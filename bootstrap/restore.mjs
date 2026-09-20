@@ -72,4 +72,72 @@ while (offset + 512 <= tar.length) {
   offset += Math.ceil(size / 512) * 512
 }
 if (files < 25) throw new Error(`restore incomplete: only ${files} files`)
-console.log(`Vajeh source restored and verified (${files} files).`)
+
+const replaceOnce = (rel, from, to) => {
+  const target = path.join(root, rel)
+  const source = fs.readFileSync(target, 'utf8')
+  const first = source.indexOf(from)
+  if (first < 0 || source.indexOf(from, first + from.length) >= 0) {
+    throw new Error(`expected exactly one fixup site in ${rel}`)
+  }
+  fs.writeFileSync(target, source.replace(from, to))
+}
+
+replaceOnce(
+  'src/screens/Progress.tsx',
+  `  // donut segments, in mastery order
+  let offset = 0
+  const segments = MASTERY_ORDER.map((level) => {
+    const fraction = counts[level] / VOCABULARY.length
+    const seg = { level, fraction, offset }
+    offset += fraction
+    return seg
+  })`,
+  `  // donut segments, in mastery order
+  const segments = MASTERY_ORDER.map((level, index) => {
+    const fraction = counts[level] / VOCABULARY.length
+    const offset = MASTERY_ORDER.slice(0, index).reduce(
+      (sum, prior) => sum + counts[prior] / VOCABULARY.length,
+      0
+    )
+    return { level, fraction, offset }
+  })`
+)
+
+replaceOnce(
+  'src/screens/Settings.tsx',
+  `  useEffect(() => {
+    void refreshAudio()
+    return () => downloadAbortRef.current?.abort()
+  }, [refreshAudio])`,
+  `  useEffect(() => {
+    let active = true
+    void offlineAudioStatus(VOCABULARY).then((next) => {
+      if (active) setAudioStatus(next)
+    })
+    return () => {
+      active = false
+      downloadAbortRef.current?.abort()
+    }
+  }, [])`
+)
+
+const eslintPath = path.join(root, 'eslint.config.js')
+const eslintSource = fs.readFileSync(eslintPath, 'utf8')
+const eslintEnd = `  }
+])
+`
+if (!eslintSource.endsWith(eslintEnd)) throw new Error('unexpected eslint config shape')
+fs.writeFileSync(
+  eslintPath,
+  eslintSource.slice(0, -eslintEnd.length) +
+    `  },
+  {
+    files: ['src/state/app.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' }
+  }
+])
+`
+)
+
+console.log(`Vajeh source restored, verified and hardened (${files} files).`)
