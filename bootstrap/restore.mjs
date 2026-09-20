@@ -1,0 +1,75 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import crypto from 'node:crypto'
+import zlib from 'node:zlib'
+
+const root = path.resolve(import.meta.dirname, '..')
+const dir = path.join(root, 'bootstrap')
+const expectedArchive = 'cf4d295003d75307d6c904d60333e710553d4e1fb5ccc20aceab385a492a6487'
+const expectedParts = [
+  '5fae3bae2b68fcb760412276ec688073b1db73b697c090d24a3eac754d95e907',
+  '288f3e4c14648e51c97b0e079c63c647cdc930315e451974f7efda6b92e80a8a',
+  '9103926288bb3a69832a060a81f11ad2ff26f424a86cc3d9ff121807670df551',
+  '8e264306e49ad10d228ce365fd20183a0bba4074ca016a81b16d646bcc847bf1',
+  'cdb899ea2610cdebcef5ce8683d4041fdffc076130cb6c603f35fe07a802c7ae',
+  '73c782f80997733155d829423003738ff7e02ddd723d653758d87d7887fb0aed',
+  '8569959e9c48e8c4a4201b5fd647585c86aaecf78bf022f1a114d4ebad64f302',
+  '804e717bcc18dbb31bb6c44dc915aaba8a071120215cdc86e480d0a66d26ec97',
+  'dbac5a00c2b8376eeec270df8678582cdaa3ab6448060222c053fc8f5a10dda7',
+  'e628fb2818d92d97a2bb42753ed04ca7202a569f0ae74050c11972a3cf7157a4'
+]
+
+const sha = (data) => crypto.createHash('sha256').update(data).digest('hex')
+const parts = expectedParts.map((expected, i) => {
+  const name = `part-${String(i).padStart(2, '0')}.b64`
+  const data = fs.readFileSync(path.join(dir, name), 'utf8').trim()
+  const got = sha(data)
+  if (got !== expected) throw new Error(`${name} checksum mismatch: ${got}`)
+  return data
+})
+
+const archive = Buffer.from(parts.join(''), 'base64')
+const gotArchive = sha(archive)
+if (gotArchive !== expectedArchive) throw new Error(`payload checksum mismatch: ${gotArchive}`)
+const tar = zlib.gunzipSync(archive)
+
+const readString = (buf, start, len) => {
+  const s = buf.subarray(start, start + len)
+  const end = s.indexOf(0)
+  return s.subarray(0, end < 0 ? s.length : end).toString('utf8')
+}
+const readOctal = (buf, start, len) => {
+  const v = readString(buf, start, len).replace(/\0/g, '').trim()
+  return v ? Number.parseInt(v, 8) : 0
+}
+const safe = (name) => {
+  const n = path.posix.normalize(name.replace(/^\.\//, '').replace(/\\/g, '/'))
+  if (!n || n === '.') return null
+  if (n.startsWith('/') || n === '..' || n.startsWith('../')) throw new Error(`unsafe path: ${name}`)
+  return n
+}
+
+let offset = 0
+let files = 0
+while (offset + 512 <= tar.length) {
+  const h = tar.subarray(offset, offset + 512)
+  if (h.every((b) => b === 0)) break
+  const name = readString(h, 0, 100)
+  const prefix = readString(h, 345, 155)
+  const rel = safe(prefix ? `${prefix}/${name}` : name)
+  const size = readOctal(h, 124, 12)
+  const type = String.fromCharCode(h[156] || 48)
+  offset += 512
+  if (rel) {
+    const dest = path.join(root, ...rel.split('/'))
+    if (type === '5') fs.mkdirSync(dest, { recursive: true })
+    else if (type === '0' || type === '\0') {
+      fs.mkdirSync(path.dirname(dest), { recursive: true })
+      fs.writeFileSync(dest, tar.subarray(offset, offset + size))
+      files++
+    } else throw new Error(`unsupported tar entry ${type}: ${rel}`)
+  }
+  offset += Math.ceil(size / 512) * 512
+}
+if (files < 25) throw new Error(`restore incomplete: only ${files} files`)
+console.log(`Vajeh source restored and verified (${files} files).`)
