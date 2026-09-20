@@ -3,7 +3,9 @@
   "private": true,
   "version": "1.2.0",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "bootstrap": "node bootstrap/restore.mjs",
     "prepare": "node bootstrap/restore.mjs",
@@ -14,7 +16,8 @@
     "test": "node bootstrap/restore.mjs && vitest run",
     "check": "npm run lint && npm test && npm run build",
     "preview": "vite preview",
-    "deploy": "npm run build && npx wrangler deploy"
+    "deploy": "npm run build && npx wrangler@4.135.0 deploy",
+    "cloudflare:build": "node bootstrap/restore.mjs && npm install --ignore-scripts --legacy-peer-deps --no-audit --no-fund && npm run build"
   },
   "dependencies": {
     "react": "^19.2.0",
