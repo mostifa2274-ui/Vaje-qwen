@@ -140,4 +140,18 @@ fs.writeFileSync(
 `
 )
 
+const cssPath = path.join(root, 'src/index.css')
+let css = fs.readFileSync(cssPath, 'utf8')
+const fontStart = css.indexOf('/* ——— fonts ——— */')
+const tokenStart = css.indexOf('/* ——— tokens ——— */')
+if (fontStart < 0 || tokenStart <= fontStart) throw new Error('unexpected font CSS shape')
+css = css.slice(0, fontStart) +
+  `/* ——— deployment font stack — bundled font files are omitted from the compact Git transport ——— */
+` +
+  css.slice(tokenStart)
+css = css
+  .replace("--font-fa: 'Vazirmatn', 'Tahoma', sans-serif;", "--font-fa: Tahoma, 'Noto Sans Arabic', Arial, sans-serif;")
+  .replace("--font-en: 'Hanken Grotesk', 'Vazirmatn', sans-serif;", "--font-en: Inter, 'Segoe UI', Arial, sans-serif;")
+fs.writeFileSync(cssPath, css)
+
 console.log(`Vajeh source restored, verified and hardened (${files} files).`)
