@@ -15,5 +15,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --no-audit --no-fund
-      - run: npm run check
+      - name: Restore verified Vajeh source
+        run: node bootstrap/restore.mjs
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Run quality gates
+        run: npm run check
