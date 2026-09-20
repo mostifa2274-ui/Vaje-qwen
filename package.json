@@ -16,8 +16,9 @@
     "test": "node bootstrap/restore.mjs && vitest run",
     "check": "npm run lint && npm test && npm run build",
     "preview": "vite preview",
-    "deploy": "npm run build && npx wrangler@4.135.0 deploy",
-    "cloudflare:build": "node bootstrap/restore.mjs && npm install --ignore-scripts --legacy-peer-deps --no-audit --no-fund && npm run build"
+    "deploy": "npm run cloudflare:build && npx wrangler@4.135.0 deploy",
+    "cloudflare:build": "node bootstrap/restore.mjs && npm install --ignore-scripts --legacy-peer-deps --no-audit --no-fund && npm run build",
+    "cloudflare:deploy": "npm run cloudflare:build && npx wrangler@4.135.0 deploy"
   },
   "dependencies": {
     "react": "^19.2.0",
