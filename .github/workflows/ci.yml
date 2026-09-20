@@ -17,7 +17,7 @@ jobs:
           node-version: 22
       - name: Restore verified Vajeh source
         run: node bootstrap/restore.mjs
-      - name: Install locked dependencies
-        run: npm ci --no-audit --no-fund
+      - name: Install dependencies
+        run: npm install --ignore-scripts --legacy-peer-deps --no-audit --no-fund
       - name: Run quality gates
         run: npm run check
