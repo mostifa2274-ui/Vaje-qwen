@@ -129,11 +129,11 @@ describe('spaced mastery', () => {
     p = recordRetrieval(p, true, 'cloze', start + 4 * 86_400_000)
     p = recordRetrieval(p, true, 'productive', start + 11 * 86_400_000)
     state.words.cat = p
-    expect(wordMastery('cat', state, [])).not.toBe('mastered')
+    expect(wordMastery('cat', state)).not.toBe('mastered')
     p = recordRetrieval(p, true, 'productive', start + 25 * 86_400_000)
     state.words.cat = p
     expect(p.intervalDays).toBeGreaterThanOrEqual(30)
-    expect(wordMastery('cat', state, [])).toBe('mastered')
+    expect(wordMastery('cat', state)).toBe('mastered')
   })
 
   it('a lapse reduces stage and becomes immediately due in an exam', () => {
