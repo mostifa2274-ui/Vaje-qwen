@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
 import { sentenceSrc, stopAudio } from '../engine/audio'
@@ -41,6 +41,20 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [audioNotice, setAudioNotice] = useState('')
   const readerAudioRef = useRef<HTMLAudioElement | null>(null)
   const playbackToken = useRef(0)
+  const clockRef = useRef(() => Date.now())
+
+  const stopReaderAudio = useCallback(() => {
+    playbackToken.current++
+    const audio = readerAudioRef.current
+    if (audio) {
+      audio.onended = null
+      audio.onerror = null
+      audio.pause()
+    }
+    if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
+    setPlayAll(false)
+    setPlayIdx(-1)
+  }, [])
 
   const previousProgress = state.chapters[chapterId]
   const alreadyDone = previousProgress?.completed === true
@@ -59,26 +73,13 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     setFinished(false)
     setAudioNotice('')
     stopReaderAudio()
-  }, [chapterId])
+  }, [chapterId, stopReaderAudio])
 
   useEffect(() => () => {
     playbackToken.current++
     readerAudioRef.current?.pause()
     stopAudio()
   }, [])
-
-  function stopReaderAudio() {
-    playbackToken.current++
-    const audio = readerAudioRef.current
-    if (audio) {
-      audio.onended = null
-      audio.onerror = null
-      audio.pause()
-    }
-    if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
-    setPlayAll(false)
-    setPlayIdx(-1)
-  }
 
   function playAt(index: number, chain: boolean) {
     if (!state.soundOn || index < 0 || index >= chapter.sentences.length) {
@@ -174,7 +175,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     if (answers[questionIndex] !== undefined) return
     const checkpoint = chapter.check[questionIndex]
     const correct = optionId === checkpoint.a
-    const now = Date.now()
+    const now = clockRef.current()
     const nextWords = { ...state.words }
     const current = nextWords[checkpoint.a] ?? blankWordProgress(now)
     nextWords[checkpoint.a] = {
@@ -195,7 +196,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       chapter.new,
       checksCorrect,
       chapter.check.length,
-      Date.now(),
+      clockRef.current(),
       CHAPTERS.map(item => item.id),
       successor?.book === chapter.book ? successor.id : undefined,
     )
