@@ -2,7 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
 import { sentenceSrc, stopAudio } from '../engine/audio'
-import { selectNarrationVoice } from '../engine/narration'
+import { cancelEnglishSpeech, speakEnglish } from '../engine/narration'
+import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
 import { blankWordProgress } from '../engine/review'
 import { bookExamId } from '../engine/gates'
@@ -19,31 +20,43 @@ interface Props {
   onOpenExam: (id: string) => void
 }
 
-
 const STALE_SENTENCE_AUDIO = new Set(staleSentenceAudioJson as string[])
 
 function faNum(n: number): string {
   return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
 }
 
-
 function wallClockNow(): number {
   return Date.now()
 }
-
 
 export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
   const newIds = useMemo(() => new Set(chapter.new), [chapter])
+  const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID), [chapter])
+  const paragraphs = useMemo(() => {
+    const paragraphSize = chapter.sentences.length >= 36 ? 5 : 4
+    const groups: number[][] = []
+    for (let start = 0; start < chapter.sentences.length; start += paragraphSize) {
+      groups.push(Array.from({ length: Math.min(paragraphSize, chapter.sentences.length - start) }, (_, offset) => start + offset))
+    }
+    return groups
+  }, [chapter])
+  const readingMinutes = useMemo(() => {
+    const words = chapter.sentences.reduce((sum, sentence) => sum + sentence.en.trim().split(/\s+/).length, 0)
+    return Math.max(1, Math.ceil(words / 90))
+  }, [chapter])
 
   const [openFa, setOpenFa] = useState<Set<number>>(new Set())
   const [gloss, setGloss] = useState<WordEntry | null>(null)
   const [playIdx, setPlayIdx] = useState(-1)
   const [playAll, setPlayAll] = useState(false)
   const [answers, setAnswers] = useState<Record<number, string>>({})
+  const [checkIndex, setCheckIndex] = useState(0)
   const [finished, setFinished] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
+  const [coverFailed, setCoverFailed] = useState(false)
   const readerAudioRef = useRef<HTMLAudioElement | null>(null)
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
@@ -56,7 +69,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       audio.onerror = null
       audio.pause()
     }
-    if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
+    cancelEnglishSpeech()
     setPlayAll(false)
     setPlayIdx(-1)
   }, [])
@@ -64,7 +77,10 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const previousProgress = state.chapters[chapterId]
   const alreadyDone = previousProgress?.completed === true
   const checksAnswered = Object.keys(answers).length
-  const checksCorrect = chapter.check.filter((check, index) => answers[index] === check.a).length
+  const checksCorrect = questions.filter((question, index) => answers[index] === question.answerId).length
+  const currentQuestion = questions[Math.min(checkIndex, questions.length - 1)]
+  const currentAnswer = answers[checkIndex]
+  const currentCorrectLabel = currentQuestion?.options.find(option => option.id === currentQuestion.answerId)?.label ?? ''
   const next = nextChapter(chapterId)
   const canOpenNext = !!next && next.book === chapter.book
   const isLastOfBook = !next || next.book !== chapter.book
@@ -73,6 +89,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     playbackToken.current++
     readerAudioRef.current?.pause()
     stopAudio()
+    cancelEnglishSpeech()
   }, [])
 
   function playAt(index: number, chain: boolean) {
@@ -81,10 +98,10 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       return
     }
 
-    stopAudio() // do not overlap a word/example clip with story narration
+    stopAudio()
     const token = ++playbackToken.current
     readerAudioRef.current?.pause()
-    if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
+    cancelEnglishSpeech()
     setPlayIdx(index)
     setPlayAll(chain)
 
@@ -99,10 +116,8 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
     const playBundledFallback = () => {
       if (playbackToken.current !== token) return
-      // 606 sentences were editorially revised after the original MP3 set was
-      // recorded. Never teach stale spoken English as a fallback.
       if (STALE_SENTENCE_AUDIO.has(`${chapterId}:${index}`)) {
-        setAudioNotice('صدای این جمله در نسخهٔ ویرایش‌شده فقط با صدای انگلیسی دستگاه پخش می‌شود؛ فایل قدیمی عمداً پخش نشد.')
+        setAudioNotice('برای این جمله فقط صدای زندهٔ انگلیسی دستگاه استفاده می‌شود؛ نسخهٔ صوتی قدیمی عمداً پخش نشد.')
         done()
         return
       }
@@ -112,34 +127,25 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       audio.src = sentenceSrc(chapterId, index)
       audio.currentTime = 0
       audio.onended = done
-      audio.onerror = done
-      void audio.play().catch(done)
-    }
-
-    const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
-    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-      playBundledFallback()
-      return
-    }
-
-    try {
-      const utterance = new SpeechSynthesisUtterance(chapter.sentences[index].en)
-      const voice = selectNarrationVoice(synth.getVoices(), state.narratorVoiceURI)
-      if (voice) {
-        utterance.voice = voice
-        utterance.lang = voice.lang
-      } else {
-        utterance.lang = 'en-US'
+      audio.onerror = () => {
+        setAudioNotice('موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای انگلیسی Chrome یا سیستم را فعال کن.')
+        done()
       }
-      utterance.rate = state.narratorRate
-      utterance.pitch = 1
-      utterance.volume = 1
-      utterance.onend = done
-      utterance.onerror = () => playBundledFallback()
-      synth.speak(utterance)
-    } catch {
-      playBundledFallback()
+      void audio.play().catch(() => {
+        setAudioNotice('پخش صدا توسط مرورگر متوقف شد. یک‌بار روی دکمهٔ صدا بزن و دوباره امتحان کن.')
+        done()
+      })
     }
+
+    setAudioNotice('')
+    const started = speakEnglish(
+      chapter.sentences[index].en,
+      state.narratorVoiceURI,
+      state.narratorRate,
+      done,
+      playBundledFallback,
+    )
+    if (!started) playBundledFallback()
   }
 
   function toggleFa(index: number) {
@@ -167,19 +173,27 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
   function answer(questionIndex: number, optionId: string) {
     if (answers[questionIndex] !== undefined) return
-    const checkpoint = chapter.check[questionIndex]
-    const correct = optionId === checkpoint.a
+    const question = questions[questionIndex]
+    if (!question) return
+    const correct = optionId === question.answerId
+    setAnswers(previous => ({ ...previous, [questionIndex]: optionId }))
+
+    if (!question.evidenceWordId) return
     const now = clockRef.current()
     const nextWords = { ...state.words }
-    const current = nextWords[checkpoint.a] ?? blankWordProgress(now)
-    nextWords[checkpoint.a] = {
+    const current = nextWords[question.evidenceWordId] ?? blankWordProgress(now)
+    nextWords[question.evidenceWordId] = {
       ...current,
       checkCorrect: current.checkCorrect + (correct ? 1 : 0),
       checkWrong: current.checkWrong + (correct ? 0 : 1),
       lastCheckAt: now,
     }
-    setAnswers(previous => ({ ...previous, [questionIndex]: optionId }))
     onChange({ ...state, words: nextWords })
+  }
+
+  function continueQuestion() {
+    if (currentAnswer === undefined || checkIndex >= questions.length - 1) return
+    setCheckIndex(index => index + 1)
   }
 
   function finishChapter() {
@@ -189,7 +203,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       chapterId,
       chapter.new,
       checksCorrect,
-      chapter.check.length,
+      questions.length,
       clockRef.current(),
       CHAPTERS.map(item => item.id),
       successor?.book === chapter.book ? successor.id : undefined,
@@ -226,111 +240,162 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
       <main className="mx-auto max-w-lg px-4 pb-32">
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
-        <div className="paper-card-flat mt-4 overflow-hidden">
-          <img src={meta.cover} alt={meta.titleFa} className="block h-44 w-full object-cover" loading="lazy" />
-          <div className="px-4 py-3">
-            <div className="text-xs font-bold" style={{ color: 'var(--crimson-deep)' }}>
-              {faNum(chapter.new.length)} واژه‌ی تازه در این فصل
+
+        <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
+          {!coverFailed ? (
+            <img
+              src={meta.cover}
+              alt={`تصویر کتاب ${meta.book}: ${meta.titleFa}`}
+              className="lesson-cover-image"
+              loading="eager"
+              onError={() => setCoverFailed(true)}
+            />
+          ) : (
+            <div className="lesson-cover-fallback" role="img" aria-label={meta.titleFa}>
+              <span aria-hidden="true">🐈‍⬛</span>
+              <strong>{meta.titleFa}</strong>
             </div>
-            <div className="strip-scroll mt-2 flex gap-2 overflow-x-auto pb-1" dir="ltr">
-              {chapter.new.map(id => {
-                const word = WORD_BY_ID.get(id)
-                if (!word) return null
-                return (
-                  <button type="button" key={id} className="btn-paper shrink-0 px-3 py-1.5" onClick={() => tapWord(id)}>
-                    <span className="font-en font-semibold" dir="ltr">{word.word}</span>
-                  </button>
-                )
-              })}
+          )}
+          <div className="lesson-cover-copy">
+            <div className="min-w-0">
+              <div className="font-en text-xs font-bold uppercase tracking-[0.16em]" dir="ltr">{meta.titleEn}</div>
+              <h2 className="mt-1 text-xl font-extrabold">{chapter.titleFa}</h2>
+              <div className="mt-1 font-en text-sm" dir="ltr">{chapter.titleEn}</div>
+            </div>
+            <div className="shrink-0 text-left text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+              <div>{faNum(chapter.sentences.length)} جمله</div>
+              <div>حدود {faNum(readingMinutes)} دقیقه</div>
             </div>
           </div>
+        </section>
+
+        <div className="reading-guidance mt-4">
+          واژه‌های تازه را قبل از ورود به قصه یاد گرفته و آزمون داده‌ای. اینجا روی <b>فهم داستان</b> تمرکز کن؛ هر واژه را هم می‌توانی برای دیدن معنی لمس کنی.
         </div>
 
         {alreadyDone && !finished && (
           <div className="paper-note mt-4" role="status">
-            این فصل را قبلاً تمام کرده‌ای. بازخوانی به درک قصه و برخورد دوباره با واژه‌ها کمک می‌کند، اما به‌تنهایی سطح «مسلط» را بالا نمی‌برد؛ تسلط فقط از بازیابی فاصله‌دار می‌آید.
+            این فصل را قبلاً تمام کرده‌ای. بازخوانی برای روان‌خوانی و درک بهتر مفید است، اما تسلط پایدار همچنان از مرور فاصله‌دار می‌آید.
           </div>
         )}
 
-        <div className="mt-5 space-y-4">
-          {chapter.sentences.map((sentence, index) => (
-            <div
-              key={index}
-              style={playIdx === index ? { background: 'rgba(217,164,65,0.25)', borderRadius: 10, padding: '4px 6px', margin: '-4px -6px' } : undefined}
-            >
-              <SentenceRow
-                en={sentence.en}
-                fa={sentence.fa}
-                showFa={state.showFaDefault || openFa.has(index)}
-                isPlaying={playIdx === index}
-                soundOn={state.soundOn}
-                newIds={newIds}
-                onToggleFa={() => toggleFa(index)}
-                onPlay={() => {
-                  setPlayAll(false)
-                  playAt(index, false)
-                }}
-                onWordTap={tapWord}
-              />
+        <article className="story-reading mt-5" aria-labelledby="story-title">
+          <div className="story-reading-header">
+            <div>
+              <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>STORY READING</div>
+              <h2 id="story-title" className="mt-1 font-en text-2xl font-bold" dir="ltr">{chapter.titleEn}</h2>
             </div>
-          ))}
-        </div>
+            <span className="mastery-chip">{faNum(paragraphs.length)} بخش</span>
+          </div>
+
+          <div className="mt-4 space-y-4">
+            {paragraphs.map((indices, paragraphIndex) => (
+              <section key={paragraphIndex} className="story-paragraph" aria-label={`بخش ${faNum(paragraphIndex + 1)}`}>
+                {indices.map(index => {
+                  const sentence = chapter.sentences[index]
+                  return (
+                    <div key={index} className={`story-line ${playIdx === index ? 'is-playing' : ''}`}>
+                      <SentenceRow
+                        en={sentence.en}
+                        fa={sentence.fa}
+                        showFa={state.showFaDefault || openFa.has(index)}
+                        isPlaying={playIdx === index}
+                        soundOn={state.soundOn}
+                        newIds={newIds}
+                        onToggleFa={() => toggleFa(index)}
+                        onPlay={() => {
+                          setPlayAll(false)
+                          playAt(index, false)
+                        }}
+                        onWordTap={tapWord}
+                      />
+                    </div>
+                  )
+                })}
+              </section>
+            ))}
+          </div>
+        </article>
 
         <section className="mt-8" aria-labelledby="comprehension-title">
           <hr className="dash-line" />
-          <h2 id="comprehension-title" className="mt-4 text-xl font-extrabold">بررسی درک</h2>
-          <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>
-            بدون نگاه به ترجمه جواب بده. پاسخ اشتباه هم ثبت می‌شود تا میزان تسلط بیش‌برآورد نشود.
-          </p>
-
-          <div className="mt-4 space-y-5">
-            {chapter.check.map((checkpoint, questionIndex) => {
-              const answered = answers[questionIndex]
-              return (
-                <fieldset key={questionIndex} className="paper-card-flat p-4">
-                  <legend className="px-1 font-bold">{checkpoint.q}</legend>
-                  <div className="mt-3 grid grid-cols-2 gap-2" dir="ltr">
-                    {checkpoint.options.map(option => {
-                      const word = WORD_BY_ID.get(option)
-                      const isAnswer = option === checkpoint.a
-                      const chosen = answered === option
-                      let style: React.CSSProperties = {}
-                      if (answered) {
-                        if (isAnswer) style = { background: 'var(--ink)', color: 'var(--cream)' }
-                        else if (chosen) style = { background: 'var(--crimson)', color: '#fff' }
-                        else style = { opacity: 0.55 }
-                      }
-                      return (
-                        <button
-                          type="button"
-                          key={option}
-                          className="btn-paper px-2 py-2.5"
-                          style={style}
-                          disabled={answered !== undefined}
-                          onClick={() => answer(questionIndex, option)}
-                        >
-                          <span className="font-en font-semibold" dir="ltr">{word?.word ?? option}</span>
-                          {answered && isAnswer && ' ✓'}
-                          {answered && chosen && !isAnswer && ' ✗'}
-                        </button>
-                      )
-                    })}
-                  </div>
-                  {answered && (
-                    <div className="mt-2 text-xs" aria-live="polite" style={{ color: 'var(--ink-soft)' }}>
-                      {answered === checkpoint.a ? 'درست بود.' : 'پاسخ درست مشخص شده است.'}
-                    </div>
-                  )}
-                </fieldset>
-              )
-            })}
+          <div className="mt-4 flex items-start justify-between gap-3">
+            <div>
+              <h2 id="comprehension-title" className="text-xl font-extrabold">درک مطلب</h2>
+              <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+                ۱۰ سؤال از خود همین قصه: جزئیات، معنی جمله و ترتیب اتفاق‌ها.
+              </p>
+            </div>
+            <span className="mastery-chip">{faNum(Math.min(checkIndex + 1, questions.length))} / {faNum(questions.length)}</span>
           </div>
+
+          <div className="mastery-progress mt-3">
+            <span style={{ width: `${((checksAnswered + (currentAnswer === undefined ? 0 : 0)) / questions.length) * 100}%` }} />
+          </div>
+
+          {currentQuestion && !finished && (
+            <div className="paper-card mt-4 p-4">
+              <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>
+                سؤال {faNum(checkIndex + 1)} از {faNum(questions.length)}
+              </div>
+              <h3 className="mt-2 text-base font-extrabold leading-8">{currentQuestion.prompt}</h3>
+              {currentQuestion.context && (
+                <div
+                  className="question-context mt-3"
+                  dir={currentQuestion.contextDir ?? 'rtl'}
+                >
+                  {currentQuestion.context}
+                </div>
+              )}
+
+              <div
+                className={`mt-4 grid gap-2 ${currentQuestion.options.every(option => option.label.length <= 24) ? 'grid-cols-2' : 'grid-cols-1'}`}
+                dir={currentQuestion.optionDir}
+              >
+                {currentQuestion.options.map(option => {
+                  const isAnswer = option.id === currentQuestion.answerId
+                  const chosen = currentAnswer === option.id
+                  let className = 'btn-paper min-h-12 px-3 py-3 text-sm leading-6'
+                  if (currentAnswer !== undefined && isAnswer) className += ' answer-correct'
+                  else if (currentAnswer !== undefined && chosen) className += ' answer-wrong'
+                  return (
+                    <button
+                      type="button"
+                      key={option.id}
+                      className={className}
+                      disabled={currentAnswer !== undefined}
+                      onClick={() => answer(checkIndex, option.id)}
+                    >
+                      {option.label}
+                    </button>
+                  )
+                })}
+              </div>
+
+              {currentAnswer !== undefined && (
+                <div
+                  className={`mt-4 rounded-xl border-2 p-3 text-sm leading-7 ${currentAnswer === currentQuestion.answerId ? 'feedback-correct' : 'feedback-wrong'}`}
+                  role="status"
+                >
+                  {currentAnswer === currentQuestion.answerId
+                    ? 'درست است.'
+                    : <>پاسخ درست: <span dir={currentQuestion.optionDir} className={currentQuestion.optionDir === 'ltr' ? 'font-en' : ''}>{currentCorrectLabel}</span></>}
+                </div>
+              )}
+
+              {currentAnswer !== undefined && checkIndex < questions.length - 1 && (
+                <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueQuestion}>
+                  سؤال بعدی ←
+                </button>
+              )}
+            </div>
+          )}
         </section>
 
-        <div className="mt-8">
-          {checksAnswered === chapter.check.length && !finished && (
+        <div className="mt-6">
+          {checksAnswered === questions.length && !finished && (
             <button type="button" className="btn-crimson pop w-full py-3.5 text-lg" onClick={finishChapter}>
-              {alreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(checksCorrect)} از {faNum(chapter.check.length)} درست
+              {alreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(checksCorrect)} از {faNum(questions.length)} درست
             </button>
           )}
 
@@ -338,7 +403,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             <div className="paper-card p-5 text-center" role="status">
               <div className="text-4xl" aria-hidden="true">🐈‍⬛</div>
               <div className="mt-2 font-extrabold">{alreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
-              <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>
+              <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
                 {isLastOfBook
                   ? `این کتاب تمام شد. واژه‌هایش وارد مرور فاصله‌دار شده‌اند؛ برای بازشدن مرحلهٔ بعد، آزمون کتاب ${faNum(chapter.book)} را بگذران.`
                   : next ? `واژه‌های این فصل برای مرور فاصله‌دار برنامه‌ریزی شدند. پیش از فصل بعد، واژه‌های تازهٔ «${next.titleFa}» را آماده می‌کنی.` : ''}
