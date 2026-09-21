@@ -68,6 +68,7 @@ export default function App() {
   const [state, setState] = useState<GhesseState>(() => loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS))
   const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)))
   const [persistOk, setPersistOk] = useState(true)
+  const [now, setNow] = useState(() => Date.now())
   const stateRef = useRef(state)
 
   const update = useCallback((next: GhesseState) => {
@@ -125,6 +126,10 @@ export default function App() {
   }, [])
 
   useEffect(() => { stateRef.current = state }, [state])
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(Date.now()), 60_000)
+    return () => window.clearInterval(timer)
+  }, [])
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'auto' }) }, [view])
   useEffect(() => {
     document.documentElement.setAttribute('dir', 'rtl')
@@ -174,7 +179,7 @@ export default function App() {
       )
       break
     case 'review':
-      screen = <ReviewScreen state={state} onChange={update} onBack={backToMap} />
+      screen = <ReviewScreen state={state} now={now} onChange={update} onBack={backToMap} />
       break
     case 'exam':
       screen = (
@@ -209,6 +214,7 @@ export default function App() {
       screen = (
         <MapScreen
           state={state}
+          now={now}
           onOpenChapter={openChapter}
           onOpenExam={openExam}
           onOpenReview={() => navigate({ name: 'review' })}
