@@ -17,6 +17,10 @@
     --gold: #d9a441;
     --sage-line: #87a08b;
     --book-tint: #e8d9c4;    /* per-book override via inline style */
+    --line-soft: color-mix(in srgb, var(--ink) 22%, transparent);
+    --line-medium: color-mix(in srgb, var(--ink) 38%, transparent);
+    --shadow-soft: 0 10px 28px rgba(43, 42, 38, 0.10);
+    --shadow-control: 0 2px 8px rgba(43, 42, 38, 0.10);
 
     --background: 95 19% 74%;
     --foreground: 60 5% 16%;
@@ -59,17 +63,17 @@ body {
 
 /* ---------- Paper card ---------- */
 .paper-card {
-  background: var(--cream);
-  border: 2px solid var(--ink);
-  border-radius: 14px;
-  box-shadow: 3px 4px 0 rgba(43, 42, 38, 0.85);
+  background: color-mix(in srgb, var(--cream) 94%, white);
+  border: 1px solid var(--line-medium);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
   position: relative;
 }
 
 .paper-card-flat {
   background: var(--cream-soft);
-  border: 2px solid var(--ink);
-  border-radius: 14px;
+  border: 1px solid var(--line-medium);
+  border-radius: 16px;
 }
 
 /* dashed sketchbook path line */
@@ -109,18 +113,24 @@ body {
 }
 
 /* ---------- Buttons ---------- */
+.btn-ink,
+.btn-paper,
+.btn-crimson {
+  min-height: 2.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: transform 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+}
+
 .btn-ink {
   background: var(--ink);
   color: var(--cream);
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  box-shadow: 2px 3px 0 rgba(43, 42, 38, 0.4);
-  font-weight: 700;
-  transition: transform 80ms ease, box-shadow 80ms ease;
+  border: 1px solid var(--ink);
+  box-shadow: var(--shadow-control);
 }
 .btn-ink:active {
-  transform: translate(2px, 3px);
-  box-shadow: 0 0 0 rgba(43, 42, 38, 0.4);
+  transform: scale(.985);
+  box-shadow: none;
 }
 .btn-ink:disabled {
   opacity: 0.45;
@@ -128,31 +138,25 @@ body {
 }
 
 .btn-paper {
-  background: var(--cream);
+  background: color-mix(in srgb, var(--cream) 96%, white);
   color: var(--ink);
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  box-shadow: 2px 3px 0 rgba(43, 42, 38, 0.85);
-  font-weight: 700;
-  transition: transform 80ms ease, box-shadow 80ms ease;
+  border: 1px solid var(--line-medium);
+  box-shadow: var(--shadow-control);
 }
 .btn-paper:active {
-  transform: translate(2px, 3px);
-  box-shadow: 0 0 0 rgba(43, 42, 38, 0.85);
+  transform: scale(.985);
+  box-shadow: none;
 }
 
 .btn-crimson {
   background: var(--crimson);
   color: #fff;
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  box-shadow: 2px 3px 0 rgba(43, 42, 38, 0.85);
-  font-weight: 700;
-  transition: transform 80ms ease, box-shadow 80ms ease;
+  border: 1px solid var(--crimson-deep);
+  box-shadow: var(--shadow-control);
 }
 .btn-crimson:active {
-  transform: translate(2px, 3px);
-  box-shadow: 0 0 0 rgba(43, 42, 38, 0.85);
+  transform: scale(.985);
+  box-shadow: none;
 }
 
 /* ---------- Map nodes ---------- */
@@ -216,15 +220,13 @@ body {
   gap: 1rem;
 }
 .story-paragraph {
-  border: 1.5px solid color-mix(in srgb, var(--ink) 64%, transparent);
-  border-radius: 14px;
-  background: rgba(255,255,255,.28);
-  padding: .9rem;
+  padding-block: .15rem;
+}
+.story-paragraph + .story-paragraph {
+  margin-top: 1.7rem;
 }
 .story-line + .story-line {
-  margin-top: .45rem;
-  padding-top: .45rem;
-  border-top: 1px dashed color-mix(in srgb, var(--ink) 22%, transparent);
+  margin-top: .72rem;
 }
 .story-line.is-playing {
   margin-inline: -.35rem;
@@ -247,13 +249,13 @@ body {
 }
 .story-action {
   display: inline-flex;
-  width: 2rem;
-  height: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid color-mix(in srgb, var(--ink) 76%, transparent);
-  border-radius: 9px;
-  background: color-mix(in srgb, var(--cream) 88%, white);
+  border: 1px solid var(--line-medium);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--cream) 94%, white);
   color: var(--ink);
   font-size: .74rem;
   font-weight: 800;
@@ -274,8 +276,8 @@ body {
   font-family: Georgia, 'Times New Roman', serif;
   direction: ltr;
   text-align: left;
-  line-height: 1.82;
-  font-size: 1.16rem;
+  line-height: 1.9;
+  font-size: 1.2rem;
   letter-spacing: 0.002em;
 }
 .story-fa {
@@ -287,9 +289,9 @@ body {
 
 .lesson-cover-card {
   position: relative;
-  border: 2px solid var(--ink);
-  border-radius: 16px;
-  box-shadow: 3px 4px 0 rgba(43,42,38,.72);
+  border: 1px solid var(--line-medium);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
 }
 .lesson-cover-image {
   display: block;
@@ -316,23 +318,23 @@ body {
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
-  border-top: 1.5px solid var(--ink);
+  border-top: 1px solid var(--line-medium);
   background: rgba(251,245,236,.86);
   padding: .8rem .9rem;
 }
 .reading-guidance {
-  border-inline-start: 4px solid var(--crimson);
-  border-radius: 9px;
-  background: rgba(255,255,255,.32);
-  padding: .75rem .85rem;
-  font-size: .82rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: rgba(255,255,255,.34);
+  padding: .8rem .9rem;
+  font-size: .84rem;
   line-height: 1.9;
 }
 .question-context {
-  border: 1.5px dashed color-mix(in srgb, var(--ink) 58%, transparent);
-  border-radius: 11px;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
   background: rgba(255,255,255,.42);
-  padding: .8rem;
+  padding: .85rem;
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -384,7 +386,7 @@ button:disabled {
 
 .paper-note {
   background: #fff8dc;
-  border: 2px dashed var(--ink);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, var(--ink));
   border-radius: 12px;
   padding: 12px 14px;
   color: var(--ink);
@@ -423,21 +425,21 @@ button:disabled {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid var(--ink);
+  border: 1px solid var(--line-medium);
   border-radius: 999px;
-  background: var(--cream-soft);
-  padding: 0.25rem 0.55rem;
+  background: rgba(255,255,255,.38);
+  padding: 0.3rem 0.62rem;
   font-size: 0.72rem;
   font-weight: 800;
   white-space: nowrap;
 }
 
 .mastery-progress {
-  height: 0.65rem;
+  height: 0.42rem;
   overflow: hidden;
-  border: 1.5px solid var(--ink);
+  border: 0;
   border-radius: 999px;
-  background: var(--cream-soft);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
 }
 .mastery-progress > span {
   display: block;
@@ -544,12 +546,12 @@ button:disabled {
 }
 
 .answer-input {
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line-medium);
   border-radius: 12px;
-  background: white;
-  padding: 0.8rem 0.9rem;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.2rem;
+  background: rgba(255,255,255,.78);
+  padding: 0.9rem 1rem;
+  font-family: Tahoma, 'Noto Sans Arabic', Arial, system-ui, sans-serif;
+  font-size: 1.05rem;
   color: var(--ink);
 }
 .answer-input:focus {
@@ -583,25 +585,24 @@ button:disabled {
 .prep-stepper {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.35rem;
-  font-size: 0.66rem;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.67rem;
   font-weight: 800;
 }
 .prep-stepper span {
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  background: var(--cream-soft);
-  padding: 0.45rem 0.25rem;
+  min-width: 0;
+  padding: .6rem .25rem .7rem;
   text-align: center;
-  opacity: 0.48;
+  color: var(--ink-soft);
+  opacity: .58;
 }
 .prep-stepper span.done {
-  background: #e6efdf;
-  opacity: 0.78;
+  color: var(--ink);
+  opacity: .82;
 }
 .prep-stepper span.active {
-  background: var(--ink);
-  color: var(--cream);
+  box-shadow: inset 0 -3px 0 var(--crimson);
+  color: var(--ink);
   opacity: 1;
 }
 
@@ -630,7 +631,8 @@ button:disabled {
 }
 
 .btn-quiet {
-  border: 1.5px dashed color-mix(in srgb, var(--ink) 48%, transparent);
+  min-height: 2.75rem;
+  border: 1px solid var(--line-soft);
   border-radius: 0.75rem;
   background: transparent;
   color: var(--ink-soft);
@@ -679,3 +681,99 @@ button:disabled {
 .book-cover-mark { width:64px;height:64px;flex:0 0 64px;border:2px solid var(--ink);border-radius:14px;box-shadow:3px 3px 0 var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05; }
 .book-cover-mark span { font-size:1.25rem;font-weight:800; }
 .book-cover-mark small { margin-top:5px;font-family:Georgia,serif;font-size:.55rem;max-width:54px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+
+
+/* ---------- Learning flow premium refinement ---------- */
+.reader-header-button {
+  width: 2.75rem;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.learning-focus-card {
+  max-width: 44rem;
+  margin-inline: auto;
+  border: 1px solid var(--line-medium);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--cream) 95%, white);
+  box-shadow: var(--shadow-soft);
+}
+
+.learning-example {
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  background: rgba(255,255,255,.34);
+}
+
+.story-reading {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.story-sentence-actions {
+  gap: .4rem;
+}
+
+.story-action-fa {
+  font-size: .7rem;
+  letter-spacing: .02em;
+}
+
+.page-in > header.sticky,
+.page-in > div.sticky {
+  padding-top: env(safe-area-inset-top);
+}
+
+@media (pointer: coarse) {
+  .btn-ink,
+  .btn-paper,
+  .btn-crimson,
+  .btn-quiet {
+    min-height: 2.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .lesson-cover-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(15rem, .7fr);
+    align-items: stretch;
+  }
+
+  .lesson-cover-image,
+  .lesson-cover-fallback {
+    height: 16rem;
+  }
+
+  .lesson-cover-copy {
+    border-top: 0;
+    border-inline-start: 1px solid var(--line-medium);
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.15rem;
+  }
+
+  .story-paragraph + .story-paragraph {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-sentence {
+    gap: .55rem;
+  }
+
+  .story-en {
+    font-size: 1.08rem;
+    line-height: 1.86;
+  }
+
+  .story-sentence-actions {
+    gap: .32rem;
+  }
+}
