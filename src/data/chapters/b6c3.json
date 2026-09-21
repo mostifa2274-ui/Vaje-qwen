@@ -37,8 +37,8 @@
       "fa": "او در یک دفتر کار می‌کند."
     },
     {
-      "en": "The office is in the city center.",
-      "fa": "دفتر در مرکز شهر است."
+      "en": "Dad's office is in the city center, near the market.",
+      "fa": "دفتر بابا در مرکز شهر، نزدیک بازار است."
     },
     {
       "en": "He is a worker.",
@@ -69,19 +69,19 @@
       "fa": "او در تجارت است."
     },
     {
-      "en": "The company is near the city center.",
-      "fa": "شرکت نزدیک مرکز شهر است."
+      "en": "The company is near the city center, so Dad sees many people.",
+      "fa": "شرکت نزدیک مرکز شهر است، بنابراین بابا آدم‌های زیادی می‌بیند."
     },
     {
       "en": "He works for a company.",
       "fa": "او برای یک شرکت کار می‌کند."
     },
     {
-      "en": "Dad has a good career.",
-      "fa": "بابا شغل و مسیر حرفه‌ای خوبی دارد."
+      "en": "Dad has built a good career at the company.",
+      "fa": "بابا در شرکت مسیر حرفه‌ای خوبی ساخته است."
     },
     {
-      "en": "Mom has a career, too.",
+      "en": "Mom has her own career too.",
       "fa": "مامان هم مسیر حرفه‌ای خودش را دارد."
     },
     {
@@ -89,8 +89,8 @@
       "fa": "مصاحبه امروز است."
     },
     {
-      "en": "Mina's brother has an interview.",
-      "fa": "برادر مینا یک مصاحبه دارد."
+      "en": "Mina's brother has an interview for a new job.",
+      "fa": "برادر مینا برای یک کار جدید مصاحبه دارد."
     },
     {
       "en": "The meeting is at nine.",
@@ -101,8 +101,8 @@
       "fa": "بابا در جلسه است."
     },
     {
-      "en": "The project is large.",
-      "fa": "پروژه بزرگ است."
+      "en": "Dad's main project is large and important.",
+      "fa": "پروژه‌ی اصلی بابا بزرگ و مهم است."
     },
     {
       "en": "He has a project.",
@@ -117,16 +117,16 @@
       "fa": "گزارش طولانی است."
     },
     {
-      "en": "The company has a big machine.",
-      "fa": "شرکت یک دستگاه بزرگ دارد."
+      "en": "The company has a big machine in one room.",
+      "fa": "شرکت در یکی از اتاق‌ها یک دستگاه بزرگ دارد."
     },
     {
       "en": "The machine makes bread.",
       "fa": "دستگاه نان درست می‌کند."
     },
     {
-      "en": "The program helps Dad write reports.",
-      "fa": "این برنامه به بابا کمک می‌کند گزارش بنویسد."
+      "en": "A computer program helps Dad write his report.",
+      "fa": "یک برنامه‌ی رایانه‌ای به بابا کمک می‌کند گزارشش را بنویسد."
     },
     {
       "en": "He uses a program.",
@@ -141,12 +141,12 @@
       "fa": "وبلاگ درباره‌ی نینو است."
     },
     {
-      "en": "The work is difficult, but Dad can do it.",
-      "fa": "کار دشوار است، اما بابا می‌تواند انجامش دهد."
+      "en": "The work is difficult, but Dad keeps going.",
+      "fa": "کار دشوار است، اما بابا ادامه می‌دهد."
     },
     {
-      "en": "Dad can do the difficult work.",
-      "fa": "بابا می‌تواند کار دشوار را انجام دهد."
+      "en": "Dad can do difficult work because he practices.",
+      "fa": "بابا می‌تواند کار دشوار را انجام دهد چون تمرین می‌کند."
     },
     {
       "en": "The meeting is important.",
@@ -161,8 +161,8 @@
       "fa": "دفتر اصلی در شهر است."
     },
     {
-      "en": "The main street is near the office.",
-      "fa": "خیابان اصلی نزدیک دفتر است."
+      "en": "The main street passes close to Dad's office.",
+      "fa": "خیابان اصلی از نزدیک دفتر بابا می‌گذرد."
     },
     {
       "en": "The office is modern.",
@@ -177,8 +177,8 @@
       "fa": "رایانه مفید است."
     },
     {
-      "en": "It is a useful machine.",
-      "fa": "دستگاه مفیدی است."
+      "en": "The computer is a useful machine for his work.",
+      "fa": "رایانه دستگاهی مفید برای کار اوست."
     },
     {
       "en": "The club is for workers.",
