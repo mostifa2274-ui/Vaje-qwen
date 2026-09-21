@@ -14,6 +14,10 @@ interface Props {
 
 const PAGE_SIZE = 200
 
+function faNum(n: number): string {
+  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
+}
+
 const LEVEL_FA: Record<MasteryLevel, string> = {
   new: 'تازه',
   seen: 'دیده‌شده',
