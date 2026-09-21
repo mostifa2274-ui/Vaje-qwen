@@ -18,7 +18,7 @@ function draft(overrides: Partial<PrepDraft> = {}): PrepDraft {
     version: 1,
     chapterId: 'b1c1',
     phase: 'written',
-    teachIndex: 1,
+    teachIndex: 2,
     writtenQueue: ['dog', 'bird'],
     writtenPassed: ['cat'],
     writtenMissed: [],
@@ -71,6 +71,28 @@ describe('chapter preparation drafts', () => {
     }), 'b1c1', IDS)
 
     expect(normalized?.listeningQueue).toEqual(['dog'])
+  })
+
+  it('downgrades listening to written when written coverage is incomplete', () => {
+    const normalized = sanitizePrepDraft(draft({
+      phase: 'listening',
+      writtenQueue: [],
+      writtenPassed: ['cat'],
+      listeningQueue: ['dog'],
+      listeningPassed: [],
+    }), 'b1c1', IDS)
+
+    expect(normalized?.phase).toBe('written')
+    expect(normalized?.writtenQueue).toEqual(['dog', 'bird'])
+  })
+
+  it('downgrades testing to teaching when the teaching sequence was not finished', () => {
+    const normalized = sanitizePrepDraft(draft({
+      phase: 'written',
+      teachIndex: 0,
+    }), 'b1c1', IDS)
+
+    expect(normalized?.phase).toBe('teach')
   })
 
   it('rejects a draft for another chapter or an invalid phase', () => {
