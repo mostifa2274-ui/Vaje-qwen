@@ -118,7 +118,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }, [phase, teachIndex, currentWrittenId, currentListeningId])
 
   useEffect(() => {
-    if (alreadyPrepared) {
+    if (alreadyPrepared || (phase === 'teach' && teachIndex === 0)) {
       clearPrepDraft(chapterId)
       return
     }
