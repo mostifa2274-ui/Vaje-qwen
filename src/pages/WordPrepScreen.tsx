@@ -7,6 +7,7 @@ import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglish } from '../engine/narration'
 import { play, wordSrc } from '../engine/audio'
 import { BackIcon, SpeakerIcon } from '../components/Icons'
+import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 
 interface Props {
   chapterId: string
@@ -15,9 +16,6 @@ interface Props {
   onBack: () => void
   onReady: () => void
 }
-
-type Phase = 'teach' | 'written' | 'listening'
-type Feedback = 'correct' | 'wrong' | null
 
 function faNum(n: number): string {
   return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
@@ -56,21 +54,24 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const meta = BOOKS.find(book => book.book === chapter.book)!
   const alreadyPrepared = chapterPrepared(state, chapterId)
 
-  const [phase, setPhase] = useState<Phase>('teach')
-  const [teachIndex, setTeachIndex] = useState(0)
+  const [initialDraft] = useState(() => alreadyPrepared ? undefined : loadPrepDraft(chapterId, chapter.new))
+  const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
+  const [phase, setPhase] = useState<PrepPhase>(() => initialDraft?.phase ?? 'teach')
+  const [teachIndex, setTeachIndex] = useState(() => initialDraft?.teachIndex ?? 0)
 
-  const [writtenQueue, setWrittenQueue] = useState<string[]>(() => [...chapter.new])
-  const [writtenPassed, setWrittenPassed] = useState<Set<string>>(new Set())
-  const [writtenMissed, setWrittenMissed] = useState<Set<string>>(new Set())
+  const [writtenQueue, setWrittenQueue] = useState<string[]>(() => initialDraft?.writtenQueue ?? [...chapter.new])
+  const [writtenPassed, setWrittenPassed] = useState<Set<string>>(() => new Set(initialDraft?.writtenPassed ?? []))
+  const [writtenMissed, setWrittenMissed] = useState<Set<string>>(() => new Set(initialDraft?.writtenMissed ?? []))
 
-  const [listeningQueue, setListeningQueue] = useState<string[]>([])
-  const [listeningPassed, setListeningPassed] = useState<Set<string>>(new Set())
-  const [listeningMissed, setListeningMissed] = useState<Set<string>>(new Set())
+  const [listeningQueue, setListeningQueue] = useState<string[]>(() => initialDraft?.listeningQueue ?? [])
+  const [listeningPassed, setListeningPassed] = useState<Set<string>>(() => new Set(initialDraft?.listeningPassed ?? []))
+  const [listeningMissed, setListeningMissed] = useState<Set<string>>(() => new Set(initialDraft?.listeningMissed ?? []))
 
-  const [feedback, setFeedback] = useState<Feedback>(null)
-  const [selected, setSelected] = useState('')
-  const [typed, setTyped] = useState('')
+  const [feedback, setFeedback] = useState<PrepFeedback>(() => initialDraft?.feedback ?? null)
+  const [selected, setSelected] = useState(() => initialDraft?.selected ?? '')
+  const [typed, setTyped] = useState(() => initialDraft?.typed ?? '')
   const stageRef = useRef<HTMLDivElement>(null)
+  const hasMountedRef = useRef(false)
 
   const currentTeachId = chapter.new[teachIndex]
   const currentTeachWord = currentTeachId ? WORD_BY_ID.get(currentTeachId) : undefined
@@ -109,11 +110,69 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
 
   useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true
+      return
+    }
     stageRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
   }, [phase, teachIndex, currentWrittenId, currentListeningId])
 
+  useEffect(() => {
+    if (alreadyPrepared) {
+      clearPrepDraft(chapterId)
+      return
+    }
+    savePrepDraft({
+      version: 1,
+      chapterId,
+      phase,
+      teachIndex,
+      writtenQueue,
+      writtenPassed: [...writtenPassed],
+      writtenMissed: [...writtenMissed],
+      listeningQueue,
+      listeningPassed: [...listeningPassed],
+      listeningMissed: [...listeningMissed],
+      feedback,
+      selected,
+      typed,
+      updatedAt: Date.now(),
+    }, chapter.new)
+  }, [
+    alreadyPrepared,
+    chapter.new,
+    chapterId,
+    feedback,
+    listeningMissed,
+    listeningPassed,
+    listeningQueue,
+    phase,
+    selected,
+    teachIndex,
+    typed,
+    writtenMissed,
+    writtenPassed,
+    writtenQueue,
+  ])
+
   function enableSound() {
     onChange({ ...state, soundOn: true })
+  }
+
+  function restartPrep() {
+    clearPrepDraft(chapterId)
+    setResumedDraft(false)
+    setPhase('teach')
+    setTeachIndex(0)
+    setWrittenQueue([...chapter.new])
+    setWrittenPassed(new Set())
+    setWrittenMissed(new Set())
+    setListeningQueue([])
+    setListeningPassed(new Set())
+    setListeningMissed(new Set())
+    setFeedback(null)
+    setSelected('')
+    setTyped('')
   }
 
   function continueTeach() {
@@ -205,6 +264,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         [...listeningMissed],
         Date.now(),
       )
+      clearPrepDraft(chapterId)
       onChange(nextState)
       onReady()
     }
@@ -240,6 +300,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             </span>
           ))}
         </div>
+
+        {resumedDraft && !alreadyPrepared && (
+          <div className="prep-resume-row mt-3" role="status">
+            <span>پیشرفت این جلسه بازیابی شد؛ از همان‌جایی که رها کردی ادامه بده.</span>
+            <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={restartPrep}>شروع از اول</button>
+          </div>
+        )}
 
         {phase === 'teach' && currentTeachWord && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
