@@ -17,7 +17,8 @@ export const CHAPTERS: Chapter[] = Object.values(modules)
 export const CHAPTER_BY_ID: Map<string, Chapter> = new Map(CHAPTERS.map(c => [c.id, c]))
 
 function publicAsset(path: string): string {
-  return `${import.meta.env.BASE_URL}${path.replace(/^\\/+/, '')}`
+  const clean = path.startsWith('/') ? path.slice(1) : path
+  return `${import.meta.env.BASE_URL}${clean}`
 }
 
 export const BOOKS: BookMeta[] = [
