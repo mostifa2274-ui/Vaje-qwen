@@ -60,6 +60,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const readerAudioRef = useRef<HTMLAudioElement | null>(null)
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
+  const questionRef = useRef<HTMLDivElement>(null)
 
   const stopReaderAudio = useCallback(() => {
     playbackToken.current++
@@ -91,6 +92,10 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     stopAudio()
     cancelEnglishSpeech()
   }, [])
+
+  useEffect(() => {
+    if (checkIndex > 0) questionRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
+  }, [checkIndex])
 
   function playAt(index: number, chain: boolean) {
     if (!state.soundOn || index < 0 || index >= chapter.sentences.length) {
@@ -214,7 +219,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
   return (
     <div className="page-in" style={{ background: 'var(--cream)', minHeight: '100vh' }}>
-      <div className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '2px solid var(--ink)' }}>
+      <div className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '1px solid var(--line-medium)' }}>
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه">
             <BackIcon className="h-5 w-5" />
@@ -336,7 +341,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
           </div>
 
           {currentQuestion && !finished && (
-            <div className="paper-card mt-4 p-4">
+            <div ref={questionRef} className="paper-card question-card mt-4 p-4 sm:p-5">
               <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>
                 سؤال {faNum(checkIndex + 1)} از {faNum(questions.length)}
               </div>
@@ -376,7 +381,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
               {currentAnswer !== undefined && (
                 <div
-                  className={`mt-4 rounded-xl border-2 p-3 text-sm leading-7 ${currentAnswer === currentQuestion.answerId ? 'feedback-correct' : 'feedback-wrong'}`}
+                  className={`feedback-panel mt-4 p-3 text-sm leading-7 ${currentAnswer === currentQuestion.answerId ? 'feedback-correct' : 'feedback-wrong'}`}
                   role="status"
                 >
                   {currentAnswer === currentQuestion.answerId
