@@ -130,6 +130,8 @@ describe('spaced mastery', () => {
     p = recordRetrieval(p, true, 'productive', start + 11 * 86_400_000)
     state.words.cat = p
     expect(wordMastery('cat', state)).not.toBe('mastered')
+    // Mastery now requires evidence across meaning, context, production and form.
+    p = recordRetrieval(p, true, 'spelling', start + 18 * 86_400_000)
     p = recordRetrieval(p, true, 'productive', start + 25 * 86_400_000)
     state.words.cat = p
     expect(p.intervalDays).toBeGreaterThanOrEqual(30)
@@ -152,6 +154,11 @@ describe('spaced mastery', () => {
     const start = Date.UTC(2026, 0, 1)
     let p = blankWordProgress(start)
     p.reviewStage = 3
+    // At stage 3, the adaptive selector should target production once the
+    // other evidence channels have their minimum coverage.
+    p.skillStats.meaning.correct = 3
+    p.skillStats.context.correct = 2
+    p.skillStats.form.correct = 1
     expect(modeForProgress(p)).toBe('productive')
     const before = p.difficulty
     p = recordRetrieval(p, false, 'productive', start, 'review', 12_000)
