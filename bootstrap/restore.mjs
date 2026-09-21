@@ -2,11 +2,57 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import zlib from 'node:zlib'
-const root=path.resolve(import.meta.dirname,'..'),dir=path.join(root,'bootstrap'),expectedArchive='0bd311341f8575085f09191ca45c491f880ba8b05ec84d3b7a3e15bd10cec7b5',expectedParts=["3362a38183a24b4cf4170b467e01f60e9be2d543fe4be5ed8f30ccd04c70aac1", "207769b8f44c56fc9311fdf3f292cf758e9218663031a56808ca41bc4dd3f781", "5646b8a1f4f34f371ae1c8b7166f7816cbdbc16c69cd025aa5f49d4c0eed7e92", "f831dba373bf3ba9a3b664e70d5f7ecdb41231d8e3c25647bbc79dbdba2de473", "3b47d4714765cc89c7b8d8c62f4d60b578a7c6da104400ccc71dacb3d96992f6", "3673a90203eca3c8d715169c9ba6c25c8b7f9fe7e18cc5853a5929992bb3e423", "fcbd5d52795fe3540ebef4158e0faf9b29efe551ee4c97eb61a070605923de06", "2728670e09f02a1afa0eaab5b3004bf0bc24b07d885daa0e1fecc70887be6051", "2d435480e1325602ba14a9a6efec664dcca8005ae62e6db6968d2d6e64322437", "8a44bcf07a4c9e8c9b327e513b742b6771bd5d148ba2684bcccaea1ec3204d98", "9c02ae00e7bbb78c9d9ece8fbf206eb8dcb5c98965446643708d9de41e1af02c", "94f3ec9897ff6e24250c28a33f32f75ea688c78c1bd55b1922f476a20607f098", "c4d3eed53b8acb8fb24759dc5f4b86dfe11f74760a0a71e7d6adee204765a65c", "4016bbed18d41223bf28fc1d5f52f73fd4412745fa120f8c8ee74825035c9745", "c721061fb180ba25f0b50cd872626c9290c891e2946025eec434878a7e5b3488"]
-const sha=data=>crypto.createHash('sha256').update(data).digest('hex')
-const parts=expectedParts.map((expected,i)=>{const name=`part-${String(i).padStart(2,'0')}.b64`,data=fs.readFileSync(path.join(dir,name),'utf8').trim(),got=sha(data);if(got!==expected)throw new Error(`${name} checksum mismatch: ${got}`);return data})
-const archive=Buffer.from(parts.join(''),'base64'),gotArchive=sha(archive);if(gotArchive!==expectedArchive)throw new Error(`payload checksum mismatch: ${gotArchive}`);const tar=zlib.gunzipSync(archive)
-const readString=(buf,start,len)=>{const s=buf.subarray(start,start+len),end=s.indexOf(0);return s.subarray(0,end<0?s.length:end).toString('utf8')},readOctal=(buf,start,len)=>{const v=readString(buf,start,len).replace(/\0/g,'').trim();return v?Number.parseInt(v,8):0},safe=name=>{const n=path.posix.normalize(name.replace(/^\.\//,'').replace(/\\/g,'/'));if(!n||n==='.')return null;if(n.startsWith('/')||n==='..'||n.startsWith('../'))throw new Error(`unsafe path: ${name}`);return n}
-for(const rel of ['src','public','scripts','package-lock.json','tsconfig.json','tsconfig.app.json','tsconfig.node.json','vite.config.ts','eslint.config.js','postcss.config.js','tailwind.config.ts'])fs.rmSync(path.join(root,rel),{recursive:true,force:true})
-let offset=0,files=0;while(offset+512<=tar.length){const h=tar.subarray(offset,offset+512);if(h.every(b=>b===0))break;const name=readString(h,0,100),prefix=readString(h,345,155),rel=safe(prefix?`${prefix}/${name}`:name),size=readOctal(h,124,12),type=String.fromCharCode(h[156]||48);offset+=512;if(rel){const dest=path.join(root,...rel.split('/'));if(type==='5')fs.mkdirSync(dest,{recursive:true});else if(type==='0'||type==='\0'){fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,tar.subarray(offset,offset+size));files++}else throw new Error(`unsupported tar entry ${type}: ${rel}`)}offset+=Math.ceil(size/512)*512}
-if(files!==87)throw new Error(`restore incomplete: expected 87 files, got ${files}`);console.log(`Ghesse 5.0 source restored and verified (${files} files).`)
+
+const root = path.resolve(import.meta.dirname, '..')
+const dir = path.join(root, 'bootstrap')
+const expectedArchive = '0113987b0c4a1da295e0732e5a1a38d8560d049d77400b1e785caecb13985bf3'
+const expectedArchiveBytes = 159412
+const expectedFiles = 97
+const expectedParts = ["53907eb28b0e8738df058fc13117981c370868c557933d1f0e1cabbf48dbc64a", "57764ff843020f95a89aab3fbff6af2f639efb24dd102f897d4a4b06f54787f7", "86afd57faccc7768a38ae1d0cf03b61bb7272e714689c77d5ec23e5ddf85254f", "08827b40137811705db3faa2aedf68ae7b460bb7bcc73b5653449a99fef54397", "76a2311b8edddf626905c30d8cd00bf1d6ba400a1b3ced07a4cd42751ad81145", "aa24503f07b3e4566049108cd6f8b2b7b2bc3872550cbc9c42948ca75035d4a7", "7355e28e841addfceeac161a46894fa09d7bf873d6397246ccc9b802e040161f", "70bc10cf8ea6ad444e4d33bf54c0fe8748ae2a6f9028dfcfd9ea2e1df2b4468b"]
+const sha = (data) => crypto.createHash('sha256').update(data).digest('hex')
+
+const encoded = expectedParts.map((expected, i) => {
+  const name = `ghesse-${String(i).padStart(2, '0')}.b64`
+  const data = fs.readFileSync(path.join(dir, name), 'utf8').trim()
+  const got = sha(data)
+  if (got !== expected) throw new Error(`${name} checksum mismatch: ${got}`)
+  return data
+}).join('')
+
+const archive = Buffer.from(encoded, 'base64')
+if (archive.length !== expectedArchiveBytes) throw new Error(`payload size mismatch: ${archive.length}`)
+const gotArchive = sha(archive)
+if (gotArchive !== expectedArchive) throw new Error(`payload checksum mismatch: ${gotArchive}`)
+const tar = zlib.brotliDecompressSync(archive)
+
+const readString = (buf, start, len) => { const s=buf.subarray(start,start+len); const end=s.indexOf(0); return s.subarray(0,end<0?s.length:end).toString('utf8') }
+const readOctal = (buf, start, len) => { const v=readString(buf,start,len).replace(/\0/g,'').trim(); return v?Number.parseInt(v,8):0 }
+const safe = (name) => {
+  const n=path.posix.normalize(name.replace(/^\.\//,'').replace(/\\/g,'/'))
+  if (!n || n==='.') return null
+  if (n.startsWith('/') || n==='..' || n.startsWith('../')) throw new Error(`unsafe path: ${name}`)
+  return n
+}
+
+for (const rel of ['src','public','scripts']) fs.rmSync(path.join(root, rel), { recursive: true, force: true })
+for (const rel of ['index.html','eslint.config.js','postcss.config.js','tailwind.config.js','tsconfig.json','tsconfig.app.json','tsconfig.node.json','vite.config.ts','package-lock.json']) fs.rmSync(path.join(root, rel), { force: true })
+
+let offset=0, files=0
+while (offset+512<=tar.length) {
+  const h=tar.subarray(offset,offset+512)
+  if (h.every((b)=>b===0)) break
+  const name=readString(h,0,100), prefix=readString(h,345,155)
+  const rel=safe(prefix?`${prefix}/${name}`:name)
+  const size=readOctal(h,124,12), type=String.fromCharCode(h[156]||48)
+  offset+=512
+  if (rel) {
+    const dest=path.join(root,...rel.split('/'))
+    if (!dest.startsWith(root+path.sep)) throw new Error(`unsafe destination: ${rel}`)
+    if (type==='5') fs.mkdirSync(dest,{recursive:true})
+    else if (type==='0' || type==='\0') { fs.mkdirSync(path.dirname(dest),{recursive:true}); fs.writeFileSync(dest,tar.subarray(offset,offset+size)); files++ }
+    else throw new Error(`unsupported tar entry ${type}: ${rel}`)
+  }
+  offset += Math.ceil(size/512)*512
+}
+if (files !== expectedFiles) throw new Error(`restore incomplete: expected ${expectedFiles} files, wrote ${files}`)
+console.log(`Ghesse 5.0 source restored and SHA-256 verified (${files} files).`)
