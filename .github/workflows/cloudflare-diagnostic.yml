@@ -1,0 +1,37 @@
+name: Cloudflare diagnostic
+on:
+  push:
+    branches: [diag/cloudflare-production]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PRODUCTION_URL: https://vaje-qwen.mostifa2273.workers.dev
+    steps:
+      - name: Probe live Worker
+        shell: bash
+        run: |
+          set -u
+          echo "=== DNS ==="
+          getent ahosts vaje-qwen.mostifa2273.workers.dev || true
+          echo "=== ROOT ==="
+          curl --silent --show-error --location --connect-timeout 10 --max-time 20 \
+            --dump-header /tmp/root.headers --output /tmp/root.body \
+            --write-out 'ROOT_STATUS=%{http_code}\nROOT_FINAL=%{url_effective}\nROOT_TYPE=%{content_type}\n' \
+            "$PRODUCTION_URL/" || true
+          cat /tmp/root.headers 2>/dev/null || true
+          echo "--- root body (first 1200 bytes) ---"
+          head -c 1200 /tmp/root.body 2>/dev/null || true
+          echo
+          echo "=== RELEASE MARKER ==="
+          curl --silent --show-error --location --connect-timeout 10 --max-time 20 \
+            --dump-header /tmp/release.headers --output /tmp/release.body \
+            --write-out 'RELEASE_STATUS=%{http_code}\nRELEASE_FINAL=%{url_effective}\nRELEASE_TYPE=%{content_type}\n' \
+            "$PRODUCTION_URL/release.json" || true
+          cat /tmp/release.headers 2>/dev/null || true
+          echo "--- release body ---"
+          cat /tmp/release.body 2>/dev/null || true
+          echo
