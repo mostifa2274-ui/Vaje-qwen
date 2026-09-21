@@ -27,6 +27,11 @@ function faNum(n: number): string {
 }
 
 
+function wallClockNow(): number {
+  return Date.now()
+}
+
+
 export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
@@ -41,7 +46,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [audioNotice, setAudioNotice] = useState('')
   const readerAudioRef = useRef<HTMLAudioElement | null>(null)
   const playbackToken = useRef(0)
-  const clockRef = useRef(() => Date.now())
+  const clockRef = useRef(wallClockNow)
 
   const stopReaderAudio = useCallback(() => {
     playbackToken.current++
