@@ -40,8 +40,8 @@
       "fa": "مدرسه بزرگ است."
     },
     {
-      "en": "Her class is small.",
-      "fa": "کلاسش کوچک است."
+      "en": "Her class is small, so the teacher knows every student.",
+      "fa": "کلاسش کوچک است، بنابراین معلم همه‌ی دانش‌آموزها را می‌شناسد."
     },
     {
       "en": "The class has ten students.",
@@ -92,8 +92,8 @@
       "fa": "او درس را دوست دارد."
     },
     {
-      "en": "She has a little homework.",
-      "fa": "او کمی تکلیف دارد."
+      "en": "She has a little homework, but her mind is on Nino.",
+      "fa": "کمی تکلیف دارد، اما فکرش پیش نینو است."
     },
     {
       "en": "She does her homework.",
@@ -124,8 +124,8 @@
       "fa": "آن‌ها کلمه یاد می‌گیرند."
     },
     {
-      "en": "Mina learns English, a new language for her.",
-      "fa": "مینا انگلیسی را که زبان تازه‌ای برای اوست یاد می‌گیرد."
+      "en": "Mina learns English, a new language she can use in her note.",
+      "fa": "مینا انگلیسی را یاد می‌گیرد؛ زبان تازه‌ای که می‌تواند در یادداشتش از آن استفاده کند."
     },
     {
       "en": "She likes the language.",
@@ -144,16 +144,16 @@
       "fa": "او یک اشتباه می‌کند."
     },
     {
-      "en": "The mistake is small.",
-      "fa": "اشتباه کوچک است."
+      "en": "The mistake is small, and the teacher helps her fix it.",
+      "fa": "اشتباه کوچک است و معلم کمک می‌کند درستش کند."
     },
     {
       "en": "She has an exam.",
       "fa": "او یک امتحان دارد."
     },
     {
-      "en": "The exam is important.",
-      "fa": "امتحان مهم است."
+      "en": "The exam feels important, but Mina stays calm.",
+      "fa": "امتحان مهم به نظر می‌رسد، اما مینا آرام می‌ماند."
     },
     {
       "en": "The test is easy.",
@@ -164,12 +164,12 @@
       "fa": "یک آزمون آسان است."
     },
     {
-      "en": "Some questions look hard.",
-      "fa": "بعضی سؤال‌ها سخت به نظر می‌رسند."
+      "en": "Some questions look hard at first.",
+      "fa": "بعضی سؤال‌ها در ابتدا سخت به نظر می‌رسند."
     },
     {
-      "en": "But the test is not hard for Mina.",
-      "fa": "اما آزمون برای مینا سخت نیست."
+      "en": "But the test is not too hard for Mina.",
+      "fa": "اما آزمون برای مینا خیلی سخت نیست."
     },
     {
       "en": "The subject is cats.",
@@ -192,12 +192,12 @@
       "fa": "جغرافیا درباره‌ی دنیاست."
     },
     {
-      "en": "Mina likes geography.",
-      "fa": "مینا جغرافیا را دوست دارد."
+      "en": "Mina likes geography because it shows places on the map.",
+      "fa": "مینا جغرافیا را دوست دارد چون جاها را روی نقشه نشان می‌دهد."
     },
     {
-      "en": "Science is an important subject.",
-      "fa": "علوم یک درس مهم است."
+      "en": "Science is another important subject in her class.",
+      "fa": "علوم یک درس مهم دیگر در کلاس اوست."
     },
     {
       "en": "They learn science.",
