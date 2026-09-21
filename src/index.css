@@ -915,3 +915,26 @@ button:disabled {
     flex-basis: 3.75rem;
   }
 }
+
+
+/* ---------- Resumable chapter preparation ---------- */
+.prep-resume-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: rgba(255,255,255,.28);
+  padding: .65rem .75rem;
+  color: var(--ink-soft);
+  font-size: .78rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 480px) {
+  .prep-resume-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
