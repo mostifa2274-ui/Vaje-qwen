@@ -5,10 +5,10 @@ import zlib from 'node:zlib'
 
 const root = path.resolve(import.meta.dirname, '..')
 const dir = path.join(root, 'bootstrap')
-const expectedArchive = '0113987b0c4a1da295e0732e5a1a38d8560d049d77400b1e785caecb13985bf3'
-const expectedArchiveBytes = 159412
+const expectedArchive = '7f648f6f5cc7cea8a198f6857fe01dedca546bf3e150de962d278e9d7a02fb99'
+const expectedArchiveBytes = 159219
 const expectedFiles = 97
-const expectedParts = ["53907eb28b0e8738df058fc13117981c370868c557933d1f0e1cabbf48dbc64a", "57764ff843020f95a89aab3fbff6af2f639efb24dd102f897d4a4b06f54787f7", "86afd57faccc7768a38ae1d0cf03b61bb7272e714689c77d5ec23e5ddf85254f", "08827b40137811705db3faa2aedf68ae7b460bb7bcc73b5653449a99fef54397", "76a2311b8edddf626905c30d8cd00bf1d6ba400a1b3ced07a4cd42751ad81145", "aa24503f07b3e4566049108cd6f8b2b7b2bc3872550cbc9c42948ca75035d4a7", "7355e28e841addfceeac161a46894fa09d7bf873d6397246ccc9b802e040161f", "70bc10cf8ea6ad444e4d33bf54c0fe8748ae2a6f9028dfcfd9ea2e1df2b4468b"]
+const expectedParts = ["85e283e989acc028a82465a342a2d1e1115d38d6066553d897367ea55ae2a9e8", "e1bb79ecdf793dbd86241d7f61620e3a95a78a6e5e65f5d1295115cb42e91cb0", "3fe599daabbf417927904414972a9e6f97ae143210694a20e3b7481395b52298", "32a0029efded6ea2a2f25230fc0d48452aa9ca7fadcd0d5fe2a16834ef45ec34", "e5c72bfcccc7b08952fdd1a015f758d976efa55d7044b8b54f666906b23096c5", "3d0a5cf9f640143691cfc3acfc5538dc6582968816f37bbded749f8899f24c58", "9bb3059cf8f9d008cad9f84c573588425755b1f31c49b686cff6e1af71fa1f61", "f75c1df2f1439ba7495f7ec83e2bbcee2ceb2f135efb67cb71786a833755b8fa"]
 const sha = (data) => crypto.createHash('sha256').update(data).digest('hex')
 
 const encoded = expectedParts.map((expected, i) => {
