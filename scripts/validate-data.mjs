@@ -54,5 +54,8 @@ if (requireBundledAudio) {
 }
 
 assert(existsSync(join(publicDir, 'icons', 'icon.svg')), 'missing vector PWA icon: icon.svg')
+for (let book = 1; book <= 8; book++) {
+  assert(existsSync(join(publicDir, 'art', `book${book}.svg`)), `missing lesson artwork: art/book${book}.svg`)
+}
 
 console.log(`Validated ${vocab.length} words, ${chapters.length} chapters, ${sentenceCount} sentences, ${checkpointCount} checkpoints${requireBundledAudio ? ', and all bundled audio assets' : ', using speech-first production audio mode'}.`)
