@@ -37,8 +37,8 @@
       "fa": "مینا به خیابان می‌رود."
     },
     {
-      "en": "The street is near Mina’s house.",
-      "fa": "خیابان نزدیک خانه‌ی مینا است."
+      "en": "The street near Mina’s house is busy.",
+      "fa": "خیابان نزدیک خانه‌ی مینا شلوغ است."
     },
     {
       "en": "The city is big.",
@@ -53,20 +53,20 @@
       "fa": "نینو روی جاده نیست."
     },
     {
-      "en": "The road is near the park, too.",
-      "fa": "جاده هم نزدیک پارک است."
+      "en": "The road near the park is quiet.",
+      "fa": "جاده‌ی نزدیک پارک ساکت است."
     },
     {
-      "en": "The park is near Mina's house.",
-      "fa": "پارک نزدیک خانه‌ی مینا است."
+      "en": "The park is close to Mina's house.",
+      "fa": "پارک به خانه‌ی مینا نزدیک است."
     },
     {
-      "en": "\"Is Nino near the park?\" Mina asks.",
-      "fa": "«نینو نزدیک پارک است؟» مینا می‌پرسد."
+      "en": "\"Is Nino near the park?\" Mina asks again.",
+      "fa": "«نینو نزدیک پارک است؟» مینا دوباره می‌پرسد."
     },
     {
-      "en": "Is Nino far from home?",
-      "fa": "آیا نینو از خانه دور است؟"
+      "en": "Maybe Nino is far from home.",
+      "fa": "شاید نینو از خانه دور باشد."
     },
     {
       "en": "The park is not far.",
@@ -85,8 +85,8 @@
       "fa": "خانه روبه‌روی پارک است."
     },
     {
-      "en": "A man stands opposite Mina.",
-      "fa": "مردی روبه‌روی مینا ایستاده است."
+      "en": "An old man stands opposite Mina.",
+      "fa": "یک مرد پیر روبه‌روی مینا ایستاده است."
     },
     {
       "en": "Mina goes left.",
@@ -97,20 +97,20 @@
       "fa": "پسر به چپ می‌رود."
     },
     {
-      "en": "Mina goes right.",
-      "fa": "مینا به راست می‌رود."
+      "en": "Mina turns right at the park.",
+      "fa": "مینا کنار پارک به راست می‌پیچد."
     },
     {
       "en": "The girl goes right.",
       "fa": "دختر به راست می‌رود."
     },
     {
-      "en": "\"Who is that?\" Mina says.",
-      "fa": "آن کیست؟ مینا می‌گوید."
+      "en": "\"Who is that near the road?\" Mina says.",
+      "fa": "«آن نزدیک جاده کیست؟» مینا می‌گوید."
     },
     {
-      "en": "\"Who are you?\" the man says.",
-      "fa": "تو کی هستی؟ مرد می‌گوید."
+      "en": "\"Who are you looking for?\" the man asks.",
+      "fa": "«دنبال چه کسی می‌گردی؟» مرد می‌پرسد."
     },
     {
       "en": "That is a boy.",
@@ -137,8 +137,8 @@
       "fa": "بعضی پسرها می‌دوند."
     },
     {
-      "en": "Do you see a cat?",
-      "fa": "گربه‌ای می‌بینی؟"
+      "en": "\"Do you see any black cat?\" Mina asks.",
+      "fa": "«هیچ گربه‌ی سیاهی می‌بینی؟» مینا می‌پرسد."
     },
     {
       "en": "I do not see any cat.",
@@ -201,8 +201,8 @@
       "fa": "یک بچه در پارک است."
     },
     {
-      "en": "The child is young.",
-      "fa": "بچه کم‌سن است."
+      "en": "A young child runs past Mina.",
+      "fa": "یک بچه‌ی کم‌سن از کنار مینا می‌دود."
     },
     {
       "en": "A person is in the park.",
