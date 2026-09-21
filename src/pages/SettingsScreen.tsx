@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
 import { importStateJson, MAX_IMPORT_BYTES, resetState } from '../engine/store'
-import { clampNarrationRate, englishNarrationVoices, speakEnglish } from '../engine/narration'
+import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish } from '../engine/narration'
 
 interface Props {
   state: GhesseState
@@ -28,7 +28,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     synth.addEventListener('voiceschanged', refresh)
     return () => {
       synth.removeEventListener('voiceschanged', refresh)
-      synth.cancel()
+      cancelEnglishSpeech()
     }
   }, [])
 
