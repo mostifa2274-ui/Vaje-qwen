@@ -30,8 +30,8 @@
   ],
   "sentences": [
     {
-      "en": "A man sells bread in a small shop.",
-      "fa": "یک مرد در یک مغازه‌ی کوچک نان می‌فروشد."
+      "en": "A man sells hot bread in a small shop.",
+      "fa": "مردی در یک مغازه‌ی کوچک نان داغ می‌فروشد."
     },
     {
       "en": "The shop is small and warm.",
@@ -74,16 +74,16 @@
       "fa": "آن‌ها نان داغ را انتخاب می‌کنند."
     },
     {
-      "en": "Mina prefers a small piece of bread.",
-      "fa": "مینا یک تکه‌ی کوچک نان را ترجیح می‌دهد."
+      "en": "Mina prefers a small piece of hot bread.",
+      "fa": "مینا یک تکه‌ی کوچک نان داغ را ترجیح می‌دهد."
     },
     {
       "en": "She prefers it hot.",
       "fa": "او آن را داغ ترجیح می‌دهد."
     },
     {
-      "en": "The man who sells bread has butter.",
-      "fa": "مردی که نان می‌فروشد کره هم دارد."
+      "en": "The man who sells bread also has butter and cheese.",
+      "fa": "مردی که نان می‌فروشد، کره و پنیر هم دارد."
     },
     {
       "en": "The butter is yellow.",
@@ -118,8 +118,8 @@
       "fa": "سوپ داغ است."
     },
     {
-      "en": "At home, Mom cooks a dish.",
-      "fa": "در خانه، مامان یک غذا می‌پزد."
+      "en": "At home, Mom cooks a warm dish for lunch.",
+      "fa": "در خانه، مامان برای ناهار یک غذای گرم می‌پزد."
     },
     {
       "en": "The dish is delicious.",
@@ -130,8 +130,8 @@
       "fa": "وعده‌ی غذایی خوب است."
     },
     {
-      "en": "The family prepares the meal together.",
-      "fa": "خانواده با هم وعده‌ی غذایی را آماده می‌کنند."
+      "en": "The family prepares the meal together at the table.",
+      "fa": "خانواده با هم سر میز وعده‌ی غذایی را آماده می‌کنند."
     },
     {
       "en": "Mom prepares lunch.",
@@ -174,8 +174,8 @@
       "fa": "ساندویچ کوچک است."
     },
     {
-      "en": "The man likes cooking.",
-      "fa": "آن مرد آشپزی را دوست دارد."
+      "en": "The man smiles when Mina says he must love cooking.",
+      "fa": "وقتی مینا می‌گوید حتماً آشپزی را دوست دارد، مرد لبخند می‌زند."
     },
     {
       "en": "Cooking is his life.",
@@ -190,12 +190,12 @@
       "fa": "روز طولانی است."
     },
     {
-      "en": "\"I see a black cat here every morning,\" he says.",
-      "fa": "هر صبح یک گربه‌ی سیاه اینجا می‌بینم، مرد می‌گوید."
+      "en": "\"I see a black cat here most mornings,\" he says.",
+      "fa": "«بیشتر صبح‌ها یک گربه‌ی سیاه اینجا می‌بینم»، مرد می‌گوید."
     },
     {
-      "en": "The cat comes to the shop in the morning.",
-      "fa": "گربه صبح به مغازه می‌آید."
+      "en": "The cat often comes to the shop early in the morning.",
+      "fa": "گربه اغلب صبح زود به مغازه می‌آید."
     },
     {
       "en": "Mina is happy.",
