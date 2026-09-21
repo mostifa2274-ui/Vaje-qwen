@@ -344,19 +344,47 @@ function uniqueDistractors(
   const used = new Set([targetLabel])
   // Prefer same part of speech and topic because plausible distractors make
   // recognition tests diagnostic instead of trivial visual elimination.
-  const samePosTopic = vocab.filter(w => w.id !== target.id && w.pos === target.pos && w.topic === target.topic)
-  const samePos = vocab.filter(w => w.id !== target.id && w.pos === target.pos && w.topic !== target.topic)
-  const sameTopic = vocab.filter(w => w.id !== target.id && w.pos !== target.pos && w.topic === target.topic)
-  const others = vocab.filter(w => w.id !== target.id && w.pos !== target.pos && w.topic !== target.topic)
-  const candidates = [samePosTopic, samePos, sameTopic, others]
-    .flatMap(group => group.sort((a, b) => seededRank(seed, a.id) - seededRank(seed, b.id)))
+  //
+  // Only the four best unique labels from each priority bucket can possibly
+  // affect the final three distractors: at most the target plus two labels
+  // selected from earlier buckets can collide. Keeping a bounded shortlist
+  // avoids sorting the full 899-word vocabulary for every question.
+  type Ranked = { word: WordEntry; surface: string; rank: number }
+  const buckets: Ranked[][] = [[], [], [], []]
+
+  const keepBest = (bucket: Ranked[], candidate: Ranked) => {
+    const duplicate = bucket.findIndex(item => item.surface === candidate.surface)
+    if (duplicate >= 0) {
+      if (candidate.rank < bucket[duplicate].rank) bucket[duplicate] = candidate
+    } else if (bucket.length < 4) {
+      bucket.push(candidate)
+    } else {
+      let worst = 0
+      for (let i = 1; i < bucket.length; i++) if (bucket[i].rank > bucket[worst].rank) worst = i
+      if (candidate.rank < bucket[worst].rank) bucket[worst] = candidate
+    }
+    bucket.sort((a, b) => a.rank - b.rank)
+  }
+
+  for (const word of vocab) {
+    if (word.id === target.id) continue
+    const surface = label(word).trim().toLowerCase()
+    if (!surface || surface === targetLabel) continue
+    const bucketIndex =
+      word.pos === target.pos && word.topic === target.topic ? 0 :
+      word.pos === target.pos ? 1 :
+      word.topic === target.topic ? 2 : 3
+    keepBest(buckets[bucketIndex], { word, surface, rank: seededRank(seed, word.id) })
+  }
+
   const out: WordEntry[] = []
-  for (const word of candidates) {
-    const candidateLabel = label(word).trim().toLowerCase()
-    if (!candidateLabel || used.has(candidateLabel)) continue
-    used.add(candidateLabel)
-    out.push(word)
-    if (out.length === 3) break
+  for (const bucket of buckets) {
+    for (const candidate of bucket) {
+      if (used.has(candidate.surface)) continue
+      used.add(candidate.surface)
+      out.push(candidate.word)
+      if (out.length === 3) return out
+    }
   }
   return out
 }
