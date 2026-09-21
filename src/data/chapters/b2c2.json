@@ -40,16 +40,16 @@
       "fa": "همسایه پیر است."
     },
     {
-      "en": "\"Hello,\" Mina says.",
-      "fa": "سلام، مینا می‌گوید."
+      "en": "\"Hello,\" Mina says to an old neighbor.",
+      "fa": "«سلام»، مینا به یک همسایه‌ی پیر می‌گوید."
     },
     {
       "en": "She says hello.",
       "fa": "او سلام می‌کند."
     },
     {
-      "en": "\"What is your name?\" the man says.",
-      "fa": "اسمت چیست؟ مرد می‌گوید."
+      "en": "\"What is your name?\" the man asks.",
+      "fa": "«اسمت چیست؟» مرد می‌پرسد."
     },
     {
       "en": "My name is Mina.",
@@ -60,8 +60,8 @@
       "fa": "اسم گربه نینو است."
     },
     {
-      "en": "The neighbor gives Mina a glass of water.",
-      "fa": "همسایه یک لیوان آب به مینا می‌دهد."
+      "en": "The neighbor gives Mina a glass of cold water.",
+      "fa": "همسایه یک لیوان آب خنک به مینا می‌دهد."
     },
     {
       "en": "Mina meets a neighbor.",
@@ -72,8 +72,8 @@
       "fa": "آن‌ها در خیابان ملاقات می‌کنند."
     },
     {
-      "en": "\"How are you?\" the woman says.",
-      "fa": "حالت چطور است؟ زن می‌گوید."
+      "en": "\"How are you?\" the woman asks.",
+      "fa": "«حالت چطور است؟» زن می‌پرسد."
     },
     {
       "en": "How is your cat?",
@@ -84,8 +84,8 @@
       "fa": "پسر دوستش است."
     },
     {
-      "en": "\"Nino is my friend,\" Mina says.",
-      "fa": "نینو دوست من است، مینا می‌گوید."
+      "en": "\"Nino is my best friend,\" Mina says.",
+      "fa": "«نینو بهترین دوست من است»، مینا می‌گوید."
     },
     {
       "en": "The woman is friendly.",
@@ -96,20 +96,20 @@
       "fa": "یک مرد مهربان سلام می‌کند."
     },
     {
-      "en": "\"Hi!\" the boy says.",
-      "fa": "سلام! پسر می‌گوید."
+      "en": "\"Hi!\" the boy says with a smile.",
+      "fa": "«سلام!» پسر با لبخند می‌گوید."
     },
     {
       "en": "Mina says hi.",
       "fa": "مینا سلام می‌کند."
     },
     {
-      "en": "\"Hey, Nino!\" Mina says.",
-      "fa": "هی، نینو! مینا می‌گوید."
+      "en": "\"Hey, Nino!\" Mina calls when she sees something black.",
+      "fa": "وقتی مینا چیزی سیاه می‌بیند، صدا می‌زند: «هی، نینو!»"
     },
     {
-      "en": "\"Hey!\" the girl says.",
-      "fa": "هی! دختر می‌گوید."
+      "en": "\"Hey! That is my bag,\" the girl says.",
+      "fa": "«هی! آن کیف من است»، دختر می‌گوید."
     },
     {
       "en": "Mina asks about Nino.",
@@ -120,16 +120,16 @@
       "fa": "درباره‌ی گربه می‌پرسد."
     },
     {
-      "en": "The neighbor asks, \"Is Nino black or red?\"",
-      "fa": "همسایه می‌پرسد: «نینو سیاه است یا قرمز؟»"
+      "en": "\"Is Nino black or red?\" the neighbor asks.",
+      "fa": "«نینو سیاه است یا قرمز؟» همسایه می‌پرسد."
     },
     {
-      "en": "Mina says, \"He is a black cat.\"",
-      "fa": "مینا می‌گوید: «او یک گربه‌ی سیاه است.»"
+      "en": "\"He is a black cat,\" Mina says.",
+      "fa": "«او یک گربه‌ی سیاه است»، مینا می‌گوید."
     },
     {
-      "en": "Mina is sad, so she looks for Nino.",
-      "fa": "مینا غمگین است، پس دنبال نینو می‌گردد."
+      "en": "Mina is sad, so she keeps looking for Nino.",
+      "fa": "مینا غمگین است، پس به جست‌وجوی نینو ادامه می‌دهد."
     },
     {
       "en": "So, where is Nino?",
@@ -140,40 +140,40 @@
       "fa": "غمگین است چون نینو خانه نیست."
     },
     {
-      "en": "Mina is sad because her little cat is not home.",
-      "fa": "مینا غمگین است چون گربه‌ی کوچکش خانه نیست."
+      "en": "Mina is sad because her little cat is missing.",
+      "fa": "مینا غمگین است چون گربه‌ی کوچکش گم شده است."
     },
     {
-      "en": "Everyone nearby looks for Nino.",
-      "fa": "همه‌ی افراد نزدیک دنبال نینو می‌گردند."
+      "en": "Everyone nearby joins the search for Nino.",
+      "fa": "همه‌ی افراد نزدیک به جست‌وجوی نینو کمک می‌کنند."
     },
     {
-      "en": "Everyone Mina meets is friendly.",
-      "fa": "همه‌ی کسانی که مینا می‌بیند مهربان هستند."
+      "en": "Everyone Mina meets is friendly and wants to help.",
+      "fa": "هرکسی که مینا می‌بیند مهربان است و می‌خواهد کمک کند."
     },
     {
-      "en": "Everybody asks about Nino.",
-      "fa": "همه درباره‌ی نینو می‌پرسند."
+      "en": "Everybody asks what Nino looks like.",
+      "fa": "همه می‌پرسند نینو چه شکلی است."
     },
     {
-      "en": "Everybody they speak to is sorry that Nino is missing.",
-      "fa": "همه‌ی کسانی که با آن‌ها حرف می‌زنند از گم شدن نینو ناراحت هستند."
+      "en": "Everybody they speak to says they are sorry.",
+      "fa": "هرکسی که با او حرف می‌زنند می‌گوید متأسف است."
     },
     {
       "en": "Mina looks at everything.",
       "fa": "مینا به همه‌چیز نگاه می‌کند."
     },
     {
-      "en": "She sees everything in the street.",
-      "fa": "او همه‌چیز را در خیابان می‌بیند."
+      "en": "She looks at everything along the street.",
+      "fa": "او به همه‌چیز در طول خیابان نگاه می‌کند."
     },
     {
       "en": "No one sees Nino.",
       "fa": "هیچ‌کس نینو را نمی‌بیند."
     },
     {
-      "en": "No one in the park sees Nino.",
-      "fa": "هیچ‌کس در پارک نینو را نمی‌بیند."
+      "en": "No one in the park has seen Nino.",
+      "fa": "هیچ‌کس در پارک نینو را ندیده است."
     },
     {
       "en": "Nobody sees the cat.",
@@ -185,11 +185,11 @@
     },
     {
       "en": "Mina sees nothing that looks like Nino.",
-      "fa": "مینا چیزی که شبیه نینو باشد نمی‌بیند."
+      "fa": "مینا هیچ‌چیزی شبیه نینو نمی‌بیند."
     },
     {
-      "en": "Mina finds nothing in the yard.",
-      "fa": "مینا در حیاط چیزی پیدا نمی‌کند."
+      "en": "She finds nothing in the yard, either.",
+      "fa": "در حیاط هم چیزی پیدا نمی‌کند."
     },
     {
       "en": "The neighbors are nice.",
@@ -200,16 +200,16 @@
       "fa": "یک زن خوب خداحافظ می‌کند."
     },
     {
-      "en": "\"Bye,\" Mina says.",
-      "fa": "خداحافظ، مینا می‌گوید."
+      "en": "\"Bye,\" Mina says to the woman.",
+      "fa": "«خداحافظ»، مینا به زن می‌گوید."
     },
     {
       "en": "She says bye.",
       "fa": "او خداحافظ می‌کند."
     },
     {
-      "en": "\"Goodbye,\" the man says.",
-      "fa": "خداحافظ، مرد می‌گوید."
+      "en": "\"Goodbye,\" the man says kindly.",
+      "fa": "«خداحافظ»، مرد با مهربانی می‌گوید."
     },
     {
       "en": "Mina says goodbye.",
@@ -220,8 +220,8 @@
       "fa": "روز جدیدی است."
     },
     {
-      "en": "A new house is on the street.",
-      "fa": "یک خانه‌ی جدید در خیابان است."
+      "en": "A new family is moving into a house on the street.",
+      "fa": "یک خانواده‌ی جدید دارد به خانه‌ای در خیابان نقل مکان می‌کند."
     }
   ],
   "check": [

@@ -54,16 +54,16 @@
       "fa": "توپ قرمز است."
     },
     {
-      "en": "The boy likes football.",
-      "fa": "پسر فوتبال دوست دارد."
+      "en": "The boy likes football and runs after the ball.",
+      "fa": "پسر فوتبال دوست دارد و دنبال توپ می‌دود."
     },
     {
       "en": "The girls play basketball.",
       "fa": "دخترها بسکتبال بازی می‌کنند."
     },
     {
-      "en": "The girl likes basketball.",
-      "fa": "دختر بسکتبال دوست دارد."
+      "en": "The girl likes basketball and plays with her friends.",
+      "fa": "دختر بسکتبال دوست دارد و با دوستانش بازی می‌کند."
     },
     {
       "en": "They play tennis.",
@@ -82,12 +82,12 @@
       "fa": "بیس‌بال یک بازی است."
     },
     {
-      "en": "They like sports.",
-      "fa": "آن‌ها ورزش را دوست دارند."
+      "en": "They like sport and play together.",
+      "fa": "آن‌ها ورزش را دوست دارند و با هم بازی می‌کنند."
     },
     {
-      "en": "Sport is good for them.",
-      "fa": "ورزش برایشان خوب است."
+      "en": "Sport is fun for the children.",
+      "fa": "ورزش برای بچه‌ها سرگرم‌کننده است."
     },
     {
       "en": "The player runs.",
@@ -110,8 +110,8 @@
       "fa": "مسابقه امروز است."
     },
     {
-      "en": "They watch a match.",
-      "fa": "آن‌ها یک مسابقه تماشا می‌کنند."
+      "en": "Families stop to watch the match.",
+      "fa": "خانواده‌ها می‌ایستند تا مسابقه را تماشا کنند."
     },
     {
       "en": "They win.",
@@ -130,12 +130,12 @@
       "fa": "او شنا می‌کند."
     },
     {
-      "en": "Swimming is good for the children.",
-      "fa": "شنا برای بچه‌ها خوب است."
+      "en": "Swimming is another game the children enjoy.",
+      "fa": "شنا یک بازی دیگر است که بچه‌ها از آن لذت می‌برند."
     },
     {
-      "en": "The boy likes swimming.",
-      "fa": "پسر شنا دوست دارد."
+      "en": "The boy likes swimming in the pool.",
+      "fa": "پسر شنا کردن در استخر را دوست دارد."
     },
     {
       "en": "The pool is in the park.",
@@ -158,8 +158,8 @@
       "fa": "یک نوجوان بازی می‌کند."
     },
     {
-      "en": "The teenager is tall.",
-      "fa": "نوجوان قدبلند است."
+      "en": "The teenager is tall and plays with the older children.",
+      "fa": "نوجوان قدبلند است و با بچه‌های بزرگ‌تر بازی می‌کند."
     },
     {
       "en": "A group of children plays.",
@@ -202,8 +202,8 @@
       "fa": "بعضی آدم‌ها شنا می‌کنند."
     },
     {
-      "en": "Nino is not there to play.",
-      "fa": "نینو آنجا نیست که بازی کند."
+      "en": "Mina watches them play, but Nino is not there.",
+      "fa": "مینا بازی آن‌ها را تماشا می‌کند، اما نینو آنجا نیست."
     },
     {
       "en": "Nino is not in the park.",

@@ -47,8 +47,8 @@
       "fa": "شوهرش پیر است."
     },
     {
-      "en": "They are married and live together.",
-      "fa": "آن‌ها متأهل هستند و با هم زندگی می‌کنند."
+      "en": "They are married and live in the same apartment.",
+      "fa": "آن‌ها متأهل هستند و در یک آپارتمان زندگی می‌کنند."
     },
     {
       "en": "The singer is married.",
@@ -87,24 +87,24 @@
       "fa": "دوست‌دخترش خوب است."
     },
     {
-      "en": "\"How old are you?\" the woman says.",
-      "fa": "چند سالت است؟ زن می‌گوید."
+      "en": "\"How old are you?\" the woman asks the boy.",
+      "fa": "«چند سالت است؟» زن از پسر می‌پرسد."
     },
     {
-      "en": "The woman asks the boy his age.",
-      "fa": "زن سن پسر را می‌پرسد."
+      "en": "The woman asks the boy about his age.",
+      "fa": "زن درباره‌ی سن پسر می‌پرسد."
     },
     {
-      "en": "The baby was born today.",
-      "fa": "نوزاد امروز به دنیا آمده است."
+      "en": "A baby in the neighborhood was born today.",
+      "fa": "امروز یک نوزاد در محله به دنیا آمده است."
     },
     {
-      "en": "Where was he born?",
-      "fa": "او کجا به دنیا آمد؟"
+      "en": "\"Where was he born?\" Mina asks.",
+      "fa": "«او کجا به دنیا آمد؟» مینا می‌پرسد."
     },
     {
-      "en": "Life in the city is busy.",
-      "fa": "زندگی در شهر شلوغ است."
+      "en": "Life in the city feels busy today.",
+      "fa": "زندگی در شهر امروز شلوغ به نظر می‌رسد."
     },
     {
       "en": "Life is good.",
@@ -123,16 +123,16 @@
       "fa": "چیزی می‌بینی؟"
     },
     {
-      "en": "\"Is there anything black?\" Mina asks.",
-      "fa": "«چیز سیاهی هست؟» مینا می‌پرسد."
+      "en": "\"Is there anything black near the park?\" Mina asks.",
+      "fa": "«چیز سیاهی نزدیک پارک هست؟» مینا می‌پرسد."
     },
     {
       "en": "A visitor is in the street.",
       "fa": "یک بازدیدکننده در خیابان است."
     },
     {
-      "en": "The visitor looks for Nino.",
-      "fa": "بازدیدکننده دنبال نینو می‌گردد."
+      "en": "The visitor helps Mina look for Nino.",
+      "fa": "بازدیدکننده به مینا کمک می‌کند دنبال نینو بگردد."
     },
     {
       "en": "The town is old.",
@@ -175,8 +175,8 @@
       "fa": "او در یک ساختمان زندگی می‌کند."
     },
     {
-      "en": "The apartment is small.",
-      "fa": "آپارتمان کوچک است."
+      "en": "Their apartment is small but warm.",
+      "fa": "آپارتمان آن‌ها کوچک اما گرم است."
     },
     {
       "en": "They live in an apartment.",
@@ -187,8 +187,8 @@
       "fa": "آدرست چیست؟"
     },
     {
-      "en": "It is the address of an old house.",
-      "fa": "این آدرسِ یک خانه‌ی قدیمی است."
+      "en": "It is the address of an old house near the center.",
+      "fa": "این آدرس یک خانه‌ی قدیمی نزدیک مرکز شهر است."
     },
     {
       "en": "The world is big.",
@@ -199,7 +199,7 @@
       "fa": "دنیای بزرگی است."
     },
     {
-      "en": "The center of the city is near the park.",
+      "en": "The city center is near the park.",
       "fa": "مرکز شهر نزدیک پارک است."
     },
     {
@@ -211,12 +211,12 @@
       "fa": "مردم محلی خوب هستند."
     },
     {
-      "en": "A local cafe is near the center.",
-      "fa": "یک کافه‌ی محلی نزدیک مرکز شهر است."
+      "en": "A local cafe near the center is still open.",
+      "fa": "یک کافه‌ی محلی نزدیک مرکز شهر هنوز باز است."
     },
     {
-      "en": "The city is big, and Nino is small.",
-      "fa": "شهر بزرگ است و نینو کوچک است."
+      "en": "The city is big, but Nino is small, and Mina keeps looking.",
+      "fa": "شهر بزرگ است، اما نینو کوچک است و مینا به جست‌وجو ادامه می‌دهد."
     }
   ],
   "check": [
