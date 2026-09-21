@@ -1,0 +1,36 @@
+name: Production smoke
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ghesse-production-smoke
+  cancel-in-progress: true
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PRODUCTION_URL: https://vaje-qwen.mostifa2273.workers.dev
+    steps:
+      - name: Wait for Cloudflare production release
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='"release":"ghesse-5.0.0"'
+          for attempt in $(seq 1 24); do
+            echo "Smoke attempt $attempt/24"
+            body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json" || true)"
+            compact="$(printf '%s' "$body" | tr -d '[:space:]')"
+            if printf '%s' "$compact" | grep -Fq "$expected"; then
+              echo "Verified Ghesse 5.0 release marker at $PRODUCTION_URL/release.json"
+              curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null
+              echo "Production root is reachable."
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::Cloudflare production did not expose the expected Ghesse 5.0 release marker within the smoke window."
+          exit 1

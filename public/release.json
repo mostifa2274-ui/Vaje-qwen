@@ -1,0 +1,8 @@
+{
+  "release": "ghesse-5.0.0",
+  "app": "Ghesse",
+  "worker": "vaje-qwen",
+  "vocabulary": 899,
+  "chapters": 40,
+  "stateSchema": 6
+}
