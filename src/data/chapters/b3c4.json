@@ -41,23 +41,23 @@
       "fa": "مینا تاریخ را می‌گوید."
     },
     {
-      "en": "\"What month is it?\" Dad asks.",
-      "fa": "«چه ماهی است؟» بابا می‌پرسد."
+      "en": "\"What month is it?\" Dad asks while Mina looks at the date.",
+      "fa": "«چه ماهی است؟» بابا می‌پرسد و مینا به تاریخ نگاه می‌کند."
     },
     {
       "en": "It is June.",
       "fa": "ژوئن است."
     },
     {
-      "en": "June is Mina's birthday month.",
-      "fa": "ژوئن ماه تولد مینا است."
+      "en": "June is Mina's birthday month, so she smiles.",
+      "fa": "ژوئن ماه تولد مینا است، پس لبخند می‌زند."
     },
     {
       "en": "Her birthday is in June.",
       "fa": "تولدش در ژوئن است."
     },
     {
-      "en": "Her birthday is near the end of spring.",
+      "en": "Her birthday comes near the end of spring.",
       "fa": "تولدش نزدیک پایان بهار است."
     },
     {
@@ -81,8 +81,8 @@
       "fa": "زمستان سرد است."
     },
     {
-      "en": "Nino was born in winter.",
-      "fa": "نینو در زمستان به دنیا آمده است."
+      "en": "Nino was born on a cold day in winter.",
+      "fa": "نینو در یک روز سرد زمستان به دنیا آمده است."
     },
     {
       "en": "January is the first month.",
@@ -93,16 +93,16 @@
       "fa": "فوریه دومین ماه است."
     },
     {
-      "en": "March is the third month.",
-      "fa": "مارس سومین ماه است."
+      "en": "March is the third month of the year.",
+      "fa": "مارس سومین ماه سال است."
     },
     {
-      "en": "April is the fourth month.",
-      "fa": "آوریل چهارمین ماه است."
+      "en": "April is the fourth month of the year.",
+      "fa": "آوریل چهارمین ماه سال است."
     },
     {
-      "en": "May is the fifth month.",
-      "fa": "مه پنجمین ماه است."
+      "en": "May is the fifth month of the year.",
+      "fa": "مه پنجمین ماه سال است."
     },
     {
       "en": "July is after June.",
@@ -129,8 +129,8 @@
       "fa": "سپتامبر بعدی است."
     },
     {
-      "en": "October comes after September.",
-      "fa": "اکتبر بعد از سپتامبر می‌آید."
+      "en": "October comes next, after September.",
+      "fa": "بعد از سپتامبر، اکتبر می‌آید."
     },
     {
       "en": "November is cold.",
@@ -145,40 +145,40 @@
       "fa": "آخرین ماه دسامبر است."
     },
     {
-      "en": "A year runs from January to December.",
-      "fa": "یک سال از ژانویه تا دسامبر ادامه دارد."
+      "en": "A year begins in January and ends in December.",
+      "fa": "یک سال در ژانویه شروع می‌شود و در دسامبر پایان می‌یابد."
     },
     {
       "en": "A year has twelve months.",
       "fa": "یک سال دوازده ماه دارد."
     },
     {
-      "en": "There are twelve months in a year.",
-      "fa": "در یک سال دوازده ماه وجود دارد."
+      "en": "Twelve months make one year.",
+      "fa": "دوازده ماه یک سال را می‌سازند."
     },
     {
       "en": "Her birthday is at the beginning of June.",
       "fa": "تولدش در آغاز ژوئن است."
     },
     {
-      "en": "At the beginning of the party, she is happy.",
-      "fa": "در آغاز مهمانی، او خوشحال است."
+      "en": "At the beginning of the party, Mina tries to be happy.",
+      "fa": "در آغاز مهمانی، مینا سعی می‌کند خوشحال باشد."
     },
     {
       "en": "Mina has a party.",
       "fa": "مینا یک مهمانی دارد."
     },
     {
-      "en": "The party is small.",
-      "fa": "مهمانی کوچک است."
+      "en": "The party is small, with her family close by.",
+      "fa": "مهمانی کوچک است و خانواده‌اش نزدیک او هستند."
     },
     {
       "en": "What happens at the party?",
       "fa": "در مهمانی چه اتفاقی می‌افتد؟"
     },
     {
-      "en": "Nothing special happens.",
-      "fa": "اتفاق خاصی نمی‌افتد."
+      "en": "Nothing special happens, but Mina keeps looking at the door.",
+      "fa": "اتفاق خاصی نمی‌افتد، اما مینا همچنان به در نگاه می‌کند."
     },
     {
       "en": "She looks once.",
@@ -189,8 +189,8 @@
       "fa": "او دو بار نگاه می‌کند."
     },
     {
-      "en": "She looks once in the morning and twice at night.",
-      "fa": "او یک بار صبح و دو بار شب نگاه می‌کند."
+      "en": "She looks once in the morning and twice at night, hoping to see Nino.",
+      "fa": "او یک بار صبح و دو بار شب نگاه می‌کند، با امید دیدن نینو."
     }
   ],
   "check": [
