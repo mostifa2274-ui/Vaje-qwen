@@ -39,8 +39,8 @@
       "fa": "آن را در کتابش می‌نویسد."
     },
     {
-      "en": "Her handwriting is small.",
-      "fa": "دست‌خطش کوچک است."
+      "en": "Her handwriting is small but careful.",
+      "fa": "دست‌خطش کوچک اما مرتب است."
     },
     {
       "en": "Her writing is good.",
@@ -79,20 +79,20 @@
       "fa": "روی صفحه می‌نویسد."
     },
     {
-      "en": "\"Dear neighbors,\" she writes.",
-      "fa": "همسایه‌های عزیز، می‌نویسد."
+      "en": "\"Dear neighbors,\" she writes at the top of the page.",
+      "fa": "«همسایه‌های عزیز»، بالای صفحه می‌نویسد."
     },
     {
-      "en": "\"Dear friends,\" she writes.",
-      "fa": "دوستانِ عزیز، می‌نویسد."
+      "en": "\"Dear friends,\" she writes on the next line.",
+      "fa": "«دوستان عزیز»، در خط بعد می‌نویسد."
     },
     {
       "en": "Nino is a little black cat.",
       "fa": "نینو یک گربه‌ی سیاه کوچک است."
     },
     {
-      "en": "The note says: Nino is small.",
-      "fa": "در یادداشت نوشته: نینو کوچک است."
+      "en": "The note says, \"Nino is small, black, and fast.\"",
+      "fa": "در یادداشت نوشته است: «نینو کوچک، سیاه و سریع است.»"
     },
     {
       "en": "She writes a letter.",
@@ -127,12 +127,12 @@
       "fa": "آن را برای مامان املا می‌کند."
     },
     {
-      "en": "The spelling is right.",
-      "fa": "املا درست است."
+      "en": "Mina checks the spelling of Nino's name.",
+      "fa": "مینا املای اسم نینو را بررسی می‌کند."
     },
     {
-      "en": "The name is spelled correctly.",
-      "fa": "اسم درست املا شده است."
+      "en": "She smiles when the name is spelled correctly.",
+      "fa": "وقتی اسم درست املا می‌شود، لبخند می‌زند."
     },
     {
       "en": "She writes a phrase.",
@@ -155,8 +155,8 @@
       "fa": "او یک متن می‌نویسد."
     },
     {
-      "en": "The text is short.",
-      "fa": "متن کوتاه است."
+      "en": "The text is short, so people can read it quickly.",
+      "fa": "متن کوتاه است تا مردم بتوانند آن را زود بخوانند."
     },
     {
       "en": "The message is: Come home.",
@@ -195,20 +195,20 @@
       "fa": "این یک حقیقت است."
     },
     {
-      "en": "The fact is: Nino is small.",
-      "fa": "واقعیت این است: نینو کوچک است."
+      "en": "One fact is clear: Nino is small and black.",
+      "fa": "یک حقیقت روشن است: نینو کوچک و سیاه است."
     },
     {
-      "en": "She writes word by word.",
-      "fa": "او کلمه‌به‌کلمه می‌نویسد."
+      "en": "She writes every word slowly and carefully.",
+      "fa": "او هر کلمه را آرام و با دقت می‌نویسد."
     },
     {
       "en": "The note is by Mina.",
       "fa": "یادداشت از مینا است."
     },
     {
-      "en": "The last word is \"home.\"",
-      "fa": "آخرین کلمه «خانه» است."
+      "en": "The last word on the page is \"home.\"",
+      "fa": "آخرین کلمه‌ی صفحه «خانه» است."
     }
   ],
   "check": [
