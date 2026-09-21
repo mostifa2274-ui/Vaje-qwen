@@ -69,20 +69,26 @@ export function sanitizePrepDraft(raw: unknown, chapterId: string, chapterWordId
   let listeningQueue = validIds(value.listeningQueue, allowed).filter(id => !listeningPassed.includes(id))
   const listeningMissed = validIds(value.listeningMissed, allowed)
 
+  // Restore phases fail closed. Written testing is valid only after the final
+  // teaching card, and listening is valid only after 100% written coverage.
+  let phase: PrepPhase = value.phase
+  if (phase !== 'teach' && teachIndex < maxTeachIndex) phase = 'teach'
+  if (phase === 'listening' && writtenPassed.length < chapterWordIds.length) phase = 'written'
+
   // A malformed or interrupted draft must never leave a test in an empty,
   // incomplete state. Rebuild the remaining queue from the authoritative
   // chapter assignment rather than treating an empty queue as completion.
-  if (value.phase === 'written' && writtenQueue.length === 0 && writtenPassed.length < chapterWordIds.length) {
+  if (phase === 'written' && writtenQueue.length === 0 && writtenPassed.length < chapterWordIds.length) {
     writtenQueue = chapterWordIds.filter(id => !writtenPassed.includes(id))
   }
-  if (value.phase === 'listening' && listeningQueue.length === 0 && listeningPassed.length < chapterWordIds.length) {
+  if (phase === 'listening' && listeningQueue.length === 0 && listeningPassed.length < chapterWordIds.length) {
     listeningQueue = chapterWordIds.filter(id => !listeningPassed.includes(id))
   }
 
   return {
     version: 1,
     chapterId,
-    phase: value.phase,
+    phase,
     teachIndex,
     writtenQueue,
     writtenPassed,
