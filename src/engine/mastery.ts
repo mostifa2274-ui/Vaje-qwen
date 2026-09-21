@@ -113,7 +113,7 @@ export function masteryEvidence(wordId: string, state: GhesseState): MasteryEvid
   }
 }
 
-export function wordMastery(wordId: string, state: GhesseState, _chapters: Chapter[]): MasteryLevel {
+export function wordMastery(wordId: string, state: GhesseState): MasteryLevel {
   return masteryEvidence(wordId, state).level
 }
 
@@ -127,24 +127,24 @@ export function masteryWeight(level: MasteryLevel): number {
   }
 }
 
-export function chapterMastery(ch: Chapter, state: GhesseState, chapters: Chapter[]): number {
+export function chapterMastery(ch: Chapter, state: GhesseState): number {
   if (ch.new.length === 0) return 1
-  return ch.new.reduce((sum, id) => sum + masteryWeight(wordMastery(id, state, chapters)), 0) / ch.new.length
+  return ch.new.reduce((sum, id) => sum + masteryWeight(wordMastery(id, state)), 0) / ch.new.length
 }
 
-export function masteryCounts(state: GhesseState, chapters: Chapter[], ids: string[]): Record<MasteryLevel, number> {
+export function masteryCounts(state: GhesseState, ids: string[]): Record<MasteryLevel, number> {
   const counts: Record<MasteryLevel, number> = { new: 0, seen: 0, learning: 0, strong: 0, mastered: 0 }
-  for (const id of ids) counts[wordMastery(id, state, chapters)]++
+  for (const id of ids) counts[wordMastery(id, state)]++
   return counts
 }
 
-export function durableCoverage(state: GhesseState, chapters: Chapter[], ids: string[]): number {
+export function durableCoverage(state: GhesseState, ids: string[]): number {
   if (ids.length === 0) return 0
-  const counts = masteryCounts(state, chapters, ids)
+  const counts = masteryCounts(state, ids)
   return (counts.mastered + counts.strong) / ids.length
 }
 
-export function masteredCoverage(state: GhesseState, chapters: Chapter[], ids: string[]): number {
+export function masteredCoverage(state: GhesseState, ids: string[]): number {
   if (ids.length === 0) return 0
-  return masteryCounts(state, chapters, ids).mastered / ids.length
+  return masteryCounts(state, ids).mastered / ids.length
 }
