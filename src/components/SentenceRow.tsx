@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { tokenizeSentence } from '../engine/lemmatize'
 import { lemmaMap, WORD_BY_ID } from '../data/chapters'
+import { SpeakerIcon } from './Icons'
 
 interface Props {
   en: string
@@ -8,13 +9,12 @@ interface Props {
   showFa: boolean
   isPlaying: boolean
   soundOn: boolean
-  newIds: Set<string>
   onToggleFa: () => void
   onPlay: () => void
   onWordTap: (wordId: string) => void
 }
 
-export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, newIds, onToggleFa, onPlay, onWordTap }: Props) {
+export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, onToggleFa, onPlay, onWordTap }: Props) {
   const tokens = useMemo(() => tokenizeSentence(en, lemmaMap), [en])
 
   return (
@@ -25,10 +25,10 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, newIds
           className="story-action"
           onClick={onPlay}
           disabled={!soundOn}
-          aria-label="شنیدن جمله"
+          aria-label={isPlaying ? 'جمله در حال پخش است' : 'شنیدن جمله'}
           aria-pressed={isPlaying}
         >
-          {isPlaying ? '▶' : '🔊'}
+          <SpeakerIcon className="h-5 w-5" />
         </button>
         <button
           type="button"
@@ -46,15 +46,14 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, newIds
           {tokens.map((token, index) => {
             if (!token.isWord) return <span key={index}>{token.raw}</span>
             const entry = token.id ? WORD_BY_ID.get(token.id) : undefined
-            const isNew = token.id ? newIds.has(token.id) : false
             if (!entry) return <span key={index} className="tok tok-unknown">{token.raw}</span>
             return (
               <button
                 type="button"
                 key={index}
-                className={`tok tok-word${isNew ? ' tok-new' : ''}`}
+                className="tok tok-word"
                 onClick={() => onWordTap(entry.id)}
-                aria-label={`معنی ${token.raw}`}
+                aria-label={'معنی ' + token.raw}
               >
                 {token.raw}
               </button>
