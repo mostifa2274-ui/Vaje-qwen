@@ -10,6 +10,7 @@ import { bookExamId } from '../engine/gates'
 import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
 import staleSentenceAudioJson from '../data/staleSentenceAudio.json'
+import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
 
 interface Props {
   chapterId: string
@@ -33,7 +34,6 @@ function wallClockNow(): number {
 export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
-  const newIds = useMemo(() => new Set(chapter.new), [chapter])
   const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID), [chapter])
   const paragraphs = useMemo(() => {
     const paragraphSize = chapter.sentences.length >= 36 ? 5 : 4
@@ -215,9 +215,9 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   return (
     <div className="page-in" style={{ background: 'var(--cream)', minHeight: '100vh' }}>
       <div className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '2px solid var(--ink)' }}>
-        <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-3">
-          <button type="button" className="btn-paper px-3 py-2 text-sm" onClick={onBack} aria-label="بازگشت به نقشه">
-            →
+        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
+          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه">
+            <BackIcon className="h-5 w-5" />
           </button>
           <div className="min-w-0 flex-1">
             <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>
@@ -233,12 +233,15 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             aria-pressed={playAll}
             onClick={() => playAll ? stopReaderAudio() : playAt(0, true)}
           >
-            {playAll ? '⏸ توقف' : '▶ خواندن'}
+            <span className="inline-flex items-center gap-2">
+              {playAll ? <PauseIcon className="h-4 w-4" /> : <PlayIcon className="h-4 w-4" />}
+              {playAll ? 'توقف' : 'خواندن'}
+            </span>
           </button>
         </div>
       </div>
 
-      <main className="mx-auto max-w-lg px-4 pb-32">
+      <main className="mx-auto max-w-3xl px-4 pb-32">
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
         <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
@@ -282,8 +285,8 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         <article className="story-reading mt-5" aria-labelledby="story-title">
           <div className="story-reading-header">
             <div>
-              <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>STORY READING</div>
-              <h2 id="story-title" className="mt-1 font-en text-2xl font-bold" dir="ltr">{chapter.titleEn}</h2>
+              <h2 id="story-title" className="font-en text-2xl font-bold" dir="ltr">{chapter.titleEn}</h2>
+              <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{chapter.titleFa}</div>
             </div>
             <span className="mastery-chip">{faNum(paragraphs.length)} بخش</span>
           </div>
@@ -301,7 +304,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                         showFa={state.showFaDefault || openFa.has(index)}
                         isPlaying={playIdx === index}
                         soundOn={state.soundOn}
-                        newIds={newIds}
                         onToggleFa={() => toggleFa(index)}
                         onPlay={() => {
                           setPlayAll(false)
