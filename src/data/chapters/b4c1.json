@@ -1,0 +1,243 @@
+{
+  "id": "b4c1",
+  "book": 4,
+  "n": 1,
+  "titleFa": "بازار",
+  "titleEn": "The Market",
+  "new": [
+    "market",
+    "shop",
+    "shopping",
+    "store",
+    "supermarket",
+    "food",
+    "fruit",
+    "vegetable",
+    "apple",
+    "banana",
+    "orange",
+    "carrot",
+    "potato",
+    "tomato",
+    "onion",
+    "salad",
+    "rice",
+    "meat",
+    "chicken",
+    "fish",
+    "buy",
+    "sell",
+    "cheap",
+    "expensive",
+    "yellow",
+    "white"
+  ],
+  "sentences": [
+    {
+      "en": "Mina and Mom go to the market.",
+      "fa": "مینا و مامان به بازار می‌روند."
+    },
+    {
+      "en": "The market is big.",
+      "fa": "بازار بزرگ است."
+    },
+    {
+      "en": "They go to the shops.",
+      "fa": "آن‌ها به مغازه‌ها می‌روند."
+    },
+    {
+      "en": "The shops are near the market.",
+      "fa": "مغازه‌ها نزدیک بازار هستند."
+    },
+    {
+      "en": "Mina likes shopping.",
+      "fa": "مینا خرید کردن دوست دارد."
+    },
+    {
+      "en": "Shopping is good.",
+      "fa": "خرید کردن خوب است."
+    },
+    {
+      "en": "The store is near the market.",
+      "fa": "فروشگاه نزدیک بازار است."
+    },
+    {
+      "en": "They go to the store.",
+      "fa": "آن‌ها به فروشگاه می‌روند."
+    },
+    {
+      "en": "The supermarket is big.",
+      "fa": "سوپرمارکت بزرگ است."
+    },
+    {
+      "en": "Mom goes to the supermarket.",
+      "fa": "مامان به سوپرمارکت می‌رود."
+    },
+    {
+      "en": "They buy food.",
+      "fa": "آن‌ها غذا می‌خرند."
+    },
+    {
+      "en": "The food is good.",
+      "fa": "غذا خوب است."
+    },
+    {
+      "en": "Mom buys fruit.",
+      "fa": "مامان میوه می‌خرد."
+    },
+    {
+      "en": "The fruit is red.",
+      "fa": "میوه قرمز است."
+    },
+    {
+      "en": "She buys an apple.",
+      "fa": "او یک سیب می‌خرد."
+    },
+    {
+      "en": "The apple is red.",
+      "fa": "سیب قرمز است."
+    },
+    {
+      "en": "Mina buys a banana.",
+      "fa": "مینا یک موز می‌خرد."
+    },
+    {
+      "en": "The banana is yellow.",
+      "fa": "موز زرد است."
+    },
+    {
+      "en": "She likes yellow.",
+      "fa": "او زرد دوست دارد."
+    },
+    {
+      "en": "She buys an orange.",
+      "fa": "او یک پرتقال می‌خرد."
+    },
+    {
+      "en": "The orange is orange.",
+      "fa": "پرتقال، نارنجی است."
+    },
+    {
+      "en": "Mom buys vegetables.",
+      "fa": "مامان سبزیجات می‌خرد."
+    },
+    {
+      "en": "The vegetables are good.",
+      "fa": "سبزیجات خوب هستند."
+    },
+    {
+      "en": "She buys a carrot.",
+      "fa": "او یک هویج می‌خرد."
+    },
+    {
+      "en": "The carrot is for the baby.",
+      "fa": "هویج برای نوزاد است."
+    },
+    {
+      "en": "She buys potatoes.",
+      "fa": "او سیب‌زمینی می‌خرد."
+    },
+    {
+      "en": "The potatoes are big.",
+      "fa": "سیب‌زمینی‌ها بزرگ هستند."
+    },
+    {
+      "en": "She buys a tomato.",
+      "fa": "او یک گوجه می‌خرد."
+    },
+    {
+      "en": "The tomato is red.",
+      "fa": "گوجه قرمز است."
+    },
+    {
+      "en": "She buys an onion.",
+      "fa": "او یک پیاز می‌خرد."
+    },
+    {
+      "en": "The onion is white.",
+      "fa": "پیاز سفید است."
+    },
+    {
+      "en": "Mina sees a black-and-white cat.",
+      "fa": "مینا یک گربه‌ی سیاه‌وسفید می‌بیند."
+    },
+    {
+      "en": "Mom makes a salad.",
+      "fa": "مامان سالاد درست می‌کند."
+    },
+    {
+      "en": "The salad is good.",
+      "fa": "سالاد خوب است."
+    },
+    {
+      "en": "She buys rice.",
+      "fa": "او برنج می‌خرد."
+    },
+    {
+      "en": "The rice is cheap.",
+      "fa": "برنج ارزان است."
+    },
+    {
+      "en": "The meat is expensive.",
+      "fa": "گوشت گران است."
+    },
+    {
+      "en": "She buys meat.",
+      "fa": "او گوشت می‌خرد."
+    },
+    {
+      "en": "The chicken is cheap.",
+      "fa": "مرغ ارزان است."
+    },
+    {
+      "en": "She buys some chicken.",
+      "fa": "او کمی گوشت مرغ می‌خرد."
+    },
+    {
+      "en": "The fish is expensive.",
+      "fa": "ماهی گران است."
+    },
+    {
+      "en": "Mina looks at the fish.",
+      "fa": "مینا به ماهی نگاه می‌کند."
+    },
+    {
+      "en": "A man sells fruit.",
+      "fa": "یک مرد میوه می‌فروشد."
+    },
+    {
+      "en": "He sells apples.",
+      "fa": "او سیب می‌فروشد."
+    },
+    {
+      "en": "Mina asks the man.",
+      "fa": "مینا از مرد می‌پرسد."
+    },
+    {
+      "en": "\"Do you see my cat?\" Mina asks.",
+      "fa": "«گربه‌ام را می‌بینی؟» مینا می‌پرسد."
+    }
+  ],
+  "check": [
+    {
+      "q": "موز چه رنگی است؟",
+      "options": [
+        "yellow",
+        "red",
+        "white",
+        "black"
+      ],
+      "a": "yellow"
+    },
+    {
+      "q": "ماهی گران است یا ارزان؟",
+      "options": [
+        "expensive",
+        "cheap",
+        "big",
+        "red"
+      ],
+      "a": "expensive"
+    }
+  ]
+}

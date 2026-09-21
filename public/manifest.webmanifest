@@ -1,0 +1,14 @@
+{
+  "name":"قصه — Ghesse",
+  "short_name":"قصه",
+  "description":"تسلط بر ۸۹۹ واژهٔ A1 انگلیسی با قصه، مرور فاصله‌دار و آزمون‌های مرحله‌ای برای فارسی‌زبانان",
+  "start_url":".",
+  "scope":".",
+  "display":"standalone",
+  "orientation":"any",
+  "dir":"rtl",
+  "lang":"fa",
+  "background_color":"#b0c6b3",
+  "theme_color":"#b0c6b3",
+  "icons":[{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

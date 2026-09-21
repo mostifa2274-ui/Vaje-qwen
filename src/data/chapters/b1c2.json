@@ -1,0 +1,217 @@
+{
+  "id": "b1c2",
+  "book": 1,
+  "n": 2,
+  "titleFa": "همه نگاه می‌کنند",
+  "titleEn": "Everyone Looks",
+  "new": [
+    "mom",
+    "dad",
+    "parent",
+    "brother",
+    "sister",
+    "baby",
+    "family",
+    "daughter",
+    "son",
+    "he",
+    "his",
+    "her",
+    "we",
+    "our",
+    "me",
+    "they",
+    "house",
+    "room",
+    "kitchen",
+    "door",
+    "window",
+    "live",
+    "where",
+    "say",
+    "for",
+    "go",
+    "come",
+    "to"
+  ],
+  "sentences": [
+    {
+      "en": "Mina runs to the house.",
+      "fa": "مینا به خانه می‌دود."
+    },
+    {
+      "en": "\"Mom!\" she says.",
+      "fa": "مامان! می‌گوید."
+    },
+    {
+      "en": "Mom is in the kitchen.",
+      "fa": "مامان در آشپزخانه است."
+    },
+    {
+      "en": "Dad is in the kitchen.",
+      "fa": "بابا در آشپزخانه است."
+    },
+    {
+      "en": "\"Where is Nino?\" Mina says.",
+      "fa": "نینو کجاست؟ مینا می‌گوید."
+    },
+    {
+      "en": "Nino is not at home.",
+      "fa": "نینو در خانه نیست."
+    },
+    {
+      "en": "\"We look for Nino,\" Mom says.",
+      "fa": "دنبال نینو می‌گردیم، مامان می‌گوید."
+    },
+    {
+      "en": "Dad looks in the rooms.",
+      "fa": "بابا به اتاق‌ها نگاه می‌کند."
+    },
+    {
+      "en": "Her brother looks in his room.",
+      "fa": "برادرش به اتاق خودش نگاه می‌کند."
+    },
+    {
+      "en": "\"Our little cat is black,\" he says.",
+      "fa": "گربه‌ی کوچک ما سیاه است، او می‌گوید."
+    },
+    {
+      "en": "Her sister is a baby.",
+      "fa": "خواهرش یک نوزاد است."
+    },
+    {
+      "en": "The baby is in her room.",
+      "fa": "نوزاد در اتاقش است."
+    },
+    {
+      "en": "Her little sister is in the room.",
+      "fa": "خواهر کوچکش در اتاق است."
+    },
+    {
+      "en": "\"Nino! Nino!\" Mina says.",
+      "fa": "نینو! نینو! مینا می‌گوید."
+    },
+    {
+      "en": "The family looks and looks.",
+      "fa": "خانواده نگاه می‌کنند و نگاه می‌کنند."
+    },
+    {
+      "en": "The family looks for Nino.",
+      "fa": "خانواده دنبال نینو می‌گردد."
+    },
+    {
+      "en": "\"We do not see Nino,\" Dad says.",
+      "fa": "نینو را نمی‌بینیم، بابا می‌گوید."
+    },
+    {
+      "en": "\"He is my cat,\" Mina says.",
+      "fa": "او گربه‌ی من است، مینا می‌گوید."
+    },
+    {
+      "en": "\"He is our cat,\" her brother says.",
+      "fa": "او گربه‌ی ماست، برادرش می‌گوید."
+    },
+    {
+      "en": "Mom and Dad are her parents.",
+      "fa": "مامان و بابا پدر و مادرش هستند."
+    },
+    {
+      "en": "Her parents look and look.",
+      "fa": "پدر و مادرش نگاه می‌کنند و نگاه می‌کنند."
+    },
+    {
+      "en": "They live in the house.",
+      "fa": "آن‌ها در خانه زندگی می‌کنند."
+    },
+    {
+      "en": "They look in the house, and they look at the door.",
+      "fa": "آن‌ها به خانه نگاه می‌کنند، و به در نگاه می‌کنند."
+    },
+    {
+      "en": "The family lives in the house.",
+      "fa": "خانواده در خانه زندگی می‌کند."
+    },
+    {
+      "en": "\"Our house is our home,\" Mom says.",
+      "fa": "خانه‌مان خانه‌ی ماست، مامان می‌گوید."
+    },
+    {
+      "en": "Mom and Dad have daughters and a son.",
+      "fa": "مامان و بابا دخترانی و یک پسر دارند."
+    },
+    {
+      "en": "The daughter is Mina.",
+      "fa": "دختر، مینا است."
+    },
+    {
+      "en": "The son is her brother.",
+      "fa": "پسر، برادرش است."
+    },
+    {
+      "en": "\"Look at me,\" Mina says.",
+      "fa": "به من نگاه کن، مینا می‌گوید."
+    },
+    {
+      "en": "The bird looks at Mina.",
+      "fa": "پرنده به مینا نگاه می‌کند."
+    },
+    {
+      "en": "\"Where is my cat?\" Mina says.",
+      "fa": "گربه‌ام کجاست؟ مینا می‌گوید."
+    },
+    {
+      "en": "Mina goes to the door.",
+      "fa": "مینا به سمت در می‌رود."
+    },
+    {
+      "en": "Nino is not at the door.",
+      "fa": "نینو دمِ در نیست."
+    },
+    {
+      "en": "\"Where did he go?\" Mom says.",
+      "fa": "او کجا رفت؟ مامان می‌گوید."
+    },
+    {
+      "en": "\"He ran to the bird,\" Mina says.",
+      "fa": "«او به سمت پرنده دوید»، مینا می‌گوید."
+    },
+    {
+      "en": "\"Come home, Nino!\" she says.",
+      "fa": "بیا خانه، نینو! می‌گوید."
+    },
+    {
+      "en": "Come home! Come home!",
+      "fa": "بیا خانه! بیا خانه!"
+    },
+    {
+      "en": "Mina looks at the window.",
+      "fa": "مینا به پنجره نگاه می‌کند."
+    },
+    {
+      "en": "Nino is not at the window.",
+      "fa": "نینو کنار پنجره نیست."
+    }
+  ],
+  "check": [
+    {
+      "q": "مامان کجاست؟",
+      "options": [
+        "kitchen",
+        "door",
+        "window",
+        "bird"
+      ],
+      "a": "kitchen"
+    },
+    {
+      "q": "خواهر مینا کیست؟",
+      "options": [
+        "baby",
+        "brother",
+        "son",
+        "dad"
+      ],
+      "a": "baby"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "id": "b6c3",
+  "book": 6,
+  "n": 3,
+  "titleFa": "کار",
+  "titleEn": "Work",
+  "new": [
+    "work",
+    "worker",
+    "job",
+    "business",
+    "company",
+    "career",
+    "interview",
+    "meeting",
+    "project",
+    "report",
+    "office",
+    "machine",
+    "program",
+    "blog",
+    "busy",
+    "difficult",
+    "important",
+    "main",
+    "modern",
+    "useful",
+    "club"
+  ],
+  "sentences": [
+    {
+      "en": "Dad works.",
+      "fa": "بابا کار می‌کند."
+    },
+    {
+      "en": "He works in an office.",
+      "fa": "او در یک دفتر کار می‌کند."
+    },
+    {
+      "en": "The office is in the city center.",
+      "fa": "دفتر در مرکز شهر است."
+    },
+    {
+      "en": "He is a worker.",
+      "fa": "او یک کارگر است."
+    },
+    {
+      "en": "The workers are busy.",
+      "fa": "کارگران مشغول هستند."
+    },
+    {
+      "en": "Dad is busy.",
+      "fa": "بابا مشغول است."
+    },
+    {
+      "en": "His job is good.",
+      "fa": "کارش خوب است."
+    },
+    {
+      "en": "He likes his job.",
+      "fa": "او کارش را دوست دارد."
+    },
+    {
+      "en": "The business is big.",
+      "fa": "تجارت بزرگ است."
+    },
+    {
+      "en": "He is in business.",
+      "fa": "او در تجارت است."
+    },
+    {
+      "en": "The company is near the city center.",
+      "fa": "شرکت نزدیک مرکز شهر است."
+    },
+    {
+      "en": "He works for a company.",
+      "fa": "او برای یک شرکت کار می‌کند."
+    },
+    {
+      "en": "Dad has a good career.",
+      "fa": "بابا شغل و مسیر حرفه‌ای خوبی دارد."
+    },
+    {
+      "en": "Mom has a career, too.",
+      "fa": "مامان هم مسیر حرفه‌ای خودش را دارد."
+    },
+    {
+      "en": "The interview is today.",
+      "fa": "مصاحبه امروز است."
+    },
+    {
+      "en": "Mina's brother has an interview.",
+      "fa": "برادر مینا یک مصاحبه دارد."
+    },
+    {
+      "en": "The meeting is at nine.",
+      "fa": "جلسه ساعت نه است."
+    },
+    {
+      "en": "Dad is in a meeting.",
+      "fa": "بابا در جلسه است."
+    },
+    {
+      "en": "The project is large.",
+      "fa": "پروژه بزرگ است."
+    },
+    {
+      "en": "He has a project.",
+      "fa": "او یک پروژه دارد."
+    },
+    {
+      "en": "He writes a report.",
+      "fa": "او یک گزارش می‌نویسد."
+    },
+    {
+      "en": "The report is long.",
+      "fa": "گزارش طولانی است."
+    },
+    {
+      "en": "The company has a big machine.",
+      "fa": "شرکت یک دستگاه بزرگ دارد."
+    },
+    {
+      "en": "The machine makes bread.",
+      "fa": "دستگاه نان درست می‌کند."
+    },
+    {
+      "en": "The program helps Dad write reports.",
+      "fa": "این برنامه به بابا کمک می‌کند گزارش بنویسد."
+    },
+    {
+      "en": "He uses a program.",
+      "fa": "او از یک برنامه استفاده می‌کند."
+    },
+    {
+      "en": "Mina writes a blog.",
+      "fa": "مینا یک وبلاگ می‌نویسد."
+    },
+    {
+      "en": "The blog is about Nino.",
+      "fa": "وبلاگ درباره‌ی نینو است."
+    },
+    {
+      "en": "The work is difficult, but Dad can do it.",
+      "fa": "کار دشوار است، اما بابا می‌تواند انجامش دهد."
+    },
+    {
+      "en": "Dad can do the difficult work.",
+      "fa": "بابا می‌تواند کار دشوار را انجام دهد."
+    },
+    {
+      "en": "The meeting is important.",
+      "fa": "جلسه مهم است."
+    },
+    {
+      "en": "It is an important meeting.",
+      "fa": "یک جلسه‌ی مهم است."
+    },
+    {
+      "en": "The main office is in the city.",
+      "fa": "دفتر اصلی در شهر است."
+    },
+    {
+      "en": "The main street is near the office.",
+      "fa": "خیابان اصلی نزدیک دفتر است."
+    },
+    {
+      "en": "The office is modern.",
+      "fa": "دفتر مدرن است."
+    },
+    {
+      "en": "It is a modern office.",
+      "fa": "یک دفتر مدرن است."
+    },
+    {
+      "en": "The computer is useful.",
+      "fa": "رایانه مفید است."
+    },
+    {
+      "en": "It is a useful machine.",
+      "fa": "دستگاه مفیدی است."
+    },
+    {
+      "en": "The club is for workers.",
+      "fa": "باشگاه برای کارگران است."
+    },
+    {
+      "en": "He goes to the club.",
+      "fa": "او به باشگاه می‌رود."
+    }
+  ],
+  "check": [
+    {
+      "q": "بابا کجا کار می‌کند؟",
+      "options": [
+        "office",
+        "school",
+        "market",
+        "farm"
+      ],
+      "a": "office"
+    },
+    {
+      "q": "وبلاگ مینا درباره‌ی چیست؟",
+      "options": [
+        "cat",
+        "dog",
+        "food",
+        "school"
+      ],
+      "a": "cat"
+    }
+  ]
+}

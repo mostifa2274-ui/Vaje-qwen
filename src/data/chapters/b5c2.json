@@ -1,0 +1,236 @@
+{
+  "id": "b5c2",
+  "book": 5,
+  "n": 2,
+  "titleFa": "یادداشت",
+  "titleEn": "The Note",
+  "new": [
+    "write",
+    "writing",
+    "word",
+    "pen",
+    "pencil",
+    "paper",
+    "page",
+    "note",
+    "letter",
+    "line",
+    "list",
+    "spell",
+    "spelling",
+    "phrase",
+    "sentence",
+    "text",
+    "message",
+    "dear",
+    "post",
+    "send",
+    "introduce",
+    "fact",
+    "by"
+  ],
+  "sentences": [
+    {
+      "en": "Mina writes a note.",
+      "fa": "مینا یک یادداشت می‌نویسد."
+    },
+    {
+      "en": "She writes it in her book.",
+      "fa": "آن را در کتابش می‌نویسد."
+    },
+    {
+      "en": "Her handwriting is small.",
+      "fa": "دست‌خطش کوچک است."
+    },
+    {
+      "en": "Her writing is good.",
+      "fa": "دست‌خطش خوب است."
+    },
+    {
+      "en": "She has a pen.",
+      "fa": "او یک خودکار دارد."
+    },
+    {
+      "en": "The pen is red.",
+      "fa": "خودکار قرمز است."
+    },
+    {
+      "en": "She has a pencil.",
+      "fa": "او یک مداد دارد."
+    },
+    {
+      "en": "The pencil is black.",
+      "fa": "مداد سیاه است."
+    },
+    {
+      "en": "She has paper.",
+      "fa": "او کاغذ دارد."
+    },
+    {
+      "en": "The paper is white.",
+      "fa": "کاغذ سفید است."
+    },
+    {
+      "en": "The page is white.",
+      "fa": "صفحه سفید است."
+    },
+    {
+      "en": "She writes on the page.",
+      "fa": "روی صفحه می‌نویسد."
+    },
+    {
+      "en": "\"Dear neighbors,\" she writes.",
+      "fa": "همسایه‌های عزیز، می‌نویسد."
+    },
+    {
+      "en": "\"Dear friends,\" she writes.",
+      "fa": "دوستانِ عزیز، می‌نویسد."
+    },
+    {
+      "en": "Nino is a little black cat.",
+      "fa": "نینو یک گربه‌ی سیاه کوچک است."
+    },
+    {
+      "en": "The note says: Nino is small.",
+      "fa": "در یادداشت نوشته: نینو کوچک است."
+    },
+    {
+      "en": "She writes a letter.",
+      "fa": "او یک نامه می‌نویسد."
+    },
+    {
+      "en": "The letter is for the neighbors.",
+      "fa": "نامه برای همسایه‌هاست."
+    },
+    {
+      "en": "She writes a line.",
+      "fa": "او یک خط می‌نویسد."
+    },
+    {
+      "en": "The line is long.",
+      "fa": "خط بلند است."
+    },
+    {
+      "en": "She makes a list.",
+      "fa": "او یک فهرست درست می‌کند."
+    },
+    {
+      "en": "The list is: black, little, fast.",
+      "fa": "فهرست این است: سیاه، کوچک، سریع."
+    },
+    {
+      "en": "She spells the name.",
+      "fa": "او اسم را املا می‌کند."
+    },
+    {
+      "en": "She spells it for Mom.",
+      "fa": "آن را برای مامان املا می‌کند."
+    },
+    {
+      "en": "The spelling is right.",
+      "fa": "املا درست است."
+    },
+    {
+      "en": "The name is spelled correctly.",
+      "fa": "اسم درست املا شده است."
+    },
+    {
+      "en": "She writes a phrase.",
+      "fa": "او یک عبارت می‌نویسد."
+    },
+    {
+      "en": "The phrase is: Come home, Nino.",
+      "fa": "عبارت این است: بیا خانه، نینو."
+    },
+    {
+      "en": "She writes a sentence.",
+      "fa": "او یک جمله می‌نویسد."
+    },
+    {
+      "en": "The sentence is: I miss my cat.",
+      "fa": "جمله این است: دلم برای گربه‌ام تنگ شده."
+    },
+    {
+      "en": "She writes a text.",
+      "fa": "او یک متن می‌نویسد."
+    },
+    {
+      "en": "The text is short.",
+      "fa": "متن کوتاه است."
+    },
+    {
+      "en": "The message is: Come home.",
+      "fa": "پیام این است: بیا خانه."
+    },
+    {
+      "en": "It is a message for Nino.",
+      "fa": "پیامی برای نینو است."
+    },
+    {
+      "en": "She posts the note.",
+      "fa": "او یادداشت را نصب می‌کند."
+    },
+    {
+      "en": "She posts it on the wall.",
+      "fa": "آن را روی دیوار نصب می‌کند."
+    },
+    {
+      "en": "She sends a letter.",
+      "fa": "او یک نامه می‌فرستد."
+    },
+    {
+      "en": "She sends it to the neighbors.",
+      "fa": "آن را برای همسایه‌ها می‌فرستد."
+    },
+    {
+      "en": "She introduces Nino.",
+      "fa": "او نینو را معرفی می‌کند."
+    },
+    {
+      "en": "The note introduces the cat.",
+      "fa": "یادداشت گربه را معرفی می‌کند."
+    },
+    {
+      "en": "It is a fact.",
+      "fa": "این یک حقیقت است."
+    },
+    {
+      "en": "The fact is: Nino is small.",
+      "fa": "واقعیت این است: نینو کوچک است."
+    },
+    {
+      "en": "She writes word by word.",
+      "fa": "او کلمه‌به‌کلمه می‌نویسد."
+    },
+    {
+      "en": "The note is by Mina.",
+      "fa": "یادداشت از مینا است."
+    },
+    {
+      "en": "The last word is \"home.\"",
+      "fa": "آخرین کلمه «خانه» است."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا با چه چیزی می‌نویسد؟",
+      "options": [
+        "pen",
+        "book",
+        "page",
+        "wall"
+      ],
+      "a": "pen"
+    },
+    {
+      "q": "یادداشت روی کجا نصب می‌شود؟",
+      "options": [
+        "wall",
+        "door",
+        "table",
+        "floor"
+      ],
+      "a": "wall"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="t d">
+<title id="t">Ghesse — Book 7</title><desc id="d">Hand-drawn storybook cover with a black cat.</desc>
+<rect width="512" height="512" rx="34" fill="#e9dfd2"/><g color="#4f6f78" opacity=".9"><circle cx="246" cy="170" r="35" fill="none" stroke="currentColor" stroke-width="7"/><path d="M280 170h78m-25 0v28m-23-28v20" fill="none" stroke="currentColor" stroke-width="7"/></g>
+<!-- cat --> <g fill="#23231f"><ellipse cx="258" cy="337" rx="64" ry="72"/><circle cx="258" cy="287" r="46"/><path d="M223 258l11-45 27 34zm70 0l-11-45-27 34z"/><path d="M313 352c55-33 72-4 48 28-14 18-37 15-50 2 26 3 43-14 32-25-8-8-20-5-30 2z"/></g>
+<circle cx="242" cy="283" r="4" fill="#eee9d9"/><circle cx="274" cy="283" r="4" fill="#eee9d9"/>
+<!-- scarf --> <path d="M214 319c30 13 58 13 88 0l8 15c-35 17-70 17-104 0z" fill="#4f6f78"/><path d="M290 329l28 53-18 7-25-54z" fill="#4f6f78"/>
+<text x="256" y="440" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="3" fill="#38382f">BOOK 7</text>
+<path d="M116 465c90 12 190 12 280 0" fill="none" stroke="#38382f" stroke-width="3" stroke-linecap="round" opacity=".45"/>
+</svg>

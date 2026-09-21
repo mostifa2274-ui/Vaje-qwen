@@ -1,0 +1,243 @@
+{
+  "id": "b5c4",
+  "book": 5,
+  "n": 4,
+  "titleFa": "ممنون",
+  "titleEn": "Thank You",
+  "new": [
+    "thank",
+    "thanks",
+    "enjoy",
+    "hate",
+    "afraid",
+    "angry",
+    "bored",
+    "boring",
+    "excited",
+    "exciting",
+    "fantastic",
+    "interest",
+    "interested",
+    "amazing",
+    "awesome",
+    "wonderful",
+    "perfect",
+    "beautiful",
+    "pretty",
+    "special",
+    "welcome",
+    "yeah"
+  ],
+  "sentences": [
+    {
+      "en": "The note is on the wall.",
+      "fa": "یادداشت روی دیوار است."
+    },
+    {
+      "en": "People look at it.",
+      "fa": "مردم به آن نگاه می‌کنند."
+    },
+    {
+      "en": "\"Thank you,\" Mina says.",
+      "fa": "متشکرم، مینا می‌گوید."
+    },
+    {
+      "en": "Thank you, Mom.",
+      "fa": "متشکرم، مامان."
+    },
+    {
+      "en": "She thanks the people.",
+      "fa": "او از مردم تشکر می‌کند."
+    },
+    {
+      "en": "The neighbors say, \"Thanks for the note.\"",
+      "fa": "همسایه‌ها می‌گویند: «ممنون بابت یادداشت.»"
+    },
+    {
+      "en": "\"Thanks for the bread,\" Mina says.",
+      "fa": "مرسی بابت نان، مینا می‌گوید."
+    },
+    {
+      "en": "You are welcome.",
+      "fa": "خواهش می‌کنم."
+    },
+    {
+      "en": "\"You are welcome,\" the man at the bread shop says.",
+      "fa": "خواهش می‌کنم، مردِ مغازه‌ی نان می‌گوید."
+    },
+    {
+      "en": "Mina enjoys the market.",
+      "fa": "مینا از بازار لذت می‌برد."
+    },
+    {
+      "en": "She enjoys the day.",
+      "fa": "او از روز لذت می‌برد."
+    },
+    {
+      "en": "Mina hates being without Nino.",
+      "fa": "مینا از بی‌نینو بودن متنفر است."
+    },
+    {
+      "en": "Mina hates waiting.",
+      "fa": "مینا از منتظر ماندن متنفر است."
+    },
+    {
+      "en": "Mina is angry at the bird.",
+      "fa": "مینا از پرنده عصبانی است."
+    },
+    {
+      "en": "Her brother is angry, too.",
+      "fa": "برادرش هم عصبانی است."
+    },
+    {
+      "en": "Mina is afraid.",
+      "fa": "مینا می‌ترسد."
+    },
+    {
+      "en": "Mina is afraid for Nino.",
+      "fa": "مینا برای نینو نگران است."
+    },
+    {
+      "en": "Mina is bored.",
+      "fa": "مینا حوصله‌اش سر رفته است."
+    },
+    {
+      "en": "The baby is bored.",
+      "fa": "نوزاد حوصله‌اش سر رفته است."
+    },
+    {
+      "en": "The day is boring.",
+      "fa": "روز کسل‌کننده است."
+    },
+    {
+      "en": "Waiting is boring.",
+      "fa": "منتظر ماندن کسل‌کننده است."
+    },
+    {
+      "en": "Mina is excited when more people offer to help.",
+      "fa": "وقتی افراد بیشتری پیشنهاد کمک می‌دهند، مینا هیجان‌زده می‌شود."
+    },
+    {
+      "en": "The family is excited.",
+      "fa": "خانواده هیجان‌زده هستند."
+    },
+    {
+      "en": "It is exciting.",
+      "fa": "هیجان‌انگیز است."
+    },
+    {
+      "en": "The news is exciting: more people are looking for Nino.",
+      "fa": "خبر هیجان‌انگیز است: افراد بیشتری دنبال نینو می‌گردند."
+    },
+    {
+      "en": "The help from the neighbors is fantastic.",
+      "fa": "کمک همسایه‌ها فوق‌العاده است."
+    },
+    {
+      "en": "It is fantastic to have so much help.",
+      "fa": "داشتن این همه کمک فوق‌العاده است."
+    },
+    {
+      "en": "Mina has an interest in cats.",
+      "fa": "مینا به گربه‌ها علاقه دارد."
+    },
+    {
+      "en": "Her interest in cats is easy to see.",
+      "fa": "علاقه‌ی او به گربه‌ها کاملاً پیداست."
+    },
+    {
+      "en": "She is interested in cats.",
+      "fa": "او به گربه‌ها علاقه‌مند است."
+    },
+    {
+      "en": "The boy is interested, too.",
+      "fa": "پسر هم علاقه‌مند است."
+    },
+    {
+      "en": "The help from people across the city is amazing.",
+      "fa": "کمک مردم در سراسر شهر شگفت‌انگیز است."
+    },
+    {
+      "en": "Mina thinks it is amazing.",
+      "fa": "مینا فکر می‌کند این شگفت‌انگیز است."
+    },
+    {
+      "en": "The people are awesome.",
+      "fa": "مردم عالی هستند."
+    },
+    {
+      "en": "\"Awesome,\" Mina says.",
+      "fa": "عالی، مینا می‌گوید."
+    },
+    {
+      "en": "The world is wonderful.",
+      "fa": "دنیا شگفت‌انگیز است."
+    },
+    {
+      "en": "It is a wonderful world.",
+      "fa": "دنیای شگفت‌انگیزی است."
+    },
+    {
+      "en": "No day is perfect without Nino.",
+      "fa": "هیچ روزی بدون نینو کامل نیست."
+    },
+    {
+      "en": "Mina hopes for a perfect morning with Nino at home.",
+      "fa": "مینا امیدوار است صبحی کامل داشته باشد که نینو در خانه باشد."
+    },
+    {
+      "en": "The city is beautiful.",
+      "fa": "شهر زیبا است."
+    },
+    {
+      "en": "It is beautiful.",
+      "fa": "زیبا است."
+    },
+    {
+      "en": "The girl is pretty.",
+      "fa": "دختر قشنگ است."
+    },
+    {
+      "en": "The pretty girl helps.",
+      "fa": "دختر قشنگ کمک می‌کند."
+    },
+    {
+      "en": "Nino is special.",
+      "fa": "نینو خاص است."
+    },
+    {
+      "en": "Nino is a special cat.",
+      "fa": "نینو گربه‌ی خاصی است."
+    },
+    {
+      "en": "\"Yeah,\" Mina says.",
+      "fa": "آره، مینا می‌گوید."
+    },
+    {
+      "en": "\"Yeah!\" the boy says.",
+      "fa": "آره! پسر می‌گوید."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا به مردم چه می‌گوید؟",
+      "options": [
+        "thank",
+        "sorry",
+        "bye",
+        "hello"
+      ],
+      "a": "thank"
+    },
+    {
+      "q": "مینا برای چه کسی نگران است؟",
+      "options": [
+        "cat",
+        "bird",
+        "dog",
+        "baby"
+      ],
+      "a": "cat"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "id": "b6c4",
+  "book": 6,
+  "n": 4,
+  "titleFa": "یک زنگ",
+  "titleEn": "A Phone Call",
+  "new": [
+    "scientist",
+    "problem",
+    "reason",
+    "situation",
+    "action",
+    "activity",
+    "thing",
+    "type",
+    "kind",
+    "part",
+    "event",
+    "success",
+    "object",
+    "model",
+    "color",
+    "card",
+    "present",
+    "umbrella",
+    "cup",
+    "break"
+  ],
+  "sentences": [
+    {
+      "en": "A woman calls.",
+      "fa": "یک زن زنگ می‌زند."
+    },
+    {
+      "en": "The woman is a scientist.",
+      "fa": "زن یک دانشمند است."
+    },
+    {
+      "en": "The scientist has a cat.",
+      "fa": "دانشمند یک گربه دارد."
+    },
+    {
+      "en": "She works at the university.",
+      "fa": "او در دانشگاه کار می‌کند."
+    },
+    {
+      "en": "\"I have a black cat,\" she says.",
+      "fa": "من یک گربه‌ی سیاه دارم، می‌گوید."
+    },
+    {
+      "en": "\"Is it your cat?\" Mina asks.",
+      "fa": "«گربه‌ی توست؟» مینا می‌پرسد."
+    },
+    {
+      "en": "The family goes to the university.",
+      "fa": "خانواده به دانشگاه می‌روند."
+    },
+    {
+      "en": "The cat is black.",
+      "fa": "گربه سیاه است."
+    },
+    {
+      "en": "It is small.",
+      "fa": "کوچک است."
+    },
+    {
+      "en": "But it is not Nino.",
+      "fa": "اما نینو نیست."
+    },
+    {
+      "en": "It is her cat.",
+      "fa": "گربه‌ی اوست."
+    },
+    {
+      "en": "Mina is sad.",
+      "fa": "مینا غمگین است."
+    },
+    {
+      "en": "It is a problem.",
+      "fa": "این یک مشکل است."
+    },
+    {
+      "en": "The problem is serious.",
+      "fa": "مشکل جدی است."
+    },
+    {
+      "en": "What is the reason?",
+      "fa": "دلیل چیست؟"
+    },
+    {
+      "en": "The reason for the call is the black cat.",
+      "fa": "دلیل تماس، گربه‌ی سیاه است."
+    },
+    {
+      "en": "The situation is bad.",
+      "fa": "وضعیت بد است."
+    },
+    {
+      "en": "It is a bad situation.",
+      "fa": "وضعیت بدی است."
+    },
+    {
+      "en": "The next action is to look again.",
+      "fa": "کار بعدی این است که دوباره نگاه کنند."
+    },
+    {
+      "en": "It is a good action.",
+      "fa": "اقدام خوبی است."
+    },
+    {
+      "en": "The activity is to look, ask, and call.",
+      "fa": "فعالیت این است که نگاه کنند، بپرسند و زنگ بزنند."
+    },
+    {
+      "en": "This activity keeps Mina busy.",
+      "fa": "این فعالیت مینا را مشغول نگه می‌دارد."
+    },
+    {
+      "en": "The important thing is that the cat is not Nino.",
+      "fa": "نکته‌ی مهم این است که گربه نینو نیست."
+    },
+    {
+      "en": "It is a sad thing.",
+      "fa": "چیز غم‌انگیزی است."
+    },
+    {
+      "en": "What type of cat?",
+      "fa": "چه نوع گربه‌ای؟"
+    },
+    {
+      "en": "She describes the type: a little black cat.",
+      "fa": "او نوع گربه را توصیف می‌کند: یک گربه‌ی سیاه کوچک."
+    },
+    {
+      "en": "What kind of cat is Nino?",
+      "fa": "نینو چه جور گربه‌ای است؟"
+    },
+    {
+      "en": "Nino is a little black cat.",
+      "fa": "نینو یک گربه‌ی سیاه کوچک است."
+    },
+    {
+      "en": "Part of the city is old.",
+      "fa": "بخشی از شهر قدیمی است."
+    },
+    {
+      "en": "One part of the plan is to keep looking.",
+      "fa": "یک بخش از نقشه این است که به جست‌وجو ادامه بدهند."
+    },
+    {
+      "en": "The visit to the university is today's main event.",
+      "fa": "دیدار از دانشگاه رویداد اصلی امروز است."
+    },
+    {
+      "en": "For Mina, it is a sad event.",
+      "fa": "برای مینا، این رویداد غم‌انگیزی است."
+    },
+    {
+      "en": "The family wants the plan to be a success.",
+      "fa": "خانواده می‌خواهد نقشه موفق باشد."
+    },
+    {
+      "en": "\"Is it a success?\" Mina asks. \"Not today.\"",
+      "fa": "«موفق شد؟» مینا می‌پرسد. «امروز نه.»"
+    },
+    {
+      "en": "The object is small.",
+      "fa": "شیء کوچک است."
+    },
+    {
+      "en": "It is a little object.",
+      "fa": "یک شیء کوچک است."
+    },
+    {
+      "en": "The scientist has a model.",
+      "fa": "دانشمند یک ماکت دارد."
+    },
+    {
+      "en": "It is a model of a cat.",
+      "fa": "ماکت یک گربه است."
+    },
+    {
+      "en": "The model is a present.",
+      "fa": "ماکت یک هدیه است."
+    },
+    {
+      "en": "The present is for Mina.",
+      "fa": "هدیه برای مینا است."
+    },
+    {
+      "en": "The color is black.",
+      "fa": "رنگ سیاه است."
+    },
+    {
+      "en": "What color is Nino?",
+      "fa": "نینو چه رنگی است؟"
+    },
+    {
+      "en": "She has a card.",
+      "fa": "او یک کارت دارد."
+    },
+    {
+      "en": "The card says: Call me.",
+      "fa": "کارت می‌گوید: به من زنگ بزن."
+    },
+    {
+      "en": "Mina puts her red umbrella by the door.",
+      "fa": "مینا چتر قرمزش را کنار در می‌گذارد."
+    },
+    {
+      "en": "The umbrella is red.",
+      "fa": "چتر قرمز است."
+    },
+    {
+      "en": "A cup falls from a desk and breaks.",
+      "fa": "یک فنجان از روی میز می‌افتد و می‌شکند."
+    },
+    {
+      "en": "The broken cup is on the floor.",
+      "fa": "فنجان شکسته روی زمین است."
+    },
+    {
+      "en": "The cup is white.",
+      "fa": "فنجان سفید است."
+    },
+    {
+      "en": "At night, Mina looks at the card.",
+      "fa": "شب، مینا به کارت نگاه می‌کند."
+    },
+    {
+      "en": "\"Call me,\" it says.",
+      "fa": "به من زنگ بزن، رویش نوشته."
+    },
+    {
+      "en": "Mina calls, but the scientist does not answer.",
+      "fa": "مینا زنگ می‌زند، اما دانشمند جواب نمی‌دهد."
+    },
+    {
+      "en": "She waits.",
+      "fa": "او منتظر می‌ماند."
+    }
+  ],
+  "check": [
+    {
+      "q": "گربه‌ی دانشگاه نینو بود؟",
+      "options": [
+        "no",
+        "yes",
+        "model",
+        "card"
+      ],
+      "a": "no"
+    },
+    {
+      "q": "دانشمند به مینا چه می‌دهد؟",
+      "options": [
+        "present",
+        "cup",
+        "umbrella",
+        "color"
+      ],
+      "a": "present"
+    }
+  ]
+}

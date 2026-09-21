@@ -1,0 +1,209 @@
+{
+  "id": "b5c1",
+  "book": 5,
+  "n": 1,
+  "titleFa": "حرف زدن",
+  "titleEn": "Talking",
+  "new": [
+    "talk",
+    "speak",
+    "tell",
+    "listen",
+    "hear",
+    "sound",
+    "conversation",
+    "dialogue",
+    "discuss",
+    "agree",
+    "advice",
+    "idea",
+    "opinion",
+    "think",
+    "understand",
+    "mean",
+    "meaning",
+    "explain",
+    "question",
+    "story"
+  ],
+  "sentences": [
+    {
+      "en": "Mina talks to Mom.",
+      "fa": "مینا با مامان حرف می‌زند."
+    },
+    {
+      "en": "They talk about Nino.",
+      "fa": "آن‌ها درباره‌ی نینو حرف می‌زنند."
+    },
+    {
+      "en": "She speaks to Dad.",
+      "fa": "او با بابا صحبت می‌کند."
+    },
+    {
+      "en": "He speaks to her.",
+      "fa": "او با مینا صحبت می‌کند."
+    },
+    {
+      "en": "\"Tell me,\" Mina says.",
+      "fa": "به من بگو، مینا می‌گوید."
+    },
+    {
+      "en": "Dad tells her about Nino.",
+      "fa": "بابا درباره‌ی نینو با او حرف می‌زند."
+    },
+    {
+      "en": "\"Listen to me,\" Mom says.",
+      "fa": "به من گوش کن، مامان می‌گوید."
+    },
+    {
+      "en": "Mina listens.",
+      "fa": "مینا گوش می‌کند."
+    },
+    {
+      "en": "Mina hears a sound.",
+      "fa": "مینا صدایی می‌شنود."
+    },
+    {
+      "en": "She hears the sound again.",
+      "fa": "او دوباره صدا را می‌شنود."
+    },
+    {
+      "en": "It is a bird.",
+      "fa": "یک پرنده است."
+    },
+    {
+      "en": "The conversation is long.",
+      "fa": "گفتگو طولانی است."
+    },
+    {
+      "en": "They have a conversation.",
+      "fa": "آن‌ها گفتگو می‌کنند."
+    },
+    {
+      "en": "The dialogue is good.",
+      "fa": "دیالوگ خوب است."
+    },
+    {
+      "en": "It is a dialogue about cats.",
+      "fa": "دیالوگی درباره‌ی گربه‌هاست."
+    },
+    {
+      "en": "They discuss Nino.",
+      "fa": "آن‌ها درباره‌ی نینو بحث می‌کنند."
+    },
+    {
+      "en": "The family discusses the cat.",
+      "fa": "خانواده درباره‌ی گربه بحث می‌کند."
+    },
+    {
+      "en": "Mina agrees.",
+      "fa": "مینا موافق است."
+    },
+    {
+      "en": "Dad agrees, too.",
+      "fa": "بابا هم موافق است."
+    },
+    {
+      "en": "Mom has advice.",
+      "fa": "مامان توصیه‌ای دارد."
+    },
+    {
+      "en": "Her advice is good.",
+      "fa": "توصیه‌اش خوب است."
+    },
+    {
+      "en": "Mina has an idea.",
+      "fa": "مینا یک ایده دارد."
+    },
+    {
+      "en": "The idea is good.",
+      "fa": "ایده خوب است."
+    },
+    {
+      "en": "What is your opinion?",
+      "fa": "نظرت چیست؟"
+    },
+    {
+      "en": "Dad shares his opinion.",
+      "fa": "بابا نظرش را می‌گوید."
+    },
+    {
+      "en": "Mina thinks.",
+      "fa": "مینا فکر می‌کند."
+    },
+    {
+      "en": "She thinks about Nino.",
+      "fa": "او به نینو فکر می‌کند."
+    },
+    {
+      "en": "\"I understand,\" Mina says.",
+      "fa": "می‌فهمم، مینا می‌گوید."
+    },
+    {
+      "en": "Do you understand?",
+      "fa": "می‌فهمی؟"
+    },
+    {
+      "en": "What do you mean?",
+      "fa": "منظورت چیست؟"
+    },
+    {
+      "en": "\"I mean we should keep looking,\" Mina says.",
+      "fa": "منظورم این است که باید به جست‌وجو ادامه بدهیم، مینا می‌گوید."
+    },
+    {
+      "en": "Mina asks about the meaning of a word.",
+      "fa": "مینا درباره‌ی معنی یک کلمه می‌پرسد."
+    },
+    {
+      "en": "What is the meaning?",
+      "fa": "معنی چیست؟"
+    },
+    {
+      "en": "Explain, please.",
+      "fa": "توضیح بده، لطفاً."
+    },
+    {
+      "en": "Mom explains.",
+      "fa": "مامان توضیح می‌دهد."
+    },
+    {
+      "en": "Mina has a question.",
+      "fa": "مینا یک سؤال دارد."
+    },
+    {
+      "en": "It is a good question.",
+      "fa": "سؤال خوبی است."
+    },
+    {
+      "en": "Mina tells a story.",
+      "fa": "مینا یک قصه تعریف می‌کند."
+    },
+    {
+      "en": "The story is about Nino.",
+      "fa": "قصه درباره‌ی نینو است."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا درباره‌ی چه چیزی فکر می‌کند؟",
+      "options": [
+        "cat",
+        "bird",
+        "dog",
+        "book"
+      ],
+      "a": "cat"
+    },
+    {
+      "q": "مینا چه چیزی می‌شنود؟",
+      "options": [
+        "sound",
+        "story",
+        "question",
+        "idea"
+      ],
+      "a": "sound"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "id": "b7c2",
+  "book": 7,
+  "n": 2,
+  "titleFa": "قطار",
+  "titleEn": "The Train",
+  "new": [
+    "car",
+    "bus",
+    "train",
+    "taxi",
+    "truck",
+    "bicycle",
+    "bike",
+    "drive",
+    "driver",
+    "ride",
+    "station",
+    "stop",
+    "ticket",
+    "traffic",
+    "arrive",
+    "carry",
+    "fall",
+    "follow",
+    "meter",
+    "mile",
+    "country"
+  ],
+  "sentences": [
+    {
+      "en": "The family goes to the station.",
+      "fa": "خانواده به ایستگاه می‌روند."
+    },
+    {
+      "en": "The station is big.",
+      "fa": "ایستگاه بزرگ است."
+    },
+    {
+      "en": "They have tickets.",
+      "fa": "آن‌ها بلیت دارند."
+    },
+    {
+      "en": "The tickets are for the train.",
+      "fa": "بلیت‌ها برای قطار هستند."
+    },
+    {
+      "en": "The train is long.",
+      "fa": "قطار طولانی است."
+    },
+    {
+      "en": "They are on the train.",
+      "fa": "آن‌ها سوار قطار هستند."
+    },
+    {
+      "en": "A bus is near the station.",
+      "fa": "یک اتوبوس نزدیک ایستگاه است."
+    },
+    {
+      "en": "The bus is full.",
+      "fa": "اتوبوس پر است."
+    },
+    {
+      "en": "A taxi is near the station, too.",
+      "fa": "یک تاکسی هم نزدیک ایستگاه است."
+    },
+    {
+      "en": "The taxi is yellow.",
+      "fa": "تاکسی زرد است."
+    },
+    {
+      "en": "Cars are in the street.",
+      "fa": "ماشین‌ها در خیابان هستند."
+    },
+    {
+      "en": "The cars are fast.",
+      "fa": "ماشین‌ها سریع هستند."
+    },
+    {
+      "en": "A truck is big.",
+      "fa": "یک کامیون بزرگ است."
+    },
+    {
+      "en": "The truck carries food.",
+      "fa": "کامیون غذا حمل می‌کند."
+    },
+    {
+      "en": "It carries bread to the market.",
+      "fa": "نان را به بازار می‌برد."
+    },
+    {
+      "en": "A man rides a bicycle.",
+      "fa": "یک مرد دوچرخه سوار می‌شود."
+    },
+    {
+      "en": "The bicycle is red.",
+      "fa": "دوچرخه قرمز است."
+    },
+    {
+      "en": "A boy rides a bike.",
+      "fa": "یک پسر دوچرخه سوار می‌شود."
+    },
+    {
+      "en": "The bike is small.",
+      "fa": "دوچرخه کوچک است."
+    },
+    {
+      "en": "Dad knows how to drive a car.",
+      "fa": "بابا بلد است ماشین براند."
+    },
+    {
+      "en": "He drives well.",
+      "fa": "او خوب رانندگی می‌کند."
+    },
+    {
+      "en": "The driver is nice.",
+      "fa": "راننده خوب است."
+    },
+    {
+      "en": "The train driver is busy.",
+      "fa": "راننده‌ی قطار مشغول است."
+    },
+    {
+      "en": "The traffic is bad.",
+      "fa": "ترافیک بد است."
+    },
+    {
+      "en": "The traffic is heavy.",
+      "fa": "ترافیک سنگین است."
+    },
+    {
+      "en": "They arrive at a small station.",
+      "fa": "آن‌ها به یک ایستگاه کوچک می‌رسند."
+    },
+    {
+      "en": "The train arrives at the station.",
+      "fa": "قطار به ایستگاه می‌رسد."
+    },
+    {
+      "en": "Mina almost falls.",
+      "fa": "مینا نزدیک است بیفتد."
+    },
+    {
+      "en": "She does not fall.",
+      "fa": "او نمی‌افتد."
+    },
+    {
+      "en": "Mina remembers that Nino followed the bird.",
+      "fa": "مینا به یاد می‌آورد که نینو دنبال پرنده رفت."
+    },
+    {
+      "en": "The family follows the map.",
+      "fa": "خانواده دنبال نقشه می‌روند."
+    },
+    {
+      "en": "A mile is a long distance.",
+      "fa": "یک مایل فاصله‌ی زیادی است."
+    },
+    {
+      "en": "The trip is ten miles.",
+      "fa": "سفر ده مایل است."
+    },
+    {
+      "en": "One meter is a short distance.",
+      "fa": "یک متر فاصله‌ی کوتاهی است."
+    },
+    {
+      "en": "A room at the station is two meters wide.",
+      "fa": "عرض یکی از اتاق‌های ایستگاه دو متر است."
+    },
+    {
+      "en": "They travel through the country.",
+      "fa": "آن‌ها در سراسر کشور سفر می‌کنند."
+    },
+    {
+      "en": "Their country is beautiful.",
+      "fa": "کشورشان زیبا است."
+    },
+    {
+      "en": "\"This is our stop,\" Dad says.",
+      "fa": "این ایستگاه ماست، بابا می‌گوید."
+    },
+    {
+      "en": "The train stops.",
+      "fa": "قطار می‌ایستد."
+    }
+  ],
+  "check": [
+    {
+      "q": "خانواده با چه چیزی سفر می‌کند؟",
+      "options": [
+        "train",
+        "bus",
+        "taxi",
+        "bike"
+      ],
+      "a": "train"
+    },
+    {
+      "q": "کامیون چه چیزی حمل می‌کند؟",
+      "options": [
+        "food",
+        "water",
+        "clothes",
+        "money"
+      ],
+      "a": "food"
+    }
+  ]
+}

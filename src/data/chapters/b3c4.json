@@ -1,0 +1,218 @@
+{
+  "id": "b3c4",
+  "book": 3,
+  "n": 4,
+  "titleFa": "تولد",
+  "titleEn": "The Birthday",
+  "new": [
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+    "spring",
+    "summer",
+    "winter",
+    "year",
+    "month",
+    "birthday",
+    "date",
+    "beginning",
+    "last",
+    "next",
+    "once",
+    "twice",
+    "party",
+    "happen",
+    "warm",
+    "cold",
+    "twelve"
+  ],
+  "sentences": [
+    {
+      "en": "Mina says the date.",
+      "fa": "مینا تاریخ را می‌گوید."
+    },
+    {
+      "en": "\"What month is it?\" Dad asks.",
+      "fa": "«چه ماهی است؟» بابا می‌پرسد."
+    },
+    {
+      "en": "It is June.",
+      "fa": "ژوئن است."
+    },
+    {
+      "en": "June is Mina's birthday month.",
+      "fa": "ژوئن ماه تولد مینا است."
+    },
+    {
+      "en": "Her birthday is in June.",
+      "fa": "تولدش در ژوئن است."
+    },
+    {
+      "en": "Her birthday is near the end of spring.",
+      "fa": "تولدش نزدیک پایان بهار است."
+    },
+    {
+      "en": "Spring is nice.",
+      "fa": "بهار خوب است."
+    },
+    {
+      "en": "Summer is warm.",
+      "fa": "تابستان گرم است."
+    },
+    {
+      "en": "The days are warm.",
+      "fa": "روزها گرم هستند."
+    },
+    {
+      "en": "She likes summer.",
+      "fa": "او تابستان دوست دارد."
+    },
+    {
+      "en": "Winter is cold.",
+      "fa": "زمستان سرد است."
+    },
+    {
+      "en": "Nino was born in winter.",
+      "fa": "نینو در زمستان به دنیا آمده است."
+    },
+    {
+      "en": "January is the first month.",
+      "fa": "ژانویه اولین ماه است."
+    },
+    {
+      "en": "February is the second month.",
+      "fa": "فوریه دومین ماه است."
+    },
+    {
+      "en": "March is the third month.",
+      "fa": "مارس سومین ماه است."
+    },
+    {
+      "en": "April is the fourth month.",
+      "fa": "آوریل چهارمین ماه است."
+    },
+    {
+      "en": "May is the fifth month.",
+      "fa": "مه پنجمین ماه است."
+    },
+    {
+      "en": "July is after June.",
+      "fa": "ژوئیه بعد از ژوئن است."
+    },
+    {
+      "en": "Mina says: January, February, March, April, May.",
+      "fa": "مینا می‌گوید: ژانویه، فوریه، مارس، آوریل، مه."
+    },
+    {
+      "en": "She says: June, July, August, September, October.",
+      "fa": "او می‌گوید: ژوئن، ژوئیه، اوت، سپتامبر، اکتبر."
+    },
+    {
+      "en": "November and December are cold months.",
+      "fa": "نوامبر و دسامبر ماه‌های سردی هستند."
+    },
+    {
+      "en": "August is after July.",
+      "fa": "اوت بعد از ژوئیه است."
+    },
+    {
+      "en": "September is next.",
+      "fa": "سپتامبر بعدی است."
+    },
+    {
+      "en": "October comes after September.",
+      "fa": "اکتبر بعد از سپتامبر می‌آید."
+    },
+    {
+      "en": "November is cold.",
+      "fa": "نوامبر سرد است."
+    },
+    {
+      "en": "December is the last month.",
+      "fa": "دسامبر آخرین ماه است."
+    },
+    {
+      "en": "The last month is December.",
+      "fa": "آخرین ماه دسامبر است."
+    },
+    {
+      "en": "A year runs from January to December.",
+      "fa": "یک سال از ژانویه تا دسامبر ادامه دارد."
+    },
+    {
+      "en": "A year has twelve months.",
+      "fa": "یک سال دوازده ماه دارد."
+    },
+    {
+      "en": "There are twelve months in a year.",
+      "fa": "در یک سال دوازده ماه وجود دارد."
+    },
+    {
+      "en": "Her birthday is at the beginning of June.",
+      "fa": "تولدش در آغاز ژوئن است."
+    },
+    {
+      "en": "At the beginning of the party, she is happy.",
+      "fa": "در آغاز مهمانی، او خوشحال است."
+    },
+    {
+      "en": "Mina has a party.",
+      "fa": "مینا یک مهمانی دارد."
+    },
+    {
+      "en": "The party is small.",
+      "fa": "مهمانی کوچک است."
+    },
+    {
+      "en": "What happens at the party?",
+      "fa": "در مهمانی چه اتفاقی می‌افتد؟"
+    },
+    {
+      "en": "Nothing special happens.",
+      "fa": "اتفاق خاصی نمی‌افتد."
+    },
+    {
+      "en": "She looks once.",
+      "fa": "او یک بار نگاه می‌کند."
+    },
+    {
+      "en": "She looks twice.",
+      "fa": "او دو بار نگاه می‌کند."
+    },
+    {
+      "en": "She looks once in the morning and twice at night.",
+      "fa": "او یک بار صبح و دو بار شب نگاه می‌کند."
+    }
+  ],
+  "check": [
+    {
+      "q": "تولد مینا در کدام ماه است؟",
+      "options": [
+        "june",
+        "january",
+        "december",
+        "march"
+      ],
+      "a": "june"
+    },
+    {
+      "q": "نینو در کدام فصل به دنیا آمده است؟",
+      "options": [
+        "winter",
+        "spring",
+        "summer",
+        "party"
+      ],
+      "a": "winter"
+    }
+  ]
+}

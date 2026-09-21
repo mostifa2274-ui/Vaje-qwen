@@ -1,0 +1,312 @@
+{
+  "id": "b4c5",
+  "book": 4,
+  "n": 5,
+  "titleFa": "گربه‌ی سیاه",
+  "titleEn": "The Black Cat",
+  "new": [
+    "same",
+    "different",
+    "wrong",
+    "true",
+    "real",
+    "sure",
+    "like",
+    "animal",
+    "dog",
+    "mouse",
+    "cow",
+    "horse",
+    "pig",
+    "sheep",
+    "elephant",
+    "lion",
+    "snake",
+    "miss",
+    "feel",
+    "feeling",
+    "fine",
+    "great",
+    "favorite",
+    "fun",
+    "funny",
+    "laugh",
+    "farm"
+  ],
+  "sentences": [
+    {
+      "en": "It is morning. Mina runs to the market.",
+      "fa": "صبح است. مینا به بازار می‌دود."
+    },
+    {
+      "en": "She sees a black cat.",
+      "fa": "او یک گربه‌ی سیاه می‌بیند."
+    },
+    {
+      "en": "The cat is like Nino.",
+      "fa": "گربه شبیه نینو است."
+    },
+    {
+      "en": "It is black like Nino.",
+      "fa": "مانند نینو سیاه است."
+    },
+    {
+      "en": "It has the same black color as Nino.",
+      "fa": "همان رنگ سیاه نینو را دارد."
+    },
+    {
+      "en": "\"The same cat?\" Mina says.",
+      "fa": "همان گربه؟ مینا می‌گوید."
+    },
+    {
+      "en": "\"Nino!\" she calls.",
+      "fa": "«نینو!» صدا می‌زند."
+    },
+    {
+      "en": "The cat looks at her.",
+      "fa": "گربه به او نگاه می‌کند."
+    },
+    {
+      "en": "It is not Nino.",
+      "fa": "نینو نیست."
+    },
+    {
+      "en": "It is a different cat.",
+      "fa": "یک گربه‌ی متفاوت است."
+    },
+    {
+      "en": "The cat is different.",
+      "fa": "گربه متفاوت است."
+    },
+    {
+      "en": "Mina is wrong.",
+      "fa": "مینا اشتباه می‌کند."
+    },
+    {
+      "en": "She is wrong again.",
+      "fa": "او دوباره اشتباه می‌کند."
+    },
+    {
+      "en": "Is it true?",
+      "fa": "درست است؟"
+    },
+    {
+      "en": "It is true. The cat is not Nino.",
+      "fa": "درست است. گربه نینو نیست."
+    },
+    {
+      "en": "It is a real cat.",
+      "fa": "این یک گربه‌ی واقعی است."
+    },
+    {
+      "en": "Nino is a real cat, too.",
+      "fa": "نینو هم یک گربه‌ی واقعی است."
+    },
+    {
+      "en": "\"Are you sure?\" the man at the bread shop says.",
+      "fa": "مطمئنی؟ مردِ مغازه‌ی نان می‌گوید."
+    },
+    {
+      "en": "\"I am sure,\" Mina says.",
+      "fa": "مطمئنم، مینا می‌گوید."
+    },
+    {
+      "en": "She feels sad.",
+      "fa": "او احساس غم می‌کند."
+    },
+    {
+      "en": "\"How do you feel?\" Mom says.",
+      "fa": "چه حسی داری؟ مامان می‌گوید."
+    },
+    {
+      "en": "It is a bad feeling.",
+      "fa": "حس بدی است."
+    },
+    {
+      "en": "It is a sad feeling.",
+      "fa": "حس غم‌انگیزی است."
+    },
+    {
+      "en": "\"I miss Nino,\" Mina says.",
+      "fa": "دلم برای نینو تنگ شده، مینا می‌گوید."
+    },
+    {
+      "en": "\"We miss him, too,\" Mom says.",
+      "fa": "دلمان برای او تنگ شده، مامان می‌گوید."
+    },
+    {
+      "en": "Mina is not fine.",
+      "fa": "مینا خوب نیست."
+    },
+    {
+      "en": "\"Are you fine?\" Mom says.",
+      "fa": "خوب هستی؟ مامان می‌گوید."
+    },
+    {
+      "en": "The market is a great place to look for cats.",
+      "fa": "بازار جای خوبی برای گشتن دنبال گربه‌هاست."
+    },
+    {
+      "en": "But Mina does not feel great.",
+      "fa": "اما مینا حال خوبی ندارد."
+    },
+    {
+      "en": "The man asks, \"What is your favorite food?\"",
+      "fa": "مرد می‌پرسد: «غذای مورد علاقه‌ات چیست؟»"
+    },
+    {
+      "en": "Mina's favorite food is bread.",
+      "fa": "غذای مورد علاقه‌ی مینا نان است."
+    },
+    {
+      "en": "The dog is fun.",
+      "fa": "سگ بامزه است."
+    },
+    {
+      "en": "It is fun to see the dog.",
+      "fa": "دیدن سگ خوش است."
+    },
+    {
+      "en": "The dog is funny.",
+      "fa": "سگ خنده‌دار است."
+    },
+    {
+      "en": "The funny dog runs.",
+      "fa": "سگِ خنده‌دار می‌دود."
+    },
+    {
+      "en": "People laugh.",
+      "fa": "مردم می‌خندند."
+    },
+    {
+      "en": "Mina does not laugh.",
+      "fa": "مینا نمی‌خندد."
+    },
+    {
+      "en": "The dog is an animal.",
+      "fa": "سگ یک حیوان است."
+    },
+    {
+      "en": "The cat is an animal, too.",
+      "fa": "گربه هم یک حیوان است."
+    },
+    {
+      "en": "A dog is in the market.",
+      "fa": "یک سگ در بازار است."
+    },
+    {
+      "en": "The dog is big.",
+      "fa": "سگ بزرگ است."
+    },
+    {
+      "en": "A mouse is in the shop.",
+      "fa": "یک موش در مغازه است."
+    },
+    {
+      "en": "The mouse is small.",
+      "fa": "موش کوچک است."
+    },
+    {
+      "en": "After the market, Mina and Mom visit a farm nearby.",
+      "fa": "بعد از بازار، مینا و مامان به یک مزرعه‌ی نزدیک سر می‌زنند."
+    },
+    {
+      "en": "The farm has cows.",
+      "fa": "مزرعه گاو دارد."
+    },
+    {
+      "en": "The cows are big.",
+      "fa": "گاوها بزرگ هستند."
+    },
+    {
+      "en": "It has pigs.",
+      "fa": "خوک دارد."
+    },
+    {
+      "en": "The pigs are dirty.",
+      "fa": "خوک‌ها کثیف هستند."
+    },
+    {
+      "en": "It has sheep.",
+      "fa": "گوسفند دارد."
+    },
+    {
+      "en": "The sheep are white.",
+      "fa": "گوسفندها سفید هستند."
+    },
+    {
+      "en": "It has horses.",
+      "fa": "اسب دارد."
+    },
+    {
+      "en": "The horses are fast.",
+      "fa": "اسب‌ها سریع هستند."
+    },
+    {
+      "en": "Back home, Mina draws an elephant in her book.",
+      "fa": "مینا در خانه یک فیل در کتابش می‌کشد."
+    },
+    {
+      "en": "The elephant is big.",
+      "fa": "فیل بزرگ است."
+    },
+    {
+      "en": "She draws a lion.",
+      "fa": "او یک شیر می‌کشد."
+    },
+    {
+      "en": "The lion is big, too.",
+      "fa": "شیر هم بزرگ است."
+    },
+    {
+      "en": "She draws a snake.",
+      "fa": "او یک مار می‌کشد."
+    },
+    {
+      "en": "The snake is long.",
+      "fa": "مار بلند است."
+    },
+    {
+      "en": "Then she draws a black cat.",
+      "fa": "بعد یک گربه‌ی سیاه می‌کشد."
+    },
+    {
+      "en": "It is not the market cat.",
+      "fa": "گربه‌ی بازار نیست."
+    },
+    {
+      "en": "The cat in the drawing is Nino.",
+      "fa": "گربه‌ی داخل نقاشی نینو است."
+    },
+    {
+      "en": "\"I miss you,\" she says.",
+      "fa": "دلم برایت تنگ شده، می‌گوید."
+    },
+    {
+      "en": "Mina still feels sad.",
+      "fa": "مینا هنوز احساس غم می‌کند."
+    }
+  ],
+  "check": [
+    {
+      "q": "گربه‌ی بازار نینو است؟",
+      "options": [
+        "no",
+        "yes",
+        "same",
+        "like"
+      ],
+      "a": "no"
+    },
+    {
+      "q": "مینا در کتابش چه حیوانی می‌کشد؟",
+      "options": [
+        "elephant",
+        "dog",
+        "mouse",
+        "cow"
+      ],
+      "a": "elephant"
+    }
+  ]
+}

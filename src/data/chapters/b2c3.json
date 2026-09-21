@@ -1,0 +1,235 @@
+{
+  "id": "b2c3",
+  "book": 2,
+  "n": 3,
+  "titleFa": "بازی در پارک",
+  "titleEn": "Games in the Park",
+  "new": [
+    "play",
+    "game",
+    "ball",
+    "football",
+    "basketball",
+    "tennis",
+    "baseball",
+    "sport",
+    "player",
+    "team",
+    "match",
+    "win",
+    "swim",
+    "swimming",
+    "pool",
+    "gym",
+    "teenager",
+    "group",
+    "together",
+    "young",
+    "adult",
+    "people"
+  ],
+  "sentences": [
+    {
+      "en": "Children play in the park.",
+      "fa": "بچه‌ها در پارک بازی می‌کنند."
+    },
+    {
+      "en": "The boys play football.",
+      "fa": "پسرها فوتبال بازی می‌کنند."
+    },
+    {
+      "en": "They play a game.",
+      "fa": "آن‌ها یک بازی می‌کنند."
+    },
+    {
+      "en": "The game is good.",
+      "fa": "بازی خوب است."
+    },
+    {
+      "en": "The child has a ball.",
+      "fa": "بچه یک توپ دارد."
+    },
+    {
+      "en": "The ball is red.",
+      "fa": "توپ قرمز است."
+    },
+    {
+      "en": "The boy likes football.",
+      "fa": "پسر فوتبال دوست دارد."
+    },
+    {
+      "en": "The girls play basketball.",
+      "fa": "دخترها بسکتبال بازی می‌کنند."
+    },
+    {
+      "en": "The girl likes basketball.",
+      "fa": "دختر بسکتبال دوست دارد."
+    },
+    {
+      "en": "They play tennis.",
+      "fa": "آن‌ها تنیس بازی می‌کنند."
+    },
+    {
+      "en": "Tennis is good.",
+      "fa": "تنیس خوب است."
+    },
+    {
+      "en": "He plays baseball.",
+      "fa": "او بیس‌بال بازی می‌کند."
+    },
+    {
+      "en": "Baseball is a game.",
+      "fa": "بیس‌بال یک بازی است."
+    },
+    {
+      "en": "They like sports.",
+      "fa": "آن‌ها ورزش را دوست دارند."
+    },
+    {
+      "en": "Sport is good for them.",
+      "fa": "ورزش برایشان خوب است."
+    },
+    {
+      "en": "The player runs.",
+      "fa": "بازیکن می‌دود."
+    },
+    {
+      "en": "He is a good player.",
+      "fa": "او بازیکن خوبی است."
+    },
+    {
+      "en": "The team plays.",
+      "fa": "تیم بازی می‌کند."
+    },
+    {
+      "en": "It is a big team.",
+      "fa": "یک تیم بزرگ است."
+    },
+    {
+      "en": "The match is today.",
+      "fa": "مسابقه امروز است."
+    },
+    {
+      "en": "They watch a match.",
+      "fa": "آن‌ها یک مسابقه تماشا می‌کنند."
+    },
+    {
+      "en": "They win.",
+      "fa": "آن‌ها برنده می‌شوند."
+    },
+    {
+      "en": "The team wins.",
+      "fa": "تیم برنده می‌شود."
+    },
+    {
+      "en": "The children swim.",
+      "fa": "بچه‌ها شنا می‌کنند."
+    },
+    {
+      "en": "She swims.",
+      "fa": "او شنا می‌کند."
+    },
+    {
+      "en": "Swimming is good for the children.",
+      "fa": "شنا برای بچه‌ها خوب است."
+    },
+    {
+      "en": "The boy likes swimming.",
+      "fa": "پسر شنا دوست دارد."
+    },
+    {
+      "en": "The pool is in the park.",
+      "fa": "استخر در پارک است."
+    },
+    {
+      "en": "They swim in the pool.",
+      "fa": "آن‌ها در استخر شنا می‌کنند."
+    },
+    {
+      "en": "The gym is big.",
+      "fa": "باشگاه بزرگ است."
+    },
+    {
+      "en": "He goes to the gym.",
+      "fa": "او به باشگاه می‌رود."
+    },
+    {
+      "en": "A teenager plays.",
+      "fa": "یک نوجوان بازی می‌کند."
+    },
+    {
+      "en": "The teenager is tall.",
+      "fa": "نوجوان قدبلند است."
+    },
+    {
+      "en": "A group of children plays.",
+      "fa": "یک گروه از بچه‌ها بازی می‌کنند."
+    },
+    {
+      "en": "The group plays.",
+      "fa": "گروه بازی می‌کند."
+    },
+    {
+      "en": "They play together.",
+      "fa": "آن‌ها با هم بازی می‌کنند."
+    },
+    {
+      "en": "The family is together.",
+      "fa": "خانواده کنار هم هستند."
+    },
+    {
+      "en": "The children are young.",
+      "fa": "بچه‌ها جوان هستند."
+    },
+    {
+      "en": "A young man swims.",
+      "fa": "یک مرد جوان شنا می‌کند."
+    },
+    {
+      "en": "An adult is with the children.",
+      "fa": "یک بزرگسال با بچه‌هاست."
+    },
+    {
+      "en": "The adult is old.",
+      "fa": "بزرگسال پیر است."
+    },
+    {
+      "en": "People play in the park.",
+      "fa": "آدم‌ها در پارک بازی می‌کنند."
+    },
+    {
+      "en": "Some people swim.",
+      "fa": "بعضی آدم‌ها شنا می‌کنند."
+    },
+    {
+      "en": "Nino is not there to play.",
+      "fa": "نینو آنجا نیست که بازی کند."
+    },
+    {
+      "en": "Nino is not in the park.",
+      "fa": "نینو در پارک نیست."
+    }
+  ],
+  "check": [
+    {
+      "q": "پسرها در پارک چه بازی می‌کنند؟",
+      "options": [
+        "football",
+        "swimming",
+        "tennis",
+        "baseball"
+      ],
+      "a": "football"
+    },
+    {
+      "q": "بچه‌ها کجا شنا می‌کنند؟",
+      "options": [
+        "pool",
+        "gym",
+        "street",
+        "yard"
+      ],
+      "a": "pool"
+    }
+  ]
+}

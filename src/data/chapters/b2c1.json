@@ -1,0 +1,246 @@
+{
+  "id": "b2c1",
+  "book": 2,
+  "n": 1,
+  "titleFa": "خیابان",
+  "titleEn": "The Street",
+  "new": [
+    "street",
+    "road",
+    "city",
+    "near",
+    "far",
+    "next-to",
+    "opposite",
+    "left",
+    "right",
+    "park",
+    "who",
+    "what",
+    "some",
+    "any",
+    "someone",
+    "something",
+    "boy",
+    "girl",
+    "man",
+    "woman",
+    "child",
+    "person",
+    "big",
+    "old",
+    "that"
+  ],
+  "sentences": [
+    {
+      "en": "Mina goes to the street.",
+      "fa": "مینا به خیابان می‌رود."
+    },
+    {
+      "en": "The street is near Mina’s house.",
+      "fa": "خیابان نزدیک خانه‌ی مینا است."
+    },
+    {
+      "en": "The city is big.",
+      "fa": "شهر بزرگ است."
+    },
+    {
+      "en": "She lives in the city.",
+      "fa": "او در شهر زندگی می‌کند."
+    },
+    {
+      "en": "Nino is not on the road.",
+      "fa": "نینو روی جاده نیست."
+    },
+    {
+      "en": "The road is near the park, too.",
+      "fa": "جاده هم نزدیک پارک است."
+    },
+    {
+      "en": "The park is near Mina's house.",
+      "fa": "پارک نزدیک خانه‌ی مینا است."
+    },
+    {
+      "en": "\"Is Nino near the park?\" Mina asks.",
+      "fa": "«نینو نزدیک پارک است؟» مینا می‌پرسد."
+    },
+    {
+      "en": "Is Nino far from home?",
+      "fa": "آیا نینو از خانه دور است؟"
+    },
+    {
+      "en": "The park is not far.",
+      "fa": "پارک دور نیست."
+    },
+    {
+      "en": "The park is next to the street.",
+      "fa": "پارک کنار خیابان است."
+    },
+    {
+      "en": "A boy is next to a girl.",
+      "fa": "یک پسر کنار یک دختر است."
+    },
+    {
+      "en": "The house is opposite the park.",
+      "fa": "خانه روبه‌روی پارک است."
+    },
+    {
+      "en": "A man stands opposite Mina.",
+      "fa": "مردی روبه‌روی مینا ایستاده است."
+    },
+    {
+      "en": "Mina goes left.",
+      "fa": "مینا به چپ می‌رود."
+    },
+    {
+      "en": "The boy goes left.",
+      "fa": "پسر به چپ می‌رود."
+    },
+    {
+      "en": "Mina goes right.",
+      "fa": "مینا به راست می‌رود."
+    },
+    {
+      "en": "The girl goes right.",
+      "fa": "دختر به راست می‌رود."
+    },
+    {
+      "en": "\"Who is that?\" Mina says.",
+      "fa": "آن کیست؟ مینا می‌گوید."
+    },
+    {
+      "en": "\"Who are you?\" the man says.",
+      "fa": "تو کی هستی؟ مرد می‌گوید."
+    },
+    {
+      "en": "That is a boy.",
+      "fa": "آن یک پسر است."
+    },
+    {
+      "en": "That is not Nino.",
+      "fa": "آن نینو نیست."
+    },
+    {
+      "en": "What is that?",
+      "fa": "آن چیست؟"
+    },
+    {
+      "en": "What do you see?",
+      "fa": "چه می‌بینی؟"
+    },
+    {
+      "en": "Some girls look.",
+      "fa": "بعضی دخترها نگاه می‌کنند."
+    },
+    {
+      "en": "Some boys run.",
+      "fa": "بعضی پسرها می‌دوند."
+    },
+    {
+      "en": "Do you see a cat?",
+      "fa": "گربه‌ای می‌بینی؟"
+    },
+    {
+      "en": "I do not see any cat.",
+      "fa": "هیچ گربه‌ای نمی‌بینم."
+    },
+    {
+      "en": "Someone is in the park.",
+      "fa": "کسی در پارک است."
+    },
+    {
+      "en": "Someone runs.",
+      "fa": "کسی می‌دود."
+    },
+    {
+      "en": "Mina sees something.",
+      "fa": "مینا چیزی می‌بیند."
+    },
+    {
+      "en": "She sees something black.",
+      "fa": "چیزی سیاه می‌بیند."
+    },
+    {
+      "en": "It is a black bird.",
+      "fa": "یک پرنده‌ی سیاه است."
+    },
+    {
+      "en": "A boy is in the park.",
+      "fa": "یک پسر در پارک است."
+    },
+    {
+      "en": "The boy runs.",
+      "fa": "پسر می‌دود."
+    },
+    {
+      "en": "A girl is with the boy.",
+      "fa": "یک دختر با پسر است."
+    },
+    {
+      "en": "The girl looks.",
+      "fa": "دختر نگاه می‌کند."
+    },
+    {
+      "en": "A man is in the street.",
+      "fa": "یک مرد در خیابان است."
+    },
+    {
+      "en": "The man is old.",
+      "fa": "مرد پیر است."
+    },
+    {
+      "en": "A woman is with the man.",
+      "fa": "یک زن با مرد است."
+    },
+    {
+      "en": "The woman looks.",
+      "fa": "زن نگاه می‌کند."
+    },
+    {
+      "en": "A child is in the park.",
+      "fa": "یک بچه در پارک است."
+    },
+    {
+      "en": "The child is young.",
+      "fa": "بچه کم‌سن است."
+    },
+    {
+      "en": "A person is in the park.",
+      "fa": "یک نفر در پارک است."
+    },
+    {
+      "en": "The person is old.",
+      "fa": "آن شخص پیر است."
+    },
+    {
+      "en": "The park is old.",
+      "fa": "پارک قدیمی است."
+    },
+    {
+      "en": "Nino is not in the park.",
+      "fa": "نینو در پارک نیست."
+    }
+  ],
+  "check": [
+    {
+      "q": "پارک کجاست؟",
+      "options": [
+        "near",
+        "far",
+        "big",
+        "old"
+      ],
+      "a": "near"
+    },
+    {
+      "q": "چیزی سیاه که مینا می‌بیند چیست؟",
+      "options": [
+        "bird",
+        "cat",
+        "boy",
+        "house"
+      ],
+      "a": "bird"
+    }
+  ]
+}

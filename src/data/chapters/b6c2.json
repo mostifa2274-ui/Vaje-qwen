@@ -1,0 +1,248 @@
+{
+  "id": "b6c2",
+  "book": 6,
+  "n": 2,
+  "titleFa": "نقشه‌ی معلم",
+  "titleEn": "The Teacher's Plan",
+  "new": [
+    "correct",
+    "false",
+    "example",
+    "form",
+    "chart",
+    "paragraph",
+    "point",
+    "compare",
+    "complete",
+    "detail",
+    "dictionary",
+    "result",
+    "rule",
+    "skill",
+    "improve",
+    "course",
+    "college",
+    "university",
+    "remember",
+    "repeat",
+    "put",
+    "plan",
+    "section"
+  ],
+  "sentences": [
+    {
+      "en": "The teacher looks at the note.",
+      "fa": "معلم به یادداشت نگاه می‌کند."
+    },
+    {
+      "en": "\"Your note is good,\" she says.",
+      "fa": "یادداشتت خوب است، می‌گوید."
+    },
+    {
+      "en": "But it is not complete.",
+      "fa": "اما کامل نیست."
+    },
+    {
+      "en": "Complete the sentence.",
+      "fa": "جمله را کامل کن."
+    },
+    {
+      "en": "Is it correct?",
+      "fa": "درست است؟"
+    },
+    {
+      "en": "The address is correct.",
+      "fa": "آدرس درست است."
+    },
+    {
+      "en": "\"Is this sentence false?\" the teacher asks.",
+      "fa": "«این جمله غلط است؟» معلم می‌پرسد."
+    },
+    {
+      "en": "\"No. It is true,\" Mina says.",
+      "fa": "«نه. درست است»، مینا می‌گوید."
+    },
+    {
+      "en": "She gives an example.",
+      "fa": "او یک مثال می‌زند."
+    },
+    {
+      "en": "The example is good.",
+      "fa": "مثال خوب است."
+    },
+    {
+      "en": "Mina fills a form.",
+      "fa": "مینا یک فرم پر می‌کند."
+    },
+    {
+      "en": "The form is about Nino.",
+      "fa": "فرم درباره‌ی نینو است."
+    },
+    {
+      "en": "The teacher has a chart.",
+      "fa": "معلم یک نمودار دارد."
+    },
+    {
+      "en": "The chart shows the streets.",
+      "fa": "نمودار خیابان‌ها را نشان می‌دهد."
+    },
+    {
+      "en": "She writes a paragraph.",
+      "fa": "او یک پاراگراف می‌نویسد."
+    },
+    {
+      "en": "The paragraph is about the cat.",
+      "fa": "پاراگراف درباره‌ی گربه است."
+    },
+    {
+      "en": "That is the point.",
+      "fa": "نکته همین است."
+    },
+    {
+      "en": "The point is: Nino is small and black.",
+      "fa": "نکته این است: نینو کوچک و سیاه است."
+    },
+    {
+      "en": "Compare the cats.",
+      "fa": "گربه‌ها را مقایسه کن."
+    },
+    {
+      "en": "She compares the cats.",
+      "fa": "او گربه‌ها را مقایسه می‌کند."
+    },
+    {
+      "en": "The detail helps describe Nino.",
+      "fa": "این جزئیات به توصیف نینو کمک می‌کند."
+    },
+    {
+      "en": "She adds a detail.",
+      "fa": "او یک نکته‌ی دیگر اضافه می‌کند."
+    },
+    {
+      "en": "The dictionary has words.",
+      "fa": "فرهنگ‌لغت کلمه دارد."
+    },
+    {
+      "en": "She looks in the dictionary.",
+      "fa": "او در فرهنگ‌لغت نگاه می‌کند."
+    },
+    {
+      "en": "The result is a better note.",
+      "fa": "نتیجه، یادداشت بهتری است."
+    },
+    {
+      "en": "She sees the result.",
+      "fa": "او نتیجه را می‌بیند."
+    },
+    {
+      "en": "The rule is: write a little every day.",
+      "fa": "قانون این است: هر روز کمی بنویس."
+    },
+    {
+      "en": "It is a good rule.",
+      "fa": "قانون خوبی است."
+    },
+    {
+      "en": "Mina has a skill.",
+      "fa": "مینا یک مهارت دارد."
+    },
+    {
+      "en": "Her skill is writing.",
+      "fa": "مهارتش نوشتن است."
+    },
+    {
+      "en": "She improves the note.",
+      "fa": "او یادداشت را بهتر می‌کند."
+    },
+    {
+      "en": "The note is better now.",
+      "fa": "یادداشت حالا بهتر است."
+    },
+    {
+      "en": "The course is about animals.",
+      "fa": "دوره درباره‌ی حیوان‌هاست."
+    },
+    {
+      "en": "She likes the course.",
+      "fa": "او دوره را دوست دارد."
+    },
+    {
+      "en": "Her brother is in college.",
+      "fa": "برادرش در کالج است."
+    },
+    {
+      "en": "The college is big.",
+      "fa": "کالج بزرگ است."
+    },
+    {
+      "en": "He plans to go to university later.",
+      "fa": "او برنامه دارد بعداً به دانشگاه برود."
+    },
+    {
+      "en": "The university is far from home.",
+      "fa": "دانشگاه از خانه دور است."
+    },
+    {
+      "en": "\"Remember the address,\" the teacher says.",
+      "fa": "آدرس را به خاطر بسپار، معلم می‌گوید."
+    },
+    {
+      "en": "She remembers the address.",
+      "fa": "او آدرس را به یاد می‌آورد."
+    },
+    {
+      "en": "Repeat the words.",
+      "fa": "کلمات را تکرار کن."
+    },
+    {
+      "en": "Mina repeats the words.",
+      "fa": "مینا کلمات را تکرار می‌کند."
+    },
+    {
+      "en": "Put the note up at the school.",
+      "fa": "یادداشت را در مدرسه نصب کن."
+    },
+    {
+      "en": "Put it up at the market, too.",
+      "fa": "آن را در بازار هم نصب کن."
+    },
+    {
+      "en": "The plan is good.",
+      "fa": "نقشه خوب است."
+    },
+    {
+      "en": "It is a plan for Nino.",
+      "fa": "نقشه‌ای برای نینو است."
+    },
+    {
+      "en": "The section is about cats.",
+      "fa": "بخش درباره‌ی گربه‌هاست."
+    },
+    {
+      "en": "She reads the section.",
+      "fa": "او بخش را می‌خواند."
+    }
+  ],
+  "check": [
+    {
+      "q": "معلم به مینا کمک می‌کند چه چیزی را بهتر کند؟",
+      "options": [
+        "note",
+        "bag",
+        "pen",
+        "desk"
+      ],
+      "a": "note"
+    },
+    {
+      "q": "یادداشت را کجا می‌گذارند؟",
+      "options": [
+        "school",
+        "floor",
+        "yard",
+        "pool"
+      ],
+      "a": "school"
+    }
+  ]
+}

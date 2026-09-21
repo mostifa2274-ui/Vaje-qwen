@@ -1,0 +1,272 @@
+{
+  "id": "b5c3",
+  "book": 5,
+  "n": 3,
+  "titleFa": "تلفن",
+  "titleEn": "The Telephone",
+  "new": [
+    "telephone",
+    "phone",
+    "email",
+    "internet",
+    "computer",
+    "online",
+    "website",
+    "video",
+    "photo",
+    "photograph",
+    "picture",
+    "camera",
+    "news",
+    "newspaper",
+    "magazine",
+    "radio",
+    "article",
+    "information",
+    "include",
+    "description",
+    "describe",
+    "cd",
+    "dvd"
+  ],
+  "sentences": [
+    {
+      "en": "Dad has a telephone.",
+      "fa": "بابا یک تلفن دارد."
+    },
+    {
+      "en": "The telephone is black.",
+      "fa": "تلفن سیاه است."
+    },
+    {
+      "en": "He calls the neighbors.",
+      "fa": "او به همسایه‌ها زنگ می‌زند."
+    },
+    {
+      "en": "He has a phone.",
+      "fa": "او یک گوشی دارد."
+    },
+    {
+      "en": "The phone is in his bag.",
+      "fa": "گوشی در کیفش است."
+    },
+    {
+      "en": "Mina phones the man at the bread shop.",
+      "fa": "مینا به مردِ مغازه‌ی نان زنگ می‌زند."
+    },
+    {
+      "en": "\"Do you see Nino?\" she says.",
+      "fa": "نینو را می‌بینی؟ می‌گوید."
+    },
+    {
+      "en": "A man calls.",
+      "fa": "یک مرد زنگ می‌زند."
+    },
+    {
+      "en": "He calls about the note.",
+      "fa": "او درباره‌ی یادداشت زنگ می‌زند."
+    },
+    {
+      "en": "\"A black cat is near the park,\" he says.",
+      "fa": "یک گربه‌ی سیاه نزدیک پارک است، می‌گوید."
+    },
+    {
+      "en": "They go to the park.",
+      "fa": "آن‌ها به پارک می‌روند."
+    },
+    {
+      "en": "It is not Nino.",
+      "fa": "نینو نیست."
+    },
+    {
+      "en": "Mom writes an email.",
+      "fa": "مامان یک ایمیل می‌نویسد."
+    },
+    {
+      "en": "The email is about Nino.",
+      "fa": "ایمیل درباره‌ی نینو است."
+    },
+    {
+      "en": "She sends it using the computer.",
+      "fa": "او ایمیل را با رایانه می‌فرستد."
+    },
+    {
+      "en": "The computer is on the desk.",
+      "fa": "رایانه روی میز است."
+    },
+    {
+      "en": "They are online.",
+      "fa": "آن‌ها آنلاین هستند."
+    },
+    {
+      "en": "Mina goes online.",
+      "fa": "مینا آنلاین می‌شود."
+    },
+    {
+      "en": "There is a lot of information on the internet.",
+      "fa": "اطلاعات زیادی در اینترنت وجود دارد."
+    },
+    {
+      "en": "She uses the internet.",
+      "fa": "او از اینترنت استفاده می‌کند."
+    },
+    {
+      "en": "The website has pictures of cats.",
+      "fa": "وب‌سایت عکس‌هایی از گربه‌ها دارد."
+    },
+    {
+      "en": "She looks at the website.",
+      "fa": "او به وب‌سایت نگاه می‌کند."
+    },
+    {
+      "en": "She sees a video.",
+      "fa": "او یک ویدیو می‌بیند."
+    },
+    {
+      "en": "The video is about a cat.",
+      "fa": "ویدیو درباره‌ی یک گربه است."
+    },
+    {
+      "en": "Mina has a photo of Nino.",
+      "fa": "مینا یک عکس از نینو دارد."
+    },
+    {
+      "en": "The photo is small.",
+      "fa": "عکس کوچک است."
+    },
+    {
+      "en": "It is a photograph.",
+      "fa": "این یک عکس است."
+    },
+    {
+      "en": "The photograph is black and white.",
+      "fa": "عکس سیاه و سفید است."
+    },
+    {
+      "en": "She draws a picture.",
+      "fa": "او یک نقاشی می‌کشد."
+    },
+    {
+      "en": "The picture is of Nino.",
+      "fa": "نقاشی از نینو است."
+    },
+    {
+      "en": "Dad has a camera.",
+      "fa": "بابا یک دوربین دارد."
+    },
+    {
+      "en": "The camera is large.",
+      "fa": "دوربین بزرگ است."
+    },
+    {
+      "en": "The news is about cats.",
+      "fa": "خبرها درباره‌ی گربه‌هاست."
+    },
+    {
+      "en": "She hears the news.",
+      "fa": "او خبرها را می‌شنود."
+    },
+    {
+      "en": "Mina's note is in the newspaper.",
+      "fa": "یادداشت مینا در روزنامه است."
+    },
+    {
+      "en": "Mom buys a newspaper.",
+      "fa": "مامان یک روزنامه می‌خرد."
+    },
+    {
+      "en": "The magazine has pictures.",
+      "fa": "مجله عکس دارد."
+    },
+    {
+      "en": "She looks at the magazine.",
+      "fa": "او به مجله نگاه می‌کند."
+    },
+    {
+      "en": "The radio is on.",
+      "fa": "رادیو روشن است."
+    },
+    {
+      "en": "They hear the radio.",
+      "fa": "آن‌ها رادیو را می‌شنوند."
+    },
+    {
+      "en": "The article is about cats.",
+      "fa": "مقاله درباره‌ی گربه‌هاست."
+    },
+    {
+      "en": "The article is long.",
+      "fa": "مقاله طولانی است."
+    },
+    {
+      "en": "The information helps Mina.",
+      "fa": "اطلاعات به مینا کمک می‌کند."
+    },
+    {
+      "en": "Some of the information is about lost cats.",
+      "fa": "بخشی از اطلاعات درباره‌ی گربه‌های گمشده است."
+    },
+    {
+      "en": "The note includes a photo.",
+      "fa": "یادداشت شامل یک عکس است."
+    },
+    {
+      "en": "It includes the address.",
+      "fa": "شامل آدرس است."
+    },
+    {
+      "en": "The description is: little, black, fast.",
+      "fa": "توصیف این است: کوچک، سیاه، سریع."
+    },
+    {
+      "en": "It is a description of Nino.",
+      "fa": "توصیفی از نینو است."
+    },
+    {
+      "en": "Mina describes Nino.",
+      "fa": "مینا نینو را توصیف می‌کند."
+    },
+    {
+      "en": "She describes the cat.",
+      "fa": "او گربه را توصیف می‌کند."
+    },
+    {
+      "en": "Dad has an old CD.",
+      "fa": "بابا یک سی‌دی قدیمی دارد."
+    },
+    {
+      "en": "The CD is old.",
+      "fa": "سی‌دی قدیمی است."
+    },
+    {
+      "en": "Mina has a DVD about cats.",
+      "fa": "مینا یک دی‌وی‌دی درباره‌ی گربه‌ها دارد."
+    },
+    {
+      "en": "The DVD is about cats.",
+      "fa": "دی‌وی‌دی درباره‌ی گربه‌هاست."
+    }
+  ],
+  "check": [
+    {
+      "q": "مرد درباره‌ی چه چیزی زنگ می‌زند؟",
+      "options": [
+        "note",
+        "email",
+        "video",
+        "news"
+      ],
+      "a": "note"
+    },
+    {
+      "q": "گربه‌ی نزدیک پارک نینو بود؟",
+      "options": [
+        "no",
+        "yes",
+        "photo",
+        "video"
+      ],
+      "a": "no"
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "id": "b2c2",
+  "book": 2,
+  "n": 2,
+  "titleFa": "همسایه‌ها",
+  "titleEn": "The Neighbors",
+  "new": [
+    "neighbor",
+    "name",
+    "meet",
+    "friend",
+    "friendly",
+    "how",
+    "of",
+    "about",
+    "or",
+    "so",
+    "because",
+    "everyone",
+    "everybody",
+    "everything",
+    "no-one",
+    "nobody",
+    "nothing",
+    "nice",
+    "new",
+    "hello",
+    "hi",
+    "hey",
+    "bye",
+    "goodbye"
+  ],
+  "sentences": [
+    {
+      "en": "Mina asks a neighbor.",
+      "fa": "مینا از یک همسایه می‌پرسد."
+    },
+    {
+      "en": "The neighbor is old.",
+      "fa": "همسایه پیر است."
+    },
+    {
+      "en": "\"Hello,\" Mina says.",
+      "fa": "سلام، مینا می‌گوید."
+    },
+    {
+      "en": "She says hello.",
+      "fa": "او سلام می‌کند."
+    },
+    {
+      "en": "\"What is your name?\" the man says.",
+      "fa": "اسمت چیست؟ مرد می‌گوید."
+    },
+    {
+      "en": "My name is Mina.",
+      "fa": "اسم من مینا است."
+    },
+    {
+      "en": "The name of the cat is Nino.",
+      "fa": "اسم گربه نینو است."
+    },
+    {
+      "en": "The neighbor gives Mina a glass of water.",
+      "fa": "همسایه یک لیوان آب به مینا می‌دهد."
+    },
+    {
+      "en": "Mina meets a neighbor.",
+      "fa": "مینا با یک همسایه ملاقات می‌کند."
+    },
+    {
+      "en": "They meet in the street.",
+      "fa": "آن‌ها در خیابان ملاقات می‌کنند."
+    },
+    {
+      "en": "\"How are you?\" the woman says.",
+      "fa": "حالت چطور است؟ زن می‌گوید."
+    },
+    {
+      "en": "How is your cat?",
+      "fa": "گربه‌ات چطور است؟"
+    },
+    {
+      "en": "The boy is her friend.",
+      "fa": "پسر دوستش است."
+    },
+    {
+      "en": "\"Nino is my friend,\" Mina says.",
+      "fa": "نینو دوست من است، مینا می‌گوید."
+    },
+    {
+      "en": "The woman is friendly.",
+      "fa": "زن مهربان است."
+    },
+    {
+      "en": "A friendly man says hi.",
+      "fa": "یک مرد مهربان سلام می‌کند."
+    },
+    {
+      "en": "\"Hi!\" the boy says.",
+      "fa": "سلام! پسر می‌گوید."
+    },
+    {
+      "en": "Mina says hi.",
+      "fa": "مینا سلام می‌کند."
+    },
+    {
+      "en": "\"Hey, Nino!\" Mina says.",
+      "fa": "هی، نینو! مینا می‌گوید."
+    },
+    {
+      "en": "\"Hey!\" the girl says.",
+      "fa": "هی! دختر می‌گوید."
+    },
+    {
+      "en": "Mina asks about Nino.",
+      "fa": "مینا درباره‌ی نینو می‌پرسد."
+    },
+    {
+      "en": "She asks about the cat.",
+      "fa": "درباره‌ی گربه می‌پرسد."
+    },
+    {
+      "en": "The neighbor asks, \"Is Nino black or red?\"",
+      "fa": "همسایه می‌پرسد: «نینو سیاه است یا قرمز؟»"
+    },
+    {
+      "en": "Mina says, \"He is a black cat.\"",
+      "fa": "مینا می‌گوید: «او یک گربه‌ی سیاه است.»"
+    },
+    {
+      "en": "Mina is sad, so she looks for Nino.",
+      "fa": "مینا غمگین است، پس دنبال نینو می‌گردد."
+    },
+    {
+      "en": "So, where is Nino?",
+      "fa": "پس، نینو کجاست؟"
+    },
+    {
+      "en": "She is sad because Nino is not home.",
+      "fa": "غمگین است چون نینو خانه نیست."
+    },
+    {
+      "en": "Mina is sad because her little cat is not home.",
+      "fa": "مینا غمگین است چون گربه‌ی کوچکش خانه نیست."
+    },
+    {
+      "en": "Everyone nearby looks for Nino.",
+      "fa": "همه‌ی افراد نزدیک دنبال نینو می‌گردند."
+    },
+    {
+      "en": "Everyone Mina meets is friendly.",
+      "fa": "همه‌ی کسانی که مینا می‌بیند مهربان هستند."
+    },
+    {
+      "en": "Everybody asks about Nino.",
+      "fa": "همه درباره‌ی نینو می‌پرسند."
+    },
+    {
+      "en": "Everybody they speak to is sorry that Nino is missing.",
+      "fa": "همه‌ی کسانی که با آن‌ها حرف می‌زنند از گم شدن نینو ناراحت هستند."
+    },
+    {
+      "en": "Mina looks at everything.",
+      "fa": "مینا به همه‌چیز نگاه می‌کند."
+    },
+    {
+      "en": "She sees everything in the street.",
+      "fa": "او همه‌چیز را در خیابان می‌بیند."
+    },
+    {
+      "en": "No one sees Nino.",
+      "fa": "هیچ‌کس نینو را نمی‌بیند."
+    },
+    {
+      "en": "No one in the park sees Nino.",
+      "fa": "هیچ‌کس در پارک نینو را نمی‌بیند."
+    },
+    {
+      "en": "Nobody sees the cat.",
+      "fa": "هیچ‌کس گربه را نمی‌بیند."
+    },
+    {
+      "en": "Mina goes home, but Nino is not there.",
+      "fa": "مینا به خانه برمی‌گردد، اما نینو آنجا نیست."
+    },
+    {
+      "en": "Mina sees nothing that looks like Nino.",
+      "fa": "مینا چیزی که شبیه نینو باشد نمی‌بیند."
+    },
+    {
+      "en": "Mina finds nothing in the yard.",
+      "fa": "مینا در حیاط چیزی پیدا نمی‌کند."
+    },
+    {
+      "en": "The neighbors are nice.",
+      "fa": "همسایه‌ها خوب هستند."
+    },
+    {
+      "en": "A nice woman says bye.",
+      "fa": "یک زن خوب خداحافظ می‌کند."
+    },
+    {
+      "en": "\"Bye,\" Mina says.",
+      "fa": "خداحافظ، مینا می‌گوید."
+    },
+    {
+      "en": "She says bye.",
+      "fa": "او خداحافظ می‌کند."
+    },
+    {
+      "en": "\"Goodbye,\" the man says.",
+      "fa": "خداحافظ، مرد می‌گوید."
+    },
+    {
+      "en": "Mina says goodbye.",
+      "fa": "مینا خداحافظ می‌کند."
+    },
+    {
+      "en": "It is a new day.",
+      "fa": "روز جدیدی است."
+    },
+    {
+      "en": "A new house is on the street.",
+      "fa": "یک خانه‌ی جدید در خیابان است."
+    }
+  ],
+  "check": [
+    {
+      "q": "همسایه‌ها چطور هستند؟",
+      "options": [
+        "friendly",
+        "sad",
+        "dirty",
+        "far"
+      ],
+      "a": "friendly"
+    },
+    {
+      "q": "چه کسی نینو را می‌بیند؟",
+      "options": [
+        "no-one",
+        "everyone",
+        "friend",
+        "neighbor"
+      ],
+      "a": "no-one"
+    }
+  ]
+}

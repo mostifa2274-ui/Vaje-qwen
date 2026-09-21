@@ -1,0 +1,241 @@
+{
+  "id": "b2c4",
+  "book": 2,
+  "n": 4,
+  "titleFa": "آواز در خیابان",
+  "titleEn": "Music in the Street",
+  "new": [
+    "cafe",
+    "restaurant",
+    "waiter",
+    "police",
+    "policeman",
+    "music",
+    "song",
+    "sing",
+    "singer",
+    "guitar",
+    "piano",
+    "band",
+    "dance",
+    "dancing",
+    "dancer",
+    "concert",
+    "actor",
+    "actress",
+    "famous",
+    "artist",
+    "writer",
+    "reader",
+    "art",
+    "draw"
+  ],
+  "sentences": [
+    {
+      "en": "Mina goes to a cafe.",
+      "fa": "مینا به یک کافه می‌رود."
+    },
+    {
+      "en": "The cafe is near the park.",
+      "fa": "کافه نزدیک پارک است."
+    },
+    {
+      "en": "A restaurant is next to the cafe.",
+      "fa": "یک رستوران کنار کافه است."
+    },
+    {
+      "en": "Mina and Mom eat at the restaurant.",
+      "fa": "مینا و مامان در رستوران غذا می‌خورند."
+    },
+    {
+      "en": "The waiter is friendly.",
+      "fa": "گارسون مهربان است."
+    },
+    {
+      "en": "A waiter asks about Nino.",
+      "fa": "یک گارسون درباره‌ی نینو می‌پرسد."
+    },
+    {
+      "en": "The police are here.",
+      "fa": "پلیس اینجاست."
+    },
+    {
+      "en": "Mina asks the police.",
+      "fa": "مینا از پلیس می‌پرسد."
+    },
+    {
+      "en": "The policeman is nice.",
+      "fa": "پلیس خوب است."
+    },
+    {
+      "en": "A policeman looks for Nino.",
+      "fa": "یک پلیس دنبال نینو می‌گردد."
+    },
+    {
+      "en": "There is music in the street.",
+      "fa": "در خیابان موسیقی پخش می‌شود."
+    },
+    {
+      "en": "Mina likes music.",
+      "fa": "مینا موسیقی را دوست دارد."
+    },
+    {
+      "en": "The song is good.",
+      "fa": "آهنگ خوب است."
+    },
+    {
+      "en": "A man sings a song.",
+      "fa": "یک مرد آهنگ می‌خواند."
+    },
+    {
+      "en": "The woman sings.",
+      "fa": "زن آواز می‌خواند."
+    },
+    {
+      "en": "The singer is famous.",
+      "fa": "خواننده مشهور است."
+    },
+    {
+      "en": "She is a singer.",
+      "fa": "او خواننده است."
+    },
+    {
+      "en": "He plays the guitar.",
+      "fa": "او گیتار می‌نوازد."
+    },
+    {
+      "en": "The guitar is big.",
+      "fa": "گیتار بزرگ است."
+    },
+    {
+      "en": "She plays the piano.",
+      "fa": "او پیانو می‌نوازد."
+    },
+    {
+      "en": "The piano is black.",
+      "fa": "پیانو سیاه است."
+    },
+    {
+      "en": "The band plays.",
+      "fa": "گروه می‌نوازد."
+    },
+    {
+      "en": "A band is in the street.",
+      "fa": "یک گروه در خیابان است."
+    },
+    {
+      "en": "People dance.",
+      "fa": "آدم‌ها می‌رقصند."
+    },
+    {
+      "en": "Mina dances.",
+      "fa": "مینا می‌رقصد."
+    },
+    {
+      "en": "She likes dancing.",
+      "fa": "او رقصیدن دوست دارد."
+    },
+    {
+      "en": "Dancing is good.",
+      "fa": "رقصیدن خوب است."
+    },
+    {
+      "en": "The dancer is young.",
+      "fa": "رقاص جوان است."
+    },
+    {
+      "en": "He is a dancer.",
+      "fa": "او رقاص است."
+    },
+    {
+      "en": "The concert is in the park.",
+      "fa": "کنسرت در پارک است."
+    },
+    {
+      "en": "They go to a concert.",
+      "fa": "آن‌ها به کنسرت می‌روند."
+    },
+    {
+      "en": "The actor is famous.",
+      "fa": "بازیگر مشهور است."
+    },
+    {
+      "en": "He is an actor.",
+      "fa": "او بازیگر است."
+    },
+    {
+      "en": "The actress is famous.",
+      "fa": "بازیگر زن مشهور است."
+    },
+    {
+      "en": "She is an actress.",
+      "fa": "او بازیگر است."
+    },
+    {
+      "en": "The artist draws.",
+      "fa": "هنرمند نقاشی می‌کشد."
+    },
+    {
+      "en": "She is an artist.",
+      "fa": "او هنرمند است."
+    },
+    {
+      "en": "The writer is old.",
+      "fa": "نویسنده پیر است."
+    },
+    {
+      "en": "He is a writer.",
+      "fa": "او نویسنده است."
+    },
+    {
+      "en": "The reader is young.",
+      "fa": "خواننده‌ی کتاب جوان است."
+    },
+    {
+      "en": "She is a reader.",
+      "fa": "او کتاب‌خوان است."
+    },
+    {
+      "en": "Art is good.",
+      "fa": "هنر خوب است."
+    },
+    {
+      "en": "She likes art.",
+      "fa": "او هنر دوست دارد."
+    },
+    {
+      "en": "Mina draws a cat.",
+      "fa": "مینا یک گربه می‌کشد."
+    },
+    {
+      "en": "She draws Nino in her book.",
+      "fa": "او نینو را در کتابش می‌کشد."
+    },
+    {
+      "en": "She draws and draws.",
+      "fa": "می‌کشد و می‌کشد."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا در کتابش چه می‌کشد؟",
+      "options": [
+        "cat",
+        "bird",
+        "ball",
+        "song"
+      ],
+      "a": "cat"
+    },
+    {
+      "q": "مرد در خیابان چه می‌نوازد؟",
+      "options": [
+        "guitar",
+        "piano",
+        "ball",
+        "book"
+      ],
+      "a": "guitar"
+    }
+  ]
+}

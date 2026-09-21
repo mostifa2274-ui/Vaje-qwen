@@ -1,0 +1,264 @@
+{
+  "id": "b4c4",
+  "book": 4,
+  "n": 4,
+  "titleFa": "پول",
+  "titleEn": "Money",
+  "new": [
+    "money",
+    "bank",
+    "bill",
+    "cent",
+    "cost",
+    "dollar",
+    "euro",
+    "free",
+    "pay",
+    "pound",
+    "price",
+    "product",
+    "customer",
+    "order",
+    "menu",
+    "another",
+    "each",
+    "both",
+    "other",
+    "else",
+    "only",
+    "very",
+    "also",
+    "even",
+    "bag",
+    "bottle",
+    "box"
+  ],
+  "sentences": [
+    {
+      "en": "Mom has money.",
+      "fa": "مامان پول دارد."
+    },
+    {
+      "en": "The money is in her bag.",
+      "fa": "پول در کیفش است."
+    },
+    {
+      "en": "Mina has a bag, too.",
+      "fa": "مینا هم یک کیف دارد."
+    },
+    {
+      "en": "She goes to the bank.",
+      "fa": "او به بانک می‌رود."
+    },
+    {
+      "en": "The bank is near the market.",
+      "fa": "بانک نزدیک بازار است."
+    },
+    {
+      "en": "Mom pays for the food.",
+      "fa": "مامان برای غذا پول می‌دهد."
+    },
+    {
+      "en": "She pays the man.",
+      "fa": "او به مرد پول می‌دهد."
+    },
+    {
+      "en": "The bill is high.",
+      "fa": "مبلغ صورتحساب زیاد است."
+    },
+    {
+      "en": "She pays the bill.",
+      "fa": "او صورتحساب را پرداخت می‌کند."
+    },
+    {
+      "en": "The bread costs a dollar.",
+      "fa": "نان یک دلار قیمت دارد."
+    },
+    {
+      "en": "It costs one dollar.",
+      "fa": "قیمتش یک دلار است."
+    },
+    {
+      "en": "The cake costs two euros.",
+      "fa": "کیک دو یورو قیمت دارد."
+    },
+    {
+      "en": "The euro is money, too.",
+      "fa": "یورو هم پول است."
+    },
+    {
+      "en": "She has fifty cents.",
+      "fa": "او پنجاه سنت دارد."
+    },
+    {
+      "en": "The cent is money.",
+      "fa": "سنت پول است."
+    },
+    {
+      "en": "The pound is money, too.",
+      "fa": "پوند هم پول است."
+    },
+    {
+      "en": "He pays with pounds.",
+      "fa": "او با پوند پرداخت می‌کند."
+    },
+    {
+      "en": "Mina likes the price.",
+      "fa": "مینا از قیمت راضی است."
+    },
+    {
+      "en": "The price of the fish is high.",
+      "fa": "قیمت ماهی زیاد است."
+    },
+    {
+      "en": "The man gives Mina some bread for free.",
+      "fa": "مرد کمی نان رایگان به مینا می‌دهد."
+    },
+    {
+      "en": "The bread is free for Mina today.",
+      "fa": "نان امروز برای مینا رایگان است."
+    },
+    {
+      "en": "The product is good.",
+      "fa": "محصول خوب است."
+    },
+    {
+      "en": "He sells a good product.",
+      "fa": "او محصول خوبی می‌فروشد."
+    },
+    {
+      "en": "The customer is happy.",
+      "fa": "مشتری خوشحال است."
+    },
+    {
+      "en": "Mina is a customer.",
+      "fa": "مینا یک مشتری است."
+    },
+    {
+      "en": "They order food.",
+      "fa": "آن‌ها غذا سفارش می‌دهند."
+    },
+    {
+      "en": "Mom orders a salad.",
+      "fa": "مامان سالاد سفارش می‌دهد."
+    },
+    {
+      "en": "The menu has many choices.",
+      "fa": "منو انتخاب‌های زیادی دارد."
+    },
+    {
+      "en": "Mina looks at the menu.",
+      "fa": "مینا به منو نگاه می‌کند."
+    },
+    {
+      "en": "She wants another juice.",
+      "fa": "او یک آب‌میوه‌ی دیگر می‌خواهد."
+    },
+    {
+      "en": "Another glass, please.",
+      "fa": "یک لیوان دیگر، لطفاً."
+    },
+    {
+      "en": "Each person has a glass.",
+      "fa": "هر نفر یک لیوان دارد."
+    },
+    {
+      "en": "Each cat has a different color or pattern.",
+      "fa": "هر گربه رنگ یا طرح متفاوتی دارد."
+    },
+    {
+      "en": "Both cats are near the market.",
+      "fa": "هر دو گربه نزدیک بازار هستند."
+    },
+    {
+      "en": "Both are hungry.",
+      "fa": "هر دو گرسنه هستند."
+    },
+    {
+      "en": "The other cat is white.",
+      "fa": "گربه‌ی دیگر سفید است."
+    },
+    {
+      "en": "Other people look.",
+      "fa": "آدم‌های دیگر نگاه می‌کنند."
+    },
+    {
+      "en": "What else?",
+      "fa": "چه چیز دیگر؟"
+    },
+    {
+      "en": "Nothing else.",
+      "fa": "چیز دیگری نه."
+    },
+    {
+      "en": "Only one cat is Nino.",
+      "fa": "فقط یک گربه نینو است."
+    },
+    {
+      "en": "There is only one Nino.",
+      "fa": "فقط یک نینو وجود دارد."
+    },
+    {
+      "en": "The bread is very hot.",
+      "fa": "نان خیلی داغ است."
+    },
+    {
+      "en": "Mina is very happy.",
+      "fa": "مینا خیلی خوشحال است."
+    },
+    {
+      "en": "The fish is also expensive.",
+      "fa": "ماهی هم گران است."
+    },
+    {
+      "en": "Mom also buys rice.",
+      "fa": "مامان هم برنج می‌خرد."
+    },
+    {
+      "en": "Even the baby eats bread.",
+      "fa": "حتی نوزاد هم نان می‌خورد."
+    },
+    {
+      "en": "Even Nino likes bread.",
+      "fa": "حتی نینو هم نان دوست دارد."
+    },
+    {
+      "en": "A bottle of water, please.",
+      "fa": "یک بطری آب، لطفاً."
+    },
+    {
+      "en": "The bottle is full.",
+      "fa": "بطری پر است."
+    },
+    {
+      "en": "A box for the cake, please.",
+      "fa": "لطفاً یک جعبه برای کیک."
+    },
+    {
+      "en": "The box is big.",
+      "fa": "جعبه بزرگ است."
+    }
+  ],
+  "check": [
+    {
+      "q": "نان برای مینا چقدر است؟",
+      "options": [
+        "free",
+        "expensive",
+        "dollar",
+        "bill"
+      ],
+      "a": "free"
+    },
+    {
+      "q": "مامان با چه چیزی پرداخت می‌کند؟",
+      "options": [
+        "money",
+        "menu",
+        "bag",
+        "box"
+      ],
+      "a": "money"
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "id": "b6c1",
+  "book": 6,
+  "n": 1,
+  "titleFa": "مدرسه",
+  "titleEn": "School",
+  "new": [
+    "school",
+    "class",
+    "classroom",
+    "student",
+    "study",
+    "teacher",
+    "teach",
+    "lesson",
+    "homework",
+    "read",
+    "reading",
+    "learn",
+    "language",
+    "practice",
+    "mistake",
+    "exam",
+    "test",
+    "subject",
+    "history",
+    "geography",
+    "science",
+    "show",
+    "easy",
+    "hard"
+  ],
+  "sentences": [
+    {
+      "en": "Mina goes to school.",
+      "fa": "مینا به مدرسه می‌رود."
+    },
+    {
+      "en": "The school is big.",
+      "fa": "مدرسه بزرگ است."
+    },
+    {
+      "en": "Her class is small.",
+      "fa": "کلاسش کوچک است."
+    },
+    {
+      "en": "The class has ten students.",
+      "fa": "کلاس ده دانش‌آموز دارد."
+    },
+    {
+      "en": "The students are young.",
+      "fa": "دانش‌آموزان جوان هستند."
+    },
+    {
+      "en": "The classroom is white.",
+      "fa": "کلاس سفید است."
+    },
+    {
+      "en": "They are in the classroom.",
+      "fa": "آن‌ها در کلاس هستند."
+    },
+    {
+      "en": "The teacher is nice.",
+      "fa": "معلم خوب است."
+    },
+    {
+      "en": "Mina likes the teacher.",
+      "fa": "مینا معلم را دوست دارد."
+    },
+    {
+      "en": "The teacher teaches.",
+      "fa": "معلم تدریس می‌کند."
+    },
+    {
+      "en": "She teaches the students.",
+      "fa": "او به دانش‌آموزان درس می‌دهد."
+    },
+    {
+      "en": "Mina studies.",
+      "fa": "مینا درس می‌خواند."
+    },
+    {
+      "en": "She studies at school.",
+      "fa": "او در مدرسه درس می‌خواند."
+    },
+    {
+      "en": "The lesson is about cats.",
+      "fa": "درس درباره‌ی گربه‌هاست."
+    },
+    {
+      "en": "She likes the lesson.",
+      "fa": "او درس را دوست دارد."
+    },
+    {
+      "en": "She has a little homework.",
+      "fa": "او کمی تکلیف دارد."
+    },
+    {
+      "en": "She does her homework.",
+      "fa": "او تکلیفش را انجام می‌دهد."
+    },
+    {
+      "en": "Mina reads.",
+      "fa": "مینا می‌خواند."
+    },
+    {
+      "en": "She reads the note.",
+      "fa": "او یادداشت را می‌خواند."
+    },
+    {
+      "en": "Reading is good.",
+      "fa": "خواندن خوب است."
+    },
+    {
+      "en": "She likes reading.",
+      "fa": "او خواندن دوست دارد."
+    },
+    {
+      "en": "The students learn.",
+      "fa": "دانش‌آموزان یاد می‌گیرند."
+    },
+    {
+      "en": "They learn words.",
+      "fa": "آن‌ها کلمه یاد می‌گیرند."
+    },
+    {
+      "en": "Mina learns English, a new language for her.",
+      "fa": "مینا انگلیسی را که زبان تازه‌ای برای اوست یاد می‌گیرد."
+    },
+    {
+      "en": "She likes the language.",
+      "fa": "او زبان را دوست دارد."
+    },
+    {
+      "en": "They practice.",
+      "fa": "آن‌ها تمرین می‌کنند."
+    },
+    {
+      "en": "Mina practices the words.",
+      "fa": "مینا کلمات را تمرین می‌کند."
+    },
+    {
+      "en": "She makes a mistake.",
+      "fa": "او یک اشتباه می‌کند."
+    },
+    {
+      "en": "The mistake is small.",
+      "fa": "اشتباه کوچک است."
+    },
+    {
+      "en": "She has an exam.",
+      "fa": "او یک امتحان دارد."
+    },
+    {
+      "en": "The exam is important.",
+      "fa": "امتحان مهم است."
+    },
+    {
+      "en": "The test is easy.",
+      "fa": "آزمون آسان است."
+    },
+    {
+      "en": "It is an easy test.",
+      "fa": "یک آزمون آسان است."
+    },
+    {
+      "en": "Some questions look hard.",
+      "fa": "بعضی سؤال‌ها سخت به نظر می‌رسند."
+    },
+    {
+      "en": "But the test is not hard for Mina.",
+      "fa": "اما آزمون برای مینا سخت نیست."
+    },
+    {
+      "en": "The subject is cats.",
+      "fa": "موضوع گربه‌هاست."
+    },
+    {
+      "en": "Her favorite subject is animals.",
+      "fa": "موضوع مورد علاقه‌اش حیوان‌هاست."
+    },
+    {
+      "en": "History is a subject.",
+      "fa": "تاریخ یک درس است."
+    },
+    {
+      "en": "She likes history.",
+      "fa": "او تاریخ دوست دارد."
+    },
+    {
+      "en": "Geography is about the world.",
+      "fa": "جغرافیا درباره‌ی دنیاست."
+    },
+    {
+      "en": "Mina likes geography.",
+      "fa": "مینا جغرافیا را دوست دارد."
+    },
+    {
+      "en": "Science is an important subject.",
+      "fa": "علوم یک درس مهم است."
+    },
+    {
+      "en": "They learn science.",
+      "fa": "آن‌ها علم یاد می‌گیرند."
+    },
+    {
+      "en": "Mina shows her book.",
+      "fa": "مینا کتابش را نشان می‌دهد."
+    },
+    {
+      "en": "She shows the note.",
+      "fa": "او یادداشت را نشان می‌دهد."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا در مدرسه چه چیزی را نشان می‌دهد؟",
+      "options": [
+        "book",
+        "pen",
+        "photo",
+        "bag"
+      ],
+      "a": "book"
+    },
+    {
+      "q": "آزمون برای مینا چطور است؟",
+      "options": [
+        "easy",
+        "hard",
+        "bad",
+        "long"
+      ],
+      "a": "easy"
+    }
+  ]
+}

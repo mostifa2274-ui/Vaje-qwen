@@ -1,0 +1,219 @@
+{
+  "id": "b3c1",
+  "book": 3,
+  "n": 1,
+  "titleFa": "یک هفته",
+  "titleEn": "One Week",
+  "new": [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
+    "week",
+    "weekend",
+    "again",
+    "always",
+    "never",
+    "often",
+    "usually",
+    "sometimes",
+    "still",
+    "just",
+    "time",
+    "walk",
+    "watch",
+    "routine",
+    "fast"
+  ],
+  "sentences": [
+    {
+      "en": "It is Monday.",
+      "fa": "دوشنبه است."
+    },
+    {
+      "en": "Mina walks to the park.",
+      "fa": "مینا به پارک قدم می‌زند."
+    },
+    {
+      "en": "She walks and walks.",
+      "fa": "او قدم می‌زند و قدم می‌زند."
+    },
+    {
+      "en": "Nino is fast.",
+      "fa": "نینو سریع است."
+    },
+    {
+      "en": "The bird is fast, too.",
+      "fa": "پرنده هم سریع است."
+    },
+    {
+      "en": "It is Tuesday.",
+      "fa": "سه‌شنبه است."
+    },
+    {
+      "en": "She asks again.",
+      "fa": "او دوباره می‌پرسد."
+    },
+    {
+      "en": "\"Do you see my cat?\" she says again.",
+      "fa": "گربه‌ام را می‌بینی؟ دوباره می‌گوید."
+    },
+    {
+      "en": "It is Wednesday.",
+      "fa": "چهارشنبه است."
+    },
+    {
+      "en": "Mina always looks.",
+      "fa": "مینا همیشه نگاه می‌کند."
+    },
+    {
+      "en": "She always asks.",
+      "fa": "او همیشه می‌پرسد."
+    },
+    {
+      "en": "It is Thursday.",
+      "fa": "پنجشنبه است."
+    },
+    {
+      "en": "Mina never sees Nino this week.",
+      "fa": "مینا در این هفته هیچ‌وقت نینو را نمی‌بیند."
+    },
+    {
+      "en": "She does not sleep well.",
+      "fa": "او خوب نمی‌خوابد."
+    },
+    {
+      "en": "It is Friday.",
+      "fa": "جمعه است."
+    },
+    {
+      "en": "Mina often goes to the park.",
+      "fa": "مینا اغلب به پارک می‌رود."
+    },
+    {
+      "en": "She often looks at the door.",
+      "fa": "او اغلب به در نگاه می‌کند."
+    },
+    {
+      "en": "It is Saturday.",
+      "fa": "شنبه است."
+    },
+    {
+      "en": "The family usually eats together.",
+      "fa": "خانواده معمولاً با هم غذا می‌خورد."
+    },
+    {
+      "en": "They usually look in the evening.",
+      "fa": "آن‌ها معمولاً عصر نگاه می‌کنند."
+    },
+    {
+      "en": "It is Sunday.",
+      "fa": "یکشنبه است."
+    },
+    {
+      "en": "Mina sometimes sits in the yard.",
+      "fa": "مینا گاهی در حیاط می‌نشیند."
+    },
+    {
+      "en": "She sometimes calls Nino.",
+      "fa": "او گاهی نینو را صدا می‌کند."
+    },
+    {
+      "en": "The week is bad.",
+      "fa": "هفته بد است."
+    },
+    {
+      "en": "A week runs from Monday to Sunday.",
+      "fa": "یک هفته از دوشنبه تا یکشنبه ادامه دارد."
+    },
+    {
+      "en": "The weekend is here.",
+      "fa": "آخر هفته اینجاست."
+    },
+    {
+      "en": "On the weekend, they look all day.",
+      "fa": "آخر هفته، آن‌ها تمام روز نگاه می‌کنند."
+    },
+    {
+      "en": "For Mina’s family, the weekend starts on Friday.",
+      "fa": "برای خانواده‌ی مینا، آخر هفته از جمعه شروع می‌شود."
+    },
+    {
+      "en": "Mina still looks.",
+      "fa": "مینا هنوز نگاه می‌کند."
+    },
+    {
+      "en": "Nino is still not home.",
+      "fa": "نینو هنوز خانه نیست."
+    },
+    {
+      "en": "\"I just look and look,\" she says.",
+      "fa": "من فقط نگاه می‌کنم و نگاه می‌کنم، می‌گوید."
+    },
+    {
+      "en": "He just runs and runs.",
+      "fa": "او فقط می‌دود و می‌دود."
+    },
+    {
+      "en": "What time is it?",
+      "fa": "ساعت چند است؟"
+    },
+    {
+      "en": "It is time for dinner.",
+      "fa": "وقت شام است."
+    },
+    {
+      "en": "The family watches TV.",
+      "fa": "خانواده تلویزیون تماشا می‌کند."
+    },
+    {
+      "en": "Mina watches the door.",
+      "fa": "مینا در را تماشا می‌کند."
+    },
+    {
+      "en": "It is her routine.",
+      "fa": "این برنامه‌ی روزانه‌ی اوست."
+    },
+    {
+      "en": "Her routine is to look, ask, and wait.",
+      "fa": "برنامه‌ی روزانه‌اش این است که نگاه کند، بپرسد و منتظر بماند."
+    },
+    {
+      "en": "From Monday to Sunday, she looks.",
+      "fa": "از دوشنبه تا یکشنبه، او نگاه می‌کند."
+    },
+    {
+      "en": "From Tuesday to Saturday, she asks.",
+      "fa": "از سه‌شنبه تا شنبه، او می‌پرسد."
+    },
+    {
+      "en": "On Wednesday and Thursday, she calls.",
+      "fa": "چهارشنبه و پنجشنبه، او نینو را صدا می‌کند."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا هر روز چه کار می‌کند؟",
+      "options": [
+        "look",
+        "sleep",
+        "cook",
+        "play"
+      ],
+      "a": "look"
+    },
+    {
+      "q": "برای خانواده‌ی مینا، آخر هفته از چه روزی شروع می‌شود؟",
+      "options": [
+        "friday",
+        "monday",
+        "sunday",
+        "wednesday"
+      ],
+      "a": "friday"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "id": "b4c3",
+  "book": 4,
+  "n": 3,
+  "titleFa": "در کافه",
+  "titleEn": "At the Cafe",
+  "new": [
+    "juice",
+    "tea",
+    "coffee",
+    "beer",
+    "wine",
+    "ice",
+    "ice-cream",
+    "chocolate",
+    "thirsty",
+    "hungry",
+    "full",
+    "enough",
+    "extra",
+    "lot",
+    "many",
+    "much",
+    "more",
+    "most",
+    "few",
+    "pair",
+    "piece",
+    "brown"
+  ],
+  "sentences": [
+    {
+      "en": "The family is in a cafe.",
+      "fa": "خانواده در یک کافه هستند."
+    },
+    {
+      "en": "Mina is thirsty.",
+      "fa": "مینا تشنه است."
+    },
+    {
+      "en": "The baby is thirsty, too.",
+      "fa": "نوزاد هم تشنه است."
+    },
+    {
+      "en": "She is hungry.",
+      "fa": "او گرسنه است."
+    },
+    {
+      "en": "Her brother is hungry.",
+      "fa": "برادرش گرسنه است."
+    },
+    {
+      "en": "Mina drinks juice.",
+      "fa": "مینا آب‌میوه می‌نوشد."
+    },
+    {
+      "en": "The juice is cold.",
+      "fa": "آب‌میوه سرد است."
+    },
+    {
+      "en": "Mom drinks tea.",
+      "fa": "مامان چای می‌نوشد."
+    },
+    {
+      "en": "The tea is hot.",
+      "fa": "چای داغ است."
+    },
+    {
+      "en": "Dad drinks coffee.",
+      "fa": "بابا قهوه می‌نوشد."
+    },
+    {
+      "en": "The coffee is hot, too.",
+      "fa": "قهوه هم داغ است."
+    },
+    {
+      "en": "The man drinks beer.",
+      "fa": "مرد آبجو می‌نوشد."
+    },
+    {
+      "en": "The beer is cold.",
+      "fa": "آبجو سرد است."
+    },
+    {
+      "en": "The woman drinks wine.",
+      "fa": "زن شراب می‌نوشد."
+    },
+    {
+      "en": "The wine is red.",
+      "fa": "شراب قرمز است."
+    },
+    {
+      "en": "Mina has ice in her juice.",
+      "fa": "مینا در آب‌میوه‌اش یخ دارد."
+    },
+    {
+      "en": "The ice is cold.",
+      "fa": "یخ سرد است."
+    },
+    {
+      "en": "She eats ice cream.",
+      "fa": "او بستنی می‌خورد."
+    },
+    {
+      "en": "The ice cream is white.",
+      "fa": "بستنی سفید است."
+    },
+    {
+      "en": "Mina eats some chocolate.",
+      "fa": "مینا کمی شکلات می‌خورد."
+    },
+    {
+      "en": "The chocolate is brown.",
+      "fa": "شکلات قهوه‌ای است."
+    },
+    {
+      "en": "The bread is brown.",
+      "fa": "نان قهوه‌ای است."
+    },
+    {
+      "en": "A lot of people are in the cafe.",
+      "fa": "خیلی آدم‌ها در کافه هستند."
+    },
+    {
+      "en": "Mina sees a lot of cats near the market.",
+      "fa": "مینا نزدیک بازار گربه‌های زیادی می‌بیند."
+    },
+    {
+      "en": "Many people eat.",
+      "fa": "بسیاری از مردم غذا می‌خورند."
+    },
+    {
+      "en": "Many cats are in the market.",
+      "fa": "بسیاری از گربه‌ها در بازار هستند."
+    },
+    {
+      "en": "She does not drink much.",
+      "fa": "او زیاد نمی‌نوشد."
+    },
+    {
+      "en": "The baby does not eat much.",
+      "fa": "نوزاد زیاد نمی‌خورد."
+    },
+    {
+      "en": "Mina wants more juice.",
+      "fa": "مینا آب‌میوه‌ی بیشتر می‌خواهد."
+    },
+    {
+      "en": "More juice, please.",
+      "fa": "آب‌میوه‌ی بیشتر، لطفاً."
+    },
+    {
+      "en": "Most people in the cafe are nice.",
+      "fa": "بیشتر مردمِ کافه مهربان هستند."
+    },
+    {
+      "en": "Most of the cats Mina sees are black.",
+      "fa": "بیشتر گربه‌هایی که مینا می‌بیند سیاه هستند."
+    },
+    {
+      "en": "Few people know Nino.",
+      "fa": "افراد کمی نینو را می‌شناسند."
+    },
+    {
+      "en": "Few of the cats she sees are white.",
+      "fa": "تعداد کمی از گربه‌هایی که می‌بیند سفید هستند."
+    },
+    {
+      "en": "A piece of cake, please.",
+      "fa": "یک تکه کیک، لطفاً."
+    },
+    {
+      "en": "She eats a piece of cake.",
+      "fa": "او یک تکه کیک می‌خورد."
+    },
+    {
+      "en": "A pair of cats is in the market.",
+      "fa": "یک جفت گربه در بازار است."
+    },
+    {
+      "en": "The pair of cats is black.",
+      "fa": "جفت گربه‌ها سیاه هستند."
+    },
+    {
+      "en": "The glass is full.",
+      "fa": "لیوان پر است."
+    },
+    {
+      "en": "The cafe is full.",
+      "fa": "کافه پر است."
+    },
+    {
+      "en": "It is enough.",
+      "fa": "کافی است."
+    },
+    {
+      "en": "\"That is enough juice,\" Mina says.",
+      "fa": "«این مقدار آب‌میوه کافی است»، مینا می‌گوید."
+    },
+    {
+      "en": "An extra glass is on the table.",
+      "fa": "یک لیوان اضافی روی میز است."
+    },
+    {
+      "en": "Mina keeps the extra bread for Nino.",
+      "fa": "مینا نان اضافی را برای نینو نگه می‌دارد."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا چه می‌نوشد؟",
+      "options": [
+        "juice",
+        "tea",
+        "coffee",
+        "wine"
+      ],
+      "a": "juice"
+    },
+    {
+      "q": "مینا نانِ اضافی را برای چه کسی نگه می‌دارد؟",
+      "options": [
+        "cat",
+        "baby",
+        "man",
+        "bird"
+      ],
+      "a": "cat"
+    }
+  ]
+}

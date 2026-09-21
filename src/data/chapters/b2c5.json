@@ -1,0 +1,244 @@
+{
+  "id": "b2c5",
+  "book": 2,
+  "n": 5,
+  "titleFa": "شهر بزرگ است",
+  "titleEn": "The City Is Big",
+  "new": [
+    "wife",
+    "husband",
+    "married",
+    "member",
+    "partner",
+    "boyfriend",
+    "girlfriend",
+    "age",
+    "born",
+    "life",
+    "anyone",
+    "anything",
+    "visitor",
+    "town",
+    "neighborhood",
+    "area",
+    "place",
+    "building",
+    "apartment",
+    "address",
+    "world",
+    "center",
+    "local"
+  ],
+  "sentences": [
+    {
+      "en": "The man has a wife.",
+      "fa": "مرد یک همسر دارد."
+    },
+    {
+      "en": "His wife is nice.",
+      "fa": "همسرش خوب است."
+    },
+    {
+      "en": "The woman has a husband.",
+      "fa": "زن یک شوهر دارد."
+    },
+    {
+      "en": "Her husband is old.",
+      "fa": "شوهرش پیر است."
+    },
+    {
+      "en": "They are married and live together.",
+      "fa": "آن‌ها متأهل هستند و با هم زندگی می‌کنند."
+    },
+    {
+      "en": "The singer is married.",
+      "fa": "خواننده متأهل است."
+    },
+    {
+      "en": "Nino is a member of the family.",
+      "fa": "نینو عضوی از خانواده است."
+    },
+    {
+      "en": "He is a member.",
+      "fa": "او یک عضو است."
+    },
+    {
+      "en": "The dancer has a partner.",
+      "fa": "رقاص یک همراه دارد."
+    },
+    {
+      "en": "Her partner dances.",
+      "fa": "همراهش می‌رقصد."
+    },
+    {
+      "en": "The girl has a boyfriend.",
+      "fa": "دختر یک دوست‌پسر دارد."
+    },
+    {
+      "en": "Her boyfriend is young.",
+      "fa": "دوست‌پسرش جوان است."
+    },
+    {
+      "en": "The boy has a girlfriend.",
+      "fa": "پسر یک دوست‌دختر دارد."
+    },
+    {
+      "en": "His girlfriend is nice.",
+      "fa": "دوست‌دخترش خوب است."
+    },
+    {
+      "en": "\"How old are you?\" the woman says.",
+      "fa": "چند سالت است؟ زن می‌گوید."
+    },
+    {
+      "en": "The woman asks the boy his age.",
+      "fa": "زن سن پسر را می‌پرسد."
+    },
+    {
+      "en": "The baby was born today.",
+      "fa": "نوزاد امروز به دنیا آمده است."
+    },
+    {
+      "en": "Where was he born?",
+      "fa": "او کجا به دنیا آمد؟"
+    },
+    {
+      "en": "Life in the city is busy.",
+      "fa": "زندگی در شهر شلوغ است."
+    },
+    {
+      "en": "Life is good.",
+      "fa": "زندگی خوب است."
+    },
+    {
+      "en": "Does anyone see Nino?",
+      "fa": "کسی نینو را می‌بیند؟"
+    },
+    {
+      "en": "Is anyone here?",
+      "fa": "کسی اینجاست؟"
+    },
+    {
+      "en": "Do you see anything?",
+      "fa": "چیزی می‌بینی؟"
+    },
+    {
+      "en": "\"Is there anything black?\" Mina asks.",
+      "fa": "«چیز سیاهی هست؟» مینا می‌پرسد."
+    },
+    {
+      "en": "A visitor is in the street.",
+      "fa": "یک بازدیدکننده در خیابان است."
+    },
+    {
+      "en": "The visitor looks for Nino.",
+      "fa": "بازدیدکننده دنبال نینو می‌گردد."
+    },
+    {
+      "en": "The town is old.",
+      "fa": "شهرک قدیمی است."
+    },
+    {
+      "en": "She lives in a town.",
+      "fa": "او در یک شهرک زندگی می‌کند."
+    },
+    {
+      "en": "The neighborhood is nice.",
+      "fa": "محله خوب است."
+    },
+    {
+      "en": "Nino is not in the neighborhood.",
+      "fa": "نینو در محله نیست."
+    },
+    {
+      "en": "The area is big.",
+      "fa": "منطقه بزرگ است."
+    },
+    {
+      "en": "Mina looks in the area.",
+      "fa": "مینا در منطقه می‌گردد."
+    },
+    {
+      "en": "This place is good.",
+      "fa": "این جا خوب است."
+    },
+    {
+      "en": "What is this place?",
+      "fa": "این کجاست؟"
+    },
+    {
+      "en": "The building is big.",
+      "fa": "ساختمان بزرگ است."
+    },
+    {
+      "en": "She lives in a building.",
+      "fa": "او در یک ساختمان زندگی می‌کند."
+    },
+    {
+      "en": "The apartment is small.",
+      "fa": "آپارتمان کوچک است."
+    },
+    {
+      "en": "They live in an apartment.",
+      "fa": "آن‌ها در یک آپارتمان زندگی می‌کنند."
+    },
+    {
+      "en": "What is your address?",
+      "fa": "آدرست چیست؟"
+    },
+    {
+      "en": "It is the address of an old house.",
+      "fa": "این آدرسِ یک خانه‌ی قدیمی است."
+    },
+    {
+      "en": "The world is big.",
+      "fa": "دنیا بزرگ است."
+    },
+    {
+      "en": "It is a big world.",
+      "fa": "دنیای بزرگی است."
+    },
+    {
+      "en": "The center of the city is near the park.",
+      "fa": "مرکز شهر نزدیک پارک است."
+    },
+    {
+      "en": "Mina goes to the center.",
+      "fa": "مینا به مرکز می‌رود."
+    },
+    {
+      "en": "The local people are nice.",
+      "fa": "مردم محلی خوب هستند."
+    },
+    {
+      "en": "A local cafe is near the center.",
+      "fa": "یک کافه‌ی محلی نزدیک مرکز شهر است."
+    },
+    {
+      "en": "The city is big, and Nino is small.",
+      "fa": "شهر بزرگ است و نینو کوچک است."
+    }
+  ],
+  "check": [
+    {
+      "q": "نینو عضو چیست؟",
+      "options": [
+        "family",
+        "team",
+        "band",
+        "world"
+      ],
+      "a": "family"
+    },
+    {
+      "q": "زن با کی زندگی می‌کند؟",
+      "options": [
+        "husband",
+        "boyfriend",
+        "visitor",
+        "singer"
+      ],
+      "a": "husband"
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "id": "b7c5",
+  "book": 7,
+  "n": 5,
+  "titleFa": "اقیانوس",
+  "titleEn": "The Ocean",
+  "new": [
+    "beach",
+    "ocean",
+    "boat",
+    "island",
+    "river",
+    "hotel",
+    "tourist",
+    "passport",
+    "plane",
+    "airport",
+    "flight",
+    "library",
+    "museum",
+    "theater",
+    "mall",
+    "bar",
+    "space",
+    "dark",
+    "tired"
+  ],
+  "sentences": [
+    {
+      "en": "After another train ride, the family reaches a town by the ocean.",
+      "fa": "بعد از یک سفر دیگر با قطار، خانواده به شهرکی کنار اقیانوس می‌رسند."
+    },
+    {
+      "en": "The ocean is big.",
+      "fa": "اقیانوس بزرگ است."
+    },
+    {
+      "en": "The beach is long.",
+      "fa": "ساحل طولانی است."
+    },
+    {
+      "en": "Mina is on the beach.",
+      "fa": "مینا روی ساحل است."
+    },
+    {
+      "en": "The water is cold.",
+      "fa": "آب سرد است."
+    },
+    {
+      "en": "A boat is on the ocean.",
+      "fa": "یک قایق روی اقیانوس است."
+    },
+    {
+      "en": "The boat is small.",
+      "fa": "قایق کوچک است."
+    },
+    {
+      "en": "The man who catches fish has a boat.",
+      "fa": "مردی که ماهی می‌گیرد یک قایق دارد."
+    },
+    {
+      "en": "An island is in the ocean.",
+      "fa": "یک جزیره در اقیانوس است."
+    },
+    {
+      "en": "The island is far from the beach.",
+      "fa": "جزیره از ساحل دور است."
+    },
+    {
+      "en": "A river goes to the ocean.",
+      "fa": "یک رودخانه به اقیانوس می‌رود."
+    },
+    {
+      "en": "The river is long.",
+      "fa": "رودخانه طولانی است."
+    },
+    {
+      "en": "A hotel is near the beach.",
+      "fa": "یک هتل نزدیک ساحل است."
+    },
+    {
+      "en": "The hotel is big.",
+      "fa": "هتل بزرگ است."
+    },
+    {
+      "en": "Tourists are on the beach.",
+      "fa": "گردشگران روی ساحل هستند."
+    },
+    {
+      "en": "A tourist has a camera.",
+      "fa": "یک گردشگر دوربین دارد."
+    },
+    {
+      "en": "He has a passport.",
+      "fa": "او پاسپورت دارد."
+    },
+    {
+      "en": "The passport is red.",
+      "fa": "پاسپورت قرمز است."
+    },
+    {
+      "en": "A plane is above the beach.",
+      "fa": "یک هواپیما بالای ساحل است."
+    },
+    {
+      "en": "The plane flies.",
+      "fa": "هواپیما پرواز می‌کند."
+    },
+    {
+      "en": "The airport is near the town.",
+      "fa": "فرودگاه نزدیک شهرک است."
+    },
+    {
+      "en": "Mina still watches for black cats near the airport.",
+      "fa": "مینا هنوز نزدیک فرودگاه دنبال گربه‌های سیاه می‌گردد."
+    },
+    {
+      "en": "The flight is long.",
+      "fa": "پرواز طولانی است."
+    },
+    {
+      "en": "His flight is today.",
+      "fa": "پروازش امروز است."
+    },
+    {
+      "en": "The library is in the town.",
+      "fa": "کتابخانه در شهرک است."
+    },
+    {
+      "en": "Mina sees the library from the street.",
+      "fa": "مینا کتابخانه را از خیابان می‌بیند."
+    },
+    {
+      "en": "The museum is old.",
+      "fa": "موزه قدیمی است."
+    },
+    {
+      "en": "She sees the museum, too.",
+      "fa": "او موزه را هم می‌بیند."
+    },
+    {
+      "en": "The theater is big.",
+      "fa": "تئاتر بزرگ است."
+    },
+    {
+      "en": "The theater is near the museum.",
+      "fa": "تئاتر نزدیک موزه است."
+    },
+    {
+      "en": "The mall is full.",
+      "fa": "مرکز خرید پر است."
+    },
+    {
+      "en": "The family walks through the mall.",
+      "fa": "خانواده از داخل مرکز خرید عبور می‌کنند."
+    },
+    {
+      "en": "The bar is near the mall.",
+      "fa": "کافه‌بار نزدیک مرکز خرید است."
+    },
+    {
+      "en": "Dad points to the bar near the mall.",
+      "fa": "بابا کافه‌بار نزدیک مرکز خرید را نشان می‌دهد."
+    },
+    {
+      "en": "Mina sees a small space under a bench.",
+      "fa": "مینا فضای کوچکی زیر یک نیمکت می‌بیند."
+    },
+    {
+      "en": "Many cats like small spaces.",
+      "fa": "بسیاری از گربه‌ها فضاهای کوچک را دوست دارند."
+    },
+    {
+      "en": "Mina still looks wherever she goes.",
+      "fa": "مینا هنوز هر جا می‌رود با دقت نگاه می‌کند."
+    },
+    {
+      "en": "The sun goes down.",
+      "fa": "خورشید پایین می‌رود."
+    },
+    {
+      "en": "It is dark.",
+      "fa": "تاریک است."
+    },
+    {
+      "en": "The beach is dark.",
+      "fa": "ساحل تاریک است."
+    },
+    {
+      "en": "Mina is tired.",
+      "fa": "مینا خسته است."
+    },
+    {
+      "en": "Mom is tired, too.",
+      "fa": "مامان هم خسته است."
+    },
+    {
+      "en": "Where is Nino?",
+      "fa": "نینو کجاست؟"
+    },
+    {
+      "en": "Nino is not here.",
+      "fa": "نینو اینجا نیست."
+    },
+    {
+      "en": "\"Cats sometimes come home,\" the man says.",
+      "fa": "گربه‌ها گاهی به خانه برمی‌گردند، مرد می‌گوید."
+    },
+    {
+      "en": "Cats sometimes find their way home.",
+      "fa": "گربه‌ها گاهی راه خانه را پیدا می‌کنند."
+    }
+  ],
+  "check": [
+    {
+      "q": "قایق مردِ ماهی‌گیر کجاست؟",
+      "options": [
+        "ocean",
+        "river",
+        "beach",
+        "island"
+      ],
+      "a": "ocean"
+    },
+    {
+      "q": "مردی که ماهی می‌گیرد می‌گوید گربه‌ها گاهی کجا برمی‌گردند؟",
+      "options": [
+        "home",
+        "fish",
+        "boat",
+        "water"
+      ],
+      "a": "home"
+    }
+  ]
+}

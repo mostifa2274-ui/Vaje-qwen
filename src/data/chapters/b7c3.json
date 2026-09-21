@@ -1,0 +1,204 @@
+{
+  "id": "b7c3",
+  "book": 7,
+  "n": 3,
+  "titleFa": "شمال",
+  "titleEn": "The North",
+  "new": [
+    "north",
+    "south",
+    "east",
+    "west",
+    "capital",
+    "land",
+    "through",
+    "across",
+    "around",
+    "above",
+    "below",
+    "between",
+    "front",
+    "back",
+    "away",
+    "off",
+    "over",
+    "down",
+    "sun"
+  ],
+  "sentences": [
+    {
+      "en": "Dad looks at the map.",
+      "fa": "بابا به نقشه نگاه می‌کند."
+    },
+    {
+      "en": "Grandmother is in the north.",
+      "fa": "مادربزرگ در شمال است."
+    },
+    {
+      "en": "The north of their country is cold.",
+      "fa": "شمال کشورشان سرد است."
+    },
+    {
+      "en": "Dad points to the capital on the map.",
+      "fa": "بابا پایتخت را روی نقشه نشان می‌دهد."
+    },
+    {
+      "en": "The capital is a big city.",
+      "fa": "پایتخت شهر بزرگی است."
+    },
+    {
+      "en": "The south of their country is warmer.",
+      "fa": "جنوب کشورشان گرم‌تر است."
+    },
+    {
+      "en": "They are not in the south.",
+      "fa": "آن‌ها در جنوب نیستند."
+    },
+    {
+      "en": "The east side of the country is far from them.",
+      "fa": "بخش شرقی کشور از آن‌ها دور است."
+    },
+    {
+      "en": "The sun rises in the east.",
+      "fa": "خورشید از شرق طلوع می‌کند."
+    },
+    {
+      "en": "The west is far, too.",
+      "fa": "غرب هم دور است."
+    },
+    {
+      "en": "They do not go west.",
+      "fa": "آن‌ها به غرب نمی‌روند."
+    },
+    {
+      "en": "There is a lot of open land.",
+      "fa": "زمین باز زیادی وجود دارد."
+    },
+    {
+      "en": "The land is good for farms.",
+      "fa": "این زمین برای مزرعه‌ها مناسب است."
+    },
+    {
+      "en": "They go through a town.",
+      "fa": "آن‌ها از یک شهرک می‌گذرند."
+    },
+    {
+      "en": "The road goes through the country.",
+      "fa": "جاده از کشور می‌گذرد."
+    },
+    {
+      "en": "They go across the land.",
+      "fa": "آن‌ها از سراسر زمین می‌گذرند."
+    },
+    {
+      "en": "The train goes across the country.",
+      "fa": "قطار از سراسر کشور می‌گذرد."
+    },
+    {
+      "en": "They go around the town.",
+      "fa": "آن‌ها دور شهرک می‌زنند."
+    },
+    {
+      "en": "The road goes around the town.",
+      "fa": "جاده دور شهرک می‌رود."
+    },
+    {
+      "en": "A bird flies above the train.",
+      "fa": "یک پرنده بالای قطار پرواز می‌کند."
+    },
+    {
+      "en": "It stays above the train for a moment.",
+      "fa": "برای لحظه‌ای بالای قطار می‌ماند."
+    },
+    {
+      "en": "The sun is high in the sky.",
+      "fa": "خورشید در آسمان بالاست."
+    },
+    {
+      "en": "The train goes over a road.",
+      "fa": "قطار از روی یک جاده می‌گذرد."
+    },
+    {
+      "en": "The land is below the train bridge.",
+      "fa": "زمین زیر پل قطار است."
+    },
+    {
+      "en": "The station is between two towns.",
+      "fa": "ایستگاه بین دو شهرک است."
+    },
+    {
+      "en": "Mina sits between Mom and Dad.",
+      "fa": "مینا بین مامان و بابا می‌نشیند."
+    },
+    {
+      "en": "She sits at the front of the train.",
+      "fa": "او در جلوی قطار می‌نشیند."
+    },
+    {
+      "en": "The driver is at the front of the train.",
+      "fa": "راننده در جلوی قطار است."
+    },
+    {
+      "en": "The back of the train is full.",
+      "fa": "قسمت عقب قطار پر است."
+    },
+    {
+      "en": "Her bag is at the back of the train.",
+      "fa": "کیفش در قسمت عقب قطار است."
+    },
+    {
+      "en": "The train moves away from the city.",
+      "fa": "قطار از شهر دور می‌شود."
+    },
+    {
+      "en": "Soon, the city is far away.",
+      "fa": "به‌زودی شهر خیلی دور می‌شود."
+    },
+    {
+      "en": "They are off again.",
+      "fa": "آن‌ها دوباره به راه افتاده‌اند."
+    },
+    {
+      "en": "The train moves off.",
+      "fa": "قطار به راه می‌افتد."
+    },
+    {
+      "en": "The bird is over the train.",
+      "fa": "پرنده روی قطار است."
+    },
+    {
+      "en": "The sun is over the land.",
+      "fa": "خورشید روی زمین است."
+    },
+    {
+      "en": "The sun goes down.",
+      "fa": "خورشید پایین می‌رود."
+    },
+    {
+      "en": "Mina looks down.",
+      "fa": "مینا پایین را نگاه می‌کند."
+    }
+  ],
+  "check": [
+    {
+      "q": "مادربزرگ در کدام جهت است؟",
+      "options": [
+        "north",
+        "south",
+        "east",
+        "west"
+      ],
+      "a": "north"
+    },
+    {
+      "q": "مینا بین مامان و چه کسی می‌نشیند؟",
+      "options": [
+        "dad",
+        "brother",
+        "baby",
+        "driver"
+      ],
+      "a": "dad"
+    }
+  ]
+}

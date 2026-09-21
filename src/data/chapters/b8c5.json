@@ -1,0 +1,291 @@
+{
+  "id": "b8c5",
+  "book": 8,
+  "n": 5,
+  "titleFa": "ستاره‌ها",
+  "titleEn": "The Stars",
+  "new": [
+    "star",
+    "movie",
+    "festival",
+    "culture",
+    "design",
+    "paint",
+    "painting",
+    "best",
+    "better",
+    "common",
+    "possible",
+    "negative",
+    "positive",
+    "terrible",
+    "statement",
+    "title",
+    "topic",
+    "which",
+    "why",
+    "than",
+    "as",
+    "without"
+  ],
+  "sentences": [
+    {
+      "en": "That night, there is no rain.",
+      "fa": "آن شب، باران نیست."
+    },
+    {
+      "en": "A thousand stars are out.",
+      "fa": "هزار ستاره در آسمان دیده می‌شوند."
+    },
+    {
+      "en": "Mina and Grandmother sit outside.",
+      "fa": "مینا و مادربزرگ بیرون می‌نشینند."
+    },
+    {
+      "en": "\"Look at the stars,\" Grandmother says.",
+      "fa": "به ستاره‌ها نگاه کن، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"Which one is big?\" Mina says.",
+      "fa": "کدام یک بزرگ است؟ مینا می‌گوید."
+    },
+    {
+      "en": "Which one do you like?",
+      "fa": "کدام یک را دوست داری؟"
+    },
+    {
+      "en": "\"I like that one,\" Grandmother says.",
+      "fa": "من آن یکی را دوست دارم، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"Why that one?\" Mina says.",
+      "fa": "چرا آن یکی؟ مینا می‌گوید."
+    },
+    {
+      "en": "Why? Because it is small.",
+      "fa": "چرا؟ چون کوچک است."
+    },
+    {
+      "en": "A small star can look bright, too.",
+      "fa": "یک ستاره‌ی کوچک هم می‌تواند روشن به نظر برسد."
+    },
+    {
+      "en": "This one gives more light than that one.",
+      "fa": "این یکی از آن یکی نور بیشتری می‌دهد."
+    },
+    {
+      "en": "\"But the small one is better,\" Grandmother says.",
+      "fa": "اما کوچکه بهتر است، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"I like small stars more than big ones,\" Mina says.",
+      "fa": "من ستاره‌های کوچک را بیشتر از بزرگ‌ها دوست دارم، مینا می‌گوید."
+    },
+    {
+      "en": "\"Small things can be good for you and me,\" Grandmother says.",
+      "fa": "چیزهای کوچک هم می‌توانند برای من و تو خوب باشند، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"The best star for me is that small one,\" Grandmother says.",
+      "fa": "برای من بهترین ستاره همان ستاره‌ی کوچک است، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "The best things are not always big.",
+      "fa": "بهترین چیزها همیشه بزرگ نیستند."
+    },
+    {
+      "en": "It is a festival night in the town.",
+      "fa": "امشب شب جشن در شهر است."
+    },
+    {
+      "en": "The summer festival is famous here.",
+      "fa": "جشن تابستان اینجا معروف است."
+    },
+    {
+      "en": "At the festival, people watch a movie.",
+      "fa": "در جشن، مردم یک فیلم تماشا می‌کنند."
+    },
+    {
+      "en": "The movie is about a cat.",
+      "fa": "فیلم درباره‌ی یک گربه است."
+    },
+    {
+      "en": "Movies about cats are common here.",
+      "fa": "فیلم‌هایی درباره‌ی گربه‌ها اینجا رایج هستند."
+    },
+    {
+      "en": "\"It is common in our culture,\" Grandmother says.",
+      "fa": "در فرهنگ ما رایج است، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "Cats are part of our culture.",
+      "fa": "گربه‌ها بخشی از فرهنگ ما هستند."
+    },
+    {
+      "en": "In the movie, a girl paints her cat.",
+      "fa": "در فیلم، دختری از گربه‌اش نقاشی می‌کشد."
+    },
+    {
+      "en": "She paints a black cat on a black background.",
+      "fa": "او یک گربه‌ی سیاه را روی زمینه‌ای سیاه نقاشی می‌کند."
+    },
+    {
+      "en": "The painting is famous.",
+      "fa": "نقاشی معروف است."
+    },
+    {
+      "en": "It is a beautiful painting.",
+      "fa": "نقاشی زیبایی است."
+    },
+    {
+      "en": "The design is beautiful.",
+      "fa": "طرحش زیباست."
+    },
+    {
+      "en": "Creating a good design is hard.",
+      "fa": "ساختن یک طرح خوب سخت است."
+    },
+    {
+      "en": "\"I want to paint Nino,\" Mina says.",
+      "fa": "می‌خواهم از نینو نقاشی بکشم، مینا می‌گوید."
+    },
+    {
+      "en": "I will paint him under the stars.",
+      "fa": "او را زیر ستاره‌ها نقاشی می‌کنم."
+    },
+    {
+      "en": "\"Is it possible to paint a star?\" Mina says.",
+      "fa": "ممکن است از یک ستاره نقاشی کشید؟ مینا می‌گوید."
+    },
+    {
+      "en": "\"Many things are possible when you practice,\" Grandmother says.",
+      "fa": "«وقتی تمرین می‌کنی، کارهای زیادی ممکن می‌شوند»، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "Is it possible that Nino is watching the stars, too?",
+      "fa": "ممکن است نینو هم دارد به ستاره‌ها نگاه می‌کند؟"
+    },
+    {
+      "en": "\"It is possible,\" Grandmother says.",
+      "fa": "ممکن است، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"Do not be negative,\" Grandmother says.",
+      "fa": "منفی نباش، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "Negative thoughts make Mina feel worse.",
+      "fa": "فکرهای منفی حال مینا را بدتر می‌کنند."
+    },
+    {
+      "en": "Be positive.",
+      "fa": "مثبت باش."
+    },
+    {
+      "en": "Positive thoughts give Mina hope.",
+      "fa": "فکرهای مثبت به مینا امید می‌دهند."
+    },
+    {
+      "en": "\"I will stay positive,\" Mina says.",
+      "fa": "«مثبت می‌مانم»، مینا می‌گوید."
+    },
+    {
+      "en": "Some nights are terrible without him.",
+      "fa": "بعضی شب‌ها بدون او وحشتناک هستند."
+    },
+    {
+      "en": "Without Nino, the house is not the same.",
+      "fa": "بدون نینو، خانه مثل قبل نیست."
+    },
+    {
+      "en": "Nothing is the same without him.",
+      "fa": "هیچ چیز بدون او مثل قبل نیست."
+    },
+    {
+      "en": "\"The terrible nights will end,\" Grandmother says.",
+      "fa": "شب‌های وحشتناک تمام خواهند شد، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"Make one clear statement,\" Grandmother says.",
+      "fa": "«یک جمله‌ی روشن بگو»، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"A statement?\" Mina says.",
+      "fa": "یک جمله؟ مینا می‌گوید."
+    },
+    {
+      "en": "Say your statement to the stars.",
+      "fa": "جمله‌ات را به ستاره‌ها بگو."
+    },
+    {
+      "en": "Mina stands up.",
+      "fa": "مینا بلند می‌شود."
+    },
+    {
+      "en": "\"My statement is this,\" she says.",
+      "fa": "جمله‌ی من این است، می‌گوید."
+    },
+    {
+      "en": "Nino, come home.",
+      "fa": "نینو، به خانه بیا."
+    },
+    {
+      "en": "\"That is a good title for your book,\" Grandmother says.",
+      "fa": "این عنوان خوبی برای کتابت است، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"The title of my book,\" Mina says.",
+      "fa": "عنوان کتابم، مینا می‌گوید."
+    },
+    {
+      "en": "\"And the topic?\" Grandmother says.",
+      "fa": "و موضوعش؟ مادربزرگ می‌گوید."
+    },
+    {
+      "en": "The topic is a cat.",
+      "fa": "موضوعش یک گربه است."
+    },
+    {
+      "en": "\"The topic is love,\" Grandmother says.",
+      "fa": "موضوعش عشق است، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "They sit without talking.",
+      "fa": "بدون حرف زدن می‌نشینند."
+    },
+    {
+      "en": "The stars are as quiet as cats.",
+      "fa": "ستاره‌ها مثل گربه‌ها ساکت‌اند."
+    },
+    {
+      "en": "Mina writes in her little book.",
+      "fa": "مینا در کتاب کوچکش می‌نویسد."
+    },
+    {
+      "en": "Title: Nino, Come Home.",
+      "fa": "عنوان: نینو، به خانه بیا."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا و مادربزرگ به چه چیزی نگاه می‌کنند؟",
+      "options": [
+        "star",
+        "movie",
+        "fire",
+        "garden"
+      ],
+      "a": "star"
+    },
+    {
+      "q": "در عنوان کتاب مینا، نینو باید کجا بیاید؟",
+      "options": [
+        "home",
+        "school",
+        "market",
+        "farm"
+      ],
+      "a": "home"
+    }
+  ]
+}

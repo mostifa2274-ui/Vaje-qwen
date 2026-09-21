@@ -1,0 +1,229 @@
+{
+  "id": "b3c2",
+  "book": 3,
+  "n": 2,
+  "titleFa": "مینا می‌شمارد",
+  "titleEn": "Mina Counts",
+  "new": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "first",
+    "second",
+    "third",
+    "fourth",
+    "fifth",
+    "clock",
+    "o-clock",
+    "hour",
+    "minute",
+    "check"
+  ],
+  "sentences": [
+    {
+      "en": "Mina has one cat.",
+      "fa": "مینا یک گربه دارد."
+    },
+    {
+      "en": "Her little cat is Nino.",
+      "fa": "گربه‌ی کوچک او نینو است."
+    },
+    {
+      "en": "She sees two birds.",
+      "fa": "او دو پرنده می‌بیند."
+    },
+    {
+      "en": "Two birds are in the park.",
+      "fa": "دو پرنده در پارک هستند."
+    },
+    {
+      "en": "Three houses are on the street.",
+      "fa": "سه خانه در خیابان هستند."
+    },
+    {
+      "en": "She looks at three houses.",
+      "fa": "او به سه خانه نگاه می‌کند."
+    },
+    {
+      "en": "Four rooms are in the house.",
+      "fa": "چهار اتاق در خانه هستند."
+    },
+    {
+      "en": "Mina looks in four rooms.",
+      "fa": "مینا به چهار اتاق نگاه می‌کند."
+    },
+    {
+      "en": "Five people are in the family.",
+      "fa": "پنج نفر در خانواده هستند."
+    },
+    {
+      "en": "Five people look for Nino.",
+      "fa": "پنج نفر دنبال نینو می‌گردند."
+    },
+    {
+      "en": "Six boys play football.",
+      "fa": "شش پسر فوتبال بازی می‌کنند."
+    },
+    {
+      "en": "She sees six boys.",
+      "fa": "او شش پسر می‌بیند."
+    },
+    {
+      "en": "There are seven days in a week.",
+      "fa": "در یک هفته هفت روز وجود دارد."
+    },
+    {
+      "en": "A week has seven days.",
+      "fa": "یک هفته هفت روز دارد."
+    },
+    {
+      "en": "There are eight windows in the house.",
+      "fa": "در خانه هشت پنجره وجود دارد."
+    },
+    {
+      "en": "The house has eight windows.",
+      "fa": "خانه هشت پنجره دارد."
+    },
+    {
+      "en": "Nine cats are in the street.",
+      "fa": "نه گربه در خیابان هستند."
+    },
+    {
+      "en": "She sees nine cats.",
+      "fa": "او نه گربه می‌بیند."
+    },
+    {
+      "en": "Not one is Nino.",
+      "fa": "حتی یکی هم نینو نیست."
+    },
+    {
+      "en": "Ten birds are in the park.",
+      "fa": "ده پرنده در پارک هستند."
+    },
+    {
+      "en": "She sees ten birds.",
+      "fa": "او ده پرنده می‌بیند."
+    },
+    {
+      "en": "Mina says: one, two, three.",
+      "fa": "مینا می‌گوید: یک، دو، سه."
+    },
+    {
+      "en": "It is eight o'clock.",
+      "fa": "ساعت هشت است."
+    },
+    {
+      "en": "It is nine o'clock.",
+      "fa": "ساعت نه است."
+    },
+    {
+      "en": "The clock is on the wall.",
+      "fa": "ساعت روی دیوار است."
+    },
+    {
+      "en": "She looks at the clock.",
+      "fa": "او به ساعت نگاه می‌کند."
+    },
+    {
+      "en": "It is the first day.",
+      "fa": "روز اول است."
+    },
+    {
+      "en": "The first day is bad.",
+      "fa": "روز اول بد است."
+    },
+    {
+      "en": "The second day is bad, too.",
+      "fa": "روز دوم هم بد است."
+    },
+    {
+      "en": "On the second day, she asks.",
+      "fa": "روز دوم، او می‌پرسد."
+    },
+    {
+      "en": "The third day of Mina’s count is Thursday.",
+      "fa": "روز سومِ شمارش مینا پنجشنبه است."
+    },
+    {
+      "en": "On the third day, she calls.",
+      "fa": "روز سوم، او صدا می‌کند."
+    },
+    {
+      "en": "It is the fourth day.",
+      "fa": "روز چهارم است."
+    },
+    {
+      "en": "The fourth day is Friday.",
+      "fa": "روز چهارم جمعه است."
+    },
+    {
+      "en": "The fifth day is Saturday.",
+      "fa": "روز پنجم شنبه است."
+    },
+    {
+      "en": "On the fifth day, she waits.",
+      "fa": "روز پنجم، او منتظر می‌ماند."
+    },
+    {
+      "en": "It is five o'clock.",
+      "fa": "ساعت پنج است."
+    },
+    {
+      "en": "She waits for one hour.",
+      "fa": "او یک ساعت منتظر می‌ماند."
+    },
+    {
+      "en": "Dad waits for one hour, too.",
+      "fa": "بابا هم یک ساعت منتظر می‌ماند."
+    },
+    {
+      "en": "A minute is a short time.",
+      "fa": "یک دقیقه زمان کوتاهی است."
+    },
+    {
+      "en": "She waits a minute.",
+      "fa": "او یک دقیقه صبر می‌کند."
+    },
+    {
+      "en": "\"Check the house,\" Mom says.",
+      "fa": "خانه را ببین، مامان می‌گوید."
+    },
+    {
+      "en": "Mina checks the house.",
+      "fa": "مینا خانه را بررسی می‌کند."
+    },
+    {
+      "en": "\"Check the yard,\" Dad says.",
+      "fa": "حیاط را ببین، بابا می‌گوید."
+    }
+  ],
+  "check": [
+    {
+      "q": "خانواده‌ی مینا چند نفر است؟",
+      "options": [
+        "five",
+        "four",
+        "six",
+        "three"
+      ],
+      "a": "five"
+    },
+    {
+      "q": "مینا در خیابان چند گربه می‌بیند؟",
+      "options": [
+        "nine",
+        "ten",
+        "two",
+        "eight"
+      ],
+      "a": "nine"
+    }
+  ]
+}
