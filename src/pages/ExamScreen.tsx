@@ -7,7 +7,7 @@ import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/
 import { speakEnglish } from '../engine/narration'
 import { play, wordSrc } from '../engine/audio'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
-import { clearExamDraft, EXAM_BREAK_EVERY, loadExamDraft, saveExamDraft } from '../engine/examDraft'
+import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 
 interface Props {
   examId: string
@@ -81,7 +81,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       version: 1,
       examId,
       attempt,
-      signature: '',
+      signature: examSignature(exam),
       index,
       answers,
       timings,
