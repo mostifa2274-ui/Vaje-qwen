@@ -22,10 +22,15 @@ jobs:
           expected_release='"release":"ghesse-5.0.0"'
           expected_worker='"worker":"vaje-qwen1"'
           expected_commit="\"commit\":\"$GITHUB_SHA\""
-          for attempt in $(seq 1 24); do
-            echo "Smoke attempt $attempt/24 for $GITHUB_SHA"
+          last_compact=''
+          for attempt in $(seq 1 40); do
+            echo "Smoke attempt $attempt/40 for $GITHUB_SHA"
             body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json" || true)"
             compact="$(printf '%s' "$body" | tr -d '[:space:]')"
+            last_compact="$compact"
+            if [ "$attempt" -eq 1 ] || [ $((attempt % 5)) -eq 0 ]; then
+              echo "Observed live marker: ${compact:-<empty>}"
+            fi
             if printf '%s' "$compact" | grep -Fq "$expected_release" \
               && printf '%s' "$compact" | grep -Fq "$expected_worker" \
               && printf '%s' "$compact" | grep -Fq "$expected_commit"; then
@@ -36,5 +41,5 @@ jobs:
             fi
             sleep 15
           done
-          echo "::error::Cloudflare production did not expose commit $GITHUB_SHA on worker vaje-qwen1 within the smoke window."
+          echo "::error::Cloudflare production did not expose commit $GITHUB_SHA on worker vaje-qwen1 within the smoke window. Last observed marker: ${last_compact:-<empty>}"
           exit 1
