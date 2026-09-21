@@ -7,9 +7,43 @@ concurrency:
   group: ghesse-ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  materialize:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Materialize verified release source
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f src/App.tsx ]; then
+            echo "Verified source is already materialized."
+            exit 0
+          fi
+          node bootstrap/restore.mjs
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No materialized changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: materialize verified Ghesse source"
+          git push origin HEAD:${{ github.head_ref }}
   quality:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
