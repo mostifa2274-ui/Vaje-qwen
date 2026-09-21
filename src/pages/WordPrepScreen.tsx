@@ -15,7 +15,7 @@ interface Props {
   onReady: () => void
 }
 
-type Phase = 'teach' | 'written' | 'listening' | 'done'
+type Phase = 'teach' | 'written' | 'listening'
 type Feedback = 'correct' | 'wrong' | null
 
 function faNum(n: number): string {
@@ -200,11 +200,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         Date.now(),
       )
       onChange(nextState)
-      setPhase('done')
+      onReady()
     }
   }
 
-  const step = phase === 'teach' ? 1 : phase === 'written' ? 2 : phase === 'listening' ? 3 : 4
+  const step = phase === 'teach' ? 1 : phase === 'written' ? 2 : 3
 
   return (
     <div className="page-in min-h-screen" style={{ background: 'var(--cream)' }}>
@@ -404,16 +404,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           </div>
         )}
 
-        {phase === 'done' && (
-          <div className="paper-card pop mt-5 p-6 text-center">
-            <div className="text-5xl">✓</div>
-            <h2 className="mt-3 text-2xl font-extrabold">قصه باز شد</h2>
-            <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-              همهٔ {faNum(chapter.new.length)} واژه ابتدا آموزش داده شدند، سپس آزمون ترجمهٔ نوشتاری و آزمون شنیداری را با پوشش ۱۰۰٪ گذراندی. حالا فصل باز است.
-            </p>
-            <button type="button" className="btn-crimson mt-5 w-full py-3.5 text-lg" onClick={onReady}>شروع قصه ←</button>
-          </div>
-        )}
+
       </main>
     </div>
   )
