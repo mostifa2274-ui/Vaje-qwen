@@ -65,10 +65,14 @@ npm run build
 
 - production branch: `main`
 - root: `/`
-- build variable: `SKIP_DEPENDENCY_INSTALL=1`
-- build command: `npm run cloudflare:build`
+- dependency install: خودکار؛ `SKIP_DEPENDENCY_INSTALL` را تنظیم نکن
+- build command پیشنهادی: `npm run build`
 - deploy command: `npx wrangler@4.135.0 deploy`
 - output: `dist/`
+- Worker name: `vaje-qwen`
+- production smoke URL: `https://vaje-qwen.mostifa2273.workers.dev/`
+
+اسکریپت `prepare` نیز `dist/` را هنگام نصب وابستگی‌ها می‌سازد تا تنظیم قدیمی Cloudflare با Build command خالی هم خراب نشود؛ با این حال تنظیم صریح `npm run build` شفاف‌تر و ترجیحی است. `.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را بررسی می‌کند.
 
 ## provenance
 
