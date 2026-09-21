@@ -136,6 +136,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   function answer(correct: boolean) {
     if (!question || result) return
+    if (resumedDraft) setResumedDraft(false)
     const elapsed = Math.max(1, Date.now() - questionStartedAt.current)
     const nextAnswers = { ...answers, [question.index]: correct }
     const nextTimings = { ...timings, [question.index]: elapsed }
@@ -256,7 +257,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
               <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={restartExam}>شروع از اول</button>
             </div>
           )}
-          <button type="button" className="btn-ink mt-5 w-full py-3" onClick={() => setOnBreak(false)}>ادامهٔ آزمون ←</button>
+          <button type="button" className="btn-ink mt-5 w-full py-3" onClick={() => { setResumedDraft(false); setOnBreak(false) }}>ادامهٔ آزمون ←</button>
         </div>
       </div>
     )
