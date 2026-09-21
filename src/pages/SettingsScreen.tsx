@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
 import { importStateJson, MAX_IMPORT_BYTES, resetState } from '../engine/store'
 import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish } from '../engine/narration'
+import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
 
 interface Props {
   state: GhesseState
@@ -68,14 +69,14 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
   }
 
   return (
-    <div className="page-in mx-auto min-h-screen max-w-lg px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+    <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
       <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper px-3 py-2 text-sm" onClick={onBack} aria-label="بازگشت به نقشه">→</button>
+        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
         <h1 className="text-2xl font-extrabold">تنظیمات</h1>
       </header>
 
       <div className="mt-6 space-y-4">
-        <div className="paper-card-flat flex items-center justify-between p-4">
+        <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
             <div className="font-bold">صدا</div>
             <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ واژه‌ها و خواندن جمله‌ها</div>
@@ -94,7 +95,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           </button>
         </div>
 
-        <div className="paper-card-flat p-4">
+        <div className="settings-section p-4 sm:p-5">
           <div className="font-bold">صدای راوی انگلیسی</div>
           <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
             قصه، واژه‌ها و مثال‌ها همگی از یک موتور گفتار استفاده می‌کنند. حالت خودکار بهترین صدای طبیعی/Neural انگلیسی موجود در Chrome یا سیستم‌عامل را انتخاب می‌کند و برای آماده‌شدن فهرست صداهای باکیفیت کمی صبر می‌کند.
@@ -102,7 +103,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           <label className="mt-3 block text-xs font-bold" htmlFor="narrator-voice">انتخاب صدا</label>
           <select
             id="narrator-voice"
-            className="mt-1 w-full rounded-lg border-2 border-[var(--ink)] bg-[var(--cream)] px-3 py-2 text-sm"
+            className="settings-select mt-1 w-full px-3 py-3 text-sm"
             dir="ltr"
             value={state.narratorVoiceURI}
             onChange={event => onChange({ ...state, narratorVoiceURI: event.target.value })}
@@ -139,12 +140,12 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
             onChange={event => onChange({ ...state, narratorRate: clampNarrationRate(Number(event.target.value)) })}
           />
           <button type="button" className="btn-paper mt-3 w-full py-2.5" disabled={!state.soundOn} onClick={previewNarrator}>
-            ▶ شنیدن نمونه
+            <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />شنیدن نمونه</span>
           </button>
         </div>
 
 
-        <div className="paper-card-flat p-4">
+        <div className="settings-section p-4 sm:p-5">
           <div className="font-bold">هدف مرور روزانه</div>
           <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
             وقتی کارت‌های سررسید زیاد باشند، مرور هوشمند این تعداد واژه را در هر جلسه انتخاب می‌کند. پاسخ‌های اشتباه تا بازیابی درست در همان جلسه برمی‌گردند.
@@ -164,7 +165,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           </div>
         </div>
 
-        <div className="paper-card-flat flex items-center justify-between p-4">
+        <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
             <div className="font-bold">ترجمه‌ی فارسی همیشه باز</div>
             <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>در حالت خاموش، دکمهٔ FA ترجمهٔ هر جمله را باز می‌کند.</div>
@@ -180,14 +181,14 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           </button>
         </div>
 
-        <div className="paper-card-flat p-4">
+        <div className="settings-section p-4 sm:p-5">
           <div className="font-bold">پشتیبان پیشرفت</div>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             برای جلوگیری از از دست رفتن پیشرفت در صورت پاک‌شدن داده‌های مرورگر، یک فایل JSON بگیر و هر زمان لازم شد آن را برگردان.
           </p>
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <button type="button" className="btn-paper py-2.5" onClick={exportProgress}>دریافت پشتیبان</button>
-            <button type="button" className="btn-paper py-2.5" onClick={() => fileRef.current?.click()}>بازیابی پشتیبان</button>
+            <button type="button" className="btn-paper py-2.5" onClick={exportProgress}><span className="inline-flex items-center justify-center gap-2"><DownloadIcon className="h-5 w-5" />دریافت پشتیبان</span></button>
+            <button type="button" className="btn-paper py-2.5" onClick={() => fileRef.current?.click()}><span className="inline-flex items-center justify-center gap-2"><UploadIcon className="h-5 w-5" />بازیابی پشتیبان</span></button>
           </div>
           <input
             ref={fileRef}
@@ -202,15 +203,15 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           {importMessage && <p className="mt-2 text-xs" role="status">{importMessage}</p>}
         </div>
 
-        <div className="paper-card-flat p-4">
-          <div className="font-bold">حریم خصوصی</div>
+        <div className="settings-section p-4 sm:p-5">
+          <div className="settings-section-title"><ShieldIcon className="h-5 w-5" aria-hidden="true" /><span>حریم خصوصی</span></div>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             قصه حساب کاربری یا سرور پیشرفت ندارد و دادهٔ یادگیری و تنظیمات در همین مرورگر می‌ماند. خواندن جمله‌های انگلیسی را موتور گفتار مرورگر/سیستم‌عامل انجام می‌دهد؛ بسته به صدایی که روی دستگاه انتخاب شده، خودِ سرویس گفتار ممکن است آنلاین یا آفلاین باشد.
           </p>
         </div>
 
-        <div className="paper-card-flat p-4">
-          <div className="font-bold" style={{ color: 'var(--crimson-deep)' }}>شروع دوباره</div>
+        <div className="settings-section settings-danger p-4 sm:p-5">
+          <div className="settings-section-title" style={{ color: 'var(--crimson-deep)' }}><TrashIcon className="h-5 w-5" aria-hidden="true" /><span>شروع دوباره</span></div>
           <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>همه‌ی پیشرفت پاک می‌شود و قصه از فصل اول آغاز می‌شود.</p>
           {!confirming ? (
             <button type="button" className="btn-paper mt-3 w-full py-2.5" onClick={() => setConfirming(true)}>پاک کردن پیشرفت</button>
@@ -223,7 +224,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         </div>
 
         <div className="pt-4 text-center text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-          قصه ۳٫۰ — ۸۹۹ واژه‌ی A1 در ۴۰ فصل
+          قصه ۵٫۰ — ۸۹۹ واژه‌ی A1 در ۴۰ فصل
           <br />
           تسلط از بازیابی فاصله‌دار، پاسخ نوشتاری، سختی واژه و شواهد چندروزه محاسبه می‌شود.
         </div>
