@@ -61,18 +61,22 @@ npm run build
 
 ## Cloudflare
 
-این repository برای Cloudflare Workers static assets آماده است:
+این repository برای Cloudflare Workers static assets و Git deployment آماده است. تنظیم فعلی Worker بدون تغییر داشبورد پشتیبانی می‌شود:
 
 - production branch: `main`
 - root: `/`
-- dependency install: خودکار؛ `SKIP_DEPENDENCY_INSTALL` را تنظیم نکن
-- build command پیشنهادی: `npm run build`
-- deploy command: `npx wrangler@4.135.0 deploy`
+- build command: خالی / `None`
+- build variable: `SKIP_DEPENDENCY_INSTALL=1`
+- deploy command: `npm run deploy`
 - output: `dist/`
 - Worker name: `vaje-qwen`
-- production smoke URL: `https://vaje-qwen.mostifa2273.workers.dev/`
+- production URL: `https://vaje-qwen.mostifa2273.workers.dev/`
 
-اسکریپت `prepare` نیز `dist/` را هنگام نصب وابستگی‌ها می‌سازد تا تنظیم قدیمی Cloudflare با Build command خالی هم خراب نشود؛ با این حال تنظیم صریح `npm run build` شفاف‌تر و ترجیحی است. `.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را بررسی می‌کند.
+`npm run deploy` عمداً self-contained است: ابتدا `npm ci --ignore-scripts` را از lockfile اجرا می‌کند، سپس همهٔ validationها، lint، test، TypeScript و Vite build را با `npm run cloudflare:build` می‌گذراند و در پایان Wrangler را deploy می‌کند. بنابراین `SKIP_DEPENDENCY_INSTALL=1` در تنظیم فعلی Cloudflare امن است.
+
+Cloudflare با تنظیم استاندارد جدید نیز پشتیبانی می‌شود: dependency install خودکار، Build command برابر `npm run build` و Deploy command برابر `npx wrangler@4.135.0 deploy`. در هر دو حالت `dist/` قبل از deploy ساخته می‌شود.
+
+`.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را بررسی می‌کند.
 
 ## provenance
 
