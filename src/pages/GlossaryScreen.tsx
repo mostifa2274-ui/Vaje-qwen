@@ -4,6 +4,7 @@ import { VOCAB } from '../data/chapters'
 import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
+import { BackIcon, SearchIcon } from '../components/Icons'
 
 interface Props {
   state: GhesseState
@@ -12,6 +13,10 @@ interface Props {
 }
 
 const PAGE_SIZE = 200
+
+function faNum(n: number): string {
+  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
+}
 
 const LEVEL_FA: Record<MasteryLevel, string> = {
   new: 'تازه',
@@ -65,24 +70,27 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
   }
 
   return (
-    <div className="page-in mx-auto min-h-screen max-w-lg px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+    <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
       <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper px-3 py-2 text-sm" onClick={onBack} aria-label="بازگشت به نقشه">→</button>
+        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
         <div className="flex-1">
           <h1 className="text-2xl font-extrabold">واژه‌نامه</h1>
           <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>
-            {counts.mastered} مسلط · {counts.strong} قوی · {trouble.size} نیازمند تمرین
+            {faNum(counts.mastered)} مسلط · {faNum(counts.strong)} قوی · {faNum(trouble.size)} نیازمند تمرین
           </p>
         </div>
       </header>
 
-      <input
-        className="paper-card-flat mt-4 w-full px-4 py-3 text-base outline-none"
-        placeholder="جست‌وجو: book یا کتاب…"
-        value={query}
-        onChange={event => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE) }}
-        aria-label="جست‌وجو در واژه‌نامه"
-      />
+      <label className="search-shell mt-4">
+        <SearchIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+        <input
+          className="min-w-0 flex-1 bg-transparent py-3 text-base outline-none"
+          placeholder="جست‌وجو: book یا کتاب…"
+          value={query}
+          onChange={event => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE) }}
+          aria-label="جست‌وجو در واژه‌نامه"
+        />
+      </label>
 
       <div className="strip-scroll mt-3 flex gap-2 overflow-x-auto pb-1" aria-label="فیلتر سطح تسلط">
         {(['all', 'trouble', 'mastered', 'strong', 'learning', 'seen', 'new'] as const).map(value => (
@@ -98,7 +106,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         ))}
       </div>
 
-      <div className="mt-4 space-y-2">
+      <div className="glossary-list mt-4">
         {list.slice(0, visibleCount).map(word => {
           const level = wordMastery(word.id, state)
           const needsWork = trouble.has(word.id)
@@ -106,14 +114,14 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
             <button
               type="button"
               key={word.id}
-              className="paper-card-flat flex w-full items-center gap-3 px-4 py-2.5 text-right"
+              className="glossary-row flex w-full items-center gap-3 px-3 py-3 text-right"
               onClick={() => tapWord(word)}
             >
               <span className="shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold" style={needsWork ? { background: '#f7d7d7', color: 'var(--ink)' } : LEVEL_STYLE[level]}>
                 {needsWork ? 'تمرین' : LEVEL_FA[level]}
               </span>
               <span className="font-en min-w-0 flex-1 truncate text-left font-semibold" dir="ltr">{word.word}</span>
-              <span className="shrink-0 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.fa}</span>
+              <span className="min-w-0 max-w-[48%] text-sm leading-6" style={{ color: 'var(--ink-soft)' }}>{word.fa}</span>
             </button>
           )
         })}
