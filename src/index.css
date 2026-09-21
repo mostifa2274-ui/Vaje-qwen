@@ -372,7 +372,7 @@ body {
     font-size: 1.08rem;
   }
   .story-paragraph {
-    padding: .72rem;
+    padding-block: .15rem;
   }
 }
 
