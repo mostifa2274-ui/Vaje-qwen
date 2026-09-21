@@ -34,8 +34,8 @@
       "fa": "عصر است."
     },
     {
-      "en": "It is evening, and Nino is not home.",
-      "fa": "عصر است و نینو خانه نیست."
+      "en": "It is evening, and Nino is still not home.",
+      "fa": "عصر است و نینو هنوز خانه نیست."
     },
     {
       "en": "Mom cooks dinner.",
@@ -66,8 +66,8 @@
       "fa": "صندلی سر میز است."
     },
     {
-      "en": "Mina sits at the table.",
-      "fa": "مینا سر میز می‌نشیند."
+      "en": "Mina sits at the table, but she keeps looking at the window.",
+      "fa": "مینا سر میز می‌نشیند، اما همچنان به پنجره نگاه می‌کند."
     },
     {
       "en": "She stands at the window.",
@@ -86,20 +86,20 @@
       "fa": "صدا می‌کند و صدا می‌کند."
     },
     {
-      "en": "\"We wait for Nino,\" Dad says.",
-      "fa": "منتظر نینو می‌مانیم، بابا می‌گوید."
+      "en": "\"We can wait for Nino,\" Dad says.",
+      "fa": "«می‌توانیم منتظر نینو بمانیم»، بابا می‌گوید."
     },
     {
       "en": "Mina waits at the window.",
       "fa": "مینا پشت پنجره منتظر می‌ماند."
     },
     {
-      "en": "\"I love Nino,\" Mina says.",
-      "fa": "من نینو را دوست دارم، مینا می‌گوید."
+      "en": "\"I love Nino,\" Mina says quietly.",
+      "fa": "«من نینو را دوست دارم»، مینا آرام می‌گوید."
     },
     {
-      "en": "\"We love Nino, too,\" Mom says.",
-      "fa": "ما هم نینو را دوست داریم، مامان می‌گوید."
+      "en": "\"We love him, too,\" Mom says.",
+      "fa": "«ما هم او را دوست داریم»، مامان می‌گوید."
     },
     {
       "en": "Nino likes milk.",
@@ -138,20 +138,20 @@
       "fa": "یک روز بدِ بد، مینا می‌گوید."
     },
     {
-      "en": "\"I want Nino,\" Mina says.",
-      "fa": "نینو را می‌خواهم، مینا می‌گوید."
+      "en": "\"I just want Nino home,\" Mina says.",
+      "fa": "«فقط می‌خواهم نینو خانه باشد»، مینا می‌گوید."
     },
     {
       "en": "She wants her cat.",
       "fa": "او گربه‌اش را می‌خواهد."
     },
     {
-      "en": "\"Can Nino come home?\" she says.",
-      "fa": "نینو می‌تواند به خانه بیاید؟ می‌گوید."
+      "en": "\"Can Nino come home tonight?\" she says.",
+      "fa": "«نینو می‌تواند امشب به خانه بیاید؟» او می‌گوید."
     },
     {
-      "en": "\"I cannot sleep,\" Mina says.",
-      "fa": "نمی‌توانم بخوابم، مینا می‌گوید."
+      "en": "\"I cannot sleep without him,\" Mina says.",
+      "fa": "«بدون او نمی‌توانم بخوابم»، مینا می‌گوید."
     },
     {
       "en": "Mina is sad, but she looks.",
@@ -174,24 +174,24 @@
       "fa": "نوزاد می‌خوابد."
     },
     {
-      "en": "\"I hope Nino comes home,\" Mina says.",
-      "fa": "امیدوارم نینو به خانه برگردد، مینا می‌گوید."
+      "en": "\"I hope Nino comes home tonight,\" Mina says.",
+      "fa": "«امیدوارم نینو امشب به خانه بیاید»، مینا می‌گوید."
     },
     {
-      "en": "\"We hope, too,\" Dad says.",
-      "fa": "ما هم امید داریم، بابا می‌گوید."
+      "en": "\"We hope so, too,\" Dad says.",
+      "fa": "«ما هم امیدواریم»، بابا می‌گوید."
     },
     {
       "en": "Mina is not well.",
       "fa": "مینا خوب نیست."
     },
     {
-      "en": "\"Are you well?\" Mom says.",
-      "fa": "خوب هستی؟ مامان می‌گوید."
+      "en": "\"Are you well?\" Mom says softly.",
+      "fa": "«حالت خوب است؟» مامان آرام می‌گوید."
     },
     {
-      "en": "\"Yes,\" Mina says.",
-      "fa": "بله، مینا می‌گوید."
+      "en": "\"Yes,\" Mina says, but her voice is small.",
+      "fa": "«بله»، مینا می‌گوید، اما صدایش آرام است."
     },
     {
       "en": "Yes, yes.",
