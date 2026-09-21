@@ -42,12 +42,12 @@
       "fa": "بدنش داغ است."
     },
     {
-      "en": "\"Oh, no,\" Aunt says.",
-      "fa": "اوه، نه، خاله می‌گوید."
+      "en": "\"Oh no,\" Aunt says when she touches his hot forehead.",
+      "fa": "«اوه نه»، خاله وقتی پیشانی داغش را لمس می‌کند می‌گوید."
     },
     {
-      "en": "\"Oh, stay in bed,\" Aunt says.",
-      "fa": "«اوه، در تخت بمان»، خاله می‌گوید."
+      "en": "\"Oh, stay in bed for a moment,\" Aunt says.",
+      "fa": "«اوه، یک لحظه در تخت بمان»، خاله می‌گوید."
     },
     {
       "en": "We have to go to the doctor.",
@@ -58,12 +58,12 @@
       "fa": "امروز باید دکتر ببینی."
     },
     {
-      "en": "\"OK,\" Uncle says.",
-      "fa": "«باشه»، دایی می‌گوید."
+      "en": "\"OK,\" Uncle says. \"I think I need the doctor.\"",
+      "fa": "«باشه»، دایی می‌گوید. «فکر کنم به دکتر نیاز دارم.»"
     },
     {
-      "en": "OK, OK, I am coming.",
-      "fa": "باشه، باشه، دارم می‌آیم."
+      "en": "\"OK, OK, I am coming,\" he says as he stands slowly.",
+      "fa": "«باشه، باشه، دارم می‌آیم»، وقتی آرام بلند می‌شود می‌گوید."
     },
     {
       "en": "The hospital is in the town.",
@@ -86,24 +86,24 @@
       "fa": "بابا سریع رانندگی می‌کند، اما نه خیلی سریع."
     },
     {
-      "en": "Dad wants a quick trip, but he drives safely.",
-      "fa": "بابا می‌خواهد زود برسند، اما با احتیاط رانندگی می‌کند."
+      "en": "Dad wants a quick trip, but he drives safely down the mountain.",
+      "fa": "بابا می‌خواهد زود برسند، اما با احتیاط از کوه پایین می‌راند."
     },
     {
       "en": "But the mountain road is dangerous.",
       "fa": "اما جاده‌ی کوهستان خطرناک است."
     },
     {
-      "en": "\"It is better to drive slowly here,\" Dad says.",
-      "fa": "اینجا بهتر است آرام رانندگی کنیم، بابا می‌گوید."
+      "en": "\"It is better to drive slowly here,\" Dad says, watching the road.",
+      "fa": "«اینجا بهتر است آرام رانندگی کنیم»، بابا در حالی که جاده را نگاه می‌کند می‌گوید."
     },
     {
-      "en": "He drives slowly on the dangerous parts.",
-      "fa": "او در قسمت‌های خطرناک آرام رانندگی می‌کند."
+      "en": "He drives slowly through the dangerous turns.",
+      "fa": "او در پیچ‌های خطرناک آرام رانندگی می‌کند."
     },
     {
-      "en": "It is dangerous to drive quickly here.",
-      "fa": "اینجا سریع رانندگی کردن خطرناک است."
+      "en": "Driving too quickly here would be dangerous.",
+      "fa": "اینجا خیلی سریع رانندگی کردن خطرناک خواهد بود."
     },
     {
       "en": "At the hospital, a nurse waits.",
@@ -126,12 +126,12 @@
       "fa": "دکتر کاملاً جوان است."
     },
     {
-      "en": "\"But he is quite good,\" the nurse says.",
-      "fa": "اما کاملاً خوب است، پرستار می‌گوید."
+      "en": "\"But he is quite good,\" the nurse says when Mina looks worried.",
+      "fa": "«اما او کاملاً دکتر خوبی است»، پرستار وقتی مینا نگران به نظر می‌رسد می‌گوید."
     },
     {
-      "en": "\"It is probably a cold,\" the doctor says.",
-      "fa": "احتمالاً سرماخوردگی است، دکتر می‌گوید."
+      "en": "\"It is probably a cold,\" the doctor says after the exam.",
+      "fa": "«احتمالاً سرماخوردگی است»، دکتر بعد از معاینه می‌گوید."
     },
     {
       "en": "You probably have a cold.",
@@ -154,8 +154,8 @@
       "fa": "و باید خوب غذا بخوری."
     },
     {
-      "en": "\"Health is important,\" the doctor says.",
-      "fa": "سلامتی مهم است، دکتر می‌گوید."
+      "en": "\"Your health is important,\" the doctor says.",
+      "fa": "«سلامتی‌ات مهم است»، دکتر می‌گوید."
     },
     {
       "en": "Your health comes first.",
@@ -170,8 +170,8 @@
       "fa": "رژیم غذایی سالم مهم است."
     },
     {
-      "en": "Fruit and vegetables are part of a healthy diet.",
-      "fa": "میوه و سبزیجات بخشی از یک رژیم غذایی سالم هستند."
+      "en": "Fruit and vegetables are an important part of a healthy diet.",
+      "fa": "میوه و سبزیجات بخش مهمی از یک رژیم غذایی سالم هستند."
     },
     {
       "en": "And you should exercise.",
@@ -190,76 +190,76 @@
       "fa": "ورزش منظم می‌تواند به سالم ماندن آدم‌ها کمک کند."
     },
     {
-      "en": "Exercise can help make the body strong.",
-      "fa": "ورزش می‌تواند به قوی شدن بدن کمک کند."
+      "en": "Exercise can also make the body stronger.",
+      "fa": "ورزش همچنین می‌تواند بدن را قوی‌تر کند."
     },
     {
-      "en": "\"You are a strong man,\" the doctor says.",
-      "fa": "تو مرد قوی‌ای هستی، دکتر می‌گوید."
+      "en": "\"You are a strong man, but even strong people need rest,\" the doctor says.",
+      "fa": "«تو مرد قوی‌ای هستی، اما حتی آدم‌های قوی هم به استراحت نیاز دارند»، دکتر می‌گوید."
     },
     {
-      "en": "Rest in bed for two more days.",
-      "fa": "دو روز دیگر در تخت استراحت کن."
+      "en": "Rest in bed for two more days and drink plenty of water.",
+      "fa": "دو روز دیگر در تخت استراحت کن و آب زیادی بنوش."
     },
     {
-      "en": "\"OK,\" Uncle says again.",
-      "fa": "«باشه»، دایی دوباره می‌گوید."
+      "en": "\"OK,\" Uncle says again. \"I will rest.\"",
+      "fa": "«باشه»، دایی دوباره می‌گوید. «استراحت می‌کنم.»"
     },
     {
-      "en": "\"Are you ready to go home?\" Dad says.",
-      "fa": "آماده‌ای برویم خانه؟ بابا می‌گوید."
+      "en": "\"Are you ready to go home?\" Dad asks.",
+      "fa": "«آماده‌ای برویم خانه؟» بابا می‌پرسد."
     },
     {
-      "en": "\"I am ready,\" Uncle says.",
-      "fa": "آماده‌ام، دایی می‌گوید."
+      "en": "\"I am ready,\" Uncle says, moving slowly.",
+      "fa": "«آماده‌ام»، دایی آرام حرکت می‌کند و می‌گوید."
     },
     {
-      "en": "\"Get ready, everyone,\" Aunt says.",
-      "fa": "همه آماده شوید، خاله می‌گوید."
+      "en": "\"Get ready, everyone,\" Aunt says. \"Let him rest at home.\"",
+      "fa": "«همه آماده شوید»، خاله می‌گوید. «بگذارید در خانه استراحت کند.»"
     },
     {
       "en": "The family is ready.",
       "fa": "خانواده آماده است."
     },
     {
-      "en": "\"Thank you, Doctor,\" they say.",
-      "fa": "«متشکریم، دکتر»، می‌گویند."
+      "en": "\"Thank you, Doctor,\" the family says.",
+      "fa": "«متشکریم، دکتر»، خانواده می‌گویند."
     },
     {
-      "en": "\"Thank you, Nurse,\" Mina says.",
-      "fa": "«متشکرم، پرستار»، مینا می‌گوید."
+      "en": "\"Thank you, Nurse,\" Mina adds.",
+      "fa": "«متشکرم، پرستار»، مینا هم اضافه می‌کند."
     },
     {
       "en": "Mina thinks about the visit.",
       "fa": "مینا به این ملاقات فکر می‌کند."
     },
     {
-      "en": "The visit went quite well.",
-      "fa": "این مراجعه نسبتاً خوب پیش رفت."
+      "en": "The visit went quite well, and Mina feels less worried.",
+      "fa": "این مراجعه نسبتاً خوب پیش رفت و مینا کمتر نگران است."
     },
     {
-      "en": "\"I really like the doctor,\" she says.",
-      "fa": "من واقعاً دکتر را دوست دارم، می‌گوید."
+      "en": "\"I really like the doctor,\" she says on the way back.",
+      "fa": "«من واقعاً دکتر را دوست دارم»، در راه برگشت می‌گوید."
     },
     {
-      "en": "I really do like him.",
-      "fa": "واقعاً او را دوست دارم."
+      "en": "\"I really do like him. He helped Uncle,\" Mina says.",
+      "fa": "«واقعاً دوستش دارم. به دایی کمک کرد»، مینا می‌گوید."
     },
     {
       "en": "\"Sick people need doctors,\" Mom says.",
-      "fa": "آدم‌های مریض به دکترها نیاز دارند، مامان می‌گوید."
+      "fa": "«آدم‌های مریض به دکتر نیاز دارند»، مامان می‌گوید."
     },
     {
-      "en": "\"And sick cats need help, too,\" Mina says.",
-      "fa": "و گربه‌های مریض هم به کمک نیاز دارند، مینا می‌گوید."
+      "en": "\"And sick cats need help, too,\" Mina says, thinking of Nino.",
+      "fa": "«و گربه‌های مریض هم به کمک نیاز دارند»، مینا در حالی که به نینو فکر می‌کند می‌گوید."
     },
     {
       "en": "Mom looks at her.",
       "fa": "مامان به او نگاه می‌کند."
     },
     {
-      "en": "\"Yes,\" she says. \"They do.\"",
-      "fa": "«بله»، می‌گوید. «نیاز دارند.»"
+      "en": "\"Yes,\" Mom says softly. \"They do.\"",
+      "fa": "«بله»، مامان آرام می‌گوید. «نیاز دارند.»"
     }
   ],
   "check": [
