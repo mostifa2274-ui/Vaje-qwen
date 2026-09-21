@@ -4,5 +4,6 @@
   "worker": "vaje-qwen1",
   "vocabulary": 899,
   "chapters": 40,
-  "stateSchema": 6
+  "stateSchema": 6,
+  "learningFlow": "teach-write-listen-100"
 }
