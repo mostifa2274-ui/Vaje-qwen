@@ -697,6 +697,7 @@ button:disabled {
 .learning-focus-card {
   max-width: 44rem;
   margin-inline: auto;
+  scroll-margin-top: 7rem;
   border: 1px solid var(--line-medium);
   border-radius: 18px;
   background: color-mix(in srgb, var(--cream) 95%, white);
@@ -712,6 +713,15 @@ button:disabled {
 .story-reading {
   max-width: 44rem;
   margin-inline: auto;
+}
+
+.question-card {
+  scroll-margin-top: 7rem;
+}
+
+.feedback-panel {
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
 }
 
 .story-sentence-actions {
