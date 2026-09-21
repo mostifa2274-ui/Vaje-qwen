@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { CHAPTERS, VOCAB, WORD_BY_ID } from '../data/chapters'
+import { VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState, RetrievalMode } from '../engine/types'
 import { masteryCounts } from '../engine/mastery'
 import {
@@ -19,6 +19,7 @@ import { examRemediationWordIds } from '../engine/gates'
 
 interface Props {
   state: GhesseState
+  now: number
   onChange: (next: GhesseState) => void
   onBack: () => void
 }
@@ -44,8 +45,7 @@ function weaknessLabel(mode: RetrievalMode): string {
   return 'تولید فعال'
 }
 
-export default function ReviewScreen({ state, onChange, onBack }: Props) {
-  const now = Date.now()
+export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const due = useMemo(() => dueWordIds(state.words, now), [state.words, now])
   const trouble = useMemo(() => troubleWordIds(state.words), [state.words])
   const remediation = useMemo(() => examRemediationWordIds(state), [state])
@@ -68,7 +68,7 @@ export default function ReviewScreen({ state, onChange, onBack }: Props) {
   const [selected, setSelected] = useState('')
   const [typed, setTyped] = useState('')
   const [attemptNumber, setAttemptNumber] = useState<Record<string, number>>({})
-  const startedAtRef = useRef(Date.now())
+  const startedAtRef = useRef(0)
 
   const currentId = queue[0]
   const currentWord = currentId ? WORD_BY_ID.get(currentId) : undefined
@@ -78,7 +78,7 @@ export default function ReviewScreen({ state, onChange, onBack }: Props) {
     () => currentWord ? buildReviewQuestion(currentWord, VOCAB, mode, `review:${currentId}:${attemptNumber[currentId] ?? 0}`) : undefined,
     [attemptNumber, currentId, currentWord, mode],
   )
-  const counts = useMemo(() => masteryCounts(state, CHAPTERS, VOCAB.map(w => w.id)), [state])
+  const counts = useMemo(() => masteryCounts(state, VOCAB.map(w => w.id)), [state])
 
   useEffect(() => {
     startedAtRef.current = Date.now()
