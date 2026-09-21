@@ -36,8 +36,8 @@
   ],
   "sentences": [
     {
-      "en": "Mina runs to the house.",
-      "fa": "مینا به خانه می‌دود."
+      "en": "Mina runs back to the house.",
+      "fa": "مینا دوباره به سمت خانه می‌دود."
     },
     {
       "en": "\"Mom!\" she says.",
@@ -52,16 +52,16 @@
       "fa": "بابا در آشپزخانه است."
     },
     {
-      "en": "\"Where is Nino?\" Mina says.",
-      "fa": "نینو کجاست؟ مینا می‌گوید."
+      "en": "\"Where is Nino?\" Mina says quickly.",
+      "fa": "«نینو کجاست؟» مینا با عجله می‌گوید."
     },
     {
       "en": "Nino is not at home.",
       "fa": "نینو در خانه نیست."
     },
     {
-      "en": "\"We look for Nino,\" Mom says.",
-      "fa": "دنبال نینو می‌گردیم، مامان می‌گوید."
+      "en": "\"We look for Nino together,\" Mom says.",
+      "fa": "«همه با هم دنبال نینو می‌گردیم»، مامان می‌گوید."
     },
     {
       "en": "Dad looks in the rooms.",
@@ -84,12 +84,12 @@
       "fa": "نوزاد در اتاقش است."
     },
     {
-      "en": "Her little sister is in the room.",
-      "fa": "خواهر کوچکش در اتاق است."
+      "en": "Her little sister is still in the room.",
+      "fa": "خواهر کوچکش هنوز در اتاق است."
     },
     {
-      "en": "\"Nino! Nino!\" Mina says.",
-      "fa": "نینو! نینو! مینا می‌گوید."
+      "en": "\"Nino! Nino!\" Mina calls through the house.",
+      "fa": "«نینو! نینو!» مینا در خانه صدایش می‌کند."
     },
     {
       "en": "The family looks and looks.",
@@ -100,16 +100,16 @@
       "fa": "خانواده دنبال نینو می‌گردد."
     },
     {
-      "en": "\"We do not see Nino,\" Dad says.",
-      "fa": "نینو را نمی‌بینیم، بابا می‌گوید."
+      "en": "\"We do not see Nino,\" Dad says at last.",
+      "fa": "«نینو را نمی‌بینیم»، بابا در پایان می‌گوید."
     },
     {
       "en": "\"He is my cat,\" Mina says.",
       "fa": "او گربه‌ی من است، مینا می‌گوید."
     },
     {
-      "en": "\"He is our cat,\" her brother says.",
-      "fa": "او گربه‌ی ماست، برادرش می‌گوید."
+      "en": "\"And he is our cat,\" her brother says.",
+      "fa": "«و او گربه‌ی ما هم هست»، برادرش می‌گوید."
     },
     {
       "en": "Mom and Dad are her parents.",
@@ -132,12 +132,12 @@
       "fa": "خانواده در خانه زندگی می‌کند."
     },
     {
-      "en": "\"Our house is our home,\" Mom says.",
-      "fa": "خانه‌مان خانه‌ی ماست، مامان می‌گوید."
+      "en": "\"Our house is our home, and Nino knows it,\" Mom says.",
+      "fa": "«خانه‌ی ما خانه‌ی نینو هم هست و او آن را می‌شناسد»، مامان می‌گوید."
     },
     {
-      "en": "Mom and Dad have daughters and a son.",
-      "fa": "مامان و بابا دخترانی و یک پسر دارند."
+      "en": "Mom and Dad have two daughters and a son.",
+      "fa": "مامان و بابا دو دختر و یک پسر دارند."
     },
     {
       "en": "The daughter is Mina.",
@@ -148,16 +148,16 @@
       "fa": "پسر، برادرش است."
     },
     {
-      "en": "\"Look at me,\" Mina says.",
-      "fa": "به من نگاه کن، مینا می‌گوید."
+      "en": "\"Look at me,\" Mina says to the bird.",
+      "fa": "«به من نگاه کن»، مینا به پرنده می‌گوید."
     },
     {
-      "en": "The bird looks at Mina.",
-      "fa": "پرنده به مینا نگاه می‌کند."
+      "en": "The red bird looks back at Mina.",
+      "fa": "پرنده‌ی قرمز دوباره به مینا نگاه می‌کند."
     },
     {
-      "en": "\"Where is my cat?\" Mina says.",
-      "fa": "گربه‌ام کجاست؟ مینا می‌گوید."
+      "en": "\"Where is my cat?\" Mina says again.",
+      "fa": "«گربه‌ام کجاست؟» مینا دوباره می‌گوید."
     },
     {
       "en": "Mina goes to the door.",
@@ -169,15 +169,15 @@
     },
     {
       "en": "\"Where did he go?\" Mom says.",
-      "fa": "او کجا رفت؟ مامان می‌گوید."
+      "fa": "«او کجا رفت؟» مامان می‌گوید."
     },
     {
-      "en": "\"He ran to the bird,\" Mina says.",
-      "fa": "«او به سمت پرنده دوید»، مینا می‌گوید."
+      "en": "\"He ran after the bird,\" Mina says.",
+      "fa": "«او دنبال پرنده دوید»، مینا می‌گوید."
     },
     {
-      "en": "\"Come home, Nino!\" she says.",
-      "fa": "بیا خانه، نینو! می‌گوید."
+      "en": "\"Come home, Nino!\" Mina calls.",
+      "fa": "«بیا خانه، نینو!» مینا صدایش می‌کند."
     },
     {
       "en": "Come home! Come home!",

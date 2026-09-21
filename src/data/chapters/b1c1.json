@@ -43,8 +43,8 @@
       "fa": "گربه سیاه است."
     },
     {
-      "en": "His name is Nino.",
-      "fa": "اسمش نینو است."
+      "en": "The cat's name is Nino.",
+      "fa": "اسم گربه نینو است."
     },
     {
       "en": "Mina and Nino are at home.",
@@ -63,8 +63,8 @@
       "fa": "این کتاب من است، نینو."
     },
     {
-      "en": "Mina looks at the book.",
-      "fa": "مینا به کتاب نگاه می‌کند."
+      "en": "Mina looks at the red book.",
+      "fa": "مینا به کتاب قرمز نگاه می‌کند."
     },
     {
       "en": "The cat is on the book.",
@@ -91,8 +91,8 @@
       "fa": "پرنده روی کتاب است."
     },
     {
-      "en": "Nino runs toward the bird.",
-      "fa": "نینو به سمت پرنده می‌دود."
+      "en": "Nino sees the bird and runs toward it.",
+      "fa": "نینو پرنده را می‌بیند و به سمتش می‌دود."
     },
     {
       "en": "The bird runs and runs.",
@@ -103,8 +103,8 @@
       "fa": "نینو می‌دود و می‌دود."
     },
     {
-      "en": "Mina looks for Nino, but she does not see the cat.",
-      "fa": "مینا دنبال نینو می‌گردد، اما گربه را نمی‌بیند."
+      "en": "Mina looks for Nino, but she does not see him.",
+      "fa": "مینا دنبال نینو می‌گردد، اما او را نمی‌بیند."
     },
     {
       "en": "\"I do not see my cat,\" Mina says.",
@@ -115,20 +115,20 @@
       "fa": "نینو در خانه نیست."
     },
     {
-      "en": "Mina sees no cat and no bird.",
-      "fa": "مینا نه گربه‌ای می‌بیند و نه پرنده‌ای."
+      "en": "Mina looks again: no cat, no bird.",
+      "fa": "مینا دوباره نگاه می‌کند: نه گربه‌ای، نه پرنده‌ای."
     },
     {
-      "en": "It is morning, and Nino is not home.",
-      "fa": "صبح است و نینو خانه نیست."
+      "en": "It is still morning, and Nino is not home.",
+      "fa": "هنوز صبح است و نینو خانه نیست."
     },
     {
       "en": "This is my book, and Nino is not in it.",
       "fa": "این کتاب من است، و نینو در آن نیست."
     },
     {
-      "en": "Mina runs and runs.",
-      "fa": "مینا می‌دود و می‌دود."
+      "en": "Mina runs out and looks for Nino.",
+      "fa": "مینا بیرون می‌دود و دنبال نینو می‌گردد."
     }
   ],
   "check": [
