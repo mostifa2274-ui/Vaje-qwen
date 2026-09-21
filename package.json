@@ -17,7 +17,7 @@
     "validate:mastery": "node scripts/validate-mastery.mjs",
     "prepare": "npm run build",
     "cloudflare:build": "npm run check",
-    "deploy": "npm run cloudflare:build && npx wrangler@4.135.0 deploy"
+    "deploy": "npm ci --ignore-scripts --no-audit --no-fund && npm run cloudflare:build && npx wrangler@4.135.0 deploy"
   },
   "dependencies": {
     "react": "^19.2.0",
