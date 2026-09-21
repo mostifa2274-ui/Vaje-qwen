@@ -18,21 +18,21 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, newIds
   const tokens = useMemo(() => tokenizeSentence(en, lemmaMap), [en])
 
   return (
-    <div className="flex items-start gap-2">
-      <div className="mt-1 flex shrink-0 flex-col gap-2">
+    <div className="story-sentence">
+      <div className="story-sentence-actions">
         <button
           type="button"
-          className="btn-paper flex h-8 w-8 items-center justify-center text-xs"
+          className="story-action"
           onClick={onPlay}
           disabled={!soundOn}
           aria-label="شنیدن جمله"
-          style={isPlaying ? { background: 'var(--gold)' } : undefined}
+          aria-pressed={isPlaying}
         >
           {isPlaying ? '▶' : '🔊'}
         </button>
         <button
           type="button"
-          className="btn-paper flex h-8 w-8 items-center justify-center text-[10px]"
+          className="story-action story-action-fa"
           onClick={onToggleFa}
           aria-expanded={showFa}
           aria-label={showFa ? 'پنهان کردن ترجمهٔ فارسی' : 'نمایش ترجمهٔ فارسی'}
@@ -62,7 +62,7 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, newIds
           })}
         </p>
         {showFa && (
-          <p className="story-fa mt-1 text-[0.95rem] page-in" style={{ color: 'var(--ink-soft)' }}>
+          <p className="story-fa page-in mt-1" style={{ color: 'var(--ink-soft)' }}>
             {fa}
           </p>
         )}
