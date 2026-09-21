@@ -1,0 +1,227 @@
+{
+  "id": "b1c5",
+  "book": 1,
+  "n": 5,
+  "titleFa": "شبِ اول",
+  "titleEn": "The First Night",
+  "new": [
+    "evening",
+    "night",
+    "sleep",
+    "dinner",
+    "cook",
+    "sit",
+    "chair",
+    "stand",
+    "love",
+    "like-2",
+    "happy",
+    "sad",
+    "good",
+    "bad",
+    "want",
+    "wait",
+    "call",
+    "hope",
+    "can",
+    "but",
+    "yes",
+    "well"
+  ],
+  "sentences": [
+    {
+      "en": "It is evening.",
+      "fa": "عصر است."
+    },
+    {
+      "en": "It is evening, and Nino is not home.",
+      "fa": "عصر است و نینو خانه نیست."
+    },
+    {
+      "en": "Mom cooks dinner.",
+      "fa": "مامان شام می‌پزد."
+    },
+    {
+      "en": "She cooks in the kitchen.",
+      "fa": "او در آشپزخانه می‌پزد."
+    },
+    {
+      "en": "The family eats dinner.",
+      "fa": "خانواده شام می‌خورد."
+    },
+    {
+      "en": "The dinner is good.",
+      "fa": "شام خوب است."
+    },
+    {
+      "en": "Dad sits at the table.",
+      "fa": "بابا سر میز می‌نشیند."
+    },
+    {
+      "en": "He sits on a chair.",
+      "fa": "او روی صندلی می‌نشیند."
+    },
+    {
+      "en": "The chair is at the table.",
+      "fa": "صندلی سر میز است."
+    },
+    {
+      "en": "Mina sits at the table.",
+      "fa": "مینا سر میز می‌نشیند."
+    },
+    {
+      "en": "She stands at the window.",
+      "fa": "او پشت پنجره می‌ایستد."
+    },
+    {
+      "en": "She stands and looks.",
+      "fa": "می‌ایستد و نگاه می‌کند."
+    },
+    {
+      "en": "Mina calls Nino.",
+      "fa": "مینا نینو را صدا می‌کند."
+    },
+    {
+      "en": "She calls and calls.",
+      "fa": "صدا می‌کند و صدا می‌کند."
+    },
+    {
+      "en": "\"We wait for Nino,\" Dad says.",
+      "fa": "منتظر نینو می‌مانیم، بابا می‌گوید."
+    },
+    {
+      "en": "Mina waits at the window.",
+      "fa": "مینا پشت پنجره منتظر می‌ماند."
+    },
+    {
+      "en": "\"I love Nino,\" Mina says.",
+      "fa": "من نینو را دوست دارم، مینا می‌گوید."
+    },
+    {
+      "en": "\"We love Nino, too,\" Mom says.",
+      "fa": "ما هم نینو را دوست داریم، مامان می‌گوید."
+    },
+    {
+      "en": "Nino likes milk.",
+      "fa": "نینو شیر دوست دارد."
+    },
+    {
+      "en": "Mina likes her book.",
+      "fa": "مینا کتابش را دوست دارد."
+    },
+    {
+      "en": "Nino is a good cat.",
+      "fa": "نینو گربه‌ی خوبی است."
+    },
+    {
+      "en": "Mina is not happy.",
+      "fa": "مینا خوشحال نیست."
+    },
+    {
+      "en": "The baby is happy.",
+      "fa": "نوزاد خوشحال است."
+    },
+    {
+      "en": "Mina is sad.",
+      "fa": "مینا غمگین است."
+    },
+    {
+      "en": "Dad is sad, too.",
+      "fa": "بابا هم غمگین است."
+    },
+    {
+      "en": "It is a bad day.",
+      "fa": "روز بدی است."
+    },
+    {
+      "en": "\"A bad, bad day,\" Mina says.",
+      "fa": "یک روز بدِ بد، مینا می‌گوید."
+    },
+    {
+      "en": "\"I want Nino,\" Mina says.",
+      "fa": "نینو را می‌خواهم، مینا می‌گوید."
+    },
+    {
+      "en": "She wants her cat.",
+      "fa": "او گربه‌اش را می‌خواهد."
+    },
+    {
+      "en": "\"Can Nino come home?\" she says.",
+      "fa": "نینو می‌تواند به خانه بیاید؟ می‌گوید."
+    },
+    {
+      "en": "\"I cannot sleep,\" Mina says.",
+      "fa": "نمی‌توانم بخوابم، مینا می‌گوید."
+    },
+    {
+      "en": "Mina is sad, but she looks.",
+      "fa": "مینا غمگین است، اما نگاه می‌کند."
+    },
+    {
+      "en": "It is night, but Nino is not home.",
+      "fa": "شب است، اما نینو خانه نیست."
+    },
+    {
+      "en": "It is night.",
+      "fa": "شب است."
+    },
+    {
+      "en": "Mina sleeps.",
+      "fa": "مینا می‌خوابد."
+    },
+    {
+      "en": "The baby sleeps.",
+      "fa": "نوزاد می‌خوابد."
+    },
+    {
+      "en": "\"I hope Nino comes home,\" Mina says.",
+      "fa": "امیدوارم نینو به خانه برگردد، مینا می‌گوید."
+    },
+    {
+      "en": "\"We hope, too,\" Dad says.",
+      "fa": "ما هم امید داریم، بابا می‌گوید."
+    },
+    {
+      "en": "Mina is not well.",
+      "fa": "مینا خوب نیست."
+    },
+    {
+      "en": "\"Are you well?\" Mom says.",
+      "fa": "خوب هستی؟ مامان می‌گوید."
+    },
+    {
+      "en": "\"Yes,\" Mina says.",
+      "fa": "بله، مینا می‌گوید."
+    },
+    {
+      "en": "Yes, yes.",
+      "fa": "بله، بله."
+    },
+    {
+      "en": "But she is not well.",
+      "fa": "اما او خوب نیست."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا پشت پنجره چه کار می‌کند؟",
+      "options": [
+        "wait",
+        "sleep",
+        "cook",
+        "sit"
+      ],
+      "a": "wait"
+    },
+    {
+      "q": "مینا شب چه حسی دارد؟",
+      "options": [
+        "happy",
+        "sad",
+        "good",
+        "well"
+      ],
+      "a": "sad"
+    }
+  ]
+}

@@ -4,20 +4,22 @@ on:
     branches: [main]
   pull_request:
 concurrency:
-  group: vajeh-ci-${{ github.ref }}
+  group: ghesse-ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Restore verified Vajeh source
-        run: node bootstrap/restore.mjs
-      - name: Install dependencies
-        run: npm install --ignore-scripts --legacy-peer-deps --no-audit --no-fund
-      - name: Run quality gates
+      - name: Pin npm
+        run: npm install --global npm@11.19.1 && npm --version
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run production quality gates
         run: npm run check

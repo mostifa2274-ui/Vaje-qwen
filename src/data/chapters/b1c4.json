@@ -1,0 +1,260 @@
+{
+  "id": "b1c4",
+  "book": 1,
+  "n": 4,
+  "titleFa": "حیاط و باغچه",
+  "titleEn": "The Yard and the Garden",
+  "new": [
+    "yard",
+    "garden",
+    "key",
+    "light",
+    "television",
+    "tv",
+    "desk",
+    "glass",
+    "clean",
+    "dirty",
+    "find",
+    "ask",
+    "answer",
+    "here",
+    "there",
+    "under",
+    "behind",
+    "out",
+    "outside",
+    "open",
+    "close",
+    "sorry",
+    "please",
+    "table",
+    "from",
+    "him",
+    "too"
+  ],
+  "sentences": [
+    {
+      "en": "Mina goes to the yard.",
+      "fa": "مینا به حیاط می‌رود."
+    },
+    {
+      "en": "The yard is small.",
+      "fa": "حیاط کوچک است."
+    },
+    {
+      "en": "She looks in the garden.",
+      "fa": "او به باغچه نگاه می‌کند."
+    },
+    {
+      "en": "She looks in the little garden.",
+      "fa": "او به باغچه‌ی کوچک نگاه می‌کند."
+    },
+    {
+      "en": "Mom has the key.",
+      "fa": "کلید پیش مامان است."
+    },
+    {
+      "en": "\"The key, please,\" Mina says.",
+      "fa": "کلید، لطفاً، مینا می‌گوید."
+    },
+    {
+      "en": "Please, Mom.",
+      "fa": "لطفاً، مامان."
+    },
+    {
+      "en": "Mom opens the door for her.",
+      "fa": "مامان در را برایش باز می‌کند."
+    },
+    {
+      "en": "Mina opens the door and goes out.",
+      "fa": "مینا در را باز می‌کند و بیرون می‌رود."
+    },
+    {
+      "en": "She is outside.",
+      "fa": "او بیرون است."
+    },
+    {
+      "en": "Nino is not outside.",
+      "fa": "نینو بیرون نیست."
+    },
+    {
+      "en": "\"Nino! Come out!\" she says.",
+      "fa": "نینو! بیا بیرون! می‌گوید."
+    },
+    {
+      "en": "She looks under the table.",
+      "fa": "او زیر میز نگاه می‌کند."
+    },
+    {
+      "en": "The cat is not under the table.",
+      "fa": "گربه زیر میز نیست."
+    },
+    {
+      "en": "She looks behind the door.",
+      "fa": "او پشت در نگاه می‌کند."
+    },
+    {
+      "en": "Nino is not behind the door.",
+      "fa": "نینو پشت در نیست."
+    },
+    {
+      "en": "Her brother is at his desk.",
+      "fa": "برادرش پشت میز تحریرش است."
+    },
+    {
+      "en": "He looks under the desk.",
+      "fa": "او زیر میز تحریر را نگاه می‌کند."
+    },
+    {
+      "en": "The television is on.",
+      "fa": "تلویزیون روشن است."
+    },
+    {
+      "en": "Nino is not behind the television.",
+      "fa": "نینو پشت تلویزیون نیست."
+    },
+    {
+      "en": "\"Is Nino behind the TV?\" Dad says.",
+      "fa": "نینو پشت تلویزیون است؟ بابا می‌گوید."
+    },
+    {
+      "en": "The TV is black.",
+      "fa": "تلویزیون سیاه است."
+    },
+    {
+      "en": "Mom has a glass.",
+      "fa": "مامان یک لیوان دارد."
+    },
+    {
+      "en": "The glass is in the kitchen.",
+      "fa": "لیوان در آشپزخانه است."
+    },
+    {
+      "en": "The kitchen is clean.",
+      "fa": "آشپزخانه تمیز است."
+    },
+    {
+      "en": "Mom cleans the kitchen.",
+      "fa": "مامان آشپزخانه را تمیز می‌کند."
+    },
+    {
+      "en": "The yard is dirty.",
+      "fa": "حیاط کثیف است."
+    },
+    {
+      "en": "The floor is dirty, too.",
+      "fa": "زمین هم کثیف است."
+    },
+    {
+      "en": "Her brother is dirty, too.",
+      "fa": "برادرش هم کثیف است."
+    },
+    {
+      "en": "\"Did you find Nino?\" Mom says.",
+      "fa": "نینو را پیدا کردی؟ مامان می‌گوید."
+    },
+    {
+      "en": "\"No, I did not find him,\" Mina says.",
+      "fa": "«نه، پیدایش نکردم»، مینا می‌گوید."
+    },
+    {
+      "en": "She looks for him.",
+      "fa": "او دنبالش می‌گردد."
+    },
+    {
+      "en": "\"Ask your brother,\" Mom says.",
+      "fa": "از برادرت بپرس، مامان می‌گوید."
+    },
+    {
+      "en": "Mina asks her brother.",
+      "fa": "مینا از برادرش می‌پرسد."
+    },
+    {
+      "en": "\"Do you see Nino?\" she asks.",
+      "fa": "نینو را می‌بینی؟ می‌پرسد."
+    },
+    {
+      "en": "\"I do not see Nino,\" he answers.",
+      "fa": "نینو را نمی‌بینم، جواب می‌دهد."
+    },
+    {
+      "en": "Dad asks, and Mom answers.",
+      "fa": "بابا می‌پرسد، و مامان جواب می‌دهد."
+    },
+    {
+      "en": "\"He is not here,\" she says.",
+      "fa": "او اینجا نیست، مامان می‌گوید."
+    },
+    {
+      "en": "\"Nino is not here,\" Mina says.",
+      "fa": "نینو اینجا نیست، مینا می‌گوید."
+    },
+    {
+      "en": "\"Is Nino there?\" Mina asks.",
+      "fa": "«نینو آنجاست؟» مینا می‌پرسد."
+    },
+    {
+      "en": "Mina goes there to look.",
+      "fa": "مینا به آنجا می‌رود تا نگاه کند."
+    },
+    {
+      "en": "\"I am sorry, Mina,\" Dad says.",
+      "fa": "متأسفم، مینا، بابا می‌گوید."
+    },
+    {
+      "en": "\"We are sorry,\" Mom says.",
+      "fa": "ما متأسفیم، مامان می‌گوید."
+    },
+    {
+      "en": "The light is on.",
+      "fa": "چراغ روشن است."
+    },
+    {
+      "en": "The light in the yard is on.",
+      "fa": "چراغ حیاط روشن است."
+    },
+    {
+      "en": "She closes the door.",
+      "fa": "او در را می‌بندد."
+    },
+    {
+      "en": "Dad closes the window.",
+      "fa": "بابا پنجره را می‌بندد."
+    },
+    {
+      "en": "Mina runs from the yard to the house.",
+      "fa": "مینا از حیاط به سمت خانه می‌دود."
+    },
+    {
+      "en": "Then she runs outside again.",
+      "fa": "بعد دوباره به بیرون می‌دود."
+    },
+    {
+      "en": "Come home, Nino. Please.",
+      "fa": "بیا خانه، نینو. لطفاً."
+    }
+  ],
+  "check": [
+    {
+      "q": "آیا گربه زیر میز است؟",
+      "options": [
+        "no",
+        "cat",
+        "bird",
+        "key"
+      ],
+      "a": "no"
+    },
+    {
+      "q": "آشپزخانه چطور است؟",
+      "options": [
+        "dirty",
+        "clean",
+        "little",
+        "black"
+      ],
+      "a": "clean"
+    }
+  ]
+}

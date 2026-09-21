@@ -1,0 +1,252 @@
+{
+  "id": "b1c3",
+  "book": 1,
+  "n": 3,
+  "titleFa": "صبحِ بی‌نینو",
+  "titleEn": "A Morning Without Nino",
+  "new": [
+    "wake",
+    "wash",
+    "bath",
+    "bathroom",
+    "shower",
+    "toilet",
+    "upstairs",
+    "downstairs",
+    "floor",
+    "wall",
+    "bed",
+    "bedroom",
+    "eat",
+    "drink",
+    "breakfast",
+    "milk",
+    "bread",
+    "water",
+    "egg",
+    "day",
+    "today",
+    "now",
+    "every",
+    "with",
+    "you",
+    "your",
+    "all"
+  ],
+  "sentences": [
+    {
+      "en": "It is morning.",
+      "fa": "صبح است."
+    },
+    {
+      "en": "Mina wakes up in her bed.",
+      "fa": "مینا در تختش بیدار می‌شود."
+    },
+    {
+      "en": "She wakes, and the baby wakes.",
+      "fa": "او بیدار می‌شود، و نوزاد هم بیدار می‌شود."
+    },
+    {
+      "en": "Nino is not in her bed.",
+      "fa": "نینو در تختش نیست."
+    },
+    {
+      "en": "Mina is in her bedroom.",
+      "fa": "مینا در اتاق‌خوابش است."
+    },
+    {
+      "en": "The bedroom is small.",
+      "fa": "اتاق‌خواب کوچک است."
+    },
+    {
+      "en": "Mina goes to the bathroom.",
+      "fa": "مینا به حمام می‌رود."
+    },
+    {
+      "en": "The toilet is in the bathroom.",
+      "fa": "دستشویی در حمام است."
+    },
+    {
+      "en": "Her brother goes to the toilet.",
+      "fa": "برادرش به دستشویی می‌رود."
+    },
+    {
+      "en": "Dad is in the shower.",
+      "fa": "بابا زیر دوش است."
+    },
+    {
+      "en": "He washes in the shower.",
+      "fa": "او زیر دوش می‌شوید."
+    },
+    {
+      "en": "Mom washes the baby, and Mina washes too.",
+      "fa": "مامان نوزاد را می‌شوید و مینا هم خودش را می‌شوید."
+    },
+    {
+      "en": "Mina has a bath.",
+      "fa": "مینا حمام می‌کند."
+    },
+    {
+      "en": "She has a bath every morning.",
+      "fa": "او هر صبح حمام می‌کند."
+    },
+    {
+      "en": "Mom is in the kitchen.",
+      "fa": "مامان در آشپزخانه است."
+    },
+    {
+      "en": "\"Come to the kitchen, Mina!\" she says.",
+      "fa": "بیا آشپزخانه، مینا! می‌گوید."
+    },
+    {
+      "en": "\"Eat your breakfast,\" Mom says.",
+      "fa": "صبحانه‌ات را بخور، مامان می‌گوید."
+    },
+    {
+      "en": "Mina looks at her breakfast.",
+      "fa": "مینا به صبحانه‌اش نگاه می‌کند."
+    },
+    {
+      "en": "Breakfast is bread and an egg.",
+      "fa": "صبحانه نان و یک تخم‌مرغ است."
+    },
+    {
+      "en": "Mina does not eat.",
+      "fa": "مینا غذا نمی‌خورد."
+    },
+    {
+      "en": "\"You eat your egg, and I drink my milk,\" Mom says.",
+      "fa": "تو تخم‌مرغت را بخور، و من شیرم را می‌نوشم، مامان می‌گوید."
+    },
+    {
+      "en": "\"Eat your egg,\" Dad says.",
+      "fa": "تخم‌مرغت را بخور، بابا می‌گوید."
+    },
+    {
+      "en": "Mina drinks her milk.",
+      "fa": "مینا شیرش را می‌نوشد."
+    },
+    {
+      "en": "The baby drinks water.",
+      "fa": "نوزاد آب می‌نوشد."
+    },
+    {
+      "en": "Dad drinks water.",
+      "fa": "بابا آب می‌نوشد."
+    },
+    {
+      "en": "Her brother eats his bread.",
+      "fa": "برادرش نانش را می‌خورد."
+    },
+    {
+      "en": "\"Nino eats my bread,\" he says.",
+      "fa": "نینو نان من را می‌خورد، می‌گوید."
+    },
+    {
+      "en": "\"Nino drinks my milk,\" he says.",
+      "fa": "نینو شیر من را می‌نوشد، می‌گوید."
+    },
+    {
+      "en": "Mina eats with her brother.",
+      "fa": "مینا همراه برادرش می‌خورد."
+    },
+    {
+      "en": "She drinks milk with her bread.",
+      "fa": "او با نانش شیر می‌نوشد."
+    },
+    {
+      "en": "Now Nino is not at home.",
+      "fa": "حالا نینو در خانه نیست."
+    },
+    {
+      "en": "\"Where is he now?\" Mina says.",
+      "fa": "حالا او کجاست؟ مینا می‌گوید."
+    },
+    {
+      "en": "\"Today we look for Nino,\" Dad says.",
+      "fa": "امروز دنبال نینو می‌گردیم، بابا می‌گوید."
+    },
+    {
+      "en": "\"Today, and every day,\" Mom says.",
+      "fa": "امروز، و هر روز، مامان می‌گوید."
+    },
+    {
+      "en": "\"Every day,\" Mina says.",
+      "fa": "هر روز، مینا می‌گوید."
+    },
+    {
+      "en": "\"We look all day,\" Dad says.",
+      "fa": "تمام روز نگاه می‌کنیم، بابا می‌گوید."
+    },
+    {
+      "en": "\"All day,\" Mina says.",
+      "fa": "تمام روز، مینا می‌گوید."
+    },
+    {
+      "en": "Mina goes upstairs.",
+      "fa": "مینا به طبقه‌ی بالا می‌رود."
+    },
+    {
+      "en": "She looks in the rooms upstairs.",
+      "fa": "او به اتاق‌های طبقه‌ی بالا نگاه می‌کند."
+    },
+    {
+      "en": "\"You look upstairs, and I look downstairs,\" Dad says.",
+      "fa": "تو طبقه‌ی بالا را نگاه کن، و من طبقه‌ی پایین را، بابا می‌گوید."
+    },
+    {
+      "en": "Her brother goes downstairs.",
+      "fa": "برادرش به طبقه‌ی پایین می‌رود."
+    },
+    {
+      "en": "He looks in the rooms downstairs.",
+      "fa": "او به اتاق‌های طبقه‌ی پایین نگاه می‌کند."
+    },
+    {
+      "en": "Mina looks at the walls.",
+      "fa": "مینا به دیوارها نگاه می‌کند."
+    },
+    {
+      "en": "The walls in her room are red.",
+      "fa": "دیوارهای اتاقش قرمز هستند."
+    },
+    {
+      "en": "She looks at the floor.",
+      "fa": "او به زمین نگاه می‌کند."
+    },
+    {
+      "en": "Nino is not on the floor.",
+      "fa": "نینو روی زمین نیست."
+    },
+    {
+      "en": "Come home today, Nino.",
+      "fa": "امروز بیا خانه، نینو."
+    },
+    {
+      "en": "Come home now.",
+      "fa": "حالا بیا خانه."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا برای صبحانه نان و چه چیزی دارد؟",
+      "options": [
+        "egg",
+        "milk",
+        "water",
+        "cat"
+      ],
+      "a": "egg"
+    },
+    {
+      "q": "مینا و خانواده‌اش چه زمانی دنبال نینو می‌گردند؟",
+      "options": [
+        "today",
+        "morning",
+        "home",
+        "day"
+      ],
+      "a": "today"
+    }
+  ]
+}

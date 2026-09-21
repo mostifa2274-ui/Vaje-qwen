@@ -1,0 +1,188 @@
+{
+  "id": "b7c4",
+  "book": 7,
+  "n": 4,
+  "titleFa": "مزرعه",
+  "titleEn": "The Farm",
+  "new": [
+    "farmer",
+    "grow",
+    "plant",
+    "flower",
+    "tree",
+    "air",
+    "rain",
+    "weather",
+    "share",
+    "change",
+    "create",
+    "build",
+    "fly",
+    "fire",
+    "snow"
+  ],
+  "sentences": [
+    {
+      "en": "The train stops at a small station near a farm.",
+      "fa": "قطار در ایستگاه کوچکی نزدیک یک مزرعه می‌ایستد."
+    },
+    {
+      "en": "The farmer is nice.",
+      "fa": "کشاورز خوب است."
+    },
+    {
+      "en": "Mina asks the farmer.",
+      "fa": "مینا از کشاورز می‌پرسد."
+    },
+    {
+      "en": "He has cows, pigs, sheep, and horses.",
+      "fa": "او گاو، خوک، گوسفند و اسب دارد."
+    },
+    {
+      "en": "The farmer grows food.",
+      "fa": "کشاورز غذا می‌کارد."
+    },
+    {
+      "en": "The plants grow.",
+      "fa": "گیاه‌ها رشد می‌کنند."
+    },
+    {
+      "en": "He plants flowers.",
+      "fa": "او گل می‌کارد."
+    },
+    {
+      "en": "The flowers are red and yellow.",
+      "fa": "گل‌ها قرمز و زرد هستند."
+    },
+    {
+      "en": "The trees are big.",
+      "fa": "درخت‌ها بزرگ هستند."
+    },
+    {
+      "en": "A tall tree is near the farmhouse.",
+      "fa": "یک درخت بلند نزدیک خانه‌ی مزرعه است."
+    },
+    {
+      "en": "The air feels fresh.",
+      "fa": "هوا تازه و دلپذیر است."
+    },
+    {
+      "en": "The air is clean.",
+      "fa": "هوا تمیز است."
+    },
+    {
+      "en": "The sun is warm.",
+      "fa": "خورشید گرم است."
+    },
+    {
+      "en": "The sun is above.",
+      "fa": "خورشید بالا است."
+    },
+    {
+      "en": "It rains.",
+      "fa": "باران می‌بارد."
+    },
+    {
+      "en": "The rain is cold.",
+      "fa": "باران سرد است."
+    },
+    {
+      "en": "The weather is bad.",
+      "fa": "هوا بد است."
+    },
+    {
+      "en": "The weather changes.",
+      "fa": "هوا عوض می‌شود."
+    },
+    {
+      "en": "The farm looks different when the weather changes.",
+      "fa": "وقتی هوا عوض می‌شود، مزرعه هم متفاوت به نظر می‌رسد."
+    },
+    {
+      "en": "Does it snow?",
+      "fa": "برف می‌بارد؟"
+    },
+    {
+      "en": "It does not snow.",
+      "fa": "برف نمی‌بارد."
+    },
+    {
+      "en": "The farmer shares his food with the family.",
+      "fa": "کشاورز غذایش را با خانواده تقسیم می‌کند."
+    },
+    {
+      "en": "He shares the bread.",
+      "fa": "او نان را تقسیم می‌کند."
+    },
+    {
+      "en": "The farmer shows Mina a plan he created for a new room.",
+      "fa": "کشاورز نقشه‌ای را که برای یک اتاق جدید ساخته به مینا نشان می‌دهد."
+    },
+    {
+      "en": "The plan will help him create a better home.",
+      "fa": "این نقشه به او کمک می‌کند خانه‌ی بهتری بسازد."
+    },
+    {
+      "en": "He plans to build the new room soon.",
+      "fa": "او برنامه دارد به‌زودی اتاق جدید را بسازد."
+    },
+    {
+      "en": "His family will help him build it.",
+      "fa": "خانواده‌اش در ساختن آن به او کمک خواهند کرد."
+    },
+    {
+      "en": "A bird flies.",
+      "fa": "یک پرنده پرواز می‌کند."
+    },
+    {
+      "en": "It flies above the farm.",
+      "fa": "بالای مزرعه پرواز می‌کند."
+    },
+    {
+      "en": "There is a warm fire in the farmhouse.",
+      "fa": "در خانه‌ی مزرعه آتش گرمی روشن است."
+    },
+    {
+      "en": "The fire is warm.",
+      "fa": "آتش گرم است."
+    },
+    {
+      "en": "\"A black cat?\" the farmer says.",
+      "fa": "یک گربه‌ی سیاه؟ کشاورز می‌گوید."
+    },
+    {
+      "en": "\"Cats like the farm,\" the farmer says.",
+      "fa": "«گربه‌ها مزرعه را دوست دارند»، کشاورز می‌گوید."
+    },
+    {
+      "en": "Mina looks.",
+      "fa": "مینا نگاه می‌کند."
+    },
+    {
+      "en": "There is no black cat.",
+      "fa": "گربه‌ی سیاهی آنجا نیست."
+    }
+  ],
+  "check": [
+    {
+      "q": "کشاورز چه می‌کارد؟",
+      "options": [
+        "flower",
+        "bread",
+        "fire",
+        "rain"
+      ],
+      "a": "flower"
+    },
+    {
+      "q": "هوا در مزرعه چطور است؟",
+      "options": [
+        "clean",
+        "dirty",
+        "bad",
+        "cold"
+      ],
+      "a": "clean"
+    }
+  ]
+}

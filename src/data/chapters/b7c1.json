@@ -1,0 +1,232 @@
+{
+  "id": "b7c1",
+  "book": 7,
+  "n": 1,
+  "titleFa": "سفر",
+  "titleEn": "The Trip",
+  "new": [
+    "boot",
+    "clothes",
+    "coat",
+    "dress",
+    "hat",
+    "jacket",
+    "jeans",
+    "pants",
+    "shirt",
+    "shoe",
+    "skirt",
+    "sweater",
+    "t-shirt",
+    "wear",
+    "map",
+    "way",
+    "trip",
+    "travel",
+    "visit",
+    "vacation",
+    "grandmother",
+    "grandfather",
+    "blue"
+  ],
+  "sentences": [
+    {
+      "en": "The family has a plan.",
+      "fa": "خانواده یک نقشه دارد."
+    },
+    {
+      "en": "They visit Grandmother.",
+      "fa": "آن‌ها به دیدن مادربزرگ می‌روند."
+    },
+    {
+      "en": "Grandmother lives far away.",
+      "fa": "مادربزرگ دور از آن‌ها زندگی می‌کند."
+    },
+    {
+      "en": "Grandfather is with Grandmother.",
+      "fa": "پدربزرگ با مادربزرگ است."
+    },
+    {
+      "en": "Her grandfather is old.",
+      "fa": "پدربزرگش پیر است."
+    },
+    {
+      "en": "Mina puts clothes in her bag.",
+      "fa": "مینا لباس در کیفش می‌گذارد."
+    },
+    {
+      "en": "The clothes are in the bag.",
+      "fa": "لباس‌ها در کیف هستند."
+    },
+    {
+      "en": "She has a coat.",
+      "fa": "او یک کت دارد."
+    },
+    {
+      "en": "The coat is warm.",
+      "fa": "کت گرم است."
+    },
+    {
+      "en": "She has boots.",
+      "fa": "او چکمه دارد."
+    },
+    {
+      "en": "The boots are brown.",
+      "fa": "چکمه‌ها قهوه‌ای هستند."
+    },
+    {
+      "en": "She has a hat.",
+      "fa": "او یک کلاه دارد."
+    },
+    {
+      "en": "The hat is red.",
+      "fa": "کلاه قرمز است."
+    },
+    {
+      "en": "She has a jacket.",
+      "fa": "او یک ژاکت دارد."
+    },
+    {
+      "en": "The jacket is black.",
+      "fa": "ژاکت سیاه است."
+    },
+    {
+      "en": "She has jeans.",
+      "fa": "او شلوار جین دارد."
+    },
+    {
+      "en": "The jeans are blue.",
+      "fa": "جین آبی است."
+    },
+    {
+      "en": "She likes blue.",
+      "fa": "او آبی دوست دارد."
+    },
+    {
+      "en": "She has pants.",
+      "fa": "او شلوار دارد."
+    },
+    {
+      "en": "The pants are black.",
+      "fa": "شلوار سیاه است."
+    },
+    {
+      "en": "She has shirts.",
+      "fa": "او پیراهن دارد."
+    },
+    {
+      "en": "The shirts are white.",
+      "fa": "پیراهن‌ها سفید هستند."
+    },
+    {
+      "en": "She has a dress.",
+      "fa": "او یک پیراهن زنانه دارد."
+    },
+    {
+      "en": "The dress is pretty.",
+      "fa": "پیراهن قشنگ است."
+    },
+    {
+      "en": "She has a skirt.",
+      "fa": "او یک دامن دارد."
+    },
+    {
+      "en": "The skirt is red.",
+      "fa": "دامن قرمز است."
+    },
+    {
+      "en": "She has a sweater.",
+      "fa": "او یک بافتنی دارد."
+    },
+    {
+      "en": "The sweater is warm.",
+      "fa": "بافتنی گرم است."
+    },
+    {
+      "en": "She has a T-shirt.",
+      "fa": "او یک تی‌شرت دارد."
+    },
+    {
+      "en": "The T-shirt is white.",
+      "fa": "تی‌شرت سفید است."
+    },
+    {
+      "en": "She has shoes.",
+      "fa": "او کفش دارد."
+    },
+    {
+      "en": "The shoes are brown.",
+      "fa": "کفش‌ها قهوه‌ای هستند."
+    },
+    {
+      "en": "What does she wear?",
+      "fa": "چه می‌پوشد؟"
+    },
+    {
+      "en": "She wears the red hat.",
+      "fa": "او کلاه قرمز را می‌پوشد."
+    },
+    {
+      "en": "Dad has a map.",
+      "fa": "بابا یک نقشه دارد."
+    },
+    {
+      "en": "The map shows the way.",
+      "fa": "نقشه راه را نشان می‌دهد."
+    },
+    {
+      "en": "The way is long.",
+      "fa": "راه طولانی است."
+    },
+    {
+      "en": "The trip is long.",
+      "fa": "سفر طولانی است."
+    },
+    {
+      "en": "It is a trip to Grandmother.",
+      "fa": "سفری به سمت مادربزرگ است."
+    },
+    {
+      "en": "They travel.",
+      "fa": "آن‌ها سفر می‌کنند."
+    },
+    {
+      "en": "The family travels.",
+      "fa": "خانواده سفر می‌کند."
+    },
+    {
+      "en": "The visit is good.",
+      "fa": "دیدار خوب است."
+    },
+    {
+      "en": "They are on vacation.",
+      "fa": "آن‌ها در تعطیلات هستند."
+    },
+    {
+      "en": "The vacation is short.",
+      "fa": "تعطیلات کوتاه است."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا چه چیزی در کیفش می‌گذارد؟",
+      "options": [
+        "clothes",
+        "food",
+        "water",
+        "money"
+      ],
+      "a": "clothes"
+    },
+    {
+      "q": "خانواده به دیدن کی می‌روند؟",
+      "options": [
+        "grandmother",
+        "teacher",
+        "scientist",
+        "policeman"
+      ],
+      "a": "grandmother"
+    }
+  ]
+}

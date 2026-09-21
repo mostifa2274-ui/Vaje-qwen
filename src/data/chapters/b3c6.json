@@ -1,0 +1,244 @@
+{
+  "id": "b3c6",
+  "book": 3,
+  "n": 6,
+  "titleFa": "آخر هفته",
+  "titleEn": "The Week Ends",
+  "new": [
+    "fill",
+    "finish",
+    "forget",
+    "get",
+    "give",
+    "help",
+    "join",
+    "keep",
+    "leave",
+    "let",
+    "lose",
+    "make",
+    "move",
+    "need",
+    "start",
+    "stay",
+    "take",
+    "try",
+    "turn",
+    "use",
+    "begin",
+    "add",
+    "us"
+  ],
+  "sentences": [
+    {
+      "en": "The week ends.",
+      "fa": "هفته تمام می‌شود."
+    },
+    {
+      "en": "Mina fills a glass with milk.",
+      "fa": "مینا یک لیوان را با شیر پر می‌کند."
+    },
+    {
+      "en": "She fills it for Nino.",
+      "fa": "آن را برای نینو پر می‌کند."
+    },
+    {
+      "en": "The milk is for Nino.",
+      "fa": "شیر برای نینو است."
+    },
+    {
+      "en": "\"Finish your dinner,\" Mom says.",
+      "fa": "شامت را تمام کن، مامان می‌گوید."
+    },
+    {
+      "en": "Mina finishes her dinner.",
+      "fa": "مینا شامش را تمام می‌کند."
+    },
+    {
+      "en": "\"Do not forget to look for Nino,\" Mom says.",
+      "fa": "«یادت نرود دنبال نینو بگردی»، مامان می‌گوید."
+    },
+    {
+      "en": "\"I never forget him,\" Mina says.",
+      "fa": "من هرگز او را فراموش نمی‌کنم، مینا می‌گوید."
+    },
+    {
+      "en": "\"Get your book,\" Dad says.",
+      "fa": "کتابت را بردار، بابا می‌گوید."
+    },
+    {
+      "en": "Mina gets her book.",
+      "fa": "مینا کتابش را برمی‌دارد."
+    },
+    {
+      "en": "\"Give me the book,\" her brother says.",
+      "fa": "کتاب را به من بده، برادرش می‌گوید."
+    },
+    {
+      "en": "She gives him the book.",
+      "fa": "او کتاب را به او می‌دهد."
+    },
+    {
+      "en": "\"Help me,\" Mina says.",
+      "fa": "به من کمک کن، مینا می‌گوید."
+    },
+    {
+      "en": "\"We help you,\" Mom says.",
+      "fa": "ما به تو کمک می‌کنیم، مامان می‌گوید."
+    },
+    {
+      "en": "\"Join us,\" Dad says.",
+      "fa": "به ما بپیوند، بابا می‌گوید."
+    },
+    {
+      "en": "Join us at the table.",
+      "fa": "سر میز به ما بپیوند."
+    },
+    {
+      "en": "\"Keep the door open,\" Mina says.",
+      "fa": "در را باز نگه دار، مینا می‌گوید."
+    },
+    {
+      "en": "She keeps the door open.",
+      "fa": "او در را باز نگه می‌دارد."
+    },
+    {
+      "en": "\"Leave the window open,\" she says.",
+      "fa": "پنجره را باز بگذار، می‌گوید."
+    },
+    {
+      "en": "Mom leaves the window open.",
+      "fa": "مامان پنجره را باز می‌گذارد."
+    },
+    {
+      "en": "\"Let him come home,\" Mina says.",
+      "fa": "بگذار به خانه بیاید، مینا می‌گوید."
+    },
+    {
+      "en": "Let the cat come in.",
+      "fa": "بگذار گربه داخل بیاید."
+    },
+    {
+      "en": "\"I lost my cat,\" Mina says.",
+      "fa": "گربه‌ام را گم کردم، مینا می‌گوید."
+    },
+    {
+      "en": "You did not lose him. He ran away.",
+      "fa": "تو او را گم نکردی. او فرار کرد."
+    },
+    {
+      "en": "\"Make a place for him,\" Mom says.",
+      "fa": "یک جا برایش درست کن، مامان می‌گوید."
+    },
+    {
+      "en": "Mina makes a place for Nino.",
+      "fa": "مینا یک جا برای نینو درست می‌کند."
+    },
+    {
+      "en": "\"Move the chair,\" Dad says.",
+      "fa": "صندلی را جابه‌جا کن، بابا می‌گوید."
+    },
+    {
+      "en": "Mina moves the chair.",
+      "fa": "مینا صندلی را جابه‌جا می‌کند."
+    },
+    {
+      "en": "\"I need him,\" Mina says.",
+      "fa": "به او نیاز دارم، مینا می‌گوید."
+    },
+    {
+      "en": "\"We need Nino,\" Dad says.",
+      "fa": "«ما به نینو نیاز داریم»، بابا می‌گوید."
+    },
+    {
+      "en": "The boys say, \"Start the game.\"",
+      "fa": "پسرها می‌گویند: «بازی را شروع کنید.»"
+    },
+    {
+      "en": "The game starts.",
+      "fa": "بازی شروع می‌شود."
+    },
+    {
+      "en": "\"Stay home,\" Mom says.",
+      "fa": "خانه بمان، مامان می‌گوید."
+    },
+    {
+      "en": "\"Nino does not stay home,\" Mina says.",
+      "fa": "نینو خانه نمی‌ماند، مینا می‌گوید."
+    },
+    {
+      "en": "\"Take your book,\" Mom says.",
+      "fa": "کتابت را بردار، مامان می‌گوید."
+    },
+    {
+      "en": "Mina takes her book.",
+      "fa": "مینا کتابش را برمی‌دارد."
+    },
+    {
+      "en": "\"Try the park again,\" Dad says.",
+      "fa": "پارک را دوباره امتحان کن، بابا می‌گوید."
+    },
+    {
+      "en": "Mina tries again.",
+      "fa": "مینا دوباره تلاش می‌کند."
+    },
+    {
+      "en": "\"Turn left at the park,\" Mom says.",
+      "fa": "به پارک که رسیدی به چپ بپیچ، مامان می‌گوید."
+    },
+    {
+      "en": "Mina turns left.",
+      "fa": "مینا به چپ می‌پیچد."
+    },
+    {
+      "en": "\"Use your book to make a list,\" Dad says.",
+      "fa": "از کتابت برای درست کردن یک فهرست استفاده کن، بابا می‌گوید."
+    },
+    {
+      "en": "She uses the book.",
+      "fa": "او از کتاب استفاده می‌کند."
+    },
+    {
+      "en": "\"Begin at the park,\" Mom says.",
+      "fa": "از پارک شروع کن، مامان می‌گوید."
+    },
+    {
+      "en": "The next day begins.",
+      "fa": "روز بعد شروع می‌شود."
+    },
+    {
+      "en": "\"Add a little more milk,\" Mom says.",
+      "fa": "کمی شیر بیشتر اضافه کن، مامان می‌گوید."
+    },
+    {
+      "en": "Mina adds milk.",
+      "fa": "مینا شیر اضافه می‌کند."
+    },
+    {
+      "en": "\"Come with us,\" Dad says.",
+      "fa": "با ما بیا، بابا می‌گوید."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا در را چطور نگه می‌دارد؟",
+      "options": [
+        "open",
+        "close",
+        "clean",
+        "dirty"
+      ],
+      "a": "open"
+    },
+    {
+      "q": "مینا لیوان را با چه چیزی پر می‌کند؟",
+      "options": [
+        "milk",
+        "water",
+        "bread",
+        "egg"
+      ],
+      "a": "milk"
+    }
+  ]
+}

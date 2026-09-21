@@ -1,0 +1,217 @@
+{
+  "id": "b3c3",
+  "book": 3,
+  "n": 3,
+  "titleFa": "قبل و بعد",
+  "titleEn": "Before and After",
+  "new": [
+    "quarter",
+    "half",
+    "past",
+    "midnight",
+    "early",
+    "late",
+    "soon",
+    "later",
+    "after",
+    "before",
+    "during",
+    "until",
+    "ago",
+    "then",
+    "afternoon",
+    "tonight",
+    "tomorrow",
+    "yesterday",
+    "ever",
+    "end"
+  ],
+  "sentences": [
+    {
+      "en": "Mina wakes early.",
+      "fa": "مینا زود بیدار می‌شود."
+    },
+    {
+      "en": "She is early.",
+      "fa": "او زود است."
+    },
+    {
+      "en": "Before breakfast, she looks in the yard.",
+      "fa": "قبل از صبحانه، به حیاط نگاه می‌کند."
+    },
+    {
+      "en": "Her brother eats before Mina.",
+      "fa": "برادرش قبل از مینا غذا می‌خورد."
+    },
+    {
+      "en": "After breakfast, she goes to the park.",
+      "fa": "بعد از صبحانه، به پارک می‌رود."
+    },
+    {
+      "en": "After the park, she goes home.",
+      "fa": "بعد از پارک، به خانه می‌رود."
+    },
+    {
+      "en": "It is half past eight.",
+      "fa": "ساعت هشت و نیم است."
+    },
+    {
+      "en": "It is half past nine.",
+      "fa": "ساعت نه و نیم است."
+    },
+    {
+      "en": "It is a quarter past ten.",
+      "fa": "ساعت ده و ربع است."
+    },
+    {
+      "en": "A quarter past ten is late for Mina's morning walk.",
+      "fa": "ده و ربع برای پیاده‌روی صبحِ مینا دیر است."
+    },
+    {
+      "en": "Mina is late for her walk.",
+      "fa": "مینا برای پیاده‌روی‌اش دیر کرده است."
+    },
+    {
+      "en": "It is afternoon.",
+      "fa": "بعدازظهر است."
+    },
+    {
+      "en": "In the afternoon, she walks.",
+      "fa": "بعدازظهر، او قدم می‌زند."
+    },
+    {
+      "en": "Before dinner, she calls Nino.",
+      "fa": "قبل از شام، نینو را صدا می‌کند."
+    },
+    {
+      "en": "After dinner, she waits.",
+      "fa": "بعد از شام، منتظر می‌ماند."
+    },
+    {
+      "en": "During dinner, Mina is sad.",
+      "fa": "سر شام، مینا غمگین است."
+    },
+    {
+      "en": "During the day, she looks.",
+      "fa": "در طول روز، او نگاه می‌کند."
+    },
+    {
+      "en": "She looks until night.",
+      "fa": "او تا شب نگاه می‌کند."
+    },
+    {
+      "en": "They wait until nine o'clock.",
+      "fa": "آن‌ها تا ساعت نه منتظر می‌مانند."
+    },
+    {
+      "en": "Mina thinks Nino may run until midnight.",
+      "fa": "مینا فکر می‌کند شاید نینو تا نیمه‌شب بدود."
+    },
+    {
+      "en": "It is dark at midnight.",
+      "fa": "نیمه‌شب هوا تاریک است."
+    },
+    {
+      "en": "Nino is not home at midnight.",
+      "fa": "نینو نیمه‌شب خانه نیست."
+    },
+    {
+      "en": "A week ago, Nino was home.",
+      "fa": "یک هفته پیش، نینو خانه بود."
+    },
+    {
+      "en": "Two days ago, Mina was sad, too.",
+      "fa": "دو روز پیش، مینا هم غمگین بود."
+    },
+    {
+      "en": "Then Mina sees something.",
+      "fa": "بعد مینا چیزی می‌بیند."
+    },
+    {
+      "en": "Then she runs.",
+      "fa": "بعد می‌دود."
+    },
+    {
+      "en": "It is a bird.",
+      "fa": "یک پرنده است."
+    },
+    {
+      "en": "\"Nino will come home soon,\" Mom says.",
+      "fa": "نینو به‌زودی به خانه برمی‌گردد، مامان می‌گوید."
+    },
+    {
+      "en": "\"Soon,\" Mina says.",
+      "fa": "به‌زودی، مینا می‌گوید."
+    },
+    {
+      "en": "Later, the family eats.",
+      "fa": "بعداً، خانواده غذا می‌خورند."
+    },
+    {
+      "en": "Later, Mina sleeps.",
+      "fa": "بعداً، مینا می‌خوابد."
+    },
+    {
+      "en": "Tomorrow is a new day.",
+      "fa": "فردا روز جدیدی است."
+    },
+    {
+      "en": "Tomorrow, she looks again.",
+      "fa": "فردا، دوباره نگاه می‌کند."
+    },
+    {
+      "en": "Yesterday was bad.",
+      "fa": "دیروز بد بود."
+    },
+    {
+      "en": "Yesterday, Nino was not home.",
+      "fa": "دیروز، نینو خانه نبود."
+    },
+    {
+      "en": "Do you ever see Nino?",
+      "fa": "اصلاً نینو را می‌بینی؟"
+    },
+    {
+      "en": "Does he ever come home?",
+      "fa": "او اصلاً به خانه می‌آید؟"
+    },
+    {
+      "en": "Tonight, Mina waits.",
+      "fa": "امشب، مینا منتظر می‌ماند."
+    },
+    {
+      "en": "\"I hope tonight is the night,\" she says.",
+      "fa": "«امیدوارم امشب همان شب باشد»، می‌گوید."
+    },
+    {
+      "en": "It is the end of the day.",
+      "fa": "آخر روز است."
+    },
+    {
+      "en": "At the end, she sleeps.",
+      "fa": "در آخر، او می‌خوابد."
+    }
+  ],
+  "check": [
+    {
+      "q": "مینا قبل از صبحانه چه کار می‌کند؟",
+      "options": [
+        "look",
+        "sleep",
+        "eat",
+        "cook"
+      ],
+      "a": "look"
+    },
+    {
+      "q": "مینا فکر می‌کند نینو شاید تا چه زمانی بدود؟",
+      "options": [
+        "midnight",
+        "morning",
+        "dinner",
+        "clock"
+      ],
+      "a": "midnight"
+    }
+  ]
+}

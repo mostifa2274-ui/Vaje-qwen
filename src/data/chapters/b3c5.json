@@ -1,0 +1,235 @@
+{
+  "id": "b3c5",
+  "book": 3,
+  "n": 5,
+  "titleFa": "هزار گربه",
+  "titleEn": "A Thousand Cats",
+  "new": [
+    "eleven",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety",
+    "hundred",
+    "thousand",
+    "million",
+    "second-2",
+    "moment",
+    "period"
+  ],
+  "sentences": [
+    {
+      "en": "Mina sees eleven cats.",
+      "fa": "مینا یازده گربه می‌بیند."
+    },
+    {
+      "en": "Eleven cats are in the neighborhood.",
+      "fa": "یازده گربه در محله هستند."
+    },
+    {
+      "en": "Not one is Nino.",
+      "fa": "حتی یکی هم نینو نیست."
+    },
+    {
+      "en": "Thirteen people are in the park.",
+      "fa": "سیزده نفر در پارک هستند."
+    },
+    {
+      "en": "She sees thirteen people.",
+      "fa": "او سیزده نفر می‌بیند."
+    },
+    {
+      "en": "Fourteen boys play football.",
+      "fa": "چهارده پسر فوتبال بازی می‌کنند."
+    },
+    {
+      "en": "The fourteen boys run.",
+      "fa": "چهارده پسر می‌دوند."
+    },
+    {
+      "en": "Fifteen girls dance.",
+      "fa": "پانزده دختر می‌رقصند."
+    },
+    {
+      "en": "She sees fifteen girls.",
+      "fa": "او پانزده دختر می‌بیند."
+    },
+    {
+      "en": "Sixteen houses are on the street.",
+      "fa": "شانزده خانه در خیابان هستند."
+    },
+    {
+      "en": "She looks at sixteen houses.",
+      "fa": "او به شانزده خانه نگاه می‌کند."
+    },
+    {
+      "en": "Seventeen birds are in the park.",
+      "fa": "هفده پرنده در پارک هستند."
+    },
+    {
+      "en": "She sees seventeen birds.",
+      "fa": "او هفده پرنده می‌بیند."
+    },
+    {
+      "en": "Eighteen windows are in the building.",
+      "fa": "هجده پنجره در ساختمان هستند."
+    },
+    {
+      "en": "The building has eighteen windows.",
+      "fa": "ساختمان هجده پنجره دارد."
+    },
+    {
+      "en": "Nineteen people are in the cafe.",
+      "fa": "نوزده نفر در کافه هستند."
+    },
+    {
+      "en": "She sees nineteen people.",
+      "fa": "او نوزده نفر می‌بیند."
+    },
+    {
+      "en": "Twenty days without Nino are hard for Mina.",
+      "fa": "بیست روز بدون نینو برای مینا سخت است."
+    },
+    {
+      "en": "Twenty days, and Nino is not home.",
+      "fa": "بیست روز، و نینو خانه نیست."
+    },
+    {
+      "en": "Thirty people live in the building.",
+      "fa": "سی نفر در ساختمان زندگی می‌کنند."
+    },
+    {
+      "en": "Mina asks thirty people about Nino.",
+      "fa": "مینا از سی نفر درباره‌ی نینو می‌پرسد."
+    },
+    {
+      "en": "The game lasts forty minutes.",
+      "fa": "بازی چهل دقیقه طول می‌کشد."
+    },
+    {
+      "en": "The game is forty minutes long.",
+      "fa": "بازی چهل دقیقه طول می‌کشد."
+    },
+    {
+      "en": "Fifty houses are in the neighborhood.",
+      "fa": "پنجاه خانه در محله هستند."
+    },
+    {
+      "en": "She looks at fifty houses.",
+      "fa": "او به پنجاه خانه نگاه می‌کند."
+    },
+    {
+      "en": "There are sixty minutes in an hour.",
+      "fa": "در یک ساعت شصت دقیقه وجود دارد."
+    },
+    {
+      "en": "An hour has sixty minutes.",
+      "fa": "یک ساعت شصت دقیقه دارد."
+    },
+    {
+      "en": "Seventy cats are in the city.",
+      "fa": "هفتاد گربه در شهر هستند."
+    },
+    {
+      "en": "She sees seventy cats.",
+      "fa": "او هفتاد گربه می‌بیند."
+    },
+    {
+      "en": "Eighty people are in the restaurant.",
+      "fa": "هشتاد نفر در رستوران هستند."
+    },
+    {
+      "en": "There are eighty people in the restaurant.",
+      "fa": "هشتاد نفر در رستوران هستند."
+    },
+    {
+      "en": "Ninety windows are in the building.",
+      "fa": "نود پنجره در ساختمان هستند."
+    },
+    {
+      "en": "The big building has ninety windows.",
+      "fa": "ساختمان بزرگ نود پنجره دارد."
+    },
+    {
+      "en": "A hundred people are in the park.",
+      "fa": "صد نفر در پارک هستند."
+    },
+    {
+      "en": "She sees a hundred people.",
+      "fa": "او صد نفر می‌بیند."
+    },
+    {
+      "en": "A thousand cats are in the city.",
+      "fa": "هزار گربه در شهر هستند."
+    },
+    {
+      "en": "There are a thousand cats, and not one is Nino.",
+      "fa": "هزار گربه وجود دارد و حتی یکی از آن‌ها نینو نیست."
+    },
+    {
+      "en": "A million people are in the city.",
+      "fa": "یک میلیون نفر در شهر هستند."
+    },
+    {
+      "en": "The city has a million people.",
+      "fa": "شهر یک میلیون نفر دارد."
+    },
+    {
+      "en": "\"Wait one second,\" Mina says.",
+      "fa": "یک ثانیه صبر کن، مینا می‌گوید."
+    },
+    {
+      "en": "One second, please.",
+      "fa": "یک ثانیه، لطفاً."
+    },
+    {
+      "en": "Wait a moment.",
+      "fa": "یک لحظه صبر کن."
+    },
+    {
+      "en": "A moment, please.",
+      "fa": "یک لحظه، لطفاً."
+    },
+    {
+      "en": "A week is a period of seven days.",
+      "fa": "یک هفته دوره‌ی هفت روز است."
+    },
+    {
+      "en": "A month is a longer period.",
+      "fa": "یک ماه دوره‌ی طولانی‌تری است."
+    }
+  ],
+  "check": [
+    {
+      "q": "در شهر چند گربه وجود دارد؟",
+      "options": [
+        "thousand",
+        "hundred",
+        "eleven",
+        "twenty"
+      ],
+      "a": "thousand"
+    },
+    {
+      "q": "یک ساعت چند دقیقه است؟",
+      "options": [
+        "sixty",
+        "forty",
+        "thirty",
+        "hundred"
+      ],
+      "a": "sixty"
+    }
+  ]
+}

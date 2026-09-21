@@ -1,81 +1,75 @@
-# واژه · Vajeh 1.2
+# قصه — Ghesse 5.0 Production
 
-Persian-first RTL PWA for mastering 899 essential A1 English words with spaced repetition, daily sessions, listening, spelling, repair practice, progress tracking, local-first persistence, and offline-capable app shell.
+قصه یک PWA فارسی‌محور برای **تسلط واقعی بر ۸۹۹ واژهٔ A1 انگلیسی** در دل یک داستان ۴۰ فصلی است. نسخهٔ 5.0 مسیر را بر پایهٔ تشخیص اولیه، بازیابی فعال، مرور فاصله‌دار FSRS، تولید نوشتاری، آزمون‌های مرحله‌ای و remediation دقیق می‌سازد؛ پایان فصل به‌تنهایی هیچ واژه‌ای را «مسلط» نمی‌کند.
 
-## Production status
+## مسیر هر فصل
 
-The hardened GitHub deployment reconstructs the verified Vajeh 1.2.0 source from checksum-validated bootstrap parts before linting, testing, or building.
+1. **Pretest کم‌ریسک** برای تشخیص دانسته‌های اولیه، بدون امتیاز mastery.
+2. **آموزش اصلاحی فوری** برای واژه‌های تازه.
+3. **Readiness recognition**؛ همهٔ واژه‌های تازه باید درست بازیابی شوند و خطاها دوباره در صف می‌آیند.
+4. **Productive recall**؛ همهٔ خطاها + نمونه‌ای نظام‌مند از بقیه باید بدون گزینه تایپ شوند.
+5. **قصه + درک مطلب** در بافت طبیعی، با ترجمهٔ اختیاری.
+6. **Smart Review** بر اساس دشواری، پایداری، retrievability، نوع خطا و فاصلهٔ واقعی زمانی.
 
-GitHub CI currently verifies:
+## آزمون‌های gate
 
-- bootstrap part and archive SHA-256 integrity
-- ESLint / React Hooks checks
-- 23 engine and regression tests
-- full-deck unique-answer invariants
-- strict TypeScript compilation
-- Vite production build
-- PWA service-worker generation
+- پایان هر کتاب: **۳۲ سؤال**، حداقل **۸۵٪ کل** و **۸۰٪ typed recall**.
+- پس از کتاب ۴: **۵۶ سؤال تجمعی**، حداقل **۸۸٪ کل** و **۸۵٪ typed recall**.
+- پایان مسیر: **۸۸ سؤال تجمعی**، حداقل **۹۲٪ کل** و **۹۰٪ typed recall**.
+- هر آزمون حداقل از همهٔ فصل‌های محدودهٔ خود نمونه می‌گیرد و ظرفیت باقی‌مانده را به واژه‌های ضعیف و کمتر آزموده‌شده اختصاص می‌دهد.
+- حتی اگر نمرهٔ آزمون قبول باشد، واژه‌های غلط باید بعد از آزمون با بازیابی مستقل remediation شوند تا gate بعدی واقعاً باز شود.
 
-The compact Git deployment deliberately excludes the ~20 MB MP3 pronunciation pack. Pronunciation tries bundled audio first and automatically falls back to the browser/device English speech engine when the MP3 is unavailable.
+## تعریف mastery
 
-The full hardened archive retains the original audio/font assets.
+سطوح واژه:
 
-## Local build
+`تازه → دیده‌شده → در حال یادگیری → قوی → مسلط`
 
-Node.js 22+ is recommended.
+«مسلط» فقط با شواهد مستقل و فاصله‌دار به دست می‌آید: موفقیت در روزهای متفاوت، پوشش معنی/بافت/تولید/فرم، productive recall، accuracy مناسب، پایداری کافی و آخرین retrieval موفق. لمس معنی، reread، completion و retry بلافاصله بعد از دیدن جواب mastery evidence نیستند.
+
+## Scheduler
+
+هستهٔ زمان‌بندی از مدل FSRS-6 استفاده می‌کند، اما برای واژگان تازه guardrailهای acquisition دارد تا یک پاسخ سریع نتواند فاصله را غیرواقعی به ماه‌ها یا سال‌ها بپراند. retry بعد از feedback برای relearning مفید است ولی stability، success day یا mastery را افزایش نمی‌دهد.
+
+## محتوا و صدا
+
+- **۸۹۹** واژه
+- **۴۰** فصل
+- **۱۸۵۴** جفت جملهٔ انگلیسی/فارسی
+- **۸۰** سؤال درک مطلب
+- **۶۰۶** جملهٔ ویرایش‌شده نسبت به script ضبط اولیه، بنابراین MP3 قدیمی آن‌ها هرگز به‌عنوان fallback استفاده نمی‌شود.
+- deployment GitHub/Cloudflare به‌صورت **speech-first** است: صدای انگلیسی منتخب سیستم/مرورگر برای قصه، واژه و مثال استفاده می‌شود. MP3 فقط در buildهایی فعال می‌شود که واقعاً pack را با `VITE_BUNDLED_AUDIO=1` همراه دارند.
+
+## persistence
+
+- state schema: **v6**
+- migration امن از نسخه‌های قبلی
+- فیلتر IDهای ناشناخته
+- rolling backup
+- export/import JSON با محدودیت ۲MB
+- gate engine منبع حقیقت progression است
+
+## QA
 
 ```bash
-node bootstrap/restore.mjs
-npm install --ignore-scripts --legacy-peer-deps --no-audit --no-fund
+npm ci
 npm run check
 npm run build
 ```
 
-The output directory is `dist/`.
+`npm run check` شامل validation کامل داده/ویرایش/assignment/mastery، ESLint، Vitest، TypeScript و Vite production build است.
 
-## Cloudflare Workers Builds
+## Cloudflare
 
-This repository includes `wrangler.jsonc` for static assets with SPA fallback.
+این repository برای Cloudflare Workers static assets آماده است:
 
-Use these settings in Cloudflare Workers Builds:
+- production branch: `main`
+- root: `/`
+- build variable: `SKIP_DEPENDENCY_INSTALL=1`
+- build command: `npm run cloudflare:build`
+- deploy command: `npx wrangler@4.135.0 deploy`
+- output: `dist/`
 
-- Git repository: `mostifa2274-ui/Vaje-qwen`
-- Production branch: `main`
-- Root directory: `/`
-- Build variable: `SKIP_DEPENDENCY_INSTALL=1`
-- Build command: `npm run cloudflare:build`
-- Deploy command: `npx wrangler@4.135.0 deploy`
+## provenance
 
-The explicit skip/install sequence is important because source files are reconstructed from the verified bootstrap payload before npm resolves the complete project.
-
-## Main scripts
-
-```bash
-npm run check
-npm run build
-npm run cloudflare:build
-npm run deploy
-```
-
-## Learning-engine hardening in 1.2
-
-- explicit learning/relearning states so wrong or assisted first encounters cannot disappear
-- same-session relearning without double-penalizing SRS state
-- backlog chunking and fresh-word gating
-- capped mature review intervals
-- unique visible MCQ answers across the full 899-word deck
-- learner favorites separated from SRS state
-- daily-plan progress separated from repair/topic/custom practice
-- answer persistence before feedback animation
-- Persian/Arabic search normalization
-- Android/browser Back behavior
-- validated backup export/import
-- storage failure reporting
-- improved accessibility, contrast and safe-area behavior
-- offline/PWA hardening
-- audio playback race handling and Web Speech fallback
-- stricter CI and release verification
-
-## Content provenance
-
-Application-code deployment is separate from content redistribution rights. Public/commercial redistribution of the bundled vocabulary/audio selection should remain fail-closed until the rights evidence described in the release provenance documentation is retained.
+کیفیت فنی و حقوق بازتوزیع دو موضوع جدا هستند. `CONTENT_PROVENANCE.md` باید همراه release نگهداری شود. `npm run release:check` عمداً بدون `GHESSE_RIGHTS_CONFIRMED=1` fail می‌شود؛ این متغیر فقط زمانی باید تنظیم شود که evidence حقوق انتشار در release record موجود باشد.

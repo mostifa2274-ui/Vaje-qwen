@@ -1,0 +1,227 @@
+{
+  "id": "b4c2",
+  "book": 4,
+  "n": 2,
+  "titleFa": "مغازه‌ی نان",
+  "titleEn": "The Bread Shop",
+  "new": [
+    "butter",
+    "cheese",
+    "cream",
+    "cake",
+    "sugar",
+    "salt",
+    "pepper",
+    "sandwich",
+    "soup",
+    "dish",
+    "meal",
+    "lunch",
+    "cooking",
+    "prepare",
+    "cut",
+    "bring",
+    "choose",
+    "prefer",
+    "delicious",
+    "hot",
+    "small",
+    "long"
+  ],
+  "sentences": [
+    {
+      "en": "A man sells bread in a small shop.",
+      "fa": "یک مرد در یک مغازه‌ی کوچک نان می‌فروشد."
+    },
+    {
+      "en": "The shop is small and warm.",
+      "fa": "مغازه کوچک و گرم است."
+    },
+    {
+      "en": "He makes bread.",
+      "fa": "او نان درست می‌کند."
+    },
+    {
+      "en": "The bread is hot.",
+      "fa": "نان داغ است."
+    },
+    {
+      "en": "Hot bread is good.",
+      "fa": "نان داغ خوب است."
+    },
+    {
+      "en": "He cuts the bread.",
+      "fa": "او نان را برش می‌دهد."
+    },
+    {
+      "en": "He cuts it for Mina.",
+      "fa": "آن را برای مینا برش می‌دهد."
+    },
+    {
+      "en": "He brings the bread.",
+      "fa": "او نان را می‌آورد."
+    },
+    {
+      "en": "He brings it to the people.",
+      "fa": "آن را برای مردم می‌آورد."
+    },
+    {
+      "en": "The people choose the bread.",
+      "fa": "مردم نان را انتخاب می‌کنند."
+    },
+    {
+      "en": "They choose the hot bread.",
+      "fa": "آن‌ها نان داغ را انتخاب می‌کنند."
+    },
+    {
+      "en": "Mina prefers a small piece of bread.",
+      "fa": "مینا یک تکه‌ی کوچک نان را ترجیح می‌دهد."
+    },
+    {
+      "en": "She prefers it hot.",
+      "fa": "او آن را داغ ترجیح می‌دهد."
+    },
+    {
+      "en": "The man who sells bread has butter.",
+      "fa": "مردی که نان می‌فروشد کره هم دارد."
+    },
+    {
+      "en": "The butter is yellow.",
+      "fa": "کره زرد است."
+    },
+    {
+      "en": "He has cheese.",
+      "fa": "او پنیر دارد."
+    },
+    {
+      "en": "The cheese is white.",
+      "fa": "پنیر سفید است."
+    },
+    {
+      "en": "He has cream.",
+      "fa": "او خامه دارد."
+    },
+    {
+      "en": "The cream is for cake.",
+      "fa": "خامه برای کیک است."
+    },
+    {
+      "en": "The cake is delicious.",
+      "fa": "کیک خوشمزه است."
+    },
+    {
+      "en": "The soup is delicious, too.",
+      "fa": "سوپ هم خوشمزه است."
+    },
+    {
+      "en": "The soup is hot.",
+      "fa": "سوپ داغ است."
+    },
+    {
+      "en": "At home, Mom cooks a dish.",
+      "fa": "در خانه، مامان یک غذا می‌پزد."
+    },
+    {
+      "en": "The dish is delicious.",
+      "fa": "غذا خوشمزه است."
+    },
+    {
+      "en": "The meal is good.",
+      "fa": "وعده‌ی غذایی خوب است."
+    },
+    {
+      "en": "The family prepares the meal together.",
+      "fa": "خانواده با هم وعده‌ی غذایی را آماده می‌کنند."
+    },
+    {
+      "en": "Mom prepares lunch.",
+      "fa": "مامان ناهار آماده می‌کند."
+    },
+    {
+      "en": "The lunch is good.",
+      "fa": "ناهار خوب است."
+    },
+    {
+      "en": "He has sugar.",
+      "fa": "او شکر دارد."
+    },
+    {
+      "en": "The sugar is white.",
+      "fa": "شکر سفید است."
+    },
+    {
+      "en": "He has salt.",
+      "fa": "او نمک دارد."
+    },
+    {
+      "en": "The salt is white, too.",
+      "fa": "نمک هم سفید است."
+    },
+    {
+      "en": "He has pepper.",
+      "fa": "او فلفل دارد."
+    },
+    {
+      "en": "The pepper is black.",
+      "fa": "فلفل سیاه است."
+    },
+    {
+      "en": "Mina has a sandwich.",
+      "fa": "مینا یک ساندویچ دارد."
+    },
+    {
+      "en": "The sandwich is small.",
+      "fa": "ساندویچ کوچک است."
+    },
+    {
+      "en": "The man likes cooking.",
+      "fa": "آن مرد آشپزی را دوست دارد."
+    },
+    {
+      "en": "Cooking is his life.",
+      "fa": "آشپزی زندگی اوست."
+    },
+    {
+      "en": "It is a long morning.",
+      "fa": "صبح طولانی‌ای است."
+    },
+    {
+      "en": "The day is long.",
+      "fa": "روز طولانی است."
+    },
+    {
+      "en": "\"I see a black cat here every morning,\" he says.",
+      "fa": "هر صبح یک گربه‌ی سیاه اینجا می‌بینم، مرد می‌گوید."
+    },
+    {
+      "en": "The cat comes to the shop in the morning.",
+      "fa": "گربه صبح به مغازه می‌آید."
+    },
+    {
+      "en": "Mina is happy.",
+      "fa": "مینا خوشحال است."
+    }
+  ],
+  "check": [
+    {
+      "q": "نان چطور است؟",
+      "options": [
+        "hot",
+        "cold",
+        "cheap",
+        "expensive"
+      ],
+      "a": "hot"
+    },
+    {
+      "q": "مردِ نان‌فروش صبح‌ها چه می‌بیند؟",
+      "options": [
+        "cat",
+        "bird",
+        "cake",
+        "soup"
+      ],
+      "a": "cat"
+    }
+  ]
+}

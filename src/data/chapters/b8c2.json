@@ -1,0 +1,283 @@
+{
+  "id": "b8c2",
+  "book": 8,
+  "n": 2,
+  "titleFa": "دست‌ها و پاها",
+  "titleEn": "Hands and Feet",
+  "new": [
+    "arm",
+    "body",
+    "ear",
+    "eye",
+    "face",
+    "fat",
+    "foot",
+    "hair",
+    "hand",
+    "head",
+    "leg",
+    "mouth",
+    "nose",
+    "tooth",
+    "blond",
+    "relax",
+    "lie",
+    "spend",
+    "hobby",
+    "their",
+    "them",
+    "yourself"
+  ],
+  "sentences": [
+    {
+      "en": "After the climb, the family rests at Grandmother's house.",
+      "fa": "بعد از بالا رفتن از کوه، خانواده در خانه‌ی مادربزرگ استراحت می‌کنند."
+    },
+    {
+      "en": "The climb was long.",
+      "fa": "بالا رفتن از کوه طولانی بود."
+    },
+    {
+      "en": "Mina's legs are tired.",
+      "fa": "پاهای مینا خسته هستند."
+    },
+    {
+      "en": "Her feet are tired, too.",
+      "fa": "پاهایش هم خسته هستند."
+    },
+    {
+      "en": "\"One foot, two feet,\" she says.",
+      "fa": "یک پا، دو پا، می‌گوید."
+    },
+    {
+      "en": "\"My legs do not feel good today,\" Mina says.",
+      "fa": "«پاهایم امروز حال خوبی ندارند»، مینا می‌گوید."
+    },
+    {
+      "en": "Dad carries her in his arms.",
+      "fa": "بابا او را در آغوشش حمل می‌کند."
+    },
+    {
+      "en": "His arms are strong.",
+      "fa": "بازوهایش قوی هستند."
+    },
+    {
+      "en": "Grandmother waits at the door.",
+      "fa": "مادربزرگ پشت در منتظر است."
+    },
+    {
+      "en": "Grandmother has a kind face.",
+      "fa": "مادربزرگ چهره‌ی مهربانی دارد."
+    },
+    {
+      "en": "Her eyes are warm.",
+      "fa": "چشم‌هایش گرم هستند."
+    },
+    {
+      "en": "She has gray hair.",
+      "fa": "موهای خاکستری دارد."
+    },
+    {
+      "en": "Her hair is long and gray.",
+      "fa": "موهایش بلند و خاکستری هستند."
+    },
+    {
+      "en": "\"Look at yourself,\" she says.",
+      "fa": "به خودت نگاه کن، می‌گوید."
+    },
+    {
+      "en": "Your face is red from the climb.",
+      "fa": "صورتت از بالا رفتن قرمز است."
+    },
+    {
+      "en": "\"Sit and relax,\" Grandmother says.",
+      "fa": "«بنشین و استراحت کن»، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "Mina sits and relaxes.",
+      "fa": "مینا می‌نشیند و استراحت می‌کند."
+    },
+    {
+      "en": "Grandmother washes Mina's hands.",
+      "fa": "مادربزرگ دست‌های مینا را می‌شوید."
+    },
+    {
+      "en": "Her hands look small in Grandmother's hands.",
+      "fa": "دست‌هایش در دست‌های مادربزرگ کوچک به نظر می‌رسند."
+    },
+    {
+      "en": "\"Wash your face, too,\" Grandmother says.",
+      "fa": "صورتت را هم بشور، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "She washes her hair, too.",
+      "fa": "موهایش را هم می‌شوید."
+    },
+    {
+      "en": "Mina washes her face, her nose, and her ears.",
+      "fa": "مینا صورتش، بینی‌اش و گوش‌هایش را می‌شوید."
+    },
+    {
+      "en": "Her nose is cold.",
+      "fa": "بینی‌اش سرد است."
+    },
+    {
+      "en": "Her ears are cold, too.",
+      "fa": "گوش‌هایش هم سرد هستند."
+    },
+    {
+      "en": "\"Now your mouth,\" Grandmother says.",
+      "fa": "حالا دهانت، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "Mina opens her mouth.",
+      "fa": "مینا دهانش را باز می‌کند."
+    },
+    {
+      "en": "\"Look at that tooth,\" Grandmother says.",
+      "fa": "به آن دندان نگاه کن، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "One tooth is new.",
+      "fa": "یک دندان تازه است."
+    },
+    {
+      "en": "It is a little white tooth.",
+      "fa": "یک دندان سفید کوچک است."
+    },
+    {
+      "en": "The cousin has blond hair.",
+      "fa": "دخترخاله موهای بلوند دارد."
+    },
+    {
+      "en": "Her blond hair is long.",
+      "fa": "موهای بلوندش بلند هستند."
+    },
+    {
+      "en": "Her eyes are blue.",
+      "fa": "چشم‌هایش آبی هستند."
+    },
+    {
+      "en": "\"Do you like my hair?\" the cousin says.",
+      "fa": "موهایم را دوست داری؟ دخترخاله می‌گوید."
+    },
+    {
+      "en": "\"I like it,\" Mina says.",
+      "fa": "دوستش دارم، مینا می‌گوید."
+    },
+    {
+      "en": "The cousin shows Mina a picture of a very fat cat.",
+      "fa": "دخترخاله عکس یک گربه‌ی خیلی چاق را به مینا نشان می‌دهد."
+    },
+    {
+      "en": "\"That is a fat cat,\" the cousin says.",
+      "fa": "«این گربه چاق است»، دخترخاله می‌گوید."
+    },
+    {
+      "en": "The children play in the garden.",
+      "fa": "بچه‌ها در باغ بازی می‌کنند."
+    },
+    {
+      "en": "Mina spends the day with them.",
+      "fa": "مینا روز را با آن‌ها می‌گذراند."
+    },
+    {
+      "en": "They spend the day in the garden.",
+      "fa": "آن‌ها روز را در باغ می‌گذرانند."
+    },
+    {
+      "en": "They play many games.",
+      "fa": "آن‌ها بازی‌های زیادی می‌کنند."
+    },
+    {
+      "en": "Aunt calls them for dinner, so they leave their games.",
+      "fa": "خاله آن‌ها را برای شام صدا می‌کند، پس بازی‌هایشان را رها می‌کنند."
+    },
+    {
+      "en": "At night, Mina lies in her own bed.",
+      "fa": "شب، مینا در تخت خودش دراز می‌کشد."
+    },
+    {
+      "en": "She lies down and closes her eyes.",
+      "fa": "دراز می‌کشد و چشم‌هایش را می‌بندد."
+    },
+    {
+      "en": "Her body is tired.",
+      "fa": "بدنش خسته است."
+    },
+    {
+      "en": "Her head rests on the bed.",
+      "fa": "سرش روی تخت قرار دارد."
+    },
+    {
+      "en": "Her head is down, and her body is quiet.",
+      "fa": "سرش پایین است و بدنش آرام."
+    },
+    {
+      "en": "Grandmother sits by the bed.",
+      "fa": "مادربزرگ کنار تخت می‌نشیند."
+    },
+    {
+      "en": "Her hobby is telling stories.",
+      "fa": "سرگرمی‌اش قصه گفتن است."
+    },
+    {
+      "en": "She has a hundred stories.",
+      "fa": "او صد قصه دارد."
+    },
+    {
+      "en": "\"My hobby is listening to your stories,\" Mina says.",
+      "fa": "سرگرمی من گوش دادن به قصه‌های توست، مینا می‌گوید."
+    },
+    {
+      "en": "\"Then listen,\" Grandmother says.",
+      "fa": "پس گوش کن، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "\"Keep yourself warm,\" Grandmother says.",
+      "fa": "خودت را گرم نگه دار، مادربزرگ می‌گوید."
+    },
+    {
+      "en": "Mina is warm in the bed.",
+      "fa": "مینا در تخت گرم است."
+    },
+    {
+      "en": "She listens closely to the story.",
+      "fa": "او با دقت به قصه گوش می‌دهد."
+    },
+    {
+      "en": "The story is about a cat.",
+      "fa": "قصه درباره‌ی یک گربه است."
+    },
+    {
+      "en": "The story is about a little black cat.",
+      "fa": "قصه درباره‌ی یک گربه‌ی سیاه کوچک است."
+    },
+    {
+      "en": "Mina's eyes are open again.",
+      "fa": "چشم‌های مینا دوباره باز هستند."
+    }
+  ],
+  "check": [
+    {
+      "q": "کدام قسمت بدن مینا از بالا رفتن خسته است؟",
+      "options": [
+        "leg",
+        "hand",
+        "ear",
+        "nose"
+      ],
+      "a": "leg"
+    },
+    {
+      "q": "سرگرمی مادربزرگ چیست؟",
+      "options": [
+        "story",
+        "job",
+        "sport",
+        "game"
+      ],
+      "a": "story"
+    }
+  ]
+}

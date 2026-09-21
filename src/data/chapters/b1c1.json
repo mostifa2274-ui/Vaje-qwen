@@ -1,0 +1,156 @@
+{
+  "id": "b1c1",
+  "book": 1,
+  "n": 1,
+  "titleFa": "نینو می‌دود",
+  "titleEn": "Nino Runs",
+  "new": [
+    "a-an",
+    "the",
+    "and",
+    "be",
+    "have",
+    "do",
+    "i",
+    "my",
+    "it",
+    "she",
+    "this",
+    "not",
+    "no",
+    "at",
+    "in",
+    "on",
+    "cat",
+    "bird",
+    "run",
+    "look",
+    "see",
+    "home",
+    "morning",
+    "little",
+    "red",
+    "black",
+    "book"
+  ],
+  "sentences": [
+    {
+      "en": "Mina has a little cat.",
+      "fa": "مینا یک گربه‌ی کوچک دارد."
+    },
+    {
+      "en": "The cat is black.",
+      "fa": "گربه سیاه است."
+    },
+    {
+      "en": "His name is Nino.",
+      "fa": "اسمش نینو است."
+    },
+    {
+      "en": "Mina and Nino are at home.",
+      "fa": "مینا و نینو در خانه هستند."
+    },
+    {
+      "en": "It is morning.",
+      "fa": "صبح است."
+    },
+    {
+      "en": "Mina has a red book.",
+      "fa": "مینا یک کتاب قرمز دارد."
+    },
+    {
+      "en": "This is my book, Nino.",
+      "fa": "این کتاب من است، نینو."
+    },
+    {
+      "en": "Mina looks at the book.",
+      "fa": "مینا به کتاب نگاه می‌کند."
+    },
+    {
+      "en": "The cat is on the book.",
+      "fa": "گربه روی کتاب است."
+    },
+    {
+      "en": "Nino is a little black cat.",
+      "fa": "نینو یک گربه‌ی کوچک و سیاه است."
+    },
+    {
+      "en": "Mina looks at the cat.",
+      "fa": "مینا به گربه نگاه می‌کند."
+    },
+    {
+      "en": "The cat looks at a bird.",
+      "fa": "گربه به یک پرنده نگاه می‌کند."
+    },
+    {
+      "en": "The bird is red.",
+      "fa": "پرنده قرمز است."
+    },
+    {
+      "en": "The bird is on the book.",
+      "fa": "پرنده روی کتاب است."
+    },
+    {
+      "en": "Nino runs toward the bird.",
+      "fa": "نینو به سمت پرنده می‌دود."
+    },
+    {
+      "en": "The bird runs and runs.",
+      "fa": "پرنده می‌دود و می‌دود."
+    },
+    {
+      "en": "Nino runs and runs.",
+      "fa": "نینو می‌دود و می‌دود."
+    },
+    {
+      "en": "Mina looks for Nino, but she does not see the cat.",
+      "fa": "مینا دنبال نینو می‌گردد، اما گربه را نمی‌بیند."
+    },
+    {
+      "en": "\"I do not see my cat,\" Mina says.",
+      "fa": "گربه‌ام را نمی‌بینم، مینا می‌گوید."
+    },
+    {
+      "en": "Nino is not at home.",
+      "fa": "نینو در خانه نیست."
+    },
+    {
+      "en": "Mina sees no cat and no bird.",
+      "fa": "مینا نه گربه‌ای می‌بیند و نه پرنده‌ای."
+    },
+    {
+      "en": "It is morning, and Nino is not home.",
+      "fa": "صبح است و نینو خانه نیست."
+    },
+    {
+      "en": "This is my book, and Nino is not in it.",
+      "fa": "این کتاب من است، و نینو در آن نیست."
+    },
+    {
+      "en": "Mina runs and runs.",
+      "fa": "مینا می‌دود و می‌دود."
+    }
+  ],
+  "check": [
+    {
+      "q": "نینو چه حیوانی است؟",
+      "options": [
+        "cat",
+        "bird",
+        "book",
+        "morning"
+      ],
+      "a": "cat"
+    },
+    {
+      "q": "کتاب مینا چه رنگی است؟",
+      "options": [
+        "black",
+        "red",
+        "little",
+        "home"
+      ],
+      "a": "red"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "id": "b8c1",
+  "book": 8,
+  "n": 1,
+  "titleFa": "کوه",
+  "titleEn": "The Mountain",
+  "new": [
+    "aunt",
+    "uncle",
+    "cousin",
+    "father",
+    "mother",
+    "grandparent",
+    "mountain",
+    "up",
+    "climb",
+    "high",
+    "tall",
+    "short",
+    "large",
+    "quiet",
+    "cool",
+    "gray",
+    "green",
+    "pink",
+    "purple",
+    "into",
+    "its",
+    "own"
+  ],
+  "sentences": [
+    {
+      "en": "The family goes up.",
+      "fa": "خانواده بالا می‌روند."
+    },
+    {
+      "en": "They go up the mountain.",
+      "fa": "آن‌ها از کوه بالا می‌روند."
+    },
+    {
+      "en": "The mountain is high.",
+      "fa": "کوه بلند است."
+    },
+    {
+      "en": "It is high.",
+      "fa": "بلند است."
+    },
+    {
+      "en": "Mina climbs.",
+      "fa": "مینا بالا می‌رود."
+    },
+    {
+      "en": "She climbs the mountain.",
+      "fa": "او از کوه بالا می‌رود."
+    },
+    {
+      "en": "The house is tall.",
+      "fa": "خانه بلند است."
+    },
+    {
+      "en": "A tall tree is near the house.",
+      "fa": "یک درخت بلند نزدیک خانه است."
+    },
+    {
+      "en": "Her skirt is short.",
+      "fa": "دامنش کوتاه است."
+    },
+    {
+      "en": "Mina has short pants and a warm coat.",
+      "fa": "مینا شلوار کوتاه و یک کت گرم دارد."
+    },
+    {
+      "en": "The house is large.",
+      "fa": "خانه بزرگ است."
+    },
+    {
+      "en": "A large garden is behind the house.",
+      "fa": "یک باغ بزرگ پشت خانه است."
+    },
+    {
+      "en": "The garden is quiet.",
+      "fa": "باغ آرام است."
+    },
+    {
+      "en": "It is quiet here.",
+      "fa": "اینجا آرام است."
+    },
+    {
+      "en": "The air is cool.",
+      "fa": "هوا خنک است."
+    },
+    {
+      "en": "It is cool on the mountain.",
+      "fa": "روی کوه خنک است."
+    },
+    {
+      "en": "The mountain is gray.",
+      "fa": "کوه خاکستری است."
+    },
+    {
+      "en": "The road is gray.",
+      "fa": "جاده خاکستری است."
+    },
+    {
+      "en": "The garden is green.",
+      "fa": "باغ سبز است."
+    },
+    {
+      "en": "The trees are green.",
+      "fa": "درخت‌ها سبز هستند."
+    },
+    {
+      "en": "The flowers are pink.",
+      "fa": "گل‌ها صورتی هستند."
+    },
+    {
+      "en": "Pink flowers grow in the garden.",
+      "fa": "گل‌های صورتی در باغ رشد می‌کنند."
+    },
+    {
+      "en": "The flowers are purple, too.",
+      "fa": "گل‌ها بنفش هم هستند."
+    },
+    {
+      "en": "The flowers are purple and pink.",
+      "fa": "گل‌ها بنفش و صورتی هستند."
+    },
+    {
+      "en": "Her aunt is there.",
+      "fa": "خاله‌اش آنجاست."
+    },
+    {
+      "en": "The aunt is nice.",
+      "fa": "خاله خوب است."
+    },
+    {
+      "en": "Her uncle is there.",
+      "fa": "دایی‌اش آنجاست."
+    },
+    {
+      "en": "The uncle is old.",
+      "fa": "دایی پیر است."
+    },
+    {
+      "en": "Her cousin is there.",
+      "fa": "دخترخاله‌اش آنجاست."
+    },
+    {
+      "en": "The cousin is young.",
+      "fa": "دخترخاله جوان است."
+    },
+    {
+      "en": "Her mother helps in the kitchen.",
+      "fa": "مادرش در آشپزخانه کمک می‌کند."
+    },
+    {
+      "en": "Her father talks with Grandfather.",
+      "fa": "پدرش با پدربزرگ صحبت می‌کند."
+    },
+    {
+      "en": "Mina's mother cooks.",
+      "fa": "مادر مینا آشپزی می‌کند."
+    },
+    {
+      "en": "Her father helps.",
+      "fa": "پدرش کمک می‌کند."
+    },
+    {
+      "en": "The grandparents are happy.",
+      "fa": "پدربزرگ و مادربزرگ خوشحال هستند."
+    },
+    {
+      "en": "Her grandparents live here.",
+      "fa": "پدربزرگ و مادربزرگش اینجا زندگی می‌کنند."
+    },
+    {
+      "en": "They go into the house.",
+      "fa": "آن‌ها به داخل خانه می‌روند."
+    },
+    {
+      "en": "Mina runs into the garden.",
+      "fa": "مینا به داخل باغ می‌دود."
+    },
+    {
+      "en": "The house has its own garden.",
+      "fa": "خانه باغ خودش را دارد."
+    },
+    {
+      "en": "Mina hopes Nino will soon be in his own home.",
+      "fa": "مینا امیدوار است نینو به‌زودی در خانه‌ی خودش باشد."
+    },
+    {
+      "en": "Mina has her own room here.",
+      "fa": "مینا اینجا اتاق خودش را دارد."
+    },
+    {
+      "en": "Mina has her own bed.",
+      "fa": "مینا تخت خودش را دارد."
+    }
+  ],
+  "check": [
+    {
+      "q": "خانه‌ی مادربزرگ کجاست؟",
+      "options": [
+        "mountain",
+        "beach",
+        "city",
+        "farm"
+      ],
+      "a": "mountain"
+    },
+    {
+      "q": "گل‌ها چه رنگی هستند؟",
+      "options": [
+        "pink",
+        "gray",
+        "blue",
+        "brown"
+      ],
+      "a": "pink"
+    }
+  ]
+}
