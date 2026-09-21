@@ -58,8 +58,8 @@
       "fa": "او دوباره می‌پرسد."
     },
     {
-      "en": "\"Do you see my cat?\" she says again.",
-      "fa": "گربه‌ام را می‌بینی؟ دوباره می‌گوید."
+      "en": "\"Do you see my cat?\" she asks again.",
+      "fa": "«گربه‌ام را می‌بینی؟» دوباره می‌پرسد."
     },
     {
       "en": "It is Wednesday.",
@@ -78,12 +78,12 @@
       "fa": "پنجشنبه است."
     },
     {
-      "en": "Mina never sees Nino this week.",
-      "fa": "مینا در این هفته هیچ‌وقت نینو را نمی‌بیند."
+      "en": "Mina never sees Nino that week.",
+      "fa": "مینا آن هفته هیچ‌وقت نینو را نمی‌بیند."
     },
     {
-      "en": "She does not sleep well.",
-      "fa": "او خوب نمی‌خوابد."
+      "en": "At night, she does not sleep well.",
+      "fa": "شب‌ها خوب نمی‌خوابد."
     },
     {
       "en": "It is Friday.",
@@ -126,8 +126,8 @@
       "fa": "هفته بد است."
     },
     {
-      "en": "A week runs from Monday to Sunday.",
-      "fa": "یک هفته از دوشنبه تا یکشنبه ادامه دارد."
+      "en": "A week begins on Monday and ends on Sunday.",
+      "fa": "یک هفته از دوشنبه شروع می‌شود و یکشنبه تمام می‌شود."
     },
     {
       "en": "The weekend is here.",
@@ -138,8 +138,8 @@
       "fa": "آخر هفته، آن‌ها تمام روز نگاه می‌کنند."
     },
     {
-      "en": "For Mina’s family, the weekend starts on Friday.",
-      "fa": "برای خانواده‌ی مینا، آخر هفته از جمعه شروع می‌شود."
+      "en": "For Mina’s family, the weekend starts on Friday evening.",
+      "fa": "برای خانواده‌ی مینا، آخر هفته از عصر جمعه شروع می‌شود."
     },
     {
       "en": "Mina still looks.",
@@ -150,8 +150,8 @@
       "fa": "نینو هنوز خانه نیست."
     },
     {
-      "en": "\"I just look and look,\" she says.",
-      "fa": "من فقط نگاه می‌کنم و نگاه می‌کنم، می‌گوید."
+      "en": "\"I just keep looking,\" she says.",
+      "fa": "«فقط به جست‌وجو ادامه می‌دهم»، می‌گوید."
     },
     {
       "en": "He just runs and runs.",
@@ -166,8 +166,8 @@
       "fa": "وقت شام است."
     },
     {
-      "en": "The family watches TV.",
-      "fa": "خانواده تلویزیون تماشا می‌کند."
+      "en": "The family watches TV while Mina listens for Nino.",
+      "fa": "خانواده تلویزیون تماشا می‌کنند و مینا گوش می‌دهد شاید صدای نینو را بشنود."
     },
     {
       "en": "Mina watches the door.",
@@ -178,20 +178,20 @@
       "fa": "این برنامه‌ی روزانه‌ی اوست."
     },
     {
-      "en": "Her routine is to look, ask, and wait.",
-      "fa": "برنامه‌ی روزانه‌اش این است که نگاه کند، بپرسد و منتظر بماند."
+      "en": "Her routine is simple: look, ask, and wait for Nino.",
+      "fa": "برنامه‌ی روزانه‌اش ساده است: نگاه کردن، پرسیدن و منتظر نینو ماندن."
     },
     {
-      "en": "From Monday to Sunday, she looks.",
-      "fa": "از دوشنبه تا یکشنبه، او نگاه می‌کند."
+      "en": "From Monday to Sunday, Mina keeps looking.",
+      "fa": "از دوشنبه تا یکشنبه، مینا به جست‌وجو ادامه می‌دهد."
     },
     {
-      "en": "From Tuesday to Saturday, she asks.",
-      "fa": "از سه‌شنبه تا شنبه، او می‌پرسد."
+      "en": "From Tuesday to Saturday, she keeps asking people.",
+      "fa": "از سه‌شنبه تا شنبه، از مردم سؤال می‌کند."
     },
     {
-      "en": "On Wednesday and Thursday, she calls.",
-      "fa": "چهارشنبه و پنجشنبه، او نینو را صدا می‌کند."
+      "en": "On Wednesday and Thursday, she calls Nino from the yard.",
+      "fa": "چهارشنبه و پنجشنبه، از حیاط نینو را صدا می‌کند."
     }
   ],
   "check": [

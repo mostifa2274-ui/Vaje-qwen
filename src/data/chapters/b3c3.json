@@ -40,8 +40,8 @@
       "fa": "قبل از صبحانه، به حیاط نگاه می‌کند."
     },
     {
-      "en": "Her brother eats before Mina.",
-      "fa": "برادرش قبل از مینا غذا می‌خورد."
+      "en": "Her brother finishes breakfast before Mina.",
+      "fa": "برادرش قبل از مینا صبحانه‌اش را تمام می‌کند."
     },
     {
       "en": "After breakfast, she goes to the park.",
@@ -64,12 +64,12 @@
       "fa": "ساعت ده و ربع است."
     },
     {
-      "en": "A quarter past ten is late for Mina's morning walk.",
-      "fa": "ده و ربع برای پیاده‌روی صبحِ مینا دیر است."
+      "en": "A quarter past ten feels late for Mina's morning walk.",
+      "fa": "ساعت ده و ربع برای پیاده‌روی صبحِ مینا دیر به نظر می‌رسد."
     },
     {
-      "en": "Mina is late for her walk.",
-      "fa": "مینا برای پیاده‌روی‌اش دیر کرده است."
+      "en": "Mina is late, but she still goes out.",
+      "fa": "مینا دیر کرده است، اما باز هم بیرون می‌رود."
     },
     {
       "en": "It is afternoon.",
@@ -104,23 +104,23 @@
       "fa": "آن‌ها تا ساعت نه منتظر می‌مانند."
     },
     {
-      "en": "Mina thinks Nino may run until midnight.",
-      "fa": "مینا فکر می‌کند شاید نینو تا نیمه‌شب بدود."
+      "en": "Mina thinks Nino may keep running until midnight.",
+      "fa": "مینا فکر می‌کند شاید نینو تا نیمه‌شب به دویدن ادامه دهد."
     },
     {
-      "en": "It is dark at midnight.",
-      "fa": "نیمه‌شب هوا تاریک است."
+      "en": "At midnight, the street is dark and quiet.",
+      "fa": "نیمه‌شب، خیابان تاریک و ساکت است."
     },
     {
       "en": "Nino is not home at midnight.",
       "fa": "نینو نیمه‌شب خانه نیست."
     },
     {
-      "en": "A week ago, Nino was home.",
-      "fa": "یک هفته پیش، نینو خانه بود."
+      "en": "A week ago, Nino was still at home.",
+      "fa": "یک هفته پیش، نینو هنوز در خانه بود."
     },
     {
-      "en": "Two days ago, Mina was sad, too.",
+      "en": "Two days ago, Mina was sad too.",
       "fa": "دو روز پیش، مینا هم غمگین بود."
     },
     {
@@ -136,12 +136,12 @@
       "fa": "یک پرنده است."
     },
     {
-      "en": "\"Nino will come home soon,\" Mom says.",
-      "fa": "نینو به‌زودی به خانه برمی‌گردد، مامان می‌گوید."
+      "en": "\"Nino will come home soon,\" Mom tells her.",
+      "fa": "«نینو به‌زودی به خانه برمی‌گردد»، مامان به او می‌گوید."
     },
     {
-      "en": "\"Soon,\" Mina says.",
-      "fa": "به‌زودی، مینا می‌گوید."
+      "en": "\"Soon,\" Mina says. She wants to believe it.",
+      "fa": "«به‌زودی»، مینا می‌گوید. می‌خواهد آن را باور کند."
     },
     {
       "en": "Later, the family eats.",
@@ -160,12 +160,12 @@
       "fa": "فردا، دوباره نگاه می‌کند."
     },
     {
-      "en": "Yesterday was bad.",
-      "fa": "دیروز بد بود."
+      "en": "Yesterday felt like another bad day.",
+      "fa": "دیروز هم مثل یک روز بد دیگر گذشت."
     },
     {
-      "en": "Yesterday, Nino was not home.",
-      "fa": "دیروز، نینو خانه نبود."
+      "en": "Yesterday, Nino was still not home.",
+      "fa": "دیروز هم نینو هنوز خانه نبود."
     },
     {
       "en": "Do you ever see Nino?",
@@ -180,8 +180,8 @@
       "fa": "امشب، مینا منتظر می‌ماند."
     },
     {
-      "en": "\"I hope tonight is the night,\" she says.",
-      "fa": "«امیدوارم امشب همان شب باشد»، می‌گوید."
+      "en": "\"I hope tonight is the night he comes home,\" she says.",
+      "fa": "«امیدوارم امشب همان شبی باشد که به خانه برمی‌گردد»، می‌گوید."
     },
     {
       "en": "It is the end of the day.",
