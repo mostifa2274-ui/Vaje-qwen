@@ -175,7 +175,7 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
       chapterId: chapter.id,
       prepared,
       title: prepared ? `ادامه: ${chapter.titleFa}` : `آمادگی: ${chapter.titleFa}`,
-      detail: prepared ? 'واژه‌های این فصل آماده‌اند؛ حالا آن‌ها را در قصه ببین.' : `${chapter.new.length} واژهٔ تازه را قبل از قصه مرور و بازیابی کن.`,
+      detail: prepared ? 'آزمون نوشتاری و شنیداری ۱۰۰٪ کامل است؛ حالا واژه‌ها را در قصه ببین.' : `${chapter.new.length} واژهٔ تازه را یاد بگیر، سپس همه را در آزمون نوشتاری و شنیداری ۱۰۰٪ پاس کن.`,
     }
   }
 

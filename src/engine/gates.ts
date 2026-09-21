@@ -64,7 +64,21 @@ export function examDefinition(id: string): ExamDefinition | undefined {
 }
 
 export function chapterPrepared(state: GhesseState, chapterId: string): boolean {
-  return Boolean(state.chapters[chapterId]?.preparedAt)
+  const progress = state.chapters[chapterId]
+  if (!progress) return false
+  // Never relock a chapter the learner has already completed in an older app
+  // version. For every unfinished chapter, however, legacy preparedAt alone
+  // is intentionally insufficient: both new prep tests must be 100%.
+  if (progress.completed) return true
+  const writtenTotal = progress.prepWrittenTotal ?? 0
+  const listeningTotal = progress.prepListeningTotal ?? 0
+  return Boolean(
+    progress.preparedAt
+    && writtenTotal > 0
+    && listeningTotal > 0
+    && progress.prepWrittenCorrect === writtenTotal
+    && progress.prepListeningCorrect === listeningTotal,
+  )
 }
 
 export function chapterCompleted(state: GhesseState, chapterId: string): boolean {

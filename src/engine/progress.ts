@@ -5,28 +5,34 @@ export function recordPreparedChapter(
   state: GhesseState,
   chapterId: string,
   wordIds: string[],
-  pretestCorrect: number,
-  pretestTotal: number,
-  pretestMissedIds: readonly string[],
-  firstPassCorrect: number,
-  productiveCorrect: number,
-  productiveTotal: number,
-  recognitionMissedIds: readonly string[],
-  productiveMissedIds: readonly string[],
+  writtenPassedIds: readonly string[],
+  listeningPassedIds: readonly string[],
+  writtenMissedIds: readonly string[],
+  listeningMissedIds: readonly string[],
   now: number,
 ): GhesseState {
   const previous = state.chapters[chapterId]
+  const writtenPassed = new Set(writtenPassedIds)
+  const listeningPassed = new Set(listeningPassedIds)
+
+  // Engine-level fail-closed gate: UI bugs, imported sparse state, or direct
+  // callers cannot unlock a chapter unless every word passed both tests.
+  const fullWrittenPass = wordIds.length > 0 && wordIds.every(id => writtenPassed.has(id))
+  const fullListeningPass = wordIds.length > 0 && wordIds.every(id => listeningPassed.has(id))
+  if (!fullWrittenPass || !fullListeningPass) return state
+
   const words = { ...state.words }
-  const pretestMissed = new Set(pretestMissedIds)
-  const recognitionMissed = new Set(recognitionMissedIds)
-  const productiveMissed = new Set(productiveMissedIds)
-  const tuneDifficulty = !previous?.preparedAt
+  const writtenMissed = new Set(writtenMissedIds)
+  const listeningMissed = new Set(listeningMissedIds)
+  const alreadyUsedCurrentGate = (previous?.prepWrittenTotal ?? 0) > 0 || (previous?.prepListeningTotal ?? 0) > 0
+  const tuneDifficulty = !alreadyUsedCurrentGate
+
   for (const id of wordIds) {
     const existing = words[id] ?? blankWordProgress(now)
-    // Prep is diagnostic, not long-term retrieval evidence. It only tunes the
-    // initial difficulty so later spacing reacts to actual learner friction.
+    // Prep still does not grant long-term mastery. Misses only tune initial
+    // difficulty so the later spaced-retrieval scheduler reacts to friction.
     const difficultyDelta = tuneDifficulty
-      ? (pretestMissed.has(id) ? 0.35 : -0.08) + (recognitionMissed.has(id) ? 0.55 : -0.07) + (productiveMissed.has(id) ? 0.9 : 0)
+      ? (writtenMissed.has(id) ? 0.85 : -0.08) + (listeningMissed.has(id) ? 0.6 : -0.05)
       : 0
     words[id] = {
       ...existing,
@@ -35,20 +41,20 @@ export function recordPreparedChapter(
       difficulty: Math.max(1, Math.min(10, existing.difficulty + difficultyDelta)),
     }
   }
+
   return {
     ...state,
     words,
     chapters: {
       ...state.chapters,
       [chapterId]: {
+        ...(previous ?? {}),
         preparedAt: now,
         prepAttempts: (previous?.prepAttempts ?? 0) + 1,
-        prepPretestCorrect: pretestCorrect,
-        prepPretestTotal: pretestTotal,
-        prepFirstPassCorrect: firstPassCorrect,
-        prepTotal: wordIds.length,
-        prepProductiveCorrect: productiveCorrect,
-        prepProductiveTotal: productiveTotal,
+        prepWrittenCorrect: wordIds.length,
+        prepWrittenTotal: wordIds.length,
+        prepListeningCorrect: wordIds.length,
+        prepListeningTotal: wordIds.length,
         completed: previous?.completed ?? false,
         completedAt: previous?.completedAt,
         lastReadAt: previous?.lastReadAt,
@@ -82,14 +88,9 @@ export function recordCompletedRead(
     chapters: {
       ...state.chapters,
       [chapterId]: {
+        ...(previous ?? {}),
         preparedAt: previous?.preparedAt ?? now,
         prepAttempts: Math.max(1, previous?.prepAttempts ?? 0),
-        prepPretestCorrect: previous?.prepPretestCorrect,
-        prepPretestTotal: previous?.prepPretestTotal,
-        prepFirstPassCorrect: previous?.prepFirstPassCorrect,
-        prepTotal: previous?.prepTotal,
-        prepProductiveCorrect: previous?.prepProductiveCorrect,
-        prepProductiveTotal: previous?.prepProductiveTotal,
         completed: true,
         completedAt: previous?.completedAt ?? now,
         lastReadAt: now,

@@ -17,8 +17,16 @@ export interface ChapterProgress {
   prepPretestTotal?: number
   prepFirstPassCorrect?: number
   prepTotal?: number
+  // Legacy prep metrics retained for backwards-compatible imports.
   prepProductiveCorrect?: number
   prepProductiveTotal?: number
+
+  // Current chapter-unlock gate. An unfinished chapter is readable only after
+  // every new word has passed both tests (100% written + 100% listening).
+  prepWrittenCorrect?: number
+  prepWrittenTotal?: number
+  prepListeningCorrect?: number
+  prepListeningTotal?: number
   completed: boolean
   completedAt?: number
   lastReadAt?: number
