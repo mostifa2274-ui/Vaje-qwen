@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
-import { VOCAB, CHAPTERS } from '../data/chapters'
+import { VOCAB } from '../data/chapters'
 import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
@@ -37,7 +37,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
 
   const counts = useMemo(() => {
     const result: Record<MasteryLevel, number> = { new: 0, seen: 0, learning: 0, strong: 0, mastered: 0 }
-    for (const word of VOCAB) result[wordMastery(word.id, state, CHAPTERS)]++
+    for (const word of VOCAB) result[wordMastery(word.id, state)]++
     return result
   }, [state])
 
@@ -46,15 +46,13 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
   const list = useMemo(() => {
     const q = query.trim().toLowerCase()
     return VOCAB.filter(word => {
-      const level = wordMastery(word.id, state, CHAPTERS)
+      const level = wordMastery(word.id, state)
       if (filter === 'trouble' && !trouble.has(word.id)) return false
       if (filter !== 'all' && filter !== 'trouble' && level !== filter) return false
       if (!q) return true
       return word.word.toLowerCase().includes(q) || word.fa.includes(q)
     })
   }, [query, filter, state, trouble])
-
-  useEffect(() => setVisibleCount(PAGE_SIZE), [query, filter])
 
   function tapWord(word: WordEntry) {
     setGloss(word)
@@ -82,7 +80,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         className="paper-card-flat mt-4 w-full px-4 py-3 text-base outline-none"
         placeholder="جست‌وجو: book یا کتاب…"
         value={query}
-        onChange={event => setQuery(event.target.value)}
+        onChange={event => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE) }}
         aria-label="جست‌وجو در واژه‌نامه"
       />
 
@@ -93,7 +91,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
             key={value}
             className={filter === value ? 'btn-ink shrink-0 px-3 py-1.5 text-sm' : 'btn-paper shrink-0 px-3 py-1.5 text-sm'}
             aria-pressed={filter === value}
-            onClick={() => setFilter(value)}
+            onClick={() => { setFilter(value); setVisibleCount(PAGE_SIZE) }}
           >
             {value === 'all' ? 'همه' : value === 'trouble' ? 'نیاز به تمرین' : LEVEL_FA[value]}
           </button>
@@ -102,7 +100,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
 
       <div className="mt-4 space-y-2">
         {list.slice(0, visibleCount).map(word => {
-          const level = wordMastery(word.id, state, CHAPTERS)
+          const level = wordMastery(word.id, state)
           const needsWork = trouble.has(word.id)
           return (
             <button
