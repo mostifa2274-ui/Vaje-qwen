@@ -51,7 +51,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const [typed, setTyped] = useState('')
   const [result, setResult] = useState<ExamResult | null>(null)
   const [onBreak, setOnBreak] = useState(false)
-  const questionStartedAt = useRef(Date.now())
+  const questionStartedAt = useRef(0)
 
   useEffect(() => {
     questionStartedAt.current = Date.now()
