@@ -199,15 +199,41 @@ describe('chapter prep and gate progression', () => {
     expect(canPrepareChapter(state, 'b1c1')).toBe(true)
     expect(canReadChapter(state, 'b1c1')).toBe(false)
     const ids = CHAPTERS[0].new
-    state = recordPreparedChapter(state, 'b1c1', ids, ids.length, ids.length, [], ids.length, Math.min(5, ids.length), Math.min(5, ids.length), [], [], 10)
+    state = recordPreparedChapter(state, 'b1c1', ids, ids, ids, [], [], 10)
     expect(canReadChapter(state, 'b1c1')).toBe(true)
+  })
+
+
+  it('does not unlock an unfinished chapter from legacy preparedAt alone', () => {
+    const state = emptyState(1, 'b1c1')
+    state.chapters.b1c1 = {
+      preparedAt: 10,
+      prepAttempts: 1,
+      completed: false,
+      checksCorrect: 0,
+      checksTotal: 0,
+      reads: 0,
+    }
+    expect(canReadChapter(state, 'b1c1')).toBe(false)
+  })
+
+  it('fails closed when either prep test has not passed every word', () => {
+    let state = emptyState(1, 'b1c1')
+    const ids = CHAPTERS[0].new.slice(0, 2)
+    state = recordPreparedChapter(state, 'b1c1', ids, [ids[0]], ids, [], [], 10)
+    expect(canReadChapter(state, 'b1c1')).toBe(false)
+    expect(state.chapters.b1c1?.preparedAt).toBeUndefined()
+
+    state = recordPreparedChapter(state, 'b1c1', ids, ids, [ids[0]], [], [], 20)
+    expect(canReadChapter(state, 'b1c1')).toBe(false)
+    expect(state.chapters.b1c1?.preparedAt).toBeUndefined()
   })
 
 
   it('uses prep misses to tune difficulty without granting mastery evidence', () => {
     let state = emptyState(1, 'b1c1')
     const ids = CHAPTERS[0].new.slice(0, 2)
-    state = recordPreparedChapter(state, 'b1c1', ids, 1, ids.length, [ids[0]], 1, 1, 1, [ids[0]], [ids[0]], 10)
+    state = recordPreparedChapter(state, 'b1c1', ids, ids, ids, [ids[0]], [ids[0]], 10)
     expect(state.words[ids[0]].difficulty).toBeGreaterThan(state.words[ids[1]].difficulty)
     expect(state.words[ids[0]].reviewCorrect).toBe(0)
     expect(state.words[ids[0]].successDays).toHaveLength(0)
@@ -217,9 +243,9 @@ describe('chapter prep and gate progression', () => {
   it('does not let repeated prep practice manipulate later scheduling difficulty', () => {
     let state = emptyState(1, 'b1c1')
     const ids = CHAPTERS[0].new.slice(0, 1)
-    state = recordPreparedChapter(state, 'b1c1', ids, 0, 1, ids, 0, 0, 1, ids, ids, 10)
+    state = recordPreparedChapter(state, 'b1c1', ids, ids, ids, ids, ids, 10)
     const afterFirstPrep = state.words[ids[0]].difficulty
-    state = recordPreparedChapter(state, 'b1c1', ids, 1, 1, [], 1, 1, 1, [], [], 20)
+    state = recordPreparedChapter(state, 'b1c1', ids, ids, ids, [], [], 20)
     expect(state.words[ids[0]].difficulty).toBe(afterFirstPrep)
   })
 
