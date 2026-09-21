@@ -84,7 +84,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           currentListeningWord,
           VOCAB,
           'reverse',
-          \`\${chapterId}:prep-listening:\${listeningPassed.size}:\${listeningQueue.length}:\${currentListeningId}\`,
+          `${chapterId}:prep-listening:${listeningPassed.size}:${listeningQueue.length}:${currentListeningId}`,
         )
       : undefined,
     [chapterId, currentListeningId, currentListeningWord, listeningPassed.size, listeningQueue.length],
@@ -242,7 +242,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <span>{faNum(teachIndex + 1)} / {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
-              <span style={{ width: \`\${((teachIndex + 1) / chapter.new.length) * 100}%\` }} />
+              <span style={{ width: `${((teachIndex + 1) / chapter.new.length) * 100}%` }} />
             </div>
 
             {!state.soundOn && (
@@ -261,7 +261,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 className="btn-paper mt-4 px-4 py-2.5 text-sm"
                 onClick={() => speak(currentTeachWord.word, currentTeachWord.id)}
                 disabled={!state.soundOn}
-                aria-label={\`پخش تلفظ \${currentTeachWord.word}\`}
+                aria-label={`پخش تلفظ ${currentTeachWord.word}`}
               >
                 🔊 پخش دوباره
               </button>
@@ -285,7 +285,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <span>{faNum(writtenPassed.size)} / {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
-              <span style={{ width: \`\${(writtenPassed.size / chapter.new.length) * 100}%\` }} />
+              <span style={{ width: `${(writtenPassed.size / chapter.new.length) * 100}%` }} />
             </div>
 
             <div className="mt-7 text-center">
@@ -315,7 +315,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback && (
-              <div className={\`mt-4 rounded-xl border-2 p-3 text-sm \${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}\`} role="status">
+              <div className={`mt-4 rounded-xl border-2 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
                   ? 'درست. این واژه آزمون نوشتاری را گذراند.'
                   : <>معنی درست: <b>{currentWrittenWord.fa}</b>. این واژه دوباره در همین آزمون می‌آید.</>}
@@ -337,7 +337,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <span>{faNum(listeningPassed.size)} / {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
-              <span style={{ width: \`\${(listeningPassed.size / chapter.new.length) * 100}%\` }} />
+              <span style={{ width: `${(listeningPassed.size / chapter.new.length) * 100}%` }} />
             </div>
 
             {!state.soundOn ? (
@@ -389,7 +389,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback && (
-              <div className={\`mt-4 rounded-xl border-2 p-3 text-sm \${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}\`} role="status">
+              <div className={`mt-4 rounded-xl border-2 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
                   ? <><b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa} ✓</>
                   : <>پاسخ درست: <b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. دوباره در همین آزمون می‌آید.</>}
