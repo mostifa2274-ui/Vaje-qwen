@@ -16,8 +16,8 @@
     "validate:introductions": "node scripts/validate-introductions.mjs",
     "validate:mastery": "node scripts/validate-mastery.mjs",
     "bootstrap": "node bootstrap/restore.mjs",
-    "prepare": "node bootstrap/restore.mjs",
-    "cloudflare:build": "node bootstrap/restore.mjs && npm ci --ignore-scripts --no-audit --no-fund && npm run check",
+    "prepare": "node bootstrap/restore.mjs && npm run build",
+    "cloudflare:build": "node bootstrap/restore.mjs && npm run check",
     "deploy": "npm run cloudflare:build && npx wrangler@4.135.0 deploy"
   },
   "dependencies": {
@@ -44,5 +44,6 @@
   },
   "engines": {
     "node": ">=22"
-  }
+  },
+  "packageManager": "npm@11.19.1"
 }
