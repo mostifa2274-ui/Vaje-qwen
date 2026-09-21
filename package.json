@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/stamp-release.mjs",
     "lint": "eslint .",
     "test": "vitest run",
     "check": "npm run validate:data && npm run validate:editorial && npm run validate:introductions && npm run validate:mastery && npm run lint && npm run test && npm run build",
@@ -17,7 +17,7 @@
     "validate:mastery": "node scripts/validate-mastery.mjs",
     "prepare": "npm run build",
     "cloudflare:build": "npm run check",
-    "deploy": "npm ci --ignore-scripts --no-audit --no-fund && npm run cloudflare:build && npx wrangler@4.135.0 deploy"
+    "deploy": "npm ci --include=dev --ignore-scripts --no-audit --no-fund && npm run cloudflare:build && npx wrangler@4.135.0 deploy"
   },
   "dependencies": {
     "react": "^19.2.0",

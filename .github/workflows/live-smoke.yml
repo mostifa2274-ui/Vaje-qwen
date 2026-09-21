@@ -15,22 +15,23 @@ jobs:
     env:
       PRODUCTION_URL: https://vaje-qwen.mostifa2273.workers.dev
     steps:
-      - name: Wait for Cloudflare production release
+      - name: Wait for exact Cloudflare production revision
         shell: bash
         run: |
           set -euo pipefail
-          expected='"release":"ghesse-5.0.0"'
+          expected_release='"release":"ghesse-5.0.0"'
+          expected_commit="\"commit\":\"$GITHUB_SHA\""
           for attempt in $(seq 1 24); do
-            echo "Smoke attempt $attempt/24"
+            echo "Smoke attempt $attempt/24 for $GITHUB_SHA"
             body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json" || true)"
             compact="$(printf '%s' "$body" | tr -d '[:space:]')"
-            if printf '%s' "$compact" | grep -Fq "$expected"; then
-              echo "Verified Ghesse 5.0 release marker at $PRODUCTION_URL/release.json"
+            if printf '%s' "$compact" | grep -Fq "$expected_release" && printf '%s' "$compact" | grep -Fq "$expected_commit"; then
+              echo "Verified exact Ghesse 5.0 revision $GITHUB_SHA at $PRODUCTION_URL/release.json"
               curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null
               echo "Production root is reachable."
               exit 0
             fi
             sleep 15
           done
-          echo "::error::Cloudflare production did not expose the expected Ghesse 5.0 release marker within the smoke window."
+          echo "::error::Cloudflare production did not expose commit $GITHUB_SHA within the smoke window."
           exit 1
