@@ -15,8 +15,8 @@
     "validate:editorial": "node scripts/validate-editorial.mjs",
     "validate:introductions": "node scripts/validate-introductions.mjs",
     "validate:mastery": "node scripts/validate-mastery.mjs",
-    "prepare": "node bootstrap/restore.mjs && npm run build",
-    "cloudflare:build": "node bootstrap/restore.mjs && npm run check",
+    "prepare": "npm run build",
+    "cloudflare:build": "npm run check",
     "deploy": "npm run cloudflare:build && npx wrangler@4.135.0 deploy"
   },
   "dependencies": {
