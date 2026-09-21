@@ -21,7 +21,7 @@ jobs:
           set -euo pipefail
           expected_release='"release":"ghesse-5.0.0"'
           expected_worker='"worker":"vaje-qwen1"'
-          expected_commit=""commit":"$GITHUB_SHA""
+          expected_commit="\"commit\":\"$GITHUB_SHA\""
           for attempt in $(seq 1 24); do
             echo "Smoke attempt $attempt/24 for $GITHUB_SHA"
             body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json" || true)"
