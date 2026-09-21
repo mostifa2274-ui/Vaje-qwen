@@ -16,6 +16,7 @@ import {
 
 interface Props {
   state: GhesseState
+  now: number
   onOpenChapter: (id: string) => void
   onOpenExam: (id: string) => void
   onOpenReview: () => void
@@ -74,8 +75,7 @@ function ExamGate({
   )
 }
 
-export default function MapScreen({ state, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenSettings }: Props) {
-  const now = Date.now()
+export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenSettings }: Props) {
   const doneCount = CHAPTERS.filter(c => state.chapters[c.id]?.completed).length
   const health = learningHealth(state, now)
   const action = nextBestAction(state, now)
@@ -180,7 +180,7 @@ export default function MapScreen({ state, onOpenChapter, onOpenExam, onOpenRevi
           const chapters = chaptersOfBook(meta.book)
           const bookAvailable = chapters.some(ch => canPrepareChapter(state, ch.id) || state.chapters[ch.id]?.completed)
           const done = bookCompleted(state, meta.book)
-          const mastery = chapters.reduce((sum, ch) => sum + chapterMastery(ch, state, CHAPTERS), 0) / chapters.length
+          const mastery = chapters.reduce((sum, ch) => sum + chapterMastery(ch, state), 0) / chapters.length
           const bHealth = bookHealth(state, meta.book, now)
           const bookExam = bookExamId(meta.book)
 
