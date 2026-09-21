@@ -330,7 +330,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
           </div>
 
           <div className="mastery-progress mt-3">
-            <span style={{ width: `${((checksAnswered + (currentAnswer === undefined ? 0 : 0)) / questions.length) * 100}%` }} />
+            <span style={{ width: `${(checksAnswered / questions.length) * 100}%` }} />
           </div>
 
           {currentQuestion && !finished && (
