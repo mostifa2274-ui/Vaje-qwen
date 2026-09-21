@@ -10,6 +10,7 @@ import {
   bookExamId,
   canPrepareChapter,
   canTakeExam,
+  chapterPrepared,
   examPassed,
   examRemediationPending,
 } from '../engine/gates'
@@ -92,7 +93,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
     : action.kind === 'exam'
       ? 'شروع آزمون'
       : action.kind === 'chapter'
-        ? action.prepared ? 'ورود به قصه' : 'مرور واژه‌های فصل'
+        ? action.prepared ? 'ورود به قصه' : 'آموزش واژه‌ها'
         : action.kind === 'certification'
           ? 'ادامهٔ تثبیت'
           : 'مسیر کامل شده'
@@ -126,7 +127,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
           <div className="story-hero-copy">
             <span className="story-hero-kicker">MINA &amp; NINO</span>
             <strong>قصه‌ای برای تسلط واقعی بر واژه‌ها</strong>
-            <span>از حدس و قصه تا یادآوری پایدار</span>
+            <span>از آموزش، نوشتن و شنیدن تا یادآوری پایدار</span>
           </div>
           <div className="story-hero-cat" aria-hidden="true">⌁</div>
         </div>
@@ -172,7 +173,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
       </button>
 
       <div className="paper-note mt-4">
-        هر فصل: <b>حدس کم‌فشار + بازخورد آموزشی ← شناخت همهٔ واژه‌ها ← یادآوری نوشتاریِ خطاها و نمونهٔ هدفمند ← قصه ← مرور فاصله‌دار و چندمهارتی.</b> پایان هر کتاب آزمون دارد؛ کتاب ۴ و پایان مسیر آزمون تجمعی ویژه دارند.
+        هر فصل: <b>آموزش همهٔ واژه‌های تازه با تلفظ خودکار ← آزمون ترجمهٔ نوشتاری ۱۰۰٪ ← آزمون شنیداری ۱۰۰٪ ← بازشدن قصه ← مرور فاصله‌دار و چندمهارتی.</b> تا هر دو آزمون واژه کامل نشوند، قصه باز نمی‌شود.
       </div>
 
       <div className="mt-6 space-y-6">
@@ -212,7 +213,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                   {chapters.map((ch, i) => {
                     const prog = state.chapters[ch.id]
                     const isDone = prog?.completed === true
-                    const prepared = Boolean(prog?.preparedAt)
+                    const prepared = chapterPrepared(state, ch.id)
                     const accessible = canPrepareChapter(state, ch.id)
                     let bg = 'var(--cream-soft)'
                     let fg = 'var(--ink-soft)'
@@ -229,7 +230,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                           style={{ background: bg, color: fg, ...outline }}
                           disabled={!accessible}
                           onClick={() => onOpenChapter(ch.id)}
-                          title={isDone ? `${ch.titleFa} — تمام شده` : prepared ? `${ch.titleFa} — آمادهٔ خواندن` : `${ch.titleFa} — مرور واژه‌ها`}
+                          title={isDone ? `${ch.titleFa} — تمام شده` : prepared ? `${ch.titleFa} — آمادهٔ خواندن` : `${ch.titleFa} — آموزش + آزمون واژه‌ها`}
                           aria-label={`فصل ${faNum(ch.n)}: ${ch.titleFa}`}
                         >{label}</button>
                         {i < chapters.length - 1 && <span className="inline-block h-0 w-4" style={{ borderTop: '3px dashed rgba(43,42,38,0.55)' }} />}
