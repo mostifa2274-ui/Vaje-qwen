@@ -36,7 +36,7 @@
 - **۸۹۹** واژه
 - **۴۰** فصل
 - **۱۸۵۴** جفت جملهٔ انگلیسی/فارسی
-- **۸۰** سؤال درک مطلب
+- **۴۰۰** سؤال درک مطلب (۱۰ سؤال برای هر فصل)
 - **۶۰۶** جملهٔ ویرایش‌شده نسبت به script ضبط اولیه، بنابراین MP3 قدیمی آن‌ها هرگز به‌عنوان fallback استفاده نمی‌شود.
 - deployment GitHub/Cloudflare به‌صورت **speech-first** است: صدای انگلیسی منتخب سیستم/مرورگر برای قصه، واژه و مثال استفاده می‌شود. MP3 فقط در buildهایی فعال می‌شود که واقعاً pack را با `VITE_BUNDLED_AUDIO=1` همراه دارند.
 
@@ -76,7 +76,7 @@ npm run build
 
 Cloudflare با تنظیم استاندارد جدید نیز پشتیبانی می‌شود: dependency install خودکار، Build command برابر `npm run build` و Deploy command برابر `npx wrangler@4.135.0 deploy`. در هر دو حالت `dist/` قبل از deploy ساخته می‌شود.
 
-`.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را بررسی می‌کند.
+`.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را بررسی می‌کند. همچنین `.github/workflows/deploy-production.yml` پس از موفقیت CI همان commit را مستقیماً با Wrangler deploy می‌کند، اگر secrets استاندارد `CLOUDFLARE_API_TOKEN` و `CLOUDFLARE_ACCOUNT_ID` در GitHub Actions موجود باشند؛ در غیر این صورت بدون افشای secret، direct deploy را skip می‌کند و Cloudflare Git integration مسیر فعال باقی می‌ماند.
 
 ## provenance
 
