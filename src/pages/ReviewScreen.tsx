@@ -16,6 +16,7 @@ import {
 import { speakEnglish } from '../engine/narration'
 import { play, wordSrc } from '../engine/audio'
 import { examRemediationWordIds } from '../engine/gates'
+import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
 
 interface Props {
   state: GhesseState
@@ -69,6 +70,8 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const [typed, setTyped] = useState('')
   const [attemptNumber, setAttemptNumber] = useState<Record<string, number>>({})
   const startedAtRef = useRef(0)
+  const cardRef = useRef<HTMLDivElement>(null)
+  const mountedRef = useRef(false)
 
   const currentId = queue[0]
   const currentWord = currentId ? WORD_BY_ID.get(currentId) : undefined
@@ -83,6 +86,14 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   useEffect(() => {
     startedAtRef.current = Date.now()
   }, [currentId, attemptNumber])
+
+  useEffect(() => {
+    if (!mountedRef.current) {
+      mountedRef.current = true
+      return
+    }
+    if (currentId) cardRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
+  }, [currentId])
 
   function speakCurrent() {
     if (!currentWord || !state.soundOn) return
@@ -123,9 +134,9 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const typedMode = isTypedMode(mode)
 
   return (
-    <div className="page-in mx-auto min-h-screen max-w-lg px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+    <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
       <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper px-3 py-2 text-sm" onClick={onBack} aria-label="بازگشت به نقشه">→</button>
+        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
         <div className="flex-1">
           <h1 className="text-2xl font-extrabold">مرور هوشمند</h1>
           <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>هر کارت ضعیف‌ترین مهارت همان واژه را هدف می‌گیرد</p>
@@ -133,7 +144,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
         <span className="mastery-chip">هدف {faNum(state.dailyReviewGoal)}</span>
       </header>
 
-      <div className="mt-5 grid grid-cols-4 gap-2 text-center">
+      <div className="mt-5 grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
         <div className="metric-card"><b>{faNum(remediation.length)}</b><span>ترمیم</span></div>
         <div className="metric-card"><b>{faNum(trouble.length)}</b><span>سخت</span></div>
         <div className="metric-card"><b>{faNum(counts.strong)}</b><span>قوی</span></div>
@@ -141,14 +152,14 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
       </div>
 
       {initial.length === 0 ? (
-        <div className="paper-card mt-6 p-6 text-center">
-          <div className="text-4xl">🌱</div>
+        <div className="learning-focus-card mt-6 p-6 text-center">
+          <CheckIcon className="mx-auto h-9 w-9" aria-hidden="true" />
           <h2 className="mt-3 text-xl font-extrabold">مرور ضروری نداری</h2>
           <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>اگر واژه‌ای معرفی شده باشد، تمرین تقویتی روی ضعیف‌ترین واژه‌ها به‌صورت خودکار ساخته می‌شود.</p>
         </div>
       ) : !currentWord || !question ? (
-        <div className="paper-card pop mt-6 p-6 text-center" role="status">
-          <div className="text-5xl">✓</div>
+        <div className="learning-focus-card mt-6 p-6 text-center" role="status">
+          <BadgeCheckIcon className="mx-auto h-10 w-10" aria-hidden="true" />
           <h2 className="mt-3 text-2xl font-extrabold">جلسه تمام شد</h2>
           <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             {faNum(correctCount)} بازیابی مستقل ثبت شد و {faNum(relearnedCount)} واژه بعد از بازخورد دوباره ساخته شد. پاسخ درست پس از دیدن جواب عمداً شواهد تسلط محسوب نمی‌شود.
@@ -156,7 +167,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
           <button type="button" className="btn-ink mt-5 w-full py-3" onClick={onBack}>بازگشت به مسیر</button>
         </div>
       ) : (
-        <div className="paper-card mt-6 p-5">
+        <div ref={cardRef} className="learning-focus-card review-focus-card mt-6 p-5 sm:p-6">
           <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
             <span>{sessionLabel}</span>
             <span>{faNum(completed)} / {faNum(initial.length)}</span>
@@ -172,7 +183,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
             {mode === 'spelling' ? (
               <>
                 <div className="text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن؛ متن انگلیسی پنهان می‌ماند.</div>
-                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={speakCurrent}>🔊 پخش واژه</button>
+                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
               </>
             ) : (
               <div className={`text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
@@ -206,7 +217,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
             </div>
           ) : (
             <div className="mt-6" dir={mode === 'reverse' ? 'rtl' : 'ltr'}>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {question.options?.map(option => {
                   const isAnswer = option.id === question.answerId
                   const isSelected = selected === option.id
@@ -226,7 +237,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
           )}
 
           {feedback && (
-            <div className={`mt-4 rounded-xl border-2 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
+            <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
               {feedback === 'correct' ? (
                 <>
                   <b>درست.</b> این پاسخ به مهارت «{weaknessLabel(mode)}» همان واژه اضافه شد. اگر بازیابی مستقل و در یک روز جدید باشد، زمان مرور بعدی بر اساس مدل حافظه تنظیم می‌شود.
@@ -238,7 +249,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                   {mode === 'spelling' && currentWord.ipa && <div className="mt-2 font-en" dir="ltr">/{currentWord.ipa}/</div>}
                   {currentWord.ex && <div className="mt-2 font-en" dir="ltr">{currentWord.ex}</div>}
                   {currentWord.tr && <div className="mt-1" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{currentWord.tr}</div>}
-                  <button type="button" className="btn-paper mt-3 px-3 py-2 text-xs" onClick={speakCurrent}>🔊 شنیدن واژه</button>
+                  <button type="button" className="btn-paper mt-3 px-3 py-2 text-xs" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن واژه</span></button>
                   <div className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>این کارت در انتهای همین جلسه برمی‌گردد، اما پاسخ بعد از این بازخورد شواهد مستقل تسلط نیست.</div>
                 </div>
               )}
