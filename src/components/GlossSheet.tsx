@@ -81,6 +81,8 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
     document.addEventListener('keydown', onKeyDown)
     return () => {
       document.removeEventListener('keydown', onKeyDown)
+      // Cleanup must invalidate the latest speech request, not a setup-time snapshot.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       speechToken.current++
       if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
       stopAudio()
