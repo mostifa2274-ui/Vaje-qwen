@@ -39,8 +39,8 @@
       "fa": "صبح است."
     },
     {
-      "en": "Mina wakes up in her bed.",
-      "fa": "مینا در تختش بیدار می‌شود."
+      "en": "Mina wakes up in her bed and looks for Nino.",
+      "fa": "مینا در تختش بیدار می‌شود و دنبال نینو می‌گردد."
     },
     {
       "en": "She wakes, and the baby wakes.",
@@ -55,8 +55,8 @@
       "fa": "مینا در اتاق‌خوابش است."
     },
     {
-      "en": "The bedroom is small.",
-      "fa": "اتاق‌خواب کوچک است."
+      "en": "Her small bedroom feels empty without Nino.",
+      "fa": "اتاق‌خواب کوچک او بدون نینو خالی به نظر می‌رسد."
     },
     {
       "en": "Mina goes to the bathroom.",
@@ -79,7 +79,7 @@
       "fa": "او زیر دوش می‌شوید."
     },
     {
-      "en": "Mom washes the baby, and Mina washes too.",
+      "en": "Mom washes the baby while Mina washes too.",
       "fa": "مامان نوزاد را می‌شوید و مینا هم خودش را می‌شوید."
     },
     {
@@ -95,12 +95,12 @@
       "fa": "مامان در آشپزخانه است."
     },
     {
-      "en": "\"Come to the kitchen, Mina!\" she says.",
-      "fa": "بیا آشپزخانه، مینا! می‌گوید."
+      "en": "\"Come to the kitchen, Mina!\" Mom says.",
+      "fa": "«بیا آشپزخانه، مینا!» مامان می‌گوید."
     },
     {
-      "en": "\"Eat your breakfast,\" Mom says.",
-      "fa": "صبحانه‌ات را بخور، مامان می‌گوید."
+      "en": "\"Eat your breakfast,\" Mom says gently.",
+      "fa": "«صبحانه‌ات را بخور»، مامان آرام می‌گوید."
     },
     {
       "en": "Mina looks at her breakfast.",
@@ -111,16 +111,16 @@
       "fa": "صبحانه نان و یک تخم‌مرغ است."
     },
     {
-      "en": "Mina does not eat.",
-      "fa": "مینا غذا نمی‌خورد."
+      "en": "Mina looks at her breakfast but does not eat.",
+      "fa": "مینا به صبحانه‌اش نگاه می‌کند، اما چیزی نمی‌خورد."
     },
     {
-      "en": "\"You eat your egg, and I drink my milk,\" Mom says.",
-      "fa": "تو تخم‌مرغت را بخور، و من شیرم را می‌نوشم، مامان می‌گوید."
+      "en": "\"Eat your egg, and I will drink my milk,\" Mom says.",
+      "fa": "«تو تخم‌مرغت را بخور و من شیرم را می‌نوشم»، مامان می‌گوید."
     },
     {
-      "en": "\"Eat your egg,\" Dad says.",
-      "fa": "تخم‌مرغت را بخور، بابا می‌گوید."
+      "en": "\"Eat your egg,\" Dad says again.",
+      "fa": "«تخم‌مرغت را بخور»، بابا دوباره می‌گوید."
     },
     {
       "en": "Mina drinks her milk.",
@@ -139,12 +139,12 @@
       "fa": "برادرش نانش را می‌خورد."
     },
     {
-      "en": "\"Nino eats my bread,\" he says.",
-      "fa": "نینو نان من را می‌خورد، می‌گوید."
+      "en": "\"Nino eats my bread,\" her brother says.",
+      "fa": "«نینو نان من را می‌خورد»، برادرش می‌گوید."
     },
     {
-      "en": "\"Nino drinks my milk,\" he says.",
-      "fa": "نینو شیر من را می‌نوشد، می‌گوید."
+      "en": "\"And Nino drinks my milk,\" he says.",
+      "fa": "«و نینو شیر من را هم می‌نوشد»، او می‌گوید."
     },
     {
       "en": "Mina eats with her brother.",
@@ -159,28 +159,28 @@
       "fa": "حالا نینو در خانه نیست."
     },
     {
-      "en": "\"Where is he now?\" Mina says.",
-      "fa": "حالا او کجاست؟ مینا می‌گوید."
+      "en": "\"Where is he now?\" Mina says quietly.",
+      "fa": "«حالا او کجاست؟» مینا آرام می‌گوید."
     },
     {
-      "en": "\"Today we look for Nino,\" Dad says.",
-      "fa": "امروز دنبال نینو می‌گردیم، بابا می‌گوید."
+      "en": "\"Today we look for Nino together,\" Dad says.",
+      "fa": "«امروز همه با هم دنبال نینو می‌گردیم»، بابا می‌گوید."
     },
     {
-      "en": "\"Today, and every day,\" Mom says.",
-      "fa": "امروز، و هر روز، مامان می‌گوید."
+      "en": "\"Today and every day,\" Mom says.",
+      "fa": "«امروز و هر روز»، مامان می‌گوید."
     },
     {
-      "en": "\"Every day,\" Mina says.",
-      "fa": "هر روز، مینا می‌گوید."
+      "en": "\"Every day,\" Mina says. \"Every day.\"",
+      "fa": "«هر روز»، مینا می‌گوید. «هر روز.»"
     },
     {
       "en": "\"We look all day,\" Dad says.",
-      "fa": "تمام روز نگاه می‌کنیم، بابا می‌گوید."
+      "fa": "«تمام روز دنبالش می‌گردیم»، بابا می‌گوید."
     },
     {
-      "en": "\"All day,\" Mina says.",
-      "fa": "تمام روز، مینا می‌گوید."
+      "en": "\"All day,\" Mina says, and she keeps looking.",
+      "fa": "«تمام روز»، مینا می‌گوید و به جست‌وجو ادامه می‌دهد."
     },
     {
       "en": "Mina goes upstairs.",
@@ -192,7 +192,7 @@
     },
     {
       "en": "\"You look upstairs, and I look downstairs,\" Dad says.",
-      "fa": "تو طبقه‌ی بالا را نگاه کن، و من طبقه‌ی پایین را، بابا می‌گوید."
+      "fa": "«تو طبقه‌ی بالا را نگاه کن و من طبقه‌ی پایین را»، بابا می‌گوید."
     },
     {
       "en": "Her brother goes downstairs.",
