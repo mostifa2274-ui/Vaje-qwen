@@ -23,8 +23,8 @@
   ],
   "sentences": [
     {
-      "en": "The train stops at a small station near a farm.",
-      "fa": "قطار در ایستگاه کوچکی نزدیک یک مزرعه می‌ایستد."
+      "en": "The train stops at a small station beside a farm.",
+      "fa": "قطار در یک ایستگاه کوچک کنار مزرعه می‌ایستد."
     },
     {
       "en": "The farmer is nice.",
@@ -59,12 +59,12 @@
       "fa": "درخت‌ها بزرگ هستند."
     },
     {
-      "en": "A tall tree is near the farmhouse.",
-      "fa": "یک درخت بلند نزدیک خانه‌ی مزرعه است."
+      "en": "A tall tree stands beside the farmhouse, full of birds.",
+      "fa": "یک درخت بلند کنار خانه‌ی مزرعه ایستاده و پر از پرنده است."
     },
     {
-      "en": "The air feels fresh.",
-      "fa": "هوا تازه و دلپذیر است."
+      "en": "The air feels fresh after the long train ride.",
+      "fa": "بعد از سفر طولانی با قطار، هوا تازه و دلپذیر است."
     },
     {
       "en": "The air is clean.",
@@ -95,8 +95,8 @@
       "fa": "هوا عوض می‌شود."
     },
     {
-      "en": "The farm looks different when the weather changes.",
-      "fa": "وقتی هوا عوض می‌شود، مزرعه هم متفاوت به نظر می‌رسد."
+      "en": "The farm looks different each time the weather changes.",
+      "fa": "هر بار که هوا عوض می‌شود، مزرعه هم متفاوت به نظر می‌رسد."
     },
     {
       "en": "Does it snow?",
@@ -107,8 +107,8 @@
       "fa": "برف نمی‌بارد."
     },
     {
-      "en": "The farmer shares his food with the family.",
-      "fa": "کشاورز غذایش را با خانواده تقسیم می‌کند."
+      "en": "The farmer shares warm bread and fresh food with the family.",
+      "fa": "کشاورز نان گرم و غذای تازه‌اش را با خانواده تقسیم می‌کند."
     },
     {
       "en": "He shares the bread.",
@@ -119,16 +119,16 @@
       "fa": "کشاورز نقشه‌ای را که برای یک اتاق جدید ساخته به مینا نشان می‌دهد."
     },
     {
-      "en": "The plan will help him create a better home.",
-      "fa": "این نقشه به او کمک می‌کند خانه‌ی بهتری بسازد."
+      "en": "The plan will help him build a better home for his family.",
+      "fa": "این نقشه کمکش می‌کند خانه‌ی بهتری برای خانواده‌اش بسازد."
     },
     {
-      "en": "He plans to build the new room soon.",
-      "fa": "او برنامه دارد به‌زودی اتاق جدید را بسازد."
+      "en": "He plans to build the new room before winter.",
+      "fa": "او برنامه دارد پیش از زمستان اتاق جدید را بسازد."
     },
     {
-      "en": "His family will help him build it.",
-      "fa": "خانواده‌اش در ساختن آن به او کمک خواهند کرد."
+      "en": "His family will help him build it together.",
+      "fa": "خانواده‌اش هم در ساختنش کمک خواهند کرد."
     },
     {
       "en": "A bird flies.",
@@ -139,28 +139,28 @@
       "fa": "بالای مزرعه پرواز می‌کند."
     },
     {
-      "en": "There is a warm fire in the farmhouse.",
-      "fa": "در خانه‌ی مزرعه آتش گرمی روشن است."
+      "en": "A warm fire burns inside the farmhouse as rain taps the window.",
+      "fa": "در حالی که باران به پنجره می‌زند، آتش گرمی داخل خانه‌ی مزرعه روشن است."
     },
     {
       "en": "The fire is warm.",
       "fa": "آتش گرم است."
     },
     {
-      "en": "\"A black cat?\" the farmer says.",
-      "fa": "یک گربه‌ی سیاه؟ کشاورز می‌گوید."
+      "en": "\"A black cat?\" the farmer says, looking toward the barn.",
+      "fa": "«یک گربه‌ی سیاه؟» کشاورز می‌گوید و به سمت انبار نگاه می‌کند."
     },
     {
-      "en": "\"Cats like the farm,\" the farmer says.",
-      "fa": "«گربه‌ها مزرعه را دوست دارند»، کشاورز می‌گوید."
+      "en": "\"Cats like the farm,\" the farmer says. \"They come for food and warmth.\"",
+      "fa": "«گربه‌ها مزرعه را دوست دارند»، کشاورز می‌گوید. «برای غذا و گرما می‌آیند.»"
     },
     {
       "en": "Mina looks.",
       "fa": "مینا نگاه می‌کند."
     },
     {
-      "en": "There is no black cat.",
-      "fa": "گربه‌ی سیاهی آنجا نیست."
+      "en": "Mina searches the yard, but there is no black cat.",
+      "fa": "مینا حیاط را می‌گردد، اما گربه‌ی سیاهی نیست."
     }
   ],
   "check": [
