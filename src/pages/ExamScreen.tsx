@@ -7,6 +7,7 @@ import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/
 import { speakEnglish } from '../engine/narration'
 import { play, wordSrc } from '../engine/audio'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { clearExamDraft, EXAM_BREAK_EVERY, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 
 interface Props {
   examId: string
@@ -40,18 +41,19 @@ const SKILL_LABELS: Record<SkillDimension, string> = {
   form: 'املاء',
 }
 
-const BREAK_EVERY = 16
 
 export default function ExamScreen({ examId, state, onChange, onBack, onReview }: Props) {
   const previousExam = state.exams[examId]
   const attempt = (previousExam?.attempts ?? 0) + 1
   const [exam] = useState(() => buildExam(examId, state, attempt))
-  const [index, setIndex] = useState(0)
-  const [answers, setAnswers] = useState<Record<number, boolean>>({})
-  const [timings, setTimings] = useState<Record<number, number>>({})
-  const [typed, setTyped] = useState('')
+  const [initialDraft] = useState(() => exam ? loadExamDraft(examId, attempt, exam) : undefined)
+  const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
+  const [index, setIndex] = useState(() => initialDraft?.index ?? 0)
+  const [answers, setAnswers] = useState<Record<number, boolean>>(() => initialDraft?.answers ?? {})
+  const [timings, setTimings] = useState<Record<number, number>>(() => initialDraft?.timings ?? {})
+  const [typed, setTyped] = useState(() => initialDraft?.typed ?? '')
   const [result, setResult] = useState<ExamResult | null>(null)
-  const [onBreak, setOnBreak] = useState(false)
+  const [onBreak, setOnBreak] = useState(() => initialDraft?.onBreak ?? false)
   const questionStartedAt = useRef(0)
   const questionRef = useRef<HTMLDivElement>(null)
   const mountedRef = useRef(false)
@@ -68,6 +70,27 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     if (!onBreak) questionRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
   }, [index, onBreak])
 
+  useEffect(() => {
+    if (!exam || result) return
+    const hasMeaningfulProgress = index > 0 || typed.length > 0 || onBreak
+    if (!hasMeaningfulProgress) {
+      clearExamDraft(examId)
+      return
+    }
+    saveExamDraft({
+      version: 1,
+      examId,
+      attempt,
+      signature: '',
+      index,
+      answers,
+      timings,
+      typed,
+      onBreak,
+      updatedAt: Date.now(),
+    }, exam)
+  }, [answers, attempt, exam, examId, index, onBreak, result, timings, typed])
+
   if (!exam) return null
   const builtExam: BuiltExam = exam
   const def = examDefinition(examId)!
@@ -80,6 +103,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   }
 
   function finalize(nextAnswers: Record<number, boolean>, nextTimings: Record<number, number>, built: BuiltExam) {
+    clearExamDraft(examId)
     const scored = scoreExam(built, nextAnswers)
     const now = Date.now()
     const words = { ...state.words }
@@ -123,13 +147,24 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     } else {
       const nextIndex = index + 1
       setIndex(nextIndex)
-      if (nextIndex % BREAK_EVERY === 0) setOnBreak(true)
+      if (nextIndex % EXAM_BREAK_EVERY === 0) setOnBreak(true)
     }
   }
 
   function submitTyped() {
     if (!word || !typed.trim()) return
     answer(isQuestionTypedCorrect(typed, question))
+  }
+
+  function restartExam() {
+    clearExamDraft(examId)
+    setResumedDraft(false)
+    setIndex(0)
+    setAnswers({})
+    setTimings({})
+    setTyped('')
+    setOnBreak(false)
+    questionStartedAt.current = Date.now()
   }
 
   if (result) {
@@ -215,6 +250,12 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           <p className="mt-3 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             {faNum(index)} سؤال پاسخ داده‌ای. برای اینکه آزمون بیشتر حافظه را بسنجد تا خستگی، چند لحظه استراحت کن. هیچ پاسخ یا امتیازی نمایش داده نمی‌شود.
           </p>
+          {resumedDraft && (
+            <div className="prep-resume-row mt-4" role="status">
+              <span>پیشرفت این آزمون از همین دستگاه بازیابی شد.</span>
+              <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={restartExam}>شروع از اول</button>
+            </div>
+          )}
           <button type="button" className="btn-ink mt-5 w-full py-3" onClick={() => setOnBreak(false)}>ادامهٔ آزمون ←</button>
         </div>
       </div>
@@ -242,6 +283,13 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       <div className="paper-note mt-4">
         هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. آزمون معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد و نتیجهٔ هر مهارت را در پایان نشان می‌دهد.
       </div>
+
+      {resumedDraft && (
+        <div className="prep-resume-row mt-3" role="status">
+          <span>پیشرفت این آزمون بازیابی شد؛ از سؤال {faNum(index + 1)} ادامه می‌دهی.</span>
+          <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={restartExam}>شروع از اول</button>
+        </div>
+      )}
 
       {question && word && (
         <div ref={questionRef} className="learning-focus-card exam-question-card mt-5 p-5 sm:p-6">
