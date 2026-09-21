@@ -1,7 +1,7 @@
 {
   "release": "ghesse-5.0.0",
   "app": "Ghesse",
-  "worker": "vaje-qwen",
+  "worker": "vaje-qwen1",
   "vocabulary": 899,
   "chapters": 40,
   "stateSchema": 6

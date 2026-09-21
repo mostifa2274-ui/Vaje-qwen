@@ -69,10 +69,10 @@ npm run build
 - build variable: `SKIP_DEPENDENCY_INSTALL=1`
 - deploy command: `npm run deploy`
 - output: `dist/`
-- Worker name: `vaje-qwen`
-- production URL: `https://vaje-qwen.mostifa2273.workers.dev/`
+- Worker name: `vaje-qwen1`
+- production URL: `https://vaje-qwen1.mostifa2273.workers.dev/`
 
-`npm run deploy` عمداً self-contained است: ابتدا `npm ci --ignore-scripts` را از lockfile اجرا می‌کند، سپس همهٔ validationها، lint، test، TypeScript و Vite build را با `npm run cloudflare:build` می‌گذراند و در پایان Wrangler را deploy می‌کند. بنابراین `SKIP_DEPENDENCY_INSTALL=1` در تنظیم فعلی Cloudflare امن است.
+`npm run deploy` عمداً self-contained است: ابتدا `npm ci --include=dev --ignore-scripts` را از lockfile اجرا می‌کند، سپس همهٔ validationها، lint، test، TypeScript و Vite build را با `npm run cloudflare:build` می‌گذراند و در پایان Wrangler را deploy می‌کند. بنابراین `SKIP_DEPENDENCY_INSTALL=1` در تنظیم فعلی Cloudflare امن است.
 
 Cloudflare با تنظیم استاندارد جدید نیز پشتیبانی می‌شود: dependency install خودکار، Build command برابر `npm run build` و Deploy command برابر `npx wrangler@4.135.0 deploy`. در هر دو حالت `dist/` قبل از deploy ساخته می‌شود.
 
