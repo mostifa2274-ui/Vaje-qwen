@@ -35,7 +35,7 @@ export function learningHealth(state: GhesseState, now = Date.now()): LearningHe
     return now - due >= 3 * DAY
   }).length
   const trouble = troubleWordIds(state.words).length
-  const counts = masteryCounts(state, CHAPTERS, ids)
+  const counts = masteryCounts(state, ids)
   const productive = introduced.filter(id => (state.words[id]?.skillStats?.production?.correct ?? 0) > 0).length
   const fullSkill = introduced.filter(id => state.words[id] && skillCoverage(state.words[id]) === 1).length
   const dimensions: SkillDimension[] = ['meaning', 'context', 'production', 'form']
@@ -62,8 +62,8 @@ export function learningHealth(state: GhesseState, now = Date.now()): LearningHe
     trouble,
     strong: counts.strong,
     mastered: counts.mastered,
-    durableCoverage: durableCoverage(state, CHAPTERS, ids),
-    masteredCoverage: masteredCoverage(state, CHAPTERS, ids),
+    durableCoverage: durableCoverage(state, ids),
+    masteredCoverage: masteredCoverage(state, ids),
     productiveCoverage: introduced.length ? productive / introduced.length : 0,
     fullSkillCoverage: introduced.length ? fullSkill / introduced.length : 0,
     skillAccuracy,
@@ -84,7 +84,7 @@ export interface BookHealth {
 
 export function bookHealth(state: GhesseState, book: number, now = Date.now()): BookHealth {
   const ids = [...new Set(chaptersOfBook(book).flatMap(ch => ch.new))]
-  const counts = masteryCounts(state, CHAPTERS, ids)
+  const counts = masteryCounts(state, ids)
   const due = ids.filter(id => {
     const at = state.words[id]?.dueAt
     return at !== undefined && at <= now
