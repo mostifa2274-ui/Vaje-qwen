@@ -6,6 +6,7 @@ import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglish } from '../engine/narration'
 import { play, wordSrc } from '../engine/audio'
+import { BackIcon, SpeakerIcon } from '../components/Icons'
 
 interface Props {
   chapterId: string
@@ -209,8 +210,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   return (
     <div className="page-in min-h-screen" style={{ background: 'var(--cream)' }}>
       <header className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '2px solid var(--ink)' }}>
-        <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-3">
-          <button type="button" className="btn-paper px-3 py-2 text-sm" onClick={onBack} aria-label="بازگشت به نقشه">→</button>
+        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
+          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
           <div className="min-w-0 flex-1">
             <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>آمادگی فصل {faNum(chapter.n)} · کتاب {faNum(chapter.book)}</div>
             <h1 className="truncate text-lg font-extrabold">واژه‌های تازه: {chapter.titleFa}</h1>
@@ -219,7 +220,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         </div>
       </header>
 
-      <main className="mx-auto max-w-lg px-4 pb-28 pt-5">
+      <main className="mx-auto max-w-3xl px-4 pb-28 pt-5">
         {alreadyPrepared && phase === 'teach' && (
           <div className="paper-note mb-4">
             این فصل قبلاً آزمون نوشتاری و شنیداری را با پوشش ۱۰۰٪ گذرانده است.
@@ -236,7 +237,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         </div>
 
         {phase === 'teach' && currentTeachWord && (
-          <div className="paper-card mt-5 p-5">
+          <div className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>فقط یاد بگیر؛ این بخش آزمون نیست</span>
               <span>{faNum(teachIndex + 1)} / {faNum(chapter.new.length)}</span>
@@ -263,11 +264,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 disabled={!state.soundOn}
                 aria-label={`پخش تلفظ ${currentTeachWord.word}`}
               >
-                🔊 پخش دوباره
+                <span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش دوباره</span>
               </button>
             </div>
 
-            <div className="mt-6 rounded-xl border-2 border-dashed border-[var(--ink)] bg-white/40 p-4">
+            <div className="learning-example mt-6 p-4">
               <div className="font-en text-lg leading-8" dir="ltr">{currentTeachWord.ex}</div>
               <div className="mt-2 text-sm leading-7" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{currentTeachWord.tr}</div>
             </div>
@@ -279,7 +280,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'written' && currentWrittenWord && (
-          <div className="paper-card mt-5 p-5">
+          <div className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
               <span>{faNum(writtenPassed.size)} / {faNum(chapter.new.length)}</span>
@@ -331,7 +332,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'listening' && currentListeningWord && listeningQuestion && (
-          <div className="paper-card mt-5 p-5">
+          <div className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
               <span>{faNum(listeningPassed.size)} / {faNum(chapter.new.length)}</span>
@@ -355,7 +356,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                     onClick={() => speak(currentListeningWord.word, currentListeningWord.id)}
                     aria-label="پخش دوبارهٔ واژه"
                   >
-                    🔊 پخش دوباره
+                    <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
                   </button>
                 </div>
 
