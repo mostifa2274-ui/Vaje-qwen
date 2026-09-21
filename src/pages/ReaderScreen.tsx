@@ -69,17 +69,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const canOpenNext = !!next && next.book === chapter.book
   const isLastOfBook = !next || next.book !== chapter.book
 
-  // Every chapter is keyed in App, but reset explicitly as a second line of
-  // defence if the screen is ever reused differently in the future.
-  useEffect(() => {
-    setOpenFa(new Set())
-    setGloss(null)
-    setAnswers({})
-    setFinished(false)
-    setAudioNotice('')
-    stopReaderAudio()
-  }, [chapterId, stopReaderAudio])
-
   useEffect(() => () => {
     playbackToken.current++
     readerAudioRef.current?.pause()
