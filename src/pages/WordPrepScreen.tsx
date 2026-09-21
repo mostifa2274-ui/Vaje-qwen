@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { buildReviewQuestion } from '../engine/review'
@@ -70,6 +70,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [selected, setSelected] = useState('')
   const [typed, setTyped] = useState('')
+  const stageRef = useRef<HTMLDivElement>(null)
 
   const currentTeachId = chapter.new[teachIndex]
   const currentTeachWord = currentTeachId ? WORD_BY_ID.get(currentTeachId) : undefined
@@ -106,6 +107,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     const timer = window.setTimeout(() => speak(word.word, word.id), 90)
     return () => window.clearTimeout(timer)
   }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
+
+  useEffect(() => {
+    stageRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
+  }, [phase, teachIndex, currentWrittenId, currentListeningId])
 
   function enableSound() {
     onChange({ ...state, soundOn: true })
@@ -209,7 +214,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   return (
     <div className="page-in min-h-screen" style={{ background: 'var(--cream)' }}>
-      <header className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '2px solid var(--ink)' }}>
+      <header className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '1px solid var(--line-medium)' }}>
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
           <div className="min-w-0 flex-1">
@@ -237,7 +242,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         </div>
 
         {phase === 'teach' && currentTeachWord && (
-          <div className="learning-focus-card mt-5 p-5 sm:p-6">
+          <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>فقط یاد بگیر؛ این بخش آزمون نیست</span>
               <span>{faNum(teachIndex + 1)} / {faNum(chapter.new.length)}</span>
@@ -280,7 +285,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'written' && currentWrittenWord && (
-          <div className="learning-focus-card mt-5 p-5 sm:p-6">
+          <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
               <span>{faNum(writtenPassed.size)} / {faNum(chapter.new.length)}</span>
@@ -316,7 +321,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback && (
-              <div className={`mt-4 rounded-xl border-2 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
+              <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
                   ? 'درست. این واژه آزمون نوشتاری را گذراند.'
                   : <>معنی درست: <b>{currentWrittenWord.fa}</b>. این واژه دوباره در همین آزمون می‌آید.</>}
@@ -332,7 +337,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'listening' && currentListeningWord && listeningQuestion && (
-          <div className="learning-focus-card mt-5 p-5 sm:p-6">
+          <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
               <span>{faNum(listeningPassed.size)} / {faNum(chapter.new.length)}</span>
@@ -390,7 +395,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback && (
-              <div className={`mt-4 rounded-xl border-2 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
+              <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
                   ? <><b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa} ✓</>
                   : <>پاسخ درست: <b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. دوباره در همین آزمون می‌آید.</>}
