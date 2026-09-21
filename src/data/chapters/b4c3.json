@@ -106,8 +106,8 @@
       "fa": "بستنی سفید است."
     },
     {
-      "en": "Mina eats some chocolate.",
-      "fa": "مینا کمی شکلات می‌خورد."
+      "en": "Mina eats a little chocolate while she waits.",
+      "fa": "مینا هنگام انتظار کمی شکلات می‌خورد."
     },
     {
       "en": "The chocolate is brown.",
@@ -122,8 +122,8 @@
       "fa": "خیلی آدم‌ها در کافه هستند."
     },
     {
-      "en": "Mina sees a lot of cats near the market.",
-      "fa": "مینا نزدیک بازار گربه‌های زیادی می‌بیند."
+      "en": "From the cafe window, Mina sees a lot of cats near the market.",
+      "fa": "از پنجره‌ی کافه، مینا گربه‌های زیادی نزدیک بازار می‌بیند."
     },
     {
       "en": "Many people eat.",
@@ -150,20 +150,20 @@
       "fa": "آب‌میوه‌ی بیشتر، لطفاً."
     },
     {
-      "en": "Most people in the cafe are nice.",
-      "fa": "بیشتر مردمِ کافه مهربان هستند."
+      "en": "Most people in the cafe smile at Mina.",
+      "fa": "بیشتر مردم کافه به مینا لبخند می‌زنند."
     },
     {
-      "en": "Most of the cats Mina sees are black.",
-      "fa": "بیشتر گربه‌هایی که مینا می‌بیند سیاه هستند."
+      "en": "Most of the cats outside are black, but none is Nino.",
+      "fa": "بیشتر گربه‌های بیرون سیاه هستند، اما هیچ‌کدام نینو نیستند."
     },
     {
-      "en": "Few people know Nino.",
-      "fa": "افراد کمی نینو را می‌شناسند."
+      "en": "Few people know Nino, but they listen to Mina.",
+      "fa": "افراد کمی نینو را می‌شناسند، اما به حرف‌های مینا گوش می‌دهند."
     },
     {
-      "en": "Few of the cats she sees are white.",
-      "fa": "تعداد کمی از گربه‌هایی که می‌بیند سفید هستند."
+      "en": "Only a few of the cats she sees are white.",
+      "fa": "فقط تعداد کمی از گربه‌هایی که می‌بیند سفید هستند."
     },
     {
       "en": "A piece of cake, please.",
@@ -194,16 +194,16 @@
       "fa": "کافی است."
     },
     {
-      "en": "\"That is enough juice,\" Mina says.",
-      "fa": "«این مقدار آب‌میوه کافی است»، مینا می‌گوید."
+      "en": "\"That is enough juice,\" Mina says, pushing the glass away.",
+      "fa": "«این مقدار آب‌میوه کافی است»، مینا می‌گوید و لیوان را کنار می‌زند."
     },
     {
       "en": "An extra glass is on the table.",
       "fa": "یک لیوان اضافی روی میز است."
     },
     {
-      "en": "Mina keeps the extra bread for Nino.",
-      "fa": "مینا نان اضافی را برای نینو نگه می‌دارد."
+      "en": "Mina keeps the extra bread in her bag for Nino.",
+      "fa": "مینا نان اضافی را در کیفش برای نینو نگه می‌دارد."
     }
   ],
   "check": [
