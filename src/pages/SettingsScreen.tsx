@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
 import { importStateJson, MAX_IMPORT_BYTES, resetState } from '../engine/store'
-import { clampNarrationRate, englishNarrationVoices, selectNarrationVoice } from '../engine/narration'
+import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish } from '../engine/narration'
 
 interface Props {
   state: GhesseState
@@ -28,24 +28,17 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     synth.addEventListener('voiceschanged', refresh)
     return () => {
       synth.removeEventListener('voiceschanged', refresh)
-      synth.cancel()
+      cancelEnglishSpeech()
     }
   }, [])
 
   function previewNarrator() {
-    if (!state.soundOn || typeof window === 'undefined' || !window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') return
-    const synth = window.speechSynthesis
-    synth.cancel()
-    const utterance = new SpeechSynthesisUtterance('Nino is home. Mina is happy to see him again.')
-    const voice = selectNarrationVoice(synth.getVoices(), state.narratorVoiceURI)
-    if (voice) {
-      utterance.voice = voice
-      utterance.lang = voice.lang
-    } else {
-      utterance.lang = 'en-US'
-    }
-    utterance.rate = state.narratorRate
-    synth.speak(utterance)
+    if (!state.soundOn) return
+    speakEnglish(
+      'Nino is home. Mina is happy to see him again.',
+      state.narratorVoiceURI,
+      state.narratorRate,
+    )
   }
 
   function exportProgress() {
@@ -104,7 +97,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <div className="paper-card-flat p-4">
           <div className="font-bold">صدای راوی انگلیسی</div>
           <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-            همهٔ ۱۸۵۴ جملهٔ قصه، تلفظ واژه‌ها و مثال‌های واژه‌نامه با همین صدای انگلیسی دستگاه خوانده می‌شوند تا تجربهٔ شنیداری یکدست باشد. اگر موتور گفتار در دسترس نباشد یا خطا بدهد، فایل MP3 بسته‌بندی‌شده استفاده می‌شود.
+            قصه، واژه‌ها و مثال‌ها همگی از یک موتور گفتار استفاده می‌کنند. حالت خودکار بهترین صدای طبیعی/Neural انگلیسی موجود در Chrome یا سیستم‌عامل را انتخاب می‌کند و برای آماده‌شدن فهرست صداهای باکیفیت کمی صبر می‌کند.
           </p>
           <label className="mt-3 block text-xs font-bold" htmlFor="narrator-voice">انتخاب صدا</label>
           <select
@@ -114,7 +107,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
             value={state.narratorVoiceURI}
             onChange={event => onChange({ ...state, narratorVoiceURI: event.target.value })}
           >
-            <option value="">Automatic — preferred English voice</option>
+            <option value="">Automatic — best natural English voice</option>
             {state.narratorVoiceURI && !voices.some(voice => voice.voiceURI === state.narratorVoiceURI) && (
               <option value={state.narratorVoiceURI}>Previously selected — unavailable on this device</option>
             )}

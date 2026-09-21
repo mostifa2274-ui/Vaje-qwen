@@ -14,7 +14,7 @@ import { buildLemmaMap, lemmaOf, preprocess, tokenizeSentence } from './lemmatiz
 import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { recordCompletedRead, recordPreparedChapter } from './progress'
-import { clampNarrationRate, englishNarrationVoices, selectNarrationVoice, type VoiceLike } from './narration'
+import { clampNarrationRate, englishNarrationVoices, selectNarrationVoice, voiceQualityScore, type VoiceLike } from './narration'
 import { acceptedAnswers, blankWordProgress, buildReviewQuestion, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus } from './analytics'
@@ -388,6 +388,13 @@ describe('narration voice selection', () => {
     expect(selectNarrationVoice(voices, 'uk')?.voiceURI).toBe('uk')
     expect(englishNarrationVoices(voices)[0].voiceURI).toBe('us')
   })
+  it('prefers natural/neural remote voices over legacy synthetic voices', () => {
+    const natural = voice('neural', 'Microsoft Aria Online (Natural)', 'en-US', false, false)
+    const legacy = voice('legacy', 'eSpeak English', 'en-US', true, true)
+    expect(voiceQualityScore(natural)).toBeGreaterThan(voiceQualityScore(legacy))
+    expect(englishNarrationVoices([legacy, natural])[0].voiceURI).toBe('neural')
+  })
+
   it('clamps narration rate', () => {
     expect(clampNarrationRate(.2)).toBe(.75)
     expect(clampNarrationRate(2)).toBe(1.1)

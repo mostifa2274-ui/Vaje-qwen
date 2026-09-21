@@ -10,6 +10,7 @@ import ReviewScreen from './pages/ReviewScreen'
 import ExamScreen from './pages/ExamScreen'
 import GlossaryScreen from './pages/GlossaryScreen'
 import SettingsScreen from './pages/SettingsScreen'
+import { warmEnglishVoices } from './engine/narration'
 
 type View =
   | { name: 'map' }
@@ -134,6 +135,7 @@ export default function App() {
   useEffect(() => {
     document.documentElement.setAttribute('dir', 'rtl')
     document.documentElement.setAttribute('lang', 'fa')
+    warmEnglishVoices()
   }, [])
   useEffect(() => {
     setPersistOk(saveState(state))

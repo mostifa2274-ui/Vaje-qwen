@@ -1,9 +1,17 @@
-const CACHE = 'ghesse-5.0.0-vector'
+const CACHE = 'ghesse-5.0.1-reader'
 const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './icons/icon.svg'
+  './icons/icon.svg',
+  './art/book1.svg',
+  './art/book2.svg',
+  './art/book3.svg',
+  './art/book4.svg',
+  './art/book5.svg',
+  './art/book6.svg',
+  './art/book7.svg',
+  './art/book8.svg'
 ]
 
 async function precacheShell() {
