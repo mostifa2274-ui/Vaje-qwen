@@ -56,6 +56,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const [onBreak, setOnBreak] = useState(() => initialDraft?.onBreak ?? false)
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
+  const [audioReady, setAudioReady] = useState(false)
   const questionStartedAt = useRef(0)
   const questionRef = useRef<HTMLDivElement>(null)
   const mountedRef = useRef(false)
@@ -102,10 +103,12 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   function speakCurrent() {
     if (!word || !state.soundOn) return
     const unavailable = () => {
+      setAudioReady(false)
       setAudioBlocked(true)
       setAudioNotice('پخش تلفظ انگلیسی در دسترس نیست. برای ادامهٔ سؤال شنیداری، صدای English Text-to-Speech مرورگر یا سیستم را فعال کن.')
     }
     const ended = () => {
+      setAudioReady(true)
       setAudioBlocked(false)
       setAudioNotice('')
     }
@@ -153,7 +156,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   }
 
   function answer(correct: boolean) {
-    if (!question || result || (question.mode === 'spelling' && audioBlocked)) return
+    if (!question || result || (question.mode === 'spelling' && (audioBlocked || !audioReady))) return
     if (resumedDraft) setResumedDraft(false)
     const elapsed = Math.max(1, Date.now() - questionStartedAt.current)
     const nextAnswers = { ...answers, [question.index]: correct }
@@ -163,6 +166,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     setTyped('')
     setAudioBlocked(false)
     setAudioNotice('')
+    setAudioReady(false)
     if (index + 1 >= builtExam.questions.length) {
       finalize(nextAnswers, nextTimings, builtExam)
     } else {
@@ -187,6 +191,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     setOnBreak(false)
     setAudioBlocked(false)
     setAudioNotice('')
+    setAudioReady(false)
     questionStartedAt.current = Date.now()
   }
 
@@ -321,8 +326,9 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             {question.mode === 'spelling' ? (
               <>
                 <div className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و دقیق بنویس.</div>
-                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
+                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={() => { setAudioReady(false); speakCurrent() }}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
                 {audioNotice && <div className="paper-note mt-3 text-right" role="alert">{audioNotice}</div>}
+                {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}
               </>
             ) : (
               <div className={`mt-4 text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
@@ -340,14 +346,14 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
                 autoComplete="off"
                 autoCapitalize="none"
                 spellCheck={false}
-                disabled={question.mode === 'spelling' && audioBlocked}
+                disabled={question.mode === 'spelling' && (audioBlocked || !audioReady)}
                 value={typed}
                 onChange={event => setTyped(event.target.value)}
                 onKeyDown={event => { if (event.key === 'Enter') submitTyped() }}
               />
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <button type="button" className="btn-quiet py-3 text-sm" disabled={question.mode === 'spelling' && audioBlocked} onClick={() => answer(false)}>نمی‌دانم</button>
-                <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (question.mode === 'spelling' && audioBlocked)} onClick={submitTyped}>ثبت و بعدی</button>
+                <button type="button" className="btn-quiet py-3 text-sm" disabled={question.mode === 'spelling' && (audioBlocked || !audioReady)} onClick={() => answer(false)}>نمی‌دانم</button>
+                <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (question.mode === 'spelling' && (audioBlocked || !audioReady))} onClick={submitTyped}>ثبت و بعدی</button>
               </div>
             </div>
           ) : (
