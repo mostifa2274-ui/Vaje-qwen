@@ -80,7 +80,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     setPlayIdx(-1)
   }, [])
 
-  const previousProgress = state.chapters[chapterId]
   const checksAnswered = Object.keys(answers).length
   const checksCorrect = questions.filter((question, index) => answers[index] === question.answerId).length
   const correctionMode = firstPassCorrect !== undefined
