@@ -64,6 +64,27 @@ export function selectNarrationVoice<T extends VoiceLike>(voices: readonly T[], 
   return englishNarrationVoices(voices)[0]
 }
 
+const READY_VOICE_SCORE = 180
+
+/**
+ * Chrome/Android can expose an incomplete speech catalogue before its better
+ * English voices arrive. Wait briefly only when the currently available best
+ * English voice is below Ghesse's quality floor. Explicitly selected voices
+ * that are already available always start immediately.
+ */
+export function shouldWaitForHigherQualityVoice<T extends VoiceLike>(
+  voices: readonly T[],
+  preferredVoiceURI = '',
+): boolean {
+  if (preferredVoiceURI) {
+    const preferred = voices.find(voice => voice.voiceURI === preferredVoiceURI && isEnglish(voice.lang))
+    if (preferred) return false
+  }
+  const best = englishNarrationVoices(voices)[0]
+  if (!best) return true
+  return voiceQualityScore(best) < READY_VOICE_SCORE
+}
+
 export function clampNarrationRate(rate: number): number {
   if (!Number.isFinite(rate)) return 0.92
   return Math.min(1.1, Math.max(0.75, rate))
@@ -134,22 +155,33 @@ export function speakEnglish(
   const requestId = ++speechRequestId
   const voices = synth.getVoices()
 
-  if (voices.length > 0) {
+  if (!shouldWaitForHigherQualityVoice(voices, voiceURI)) {
     speakWithAvailableVoices(requestId, text, voiceURI, rate, onEnd, onError)
     return true
   }
 
-  // Chrome/Android can return [] on the first getVoices() call. Wait briefly
-  // for voiceschanged so we do not lock the learner into the robotic default.
+  // On a cold Chrome/Android start the first catalogue may be empty or may
+  // contain only a generic/legacy English voice. Give voiceschanged a short
+  // grace period to expose a Natural/Neural/Premium voice, then fall back so
+  // pronunciation never becomes blocked.
   let launched = false
+  let timer = 0
+  const cleanup = () => {
+    synth.removeEventListener('voiceschanged', maybeLaunch)
+    if (timer) window.clearTimeout(timer)
+  }
   const launch = () => {
     if (launched || requestId !== speechRequestId) return
     launched = true
-    synth.removeEventListener('voiceschanged', launch)
+    cleanup()
     speakWithAvailableVoices(requestId, text, voiceURI, rate, onEnd, onError)
   }
+  const maybeLaunch = () => {
+    if (launched || requestId !== speechRequestId) return
+    if (!shouldWaitForHigherQualityVoice(synth.getVoices(), voiceURI)) launch()
+  }
 
-  synth.addEventListener('voiceschanged', launch)
-  window.setTimeout(launch, 280)
+  synth.addEventListener('voiceschanged', maybeLaunch)
+  timer = window.setTimeout(launch, 650)
   return true
 }
