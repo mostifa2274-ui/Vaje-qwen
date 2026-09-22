@@ -12,6 +12,7 @@ export interface VoiceLike {
 }
 
 let speechRequestId = 0
+let voiceCatalogueSettled = false
 
 function isEnglish(lang: string): boolean {
   return /^en(?:-|_|$)/i.test(lang)
@@ -155,7 +156,8 @@ export function speakEnglish(
   const requestId = ++speechRequestId
   const voices = synth.getVoices()
 
-  if (!shouldWaitForHigherQualityVoice(voices, voiceURI)) {
+  if (voiceCatalogueSettled || !shouldWaitForHigherQualityVoice(voices, voiceURI)) {
+    voiceCatalogueSettled = true
     speakWithAvailableVoices(requestId, text, voiceURI, rate, onEnd, onError)
     return true
   }
@@ -171,13 +173,24 @@ export function speakEnglish(
     if (timer) window.clearTimeout(timer)
   }
   const launch = () => {
-    if (launched || requestId !== speechRequestId) return
+    if (launched) return
+    if (requestId !== speechRequestId) {
+      launched = true
+      cleanup()
+      return
+    }
     launched = true
+    voiceCatalogueSettled = true
     cleanup()
     speakWithAvailableVoices(requestId, text, voiceURI, rate, onEnd, onError)
   }
   const maybeLaunch = () => {
-    if (launched || requestId !== speechRequestId) return
+    if (launched) return
+    if (requestId !== speechRequestId) {
+      launched = true
+      cleanup()
+      return
+    }
     if (!shouldWaitForHigherQualityVoice(synth.getVoices(), voiceURI)) launch()
   }
 
