@@ -62,8 +62,6 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   useEffect(() => {
     questionStartedAt.current = Date.now()
-    setAudioBlocked(false)
-    setAudioNotice('')
   }, [index, onBreak])
 
   useEffect(() => {
@@ -163,6 +161,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     setAnswers(nextAnswers)
     setTimings(nextTimings)
     setTyped('')
+    setAudioBlocked(false)
+    setAudioNotice('')
     if (index + 1 >= builtExam.questions.length) {
       finalize(nextAnswers, nextTimings, builtExam)
     } else {
@@ -185,6 +185,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     setTimings({})
     setTyped('')
     setOnBreak(false)
+    setAudioBlocked(false)
+    setAudioNotice('')
     questionStartedAt.current = Date.now()
   }
 
