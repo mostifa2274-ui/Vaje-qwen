@@ -50,6 +50,30 @@ function wordCount(value: string): number {
     .length
 }
 
+const COMMON_CONTENT_WORDS = new Set([
+  'a', 'an', 'the', 'and', 'or', 'but', 'is', 'are', 'was', 'were', 'be', 'been',
+  'to', 'of', 'in', 'on', 'at', 'for', 'from', 'with', 'it', 'this', 'that', 'her',
+  'his', 'their', 'my', 'your', 'our', 'she', 'he', 'they', 'we', 'i',
+])
+
+function contentWords(value: string): Set<string> {
+  return new Set(
+    value
+      .toLowerCase()
+      .replace(/[^a-z'-]+/g, ' ')
+      .trim()
+      .split(/\s+/)
+      .filter(word => word.length > 2 && !COMMON_CONTENT_WORDS.has(word)),
+  )
+}
+
+function overlapRatio(a: ReadonlySet<string>, b: ReadonlySet<string>): number {
+  if (!a.size || !b.size) return 0
+  let overlap = 0
+  for (const word of a) if (b.has(word)) overlap++
+  return overlap / Math.min(a.size, b.size)
+}
+
 function storySentenceIndices(chapter: Chapter): number[] {
   const unique = uniqueSentenceIndices(chapter, 'en')
   const substantial = unique.filter(index => {
@@ -107,8 +131,10 @@ function storyPresenceOptions(
   seed: string,
 ): ReadingOption[] {
   const answerLabel = chapter.sentences[target].en
+  const answerWords = contentWords(answerLabel)
+  const chapterWords = contentWords(chapter.sentences.map(sentence => sentence.en).join(' '))
   const seen = new Set([answerLabel.trim().toLowerCase()])
-  const candidates: ReadingOption[] = []
+  const candidates: Array<ReadingOption & { overlap: number }> = []
 
   for (const other of chapterPool) {
     if (other.id === chapter.id) continue
@@ -120,12 +146,15 @@ function storyPresenceOptions(
     const normalized = label.trim().toLowerCase()
     if (!normalized || seen.has(normalized)) continue
     seen.add(normalized)
-    candidates.push({ id: `story-${other.id}-${index}`, label })
+    const words = contentWords(label)
+    const overlap = Math.max(overlapRatio(answerWords, words), overlapRatio(chapterWords, words) * 0.5)
+    candidates.push({ id: `story-${other.id}-${index}`, label, overlap })
   }
 
-  const distractors = candidates
-    .sort((a, b) => seededRank(seed, a.id) - seededRank(seed, b.id))
+  const distractors: ReadingOption[] = candidates
+    .sort((a, b) => a.overlap - b.overlap || seededRank(seed, a.id) - seededRank(seed, b.id))
     .slice(0, 3)
+    .map(({ id, label }) => ({ id, label }))
 
   // Production always supplies all 40 chapters. Keep a deterministic fallback
   // for isolated unit/integration consumers without making the builder fragile.
