@@ -60,6 +60,11 @@ assert(
   serviceWorkerSource.split(swCachePlaceholder).length === 2,
   'public/sw.js must contain exactly one build-cache placeholder for release stamping',
 )
+const swAssetsPlaceholder = '__GHESSE_BUILD_ASSETS__'
+assert(
+  serviceWorkerSource.split(swAssetsPlaceholder).length === 2,
+  'public/sw.js must contain exactly one build-assets placeholder for release stamping',
+)
 for (let book = 1; book <= 8; book++) {
   assert(existsSync(join(publicDir, 'art', `book${book}.svg`)), `missing lesson artwork: art/book${book}.svg`)
 }
