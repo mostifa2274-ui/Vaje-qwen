@@ -418,15 +418,15 @@ button:disabled {
   position: fixed;
   inset-inline: 10px;
   top: max(10px, env(safe-area-inset-top));
-  z-index: 100;
-  max-width: 34rem;
+  z-index: 120;
+  max-width: 42rem;
   margin-inline: auto;
   padding: 10px 14px;
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  background: #fff1c7;
+  border: 1px solid color-mix(in srgb, var(--gold) 42%, var(--ink));
+  border-radius: 13px;
+  background: #fff7dc;
   color: var(--ink);
-  box-shadow: 2px 3px 0 rgba(43, 42, 38, 0.75);
+  box-shadow: var(--shadow-soft);
   font-size: 0.82rem;
   line-height: 1.7;
 }
@@ -1055,5 +1055,44 @@ input[type="range"]:focus-visible {
   }
   .settings-toggle-row > button {
     width: 100%;
+  }
+}
+
+
+/* ---------- PWA release freshness ---------- */
+.app-update-banner {
+  position: fixed;
+  inset-inline: 10px;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 115;
+  display: flex;
+  max-width: 42rem;
+  margin-inline: auto;
+  align-items: center;
+  gap: .85rem;
+  border: 1px solid var(--line-medium);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--cream) 96%, white);
+  box-shadow: var(--shadow-soft);
+  padding: .8rem .9rem;
+  color: var(--ink);
+  font-size: .8rem;
+  line-height: 1.7;
+}
+.app-update-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: .45rem;
+}
+
+@media (max-width: 520px) {
+  .app-update-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .app-update-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }
