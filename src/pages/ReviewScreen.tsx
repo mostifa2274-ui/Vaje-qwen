@@ -17,6 +17,7 @@ import { speakEnglish } from '../engine/narration'
 import { play, wordSrc } from '../engine/audio'
 import { examRemediationWordIds } from '../engine/gates'
 import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
+import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
 
 interface Props {
   state: GhesseState
@@ -60,15 +61,20 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     if (trouble.length) return trouble.slice(0, Math.min(10, state.dailyReviewGoal))
     return selectWeakestWordIds(introduced, state.words, Math.min(10, state.dailyReviewGoal), `extra:${Math.floor(now / 86_400_000)}`)
   }, [due, introduced, now, remediation, state.dailyReviewGoal, state.words, trouble])
+  const suggestedKind: ReviewSessionKind = remediation.length ? 'remediation' : due.length ? 'due' : trouble.length ? 'trouble' : 'extra'
 
-  const [queue, setQueue] = useState<string[]>(initial)
-  const [completed, setCompleted] = useState(0)
-  const [correctCount, setCorrectCount] = useState(0)
-  const [relearnedCount, setRelearnedCount] = useState(0)
-  const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null)
-  const [selected, setSelected] = useState('')
-  const [typed, setTyped] = useState('')
-  const [attemptNumber, setAttemptNumber] = useState<Record<string, number>>({})
+  const [initialDraft] = useState(() => loadReviewDraft(introduced))
+  const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
+  const [queue, setQueue] = useState<string[]>(() => initialDraft?.queue ?? initial)
+  const [sessionTotal] = useState(() => initialDraft?.sessionTotal ?? initial.length)
+  const [sessionKind] = useState<ReviewSessionKind>(() => initialDraft?.kind ?? suggestedKind)
+  const [completed, setCompleted] = useState(() => initialDraft?.completed ?? 0)
+  const [correctCount, setCorrectCount] = useState(() => initialDraft?.correctCount ?? 0)
+  const [relearnedCount, setRelearnedCount] = useState(() => initialDraft?.relearnedCount ?? 0)
+  const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(() => initialDraft?.feedback ?? null)
+  const [selected, setSelected] = useState(() => initialDraft?.selected ?? '')
+  const [typed, setTyped] = useState(() => initialDraft?.typed ?? '')
+  const [attemptNumber, setAttemptNumber] = useState<Record<string, number>>(() => initialDraft?.attemptNumber ?? {})
   const startedAtRef = useRef(0)
   const cardRef = useRef<HTMLDivElement>(null)
   const mountedRef = useRef(false)
@@ -95,6 +101,48 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     if (currentId) cardRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
   }, [currentId])
 
+  useEffect(() => {
+    if (sessionTotal === 0) {
+      clearReviewDraft()
+      return
+    }
+    const meaningful = completed > 0
+      || Object.keys(attemptNumber).length > 0
+      || typed.length > 0
+      || selected.length > 0
+      || feedback !== null
+    if (!meaningful) {
+      clearReviewDraft()
+      return
+    }
+    saveReviewDraft({
+      version: 1,
+      kind: sessionKind,
+      queue,
+      sessionTotal,
+      completed,
+      correctCount,
+      relearnedCount,
+      attemptNumber,
+      feedback,
+      selected,
+      typed,
+      updatedAt: Date.now(),
+    }, introduced)
+  }, [
+    attemptNumber,
+    completed,
+    correctCount,
+    feedback,
+    introduced,
+    queue,
+    relearnedCount,
+    selected,
+    sessionKind,
+    sessionTotal,
+    typed,
+  ])
+
   function speakCurrent() {
     if (!currentWord || !state.soundOn) return
     if (!speakEnglish(currentWord.word, state.narratorVoiceURI, state.narratorRate)) play(wordSrc(currentWord.id), true)
@@ -102,13 +150,35 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   function commit(correct: boolean) {
     if (!currentId || !currentWord || !progress || feedback) return
+    if (resumedDraft) setResumedDraft(false)
     const elapsedMs = Date.now() - startedAtRef.current
     const source = (attemptNumber[currentId] ?? 0) > 0 ? 'relearn' : 'review'
+    const nextCorrectCount = correct && source === 'review' ? correctCount + 1 : correctCount
+    const nextRelearnedCount = correct && source === 'relearn' ? relearnedCount + 1 : relearnedCount
+
+    // Persist the already-graded transition before permanent word state changes.
+    // The draft sanitizer settles this feedback to the next safe queue state, so
+    // a reload cannot grade the same retrieval twice.
+    saveReviewDraft({
+      version: 1,
+      kind: sessionKind,
+      queue,
+      sessionTotal,
+      completed,
+      correctCount: nextCorrectCount,
+      relearnedCount: nextRelearnedCount,
+      attemptNumber,
+      feedback: correct ? 'correct' : 'wrong',
+      selected,
+      typed,
+      updatedAt: Date.now(),
+    }, introduced)
+
     const nextProgress = recordRetrieval(progress, correct, mode, Date.now(), source, elapsedMs)
     onChange({ ...state, words: { ...state.words, [currentId]: nextProgress } })
     setFeedback(correct ? 'correct' : 'wrong')
-    if (correct && source === 'review') setCorrectCount(value => value + 1)
-    if (correct && source === 'relearn') setRelearnedCount(value => value + 1)
+    setCorrectCount(nextCorrectCount)
+    setRelearnedCount(nextRelearnedCount)
   }
 
   function submitTyped() {
@@ -130,7 +200,13 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     setTyped('')
   }
 
-  const sessionLabel = remediation.length ? 'ترمیم آزمون' : due.length ? 'مرورهای سررسید' : trouble.length ? 'واژه‌های سخت' : 'تمرین تقویتی'
+  const sessionLabel = sessionKind === 'remediation'
+    ? 'ترمیم آزمون'
+    : sessionKind === 'due'
+      ? 'مرورهای سررسید'
+      : sessionKind === 'trouble'
+        ? 'واژه‌های سخت'
+        : 'تمرین تقویتی'
   const typedMode = isTypedMode(mode)
 
   return (
@@ -151,7 +227,13 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
         <div className="metric-card"><b>{faNum(counts.mastered)}</b><span>مسلط</span></div>
       </div>
 
-      {initial.length === 0 ? (
+      {resumedDraft && sessionTotal > 0 && (
+        <div className="prep-resume-row mt-3" role="status">
+          <span>جلسهٔ مرور بازیابی شد؛ پاسخ‌های قبلاً ثبت‌شده دوباره شمرده نمی‌شوند.</span>
+        </div>
+      )}
+
+      {sessionTotal === 0 ? (
         <div className="learning-focus-card mt-6 p-6 text-center">
           <CheckIcon className="mx-auto h-9 w-9" aria-hidden="true" />
           <h2 className="mt-3 text-xl font-extrabold">مرور ضروری نداری</h2>
@@ -164,15 +246,15 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
           <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             {faNum(correctCount)} بازیابی مستقل ثبت شد و {faNum(relearnedCount)} واژه بعد از بازخورد دوباره ساخته شد. پاسخ درست پس از دیدن جواب عمداً شواهد تسلط محسوب نمی‌شود.
           </p>
-          <button type="button" className="btn-ink mt-5 w-full py-3" onClick={onBack}>بازگشت به مسیر</button>
+          <button type="button" className="btn-ink mt-5 w-full py-3" onClick={() => { clearReviewDraft(); onBack() }}>بازگشت به مسیر</button>
         </div>
       ) : (
         <div ref={cardRef} className="learning-focus-card review-focus-card mt-6 p-5 sm:p-6">
           <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
             <span>{sessionLabel}</span>
-            <span>{faNum(completed)} / {faNum(initial.length)}</span>
+            <span>{faNum(completed)} / {faNum(sessionTotal)}</span>
           </div>
-          <div className="mastery-progress mt-3"><span style={{ width: `${Math.min(100, (completed / initial.length) * 100)}%` }} /></div>
+          <div className="mastery-progress mt-3"><span style={{ width: `${Math.min(100, (completed / sessionTotal) * 100)}%` }} /></div>
 
           <div className="mt-5 flex items-center justify-between gap-2">
             <span className="mastery-chip">مهارت هدف: {weaknessLabel(mode)}</span>
