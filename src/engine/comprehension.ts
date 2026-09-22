@@ -1,5 +1,7 @@
 import type { Chapter, WordEntry } from './types'
 
+export const READING_QUESTION_COUNT = 10
+
 export interface ReadingOption {
   id: string
   label: string
@@ -295,5 +297,5 @@ export function buildReadingQuestions(
     answerId: `sentence-${previousTarget}`,
   })
 
-  return questions.slice(0, 10)
+  return questions.slice(0, READING_QUESTION_COUNT)
 }
