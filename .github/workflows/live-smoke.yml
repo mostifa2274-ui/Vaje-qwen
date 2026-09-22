@@ -1,19 +1,31 @@
 name: Production smoke
+
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
   workflow_dispatch:
+
 permissions:
   contents: read
+
 concurrency:
   group: ghesse-production-smoke
   cancel-in-progress: true
+
 jobs:
   live:
+    if: >-
+      ${{ github.event_name == 'workflow_dispatch' ||
+          (github.event.workflow_run.conclusion == 'success' &&
+           github.event.workflow_run.head_branch == 'main' &&
+           github.event.workflow_run.event == 'push') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       PRODUCTION_URL: https://vaje-qwen1.mostifa2273.workers.dev
+      SOURCE_SHA: ${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.workflow_run.head_sha }}
+
     steps:
       - name: Wait for exact Cloudflare production revision
         shell: bash
@@ -21,25 +33,47 @@ jobs:
           set -euo pipefail
           expected_release='"release":"ghesse-5.0.0"'
           expected_worker='"worker":"vaje-qwen1"'
-          expected_commit="\"commit\":\"$GITHUB_SHA\""
+          expected_commit="\"commit\":\"$SOURCE_SHA\""
           last_compact=''
-          for attempt in $(seq 1 40); do
-            echo "Smoke attempt $attempt/40 for $GITHUB_SHA"
-            body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json" || true)"
+
+          echo "Verifying source revision: $SOURCE_SHA"
+          echo "Production worker: $PRODUCTION_URL"
+
+          for attempt in $(seq 1 44); do
+            echo "Smoke attempt $attempt/44 for $SOURCE_SHA"
+            body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
             compact="$(printf '%s' "$body" | tr -d '[:space:]')"
             last_compact="$compact"
+
             if [ "$attempt" -eq 1 ] || [ $((attempt % 5)) -eq 0 ]; then
               echo "Observed live marker: ${compact:-<empty>}"
             fi
+
             if printf '%s' "$compact" | grep -Fq "$expected_release" \
               && printf '%s' "$compact" | grep -Fq "$expected_worker" \
               && printf '%s' "$compact" | grep -Fq "$expected_commit"; then
-              echo "Verified exact Ghesse 5.0 revision $GITHUB_SHA at $PRODUCTION_URL/release.json"
+              echo "Verified exact Ghesse 5.0 revision $SOURCE_SHA at $PRODUCTION_URL/release.json"
               curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null
               echo "Production root is reachable."
+              {
+                echo "## Production verification"
+                echo ""
+                echo "- Exact revision verified: `$SOURCE_SHA`"
+                echo "- Worker: `vaje-qwen1`"
+                echo "- Root reachable: yes"
+              } >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
+
             sleep 15
           done
-          echo "::error::Cloudflare production did not expose commit $GITHUB_SHA on worker vaje-qwen1 within the smoke window. Last observed marker: ${last_compact:-<empty>}"
+
+          {
+            echo "## Production verification failed"
+            echo ""
+            echo "- Expected revision: `$SOURCE_SHA`"
+            echo "- Worker: `vaje-qwen1`"
+            echo "- Last marker: `${last_compact:-<empty>}`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::error::Cloudflare production did not expose commit $SOURCE_SHA on worker vaje-qwen1 within the smoke window. Last observed marker: ${last_compact:-<empty>}"
           exit 1

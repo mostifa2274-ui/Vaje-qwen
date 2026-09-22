@@ -1,4 +1,4 @@
-name: Deploy production
+name: Optional direct Cloudflare deploy
 
 on:
   workflow_run:
@@ -37,7 +37,16 @@ jobs:
             echo "Cloudflare GitHub Actions credentials are configured."
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are not configured. Skipping direct deploy and leaving Cloudflare Git integration as the active deployment path."
+            echo "::notice::Direct deployment NOT performed: CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are not configured. Cloudflare Git integration remains the deployment path."
+            {
+              echo "## Direct Cloudflare deploy skipped"
+              echo ""
+              echo "- Source revision: \`$SOURCE_SHA\`"
+              echo "- Reason: GitHub Actions Cloudflare credentials are not configured"
+              echo "- Active deployment path: Cloudflare Git integration"
+              echo ""
+              echo "A green workflow result here means the optional fallback behaved correctly; it does not mean Wrangler deployed production."
+            } >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Check out exact verified revision
