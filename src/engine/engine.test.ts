@@ -369,12 +369,41 @@ describe('review and exam generation', () => {
 })
 
 describe('chapter completion scheduling', () => {
-  it('schedules new words for next-day retrieval and does not regress frontier on reread', () => {
+  it('rejects completion when an unfinished chapter has not passed the prep gate', () => {
+    const state = emptyState(1, 'c1')
+    state.words.cat = blankWordProgress(1)
+    const next = recordCompletedRead(state, 'c1', ['cat'], 10, 10, 10, 20, ['c1', 'c2'], 'c2')
+    expect(next).toBe(state)
+    expect(next.chapters.c1).toBeUndefined()
+    expect(next.currentChapter).toBe('c1')
+  })
+
+  it('rejects completion until every comprehension question has been corrected', () => {
+    let state = emptyState(1, 'c1')
+    state = recordPreparedChapter(state, 'c1', ['cat'], ['cat'], ['cat'], [], [], 10)
+    const next = recordCompletedRead(state, 'c1', ['cat'], 7, 10, 9, 20, ['c1', 'c2'], 'c2')
+    expect(next).toBe(state)
+    expect(next.chapters.c1.completed).toBe(false)
+    expect(next.currentChapter).toBe('c1')
+  })
+
+  it('keeps the honest first-pass score after full correction and completes the chapter', () => {
+    let state = emptyState(1, 'c1')
+    state = recordPreparedChapter(state, 'c1', ['cat'], ['cat'], ['cat'], [], [], 10)
+    const next = recordCompletedRead(state, 'c1', ['cat'], 7, 10, 10, 20, ['c1', 'c2'], 'c2')
+    expect(next.chapters.c1.completed).toBe(true)
+    expect(next.chapters.c1.checksCorrect).toBe(7)
+    expect(next.chapters.c1.checksTotal).toBe(10)
+    expect(next.currentChapter).toBe('c2')
+    expect(next.words.cat.dueAt).toBe(20 + 86_400_000)
+  })
+
+  it('allows legacy completed chapters to be reread without regressing the frontier', () => {
     const order = ['c1', 'c2', 'c3']
     const state = emptyState(1, 'c3')
     state.words.cat = blankWordProgress(1)
     state.chapters.c1 = { preparedAt: 1, prepAttempts: 1, completed: true, completedAt: 2, lastReadAt: 2, checksCorrect: 2, checksTotal: 2, reads: 1 }
-    const next = recordCompletedRead(state, 'c1', ['cat'], 1, 2, 20, order, 'c2')
+    const next = recordCompletedRead(state, 'c1', ['cat'], 1, 2, 2, 20, order, 'c2')
     expect(next.currentChapter).toBe('c3')
     expect(next.chapters.c1.reads).toBe(2)
     expect(next.words.cat.dueAt).toBe(20 + 86_400_000)
