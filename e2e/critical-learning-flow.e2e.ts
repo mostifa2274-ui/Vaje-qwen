@@ -147,6 +147,27 @@ test.beforeEach(async ({ page }) => {
   })
 })
 
+test('keyboard skip link focuses the main landmark without changing the hash route', async ({ page }) => {
+  await page.goto('/#/map')
+  await page.evaluate(() => {
+    const body = document.body
+    body.tabIndex = -1
+    body.focus()
+    body.removeAttribute('tabindex')
+  })
+  await page.keyboard.press('Tab')
+
+  const skip = page.getByRole('link', { name: 'رفتن به محتوای اصلی' })
+  await expect(skip).toBeFocused()
+  await skip.press('Enter')
+
+  const main = page.locator('#main-content')
+  await expect(main).toBeFocused()
+  await expect(main).toHaveAttribute('aria-label', 'مسیر یادگیری')
+  await expect(page).toHaveTitle('مسیر یادگیری — قصه')
+  await expect(page).toHaveURL(/#\/map$/)
+})
+
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
   await page.goto('/#/read/b1c1')
 
@@ -213,6 +234,9 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   }
 
   await expect(page).toHaveURL(/#\/read\/b1c1$/)
+  await expect(page.locator('#main-content')).toBeFocused()
+  await expect(page.locator('#main-content')).toHaveAttribute('aria-label', /خواندن داستان:/)
+  await expect(page).toHaveTitle(/خواندن داستان: .* — قصه/)
   await expect(page.locator('svg.lesson-chapter-art[role="img"]')).toBeVisible()
   await expect(page.locator('.tok-new')).toHaveCount(0)
   await expectNoHorizontalOverflow(page)

@@ -69,6 +69,22 @@ function hashFor(view: View): string {
   return '#/map'
 }
 
+function viewLabel(view: View): string {
+  if (view.name === 'prep') {
+    const chapter = CHAPTER_BY_ID.get(view.chapterId)
+    return chapter ? `آمادگی فصل: ${chapter.titleFa}` : 'آمادگی فصل'
+  }
+  if (view.name === 'read') {
+    const chapter = CHAPTER_BY_ID.get(view.chapterId)
+    return chapter ? `خواندن داستان: ${chapter.titleFa}` : 'خواندن داستان'
+  }
+  if (view.name === 'review') return 'مرور هوشمند'
+  if (view.name === 'exam') return examDefinition(view.examId)?.titleFa ?? 'آزمون'
+  if (view.name === 'glossary') return 'واژه‌نامه'
+  if (view.name === 'settings') return 'تنظیمات'
+  return 'مسیر یادگیری'
+}
+
 export default function App() {
   const [state, setState] = useState<GhesseState>(() => loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS))
   const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)))
@@ -77,6 +93,8 @@ export default function App() {
   const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
   const [dismissedCommit, setDismissedCommit] = useState<string | null>(null)
   const stateRef = useRef(state)
+  const mainRef = useRef<HTMLElement>(null)
+  const routeFocusReadyRef = useRef(false)
 
   const update = useCallback((next: GhesseState) => {
     setState(next)
@@ -137,7 +155,20 @@ export default function App() {
     const timer = window.setInterval(() => setNow(Date.now()), 60_000)
     return () => window.clearInterval(timer)
   }, [])
-  useEffect(() => { window.scrollTo({ top: 0, behavior: 'auto' }) }, [view])
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+    if (!routeFocusReadyRef.current) {
+      routeFocusReadyRef.current = true
+      return
+    }
+    const frame = window.requestAnimationFrame(() => {
+      mainRef.current?.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [view])
+  useEffect(() => {
+    document.title = `${viewLabel(view)} — قصه`
+  }, [view])
   useEffect(() => {
     document.documentElement.setAttribute('dir', 'rtl')
     document.documentElement.setAttribute('lang', 'fa')
@@ -267,6 +298,17 @@ export default function App() {
 
   return (
     <>
+      <a
+        className="skip-link"
+        href="#main-content"
+        onClick={event => {
+          event.preventDefault()
+          mainRef.current?.focus({ preventScroll: true })
+          mainRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
+        }}
+      >
+        رفتن به محتوای اصلی
+      </a>
       {!persistOk && (
         <div className="storage-warning" role="alert">
           ذخیره‌سازی مرورگر در دسترس نیست؛ پیشرفت این جلسه ممکن است پس از بستن صفحه از بین برود. از تنظیمات نسخهٔ پشتیبان بگیر.
@@ -284,7 +326,15 @@ export default function App() {
           </div>
         </div>
       )}
-      {screen}
+      <main
+        id="main-content"
+        ref={mainRef}
+        className="app-main"
+        tabIndex={-1}
+        aria-label={viewLabel(view)}
+      >
+        {screen}
+      </main>
     </>
   )
 }

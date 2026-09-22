@@ -1164,3 +1164,32 @@ input[type="range"]:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ---------- SPA navigation accessibility ---------- */
+.skip-link {
+  position: fixed;
+  inset-inline-start: max(12px, env(safe-area-inset-left));
+  top: max(10px, env(safe-area-inset-top));
+  z-index: 250;
+  transform: translateY(calc(-100% - 24px));
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: var(--shadow-control);
+  padding: .65rem .85rem;
+  font-size: .85rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 140ms ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--crimson-deep);
+  outline-offset: 3px;
+}
+.app-main:focus {
+  outline: none;
+}
