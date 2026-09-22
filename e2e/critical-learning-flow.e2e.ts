@@ -235,7 +235,9 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('rendered core screens satisfy the structural accessibility contract', async ({ page }) => {
-  for (const route of ['/#/map', '/#/glossary', '/#/settings', '/#/read/b1c1']) {
+  // Fresh progress cannot read b1c1 yet, so exercise Prep explicitly here.
+  // Reader accessibility is asserted again after the full unlock journey below.
+  for (const route of ['/#/map', '/#/glossary', '/#/settings', '/#/review', '/#/prep/b1c1']) {
     await page.goto(route)
     await expect(page.locator('#main-content')).toBeVisible()
     await expectRenderedAccessibilityContract(page)
