@@ -97,6 +97,45 @@ describe('reading comprehension drafts', () => {
     }), 'b1c1', qs, NOW)).toBeUndefined()
   })
 
+  it('restores a correction round with later already-correct questions intact', () => {
+    const qs = questions()
+    const normalized = sanitizeReadingDraft(draft(qs, {
+      checkIndex: 1,
+      firstPassCorrect: 2,
+      answers: {
+        0: 'q-0-o-0',
+        2: 'q-2-o-0',
+      },
+    }), 'b1c1', qs, NOW)
+
+    expect(normalized?.firstPassCorrect).toBe(2)
+    expect(normalized?.checkIndex).toBe(1)
+    expect(normalized?.answers).toEqual({
+      0: 'q-0-o-0',
+      2: 'q-2-o-0',
+    })
+  })
+
+  it('rejects a correction draft that stores an incorrect future answer', () => {
+    const qs = questions()
+    expect(sanitizeReadingDraft(draft(qs, {
+      checkIndex: 1,
+      firstPassCorrect: 1,
+      answers: {
+        0: 'q-0-o-0',
+        2: 'q-2-o-2',
+      },
+    }), 'b1c1', qs, NOW)).toBeUndefined()
+  })
+
+  it('rejects an impossible first-pass score in correction mode', () => {
+    const qs = questions()
+    expect(sanitizeReadingDraft(draft(qs, {
+      checkIndex: 1,
+      firstPassCorrect: 3,
+    }), 'b1c1', qs, NOW)).toBeUndefined()
+  })
+
   it('rejects another chapter and stale drafts', () => {
     const qs = questions()
     expect(sanitizeReadingDraft(draft(qs, { chapterId: 'b1c2' }), 'b1c1', qs, NOW)).toBeUndefined()
