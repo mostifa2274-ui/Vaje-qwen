@@ -5,7 +5,7 @@ import { buildReadingQuestions } from './comprehension'
 describe('chapter reading comprehension', () => {
   it('builds exactly ten valid questions for every chapter', () => {
     for (const chapter of CHAPTERS) {
-      const questions = buildReadingQuestions(chapter, WORD_BY_ID)
+      const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
       expect(questions, chapter.id).toHaveLength(10)
       expect(new Set(questions.map(question => question.id)).size, chapter.id).toBe(10)
 
@@ -21,11 +21,33 @@ describe('chapter reading comprehension', () => {
 
   it('is deterministic and keeps the two authored story-detail questions', () => {
     for (const chapter of CHAPTERS) {
-      const first = buildReadingQuestions(chapter, WORD_BY_ID)
-      const second = buildReadingQuestions(chapter, WORD_BY_ID)
+      const first = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
+      const second = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
       expect(second).toEqual(first)
       expect(first[0].evidenceWordId).toBe(chapter.check[0].a)
       expect(first[1].evidenceWordId).toBe(chapter.check[1].a)
+    }
+  })
+
+  it('uses a balanced story-comprehension mix instead of mostly translation matching', () => {
+    for (const chapter of CHAPTERS) {
+      const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
+      const ids = questions.map(question => question.id)
+      expect(ids.filter(id => id.includes(':authored:')).length, chapter.id).toBe(2)
+      expect(ids.filter(id => id.includes(':meaning-')).length, chapter.id).toBe(2)
+      expect(ids.filter(id => id.includes(':story-event:')).length, chapter.id).toBe(2)
+      expect(ids.filter(id => id.includes(':sequence:')).length, chapter.id).toBe(4)
+    }
+  })
+
+  it('uses other chapters as plausible distractors for story-event questions', () => {
+    for (const chapter of CHAPTERS) {
+      const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
+        .filter(question => question.id.includes(':story-event:'))
+      for (const question of questions) {
+        expect(question.options.some(option => option.id.startsWith(`story-${chapter.id}-`)), question.id).toBe(true)
+        expect(question.options.filter(option => option.id.startsWith('story-') && !option.id.startsWith(`story-${chapter.id}-`)).length, question.id).toBe(3)
+      }
     }
   })
 })

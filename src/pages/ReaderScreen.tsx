@@ -34,7 +34,7 @@ function wallClockNow(): number {
 export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
-  const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID), [chapter])
+  const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS), [chapter])
   const paragraphs = useMemo(() => {
     const paragraphSize = chapter.sentences.length >= 36 ? 5 : 4
     const groups: number[][] = []
