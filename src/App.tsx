@@ -11,6 +11,7 @@ import ExamScreen from './pages/ExamScreen'
 import GlossaryScreen from './pages/GlossaryScreen'
 import SettingsScreen from './pages/SettingsScreen'
 import { warmEnglishVoices } from './engine/narration'
+import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
 
 type View =
   | { name: 'map' }
@@ -70,6 +71,8 @@ export default function App() {
   const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)))
   const [persistOk, setPersistOk] = useState(true)
   const [now, setNow] = useState(() => Date.now())
+  const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
+  const [dismissedCommit, setDismissedCommit] = useState<string | null>(null)
   const stateRef = useRef(state)
 
   const update = useCallback((next: GhesseState) => {
@@ -153,6 +156,37 @@ export default function App() {
     return () => window.removeEventListener('storage', onStorage)
   }, [])
 
+  const checkForDeployedUpdate = useCallback(async () => {
+    if (!import.meta.env.PROD) return
+    const marker = await fetchReleaseMarker(import.meta.env.BASE_URL)
+    if (deployedBuildDiffers(marker)) setDeployedCommit(marker?.commit?.trim() || null)
+    else setDeployedCommit(null)
+  }, [])
+
+  useEffect(() => {
+    if (!import.meta.env.PROD) return
+    void checkForDeployedUpdate()
+    const timer = window.setInterval(() => { void checkForDeployedUpdate() }, 5 * 60_000)
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') void checkForDeployedUpdate()
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => {
+      window.clearInterval(timer)
+      document.removeEventListener('visibilitychange', onVisibility)
+    }
+  }, [checkForDeployedUpdate])
+
+  async function refreshToDeployedBuild() {
+    try {
+      const registration = await navigator.serviceWorker?.getRegistration()
+      await registration?.update()
+    } catch {
+      // A page reload still uses network-first navigation even if SW update fails.
+    }
+    window.location.reload()
+  }
+
   let screen: ReactNode
   switch (view.name) {
     case 'prep':
@@ -226,11 +260,25 @@ export default function App() {
       )
   }
 
+  const updateAvailable = Boolean(deployedCommit && deployedCommit !== dismissedCommit)
+
   return (
     <>
       {!persistOk && (
         <div className="storage-warning" role="alert">
           ذخیره‌سازی مرورگر در دسترس نیست؛ پیشرفت این جلسه ممکن است پس از بستن صفحه از بین برود. از تنظیمات نسخهٔ پشتیبان بگیر.
+        </div>
+      )}
+      {updateAvailable && deployedCommit && (
+        <div className="app-update-banner" role="status">
+          <div className="min-w-0 flex-1">
+            <b>نسخهٔ فعال برنامه تغییر کرده است.</b>
+            <span> برای هماهنگ‌شدن با نسخهٔ جدید، صفحه را تازه کن.</span>
+          </div>
+          <div className="app-update-actions">
+            <button type="button" className="btn-quiet px-3 text-xs" onClick={() => setDismissedCommit(deployedCommit)}>بعداً</button>
+            <button type="button" className="btn-ink px-3 text-xs" onClick={() => { void refreshToDeployedBuild() }}>تازه‌سازی</button>
+          </div>
         </div>
       )}
       {screen}

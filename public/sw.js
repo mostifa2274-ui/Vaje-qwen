@@ -1,4 +1,4 @@
-const CACHE = 'ghesse-5.0.1-reader'
+const CACHE = 'ghesse-5.0-shell-v2'
 const CORE = [
   './',
   './index.html',
@@ -55,6 +55,14 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
+
+  if (url.pathname.endsWith('/release.json')) {
+    event.respondWith(
+      fetch(request, { cache: 'no-store' })
+        .catch(() => new Response('', { status: 503, statusText: 'Offline' }))
+    )
+    return
+  }
 
   if (request.mode === 'navigate') {
     event.respondWith(
