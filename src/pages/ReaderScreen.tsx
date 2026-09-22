@@ -487,6 +487,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               )}
 
               <div
+                data-testid="comprehension-options"
                 className={`mt-4 grid gap-2 ${currentQuestion.options.every(option => option.label.length <= 24) ? 'grid-cols-2' : 'grid-cols-1'}`}
                 dir={currentQuestion.optionDir}
               >
