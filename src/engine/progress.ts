@@ -1,5 +1,6 @@
 import type { GhesseState } from './types'
 import { blankWordProgress, scheduleAfterChapter } from './review'
+import { READING_QUESTION_COUNT } from './comprehension'
 
 export function recordPreparedChapter(
   state: GhesseState,
@@ -88,7 +89,7 @@ export function recordCompletedRead(
     && previous.prepListeningTotal === wordIds.length,
   )
   const canRereadLegacyCompletion = previous?.completed === true
-  const comprehensionVerified = checksTotal > 0 && verifiedChecksCorrect === checksTotal
+  const comprehensionVerified = checksTotal === READING_QUESTION_COUNT && verifiedChecksCorrect === READING_QUESTION_COUNT
 
   // Engine-level fail-closed completion gate. UI bugs or direct callers cannot
   // complete an unfinished chapter without the 100% prep gate and corrected
