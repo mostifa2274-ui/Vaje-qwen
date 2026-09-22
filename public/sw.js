@@ -1,4 +1,4 @@
-const CACHE = 'ghesse-5.0-shell-v2'
+const CACHE = 'ghesse-shell-__GHESSE_BUILD_CACHE__'
 const CORE = [
   './',
   './index.html',
