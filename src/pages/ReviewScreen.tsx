@@ -93,8 +93,6 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   useEffect(() => {
     startedAtRef.current = Date.now()
-    setAudioBlocked(false)
-    setAudioNotice('')
   }, [currentId, attemptNumber])
 
   useEffect(() => {
@@ -218,6 +216,8 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     setFeedback(null)
     setSelected('')
     setTyped('')
+    setAudioBlocked(false)
+    setAudioNotice('')
   }
 
   const sessionLabel = sessionKind === 'remediation'
