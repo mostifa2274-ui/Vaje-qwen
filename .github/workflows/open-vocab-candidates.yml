@@ -1,0 +1,77 @@
+name: Open vocabulary candidate snapshot
+
+on:
+  push:
+    branches:
+      - provenance/open-vocab-snapshot
+    paths:
+      - .github/workflows/open-vocab-candidates.yml
+      - scripts/build-open-vocab-candidates.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ghesse-open-vocab-candidates
+  cancel-in-progress: true
+
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout reconstruction tooling
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Download official Tatoeba English CC0 export
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_url='https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences_CC0.tsv.bz2'
+          curl --fail --location --retry 4 --retry-all-errors --connect-timeout 20 --max-time 180 \
+            "$source_url" \
+            --output /tmp/eng_sentences_CC0.tsv.bz2
+          test -s /tmp/eng_sentences_CC0.tsv.bz2
+          sha256sum /tmp/eng_sentences_CC0.tsv.bz2
+
+      - name: Build independent candidate pool
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ghesse-open-vocab
+          python scripts/build-open-vocab-candidates.py \
+            --input /tmp/eng_sentences_CC0.tsv.bz2 \
+            --output /tmp/ghesse-open-vocab/tatoeba-cc0-candidates.json \
+            --limit 5000
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('/tmp/ghesse-open-vocab/tatoeba-cc0-candidates.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          assert data['releaseClearingEvidence'] is False
+          assert data['method']['legacyVocabularyConsulted'] is False
+          assert len(data['candidates']) == 5000
+          assert data['stats']['sentences'] > 0
+          assert data['source']['sha256']
+          print(json.dumps({
+              'sourceSha256': data['source']['sha256'],
+              'sentences': data['stats']['sentences'],
+              'uniqueTokens': data['stats']['uniqueTokens'],
+              'candidateCount': len(data['candidates']),
+              'top20': [item['word'] for item in data['candidates'][:20]],
+          }, ensure_ascii=False))
+          PY
+
+      - name: Upload reconstruction artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tatoeba-cc0-independent-candidates
+          path: /tmp/ghesse-open-vocab/tatoeba-cc0-candidates.json
+          if-no-files-found: error
+          retention-days: 30
