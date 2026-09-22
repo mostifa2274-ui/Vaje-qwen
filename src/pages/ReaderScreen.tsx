@@ -461,15 +461,23 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             <div>
               <h2 id="comprehension-title" className="text-xl font-extrabold">درک مطلب</h2>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-                ۱۰ سؤال از خود همین قصه: جزئیات، معنی جمله و ترتیب اتفاق‌ها.
+                ۱۰ سؤال از خود همین قصه: جزئیات، معنی جمله و ترتیب اتفاق‌ها. اگر چیزی اشتباه شود، فقط همان سؤال‌ها برای اصلاح برمی‌گردند.
               </p>
             </div>
-            <span className="mastery-chip">{faNum(Math.min(checkIndex + 1, questions.length))} / {faNum(questions.length)}</span>
+            <span className="mastery-chip">
+              {correctionMode ? 'اصلاح · ' : ''}{faNum(checksCorrect)} / {faNum(questions.length)} درست
+            </span>
           </div>
 
-          <div className="mastery-progress mt-3">
-            <span style={{ width: `${(checksAnswered / questions.length) * 100}%` }} />
+          <div className="mastery-progress mt-3" aria-label={`${checksCorrect} از ${questions.length} پاسخ تأیید شده`}>
+            <span style={{ width: `${(checksCorrect / questions.length) * 100}%` }} />
           </div>
+
+          {correctionMode && !finished && (
+            <div className="paper-note mt-3" role="status">
+              پاسخ‌های درستت حفظ شده‌اند. فقط سؤال‌های از‌دست‌رفته را اصلاح می‌کنی؛ امتیاز مرحلهٔ اول برای گزارش واقعی یادگیری نگه داشته می‌شود.
+            </div>
+          )}
 
           {currentQuestion && !finished && (
             <div ref={questionRef} className="paper-card question-card mt-4 p-4 sm:p-5">
@@ -521,7 +529,15 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                 </div>
               )}
 
-              {currentAnswer !== undefined && checkIndex < questions.length - 1 && (
+              {currentAnswer !== undefined && correctionMode && currentAnswer !== currentQuestion.answerId && (
+                <button type="button" className="btn-ink mt-4 w-full py-3" onClick={retryCurrentCorrection}>
+                  دوباره پاسخ بده
+                </button>
+              )}
+
+              {currentAnswer !== undefined
+                && (!correctionMode || currentAnswer === currentQuestion.answerId)
+                && questions.some((_, index) => index > checkIndex && answers[index] === undefined) && (
                 <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueQuestion}>
                   سؤال بعدی ←
                 </button>
@@ -531,9 +547,15 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         </section>
 
         <div className="mt-6">
-          {checksAnswered === questions.length && !finished && (
+          {checksAnswered === questions.length && checksCorrect < questions.length && !correctionMode && !finished && (
+            <button type="button" className="btn-crimson w-full py-3.5 text-lg" onClick={beginCorrectionRound}>
+              اصلاح {faNum(questions.length - checksCorrect)} پاسخ اشتباه
+            </button>
+          )}
+
+          {checksCorrect === questions.length && !finished && (
             <button type="button" className="btn-crimson pop w-full py-3.5 text-lg" onClick={finishChapter}>
-              {alreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(checksCorrect)} از {faNum(questions.length)} درست
+              {alreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(questions.length)} از {faNum(questions.length)} تأیید شد
             </button>
           )}
 
