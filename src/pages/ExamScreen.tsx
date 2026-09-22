@@ -4,8 +4,8 @@ import { buildExam, examPool, scoreExam, type BuiltExam, type ExamResult } from 
 import { examDefinition } from '../engine/gates'
 import { WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
-import { speakEnglish } from '../engine/narration'
-import { play, wordSrc } from '../engine/audio'
+import { speakEnglishWithFallback } from '../engine/narration'
+import { wordSrc } from '../engine/audio'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 
@@ -54,12 +54,16 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const [typed, setTyped] = useState(() => initialDraft?.typed ?? '')
   const [result, setResult] = useState<ExamResult | null>(null)
   const [onBreak, setOnBreak] = useState(() => initialDraft?.onBreak ?? false)
+  const [audioBlocked, setAudioBlocked] = useState(false)
+  const [audioNotice, setAudioNotice] = useState('')
   const questionStartedAt = useRef(0)
   const questionRef = useRef<HTMLDivElement>(null)
   const mountedRef = useRef(false)
 
   useEffect(() => {
     questionStartedAt.current = Date.now()
+    setAudioBlocked(false)
+    setAudioNotice('')
   }, [index, onBreak])
 
   useEffect(() => {
@@ -99,7 +103,23 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   function speakCurrent() {
     if (!word || !state.soundOn) return
-    if (!speakEnglish(word.word, state.narratorVoiceURI, state.narratorRate)) play(wordSrc(word.id), true)
+    const unavailable = () => {
+      setAudioBlocked(true)
+      setAudioNotice('پخش تلفظ انگلیسی در دسترس نیست. برای ادامهٔ سؤال شنیداری، صدای English Text-to-Speech مرورگر یا سیستم را فعال کن.')
+    }
+    const ended = () => {
+      setAudioBlocked(false)
+      setAudioNotice('')
+    }
+    const started = speakEnglishWithFallback(
+      word.word,
+      state.narratorVoiceURI,
+      state.narratorRate,
+      wordSrc(word.id),
+      ended,
+      unavailable,
+    )
+    if (!started) unavailable()
   }
 
   function finalize(nextAnswers: Record<number, boolean>, nextTimings: Record<number, number>, built: BuiltExam) {
@@ -135,7 +155,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   }
 
   function answer(correct: boolean) {
-    if (!question || result) return
+    if (!question || result || (question.mode === 'spelling' && audioBlocked)) return
     if (resumedDraft) setResumedDraft(false)
     const elapsed = Math.max(1, Date.now() - questionStartedAt.current)
     const nextAnswers = { ...answers, [question.index]: correct }
@@ -300,6 +320,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
               <>
                 <div className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و دقیق بنویس.</div>
                 <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
+                {audioNotice && <div className="paper-note mt-3 text-right" role="alert">{audioNotice}</div>}
               </>
             ) : (
               <div className={`mt-4 text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
@@ -317,13 +338,14 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
                 autoComplete="off"
                 autoCapitalize="none"
                 spellCheck={false}
+                disabled={question.mode === 'spelling' && audioBlocked}
                 value={typed}
                 onChange={event => setTyped(event.target.value)}
                 onKeyDown={event => { if (event.key === 'Enter') submitTyped() }}
               />
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <button type="button" className="btn-quiet py-3 text-sm" onClick={() => answer(false)}>نمی‌دانم</button>
-                <button type="button" className="btn-ink py-3" disabled={!typed.trim()} onClick={submitTyped}>ثبت و بعدی</button>
+                <button type="button" className="btn-quiet py-3 text-sm" disabled={question.mode === 'spelling' && audioBlocked} onClick={() => answer(false)}>نمی‌دانم</button>
+                <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (question.mode === 'spelling' && audioBlocked)} onClick={submitTyped}>ثبت و بعدی</button>
               </div>
             </div>
           ) : (
