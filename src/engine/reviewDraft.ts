@@ -80,8 +80,8 @@ export function sanitizeReviewDraft(
   const sessionTotal = safeCount(value.sessionTotal, allowed.size)
   if (!sessionTotal || sessionTotal < 1) return undefined
   let completed = safeCount(value.completed, sessionTotal)
-  let correctCount = safeCount(value.correctCount, sessionTotal)
-  let relearnedCount = safeCount(value.relearnedCount, sessionTotal)
+  const correctCount = safeCount(value.correctCount, sessionTotal)
+  const relearnedCount = safeCount(value.relearnedCount, sessionTotal)
   let queue = safeQueue(value.queue, allowed)
   const attemptNumber = safeAttempts(value.attemptNumber, allowed)
   if (completed === undefined || correctCount === undefined || relearnedCount === undefined || !queue || !attemptNumber) return undefined
