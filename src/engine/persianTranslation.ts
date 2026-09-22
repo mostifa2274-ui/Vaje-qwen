@@ -36,6 +36,25 @@ export function acceptedPersianAnswers(word: Pick<WordEntry, 'fa'>): string[] {
   add(word.fa)
   add(withoutParenthetical(word.fa))
 
+  // Persian glosses sometimes omit a repeated compound head after a slash:
+  // "ساعت دیواری/رومیزی" means "ساعت دیواری" OR "ساعت رومیزی".
+  // Reconstruct only that explicitly omitted prefix; do not infer synonyms.
+  const slashGroups = word.fa
+    .split(/[؛;،,]/)
+    .map(group => group.trim())
+    .filter(Boolean)
+
+  for (const group of slashGroups) {
+    const slashParts = group.split('/').map(part => withoutParenthetical(part).trim()).filter(Boolean)
+    if (slashParts.length < 2) continue
+    const leftWords = slashParts[0].split(/\s+/).filter(Boolean)
+    if (leftWords.length < 2) continue
+    const sharedPrefix = leftWords.slice(0, -1).join(' ')
+    for (const right of slashParts.slice(1)) {
+      if (!right.includes(' ')) add(`${sharedPrefix} ${right}`)
+    }
+  }
+
   for (const part of primary) {
     add(part)
     const stripped = withoutParenthetical(part)
