@@ -209,7 +209,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       signature: readingQuestionSignature(questions),
       checkIndex: questionIndex,
       answers: nextAnswers,
-      updatedAt: Date.now(),
+      updatedAt: clockRef.current(),
     }, questions)
     setAnswers(nextAnswers)
 
