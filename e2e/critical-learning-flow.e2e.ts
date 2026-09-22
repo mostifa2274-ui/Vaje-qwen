@@ -109,7 +109,7 @@ async function expectRenderedAccessibilityContract(page: Page): Promise<void> {
           element.getAttribute('aria-label')?.trim() ?? '',
           labelledByText,
           labelText,
-          element.textContent?.trim() ?? '',
+          element.innerText?.trim() ?? '',
           element.getAttribute('title')?.trim() ?? '',
         ].find(Boolean)
         return !name
