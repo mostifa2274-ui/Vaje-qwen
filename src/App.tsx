@@ -51,7 +51,10 @@ function resolveView(view: View, state: GhesseState): View {
     if (!canPrepareChapter(state, view.chapterId)) return { name: 'map' }
     if (!canReadChapter(state, view.chapterId)) return { name: 'prep', chapterId: view.chapterId }
   }
-  if (view.name === 'prep' && !canPrepareChapter(state, view.chapterId)) return { name: 'map' }
+  if (view.name === 'prep') {
+    if (!canPrepareChapter(state, view.chapterId)) return { name: 'map' }
+    if (canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
+  }
   if (view.name === 'exam' && !canTakeExam(state, view.examId)) return { name: 'map' }
   return view
 }
