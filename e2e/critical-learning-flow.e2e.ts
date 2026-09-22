@@ -58,6 +58,93 @@ async function expectTouchSafeStoryControls(page: Page): Promise<void> {
   }
 }
 
+async function expectRenderedAccessibilityContract(page: Page): Promise<void> {
+  const result = await page.evaluate(() => {
+    const isVisible = (element: HTMLElement) => {
+      const style = window.getComputedStyle(element)
+      const rect = element.getBoundingClientRect()
+      return style.display !== 'none'
+        && style.visibility !== 'hidden'
+        && style.opacity !== '0'
+        && rect.width > 0
+        && rect.height > 0
+    }
+
+    const ids = new Map<string, number>()
+    for (const element of Array.from(document.querySelectorAll<HTMLElement>('[id]'))) {
+      const id = element.id.trim()
+      if (id) ids.set(id, (ids.get(id) ?? 0) + 1)
+    }
+
+    const duplicateIds = [...ids.entries()]
+      .filter(([, count]) => count > 1)
+      .map(([id]) => id)
+
+    const controls = Array.from(document.querySelectorAll<HTMLElement>(
+      'button, a[href], input, select, textarea',
+    )).filter(element => {
+      if (!isVisible(element)) return false
+      if (element.getAttribute('aria-hidden') === 'true') return false
+      if ('disabled' in element && (element as HTMLButtonElement).disabled) return false
+      if (element instanceof HTMLInputElement && element.type === 'hidden') return false
+      return true
+    })
+
+    const unnamedControls = controls
+      .filter(element => {
+        const labelledBy = element.getAttribute('aria-labelledby')
+        const labelledByText = labelledBy
+          ? labelledBy
+              .split(/\s+/)
+              .map(id => document.getElementById(id)?.textContent?.trim() ?? '')
+              .join(' ')
+              .trim()
+          : ''
+        const labelText = element instanceof HTMLInputElement
+          || element instanceof HTMLSelectElement
+          || element instanceof HTMLTextAreaElement
+          ? Array.from(element.labels ?? []).map(label => label.textContent?.trim() ?? '').join(' ').trim()
+          : ''
+        const name = [
+          element.getAttribute('aria-label')?.trim() ?? '',
+          labelledByText,
+          labelText,
+          element.textContent?.trim() ?? '',
+          element.getAttribute('title')?.trim() ?? '',
+        ].find(Boolean)
+        return !name
+      })
+      .map(element => `${element.tagName.toLowerCase()}#${element.id || '(no-id)'}.${element.className || '(no-class)'}`)
+
+    const undersizedButtons = controls
+      .filter(element => element.tagName === 'BUTTON' && !element.classList.contains('tok-word'))
+      .filter(element => {
+        const rect = element.getBoundingClientRect()
+        return rect.width < 43.5 || rect.height < 43.5
+      })
+      .map(element => {
+        const rect = element.getBoundingClientRect()
+        return `${element.textContent?.trim() || element.getAttribute('aria-label') || 'button'}:${rect.width.toFixed(1)}x${rect.height.toFixed(1)}`
+      })
+
+    return {
+      lang: document.documentElement.lang,
+      dir: document.documentElement.dir,
+      mainCount: document.querySelectorAll('main').length,
+      duplicateIds,
+      unnamedControls,
+      undersizedButtons,
+    }
+  })
+
+  expect(result.lang).toBe('fa')
+  expect(result.dir).toBe('rtl')
+  expect(result.mainCount).toBe(1)
+  expect(result.duplicateIds).toEqual([])
+  expect(result.unnamedControls).toEqual([])
+  expect(result.undersizedButtons).toEqual([])
+}
+
 async function answerCurrentWrittenWord(page: Page): Promise<void> {
   const stage = page.locator('.learning-focus-card')
   const surface = (await page.getByTestId('written-headword').innerText()).trim()
@@ -145,6 +232,15 @@ test.beforeEach(async ({ page }) => {
       configurable: true,
     })
   })
+})
+
+test('rendered core screens satisfy the structural accessibility contract', async ({ page }) => {
+  for (const route of ['/#/map', '/#/glossary', '/#/settings', '/#/read/b1c1']) {
+    await page.goto(route)
+    await expect(page.locator('#main-content')).toBeVisible()
+    await expectRenderedAccessibilityContract(page)
+    await expectNoHorizontalOverflow(page)
+  }
 })
 
 test('keyboard skip link focuses the main landmark without changing the hash route', async ({ page }) => {
@@ -241,6 +337,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(page.locator('.tok-new')).toHaveCount(0)
   await expectNoHorizontalOverflow(page)
   await expectTouchSafeStoryControls(page)
+  await expectRenderedAccessibilityContract(page)
 
   const viewport = page.viewportSize()
   if (viewport && viewport.width >= 768) {
