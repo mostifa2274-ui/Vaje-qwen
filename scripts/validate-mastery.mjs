@@ -80,9 +80,10 @@ assert(vocab.length >= 88, 'Final pool is too small')
 
 const sentenceKeys = new Set()
 for (const chapter of chapters) chapter.sentences.forEach((_, index) => sentenceKeys.add(`${chapter.id}:${index}`))
+assert(Array.isArray(stale), 'staleSentenceAudio.json must be an array')
+assert(stale.every(key => typeof key === 'string'), 'Every stale-audio key must be a string')
 assert(new Set(stale).size === stale.length, 'Duplicate stale-audio keys')
 for (const key of stale) assert(sentenceKeys.has(key), `Unknown stale-audio key ${key}`)
-assert(stale.length === 606, `Expected 606 revised sentence-audio keys; got ${stale.length}`)
 
 // Validate that every target can support four distinct choices for both English
 // and Persian labels. The runtime generator also prefers same-topic distractors.
@@ -100,4 +101,4 @@ for (const target of vocab) {
   }
 }
 
-console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, stratified book pools ${bookSizes.join('/')}, 56-question midpoint pool, 88-question final pool, 606 stale-audio blocks.`)
+console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, stratified book pools ${bookSizes.join('/')}, 56-question midpoint pool, 88-question final pool, ${stale.length} stale-audio blocks.`)

@@ -34,156 +34,124 @@
   ],
   "sentences": [
     {
-      "en": "Mina and Mom go to the market.",
-      "fa": "مینا و مامان به بازار می‌روند."
+      "en": "Mina and Mom go to the market in the morning.",
+      "fa": "مینا و مامان صبح به بازار می‌روند."
     },
     {
-      "en": "The market is big.",
-      "fa": "بازار بزرگ است."
+      "en": "The market is busy, and many shops are open.",
+      "fa": "بازار شلوغ است و مغازه‌های زیادی باز هستند."
     },
     {
-      "en": "They go to the shops.",
-      "fa": "آن‌ها به مغازه‌ها می‌روند."
+      "en": "Mom has a shopping list in her hand.",
+      "fa": "مامان یک فهرست خرید در دستش دارد."
     },
     {
-      "en": "The shops are near the market.",
-      "fa": "مغازه‌ها نزدیک بازار هستند."
+      "en": "Mina likes shopping with Mom.",
+      "fa": "مینا خرید کردن با مامان را دوست دارد."
     },
     {
-      "en": "Mina likes shopping.",
-      "fa": "مینا خرید کردن دوست دارد."
+      "en": "They enter a small store near the market.",
+      "fa": "آن‌ها وارد یک فروشگاه کوچک نزدیک بازار می‌شوند."
     },
     {
-      "en": "Shopping is good.",
-      "fa": "خرید کردن خوب است."
+      "en": "Then they walk into the supermarket next door.",
+      "fa": "بعد وارد سوپرمارکت کناری می‌شوند."
     },
     {
-      "en": "The store beside the market is busy.",
-      "fa": "فروشگاه کنار بازار شلوغ است."
+      "en": "The supermarket has food, fruit, and vegetables.",
+      "fa": "سوپرمارکت غذا، میوه و سبزیجات دارد."
     },
     {
-      "en": "They go to the store.",
-      "fa": "آن‌ها به فروشگاه می‌روند."
+      "en": "Let's buy food for dinner, Mom says.",
+      "fa": "مامان می‌گوید: «بیایید برای شام غذا بخریم.»"
     },
     {
-      "en": "The supermarket is big.",
-      "fa": "سوپرمارکت بزرگ است."
+      "en": "First, they look at the fruit.",
+      "fa": "اول به میوه‌ها نگاه می‌کنند."
     },
     {
-      "en": "Mom goes to the supermarket.",
-      "fa": "مامان به سوپرمارکت می‌رود."
+      "en": "Mom picks a red apple.",
+      "fa": "مامان یک سیب قرمز برمی‌دارد."
     },
     {
-      "en": "They buy food.",
-      "fa": "آن‌ها غذا می‌خرند."
-    },
-    {
-      "en": "The food is good.",
-      "fa": "غذا خوب است."
-    },
-    {
-      "en": "Mom buys fruit.",
-      "fa": "مامان میوه می‌خرد."
-    },
-    {
-      "en": "The fruit is red.",
-      "fa": "میوه قرمز است."
-    },
-    {
-      "en": "She buys an apple.",
-      "fa": "او یک سیب می‌خرد."
-    },
-    {
-      "en": "The apple is red.",
-      "fa": "سیب قرمز است."
-    },
-    {
-      "en": "Mina buys a banana.",
-      "fa": "مینا یک موز می‌خرد."
+      "en": "Mina chooses a banana.",
+      "fa": "مینا یک موز انتخاب می‌کند."
     },
     {
       "en": "The banana is yellow.",
       "fa": "موز زرد است."
     },
     {
-      "en": "She likes yellow.",
-      "fa": "او زرد دوست دارد."
+      "en": "She also takes an orange.",
+      "fa": "او یک پرتقال هم برمی‌دارد."
     },
     {
-      "en": "She buys an orange.",
-      "fa": "او یک پرتقال می‌خرد."
+      "en": "The orange smells good.",
+      "fa": "پرتقال بوی خوبی دارد."
     },
     {
-      "en": "The orange is orange.",
-      "fa": "پرتقال، نارنجی است."
+      "en": "Next, they go to the vegetables.",
+      "fa": "بعد به بخش سبزیجات می‌روند."
     },
     {
-      "en": "Mom buys vegetables.",
-      "fa": "مامان سبزیجات می‌خرد."
+      "en": "Mom puts a carrot in the basket.",
+      "fa": "مامان یک هویج در سبد می‌گذارد."
     },
     {
-      "en": "The vegetables are good.",
-      "fa": "سبزیجات خوب هستند."
+      "en": "She adds some potatoes.",
+      "fa": "او چند سیب‌زمینی هم اضافه می‌کند."
     },
     {
-      "en": "She buys a carrot.",
-      "fa": "او یک هویج می‌خرد."
+      "en": "Mina finds a red tomato.",
+      "fa": "مینا یک گوجه‌ی قرمز پیدا می‌کند."
     },
     {
-      "en": "The carrot is for the baby.",
-      "fa": "هویج برای نوزاد است."
-    },
-    {
-      "en": "She buys potatoes.",
-      "fa": "او سیب‌زمینی می‌خرد."
-    },
-    {
-      "en": "The potatoes are big.",
-      "fa": "سیب‌زمینی‌ها بزرگ هستند."
-    },
-    {
-      "en": "She buys a tomato.",
-      "fa": "او یک گوجه می‌خرد."
-    },
-    {
-      "en": "The tomato is red.",
-      "fa": "گوجه قرمز است."
-    },
-    {
-      "en": "She buys an onion.",
-      "fa": "او یک پیاز می‌خرد."
+      "en": "Mom chooses an onion.",
+      "fa": "مامان یک پیاز انتخاب می‌کند."
     },
     {
       "en": "The onion is white.",
       "fa": "پیاز سفید است."
     },
     {
-      "en": "Between the fruit and vegetables, Mina sees a black-and-white cat.",
-      "fa": "میان میوه‌ها و سبزیجات، مینا یک گربه‌ی سیاه‌وسفید می‌بیند."
+      "en": "These vegetables will make a salad, Mom says.",
+      "fa": "مامان می‌گوید: «با این سبزیجات سالاد درست می‌کنیم.»"
     },
     {
-      "en": "Mom makes a salad.",
-      "fa": "مامان سالاد درست می‌کند."
+      "en": "Mina helps carry the fruit and vegetables.",
+      "fa": "مینا کمک می‌کند میوه‌ها و سبزیجات را حمل کنند."
     },
     {
-      "en": "The salad is good.",
-      "fa": "سالاد خوب است."
+      "en": "Between them, Mina sees a black-and-white cat.",
+      "fa": "میان آن‌ها، مینا یک گربه‌ی سیاه‌وسفید می‌بیند."
     },
     {
-      "en": "She buys rice.",
-      "fa": "او برنج می‌خرد."
+      "en": "She quickly walks toward the cat.",
+      "fa": "او سریع به سمت گربه می‌رود."
     },
     {
-      "en": "The rice is cheap.",
-      "fa": "برنج ارزان است."
+      "en": "The cat turns around, but it is not Nino.",
+      "fa": "گربه برمی‌گردد، اما نینو نیست."
+    },
+    {
+      "en": "Mina feels sad and goes back to Mom.",
+      "fa": "مینا ناراحت می‌شود و پیش مامان برمی‌گردد."
+    },
+    {
+      "en": "Mom buys a bag of rice.",
+      "fa": "مامان یک کیسه برنج می‌خرد."
+    },
+    {
+      "en": "The rice is cheap today.",
+      "fa": "برنج امروز ارزان است."
+    },
+    {
+      "en": "They walk to the meat counter.",
+      "fa": "آن‌ها به بخش گوشت می‌روند."
     },
     {
       "en": "The meat is expensive.",
       "fa": "گوشت گران است."
-    },
-    {
-      "en": "She buys meat.",
-      "fa": "او گوشت می‌خرد."
     },
     {
       "en": "The chicken is cheap.",
@@ -194,28 +162,60 @@
       "fa": "مامان کمی مرغ برای شام می‌خرد."
     },
     {
+      "en": "Fresh fish is on the next counter.",
+      "fa": "ماهی تازه روی پیشخوان بعدی است."
+    },
+    {
       "en": "The fish is expensive.",
       "fa": "ماهی گران است."
     },
     {
-      "en": "Mina looks at the fish.",
-      "fa": "مینا به ماهی نگاه می‌کند."
+      "en": "Mina looks at the fish and thinks about Nino.",
+      "fa": "مینا به ماهی نگاه می‌کند و به نینو فکر می‌کند."
     },
     {
-      "en": "A man sells fruit.",
-      "fa": "یک مرد میوه می‌فروشد."
+      "en": "A man near the door sells fruit.",
+      "fa": "مردی نزدیک در، میوه می‌فروشد."
     },
     {
-      "en": "He sells apples.",
-      "fa": "او سیب می‌فروشد."
+      "en": "He sells apples and oranges.",
+      "fa": "او سیب و پرتقال می‌فروشد."
     },
     {
-      "en": "Mina asks the man.",
-      "fa": "مینا از مرد می‌پرسد."
+      "en": "Mina asks the man about her cat.",
+      "fa": "مینا از مرد درباره‌ی گربه‌اش می‌پرسد."
     },
     {
-      "en": "\"Have you seen my cat?\" Mina asks the man.",
-      "fa": "«گربه‌ام را دیده‌ای؟» مینا از مرد می‌پرسد."
+      "en": "\"Have you seen a small black cat?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «یک گربه‌ی سیاه کوچک دیده‌اید؟»"
+    },
+    {
+      "en": "The man says he sees many cats near the market.",
+      "fa": "مرد می‌گوید نزدیک بازار گربه‌های زیادی می‌بیند."
+    },
+    {
+      "en": "Mom pays for the shopping.",
+      "fa": "مامان پول خرید را می‌دهد."
+    },
+    {
+      "en": "Mina carries one bag from the shop.",
+      "fa": "مینا یک کیسه را از مغازه حمل می‌کند."
+    },
+    {
+      "en": "Her bag has fruit and vegetables inside.",
+      "fa": "در کیسه‌ی او میوه و سبزیجات است."
+    },
+    {
+      "en": "Mom carries the rice and chicken.",
+      "fa": "مامان برنج و مرغ را حمل می‌کند."
+    },
+    {
+      "en": "They leave the supermarket and look at the shops again.",
+      "fa": "آن‌ها از سوپرمارکت بیرون می‌آیند و دوباره به مغازه‌ها نگاه می‌کنند."
+    },
+    {
+      "en": "Maybe Nino is near the next shop, Mina says.",
+      "fa": "مینا می‌گوید: «شاید نینو نزدیک مغازه‌ی بعدی باشد.»"
     }
   ],
   "check": [
