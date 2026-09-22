@@ -6,6 +6,7 @@ export interface ReadingDraft {
   signature: string
   checkIndex: number
   answers: Record<number, string>
+  firstPassCorrect?: number
   updatedAt: number
 }
 
@@ -30,22 +31,26 @@ function safeAnswers(
   raw: unknown,
   checkIndex: number,
   questions: readonly ReadingQuestion[],
+  correctionMode: boolean,
 ): Record<number, string> | undefined {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined
   const answers: Record<number, string> = {}
 
   for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
     const index = Number(key)
-    if (!Number.isInteger(index) || index < 0 || index > checkIndex || typeof value !== 'string') return undefined
+    if (!Number.isInteger(index) || index < 0 || index >= questions.length || typeof value !== 'string') return undefined
+    if (!correctionMode && index > checkIndex) return undefined
     const question = questions[index]
     if (!question || !question.options.some(option => option.id === value)) return undefined
+    if (correctionMode && index !== checkIndex && value !== question.answerId) return undefined
     answers[index] = value
   }
 
-  // All questions before the active question must already be answered. The
-  // active question may be unanswered or may be showing its feedback state.
+  // All questions before the active question must already be answered. In a
+  // correction round they must also already be corrected.
   for (let index = 0; index < checkIndex; index++) {
     if (typeof answers[index] !== 'string') return undefined
+    if (correctionMode && answers[index] !== questions[index].answerId) return undefined
   }
   return answers
 }
@@ -68,8 +73,28 @@ export function sanitizeReadingDraft(
     || value.checkIndex >= questions.length
   ) return undefined
 
-  const answers = safeAnswers(value.answers, value.checkIndex, questions)
+  let firstPassCorrect: number | undefined
+  if (value.firstPassCorrect !== undefined) {
+    if (
+      typeof value.firstPassCorrect !== 'number'
+      || !Number.isInteger(value.firstPassCorrect)
+      || value.firstPassCorrect < 0
+      || value.firstPassCorrect >= questions.length
+    ) return undefined
+    firstPassCorrect = value.firstPassCorrect
+  }
+
+  const correctionMode = firstPassCorrect !== undefined
+  const answers = safeAnswers(value.answers, value.checkIndex, questions, correctionMode)
   if (!answers) return undefined
+
+  if (correctionMode) {
+    const currentCorrect = questions.reduce(
+      (sum, question, index) => sum + (answers[index] === question.answerId ? 1 : 0),
+      0,
+    )
+    if (currentCorrect < firstPassCorrect) return undefined
+  }
 
   const updatedAt = typeof value.updatedAt === 'number' && Number.isFinite(value.updatedAt) && value.updatedAt > 0
     ? value.updatedAt
@@ -82,6 +107,7 @@ export function sanitizeReadingDraft(
     signature: value.signature,
     checkIndex: value.checkIndex,
     answers,
+    firstPassCorrect,
     updatedAt,
   }
 }
