@@ -22,17 +22,33 @@ export function exampleSrc(wordId: string): string {
   return `${import.meta.env.BASE_URL}audio/examples/${wordId}.mp3`
 }
 
-export function play(src: string, enabled: boolean): void {
-  if (!enabled || !bundledAudioAvailable) return
+export function bundledAudioEnabled(): boolean {
+  return bundledAudioAvailable
+}
+
+export function play(
+  src: string,
+  enabled: boolean,
+  onEnd?: () => void,
+  onError?: () => void,
+): boolean {
+  if (!enabled || !bundledAudioAvailable) return false
   const a = player()
   if (currentSrc !== src) {
     a.src = src
     currentSrc = src
   }
   a.currentTime = 0
-  void a.play().catch(() => { /* autoplay blocked — ignore */ })
+  a.onended = onEnd ?? null
+  a.onerror = () => onError?.()
+  void a.play().catch(() => onError?.())
+  return true
 }
 
 export function stopAudio(): void {
-  if (el) el.pause()
+  if (el) {
+    el.onended = null
+    el.onerror = null
+    el.pause()
+  }
 }
