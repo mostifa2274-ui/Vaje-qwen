@@ -3,6 +3,7 @@ import type { GhesseState } from '../engine/types'
 import { importStateJson, MAX_IMPORT_BYTES, resetState } from '../engine/store'
 import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish } from '../engine/narration'
 import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
+import { BUILD_COMMIT } from '../engine/release'
 
 interface Props {
   state: GhesseState
@@ -227,6 +228,8 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           قصه ۵٫۰ — ۸۹۹ واژه‌ی A1 در ۴۰ فصل
           <br />
           تسلط از بازیابی فاصله‌دار، پاسخ نوشتاری، سختی واژه و شواهد چندروزه محاسبه می‌شود.
+          <br />
+          <span dir="ltr" className="font-en">build {BUILD_COMMIT === 'local' ? 'local' : BUILD_COMMIT.slice(0, 7)}</span>
         </div>
       </div>
     </div>
