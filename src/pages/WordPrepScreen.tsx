@@ -337,7 +337,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             <div className="mt-7 text-center">
-              <div className="font-en text-4xl font-bold" dir="ltr">{currentTeachWord.word}</div>
+              <div data-testid="teach-headword" className="font-en text-4xl font-bold" dir="ltr">{currentTeachWord.word}</div>
               {currentTeachWord.ipa && <div className="mt-2 font-en text-sm" dir="ltr">/ {currentTeachWord.ipa} /</div>}
               <div className="mt-4 text-3xl font-extrabold">{currentTeachWord.fa}</div>
               <button
@@ -374,7 +374,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
             <div className="mt-7 text-center">
               <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>یک معنی درست را به فارسی بنویس</div>
-              <div className="mt-2 font-en text-4xl font-bold" dir="ltr">{currentWrittenWord.word}</div>
+              <div data-testid="written-headword" className="mt-2 font-en text-4xl font-bold" dir="ltr">{currentWrittenWord.word}</div>
             </div>
 
             <label htmlFor="prep-written" className="mt-6 block text-sm font-bold">ترجمهٔ فارسی</label>
@@ -448,7 +448,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   )}
                 </div>
 
-                <div className="mt-6 grid grid-cols-2 gap-2" dir="rtl">
+                <div data-testid="listening-options" className="mt-6 grid grid-cols-2 gap-2" dir="rtl">
                   {listeningQuestion.options?.map(option => {
                     const isAnswer = option.id === listeningQuestion.answerId
                     const isSelected = selected === option.id
