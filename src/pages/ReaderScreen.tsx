@@ -11,6 +11,7 @@ import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
 import staleSentenceAudioJson from '../data/staleSentenceAudio.json'
 import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
+import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
 
 interface Props {
   chapterId: string
@@ -48,12 +49,14 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     return Math.max(1, Math.ceil(words / 90))
   }, [chapter])
 
+  const [initialReadingDraft] = useState(() => loadReadingDraft(chapterId, questions))
+  const [resumedReading, setResumedReading] = useState(Boolean(initialReadingDraft))
   const [openFa, setOpenFa] = useState<Set<number>>(new Set())
   const [gloss, setGloss] = useState<WordEntry | null>(null)
   const [playIdx, setPlayIdx] = useState(-1)
   const [playAll, setPlayAll] = useState(false)
-  const [answers, setAnswers] = useState<Record<number, string>>({})
-  const [checkIndex, setCheckIndex] = useState(0)
+  const [answers, setAnswers] = useState<Record<number, string>>(() => initialReadingDraft?.answers ?? {})
+  const [checkIndex, setCheckIndex] = useState(() => initialReadingDraft?.checkIndex ?? 0)
   const [finished, setFinished] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
   const [coverFailed, setCoverFailed] = useState(false)
@@ -96,6 +99,22 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   useEffect(() => {
     if (checkIndex > 0) questionRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
   }, [checkIndex])
+
+  useEffect(() => {
+    if (finished) return
+    if (checkIndex === 0 && Object.keys(answers).length === 0) {
+      clearReadingDraft(chapterId)
+      return
+    }
+    saveReadingDraft({
+      version: 1,
+      chapterId,
+      signature: readingQuestionSignature(questions),
+      checkIndex,
+      answers,
+      updatedAt: Date.now(),
+    }, questions)
+  }, [answers, chapterId, checkIndex, finished, questions])
 
   function playAt(index: number, chain: boolean) {
     if (!state.soundOn || index < 0 || index >= chapter.sentences.length) {
@@ -180,8 +199,19 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     if (answers[questionIndex] !== undefined) return
     const question = questions[questionIndex]
     if (!question) return
+    if (resumedReading) setResumedReading(false)
     const correct = optionId === question.answerId
-    setAnswers(previous => ({ ...previous, [questionIndex]: optionId }))
+    const nextAnswers = { ...answers, [questionIndex]: optionId }
+
+    saveReadingDraft({
+      version: 1,
+      chapterId,
+      signature: readingQuestionSignature(questions),
+      checkIndex: questionIndex,
+      answers: nextAnswers,
+      updatedAt: Date.now(),
+    }, questions)
+    setAnswers(nextAnswers)
 
     if (!question.evidenceWordId) return
     const now = clockRef.current()
@@ -198,6 +228,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
   function continueQuestion() {
     if (currentAnswer === undefined || checkIndex >= questions.length - 1) return
+    if (resumedReading) setResumedReading(false)
     setCheckIndex(index => index + 1)
   }
 
@@ -213,6 +244,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       CHAPTERS.map(item => item.id),
       successor?.book === chapter.book ? successor.id : undefined,
     )
+    clearReadingDraft(chapterId)
     setFinished(true)
     onChange(nextState)
   }
@@ -280,6 +312,12 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         <div className="reading-guidance mt-4">
           واژه‌های تازه را قبل از ورود به قصه یاد گرفته و آزمون داده‌ای. اینجا روی <b>فهم داستان</b> تمرکز کن؛ هر واژه را هم می‌توانی برای دیدن معنی لمس کنی.
         </div>
+
+        {resumedReading && (
+          <div className="prep-resume-row mt-3" role="status">
+            <span>آزمون درک مطلب این فصل بازیابی شد؛ پاسخ‌های قبلی دوباره ثبت نمی‌شوند.</span>
+          </div>
+        )}
 
         {alreadyDone && !finished && (
           <div className="paper-note mt-4" role="status">
