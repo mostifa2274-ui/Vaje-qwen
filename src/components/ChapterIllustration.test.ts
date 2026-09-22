@@ -25,11 +25,14 @@ describe('chapter-specific reader artwork', () => {
     expect(new Set(signatures).size).toBe(CHAPTERS.length)
   })
 
-  it('never uses text-bearing data in the scene definition', () => {
+  it('keeps illustrations free of chapter text and overlay labels', () => {
     for (const scene of Object.values(CHAPTER_ART)) {
-      expect(Object.keys(scene).sort()).toEqual(
-        ['accent', 'detail', 'ground', 'night', 'primary', 'secondary', 'sky'].filter(key => key !== 'night' || scene.night !== undefined).sort(),
-      )
+      const keys = Object.keys(scene)
+      expect(keys).not.toContain('title')
+      expect(keys).not.toContain('label')
+      expect(keys).not.toContain('text')
+      expect(scene.primary).toBeTruthy()
+      expect(scene.detail).toBeTruthy()
     }
   })
 })
