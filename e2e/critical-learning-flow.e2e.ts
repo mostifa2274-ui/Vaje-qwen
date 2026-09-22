@@ -35,6 +35,29 @@ async function spokenWord(page: Page): Promise<string> {
   ).__ghesseSpoken ?? '')
 }
 
+async function expectNoHorizontalOverflow(page: Page): Promise<void> {
+  const dimensions = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth,
+  }))
+  expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1)
+}
+
+async function expectTouchSafeStoryControls(page: Page): Promise<void> {
+  const controls = [
+    page.getByRole('button', { name: 'شنیدن جمله' }).first(),
+    page.getByRole('button', { name: 'نمایش ترجمهٔ فارسی' }).first(),
+  ]
+
+  for (const control of controls) {
+    await expect(control).toBeVisible()
+    const box = await control.boundingBox()
+    expect(box).not.toBeNull()
+    expect(box?.width ?? 0).toBeGreaterThanOrEqual(44)
+    expect(box?.height ?? 0).toBeGreaterThanOrEqual(44)
+  }
+}
+
 async function answerCurrentWrittenWord(page: Page): Promise<void> {
   const stage = page.locator('.learning-focus-card')
   const surface = (await page.getByTestId('written-headword').innerText()).trim()
@@ -131,6 +154,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toBeVisible()
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
+  await expectNoHorizontalOverflow(page)
 
   const stage = page.locator('.learning-focus-card')
 
@@ -191,6 +215,16 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(page).toHaveURL(/#\/read\/b1c1$/)
   await expect(page.locator('svg.lesson-chapter-art[role="img"]')).toBeVisible()
   await expect(page.locator('.tok-new')).toHaveCount(0)
+  await expectNoHorizontalOverflow(page)
+  await expectTouchSafeStoryControls(page)
+
+  const viewport = page.viewportSize()
+  if (viewport && viewport.width >= 768) {
+    const coverDisplay = await page.locator('.lesson-cover-card').evaluate(element => getComputedStyle(element).display)
+    expect(coverDisplay).toBe('grid')
+  }
+
+  await expectNoHorizontalOverflow(page)
 
   // First-pass comprehension: deliberately miss authored question 1.
   const firstCorrectLabel = wordById.get(chapter.check[0].a)?.word
