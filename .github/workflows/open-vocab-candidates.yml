@@ -75,3 +75,42 @@ jobs:
           path: /tmp/ghesse-open-vocab/tatoeba-cc0-candidates.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Download official VOA Learning English Word Book
+        shell: bash
+        run: |
+          set -euo pipefail
+          voa_url='https://docs.voanews.eu/en-us-learn/2022/06/07/c4dbd6af-5f63-4f28-bc42-0bd175f4e4b4.pdf'
+          curl --fail --location --retry 4 --retry-all-errors --connect-timeout 20 --max-time 240 \
+            "$voa_url" \
+            --output /tmp/voa-learning-english-word-book.pdf
+          test -s /tmp/voa-learning-english-word-book.pdf
+          sha256sum /tmp/voa-learning-english-word-book.pdf
+
+      - name: Extract VOA Word Book text
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check --quiet pypdf==6.0.0
+          python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          source = Path('/tmp/voa-learning-english-word-book.pdf')
+          target = Path('/tmp/ghesse-open-vocab/voa-word-book-extracted.txt')
+          reader = PdfReader(str(source))
+          with target.open('w', encoding='utf-8') as handle:
+              for page_number, page in enumerate(reader.pages, 1):
+                  handle.write(f'\n===== PAGE {page_number} =====\n')
+                  handle.write(page.extract_text() or '')
+                  handle.write('\n')
+          print(f'Extracted {len(reader.pages)} pages to {target}')
+          PY
+
+      - name: Upload VOA extraction artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: voa-word-book-extracted
+          path: /tmp/ghesse-open-vocab/voa-word-book-extracted.txt
+          if-no-files-found: error
+          retention-days: 30
