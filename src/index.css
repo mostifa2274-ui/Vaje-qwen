@@ -306,12 +306,18 @@ body {
   border-radius: 18px;
   box-shadow: var(--shadow-soft);
 }
-.lesson-cover-image {
+.lesson-cover-image,
+.lesson-chapter-art {
   display: block;
   width: 100%;
   height: 14rem;
+}
+.lesson-cover-image {
   object-fit: contain;
   padding: .75rem;
+}
+.lesson-chapter-art {
+  background: rgba(255,255,255,.16);
 }
 .lesson-cover-fallback {
   display: flex;
@@ -358,6 +364,7 @@ body {
 
 @media (max-width: 380px) {
   .lesson-cover-image,
+  .lesson-chapter-art,
   .lesson-cover-fallback {
     height: 11.5rem;
   }
@@ -772,6 +779,7 @@ button:disabled {
   }
 
   .lesson-cover-image,
+  .lesson-chapter-art,
   .lesson-cover-fallback {
     height: 16rem;
   }
