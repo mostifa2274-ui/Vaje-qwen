@@ -203,6 +203,8 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
             className="sr-only"
             type="file"
             accept="application/json,.json"
+            aria-label="فایل پشتیبان پیشرفت"
+            tabIndex={-1}
             onChange={event => {
               const file = event.target.files?.[0]
               if (file) void importProgress(file)

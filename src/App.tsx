@@ -137,8 +137,9 @@ export default function App() {
       history.replaceState({ ghesse: true, ghesseDepth: 0 }, '', hashFor({ name: 'map' }))
       history.pushState({ ghesse: true, ghesseDepth: 1 }, '', hashFor(initial))
     }
-    setView(initial)
-
+    // The state initializer already resolved this initial route. Re-setting the
+    // same logical view here creates a second object identity and can race with
+    // the skip-link's first keyboard focus via the route-focus effect.
     const onPopState = () => {
       const resolved = resolveView(rawViewFromHash(), stateRef.current)
       if (hashFor(resolved) !== window.location.hash) history.replaceState(history.state, '', hashFor(resolved))

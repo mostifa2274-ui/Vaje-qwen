@@ -289,7 +289,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <div className="mx-auto max-w-3xl px-4 pb-28 pt-5">
         {alreadyPrepared && phase === 'teach' && (
           <div className="paper-note mb-4">
             این فصل قبلاً آزمون نوشتاری و شنیداری را با پوشش ۱۰۰٪ گذرانده است.
@@ -494,7 +494,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
 
-      </main>
+      </div>
     </div>
   )
 }
