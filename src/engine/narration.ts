@@ -1,3 +1,5 @@
+import { play } from './audio'
+
 // Consistent English narration for words, examples and story text.
 // We prefer the best natural/neural English voice exposed by the browser/OS
 // and briefly wait for Chrome's asynchronous voice catalogue before falling
@@ -196,5 +198,45 @@ export function speakEnglish(
 
   synth.addEventListener('voiceschanged', maybeLaunch)
   timer = window.setTimeout(launch, 650)
+  return true
+}
+
+
+/**
+ * Speak with the preferred system/browser English voice and fall back to the
+ * optional bundled asset when speech synthesis is unavailable or errors.
+ * Returns false only when neither path can even be started.
+ */
+export function speakEnglishWithFallback(
+  text: string,
+  voiceURI: string,
+  rate: number,
+  fallbackSrc: string,
+  onEnd?: () => void,
+  onUnavailable?: () => void,
+): boolean {
+  let fallbackAttempted = false
+  let fallbackStarted = false
+
+  const useFallback = () => {
+    if (fallbackAttempted) return
+    fallbackAttempted = true
+    fallbackStarted = play(fallbackSrc, true, onEnd, onUnavailable)
+    if (!fallbackStarted) onUnavailable?.()
+  }
+
+  const speechStarted = speakEnglish(
+    text,
+    voiceURI,
+    rate,
+    onEnd,
+    useFallback,
+  )
+
+  if (!speechStarted) {
+    useFallback()
+    return fallbackStarted
+  }
+
   return true
 }
