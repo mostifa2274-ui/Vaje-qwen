@@ -66,15 +66,17 @@ npm run build
 - production branch: `main`
 - root: `/`
 - build command: خالی / `None`
-- build variable: `SKIP_DEPENDENCY_INSTALL=1`
+- build variables:
+  - `SKIP_DEPENDENCY_INSTALL=1`
+  - `GHESSE_RIGHTS_CONFIRMED=1` **فقط پس از ثبت evidence حقوق بازتوزیع مطابق `CONTENT_PROVENANCE.md`**
 - deploy command: `npm run deploy`
 - output: `dist/`
 - Worker name: `vaje-qwen1`
 - production URL: `https://vaje-qwen1.mostifa2273.workers.dev/`
 
-`npm run deploy` عمداً self-contained است: ابتدا `npm ci --include=dev --ignore-scripts` را از lockfile اجرا می‌کند، سپس همهٔ validationها، lint، test، TypeScript و Vite build را با `npm run cloudflare:build` می‌گذراند و در پایان Wrangler را deploy می‌کند. بنابراین `SKIP_DEPENDENCY_INSTALL=1` در تنظیم فعلی Cloudflare امن است.
+`npm run deploy` عمداً self-contained و fail-closed است: ابتدا dependencyها را از lockfile نصب می‌کند، سپس `npm run release:check` را از مسیر `cloudflare:build` اجرا می‌کند، بعد همهٔ validationها، lint، test، TypeScript و Vite build را می‌گذراند و در پایان Wrangler را deploy می‌کند. اگر `GHESSE_RIGHTS_CONFIRMED=1` وجود نداشته باشد، public deploy پیش از build متوقف می‌شود. این متغیر فقط پس از نگهداری evidence حقوق انتشار باید تنظیم شود.
 
-Cloudflare با تنظیم استاندارد جدید نیز پشتیبانی می‌شود: dependency install خودکار، Build command برابر `npm run build` و Deploy command برابر `npx wrangler@4.135.0 deploy`. در هر دو حالت `dist/` قبل از deploy ساخته می‌شود.
+برای تنظیم استاندارد جدید Cloudflare نیز Build command را `npm run cloudflare:build` و Deploy command را `npx wrangler@4.135.0 deploy` بگذار؛ همان `GHESSE_RIGHTS_CONFIRMED=1` باید فقط پس از ثبت evidence حقوق انتشار موجود باشد. در هر دو مسیر `dist/` پیش از deploy ساخته می‌شود و release gate قابل دورزدن نیست.
 
 `.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را بررسی می‌کند. همچنین `.github/workflows/deploy-production.yml` پس از موفقیت CI همان commit را مستقیماً با Wrangler deploy می‌کند، اگر secrets استاندارد `CLOUDFLARE_API_TOKEN` و `CLOUDFLARE_ACCOUNT_ID` در GitHub Actions موجود باشند؛ در غیر این صورت بدون افشای secret، direct deploy را skip می‌کند و Cloudflare Git integration مسیر فعال باقی می‌ماند.
 

@@ -59,8 +59,8 @@ jobs:
               {
                 echo "## Production verification"
                 echo ""
-                echo "- Exact revision verified: `$SOURCE_SHA`"
-                echo "- Worker: `vaje-qwen1`"
+                echo "- Exact revision verified: $SOURCE_SHA"
+                echo "- Worker: vaje-qwen1"
                 echo "- Root reachable: yes"
               } >> "$GITHUB_STEP_SUMMARY"
               exit 0
@@ -72,9 +72,9 @@ jobs:
           {
             echo "## Production verification failed"
             echo ""
-            echo "- Expected revision: `$SOURCE_SHA`"
-            echo "- Worker: `vaje-qwen1`"
-            echo "- Last marker: `${last_compact:-<empty>}`"
+            echo "- Expected revision: $SOURCE_SHA"
+            echo "- Worker: vaje-qwen1"
+            echo "- Last marker: ${last_compact:-<empty>}"
           } >> "$GITHUB_STEP_SUMMARY"
           echo "::error::Cloudflare production did not expose commit $SOURCE_SHA on worker vaje-qwen1 within the smoke window. Last observed marker: ${last_compact:-<empty>}"
           exit 1
