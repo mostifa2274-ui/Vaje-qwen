@@ -89,11 +89,12 @@ export function sanitizeReadingDraft(
   if (!answers) return undefined
 
   if (correctionMode) {
+    const minimumCorrect = firstPassCorrect
     const currentCorrect = questions.reduce(
       (sum, question, index) => sum + (answers[index] === question.answerId ? 1 : 0),
       0,
     )
-    if (currentCorrect < firstPassCorrect) return undefined
+    if (minimumCorrect === undefined || currentCorrect < minimumCorrect) return undefined
   }
 
   const updatedAt = typeof value.updatedAt === 'number' && Number.isFinite(value.updatedAt) && value.updatedAt > 0
