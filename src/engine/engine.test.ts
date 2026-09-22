@@ -14,7 +14,7 @@ import { buildLemmaMap, lemmaOf, preprocess, tokenizeSentence } from './lemmatiz
 import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { recordCompletedRead, recordPreparedChapter } from './progress'
-import { clampNarrationRate, englishNarrationVoices, selectNarrationVoice, voiceQualityScore, type VoiceLike } from './narration'
+import { clampNarrationRate, englishNarrationVoices, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
 import { acceptedAnswers, blankWordProgress, buildReviewQuestion, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus } from './analytics'
@@ -393,6 +393,26 @@ describe('narration voice selection', () => {
     const legacy = voice('legacy', 'eSpeak English', 'en-US', true, true)
     expect(voiceQualityScore(natural)).toBeGreaterThan(voiceQualityScore(legacy))
     expect(englishNarrationVoices([legacy, natural])[0].voiceURI).toBe('neural')
+  })
+
+  it('waits only when the cold-start catalogue lacks a quality English voice', () => {
+    const natural = voice('neural', 'Microsoft Aria Online (Natural)', 'en-US', false, false)
+    const samantha = voice('samantha', 'Samantha', 'en-US', true, true)
+    const generic = voice('generic', 'English United States', 'en-US', true, true)
+    const legacy = voice('legacy', 'eSpeak English', 'en-US', true, true)
+    const nonEnglish = voice('sv', 'Swedish', 'sv-SE', true, true)
+
+    expect(shouldWaitForHigherQualityVoice([])).toBe(true)
+    expect(shouldWaitForHigherQualityVoice([nonEnglish])).toBe(true)
+    expect(shouldWaitForHigherQualityVoice([legacy])).toBe(true)
+    expect(shouldWaitForHigherQualityVoice([generic])).toBe(true)
+    expect(shouldWaitForHigherQualityVoice([samantha])).toBe(false)
+    expect(shouldWaitForHigherQualityVoice([natural])).toBe(false)
+  })
+
+  it('never delays a user-selected English voice that is already available', () => {
+    const selected = voice('chosen', 'Plain English Voice', 'en-US', false, true)
+    expect(shouldWaitForHigherQualityVoice([selected], 'chosen')).toBe(false)
   })
 
   it('clamps narration rate', () => {
