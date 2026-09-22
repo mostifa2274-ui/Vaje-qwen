@@ -70,13 +70,31 @@ export function recordCompletedRead(
   state: GhesseState,
   chapterId: string,
   wordIds: string[],
-  checksCorrect: number,
+  firstPassChecksCorrect: number,
   checksTotal: number,
+  verifiedChecksCorrect: number,
   now: number,
   chapterOrder: readonly string[],
   successorId?: string,
 ): GhesseState {
   const previous = state.chapters[chapterId]
+
+  const hasCurrentPrepGate = Boolean(
+    previous?.preparedAt
+    && wordIds.length > 0
+    && previous.prepWrittenCorrect === wordIds.length
+    && previous.prepWrittenTotal === wordIds.length
+    && previous.prepListeningCorrect === wordIds.length
+    && previous.prepListeningTotal === wordIds.length,
+  )
+  const canRereadLegacyCompletion = previous?.completed === true
+  const comprehensionVerified = checksTotal > 0 && verifiedChecksCorrect === checksTotal
+
+  // Engine-level fail-closed completion gate. UI bugs or direct callers cannot
+  // complete an unfinished chapter without the 100% prep gate and corrected
+  // comprehension. Legacy chapters already marked complete remain rereadable.
+  if ((!hasCurrentPrepGate && !canRereadLegacyCompletion) || !comprehensionVerified) return state
+
   const words = { ...state.words }
   for (const id of wordIds) {
     const base = words[id] ?? blankWordProgress(now)
@@ -94,7 +112,7 @@ export function recordCompletedRead(
         completed: true,
         completedAt: previous?.completedAt ?? now,
         lastReadAt: now,
-        checksCorrect,
+        checksCorrect: firstPassChecksCorrect,
         checksTotal,
         reads: Math.max(previous?.reads ?? 0, previous?.completed ? 1 : 0) + 1,
       },
