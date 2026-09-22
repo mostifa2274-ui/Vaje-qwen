@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
-import { sentenceSrc, stopAudio } from '../engine/audio'
+import { bundledAudioEnabled, sentenceSrc, stopAudio } from '../engine/audio'
 import { cancelEnglishSpeech, speakEnglish } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
@@ -161,11 +161,29 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       }
     }
 
+    const failPlayback = (message: string) => {
+      if (playbackToken.current !== token) return
+      playbackToken.current++
+      const audio = readerAudioRef.current
+      if (audio) {
+        audio.onended = null
+        audio.onerror = null
+        audio.pause()
+      }
+      cancelEnglishSpeech()
+      setAudioNotice(message)
+      setPlayIdx(-1)
+      setPlayAll(false)
+    }
+
     const playBundledFallback = () => {
       if (playbackToken.current !== token) return
+      if (!bundledAudioEnabled()) {
+        failPlayback('موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره پخش را بزن.')
+        return
+      }
       if (STALE_SENTENCE_AUDIO.has(`${chapterId}:${index}`)) {
-        setAudioNotice('برای این جمله فقط صدای زندهٔ انگلیسی دستگاه استفاده می‌شود؛ نسخهٔ صوتی قدیمی عمداً پخش نشد.')
-        done()
+        failPlayback('صدای زندهٔ انگلیسی برای این جمله در دسترس نبود و فایل صوتی قدیمی عمداً پخش نشد. صدای English Text-to-Speech دستگاه را فعال کن.')
         return
       }
       setAudioNotice('')
@@ -175,12 +193,10 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       audio.currentTime = 0
       audio.onended = done
       audio.onerror = () => {
-        setAudioNotice('موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای انگلیسی Chrome یا سیستم را فعال کن.')
-        done()
+        failPlayback('صدای انگلیسی و فایل پشتیبان این جمله قابل پخش نبود. تنظیمات صدا را بررسی کن و دوباره امتحان کن.')
       }
       void audio.play().catch(() => {
-        setAudioNotice('پخش صدا توسط مرورگر متوقف شد. یک‌بار روی دکمهٔ صدا بزن و دوباره امتحان کن.')
-        done()
+        failPlayback('مرورگر پخش صدا را متوقف کرد. یک‌بار روی دکمهٔ پخش بزن و دوباره امتحان کن.')
       })
     }
 
