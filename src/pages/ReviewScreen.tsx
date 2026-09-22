@@ -77,6 +77,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const [attemptNumber, setAttemptNumber] = useState<Record<string, number>>(() => initialDraft?.attemptNumber ?? {})
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
+  const [audioReady, setAudioReady] = useState(false)
   const startedAtRef = useRef(0)
   const cardRef = useRef<HTMLDivElement>(null)
   const mountedRef = useRef(false)
@@ -148,10 +149,12 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   function speakCurrent() {
     if (!currentWord || !state.soundOn) return
     const unavailable = () => {
+      setAudioReady(false)
       setAudioBlocked(true)
       setAudioNotice('پخش تلفظ انگلیسی در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.')
     }
     const ended = () => {
+      setAudioReady(true)
       setAudioBlocked(false)
       setAudioNotice('')
     }
@@ -168,6 +171,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   function commit(correct: boolean) {
     if (!currentId || !currentWord || !progress || feedback) return
+    if (mode === 'spelling' && (audioBlocked || !audioReady)) return
     if (resumedDraft) setResumedDraft(false)
     const elapsedMs = Date.now() - startedAtRef.current
     const source = (attemptNumber[currentId] ?? 0) > 0 ? 'relearn' : 'review'
@@ -218,6 +222,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     setTyped('')
     setAudioBlocked(false)
     setAudioNotice('')
+    setAudioReady(false)
   }
 
   const sessionLabel = sessionKind === 'remediation'
@@ -285,8 +290,9 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
             {mode === 'spelling' ? (
               <>
                 <div className="text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن؛ متن انگلیسی پنهان می‌ماند.</div>
-                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
+                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={() => { setAudioReady(false); speakCurrent() }}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
                 {audioNotice && <div className="paper-note mt-3 text-right" role="alert">{audioNotice}</div>}
+                {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}
               </>
             ) : (
               <div className={`text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
@@ -306,15 +312,15 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                 autoComplete="off"
                 autoCapitalize="none"
                 spellCheck={false}
-                disabled={Boolean(feedback) || (mode === 'spelling' && audioBlocked)}
+                disabled={Boolean(feedback) || (mode === 'spelling' && (audioBlocked || !audioReady))}
                 value={typed}
                 onChange={event => setTyped(event.target.value)}
                 onKeyDown={event => { if (event.key === 'Enter') submitTyped() }}
               />
               {!feedback && (
                 <div className="mt-3 grid grid-cols-2 gap-2">
-                  <button type="button" className="btn-quiet py-3 text-sm" disabled={mode === 'spelling' && audioBlocked} onClick={() => commit(false)}>نمی‌دانم</button>
-                  <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (mode === 'spelling' && audioBlocked)} onClick={submitTyped}>ثبت پاسخ</button>
+                  <button type="button" className="btn-quiet py-3 text-sm" disabled={mode === 'spelling' && (audioBlocked || !audioReady)} onClick={() => commit(false)}>نمی‌دانم</button>
+                  <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (mode === 'spelling' && (audioBlocked || !audioReady))} onClick={submitTyped}>ثبت پاسخ</button>
                 </div>
               )}
             </div>
