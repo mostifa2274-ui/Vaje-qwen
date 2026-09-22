@@ -167,6 +167,9 @@ export default function App() {
     return () => window.cancelAnimationFrame(frame)
   }, [view])
   useEffect(() => {
+    document.title = `${viewLabel(view)} — قصه`
+  }, [view])
+  useEffect(() => {
     document.documentElement.setAttribute('dir', 'rtl')
     document.documentElement.setAttribute('lang', 'fa')
     warmEnglishVoices()
