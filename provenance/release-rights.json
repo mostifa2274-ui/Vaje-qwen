@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "status": "blocked",
+  "activeVocabulary": "src/data/vocabulary.json",
+  "activeVocabularySha256": null,
+  "basis": "legacy-oxford-derived-development-deck",
+  "sources": [],
+  "clearedAt": null,
+  "notes": "Private-development vocabulary remains fail-closed. Set status to cleared only after documented redistribution rights or a completed independent reconstruction is retained with this exact vocabulary revision."
+}
