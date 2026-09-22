@@ -218,7 +218,7 @@ export function speakEnglishWithFallback(
   let fallbackAttempted = false
   let fallbackStarted = false
 
-  const useFallback = () => {
+  const startFallback = () => {
     if (fallbackAttempted) return
     fallbackAttempted = true
     fallbackStarted = play(fallbackSrc, true, onEnd, onUnavailable)
@@ -230,11 +230,11 @@ export function speakEnglishWithFallback(
     voiceURI,
     rate,
     onEnd,
-    useFallback,
+    startFallback,
   )
 
   if (!speechStarted) {
-    useFallback()
+    startFallback()
     return fallbackStarted
   }
 
