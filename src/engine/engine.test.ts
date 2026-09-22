@@ -379,6 +379,53 @@ describe('chapter completion scheduling', () => {
     expect(next.chapters.c1.reads).toBe(2)
     expect(next.words.cat.dueAt).toBe(20 + 86_400_000)
   })
+
+  it('never turns passive rereading into retrieval evidence or postpones an earlier review', () => {
+    const now = Date.UTC(2026, 0, 20, 12)
+    const earlierDue = now + 30 * 60_000
+    const state = emptyState(now, 'c1')
+    state.words.cat = {
+      ...blankWordProgress(now - 20 * 86_400_000),
+      reviewStage: 4,
+      reviewCorrect: 7,
+      reviewWrong: 2,
+      reviewStreak: 3,
+      intervalDays: 14,
+      productiveCorrect: 3,
+      successDays: ['2026-01-01', '2026-01-05', '2026-01-12'],
+      productiveSuccessDays: ['2026-01-05', '2026-01-12'],
+      difficulty: 4.2,
+      stabilityDays: 17,
+      lapses: 1,
+      dueAt: earlierDue,
+      lastReviewedAt: now - 13 * 86_400_000,
+      lastIndependentSuccessAt: now - 13 * 86_400_000,
+      lastReviewWasCorrect: true,
+      skillStats: {
+        meaning: { correct: 3, wrong: 1 },
+        context: { correct: 2, wrong: 0 },
+        production: { correct: 2, wrong: 1 },
+        form: { correct: 1, wrong: 0 },
+      },
+    }
+
+    const before = state.words.cat
+    const next = recordCompletedRead(state, 'c1', ['cat'], 10, 10, now, ['c1'])
+
+    expect(next.words.cat.dueAt).toBe(earlierDue)
+    expect(next.words.cat.reviewStage).toBe(before.reviewStage)
+    expect(next.words.cat.reviewCorrect).toBe(before.reviewCorrect)
+    expect(next.words.cat.reviewWrong).toBe(before.reviewWrong)
+    expect(next.words.cat.reviewStreak).toBe(before.reviewStreak)
+    expect(next.words.cat.intervalDays).toBe(before.intervalDays)
+    expect(next.words.cat.stabilityDays).toBe(before.stabilityDays)
+    expect(next.words.cat.difficulty).toBe(before.difficulty)
+    expect(next.words.cat.lapses).toBe(before.lapses)
+    expect(next.words.cat.successDays).toEqual(before.successDays)
+    expect(next.words.cat.productiveSuccessDays).toEqual(before.productiveSuccessDays)
+    expect(next.words.cat.skillStats).toEqual(before.skillStats)
+    expect(next.words.cat.lastIndependentSuccessAt).toBe(before.lastIndependentSuccessAt)
+  })
 })
 
 describe('narration voice selection', () => {
