@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useId, useRef } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import type { WordEntry } from '../engine/types'
-import { exampleSrc, play, stopAudio, wordSrc } from '../engine/audio'
-import { selectNarrationVoice } from '../engine/narration'
+import { exampleSrc, stopAudio, wordSrc } from '../engine/audio'
+import { cancelEnglishSpeech, speakEnglishWithFallback } from '../engine/narration'
+import { SpeakerIcon } from './Icons'
 
 interface Props {
   word: WordEntry | null
@@ -15,7 +16,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
   const sheetRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const onCloseRef = useRef(onClose)
-  const speechToken = useRef(0)
+  const [audioNotice, setAudioNotice] = useState('')
   const titleId = useId()
   const descriptionId = useId()
 
@@ -23,40 +24,29 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
 
   const speakOrFallback = useCallback((text: string, fallbackSrc: string) => {
     if (!soundOn) return
-    const token = ++speechToken.current
+    setAudioNotice('')
     stopAudio()
-    const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
-    synth?.cancel()
-    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-      play(fallbackSrc, true)
-      return
+    const unavailable = () => {
+      setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن.')
     }
-    try {
-      const utterance = new SpeechSynthesisUtterance(text)
-      const voice = selectNarrationVoice(synth.getVoices(), narratorVoiceURI)
-      if (voice) {
-        utterance.voice = voice
-        utterance.lang = voice.lang
-      } else {
-        utterance.lang = 'en-US'
-      }
-      utterance.rate = narratorRate
-      utterance.pitch = 1
-      utterance.volume = 1
-      utterance.onerror = () => {
-        if (speechToken.current === token) play(fallbackSrc, true)
-      }
-      synth.speak(utterance)
-    } catch {
-      if (speechToken.current === token) play(fallbackSrc, true)
-    }
+    const started = speakEnglishWithFallback(
+      text,
+      narratorVoiceURI,
+      narratorRate,
+      fallbackSrc,
+      () => setAudioNotice(''),
+      unavailable,
+    )
+    if (!started) unavailable()
   }, [narratorRate, narratorVoiceURI, soundOn])
 
   useEffect(() => {
     if (!word) return
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
     closeRef.current?.focus()
-    if (soundOn) speakOrFallback(word.word, wordSrc(word.id))
+    const autoSpeakTimer = soundOn
+      ? window.setTimeout(() => speakOrFallback(word.word, wordSrc(word.id)), 0)
+      : 0
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -81,10 +71,8 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
     document.addEventListener('keydown', onKeyDown)
     return () => {
       document.removeEventListener('keydown', onKeyDown)
-      // Cleanup must invalidate the latest speech request, not a setup-time snapshot.
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      speechToken.current++
-      if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
+      if (autoSpeakTimer) window.clearTimeout(autoSpeakTimer)
+      cancelEnglishSpeech()
       stopAudio()
       previousFocus?.focus()
     }
@@ -121,11 +109,12 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
             disabled={!soundOn}
             aria-label="شنیدن تلفظ"
           >
-            🔊 تلفظ
+            <span className="inline-flex items-center gap-2"><SpeakerIcon className="h-4 w-4" />تلفظ</span>
           </button>
         </div>
 
         <div id={descriptionId} className="mt-3 text-xl font-bold">{word.fa}</div>
+        {audioNotice && <div className="paper-note mt-3" role="alert">{audioNotice}</div>}
         <hr className="dash-line my-4" />
         <div className="font-en text-base leading-relaxed" dir="ltr">{word.ex}</div>
         <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.tr}</div>
@@ -137,7 +126,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
             onClick={() => speakOrFallback(word.ex, exampleSrc(word.id))}
             disabled={!soundOn}
           >
-            🔊 شنیدن مثال
+            <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن مثال</span>
           </button>
           <button ref={closeRef} type="button" className="btn-ink flex-1 px-3 py-2 text-sm" onClick={onClose}>
             بستن

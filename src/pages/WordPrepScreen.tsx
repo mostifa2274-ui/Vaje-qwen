@@ -4,8 +4,8 @@ import type { GhesseState, WordEntry } from '../engine/types'
 import { buildReviewQuestion } from '../engine/review'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
-import { speakEnglish } from '../engine/narration'
-import { play, wordSrc } from '../engine/audio'
+import { speakEnglishWithFallback } from '../engine/narration'
+import { wordSrc } from '../engine/audio'
 import { BackIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 
@@ -70,6 +70,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [feedback, setFeedback] = useState<PrepFeedback>(() => initialDraft?.feedback ?? null)
   const [selected, setSelected] = useState(() => initialDraft?.selected ?? '')
   const [typed, setTyped] = useState(() => initialDraft?.typed ?? '')
+  const [audioBlocked, setAudioBlocked] = useState(false)
+  const [audioNotice, setAudioNotice] = useState('')
   const stageRef = useRef<HTMLDivElement>(null)
   const hasMountedRef = useRef(false)
 
@@ -95,7 +97,23 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   const speak = useCallback((word: string, id: string) => {
     if (!state.soundOn) return
-    if (!speakEnglish(word, state.narratorVoiceURI, state.narratorRate)) play(wordSrc(id), true)
+    const unavailable = () => {
+      setAudioBlocked(true)
+      setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.')
+    }
+    const ended = () => {
+      setAudioBlocked(false)
+      setAudioNotice('')
+    }
+    const started = speakEnglishWithFallback(
+      word,
+      state.narratorVoiceURI,
+      state.narratorRate,
+      wordSrc(id),
+      ended,
+      unavailable,
+    )
+    if (!started) unavailable()
   }, [state.narratorRate, state.narratorVoiceURI, state.soundOn])
 
   useEffect(() => {
@@ -105,7 +123,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         ? currentListeningWord
         : undefined
     if (!word || !state.soundOn) return
-    const timer = window.setTimeout(() => speak(word.word, word.id), 90)
+    const timer = window.setTimeout(() => {
+      setAudioBlocked(false)
+      setAudioNotice('')
+      speak(word.word, word.id)
+    }, 90)
     return () => window.clearTimeout(timer)
   }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
 
@@ -173,6 +195,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setFeedback(null)
     setSelected('')
     setTyped('')
+    setAudioBlocked(false)
+    setAudioNotice('')
   }
 
   function continueTeach() {
@@ -305,6 +329,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           <div className="prep-resume-row mt-3" role="status">
             <span>پیشرفت این جلسه بازیابی شد؛ از همان‌جایی که رها کردی ادامه بده.</span>
             <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={restartPrep}>شروع از اول</button>
+          </div>
+        )}
+
+        {audioNotice && phase !== 'written' && (
+          <div className="paper-note mt-3" role="alert">
+            {audioNotice}
+            {phase === 'listening' && <div className="mt-1 text-xs">تا یک پخش موفق، گزینه‌های آزمون شنیداری غیرفعال می‌مانند.</div>}
           </div>
         )}
 
@@ -444,7 +475,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                         key={option.id}
                         type="button"
                         className={className}
-                        disabled={Boolean(feedback)}
+                        disabled={Boolean(feedback) || audioBlocked}
                         onClick={() => chooseListening(option.id)}
                       >
                         {option.label}
@@ -454,7 +485,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </div>
 
                 {!feedback && (
-                  <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" onClick={dontKnowListening}>
+                  <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" disabled={audioBlocked} onClick={dontKnowListening}>
                     نمی‌دانم — نشان بده و دوباره بپرس
                   </button>
                 )}
