@@ -10,6 +10,8 @@ describe('Persian written-translation grading', () => {
   it('accepts semicolon and slash alternatives without fuzzy matching', () => {
     expect(isPersianTranslationCorrect('جواب دادن', { fa: 'پاسخ؛ جواب دادن' })).toBe(true)
     expect(isPersianTranslationCorrect('ساعت رومیزی', { fa: 'ساعت دیواری/رومیزی' })).toBe(true)
+    expect(isPersianTranslationCorrect('یک صدم یورو', { fa: 'سنت؛ یک صدم دلار/یورو' })).toBe(true)
+    expect(isPersianTranslationCorrect('واحد وزن', { fa: 'پوند؛ واحد پول/وزن' })).toBe(true)
     expect(isPersianTranslationCorrect('میز', { fa: 'ساعت دیواری/رومیزی' })).toBe(false)
   })
 
