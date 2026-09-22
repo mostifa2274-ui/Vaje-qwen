@@ -15,7 +15,7 @@ The learner should understand, recall, hear, and use the vocabulary well enough 
 3. Listening test. Every chapter word must be recognized from audio; missed words re-enter the same queue.
 4. The story remains locked until both tests reach 100% coverage.
 5. Read the chapter with optional Persian translation and per-sentence audio.
-6. Complete 10 comprehension questions based on the chapter.
+6. Complete 10 comprehension questions based on the chapter. Immediate feedback is shown; only missed questions return for correction. Chapter completion unlocks after all 10 have been corrected, while analytics retain the honest first-pass score.
 7. Continue into spaced review and gated book/midpoint/final exams.
 
 ## Product principles
