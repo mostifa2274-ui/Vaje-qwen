@@ -101,13 +101,6 @@ body {
 .tok-word:hover {
   background: rgba(219, 51, 86, 0.12);
 }
-.tok-new {
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: color-mix(in srgb, var(--crimson) 72%, transparent);
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 4px;
-}
 .tok-unknown {
   color: var(--ink);
 }
