@@ -116,6 +116,29 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     }, questions)
   }, [answers, chapterId, checkIndex, finished, questions])
 
+  useEffect(() => {
+    if (!playAll || playIdx < 0 || typeof window === 'undefined') return
+
+    const frame = window.requestAnimationFrame(() => {
+      const line = document.querySelector<HTMLElement>(`[data-story-index="${playIdx}"]`)
+      if (!line) return
+
+      const rect = line.getBoundingClientRect()
+      const topGuard = 88
+      const bottomGuard = window.innerHeight - 48
+      if (rect.top >= topGuard && rect.bottom <= bottomGuard) return
+
+      const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
+      line.scrollIntoView({
+        block: 'center',
+        inline: 'nearest',
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      })
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [playAll, playIdx])
+
   function playAt(index: number, chain: boolean) {
     if (!state.soundOn || index < 0 || index >= chapter.sentences.length) {
       stopReaderAudio()
@@ -340,7 +363,11 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                 {indices.map(index => {
                   const sentence = chapter.sentences[index]
                   return (
-                    <div key={index} className={`story-line ${playIdx === index ? 'is-playing' : ''}`}>
+                    <div
+                      key={index}
+                      data-story-index={index}
+                      className={`story-line ${playIdx === index ? 'is-playing' : ''}`}
+                    >
                       <SentenceRow
                         en={sentence.en}
                         fa={sentence.fa}
