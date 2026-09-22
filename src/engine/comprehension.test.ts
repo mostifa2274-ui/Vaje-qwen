@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
-import { buildReadingQuestions } from './comprehension'
+import { buildReadingQuestions, READING_QUESTION_COUNT } from './comprehension'
 
 describe('chapter reading comprehension', () => {
   it('builds exactly ten valid questions for every chapter', () => {
     for (const chapter of CHAPTERS) {
       const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
-      expect(questions, chapter.id).toHaveLength(10)
-      expect(new Set(questions.map(question => question.id)).size, chapter.id).toBe(10)
+      expect(questions, chapter.id).toHaveLength(READING_QUESTION_COUNT)
+      expect(new Set(questions.map(question => question.id)).size, chapter.id).toBe(READING_QUESTION_COUNT)
 
       for (const question of questions) {
         expect(question.prompt.trim().length, `${chapter.id}:${question.id}`).toBeGreaterThan(0)
