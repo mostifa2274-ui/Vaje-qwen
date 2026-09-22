@@ -254,6 +254,33 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
   }
 })
 
+test('fresh install can open an unloaded lazy route offline', async ({ page, context }) => {
+  await page.goto('/#/map')
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+  await page.evaluate(async () => {
+    if (!('serviceWorker' in navigator)) throw new Error('service worker unavailable in browser QA')
+    await navigator.serviceWorker.ready
+    if (navigator.serviceWorker.controller) return
+    await new Promise<void>((resolve, reject) => {
+      const timeout = window.setTimeout(() => reject(new Error('service worker did not claim page')), 7_000)
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        window.clearTimeout(timeout)
+        resolve()
+      }, { once: true })
+    })
+  })
+
+  await context.setOffline(true)
+  try {
+    await page.getByRole('button', { name: 'واژه‌نامه' }).click()
+    await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
+    await expectNoHorizontalOverflow(page)
+  } finally {
+    await context.setOffline(false)
+  }
+})
+
 test('keyboard skip link focuses the main landmark without changing the hash route', async ({ page }) => {
   await page.goto('/#/map')
   await page.evaluate(() => {
