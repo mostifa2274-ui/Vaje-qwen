@@ -68,13 +68,13 @@ npm run build
 - build command: خالی / `None`
 - build variables:
   - `SKIP_DEPENDENCY_INSTALL=1`
-  - `GHESSE_RIGHTS_CONFIRMED=1` **فقط پس از ثبت evidence حقوق بازتوزیع مطابق `CONTENT_PROVENANCE.md`**
+  - `GHESSE_RIGHTS_CONFIRMED=1` **فقط پس از ثبت evidence حقوق بازتوزیع مطابق `CONTENT_PROVENANCE.md`**؛ این flag به‌تنهایی کافی نیست و `provenance/release-rights.json` نیز باید `cleared` و با SHA-256 دقیق `src/data/vocabulary.json` منطبق باشد.
 - deploy command: `npm run deploy`
 - output: `dist/`
 - Worker name: `vaje-qwen1`
 - production URL: `https://vaje-qwen1.mostifa2273.workers.dev/`
 
-`npm run deploy` عمداً self-contained و fail-closed است: ابتدا dependencyها را از lockfile نصب می‌کند، سپس `npm run release:check` را از مسیر `cloudflare:build` اجرا می‌کند، بعد همهٔ validationها، lint، test، TypeScript و Vite build را می‌گذراند و در پایان Wrangler را deploy می‌کند. اگر `GHESSE_RIGHTS_CONFIRMED=1` وجود نداشته باشد، public deploy پیش از build متوقف می‌شود. این متغیر فقط پس از نگهداری evidence حقوق انتشار باید تنظیم شود.
+`npm run deploy` عمداً self-contained و fail-closed است: ابتدا dependencyها را از lockfile نصب می‌کند، سپس `npm run release:check` را از مسیر `cloudflare:build` اجرا می‌کند، بعد همهٔ validationها، lint، test، TypeScript و Vite build را می‌گذراند و در پایان Wrangler را deploy می‌کند. public deploy زمانی متوقف می‌شود که `GHESSE_RIGHTS_CONFIRMED=1` وجود نداشته باشد **یا** manifest حقوقی checked-in هنوز blocked باشد **یا** SHA-256 ثبت‌شده با vocabulary فعال فرق کند. بنابراین flag محیطی به‌تنهایی هیچ release را مجاز نمی‌کند.
 
 برای تنظیم استاندارد جدید Cloudflare نیز Build command را `npm run cloudflare:build` و Deploy command را `npx wrangler@4.135.0 deploy` بگذار؛ همان `GHESSE_RIGHTS_CONFIRMED=1` باید فقط پس از ثبت evidence حقوق انتشار موجود باشد. در هر دو مسیر `dist/` پیش از deploy ساخته می‌شود و release gate قابل دورزدن نیست.
 
@@ -82,4 +82,4 @@ npm run build
 
 ## provenance
 
-کیفیت فنی و حقوق بازتوزیع دو موضوع جدا هستند. `CONTENT_PROVENANCE.md` باید همراه release نگهداری شود. `npm run release:check` عمداً بدون `GHESSE_RIGHTS_CONFIRMED=1` fail می‌شود؛ این متغیر فقط زمانی باید تنظیم شود که evidence حقوق انتشار در release record موجود باشد.
+کیفیت فنی و حقوق بازتوزیع دو موضوع جدا هستند. `CONTENT_PROVENANCE.md` و `provenance/release-rights.json` باید همراه release نگهداری شوند. `npm run release:check` عمداً بدون acknowledgement محیطی، manifest `cleared`، evidence منبع/مجوز و SHA-256 منطبق fail می‌شود. مسیر بازسازی مستقل واژگان در `provenance/open-vocab/README.md` ثبت شده است.
