@@ -1,17 +1,18 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { GhesseState } from './engine/types'
 import { loadState, saveState, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canPrepareChapter, canReadChapter, canTakeExam, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
-import WordPrepScreen from './pages/WordPrepScreen'
-import ReaderScreen from './pages/ReaderScreen'
-import ReviewScreen from './pages/ReviewScreen'
-import ExamScreen from './pages/ExamScreen'
-import GlossaryScreen from './pages/GlossaryScreen'
-import SettingsScreen from './pages/SettingsScreen'
 import { warmEnglishVoices } from './engine/narration'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
+
+const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
+const ReaderScreen = lazy(() => import('./pages/ReaderScreen'))
+const ReviewScreen = lazy(() => import('./pages/ReviewScreen'))
+const ExamScreen = lazy(() => import('./pages/ExamScreen'))
+const GlossaryScreen = lazy(() => import('./pages/GlossaryScreen'))
+const SettingsScreen = lazy(() => import('./pages/SettingsScreen'))
 
 type View =
   | { name: 'map' }
@@ -21,6 +22,15 @@ type View =
   | { name: 'exam'; examId: string }
   | { name: 'glossary' }
   | { name: 'settings' }
+
+function RouteLoading() {
+  return (
+    <div className="page-in mx-auto max-w-3xl px-4 py-14 text-center" role="status" aria-live="polite">
+      <p className="font-extrabold">در حال آماده‌سازی…</p>
+      <p className="mt-2 text-sm" style={{ color: 'var(--ink-soft)' }}>این بخش فقط یک‌بار بارگذاری می‌شود.</p>
+    </div>
+  )
+}
 
 const FIRST = CHAPTERS[0].id
 const VALID_CHAPTER_IDS = CHAPTERS.map(ch => ch.id)
@@ -334,7 +344,9 @@ export default function App() {
         tabIndex={-1}
         aria-label={viewLabel(view)}
       >
-        {screen}
+        <Suspense fallback={<RouteLoading />}>
+          {screen}
+        </Suspense>
       </main>
     </>
   )
