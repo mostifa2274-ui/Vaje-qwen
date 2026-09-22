@@ -24,3 +24,9 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Run production quality gates
         run: npm run check
+      - name: Install pinned browser test runner
+        run: npm install --no-save --package-lock=false --ignore-scripts @playwright/test@1.55.0
+      - name: Install Chromium for critical-flow QA
+        run: npx playwright install --with-deps chromium
+      - name: Run critical browser flow
+        run: npx playwright test

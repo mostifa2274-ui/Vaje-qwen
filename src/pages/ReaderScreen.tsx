@@ -60,6 +60,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [checkIndex, setCheckIndex] = useState(() => initialReadingDraft?.checkIndex ?? 0)
   const [firstPassCorrect, setFirstPassCorrect] = useState<number | undefined>(() => initialReadingDraft?.firstPassCorrect)
   const [finished, setFinished] = useState(false)
+  const [wasAlreadyDone] = useState(() => state.chapters[chapterId]?.completed === true)
   const [audioNotice, setAudioNotice] = useState('')
   const readerAudioRef = useRef<HTMLAudioElement | null>(null)
   const playbackToken = useRef(0)
@@ -79,8 +80,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     setPlayIdx(-1)
   }, [])
 
-  const previousProgress = state.chapters[chapterId]
-  const alreadyDone = previousProgress?.completed === true
   const checksAnswered = Object.keys(answers).length
   const checksCorrect = questions.filter((question, index) => answers[index] === question.answerId).length
   const correctionMode = firstPassCorrect !== undefined
@@ -400,7 +399,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
           </div>
         )}
 
-        {alreadyDone && !finished && (
+        {wasAlreadyDone && !finished && (
           <div className="paper-note mt-4" role="status">
             این فصل را قبلاً تمام کرده‌ای. بازخوانی برای روان‌خوانی و درک بهتر مفید است، اما تسلط پایدار همچنان از مرور فاصله‌دار می‌آید.
           </div>
@@ -487,6 +486,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               )}
 
               <div
+                data-testid="comprehension-options"
                 className={`mt-4 grid gap-2 ${currentQuestion.options.every(option => option.label.length <= 24) ? 'grid-cols-2' : 'grid-cols-1'}`}
                 dir={currentQuestion.optionDir}
               >
@@ -547,14 +547,14 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
           {checksCorrect === questions.length && !finished && (
             <button type="button" className="btn-crimson pop w-full py-3.5 text-lg" onClick={finishChapter}>
-              {alreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(questions.length)} از {faNum(questions.length)} تأیید شد
+              {wasAlreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(questions.length)} از {faNum(questions.length)} تأیید شد
             </button>
           )}
 
           {finished && (
             <div className="paper-card p-5 text-center" role="status">
               <div className="text-4xl" aria-hidden="true">🐈‍⬛</div>
-              <div className="mt-2 font-extrabold">{alreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
+              <div className="mt-2 font-extrabold">{wasAlreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
                 {isLastOfBook
                   ? `این کتاب تمام شد. واژه‌هایش وارد مرور فاصله‌دار شده‌اند؛ برای بازشدن مرحلهٔ بعد، آزمون کتاب ${faNum(chapter.book)} را بگذران.`
