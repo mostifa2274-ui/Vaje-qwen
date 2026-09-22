@@ -13,8 +13,8 @@ import {
   selectWeakestWordIds,
   troubleWordIds,
 } from '../engine/review'
-import { speakEnglish } from '../engine/narration'
-import { play, wordSrc } from '../engine/audio'
+import { speakEnglishWithFallback } from '../engine/narration'
+import { wordSrc } from '../engine/audio'
 import { examRemediationWordIds } from '../engine/gates'
 import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
@@ -75,6 +75,8 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const [selected, setSelected] = useState(() => initialDraft?.selected ?? '')
   const [typed, setTyped] = useState(() => initialDraft?.typed ?? '')
   const [attemptNumber, setAttemptNumber] = useState<Record<string, number>>(() => initialDraft?.attemptNumber ?? {})
+  const [audioBlocked, setAudioBlocked] = useState(false)
+  const [audioNotice, setAudioNotice] = useState('')
   const startedAtRef = useRef(0)
   const cardRef = useRef<HTMLDivElement>(null)
   const mountedRef = useRef(false)
@@ -91,6 +93,8 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   useEffect(() => {
     startedAtRef.current = Date.now()
+    setAudioBlocked(false)
+    setAudioNotice('')
   }, [currentId, attemptNumber])
 
   useEffect(() => {
@@ -145,7 +149,23 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   function speakCurrent() {
     if (!currentWord || !state.soundOn) return
-    if (!speakEnglish(currentWord.word, state.narratorVoiceURI, state.narratorRate)) play(wordSrc(currentWord.id), true)
+    const unavailable = () => {
+      setAudioBlocked(true)
+      setAudioNotice('پخش تلفظ انگلیسی در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.')
+    }
+    const ended = () => {
+      setAudioBlocked(false)
+      setAudioNotice('')
+    }
+    const started = speakEnglishWithFallback(
+      currentWord.word,
+      state.narratorVoiceURI,
+      state.narratorRate,
+      wordSrc(currentWord.id),
+      ended,
+      unavailable,
+    )
+    if (!started) unavailable()
   }
 
   function commit(correct: boolean) {
@@ -266,6 +286,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
               <>
                 <div className="text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن؛ متن انگلیسی پنهان می‌ماند.</div>
                 <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
+                {audioNotice && <div className="paper-note mt-3 text-right" role="alert">{audioNotice}</div>}
               </>
             ) : (
               <div className={`text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
@@ -285,15 +306,15 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                 autoComplete="off"
                 autoCapitalize="none"
                 spellCheck={false}
-                disabled={Boolean(feedback)}
+                disabled={Boolean(feedback) || (mode === 'spelling' && audioBlocked)}
                 value={typed}
                 onChange={event => setTyped(event.target.value)}
                 onKeyDown={event => { if (event.key === 'Enter') submitTyped() }}
               />
               {!feedback && (
                 <div className="mt-3 grid grid-cols-2 gap-2">
-                  <button type="button" className="btn-quiet py-3 text-sm" onClick={() => commit(false)}>نمی‌دانم</button>
-                  <button type="button" className="btn-ink py-3" disabled={!typed.trim()} onClick={submitTyped}>ثبت پاسخ</button>
+                  <button type="button" className="btn-quiet py-3 text-sm" disabled={mode === 'spelling' && audioBlocked} onClick={() => commit(false)}>نمی‌دانم</button>
+                  <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (mode === 'spelling' && audioBlocked)} onClick={submitTyped}>ثبت پاسخ</button>
                 </div>
               )}
             </div>
@@ -332,6 +353,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                   {currentWord.ex && <div className="mt-2 font-en" dir="ltr">{currentWord.ex}</div>}
                   {currentWord.tr && <div className="mt-1" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{currentWord.tr}</div>}
                   <button type="button" className="btn-paper mt-3 px-3 py-2 text-xs" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن واژه</span></button>
+                  {audioNotice && <div className="paper-note mt-2" role="alert">{audioNotice}</div>}
                   <div className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>این کارت در انتهای همین جلسه برمی‌گردد، اما پاسخ بعد از این بازخورد شواهد مستقل تسلط نیست.</div>
                 </div>
               )}
