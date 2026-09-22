@@ -367,7 +367,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         </div>
       </div>
 
-      <main className="mx-auto max-w-3xl px-4 pb-32">
+      <div className="mx-auto max-w-3xl px-4 pb-32">
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
         <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
@@ -576,7 +576,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </div>
           )}
         </div>
-      </main>
+      </div>
 
       <GlossSheet
         word={gloss}
