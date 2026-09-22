@@ -12,6 +12,7 @@ import GlossSheet from '../components/GlossSheet'
 import staleSentenceAudioJson from '../data/staleSentenceAudio.json'
 import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
 import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
+import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   chapterId: string
@@ -60,7 +61,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [firstPassCorrect, setFirstPassCorrect] = useState<number | undefined>(() => initialReadingDraft?.firstPassCorrect)
   const [finished, setFinished] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
-  const [coverFailed, setCoverFailed] = useState(false)
   const readerAudioRef = useRef<HTMLAudioElement | null>(null)
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
@@ -371,20 +371,11 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
         <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
-          {!coverFailed ? (
-            <img
-              src={meta.cover}
-              alt={`تصویر کتاب ${meta.book}: ${meta.titleFa}`}
-              className="lesson-cover-image"
-              loading="eager"
-              onError={() => setCoverFailed(true)}
-            />
-          ) : (
-            <div className="lesson-cover-fallback" role="img" aria-label={meta.titleFa}>
-              <span aria-hidden="true">🐈‍⬛</span>
-              <strong>{meta.titleFa}</strong>
-            </div>
-          )}
+          <ChapterIllustration
+            chapterId={chapter.id}
+            titleFa={chapter.titleFa}
+            tint={meta.tint}
+          />
           <div className="lesson-cover-copy">
             <div className="min-w-0">
               <div className="font-en text-xs font-bold uppercase tracking-[0.16em]" dir="ltr">{meta.titleEn}</div>
