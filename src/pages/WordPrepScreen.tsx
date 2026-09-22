@@ -7,7 +7,8 @@ import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback } from '../engine/narration'
 import { wordSrc } from '../engine/audio'
 import { BackIcon, SpeakerIcon } from '../components/Icons'
-import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'\nimport { isPersianTranslationCorrect } from '../engine/persianTranslation'
+import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
+import { isPersianTranslationCorrect } from '../engine/persianTranslation'
 
 interface Props {
   chapterId: string
