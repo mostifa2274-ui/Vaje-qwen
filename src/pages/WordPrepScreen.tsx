@@ -123,9 +123,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         ? currentListeningWord
         : undefined
     if (!word || !state.soundOn) return
-    setAudioBlocked(false)
-    setAudioNotice('')
-    const timer = window.setTimeout(() => speak(word.word, word.id), 90)
+    const timer = window.setTimeout(() => {
+      setAudioBlocked(false)
+      setAudioNotice('')
+      speak(word.word, word.id)
+    }, 90)
     return () => window.clearTimeout(timer)
   }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
 
