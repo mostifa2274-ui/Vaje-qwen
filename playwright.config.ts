@@ -13,9 +13,22 @@ export default defineConfig({
   reporter: 'line',
   use: {
     baseURL: 'http://127.0.0.1:4173',
-    viewport: { width: 412, height: 915 },
     trace: 'retain-on-failure',
   },
+  projects: [
+    {
+      name: 'phone',
+      use: {
+        viewport: { width: 412, height: 915 },
+      },
+    },
+    {
+      name: 'tablet',
+      use: {
+        viewport: { width: 834, height: 1112 },
+      },
+    },
+  ],
   webServer: {
     command: 'npm run preview -- --host 127.0.0.1 --port 4173',
     url: 'http://127.0.0.1:4173',
