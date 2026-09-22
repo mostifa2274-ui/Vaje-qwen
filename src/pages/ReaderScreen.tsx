@@ -57,6 +57,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [playAll, setPlayAll] = useState(false)
   const [answers, setAnswers] = useState<Record<number, string>>(() => initialReadingDraft?.answers ?? {})
   const [checkIndex, setCheckIndex] = useState(() => initialReadingDraft?.checkIndex ?? 0)
+  const [firstPassCorrect, setFirstPassCorrect] = useState<number | undefined>(() => initialReadingDraft?.firstPassCorrect)
   const [finished, setFinished] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
   const [coverFailed, setCoverFailed] = useState(false)
@@ -82,6 +83,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const alreadyDone = previousProgress?.completed === true
   const checksAnswered = Object.keys(answers).length
   const checksCorrect = questions.filter((question, index) => answers[index] === question.answerId).length
+  const correctionMode = firstPassCorrect !== undefined
   const currentQuestion = questions[Math.min(checkIndex, questions.length - 1)]
   const currentAnswer = answers[checkIndex]
   const currentCorrectLabel = currentQuestion?.options.find(option => option.id === currentQuestion.answerId)?.label ?? ''
@@ -112,9 +114,10 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       signature: readingQuestionSignature(questions),
       checkIndex,
       answers,
+      firstPassCorrect,
       updatedAt: Date.now(),
     }, questions)
-  }, [answers, chapterId, checkIndex, finished, questions])
+  }, [answers, chapterId, checkIndex, finished, firstPassCorrect, questions])
 
   useEffect(() => {
     if (!playAll || playIdx < 0 || typeof window === 'undefined') return
@@ -248,6 +251,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       signature: readingQuestionSignature(questions),
       checkIndex: questionIndex,
       answers: nextAnswers,
+      firstPassCorrect,
       updatedAt: clockRef.current(),
     }, questions)
     setAnswers(nextAnswers)
@@ -266,18 +270,64 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   }
 
   function continueQuestion() {
-    if (currentAnswer === undefined || checkIndex >= questions.length - 1) return
+    if (currentAnswer === undefined) return
     if (resumedReading) setResumedReading(false)
-    setCheckIndex(index => index + 1)
+    const nextUnanswered = questions.findIndex((_, index) => index > checkIndex && answers[index] === undefined)
+    if (nextUnanswered >= 0) setCheckIndex(nextUnanswered)
+  }
+
+  function beginCorrectionRound() {
+    if (checksAnswered !== questions.length || checksCorrect === questions.length) return
+    if (resumedReading) setResumedReading(false)
+
+    const wrongIndices = questions
+      .map((question, index) => answers[index] === question.answerId ? -1 : index)
+      .filter(index => index >= 0)
+    if (wrongIndices.length === 0) return
+
+    const correctedAnswers = { ...answers }
+    for (const index of wrongIndices) delete correctedAnswers[index]
+
+    const initialScore = firstPassCorrect ?? checksCorrect
+    const nextIndex = wrongIndices[0]
+    setFirstPassCorrect(initialScore)
+    setAnswers(correctedAnswers)
+    setCheckIndex(nextIndex)
+    saveReadingDraft({
+      version: 1,
+      chapterId,
+      signature: readingQuestionSignature(questions),
+      checkIndex: nextIndex,
+      answers: correctedAnswers,
+      firstPassCorrect: initialScore,
+      updatedAt: clockRef.current(),
+    }, questions)
+  }
+
+  function retryCurrentCorrection() {
+    if (!correctionMode || currentAnswer === undefined || currentAnswer === currentQuestion.answerId) return
+    const nextAnswers = { ...answers }
+    delete nextAnswers[checkIndex]
+    setAnswers(nextAnswers)
+    saveReadingDraft({
+      version: 1,
+      chapterId,
+      signature: readingQuestionSignature(questions),
+      checkIndex,
+      answers: nextAnswers,
+      firstPassCorrect,
+      updatedAt: clockRef.current(),
+    }, questions)
   }
 
   function finishChapter() {
+    if (checksCorrect !== questions.length) return
     const successor = nextChapter(chapterId)
     const nextState = recordCompletedRead(
       state,
       chapterId,
       chapter.new,
-      checksCorrect,
+      firstPassCorrect ?? checksCorrect,
       questions.length,
       clockRef.current(),
       CHAPTERS.map(item => item.id),
