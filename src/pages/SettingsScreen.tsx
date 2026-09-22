@@ -20,6 +20,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
   const [confirming, setConfirming] = useState(false)
   const [importMessage, setImportMessage] = useState('')
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
+  const [voiceMessage, setVoiceMessage] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -36,11 +37,16 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
 
   function previewNarrator() {
     if (!state.soundOn) return
-    speakEnglish(
+    setVoiceMessage('')
+    const unavailable = () => setVoiceMessage('صدای انگلیسی روی این دستگاه در دسترس نیست. در تنظیمات مرورگر یا سیستم، English Text-to-Speech را فعال کن.')
+    const started = speakEnglish(
       'Nino is home. Mina is happy to see him again.',
       state.narratorVoiceURI,
       state.narratorRate,
+      () => setVoiceMessage('نمونه با موفقیت پخش شد.'),
+      unavailable,
     )
+    if (!started) unavailable()
   }
 
   function exportProgress() {
@@ -143,6 +149,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           <button type="button" className="btn-paper mt-3 w-full py-2.5" disabled={!state.soundOn} onClick={previewNarrator}>
             <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />شنیدن نمونه</span>
           </button>
+          {voiceMessage && <p className="mt-2 text-xs leading-6" role="status">{voiceMessage}</p>}
         </div>
 
 
