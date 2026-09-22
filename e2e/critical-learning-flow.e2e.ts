@@ -149,6 +149,12 @@ test.beforeEach(async ({ page }) => {
 
 test('keyboard skip link focuses the main landmark without changing the hash route', async ({ page }) => {
   await page.goto('/#/map')
+  await page.evaluate(() => {
+    const body = document.body
+    body.tabIndex = -1
+    body.focus()
+    body.removeAttribute('tabindex')
+  })
   await page.keyboard.press('Tab')
 
   const skip = page.getByRole('link', { name: 'رفتن به محتوای اصلی' })
