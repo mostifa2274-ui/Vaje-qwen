@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { CHAPTER_ART, type ChapterMotif } from '../data/chapterArt'
 
 interface Props {
@@ -19,7 +20,7 @@ interface MotifProps {
 
 function Motif({ kind, x, y, scale = 1, accent, secondary, ink, paper }: MotifProps) {
   const common = { stroke: ink, strokeWidth: 4, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const }
-  const g = (children: React.ReactNode) => <g transform={`translate(${x} ${y}) scale(${scale})`}>{children}</g>
+  const g = (children: ReactNode) => <g transform={`translate(${x} ${y}) scale(${scale})`}>{children}</g>
 
   switch (kind) {
     case 'cat':
