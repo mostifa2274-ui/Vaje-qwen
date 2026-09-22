@@ -23,13 +23,16 @@ async function precacheShell() {
 }
 
 self.addEventListener('install', event => {
-  event.waitUntil(precacheShell().then(() => self.skipWaiting()))
+  // Let an existing worker keep controlling its open tabs. Their entry bundle
+  // may still request lazy chunks from the old cache after a new deploy.
+  // The installed update activates once those tabs close or reload.
+  event.waitUntil(precacheShell())
 })
 
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+      .then(keys => Promise.all(keys.filter(key => key.startsWith('ghesse-shell-') && key !== CACHE).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   )
 })
