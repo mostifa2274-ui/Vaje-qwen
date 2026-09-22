@@ -54,6 +54,12 @@ if (requireBundledAudio) {
 }
 
 assert(existsSync(join(publicDir, 'icons', 'icon.svg')), 'missing vector PWA icon: icon.svg')
+const serviceWorkerSource = readFileSync(join(publicDir, 'sw.js'), 'utf8')
+const swCachePlaceholder = '__GHESSE_BUILD_CACHE__'
+assert(
+  serviceWorkerSource.split(swCachePlaceholder).length === 2,
+  'public/sw.js must contain exactly one build-cache placeholder for release stamping',
+)
 for (let book = 1; book <= 8; book++) {
   assert(existsSync(join(publicDir, 'art', `book${book}.svg`)), `missing lesson artwork: art/book${book}.svg`)
 }
