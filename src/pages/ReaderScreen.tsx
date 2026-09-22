@@ -329,6 +329,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       chapter.new,
       firstPassCorrect ?? checksCorrect,
       questions.length,
+      checksCorrect,
       clockRef.current(),
       CHAPTERS.map(item => item.id),
       successor?.book === chapter.book ? successor.id : undefined,
