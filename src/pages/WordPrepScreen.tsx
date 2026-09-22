@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
-import type { GhesseState, WordEntry } from '../engine/types'
+import type { GhesseState } from '../engine/types'
 import { buildReviewQuestion } from '../engine/review'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
@@ -8,6 +8,7 @@ import { speakEnglishWithFallback } from '../engine/narration'
 import { wordSrc } from '../engine/audio'
 import { BackIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
+import { isPersianTranslationCorrect } from '../engine/persianTranslation'
 
 interface Props {
   chapterId: string
@@ -19,34 +20,6 @@ interface Props {
 
 function faNum(n: number): string {
   return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
-
-function normalizeFaAnswer(value: string): string {
-  return value
-    .normalize('NFKC')
-    .trim()
-    .toLowerCase()
-    .replace(/[يى]/g, 'ی')
-    .replace(/ك/g, 'ک')
-    .replace(/[\u064B-\u065F\u0670]/g, '')
-    .replace(/\u200c/g, ' ')
-    .replace(/[‐‑‒–—−-]/g, ' ')
-    .replace(/[،,؛;:!?؟."“”'()]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-function acceptedFaAnswers(word: WordEntry): string[] {
-  const alternatives = word.fa
-    .split(/[؛;،,/]/)
-    .map(normalizeFaAnswer)
-    .filter(Boolean)
-  const full = normalizeFaAnswer(word.fa)
-  return [...new Set([full, ...alternatives].filter(Boolean))]
-}
-
-function isFaTranslationCorrect(input: string, word: WordEntry): boolean {
-  return acceptedFaAnswers(word).includes(normalizeFaAnswer(input))
 }
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
@@ -220,7 +193,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   function submitWritten() {
     if (!currentWrittenWord || !currentWrittenId || !typed.trim() || feedback) return
-    const correct = isFaTranslationCorrect(typed, currentWrittenWord)
+    const correct = isPersianTranslationCorrect(typed, currentWrittenWord)
     if (!correct) setWrittenMissed(previous => new Set(previous).add(currentWrittenId))
     setFeedback(correct ? 'correct' : 'wrong')
   }
