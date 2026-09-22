@@ -109,7 +109,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
           <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ از اولین برخورد تا تسلط پایدار</p>
         </div>
         <div className="home-toolbar">
-          <button className="btn-paper home-toolbar-button px-3 text-sm" onClick={onOpenGlossary}>
+          <button className="btn-paper home-toolbar-button px-3 text-sm" onClick={onOpenGlossary} aria-label="واژه‌نامه">
             <BookOpenTextIcon className="h-5 w-5" />
             <span>واژه‌نامه</span>
           </button>

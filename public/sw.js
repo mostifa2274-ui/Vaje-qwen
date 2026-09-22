@@ -1,4 +1,5 @@
 const CACHE = 'ghesse-shell-__GHESSE_BUILD_CACHE__'
+const BUILD_ASSETS = __GHESSE_BUILD_ASSETS__
 const CORE = [
   './',
   './index.html',
@@ -16,36 +17,22 @@ const CORE = [
 
 async function precacheShell() {
   const cache = await caches.open(CACHE)
-  await cache.addAll(CORE)
-  // Vite fingerprints JS/CSS/font assets. Discover the generated shell assets
-  // from the built HTML so a freshly installed PWA can open offline without
-  // requiring a second online reload.
-  try {
-    const response = await fetch('./index.html', { cache: 'no-store' })
-    if (!response.ok) return
-    const html = await response.text()
-    const urls = new Set()
-    for (const match of html.matchAll(/(?:src|href)=["']([^"']+)["']/g)) {
-      const value = match[1]
-      if (!value || value.startsWith('data:') || value.startsWith('http:') || value.startsWith('https:')) continue
-      urls.add(new URL(value, self.registration.scope).href)
-    }
-    await Promise.all([...urls].map(async url => {
-      try { await cache.add(url) } catch { /* optional asset; runtime caching remains available */ }
-    }))
-  } catch {
-    // CORE still provides the offline document and brand assets.
-  }
+  // BUILD_ASSETS is stamped from the exact Vite output after build. This keeps
+  // route-level lazy chunks and fonts available on a first-install offline run.
+  await cache.addAll([...CORE, ...BUILD_ASSETS])
 }
 
 self.addEventListener('install', event => {
-  event.waitUntil(precacheShell().then(() => self.skipWaiting()))
+  // Let an existing worker keep controlling its open tabs. Their entry bundle
+  // may still request lazy chunks from the old cache after a new deploy.
+  // The installed update activates once those tabs close or reload.
+  event.waitUntil(precacheShell())
 })
 
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+      .then(keys => Promise.all(keys.filter(key => key.startsWith('ghesse-shell-') && key !== CACHE).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   )
 })

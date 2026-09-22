@@ -109,7 +109,7 @@ async function expectRenderedAccessibilityContract(page: Page): Promise<void> {
           element.getAttribute('aria-label')?.trim() ?? '',
           labelledByText,
           labelText,
-          element.textContent?.trim() ?? '',
+          element.innerText?.trim() ?? '',
           element.getAttribute('title')?.trim() ?? '',
         ].find(Boolean)
         return !name
@@ -237,11 +237,47 @@ test.beforeEach(async ({ page }) => {
 test('rendered core screens satisfy the structural accessibility contract', async ({ page }) => {
   // Fresh progress cannot read b1c1 yet, so exercise Prep explicitly here.
   // Reader accessibility is asserted again after the full unlock journey below.
-  for (const route of ['/#/map', '/#/glossary', '/#/settings', '/#/review', '/#/prep/b1c1']) {
+  const routes: Array<{ route: string; heading: string | RegExp }> = [
+    { route: '/#/map', heading: 'قصه' },
+    { route: '/#/glossary', heading: 'واژه‌نامه' },
+    { route: '/#/settings', heading: 'تنظیمات' },
+    { route: '/#/review', heading: 'مرور هوشمند' },
+    { route: '/#/prep/b1c1', heading: /واژه‌های تازه:/ },
+  ]
+
+  for (const { route, heading } of routes) {
     await page.goto(route)
+    await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible()
     await expect(page.locator('#main-content')).toBeVisible()
     await expectRenderedAccessibilityContract(page)
     await expectNoHorizontalOverflow(page)
+  }
+})
+
+test('fresh install can open an unloaded lazy route offline', async ({ page, context }) => {
+  await page.goto('/#/map')
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+  await page.evaluate(async () => {
+    if (!('serviceWorker' in navigator)) throw new Error('service worker unavailable in browser QA')
+    await navigator.serviceWorker.ready
+    if (navigator.serviceWorker.controller) return
+    await new Promise<void>((resolve, reject) => {
+      const timeout = window.setTimeout(() => reject(new Error('service worker did not claim page')), 7_000)
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        window.clearTimeout(timeout)
+        resolve()
+      }, { once: true })
+    })
+  })
+
+  await context.setOffline(true)
+  try {
+    await page.getByRole('button', { name: 'واژه‌نامه' }).click()
+    await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
+    await expectNoHorizontalOverflow(page)
+  } finally {
+    await context.setOffline(false)
   }
 })
 
