@@ -44,7 +44,9 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
     if (!word) return
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
     closeRef.current?.focus()
-    if (soundOn) speakOrFallback(word.word, wordSrc(word.id))
+    const autoSpeakTimer = soundOn
+      ? window.setTimeout(() => speakOrFallback(word.word, wordSrc(word.id)), 0)
+      : 0
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -69,6 +71,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
     document.addEventListener('keydown', onKeyDown)
     return () => {
       document.removeEventListener('keydown', onKeyDown)
+      if (autoSpeakTimer) window.clearTimeout(autoSpeakTimer)
       cancelEnglishSpeech()
       stopAudio()
       previousFocus?.focus()
