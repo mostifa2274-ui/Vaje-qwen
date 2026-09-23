@@ -46,6 +46,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
   const [listeningReady, setListeningReady] = useState(false)
+  const [teachAudioReady, setTeachAudioReady] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
   const hasMountedRef = useRef(false)
 
@@ -69,15 +70,17 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     [chapterId, currentListeningId, currentListeningWord, listeningPassed.size, listeningQueue.length],
   )
 
-  const speak = useCallback((word: string, id: string, unlockListening = false) => {
+  const speak = useCallback((word: string, id: string, unlockListening = false, unlockTeach = false) => {
     if (!state.soundOn) return
     const unavailable = () => {
       if (unlockListening) setListeningReady(false)
+      if (unlockTeach) setTeachAudioReady(true)
       setAudioBlocked(true)
       setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.')
     }
     const ended = () => {
       if (unlockListening) setListeningReady(true)
+      if (unlockTeach) setTeachAudioReady(true)
       setAudioBlocked(false)
       setAudioNotice('')
     }
@@ -125,7 +128,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       setAudioBlocked(false)
       setAudioNotice('')
       if (phase === 'listening') setListeningReady(false)
-      speak(word.word, word.id, phase === 'listening')
+      if (phase === 'teach') setTeachAudioReady(false)
+      speak(word.word, word.id, phase === 'listening', phase === 'teach')
     }, 90)
     return () => window.clearTimeout(timer)
   }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
@@ -197,11 +201,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setAudioBlocked(false)
     setAudioNotice('')
     setListeningReady(false)
+    setTeachAudioReady(false)
   }
 
   function continueTeach() {
-    if (!currentTeachWord) return
+    if (!currentTeachWord || !teachAudioReady) return
     if (teachIndex + 1 < chapter.new.length) {
+      setTeachAudioReady(false)
       setTeachIndex(index => index + 1)
       return
     }
@@ -380,14 +386,14 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 type="button"
                 className="btn-quiet mt-3 px-3 py-2.5 text-sm"
                 onClick={speakExample}
-                disabled={!state.soundOn}
+                disabled={!state.soundOn || !teachAudioReady}
                 aria-label="شنیدن مثال"
               >
                 <span className="inline-flex items-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن مثال</span>
               </button>
             </div>
 
-            <button type="button" className="btn-ink mt-5 w-full py-3" onClick={continueTeach}>
+            <button type="button" className="btn-ink mt-5 w-full py-3" disabled={!teachAudioReady} onClick={continueTeach}>
               {teachIndex + 1 < chapter.new.length ? 'واژهٔ بعدی ←' : 'شروع آزمون ترجمهٔ نوشتاری ←'}
             </button>
           </div>
