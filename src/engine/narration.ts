@@ -14,7 +14,9 @@ export interface VoiceLike {
 }
 
 let speechRequestId = 0
-let voiceCatalogueSettled = false
+let qualityVoiceKnown = false
+let initialVoiceGraceElapsed = false
+let warmVoiceListenerAttached = false
 
 function isEnglish(lang: string): boolean {
   return /^en(?:-|_|$)/i.test(lang)
@@ -88,6 +90,26 @@ export function shouldWaitForHigherQualityVoice<T extends VoiceLike>(
   return voiceQualityScore(best) < READY_VOICE_SCORE
 }
 
+export type NarrationLaunchDecision = 'ready' | 'wait' | 'fallback'
+
+/**
+ * Cold-start policy:
+ * - ready: a selected or quality English voice is already available
+ * - wait: give Chrome/Android one short grace period for its async catalogue
+ * - fallback: grace already elapsed; speak immediately with the best current voice
+ *
+ * A later voiceschanged event can still promote future utterances to a better
+ * Natural/Neural voice even after the first generic fallback was used.
+ */
+export function narrationLaunchDecision<T extends VoiceLike>(
+  voices: readonly T[],
+  preferredVoiceURI = '',
+  graceElapsed = false,
+): NarrationLaunchDecision {
+  if (!shouldWaitForHigherQualityVoice(voices, preferredVoiceURI)) return 'ready'
+  return graceElapsed ? 'fallback' : 'wait'
+}
+
 export function clampNarrationRate(rate: number): number {
   if (!Number.isFinite(rate)) return 0.92
   return Math.min(1.1, Math.max(0.75, rate))
@@ -100,9 +122,23 @@ export function cancelEnglishSpeech(): void {
 
 export function warmEnglishVoices(): void {
   if (typeof window === 'undefined' || !window.speechSynthesis) return
+  const synth = window.speechSynthesis
+
+  const refreshQualityState = () => {
+    const voices = synth.getVoices()
+    if (!shouldWaitForHigherQualityVoice(voices)) qualityVoiceKnown = true
+  }
+
   // Chrome populates the list lazily. Calling getVoices during app startup
   // encourages the higher-quality catalogue to be ready before the lesson.
-  window.speechSynthesis.getVoices()
+  refreshQualityState()
+
+  // Keep one app-lifetime listener so a better Android/Chrome voice that
+  // appears after the first 650 ms fallback can still upgrade later words.
+  if (!warmVoiceListenerAttached) {
+    warmVoiceListenerAttached = true
+    synth.addEventListener('voiceschanged', refreshQualityState)
+  }
 }
 
 function speakWithAvailableVoices(
@@ -157,9 +193,14 @@ export function speakEnglish(
   synth.cancel()
   const requestId = ++speechRequestId
   const voices = synth.getVoices()
+  const decision = voiceURI
+    ? narrationLaunchDecision(voices, voiceURI, initialVoiceGraceElapsed)
+    : qualityVoiceKnown
+      ? 'ready'
+      : narrationLaunchDecision(voices, '', initialVoiceGraceElapsed)
 
-  if (voiceCatalogueSettled || !shouldWaitForHigherQualityVoice(voices, voiceURI)) {
-    voiceCatalogueSettled = true
+  if (decision !== 'wait') {
+    if (!voiceURI && decision === 'ready') qualityVoiceKnown = true
     speakWithAvailableVoices(requestId, text, voiceURI, rate, onEnd, onError)
     return true
   }
@@ -182,7 +223,7 @@ export function speakEnglish(
       return
     }
     launched = true
-    voiceCatalogueSettled = true
+    if (!voiceURI && !shouldWaitForHigherQualityVoice(synth.getVoices())) qualityVoiceKnown = true
     cleanup()
     speakWithAvailableVoices(requestId, text, voiceURI, rate, onEnd, onError)
   }
@@ -197,7 +238,10 @@ export function speakEnglish(
   }
 
   synth.addEventListener('voiceschanged', maybeLaunch)
-  timer = window.setTimeout(launch, 650)
+  timer = window.setTimeout(() => {
+    initialVoiceGraceElapsed = true
+    launch()
+  }, 650)
   return true
 }
 
