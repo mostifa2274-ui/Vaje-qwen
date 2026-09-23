@@ -513,6 +513,43 @@ test('map chapter buttons announce their status', async ({ page }) => {
   await expect(page.getByRole('button', { name: /^فصل ۲: .+ — قفل$/ }).first()).toBeDisabled()
 })
 
+test('opening and closing a story word gloss keeps the reading position', async ({ page }) => {
+  const total = chapter.new.length
+  await openWithProgress(page, '/read/b1c1', {
+    words: Object.fromEntries(chapter.new.map(id => [id, { introduced: true }])),
+    chapters: {
+      b1c1: {
+        preparedAt: 1,
+        prepAttempts: 1,
+        prepWrittenCorrect: total,
+        prepWrittenTotal: total,
+        prepListeningCorrect: total,
+        prepListeningTotal: total,
+        completed: false,
+        checksCorrect: 0,
+        checksTotal: 0,
+        reads: 0,
+      },
+    },
+  })
+
+  const word = page.locator('.story-line').nth(1).locator('.tok-word').first()
+  await word.scrollIntoViewIfNeeded()
+  const before = await page.evaluate(() => window.scrollY)
+  await word.click()
+
+  const sheet = page.getByRole('dialog')
+  await expect(sheet).toBeVisible()
+  await expect(sheet.getByRole('button', { name: 'بستن' })).toBeFocused()
+  await page.waitForTimeout(300)
+  expect(await page.evaluate(() => window.scrollY)).toBe(before)
+
+  await page.keyboard.press('Escape')
+  await expect(sheet).toHaveCount(0)
+  await expect(word).toBeFocused()
+  expect(await page.evaluate(() => window.scrollY)).toBe(before)
+})
+
 test('importing a backup asks before replacing progress', async ({ page }) => {
   await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
   await page.evaluate(() => window.sessionStorage.setItem('ghesse:prep:v1:b1c1', '{"stale":true}'))

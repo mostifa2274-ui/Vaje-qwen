@@ -43,7 +43,10 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
   useEffect(() => {
     if (!word) return
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
-    closeRef.current?.focus()
+    // The sheet slides in from below the viewport. Without preventScroll the
+    // browser scrolls the whole story toward the still off-screen button,
+    // and jumps back again when focus returns on close.
+    closeRef.current?.focus({ preventScroll: true })
     const autoSpeakTimer = soundOn
       ? window.setTimeout(() => speakOrFallback(word.word, wordSrc(word.id)), 0)
       : 0
@@ -74,7 +77,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
       if (autoSpeakTimer) window.clearTimeout(autoSpeakTimer)
       cancelEnglishSpeech()
       stopAudio()
-      previousFocus?.focus()
+      previousFocus?.focus({ preventScroll: true })
     }
   }, [word, soundOn, speakOrFallback])
 
