@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -22,4 +23,32 @@ assert(!directWorkflow.includes('GHESSE_RIGHTS_CONFIRMED'), 'direct workflow mus
 assert(manifest.schemaVersion === 1, 'provenance record schemaVersion must be 1')
 assert(['blocked', 'cleared'].includes(manifest.status), 'provenance status must remain explicit')
 assert(manifest.activeVocabulary === 'src/data/vocabulary.json', 'record must identify the active deck')
+
+if (manifest.status === 'cleared') {
+  assert(
+    ['documented-redistribution-rights', 'independent-reconstruction'].includes(manifest.basis),
+    'cleared provenance must identify a supported evidence basis',
+  )
+  assert(
+    Array.isArray(manifest.sources) && manifest.sources.length > 0 && manifest.sources.every(source =>
+      source && typeof source.name === 'string' && source.name.trim()
+      && typeof source.url === 'string' && /^https:\\/\\//.test(source.url)
+      && typeof source.license === 'string' && source.license.trim()
+    ),
+    'cleared provenance must retain source and license evidence',
+  )
+  assert(
+    typeof manifest.clearedAt === 'string' && !Number.isNaN(Date.parse(manifest.clearedAt)),
+    'cleared provenance must record a valid clearance date',
+  )
+  const vocabularyBytes = readFileSync(join(root, manifest.activeVocabulary))
+  const actualSha256 = createHash('sha256').update(vocabularyBytes).digest('hex')
+  assert(
+    typeof manifest.activeVocabularySha256 === 'string'
+      && /^[a-f0-9]{64}$/.test(manifest.activeVocabularySha256)
+      && manifest.activeVocabularySha256 === actualSha256,
+    'cleared provenance must match the exact active vocabulary bytes',
+  )
+}
+
 console.log(`Deployment configuration validated; provenance status is ${manifest.status} and is not a build gate.`)
