@@ -1,11 +1,13 @@
 import { expect, test, type Page } from '@playwright/test'
 import { readFileSync } from 'node:fs'
+import { persianPartOfSpeech } from '../src/engine/partOfSpeech'
 
 interface VocabularyEntry {
   id: string
   word: string
   fa: string
   ex: string
+  pos: string
 }
 
 interface ChapterFixture {
@@ -381,11 +383,26 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expectNoHorizontalOverflow(page)
 
   const stage = page.locator('.learning-focus-card')
+  await expect(stage.locator('.lexical-role-chip')).toHaveText(persianPartOfSpeech(chapterWords[0].pos))
+
   const exampleAudio = stage.getByRole('button', { name: 'شنیدن مثال' })
   await expect(exampleAudio).toBeVisible()
   await expect(exampleAudio).toBeEnabled()
   await exampleAudio.click()
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].ex)
+
+  // Teaching stays learner-paced. Prove the new backward control can revisit
+  // a word and retrigger its automatic pronunciation without bypassing audio.
+  const firstNext = stage.getByRole('button', { name: /واژهٔ بعدی/ })
+  await firstNext.click()
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word)
+  await expect.poll(() => spokenWord(page)).toBe(chapterWords[1].word)
+  const previous = stage.getByRole('button', { name: 'قبلی', exact: true })
+  await expect(previous).toBeEnabled()
+  await previous.click()
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
+  await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
+  await expect(stage.locator('.lexical-role-chip')).toHaveText(persianPartOfSpeech(chapterWords[0].pos))
 
   // Teaching is exposure, not a guess-first quiz.
   for (let index = 0; index < chapterWords.length; index++) {
