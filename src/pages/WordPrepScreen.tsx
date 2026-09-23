@@ -5,7 +5,7 @@ import { buildReviewQuestion } from '../engine/review'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback } from '../engine/narration'
-import { wordSrc } from '../engine/audio'
+import { exampleSrc, wordSrc } from '../engine/audio'
 import { BackIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
@@ -91,6 +91,28 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     )
     if (!started) unavailable()
   }, [state.narratorRate, state.narratorVoiceURI, state.soundOn])
+
+  const speakExample = useCallback(() => {
+    if (!currentTeachWord || !state.soundOn) return
+    setAudioBlocked(false)
+    setAudioNotice('')
+    const unavailable = () => {
+      setAudioBlocked(true)
+      setAudioNotice('پخش مثال انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.')
+    }
+    const started = speakEnglishWithFallback(
+      currentTeachWord.ex,
+      state.narratorVoiceURI,
+      state.narratorRate,
+      exampleSrc(currentTeachWord.id),
+      () => {
+        setAudioBlocked(false)
+        setAudioNotice('')
+      },
+      unavailable,
+    )
+    if (!started) unavailable()
+  }, [currentTeachWord, state.narratorRate, state.narratorVoiceURI, state.soundOn])
 
   useEffect(() => {
     const word = phase === 'teach'
@@ -354,6 +376,15 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <div className="learning-example mt-6 p-4">
               <div className="font-en text-lg leading-8" dir="ltr">{currentTeachWord.ex}</div>
               <div className="mt-2 text-sm leading-7" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{currentTeachWord.tr}</div>
+              <button
+                type="button"
+                className="btn-quiet mt-3 px-3 py-2.5 text-sm"
+                onClick={speakExample}
+                disabled={!state.soundOn}
+                aria-label="شنیدن مثال"
+              >
+                <span className="inline-flex items-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن مثال</span>
+              </button>
             </div>
 
             <button type="button" className="btn-ink mt-5 w-full py-3" onClick={continueTeach}>
