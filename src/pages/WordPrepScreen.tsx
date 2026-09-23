@@ -54,6 +54,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [teachAutoExampleDone, setTeachAutoExampleDone] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
   const writtenInputRef = useRef<HTMLInputElement>(null)
+  const retryContinueRef = useRef<HTMLButtonElement>(null)
+  const focusRetryContinueRef = useRef(false)
   const continueTeachRef = useRef<() => void>(() => {})
   const continueWrittenRef = useRef<() => void>(() => {})
   const continueListeningRef = useRef<() => void>(() => {})
@@ -168,6 +170,17 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     return () => window.cancelAnimationFrame(frame)
   }, [currentWrittenId, feedback, phase])
 
+  // A miss disables the answer controls, so hand focus to the retry button
+  // instead of dropping it to the page (Enter -> read correction -> Enter).
+  useEffect(() => {
+    if (feedback !== 'wrong' || !focusRetryContinueRef.current) return
+    focusRetryContinueRef.current = false
+    // Next frame, so the Enter that submitted the answer cannot also
+    // activate the retry button.
+    const frame = window.requestAnimationFrame(() => retryContinueRef.current?.focus())
+    return () => window.cancelAnimationFrame(frame)
+  }, [feedback])
+
   useEffect(() => {
     if (alreadyPrepared || (phase === 'teach' && teachIndex === 0)) {
       clearPrepDraft(chapterId)
@@ -262,6 +275,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!currentWrittenWord || !currentWrittenId || !typed.trim() || feedback) return
     const correct = isPersianTranslationCorrect(typed, currentWrittenWord)
     if (!correct) setWrittenMissed(previous => new Set(previous).add(currentWrittenId))
+    focusRetryContinueRef.current = !correct
     setFeedback(correct ? 'correct' : 'wrong')
   }
 
@@ -269,6 +283,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!currentWrittenId || feedback) return
     setWrittenMissed(previous => new Set(previous).add(currentWrittenId))
     setTyped('')
+    focusRetryContinueRef.current = true
     setFeedback('wrong')
   }
 
@@ -300,6 +315,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     const correct = optionId === listeningQuestion.answerId
     setSelected(optionId)
     if (!correct) setListeningMissed(previous => new Set(previous).add(currentListeningId))
+    focusRetryContinueRef.current = !correct
     setFeedback(correct ? 'correct' : 'wrong')
   }
 
@@ -307,6 +323,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!currentListeningId || feedback || !state.soundOn || audioBlocked || !listeningReady) return
     setSelected('')
     setListeningMissed(previous => new Set(previous).add(currentListeningId))
+    focusRetryContinueRef.current = true
     setFeedback('wrong')
   }
 
@@ -544,10 +561,15 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               autoFocus
               autoComplete="off"
               spellCheck={false}
+              enterKeyHint="done"
               disabled={Boolean(feedback)}
               value={typed}
               onChange={event => setTyped(event.target.value)}
-              onKeyDown={event => { if (event.key === 'Enter') submitWritten() }}
+              onKeyDown={event => {
+                if (event.key !== 'Enter') return
+                event.preventDefault()
+                submitWritten()
+              }}
             />
 
             {!feedback && (
@@ -566,7 +588,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback === 'wrong' && (
-              <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueWritten}>
+              <button ref={retryContinueRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueWritten}>
                 ادامه و تکرار این واژه ←
               </button>
             )}
@@ -645,7 +667,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback === 'wrong' && (
-              <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueListening}>
+              <button ref={retryContinueRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueListening}>
                 ادامه و تکرار این واژه ←
               </button>
             )}

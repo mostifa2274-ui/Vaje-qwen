@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState, RetrievalMode } from '../engine/types'
 import { masteryCounts } from '../engine/mastery'
@@ -123,7 +123,10 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   useEffect(() => {
     if (!feedback || !focusNextCardRef.current) return
     focusNextCardRef.current = false
-    nextCardRef.current?.focus()
+    // Next frame: moving focus inside the Enter keydown that submitted the
+    // answer would let the same keystroke activate "next card".
+    const frame = window.requestAnimationFrame(() => nextCardRef.current?.focus())
+    return () => window.cancelAnimationFrame(frame)
   }, [feedback])
 
   useEffect(() => {
@@ -168,7 +171,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     typed,
   ])
 
-  function speakCurrent() {
+  const speakCurrent = useCallback(() => {
     if (!currentWord || !state.soundOn) return
     const unavailable = () => {
       setAudioReady(false)
@@ -189,7 +192,15 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
       unavailable,
     )
     if (!started) unavailable()
-  }
+  }, [currentWord, state.narratorRate, state.narratorVoiceURI, state.soundOn])
+
+  // A spelling card is unanswerable until its word is heard, so it speaks on
+  // arrival like the prep listening test; the play button remains for replays.
+  useEffect(() => {
+    if (mode !== 'spelling' || feedback) return
+    const timer = window.setTimeout(speakCurrent, 90)
+    return () => window.clearTimeout(timer)
+  }, [cardKey, feedback, mode, speakCurrent])
 
   function commit(correct: boolean) {
     if (!currentId || !currentWord || !progress || feedback) return
@@ -340,7 +351,11 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                 disabled={Boolean(feedback) || answerLocked}
                 value={typed}
                 onChange={event => setTyped(event.target.value)}
-                onKeyDown={event => { if (event.key === 'Enter') submitTyped() }}
+                onKeyDown={event => {
+                  if (event.key !== 'Enter') return
+                  event.preventDefault()
+                  submitTyped()
+                }}
               />
               {!feedback && (
                 <div className="mt-3 grid grid-cols-2 gap-2">

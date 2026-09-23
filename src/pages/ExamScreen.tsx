@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState, RetrievalMode, SkillDimension } from '../engine/types'
 import { buildExam, examPool, scoreExam, type BuiltExam, type ExamResult } from '../engine/exams'
 import { examDefinition } from '../engine/gates'
@@ -51,6 +51,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const [audioReady, setAudioReady] = useState(false)
   const questionStartedAt = useRef(0)
   const questionRef = useRef<HTMLDivElement>(null)
+  const answerInputRef = useRef<HTMLInputElement>(null)
   const mountedRef = useRef(false)
 
   useEffect(() => {
@@ -86,13 +87,10 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     }, exam)
   }, [answers, attempt, exam, examId, index, onBreak, result, timings, typed])
 
-  if (!exam) return null
-  const builtExam: BuiltExam = exam
-  const def = examDefinition(examId)!
-  const question = builtExam.questions[index]
+  const question = exam?.questions[index]
   const word = question ? WORD_BY_ID.get(question.wordId) : undefined
 
-  function speakCurrent() {
+  const speakCurrent = useCallback(() => {
     if (!word || !state.soundOn) return
     const unavailable = () => {
       setAudioReady(false)
@@ -113,7 +111,27 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       unavailable,
     )
     if (!started) unavailable()
-  }
+  }, [state.narratorRate, state.narratorVoiceURI, state.soundOn, word])
+
+  // Spelling questions speak on arrival; the play button remains for replays.
+  const spellingActive = question?.mode === 'spelling' && !onBreak && !result
+  useEffect(() => {
+    if (!spellingActive) return
+    const timer = window.setTimeout(speakCurrent, 90)
+    return () => window.clearTimeout(timer)
+  }, [index, speakCurrent, spellingActive])
+
+  const typedActive = Boolean(question && isTypedMode(question.mode)) && !onBreak && !result
+  const answerLocked = question?.mode === 'spelling' && (audioBlocked || !audioReady)
+  useEffect(() => {
+    if (!typedActive || answerLocked) return
+    const frame = window.requestAnimationFrame(() => answerInputRef.current?.focus())
+    return () => window.cancelAnimationFrame(frame)
+  }, [answerLocked, index, typedActive])
+
+  if (!exam) return null
+  const builtExam: BuiltExam = exam
+  const def = examDefinition(examId)!
 
   function finalize(nextAnswers: Record<number, boolean>, nextTimings: Record<number, number>, built: BuiltExam) {
     clearExamDraft(examId)
@@ -148,7 +166,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   }
 
   function answer(correct: boolean) {
-    if (!question || result || (question.mode === 'spelling' && (audioBlocked || !audioReady))) return
+    if (!question || result || answerLocked) return
     if (resumedDraft) setResumedDraft(false)
     const elapsed = Math.max(1, Date.now() - questionStartedAt.current)
     const nextAnswers = { ...answers, [question.index]: correct }
@@ -169,7 +187,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   }
 
   function submitTyped() {
-    if (!word || !typed.trim()) return
+    if (!question || !word || !typed.trim()) return
     answer(isQuestionTypedCorrect(typed, question))
   }
 
@@ -332,20 +350,26 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
               <label htmlFor="exam-answer" className="block text-sm font-bold">پاسخ انگلیسی</label>
               <input
                 id="exam-answer"
+                ref={answerInputRef}
                 className="answer-input mt-2 w-full"
                 dir="ltr"
                 autoFocus
                 autoComplete="off"
                 autoCapitalize="none"
                 spellCheck={false}
-                disabled={question.mode === 'spelling' && (audioBlocked || !audioReady)}
+                enterKeyHint="next"
+                disabled={answerLocked}
                 value={typed}
                 onChange={event => setTyped(event.target.value)}
-                onKeyDown={event => { if (event.key === 'Enter') submitTyped() }}
+                onKeyDown={event => {
+                  if (event.key !== 'Enter') return
+                  event.preventDefault()
+                  submitTyped()
+                }}
               />
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <button type="button" className="btn-quiet py-3 text-sm" disabled={question.mode === 'spelling' && (audioBlocked || !audioReady)} onClick={() => answer(false)}>نمی‌دانم</button>
-                <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (question.mode === 'spelling' && (audioBlocked || !audioReady))} onClick={submitTyped}>ثبت و بعدی</button>
+                <button type="button" className="btn-quiet py-3 text-sm" disabled={answerLocked} onClick={() => answer(false)}>نمی‌دانم</button>
+                <button type="button" className="btn-ink py-3" disabled={!typed.trim() || answerLocked} onClick={submitTyped}>ثبت و بعدی</button>
               </div>
             </div>
           ) : (

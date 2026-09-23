@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { persianPartOfSpeech } from '../src/engine/partOfSpeech'
+import { faNum } from '../src/engine/format'
 
 interface VocabularyEntry {
   id: string
@@ -413,19 +414,19 @@ test('listening gate fails closed when no English audio path can start', async (
   await expectNoHorizontalOverflow(page)
 })
 
-test('smart review keeps the graded card on screen until the learner moves on', async ({ page }) => {
-  const target = chapterWords[1]
+async function openWithProgress(page: Page, route: string, progress: {
+  words?: Record<string, Record<string, unknown>>
+  chapters?: Record<string, Record<string, unknown>>
+}): Promise<void> {
   await page.goto('/#/map')
-  await page.evaluate(({ wordId }) => {
+  await page.evaluate(({ route, progress }) => {
     const now = Date.now()
     window.localStorage.setItem('ghesse:state:v6', JSON.stringify({
       version: 6,
       currentChapter: 'b1c1',
-      chapters: {},
+      chapters: progress.chapters ?? {},
       exams: {},
-      words: {
-        [wordId]: { introduced: true, firstSeenAt: now - 2 * 86_400_000, reviewStage: 0, dueAt: now - 60_000 },
-      },
+      words: progress.words ?? {},
       soundOn: true,
       showFaDefault: false,
       narratorVoiceURI: '',
@@ -433,9 +434,19 @@ test('smart review keeps the graded card on screen until the learner moves on', 
       dailyReviewGoal: 15,
       created: now - 2 * 86_400_000,
     }))
-    window.location.hash = '/review'
-  }, { wordId: target.id })
+    window.location.hash = route
+  }, { route, progress })
   await page.reload()
+}
+
+function dueWord(overrides: Record<string, unknown> = {}): Record<string, unknown> {
+  const now = Date.now()
+  return { introduced: true, firstSeenAt: now - 2 * 86_400_000, reviewStage: 0, dueAt: now - 60_000, ...overrides }
+}
+
+test('smart review keeps the graded card on screen until the learner moves on', async ({ page }) => {
+  const target = chapterWords[1]
+  await openWithProgress(page, '/review', { words: { [target.id]: dueWord() } })
 
   // A first review is recognition: Persian prompt, English options.
   const prompt = page.getByTestId('review-prompt')
@@ -453,6 +464,84 @@ test('smart review keeps the graded card on screen until the learner moves on', 
   await expect(next).toBeFocused()
   await page.keyboard.press('Enter')
   await expect(page.getByRole('heading', { name: 'جلسه تمام شد' })).toBeVisible()
+})
+
+test('smart review speaks a spelling card on arrival and supports a keyboard-only answer', async ({ page }) => {
+  const target = chapterWords[2]
+  // Every skill but form is well covered, so the weakest channel is spelling.
+  await openWithProgress(page, '/review', {
+    words: {
+      [target.id]: dueWord({
+        reviewStage: 5,
+        reviewCorrect: 15,
+        skillStats: {
+          meaning: { correct: 5, wrong: 0 },
+          context: { correct: 5, wrong: 0 },
+          production: { correct: 5, wrong: 0 },
+          form: { correct: 0, wrong: 0 },
+        },
+      }),
+    },
+  })
+
+  await expect(page.getByText('واژه را گوش کن؛ متن انگلیسی پنهان می‌ماند.')).toBeVisible()
+  await expect.poll(() => spokenWord(page)).toBe(target.word)
+
+  const input = page.getByLabel('آنچه شنیدی را به انگلیسی بنویس')
+  await expect(input).toBeEnabled()
+  await expect(input).toBeFocused()
+  await page.keyboard.type(target.word)
+  await page.keyboard.press('Enter')
+  await expect(page.locator('.feedback-panel')).toContainText('درست')
+  await expect(page.getByRole('button', { name: 'کارت بعدی ←' })).toBeFocused()
+})
+
+test('glossary search tolerates Arabic-layout Persian letters', async ({ page }) => {
+  await page.goto('/#/glossary')
+  const search = page.getByLabel('جست‌وجو در واژه‌نامه')
+  // Arabic kaf and yeh, as typed on an Arabic keyboard layout.
+  await search.fill('كيك')
+  await expect(page.locator('.glossary-row')).toHaveCount(1)
+  await expect(page.locator('.glossary-row')).toContainText('cake')
+  await search.fill('BOOK')
+  await expect(page.locator('.glossary-row').first()).toContainText('book')
+})
+
+test('map chapter buttons announce their status', async ({ page }) => {
+  await page.goto('/#/map')
+  await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
+  await expect(page.getByRole('button', { name: /^فصل ۲: .+ — قفل$/ }).first()).toBeDisabled()
+})
+
+test('importing a backup asks before replacing progress', async ({ page }) => {
+  await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
+  await page.evaluate(() => window.sessionStorage.setItem('ghesse:prep:v1:b1c1', '{"stale":true}'))
+
+  const backup = {
+    version: 6,
+    currentChapter: 'b1c2',
+    chapters: { b1c1: { preparedAt: 1, prepAttempts: 1, completed: true, completedAt: 2, checksCorrect: 10, checksTotal: 10, reads: 1 } },
+    words: Object.fromEntries(chapter.new.map(id => [id, { introduced: true }])),
+    exams: {},
+  }
+  const file = { name: 'ghesse-progress.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(backup)) }
+  const fileInput = page.getByLabel('فایل پشتیبان پیشرفت')
+
+  await fileInput.setInputFiles(file)
+  const confirm = page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })
+  await expect(confirm).toContainText(`۱ فصل تمام‌شده، ${faNum(chapter.new.length)} واژهٔ آموخته`)
+  await expect(confirm).toContainText('۰ فصل تمام‌شده، ۱ واژهٔ آموخته')
+
+  // Cancelling leaves progress untouched.
+  await confirm.getByRole('button', { name: 'انصراف' }).click()
+  await expect(confirm).toHaveCount(0)
+  expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters)).toEqual({})
+
+  await fileInput.setInputFiles(file)
+  await page.getByRole('button', { name: 'جایگزین کن' }).click()
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+  expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters.b1c1.completed)).toBe(true)
+  expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).toBeNull()
 })
 
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
@@ -501,7 +590,11 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   const writtenInput = page.getByLabel('ترجمهٔ فارسی')
   await expect(writtenInput).toBeVisible()
   await writtenInput.fill('پاسخ اشتباه')
-  await stage.getByRole('button', { name: 'ثبت پاسخ', exact: true }).click()
+  await writtenInput.press('Enter')
+  await expect(stage.locator('.feedback-panel')).toContainText('دوباره در همین آزمون')
+  // The disabled answer field hands focus to the retry step, and the Enter
+  // that submitted the answer must not also skip past the correction.
+  await expect(stage.getByRole('button', { name: /ادامه و تکرار این واژه/ })).toBeFocused()
   await expect(stage.locator('.feedback-panel')).toContainText('دوباره در همین آزمون')
   await stage.getByRole('button', { name: /ادامه و تکرار این واژه/ }).click()
 
@@ -540,6 +633,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   expect(wrongOptionIndex).toBeGreaterThanOrEqual(0)
   await firstOptions.nth(wrongOptionIndex).click()
   await expect(stage.locator('.feedback-panel')).toContainText('دوباره در همین آزمون')
+  await expect(stage.getByRole('button', { name: /ادامه و تکرار این واژه/ })).toBeFocused()
   await stage.getByRole('button', { name: /ادامه و تکرار این واژه/ }).click()
 
   for (let guard = 0; guard < chapterWords.length + 2; guard++) {
@@ -592,6 +686,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
       expect(wrong).toBeGreaterThanOrEqual(0)
       await options.nth(wrong).click()
       await expect(page.locator('.question-card .feedback-panel')).toContainText('پاسخ درست')
+      await expect(page.getByRole('button', { name: 'سؤال بعدی ←', exact: true })).toBeFocused()
     } else {
       await options.first().click()
       await expect(page.locator('.question-card .feedback-panel')).toBeVisible()
