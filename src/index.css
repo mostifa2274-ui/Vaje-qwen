@@ -49,6 +49,25 @@ html {
   font-family: Tahoma, 'Noto Sans Arabic', Arial, system-ui, sans-serif;
 }
 
+/* Pre-bundle placeholder in index.html; must not depend on app scripts. */
+.boot-screen {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.boot-screen b {
+  color: var(--ink);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
 body {
   background-color: var(--paper);
   color: var(--ink);
