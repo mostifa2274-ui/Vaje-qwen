@@ -899,14 +899,33 @@ button:disabled {
   border-radius: 18px;
   box-shadow: 0 6px 20px rgba(43,42,38,.07);
 }
-.book-thumb {
-  width: 4.5rem;
-  height: 4.5rem;
-  flex: 0 0 4.5rem;
-  object-fit: contain;
-  border-radius: 12px;
-  background: rgba(255,255,255,.26);
-  padding: .3rem;
+/* Illustrated banner heading each book; bleeds to the section edges. */
+.book-banner {
+  display: block;
+  width: calc(100% + 2rem);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 8 / 3;
+  margin: -1rem -1rem 1rem;
+  object-fit: cover;
+  border-radius: 17px 17px 0 0;
+  border-bottom: 1px solid var(--line-medium);
+  background: rgba(255,255,255,.3);
+}
+@media (min-width: 640px) {
+  .book-banner {
+    width: calc(100% + 2.5rem);
+    margin: -1.25rem -1.25rem 1.1rem;
+  }
+}
+.book-section {
+  overflow: hidden;
+}
+.book-section.is-locked > * {
+  opacity: .72;
+}
+.book-section.is-locked .book-banner {
+  filter: saturate(.55);
 }
 .book-status-icon {
   display: inline-flex;
@@ -935,11 +954,6 @@ button:disabled {
   }
   .journey-overview-head {
     gap: .7rem;
-  }
-  .book-thumb {
-    width: 3.75rem;
-    height: 3.75rem;
-    flex-basis: 3.75rem;
   }
 }
 
