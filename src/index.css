@@ -1210,3 +1210,44 @@ input[type="range"]:focus-visible {
   font-weight: 700;
   line-height: 1.2;
 }
+
+
+/* ---------- Contextual chapter teaching ---------- */
+.teach-context-card {
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: rgba(255,255,255,.24);
+}
+.teach-context-card .lesson-chapter-art,
+.teach-context-card .lesson-cover-fallback {
+  height: 10.5rem;
+}
+.teach-context-copy {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: .25rem .7rem;
+  border-top: 1px solid var(--line-soft);
+  padding: .7rem .85rem;
+}
+.teach-context-copy span {
+  color: var(--ink-soft);
+  font-size: .72rem;
+  font-weight: 700;
+}
+.teach-context-copy b {
+  min-width: 0;
+  font-size: .9rem;
+}
+.teach-context-copy small {
+  grid-column: 2;
+  color: var(--ink-soft);
+  font-size: .72rem;
+}
+
+@media (min-width: 768px) {
+  .teach-context-card .lesson-chapter-art,
+  .teach-context-card .lesson-cover-fallback {
+    height: 12rem;
+  }
+}
