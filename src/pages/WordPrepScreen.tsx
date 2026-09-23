@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
-import { buildReviewQuestion } from '../engine/review'
+import { buildReviewQuestion, seededSample } from '../engine/review'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback } from '../engine/narration'
@@ -26,13 +26,21 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
   const alreadyPrepared = chapterPrepared(state, chapterId)
+  const writtenOrder = useMemo(
+    () => seededSample(chapter.new, chapter.new.length, `${chapterId}:prep:written-order`),
+    [chapter.new, chapterId],
+  )
+  const listeningOrder = useMemo(
+    () => seededSample(chapter.new, chapter.new.length, `${chapterId}:prep:listening-order`),
+    [chapter.new, chapterId],
+  )
 
   const [initialDraft] = useState(() => alreadyPrepared ? undefined : loadPrepDraft(chapterId, chapter.new))
   const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
   const [phase, setPhase] = useState<PrepPhase>(() => initialDraft?.phase ?? 'teach')
   const [teachIndex, setTeachIndex] = useState(() => initialDraft?.teachIndex ?? 0)
 
-  const [writtenQueue, setWrittenQueue] = useState<string[]>(() => initialDraft?.writtenQueue ?? [...chapter.new])
+  const [writtenQueue, setWrittenQueue] = useState<string[]>(() => initialDraft?.writtenQueue ?? [...writtenOrder])
   const [writtenPassed, setWrittenPassed] = useState<Set<string>>(() => new Set(initialDraft?.writtenPassed ?? []))
   const [writtenMissed, setWrittenMissed] = useState<Set<string>>(() => new Set(initialDraft?.writtenMissed ?? []))
 
@@ -189,7 +197,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setResumedDraft(false)
     setPhase('teach')
     setTeachIndex(0)
-    setWrittenQueue([...chapter.new])
+    setWrittenQueue([...writtenOrder])
     setWrittenPassed(new Set())
     setWrittenMissed(new Set())
     setListeningQueue([])
@@ -211,7 +219,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       setTeachIndex(index => index + 1)
       return
     }
-    setWrittenQueue([...chapter.new])
+    setWrittenQueue([...writtenOrder])
     setWrittenPassed(new Set())
     setWrittenMissed(new Set())
     setTyped('')
@@ -247,7 +255,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setTyped('')
 
     if (nextQueue.length === 0) {
-      setListeningQueue([...chapter.new])
+      setListeningQueue([...listeningOrder])
       setListeningPassed(new Set())
       setListeningMissed(new Set())
       setSelected('')
