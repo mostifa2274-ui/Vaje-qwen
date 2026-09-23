@@ -372,7 +372,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 type="button"
                 className="btn-paper mt-4 px-4 py-2.5 text-sm"
                 onClick={() => speak(currentTeachWord.word, currentTeachWord.id)}
-                disabled={!state.soundOn}
+                disabled={!state.soundOn || !teachAudioReady}
                 aria-label={`پخش تلفظ ${currentTeachWord.word}`}
               >
                 <span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش دوباره</span>
