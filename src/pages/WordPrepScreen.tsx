@@ -11,6 +11,7 @@ import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
+import { faNum } from '../engine/format'
 
 interface Props {
   chapterId: string
@@ -18,10 +19,6 @@ interface Props {
   onChange: (next: GhesseState) => void
   onBack: () => void
   onReady: () => void
-}
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
 }
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
@@ -654,7 +651,6 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
           </div>
         )}
-
 
       </div>
     </div>

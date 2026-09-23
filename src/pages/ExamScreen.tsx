@@ -8,6 +8,7 @@ import { speakEnglishWithFallback } from '../engine/narration'
 import { wordSrc } from '../engine/audio'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
+import { faNum, percent } from '../engine/format'
 
 interface Props {
   examId: string
@@ -15,14 +16,6 @@ interface Props {
   onChange: (next: GhesseState) => void
   onBack: () => void
   onReview: () => void
-}
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
-
-function percent(value: number): string {
-  return `${faNum(Math.round(value * 100))}٪`
 }
 
 function modeLabel(mode: RetrievalMode): string {
@@ -40,7 +33,6 @@ const SKILL_LABELS: Record<SkillDimension, string> = {
   production: 'تولید',
   form: 'املاء',
 }
-
 
 export default function ExamScreen({ examId, state, onChange, onBack, onReview }: Props) {
   const previousExam = state.exams[examId]

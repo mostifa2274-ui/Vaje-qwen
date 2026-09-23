@@ -14,6 +14,7 @@ import {
   examPassed,
   examRemediationPending,
 } from '../engine/gates'
+import { faNum, percent } from '../engine/format'
 
 interface Props {
   state: GhesseState
@@ -23,14 +24,6 @@ interface Props {
   onOpenReview: () => void
   onOpenGlossary: () => void
   onOpenSettings: () => void
-}
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
-
-function percent(value: number): string {
-  return `${faNum(Math.round(value * 100))}٪`
 }
 
 const SKILL_LABELS: Record<SkillDimension, string> = {

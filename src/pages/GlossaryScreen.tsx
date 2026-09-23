@@ -5,6 +5,7 @@ import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
 import { BackIcon, SearchIcon } from '../components/Icons'
+import { faNum } from '../engine/format'
 
 interface Props {
   state: GhesseState
@@ -13,10 +14,6 @@ interface Props {
 }
 
 const PAGE_SIZE = 200
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
 
 const LEVEL_FA: Record<MasteryLevel, string> = {
   new: 'تازه',
@@ -132,7 +129,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
             className="btn-paper mt-3 w-full py-2.5"
             onClick={() => setVisibleCount(count => Math.min(count + PAGE_SIZE, list.length))}
           >
-            نمایش واژه‌های بیشتر ({list.length - visibleCount} باقی مانده)
+            نمایش واژه‌های بیشتر ({faNum(list.length - visibleCount)} باقی مانده)
           </button>
         )}
 

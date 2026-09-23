@@ -3,6 +3,7 @@ import type { GhesseState, SkillDimension } from './types'
 import { durableCoverage, masteredCoverage, masteryCounts, skillCoverage } from './mastery'
 import { dueWordIds, retentionEstimate, troubleWordIds } from './review'
 import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examPassed, examRemediationWordIds } from './gates'
+import { faNum } from './format'
 
 const DAY = 86_400_000
 
@@ -150,16 +151,16 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
   const health = learningHealth(state, now)
   const remediation = examRemediationWordIds(state)
   if (remediation.length > 0) {
-    return { kind: 'review', title: 'ترمیم قبل از آزمون', detail: `${remediation.length} واژه از آزمون قبلی هنوز باید بدون کمک بازیابی شود؛ پس از آن آزمون دوباره باز می‌شود.` }
+    return { kind: 'review', title: 'ترمیم قبل از آزمون', detail: `${faNum(remediation.length)} واژه از آزمون قبلی هنوز باید بدون کمک بازیابی شود؛ پس از آن آزمون دوباره باز می‌شود.` }
   }
   if (health.dueNow >= Math.max(8, Math.ceil(state.dailyReviewGoal * 0.6)) || health.overdueLong > 0) {
-    return { kind: 'review', title: 'اول مرورهای امروز', detail: `${health.dueNow} واژه سررسید دارد؛ تثبیت حافظه قبل از واژه‌های تازه مهم‌تر است.` }
+    return { kind: 'review', title: 'اول مرورهای امروز', detail: `${faNum(health.dueNow)} واژه سررسید دارد؛ تثبیت حافظه قبل از واژه‌های تازه مهم‌تر است.` }
   }
 
   for (let book = 1; book <= 8; book++) {
     const bookId = bookExamId(book)
     if (canTakeExam(state, bookId) && !examPassed(state, bookId)) {
-      return { kind: 'exam', examId: bookId, title: `آزمون کتاب ${book}`, detail: 'این آزمون دروازهٔ ورود به کتاب بعدی است و یادآوری نوشتاری هم دارد.' }
+      return { kind: 'exam', examId: bookId, title: `آزمون کتاب ${faNum(book)}`, detail: 'این آزمون دروازهٔ ورود به کتاب بعدی است و یادآوری نوشتاری هم دارد.' }
     }
     if (book === 4 && canTakeExam(state, MIDPOINT_EXAM_ID) && !examPassed(state, MIDPOINT_EXAM_ID)) {
       return { kind: 'exam', examId: MIDPOINT_EXAM_ID, title: 'آزمون ویژهٔ نیمهٔ مسیر', detail: 'مرور تجمعی کتاب‌های ۱ تا ۴ پیش از شروع کتاب ۵.' }
@@ -175,7 +176,7 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
       chapterId: chapter.id,
       prepared,
       title: prepared ? `ادامه: ${chapter.titleFa}` : `آمادگی: ${chapter.titleFa}`,
-      detail: prepared ? 'آزمون نوشتاری و شنیداری ۱۰۰٪ کامل است؛ حالا واژه‌ها را در قصه ببین.' : `${chapter.new.length} واژهٔ تازه را یاد بگیر، سپس همه را در آزمون نوشتاری و شنیداری ۱۰۰٪ پاس کن.`,
+      detail: prepared ? 'آزمون نوشتاری و شنیداری ۱۰۰٪ کامل است؛ حالا واژه‌ها را در قصه ببین.' : `${faNum(chapter.new.length)} واژهٔ تازه را یاد بگیر، سپس همه را در آزمون نوشتاری و شنیداری ۱۰۰٪ پاس کن.`,
     }
   }
 

@@ -13,6 +13,7 @@ import staleSentenceAudioJson from '../data/staleSentenceAudio.json'
 import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
 import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
 import ChapterIllustration from '../components/ChapterIllustration'
+import { faNum } from '../engine/format'
 
 interface Props {
   chapterId: string
@@ -24,10 +25,6 @@ interface Props {
 }
 
 const STALE_SENTENCE_AUDIO = new Set(staleSentenceAudioJson as string[])
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
 
 function wallClockNow(): number {
   return Date.now()
@@ -460,7 +457,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </span>
           </div>
 
-          <div className="mastery-progress mt-3" aria-label={`${checksCorrect} از ${questions.length} پاسخ تأیید شده`}>
+          <div className="mastery-progress mt-3" aria-label={`${faNum(checksCorrect)} از ${faNum(questions.length)} پاسخ تأیید شده`}>
             <span style={{ width: `${(checksCorrect / questions.length) * 100}%` }} />
           </div>
 

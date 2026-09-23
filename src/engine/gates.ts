@@ -1,5 +1,6 @@
 import { CHAPTERS, chaptersOfBook } from '../data/chapters'
 import type { GhesseState } from './types'
+import { faNum } from './format'
 
 export type ExamKind = 'book' | 'midpoint' | 'final'
 
@@ -30,7 +31,7 @@ export function examDefinition(id: string): ExamDefinition | undefined {
         id,
         kind: 'book',
         book,
-        titleFa: `آزمون کتاب ${book}`,
+        titleFa: `آزمون کتاب ${faNum(book)}`,
         subtitleFa: 'آزمون ترکیبی همین کتاب با سهم بالا از یادآوری نوشتاری و پوشش واژه‌های ضعیف و واژه‌های کمتر آزموده‌شده.',
         questionCount: 32,
         passRate: 0.85,

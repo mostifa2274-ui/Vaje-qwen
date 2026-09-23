@@ -18,16 +18,13 @@ import { wordSrc } from '../engine/audio'
 import { examRemediationWordIds } from '../engine/gates'
 import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
+import { faNum } from '../engine/format'
 
 interface Props {
   state: GhesseState
   now: number
   onChange: (next: GhesseState) => void
   onBack: () => void
-}
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
 }
 
 function modeLabel(mode: RetrievalMode): string {
