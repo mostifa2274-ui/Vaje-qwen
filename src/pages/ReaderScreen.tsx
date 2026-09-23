@@ -514,7 +514,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                 {currentQuestion.options.map(option => {
                   const isAnswer = option.id === currentQuestion.answerId
                   const chosen = currentAnswer === option.id
-                  let className = 'btn-paper min-h-12 px-3 py-3 text-sm leading-6'
+                  let className = `btn-paper min-h-12 px-3 py-3 text-sm leading-6 ${currentQuestion.optionDir === 'ltr' ? 'font-en' : ''}`
                   if (currentAnswer !== undefined && isAnswer) className += ' answer-correct'
                   else if (currentAnswer !== undefined && chosen) className += ' answer-wrong'
                   return (

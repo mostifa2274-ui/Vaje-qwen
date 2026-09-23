@@ -796,6 +796,13 @@ button:disabled {
   .story-paragraph + .story-paragraph {
     margin-top: 2rem;
   }
+
+  /* With tablet width to spare, keep a sentence's controls on one row so a
+     one-line sentence stays one line tall and the chapter reads as prose. */
+  .story-sentence-actions {
+    flex-direction: row;
+    padding-top: 0;
+  }
 }
 
 @media (max-width: 480px) {
