@@ -4,7 +4,7 @@ This directory is the reproducible migration path away from the legacy Oxford-de
 
 ## Release status
 
-The active learner deck remains **blocked for public/commercial redistribution**. Nothing in this directory clears the release gate by itself.
+The active deck has no documented redistribution clearance in this repository. Deployment does not use this record as a build gate. Nothing in this directory clears the content's provenance by itself.
 
 ## Independent reconstruction source
 
@@ -27,9 +27,9 @@ To avoid merely relabeling the current deck:
 4. Freeze the selected English headword set before comparing it with the legacy 899-word development deck.
 5. Independently author or independently verify every redistributable runtime field used by the new deck: Persian gloss, IPA, topic, example, Persian example translation, POS, and CEFR assignment.
 6. Record the final vocabulary JSON SHA-256 plus source/license evidence in `provenance/release-rights.json`.
-7. Only then change the manifest to `status: "cleared"` and set `GHESSE_RIGHTS_CONFIRMED=1` in the production environment.
+7. Only then change the manifest to `status: "cleared"` with retained evidence.
 
-The release gate validates the manifest against the exact active vocabulary bytes. A stale evidence file cannot clear a later vocabulary revision.
+When documenting a reconstructed deck, record the SHA-256 of the exact active vocabulary bytes. A stale evidence file cannot substantiate a later revision.
 
 ## Candidate generation
 

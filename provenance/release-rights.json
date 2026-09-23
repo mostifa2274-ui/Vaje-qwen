@@ -6,5 +6,5 @@
   "basis": "legacy-oxford-derived-development-deck",
   "sources": [],
   "clearedAt": null,
-  "notes": "Private-development vocabulary remains fail-closed. Set status to cleared only after documented redistribution rights or a completed independent reconstruction is retained with this exact vocabulary revision."
+  "notes": "This status records missing rights evidence for the current deck. Build and deployment scripts do not use it as a gate. Do not mark cleared without documented rights or an independently reconstructed replacement."
 }

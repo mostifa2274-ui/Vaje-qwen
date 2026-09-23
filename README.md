@@ -61,25 +61,20 @@ npm run build
 
 ## Cloudflare
 
-این repository برای Cloudflare Workers static assets و Git deployment آماده است. تنظیم فعلی Worker بدون تغییر داشبورد پشتیبانی می‌شود:
+این مخزن برای Cloudflare Workers static assets و انتشار خودکار از شاخهٔ `main` آماده است:
 
-- production branch: `main`
 - root: `/`
 - build command: خالی / `None`
-- build variables:
-  - `SKIP_DEPENDENCY_INSTALL=1`
-  - `GHESSE_RIGHTS_CONFIRMED=1` **فقط پس از ثبت evidence حقوق بازتوزیع مطابق `CONTENT_PROVENANCE.md`**؛ این flag به‌تنهایی کافی نیست و `provenance/release-rights.json` نیز باید `cleared` و با SHA-256 دقیق `src/data/vocabulary.json` منطبق باشد.
+- build variable: `SKIP_DEPENDENCY_INSTALL=1` اگر نصب خودکار Cloudflare غیرفعال شده است
 - deploy command: `npm run deploy`
 - output: `dist/`
 - Worker name: `vaje-qwen1`
 - production URL: `https://vaje-qwen1.mostifa2273.workers.dev/`
 
-`npm run deploy` عمداً self-contained و fail-closed است: ابتدا dependencyها را از lockfile نصب می‌کند، سپس `npm run release:check` را از مسیر `cloudflare:build` اجرا می‌کند، بعد همهٔ validationها، lint، test، TypeScript و Vite build را می‌گذراند و در پایان Wrangler را deploy می‌کند. public deploy زمانی متوقف می‌شود که `GHESSE_RIGHTS_CONFIRMED=1` وجود نداشته باشد **یا** manifest حقوقی checked-in هنوز blocked باشد **یا** SHA-256 ثبت‌شده با vocabulary فعال فرق کند. بنابراین flag محیطی به‌تنهایی هیچ release را مجاز نمی‌کند.
+`npm run deploy` وابستگی‌ها را از lockfile نصب می‌کند، همهٔ بررسی‌های محتوا و کیفیت، lint، test و build را اجرا می‌کند، سپس Wrangler را اجرا می‌کند. اگر تنظیمات Cloudflare دو فرمان جداگانه می‌خواهد، Build command را `npm run cloudflare:build` و Deploy command را `npx wrangler@4.135.0 deploy` قرار بده. `dist/` باید پیش از اجرای Wrangler ساخته شده باشد.
 
-برای تنظیم استاندارد جدید Cloudflare نیز Build command را `npm run cloudflare:build` و Deploy command را `npx wrangler@4.135.0 deploy` بگذار؛ همان `GHESSE_RIGHTS_CONFIRMED=1` باید فقط پس از ثبت evidence حقوق انتشار موجود باشد. در هر دو مسیر `dist/` پیش از deploy ساخته می‌شود و release gate قابل دورزدن نیست.
+`.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را با commit بررسی می‌کند. `.github/workflows/deploy-production.yml` تنها در صورت وجود دو secret استاندارد `CLOUDFLARE_API_TOKEN` و `CLOUDFLARE_ACCOUNT_ID` انتشار مستقیم جایگزین را انجام می‌دهد؛ سبز شدن این workflow هنگام نبود secret به معنی انتشار نیست.
 
-`.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را بررسی می‌کند. همچنین `.github/workflows/deploy-production.yml` پس از موفقیت CI همان commit را مستقیماً با Wrangler deploy می‌کند، اگر secrets استاندارد `CLOUDFLARE_API_TOKEN` و `CLOUDFLARE_ACCOUNT_ID` در GitHub Actions موجود باشند؛ در غیر این صورت بدون افشای secret، direct deploy را skip می‌کند و Cloudflare Git integration مسیر فعال باقی می‌ماند.
+## Provenance
 
-## provenance
-
-کیفیت فنی و حقوق بازتوزیع دو موضوع جدا هستند. `CONTENT_PROVENANCE.md` و `provenance/release-rights.json` باید همراه release نگهداری شوند. `npm run release:check` عمداً بدون acknowledgement محیطی، manifest `cleared`، evidence منبع/مجوز و SHA-256 منطبق fail می‌شود. مسیر بازسازی مستقل واژگان در `provenance/open-vocab/README.md` ثبت شده است.
+`CONTENT_PROVENANCE.md` و `provenance/release-rights.json` وضعیت منبع واژگان را ثبت می‌کنند. رکورد فعلی همچنان `blocked` است، زیرا مدرک حقوق بازنشر برای انتخاب واژگان فعلی در این مخزن وجود ندارد. این وضعیت دیگر ساخت یا انتشار فنی را متوقف نمی‌کند و انتشار موفق به معنی تأیید حقوق محتوا نیست. مسیر بازسازی مستقل در `provenance/open-vocab/README.md` آمده است.

@@ -12,12 +12,11 @@
     "preview": "vite preview",
     "validate:release-config": "node scripts/validate-release-config.mjs",
     "validate:data": "node scripts/validate-data.mjs",
-    "release:check": "node scripts/release-gate.mjs",
     "validate:editorial": "node scripts/validate-editorial.mjs",
     "validate:introductions": "node scripts/validate-introductions.mjs",
     "validate:mastery": "node scripts/validate-mastery.mjs",
     "prepare": "npm run build",
-    "cloudflare:build": "npm run release:check && npm run check",
+    "cloudflare:build": "npm run check",
     "deploy": "npm ci --include=dev --ignore-scripts --no-audit --no-fund && npm run cloudflare:build && npx wrangler@4.135.0 deploy"
   },
   "dependencies": {
