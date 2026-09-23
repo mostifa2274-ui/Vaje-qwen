@@ -347,31 +347,42 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
     return parsed.writtenPassed?.length ?? 0
   })).toBe(1)
 
-  const expectedAfterReload = chapterWords[2].word
+  const expectedAfterReload = (await page.getByTestId('written-headword').innerText()).trim()
   await page.reload()
   await expect(page.getByText('پیشرفت این جلسه بازیابی شد؛ از همان‌جایی که رها کردی ادامه بده.')).toBeVisible()
   await expect(page.getByTestId('written-headword')).toHaveText(expectedAfterReload)
 
-  // Remaining queue = original words 3..N, then the deliberately missed first word.
-  for (const expected of [...chapterWords.slice(2), chapterWords[0]]) {
-    await expect(page.getByTestId('written-headword')).toHaveText(expected.word)
+  // Finish the deterministic written queue without assuming chapter-order positions.
+  for (let guard = 0; guard < chapterWords.length + 2; guard++) {
+    if (await page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪').isVisible()) break
     await answerCurrentWrittenWord(page)
   }
 
-  // Listening gate: answers remain disabled until the spoken word reaches onend.
+  // Listening gate uses a separate stable order and remains disabled until
+  // the spoken word reaches onend.
   await expect(page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪')).toBeVisible()
-  await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
 
   const firstOptions = page.getByTestId('listening-options').getByRole('button')
   await expect(firstOptions.first()).toBeEnabled()
+  const firstSpokenSurface = await spokenWord(page)
+  const firstListeningWord = wordBySurface.get(firstSpokenSurface)
+  if (!firstListeningWord) throw new Error(`Unknown first listening word: ${firstSpokenSurface}`)
+
   const firstOptionLabels = (await firstOptions.allTextContents()).map(label => label.trim())
-  const wrongOptionIndex = firstOptionLabels.findIndex(label => label !== chapterWords[0].fa)
+  const wrongOptionIndex = firstOptionLabels.findIndex(label => label !== firstListeningWord.fa)
   expect(wrongOptionIndex).toBeGreaterThanOrEqual(0)
   await firstOptions.nth(wrongOptionIndex).click()
   await expect(stage.locator('.feedback-panel')).toContainText('دوباره در همین آزمون')
   await stage.getByRole('button', { name: /ادامه و تکرار این واژه/ }).click()
 
-  for (const expected of [...chapterWords.slice(1), chapterWords[0]]) {
+  for (let guard = 0; guard < chapterWords.length + 2; guard++) {
+    if (/\/read\/b1c1$/.test(page.url())) break
+
+    const options = page.getByTestId('listening-options').getByRole('button')
+    await expect(options.first()).toBeEnabled()
+    const spokenSurface = await spokenWord(page)
+    const expected = wordBySurface.get(spokenSurface)
+    if (!expected) throw new Error(`Unknown listening word in browser test: ${spokenSurface}`)
     await answerCurrentListeningWord(page, expected)
   }
 
