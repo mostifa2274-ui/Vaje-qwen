@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
-import { buildReviewQuestion } from '../engine/review'
+import { buildReviewQuestion, hasDuplicateWordSurface, listeningCueText } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
@@ -78,6 +78,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       : undefined,
     [chapterId, currentListeningId, currentListeningWord, listeningPassed.size, listeningQueue.length],
   )
+  const writtenNeedsContext = Boolean(currentWrittenWord && hasDuplicateWordSurface(currentWrittenWord, VOCAB))
+  const listeningNeedsContext = Boolean(currentListeningWord && hasDuplicateWordSurface(currentListeningWord, VOCAB))
 
   const speak = useCallback((word: string, id: string, unlockListening = false, unlockTeach = false) => {
     if (!state.soundOn) return
@@ -126,6 +128,33 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!started) unavailable()
   }, [currentTeachWord, state.narratorRate, state.narratorVoiceURI, state.soundOn])
 
+  const speakListeningCue = useCallback((word: typeof currentListeningWord) => {
+    if (!word || !state.soundOn) return
+    setListeningReady(false)
+    setAudioBlocked(false)
+    setAudioNotice('')
+    const contextual = hasDuplicateWordSurface(word, VOCAB)
+    const unavailable = () => {
+      setListeningReady(false)
+      setAudioBlocked(true)
+      setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.')
+    }
+    const ended = () => {
+      setListeningReady(true)
+      setAudioBlocked(false)
+      setAudioNotice('')
+    }
+    const started = speakEnglishWithFallback(
+      listeningCueText(word, VOCAB),
+      state.narratorVoiceURI,
+      state.narratorRate,
+      contextual ? exampleSrc(word.id) : wordSrc(word.id),
+      ended,
+      unavailable,
+    )
+    if (!started) unavailable()
+  }, [state.narratorRate, state.narratorVoiceURI, state.soundOn])
+
   useEffect(() => {
     const word = phase === 'teach'
       ? currentTeachWord
@@ -136,12 +165,16 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     const timer = window.setTimeout(() => {
       setAudioBlocked(false)
       setAudioNotice('')
-      if (phase === 'listening') setListeningReady(false)
-      if (phase === 'teach') setTeachAudioReady(false)
-      speak(word.word, word.id, phase === 'listening', phase === 'teach')
+      if (phase === 'listening') {
+        setListeningReady(false)
+        speakListeningCue(currentListeningWord)
+      } else {
+        setTeachAudioReady(false)
+        speak(word.word, word.id, false, true)
+      }
     }, 90)
     return () => window.clearTimeout(timer)
-  }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
+  }, [currentListeningWord, currentTeachWord, phase, speak, speakListeningCue, state.soundOn])
 
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -463,6 +496,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <div className="mt-7 text-center">
               <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>یک معنی درست را به فارسی بنویس</div>
               <div data-testid="written-headword" className="mt-2 font-en text-4xl font-bold" dir="ltr">{currentWrittenWord.word}</div>
+              {writtenNeedsContext && (
+                <div className="learning-example mt-4 p-3 text-left" dir="ltr">
+                  <div className="text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>Meaning in this sentence:</div>
+                  <div className="mt-1 font-en text-base leading-7">{currentWrittenWord.ex}</div>
+                </div>
+              )}
             </div>
 
             <label htmlFor="prep-written" className="mt-6 block text-sm font-bold">ترجمهٔ فارسی</label>
@@ -521,14 +560,21 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             ) : (
               <>
                 <div className="mt-7 text-center">
-                  <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و معنی درست را انتخاب کن</div>
+                  <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>
+                    {listeningNeedsContext
+                      ? 'واژه را در یک جمله گوش کن و معنی همین کاربرد را انتخاب کن'
+                      : 'واژه را گوش کن و معنی درست را انتخاب کن'}
+                  </div>
                   <button
                     type="button"
                     className="btn-paper mt-4 min-h-20 w-full text-2xl"
-                    onClick={() => { setListeningReady(false); speak(currentListeningWord.word, currentListeningWord.id, true) }}
-                    aria-label="پخش دوبارهٔ واژه"
+                    onClick={() => speakListeningCue(currentListeningWord)}
+                    aria-label={listeningNeedsContext ? 'پخش دوبارهٔ واژه در جمله' : 'پخش دوبارهٔ واژه'}
                   >
-                    <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <SpeakerIcon className="h-6 w-6" />
+                      {listeningNeedsContext ? 'پخش واژه در جمله' : 'پخش دوباره'}
+                    </span>
                   </button>
                   {!listeningReady && !audioNotice && (
                     <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>
