@@ -7,7 +7,7 @@ import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback } from '../engine/narration'
 import { exampleSrc, wordSrc } from '../engine/audio'
-import { BackIcon, SpeakerIcon } from '../components/Icons'
+import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
@@ -53,8 +53,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [audioNotice, setAudioNotice] = useState('')
   const [listeningReady, setListeningReady] = useState(false)
   const [teachAudioReady, setTeachAudioReady] = useState(false)
+  const [teachAutoPlay, setTeachAutoPlay] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
   const writtenInputRef = useRef<HTMLInputElement>(null)
+  const continueTeachRef = useRef<() => void>(() => {})
   const continueWrittenRef = useRef<() => void>(() => {})
   const continueListeningRef = useRef<() => void>(() => {})
   const hasMountedRef = useRef(false)
@@ -83,7 +85,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!state.soundOn) return
     const unavailable = () => {
       if (unlockListening) setListeningReady(false)
-      if (unlockTeach) setTeachAudioReady(true)
+      if (unlockTeach) {
+        setTeachAudioReady(true)
+        setTeachAutoPlay(false)
+      }
       setAudioBlocked(true)
       setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.')
     }
@@ -217,10 +222,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setAudioNotice('')
     setListeningReady(false)
     setTeachAudioReady(false)
+    setTeachAutoPlay(false)
   }
 
   function previousTeach() {
     if (!teachAudioReady || teachIndex === 0) return
+    setTeachAutoPlay(false)
     setTeachAudioReady(false)
     setTeachIndex(index => Math.max(0, index - 1))
   }
@@ -237,6 +244,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setWrittenMissed(new Set())
     setTyped('')
     setFeedback(null)
+    setTeachAutoPlay(false)
     setPhase('written')
   }
 
@@ -324,9 +332,20 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }
 
   useEffect(() => {
+    continueTeachRef.current = continueTeach
     continueWrittenRef.current = continueWritten
     continueListeningRef.current = continueListening
   })
+
+  useEffect(() => {
+    if (phase !== 'teach' || !teachAutoPlay || !teachAudioReady || audioBlocked) return
+
+    const timer = window.setTimeout(() => {
+      continueTeachRef.current()
+    }, 1100)
+
+    return () => window.clearTimeout(timer)
+  }, [audioBlocked, currentTeachId, phase, teachAudioReady, teachAutoPlay])
 
   useEffect(() => {
     if (feedback !== 'correct') return
@@ -395,6 +414,22 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <span style={{ width: `${((teachIndex + 1) / chapter.new.length) * 100}%` }} />
             </div>
 
+            <div className="mt-3 flex justify-end">
+              <button
+                type="button"
+                className={teachAutoPlay ? 'btn-ink px-3 py-2.5 text-sm' : 'btn-quiet px-3 py-2.5 text-sm'}
+                aria-pressed={teachAutoPlay}
+                aria-label={teachAutoPlay ? 'توقف آموزش خودکار' : 'شروع آموزش خودکار'}
+                disabled={!state.soundOn || audioBlocked}
+                onClick={() => setTeachAutoPlay(value => !value)}
+              >
+                <span className="inline-flex items-center gap-2">
+                  {teachAutoPlay ? <PauseIcon className="h-4 w-4" /> : <PlayIcon className="h-4 w-4" />}
+                  {teachAutoPlay ? 'توقف خودکار' : 'آموزش خودکار'}
+                </span>
+              </button>
+            </div>
+
             {!state.soundOn && (
               <div className="paper-note mt-4">
                 برای تلفظ خودکار، صدا باید روشن باشد.
@@ -412,7 +447,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <button
                 type="button"
                 className="btn-paper mt-4 px-4 py-2.5 text-sm"
-                onClick={() => speak(currentTeachWord.word, currentTeachWord.id)}
+                onClick={() => { setTeachAutoPlay(false); speak(currentTeachWord.word, currentTeachWord.id) }}
                 disabled={!state.soundOn || !teachAudioReady}
                 aria-label={`پخش تلفظ ${currentTeachWord.word}`}
               >
@@ -426,7 +461,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <button
                 type="button"
                 className="btn-quiet mt-3 px-3 py-2.5 text-sm"
-                onClick={speakExample}
+                onClick={() => { setTeachAutoPlay(false); speakExample() }}
                 disabled={!state.soundOn || !teachAudioReady}
                 aria-label="شنیدن مثال"
               >
