@@ -316,8 +316,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     }
   }
 
-  continueWrittenRef.current = continueWritten
-  continueListeningRef.current = continueListening
+  useEffect(() => {
+    continueWrittenRef.current = continueWritten
+    continueListeningRef.current = continueListening
+  })
 
   useEffect(() => {
     if (feedback !== 'correct') return
