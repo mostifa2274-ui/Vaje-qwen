@@ -10,6 +10,7 @@ import { exampleSrc, wordSrc } from '../engine/audio'
 import { BackIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
+import { persianPartOfSpeech } from '../engine/partOfSpeech'
 
 interface Props {
   chapterId: string
@@ -218,6 +219,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setTeachAudioReady(false)
   }
 
+  function previousTeach() {
+    if (!teachAudioReady || teachIndex === 0) return
+    setTeachAudioReady(false)
+    setTeachIndex(index => Math.max(0, index - 1))
+  }
+
   function continueTeach() {
     if (!currentTeachWord || !teachAudioReady) return
     if (teachIndex + 1 < chapter.new.length) {
@@ -398,6 +405,9 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <div className="mt-7 text-center">
               <div data-testid="teach-headword" className="font-en text-4xl font-bold" dir="ltr">{currentTeachWord.word}</div>
               {currentTeachWord.ipa && <div className="mt-2 font-en text-sm" dir="ltr">/ {currentTeachWord.ipa} /</div>}
+              <div className="mt-3 flex justify-center">
+                <span className="lexical-role-chip">{persianPartOfSpeech(currentTeachWord.pos)}</span>
+              </div>
               <div className="mt-4 text-3xl font-extrabold">{currentTeachWord.fa}</div>
               <button
                 type="button"
@@ -424,9 +434,19 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               </button>
             </div>
 
-            <button type="button" className="btn-ink mt-5 w-full py-3" disabled={!teachAudioReady} onClick={continueTeach}>
-              {teachIndex + 1 < chapter.new.length ? 'واژهٔ بعدی ←' : 'شروع آزمون ترجمهٔ نوشتاری ←'}
-            </button>
+            <div className="mt-5 grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                className="btn-quiet py-3 text-sm"
+                disabled={!teachAudioReady || teachIndex === 0}
+                onClick={previousTeach}
+              >
+                قبلی
+              </button>
+              <button type="button" className="btn-ink col-span-2 py-3" disabled={!teachAudioReady} onClick={continueTeach}>
+                {teachIndex + 1 < chapter.new.length ? 'واژهٔ بعدی ←' : 'شروع آزمون ترجمهٔ نوشتاری ←'}
+              </button>
+            </div>
           </div>
         )}
 
