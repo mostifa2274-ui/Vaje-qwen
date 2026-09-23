@@ -218,6 +218,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                     const prepared = chapterPrepared(state, ch.id)
                     const accessible = canPrepareChapter(state, ch.id)
                     const nodeState = isDone ? 'is-done' : prepared && accessible ? 'is-ready' : accessible ? 'is-current' : 'is-locked'
+                    const status = isDone ? 'تمام شده' : prepared && accessible ? 'آمادهٔ خواندن' : accessible ? 'آموزش + آزمون واژه‌ها' : 'قفل'
 
                     return (
                       <div key={ch.id} className="flex items-center gap-2">
@@ -225,8 +226,8 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                           className={`node-circle h-11 w-11 text-sm ${nodeState}`}
                           disabled={!accessible}
                           onClick={() => onOpenChapter(ch.id)}
-                          title={isDone ? `${ch.titleFa} — تمام شده` : prepared ? `${ch.titleFa} — آمادهٔ خواندن` : accessible ? `${ch.titleFa} — آموزش + آزمون واژه‌ها` : `${ch.titleFa} — قفل`}
-                          aria-label={`فصل ${faNum(ch.n)}: ${ch.titleFa}`}
+                          title={`${ch.titleFa} — ${status}`}
+                          aria-label={`فصل ${faNum(ch.n)}: ${ch.titleFa} — ${status}`}
                           aria-current={nodeState === 'is-current' ? 'step' : undefined}
                         >
                           {isDone
