@@ -111,9 +111,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   const speakExample = useCallback(() => {
     if (!currentTeachWord || !state.soundOn) return
+    setTeachAudioReady(false)
     setAudioBlocked(false)
     setAudioNotice('')
     const unavailable = () => {
+      setTeachAudioReady(true)
+      setTeachAutoPlay(false)
       setAudioBlocked(true)
       setAudioNotice('پخش مثال انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.')
     }
@@ -123,6 +126,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       state.narratorRate,
       exampleSrc(currentTeachWord.id),
       () => {
+        setTeachAudioReady(true)
         setAudioBlocked(false)
         setAudioNotice('')
       },
@@ -447,7 +451,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <button
                 type="button"
                 className="btn-paper mt-4 px-4 py-2.5 text-sm"
-                onClick={() => { setTeachAutoPlay(false); speak(currentTeachWord.word, currentTeachWord.id) }}
+                onClick={() => {
+                  setTeachAutoPlay(false)
+                  setTeachAudioReady(false)
+                  speak(currentTeachWord.word, currentTeachWord.id, false, true)
+                }}
                 disabled={!state.soundOn || !teachAudioReady}
                 aria-label={`پخش تلفظ ${currentTeachWord.word}`}
               >
