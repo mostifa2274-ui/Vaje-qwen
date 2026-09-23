@@ -393,11 +393,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
         <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
-          <ChapterIllustration
-            chapterId={chapter.id}
-            titleFa={chapter.titleFa}
-            tint={meta.tint}
-          />
+          <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
           <div className="lesson-cover-copy">
             <div className="min-w-0">
               <div className="font-en text-xs font-bold uppercase tracking-[0.16em]" dir="ltr">{meta.titleEn}</div>
