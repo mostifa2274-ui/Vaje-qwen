@@ -370,7 +370,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     currentTeachId,
     phase,
     speakExample,
-    teachAudioExampleDone,
+    teachAutoExampleDone,
     teachAudioReady,
     teachAutoPlay,
   ])
@@ -483,6 +483,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 onClick={() => {
                   setTeachAutoPlay(false)
                   setTeachAudioReady(false)
+                  setTeachAutoExampleDone(false)
                   speak(currentTeachWord.word, currentTeachWord.id, false, true)
                 }}
                 disabled={!state.soundOn || !teachAudioReady}
