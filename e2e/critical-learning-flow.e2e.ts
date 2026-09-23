@@ -315,6 +315,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   const stage = page.locator('.learning-focus-card')
   const exampleAudio = stage.getByRole('button', { name: 'شنیدن مثال' })
   await expect(exampleAudio).toBeVisible()
+  await expect(exampleAudio).toBeEnabled()
   await exampleAudio.click()
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].ex)
 
@@ -324,7 +325,9 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
     const label = index === chapterWords.length - 1
       ? /شروع آزمون ترجمهٔ نوشتاری/
       : /واژهٔ بعدی/
-    await stage.getByRole('button', { name: label }).click()
+    const nextTeachingStep = stage.getByRole('button', { name: label })
+    await expect(nextTeachingStep).toBeEnabled()
+    await nextTeachingStep.click()
   }
 
   // Written gate: force one error to prove retry-until-correct behavior.
