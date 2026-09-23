@@ -92,6 +92,18 @@ export function isQuestionTypedCorrect(input: string, question: Pick<ReviewQuest
   return question.acceptedAnswers.includes(normalizeTypedAnswer(input))
 }
 
+export function hasDuplicateWordSurface(target: Pick<WordEntry, 'id' | 'word'>, vocab: readonly WordEntry[]): boolean {
+  const surface = normalizeTypedAnswer(target.word)
+  return vocab.some(word => word.id !== target.id && normalizeTypedAnswer(word.word) === surface)
+}
+
+export function listeningCueText(target: WordEntry, vocab: readonly WordEntry[]): string {
+  if (hasDuplicateWordSurface(target, vocab) && target.ex.trim()) {
+    return `${target.word}. ${target.ex}`
+  }
+  return target.word
+}
+
 function utcDay(now: number): string {
   return new Date(now).toISOString().slice(0, 10)
 }
@@ -465,7 +477,7 @@ export function buildReviewQuestion(
       [target, ...distractors].map(word => ({ id: word.id, label: word.fa })),
       `${seed}:options`,
     )
-    const duplicateSurface = vocab.some(word => word.id !== target.id && normalizeTypedAnswer(word.word) === normalizeTypedAnswer(target.word))
+    const duplicateSurface = hasDuplicateWordSurface(target, vocab)
     return {
       wordId: target.id,
       mode,
