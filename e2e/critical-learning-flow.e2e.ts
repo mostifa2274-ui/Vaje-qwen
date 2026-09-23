@@ -333,6 +333,10 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
 test('auto teach speaks word and context before advancing, then pauses on demand', async ({ page }) => {
   await page.goto('/#/prep/b1c1')
 
+  const teachingArt = page.locator('svg.lesson-chapter-art[role="img"]')
+  await expect(teachingArt).toBeVisible()
+  await expect(teachingArt.locator('text')).toHaveCount(0)
+  await expect(page.getByText('صحنهٔ این فصل', { exact: true })).toBeVisible()
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
 
@@ -340,10 +344,10 @@ test('auto teach speaks word and context before advancing, then pauses on demand
   await expect(startAuto).toBeEnabled()
   await startAuto.click()
   await expect(page.getByRole('button', { name: 'توقف آموزش خودکار' })).toHaveAttribute('aria-pressed', 'true')
-  await expect(page.getByText('در حالت خودکار: تلفظ واژه ← مثال شنیداری ← مکث کوتاه ← واژهٔ بعدی')).toBeVisible()
+  await expect(page.getByText('در حالت خودکار: تلفظ واژه ← مثال شنیداری ← زمان کافی برای خواندن ترجمه ← واژهٔ بعدی')).toBeVisible()
 
   await expect.poll(async () => (await speechHistory(page)).includes(chapterWords[0].ex)).toBe(true)
-  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word, { timeout: 4_500 })
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word, { timeout: 7_500 })
   await expect.poll(async () => (await speechHistory(page)).includes(chapterWords[1].word)).toBe(true)
 
   const history = await speechHistory(page)
@@ -419,6 +423,8 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   // Direct reading is impossible before both preparation gates pass.
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toBeVisible()
+  await expect(page.locator('svg.lesson-chapter-art[role="img"]')).toBeVisible()
+  await expect(page.locator('svg.lesson-chapter-art text')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expectNoHorizontalOverflow(page)
 
