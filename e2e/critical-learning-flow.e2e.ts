@@ -38,6 +38,12 @@ async function spokenWord(page: Page): Promise<string> {
   ).__ghesseSpoken ?? '')
 }
 
+async function speechHistory(page: Page): Promise<string[]> {
+  return page.evaluate(() => (
+    window as Window & { __ghesseSpeechHistory?: string[] }
+  ).__ghesseSpeechHistory ?? [])
+}
+
 async function expectNoHorizontalOverflow(page: Page): Promise<void> {
   const dimensions = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
@@ -224,8 +230,12 @@ test.beforeEach(async ({ page }) => {
       localService: false,
     }
 
-    const testWindow = window as Window & { __ghesseSpoken?: string }
+    const testWindow = window as Window & {
+      __ghesseSpoken?: string
+      __ghesseSpeechHistory?: string[]
+    }
     testWindow.__ghesseSpoken = ''
+    testWindow.__ghesseSpeechHistory = []
 
     const synth = {
       cancel() {},
@@ -234,6 +244,7 @@ test.beforeEach(async ({ page }) => {
       },
       speak(utterance: FakeSpeechSynthesisUtterance) {
         testWindow.__ghesseSpoken = utterance.text
+        testWindow.__ghesseSpeechHistory?.push(utterance.text)
         window.setTimeout(() => utterance.onend?.(), 20)
       },
       addEventListener() {},
@@ -319,7 +330,7 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
   await expect(page).toHaveURL(/#\/map$/)
 })
 
-test('auto teach advances after pronunciation and pauses on demand', async ({ page }) => {
+test('auto teach speaks word and context before advancing, then pauses on demand', async ({ page }) => {
   await page.goto('/#/prep/b1c1')
 
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
@@ -329,15 +340,22 @@ test('auto teach advances after pronunciation and pauses on demand', async ({ pa
   await expect(startAuto).toBeEnabled()
   await startAuto.click()
   await expect(page.getByRole('button', { name: 'توقف آموزش خودکار' })).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.getByText('در حالت خودکار: تلفظ واژه ← مثال شنیداری ← مکث کوتاه ← واژهٔ بعدی')).toBeVisible()
 
-  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word, { timeout: 3_000 })
+  await expect.poll(async () => (await speechHistory(page)).includes(chapterWords[0].ex)).toBe(true)
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word, { timeout: 4_500 })
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[1].word)
+
+  const history = await speechHistory(page)
+  expect(history.indexOf(chapterWords[0].word)).toBeGreaterThanOrEqual(0)
+  expect(history.indexOf(chapterWords[0].ex)).toBeGreaterThan(history.indexOf(chapterWords[0].word))
+  expect(history.indexOf(chapterWords[1].word)).toBeGreaterThan(history.indexOf(chapterWords[0].ex))
 
   const stopAuto = page.getByRole('button', { name: 'توقف آموزش خودکار' })
   await stopAuto.click()
   await expect(page.getByRole('button', { name: 'شروع آموزش خودکار' })).toHaveAttribute('aria-pressed', 'false')
 
-  await page.waitForTimeout(1_350)
+  await page.waitForTimeout(2_000)
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word)
 })
 
