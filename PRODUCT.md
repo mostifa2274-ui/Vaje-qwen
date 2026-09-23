@@ -38,4 +38,4 @@ The learner should understand, recall, hear, and use the vocabulary well enough 
 ## Release constraints
 - All 899 assigned vocabulary introductions must remain covered.
 - Sentence/audio provenance safeguards must remain intact.
-- Public redistribution rights remain governed by CONTENT_PROVENANCE.md and the fail-closed release gate.
+- CONTENT_PROVENANCE.md records the unresolved provenance of the current vocabulary. Deployment no longer enforces a content-rights gate.

@@ -1,29 +1,15 @@
-# Ghesse vocabulary provenance boundary
+# Ghesse vocabulary provenance
 
-The current private-development deck contains 899 A1 English→Persian entries imported from the user-provided `vazhebaaz-vocabulary-complete` package.
+The current deck contains 899 A1 English→Persian entries imported from the user-provided `vazhebaaz-vocabulary-complete` package. The source package reports that its English selection was derived from an American Oxford 3000 A1 development selection.
 
-The source package states that the current selection retains provenance from an American Oxford 3000 A1-derived development selection. Public/commercial redistribution therefore remains **fail-closed** until one of these conditions is documented:
+The repository does not contain documented public or commercial redistribution rights for that selection. Removing a deployment check does not establish those rights. The current record in `provenance/release-rights.json` remains `blocked` for this reason.
 
-1. rights covering redistribution/use of the existing selection are established; or
-2. the selection is independently reconstructed and validated against a source whose terms permit the intended release, with its required attribution/terms retained.
+At the owner's request, the content-rights check has been removed from the build and deployment commands. The record remains available for a later rights review or independent replacement of the vocabulary. Do not change its status to `cleared` without evidence tied to the exact active content.
 
-Changing a source label is not a rights migration. Technical readiness of the application does not override this release gate.
-
-Runtime learner-facing fields imported here are stable `id`, English headword, Persian gloss, IPA, topic, English example, Persian example translation, part of speech, and CEFR level.
-
-## Evidence-bound public release
-
-Public release now requires **both**:
-
-- the deployment acknowledgement `GHESSE_RIGHTS_CONFIRMED=1`; and
-- a checked-in `provenance/release-rights.json` manifest with `status: "cleared"` whose `activeVocabularySha256` exactly matches the bytes of `src/data/vocabulary.json`.
-
-The manifest must also state the clearance basis, retain source/license evidence, and record a clearance date. A stale evidence record cannot clear a modified vocabulary file, and the environment variable alone cannot bypass a blocked manifest.
-
-The current manifest remains intentionally `blocked`.
+Runtime learner-facing fields are stable ID, English headword, Persian gloss, IPA, topic, English example, Persian example translation, part of speech, and CEFR level.
 
 ## Independent reconstruction path
 
-`provenance/open-vocab/README.md` documents a clean-room-style reconstruction workflow based on the official Tatoeba English CC0 sentence export. The accompanying `scripts/build-open-vocab-candidates.py` generates a frequency-ranked candidate pool directly from that corpus and intentionally does not read the legacy Ghesse vocabulary deck.
+`provenance/open-vocab/README.md` documents a reconstruction workflow using the official Tatoeba English CC0 sentence export. `scripts/build-open-vocab-candidates.py` creates a frequency-ranked candidate pool without reading the existing deck.
 
-The candidate pool is not itself a release vocabulary or rights clearance. The English selection must be frozen independently before comparison with the legacy deck, and all redistributable runtime fields must then be independently authored or independently verified before the final vocabulary hash can be recorded as cleared evidence.
+A candidate pool alone is not a finished replacement. The English selection must be frozen independently, and the Persian glosses, IPA, topics, examples, translations, parts of speech, CEFR assignments, and chapter mappings must be independently authored or verified before the record can be marked `cleared`.
