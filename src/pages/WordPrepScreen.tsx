@@ -10,6 +10,7 @@ import { exampleSrc, wordSrc } from '../engine/audio'
 import { BackIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
+import { prepPaceMilestone } from '../engine/prepPacing'
 
 interface Props {
   chapterId: string
@@ -21,6 +22,15 @@ interface Props {
 
 function faNum(n: number): string {
   return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
+}
+
+function PrepPacingCue({ completed }: { completed: number | null }) {
+  if (!completed) return null
+  return (
+    <div className="prep-pacing-cue" role="status">
+      {faNum(completed)} واژه تا اینجا کامل شده و پیشرفتت ذخیره است؛ می‌توانی حالا ادامه بدهی یا بعداً از همین‌جا برگردی.
+    </div>
+  )
 }
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
@@ -334,6 +344,9 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }, [currentListeningId, currentWrittenId, feedback, phase])
 
   const step = phase === 'teach' ? 1 : phase === 'written' ? 2 : 3
+  const teachPaceMilestone = prepPaceMilestone(teachIndex, chapter.new.length)
+  const writtenPaceMilestone = prepPaceMilestone(writtenPassed.size, chapter.new.length)
+  const listeningPaceMilestone = prepPaceMilestone(listeningPassed.size, chapter.new.length)
 
   return (
     <div className="page-in min-h-screen" style={{ background: 'var(--cream)' }}>
@@ -387,6 +400,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <div className="mastery-progress mt-3">
               <span style={{ width: `${((teachIndex + 1) / chapter.new.length) * 100}%` }} />
             </div>
+            <PrepPacingCue completed={teachPaceMilestone} />
 
             {!state.soundOn && (
               <div className="paper-note mt-4">
@@ -439,6 +453,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <div className="mastery-progress mt-3">
               <span style={{ width: `${(writtenPassed.size / chapter.new.length) * 100}%` }} />
             </div>
+            <PrepPacingCue completed={writtenPaceMilestone} />
 
             <div className="mt-7 text-center">
               <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>یک معنی درست را به فارسی بنویس</div>
@@ -492,6 +507,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <div className="mastery-progress mt-3">
               <span style={{ width: `${(listeningPassed.size / chapter.new.length) * 100}%` }} />
             </div>
+            <PrepPacingCue completed={listeningPaceMilestone} />
 
             {!state.soundOn ? (
               <div className="paper-note mt-5">
