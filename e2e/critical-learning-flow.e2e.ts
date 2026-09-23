@@ -319,6 +319,28 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
   await expect(page).toHaveURL(/#\/map$/)
 })
 
+test('auto teach advances after pronunciation and pauses on demand', async ({ page }) => {
+  await page.goto('/#/prep/b1c1')
+
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
+  await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
+
+  const startAuto = page.getByRole('button', { name: 'شروع آموزش خودکار' })
+  await expect(startAuto).toBeEnabled()
+  await startAuto.click()
+  await expect(page.getByRole('button', { name: 'توقف آموزش خودکار' })).toHaveAttribute('aria-pressed', 'true')
+
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word, { timeout: 3_000 })
+  await expect.poll(() => spokenWord(page)).toBe(chapterWords[1].word)
+
+  const stopAuto = page.getByRole('button', { name: 'توقف آموزش خودکار' })
+  await stopAuto.click()
+  await expect(page.getByRole('button', { name: 'شروع آموزش خودکار' })).toHaveAttribute('aria-pressed', 'false')
+
+  await page.waitForTimeout(1_350)
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word)
+})
+
 test('listening gate fails closed when no English audio path can start', async ({ page }) => {
   await page.goto('/#/map')
 
