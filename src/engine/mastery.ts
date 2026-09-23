@@ -2,26 +2,6 @@ import type { GhesseState, Chapter, SkillDimension, WordProgress } from './types
 
 export type MasteryLevel = 'new' | 'seen' | 'learning' | 'strong' | 'mastered'
 
-export let containment: Map<string, Set<string>> = new Map()
-
-export function setContainment(c: Map<string, Set<string>>): void {
-  containment = c
-}
-
-export function chapterContains(ch: Chapter, wordId: string): boolean {
-  return containment.get(ch.id)?.has(wordId) ?? ch.new.includes(wordId)
-}
-
-export function completedExposures(wordId: string, state: GhesseState, chapters: Chapter[]): number {
-  let exposures = 0
-  for (const ch of chapters) {
-    const progress = state.chapters[ch.id]
-    if (!progress?.completed || !chapterContains(ch, wordId)) continue
-    exposures += Math.max(1, progress.reads)
-  }
-  return exposures
-}
-
 function daySpan(days: string[]): number {
   if (days.length < 2) return 0
   const first = Date.parse(`${days[0]}T00:00:00Z`)

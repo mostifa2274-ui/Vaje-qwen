@@ -97,7 +97,7 @@ function viewLabel(view: View): string {
 
 export default function App() {
   const [state, setState] = useState<GhesseState>(() => loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS))
-  const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)))
+  const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), state))
   const [persistOk, setPersistOk] = useState(true)
   const [now, setNow] = useState(() => Date.now())
   const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
