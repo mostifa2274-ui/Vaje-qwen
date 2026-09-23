@@ -101,7 +101,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
             <div className="font-bold">صدا</div>
-            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ واژه‌ها و خواندن جمله‌ها</div>
+            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ واژه‌ها و خواندن جمله‌ها؛ آموزش و آزمون شنیداری هر فصل بدون صدا پیش نمی‌رود.</div>
           </div>
           <button
             type="button"

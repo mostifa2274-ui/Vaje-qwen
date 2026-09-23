@@ -479,7 +479,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
             {!state.soundOn && (
               <div className="paper-note mt-4">
-                برای تلفظ خودکار، صدا باید روشن باشد.
+                آموزش هر واژه با شنیدن تلفظ آن کامل می‌شود؛ تا صدا روشن نشود، واژهٔ بعدی باز نمی‌شود.
                 <button type="button" className="btn-ink mt-2 w-full py-2.5" onClick={enableSound}>روشن کردن صدا</button>
               </div>
             )}
