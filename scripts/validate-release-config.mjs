@@ -32,7 +32,7 @@ if (manifest.status === 'cleared') {
   assert(
     Array.isArray(manifest.sources) && manifest.sources.length > 0 && manifest.sources.every(source =>
       source && typeof source.name === 'string' && source.name.trim()
-      && typeof source.url === 'string' && /^https:\\/\\//.test(source.url)
+      && typeof source.url === 'string' && source.url.startsWith('https://')
       && typeof source.license === 'string' && source.license.trim()
     ),
     'cleared provenance must retain source and license evidence',
