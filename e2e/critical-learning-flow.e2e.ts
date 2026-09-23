@@ -413,6 +413,48 @@ test('listening gate fails closed when no English audio path can start', async (
   await expectNoHorizontalOverflow(page)
 })
 
+test('smart review keeps the graded card on screen until the learner moves on', async ({ page }) => {
+  const target = chapterWords[1]
+  await page.goto('/#/map')
+  await page.evaluate(({ wordId }) => {
+    const now = Date.now()
+    window.localStorage.setItem('ghesse:state:v6', JSON.stringify({
+      version: 6,
+      currentChapter: 'b1c1',
+      chapters: {},
+      exams: {},
+      words: {
+        [wordId]: { introduced: true, firstSeenAt: now - 2 * 86_400_000, reviewStage: 0, dueAt: now - 60_000 },
+      },
+      soundOn: true,
+      showFaDefault: false,
+      narratorVoiceURI: '',
+      narratorRate: 0.92,
+      dailyReviewGoal: 15,
+      created: now - 2 * 86_400_000,
+    }))
+    window.location.hash = '/review'
+  }, { wordId: target.id })
+  await page.reload()
+
+  // A first review is recognition: Persian prompt, English options.
+  const prompt = page.getByTestId('review-prompt')
+  await expect(prompt).toHaveText(target.fa)
+  const correct = page.locator('.review-focus-card').getByRole('button', { name: target.word, exact: true })
+  await correct.click()
+
+  // Grading advances the word's stage (and therefore its next retrieval
+  // mode), but the answered card must stay exactly as the learner saw it.
+  await expect(page.locator('.feedback-panel')).toContainText('درست')
+  await expect(prompt).toHaveText(target.fa)
+  await expect(correct).toHaveClass(/answer-correct/)
+
+  const next = page.getByRole('button', { name: 'کارت بعدی ←' })
+  await expect(next).toBeFocused()
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('heading', { name: 'جلسه تمام شد' })).toBeVisible()
+})
+
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
   await page.goto('/#/read/b1c1')
 

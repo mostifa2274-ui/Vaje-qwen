@@ -78,17 +78,27 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
   const [audioReady, setAudioReady] = useState(false)
+  const [gradedCard, setGradedCard] = useState<{ key: string; mode: RetrievalMode } | null>(null)
   const startedAtRef = useRef(0)
   const cardRef = useRef<HTMLDivElement>(null)
+  const answerInputRef = useRef<HTMLInputElement>(null)
+  const nextCardRef = useRef<HTMLButtonElement>(null)
+  const focusNextCardRef = useRef(false)
   const mountedRef = useRef(false)
 
   const currentId = queue[0]
   const currentWord = currentId ? WORD_BY_ID.get(currentId) : undefined
   const progress = currentId ? state.words[currentId] : undefined
-  const mode = progress ? modeForProgress(progress) : 'recognition'
+  const cardKey = currentId ? `${currentId}:${attemptNumber[currentId] ?? 0}` : ''
+  // Grading writes the word's new progress immediately, which usually moves it
+  // to a different retrieval mode. The answered card must not change under
+  // the feedback, so its mode stays frozen until the learner moves on.
+  const mode = gradedCard?.key === cardKey
+    ? gradedCard.mode
+    : progress ? modeForProgress(progress) : 'recognition'
   const question = useMemo(
-    () => currentWord ? buildReviewQuestion(currentWord, VOCAB, mode, `review:${currentId}:${attemptNumber[currentId] ?? 0}`) : undefined,
-    [attemptNumber, currentId, currentWord, mode],
+    () => currentWord ? buildReviewQuestion(currentWord, VOCAB, mode, `review:${cardKey}`) : undefined,
+    [cardKey, currentWord, mode],
   )
   const counts = useMemo(() => masteryCounts(state, VOCAB.map(w => w.id)), [state])
 
@@ -103,6 +113,21 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     }
     if (currentId) cardRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
   }, [currentId])
+
+  const typedMode = isTypedMode(mode)
+  const answerLocked = mode === 'spelling' && (audioBlocked || !audioReady)
+
+  useEffect(() => {
+    if (!typedMode || feedback || answerLocked) return
+    const frame = window.requestAnimationFrame(() => answerInputRef.current?.focus())
+    return () => window.cancelAnimationFrame(frame)
+  }, [answerLocked, cardKey, feedback, typedMode])
+
+  useEffect(() => {
+    if (!feedback || !focusNextCardRef.current) return
+    focusNextCardRef.current = false
+    nextCardRef.current?.focus()
+  }, [feedback])
 
   useEffect(() => {
     if (sessionTotal === 0) {
@@ -171,7 +196,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   function commit(correct: boolean) {
     if (!currentId || !currentWord || !progress || feedback) return
-    if (mode === 'spelling' && (audioBlocked || !audioReady)) return
+    if (answerLocked) return
     if (resumedDraft) setResumedDraft(false)
     const elapsedMs = Date.now() - startedAtRef.current
     const source = (attemptNumber[currentId] ?? 0) > 0 ? 'relearn' : 'review'
@@ -198,6 +223,8 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
     const nextProgress = recordRetrieval(progress, correct, mode, Date.now(), source, elapsedMs)
     onChange({ ...state, words: { ...state.words, [currentId]: nextProgress } })
+    setGradedCard({ key: cardKey, mode })
+    focusNextCardRef.current = true
     setFeedback(correct ? 'correct' : 'wrong')
     setCorrectCount(nextCorrectCount)
     setRelearnedCount(nextRelearnedCount)
@@ -232,7 +259,6 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
       : sessionKind === 'trouble'
         ? 'واژه‌های سخت'
         : 'تمرین تقویتی'
-  const typedMode = isTypedMode(mode)
 
   return (
     <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
@@ -295,7 +321,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                 {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}
               </>
             ) : (
-              <div className={`text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
+              <div data-testid="review-prompt" className={`text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
             )}
           </div>
 
@@ -306,21 +332,23 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
               </label>
               <input
                 id="review-answer"
+                ref={answerInputRef}
                 className="answer-input mt-2 w-full"
                 dir="ltr"
                 autoFocus
                 autoComplete="off"
                 autoCapitalize="none"
                 spellCheck={false}
-                disabled={Boolean(feedback) || (mode === 'spelling' && (audioBlocked || !audioReady))}
+                enterKeyHint="done"
+                disabled={Boolean(feedback) || answerLocked}
                 value={typed}
                 onChange={event => setTyped(event.target.value)}
                 onKeyDown={event => { if (event.key === 'Enter') submitTyped() }}
               />
               {!feedback && (
                 <div className="mt-3 grid grid-cols-2 gap-2">
-                  <button type="button" className="btn-quiet py-3 text-sm" disabled={mode === 'spelling' && (audioBlocked || !audioReady)} onClick={() => commit(false)}>نمی‌دانم</button>
-                  <button type="button" className="btn-ink py-3" disabled={!typed.trim() || (mode === 'spelling' && (audioBlocked || !audioReady))} onClick={submitTyped}>ثبت پاسخ</button>
+                  <button type="button" className="btn-quiet py-3 text-sm" disabled={answerLocked} onClick={() => commit(false)}>نمی‌دانم</button>
+                  <button type="button" className="btn-ink py-3" disabled={!typed.trim() || answerLocked} onClick={submitTyped}>ثبت پاسخ</button>
                 </div>
               )}
             </div>
@@ -365,7 +393,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
               )}
             </div>
           )}
-          {feedback && <button type="button" className="btn-ink mt-4 w-full py-3" onClick={nextCard}>کارت بعدی ←</button>}
+          {feedback && <button ref={nextCardRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={nextCard}>کارت بعدی ←</button>}
         </div>
       )}
     </div>
