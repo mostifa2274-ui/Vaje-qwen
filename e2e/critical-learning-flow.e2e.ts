@@ -156,7 +156,17 @@ async function answerCurrentWrittenWord(page: Page): Promise<void> {
   await input.fill(entry.fa)
   await input.press('Enter')
   await expect(stage.locator('.feedback-panel')).toContainText('درست')
-  await stage.getByRole('button', { name: 'ادامه ←', exact: true }).click()
+
+  await expect.poll(async () => {
+    if (await page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪').isVisible()) return 'advanced'
+    const headword = page.getByTestId('written-headword')
+    if (!await headword.isVisible()) return 'advanced'
+    return (await headword.innerText()).trim() === surface ? 'waiting' : 'advanced'
+  }).toBe('advanced')
+
+  if (await page.getByTestId('written-headword').isVisible()) {
+    await expect(input).toBeFocused()
+  }
 }
 
 async function answerCurrentListeningWord(page: Page, expected: VocabularyEntry): Promise<void> {
@@ -170,7 +180,11 @@ async function answerCurrentListeningWord(page: Page, expected: VocabularyEntry)
   await expect(correct).toBeEnabled()
   await correct.click()
   await expect(stage.locator('.feedback-panel')).toContainText(expected.word)
-  await stage.getByRole('button', { name: 'ادامه ←', exact: true }).click()
+
+  await expect.poll(async () => {
+    if (/\/read\/b1c1$/.test(page.url())) return 'advanced'
+    return (await spokenWord(page)) === expected.word ? 'waiting' : 'advanced'
+  }).toBe('advanced')
 }
 
 test.beforeEach(async ({ page }) => {
@@ -338,7 +352,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(stage.locator('.feedback-panel')).toContainText('دوباره در همین آزمون')
   await stage.getByRole('button', { name: /ادامه و تکرار این واژه/ }).click()
 
-  // Pass one real answer, then reload to prove browser-level session recovery.
+  // Pass one real answer without a separate Continue tap, then reload to prove browser-level session recovery.
   await answerCurrentWrittenWord(page)
   await expect.poll(() => page.evaluate(() => {
     const raw = window.sessionStorage.getItem('ghesse:prep:v1:b1c1')

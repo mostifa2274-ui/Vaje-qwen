@@ -53,6 +53,9 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [listeningReady, setListeningReady] = useState(false)
   const [teachAudioReady, setTeachAudioReady] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
+  const writtenInputRef = useRef<HTMLInputElement>(null)
+  const continueWrittenRef = useRef<() => void>(() => {})
+  const continueListeningRef = useRef<() => void>(() => {})
   const hasMountedRef = useRef(false)
 
   const currentTeachId = chapter.new[teachIndex]
@@ -146,6 +149,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     }
     stageRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
   }, [phase, teachIndex, currentWrittenId, currentListeningId])
+
+  useEffect(() => {
+    if (phase !== 'written' || feedback) return
+    const frame = window.requestAnimationFrame(() => writtenInputRef.current?.focus())
+    return () => window.cancelAnimationFrame(frame)
+  }, [currentWrittenId, feedback, phase])
 
   useEffect(() => {
     if (alreadyPrepared || (phase === 'teach' && teachIndex === 0)) {
@@ -307,6 +316,23 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     }
   }
 
+  useEffect(() => {
+    continueWrittenRef.current = continueWritten
+    continueListeningRef.current = continueListening
+  })
+
+  useEffect(() => {
+    if (feedback !== 'correct') return
+    if (phase !== 'written' && phase !== 'listening') return
+
+    const timer = window.setTimeout(() => {
+      if (phase === 'written') continueWrittenRef.current()
+      else continueListeningRef.current()
+    }, 650)
+
+    return () => window.clearTimeout(timer)
+  }, [currentListeningId, currentWrittenId, feedback, phase])
+
   const step = phase === 'teach' ? 1 : phase === 'written' ? 2 : 3
 
   return (
@@ -422,6 +448,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <label htmlFor="prep-written" className="mt-6 block text-sm font-bold">ترجمهٔ فارسی</label>
             <input
               id="prep-written"
+              ref={writtenInputRef}
               className="answer-input mt-2 w-full"
               dir="rtl"
               autoFocus
@@ -443,14 +470,14 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             {feedback && (
               <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
-                  ? 'درست. این واژه آزمون نوشتاری را گذراند.'
+                  ? 'درست ✓ · رفتن به واژهٔ بعدی…'
                   : <>معنی درست: <b>{currentWrittenWord.fa}</b>. این واژه دوباره در همین آزمون می‌آید.</>}
               </div>
             )}
 
-            {feedback && (
+            {feedback === 'wrong' && (
               <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueWritten}>
-                {feedback === 'wrong' ? 'ادامه و تکرار این واژه ←' : 'ادامه ←'}
+                ادامه و تکرار این واژه ←
               </button>
             )}
           </div>
@@ -522,14 +549,14 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             {feedback && (
               <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
-                  ? <><b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa} ✓</>
+                  ? <><b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa} ✓ · بعدی…</>
                   : <>پاسخ درست: <b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. دوباره در همین آزمون می‌آید.</>}
               </div>
             )}
 
-            {feedback && (
+            {feedback === 'wrong' && (
               <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueListening}>
-                {feedback === 'wrong' ? 'ادامه و تکرار این واژه ←' : 'ادامه ←'}
+                ادامه و تکرار این واژه ←
               </button>
             )}
           </div>
