@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
-import { buildReviewQuestion, seededSample } from '../engine/review'
+import { buildReviewQuestion } from '../engine/review'
+import { buildPrepTestOrders } from '../engine/prepOrder'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback } from '../engine/narration'
@@ -26,12 +27,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
   const alreadyPrepared = chapterPrepared(state, chapterId)
-  const writtenOrder = useMemo(
-    () => seededSample(chapter.new, chapter.new.length, `${chapterId}:prep:written-order`),
-    [chapter.new, chapterId],
-  )
-  const listeningOrder = useMemo(
-    () => seededSample(chapter.new, chapter.new.length, `${chapterId}:prep:listening-order`),
+  const { writtenOrder, listeningOrder } = useMemo(
+    () => buildPrepTestOrders(chapterId, chapter.new),
     [chapter.new, chapterId],
   )
 
@@ -493,7 +490,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   )}
                 </div>
 
-                <div data-testid="listening-options" className="mt-6 grid grid-cols-2 gap-2" dir="rtl">
+                <div data-testid="listening-options" className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2" dir="rtl">
                   {listeningQuestion.options?.map(option => {
                     const isAnswer = option.id === listeningQuestion.answerId
                     const isSelected = selected === option.id
