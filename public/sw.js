@@ -55,8 +55,12 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(request)
         .then(response => {
-          const copy = response.clone()
-          void caches.open(CACHE).then(cache => cache.put(request, copy))
+          // Never let an error page (a 404 or a transient 5xx) replace the
+          // cached shell that offline launches fall back to.
+          if (response.ok) {
+            const copy = response.clone()
+            void caches.open(CACHE).then(cache => cache.put(request, copy))
+          }
           return response
         })
         .catch(async () => (await caches.match(request)) || (await caches.match('./index.html')) || (await caches.match('./')))
