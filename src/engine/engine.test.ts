@@ -14,7 +14,7 @@ import { buildLemmaMap, lemmaOf, preprocess, tokenizeSentence } from './lemmatiz
 import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { recordCompletedRead, recordPreparedChapter } from './progress'
-import { clampNarrationRate, englishNarrationVoices, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
+import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
 import { acceptedAnswers, blankWordProgress, buildReviewQuestion, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus } from './analytics'
@@ -500,6 +500,15 @@ describe('narration voice selection', () => {
   it('never delays a user-selected English voice that is already available', () => {
     const selected = voice('chosen', 'Plain English Voice', 'en-US', false, true)
     expect(shouldWaitForHigherQualityVoice([selected], 'chosen')).toBe(false)
+  })
+
+  it('falls back after one grace period but still recognizes a later quality upgrade', () => {
+    const generic = voice('generic', 'English United States', 'en-US', true, true)
+    const natural = voice('neural', 'Microsoft Aria Online (Natural)', 'en-US', false, false)
+
+    expect(narrationLaunchDecision([generic], '', false)).toBe('wait')
+    expect(narrationLaunchDecision([generic], '', true)).toBe('fallback')
+    expect(narrationLaunchDecision([generic, natural], '', true)).toBe('ready')
   })
 
   it('clamps narration rate', () => {
