@@ -3,6 +3,8 @@ import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, Retrieva
 export const STORAGE_KEY = 'ghesse:state:v6'
 const BACKUP_KEY = 'ghesse:state:v6:backup'
 const LEGACY_KEYS = ['ghesse:state:v5', 'ghesse:state:v4', 'ghesse:state:v3', 'ghesse:state:v2', 'ghesse:state:v1'] as const
+// Prep, reading, review and exam drafts all live under this sessionStorage prefix.
+const SESSION_DRAFT_PREFIX = 'ghesse:'
 export const MAX_IMPORT_BYTES = 2 * 1024 * 1024
 
 export function emptyState(now: number, firstChapterId: string): GhesseState {
@@ -285,6 +287,38 @@ export function saveState(state: GhesseState): boolean {
   }
 }
 
+export interface ProgressSummary {
+  completedChapters: number
+  introducedWords: number
+  passedExams: number
+}
+
+export function summarizeProgress(state: GhesseState): ProgressSummary {
+  return {
+    completedChapters: Object.values(state.chapters).filter(chapter => chapter.completed).length,
+    introducedWords: Object.values(state.words).filter(word => word.introduced).length,
+    passedExams: Object.values(state.exams).filter(exam => exam.passed).length,
+  }
+}
+
+/**
+ * In-progress session drafts belong to the progress they were started from.
+ * After a reset or an imported replacement they would resume stale work, so
+ * every Ghesse draft in this tab is dropped.
+ */
+export function clearSessionDrafts(): void {
+  try {
+    const keys: string[] = []
+    for (let index = 0; index < sessionStorage.length; index++) {
+      const key = sessionStorage.key(index)
+      if (key?.startsWith(SESSION_DRAFT_PREFIX)) keys.push(key)
+    }
+    for (const key of keys) sessionStorage.removeItem(key)
+  } catch {
+    // Drafts are optional resilience; an unavailable store has none to clear.
+  }
+}
+
 export function resetState(firstChapterId: string): GhesseState {
   try {
     localStorage.removeItem(STORAGE_KEY)
@@ -293,5 +327,6 @@ export function resetState(firstChapterId: string): GhesseState {
   } catch {
     // Keep reset semantics in memory.
   }
+  clearSessionDrafts()
   return emptyState(Date.now(), firstChapterId)
 }
