@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
 import { clearSessionDrafts, importStateJson, MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
-import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish } from '../engine/narration'
+import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
 import { BUILD_COMMIT } from '../engine/release'
 import { faNum } from '../engine/format'
@@ -44,7 +44,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
   function previewNarrator() {
     if (!state.soundOn) return
     setVoiceMessage('')
-    const unavailable = () => setVoiceMessage('صدای انگلیسی روی این دستگاه در دسترس نیست. در تنظیمات مرورگر یا سیستم، English Text-to-Speech را فعال کن.')
+    const unavailable = (failure: SpeechFailure = 'unavailable') => setVoiceMessage(speechFailureNotice(failure, 'صدای انگلیسی روی این دستگاه در دسترس نیست. در تنظیمات مرورگر یا سیستم، English Text-to-Speech را فعال کن.'))
     const started = speakEnglish(
       'Nino is home. Mina is happy to see him again.',
       state.narratorVoiceURI,

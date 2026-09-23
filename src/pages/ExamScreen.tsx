@@ -4,7 +4,7 @@ import { buildExam, examPool, scoreExam, type BuiltExam, type ExamResult } from 
 import { examDefinition } from '../engine/gates'
 import { WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
-import { speakEnglishWithFallback } from '../engine/narration'
+import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { wordSrc } from '../engine/audio'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
@@ -92,10 +92,10 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   const speakCurrent = useCallback(() => {
     if (!word || !state.soundOn) return
-    const unavailable = () => {
+    const unavailable = (failure: SpeechFailure = 'unavailable') => {
       setAudioReady(false)
       setAudioBlocked(true)
-      setAudioNotice('پخش تلفظ انگلیسی در دسترس نیست. برای ادامهٔ سؤال شنیداری، صدای English Text-to-Speech مرورگر یا سیستم را فعال کن.')
+      setAudioNotice(speechFailureNotice(failure, 'پخش تلفظ انگلیسی در دسترس نیست. برای ادامهٔ سؤال شنیداری، صدای English Text-to-Speech مرورگر یا سیستم را فعال کن.'))
     }
     const ended = () => {
       setAudioReady(true)

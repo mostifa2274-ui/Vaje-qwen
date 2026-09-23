@@ -13,7 +13,7 @@ import {
   selectWeakestWordIds,
   troubleWordIds,
 } from '../engine/review'
-import { speakEnglishWithFallback } from '../engine/narration'
+import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { wordSrc } from '../engine/audio'
 import { examRemediationWordIds } from '../engine/gates'
 import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
@@ -173,10 +173,10 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   const speakCurrent = useCallback(() => {
     if (!currentWord || !state.soundOn) return
-    const unavailable = () => {
+    const unavailable = (failure: SpeechFailure = 'unavailable') => {
       setAudioReady(false)
       setAudioBlocked(true)
-      setAudioNotice('پخش تلفظ انگلیسی در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.')
+      setAudioNotice(speechFailureNotice(failure, 'پخش تلفظ انگلیسی در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.'))
     }
     const ended = () => {
       setAudioReady(true)

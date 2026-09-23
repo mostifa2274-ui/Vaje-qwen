@@ -216,7 +216,7 @@ test.beforeEach(async ({ page }) => {
       pitch = 1
       volume = 1
       onend: (() => void) | null = null
-      onerror: (() => void) | null = null
+      onerror: ((event: { error: string }) => void) | null = null
 
       constructor(text: string) {
         this.text = text
@@ -234,6 +234,7 @@ test.beforeEach(async ({ page }) => {
     const testWindow = window as Window & {
       __ghesseSpoken?: string
       __ghesseSpeechHistory?: string[]
+      __ghesseBlockSpeech?: boolean
     }
     testWindow.__ghesseSpoken = ''
     testWindow.__ghesseSpeechHistory = []
@@ -244,6 +245,11 @@ test.beforeEach(async ({ page }) => {
         return [voice]
       },
       speak(utterance: FakeSpeechSynthesisUtterance) {
+        if (testWindow.__ghesseBlockSpeech) {
+          // Chrome's autoplay policy: speech without a recent user gesture.
+          window.setTimeout(() => utterance.onerror?.({ error: 'not-allowed' }), 5)
+          return
+        }
         testWindow.__ghesseSpoken = utterance.text
         testWindow.__ghesseSpeechHistory?.push(utterance.text)
         window.setTimeout(() => utterance.onend?.(), 20)
@@ -358,6 +364,26 @@ test('auto teach speaks word and context before advancing, then pauses on demand
 
   await page.waitForTimeout(2_000)
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word)
+})
+
+test('an autoplay refusal asks for one tap instead of reporting missing speech', async ({ page }) => {
+  await page.addInitScript(() => {
+    (window as Window & { __ghesseBlockSpeech?: boolean }).__ghesseBlockSpeech = true
+  })
+  await page.goto('/#/prep/b1c1')
+
+  const alert = page.getByRole('alert')
+  await expect(alert).toContainText('مرورگر پخش خودکار صدا را متوقف کرد')
+  await expect(alert).not.toContainText('در دسترس نیست')
+
+  // The learner's tap is the gesture the browser was waiting for.
+  await page.evaluate(() => {
+    (window as Window & { __ghesseBlockSpeech?: boolean }).__ghesseBlockSpeech = false
+  })
+  await page.getByRole('button', { name: `پخش تلفظ ${chapterWords[0].word}` }).click()
+  await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
+  await expect(page.getByRole('alert')).toHaveCount(0)
+  await expect(page.getByRole('button', { name: /واژهٔ بعدی/ })).toBeEnabled()
 })
 
 test('listening gate fails closed when no English audio path can start', async ({ page }) => {

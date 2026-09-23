@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import type { WordEntry } from '../engine/types'
 import { exampleSrc, stopAudio, wordSrc } from '../engine/audio'
-import { cancelEnglishSpeech, speakEnglishWithFallback } from '../engine/narration'
+import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { SpeakerIcon } from './Icons'
 
 interface Props {
@@ -26,8 +26,8 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
     if (!soundOn) return
     setAudioNotice('')
     stopAudio()
-    const unavailable = () => {
-      setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن.')
+    const unavailable = (failure: SpeechFailure = 'unavailable') => {
+      setAudioNotice(speechFailureNotice(failure, 'پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن.'))
     }
     const started = speakEnglishWithFallback(
       text,

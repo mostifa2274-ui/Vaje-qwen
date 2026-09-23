@@ -1,5 +1,24 @@
 import { play } from './audio'
 
+/**
+ * Why a spoken prompt could not play. 'blocked': the browser refused audio
+ * without a recent tap (autoplay policy, e.g. after Android reloads a
+ * discarded tab), so one tap on a play button fixes it. 'unavailable': no
+ * working English speech path exists on this device.
+ */
+export type SpeechFailure = 'blocked' | 'unavailable'
+export type SpeechFailureHandler = (failure: SpeechFailure) => void
+
+export const BLOCKED_AUDIO_NOTICE = 'مرورگر پخش خودکار صدا را متوقف کرد. یک‌بار روی دکمهٔ پخش بزن تا صدا فعال شود.'
+
+export function speechFailureNotice(failure: SpeechFailure, unavailableNotice: string): string {
+  return failure === 'blocked' ? BLOCKED_AUDIO_NOTICE : unavailableNotice
+}
+
+function failureFromSpeechError(event: unknown): SpeechFailure {
+  return (event as { error?: unknown } | undefined)?.error === 'not-allowed' ? 'blocked' : 'unavailable'
+}
+
 // Consistent English narration for words, examples and story text.
 // We prefer the best natural/neural English voice exposed by the browser/OS
 // and briefly wait for Chrome's asynchronous voice catalogue before falling
@@ -162,12 +181,12 @@ function speakWithAvailableVoices(
   voiceURI: string,
   rate: number,
   onEnd?: () => void,
-  onError?: () => void,
+  onError?: SpeechFailureHandler,
 ): void {
   if (typeof window === 'undefined' || requestId !== speechRequestId) return
   const synth = window.speechSynthesis
   if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-    onError?.()
+    onError?.('unavailable')
     return
   }
 
@@ -200,7 +219,7 @@ function speakWithAvailableVoices(
     }
     utterance.onstart = () => { started = true }
     utterance.onend = () => settle(onEnd)
-    utterance.onerror = () => settle(onError)
+    utterance.onerror = event => settle(() => onError?.(failureFromSpeechError(event)))
     activeUtterance = utterance
     synth.speak(utterance)
     watchdog = window.setTimeout(() => {
@@ -208,10 +227,10 @@ function speakWithAvailableVoices(
       // It never started: the engine is stuck, so clear it and report failure
       // to let the caller fall back or offer a replay.
       if (started) settle(onEnd)
-      else settle(onError, true)
+      else settle(() => onError?.('unavailable'), true)
     }, speechWatchdogMs(text, rate))
   } catch {
-    onError?.()
+    onError?.('unavailable')
   }
 }
 
@@ -220,7 +239,7 @@ export function speakEnglish(
   voiceURI: string,
   rate: number,
   onEnd?: () => void,
-  onError?: () => void,
+  onError?: SpeechFailureHandler,
 ): boolean {
   if (typeof window === 'undefined' || !window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') return false
 
@@ -294,16 +313,16 @@ export function speakEnglishWithFallback(
   rate: number,
   fallbackSrc: string,
   onEnd?: () => void,
-  onUnavailable?: () => void,
+  onUnavailable?: SpeechFailureHandler,
 ): boolean {
   let fallbackAttempted = false
   let fallbackStarted = false
 
-  const startFallback = () => {
+  const startFallback = (speechFailure: SpeechFailure = 'unavailable') => {
     if (fallbackAttempted) return
     fallbackAttempted = true
     fallbackStarted = play(fallbackSrc, true, onEnd, onUnavailable)
-    if (!fallbackStarted) onUnavailable?.()
+    if (!fallbackStarted) onUnavailable?.(speechFailure)
   }
 
   const speechStarted = speakEnglish(

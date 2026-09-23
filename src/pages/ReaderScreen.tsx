@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
 import { bundledAudioEnabled, sentenceSrc, stopAudio } from '../engine/audio'
-import { cancelEnglishSpeech, speakEnglish } from '../engine/narration'
+import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglish, type SpeechFailure } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
 import { blankWordProgress } from '../engine/review'
@@ -194,10 +194,12 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       setPlayAll(false)
     }
 
-    const playBundledFallback = () => {
+    const playBundledFallback = (failure: SpeechFailure = 'unavailable') => {
       if (playbackToken.current !== token) return
       if (!bundledAudioEnabled()) {
-        failPlayback('موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره پخش را بزن.')
+        failPlayback(failure === 'blocked'
+          ? BLOCKED_AUDIO_NOTICE
+          : 'موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره پخش را بزن.')
         return
       }
       if (STALE_SENTENCE_AUDIO.has(`${chapterId}:${index}`)) {
@@ -214,7 +216,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         failPlayback('صدای انگلیسی و فایل پشتیبان این جمله قابل پخش نبود. تنظیمات صدا را بررسی کن و دوباره امتحان کن.')
       }
       void audio.play().catch(() => {
-        failPlayback('مرورگر پخش صدا را متوقف کرد. یک‌بار روی دکمهٔ پخش بزن و دوباره امتحان کن.')
+        failPlayback(BLOCKED_AUDIO_NOTICE)
       })
     }
 

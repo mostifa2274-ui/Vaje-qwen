@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { speakEnglish, speechWatchdogMs } from './narration'
+import { speakEnglish, speakEnglishWithFallback, speechWatchdogMs } from './narration'
 
 class FakeUtterance {
   text: string
@@ -10,7 +10,7 @@ class FakeUtterance {
   volume = 1
   onstart: (() => void) | null = null
   onend: (() => void) | null = null
-  onerror: (() => void) | null = null
+  onerror: ((event?: { error: string }) => void) | null = null
 
   constructor(text: string) {
     this.text = text
@@ -104,6 +104,20 @@ describe('speech completion guarantees', () => {
 
     expect(firstError).not.toHaveBeenCalled()
     expect(firstEnd).not.toHaveBeenCalled()
+  })
+
+  it('distinguishes an autoplay refusal from a missing speech engine', () => {
+    const { spoken } = installSpeech()
+    const blocked = vi.fn()
+    const broken = vi.fn()
+
+    speakEnglishWithFallback('cat', '', 0.92, '/audio/words/cat.mp3', undefined, blocked)
+    spoken[0].onerror?.({ error: 'not-allowed' })
+    speakEnglishWithFallback('dog', '', 0.92, '/audio/words/dog.mp3', undefined, broken)
+    spoken[1].onerror?.({ error: 'synthesis-failed' })
+
+    expect(blocked).toHaveBeenCalledWith('blocked')
+    expect(broken).toHaveBeenCalledWith('unavailable')
   })
 
   it('scales the watchdog with text length and narrator rate', () => {

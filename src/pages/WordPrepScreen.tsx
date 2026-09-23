@@ -5,7 +5,7 @@ import { buildReviewQuestion } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
-import { speakEnglishWithFallback } from '../engine/narration'
+import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { exampleSrc, wordSrc } from '../engine/audio'
 import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
@@ -83,14 +83,14 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   const speak = useCallback((word: string, id: string, unlockListening = false, unlockTeach = false) => {
     if (!state.soundOn) return
-    const unavailable = () => {
+    const unavailable = (failure: SpeechFailure = 'unavailable') => {
       if (unlockListening) setListeningReady(false)
       if (unlockTeach) {
         setTeachAudioReady(true)
         setTeachAutoPlay(false)
       }
       setAudioBlocked(true)
-      setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.')
+      setAudioNotice(speechFailureNotice(failure, 'پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.'))
     }
     const ended = () => {
       if (unlockListening) setListeningReady(true)
@@ -114,11 +114,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setTeachAudioReady(false)
     setAudioBlocked(false)
     setAudioNotice('')
-    const unavailable = () => {
+    const unavailable = (failure: SpeechFailure = 'unavailable') => {
       setTeachAudioReady(true)
       setTeachAutoPlay(false)
       setAudioBlocked(true)
-      setAudioNotice('پخش مثال انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.')
+      setAudioNotice(speechFailureNotice(failure, 'پخش مثال انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.'))
     }
     const started = speakEnglishWithFallback(
       currentTeachWord.ex,
