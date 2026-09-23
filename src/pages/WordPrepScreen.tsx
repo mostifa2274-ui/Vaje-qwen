@@ -219,7 +219,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       setTeachIndex(index => index + 1)
       return
     }
-    setWrittenQueue([...chapter.new])
+    setWrittenQueue([...writtenOrder])
     setWrittenPassed(new Set())
     setWrittenMissed(new Set())
     setTyped('')
