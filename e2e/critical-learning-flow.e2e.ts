@@ -317,6 +317,60 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
   await expect(page).toHaveURL(/#\/map$/)
 })
 
+test('listening gate fails closed when no English audio path can start', async ({ page }) => {
+  await page.goto('/#/map')
+
+  await page.evaluate(({ chapterWordIds, teachIndex }) => {
+    window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify({
+      version: 1,
+      chapterId: 'b1c1',
+      phase: 'listening',
+      teachIndex,
+      writtenQueue: [],
+      writtenPassed: chapterWordIds,
+      writtenMissed: [],
+      listeningQueue: chapterWordIds,
+      listeningPassed: [],
+      listeningMissed: [],
+      feedback: null,
+      selected: '',
+      typed: '',
+      updatedAt: Date.now(),
+    }))
+  }, {
+    chapterWordIds: chapter.new,
+    teachIndex: chapter.new.length - 1,
+  })
+
+  await page.addInitScript(() => {
+    Object.defineProperty(window, 'speechSynthesis', {
+      value: undefined,
+      configurable: true,
+    })
+    Object.defineProperty(window, 'SpeechSynthesisUtterance', {
+      value: undefined,
+      configurable: true,
+    })
+  })
+
+  await page.goto('/#/prep/b1c1')
+  await expect(page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪')).toBeVisible()
+
+  const alert = page.getByRole('alert')
+  await expect(alert).toContainText('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست')
+  await expect(alert).toContainText('تا یک پخش موفق، گزینه‌های آزمون شنیداری غیرفعال می‌مانند')
+
+  const options = page.getByTestId('listening-options').getByRole('button')
+  await expect(options).toHaveCount(4)
+  for (let index = 0; index < 4; index++) {
+    await expect(options.nth(index)).toBeDisabled()
+  }
+
+  await expect(page.getByRole('button', { name: 'نمی‌دانم — نشان بده و دوباره بپرس' })).toBeDisabled()
+  await expect(page).toHaveURL(/#\/prep\/b1c1$/)
+  await expectNoHorizontalOverflow(page)
+})
+
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
   await page.goto('/#/read/b1c1')
 
@@ -401,6 +455,13 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   }
 
   await expect(page).toHaveURL(/#\/read\/b1c1$/)
+
+  // A stale/direct preparation URL must not replay teaching after both 100%
+  // gates have been passed. The router should resolve straight back to reading.
+  await page.goto('/#/prep/b1c1')
+  await expect(page).toHaveURL(/#\/read\/b1c1$/)
+  await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toHaveCount(0)
+
   await expect(page.locator('#main-content')).toBeFocused()
   await expect(page.locator('#main-content')).toHaveAttribute('aria-label', /خواندن داستان:/)
   await expect(page).toHaveTitle(/خواندن داستان: .* — قصه/)
