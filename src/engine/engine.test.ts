@@ -255,6 +255,8 @@ describe('chapter prep and gate progression', () => {
     for (const ch of CHAPTERS.filter(ch => ch.book === 1)) {
       state.chapters[ch.id] = { preparedAt: 1, prepAttempts: 1, completed: true, checksCorrect: 2, checksTotal: 2, reads: 1 }
     }
+    // The book's story comprehension test is its own gate (storyTest.test.ts).
+    state.storyTests['story-1'] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: 1, bestScore: 1 }
     expect(canTakeExam(state, bookExamId(1))).toBe(true)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
     state.exams[bookExamId(1)] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: .9, bestScore: .9, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] }
@@ -265,6 +267,7 @@ describe('chapter prep and gate progression', () => {
     const state = emptyState(1, 'b1c1')
     for (const ch of CHAPTERS.filter(ch => ch.book <= 4)) state.chapters[ch.id] = { preparedAt: 1, prepAttempts: 1, completed: true, checksCorrect: 2, checksTotal: 2, reads: 1 }
     for (const book of [1, 2, 3, 4]) state.exams[bookExamId(book)] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: .9, bestScore: .9, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] }
+    state.storyTests['story-4'] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: 1, bestScore: 1 }
     expect(canTakeExam(state, MIDPOINT_EXAM_ID)).toBe(true)
     expect(canPrepareChapter(state, 'b5c1')).toBe(false)
     state.exams[MIDPOINT_EXAM_ID] = { attempts: 1, passed: true, passedAt: 3, lastAttemptAt: 3, lastScore: .9, bestScore: .9, lastProductiveScore: .9, bestProductiveScore: .9, missedWordIds: [], testedWordIds: [] }

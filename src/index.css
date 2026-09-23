@@ -944,6 +944,17 @@ button:disabled {
 }
 
 
+/* ---------- Book story comprehension test ---------- */
+.story-option[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--gold) 34%, var(--cream-soft));
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.story-review-item + .story-review-item {
+  border-top: 1px solid var(--line-soft);
+  padding-top: .75rem;
+}
+
 /* ---------- Resumable chapter preparation ---------- */
 .prep-resume-row {
   display: flex;

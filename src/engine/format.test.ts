@@ -16,6 +16,6 @@ describe('Persian number formatting', () => {
     const action = nextBestAction(emptyState(1, CHAPTERS[0].id), 1)
     expect(action.kind).toBe('chapter')
     expect(`${action.title} ${action.detail}`).not.toMatch(/[0-9]/)
-    expect(examDefinition('book-3')?.titleFa).toBe('آزمون کتاب ۳')
+    expect(examDefinition('book-3')?.titleFa).toBe('آزمون واژه‌های کتاب ۳')
   })
 })

@@ -31,7 +31,14 @@ function seededRank(seed: string, value: string): number {
   return hashString(`${seed}:${value}`)
 }
 
+// Sentence scans are pure per chapter but run for every chapter in the pool
+// (distractors come from other chapters), so they are computed once.
+const uniqueIndexCache = new WeakMap<Chapter, Partial<Record<'en' | 'fa', number[]>>>()
+const storyIndexCache = new WeakMap<Chapter, number[]>()
+
 function uniqueSentenceIndices(chapter: Chapter, field: 'en' | 'fa'): number[] {
+  const cached = uniqueIndexCache.get(chapter)?.[field]
+  if (cached) return cached
   const seen = new Set<string>()
   const out: number[] = []
   chapter.sentences.forEach((sentence, index) => {
@@ -40,6 +47,7 @@ function uniqueSentenceIndices(chapter: Chapter, field: 'en' | 'fa'): number[] {
     seen.add(surface)
     out.push(index)
   })
+  uniqueIndexCache.set(chapter, { ...uniqueIndexCache.get(chapter), [field]: out })
   return out
 }
 
@@ -77,12 +85,16 @@ function overlapRatio(a: ReadonlySet<string>, b: ReadonlySet<string>): number {
 }
 
 function storySentenceIndices(chapter: Chapter): number[] {
+  const cached = storyIndexCache.get(chapter)
+  if (cached) return cached
   const unique = uniqueSentenceIndices(chapter, 'en')
   const substantial = unique.filter(index => {
     const count = wordCount(chapter.sentences[index].en)
     return count >= 4 && count <= 18
   })
-  return substantial.length >= 4 ? substantial : unique
+  const result = substantial.length >= 4 ? substantial : unique
+  storyIndexCache.set(chapter, result)
+  return result
 }
 
 function targetIndex(indices: readonly number[], fraction: number, used: Set<number>): number {

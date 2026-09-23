@@ -16,7 +16,8 @@ The learner should understand, recall, hear, and use the vocabulary well enough 
 4. The story remains locked until both tests reach 100% coverage.
 5. Read the chapter with optional Persian translation and per-sentence audio.
 6. Complete 10 comprehension questions based on the chapter. Immediate feedback is shown; only missed questions return for correction. Chapter completion unlocks after all 10 have been corrected, while analytics retain the honest first-pass score.
-7. Continue into spaced review and gated book/midpoint/final exams.
+7. After each book, pass a cumulative story comprehension test (80%): the finished book's story plus every earlier book. It gates the next book (after book 8, the final exam) together with the book's vocabulary exam.
+8. Continue into spaced review and gated book/midpoint/final exams.
 
 ## Product principles
 - The task leads; decoration never competes with learning.

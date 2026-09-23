@@ -6,7 +6,6 @@ import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglish, type SpeechFai
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
 import { blankWordProgress } from '../engine/review'
-import { bookExamId } from '../engine/gates'
 import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
 import staleSentenceAudioJson from '../data/staleSentenceAudio.json'
@@ -21,7 +20,7 @@ interface Props {
   onChange: (next: GhesseState) => void
   onBack: () => void
   onOpenChapter: (id: string) => void
-  onOpenExam: (id: string) => void
+  onOpenStoryTest: (book: number) => void
 }
 
 const STALE_SENTENCE_AUDIO = new Set(staleSentenceAudioJson as string[])
@@ -30,7 +29,7 @@ function wallClockNow(): number {
   return Date.now()
 }
 
-export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenExam }: Props) {
+export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenStoryTest }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
   const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS), [chapter])
@@ -580,7 +579,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               <div className="mt-2 font-extrabold">{wasAlreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
                 {isLastOfBook
-                  ? `این کتاب تمام شد. واژه‌هایش وارد مرور فاصله‌دار شده‌اند؛ برای بازشدن مرحلهٔ بعد، آزمون کتاب ${faNum(chapter.book)} را بگذران.`
+                  ? `این کتاب تمام شد و واژه‌هایش وارد مرور فاصله‌دار شده‌اند. برای بازشدن مرحلهٔ بعد، درک مطلب کتاب ${faNum(chapter.book)} (همراه با مرور کتاب‌های قبل) و آزمون واژه‌هایش را بگذران؛ حالا که قصه تازه است، از درک مطلب شروع کن.`
                   : next ? `واژه‌های این فصل برای مرور فاصله‌دار برنامه‌ریزی شدند. پیش از فصل بعد، واژه‌های تازهٔ «${next.titleFa}» را آماده می‌کنی.` : ''}
               </p>
               <div className="mt-4 flex gap-2">
@@ -591,8 +590,8 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                   </button>
                 )}
                 {isLastOfBook && (
-                  <button type="button" className="btn-crimson flex-1 py-2.5" onClick={() => onOpenExam(bookExamId(chapter.book))}>
-                    آزمون کتاب ←
+                  <button type="button" className="btn-crimson flex-1 py-2.5" onClick={() => onOpenStoryTest(chapter.book)}>
+                    درک مطلب کتاب ←
                   </button>
                 )}
               </div>
