@@ -1193,3 +1193,14 @@ input[type="range"]:focus-visible {
 .app-main:focus {
   outline: none;
 }
+
+
+/* ---------- Quiet preparation pacing ---------- */
+.prep-pacing-cue {
+  margin-top: .8rem;
+  border-top: 1px solid var(--line-soft);
+  padding-top: .7rem;
+  color: var(--ink-soft);
+  font-size: .78rem;
+  line-height: 1.8;
+}
