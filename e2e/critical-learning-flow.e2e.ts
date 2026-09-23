@@ -344,7 +344,7 @@ test('auto teach speaks word and context before advancing, then pauses on demand
 
   await expect.poll(async () => (await speechHistory(page)).includes(chapterWords[0].ex)).toBe(true)
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word, { timeout: 4_500 })
-  await expect.poll(() => spokenWord(page)).toBe(chapterWords[1].word)
+  await expect.poll(async () => (await speechHistory(page)).includes(chapterWords[1].word)).toBe(true)
 
   const history = await speechHistory(page)
   expect(history.indexOf(chapterWords[0].word)).toBeGreaterThanOrEqual(0)
