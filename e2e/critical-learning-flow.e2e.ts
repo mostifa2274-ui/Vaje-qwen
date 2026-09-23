@@ -342,7 +342,7 @@ test('listening gate fails closed when no English audio path can start', async (
     teachIndex: chapter.new.length - 1,
   })
 
-  await page.addInitScript(() => {
+  await page.evaluate(() => {
     Object.defineProperty(window, 'speechSynthesis', {
       value: undefined,
       configurable: true,
@@ -351,9 +351,9 @@ test('listening gate fails closed when no English audio path can start', async (
       value: undefined,
       configurable: true,
     })
+    window.location.hash = '/prep/b1c1'
   })
 
-  await page.goto('/#/prep/b1c1')
   await expect(page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪')).toBeVisible()
 
   const alert = page.getByRole('alert')
