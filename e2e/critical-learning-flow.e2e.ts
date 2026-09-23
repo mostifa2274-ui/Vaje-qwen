@@ -5,6 +5,7 @@ interface VocabularyEntry {
   id: string
   word: string
   fa: string
+  ex: string
 }
 
 interface ChapterFixture {
@@ -312,6 +313,10 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expectNoHorizontalOverflow(page)
 
   const stage = page.locator('.learning-focus-card')
+  const exampleAudio = stage.getByRole('button', { name: 'شنیدن مثال' })
+  await expect(exampleAudio).toBeVisible()
+  await exampleAudio.click()
+  await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].ex)
 
   // Teaching is exposure, not a guess-first quiz.
   for (let index = 0; index < chapterWords.length; index++) {
