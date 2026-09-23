@@ -54,6 +54,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [listeningReady, setListeningReady] = useState(false)
   const [teachAudioReady, setTeachAudioReady] = useState(false)
   const [teachAutoPlay, setTeachAutoPlay] = useState(false)
+  const [teachAutoExampleDone, setTeachAutoExampleDone] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
   const writtenInputRef = useRef<HTMLInputElement>(null)
   const continueTeachRef = useRef<() => void>(() => {})
@@ -109,7 +110,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!started) unavailable()
   }, [state.narratorRate, state.narratorVoiceURI, state.soundOn])
 
-  const speakExample = useCallback(() => {
+  const speakExample = useCallback((autoCycle = false) => {
     if (!currentTeachWord || !state.soundOn) return
     setTeachAudioReady(false)
     setAudioBlocked(false)
@@ -126,6 +127,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       state.narratorRate,
       exampleSrc(currentTeachWord.id),
       () => {
+        if (autoCycle) setTeachAutoExampleDone(true)
         setTeachAudioReady(true)
         setAudioBlocked(false)
         setAudioNotice('')
@@ -146,7 +148,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       setAudioBlocked(false)
       setAudioNotice('')
       if (phase === 'listening') setListeningReady(false)
-      if (phase === 'teach') setTeachAudioReady(false)
+      if (phase === 'teach') {
+        setTeachAudioReady(false)
+        setTeachAutoExampleDone(false)
+      }
       speak(word.word, word.id, phase === 'listening', phase === 'teach')
     }, 90)
     return () => window.clearTimeout(timer)
@@ -227,12 +232,14 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setListeningReady(false)
     setTeachAudioReady(false)
     setTeachAutoPlay(false)
+    setTeachAutoExampleDone(false)
   }
 
   function previousTeach() {
     if (!teachAudioReady || teachIndex === 0) return
     setTeachAutoPlay(false)
     setTeachAudioReady(false)
+    setTeachAutoExampleDone(false)
     setTeachIndex(index => Math.max(0, index - 1))
   }
 
@@ -240,6 +247,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!currentTeachWord || !teachAudioReady) return
     if (teachIndex + 1 < chapter.new.length) {
       setTeachAudioReady(false)
+      setTeachAutoExampleDone(false)
       setTeachIndex(index => index + 1)
       return
     }
@@ -249,6 +257,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setTyped('')
     setFeedback(null)
     setTeachAutoPlay(false)
+    setTeachAutoExampleDone(false)
     setPhase('written')
   }
 
@@ -344,12 +353,27 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   useEffect(() => {
     if (phase !== 'teach' || !teachAutoPlay || !teachAudioReady || audioBlocked) return
 
-    const timer = window.setTimeout(() => {
-      continueTeachRef.current()
-    }, 1100)
+    if (!teachAutoExampleDone) {
+      const exampleTimer = window.setTimeout(() => {
+        speakExample(true)
+      }, 450)
+      return () => window.clearTimeout(exampleTimer)
+    }
 
-    return () => window.clearTimeout(timer)
-  }, [audioBlocked, currentTeachId, phase, teachAudioReady, teachAutoPlay])
+    const advanceTimer = window.setTimeout(() => {
+      continueTeachRef.current()
+    }, 1400)
+
+    return () => window.clearTimeout(advanceTimer)
+  }, [
+    audioBlocked,
+    currentTeachId,
+    phase,
+    speakExample,
+    teachAutoExampleDone,
+    teachAudioReady,
+    teachAutoPlay,
+  ])
 
   useEffect(() => {
     if (feedback !== 'correct') return
@@ -433,6 +457,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </span>
               </button>
             </div>
+            {teachAutoPlay && (
+              <p className="mt-2 text-left text-xs leading-6" dir="rtl" style={{ color: 'var(--ink-soft)' }}>
+                در حالت خودکار: تلفظ واژه ← مثال شنیداری ← مکث کوتاه ← واژهٔ بعدی
+              </p>
+            )}
 
             {!state.soundOn && (
               <div className="paper-note mt-4">
@@ -454,6 +483,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 onClick={() => {
                   setTeachAutoPlay(false)
                   setTeachAudioReady(false)
+                  setTeachAutoExampleDone(false)
                   speak(currentTeachWord.word, currentTeachWord.id, false, true)
                 }}
                 disabled={!state.soundOn || !teachAudioReady}
