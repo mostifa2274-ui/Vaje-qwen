@@ -1,0 +1,12 @@
+{
+  "b2c1": {
+    "src": "art/generated/b2c1-tehran-street-search.svg",
+    "alt": "Mina searches a contemporary Tehran park with her mother and father for Nino, with the Alborz Mountains and Milad Tower in the distance.",
+    "position": "50% 50%"
+  },
+  "b2c2": {
+    "src": "art/generated/b2c2-neighbor-search.svg",
+    "alt": "Mina and her parents ask a hijabi female neighbor about Nino on a contemporary Tehran street.",
+    "position": "50% 48%"
+  }
+}
