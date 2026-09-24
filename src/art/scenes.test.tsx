@@ -38,12 +38,12 @@ describe('chapter illustrations', () => {
   })
 
   it('keeps Nino faithful to the story wherever he appears', () => {
-    // Nino is a small black cat with green eyes and a white mark near his ear.
+    // Nino is a tiny yellow chicken with an orange beak and one white wing feather.
     for (const id of ['b1c1', 'b3c5', 'b4c5', 'b8c6']) {
       const svg = render(id)
-      expect(svg, id).toContain('#242321')
-      expect(svg, id).toContain('#8fd16f')
-      expect(svg, id).toContain('#f4eee4')
+      expect(svg, id).toContain('#f3c84b')
+      expect(svg, id).toContain('#e8892f')
+      expect(svg, id).toContain('#f7f3e8')
     }
   })
 })
