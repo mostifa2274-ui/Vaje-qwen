@@ -21,7 +21,7 @@
     "at",
     "in",
     "on",
-    "cat",
+    "chicken",
     "bird",
     "run",
     "look",
@@ -30,7 +30,7 @@
     "morning",
     "little",
     "red",
-    "black",
+    "yellow",
     "book"
   ],
   "sentences": [
@@ -39,28 +39,28 @@
       "fa": "صبح در خانه‌ی مینا است."
     },
     {
-      "en": "Mina has a little black cat named Nino.",
-      "fa": "مینا یک گربه‌ی سیاه کوچک به نام نینو دارد."
+      "en": "Mina has a little yellow chicken named Nino.",
+      "fa": "مینا یک جوجه‌ی زرد کوچک به نام نینو دارد."
     },
     {
       "en": "She has a red book on her bed.",
       "fa": "او یک کتاب قرمز روی تختش دارد."
     },
     {
-      "en": "\"This is my book,\" Mina tells the cat.",
-      "fa": "مینا به گربه می‌گوید: «این کتاب من است.»"
+      "en": "\"This is my book,\" Mina tells the chicken.",
+      "fa": "مینا به جوجه می‌گوید: «این کتاب من است.»"
     },
     {
-      "en": "Nino sits on the book and looks at Mina.",
-      "fa": "نینو روی کتاب می‌نشیند و به مینا نگاه می‌کند."
+      "en": "Nino stands on the book and looks at Mina.",
+      "fa": "نینو روی کتاب می‌ایستد و به مینا نگاه می‌کند."
     },
     {
       "en": "A red bird lands at the open window.",
       "fa": "یک پرنده‌ی قرمز روی پنجره‌ی باز می‌نشیند."
     },
     {
-      "en": "The cat turns and looks at the bird.",
-      "fa": "گربه برمی‌گردد و به پرنده نگاه می‌کند."
+      "en": "The chicken turns and looks at the bird.",
+      "fa": "جوجه برمی‌گردد و به پرنده نگاه می‌کند."
     },
     {
       "en": "\"Look, Nino, the bird is very close,\" Mina says.",
@@ -99,8 +99,8 @@
       "fa": "او زیر صندلی و پشت در را نگاه می‌کند."
     },
     {
-      "en": "\"No cat here,\" Mina whispers to herself.",
-      "fa": "مینا آرام با خودش می‌گوید: «اینجا گربه‌ای نیست.»"
+      "en": "\"No chicken here,\" Mina whispers to herself.",
+      "fa": "مینا آرام با خودش می‌گوید: «اینجا جوجه‌ای نیست.»"
     },
     {
       "en": "Then she goes outside and calls Nino again.",
@@ -115,8 +115,8 @@
       "fa": "مینا داخل باغ و نزدیک دیوار را می‌گردد."
     },
     {
-      "en": "She sees the red bird, but not her cat.",
-      "fa": "پرنده‌ی قرمز را می‌بیند، اما گربه‌اش را نه."
+      "en": "She sees the red bird, but not her chicken.",
+      "fa": "پرنده‌ی قرمز را می‌بیند، اما جوجه‌اش را نه."
     },
     {
       "en": "Nino is not at home anymore.",
@@ -127,25 +127,25 @@
       "fa": "مینا کتاب قرمز را نزدیک سینه‌اش نگه می‌دارد."
     },
     {
-      "en": "Then Mina runs outside to look for her little cat.",
-      "fa": "بعد مینا بیرون می‌دود تا دنبال گربه‌ی کوچکش بگردد."
+      "en": "Then Mina runs outside to look for her little chicken.",
+      "fa": "بعد مینا بیرون می‌دود تا دنبال جوجه‌ی کوچکش بگردد."
     }
   ],
   "check": [
     {
       "q": "نینو چه حیوانی است؟",
       "options": [
-        "cat",
+        "chicken",
         "bird",
         "book",
         "morning"
       ],
-      "a": "cat"
+      "a": "chicken"
     },
     {
       "q": "کتاب مینا چه رنگی است؟",
       "options": [
-        "black",
+        "yellow",
         "red",
         "little",
         "home"
