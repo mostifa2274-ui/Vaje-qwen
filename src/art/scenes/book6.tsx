@@ -1,6 +1,6 @@
 import { Rain } from '../kit'
 import { CRIMSON, PAPER, outline } from '../tokens'
-import { Cast, Cat, Figure, Student } from '../characters'
+import { Cast, Chicken, Figure, Student } from '../characters'
 import { DAD, MINA } from '../cast'
 import { Clock, MissingNote, Printer, Room, Screen, Table, WallMap, Window } from '../interior'
 import { Blackboard, Building, CatPhoto, Flask, Globe, SchoolDesk } from '../outdoor'
@@ -11,7 +11,7 @@ const SCIENTIST = { build: 'adult' as const, skin: '#d9a07a', hair: '#2c1d17', h
 
 export const BOOK6: Record<string, Scene> = {
   b6c1: {
-    alt: 'در کلاس علوم، معلم دربارهٔ حیوانات درس می‌دهد و روی تخته گربه‌ای کشیده؛ مینا ایستاده و با دقت از کتاب قرمزش به انگلیسی می‌خواند و هم‌کلاسی‌ها گوش می‌دهند.',
+    alt: 'در کلاس علوم، معلم دربارهٔ پرنده‌ها و حیوانات مزرعه درس می‌دهد و روی تخته جوجه‌ای کشیده؛ مینا ایستاده و با دقت از کتاب قرمزش به انگلیسی می‌خواند و هم‌کلاسی‌ها گوش می‌دهند.',
     draw: () => (
       <>
         <Room wall="#e3e6d9" pattern="#cfd5c2" floorY={330} floor="#c9a57c" />
@@ -83,7 +83,7 @@ export const BOOK6: Record<string, Scene> = {
     ),
   },
   b6c4: {
-    alt: 'در آزمایشگاه دانشگاه، شبِ بارانی: دانشمند گربهٔ سیاهِ کوچک و جوانی را روی میز نشان می‌دهد و مینا قلاده‌اش را نگاه می‌کند؛ نشانه‌ها فرق دارند و این گربه نینو نیست.',
+    alt: 'در آزمایشگاه دانشگاه، شبِ بارانی: دانشمند جوجهٔ زردِ کوچک و جوانی را نشان می‌دهد و مینا حلقهٔ آبی دور پایش را نگاه می‌کند؛ نشانه‌ها فرق دارند و این جوجه نینو نیست.',
     draw: () => (
       <>
         <Room wall="#dfe6e6" pattern="#c9d4d4" floorY={330} floor="#b9b5ac" />
@@ -93,7 +93,7 @@ export const BOOK6: Record<string, Scene> = {
         {[280, 330, 380].map((fx, index) => <Flask key={fx} x={fx} y={178} color={['#7fbfd0', '#e98f84', '#a9c58c'][index]} s={.8} />)}
         <rect x={260} y={178} width="150" height="10" rx="3" fill="#a87a50" {...outline(2)} />
         <Table x={420} y={400} w={320} h={100} top="#e9ecee" legs="#8d949c" />
-        <Cat x={430} y={296} s={.62} coat="#242321" shade="#141312" eyes="#e8b44a" collar="#5f84b0" />
+        <g><Chicken x={430} y={296} s={.62} feathers="#e8c45c" wing="#cca341" /><path d="M422 302 H438" stroke="#5f84b0" strokeWidth="3.5" strokeLinecap="round" /></g>
         <Flask x={540} y={296} color="#7fbfd0" s={.9} />
         <Figure {...SCIENTIST} x={610} y={396} flip arms={['down', 'point']} expression="smile" />
         <Cast who={MINA} x={300} y={408} arms={['down', 'reach']} holding={{ item: 'umbrella', hand: 'left' }} accent="#5f7891" expression="calm" />
