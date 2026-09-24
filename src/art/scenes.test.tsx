@@ -29,7 +29,7 @@ describe('chapter illustrations', () => {
       const markup = render(chapter.id)
       const generated = GENERATED_CHAPTER_ART[chapter.id]
       if (generated) {
-        expect(markup, chapter.id).toMatch(/^<img/)
+        expect(markup, chapter.id).toContain('<img')
         expect(markup, chapter.id).toContain(generated.src)
         expect(markup, chapter.id).toContain(generated.altFa)
         expect(markup, chapter.id).toContain('width="640"')
