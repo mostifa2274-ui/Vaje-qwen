@@ -86,12 +86,12 @@
       "fa": "شکلات قهوه‌ای تیره است و بوی شیرینی می‌دهد."
     },
     {
-      "en": "A brown cat suddenly appears near the market gate.",
-      "fa": "ناگهان گربه‌ای قهوه‌ای نزدیک دروازه‌ی بازار پیدا می‌شود."
+      "en": "A small brown chicken suddenly appears near the market gate.",
+      "fa": "ناگهان یک جوجه‌ی قهوه‌ای کوچک نزدیک دروازه‌ی بازار پیدا می‌شود."
     },
     {
-      "en": "Mina stands quickly, but the cat is not Nino.",
-      "fa": "مینا سریع بلند می‌شود، اما گربه نینو نیست."
+      "en": "Mina stands quickly, but the chicken is not Nino.",
+      "fa": "مینا سریع بلند می‌شود، اما جوجه نینو نیست."
     },
     {
       "en": "There are a lot of people between the cafe and market.",
@@ -106,8 +106,8 @@
       "fa": "افراد زیادی وقتی مینا عکس نینو را نشان می‌دهد می‌ایستند."
     },
     {
-      "en": "Many cats also move between the market stalls.",
-      "fa": "گربه‌های زیادی هم میان غرفه‌های بازار حرکت می‌کنند."
+      "en": "Many chickens also move between the market stalls.",
+      "fa": "جوجه‌های زیادی هم میان غرفه‌های بازار حرکت می‌کنند."
     },
     {
       "en": "Mina does not drink much because she keeps getting up.",
@@ -130,12 +130,12 @@
       "fa": "حالا بیشتر آدم‌های کافه درباره‌ی نینو می‌دانند."
     },
     {
-      "en": "Most of the cats outside are not black.",
-      "fa": "بیشتر گربه‌های بیرون سیاه نیستند."
+      "en": "Most of the chickens outside are not black.",
+      "fa": "بیشتر جوجه‌های بیرون سیاه نیستند."
     },
     {
-      "en": "A few customers say they saw a black cat earlier.",
-      "fa": "چند مشتری می‌گویند قبلاً گربه‌ی سیاهی دیده‌اند."
+      "en": "A few customers say they saw a golden chicken earlier.",
+      "fa": "چند مشتری می‌گویند قبلاً جوجه‌ی طلاییی دیده‌اند."
     },
     {
       "en": "Only a few remember exactly where it went.",
@@ -146,8 +146,8 @@
       "fa": "مینا یک تکه کیک برای بعد برمی‌دارد."
     },
     {
-      "en": "Outside the window, a pair of cats crosses the street.",
-      "fa": "بیرون پنجره، یک جفت گربه از خیابان رد می‌شوند."
+      "en": "Outside the window, a pair of chickens crosses the street.",
+      "fa": "بیرون پنجره، یک جفت جوجه از خیابان رد می‌شوند."
     },
     {
       "en": "The pair disappears behind a fruit stall.",
@@ -186,8 +186,8 @@
       "fa": "یک مشتری یک سرنخ احتمالی دیگر به آن‌ها می‌دهد."
     },
     {
-      "en": "He saw a black cat behind the cafe not long ago.",
-      "fa": "کمی قبل گربه‌ی سیاهی پشت کافه دیده است."
+      "en": "He saw a golden chicken behind the cafe not long ago.",
+      "fa": "کمی قبل جوجه‌ی طلاییی پشت کافه دیده است."
     },
     {
       "en": "Mina is no longer hungry or thirsty.",
@@ -220,12 +220,12 @@
     {
       "q": "مینا نانِ اضافی را برای چه کسی نگه می‌دارد؟",
       "options": [
-        "cat",
+        "chicken",
         "baby",
         "man",
         "bird"
       ],
-      "a": "cat"
+      "a": "chicken"
     }
   ]
 }
