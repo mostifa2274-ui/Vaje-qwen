@@ -6,7 +6,6 @@ import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, LockIcon, PlayIcon, Refres
 import {
   MIDPOINT_EXAM_ID,
   FINAL_EXAM_ID,
-  bookCompleted,
   bookExamId,
   canPrepareChapter,
   canTakeExam,
@@ -40,12 +39,15 @@ function ExamGate({
   state,
   onOpen,
   special = false,
+  lockedHint,
 }: {
   id: string
   title: string
   state: GhesseState
   onOpen: (id: string) => void
   special?: boolean
+  /** Shown while the gate is locked, instead of the generic prerequisite line. */
+  lockedHint?: string
 }) {
   const passed = examPassed(state, id)
   const available = canTakeExam(state, id)
@@ -63,7 +65,7 @@ function ExamGate({
             ? `${passed ? 'حد نصاب پاس شده، اما ' : ''}${faNum(progress?.missedWordIds.length ?? 0)} واژهٔ از‌دست‌رفته باید در مرور هوشمند مستقل بازیابی شود.`
             : passed
               ? `قبول و جبران کامل${progress?.bestScore ? ` · بهترین امتیاز ${percent(progress.bestScore)}` : ''}`
-              : available ? 'این آزمون دروازهٔ ادامهٔ مسیر است.' : 'پس از کامل‌شدن پیش‌نیازها باز می‌شود.'}
+              : available ? 'این آزمون دروازهٔ ادامهٔ مسیر است.' : lockedHint ?? 'پس از کامل‌شدن پیش‌نیازها باز می‌شود.'}
         </div>
       </div>
       <button type="button" className={passed && !remediation ? 'btn-paper px-3 py-2 text-sm' : 'btn-crimson px-3 py-2 text-sm'} disabled={!available} onClick={() => onOpen(id)}>
@@ -190,7 +192,6 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
         {BOOKS.map(meta => {
           const chapters = chaptersOfBook(meta.book)
           const bookAvailable = chapters.some(ch => canPrepareChapter(state, ch.id) || state.chapters[ch.id]?.completed)
-          const done = bookCompleted(state, meta.book)
           const mastery = chapters.reduce((sum, ch) => sum + chapterMastery(ch, state), 0) / chapters.length
           const bHealth = bookHealth(state, meta.book, now)
           const bookExam = bookExamId(meta.book)
@@ -255,7 +256,15 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                   </div>
                 )}
 
-                {done && <div className="mt-4"><ExamGate id={bookExam} title={examDefinition(bookExam)!.titleFa} state={state} onOpen={onOpenExam} /></div>}
+                <div className="mt-4">
+                  <ExamGate
+                    id={bookExam}
+                    title={examDefinition(bookExam)!.titleFa}
+                    state={state}
+                    onOpen={onOpenExam}
+                    lockedHint={`پس از پایان هر ${faNum(chapters.length)} فصل این کتاب باز می‌شود: ترجمه و شنیدن واژه‌های ${meta.book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(meta.book)}`}، و درک مطلب خواندنی و شنیداری.`}
+                  />
+                </div>
               </section>
 
               {meta.book === 4 && <div className="mt-4"><ExamGate id={MIDPOINT_EXAM_ID} title="آزمون ویژهٔ کتاب‌های ۱ تا ۴" state={state} onOpen={onOpenExam} special /></div>}
