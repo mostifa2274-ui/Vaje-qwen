@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "setting": {
+    "city": "Tehran",
+    "country": "Iran",
+    "visualContinuity": [
+      "Contemporary Tehran only; do not switch to a European, Mediterranean, fantasy, or mountain-village setting.",
+      "Use the Alborz Mountains as a distant northern backdrop when geography is visible.",
+      "Use Tehran-consistent streets, parks, apartment architecture, shops, buses, taxis, and urban furniture.",
+      "Milad Tower may appear only when a wide skyline view makes it geographically plausible; it must not jump position between adjacent scenes.",
+      "Keep time of day, weather, season, clothing, and travel direction continuous inside each chapter."
+    ]
+  },
+  "properNouns": [
+    "Mina",
+    "Nino",
+    "Tehran",
+    "Iran"
+  ],
+  "characters": {
+    "Mina": {
+      "role": "main child",
+      "continuity": "same face, age, height, body proportions, eye color, and outfit identity in every image",
+      "appearance": "Iranian girl, warm brown eyes, dark brown hair fully covered by hijab",
+      "clothing": "deep red patterned headscarf, cream knit cardigan with small red floral embroidery, blue denim bottoms, red backpack when traveling outdoors"
+    },
+    "Nino": {
+      "role": "little chicken",
+      "continuity": "same size, proportions, feather color, beak, feet, and identifying feather in every image",
+      "appearance": "small soft yellow chicken, orange beak and feet, one small white feather on the left wing",
+      "restrictions": "never depict Nino as a cat, black bird, adult hen, duck, or generic chick without the white left-wing feather"
+    },
+    "Mother": {
+      "continuity": "same face and adult proportions throughout",
+      "appearance": "Iranian woman wearing a contemporary modest hijab",
+      "clothing": "muted green outerwear with a floral-patterned scarf"
+    },
+    "Father": {
+      "continuity": "same face and adult proportions throughout",
+      "appearance": "Iranian man with curly dark hair and a short neat beard",
+      "clothing": "neutral gray knit top or jacket, consistent within a scene sequence"
+    },
+    "Brother": {
+      "continuity": "same face and child proportions throughout",
+      "appearance": "younger Iranian boy with curly dark hair",
+      "clothing": "green hoodie for the primary outdoor sequence"
+    }
+  },
+  "imageRules": [
+    "All female characters are shown with hijab when outside the home or where the established design requires it.",
+    "Do not add a cat as a Nino substitute, clue, portrait, or reunion animal.",
+    "No readable text should be embedded in generated artwork.",
+    "Keep recurring props, backpacks, vehicles, storefronts, and landmarks stable across adjacent chapter images.",
+    "Use cinematic storybook realism with warm natural light, detailed Iranian environments, and child-friendly emotional expressions."
+  ]
+}
