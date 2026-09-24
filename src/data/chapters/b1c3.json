@@ -211,8 +211,8 @@
       "fa": "مینا برای بعد نان و یک بطری آب داخل کیف می‌گذارد."
     },
     {
-      "en": "\"Come with me,\" her brother says as he reaches for his coat.",
-      "fa": "برادرش در حالی که کت خود را برمی‌دارد می‌گوید: «با من بیا.»"
+      "en": "\"Come with me,\" her brother says as he reaches for the door.",
+      "fa": "برادرش در حالی که به سمت در می‌رود می‌گوید: «با من بیا.»"
     },
     {
       "en": "Before leaving, Mina looks once more at the empty window.",
@@ -234,7 +234,7 @@
         "egg",
         "milk",
         "water",
-        "cat"
+        "chicken"
       ],
       "a": "egg"
     },

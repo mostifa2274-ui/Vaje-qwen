@@ -105,8 +105,8 @@
       "fa": "فکر می‌کند: «اگر فقط باد باشد، ناامید می‌شوم.»"
     },
     {
-      "en": "\"But if it is a cat, I have to look.\"",
-      "fa": "«اما اگر گربه باشد، باید نگاه کنم.»"
+      "en": "\"But if it is a little chicken, I have to look.\"",
+      "fa": "«اما اگر یک جوجه‌ی کوچک باشد، باید نگاه کنم.»"
     },
     {
       "en": "Mina runs downstairs before anyone else reaches the door.",
@@ -117,8 +117,8 @@
       "fa": "آرام در را باز می‌کند و بیرون را نگاه می‌کند."
     },
     {
-      "en": "A small black cat sits under the porch light.",
-      "fa": "گربه‌ی سیاه کوچکی زیر چراغ ایوان نشسته است."
+      "en": "A small yellow chicken stands under the porch light.",
+      "fa": "یک جوجه‌ی زرد کوچک زیر چراغ ایوان ایستاده است."
     },
     {
       "en": "His fur is dirty from days outside.",
@@ -129,16 +129,16 @@
       "fa": "لاغر و گرسنه به نظر می‌رسد، اما چشم‌هایش روشن است."
     },
     {
-      "en": "Those green eyes look directly at Mina.",
-      "fa": "آن چشم‌های سبز مستقیم به مینا نگاه می‌کنند."
+      "en": "Those dark eyes look directly at Mina.",
+      "fa": "آن چشم‌های تیره مستقیم به مینا نگاه می‌کنند."
     },
     {
       "en": "\"If you are Nino, come to me,\" she whispers.",
       "fa": "زمزمه می‌کند: «اگر نینو هستی، بیا پیش من.»"
     },
     {
-      "en": "The cat gives a small sound and steps forward.",
-      "fa": "گربه صدای کوچکی می‌دهد و قدمی جلو می‌آید."
+      "en": "The chicken gives a soft chirp and steps forward.",
+      "fa": "جوجه جیک آرامی می‌کند و یک قدم جلو می‌آید."
     },
     {
       "en": "He crosses the doorway and enters the house.",
@@ -161,12 +161,12 @@
       "fa": "بابا می‌گوید: «من هم نمی‌توانم چشم‌هایم را باور کنم.»"
     },
     {
-      "en": "Mina does not need proof because she knows this cat.",
-      "fa": "مینا به مدرک نیاز ندارد چون این گربه را می‌شناسد."
+      "en": "Mina does not need proof because she recognizes his orange beak and white wing feather.",
+      "fa": "مینا به مدرک نیاز ندارد چون نوک نارنجی و پر سفید روی بالش را می‌شناسد."
     },
     {
-      "en": "She would recognize Nino among a thousand black cats.",
-      "fa": "او نینو را میان هزار گربه‌ی سیاه هم می‌شناخت."
+      "en": "She would recognize Nino among a thousand little chickens.",
+      "fa": "او نینو را میان هزار جوجه‌ی کوچک هم می‌شناخت."
     },
     {
       "en": "\"Nino,\" she says, and tears fill her eyes.",
@@ -177,12 +177,12 @@
       "fa": "به او می‌گوید: «واقعاً به خانه برگشتی.»"
     },
     {
-      "en": "Mom brings milk while Dad finds some fish.",
-      "fa": "مامان شیر می‌آورد و بابا کمی ماهی پیدا می‌کند."
+      "en": "Mom brings fresh water while Dad finds some grains.",
+      "fa": "مامان آب تازه می‌آورد و بابا کمی دانه پیدا می‌کند."
     },
     {
-      "en": "Nino eats slowly at first, then asks for more.",
-      "fa": "نینو اول آرام می‌خورد و بعد غذای بیشتری می‌خواهد."
+      "en": "Nino pecks at a few grains slowly at first, then looks for more.",
+      "fa": "نینو اول آرام چند دانه را نوک می‌زند و بعد دنبال غذای بیشتری می‌گردد."
     },
     {
       "en": "After eating, he curls up in Mina's arms.",
@@ -197,16 +197,16 @@
       "fa": "مینا او را به اتاقش در طبقه‌ی بالا می‌برد."
     },
     {
-      "en": "Nino sleeps beside her while she opens the red book.",
-      "fa": "نینو کنار او می‌خوابد و مینا کتاب قرمز را باز می‌کند."
+      "en": "Nino settles into his little basket beside her chair while she opens the red book.",
+      "fa": "نینو در سبد کوچک کنار صندلی مینا آرام می‌گیرد و مینا کتاب قرمز را باز می‌کند."
     },
     {
       "en": "Now she knows what the final page should say.",
       "fa": "حالا می‌داند صفحه‌ی آخر باید چه بگوید."
     },
     {
-      "en": "She writes about the return, the door, and the green eyes.",
-      "fa": "درباره‌ی برگشت، در و چشم‌های سبز می‌نویسد."
+      "en": "She writes about the return, the door, and the dark eyes.",
+      "fa": "درباره‌ی برگشت، در و چشم‌های تیره می‌نویسد."
     },
     {
       "en": "Then she adds one short sentence near the bottom.",
@@ -217,8 +217,8 @@
       "fa": "جمله می‌گوید: «نینو بالاخره خانه است.»"
     },
     {
-      "en": "Mina reads it once and smiles at the sleeping cat.",
-      "fa": "مینا یک بار آن را می‌خواند و به گربه‌ی خوابیده لبخند می‌زند."
+      "en": "Mina reads it once and smiles at Nino resting in his basket.",
+      "fa": "مینا یک بار آن را می‌خواند و به نینو که در سبدش استراحت می‌کند لبخند می‌زند."
     },
     {
       "en": "The empty page is empty no more.",
@@ -233,12 +233,12 @@
     {
       "q": "چه کسی پشت در بود؟",
       "options": [
-        "cat",
+        "chicken",
         "dog",
         "doctor",
         "teacher"
       ],
-      "a": "cat"
+      "a": "chicken"
     },
     {
       "q": "آخرین جمله می‌گوید نینو کجاست؟",

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { ArtIds, Bush, Clip, Cloud, Defs, Finish, Flower, Glow, Ground, Hills, Moon, Pine, Sky, Sparkle, Stars, StringLights, Sun, Tree } from './kit'
 import { CRIMSON, PAPER, outline } from './tokens'
-import { Bird, Cast, Cat, Figure, Flock, Nino } from './characters'
+import { Bird, Cast, Chicken, Figure, Flock, Nino } from './characters'
 import { BROTHER, DAD, GRANDMOTHER, MINA, MOM } from './cast'
 import { MissingNote } from './interior'
 import { Blackboard, BrickWall, Building, Fountain, House, Lighthouse, Mountains, Rails, Sea, Shop, Stall, StoneHouse, StreetLamp, Train } from './outdoor'
@@ -81,8 +81,14 @@ const BOOK_BANNERS: Record<number, () => ReactNode> = {
       <Stall x={40} y={250} w={220} awning={[CRIMSON, PAPER]} goods={['apples', 'oranges']} />
       <Stall x={540} y={250} w={220} awning={['#6f9a6b', PAPER]} goods={['bananas', 'greens']} />
       <BrickWall x={280} y={250} w={240} h={70} color="#cf9f7f" />
-      {[['#8b8580', '#e3c74a'], ['#d9934a', '#b8d46a'], ['#242321', '#f0c63a'], ['#f2ede4', '#8fb8d8'], ['#6e5a4e', '#e3c74a']].map(([coat, eyes], index) => (
-        <Cat key={index} x={306 + index * 48} y={180 + (index % 2) * 2} s={.38} coat={coat} eyes={eyes} flip={index % 2 === 0} />
+      {[
+        ['#f3c84b', '#dfad32'],
+        ['#e6b96a', '#c99a55'],
+        ['#f1d88b', '#dfc16b'],
+        ['#fff1bb', '#e4c875'],
+        ['#d9a45a', '#b7803e'],
+      ].map(([feathers, wing], index) => (
+        <Chicken key={index} x={306 + index * 48} y={180 + (index % 2) * 2} s={.32} feathers={feathers} wing={wing} flip={index % 2 === 0} />
       ))}
       <path d="M0 262 H800 V300 H0Z" fill="#cdbfa6" />
       <Cast who={MINA} x={400} y={296} s={.8} arms={['down', 'point']} expression="calm" />
@@ -109,9 +115,9 @@ const BOOK_BANNERS: Record<number, () => ReactNode> = {
       <Sky time="day" width={800} height={300} />
       <rect x={0} y={0} width={800} height={240} fill="#e3e6d9" />
       <Blackboard x={60} y={40} w={300} h={130}>
-        <path d="M150 96 C140 76 150 56 172 54 C194 56 202 76 194 96Z" />
-        <circle cx="172" cy="44" r="16" />
-        <path d="M160 34 L158 20 L168 30 M184 34 L186 20 L176 30" />
+        <ellipse cx="170" cy="78" rx="28" ry="21" />
+        <circle cx="194" cy="56" r="14" />
+        <path d="M207 56 L224 62 L207 67Z M190 42 q6 -12 12 0 q7 -9 10 3" />
         <path d="M30 36 H110 M30 58 H96 M30 80 H104" />
       </Blackboard>
       <g transform="translate(560 40)">

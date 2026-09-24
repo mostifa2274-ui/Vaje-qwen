@@ -86,7 +86,7 @@ export const BOOK2: Record<string, Scene> = {
     ),
   },
   b2c4: {
-    alt: 'آواز در خیابان: کنار کافه، زنی آواز می‌خواند، مردی گیتار می‌زند و پیانوی سیاه روی سکو است؛ مینا با مادرش می‌رقصد و نقاشی کنار کافه چهره می‌کشد.',
+    alt: 'آواز در خیابان: کنار کافه، مردی آواز می‌خواند، مرد دیگری گیتار می‌زند و پیانوی سیاه روی سکو است؛ مینا و مادرش با لبخند دست می‌زنند و نقاشی کنار کافه چهره می‌کشد.',
     draw: () => (
       <>
         <Sky time="evening" />
@@ -98,13 +98,13 @@ export const BOOK2: Record<string, Scene> = {
         <rect x={440} y={300} width={200} height={20} fill="#9a6b47" {...outline(2)} />
         <Piano x={580} y={300} s={.8} />
         <Figure build="adult" skin="#e0ae88" hair="#2f2622" hairStyle="short" top="#3f4a5a" bottom="#2f3440" x={500} y={300} pose="sit" arms={['hold', 'hold']} expression="calm" s={.8} shadow={false} />
-        <Figure build="adult" skin="#d9a07a" hair="#3a2a22" hairStyle="long" top={CRIMSON} bottom={CRIMSON} outfit="dress" legs="#d9a07a" x={420} y={372} arms={['up', 'chest']} expression="talk" />
+        <Figure build="adult" skin="#d9a07a" hair="#2f2622" hairStyle="short" top={CRIMSON} bottom="#3e4450" outfit="pants" x={420} y={372} arms={['out', 'chest']} expression="talk" />
         <Notes x={364} y={160} color={INK} s={1.1} />
         <Notes x={610} y={170} color={CRIMSON} s={.8} />
         <Figure build="adult" skin="#efc6a0" hair="#6b4a2e" hairStyle="curly" top="#6f9a6b" bottom="#3e4450" x={330} y={380} arms={['hold', 'hold']} expression="smile" />
         <Guitar x={324} y={292} s={1.1} rotate={-60} />
-        <Cast who={MOM} x={170} y={402} arms={['up', 'wave']} expression="happy" />
-        <Cast who={MINA} x={240} y={408} flip arms={['up', 'wave']} expression="happy" />
+        <Cast who={MOM} x={170} y={402} arms={['chest', 'chest']} expression="happy" />
+        <Cast who={MINA} x={240} y={408} flip arms={['chest', 'chest']} expression="happy" />
         <Easel x={700} y={404}>
           <circle cx="42" cy="32" r="16" fill="#242321" />
           <path d="M30 22 l2 -12 7 8 M54 22 l-2 -12 -7 8" fill="#242321" />

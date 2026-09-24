@@ -76,16 +76,16 @@
       "fa": "خانه‌ای نزدیک، هشت پنجره رو به جاده دارد."
     },
     {
-      "en": "Mina checks beneath all eight windows for paw marks.",
-      "fa": "مینا زیر هر هشت پنجره را برای رد پنجه بررسی می‌کند."
+      "en": "Mina checks beneath all eight windows for three-toed tracks.",
+      "fa": "مینا زیر هر هشت پنجره را برای رد پای سه‌انگشتی بررسی می‌کند."
     },
     {
-      "en": "Then she sees nine cats near the market wall.",
-      "fa": "بعد نه گربه نزدیک دیوار بازار می‌بیند."
+      "en": "Then she sees nine small birds near the market wall.",
+      "fa": "بعد نه پرنده‌ی کوچک نزدیک دیوار بازار می‌بیند."
     },
     {
-      "en": "She counts the nine cats slowly, but none is Nino.",
-      "fa": "نه گربه را آرام می‌شمارد، اما هیچ‌کدام نینو نیست."
+      "en": "She counts the nine birds slowly, but none is Nino.",
+      "fa": "نه پرنده را آرام می‌شمارد، اما هیچ‌کدام نینو نیست."
     },
     {
       "en": "Ten birds suddenly fly up from the park grass.",
@@ -216,7 +216,7 @@
       "a": "five"
     },
     {
-      "q": "مینا در خیابان چند گربه می‌بیند؟",
+      "q": "مینا نزدیک دیوار بازار چند پرنده می‌بیند؟",
       "options": [
         "nine",
         "ten",

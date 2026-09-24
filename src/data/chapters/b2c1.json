@@ -101,8 +101,8 @@
       "fa": "فرد دیگری کنار فواره به پرنده‌ها غذا می‌دهد."
     },
     {
-      "en": "\"Who has seen a small black cat?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «چه کسی یک گربه‌ی سیاه کوچک دیده است؟»"
+      "en": "\"Who has seen a little yellow chicken?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «چه کسی یک جوجه‌ی زرد کوچک دیده است؟»"
     },
     {
       "en": "The old man looks up and asks who she is searching for.",
@@ -137,12 +137,12 @@
       "fa": "چند دختر هم اطراف زمین بازی را می‌گردند."
     },
     {
-      "en": "Mina asks whether they saw any cat near the road.",
-      "fa": "مینا می‌پرسد آیا هیچ گربه‌ای نزدیک جاده دیده‌اند."
+      "en": "Mina asks whether they saw any chicken near the road.",
+      "fa": "مینا می‌پرسد آیا هیچ جوجه‌ای نزدیک جاده دیده‌اند."
     },
     {
-      "en": "The old man says he did not see any black cat.",
-      "fa": "مرد پیر می‌گوید هیچ گربه‌ی سیاهی ندیده است."
+      "en": "The old man says he did not see any little yellow chicken.",
+      "fa": "مرد پیر می‌گوید هیچ جوجه‌ی زرد کوچکی ندیده است."
     },
     {
       "en": "Someone near the fountain calls Mina's name.",
@@ -209,8 +209,8 @@
       "fa": "فرد دیگری روبه‌روی خانه‌ها در امتداد دیوار را نگاه می‌کند."
     },
     {
-      "en": "They search left and right, but find no cat.",
-      "fa": "چپ و راست را می‌گردند، اما گربه‌ای پیدا نمی‌کنند."
+      "en": "They search left and right, but find no chicken.",
+      "fa": "چپ و راست را می‌گردند، اما جوجه‌ای پیدا نمی‌کنند."
     },
     {
       "en": "Nino is not in the park or on that road.",
@@ -236,7 +236,7 @@
       "q": "چیزی سیاه که مینا می‌بیند چیست؟",
       "options": [
         "bird",
-        "cat",
+        "chicken",
         "boy",
         "house"
       ],

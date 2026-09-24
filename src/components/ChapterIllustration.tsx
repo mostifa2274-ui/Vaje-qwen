@@ -11,7 +11,7 @@ export default function ChapterIllustration({ chapterId, titleFa }: Props) {
   if (!scene) {
     return (
       <div className="lesson-cover-fallback" role="img" aria-label={`تصویر داستان: ${titleFa}`}>
-        <span aria-hidden="true">🐈‍⬛</span>
+        <span aria-hidden="true">🐥</span>
       </div>
     )
   }

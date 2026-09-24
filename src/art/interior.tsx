@@ -371,16 +371,19 @@ export function Screen({ x, y, w = 120, h = 80, children, stand = true, frame = 
   )
 }
 
-/** The missing-cat note Mina writes: a paper with Nino's sketch and lines. */
+/** The missing-chicken note Mina writes: a paper with Nino's sketch and lines. */
 export function MissingNote({ x, y, s = 1, rotate = 0 }: { x: number; y: number; s?: number; rotate?: number }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${rotate}) scale(${s})`}>
       <rect x="-34" y="-44" width="68" height="88" rx="2" fill={PAPER} {...outline(2)} />
       <rect x="-16" y="-50" width="32" height="10" rx="2" fill="#e9d6a0" opacity=".85" />
-      <circle cx="0" cy="-16" r="13" fill="#242321" />
-      <path d="M-10 -24 L-10 -36 L-2 -28 M10 -24 L10 -36 L2 -28" fill="#242321" />
-      <circle cx="-4.5" cy="-17" r="2.3" fill="#8fd16f" /><circle cx="4.5" cy="-17" r="2.3" fill="#8fd16f" />
-      <path d="M6 -29 q4 -1 6 2" stroke="#f4eee4" strokeWidth="2.4" strokeLinecap="round" />
+      <ellipse cx="-2" cy="-12" rx="15" ry="12" fill="#f3c84b" {...outline(1.2)} />
+      <circle cx="9" cy="-26" r="9" fill="#f3c84b" {...outline(1.2)} />
+      <path d="M17 -27 L27 -23 L17 -19Z" fill="#e8892f" />
+      <path d="M7 -36 q4 -7 7 0 q5 -5 7 1" fill="#cf4d4d" />
+      <circle cx="11" cy="-28" r="1.8" fill={INK} />
+      <path d="M-13 -15 q-8 6 -2 12 q8 -2 11 -10Z" fill="#dfad32" />
+      <path d="M-14 -12 q-4 5 0 8" stroke="#f7f3e8" strokeWidth="3" strokeLinecap="round" />
       <path d="M-22 6 H22 M-22 16 H14 M-22 26 H18" stroke="#8a8378" strokeWidth="3" strokeLinecap="round" />
       <path d="M-22 -4 H22" stroke={CRIMSON} strokeWidth="4" strokeLinecap="round" />
     </g>

@@ -118,8 +118,8 @@
       "fa": "افراد بیشتری دورشان جمع می‌شوند تا گوش بدهند."
     },
     {
-      "en": "The cyclist describes a black cat near the river road.",
-      "fa": "دوچرخه‌سوار گربه‌ی سیاهی نزدیک جاده‌ی کنار رودخانه را توصیف می‌کند."
+      "en": "The cyclist describes a little yellow chicken near the river road.",
+      "fa": "دوچرخه‌سوار یک جوجه‌ی زرد کوچک نزدیک جاده‌ی کنار رودخانه را توصیف می‌کند."
     },
     {
       "en": "\"That sounds fantastic,\" Mina says.",
@@ -138,8 +138,8 @@
       "fa": "علاقه‌اش مشخص است چون سؤال‌های زیادی می‌پرسد."
     },
     {
-      "en": "She is interested in cats and knows the river area well.",
-      "fa": "او به گربه‌ها علاقه‌مند است و منطقه‌ی رودخانه را خوب می‌شناسد."
+      "en": "She is interested in birds and knows the river area well.",
+      "fa": "او به پرنده‌ها علاقه‌مند است و منطقه‌ی رودخانه را خوب می‌شناسد."
     },
     {
       "en": "Her brother is interested too and offers to come.",
@@ -190,8 +190,8 @@
       "fa": "نینو خاص است چون بخشی از خانواده‌ی اوست."
     },
     {
-      "en": "\"He is a very special cat,\" Mina tells the girl.",
-      "fa": "مینا به دختر می‌گوید: «او گربه‌ی خیلی خاصی است.»"
+      "en": "\"He is a very special little chicken,\" Mina tells the girl.",
+      "fa": "مینا به دختر می‌گوید: «او یک جوجه‌ی کوچک خیلی خاص است.»"
     },
     {
       "en": "The girl smiles and says, \"Yeah, we should go now.\"",
@@ -232,12 +232,12 @@
     {
       "q": "مینا برای چه کسی نگران است؟",
       "options": [
-        "cat",
+        "chicken",
         "bird",
         "dog",
         "baby"
       ],
-      "a": "cat"
+      "a": "chicken"
     }
   ]
 }

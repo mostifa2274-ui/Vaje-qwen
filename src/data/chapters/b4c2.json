@@ -162,20 +162,20 @@
       "fa": "یک جعبه‌ی کوچک فلفل کنار نمک است."
     },
     {
-      "en": "The pepper is black, and Mina suddenly thinks of Nino.",
-      "fa": "فلفل سیاه است و مینا ناگهان به نینو فکر می‌کند."
+      "en": "The butter is yellow, and Mina suddenly thinks of Nino.",
+      "fa": "کره زرد است و مینا ناگهان به نینو فکر می‌کند."
     },
     {
       "en": "She puts half her sandwich in a paper bag.",
       "fa": "نصف ساندویچش را داخل یک پاکت کاغذی می‌گذارد."
     },
     {
-      "en": "\"This small sandwich is for Nino if I find him,\" she says.",
-      "fa": "«اگر نینو را پیدا کنم، این ساندویچ کوچک برای اوست»، می‌گوید."
+      "en": "\"I will save this small piece of bread for Nino if I find him,\" she says.",
+      "fa": "می‌گوید: «اگر نینو را پیدا کنم، این تکه‌ی کوچک نان را برایش نگه می‌دارم.»"
     },
     {
-      "en": "The man smiles and asks why she is carrying food for a cat.",
-      "fa": "مرد لبخند می‌زند و می‌پرسد چرا برای یک گربه غذا همراه دارد."
+      "en": "The man smiles and asks why she is saving bread for a chicken.",
+      "fa": "مرد لبخند می‌زند و می‌پرسد چرا برای یک جوجه نان نگه می‌دارد."
     },
     {
       "en": "Mina tells him the whole story while he keeps cooking.",
@@ -190,8 +190,8 @@
       "fa": "برای مینا هر روز بدون نینو طولانی به نظر می‌رسد."
     },
     {
-      "en": "The man becomes quiet. \"I see a black cat here most mornings,\" he says.",
-      "fa": "مرد ساکت می‌شود. «بیشتر صبح‌ها یک گربه‌ی سیاه اینجا می‌بینم»، می‌گوید."
+      "en": "The man becomes quiet. \"I see a little yellow chicken here most mornings,\" he says.",
+      "fa": "مرد ساکت می‌شود. می‌گوید: «بیشتر صبح‌ها یک جوجه‌ی زرد کوچک اینجا می‌بینم.»"
     },
     {
       "en": "\"It often comes early, before the shop gets busy.\"",
@@ -216,12 +216,12 @@
     {
       "q": "مردِ نان‌فروش صبح‌ها چه می‌بیند؟",
       "options": [
-        "cat",
+        "chicken",
         "bird",
         "cake",
         "soup"
       ],
-      "a": "cat"
+      "a": "chicken"
     }
   ]
 }

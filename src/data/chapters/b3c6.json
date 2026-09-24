@@ -35,16 +35,16 @@
       "fa": "هفته عصر جمعه تمام می‌شود، اما مینا هنوز به نینو فکر می‌کند."
     },
     {
-      "en": "\"Fill this glass with milk for Nino,\" Mom says.",
-      "fa": "«این لیوان را برای نینو با شیر پر کن»، مامان می‌گوید."
+      "en": "\"Fill this little bowl with water for Nino,\" Mom says.",
+      "fa": "مامان می‌گوید: «این ظرف کوچک را برای نینو با آب پر کن.»"
     },
     {
-      "en": "Mina fills it and puts it beside Nino's little bowl.",
-      "fa": "مینا آن را پر می‌کند و کنار کاسه‌ی کوچک نینو می‌گذارد."
+      "en": "Mina fills it and puts a few crumbs beside it.",
+      "fa": "مینا آن را پر می‌کند و چند خرده‌نان کنارش می‌گذارد."
     },
     {
-      "en": "\"If he comes home tonight, the milk will be ready,\" Mina says.",
-      "fa": "«اگر امشب به خانه برگردد، شیر آماده است»، مینا می‌گوید."
+      "en": "\"If he comes home tonight, the water and grains will be ready,\" Mina says.",
+      "fa": "مینا می‌گوید: «اگر امشب به خانه برگردد، آب و دانه‌ها آماده‌اند.»"
     },
     {
       "en": "\"Finish your dinner first,\" Dad says, opening Mina's notebook.",
@@ -99,8 +99,8 @@
       "fa": "«درِ جلویی را کمی باز نگه دار»، مینا می‌خواهد."
     },
     {
-      "en": "Dad keeps it open so Nino can push it easily.",
-      "fa": "بابا در را باز نگه می‌دارد تا نینو بتواند راحت آن را هل بدهد."
+      "en": "Dad keeps it open so Nino can walk in easily.",
+      "fa": "بابا در را باز نگه می‌دارد تا نینو بتواند راحت داخل بیاید."
     },
     {
       "en": "\"Leave the porch light on too,\" Mom says.",
@@ -207,12 +207,12 @@
       "fa": "صبح روز بعد با انتظار مینا کنار در آغاز می‌شود."
     },
     {
-      "en": "\"Add a little more milk before we go,\" Dad says.",
-      "fa": "«قبل از رفتن کمی شیر بیشتر اضافه کن»، بابا می‌گوید."
+      "en": "\"Add a little more water before we go,\" Dad says.",
+      "fa": "بابا می‌گوید: «قبل از رفتن کمی آب بیشتر اضافه کن.»"
     },
     {
-      "en": "Mina adds fresh milk and checks that the door is open.",
-      "fa": "مینا شیر تازه اضافه می‌کند و بررسی می‌کند که در باز باشد."
+      "en": "Mina adds fresh water and checks that the door is open.",
+      "fa": "مینا آب تازه اضافه می‌کند و بررسی می‌کند که در باز باشد."
     },
     {
       "en": "\"Come with us,\" Dad says. \"Today we will search together.\"",
@@ -231,14 +231,14 @@
       "a": "open"
     },
     {
-      "q": "مینا لیوان را با چه چیزی پر می‌کند؟",
+      "q": "مینا ظرف کوچک را با چه چیزی پر می‌کند؟",
       "options": [
-        "milk",
         "water",
+        "milk",
         "bread",
         "egg"
       ],
-      "a": "milk"
+      "a": "water"
     }
   ]
 }

@@ -60,6 +60,8 @@ const forbiddenEnglish = [
   'Their mother calls them for dinner.',
   'The plane is above.',
   'A thousand cats, and not one is Nino.',
+  'Cats know their homes.',
+  'A smart chicken can sometimes find his way home from far away.',
 ]
 
 const allEnglish = chapters.flatMap(c => c.sentences.map(s => s.en))
@@ -91,7 +93,7 @@ const expectedChecks = {
   b8c3: [['hospital'], ['exercise']],
   b8c4: [['no-one'], ['write']],
   b8c5: [['star'], ['home']],
-  b8c6: [['cat'], ['home']],
+  b8c6: [['chicken'], ['home']],
 }
 for (const [id, expected] of Object.entries(expectedChecks)) {
   const chapter = byId.get(id)

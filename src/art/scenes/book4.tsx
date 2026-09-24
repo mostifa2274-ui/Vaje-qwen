@@ -1,6 +1,6 @@
 import { Cloud, Glow, Ground, Sky, Sun, ThoughtBubble } from '../kit'
 import { CRIMSON, INK, PAPER, GOLD, outline } from '../tokens'
-import { Cast, Cat, Figure, Nino } from '../characters'
+import { Cast, Chicken, Figure, Nino } from '../characters'
 import { BROTHER, DAD, MINA, MOM } from '../cast'
 import { Coin, Glass, Plate, Room, Shelf, Table, Window } from '../interior'
 import { Building, Crate, Oven, Shop, Stall } from '../outdoor'
@@ -60,14 +60,14 @@ export const BOOK4: Record<string, Scene> = {
     ),
   },
   b4c3: {
-    alt: 'در کافه، مینا کنار پنجره آب‌پرتقال سرد می‌نوشد، مادر چای و پدر قهوه دارد و برادرش کیک شکلاتی می‌خورد؛ بیرون، نزدیک در بازار، گربه‌ای قهوه‌ای ظاهر شده و مینا از جا بلند شده است.',
+    alt: 'در کافه، مینا کنار پنجره آب‌پرتقال سرد می‌نوشد، مادر چای و پدر قهوه دارد و برادرش کیک شکلاتی می‌خورد؛ بیرون، نزدیک در بازار، جوجه‌ای قهوه‌ای ظاهر شده و مینا از جا بلند شده است.',
     draw: () => (
       <>
         <Room wall="#e9d8c4" pattern="#dcc2a8" floorY={336} floor="#a87a50" />
         <Window x={300} y={56} w={430} h={184} view="day" curtain={null} tree={false}>
           <Stall x={20} y={184} w={180} awning={['#6f9a6b', PAPER]} goods={['apples', 'bananas']} />
           <Stall x={230} y={184} w={180} awning={[CRIMSON, PAPER]} goods={['oranges', 'greens']} />
-          <Cat x={214} y={182} s={.5} coat="#9a6440" eyes="#e3c74a" pose="walk" stripes="#7a4a2e" />
+          <Chicken x={214} y={182} s={.44} feathers="#b9824f" wing="#9a6440" pose="walk" />
         </Window>
         <Cast who={MOM} x={120} y={372} pose="sit" arms={['hold', 'down']} holding={{ item: 'cup' }} expression="smile" s={.95} shadow={false} />
         <Cast who={DAD} x={220} y={372} pose="sit" arms={['hold', 'hold']} holding={{ item: 'map' }} expression="calm" s={.95} shadow={false} />
@@ -110,7 +110,7 @@ export const BOOK4: Record<string, Scene> = {
     ),
   },
   b4c5: {
-    alt: 'صبح زود کنار نانوایی، گربه‌ای سیاه درست شبیه نینو ایستاده، اما چشم‌هایش زرد است نه سبز و لکهٔ سفید کنار گوشش را ندارد؛ مینا ایستاده و نینوی واقعی را به یاد می‌آورد.',
+    alt: 'صبح زود کنار نانوایی، جوجه‌ای طلایی شبیه نینو ایستاده، اما نوکش تیره‌تر است و پر سفید روی بال چپ نینو را ندارد؛ مینا ایستاده و نینوی واقعی را به یاد می‌آورد.',
     draw: () => (
       <>
         <Sky time="morning" />
@@ -122,7 +122,7 @@ export const BOOK4: Record<string, Scene> = {
         <Glow x={170} y={250} r={80} kind="lamp" />
         <Figure {...BAKER} x={252} y={318} arms={['hip', 'down']} expression="calm" s={.85} shadow={false} />
         <rect y={310} width={800} height={110} fill="#cdbfa6" />
-        <Cat x={360} y={384} s={.9} coat="#242321" shade="#141312" eyes="#f0c63a" />
+        <Chicken x={360} y={384} s={.9} feathers="#e7bd54" wing="#c99432" beak="#9b642b" />
         <Cast who={MINA} x={560} y={404} flip arms={['reach', 'down']} expression="sad" />
         <ThoughtBubble x={660} y={140} r={60}>
           <g transform="translate(660 186) scale(.62)"><Nino x={0} y={0} /></g>

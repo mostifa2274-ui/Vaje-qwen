@@ -71,8 +71,8 @@
       "fa": "خم می‌شود و زیر میز چوبی را نگاه می‌کند."
     },
     {
-      "en": "The cat is not under the table, only a wet leaf.",
-      "fa": "گربه زیر میز نیست؛ فقط یک برگ خیس آنجاست."
+      "en": "The chicken is not under the table, only a wet leaf.",
+      "fa": "جوجه زیر میز نیست؛ فقط یک برگ خیس آنجاست."
     },
     {
       "en": "Mina moves a chair and checks behind it.",
@@ -119,8 +119,8 @@
       "fa": "مینا با دقت پشت تلویزیون سیاه را بررسی می‌کند."
     },
     {
-      "en": "Again, she finds only dust and no cat.",
-      "fa": "باز هم فقط گردوغبار پیدا می‌کند و هیچ گربه‌ای نیست."
+      "en": "Again, she finds only dust and no chicken.",
+      "fa": "باز هم فقط گردوغبار پیدا می‌کند و هیچ جوجه‌ای نیست."
     },
     {
       "en": "Mom puts a glass of water on the kitchen table for Mina.",
@@ -237,10 +237,10 @@
   ],
   "check": [
     {
-      "q": "آیا گربه زیر میز است؟",
+      "q": "آیا نینو زیر میز است؟",
       "options": [
         "no",
-        "cat",
+        "chicken",
         "bird",
         "key"
       ],

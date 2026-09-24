@@ -23,13 +23,13 @@
     "salad",
     "rice",
     "meat",
-    "chicken",
+    "cat",
     "fish",
     "buy",
     "sell",
     "cheap",
     "expensive",
-    "yellow",
+    "black",
     "white"
   ],
   "sentences": [
@@ -86,8 +86,8 @@
       "fa": "هم‌زمان که مامان فهرست خرید را بررسی می‌کند، یک پرتقال هم برمی‌دارد."
     },
     {
-      "en": "The orange smells fresh, and Mina remembers how Nino sniffs every bag.",
-      "fa": "پرتقال بوی تازه‌ای دارد و مینا یادش می‌آید نینو هر کیسه‌ای را بو می‌کند."
+      "en": "The orange smells fresh, and Mina remembers how Nino looks into every bag.",
+      "fa": "پرتقال بوی تازه‌ای دارد و مینا یادش می‌آید نینو داخل هر کیسه‌ای را نگاه می‌کند."
     },
     {
       "en": "Next they move to the vegetable section beside the cold shelves.",
@@ -126,12 +126,12 @@
       "fa": "میان آن‌ها، مینا یک گربه‌ی سیاه‌وسفید می‌بیند."
     },
     {
-      "en": "She quickly walks toward the cat.",
-      "fa": "او سریع به سمت گربه می‌رود."
+      "en": "The cat watches the fish stall while Mina keeps looking for Nino.",
+      "fa": "گربه به غرفه‌ی ماهی نگاه می‌کند و مینا همچنان دنبال نینو می‌گردد."
     },
     {
-      "en": "The cat turns around, but it is not Nino.",
-      "fa": "گربه برمی‌گردد، اما نینو نیست."
+      "en": "A little yellow chicken appears behind a basket, but it is not Nino.",
+      "fa": "یک جوجه‌ی زرد کوچک پشت سبد پیدا می‌شود، اما نینو نیست."
     },
     {
       "en": "Mina feels sad and goes back to Mom.",
@@ -166,12 +166,12 @@
       "fa": "ماهی تازه روی یخ در پیشخوان بعدی زیر نور می‌درخشد."
     },
     {
-      "en": "The fish is expensive, but Mina stops because Nino loves its smell.",
-      "fa": "ماهی گران است، اما مینا می‌ایستد چون نینو بوی آن را دوست دارد."
+      "en": "The fish is expensive, but Mina thinks about the rice Nino likes.",
+      "fa": "ماهی گران است، اما مینا به برنجی فکر می‌کند که نینو دوست دارد."
     },
     {
-      "en": "Mina looks at the fish and thinks about Nino.",
-      "fa": "مینا به ماهی نگاه می‌کند و به نینو فکر می‌کند."
+      "en": "Mina looks at the rice and thinks about Nino.",
+      "fa": "مینا به برنج نگاه می‌کند و به نینو فکر می‌کند."
     },
     {
       "en": "A man near the exit sells fruit from a wooden stand.",
@@ -182,20 +182,20 @@
       "fa": "او می‌تواند تمام روز سیب و پرتقال بفروشد چون بازار شلوغ می‌ماند."
     },
     {
-      "en": "Mina asks the man about her cat.",
-      "fa": "مینا از مرد درباره‌ی گربه‌اش می‌پرسد."
+      "en": "Mina asks the man about her little chicken.",
+      "fa": "مینا از مرد درباره‌ی جوجه‌ی کوچکش می‌پرسد."
     },
     {
-      "en": "\"Have you seen a small black cat?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «یک گربه‌ی سیاه کوچک دیده‌اید؟»"
+      "en": "\"Have you seen a little yellow chicken?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «یک جوجه‌ی زرد کوچک دیده‌اید؟»"
     },
     {
-      "en": "The man says he sees many cats near the market.",
-      "fa": "مرد می‌گوید نزدیک بازار گربه‌های زیادی می‌بیند."
+      "en": "The man says he sometimes sees small chickens near the market.",
+      "fa": "مرد می‌گوید گاهی نزدیک بازار جوجه‌های کوچک می‌بیند."
     },
     {
-      "en": "Mom pays for the shopping while Mina asks the cashier about black cats.",
-      "fa": "مامان پول خرید را می‌دهد و مینا از صندوق‌دار درباره‌ی گربه‌های سیاه می‌پرسد."
+      "en": "Mom pays for the shopping while Mina asks the cashier about a little yellow chicken.",
+      "fa": "مامان پول خرید را می‌دهد و مینا از صندوق‌دار درباره‌ی یک جوجه‌ی زرد کوچک می‌پرسد."
     },
     {
       "en": "Mina carries one bag from the shop.",
