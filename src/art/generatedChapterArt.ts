@@ -33,4 +33,11 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b2c5: {
+    src: publicAsset('art/chapters/b2c5.avif'),
+    altFa: 'مینا همراه مادر و پدرش در خانه، نقشهٔ تهران و عکس‌های نینو را بررسی می‌کند تا مسیر بعدی جست‌وجو را پیدا کنند.',
+    altEn: 'Mina, her mother and father study a Tehran map and Nino photos at home to plan the next search route.',
+    width: 640,
+    height: 336,
+  },
 }
