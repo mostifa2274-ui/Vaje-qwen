@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { CHAPTERS } from '../data/chapters'
 import { CHAPTER_SCENES } from './scenes'
 import ChapterIllustration from '../components/ChapterIllustration'
+import { GENERATED_CHAPTER_ART } from './generatedChapterArt'
 
 function render(chapterId: string): string {
   const chapter = CHAPTERS.find(item => item.id === chapterId)!
@@ -23,15 +24,25 @@ describe('chapter illustrations', () => {
     expect(new Set(descriptions).size).toBe(descriptions.length)
   })
 
-  it('renders every scene as a clean, labelled SVG', () => {
+  it('renders reviewed generated images and clean SVG fallbacks', () => {
     for (const chapter of CHAPTERS) {
-      const svg = render(chapter.id)
-      expect(svg, chapter.id).toMatch(/^<svg[^>]*role="img"/)
-      expect(svg, chapter.id).toContain(CHAPTER_SCENES[chapter.id].alt)
-      expect(svg, chapter.id).not.toMatch(/NaN|undefined|Infinity/)
-      const ids = [...svg.matchAll(/\sid="([^"]+)"/g)].map(match => match[1])
+      const markup = render(chapter.id)
+      const generated = GENERATED_CHAPTER_ART[chapter.id]
+      if (generated) {
+        expect(markup, chapter.id).toMatch(/^<img/)
+        expect(markup, chapter.id).toContain(generated.src)
+        expect(markup, chapter.id).toContain(generated.altFa)
+        expect(markup, chapter.id).toContain('width="640"')
+        expect(markup, chapter.id).toContain('height="336"')
+        continue
+      }
+
+      expect(markup, chapter.id).toMatch(/^<svg[^>]*role="img"/)
+      expect(markup, chapter.id).toContain(CHAPTER_SCENES[chapter.id].alt)
+      expect(markup, chapter.id).not.toMatch(/NaN|undefined|Infinity/)
+      const ids = [...markup.matchAll(/\sid="([^"]+)"/g)].map(match => match[1])
       expect(new Set(ids).size, `${chapter.id} duplicate ids`).toBe(ids.length)
-      for (const [, ref] of svg.matchAll(/url\(#([^)]+)\)/g)) {
+      for (const [, ref] of markup.matchAll(/url\(#([^)]+)\)/g)) {
         expect(ids, `${chapter.id} references #${ref}`).toContain(ref)
       }
     }
