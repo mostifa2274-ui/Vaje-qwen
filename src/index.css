@@ -910,10 +910,15 @@ button:disabled {
   height: auto;
   aspect-ratio: 8 / 3;
   margin: -1rem -1rem 1rem;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 17px 17px 0 0;
   border-bottom: 1px solid var(--line-medium);
   background: rgba(255,255,255,.3);
+}
+.book-banner > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 @media (min-width: 640px) {
   .book-banner {
