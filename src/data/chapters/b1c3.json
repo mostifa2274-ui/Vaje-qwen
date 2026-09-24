@@ -35,24 +35,24 @@
   ],
   "sentences": [
     {
-      "en": "Morning light enters Mina's bedroom through the window.",
+      "en": "Morning light comes into Mina's bedroom through the window.",
       "fa": "نور صبح از پنجره وارد اتاق‌خواب مینا می‌شود."
     },
     {
-      "en": "Mina wakes in her bed and reaches for Nino.",
-      "fa": "مینا در تختش بیدار می‌شود و دستش را برای نینو دراز می‌کند."
+      "en": "Mina wakes in her bed and looks for Nino.",
+      "fa": "مینا در تختش بیدار می‌شود و دنبال نینو می‌گردد."
     },
     {
-      "en": "She whispers his name, careful not to wake the baby next door.",
-      "fa": "اسمش را آرام زمزمه می‌کند تا نوزادِ اتاق کناری را بیدار نکند."
+      "en": "She says his name and does not wake the baby next door.",
+      "fa": "اسم نینو را می‌گوید و نوزادِ اتاق کناری را بیدار نمی‌کند."
     },
     {
-      "en": "The empty space at the foot of the bed makes Mina remember everything.",
-      "fa": "جای خالی پایین تخت باعث می‌شود مینا همه‌چیز را به یاد بیاورد."
+      "en": "The space at the foot of the bed makes Mina remember everything.",
+      "fa": "جای پایین تخت باعث می‌شود مینا همه‌چیز را به یاد بیاورد."
     },
     {
-      "en": "She leaves the bedroom and walks quietly toward the bathroom.",
-      "fa": "از اتاق‌خواب بیرون می‌رود و آرام به سمت حمام راه می‌افتد."
+      "en": "She leaves the bedroom and walks to the bathroom.",
+      "fa": "از اتاق‌خواب بیرون می‌رود و به حمام می‌رود."
     },
     {
       "en": "Her brother is waiting outside the toilet.",
@@ -63,12 +63,12 @@
       "fa": "وقتی مینا به حمام می‌رسد، بابا در حال تمام کردن دوش است."
     },
     {
-      "en": "\"Your turn next,\" Dad says as he dries his hair.",
-      "fa": "بابا در حالی که موهایش را خشک می‌کند می‌گوید: «نوبت بعدی توست.»"
+      "en": "\"Your turn next,\" Dad says.",
+      "fa": "بابا می‌گوید: «نوبت بعدی توست.»"
     },
     {
-      "en": "Mina takes a quick shower because she wants to start searching soon.",
-      "fa": "مینا سریع دوش می‌گیرد چون می‌خواهد زود جست‌وجو را شروع کند."
+      "en": "Mina takes a quick shower because she wants to start looking for Nino soon.",
+      "fa": "مینا سریع دوش می‌گیرد چون می‌خواهد زود دنبال نینو بگردد."
     },
     {
       "en": "After the shower, she washes her face and hands.",
@@ -87,32 +87,32 @@
       "fa": "مامان می‌گوید: «شب می‌توانی حمام کنی. اول غذا بخور.»"
     },
     {
-      "en": "Downstairs, the smell of breakfast fills the kitchen.",
-      "fa": "پایین، بوی صبحانه آشپزخانه را پر کرده است."
+      "en": "Downstairs, breakfast is ready in the kitchen.",
+      "fa": "پایین، صبحانه در آشپزخانه آماده است."
     },
     {
       "en": "Mom calls, \"Come downstairs, Mina. Breakfast is ready.\"",
       "fa": "مامان صدا می‌زند: «مینا، بیا پایین. صبحانه آماده است.»"
     },
     {
-      "en": "Bread and an egg wait on Mina's plate.",
-      "fa": "نان و یک تخم‌مرغ در بشقاب مینا منتظر است."
+      "en": "Bread and an egg are on the table for Mina.",
+      "fa": "نان و یک تخم‌مرغ برای مینا روی میز است."
     },
     {
-      "en": "A glass of milk stands beside the bread.",
-      "fa": "یک لیوان شیر کنار نان قرار دارد."
+      "en": "A glass of milk is next to the bread.",
+      "fa": "یک لیوان شیر کنار نان است."
     },
     {
-      "en": "Dad pours water for everyone at the table.",
-      "fa": "بابا برای همه سر میز آب می‌ریزد."
+      "en": "Dad gives water to everyone at the table.",
+      "fa": "بابا به همه سر میز آب می‌دهد."
     },
     {
-      "en": "\"Eat your breakfast,\" Mom says gently.",
-      "fa": "مامان آرام می‌گوید: «صبحانه‌ات را بخور.»"
+      "en": "\"Eat your breakfast,\" Mom says.",
+      "fa": "مامان می‌گوید: «صبحانه‌ات را بخور.»"
     },
     {
-      "en": "Mina tries to eat the egg even though she is worried.",
-      "fa": "مینا با اینکه نگران است سعی می‌کند تخم‌مرغ را بخورد."
+      "en": "Mina tries to eat the egg, but she is afraid.",
+      "fa": "مینا سعی می‌کند تخم‌مرغ را بخورد، اما نگران است."
     },
     {
       "en": "Her brother eats bread with cheese and watches her quietly.",
@@ -127,12 +127,12 @@
       "fa": "نوزاد از یک فنجان کوچک آب برای نوشیدن دارد."
     },
     {
-      "en": "While they eat, the family makes a new search plan.",
-      "fa": "در حالی که غذا می‌خورند، خانواده برنامه‌ی تازه‌ای برای جست‌وجو می‌سازد."
+      "en": "They eat, and the family makes a new plan to look for Nino.",
+      "fa": "آن‌ها غذا می‌خورند و خانواده برنامه‌ی تازه‌ای برای پیدا کردن نینو می‌سازد."
     },
     {
-      "en": "\"Today we search the whole house again,\" Dad says.",
-      "fa": "بابا می‌گوید: «امروز دوباره تمام خانه را می‌گردیم.»"
+      "en": "\"Today we look for Nino in every room again,\" Dad says.",
+      "fa": "بابا می‌گوید: «امروز دوباره در همه‌ی اتاق‌ها دنبال نینو می‌گردیم.»"
     },
     {
       "en": "Mom adds, \"And every room gets one careful check.\"",
@@ -143,8 +143,8 @@
       "fa": "مینا که کمی قوی‌تر شده می‌گوید: «هر جایی که نینو دوست دارد.»"
     },
     {
-      "en": "\"Now we start,\" Dad says, pushing his chair back.",
-      "fa": "بابا صندلی‌اش را عقب می‌برد و می‌گوید: «حالا شروع می‌کنیم.»"
+      "en": "\"Now we start,\" Dad says.",
+      "fa": "بابا می‌گوید: «حالا شروع می‌کنیم.»"
     },
     {
       "en": "Mina writes all the places they need to check on a small paper.",
@@ -155,12 +155,12 @@
       "fa": "اول به طبقه‌ی بالا می‌رود و درِ اتاق‌خوابش را باز می‌کند."
     },
     {
-      "en": "Dad stays downstairs and checks the kitchen and hall.",
-      "fa": "بابا پایین می‌ماند و آشپزخانه و راهرو را بررسی می‌کند."
+      "en": "Dad stays downstairs and checks the kitchen and front room.",
+      "fa": "بابا پایین می‌ماند و آشپزخانه و اتاق جلویی را بررسی می‌کند."
     },
     {
-      "en": "Her brother comes upstairs with Mina and carries a flashlight.",
-      "fa": "برادرش همراه مینا به طبقه‌ی بالا می‌آید و چراغ‌قوه‌ای دارد."
+      "en": "Her brother comes upstairs with Mina and has a light.",
+      "fa": "برادرش همراه مینا به طبقه‌ی بالا می‌آید و یک چراغ دارد."
     },
     {
       "en": "Together they look under the bed and behind the boxes.",
@@ -171,40 +171,40 @@
       "fa": "مینا هر قسمت از کف اتاق‌خواب را بررسی می‌کند."
     },
     {
-      "en": "Her brother shines the light along the wall and behind the curtain.",
-      "fa": "برادرش نور را روی دیوار و پشت پرده می‌اندازد."
+      "en": "Her brother puts the light on the wall and behind the chair.",
+      "fa": "برادرش نور را روی دیوار و پشت صندلی می‌اندازد."
     },
     {
       "en": "There is no Nino in the bedroom.",
       "fa": "نینو در اتاق‌خواب نیست."
     },
     {
-      "en": "\"You check your desk, and I will check the closet,\" he says.",
-      "fa": "او می‌گوید: «تو میزت را بررسی کن و من کمد را نگاه می‌کنم.»"
+      "en": "\"You check your desk, and I will check the clothes,\" he says.",
+      "fa": "او می‌گوید: «تو میزت را بررسی کن و من لباس‌ها را نگاه می‌کنم.»"
     },
     {
-      "en": "Mina checks all of it carefully, even the smallest corners.",
-      "fa": "مینا همه‌ی آن را با دقت بررسی می‌کند، حتی کوچک‌ترین گوشه‌ها را."
+      "en": "Mina checks all of it, even the small places.",
+      "fa": "مینا همه‌ی آن را بررسی می‌کند، حتی جاهای کوچک را."
     },
     {
-      "en": "Downstairs, Dad opens another cupboard and calls Nino's name.",
-      "fa": "پایین، بابا کمد دیگری را باز می‌کند و اسم نینو را صدا می‌زند."
+      "en": "Downstairs, Dad opens another door and calls Nino's name.",
+      "fa": "پایین، بابا در دیگری را باز می‌کند و اسم نینو را صدا می‌زند."
     },
     {
-      "en": "\"Where are you, Nino?\" Mina asks from the stairs.",
-      "fa": "مینا از پله‌ها می‌پرسد: «نینو، کجایی؟»"
+      "en": "\"Where are you, Nino?\" Mina asks from upstairs.",
+      "fa": "مینا از طبقه‌ی بالا می‌پرسد: «نینو، کجایی؟»"
     },
     {
       "en": "The family meets again by the kitchen door.",
       "fa": "خانواده دوباره کنار درِ آشپزخانه جمع می‌شود."
     },
     {
-      "en": "The day has only begun, and nobody wants to stop.",
-      "fa": "روز تازه شروع شده و هیچ‌کس نمی‌خواهد متوقف شود."
+      "en": "The day is only at the beginning, and nobody wants to stop.",
+      "fa": "روز تازه در آغاز است و هیچ‌کس نمی‌خواهد متوقف شود."
     },
     {
-      "en": "They promise to keep looking all day.",
-      "fa": "قول می‌دهند تمام روز به جست‌وجو ادامه دهند."
+      "en": "They will keep looking all day.",
+      "fa": "آن‌ها تمام روز به جست‌وجو ادامه خواهند داد."
     },
     {
       "en": "Mina puts bread and a bottle of water in a bag for later.",
