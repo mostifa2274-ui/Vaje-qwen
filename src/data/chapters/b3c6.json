@@ -35,12 +35,12 @@
       "fa": "هفته عصر جمعه تمام می‌شود، اما مینا هنوز به نینو فکر می‌کند."
     },
     {
-      "en": "\"Fill this glass with milk for Nino,\" Mom says.",
-      "fa": "«این لیوان را برای نینو با شیر پر کن»، مامان می‌گوید."
+      "en": "\"Fill this little bowl with water for Nino,\" Mom says.",
+      "fa": "مامان می‌گوید: «این ظرف کوچک را برای نینو با آب پر کن.»"
     },
     {
-      "en": "Mina fills it and puts it beside Nino's little bowl.",
-      "fa": "مینا آن را پر می‌کند و کنار کاسه‌ی کوچک نینو می‌گذارد."
+      "en": "Mina fills it and puts a few crumbs beside it.",
+      "fa": "مینا آن را پر می‌کند و چند خرده‌نان کنارش می‌گذارد."
     },
     {
       "en": "\"If he comes home tonight, the milk will be ready,\" Mina says.",
@@ -99,8 +99,8 @@
       "fa": "«درِ جلویی را کمی باز نگه دار»، مینا می‌خواهد."
     },
     {
-      "en": "Dad keeps it open so Nino can push it easily.",
-      "fa": "بابا در را باز نگه می‌دارد تا نینو بتواند راحت آن را هل بدهد."
+      "en": "Dad keeps it open so Nino can walk in easily.",
+      "fa": "بابا در را باز نگه می‌دارد تا نینو بتواند راحت داخل بیاید."
     },
     {
       "en": "\"Leave the porch light on too,\" Mom says.",
@@ -231,14 +231,14 @@
       "a": "open"
     },
     {
-      "q": "مینا لیوان را با چه چیزی پر می‌کند؟",
+      "q": "مینا ظرف کوچک را با چه چیزی پر می‌کند؟",
       "options": [
-        "milk",
         "water",
+        "milk",
         "bread",
         "egg"
       ],
-      "a": "milk"
+      "a": "water"
     }
   ]
 }
