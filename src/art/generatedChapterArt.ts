@@ -26,4 +26,11 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b2c2: {
+    src: publicAsset('art/chapters/b2c2.avif'),
+    altFa: 'مینا همراه پدر و مادرش در یک خیابان مسکونی تهران عکس نینو را به همسایه نشان می‌دهد و دربارهٔ او سؤال می‌کند.',
+    altEn: 'Mina, her mother and father show Nino’s photo to a neighbor on a residential Tehran street.',
+    width: 640,
+    height: 336,
+  },
 }
