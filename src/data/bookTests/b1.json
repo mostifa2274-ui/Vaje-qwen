@@ -118,8 +118,8 @@
     },
     {
       "id": "b1-reading-b",
-      "titleEn": "A Cat Under the Bed",
-      "titleFa": "گربه‌ای زیر تخت",
+      "titleEn": "A Chicken Under the Bed",
+      "titleFa": "جوجه‌ای زیر تخت",
       "names": [
         "Leila"
       ],
@@ -129,24 +129,24 @@
           "fa": "لیلا با مادر، پدر و خواهر کوچکش در خانه‌ای کوچک زندگی می‌کند."
         },
         {
-          "en": "The family has a black cat.",
-          "fa": "خانواده یک گربهٔ سیاه دارد."
+          "en": "The family has a yellow chicken.",
+          "fa": "خانواده یک جوجهٔ زرد دارد."
         },
         {
-          "en": "Every evening, the cat sleeps on the chair in the kitchen.",
-          "fa": "هر عصر، گربه روی صندلیِ آشپزخانه می‌خوابد."
+          "en": "Every evening, the chicken sleeps on the chair in the kitchen.",
+          "fa": "هر عصر، جوجه روی صندلیِ آشپزخانه می‌خوابد."
         },
         {
-          "en": "But this evening, the cat is not on the chair.",
-          "fa": "اما امروز عصر گربه روی صندلی نیست."
+          "en": "But this evening, the chicken is not on the chair.",
+          "fa": "اما امروز عصر جوجه روی صندلی نیست."
         },
         {
           "en": "Leila looks in the kitchen, in the yard and in the garden.",
           "fa": "لیلا آشپزخانه، حیاط و باغچه را نگاه می‌کند."
         },
         {
-          "en": "\"Where is the cat?\" she asks Dad.",
-          "fa": "از بابا می‌پرسد: «گربه کجاست؟»"
+          "en": "\"Where is the chicken?\" she asks Dad.",
+          "fa": "از بابا می‌پرسد: «جوجه کجاست؟»"
         },
         {
           "en": "\"I do not see it,\" Dad says.",
@@ -157,20 +157,20 @@
           "fa": "لیلا به طبقهٔ بالا، به اتاق خوابش می‌رود."
         },
         {
-          "en": "She looks under her bed, and there is the cat!",
-          "fa": "زیر تختش را نگاه می‌کند و گربه آنجاست!"
+          "en": "She looks under her bed, and there is the chicken!",
+          "fa": "زیر تختش را نگاه می‌کند و جوجه آنجاست!"
         },
         {
-          "en": "The cat sleeps there on a little red book.",
-          "fa": "گربه آنجا روی یک کتاب قرمز کوچک خوابیده است."
+          "en": "The chicken sleeps there on a little red book.",
+          "fa": "جوجه آنجا روی یک کتاب قرمز کوچک خوابیده است."
         },
         {
           "en": "Leila calls, \"Mom, Dad, come here!\"",
           "fa": "لیلا صدا می‌زند: «مامان، بابا، بیایید اینجا!»"
         },
         {
-          "en": "Mom and Dad come upstairs and see the cat.",
-          "fa": "مامان و بابا به طبقهٔ بالا می‌آیند و گربه را می‌بینند."
+          "en": "Mom and Dad come upstairs and see the chicken.",
+          "fa": "مامان و بابا به طبقهٔ بالا می‌آیند و جوجه را می‌بینند."
         },
         {
           "en": "Now Leila is happy, and Mom and Dad are happy too.",
@@ -179,7 +179,7 @@
       ],
       "questions": [
         {
-          "q": "گربهٔ خانواده چه رنگی است؟",
+          "q": "جوجهٔ خانواده چه رنگی است؟",
           "options": [
             "قرمز",
             "سفید",
@@ -189,7 +189,7 @@
           "answer": 2
         },
         {
-          "q": "گربه هر عصر کجا می‌خوابد؟",
+          "q": "جوجه هر عصر کجا می‌خوابد؟",
           "options": [
             "زیر تخت لیلا",
             "روی صندلی آشپزخانه",
@@ -209,7 +209,7 @@
           "answer": 1
         },
         {
-          "q": "لیلا گربه را کجا پیدا می‌کند؟",
+          "q": "لیلا جوجه را کجا پیدا می‌کند؟",
           "options": [
             "زیر تختش",
             "در باغچه",
@@ -219,7 +219,7 @@
           "answer": 0
         },
         {
-          "q": "گربه روی چه چیزی خوابیده است؟",
+          "q": "جوجه روی چه چیزی خوابیده است؟",
           "options": [
             "یک صندلی",
             "یک میز",
