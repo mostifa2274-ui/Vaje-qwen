@@ -1,0 +1,454 @@
+{
+  "book": 3,
+  "reading": [
+    {
+      "id": "b3-reading-a",
+      "titleEn": "A Party for Kaveh",
+      "titleFa": "جشنی برای کاوه",
+      "names": [
+        "Parisa",
+        "Kaveh"
+      ],
+      "sentences": [
+        {
+          "en": "On Saturdays, Parisa usually wakes at ten o'clock.",
+          "fa": "پریسا شنبه‌ها معمولاً ساعت ده بیدار می‌شود."
+        },
+        {
+          "en": "But this Saturday, she wakes early, at half past six.",
+          "fa": "اما این شنبه زود بیدار می‌شود، ساعت شش و نیم."
+        },
+        {
+          "en": "Today her brother Kaveh is eighteen.",
+          "fa": "امروز برادرش کاوه هجده ساله می‌شود."
+        },
+        {
+          "en": "The family wants to have a party for him in the evening.",
+          "fa": "خانواده می‌خواهد عصر برایش جشن بگیرد."
+        },
+        {
+          "en": "First, Parisa helps her mom in the kitchen.",
+          "fa": "اول، پریسا در آشپزخانه به مادرش کمک می‌کند."
+        },
+        {
+          "en": "Then she cleans the house with her dad.",
+          "fa": "بعد با پدرش خانه را تمیز می‌کند."
+        },
+        {
+          "en": "At two o'clock, Kaveh comes home from the gym.",
+          "fa": "ساعت دو، کاوه از باشگاه به خانه می‌آید."
+        },
+        {
+          "en": "Parisa says, \"Go to your room and stay there until five!\"",
+          "fa": "پریسا می‌گوید: «برو به اتاقت و تا ساعت پنج همان‌جا بمان!»"
+        },
+        {
+          "en": "Kaveh goes upstairs and sleeps for an hour.",
+          "fa": "کاوه به طبقهٔ بالا می‌رود و یک ساعت می‌خوابد."
+        },
+        {
+          "en": "At five o'clock, his friends and the family wait in the garden.",
+          "fa": "ساعت پنج، دوستانش و خانواده در باغچه منتظر می‌مانند."
+        },
+        {
+          "en": "Kaveh comes downstairs, and everyone says, \"Happy birthday!\"",
+          "fa": "کاوه پایین می‌آید و همه می‌گویند: «تولدت مبارک!»"
+        },
+        {
+          "en": "Kaveh is happy, and they sing and dance until midnight.",
+          "fa": "کاوه خوشحال است و آن‌ها تا نیمه‌شب آواز می‌خوانند و می‌رقصند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "پریسا شنبه‌ها معمولاً چه ساعتی بیدار می‌شود؟",
+          "options": [
+            "ساعت شش و نیم",
+            "ساعت ده",
+            "ساعت دو",
+            "ساعت پنج"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "چرا خانواده امروز جشن می‌گیرد؟",
+          "options": [
+            "چون تولد کاوه است",
+            "چون کاوه در مسابقه برنده شده است",
+            "چون مهمان از شهر دیگری می‌آید",
+            "چون آخر هفته است"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "کاوه امروز چند ساله می‌شود؟",
+          "options": [
+            "هجده",
+            "هشت",
+            "هفده",
+            "هشتاد"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "پریسا از کاوه می‌خواهد تا چه ساعتی در اتاقش بماند؟",
+          "options": [
+            "تا ساعت دو",
+            "تا نیمه‌شب",
+            "تا ساعت ده",
+            "تا ساعت پنج"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "جشن تا کی ادامه دارد؟",
+          "options": [
+            "تا ساعت پنج",
+            "تا صبح روز بعد",
+            "تا نیمه‌شب",
+            "فقط یک ساعت"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b3-reading-b",
+      "titleEn": "A Cold Week",
+      "titleFa": "هفته‌ای سرد",
+      "names": [
+        "Shirin",
+        "Mahsa"
+      ],
+      "sentences": [
+        {
+          "en": "It is a cold week in January.",
+          "fa": "هفته‌ای سرد در ماه ژانویه است."
+        },
+        {
+          "en": "On Monday, Shirin stays at home all day.",
+          "fa": "دوشنبه، شیرین تمام روز در خانه می‌ماند."
+        },
+        {
+          "en": "She watches TV and plays the piano.",
+          "fa": "تلویزیون تماشا می‌کند و پیانو می‌زند."
+        },
+        {
+          "en": "On Tuesday, she walks to the gym with her friend Mahsa.",
+          "fa": "سه‌شنبه، با دوستش مهسا پیاده به باشگاه می‌رود."
+        },
+        {
+          "en": "They swim in the warm pool for an hour.",
+          "fa": "یک ساعت در استخر گرم شنا می‌کنند."
+        },
+        {
+          "en": "On Wednesday, Shirin forgets her key, and she waits outside for twenty minutes.",
+          "fa": "چهارشنبه، شیرین کلیدش را فراموش می‌کند و بیست دقیقه بیرون منتظر می‌ماند."
+        },
+        {
+          "en": "Her mom comes home at half past four and opens the door.",
+          "fa": "مادرش ساعت چهار و نیم به خانه می‌آید و در را باز می‌کند."
+        },
+        {
+          "en": "On Thursday, Shirin stays in bed until the afternoon.",
+          "fa": "پنجشنبه، شیرین تا بعدازظهر در رختخواب می‌ماند."
+        },
+        {
+          "en": "On Friday, she helps her dad in the kitchen.",
+          "fa": "جمعه، در آشپزخانه به پدرش کمک می‌کند."
+        },
+        {
+          "en": "On Saturday, Mahsa has a birthday party.",
+          "fa": "شنبه، مهسا جشن تولد دارد."
+        },
+        {
+          "en": "Shirin gives her friend a little red book.",
+          "fa": "شیرین یک کتاب قرمز کوچک به دوستش می‌دهد."
+        },
+        {
+          "en": "Now it is Sunday, and Shirin says, \"I want summer!\"",
+          "fa": "حالا یکشنبه است و شیرین می‌گوید: «من تابستان می‌خواهم!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "این هفته در چه ماهی است؟",
+          "options": [
+            "ژانویه",
+            "ژوئیه",
+            "مارس",
+            "دسامبر"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "شیرین سه‌شنبه چه کار می‌کند؟",
+          "options": [
+            "در خانه تلویزیون تماشا می‌کند",
+            "در آشپزخانه به پدرش کمک می‌کند",
+            "تا بعدازظهر در رختخواب می‌ماند",
+            "با دوستش به باشگاه می‌رود و شنا می‌کند"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "چرا شیرین چهارشنبه بیرون منتظر می‌ماند؟",
+          "options": [
+            "چون منتظر دوستش است",
+            "چون در خانه مهمان دارند",
+            "چون ساعت خانه خراب است",
+            "چون کلیدش را فراموش کرده است"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "شیرین چه مدت بیرون منتظر می‌ماند؟",
+          "options": [
+            "یک ساعت",
+            "ده دقیقه",
+            "بیست دقیقه",
+            "نیم ساعت"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "شیرین به مهسا چه هدیه‌ای می‌دهد؟",
+          "options": [
+            "یک گیتار",
+            "یک کتاب قرمز کوچک",
+            "یک ساعت",
+            "یک توپ"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b3-listening-a",
+      "titleEn": "The Old Clock",
+      "titleFa": "ساعت قدیمی",
+      "names": [
+        "Arman"
+      ],
+      "sentences": [
+        {
+          "en": "Arman has an old clock next to his bed.",
+          "fa": "آرمان یک ساعت قدیمی کنار تختش دارد."
+        },
+        {
+          "en": "On Saturday, he has a football match at nine o'clock.",
+          "fa": "شنبه ساعت نه مسابقهٔ فوتبال دارد."
+        },
+        {
+          "en": "He wakes on Saturday morning, and the clock says six o'clock.",
+          "fa": "شنبه صبح بیدار می‌شود و ساعت، شش را نشان می‌دهد."
+        },
+        {
+          "en": "It is early, so he sleeps again.",
+          "fa": "زود است، پس دوباره می‌خوابد."
+        },
+        {
+          "en": "Later, his mom calls, \"Arman, it is half past eight!\"",
+          "fa": "کمی بعد، مادرش صدا می‌زند: «آرمان، ساعت هشت و نیم است!»"
+        },
+        {
+          "en": "Arman looks at his clock, and it still says six o'clock.",
+          "fa": "آرمان به ساعتش نگاه می‌کند و هنوز شش را نشان می‌دهد."
+        },
+        {
+          "en": "The old clock is not right!",
+          "fa": "ساعت قدیمی درست کار نمی‌کند!"
+        },
+        {
+          "en": "Arman washes fast and eats breakfast in five minutes.",
+          "fa": "آرمان تند دست و صورتش را می‌شوید و پنج دقیقه‌ای صبحانه می‌خورد."
+        },
+        {
+          "en": "He runs to the park and gets there at ten to nine.",
+          "fa": "تا پارک می‌دود و ده دقیقه به نه به آنجا می‌رسد."
+        },
+        {
+          "en": "His team is happy because he is not late.",
+          "fa": "تیمش خوشحال است، چون او دیر نکرده است."
+        },
+        {
+          "en": "They win the match three to one.",
+          "fa": "مسابقه را سه بر یک می‌برند."
+        },
+        {
+          "en": "In the evening, Arman gets a new clock for his bedroom.",
+          "fa": "عصر، آرمان برای اتاق خوابش یک ساعت تازه می‌گیرد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "ساعت آرمان کجاست؟",
+          "options": [
+            "کنار تختش",
+            "روی دیوار آشپزخانه",
+            "روی میز تحریرش",
+            "در حمام"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "مسابقهٔ فوتبال آرمان ساعت چند است؟",
+          "options": [
+            "ساعت شش",
+            "ساعت هشت و نیم",
+            "ساعت ده",
+            "ساعت نه"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "وقتی مادر صدایش می‌زند، ساعت آرمان چه ساعتی را نشان می‌دهد؟",
+          "options": [
+            "ساعت هشت و نیم",
+            "ساعت نه",
+            "ساعت هفت",
+            "هنوز ساعت شش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "آرمان چه ساعتی به پارک می‌رسد؟",
+          "options": [
+            "نه و ربع",
+            "هشت و نیم",
+            "ده دقیقه به نه",
+            "ساعت شش"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "نتیجهٔ مسابقه چه می‌شود؟",
+          "options": [
+            "تیم آرمان سه بر یک می‌بازد",
+            "تیم آرمان سه بر یک می‌برد",
+            "بازی مساوی می‌شود",
+            "مسابقه برگزار نمی‌شود"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b3-listening-b",
+      "titleEn": "A Summer Weekend",
+      "titleFa": "آخر هفته‌ای تابستانی",
+      "names": [
+        "Sepideh",
+        "Roya"
+      ],
+      "sentences": [
+        {
+          "en": "It is July, and it is warm.",
+          "fa": "ماه ژوئیه است و هوا گرم است."
+        },
+        {
+          "en": "Every summer, Sepideh and her family stay with friends in a little town.",
+          "fa": "سپیده و خانواده‌اش هر تابستان پیش دوستانشان در شهری کوچک می‌مانند."
+        },
+        {
+          "en": "This year they leave on Friday afternoon.",
+          "fa": "امسال جمعه بعدازظهر راه می‌افتند."
+        },
+        {
+          "en": "The town is far from the city, and it takes three hours to get there.",
+          "fa": "آن شهر از شهرِ خودشان دور است و رسیدن به آنجا سه ساعت طول می‌کشد."
+        },
+        {
+          "en": "They are there at seven o'clock, just before dinner.",
+          "fa": "ساعت هفت، درست پیش از شام، آنجا هستند."
+        },
+        {
+          "en": "Sepideh has a friend there, and her name is Roya.",
+          "fa": "سپیده آنجا دوستی دارد که اسمش رویاست."
+        },
+        {
+          "en": "On Saturday, the two girls swim in the town pool.",
+          "fa": "شنبه، دو دختر در استخرِ شهر شنا می‌کنند."
+        },
+        {
+          "en": "In the afternoon, they make a big dinner with Roya and her mom.",
+          "fa": "بعدازظهر، با رویا و مادرش یک شام مفصل درست می‌کنند."
+        },
+        {
+          "en": "On Sunday, Sepideh forgets the time and plays with Roya until late.",
+          "fa": "یکشنبه، سپیده گذشت زمان را فراموش می‌کند و تا دیروقت با رویا بازی می‌کند."
+        },
+        {
+          "en": "Her dad says, \"We need to go! It is five o'clock.\"",
+          "fa": "پدرش می‌گوید: «باید برویم! ساعت پنج است.»"
+        },
+        {
+          "en": "Sepideh does not want to leave.",
+          "fa": "سپیده نمی‌خواهد برود."
+        },
+        {
+          "en": "Roya says, \"Come again next summer!\"",
+          "fa": "رویا می‌گوید: «تابستان بعد دوباره بیا!»"
+        },
+        {
+          "en": "Sepideh says goodbye, and the family goes home.",
+          "fa": "سپیده خداحافظی می‌کند و خانواده به خانه برمی‌گردند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "این داستان در چه ماهی اتفاق می‌افتد؟",
+          "options": [
+            "ژانویه",
+            "ژوئیه",
+            "آوریل",
+            "اکتبر"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "خانوادهٔ سپیده چه روزی راه می‌افتند؟",
+          "options": [
+            "جمعه بعدازظهر",
+            "شنبه صبح",
+            "یکشنبه عصر",
+            "پنجشنبه شب"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "رسیدن به آن شهر کوچک چقدر طول می‌کشد؟",
+          "options": [
+            "سه ساعت",
+            "هفت ساعت",
+            "نیم ساعت",
+            "یک روز"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "دو دختر شنبه چه کار می‌کنند؟",
+          "options": [
+            "به کنسرت می‌روند",
+            "فوتبال بازی می‌کنند",
+            "به پارک می‌روند",
+            "در استخر شهر شنا می‌کنند"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "رویا هنگام خداحافظی چه می‌گوید؟",
+          "options": [
+            "فردا به شهر شما می‌آیم",
+            "زود به خانه برو",
+            "تابستان بعد دوباره بیا",
+            "برایم نامه بنویس"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

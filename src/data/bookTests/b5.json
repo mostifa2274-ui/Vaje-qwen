@@ -1,0 +1,453 @@
+{
+  "book": 5,
+  "reading": [
+    {
+      "id": "b5-reading-a",
+      "titleEn": "A Letter to a Friend",
+      "titleFa": "نامه‌ای به یک دوست",
+      "names": [
+        "Neda",
+        "Elham",
+        "Mahtab"
+      ],
+      "sentences": [
+        {
+          "en": "Dear Neda, thank you for your email and the beautiful photos.",
+          "fa": "ندای عزیز، از ایمیلت و عکس‌های زیبایت ممنونم."
+        },
+        {
+          "en": "I love the picture of your new apartment.",
+          "fa": "عکس آپارتمان تازه‌ات را خیلی دوست دارم."
+        },
+        {
+          "en": "I have some news too.",
+          "fa": "من هم خبرهایی دارم."
+        },
+        {
+          "en": "My family and I now live in a new city, and I miss my old friends.",
+          "fa": "من و خانواده‌ام حالا در شهر تازه‌ای زندگی می‌کنیم و دلم برای دوستان قدیمی‌ام تنگ شده است."
+        },
+        {
+          "en": "Our new house is small, but it has a beautiful garden.",
+          "fa": "خانهٔ تازه‌مان کوچک است، اما باغچهٔ زیبایی دارد."
+        },
+        {
+          "en": "I do not have any friends here, and sometimes I feel bored.",
+          "fa": "اینجا هیچ دوستی ندارم و گاهی حوصله‌ام سر می‌رود."
+        },
+        {
+          "en": "But this week, a girl from our street says hello to me.",
+          "fa": "اما این هفته، دختری از خیابانمان به من سلام می‌کند."
+        },
+        {
+          "en": "Her name is Elham, and she writes stories for a magazine.",
+          "fa": "اسمش الهام است و برای یک مجله داستان می‌نویسد."
+        },
+        {
+          "en": "We talk about books and music for hours.",
+          "fa": "ساعت‌ها دربارهٔ کتاب و موسیقی حرف می‌زنیم."
+        },
+        {
+          "en": "I think we are friends now.",
+          "fa": "فکر می‌کنم حالا با هم دوستیم."
+        },
+        {
+          "en": "Please write to me soon and tell me all your news.",
+          "fa": "لطفاً زود برایم بنویس و همهٔ خبرهایت را برایم بگو."
+        },
+        {
+          "en": "With love, Mahtab.",
+          "fa": "با مهر، مهتاب."
+        }
+      ],
+      "questions": [
+        {
+          "q": "مهتاب از کدام عکس ندا خوشش می‌آید؟",
+          "options": [
+            "عکس خانوادهٔ ندا",
+            "عکس گربهٔ ندا",
+            "عکس باغچهٔ ندا",
+            "عکس آپارتمان تازهٔ ندا"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "چه تغییری در زندگی مهتاب پیش آمده است؟",
+          "options": [
+            "کار تازه‌ای پیدا کرده است",
+            "یک گربه گرفته است",
+            "خانواده‌اش به شهر تازه‌ای رفته‌اند",
+            "به مدرسهٔ تازه‌ای رفته است"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "خانهٔ تازهٔ مهتاب چگونه است؟",
+          "options": [
+            "بزرگ است و استخر دارد",
+            "در یک ساختمان بلند است",
+            "کوچک است، اما باغچهٔ زیبایی دارد",
+            "قدیمی و تاریک است"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "الهام چه کاری می‌کند؟",
+          "options": [
+            "در یک کافه کار می‌کند",
+            "برای یک مجله داستان می‌نویسد",
+            "پیانو درس می‌دهد",
+            "برای روزنامه عکس می‌گیرد"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "مهتاب در پایان نامه از ندا چه می‌خواهد؟",
+          "options": [
+            "زود برایش بنویسد و همهٔ خبرهایش را بگوید",
+            "به دیدنش بیاید",
+            "برایش عکس بفرستد",
+            "به او تلفن بزند"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b5-reading-b",
+      "titleEn": "A Story on the Radio",
+      "titleFa": "داستانی از رادیو",
+      "names": [
+        "Kamran"
+      ],
+      "sentences": [
+        {
+          "en": "Every Sunday evening, Kamran listens to the radio with his dad.",
+          "fa": "کامران هر یکشنبه عصر با پدرش به رادیو گوش می‌دهد."
+        },
+        {
+          "en": "A woman tells a story, and they hear every word.",
+          "fa": "زنی داستانی تعریف می‌کند و آن‌ها تک‌تک کلمه‌ها را می‌شنوند."
+        },
+        {
+          "en": "This Sunday, the story is about a little mouse in a big city.",
+          "fa": "این یکشنبه، داستان دربارهٔ موش کوچکی در یک شهر بزرگ است."
+        },
+        {
+          "en": "The mouse is afraid of cats.",
+          "fa": "موش از گربه‌ها می‌ترسد."
+        },
+        {
+          "en": "Every night, it eats bread under a table in a cafe.",
+          "fa": "هر شب زیر میزی در یک کافه نان می‌خورد."
+        },
+        {
+          "en": "One night, the mouse hears a sound, and it is very afraid.",
+          "fa": "یک شب، موش صدایی می‌شنود و خیلی می‌ترسد."
+        },
+        {
+          "en": "But the sound is only a phone.",
+          "fa": "اما آن صدا فقط صدای یک تلفن است."
+        },
+        {
+          "en": "Then the story ends, and the woman says, \"More next Sunday!\"",
+          "fa": "بعد داستان تمام می‌شود و آن زن می‌گوید: «بقیه‌اش یکشنبهٔ بعد!»"
+        },
+        {
+          "en": "Kamran is not happy because he wants to hear more.",
+          "fa": "کامران خوشحال نیست، چون می‌خواهد بیشتر بشنود."
+        },
+        {
+          "en": "His dad has an idea.",
+          "fa": "پدرش فکری دارد."
+        },
+        {
+          "en": "\"You can write the story of the mouse too,\" he says.",
+          "fa": "می‌گوید: «تو هم می‌توانی داستان آن موش را بنویسی.»"
+        },
+        {
+          "en": "Kamran writes a funny story on paper with his pencil.",
+          "fa": "کامران با مدادش روی کاغذ یک داستان خنده‌دار می‌نویسد."
+        },
+        {
+          "en": "The mouse in his story is not afraid, and it is friends with a cat!",
+          "fa": "موشِ داستان او نمی‌ترسد و با یک گربه دوست است!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "کامران یکشنبه‌ها عصر چه می‌کند؟",
+          "options": [
+            "تلویزیون تماشا می‌کند",
+            "به کافه می‌رود",
+            "با پدرش به رادیو گوش می‌دهد",
+            "برای مجله داستان می‌نویسد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "داستان این یکشنبه دربارهٔ چیست؟",
+          "options": [
+            "گربه‌ای در یک کافه",
+            "موش کوچکی در یک شهر بزرگ",
+            "دختری که نامه می‌نویسد",
+            "سگی در یک مزرعه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "صدایی که موش را می‌ترساند چه بود؟",
+          "options": [
+            "صدای یک گربه",
+            "صدای یک تلفن",
+            "صدای رادیو",
+            "صدای یک در"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "چرا کامران خوشحال نیست؟",
+          "options": [
+            "چون می‌خواهد بیشتر از داستان بشنود",
+            "چون از موش می‌ترسد",
+            "چون رادیو خراب است",
+            "چون پدرش خوابیده است"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "موشِ داستان کامران چه فرقی دارد؟",
+          "options": [
+            "در یک کتابخانه زندگی می‌کند",
+            "نامه می‌نویسد",
+            "به شهر دیگری می‌رود",
+            "نمی‌ترسد و با یک گربه دوست است"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b5-listening-a",
+      "titleEn": "A Message from Dad",
+      "titleFa": "پیامی از بابا",
+      "names": [
+        "Sanaz"
+      ],
+      "sentences": [
+        {
+          "en": "Sanaz is at home, and her phone makes a sound.",
+          "fa": "ساناز در خانه است و تلفنش صدا می‌دهد."
+        },
+        {
+          "en": "It is a text message from her dad.",
+          "fa": "یک پیامک از طرف پدرش است."
+        },
+        {
+          "en": "It says, \"I am at the market. Do you need anything?\"",
+          "fa": "نوشته است: «من در بازارم. چیزی لازم داری؟»"
+        },
+        {
+          "en": "Sanaz thinks for a moment.",
+          "fa": "ساناز لحظه‌ای فکر می‌کند."
+        },
+        {
+          "en": "She answers, \"Yes, please! I need a pen and some paper.\"",
+          "fa": "جواب می‌دهد: «بله، لطفاً! یک خودکار و کمی کاغذ لازم دارم.»"
+        },
+        {
+          "en": "An hour later, Dad calls her on the phone.",
+          "fa": "یک ساعت بعد، بابا به او تلفن می‌زند."
+        },
+        {
+          "en": "\"Sorry, I do not understand your message,\" he says.",
+          "fa": "می‌گوید: «ببخشید، پیامت را نمی‌فهمم.»"
+        },
+        {
+          "en": "\"What is the paper for?\"",
+          "fa": "«کاغذ را برای چه می‌خواهی؟»"
+        },
+        {
+          "en": "Sanaz explains, \"I want to draw a picture for Mom.\"",
+          "fa": "ساناز توضیح می‌دهد: «می‌خواهم برای مامان یک نقاشی بکشم.»"
+        },
+        {
+          "en": "\"It is for her birthday tomorrow.\"",
+          "fa": "«برای تولدش است که فرداست.»"
+        },
+        {
+          "en": "In the evening, Dad comes home with a pen, some paper and a beautiful cake.",
+          "fa": "عصر، بابا با یک خودکار، کمی کاغذ و یک کیک زیبا به خانه می‌آید."
+        },
+        {
+          "en": "The next day, Sanaz gives Mom her picture, and Mom loves it.",
+          "fa": "روز بعد، ساناز نقاشی‌اش را به مامان می‌دهد و مامان خیلی دوستش دارد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "پیام از طرف چه کسی است؟",
+          "options": [
+            "مادر ساناز",
+            "دوست ساناز",
+            "پدر ساناز",
+            "خواهر ساناز"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "پدر ساناز کجاست؟",
+          "options": [
+            "سر کار",
+            "در بازار",
+            "در کافه",
+            "در خانه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "ساناز چه چیزهایی لازم دارد؟",
+          "options": [
+            "یک دفتر و یک مداد",
+            "یک خودکار و کمی کاغذ",
+            "یک کیک و شمع",
+            "یک دوربین"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "ساناز کاغذ را برای چه می‌خواهد؟",
+          "options": [
+            "برای کشیدن نقاشی برای مادرش",
+            "برای نوشتن نامه به دوستش",
+            "برای نوشتن پیام به پدرش",
+            "برای تکلیف مدرسه"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "پدر عصر به جز خودکار و کاغذ چه می‌آورد؟",
+          "options": [
+            "یک دسته گل",
+            "یک عکس",
+            "یک کتاب",
+            "یک کیک زیبا"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b5-listening-b",
+      "titleEn": "A Photo in the Newspaper",
+      "titleFa": "عکسی در روزنامه",
+      "names": [
+        "Ehsan"
+      ],
+      "sentences": [
+        {
+          "en": "Ehsan takes photos with his old camera every weekend.",
+          "fa": "احسان هر آخر هفته با دوربین قدیمی‌اش عکس می‌گیرد."
+        },
+        {
+          "en": "One Saturday, he goes to the park and takes a picture of a big white bird on a chair.",
+          "fa": "یک روز شنبه، به پارک می‌رود و از یک پرندهٔ بزرگ سفید روی یک صندلی عکس می‌گیرد."
+        },
+        {
+          "en": "The photo is beautiful, and his sister has an idea.",
+          "fa": "عکس زیباست و خواهرش فکری به ذهنش می‌رسد."
+        },
+        {
+          "en": "\"Send it to the newspaper!\" she says.",
+          "fa": "می‌گوید: «آن را برای روزنامه بفرست!»"
+        },
+        {
+          "en": "Ehsan is not sure, but he sends the photo by email.",
+          "fa": "احسان مطمئن نیست، اما عکس را با ایمیل می‌فرستد."
+        },
+        {
+          "en": "Three days later, a woman from the newspaper calls him.",
+          "fa": "سه روز بعد، زنی از روزنامه به او تلفن می‌زند."
+        },
+        {
+          "en": "\"We love your photo,\" she says. \"We want it for our Sunday newspaper.\"",
+          "fa": "می‌گوید: «عکست را خیلی دوست داریم. آن را برای روزنامهٔ یکشنبه‌مان می‌خواهیم.»"
+        },
+        {
+          "en": "Ehsan is very excited.",
+          "fa": "احسان خیلی هیجان‌زده است."
+        },
+        {
+          "en": "On Sunday, the family looks at the newspaper together.",
+          "fa": "یکشنبه، خانواده با هم روزنامه را نگاه می‌کنند."
+        },
+        {
+          "en": "On page six, there is his photo of the white bird.",
+          "fa": "در صفحهٔ شش، عکسِ او از پرندهٔ سفید چاپ شده است."
+        },
+        {
+          "en": "His sister says, \"It is wonderful! I am so happy for you.\"",
+          "fa": "خواهرش می‌گوید: «فوق‌العاده است! خیلی برایت خوشحالم.»"
+        },
+        {
+          "en": "Now Ehsan wants to take a photo for the newspaper every week.",
+          "fa": "حالا احسان می‌خواهد هر هفته برای روزنامه عکس بگیرد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "احسان آخر هفته‌ها چه کار می‌کند؟",
+          "options": [
+            "برای روزنامه مقاله می‌نویسد",
+            "در پارک فوتبال بازی می‌کند",
+            "به رادیو گوش می‌دهد",
+            "با دوربین قدیمی‌اش عکس می‌گیرد"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "احسان در پارک از چه چیزی عکس می‌گیرد؟",
+          "options": [
+            "یک گربهٔ سیاه زیر میز",
+            "خواهرش در پارک",
+            "یک پرندهٔ بزرگ سفید روی یک صندلی",
+            "یک سگ قهوه‌ای"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "خواهر احسان چه پیشنهادی می‌دهد؟",
+          "options": [
+            "عکس را به دیوار بزند",
+            "دوربین تازه‌ای بخرد",
+            "عکس را برای روزنامه بفرستد",
+            "عکس را به مادرش بدهد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "سه روز بعد چه کسی به احسان تلفن می‌زند؟",
+          "options": [
+            "خواهرش",
+            "زنی از روزنامه",
+            "دوستش",
+            "پدرش"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "عکس احسان در کدام صفحهٔ روزنامه است؟",
+          "options": [
+            "صفحهٔ شش",
+            "صفحهٔ یک",
+            "صفحهٔ سه",
+            "صفحهٔ آخر"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

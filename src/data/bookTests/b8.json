@@ -1,0 +1,459 @@
+{
+  "book": 8,
+  "reading": [
+    {
+      "id": "b8-reading-a",
+      "titleEn": "A Visit to the Doctor",
+      "titleFa": "رفتن پیش دکتر",
+      "names": [
+        "Pedram"
+      ],
+      "sentences": [
+        {
+          "en": "On Saturday, Pedram plays football with his cousin in the park.",
+          "fa": "شنبه، پدرام با پسرعمویش در پارک فوتبال بازی می‌کند."
+        },
+        {
+          "en": "During the game, he falls, and he cannot stand on his left foot.",
+          "fa": "وسط بازی زمین می‌خورد و نمی‌تواند روی پای چپش بایستد."
+        },
+        {
+          "en": "His uncle drives him to the hospital.",
+          "fa": "عمویش او را با ماشین به بیمارستان می‌برد."
+        },
+        {
+          "en": "The doctor looks at his foot and asks him many questions.",
+          "fa": "دکتر پایش را معاینه می‌کند و سؤال‌های زیادی از او می‌پرسد."
+        },
+        {
+          "en": "\"Can you move your foot?\" she asks.",
+          "fa": "می‌پرسد: «می‌توانی پایت را تکان بدهی؟»"
+        },
+        {
+          "en": "Pedram tries, but he cannot move it well.",
+          "fa": "پدرام تلاش می‌کند، اما نمی‌تواند آن را خوب تکان بدهد."
+        },
+        {
+          "en": "\"It is not broken,\" the doctor says, \"but you must not play football for three weeks.\"",
+          "fa": "دکتر می‌گوید: «نشکسته است، اما تا سه هفته نباید فوتبال بازی کنی.»"
+        },
+        {
+          "en": "Pedram is sad because there is a big match next Friday.",
+          "fa": "پدرام ناراحت است، چون جمعهٔ بعد یک مسابقهٔ بزرگ هست."
+        },
+        {
+          "en": "\"Your health is more important than one match,\" says the doctor.",
+          "fa": "دکتر می‌گوید: «سلامتی تو از یک مسابقه مهم‌تر است.»"
+        },
+        {
+          "en": "A nurse puts ice on his foot.",
+          "fa": "پرستاری روی پایش یخ می‌گذارد."
+        },
+        {
+          "en": "For three weeks, Pedram stays at home and watches movies.",
+          "fa": "پدرام سه هفته در خانه می‌ماند و فیلم تماشا می‌کند."
+        },
+        {
+          "en": "His cousin visits him and tells him about every game.",
+          "fa": "پسرعمویش به دیدنش می‌آید و دربارهٔ هر بازی برایش تعریف می‌کند."
+        },
+        {
+          "en": "When his foot is better, he goes back to his team.",
+          "fa": "وقتی پایش بهتر می‌شود، به تیمش برمی‌گردد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "پدرام کجا فوتبال بازی می‌کند؟",
+          "options": [
+            "در پارک",
+            "در مدرسه",
+            "در باشگاه ورزشی",
+            "در خیابان"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چه کسی پدرام را به بیمارستان می‌برد؟",
+          "options": [
+            "پدرش",
+            "پسرعمویش",
+            "مادرش",
+            "عمویش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "دکتر دربارهٔ پای پدرام چه می‌گوید؟",
+          "options": [
+            "شکسته و باید یک ماه در بیمارستان بماند",
+            "سالم است و می‌تواند فردا بازی کند",
+            "باید هر روز ورزش کند",
+            "نشکسته، اما تا سه هفته نباید فوتبال بازی کند"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "چرا پدرام ناراحت است؟",
+          "options": [
+            "چون دکتر با او تند حرف می‌زند",
+            "چون پسرعمویش به دیدنش نمی‌آید",
+            "چون جمعهٔ بعد یک مسابقهٔ بزرگ هست",
+            "چون فیلم دوست ندارد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "پرستار چه کار می‌کند؟",
+          "options": [
+            "به او دارو می‌دهد",
+            "روی پایش یخ می‌گذارد",
+            "برایش آب می‌آورد",
+            "او را به خانه می‌برد"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b8-reading-b",
+      "titleEn": "A House in the Mountains",
+      "titleFa": "خانه‌ای در کوهستان",
+      "names": [
+        "Taraneh"
+      ],
+      "sentences": [
+        {
+          "en": "Every summer, Taraneh spends two weeks with her grandparents in the mountains.",
+          "fa": "ترانه هر تابستان دو هفته را پیش پدربزرگ و مادربزرگش در کوهستان می‌گذراند."
+        },
+        {
+          "en": "Their house is small and old, but it is very beautiful.",
+          "fa": "خانه‌شان کوچک و قدیمی است، اما خیلی زیباست."
+        },
+        {
+          "en": "Her grandmother has long gray hair, and she tells wonderful stories.",
+          "fa": "مادربزرگش موهای بلند خاکستری دارد و قصه‌های شگفت‌انگیزی تعریف می‌کند."
+        },
+        {
+          "en": "Her grandfather is tall and strong, and he loves to climb.",
+          "fa": "پدربزرگش قدبلند و قوی است و کوه‌پیمایی را دوست دارد."
+        },
+        {
+          "en": "One morning, he says, \"Today we will climb the mountain behind the house.\"",
+          "fa": "یک روز صبح می‌گوید: «امروز از کوهِ پشت خانه بالا می‌رویم.»"
+        },
+        {
+          "en": "Taraneh is excited, but she is also a little afraid.",
+          "fa": "ترانه هیجان‌زده است، اما کمی هم می‌ترسد."
+        },
+        {
+          "en": "The way is long, and after two hours her legs are tired.",
+          "fa": "راه طولانی است و بعد از دو ساعت پاهایش خسته می‌شوند."
+        },
+        {
+          "en": "\"Should we go back?\" her grandfather asks.",
+          "fa": "پدربزرگش می‌پرسد: «برگردیم؟»"
+        },
+        {
+          "en": "\"No, I can do it!\" Taraneh says.",
+          "fa": "ترانه می‌گوید: «نه، من می‌توانم!»"
+        },
+        {
+          "en": "An hour later, they are high above the town.",
+          "fa": "یک ساعت بعد، خیلی بالاتر از شهر هستند."
+        },
+        {
+          "en": "The air is cool, and they can see houses, trees and a river below them.",
+          "fa": "هوا خنک است و خانه‌ها، درخت‌ها و یک رودخانه را زیر پایشان می‌بینند."
+        },
+        {
+          "en": "Taraneh takes a photo of her grandfather with her phone.",
+          "fa": "ترانه با تلفنش از پدربزرگش عکس می‌گیرد."
+        },
+        {
+          "en": "She thinks, \"This is the best day of my summer.\"",
+          "fa": "با خودش فکر می‌کند: «این بهترین روزِ تابستانم است.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "ترانه هر تابستان چه مدت پیش پدربزرگ و مادربزرگش می‌ماند؟",
+          "options": [
+            "یک ماه",
+            "دو هفته",
+            "سه روز",
+            "تمام تابستان"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "مادربزرگ ترانه چه ویژگی‌ای دارد؟",
+          "options": [
+            "موهای بلند خاکستری دارد و قصه‌های شگفت‌انگیزی تعریف می‌کند",
+            "قدبلند و قوی است",
+            "کم‌حرف است و زیاد می‌خوابد",
+            "هر روز از کوه بالا می‌رود"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "پدربزرگ چه پیشنهادی می‌دهد؟",
+          "options": [
+            "از کوه پشت خانه بالا بروند",
+            "به شهر بروند",
+            "در رودخانه شنا کنند",
+            "در خانه بمانند"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "وقتی پدربزرگ می‌پرسد برگردند یا نه، ترانه چه می‌گوید؟",
+          "options": [
+            "بله، خسته‌ام",
+            "کمی استراحت کنیم",
+            "نمی‌دانم",
+            "نه، من می‌توانم"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "ترانه از بالای کوه چه چیزهایی می‌بیند؟",
+          "options": [
+            "دریا و قایق‌ها",
+            "یک فرودگاه",
+            "خانه‌ها، درخت‌ها و یک رودخانه",
+            "فقط ابرها"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b8-listening-a",
+      "titleEn": "A Painting for the Festival",
+      "titleFa": "نقاشی‌ای برای جشنواره",
+      "names": [
+        "Shiva"
+      ],
+      "sentences": [
+        {
+          "en": "Every year, the town has a summer festival with music, food and art.",
+          "fa": "شهر هر سال یک جشنوارهٔ تابستانی با موسیقی، غذا و هنر دارد."
+        },
+        {
+          "en": "This year, anyone can show a painting at the festival.",
+          "fa": "امسال هر کسی می‌تواند در جشنواره نقاشی‌اش را نشان دهد."
+        },
+        {
+          "en": "Shiva decides to paint a picture of her aunt.",
+          "fa": "شیوا تصمیم می‌گیرد تصویری از خاله‌اش بکشد."
+        },
+        {
+          "en": "Her aunt is a nurse, and she always helps people.",
+          "fa": "خاله‌اش پرستار است و همیشه به مردم کمک می‌کند."
+        },
+        {
+          "en": "Shiva paints every evening for two weeks.",
+          "fa": "شیوا دو هفته هر عصر نقاشی می‌کند."
+        },
+        {
+          "en": "She uses green, pink and purple.",
+          "fa": "از رنگ‌های سبز، صورتی و بنفش استفاده می‌کند."
+        },
+        {
+          "en": "But when the painting is ready, Shiva does not like the eyes.",
+          "fa": "اما وقتی نقاشی آماده می‌شود، شیوا از چشم‌ها خوشش نمی‌آید."
+        },
+        {
+          "en": "\"They are too big,\" she says. \"It is terrible!\"",
+          "fa": "می‌گوید: «خیلی بزرگ‌اند. افتضاح است!»"
+        },
+        {
+          "en": "Her brother looks at it and says, \"No, it is really good. I believe in you.\"",
+          "fa": "برادرش به آن نگاه می‌کند و می‌گوید: «نه، واقعاً خوب است. من به تو ایمان دارم.»"
+        },
+        {
+          "en": "On the day of the festival, many people look at her painting.",
+          "fa": "روز جشنواره، آدم‌های زیادی نقاشی‌اش را تماشا می‌کنند."
+        },
+        {
+          "en": "Her aunt comes too, and she cannot believe her eyes.",
+          "fa": "خاله‌اش هم می‌آید و چیزی را که می‌بیند باور نمی‌کند."
+        },
+        {
+          "en": "\"This is the best present of my life,\" she says.",
+          "fa": "می‌گوید: «این بهترین هدیهٔ زندگی من است.»"
+        },
+        {
+          "en": "Now the painting is on a wall in the hospital where her aunt works.",
+          "fa": "حالا نقاشی روی دیواری در بیمارستانی است که خاله‌اش آنجا کار می‌کند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "جشنوارهٔ تابستانی شهر چه چیزهایی دارد؟",
+          "options": [
+            "فقط موسیقی",
+            "موسیقی، غذا و هنر",
+            "مسابقهٔ فوتبال",
+            "فیلم و تئاتر"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "شیوا تصویر چه کسی را می‌کشد؟",
+          "options": [
+            "خاله‌اش",
+            "مادرش",
+            "برادرش",
+            "معلمش"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "شیوا از کدام قسمت نقاشی خوشش نمی‌آید؟",
+          "options": [
+            "چشم‌ها",
+            "دهان",
+            "موها",
+            "رنگ‌ها"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "برادر شیوا دربارهٔ نقاشی چه می‌گوید؟",
+          "options": [
+            "خیلی بد است",
+            "رنگ‌هایش زیادی تند است",
+            "باید دوباره بکشد",
+            "واقعاً خوب است"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "حالا نقاشی کجاست؟",
+          "options": [
+            "در اتاق شیوا",
+            "در موزهٔ شهر",
+            "روی دیواری در بیمارستانی که خاله‌اش آنجا کار می‌کند",
+            "در خانهٔ برادرش"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b8-listening-b",
+      "titleEn": "A Healthy Plan",
+      "titleFa": "برنامه‌ای برای سلامتی",
+      "names": [
+        "Majid"
+      ],
+      "sentences": [
+        {
+          "en": "Majid is forty, and he works at a desk all day.",
+          "fa": "مجید چهل ساله است و تمام روز پشت میز کار می‌کند."
+        },
+        {
+          "en": "He does not do any exercise, and he eats a lot of fast food.",
+          "fa": "هیچ ورزشی نمی‌کند و خیلی غذای آماده می‌خورد."
+        },
+        {
+          "en": "One day, he walks upstairs to his office, and he feels terrible.",
+          "fa": "یک روز، از پله‌ها به دفترش بالا می‌رود و حالش خیلی بد می‌شود."
+        },
+        {
+          "en": "His doctor says, \"You should change your diet and exercise every day.\"",
+          "fa": "دکترش می‌گوید: «باید رژیم غذایی‌ات را عوض کنی و هر روز ورزش کنی.»"
+        },
+        {
+          "en": "Majid decides to make a plan.",
+          "fa": "مجید تصمیم می‌گیرد برنامه‌ای بریزد."
+        },
+        {
+          "en": "He will walk to work, and he will eat more fruit and vegetables.",
+          "fa": "پیاده سر کار خواهد رفت و میوه و سبزی بیشتری خواهد خورد."
+        },
+        {
+          "en": "The first week is hard, and he misses his chocolate cake.",
+          "fa": "هفتهٔ اول سخت است و دلش برای کیک شکلاتی‌اش تنگ می‌شود."
+        },
+        {
+          "en": "His wife and his daughter walk with him in the evening.",
+          "fa": "همسر و دخترش عصرها با او پیاده‌روی می‌کنند."
+        },
+        {
+          "en": "After two months, Majid feels much better.",
+          "fa": "بعد از دو ماه، مجید حالش خیلی بهتر است."
+        },
+        {
+          "en": "He can walk upstairs quickly, and he is not tired.",
+          "fa": "می‌تواند تند از پله‌ها بالا برود و خسته نمی‌شود."
+        },
+        {
+          "en": "\"I am healthy and happy,\" he says, \"and I sleep well too.\"",
+          "fa": "می‌گوید: «سالم و خوشحالم و خوب هم می‌خوابم.»"
+        },
+        {
+          "en": "Now the family goes to the mountains for a walk every Friday.",
+          "fa": "حالا خانواده هر جمعه برای پیاده‌روی به کوه می‌روند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "مجید چند سال دارد؟",
+          "options": [
+            "چهل",
+            "چهارده",
+            "پنجاه",
+            "سی"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "دکتر به مجید چه توصیه‌ای می‌کند؟",
+          "options": [
+            "یک هفته در خانه استراحت کند",
+            "کارش را عوض کند",
+            "کمتر بخوابد",
+            "رژیم غذایی‌اش را عوض کند و هر روز ورزش کند"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "هفتهٔ اول برنامه چگونه است؟",
+          "options": [
+            "آسان و سرگرم‌کننده است",
+            "مجید بیمار می‌شود",
+            "مجید برنامه را کنار می‌گذارد",
+            "سخت است و دلش برای کیک شکلاتی تنگ می‌شود"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "چه کسانی عصرها با مجید پیاده‌روی می‌کنند؟",
+          "options": [
+            "پسر و برادرش",
+            "همکارانش",
+            "همسر و دخترش",
+            "دکترش"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "حالا خانواده هر جمعه چه کار می‌کنند؟",
+          "options": [
+            "به رستوران می‌روند",
+            "برای پیاده‌روی به کوه می‌روند",
+            "فوتبال بازی می‌کنند",
+            "به سینما می‌روند"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
