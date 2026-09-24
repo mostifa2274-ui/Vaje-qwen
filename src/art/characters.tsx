@@ -524,29 +524,51 @@ export const NINO_BEAK = '#e8892f'
 export const NINO_COMB = '#cf4d4d'
 export const NINO_MARK = '#f7f3e8'
 
-/** Nino: a tiny yellow chicken with an orange beak and one white feather on his left wing. */
-export function Nino({ x, y, s = 1, flip = false, pose = 'sit', rim }: Omit<CatProps, 'coat' | 'shade' | 'eyes' | 'mark'>) {
+export interface ChickenProps {
+  x: number
+  y: number
+  s?: number
+  flip?: boolean
+  pose?: CatPose
+  feathers?: string
+  wing?: string
+  beak?: string
+  comb?: string
+  mark?: boolean
+  rim?: string
+}
+
+export function Chicken({
+  x, y, s = 1, flip = false, pose = 'sit',
+  feathers = NINO_FEATHERS, wing = NINO_WING, beak = NINO_BEAK, comb = NINO_COMB,
+  mark = false, rim,
+}: ChickenProps) {
   const leap = pose === 'leap'
   const sleep = pose === 'sleep'
   const squash = pose === 'loaf' ? .9 : 1
   return (
     <g transform={`translate(${x} ${y}) scale(${flip ? -s : s} ${s}) ${leap ? 'rotate(-12)' : ''}`}>
       {!leap && <Shadow x={0} y={0} rx={30} />}
-      <path d={leap ? 'M-12 -4 L-22 10 M10 -4 L20 10' : 'M-10 -2 L-10 12 M10 -2 L10 12'} stroke={NINO_BEAK} strokeWidth="3.2" strokeLinecap="round" />
-      <path d="M-15 12 H-6 M6 12 H15" stroke={NINO_BEAK} strokeWidth="2.2" strokeLinecap="round" />
-      <ellipse cx="0" cy="-26" rx="29" ry={26 * squash} fill={NINO_FEATHERS} stroke={rim ?? INK} strokeWidth={rim ? 2 : 1.8} />
-      <path d="M-18 -30 C-30 -30 -32 -12 -16 -8 C-5 -10 0 -20 -2 -28Z" fill={NINO_WING} {...outline(1.4)} />
-      <path d="M-22 -28 C-26 -22 -24 -14 -18 -12 C-15 -18 -15 -24 -22 -28Z" fill={NINO_MARK} opacity=".98" />
-      <circle cx="8" cy="-52" r="19" fill={NINO_FEATHERS} stroke={rim ?? INK} strokeWidth={rim ? 2 : 1.8} />
-      <path d="M8 -72 C4 -79 10 -84 15 -77 C16 -84 23 -84 23 -75 C28 -79 33 -73 27 -67Z" fill={NINO_COMB} {...outline(1.2)} />
-      <path d="M25 -52 L40 -46 L25 -41Z" fill={NINO_BEAK} {...outline(1.2)} />
+      <path d={leap ? 'M-12 -4 L-22 10 M10 -4 L20 10' : 'M-10 -2 L-10 12 M10 -2 L10 12'} stroke={beak} strokeWidth="3.2" strokeLinecap="round" />
+      <path d="M-15 12 H-6 M6 12 H15" stroke={beak} strokeWidth="2.2" strokeLinecap="round" />
+      <ellipse cx="0" cy="-26" rx="29" ry={26 * squash} fill={feathers} stroke={rim ?? INK} strokeWidth={rim ? 2 : 1.8} />
+      <path d="M-18 -30 C-30 -30 -32 -12 -16 -8 C-5 -10 0 -20 -2 -28Z" fill={wing} {...outline(1.4)} />
+      {mark && <path d="M-22 -28 C-26 -22 -24 -14 -18 -12 C-15 -18 -15 -24 -22 -28Z" fill={NINO_MARK} opacity=".98" />}
+      <circle cx="8" cy="-52" r="19" fill={feathers} stroke={rim ?? INK} strokeWidth={rim ? 2 : 1.8} />
+      <path d="M8 -72 C4 -79 10 -84 15 -77 C16 -84 23 -84 23 -75 C28 -79 33 -73 27 -67Z" fill={comb} {...outline(1.2)} />
+      <path d="M25 -52 L40 -46 L25 -41Z" fill={beak} {...outline(1.2)} />
       {sleep
         ? <path d="M0 -53 q5 4 10 0" fill="none" stroke={INK} strokeWidth="2.2" strokeLinecap="round" />
         : <><circle cx="5" cy="-54" r="3.1" fill={INK} /><circle cx="6" cy="-55" r=".8" fill="#fff" /></>}
-      <path d="M24 -37 q5 5 10 0" fill="none" stroke={NINO_COMB} strokeWidth="2.6" strokeLinecap="round" />
-      {leap && <path d="M-22 -34 C-42 -46 -42 -18 -18 -14" fill={NINO_WING} {...outline(1.4)} />}
+      <path d="M24 -37 q5 5 10 0" fill="none" stroke={comb} strokeWidth="2.6" strokeLinecap="round" />
+      {leap && <path d="M-22 -34 C-42 -46 -42 -18 -18 -14" fill={wing} {...outline(1.4)} />}
     </g>
   )
+}
+
+/** Nino: a tiny yellow chicken with an orange beak and one white feather on his left wing. */
+export function Nino(props: Omit<ChickenProps, 'feathers' | 'wing' | 'beak' | 'comb' | 'mark'>) {
+  return <Chicken {...props} mark />
 }
 
 export function Bird({ x, y, s = 1, flip = false, color = CRIMSON, flying = false }: { x: number; y: number; s?: number; flip?: boolean; color?: string; flying?: boolean }) {
