@@ -52,8 +52,8 @@
       "fa": "گارسون مهربان است و درباره‌ی نینو می‌پرسد."
     },
     {
-      "en": "Mina shows the waiter a picture of her black cat.",
-      "fa": "مینا عکس گربه‌ی سیاهش را به گارسون نشان می‌دهد."
+      "en": "Mina shows the waiter a picture of her little yellow chicken.",
+      "fa": "مینا عکس جوجه‌ی زرد کوچکش را به گارسون نشان می‌دهد."
     },
     {
       "en": "A police car stops near the cafe.",
@@ -80,8 +80,8 @@
       "fa": "مینا و مامان می‌ایستند و به موسیقی گوش می‌دهند."
     },
     {
-      "en": "A woman on the corner begins to sing a bright song.",
-      "fa": "زنی در گوشه‌ی خیابان شروع می‌کند یک آهنگ شاد بخواند."
+      "en": "A man on the corner begins to sing a bright song.",
+      "fa": "مردی در گوشه‌ی خیابان شروع می‌کند یک آهنگ شاد بخواند."
     },
     {
       "en": "The song is happy, and people stop to listen.",
@@ -120,16 +120,16 @@
       "fa": "گروه آهنگ دیگری می‌نوازد."
     },
     {
-      "en": "When the next song begins, several people start to dance.",
-      "fa": "وقتی آهنگ بعدی شروع می‌شود، چند نفر شروع به رقصیدن می‌کنند."
+      "en": "When the next song begins, a young male dancer starts to dance.",
+      "fa": "وقتی آهنگ بعدی شروع می‌شود، یک رقاص جوان مرد شروع به رقصیدن می‌کند."
     },
     {
-      "en": "Mina dances with Mom.",
-      "fa": "مینا با مامان می‌رقصد."
+      "en": "Mina and Mom clap to the music.",
+      "fa": "مینا و مامان با موسیقی دست می‌زنند."
     },
     {
-      "en": "Dancing with Mom makes Mina smile for the first time that afternoon.",
-      "fa": "رقصیدن با مامان برای اولین بار آن بعدازظهر مینا را لبخند می‌اندازد."
+      "en": "The dancer's dancing makes Mina smile for the first time that afternoon.",
+      "fa": "رقصِ آن رقاص برای اولین بار آن بعدازظهر مینا را لبخند می‌اندازد."
     },
     {
       "en": "A young dancer moves near the band.",
@@ -160,8 +160,8 @@
       "fa": "یک بازیگر زن به بازیگر مرد ملحق می‌شود و از جمعیت می‌خواهد با دقت گوش کنند."
     },
     {
-      "en": "The actress sings with the band.",
-      "fa": "بازیگر زن همراه گروه آواز می‌خواند."
+      "en": "The actress introduces the next song to the crowd.",
+      "fa": "بازیگر زن آهنگ بعدی را به جمعیت معرفی می‌کند."
     },
     {
       "en": "The actor and actress are both famous, but they stop to study Nino's picture.",
@@ -204,8 +204,8 @@
       "fa": "مینا تصمیم می‌گیرد چهره‌ای را بکشد که بیشتر از همه می‌خواهد همه به خاطر بسپارند."
     },
     {
-      "en": "She draws a black cat with bright eyes and a small white mark.",
-      "fa": "او گربه‌ای سیاه با چشم‌های روشن و لکه‌ی سفید کوچکی می‌کشد."
+      "en": "She draws a small yellow chicken with an orange beak and one white wing feather.",
+      "fa": "او یک جوجه‌ی زرد کوچک با نوک نارنجی و یک پر سفید روی بال می‌کشد."
     },
     {
       "en": "\"This is Nino,\" Mina says, showing the picture to the people around her.",
@@ -220,12 +220,12 @@
     {
       "q": "مینا در کتابش چه می‌کشد؟",
       "options": [
-        "cat",
+        "chicken",
         "bird",
         "ball",
         "song"
       ],
-      "a": "cat"
+      "a": "chicken"
     },
     {
       "q": "مرد در خیابان چه می‌نوازد؟",
