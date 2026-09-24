@@ -1,5 +1,6 @@
 import { CHAPTERS, chaptersOfBook } from '../data/chapters'
 import type { GhesseState } from './types'
+import { faNum } from './format'
 
 export type ExamKind = 'book' | 'midpoint' | 'final'
 
@@ -30,10 +31,14 @@ export function examDefinition(id: string): ExamDefinition | undefined {
         id,
         kind: 'book',
         book,
-        titleFa: `آزمون کتاب ${book}`,
-        subtitleFa: 'آزمون ترکیبی همین کتاب با سهم بالا از یادآوری نوشتاری و پوشش واژه‌های ضعیف و واژه‌های کمتر آزموده‌شده.',
-        questionCount: 32,
-        passRate: 0.85,
+        titleFa: `آزمون پایان کتاب ${faNum(book)}`,
+        subtitleFa: book === 1
+          ? 'واژه‌های کتاب ۱ (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.'
+          : `واژه‌های کتاب‌های ۱ تا ${faNum(book)} (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.`,
+        // 12 typed translations, 12 listening words, 5 reading and 5
+        // listening questions (engine/bookTest.ts); each part needs 80%.
+        questionCount: 34,
+        passRate: 0.8,
         productivePassRate: 0.8,
       }
     }
@@ -110,7 +115,8 @@ export function canPrepareChapter(state: GhesseState, chapterId: string): boolea
   const earlierInBook = CHAPTERS.filter(ch => ch.book === chapter.book && ch.n < chapter.n)
   if (!earlierInBook.every(ch => chapterCompleted(state, ch.id))) return false
 
-  // Crossing a book boundary always requires the previous book exam.
+  // Crossing a book boundary always requires the previous book's
+  // end-of-book test.
   if (previous.book !== chapter.book) {
     if (!examCleared(state, bookExamId(previous.book))) return false
     // Book 5 has an additional cumulative midpoint gate.

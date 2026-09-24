@@ -1,0 +1,455 @@
+{
+  "book": 2,
+  "reading": [
+    {
+      "id": "b2-reading-a",
+      "titleEn": "A New Neighbor",
+      "titleFa": "همسایهٔ تازه",
+      "names": [
+        "Ali",
+        "Dina"
+      ],
+      "sentences": [
+        {
+          "en": "Ali lives in an apartment on a little street near the park.",
+          "fa": "علی در آپارتمانی در خیابانی کوچک نزدیک پارک زندگی می‌کند."
+        },
+        {
+          "en": "Today a new family comes to live in the apartment next to his.",
+          "fa": "امروز خانواده‌ای تازه به آپارتمانِ کنار آپارتمان او می‌آیند."
+        },
+        {
+          "en": "Ali sees a man, a woman and a young girl at the door.",
+          "fa": "علی یک مرد، یک زن و یک دختر جوان را دمِ در می‌بیند."
+        },
+        {
+          "en": "The girl has a guitar.",
+          "fa": "دختر یک گیتار دارد."
+        },
+        {
+          "en": "Ali says, \"Hello! I am Ali. What is your name?\"",
+          "fa": "علی می‌گوید: «سلام! من علی هستم. اسم تو چیست؟»"
+        },
+        {
+          "en": "\"My name is Dina,\" the girl answers.",
+          "fa": "دختر جواب می‌دهد: «اسم من دیناست.»"
+        },
+        {
+          "en": "\"Do you play the guitar?\" Ali asks.",
+          "fa": "علی می‌پرسد: «گیتار می‌زنی؟»"
+        },
+        {
+          "en": "\"Yes, and I sing too,\" says Dina.",
+          "fa": "دینا می‌گوید: «بله، آواز هم می‌خوانم.»"
+        },
+        {
+          "en": "Ali likes music, and he plays the piano.",
+          "fa": "علی موسیقی دوست دارد و پیانو می‌زند."
+        },
+        {
+          "en": "In the evening, Ali and Dina play music together in the park.",
+          "fa": "عصر، علی و دینا با هم در پارک موسیقی می‌نوازند."
+        },
+        {
+          "en": "People in the park come and dance to the music.",
+          "fa": "آدم‌های توی پارک می‌آیند و با موسیقی می‌رقصند."
+        },
+        {
+          "en": "Dina is happy because she has a new friend.",
+          "fa": "دینا خوشحال است، چون یک دوست تازه دارد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "علی کجا زندگی می‌کند؟",
+          "options": [
+            "در خانه‌ای بزرگ کنار یک رستوران",
+            "در آپارتمانی روبه‌روی یک کافه",
+            "در آپارتمانی در خیابانی کوچک نزدیک پارک",
+            "در خانه‌ای دور از شهر"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "دختر همسایه چه چیزی دارد؟",
+          "options": [
+            "یک پیانو",
+            "یک گیتار",
+            "یک توپ",
+            "یک گربه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "اسم دختر همسایه چیست؟",
+          "options": [
+            "لیلا",
+            "دینا",
+            "سارا",
+            "نیکا"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "علی چه سازی می‌زند؟",
+          "options": [
+            "پیانو",
+            "گیتار",
+            "ویولن",
+            "طبل"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چرا دینا خوشحال است؟",
+          "options": [
+            "چون خانه‌شان بزرگ است",
+            "چون در یک مسابقه برنده شده است",
+            "چون یک گیتار تازه دارد",
+            "چون یک دوست تازه دارد"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b2-reading-b",
+      "titleEn": "The Football Match",
+      "titleFa": "مسابقهٔ فوتبال",
+      "names": [
+        "Hamid"
+      ],
+      "sentences": [
+        {
+          "en": "Hamid is a young football player.",
+          "fa": "حمید یک بازیکن جوان فوتبال است."
+        },
+        {
+          "en": "He plays for a local team in his town.",
+          "fa": "او برای یک تیم محلی در شهرش بازی می‌کند."
+        },
+        {
+          "en": "Today his team has a big match at the sports center.",
+          "fa": "امروز تیمش در مجموعهٔ ورزشی یک مسابقهٔ بزرگ دارد."
+        },
+        {
+          "en": "His mom, his dad and his little sister come to see the game.",
+          "fa": "مادر، پدر و خواهر کوچکش برای دیدن بازی می‌آیند."
+        },
+        {
+          "en": "Everyone from the neighborhood is there too.",
+          "fa": "همهٔ اهل محله هم آنجا هستند."
+        },
+        {
+          "en": "The team from the city is good, and it is famous.",
+          "fa": "تیمِ شهر خوب است و معروف هم هست."
+        },
+        {
+          "en": "But Hamid has the ball, and no one is near him.",
+          "fa": "اما توپ دست حمید است و هیچ‌کس نزدیکش نیست."
+        },
+        {
+          "en": "His team wins the match!",
+          "fa": "تیمش مسابقه را می‌برد!"
+        },
+        {
+          "en": "His sister runs to him and says, \"Well done, Hamid!\"",
+          "fa": "خواهرش به طرفش می‌دود و می‌گوید: «آفرین، حمید!»"
+        },
+        {
+          "en": "Hamid and his friends sing a song together.",
+          "fa": "حمید و دوستانش با هم آوازی می‌خوانند."
+        },
+        {
+          "en": "In the evening, the family eats dinner at a nice restaurant.",
+          "fa": "عصر، خانواده در یک رستوران خوب شام می‌خورند."
+        },
+        {
+          "en": "At night, Hamid goes to bed with his ball.",
+          "fa": "شب، حمید با توپش به رختخواب می‌رود."
+        }
+      ],
+      "questions": [
+        {
+          "q": "حمید چه کاره است؟",
+          "options": [
+            "خوانندهٔ یک گروه موسیقی",
+            "بازیکن تنیس",
+            "پیشخدمت رستوران",
+            "بازیکن جوان فوتبال"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "مسابقه کجا برگزار می‌شود؟",
+          "options": [
+            "در پارک",
+            "در خیابان",
+            "در مجموعهٔ ورزشی",
+            "در حیاط خانه"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چه کسانی از خانوادهٔ حمید برای دیدن بازی می‌آیند؟",
+          "options": [
+            "فقط پدرش",
+            "برادر و مادرش",
+            "مادر، پدر و خواهر کوچکش",
+            "هیچ‌کس"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "نتیجهٔ مسابقه چیست؟",
+          "options": [
+            "تیمِ شهر می‌برد",
+            "تیم حمید می‌برد",
+            "بازی مساوی می‌شود",
+            "بازی نیمه‌کاره می‌ماند"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "خانواده عصر کجا شام می‌خورند؟",
+          "options": [
+            "در یک رستوران خوب",
+            "در خانه",
+            "در پارک",
+            "در خانهٔ همسایه"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b2-listening-a",
+      "titleEn": "At the Cafe",
+      "titleFa": "در کافه",
+      "names": [
+        "Maryam",
+        "Sima",
+        "Kian"
+      ],
+      "sentences": [
+        {
+          "en": "Maryam and her friend Sima meet at a little cafe in the city center.",
+          "fa": "مریم و دوستش سیما در کافه‌ای کوچک در مرکز شهر همدیگر را می‌بینند."
+        },
+        {
+          "en": "The cafe is on the left, opposite a big restaurant.",
+          "fa": "کافه سمت چپ است، روبه‌روی یک رستوران بزرگ."
+        },
+        {
+          "en": "A young waiter comes to the table.",
+          "fa": "یک پیشخدمت جوان سر میز می‌آید."
+        },
+        {
+          "en": "\"Hi! What do you want?\" he asks.",
+          "fa": "می‌پرسد: «سلام! چه می‌خواهید؟»"
+        },
+        {
+          "en": "Maryam wants some bread and eggs, and Sima wants milk.",
+          "fa": "مریم کمی نان و تخم‌مرغ می‌خواهد و سیما شیر می‌خواهد."
+        },
+        {
+          "en": "Sima has a new boyfriend, and Maryam asks about him.",
+          "fa": "سیما دوست‌پسر تازه‌ای دارد و مریم دربارهٔ او می‌پرسد."
+        },
+        {
+          "en": "\"What is his name?\" Maryam asks.",
+          "fa": "مریم می‌پرسد: «اسمش چیست؟»"
+        },
+        {
+          "en": "\"His name is Kian, and he is a singer in a band,\" Sima says.",
+          "fa": "سیما می‌گوید: «اسمش کیان است و خوانندهٔ یک گروه موسیقی است.»"
+        },
+        {
+          "en": "\"Is he famous?\" Maryam asks.",
+          "fa": "مریم می‌پرسد: «معروف است؟»"
+        },
+        {
+          "en": "\"No, but he sings well, and he plays the guitar too.\"",
+          "fa": "«نه، اما خوب آواز می‌خواند و گیتار هم می‌زند.»"
+        },
+        {
+          "en": "This evening, his band has a concert in the park.",
+          "fa": "امروز عصر، گروهش در پارک کنسرت دارد."
+        },
+        {
+          "en": "Maryam and Sima want to go together.",
+          "fa": "مریم و سیما می‌خواهند با هم بروند."
+        },
+        {
+          "en": "In the evening, they go to the concert and dance.",
+          "fa": "عصر به کنسرت می‌روند و می‌رقصند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "مریم و سیما کجا همدیگر را می‌بینند؟",
+          "options": [
+            "در پارک",
+            "در یک رستوران بزرگ",
+            "در خانهٔ سیما",
+            "در کافه‌ای کوچک در مرکز شهر"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "کافه کجاست؟",
+          "options": [
+            "سمت راست، کنار پارک",
+            "روبه‌روی باشگاه ورزشی",
+            "سمت چپ، روبه‌روی یک رستوران بزرگ",
+            "دور از مرکز شهر"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "مریم چه می‌خواهد؟",
+          "options": [
+            "شیر",
+            "آب",
+            "نان و تخم‌مرغ",
+            "هیچ‌چیز"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "دوست‌پسر سیما چه کاره است؟",
+          "options": [
+            "پیشخدمت کافه",
+            "خوانندهٔ یک گروه موسیقی",
+            "بازیکن فوتبال",
+            "بازیگر معروف"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "مریم و سیما عصر چه کار می‌کنند؟",
+          "options": [
+            "به کنسرت می‌روند و می‌رقصند",
+            "به خانه می‌روند",
+            "در کافه می‌مانند",
+            "به باشگاه ورزشی می‌روند"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b2-listening-b",
+      "titleEn": "The Swimming Pool",
+      "titleFa": "استخر",
+      "names": [
+        "Nima",
+        "Arash"
+      ],
+      "sentences": [
+        {
+          "en": "Nima is a teenager, and he loves sport.",
+          "fa": "نیما نوجوان است و ورزش را دوست دارد."
+        },
+        {
+          "en": "Every morning, he plays basketball at the gym near his house.",
+          "fa": "هر روز صبح در باشگاهِ نزدیک خانه‌اش بسکتبال بازی می‌کند."
+        },
+        {
+          "en": "Today he goes to the gym, but the door is closed.",
+          "fa": "امروز به باشگاه می‌رود، اما در بسته است."
+        },
+        {
+          "en": "There is a policeman on the street, and Nima asks him about the gym.",
+          "fa": "یک پلیس در خیابان است و نیما دربارهٔ باشگاه از او می‌پرسد."
+        },
+        {
+          "en": "\"The gym is closed today,\" the policeman says.",
+          "fa": "پلیس می‌گوید: «باشگاه امروز تعطیل است.»"
+        },
+        {
+          "en": "\"But there is a swimming pool next to the park.\"",
+          "fa": "«اما کنار پارک یک استخر هست.»"
+        },
+        {
+          "en": "Nima does not swim well, but he goes to the pool.",
+          "fa": "نیما خوب شنا نمی‌کند، اما به استخر می‌رود."
+        },
+        {
+          "en": "He sees his friend Arash there.",
+          "fa": "دوستش آرش را آنجا می‌بیند."
+        },
+        {
+          "en": "Arash swims well, and he is a member of the pool team.",
+          "fa": "آرش خوب شنا می‌کند و عضو تیم استخر است."
+        },
+        {
+          "en": "\"Come in! The water is nice,\" Arash says.",
+          "fa": "آرش می‌گوید: «بیا تو! آب خوب است.»"
+        },
+        {
+          "en": "Arash and Nima swim together all morning.",
+          "fa": "آرش و نیما تمام صبح با هم شنا می‌کنند."
+        },
+        {
+          "en": "Now Nima likes swimming too.",
+          "fa": "حالا نیما شنا را هم دوست دارد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "نیما هر روز صبح چه کار می‌کند؟",
+          "options": [
+            "در استخر شنا می‌کند",
+            "در پارک فوتبال بازی می‌کند",
+            "در باشگاه بسکتبال بازی می‌کند",
+            "گیتار می‌زند"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "امروز چه مشکلی پیش می‌آید؟",
+          "options": [
+            "نیما توپش را پیدا نمی‌کند",
+            "در باشگاه بسته است",
+            "دوستش نمی‌آید",
+            "استخر پر از آدم است"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "نیما دربارهٔ باشگاه از چه کسی می‌پرسد؟",
+          "options": [
+            "از دوستش آرش",
+            "از یک پلیس در خیابان",
+            "از مادرش",
+            "از یک پیشخدمت"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "استخر کجاست؟",
+          "options": [
+            "کنار پارک",
+            "روبه‌روی باشگاه",
+            "دور از شهر",
+            "پشت رستوران"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "در پایان، نیما دربارهٔ شنا چه احساسی دارد؟",
+          "options": [
+            "هنوز شنا را دوست ندارد",
+            "از آب می‌ترسد",
+            "فقط بسکتبال را دوست دارد",
+            "حالا شنا را هم دوست دارد"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

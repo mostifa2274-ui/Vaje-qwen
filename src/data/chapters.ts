@@ -1,9 +1,8 @@
-// Chapter registry — eager-bundles all 40 chapter JSONs, builds the
-// lemmatizer + containment index once at startup.
+// Chapter registry — eager-bundles all 40 chapter JSONs and builds the
+// story-word lemmatizer once at startup.
 
 import type { Chapter, WordEntry, BookMeta } from '../engine/types'
-import { buildLemmaMap, tokenizeSentence } from '../engine/lemmatize'
-import { setContainment } from '../engine/mastery'
+import { buildLemmaMap } from '../engine/lemmatize'
 import vocabularyJson from './vocabulary.json'
 
 export const VOCAB: WordEntry[] = vocabularyJson as WordEntry[]
@@ -34,19 +33,6 @@ export const BOOKS: BookMeta[] = [
 
 export const lemmaMap = buildLemmaMap(VOCAB)
 
-// Containment: explicitly introduced words plus resolved story-word senses.
-const c = new Map<string, Set<string>>()
-for (const ch of CHAPTERS) {
-  const ids = new Set<string>(ch.new)
-  for (const s of ch.sentences) {
-    for (const tok of tokenizeSentence(s.en, lemmaMap)) {
-      if (tok.isWord && tok.id) ids.add(tok.id)
-    }
-  }
-  c.set(ch.id, ids)
-}
-setContainment(c)
-
 // Chapter order helpers
 export function chapterIndex(id: string): number {
   return CHAPTERS.findIndex(ch => ch.id === id)
@@ -58,14 +44,4 @@ export function nextChapter(id: string): Chapter | undefined {
 
 export function chaptersOfBook(book: number): Chapter[] {
   return CHAPTERS.filter(ch => ch.book === book)
-}
-
-// Introduced word ids up to and including chapter k
-export function introducedThrough(chapterId: string): Set<string> {
-  const idx = chapterIndex(chapterId)
-  const out = new Set<string>()
-  for (let i = 0; i <= idx && i < CHAPTERS.length; i++) {
-    for (const id of CHAPTERS[i].new) out.add(id)
-  }
-  return out
 }

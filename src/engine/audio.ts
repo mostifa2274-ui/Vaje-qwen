@@ -1,5 +1,6 @@
 // Optional bundled-audio fallback. Production uses the selected system English voice;
 // set VITE_BUNDLED_AUDIO=1 only in builds that actually ship the MP3 pack.
+import type { SpeechFailureHandler } from './narration'
 
 let el: HTMLAudioElement | null = null
 let currentSrc = ''
@@ -30,7 +31,7 @@ export function play(
   src: string,
   enabled: boolean,
   onEnd?: () => void,
-  onError?: () => void,
+  onError?: SpeechFailureHandler,
 ): boolean {
   if (!enabled || !bundledAudioAvailable) return false
   const a = player()
@@ -40,8 +41,10 @@ export function play(
   }
   a.currentTime = 0
   a.onended = onEnd ?? null
-  a.onerror = () => onError?.()
-  void a.play().catch(() => onError?.())
+  a.onerror = () => onError?.('unavailable')
+  void a.play().catch((error: unknown) => {
+    onError?.(error instanceof DOMException && error.name === 'NotAllowedError' ? 'blocked' : 'unavailable')
+  })
   return true
 }
 

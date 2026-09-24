@@ -54,6 +54,22 @@ if (requireBundledAudio) {
 }
 
 assert(existsSync(join(publicDir, 'icons', 'icon.svg')), 'missing vector PWA icon: icon.svg')
+const webManifest = JSON.parse(readFileSync(join(publicDir, 'manifest.webmanifest'), 'utf8'))
+const manifestIcons = Array.isArray(webManifest.icons) ? webManifest.icons : []
+for (const icon of manifestIcons) {
+  assert(existsSync(join(publicDir, icon.src)), `manifest icon is missing: ${icon.src}`)
+}
+for (const size of ['192x192', '512x512']) {
+  assert(
+    manifestIcons.some(icon => icon.type === 'image/png' && icon.sizes === size && (icon.purpose ?? 'any').split(' ').includes('any')),
+    `manifest needs a ${size} PNG icon for install prompts`,
+  )
+}
+assert(
+  manifestIcons.some(icon => icon.purpose === 'maskable'),
+  'manifest needs a dedicated full-bleed maskable icon',
+)
+assert(existsSync(join(publicDir, 'icons', 'apple-touch-icon.png')), 'missing iOS home-screen icon: apple-touch-icon.png')
 const serviceWorkerSource = readFileSync(join(publicDir, 'sw.js'), 'utf8')
 const swCachePlaceholder = '__GHESSE_BUILD_CACHE__'
 assert(

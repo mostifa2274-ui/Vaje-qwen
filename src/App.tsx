@@ -11,6 +11,7 @@ const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
 const ReaderScreen = lazy(() => import('./pages/ReaderScreen'))
 const ReviewScreen = lazy(() => import('./pages/ReviewScreen'))
 const ExamScreen = lazy(() => import('./pages/ExamScreen'))
+const BookTestScreen = lazy(() => import('./pages/BookTestScreen'))
 const GlossaryScreen = lazy(() => import('./pages/GlossaryScreen'))
 const SettingsScreen = lazy(() => import('./pages/SettingsScreen'))
 
@@ -97,7 +98,7 @@ function viewLabel(view: View): string {
 
 export default function App() {
   const [state, setState] = useState<GhesseState>(() => loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS))
-  const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)))
+  const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), state))
   const [persistOk, setPersistOk] = useState(true)
   const [now, setNow] = useState(() => Date.now())
   const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
@@ -262,8 +263,18 @@ export default function App() {
     case 'review':
       screen = <ReviewScreen state={state} now={now} onChange={update} onBack={backToMap} />
       break
-    case 'exam':
-      screen = (
+    case 'exam': {
+      const book = examDefinition(view.examId)?.book
+      screen = book ? (
+        <BookTestScreen
+          key={view.examId}
+          book={book}
+          state={state}
+          onChange={update}
+          onBack={backToMap}
+          onReview={() => navigate({ name: 'review' }, true)}
+        />
+      ) : (
         <ExamScreen
           key={view.examId}
           examId={view.examId}
@@ -274,6 +285,7 @@ export default function App() {
         />
       )
       break
+    }
     case 'glossary':
       screen = <GlossaryScreen state={state} onChange={update} onBack={backToMap} />
       break

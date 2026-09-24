@@ -1,0 +1,460 @@
+{
+  "book": 1,
+  "reading": [
+    {
+      "id": "b1-reading-a",
+      "titleEn": "Breakfast at Home",
+      "titleFa": "صبحانه در خانه",
+      "names": [
+        "Sara",
+        "Omid"
+      ],
+      "sentences": [
+        {
+          "en": "It is morning, and Sara wakes in her bedroom.",
+          "fa": "صبح است و سارا در اتاق خوابش بیدار می‌شود."
+        },
+        {
+          "en": "She goes to the bathroom and has a shower.",
+          "fa": "به حمام می‌رود و دوش می‌گیرد."
+        },
+        {
+          "en": "Her little brother Omid is in the kitchen with Mom.",
+          "fa": "برادر کوچکش، امید، با مامان در آشپزخانه است."
+        },
+        {
+          "en": "Mom cooks eggs for breakfast.",
+          "fa": "مامان برای صبحانه تخم‌مرغ می‌پزد."
+        },
+        {
+          "en": "Dad sits at the table and drinks water.",
+          "fa": "بابا پشت میز نشسته و آب می‌نوشد."
+        },
+        {
+          "en": "Sara comes downstairs and says, \"Good morning!\"",
+          "fa": "سارا به طبقهٔ پایین می‌آید و می‌گوید: «صبح بخیر!»"
+        },
+        {
+          "en": "The family eats bread and eggs at the table.",
+          "fa": "خانواده سر میز نان و تخم‌مرغ می‌خورند."
+        },
+        {
+          "en": "Omid drinks his milk, but there is milk on the floor too.",
+          "fa": "امید شیرش را می‌نوشد، اما روی زمین هم شیر ریخته است."
+        },
+        {
+          "en": "\"Omid, please clean the floor,\" Mom says.",
+          "fa": "مامان می‌گوید: «امید، لطفاً زمین را تمیز کن.»"
+        },
+        {
+          "en": "Omid cleans the floor, and Mom is happy.",
+          "fa": "امید زمین را تمیز می‌کند و مامان خوشحال است."
+        },
+        {
+          "en": "Now Sara wants to go out to the garden.",
+          "fa": "حالا سارا می‌خواهد به باغچه برود."
+        },
+        {
+          "en": "\"Can I go outside?\" she asks.",
+          "fa": "می‌پرسد: «می‌توانم بیرون بروم؟»"
+        },
+        {
+          "en": "\"Yes, you can,\" Dad answers.",
+          "fa": "بابا جواب می‌دهد: «بله، می‌توانی.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "سارا کجا بیدار می‌شود؟",
+          "options": [
+            "در آشپزخانه",
+            "در حیاط",
+            "در حمام",
+            "در اتاق خوابش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "مامان برای صبحانه چه می‌پزد؟",
+          "options": [
+            "نان",
+            "برنج",
+            "تخم‌مرغ",
+            "سوپ"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "بابا سر میز چه می‌نوشد؟",
+          "options": [
+            "شیر",
+            "چای",
+            "آب",
+            "آب‌پرتقال"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چرا مامان از امید می‌خواهد زمین را تمیز کند؟",
+          "options": [
+            "چون امید زمین را با کفش کثیف کرده است",
+            "چون شیر روی زمین ریخته است",
+            "چون پرنده‌ای وارد خانه شده است",
+            "چون سارا آب ریخته است"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "در پایان، سارا می‌خواهد کجا برود؟",
+          "options": [
+            "به باغچه",
+            "به حمام",
+            "به اتاقش",
+            "به آشپزخانه"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b1-reading-b",
+      "titleEn": "A Cat Under the Bed",
+      "titleFa": "گربه‌ای زیر تخت",
+      "names": [
+        "Leila"
+      ],
+      "sentences": [
+        {
+          "en": "Leila lives in a little house with her mom, her dad and her baby sister.",
+          "fa": "لیلا با مادر، پدر و خواهر کوچکش در خانه‌ای کوچک زندگی می‌کند."
+        },
+        {
+          "en": "The family has a black cat.",
+          "fa": "خانواده یک گربهٔ سیاه دارد."
+        },
+        {
+          "en": "Every evening, the cat sleeps on the chair in the kitchen.",
+          "fa": "هر عصر، گربه روی صندلیِ آشپزخانه می‌خوابد."
+        },
+        {
+          "en": "But this evening, the cat is not on the chair.",
+          "fa": "اما امروز عصر گربه روی صندلی نیست."
+        },
+        {
+          "en": "Leila looks in the kitchen, in the yard and in the garden.",
+          "fa": "لیلا آشپزخانه، حیاط و باغچه را نگاه می‌کند."
+        },
+        {
+          "en": "\"Where is the cat?\" she asks Dad.",
+          "fa": "از بابا می‌پرسد: «گربه کجاست؟»"
+        },
+        {
+          "en": "\"I do not see it,\" Dad says.",
+          "fa": "بابا می‌گوید: «من آن را نمی‌بینم.»"
+        },
+        {
+          "en": "Leila goes upstairs to her bedroom.",
+          "fa": "لیلا به طبقهٔ بالا، به اتاق خوابش می‌رود."
+        },
+        {
+          "en": "She looks under her bed, and there is the cat!",
+          "fa": "زیر تختش را نگاه می‌کند و گربه آنجاست!"
+        },
+        {
+          "en": "The cat sleeps there on a little red book.",
+          "fa": "گربه آنجا روی یک کتاب قرمز کوچک خوابیده است."
+        },
+        {
+          "en": "Leila calls, \"Mom, Dad, come here!\"",
+          "fa": "لیلا صدا می‌زند: «مامان، بابا، بیایید اینجا!»"
+        },
+        {
+          "en": "Mom and Dad come upstairs and see the cat.",
+          "fa": "مامان و بابا به طبقهٔ بالا می‌آیند و گربه را می‌بینند."
+        },
+        {
+          "en": "Now Leila is happy, and Mom and Dad are happy too.",
+          "fa": "حالا لیلا خوشحال است و مامان و بابا هم خوشحال‌اند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "گربهٔ خانواده چه رنگی است؟",
+          "options": [
+            "قرمز",
+            "سفید",
+            "سیاه",
+            "قهوه‌ای"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "گربه هر عصر کجا می‌خوابد؟",
+          "options": [
+            "زیر تخت لیلا",
+            "روی صندلی آشپزخانه",
+            "در حیاط",
+            "روی میز"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "لیلا اول کجاها را نگاه می‌کند؟",
+          "options": [
+            "اتاق خواب و حمام",
+            "آشپزخانه، حیاط و باغچه",
+            "زیر میز و پشت در",
+            "اتاق مامان و بابا"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "لیلا گربه را کجا پیدا می‌کند؟",
+          "options": [
+            "زیر تختش",
+            "در باغچه",
+            "پشت در",
+            "روی صندلی"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "گربه روی چه چیزی خوابیده است؟",
+          "options": [
+            "یک صندلی",
+            "یک میز",
+            "تخت مامان",
+            "یک کتاب قرمز کوچک"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b1-listening-a",
+      "titleEn": "The Key",
+      "titleFa": "کلید",
+      "names": [
+        "Reza"
+      ],
+      "sentences": [
+        {
+          "en": "It is evening, and Reza comes home.",
+          "fa": "عصر است و رضا به خانه می‌آید."
+        },
+        {
+          "en": "He wants to open the door, but where is his key?",
+          "fa": "می‌خواهد در را باز کند، اما کلیدش کجاست؟"
+        },
+        {
+          "en": "He looks on the floor in the yard.",
+          "fa": "روی زمینِ حیاط را نگاه می‌کند."
+        },
+        {
+          "en": "The key is not there.",
+          "fa": "کلید آنجا نیست."
+        },
+        {
+          "en": "Reza calls his sister.",
+          "fa": "رضا خواهرش را صدا می‌زند."
+        },
+        {
+          "en": "\"Where is my key?\" he asks.",
+          "fa": "می‌پرسد: «کلیدم کجاست؟»"
+        },
+        {
+          "en": "\"Is it on the table in the garden?\" she asks.",
+          "fa": "خواهرش می‌پرسد: «روی میزِ باغچه است؟»"
+        },
+        {
+          "en": "Reza goes to the garden and looks on the table.",
+          "fa": "رضا به باغچه می‌رود و روی میز را نگاه می‌کند."
+        },
+        {
+          "en": "There is a glass and a book on the table, but there is no key.",
+          "fa": "روی میز یک لیوان و یک کتاب هست، اما کلیدی نیست."
+        },
+        {
+          "en": "His sister opens the kitchen window and says, \"Your key is here, on the kitchen table!\"",
+          "fa": "خواهرش پنجرهٔ آشپزخانه را باز می‌کند و می‌گوید: «کلیدت اینجاست، روی میز آشپزخانه!»"
+        },
+        {
+          "en": "She opens the door, and Reza comes in.",
+          "fa": "در را باز می‌کند و رضا داخل می‌آید."
+        },
+        {
+          "en": "Reza says, \"Sorry! You are a good sister.\"",
+          "fa": "رضا می‌گوید: «ببخشید! تو خواهر خوبی هستی.»"
+        },
+        {
+          "en": "They sit at the kitchen table and eat dinner.",
+          "fa": "پشت میز آشپزخانه می‌نشینند و شام می‌خورند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "رضا چه وقتی به خانه می‌آید؟",
+          "options": [
+            "صبح",
+            "ظهر",
+            "عصر",
+            "نیمه‌شب"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چرا رضا نمی‌تواند در را باز کند؟",
+          "options": [
+            "چون در خراب است",
+            "چون کلیدش را ندارد",
+            "چون خواهرش در را قفل کرده است",
+            "چون هوا تاریک است"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "خواهر رضا اول چه می‌پرسد؟",
+          "options": [
+            "آیا کلید زیر صندلی است؟",
+            "آیا کلید روی میز باغچه است؟",
+            "آیا کلید در حمام است؟",
+            "آیا رضا شام خورده است؟"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "روی میز باغچه چه چیزهایی هست؟",
+          "options": [
+            "یک لیوان و یک کتاب",
+            "کلید و یک لیوان",
+            "نان و آب",
+            "یک بشقاب و یک کتاب"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "کلید کجا بود؟",
+          "options": [
+            "روی میز باغچه",
+            "روی زمین حیاط",
+            "زیر یک کتاب",
+            "روی میز آشپزخانه"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b1-listening-b",
+      "titleEn": "A Bird in the Room",
+      "titleFa": "پرنده‌ای در اتاق",
+      "names": [
+        "Nika"
+      ],
+      "sentences": [
+        {
+          "en": "It is a good day, and Nika is at home with her dad.",
+          "fa": "روز خوبی است و نیکا با پدرش در خانه است."
+        },
+        {
+          "en": "Dad sits at his desk, and Nika sits on the floor with a book.",
+          "fa": "بابا پشت میز کارش نشسته و نیکا با یک کتاب روی زمین نشسته است."
+        },
+        {
+          "en": "The window is open, and a little bird comes in.",
+          "fa": "پنجره باز است و یک پرندهٔ کوچک وارد می‌شود."
+        },
+        {
+          "en": "The bird sits on the TV and looks at Nika.",
+          "fa": "پرنده روی تلویزیون می‌نشیند و به نیکا نگاه می‌کند."
+        },
+        {
+          "en": "\"Dad, look! There is a bird in the room!\" Nika says.",
+          "fa": "نیکا می‌گوید: «بابا، ببین! یک پرنده توی اتاق است!»"
+        },
+        {
+          "en": "Dad does not want the bird in the house.",
+          "fa": "بابا نمی‌خواهد پرنده در خانه باشد."
+        },
+        {
+          "en": "\"Please, little bird, go out,\" he says.",
+          "fa": "می‌گوید: «پرندهٔ کوچولو، لطفاً برو بیرون.»"
+        },
+        {
+          "en": "But the bird does not go out.",
+          "fa": "اما پرنده بیرون نمی‌رود."
+        },
+        {
+          "en": "It stands on the TV and waits.",
+          "fa": "روی تلویزیون می‌ایستد و منتظر می‌ماند."
+        },
+        {
+          "en": "Nika opens the door to the garden.",
+          "fa": "نیکا درِ باغچه را باز می‌کند."
+        },
+        {
+          "en": "The bird sees the garden and goes out.",
+          "fa": "پرنده باغچه را می‌بیند و بیرون می‌رود."
+        },
+        {
+          "en": "Dad closes the window and says, \"Well done, Nika!\"",
+          "fa": "بابا پنجره را می‌بندد و می‌گوید: «آفرین، نیکا!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "نیکا و پدرش کجا هستند؟",
+          "options": [
+            "در باغچه",
+            "در حیاط",
+            "در پارک",
+            "در خانه"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "پرنده از کجا وارد اتاق می‌شود؟",
+          "options": [
+            "از در باغچه",
+            "از آشپزخانه",
+            "از پنجرهٔ باز",
+            "از حمام"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "پرنده کجا می‌نشیند؟",
+          "options": [
+            "روی میز بابا",
+            "روی تخت",
+            "روی تلویزیون",
+            "روی صندلی"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "وقتی بابا به پرنده می‌گوید بیرون برود، چه اتفاقی می‌افتد؟",
+          "options": [
+            "پرنده فوراً بیرون می‌رود",
+            "پرنده بیرون نمی‌رود",
+            "پرنده به آشپزخانه می‌رود",
+            "پرنده روی زمین می‌خوابد"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "نیکا چطور به پرنده کمک می‌کند بیرون برود؟",
+          "options": [
+            "در باغچه را باز می‌کند",
+            "پنجره را می‌بندد",
+            "به پرنده نان می‌دهد",
+            "تلویزیون را خاموش می‌کند"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

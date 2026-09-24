@@ -24,12 +24,6 @@ export interface ExamResult {
   skillScores: Record<SkillDimension, { correct: number; total: number }>
 }
 
-export function wordIdsForBook(book: number): string[] {
-  const ids: string[] = []
-  for (const chapter of CHAPTERS.filter(ch => ch.book === book)) ids.push(...chapter.new)
-  return [...new Set(ids)]
-}
-
 export function wordIdsThroughBook(book: number): string[] {
   const ids: string[] = []
   for (const chapter of CHAPTERS.filter(ch => ch.book <= book)) ids.push(...chapter.new)
@@ -39,14 +33,15 @@ export function wordIdsThroughBook(book: number): string[] {
 export function examPool(id: string): string[] {
   const def = examDefinition(id)
   if (!def) return []
-  if (def.kind === 'book') return wordIdsForBook(def.book!)
+  if (def.kind === 'book') return wordIdsThroughBook(def.book!)
   if (def.kind === 'midpoint') return wordIdsThroughBook(4)
   return VOCAB.map(word => word.id)
 }
 
-function modeForPosition(kind: ExamDefinition['kind'], index: number): ReviewMode {
-  const cycles: Record<ExamDefinition['kind'], ReviewMode[]> = {
-    book: ['productive', 'cloze', 'reverse', 'contextProductive', 'recognition', 'spelling', 'productive', 'cloze'],
+type CumulativeKind = Exclude<ExamDefinition['kind'], 'book'>
+
+function modeForPosition(kind: CumulativeKind, index: number): ReviewMode {
+  const cycles: Record<CumulativeKind, ReviewMode[]> = {
     midpoint: ['productive', 'contextProductive', 'cloze', 'spelling', 'reverse'],
     final: ['productive', 'contextProductive', 'spelling', 'cloze', 'reverse'],
   }
@@ -55,20 +50,14 @@ function modeForPosition(kind: ExamDefinition['kind'], index: number): ReviewMod
 }
 
 /**
- * Build a criterion-referenced coverage floor before adaptive sampling.
- * Book exams take two words from every chapter; cumulative exams take at
- * least one word from every chapter in scope. Across repeat attempts, an
+ * Build a criterion-referenced coverage floor before adaptive sampling:
+ * at least one word from every chapter in scope. Across repeat attempts, an
  * untested word in that chapter is preferred so coverage expands naturally.
  */
 function coverageAnchors(id: string, state: GhesseState, attempt: number): string[] {
   const def = examDefinition(id)
   if (!def) return []
-  const chapters = def.kind === 'book'
-    ? CHAPTERS.filter(ch => ch.book === def.book)
-    : def.kind === 'midpoint'
-      ? CHAPTERS.filter(ch => ch.book <= 4)
-      : CHAPTERS
-  const perChapter = def.kind === 'book' ? 2 : 1
+  const chapters = def.kind === 'midpoint' ? CHAPTERS.filter(ch => ch.book <= 4) : CHAPTERS
   const previouslyTested = new Set(state.exams[id]?.testedWordIds ?? [])
   const anchors: string[] = []
   for (const chapter of chapters) {
@@ -77,12 +66,6 @@ function coverageAnchors(id: string, state: GhesseState, attempt: number): strin
     const firstPool = untested.length ? untested : available
     const first = selectWeakestWordIds(firstPool, state.words, 1, `${id}:${attempt}:${chapter.id}:anchor-1`)
     anchors.push(...first)
-    if (perChapter > 1) {
-      const remaining = available.filter(wordId => !anchors.includes(wordId))
-      const remainingUntested = remaining.filter(wordId => !previouslyTested.has(wordId))
-      const secondPool = remainingUntested.length ? remainingUntested : remaining
-      anchors.push(...selectWeakestWordIds(secondPool, state.words, 1, `${id}:${attempt}:${chapter.id}:anchor-2`))
-    }
   }
   return anchors
 }
@@ -124,16 +107,18 @@ function selectExamWords(id: string, state: GhesseState, count: number, attempt:
   return seededSample(selected, selected.length, `${seed}:order`)
 }
 
+/** Midpoint and final exams. Book tests are built by engine/bookTest.ts. */
 export function buildExam(id: string, state: GhesseState, attempt: number): BuiltExam | undefined {
   const definition = examDefinition(id)
-  if (!definition) return undefined
+  if (!definition || definition.kind === 'book') return undefined
+  const kind = definition.kind
   const pool = examPool(id)
   const count = Math.min(definition.questionCount, pool.length)
   const selected = selectExamWords(id, state, count, attempt)
   const byId = new Map<string, WordEntry>(VOCAB.map(word => [word.id, word]))
   const questions = selected.map((wordId, index) => {
     const word = byId.get(wordId)!
-    const mode = modeForPosition(definition.kind, index)
+    const mode = modeForPosition(kind, index)
     return {
       ...buildReviewQuestion(word, VOCAB, mode, `${id}:${attempt}:${index}:${wordId}`),
       index,

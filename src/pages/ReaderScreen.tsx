@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
 import { bundledAudioEnabled, sentenceSrc, stopAudio } from '../engine/audio'
-import { cancelEnglishSpeech, speakEnglish } from '../engine/narration'
+import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglish, type SpeechFailure } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
 import { blankWordProgress } from '../engine/review'
@@ -13,6 +13,7 @@ import staleSentenceAudioJson from '../data/staleSentenceAudio.json'
 import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
 import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
 import ChapterIllustration from '../components/ChapterIllustration'
+import { faNum } from '../engine/format'
 
 interface Props {
   chapterId: string
@@ -24,10 +25,6 @@ interface Props {
 }
 
 const STALE_SENTENCE_AUDIO = new Set(staleSentenceAudioJson as string[])
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
 
 function wallClockNow(): number {
   return Date.now()
@@ -66,6 +63,9 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
   const questionRef = useRef<HTMLDivElement>(null)
+  const questionHeadingRef = useRef<HTMLHeadingElement>(null)
+  const followUpRef = useRef<HTMLButtonElement>(null)
+  const pendingFocusRef = useRef<'question' | 'followUp' | null>(null)
 
   const stopReaderAudio = useCallback(() => {
     playbackToken.current++
@@ -100,6 +100,22 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   useEffect(() => {
     if (checkIndex > 0) questionRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
   }, [checkIndex])
+
+  // Answer buttons disable (or unmount) as soon as they are used. Keep keyboard
+  // and screen-reader focus on the learner's next step instead of the page:
+  // the follow-up action after an answer, the question text after moving on.
+  useEffect(() => {
+    const target = pendingFocusRef.current
+    if (!target) return
+    pendingFocusRef.current = null
+    // Next frame, so the key that chose an answer cannot also activate the
+    // newly focused control.
+    const frame = window.requestAnimationFrame(() => {
+      if (target === 'followUp') followUpRef.current?.focus()
+      else questionHeadingRef.current?.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [checkIndex, currentAnswer])
 
   useEffect(() => {
     if (finished) return
@@ -178,10 +194,12 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       setPlayAll(false)
     }
 
-    const playBundledFallback = () => {
+    const playBundledFallback = (failure: SpeechFailure = 'unavailable') => {
       if (playbackToken.current !== token) return
       if (!bundledAudioEnabled()) {
-        failPlayback('موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره پخش را بزن.')
+        failPlayback(failure === 'blocked'
+          ? BLOCKED_AUDIO_NOTICE
+          : 'موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره پخش را بزن.')
         return
       }
       if (STALE_SENTENCE_AUDIO.has(`${chapterId}:${index}`)) {
@@ -198,7 +216,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         failPlayback('صدای انگلیسی و فایل پشتیبان این جمله قابل پخش نبود. تنظیمات صدا را بررسی کن و دوباره امتحان کن.')
       }
       void audio.play().catch(() => {
-        failPlayback('مرورگر پخش صدا را متوقف کرد. یک‌بار روی دکمهٔ پخش بزن و دوباره امتحان کن.')
+        failPlayback(BLOCKED_AUDIO_NOTICE)
       })
     }
 
@@ -253,6 +271,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       firstPassCorrect,
       updatedAt: clockRef.current(),
     }, questions)
+    pendingFocusRef.current = 'followUp'
     setAnswers(nextAnswers)
 
     if (!question.evidenceWordId) return
@@ -272,7 +291,9 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     if (currentAnswer === undefined) return
     if (resumedReading) setResumedReading(false)
     const nextUnanswered = questions.findIndex((_, index) => index > checkIndex && answers[index] === undefined)
-    if (nextUnanswered >= 0) setCheckIndex(nextUnanswered)
+    if (nextUnanswered < 0) return
+    pendingFocusRef.current = 'question'
+    setCheckIndex(nextUnanswered)
   }
 
   function beginCorrectionRound() {
@@ -290,6 +311,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     const initialScore = firstPassCorrect ?? checksCorrect
     const nextIndex = wrongIndices[0]
     setFirstPassCorrect(initialScore)
+    pendingFocusRef.current = 'question'
     setAnswers(correctedAnswers)
     setCheckIndex(nextIndex)
     saveReadingDraft({
@@ -307,6 +329,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     if (!correctionMode || currentAnswer === undefined || currentAnswer === currentQuestion.answerId) return
     const nextAnswers = { ...answers }
     delete nextAnswers[checkIndex]
+    pendingFocusRef.current = 'question'
     setAnswers(nextAnswers)
     saveReadingDraft({
       version: 1,
@@ -371,11 +394,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
         <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
-          <ChapterIllustration
-            chapterId={chapter.id}
-            titleFa={chapter.titleFa}
-            tint={meta.tint}
-          />
+          <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
           <div className="lesson-cover-copy">
             <div className="min-w-0">
               <div className="font-en text-xs font-bold uppercase tracking-[0.16em]" dir="ltr">{meta.titleEn}</div>
@@ -460,7 +479,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </span>
           </div>
 
-          <div className="mastery-progress mt-3" aria-label={`${checksCorrect} از ${questions.length} پاسخ تأیید شده`}>
+          <div className="mastery-progress mt-3" aria-label={`${faNum(checksCorrect)} از ${faNum(questions.length)} پاسخ تأیید شده`}>
             <span style={{ width: `${(checksCorrect / questions.length) * 100}%` }} />
           </div>
 
@@ -475,7 +494,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>
                 سؤال {faNum(checkIndex + 1)} از {faNum(questions.length)}
               </div>
-              <h3 className="mt-2 text-base font-extrabold leading-8">{currentQuestion.prompt}</h3>
+              <h3 ref={questionHeadingRef} tabIndex={-1} className="mt-2 text-base font-extrabold leading-8">{currentQuestion.prompt}</h3>
               {currentQuestion.context && (
                 <div
                   className="question-context mt-3"
@@ -493,7 +512,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                 {currentQuestion.options.map(option => {
                   const isAnswer = option.id === currentQuestion.answerId
                   const chosen = currentAnswer === option.id
-                  let className = 'btn-paper min-h-12 px-3 py-3 text-sm leading-6'
+                  let className = `btn-paper min-h-12 px-3 py-3 text-sm leading-6 ${currentQuestion.optionDir === 'ltr' ? 'font-en' : ''}`
                   if (currentAnswer !== undefined && isAnswer) className += ' answer-correct'
                   else if (currentAnswer !== undefined && chosen) className += ' answer-wrong'
                   return (
@@ -522,7 +541,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               )}
 
               {currentAnswer !== undefined && correctionMode && currentAnswer !== currentQuestion.answerId && (
-                <button type="button" className="btn-ink mt-4 w-full py-3" onClick={retryCurrentCorrection}>
+                <button ref={followUpRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={retryCurrentCorrection}>
                   دوباره پاسخ بده
                 </button>
               )}
@@ -530,7 +549,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               {currentAnswer !== undefined
                 && (!correctionMode || currentAnswer === currentQuestion.answerId)
                 && questions.some((_, index) => index > checkIndex && answers[index] === undefined) && (
-                <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueQuestion}>
+                <button ref={followUpRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueQuestion}>
                   سؤال بعدی ←
                 </button>
               )}
@@ -540,13 +559,13 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
         <div className="mt-6">
           {checksAnswered === questions.length && checksCorrect < questions.length && !correctionMode && !finished && (
-            <button type="button" className="btn-crimson w-full py-3.5 text-lg" onClick={beginCorrectionRound}>
+            <button ref={followUpRef} type="button" className="btn-crimson w-full py-3.5 text-lg" onClick={beginCorrectionRound}>
               اصلاح {faNum(questions.length - checksCorrect)} پاسخ اشتباه
             </button>
           )}
 
           {checksCorrect === questions.length && !finished && (
-            <button type="button" className="btn-crimson pop w-full py-3.5 text-lg" onClick={finishChapter}>
+            <button ref={followUpRef} type="button" className="btn-crimson pop w-full py-3.5 text-lg" onClick={finishChapter}>
               {wasAlreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(questions.length)} از {faNum(questions.length)} تأیید شد
             </button>
           )}
@@ -557,7 +576,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               <div className="mt-2 font-extrabold">{wasAlreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
                 {isLastOfBook
-                  ? `این کتاب تمام شد. واژه‌هایش وارد مرور فاصله‌دار شده‌اند؛ برای بازشدن مرحلهٔ بعد، آزمون کتاب ${faNum(chapter.book)} را بگذران.`
+                  ? `این کتاب تمام شد و واژه‌هایش وارد مرور فاصله‌دار شده‌اند. برای بازشدن مرحلهٔ بعد، آزمون پایان کتاب ${faNum(chapter.book)} را بگذران: واژه‌های ${chapter.book === 1 ? 'این کتاب' : 'همهٔ کتاب‌ها تا اینجا'} و دو متن تازه برای درک مطلب خواندنی و شنیداری.`
                   : next ? `واژه‌های این فصل برای مرور فاصله‌دار برنامه‌ریزی شدند. پیش از فصل بعد، واژه‌های تازهٔ «${next.titleFa}» را آماده می‌کنی.` : ''}
               </p>
               <div className="mt-4 flex gap-2">
@@ -569,7 +588,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                 )}
                 {isLastOfBook && (
                   <button type="button" className="btn-crimson flex-1 py-2.5" onClick={() => onOpenExam(bookExamId(chapter.book))}>
-                    آزمون کتاب ←
+                    آزمون پایان کتاب ←
                   </button>
                 )}
               </div>

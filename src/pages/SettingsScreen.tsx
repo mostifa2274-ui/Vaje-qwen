@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
-import { importStateJson, MAX_IMPORT_BYTES, resetState } from '../engine/store'
-import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish } from '../engine/narration'
+import { clearSessionDrafts, importStateJson, MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
+import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
 import { BUILD_COMMIT } from '../engine/release'
+import { faNum } from '../engine/format'
 
 interface Props {
   state: GhesseState
@@ -16,9 +17,14 @@ interface Props {
   validWordIds: string[]
 }
 
+function describeProgress(summary: ProgressSummary): string {
+  return `${faNum(summary.completedChapters)} فصل تمام‌شده، ${faNum(summary.introducedWords)} واژهٔ آموخته و ${faNum(summary.passedExams)} آزمون قبول‌شده`
+}
+
 export default function SettingsScreen({ state, onChange, onBack, onReset, onImport, firstChapterId, validChapterIds, validWordIds }: Props) {
   const [confirming, setConfirming] = useState(false)
   const [importMessage, setImportMessage] = useState('')
+  const [pendingImport, setPendingImport] = useState<GhesseState | null>(null)
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
   const [voiceMessage, setVoiceMessage] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
@@ -38,7 +44,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
   function previewNarrator() {
     if (!state.soundOn) return
     setVoiceMessage('')
-    const unavailable = () => setVoiceMessage('صدای انگلیسی روی این دستگاه در دسترس نیست. در تنظیمات مرورگر یا سیستم، English Text-to-Speech را فعال کن.')
+    const unavailable = (failure: SpeechFailure = 'unavailable') => setVoiceMessage(speechFailureNotice(failure, 'صدای انگلیسی روی این دستگاه در دسترس نیست. در تنظیمات مرورگر یا سیستم، English Text-to-Speech را فعال کن.'))
     const started = speakEnglish(
       'Nino is home. Mina is happy to see him again.',
       state.narratorVoiceURI,
@@ -66,13 +72,22 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
       if (file.size > MAX_IMPORT_BYTES) throw new Error('فایل پیشرفت بیش از ۲ مگابایت است.')
       const text = await file.text()
       const imported = importStateJson(text, Date.now(), firstChapterId, validChapterIds, validWordIds)
-      setImportMessage('نسخهٔ پشتیبان با موفقیت بازیابی شد.')
-      onImport(imported)
+      // Replacing progress cannot be undone from the UI, so it waits for an
+      // explicit confirmation that shows what the file actually contains.
+      setImportMessage('')
+      setPendingImport(imported)
     } catch (error) {
+      setPendingImport(null)
       setImportMessage(error instanceof Error ? error.message : 'بازیابی فایل ناموفق بود.')
     } finally {
       if (fileRef.current) fileRef.current.value = ''
     }
+  }
+
+  function confirmImport() {
+    if (!pendingImport) return
+    clearSessionDrafts()
+    onImport(pendingImport)
   }
 
   return (
@@ -86,7 +101,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
             <div className="font-bold">صدا</div>
-            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ واژه‌ها و خواندن جمله‌ها</div>
+            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ واژه‌ها و خواندن جمله‌ها؛ آموزش و آزمون شنیداری هر فصل بدون صدا پیش نمی‌رود.</div>
           </div>
           <button
             type="button"
@@ -167,7 +182,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
                 className={state.dailyReviewGoal === goal ? 'btn-ink py-2.5' : 'btn-paper py-2.5'}
                 onClick={() => onChange({ ...state, dailyReviewGoal: goal })}
               >
-                {String(goal).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])}
+                {faNum(goal)}
               </button>
             ))}
           </div>
@@ -210,6 +225,18 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
               if (file) void importProgress(file)
             }}
           />
+          {pendingImport && (
+            <div className="paper-note mt-3" role="group" aria-labelledby="import-confirm-title">
+              <div id="import-confirm-title" className="font-bold">جایگزینی پیشرفت؟</div>
+              <p className="mt-1 text-sm leading-7">
+                این فایل شامل {describeProgress(summarizeProgress(pendingImport))} است و جای پیشرفت فعلی ({describeProgress(summarizeProgress(state))}) را می‌گیرد.
+              </p>
+              <div className="mt-3 flex gap-2">
+                <button type="button" className="btn-paper flex-1 py-2.5" onClick={() => setPendingImport(null)}>انصراف</button>
+                <button type="button" className="btn-crimson flex-1 py-2.5" onClick={confirmImport}>جایگزین کن</button>
+              </div>
+            </div>
+          )}
           {importMessage && <p className="mt-2 text-xs" role="status">{importMessage}</p>}
         </div>
 
