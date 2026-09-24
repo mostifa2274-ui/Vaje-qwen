@@ -1,7 +1,6 @@
 import { CHAPTERS, chaptersOfBook } from '../data/chapters'
 import type { GhesseState } from './types'
 import { faNum } from './format'
-import { storyTestId } from './storyTest'
 
 export type ExamKind = 'book' | 'midpoint' | 'final'
 
@@ -32,10 +31,14 @@ export function examDefinition(id: string): ExamDefinition | undefined {
         id,
         kind: 'book',
         book,
-        titleFa: `آزمون واژه‌های کتاب ${faNum(book)}`,
-        subtitleFa: 'آزمون ترکیبی همین کتاب با سهم بالا از یادآوری نوشتاری و پوشش واژه‌های ضعیف و واژه‌های کمتر آزموده‌شده.',
-        questionCount: 32,
-        passRate: 0.85,
+        titleFa: `آزمون پایان کتاب ${faNum(book)}`,
+        subtitleFa: book === 1
+          ? 'واژه‌های کتاب ۱ (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.'
+          : `واژه‌های کتاب‌های ۱ تا ${faNum(book)} (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.`,
+        // 12 typed translations, 12 listening words, 5 reading and 5
+        // listening questions (engine/bookTest.ts); each part needs 80%.
+        questionCount: 34,
+        passRate: 0.8,
         productivePassRate: 0.8,
       }
     }
@@ -96,32 +99,6 @@ export function examPassed(state: GhesseState, id: string): boolean {
   return state.exams[id]?.passed === true
 }
 
-export function storyTestPassed(state: GhesseState, book: number): boolean {
-  return state.storyTests[storyTestId(book)]?.passed === true
-}
-
-/**
- * The story test after a book gates what comes next: the following book, or
- * the final exam after book 8. Learners who had already moved past that point
- * before story tests existed are never relocked; for them it is optional.
- */
-export function storyTestRequired(state: GhesseState, book: number): boolean {
-  if (book >= 8) return (state.exams[FINAL_EXAM_ID]?.attempts ?? 0) === 0
-  return !CHAPTERS.some(chapter => {
-    if (chapter.book <= book) return false
-    const progress = state.chapters[chapter.id]
-    return Boolean(progress && (progress.completed || progress.preparedAt || (progress.prepWrittenTotal ?? 0) > 0))
-  })
-}
-
-export function storyTestCleared(state: GhesseState, book: number): boolean {
-  return storyTestPassed(state, book) || !storyTestRequired(state, book)
-}
-
-export function canTakeStoryTest(state: GhesseState, book: number): boolean {
-  return bookCompleted(state, book)
-}
-
 export function previousChapterId(chapterId: string): string | undefined {
   const index = CHAPTERS.findIndex(ch => ch.id === chapterId)
   return index > 0 ? CHAPTERS[index - 1].id : undefined
@@ -138,11 +115,10 @@ export function canPrepareChapter(state: GhesseState, chapterId: string): boolea
   const earlierInBook = CHAPTERS.filter(ch => ch.book === chapter.book && ch.n < chapter.n)
   if (!earlierInBook.every(ch => chapterCompleted(state, ch.id))) return false
 
-  // Crossing a book boundary always requires the previous book's vocabulary
-  // exam and its story comprehension test.
+  // Crossing a book boundary always requires the previous book's
+  // end-of-book test.
   if (previous.book !== chapter.book) {
     if (!examCleared(state, bookExamId(previous.book))) return false
-    if (!storyTestCleared(state, previous.book)) return false
     // Book 5 has an additional cumulative midpoint gate.
     if (chapter.book === 5 && !examCleared(state, MIDPOINT_EXAM_ID)) return false
   }
@@ -187,7 +163,7 @@ function examPrerequisitesMet(state: GhesseState, id: string): boolean {
   if (!def) return false
   if (def.kind === 'book') return bookCompleted(state, def.book!)
   if (def.kind === 'midpoint') return [1, 2, 3, 4].every(book => examCleared(state, bookExamId(book)))
-  return [1, 2, 3, 4, 5, 6, 7, 8].every(book => examCleared(state, bookExamId(book))) && storyTestCleared(state, 8)
+  return [1, 2, 3, 4, 5, 6, 7, 8].every(book => examCleared(state, bookExamId(book)))
 }
 
 export function canTakeExam(state: GhesseState, id: string): boolean {

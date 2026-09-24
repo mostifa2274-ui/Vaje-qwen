@@ -2,8 +2,7 @@ import { CHAPTERS, VOCAB, chaptersOfBook } from '../data/chapters'
 import type { GhesseState, SkillDimension } from './types'
 import { durableCoverage, masteredCoverage, masteryCounts, skillCoverage } from './mastery'
 import { dueWordIds, retentionEstimate, troubleWordIds } from './review'
-import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, canTakeStoryTest, examPassed, examRemediationWordIds, storyTestPassed, storyTestRequired } from './gates'
-import { storyTestTitle } from './storyTest'
+import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examDefinition, examPassed, examRemediationWordIds } from './gates'
 import { faNum } from './format'
 
 const DAY = 86_400_000
@@ -144,7 +143,6 @@ export function certificationStatus(state: GhesseState, now = Date.now()): Certi
 export type NextAction =
   | { kind: 'review'; title: string; detail: string }
   | { kind: 'exam'; examId: string; title: string; detail: string }
-  | { kind: 'storyTest'; book: number; title: string; detail: string }
   | { kind: 'chapter'; chapterId: string; prepared: boolean; title: string; detail: string }
   | { kind: 'certification'; title: string; detail: string }
   | { kind: 'complete'; title: string; detail: string }
@@ -160,21 +158,14 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
   }
 
   for (let book = 1; book <= 8; book++) {
-    // The story is freshest right after the last chapter, so its
-    // comprehension test comes before the book's vocabulary exam.
-    if (canTakeStoryTest(state, book) && storyTestRequired(state, book) && !storyTestPassed(state, book)) {
-      return {
-        kind: 'storyTest',
-        book,
-        title: storyTestTitle(book),
-        detail: book === 1
-          ? 'قصهٔ کتاب ۱ را از اول تا آخر به یاد بیاور؛ عبور از این آزمون کتاب بعد را باز می‌کند.'
-          : `قصهٔ کتاب ${faNum(book)} و کتاب‌های قبلی را به هم وصل کن؛ عبور از این آزمون ${book === 8 ? 'آزمون نهایی' : 'کتاب بعد'} را باز می‌کند.`,
-      }
-    }
     const bookId = bookExamId(book)
     if (canTakeExam(state, bookId) && !examPassed(state, bookId)) {
-      return { kind: 'exam', examId: bookId, title: `آزمون واژه‌های کتاب ${faNum(book)}`, detail: 'این آزمون دروازهٔ ورود به کتاب بعدی است و یادآوری نوشتاری هم دارد.' }
+      return {
+        kind: 'exam',
+        examId: bookId,
+        title: examDefinition(bookId)!.titleFa,
+        detail: `واژه‌های ${book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} (ترجمه و شنیداری) و درک مطلب خواندنی و شنیداری با دو متن تازه؛ عبور از آن ${book === 8 ? 'آزمون نهایی' : 'کتاب بعد'} را باز می‌کند.`,
+      }
     }
     if (book === 4 && canTakeExam(state, MIDPOINT_EXAM_ID) && !examPassed(state, MIDPOINT_EXAM_ID)) {
       return { kind: 'exam', examId: MIDPOINT_EXAM_ID, title: 'آزمون ویژهٔ نیمهٔ مسیر', detail: 'مرور تجمعی کتاب‌های ۱ تا ۴ پیش از شروع کتاب ۵.' }

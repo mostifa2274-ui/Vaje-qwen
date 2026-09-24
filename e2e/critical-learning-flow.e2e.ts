@@ -577,51 +577,108 @@ test('opening and closing a story word gloss keeps the reading position', async 
   expect(await page.evaluate(() => window.scrollY)).toBe(before)
 })
 
-test('each finished book opens a cumulative story comprehension test that gates the next book', async ({ page }) => {
+interface BookTestFixture {
+  reading: Array<{ titleEn: string; questions: Array<{ q: string; options: string[]; answer: number }> }>
+  listening: Array<{ titleEn: string; sentences: Array<{ en: string; fa: string }>; questions: Array<{ q: string; options: string[]; answer: number }> }>
+}
+
+test('the end-of-book test checks words, a reading text and a listening text hidden until the review', async ({ page }) => {
   const book1 = ['b1c1', 'b1c2', 'b1c3', 'b1c4', 'b1c5']
+  const bookWords = new Map<string, VocabularyEntry>()
+  for (const id of book1) {
+    const fixture = JSON.parse(readFileSync(new URL(`../src/data/chapters/${id}.json`, import.meta.url), 'utf8')) as ChapterFixture
+    for (const wordId of fixture.new) bookWords.set(wordById.get(wordId)!.word, wordById.get(wordId)!)
+  }
+  const content = JSON.parse(readFileSync(new URL('../src/data/bookTests/b1.json', import.meta.url), 'utf8')) as BookTestFixture
+  const reading = content.reading[0]
+  const listening = content.listening[0]
+
   await openWithProgress(page, '/map', {
     chapters: Object.fromEntries(book1.map(id => [id, { preparedAt: 1, prepAttempts: 1, completed: true, completedAt: 2, checksCorrect: 10, checksTotal: 10, reads: 1 }])),
-    exams: {
-      'book-1': { attempts: 1, passed: true, passedAt: 3, lastAttemptAt: 3, lastScore: 1, bestScore: 1, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] },
-    },
   })
+  const lockedFirstChapters = page.getByRole('button', { name: /^فصل ۱: .+ — قفل$/ })
+  const lockedBefore = await lockedFirstChapters.count()
 
-  // Vocabulary alone no longer opens book 2; the story test is the next step.
-  await expect(page.getByRole('heading', { name: 'قدم بعدی: درک مطلب کتاب ۱' })).toBeVisible()
-  await expect(page.getByRole('button', { name: /^فصل ۱: .+ — قفل$/ }).nth(0)).toBeDisabled()
+  await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
-  await expect(page.getByRole('heading', { level: 1, name: 'درک مطلب کتاب ۱' })).toBeVisible()
-  await expect(page).toHaveURL(/#\/story\/1$/)
+  await expect(page).toHaveURL(/#\/exam\/book-1$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
   await expectRenderedAccessibilityContract(page)
   await expectNoHorizontalOverflow(page)
+  await page.getByRole('button', { name: 'شروع آزمون' }).click()
 
-  const options = page.getByTestId('story-test-options').getByRole('button')
-  const counter = page.getByText(/^سؤال .+ از ۱۰$/)
-  await expect(counter).toHaveText('سؤال ۱ از ۱۰')
-
-  // Answers wait until the end, and the learner can revisit a question.
-  await options.first().click()
-  await expect(counter).toHaveText('سؤال ۲ از ۱۰')
-  await page.getByRole('button', { name: 'قبلی', exact: true }).click()
-  await expect(counter).toHaveText('سؤال ۱ از ۱۰')
-  await expect(options.first()).toHaveAttribute('aria-pressed', 'true')
-  await page.getByRole('button', { name: 'بعدی ←' }).click()
-
-  for (let question = 2; question <= 4; question++) await options.first().click()
+  // 1. Typed translations; progress survives a reload.
+  const counter = page.getByText(/^واژهٔ .+ از ۱۲$/)
+  const answerTranslation = async () => {
+    const surface = (await page.getByTestId('translation-headword').innerText()).trim()
+    await page.getByLabel('معنی فارسی').fill(bookWords.get(surface)!.fa)
+    await page.getByLabel('معنی فارسی').press('Enter')
+  }
+  for (let item = 1; item <= 3; item++) await answerTranslation()
+  await expect(counter).toHaveText('واژهٔ ۴ از ۱۲')
   await page.reload()
-  await expect(page.getByText('پیشرفت این آزمون بازیابی شد؛ از سؤال ۵ ادامه می‌دهی.')).toBeVisible()
-  await expect(counter).toHaveText('سؤال ۵ از ۱۰')
+  await expect(page.getByText('پیشرفت این آزمون بازیابی شد؛ از همان‌جا ادامه می‌دهی.')).toBeVisible()
+  await expect(counter).toHaveText('واژهٔ ۴ از ۱۲')
+  await expectRenderedAccessibilityContract(page)
+  for (let item = 4; item <= 12; item++) await answerTranslation()
 
-  for (let question = 5; question <= 10; question++) await options.first().click()
-  await expect(counter).toHaveText('سؤال ۱۰ از ۱۰')
+  // 2. Listening words: options wait for the word to be heard.
+  await expect(page.getByRole('heading', { level: 2, name: 'شنیدن واژه‌ها' })).toBeVisible()
+  const listeningOptions = page.getByTestId('book-test-listening-options').getByRole('button')
+  for (let item = 1; item <= 12; item++) {
+    await expect(page.getByText(`واژهٔ ${faNum(item)} از ۱۲`)).toBeVisible()
+    await expect(listeningOptions.first()).toBeEnabled()
+    const heard = bookWords.get(await spokenWord(page))!
+    await page.getByTestId('book-test-listening-options').getByRole('button', { name: heard.fa, exact: true }).click()
+  }
+
+  // 3. Reading: the text is on screen with its five questions.
+  await expect(page.getByRole('heading', { level: 3, name: reading.titleEn })).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  await expectNoHorizontalOverflow(page)
+  const answerQuestions = async (questions: BookTestFixture['reading'][number]['questions']) => {
+    for (const [index, question] of questions.entries()) {
+      await page.getByRole('group', { name: `${faNum(index + 1)}. ${question.q}` })
+        .getByRole('button', { name: question.options[question.answer], exact: true })
+        .click()
+    }
+  }
+  await answerQuestions(reading.questions)
+  await page.getByRole('button', { name: 'ثبت و رفتن به بخش شنیداری ←' }).click()
+
+  // 4. Listening: only audio. The text is never in the page during the test.
+  await expect(page.getByRole('heading', { level: 2, name: 'درک مطلب شنیداری' })).toBeVisible()
+  const pageText = async () => page.evaluate(() => document.body.innerText)
+  for (const sentence of listening.sentences) expect(await pageText()).not.toContain(sentence.en)
+  expect(await page.content()).not.toContain(listening.titleEn)
+  const firstAnswer = page.getByRole('group', { name: `۱. ${listening.questions[0].q}` }).getByRole('button').first()
+  await expect(firstAnswer).toBeDisabled()
+  await page.getByRole('button', { name: 'پخش متن' }).click()
+  await expect(page.getByText('متن را کامل شنیدی؛ حالا به سؤال‌ها پاسخ بده.')).toBeVisible()
+  expect((await speechHistory(page)).slice(-listening.sentences.length)).toEqual(listening.sentences.map(sentence => sentence.en))
+  await expect(firstAnswer).toBeEnabled()
+  await expectRenderedAccessibilityContract(page)
+  await answerQuestions(listening.questions)
+  for (const sentence of listening.sentences) expect(await pageText()).not.toContain(sentence.en)
   await page.getByRole('button', { name: 'ثبت و پایان آزمون' }).click()
 
-  await expect(page.getByRole('heading', { level: 1, name: /قصه را خوب به یاد داری|هنوز آمادهٔ عبور نیستی/ })).toBeVisible()
-  await expect(page.getByText('حد قبولی ۸۰٪ است.', { exact: false })).toBeVisible()
+  // Review: scores per part, and the listening text is revealed on request.
+  await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب را گذراندی' })).toBeVisible()
+  await expect(page.getByText('هر ۲۴ واژه درست بود.')).toBeVisible()
   await expectRenderedAccessibilityContract(page)
-  const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').storyTests?.['story-1'])
-  expect(stored.attempts).toBe(1)
-  expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:story-test:v1:1'))).toBeNull()
+  await expectNoHorizontalOverflow(page)
+  await expect(page.getByText(listening.sentences[0].en, { exact: true })).toBeHidden()
+  await page.getByText(/^متن شنیداری: /).click()
+  await expect(page.getByText(listening.sentences[0].en, { exact: true })).toBeVisible()
+  await expect(page.getByText(listening.sentences[0].fa, { exact: true })).toBeVisible()
+
+  const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').exams?.['book-1'])
+  expect(stored).toMatchObject({ attempts: 1, passed: true, lastScore: 1, missedWordIds: [] })
+  expect(stored.testedWordIds).toHaveLength(24)
+  expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:book-test:v1:1'))).toBeNull()
+
+  await page.getByRole('button', { name: 'ادامهٔ مسیر ←' }).click()
+  await expect(lockedFirstChapters).toHaveCount(lockedBefore - 1)
 })
 
 test('importing a backup asks before replacing progress', async ({ page }) => {

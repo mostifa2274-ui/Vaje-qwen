@@ -1,4 +1,4 @@
-import type { ExamProgress, GhesseState, ChapterProgress, StoryTestProgress, WordProgress, RetrievalMode, SkillDimension, SkillStat } from './types'
+import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, RetrievalMode, SkillDimension, SkillStat } from './types'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
 const BACKUP_KEY = 'ghesse:state:v6:backup'
@@ -14,7 +14,6 @@ export function emptyState(now: number, firstChapterId: string): GhesseState {
     chapters: {},
     words: {},
     exams: {},
-    storyTests: {},
     soundOn: true,
     showFaDefault: false,
     narratorVoiceURI: '',
@@ -170,21 +169,6 @@ function normalizeExam(raw: unknown, validWordIds?: ReadonlySet<string>): ExamPr
   }
 }
 
-const STORY_TEST_ID = /^story-[1-8]$/
-
-function normalizeStoryTest(raw: unknown): StoryTestProgress | undefined {
-  if (!raw || typeof raw !== 'object') return undefined
-  const r = raw as Partial<StoryTestProgress>
-  return {
-    attempts: Math.max(0, Math.floor(num(r.attempts))),
-    passed: r.passed === true,
-    passedAt: timestamp(r.passedAt),
-    lastAttemptAt: timestamp(r.lastAttemptAt),
-    lastScore: Math.min(1, Math.max(0, num(r.lastScore))),
-    bestScore: Math.min(1, Math.max(0, num(r.bestScore))),
-  }
-}
-
 function normalizeState(
   raw: unknown,
   now: number,
@@ -211,12 +195,6 @@ function normalizeState(
     const normalized = normalizeExam(exam, validWordIds)
     if (normalized) exams[id] = normalized
   }
-  const storyTests: Record<string, StoryTestProgress> = {}
-  for (const [id, test] of Object.entries(p.storyTests ?? {})) {
-    if (!STORY_TEST_ID.test(id)) continue
-    const normalized = normalizeStoryTest(test)
-    if (normalized) storyTests[id] = normalized
-  }
   const requested = typeof p.currentChapter === 'string' ? p.currentChapter : firstChapterId
   const currentChapter = validChapterIds && !validChapterIds.has(requested) ? firstChapterId : requested
   return {
@@ -225,7 +203,6 @@ function normalizeState(
     chapters,
     words,
     exams,
-    storyTests,
     soundOn: p.soundOn !== false,
     showFaDefault: p.showFaDefault === true,
     narratorVoiceURI: text(p.narratorVoiceURI),
@@ -320,8 +297,7 @@ export function summarizeProgress(state: GhesseState): ProgressSummary {
   return {
     completedChapters: Object.values(state.chapters).filter(chapter => chapter.completed).length,
     introducedWords: Object.values(state.words).filter(word => word.introduced).length,
-    passedExams: Object.values(state.exams).filter(exam => exam.passed).length
-      + Object.values(state.storyTests).filter(test => test.passed).length,
+    passedExams: Object.values(state.exams).filter(exam => exam.passed).length,
   }
 }
 

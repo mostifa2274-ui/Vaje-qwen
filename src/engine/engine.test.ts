@@ -255,8 +255,6 @@ describe('chapter prep and gate progression', () => {
     for (const ch of CHAPTERS.filter(ch => ch.book === 1)) {
       state.chapters[ch.id] = { preparedAt: 1, prepAttempts: 1, completed: true, checksCorrect: 2, checksTotal: 2, reads: 1 }
     }
-    // The book's story comprehension test is its own gate (storyTest.test.ts).
-    state.storyTests['story-1'] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: 1, bestScore: 1 }
     expect(canTakeExam(state, bookExamId(1))).toBe(true)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
     state.exams[bookExamId(1)] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: .9, bestScore: .9, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] }
@@ -267,7 +265,6 @@ describe('chapter prep and gate progression', () => {
     const state = emptyState(1, 'b1c1')
     for (const ch of CHAPTERS.filter(ch => ch.book <= 4)) state.chapters[ch.id] = { preparedAt: 1, prepAttempts: 1, completed: true, checksCorrect: 2, checksTotal: 2, reads: 1 }
     for (const book of [1, 2, 3, 4]) state.exams[bookExamId(book)] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: .9, bestScore: .9, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] }
-    state.storyTests['story-4'] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: 1, bestScore: 1 }
     expect(canTakeExam(state, MIDPOINT_EXAM_ID)).toBe(true)
     expect(canPrepareChapter(state, 'b5c1')).toBe(false)
     state.exams[MIDPOINT_EXAM_ID] = { attempts: 1, passed: true, passedAt: 3, lastAttemptAt: 3, lastScore: .9, bestScore: .9, lastProductiveScore: .9, bestProductiveScore: .9, missedWordIds: [], testedWordIds: [] }
@@ -320,10 +317,12 @@ describe('review and exam generation', () => {
     }
   })
 
-  it('creates complete book, midpoint and final exams with productive recall', () => {
+  it('creates complete midpoint and final exams with productive recall', () => {
     const state = emptyState(1, 'b1c1')
     for (const word of VOCAB) state.words[word.id] = blankWordProgress(1)
-    for (const id of ['book-1', 'midpoint-4', 'final-8']) {
+    // Book exams are end-of-book tests with their own builder (bookTest.test.ts).
+    expect(buildExam('book-1', state, 1)).toBeUndefined()
+    for (const id of ['midpoint-4', 'final-8']) {
       const exam = buildExam(id, state, 1)!
       expect(exam.questions.length).toBe(exam.definition.questionCount)
       expect(new Set(exam.questions.map(q => q.wordId)).size).toBe(exam.questions.length)
@@ -334,11 +333,10 @@ describe('review and exam generation', () => {
   })
 
 
-  it('guarantees chapter representation in book, midpoint and final exams', () => {
+  it('guarantees chapter representation in midpoint and final exams', () => {
     const state = emptyState(1, 'b1c1')
     for (const word of VOCAB) state.words[word.id] = blankWordProgress(1)
     const cases: Array<[string, typeof CHAPTERS]> = [
-      ['book-1', CHAPTERS.filter(ch => ch.book === 1)],
       ['midpoint-4', CHAPTERS.filter(ch => ch.book <= 4)],
       ['final-8', CHAPTERS],
     ]
@@ -348,11 +346,6 @@ describe('review and exam generation', () => {
       for (const chapter of chapters) {
         expect(chapter.new.some(wordId => tested.has(wordId))).toBe(true)
       }
-      if (id === 'book-1') {
-        for (const chapter of chapters) {
-          expect(chapter.new.filter(wordId => tested.has(wordId)).length).toBeGreaterThanOrEqual(2)
-        }
-      }
     }
   })
 
@@ -360,14 +353,14 @@ describe('review and exam generation', () => {
   it('broadens exam coverage across attempts', () => {
     const state = emptyState(1, 'b1c1')
     for (const word of VOCAB) state.words[word.id] = blankWordProgress(1)
-    const first = buildExam('book-1', state, 1)!
-    state.exams['book-1'] = {
+    const first = buildExam(MIDPOINT_EXAM_ID, state, 1)!
+    state.exams[MIDPOINT_EXAM_ID] = {
       attempts: 1, passed: false, lastScore: 0, bestScore: 0,
       lastProductiveScore: 0, bestProductiveScore: 0, missedWordIds: [],
       testedWordIds: first.questions.map(q => q.wordId),
     }
-    const second = buildExam('book-1', state, 2)!
-    const old = new Set(state.exams['book-1'].testedWordIds)
+    const second = buildExam(MIDPOINT_EXAM_ID, state, 2)!
+    const old = new Set(state.exams[MIDPOINT_EXAM_ID].testedWordIds)
     expect(second.questions.some(q => !old.has(q.wordId))).toBe(true)
   })
 })

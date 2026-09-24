@@ -82,23 +82,12 @@ export interface ExamProgress {
   testedWordIds: string[]
 }
 
-// Book-level story comprehension (see engine/storyTest.ts), keyed "story-<book>".
-export interface StoryTestProgress {
-  attempts: number
-  passed: boolean
-  passedAt?: number
-  lastAttemptAt?: number
-  lastScore: number
-  bestScore: number
-}
-
 export interface GhesseState {
   version: 6
   currentChapter: string // retained for migration/history; gate engine is authoritative
   chapters: Record<string, ChapterProgress>
   words: Record<string, WordProgress>
   exams: Record<string, ExamProgress>
-  storyTests: Record<string, StoryTestProgress>
   soundOn: boolean
   showFaDefault: boolean
   narratorVoiceURI: string

@@ -2,8 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNod
 import type { GhesseState } from './engine/types'
 import { loadState, saveState, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
-import { canPrepareChapter, canReadChapter, canTakeExam, canTakeStoryTest, examDefinition } from './engine/gates'
-import { isStoryTestBook, storyTestTitle } from './engine/storyTest'
+import { canPrepareChapter, canReadChapter, canTakeExam, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
 import { warmEnglishVoices } from './engine/narration'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
@@ -12,7 +11,7 @@ const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
 const ReaderScreen = lazy(() => import('./pages/ReaderScreen'))
 const ReviewScreen = lazy(() => import('./pages/ReviewScreen'))
 const ExamScreen = lazy(() => import('./pages/ExamScreen'))
-const StoryTestScreen = lazy(() => import('./pages/StoryTestScreen'))
+const BookTestScreen = lazy(() => import('./pages/BookTestScreen'))
 const GlossaryScreen = lazy(() => import('./pages/GlossaryScreen'))
 const SettingsScreen = lazy(() => import('./pages/SettingsScreen'))
 
@@ -22,7 +21,6 @@ type View =
   | { name: 'read'; chapterId: string }
   | { name: 'review' }
   | { name: 'exam'; examId: string }
-  | { name: 'story'; book: number }
   | { name: 'glossary' }
   | { name: 'settings' }
 
@@ -56,10 +54,6 @@ function rawViewFromHash(): View {
     const examId = decodeURIComponent(hash.slice(5))
     if (examDefinition(examId)) return { name: 'exam', examId }
   }
-  if (hash.startsWith('story/')) {
-    const book = Number(hash.slice(6))
-    if (isStoryTestBook(book)) return { name: 'story', book }
-  }
   return { name: 'map' }
 }
 
@@ -73,7 +67,6 @@ function resolveView(view: View, state: GhesseState): View {
     if (canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
   }
   if (view.name === 'exam' && !canTakeExam(state, view.examId)) return { name: 'map' }
-  if (view.name === 'story' && !canTakeStoryTest(state, view.book)) return { name: 'map' }
   return view
 }
 
@@ -82,7 +75,6 @@ function hashFor(view: View): string {
   if (view.name === 'read') return `#/read/${encodeURIComponent(view.chapterId)}`
   if (view.name === 'review') return '#/review'
   if (view.name === 'exam') return `#/exam/${encodeURIComponent(view.examId)}`
-  if (view.name === 'story') return `#/story/${view.book}`
   if (view.name === 'glossary') return '#/glossary'
   if (view.name === 'settings') return '#/settings'
   return '#/map'
@@ -99,7 +91,6 @@ function viewLabel(view: View): string {
   }
   if (view.name === 'review') return 'مرور هوشمند'
   if (view.name === 'exam') return examDefinition(view.examId)?.titleFa ?? 'آزمون'
-  if (view.name === 'story') return storyTestTitle(view.book)
   if (view.name === 'glossary') return 'واژه‌نامه'
   if (view.name === 'settings') return 'تنظیمات'
   return 'مسیر یادگیری'
@@ -147,10 +138,6 @@ export default function App() {
 
   const openExam = useCallback((examId: string) => {
     if (canTakeExam(state, examId)) navigate({ name: 'exam', examId })
-  }, [navigate, state])
-
-  const openStoryTest = useCallback((book: number) => {
-    if (canTakeStoryTest(state, book)) navigate({ name: 'story', book })
   }, [navigate, state])
 
   useEffect(() => {
@@ -269,28 +256,25 @@ export default function App() {
           onChange={update}
           onBack={backToMap}
           onOpenChapter={openChapter}
-          onOpenStoryTest={openStoryTest}
-        />
-      )
-      break
-    case 'story':
-      screen = (
-        <StoryTestScreen
-          key={view.book}
-          book={view.book}
-          state={state}
-          onChange={update}
-          onBack={backToMap}
-          onOpenChapter={openChapter}
-          onOpenExam={examId => { if (canTakeExam(state, examId)) navigate({ name: 'exam', examId }, true) }}
+          onOpenExam={openExam}
         />
       )
       break
     case 'review':
       screen = <ReviewScreen state={state} now={now} onChange={update} onBack={backToMap} />
       break
-    case 'exam':
-      screen = (
+    case 'exam': {
+      const book = examDefinition(view.examId)?.book
+      screen = book ? (
+        <BookTestScreen
+          key={view.examId}
+          book={book}
+          state={state}
+          onChange={update}
+          onBack={backToMap}
+          onReview={() => navigate({ name: 'review' }, true)}
+        />
+      ) : (
         <ExamScreen
           key={view.examId}
           examId={view.examId}
@@ -301,6 +285,7 @@ export default function App() {
         />
       )
       break
+    }
     case 'glossary':
       screen = <GlossaryScreen state={state} onChange={update} onBack={backToMap} />
       break
@@ -325,7 +310,6 @@ export default function App() {
           now={now}
           onOpenChapter={openChapter}
           onOpenExam={openExam}
-          onOpenStoryTest={openStoryTest}
           onOpenReview={() => navigate({ name: 'review' })}
           onOpenGlossary={() => navigate({ name: 'glossary' })}
           onOpenSettings={() => navigate({ name: 'settings' })}

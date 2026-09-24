@@ -10,14 +10,11 @@ import {
   bookExamId,
   canPrepareChapter,
   canTakeExam,
-  canTakeStoryTest,
   chapterPrepared,
+  examDefinition,
   examPassed,
   examRemediationPending,
-  storyTestPassed,
-  storyTestRequired,
 } from '../engine/gates'
-import { STORY_TEST_PASS_RATE, previousQuestionCount, storyTestId, storyTestTitle, STORY_TEST_CURRENT_COUNT } from '../engine/storyTest'
 import { faNum, percent } from '../engine/format'
 
 interface Props {
@@ -25,7 +22,6 @@ interface Props {
   now: number
   onOpenChapter: (id: string) => void
   onOpenExam: (id: string) => void
-  onOpenStoryTest: (book: number) => void
   onOpenReview: () => void
   onOpenGlossary: () => void
   onOpenSettings: () => void
@@ -77,38 +73,7 @@ function ExamGate({
   )
 }
 
-function StoryTestGate({ book, state, onOpen }: { book: number; state: GhesseState; onOpen: (book: number) => void }) {
-  const passed = storyTestPassed(state, book)
-  const available = canTakeStoryTest(state, book)
-  const required = storyTestRequired(state, book)
-  const progress = state.storyTests[storyTestId(book)]
-  const questionCount = STORY_TEST_CURRENT_COUNT + previousQuestionCount(book)
-  const scope = book === 1
-    ? 'قصهٔ کتاب ۱'
-    : book === 2
-      ? 'قصهٔ این کتاب و مرور کتاب ۱'
-      : `قصهٔ این کتاب و مرور کتاب‌های ۱ ${book === 3 ? 'و' : 'تا'} ${faNum(book - 1)}`
-  return (
-    <div className={`exam-gate story-gate ${passed ? 'passed' : ''}`}>
-      <div className="exam-gate-icon" aria-hidden="true">
-        {passed ? <CheckIcon className="h-5 w-5" /> : <BookOpenTextIcon className="h-5 w-5" />}
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="font-extrabold">{storyTestTitle(book)}</div>
-        <div className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-          {passed
-            ? `قبول${progress?.bestScore ? ` · بهترین امتیاز ${percent(progress.bestScore)}` : ''}`
-            : `${faNum(questionCount)} سؤال از ${scope}؛ حد قبولی ${percent(STORY_TEST_PASS_RATE)}${required ? '' : ' · اختیاری'}.`}
-        </div>
-      </div>
-      <button type="button" className={passed || !required ? 'btn-paper px-3 py-2 text-sm' : 'btn-crimson px-3 py-2 text-sm'} disabled={!available} onClick={() => onOpen(book)}>
-        {passed ? 'بازآزمایی' : 'شروع'}
-      </button>
-    </div>
-  )
-}
-
-export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpenStoryTest, onOpenReview, onOpenGlossary, onOpenSettings }: Props) {
+export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenSettings }: Props) {
   const doneCount = CHAPTERS.filter(c => state.chapters[c.id]?.completed).length
   const health = learningHealth(state, now)
   const action = nextBestAction(state, now)
@@ -117,13 +82,12 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
   function runNextAction() {
     if (action.kind === 'review' || action.kind === 'certification') return onOpenReview()
     if (action.kind === 'exam') return onOpenExam(action.examId)
-    if (action.kind === 'storyTest') return onOpenStoryTest(action.book)
     if (action.kind === 'chapter') return onOpenChapter(action.chapterId)
   }
 
   const actionLabel = action.kind === 'review'
     ? 'شروع مرور'
-    : action.kind === 'exam' || action.kind === 'storyTest'
+    : action.kind === 'exam'
       ? 'شروع آزمون'
       : action.kind === 'chapter'
         ? action.prepared ? 'ورود به قصه' : 'آموزش واژه‌ها'
@@ -245,7 +209,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                       {bHealth.trouble > 0 && <span className="mastery-chip">{faNum(bHealth.trouble)} سخت</span>}
                     </div>
                   </div>
-                  {examPassed(state, bookExam) && <span className="book-status-icon" title="آزمون کتاب پاس شده" aria-label="آزمون کتاب پاس شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
+                  {examPassed(state, bookExam) && <span className="book-status-icon" title="آزمون پایان کتاب پاس شده" aria-label="آزمون پایان کتاب پاس شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
                 </div>
 
                 <div className="mt-4 flex flex-wrap items-center gap-2" dir="rtl">
@@ -291,12 +255,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                   </div>
                 )}
 
-                {done && (
-                  <div className="mt-4 space-y-2">
-                    <StoryTestGate book={meta.book} state={state} onOpen={onOpenStoryTest} />
-                    <ExamGate id={bookExam} title={`آزمون واژه‌های کتاب ${faNum(meta.book)}`} state={state} onOpen={onOpenExam} />
-                  </div>
-                )}
+                {done && <div className="mt-4"><ExamGate id={bookExam} title={examDefinition(bookExam)!.titleFa} state={state} onOpen={onOpenExam} /></div>}
               </section>
 
               {meta.book === 4 && <div className="mt-4"><ExamGate id={MIDPOINT_EXAM_ID} title="آزمون ویژهٔ کتاب‌های ۱ تا ۴" state={state} onOpen={onOpenExam} special /></div>}
