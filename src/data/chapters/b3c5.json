@@ -2,8 +2,8 @@
   "id": "b3c5",
   "book": 3,
   "n": 5,
-  "titleFa": "هزار گربه",
-  "titleEn": "A Thousand Cats",
+  "titleFa": "هزار سرنخ",
+  "titleEn": "A Thousand Clues",
   "new": [
     "eleven",
     "thirteen",
@@ -34,20 +34,20 @@
       "fa": "مینا و بابا به مرکز اطلاعات شهر می‌روند تا جست‌وجو را مرتب کنند."
     },
     {
-      "en": "A board there shows eleven photos of black cats found nearby.",
-      "fa": "روی تابلویی آنجا یازده عکس از گربه‌های سیاهی است که نزدیک پیدا شده‌اند."
+      "en": "A board there shows eleven photos sent by people who may have seen Nino.",
+      "fa": "روی تابلویی آنجا یازده عکس است که مردم فرستاده‌اند چون شاید نینو را دیده باشند."
     },
     {
-      "en": "Mina checks all eleven photos, but none is Nino.",
-      "fa": "مینا هر یازده عکس را بررسی می‌کند، اما هیچ‌کدام نینو نیست."
+      "en": "Mina checks all eleven photos, but none shows Nino clearly.",
+      "fa": "مینا هر یازده عکس را بررسی می‌کند، اما هیچ‌کدام نینو را واضح نشان نمی‌دهد."
     },
     {
       "en": "A second folder contains thirteen calls from people around the park.",
       "fa": "پوشه‌ی دوم سیزده تماس از مردم اطراف پارک دارد."
     },
     {
-      "en": "Thirteen people reported cats, and Dad writes down every location.",
-      "fa": "سیزده نفر گربه دیده‌اند و بابا محل هر کدام را یادداشت می‌کند."
+      "en": "Thirteen people reported small birds or chickens, and Dad writes down every location.",
+      "fa": "سیزده نفر پرنده یا جوجه‌ی کوچکی گزارش کرده‌اند و بابا محل هر کدام را یادداشت می‌کند."
     },
     {
       "en": "The map marks fourteen streets around the newest clue.",
@@ -58,8 +58,8 @@
       "fa": "داوطلب‌ها چهارده خیابان را تقسیم می‌کنند تا هیچ‌کس تنها جست‌وجو نکند."
     },
     {
-      "en": "Fifteen shop owners already have Mina's missing-cat note.",
-      "fa": "پانزده صاحب مغازه از قبل یادداشت گربه‌ی گمشده‌ی مینا را دارند."
+      "en": "Fifteen shop owners already have Mina's missing-chicken note.",
+      "fa": "پانزده صاحب مغازه از قبل یادداشت جوجه‌ی گمشده‌ی مینا را دارند."
     },
     {
       "en": "One list shows the names of all fifteen shops.",
@@ -138,12 +138,12 @@
       "fa": "یک ساعت، یعنی شصت دقیقه، از آخرین سرنخ مفید گذشته است."
     },
     {
-      "en": "The city shelter lists seventy black cats in its records.",
-      "fa": "پناهگاه شهر در پرونده‌هایش هفتاد گربه‌ی سیاه ثبت کرده است."
+      "en": "A local animal group has seventy reports in its records.",
+      "fa": "یک گروه محلی حمایت از حیوانات هفتاد گزارش در پرونده‌هایش دارد."
     },
     {
-      "en": "Mina knows they cannot check all seventy cats in one afternoon.",
-      "fa": "مینا می‌داند نمی‌توانند هر هفتاد گربه را در یک بعدازظهر بررسی کنند."
+      "en": "Mina knows they cannot check all seventy reports in one afternoon.",
+      "fa": "مینا می‌داند نمی‌توانند هر هفتاد گزارش را در یک بعدازظهر بررسی کنند."
     },
     {
       "en": "Online, eighty people have shared Nino's picture.",
@@ -170,12 +170,12 @@
       "fa": "صد جفت چشم می‌تواند بیشتر از مینا به‌تنهایی ببیند."
     },
     {
-      "en": "\"There may be a thousand cats in this city,\" Dad says.",
-      "fa": "بابا می‌گوید: «ممکن است در این شهر هزار گربه باشد.»"
+      "en": "\"There may be a thousand places to check in this city,\" Dad says.",
+      "fa": "بابا می‌گوید: «ممکن است در این شهر هزار جا برای بررسی باشد.»"
     },
     {
-      "en": "A thousand cats could live here, but Mina would know Nino immediately.",
-      "fa": "ممکن است هزار گربه اینجا زندگی کنند، اما مینا نینو را فوراً می‌شناسد."
+      "en": "A thousand clues could appear, but Mina would know Nino immediately.",
+      "fa": "ممکن است هزار سرنخ پیدا شود، اما مینا نینو را فوراً می‌شناسد."
     },
     {
       "en": "The city has almost a million people, which once made Mina feel small.",
@@ -212,7 +212,7 @@
   ],
   "check": [
     {
-      "q": "در شهر چند گربه وجود دارد؟",
+      "q": "بابا می‌گوید شاید چند جا برای بررسی وجود داشته باشد؟",
       "options": [
         "thousand",
         "hundred",
