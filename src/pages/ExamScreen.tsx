@@ -5,7 +5,6 @@ import { examDefinition } from '../engine/gates'
 import { WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { wordSrc } from '../engine/audio'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 import { faNum, percent } from '../engine/format'
@@ -106,7 +105,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       word.word,
       state.narratorVoiceURI,
       state.narratorRate,
-      wordSrc(word.id),
+      'w',
       ended,
       unavailable,
     )

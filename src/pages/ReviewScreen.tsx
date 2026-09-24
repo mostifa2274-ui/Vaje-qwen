@@ -14,7 +14,6 @@ import {
   troubleWordIds,
 } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { wordSrc } from '../engine/audio'
 import { examRemediationWordIds } from '../engine/gates'
 import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
@@ -187,7 +186,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
       currentWord.word,
       state.narratorVoiceURI,
       state.narratorRate,
-      wordSrc(currentWord.id),
+      'w',
       ended,
       unavailable,
     )

@@ -5,7 +5,7 @@ const root = new URL('..', import.meta.url).pathname
 const dataDir = join(root, 'src/data')
 const chapterDir = join(dataDir, 'chapters')
 const publicDir = join(root, 'public')
-const requireBundledAudio = process.env.GHESSE_REQUIRE_BUNDLED_AUDIO === '1'
+const allowMissingAudio = process.env.GHESSE_ALLOW_MISSING_AUDIO === '1'
 const vocab = JSON.parse(readFileSync(join(dataDir, 'vocabulary.json'), 'utf8'))
 const chapters = readdirSync(chapterDir)
   .filter(name => name.endsWith('.json'))
@@ -36,21 +36,57 @@ for (const chapter of chapters) {
     assert(check.options.includes(check.a), `${chapter.id}: checkpoint answer is not an option`)
     for (const id of check.options) assert(ids.has(id), `${chapter.id}: unknown checkpoint word ${id}`)
   }
-  if (requireBundledAudio) {
-    chapter.sentences.forEach((_, index) => {
-      const file = join(publicDir, 'audio/sentences', `${chapter.id}_${String(index).padStart(3, '0')}.mp3`)
-      assert(existsSync(file), `missing sentence audio ${file}`)
-    })
-  }
 }
 assert(introduced.length === 899, `expected 899 introduced assignments, found ${introduced.length}`)
 assert(new Set(introduced).size === 899, 'each vocabulary id must be introduced exactly once')
 
-if (requireBundledAudio) {
-  for (const word of vocab) {
-    assert(existsSync(join(publicDir, 'audio/words', `${word.id}.mp3`)), `missing word audio: ${word.id}`)
-    assert(existsSync(join(publicDir, 'audio/examples', `${word.id}.mp3`)), `missing example audio: ${word.id}`)
+// Recorded narration (scripts/audio/generate_audio.py). Clip names hash the
+// exact text, mirroring clipId() in src/engine/audioClips.ts.
+function fnv1a(bytes, seed) {
+  let hash = seed >>> 0
+  for (const byte of bytes) {
+    hash ^= byte
+    hash = Math.imul(hash, 0x01000193) >>> 0
   }
+  return hash.toString(16).padStart(8, '0')
+}
+const normalizeClipText = text => text.replace(/’/g, "'").split(/\s+/).filter(Boolean).join(' ')
+const clipId = (kind, text) => {
+  const bytes = new TextEncoder().encode(`${kind}|${normalizeClipText(text)}`)
+  return fnv1a(bytes, 0x811c9dc5) + fnv1a(bytes, (0x01000193 ^ 0x9e3779b9) >>> 0)
+}
+const prompts = new Map()
+const addPrompt = (kind, text) => prompts.set(clipId(kind, text), `${kind} "${normalizeClipText(text)}"`)
+for (const word of vocab) {
+  addPrompt('w', word.word)
+  addPrompt('s', word.ex)
+}
+for (const chapter of chapters) for (const sentence of chapter.sentences) addPrompt('s', sentence.en)
+const bookTestDir = join(dataDir, 'bookTests')
+for (const name of readdirSync(bookTestDir).filter(file => file.endsWith('.json')).sort()) {
+  const content = JSON.parse(readFileSync(join(bookTestDir, name), 'utf8'))
+  for (const text of [...content.reading, ...content.listening]) {
+    for (const sentence of text.sentences) addPrompt('s', sentence.en)
+  }
+}
+for (const sample of JSON.parse(readFileSync(join(root, 'scripts/audio/extra-prompts.json'), 'utf8'))) addPrompt('s', sample)
+
+const audioDir = join(publicDir, 'audio')
+const audioIndex = JSON.parse(readFileSync(join(audioDir, 'index.json'), 'utf8'))
+assert(typeof audioIndex.voice === 'string' && Array.isArray(audioIndex.clips), 'public/audio/index.json must list a voice and its clips')
+const listedClips = new Set(audioIndex.clips)
+assert(listedClips.size === audioIndex.clips.length, 'public/audio/index.json lists a clip twice')
+const clipFiles = new Set(readdirSync(audioDir).filter(name => name.endsWith('.mp3')).map(name => name.slice(0, -4)))
+for (const id of listedClips) {
+  assert(clipFiles.has(id), `public/audio/index.json lists a missing clip: ${id}.mp3`)
+  assert(prompts.has(id), `public/audio/${id}.mp3 no longer matches any course text; re-run scripts/audio/generate_audio.py`)
+}
+for (const id of clipFiles) assert(listedClips.has(id), `public/audio/${id}.mp3 is not listed in index.json`)
+const unrecorded = [...prompts].filter(([id]) => !listedClips.has(id)).map(([, prompt]) => prompt)
+if (unrecorded.length > 0) {
+  const message = `${unrecorded.length} prompts have no recording (they fall back to the device voice), e.g. ${unrecorded.slice(0, 3).join('; ')}. Re-run scripts/audio/generate_audio.py.`
+  if (!allowMissingAudio) throw new Error(message)
+  console.warn(`Warning: ${message}`)
 }
 
 assert(existsSync(join(publicDir, 'icons', 'icon.svg')), 'missing vector PWA icon: icon.svg')
@@ -85,4 +121,4 @@ for (let book = 1; book <= 8; book++) {
   assert(existsSync(join(publicDir, 'art', `book${book}.svg`)), `missing lesson artwork: art/book${book}.svg`)
 }
 
-console.log(`Validated ${vocab.length} words, ${chapters.length} chapters, ${sentenceCount} sentences, ${checkpointCount} checkpoints${requireBundledAudio ? ', and all bundled audio assets' : ', using speech-first production audio mode'}.`)
+console.log(`Validated ${vocab.length} words, ${chapters.length} chapters, ${sentenceCount} sentences, ${checkpointCount} checkpoints, and ${prompts.size - unrecorded.length}/${prompts.size} recorded prompts (${audioIndex.voice}).`)

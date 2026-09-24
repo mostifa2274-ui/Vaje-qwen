@@ -1,15 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
-import { bundledAudioEnabled, sentenceSrc, stopAudio } from '../engine/audio'
-import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglish, type SpeechFailure } from '../engine/narration'
+import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglishWithFallback, type SpeechFailure } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
 import { blankWordProgress } from '../engine/review'
 import { bookExamId } from '../engine/gates'
 import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
-import staleSentenceAudioJson from '../data/staleSentenceAudio.json'
 import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
 import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
 import ChapterIllustration from '../components/ChapterIllustration'
@@ -23,8 +21,6 @@ interface Props {
   onOpenChapter: (id: string) => void
   onOpenExam: (id: string) => void
 }
-
-const STALE_SENTENCE_AUDIO = new Set(staleSentenceAudioJson as string[])
 
 function wallClockNow(): number {
   return Date.now()
@@ -59,7 +55,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [finished, setFinished] = useState(false)
   const [wasAlreadyDone] = useState(() => state.chapters[chapterId]?.completed === true)
   const [audioNotice, setAudioNotice] = useState('')
-  const readerAudioRef = useRef<HTMLAudioElement | null>(null)
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
   const questionRef = useRef<HTMLDivElement>(null)
@@ -69,12 +64,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
   const stopReaderAudio = useCallback(() => {
     playbackToken.current++
-    const audio = readerAudioRef.current
-    if (audio) {
-      audio.onended = null
-      audio.onerror = null
-      audio.pause()
-    }
     cancelEnglishSpeech()
     setPlayAll(false)
     setPlayIdx(-1)
@@ -92,8 +81,6 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
   useEffect(() => () => {
     playbackToken.current++
-    readerAudioRef.current?.pause()
-    stopAudio()
     cancelEnglishSpeech()
   }, [])
 
@@ -163,9 +150,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       return
     }
 
-    stopAudio()
     const token = ++playbackToken.current
-    readerAudioRef.current?.pause()
     cancelEnglishSpeech()
     setPlayIdx(index)
     setPlayAll(chain)
@@ -179,56 +164,27 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       }
     }
 
-    const failPlayback = (message: string) => {
+    const failPlayback = (failure: SpeechFailure = 'unavailable') => {
       if (playbackToken.current !== token) return
       playbackToken.current++
-      const audio = readerAudioRef.current
-      if (audio) {
-        audio.onended = null
-        audio.onerror = null
-        audio.pause()
-      }
       cancelEnglishSpeech()
-      setAudioNotice(message)
+      setAudioNotice(failure === 'blocked'
+        ? BLOCKED_AUDIO_NOTICE
+        : 'صدای انگلیسی این جمله پخش نشد. اتصال اینترنت یا صدای English Text-to-Speech دستگاه را بررسی کن و دوباره پخش را بزن.')
       setPlayIdx(-1)
       setPlayAll(false)
     }
 
-    const playBundledFallback = (failure: SpeechFailure = 'unavailable') => {
-      if (playbackToken.current !== token) return
-      if (!bundledAudioEnabled()) {
-        failPlayback(failure === 'blocked'
-          ? BLOCKED_AUDIO_NOTICE
-          : 'موتور گفتار انگلیسی دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره پخش را بزن.')
-        return
-      }
-      if (STALE_SENTENCE_AUDIO.has(`${chapterId}:${index}`)) {
-        failPlayback('صدای زندهٔ انگلیسی برای این جمله در دسترس نبود و فایل صوتی قدیمی عمداً پخش نشد. صدای English Text-to-Speech دستگاه را فعال کن.')
-        return
-      }
-      setAudioNotice('')
-      const audio = readerAudioRef.current ?? new Audio()
-      readerAudioRef.current = audio
-      audio.src = sentenceSrc(chapterId, index)
-      audio.currentTime = 0
-      audio.onended = done
-      audio.onerror = () => {
-        failPlayback('صدای انگلیسی و فایل پشتیبان این جمله قابل پخش نبود. تنظیمات صدا را بررسی کن و دوباره امتحان کن.')
-      }
-      void audio.play().catch(() => {
-        failPlayback(BLOCKED_AUDIO_NOTICE)
-      })
-    }
-
     setAudioNotice('')
-    const started = speakEnglish(
+    const started = speakEnglishWithFallback(
       chapter.sentences[index].en,
       state.narratorVoiceURI,
       state.narratorRate,
+      's',
       done,
-      playBundledFallback,
+      failPlayback,
     )
-    if (!started) playBundledFallback()
+    if (!started) failPlayback()
   }
 
   function toggleFa(index: number) {

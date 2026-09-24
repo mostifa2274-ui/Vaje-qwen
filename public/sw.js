@@ -42,6 +42,11 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
+  // Media elements fetch narration clips with Range requests, which a cached
+  // full response cannot answer reliably (notably on Safari). The browser's
+  // own HTTP cache handles them, and offline the app falls back to the
+  // device's English voice.
+  if (url.pathname.includes('/audio/') && url.pathname.endsWith('.mp3')) return
 
   if (url.pathname.endsWith('/release.json')) {
     event.respondWith(

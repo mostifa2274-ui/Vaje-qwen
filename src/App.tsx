@@ -5,6 +5,7 @@ import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canPrepareChapter, canReadChapter, canTakeExam, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
 import { warmEnglishVoices } from './engine/narration'
+import { loadClipIndex } from './engine/audioClips'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
 
 const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
@@ -185,6 +186,7 @@ export default function App() {
     document.documentElement.setAttribute('dir', 'rtl')
     document.documentElement.setAttribute('lang', 'fa')
     warmEnglishVoices()
+    void loadClipIndex()
   }, [])
   useEffect(() => {
     setPersistOk(saveState(state))

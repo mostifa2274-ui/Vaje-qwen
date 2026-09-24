@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { WordEntry } from '../engine/types'
-import { exampleSrc, stopAudio, wordSrc } from '../engine/audio'
+import { stopAudio } from '../engine/audio'
+import type { ClipKind } from '../engine/audioClips'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { SpeakerIcon } from './Icons'
 
@@ -23,7 +24,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
 
   useEffect(() => { onCloseRef.current = onClose }, [onClose])
 
-  const speakOrFallback = useCallback((text: string, fallbackSrc: string) => {
+  const speakOrFallback = useCallback((text: string, kind: ClipKind) => {
     if (!soundOn) return
     setAudioNotice('')
     stopAudio()
@@ -34,7 +35,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
       text,
       narratorVoiceURI,
       narratorRate,
-      fallbackSrc,
+      kind,
       () => setAudioNotice(''),
       unavailable,
     )
@@ -49,7 +50,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
     // and jumps back again when focus returns on close.
     closeRef.current?.focus({ preventScroll: true })
     const autoSpeakTimer = soundOn
-      ? window.setTimeout(() => speakOrFallback(word.word, wordSrc(word.id)), 0)
+      ? window.setTimeout(() => speakOrFallback(word.word, 'w'), 0)
       : 0
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -111,7 +112,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
           <button
             type="button"
             className="btn-paper shrink-0 px-3 py-2 text-sm"
-            onClick={() => speakOrFallback(word.word, wordSrc(word.id))}
+            onClick={() => speakOrFallback(word.word, 'w')}
             disabled={!soundOn}
             aria-label="شنیدن تلفظ"
           >
@@ -129,7 +130,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
           <button
             type="button"
             className="btn-paper flex-1 px-3 py-2 text-sm"
-            onClick={() => speakOrFallback(word.ex, exampleSrc(word.id))}
+            onClick={() => speakOrFallback(word.ex, 's')}
             disabled={!soundOn}
           >
             <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن مثال</span>

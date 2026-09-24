@@ -6,7 +6,6 @@ import { buildPrepTestOrders } from '../engine/prepOrder'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { exampleSrc, wordSrc } from '../engine/audio'
 import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
@@ -83,7 +82,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     [chapterId, currentListeningId, currentListeningWord, listeningPassed.size, listeningQueue.length],
   )
 
-  const speak = useCallback((word: string, id: string, unlockListening = false, unlockTeach = false) => {
+  const speak = useCallback((word: string, unlockListening = false, unlockTeach = false) => {
     if (!state.soundOn) return
     const unavailable = (failure: SpeechFailure = 'unavailable') => {
       if (unlockListening) setListeningReady(false)
@@ -104,7 +103,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       word,
       state.narratorVoiceURI,
       state.narratorRate,
-      wordSrc(id),
+      'w',
       ended,
       unavailable,
     )
@@ -126,7 +125,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       currentTeachWord.ex,
       state.narratorVoiceURI,
       state.narratorRate,
-      exampleSrc(currentTeachWord.id),
+      's',
       () => {
         if (autoCycle) setTeachAutoExampleDone(true)
         setTeachAudioReady(true)
@@ -153,7 +152,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         setTeachAudioReady(false)
         setTeachAutoExampleDone(false)
       }
-      speak(word.word, word.id, phase === 'listening', phase === 'teach')
+      speak(word.word, phase === 'listening', phase === 'teach')
     }, 90)
     return () => window.clearTimeout(timer)
   }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
@@ -512,7 +511,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   setTeachAutoPlay(false)
                   setTeachAudioReady(false)
                   setTeachAutoExampleDone(false)
-                  speak(currentTeachWord.word, currentTeachWord.id, false, true)
+                  speak(currentTeachWord.word, false, true)
                 }}
                 disabled={!state.soundOn || !teachAudioReady}
                 aria-label={`پخش تلفظ ${currentTeachWord.word}`}
@@ -631,7 +630,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   <button
                     type="button"
                     className="btn-paper mt-4 min-h-20 w-full text-2xl"
-                    onClick={() => { setListeningReady(false); speak(currentListeningWord.word, currentListeningWord.id, true) }}
+                    onClick={() => { setListeningReady(false); speak(currentListeningWord.word, true) }}
                     aria-label="پخش دوبارهٔ واژه"
                   >
                     <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
