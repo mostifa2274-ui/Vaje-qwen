@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: regenerate-chicken-story-audio
+  cancel-in-progress: true
+
 jobs:
   audio:
     if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[audio-pack]') }}
@@ -35,11 +39,23 @@ jobs:
           curl -fL --retry 3 -o /tmp/af_heart.bin https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/voices/af_heart.bin
           echo "ba4527a874b42b21e35f468c10d326fdff3c7fc8cac1f85e9eb6c0dfc35c334a  /tmp/model_fp16.onnx" | sha256sum -c -
           echo "d583ccff3cdca2f7fae535cb998ac07e9fcb90f09737b9a41fa2734ec44a8f0b  /tmp/af_heart.bin" | sha256sum -c -
-      - name: Generate the rewritten narration pack
-        run: |
           python scripts/audio/upcast_model.py /tmp/model_fp16.onnx /tmp/model_fp32.onnx
-          python scripts/audio/generate_audio.py --model /tmp/model_fp32.onnx --voice /tmp/af_heart.bin
-          node scripts/validate-data.mjs
+      - name: Generate and reconcile the rewritten narration pack
+        run: |
+          for attempt in 1 2 3; do
+            git fetch origin chicken-story-rewrite
+            git reset --hard origin/chicken-story-rewrite
+            python scripts/audio/generate_audio.py --model /tmp/model_fp32.onnx --voice /tmp/af_heart.bin
+            node scripts/validate-data.mjs
+            git fetch origin chicken-story-rewrite
+            if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/chicken-story-rewrite)" ]; then
+              break
+            fi
+            if [ "$attempt" = "3" ]; then
+              echo "Branch kept changing while audio was generated."
+              exit 1
+            fi
+          done
       - name: Commit regenerated audio
         run: |
           if git diff --quiet -- public/audio; then
