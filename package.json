@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "art:banners": "GHESSE_WRITE_ART=1 vitest run scripts/book-banners.test.tsx",
-    "check": "npm run validate:release-config && npm run validate:data && npm run validate:editorial && npm run validate:introductions && npm run validate:mastery && npm run lint && npm run test && npm run build",
+    "check": "npm run validate:release-config && npm run validate:data && npm run validate:editorial && npm run validate:introductions && npm run validate:mastery && npm run validate:generated-art && npm run lint && npm run test && npm run build",
     "preview": "vite preview",
     "validate:release-config": "node scripts/validate-release-config.mjs",
     "validate:data": "node scripts/validate-data.mjs",
@@ -18,7 +18,8 @@
     "validate:mastery": "node scripts/validate-mastery.mjs",
     "prepare": "npm run build",
     "cloudflare:build": "npm run check",
-    "deploy": "npm ci --include=dev --ignore-scripts --no-audit --no-fund && npm run cloudflare:build && npx wrangler@4.135.0 deploy"
+    "deploy": "npm ci --include=dev --ignore-scripts --no-audit --no-fund && npm run cloudflare:build && npx wrangler@4.135.0 deploy",
+    "validate:generated-art": "node scripts/validate-generated-art.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
