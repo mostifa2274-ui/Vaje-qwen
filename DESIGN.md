@@ -55,6 +55,14 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - Tablet layout may use more width, but story measure remains controlled
 - Comprehension remains a focused one-question-at-a-time sequence
 
+## Illustration
+- Every chapter has its own scene in `src/art/scenes/`, drawn from that chapter's actual events; every book has a wide banner (`src/art/banners.tsx`, rendered to `public/art/bookN.svg` by `npm run art:banners`).
+- Scenes share one kit: palette and hooks in `src/art/tokens.ts`, light/sky/nature in `kit.tsx`, rooms and props in `interior.tsx`, places and vehicles in `outdoor.tsx`, the cast in `characters.tsx` + `cast.ts`.
+- Nino is always a small black cat with green eyes and a white mark near his ear. Other cats (the market cat, the lab cat) must differ visibly, e.g. yellow eyes or no mark.
+- Mina keeps her teal dress, ponytail with a crimson tie and the red book; the red bird stays crimson.
+- No text inside illustrations. Each scene has a Persian description used as its accessible name.
+- Keep key action between x≈80 and x≈720 of the 800-wide canvas; phones crop the sides.
+
 ## Responsive behavior
 - Phone: single-column, thumb-friendly controls
 - Tablet portrait/landscape: wider shell and richer use of horizontal space, while story prose keeps a readable measure

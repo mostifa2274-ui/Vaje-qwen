@@ -1,0 +1,459 @@
+{
+  "book": 7,
+  "reading": [
+    {
+      "id": "b7-reading-a",
+      "titleEn": "A Trip to the Beach",
+      "titleFa": "سفری به ساحل",
+      "names": [
+        "Golnaz"
+      ],
+      "sentences": [
+        {
+          "en": "In August, Golnaz and her family go on vacation to the north of the country.",
+          "fa": "در ماه اوت، گلناز و خانواده‌اش برای تعطیلات به شمال کشور می‌روند."
+        },
+        {
+          "en": "They travel by train, and the trip takes eight hours.",
+          "fa": "با قطار سفر می‌کنند و سفر هشت ساعت طول می‌کشد."
+        },
+        {
+          "en": "From the window, Golnaz sees trees, rivers and small farms.",
+          "fa": "گلناز از پنجره درخت‌ها، رودخانه‌ها و مزرعه‌های کوچک را می‌بیند."
+        },
+        {
+          "en": "The family stays at a small hotel next to the beach.",
+          "fa": "خانواده در هتل کوچکی کنار ساحل می‌مانند."
+        },
+        {
+          "en": "Every morning, Golnaz puts on her hat and goes to the beach.",
+          "fa": "گلناز هر روز صبح کلاهش را سر می‌گذارد و به ساحل می‌رود."
+        },
+        {
+          "en": "On the third day, it rains all day.",
+          "fa": "روز سوم، تمام روز باران می‌بارد."
+        },
+        {
+          "en": "The family visits a museum in the town and has lunch in a cafe.",
+          "fa": "خانواده از موزه‌ای در شهر دیدن می‌کنند و در یک کافه ناهار می‌خورند."
+        },
+        {
+          "en": "On the fourth day, the weather is warm again.",
+          "fa": "روز چهارم، هوا دوباره گرم است."
+        },
+        {
+          "en": "Golnaz and her brother take a boat to a small island.",
+          "fa": "گلناز و برادرش با قایق به جزیره‌ای کوچک می‌روند."
+        },
+        {
+          "en": "There are many birds and beautiful flowers on the island.",
+          "fa": "روی جزیره پرنده‌های زیاد و گل‌های زیبایی هست."
+        },
+        {
+          "en": "In the evening, they ride bikes by the ocean.",
+          "fa": "عصر، کنار اقیانوس دوچرخه‌سواری می‌کنند."
+        },
+        {
+          "en": "On the last day, Golnaz does not want to go home.",
+          "fa": "روز آخر، گلناز نمی‌خواهد به خانه برگردد."
+        },
+        {
+          "en": "She takes a photo of the ocean for her bedroom wall.",
+          "fa": "برای دیوار اتاق خوابش از اقیانوس عکس می‌گیرد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "خانوادهٔ گلناز در چه ماهی به سفر می‌روند؟",
+          "options": [
+            "ژوئن",
+            "اوت",
+            "آوریل",
+            "دسامبر"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "سفر با قطار چقدر طول می‌کشد؟",
+          "options": [
+            "هشت ساعت",
+            "سه ساعت",
+            "یک روز",
+            "دو ساعت"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "روز سوم هوا چگونه است؟",
+          "options": [
+            "تمام روز باران می‌بارد",
+            "آفتابی و گرم است",
+            "برف می‌بارد",
+            "باد شدیدی می‌وزد"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "گلناز و برادرش با قایق به کجا می‌روند؟",
+          "options": [
+            "به شهری دیگر",
+            "به موزه",
+            "به کنار رودخانه",
+            "به جزیره‌ای کوچک"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "گلناز روز آخر چه کار می‌کند؟",
+          "options": [
+            "یک کلاه تازه می‌خرد",
+            "تمام روز در هتل می‌خوابد",
+            "از اقیانوس برای دیوار اتاقش عکس می‌گیرد",
+            "با قایق به جزیره می‌رود"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b7-reading-b",
+      "titleEn": "Snow in the City",
+      "titleFa": "برف در شهر",
+      "names": [
+        "Arash"
+      ],
+      "sentences": [
+        {
+          "en": "It is December, and the weather is very cold.",
+          "fa": "ماه دسامبر است و هوا خیلی سرد است."
+        },
+        {
+          "en": "In the morning, Arash looks out of the window, and everything is white.",
+          "fa": "صبح، آرش از پنجره بیرون را نگاه می‌کند و همه‌جا سفید است."
+        },
+        {
+          "en": "There is snow on the cars, on the trees and on the street.",
+          "fa": "روی ماشین‌ها، درخت‌ها و خیابان برف نشسته است."
+        },
+        {
+          "en": "There is no school today because of the snow.",
+          "fa": "امروز به خاطر برف مدرسه تعطیل است."
+        },
+        {
+          "en": "Arash wears his warm coat, his boots and a blue hat.",
+          "fa": "آرش کت گرمش، چکمه‌هایش و یک کلاه آبی می‌پوشد."
+        },
+        {
+          "en": "He goes outside with his sister, and they build a small house from snow in the yard.",
+          "fa": "با خواهرش بیرون می‌رود و در حیاط یک خانهٔ کوچک برفی می‌سازند."
+        },
+        {
+          "en": "Dad does not drive to work today because there is too much snow on the road.",
+          "fa": "بابا امروز با ماشین سر کار نمی‌رود، چون برف زیادی روی جاده است."
+        },
+        {
+          "en": "He walks to the bus station, but there are no buses.",
+          "fa": "پیاده به ایستگاه اتوبوس می‌رود، اما اتوبوسی نیست."
+        },
+        {
+          "en": "So he stays at home and works on his computer.",
+          "fa": "پس در خانه می‌ماند و با کامپیوترش کار می‌کند."
+        },
+        {
+          "en": "In the afternoon, the sun comes out, and the small snow house falls down.",
+          "fa": "بعدازظهر، خورشید بیرون می‌آید و خانهٔ برفیِ کوچک فرو می‌ریزد."
+        },
+        {
+          "en": "Arash is sad, but Mom calls from the kitchen, \"Hot chocolate!\"",
+          "fa": "آرش ناراحت است، اما مامان از آشپزخانه صدا می‌زند: «شیرکاکائوی داغ!»"
+        },
+        {
+          "en": "The family sits by the fire and drinks hot chocolate together.",
+          "fa": "خانواده کنار آتش می‌نشینند و با هم شیرکاکائوی داغ می‌نوشند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "ماجرا در چه ماهی اتفاق می‌افتد؟",
+          "options": [
+            "دسامبر",
+            "ژوئیه",
+            "مه",
+            "سپتامبر"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چرا امروز مدرسه تعطیل است؟",
+          "options": [
+            "چون جمعه است",
+            "چون معلم بیمار است",
+            "چون تابستان است",
+            "به خاطر برف"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "آرش چه چیزهایی می‌پوشد؟",
+          "options": [
+            "پیراهن و شلوار جین",
+            "ژاکت و کلاه قرمز",
+            "تی‌شرت و کفش ورزشی",
+            "کت گرم، چکمه و یک کلاه آبی"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "چرا بابا با ماشین سر کار نمی‌رود؟",
+          "options": [
+            "چون ماشینش خراب است",
+            "چون پیاده‌روی را دوست دارد",
+            "چون برف زیادی روی جاده است",
+            "چون امروز کار ندارد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "بعدازظهر چه بر سر خانهٔ برفی می‌آید؟",
+          "options": [
+            "باد آن را خراب می‌کند",
+            "خورشید بیرون می‌آید و خانه فرو می‌ریزد",
+            "سگ همسایه خرابش می‌کند",
+            "بزرگ‌تر می‌شود"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b7-listening-a",
+      "titleEn": "At the Airport",
+      "titleFa": "در فرودگاه",
+      "names": [
+        "Mehdi"
+      ],
+      "sentences": [
+        {
+          "en": "Mehdi has a flight to the capital at six in the morning.",
+          "fa": "مهدی ساعت شش صبح پروازی به پایتخت دارد."
+        },
+        {
+          "en": "He takes a taxi to the airport at four o'clock.",
+          "fa": "ساعت چهار با تاکسی به فرودگاه می‌رود."
+        },
+        {
+          "en": "The streets are dark, and there is no traffic.",
+          "fa": "خیابان‌ها تاریک‌اند و ترافیکی نیست."
+        },
+        {
+          "en": "At the airport, Mehdi looks for his passport in his bag.",
+          "fa": "در فرودگاه، مهدی توی کیفش دنبال گذرنامه‌اش می‌گردد."
+        },
+        {
+          "en": "It is not in the bag!",
+          "fa": "گذرنامه توی کیف نیست!"
+        },
+        {
+          "en": "He looks in his jacket and in his pants, but he does not find it.",
+          "fa": "جیب کاپشن و شلوارش را می‌گردد، اما پیدایش نمی‌کند."
+        },
+        {
+          "en": "Then he remembers: the passport is in the taxi!",
+          "fa": "بعد یادش می‌آید: گذرنامه در تاکسی است!"
+        },
+        {
+          "en": "Mehdi runs back to the door, but the taxi is not there.",
+          "fa": "مهدی دوان‌دوان به طرف در برمی‌گردد، اما تاکسی آنجا نیست."
+        },
+        {
+          "en": "He calls the taxi company, and a man answers.",
+          "fa": "به شرکت تاکسی تلفن می‌زند و مردی جواب می‌دهد."
+        },
+        {
+          "en": "\"Yes, the driver has your passport. He is on his way back to the airport.\"",
+          "fa": "«بله، گذرنامه‌تان پیش راننده است. دارد به فرودگاه برمی‌گردد.»"
+        },
+        {
+          "en": "Ten minutes later, the driver arrives with the passport.",
+          "fa": "ده دقیقه بعد، راننده با گذرنامه می‌رسد."
+        },
+        {
+          "en": "Mehdi says, \"Thank you, thank you!\"",
+          "fa": "مهدی می‌گوید: «ممنونم، خیلی ممنونم!»"
+        },
+        {
+          "en": "He gets on his plane just in time.",
+          "fa": "درست به‌موقع سوار هواپیما می‌شود."
+        }
+      ],
+      "questions": [
+        {
+          "q": "پرواز مهدی ساعت چند است؟",
+          "options": [
+            "شش صبح",
+            "چهار صبح",
+            "ده صبح",
+            "شش عصر"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "مهدی با چه وسیله‌ای به فرودگاه می‌رود؟",
+          "options": [
+            "اتوبوس",
+            "قطار",
+            "ماشین خودش",
+            "تاکسی"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "مهدی در فرودگاه چه چیزی را پیدا نمی‌کند؟",
+          "options": [
+            "بلیتش",
+            "کیفش",
+            "تلفنش",
+            "گذرنامه‌اش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "گذرنامه کجا بود؟",
+          "options": [
+            "در خانه",
+            "در جیب کاپشنش",
+            "در تاکسی",
+            "در کیفش"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "در پایان چه اتفاقی می‌افتد؟",
+          "options": [
+            "پروازش را از دست می‌دهد",
+            "درست به‌موقع سوار هواپیما می‌شود",
+            "با قطار سفر می‌کند",
+            "به خانه برمی‌گردد"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b7-listening-b",
+      "titleEn": "A Tourist in Our Town",
+      "titleFa": "جهانگردی در شهر ما",
+      "names": [
+        "Laleh"
+      ],
+      "sentences": [
+        {
+          "en": "Laleh works at a small library in the center of town.",
+          "fa": "لاله در کتابخانه‌ای کوچک در مرکز شهر کار می‌کند."
+        },
+        {
+          "en": "One afternoon, a tourist comes in with a big map.",
+          "fa": "یک روز بعدازظهر، جهانگردی با یک نقشهٔ بزرگ وارد می‌شود."
+        },
+        {
+          "en": "He is from another country, and he wants to find the old museum.",
+          "fa": "او اهل کشور دیگری است و می‌خواهد موزهٔ قدیمی را پیدا کند."
+        },
+        {
+          "en": "Laleh shows him the way on his map.",
+          "fa": "لاله روی نقشه‌اش راه را به او نشان می‌دهد."
+        },
+        {
+          "en": "\"Go down this street and turn left at the river.\"",
+          "fa": "«این خیابان را پایین بروید و کنار رودخانه به چپ بپیچید.»"
+        },
+        {
+          "en": "\"Then walk between the bank and the big hotel.\"",
+          "fa": "«بعد از میان بانک و هتل بزرگ بگذرید.»"
+        },
+        {
+          "en": "\"The museum is behind the hotel.\"",
+          "fa": "«موزه پشت هتل است.»"
+        },
+        {
+          "en": "The tourist thanks her and leaves.",
+          "fa": "جهانگرد از او تشکر می‌کند و می‌رود."
+        },
+        {
+          "en": "An hour later, he comes back to the library.",
+          "fa": "یک ساعت بعد، به کتابخانه برمی‌گردد."
+        },
+        {
+          "en": "\"The museum is closed on Mondays!\" he says.",
+          "fa": "می‌گوید: «موزه دوشنبه‌ها تعطیل است!»"
+        },
+        {
+          "en": "Laleh has an idea: the library has a special room with old photos of the town.",
+          "fa": "لاله فکری دارد: کتابخانه اتاق ویژه‌ای با عکس‌های قدیمی شهر دارد."
+        },
+        {
+          "en": "The tourist stays there until evening and looks at every photo.",
+          "fa": "جهانگرد تا عصر آنجا می‌ماند و تک‌تک عکس‌ها را نگاه می‌کند."
+        },
+        {
+          "en": "He is very happy with his visit.",
+          "fa": "از دیدارش خیلی راضی است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "لاله کجا کار می‌کند؟",
+          "options": [
+            "در یک موزه",
+            "در یک کتابخانهٔ کوچک",
+            "در یک هتل",
+            "در یک بانک"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "جهانگرد دنبال چه جایی است؟",
+          "options": [
+            "موزهٔ قدیمی",
+            "کتابخانه",
+            "ایستگاه قطار",
+            "یک هتل ارزان"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "به گفتهٔ لاله، موزه کجاست؟",
+          "options": [
+            "پشت هتل بزرگ",
+            "کنار رودخانه",
+            "روبه‌روی کتابخانه",
+            "کنار بانک"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چرا جهانگرد به کتابخانه برمی‌گردد؟",
+          "options": [
+            "چون راه را پیدا نمی‌کند",
+            "چون نقشه‌اش را جا گذاشته است",
+            "چون می‌خواهد کتاب بخرد",
+            "چون موزه دوشنبه‌ها تعطیل است"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "جهانگرد در کتابخانه چه می‌کند؟",
+          "options": [
+            "کتاب می‌خواند",
+            "با لاله چای می‌نوشد",
+            "تا عصر عکس‌های قدیمی شهر را نگاه می‌کند",
+            "نقشهٔ تازه‌ای می‌کشد"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

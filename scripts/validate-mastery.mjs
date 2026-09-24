@@ -65,13 +65,23 @@ for (const word of vocab) {
   assert(contextSurface(word), `${word.id}: example cannot support contextual production`)
 }
 
+// End-of-book tests (src/engine/bookTest.ts) ask 12 typed and 12 listening
+// words, never function words, and never a surface two deck entries share.
+// Book 1 draws all 24 from itself; each book also has its own four texts.
+const CONTEXT_ONLY_TOPICS = new Set(['grammar', 'pronouns', 'prepositions', 'linking', 'question_words'])
+const surfaceCounts = new Map()
+for (const word of vocab) surfaceCounts.set(word.word.toLowerCase(), (surfaceCounts.get(word.word.toLowerCase()) ?? 0) + 1)
+const byId = new Map(vocab.map(word => [word.id, word]))
 const bookSizes = []
 for (let book = 1; book <= 8; book++) {
   const bookChapters = chapters.filter(ch => ch.book === book)
-  const pool = [...new Set(bookChapters.flatMap(ch => ch.new))]
-  assert(pool.length >= 32, `Book ${book}: fewer than 32 words for its exam pool`)
-  assert(bookChapters.every(ch => ch.new.length >= 2), `Book ${book}: every chapter must support two exam coverage anchors`)
-  assert(bookChapters.length * 2 <= 32, `Book ${book}: chapter coverage anchors exceed exam size`)
+  const pool = [...new Set(bookChapters.flatMap(ch => ch.new))].map(id => byId.get(id))
+  const typed = pool.filter(word => !CONTEXT_ONLY_TOPICS.has(word.topic))
+  const heard = typed.filter(word => !word.word.includes(',') && surfaceCounts.get(word.word.toLowerCase()) === 1)
+  assert(typed.length >= 24, `Book ${book}: fewer than 24 content words for its end-of-book test`)
+  assert(heard.length >= 12, `Book ${book}: fewer than 12 unambiguous words for listening`)
+  const texts = JSON.parse(fs.readFileSync(path.join(root, `src/data/bookTests/b${book}.json`), 'utf8'))
+  assert(texts.book === book && texts.reading?.length === 2 && texts.listening?.length === 2, `Book ${book}: needs two reading and two listening texts`)
   bookSizes.push(pool.length)
 }
 const midpointPool = [...new Set(chapters.filter(ch => ch.book <= 4).flatMap(ch => ch.new))]
@@ -101,4 +111,4 @@ for (const target of vocab) {
   }
 }
 
-console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, stratified book pools ${bookSizes.join('/')}, 56-question midpoint pool, 88-question final pool, ${stale.length} stale-audio blocks.`)
+console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, end-of-book pools ${bookSizes.join('/')} with four texts each, 56-question midpoint pool, 88-question final pool, ${stale.length} stale-audio blocks.`)

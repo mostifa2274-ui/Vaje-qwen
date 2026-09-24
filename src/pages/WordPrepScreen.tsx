@@ -5,12 +5,13 @@ import { buildReviewQuestion } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
-import { speakEnglishWithFallback } from '../engine/narration'
+import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { exampleSrc, wordSrc } from '../engine/audio'
 import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
+import { faNum } from '../engine/format'
 
 interface Props {
   chapterId: string
@@ -18,10 +19,6 @@ interface Props {
   onChange: (next: GhesseState) => void
   onBack: () => void
   onReady: () => void
-}
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
 }
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
@@ -57,6 +54,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [teachAutoExampleDone, setTeachAutoExampleDone] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
   const writtenInputRef = useRef<HTMLInputElement>(null)
+  const retryContinueRef = useRef<HTMLButtonElement>(null)
+  const focusRetryContinueRef = useRef(false)
   const continueTeachRef = useRef<() => void>(() => {})
   const continueWrittenRef = useRef<() => void>(() => {})
   const continueListeningRef = useRef<() => void>(() => {})
@@ -84,14 +83,14 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   const speak = useCallback((word: string, id: string, unlockListening = false, unlockTeach = false) => {
     if (!state.soundOn) return
-    const unavailable = () => {
+    const unavailable = (failure: SpeechFailure = 'unavailable') => {
       if (unlockListening) setListeningReady(false)
       if (unlockTeach) {
         setTeachAudioReady(true)
         setTeachAutoPlay(false)
       }
       setAudioBlocked(true)
-      setAudioNotice('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.')
+      setAudioNotice(speechFailureNotice(failure, 'پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.'))
     }
     const ended = () => {
       if (unlockListening) setListeningReady(true)
@@ -115,11 +114,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setTeachAudioReady(false)
     setAudioBlocked(false)
     setAudioNotice('')
-    const unavailable = () => {
+    const unavailable = (failure: SpeechFailure = 'unavailable') => {
       setTeachAudioReady(true)
       setTeachAutoPlay(false)
       setAudioBlocked(true)
-      setAudioNotice('پخش مثال انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.')
+      setAudioNotice(speechFailureNotice(failure, 'پخش مثال انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.'))
     }
     const started = speakEnglishWithFallback(
       currentTeachWord.ex,
@@ -170,6 +169,17 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     const frame = window.requestAnimationFrame(() => writtenInputRef.current?.focus())
     return () => window.cancelAnimationFrame(frame)
   }, [currentWrittenId, feedback, phase])
+
+  // A miss disables the answer controls, so hand focus to the retry button
+  // instead of dropping it to the page (Enter -> read correction -> Enter).
+  useEffect(() => {
+    if (feedback !== 'wrong' || !focusRetryContinueRef.current) return
+    focusRetryContinueRef.current = false
+    // Next frame, so the Enter that submitted the answer cannot also
+    // activate the retry button.
+    const frame = window.requestAnimationFrame(() => retryContinueRef.current?.focus())
+    return () => window.cancelAnimationFrame(frame)
+  }, [feedback])
 
   useEffect(() => {
     if (alreadyPrepared || (phase === 'teach' && teachIndex === 0)) {
@@ -265,6 +275,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!currentWrittenWord || !currentWrittenId || !typed.trim() || feedback) return
     const correct = isPersianTranslationCorrect(typed, currentWrittenWord)
     if (!correct) setWrittenMissed(previous => new Set(previous).add(currentWrittenId))
+    focusRetryContinueRef.current = !correct
     setFeedback(correct ? 'correct' : 'wrong')
   }
 
@@ -272,6 +283,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!currentWrittenId || feedback) return
     setWrittenMissed(previous => new Set(previous).add(currentWrittenId))
     setTyped('')
+    focusRetryContinueRef.current = true
     setFeedback('wrong')
   }
 
@@ -303,6 +315,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     const correct = optionId === listeningQuestion.answerId
     setSelected(optionId)
     if (!correct) setListeningMissed(previous => new Set(previous).add(currentListeningId))
+    focusRetryContinueRef.current = !correct
     setFeedback(correct ? 'correct' : 'wrong')
   }
 
@@ -310,6 +323,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     if (!currentListeningId || feedback || !state.soundOn || audioBlocked || !listeningReady) return
     setSelected('')
     setListeningMissed(previous => new Set(previous).add(currentListeningId))
+    focusRetryContinueRef.current = true
     setFeedback('wrong')
   }
 
@@ -465,7 +479,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
             {!state.soundOn && (
               <div className="paper-note mt-4">
-                برای تلفظ خودکار، صدا باید روشن باشد.
+                آموزش هر واژه با شنیدن تلفظ آن کامل می‌شود؛ تا صدا روشن نشود، واژهٔ بعدی باز نمی‌شود.
                 <button type="button" className="btn-ink mt-2 w-full py-2.5" onClick={enableSound}>روشن کردن صدا</button>
               </div>
             )}
@@ -547,10 +561,15 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               autoFocus
               autoComplete="off"
               spellCheck={false}
+              enterKeyHint="done"
               disabled={Boolean(feedback)}
               value={typed}
               onChange={event => setTyped(event.target.value)}
-              onKeyDown={event => { if (event.key === 'Enter') submitWritten() }}
+              onKeyDown={event => {
+                if (event.key !== 'Enter') return
+                event.preventDefault()
+                submitWritten()
+              }}
             />
 
             {!feedback && (
@@ -569,7 +588,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback === 'wrong' && (
-              <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueWritten}>
+              <button ref={retryContinueRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueWritten}>
                 ادامه و تکرار این واژه ←
               </button>
             )}
@@ -648,13 +667,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             {feedback === 'wrong' && (
-              <button type="button" className="btn-ink mt-4 w-full py-3" onClick={continueListening}>
+              <button ref={retryContinueRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueListening}>
                 ادامه و تکرار این واژه ←
               </button>
             )}
           </div>
         )}
-
 
       </div>
     </div>

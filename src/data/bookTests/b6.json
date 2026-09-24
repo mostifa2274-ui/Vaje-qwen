@@ -1,0 +1,458 @@
+{
+  "book": 6,
+  "reading": [
+    {
+      "id": "b6-reading-a",
+      "titleEn": "The Science Project",
+      "titleFa": "پروژهٔ علوم",
+      "names": [
+        "Hoda"
+      ],
+      "sentences": [
+        {
+          "en": "Hoda is a student at a big school in the city.",
+          "fa": "هدی دانش‌آموز یک مدرسهٔ بزرگ در شهر است."
+        },
+        {
+          "en": "Her science teacher gives the class an important project.",
+          "fa": "معلم علومش یک پروژهٔ مهم به کلاس می‌دهد."
+        },
+        {
+          "en": "Each student needs to make a model and show it to the class.",
+          "fa": "هر دانش‌آموز باید یک ماکت بسازد و آن را به کلاس نشان دهد."
+        },
+        {
+          "en": "Hoda has an idea: a model of a house with a small light in every room.",
+          "fa": "هدی فکری دارد: ماکت خانه‌ای با یک چراغ کوچک در هر اتاق."
+        },
+        {
+          "en": "She works on the project every afternoon for a week.",
+          "fa": "یک هفته، هر روز بعدازظهر روی پروژه کار می‌کند."
+        },
+        {
+          "en": "The work is difficult, and she makes many mistakes.",
+          "fa": "کار سخت است و اشتباه‌های زیادی می‌کند."
+        },
+        {
+          "en": "Her brother helps her with the lights.",
+          "fa": "برادرش در کار چراغ‌ها به او کمک می‌کند."
+        },
+        {
+          "en": "On Monday, she puts the model on a table in the classroom.",
+          "fa": "دوشنبه، ماکت را روی میزی در کلاس می‌گذارد."
+        },
+        {
+          "en": "But the lights do not work!",
+          "fa": "اما چراغ‌ها روشن نمی‌شوند!"
+        },
+        {
+          "en": "Hoda looks at the model again and finds the problem.",
+          "fa": "هدی دوباره ماکت را نگاه می‌کند و مشکل را پیدا می‌کند."
+        },
+        {
+          "en": "One small part is not in the right place.",
+          "fa": "یک قطعهٔ کوچک سر جای درستش نیست."
+        },
+        {
+          "en": "She puts the part in the right place, and the lights work!",
+          "fa": "قطعه را سر جای درستش می‌گذارد و چراغ‌ها روشن می‌شوند!"
+        },
+        {
+          "en": "The teacher and the students are very happy with her model.",
+          "fa": "معلم و دانش‌آموزان از ماکت او خیلی راضی‌اند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "معلم علوم به کلاس چه کاری می‌دهد؟",
+          "options": [
+            "یک امتحان سخت",
+            "یک گزارش دربارهٔ تاریخ",
+            "یک پروژهٔ مهم برای ساختن ماکت",
+            "یک تکلیف خواندن"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "هدی ماکت چه چیزی را می‌سازد؟",
+          "options": [
+            "یک ساعت قدیمی",
+            "خانه‌ای با یک چراغ کوچک در هر اتاق",
+            "یک پرندهٔ کوچک",
+            "مدرسه‌اش"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "چه کسی در کار چراغ‌ها به هدی کمک می‌کند؟",
+          "options": [
+            "معلمش",
+            "برادرش",
+            "پدرش",
+            "دوستش"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "دوشنبه در کلاس چه مشکلی پیش می‌آید؟",
+          "options": [
+            "چراغ‌های ماکت روشن نمی‌شوند",
+            "ماکت می‌شکند",
+            "هدی ماکت را در خانه جا می‌گذارد",
+            "معلم در کلاس نیست"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "مشکل ماکت چه بود؟",
+          "options": [
+            "چراغ‌ها خیلی کوچک بودند",
+            "ماکت خیس شده بود",
+            "میز کلاس کوچک بود",
+            "یک قطعهٔ کوچک سر جایش نبود"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b6-reading-b",
+      "titleEn": "A New Job",
+      "titleFa": "کاری تازه",
+      "names": [
+        "Kourosh",
+        "English"
+      ],
+      "sentences": [
+        {
+          "en": "Kourosh studies history at university, and he finishes in June.",
+          "fa": "کوروش در دانشگاه تاریخ می‌خواند و در ژوئن درسش تمام می‌شود."
+        },
+        {
+          "en": "He wants to work for a big computer company.",
+          "fa": "می‌خواهد در یک شرکت بزرگ کامپیوتری کار کند."
+        },
+        {
+          "en": "He fills in forms for many companies.",
+          "fa": "برای شرکت‌های زیادی فرم پر می‌کند."
+        },
+        {
+          "en": "One company asks him to come for an interview.",
+          "fa": "یک شرکت از او می‌خواهد برای مصاحبه بیاید."
+        },
+        {
+          "en": "Kourosh is very busy before the interview.",
+          "fa": "کوروش پیش از مصاحبه خیلی سرش شلوغ است."
+        },
+        {
+          "en": "He practices his English with a friend and reads about the company.",
+          "fa": "با یک دوست انگلیسی‌اش را تمرین می‌کند و دربارهٔ شرکت مطالعه می‌کند."
+        },
+        {
+          "en": "On the day of the interview, he gets to the office early.",
+          "fa": "روز مصاحبه، زود به دفتر شرکت می‌رسد."
+        },
+        {
+          "en": "A woman asks him many questions about his skills.",
+          "fa": "زنی دربارهٔ مهارت‌هایش سؤال‌های زیادی از او می‌پرسد."
+        },
+        {
+          "en": "One question is difficult, and Kourosh makes a mistake.",
+          "fa": "یکی از سؤال‌ها سخت است و کوروش اشتباه می‌کند."
+        },
+        {
+          "en": "But he says, \"Sorry, that is not correct,\" and he gives the right answer.",
+          "fa": "اما می‌گوید: «ببخشید، این درست نیست» و جواب درست را می‌دهد."
+        },
+        {
+          "en": "The woman likes his answer.",
+          "fa": "آن زن از جوابش خوشش می‌آید."
+        },
+        {
+          "en": "A week later, the company calls him, and he has the job!",
+          "fa": "یک هفته بعد، شرکت به او تلفن می‌زند و کار را به دست می‌آورد!"
+        },
+        {
+          "en": "Now Kourosh works in a big office in the city center.",
+          "fa": "حالا کوروش در دفتری بزرگ در مرکز شهر کار می‌کند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "کوروش در دانشگاه چه رشته‌ای می‌خواند؟",
+          "options": [
+            "علوم",
+            "جغرافیا",
+            "زبان انگلیسی",
+            "تاریخ"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "کوروش می‌خواهد کجا کار کند؟",
+          "options": [
+            "در یک مدرسه",
+            "در یک دانشگاه",
+            "در یک شرکت بزرگ کامپیوتری",
+            "در یک رستوران"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "کوروش پیش از مصاحبه چه کار می‌کند؟",
+          "options": [
+            "به سفر می‌رود",
+            "فقط استراحت می‌کند",
+            "با یک دوست انگلیسی تمرین می‌کند و دربارهٔ شرکت مطالعه می‌کند",
+            "برای شرکت نامه می‌نویسد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "وقتی کوروش اشتباه می‌کند، چه کار می‌کند؟",
+          "options": [
+            "از اتاق بیرون می‌رود",
+            "اشتباهش را می‌پذیرد و جواب درست را می‌دهد",
+            "ساکت می‌ماند",
+            "سؤال دیگری می‌پرسد"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "یک هفته بعد چه اتفاقی می‌افتد؟",
+          "options": [
+            "شرکت تلفن می‌زند و کوروش کار را به دست می‌آورد",
+            "شرکت می‌گوید او قبول نشده است",
+            "کوروش به دانشگاه برمی‌گردد",
+            "کوروش مصاحبهٔ دوم دارد"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b6-listening-a",
+      "titleEn": "The Missing Dictionary",
+      "titleFa": "فرهنگ لغتِ گمشده",
+      "names": [
+        "Ava",
+        "Tina",
+        "English"
+      ],
+      "sentences": [
+        {
+          "en": "Ava has an English exam on Thursday morning.",
+          "fa": "آوا پنجشنبه صبح امتحان انگلیسی دارد."
+        },
+        {
+          "en": "On Wednesday evening, she wants to study, but her dictionary is not on her desk.",
+          "fa": "چهارشنبه عصر می‌خواهد درس بخواند، اما فرهنگ لغتش روی میزش نیست."
+        },
+        {
+          "en": "She looks in her bag, under her bed and in the kitchen.",
+          "fa": "توی کیفش، زیر تختش و در آشپزخانه را می‌گردد."
+        },
+        {
+          "en": "The dictionary is not in the house.",
+          "fa": "فرهنگ لغت در خانه نیست."
+        },
+        {
+          "en": "She calls her friend Tina and asks, \"Do you have my dictionary?\"",
+          "fa": "به دوستش تینا تلفن می‌زند و می‌پرسد: «فرهنگ لغتم پیش توست؟»"
+        },
+        {
+          "en": "\"No,\" says Tina, \"but you had it at the English club on Monday.\"",
+          "fa": "تینا می‌گوید: «نه، اما دوشنبه در باشگاه زبان انگلیسی دستت بود.»"
+        },
+        {
+          "en": "The next day, Ava goes to school early.",
+          "fa": "روز بعد، آوا زود به مدرسه می‌رود."
+        },
+        {
+          "en": "She goes to the English club room and asks the teacher about it.",
+          "fa": "به اتاق باشگاه زبان انگلیسی می‌رود و از معلم درباره‌اش می‌پرسد."
+        },
+        {
+          "en": "The teacher opens a big box, and the dictionary is in it!",
+          "fa": "معلم یک جعبهٔ بزرگ را باز می‌کند و فرهنگ لغت داخل آن است!"
+        },
+        {
+          "en": "Ava is very happy, but now she has no time to study.",
+          "fa": "آوا خیلی خوشحال است، اما حالا وقتی برای درس خواندن ندارد."
+        },
+        {
+          "en": "She reads her notes for ten minutes before the exam.",
+          "fa": "پیش از امتحان، ده دقیقه یادداشت‌هایش را می‌خواند."
+        },
+        {
+          "en": "The exam is not easy, but Ava does well.",
+          "fa": "امتحان آسان نیست، اما آوا خوب از پسش برمی‌آید."
+        }
+      ],
+      "questions": [
+        {
+          "q": "آوا چه روزی امتحان انگلیسی دارد؟",
+          "options": [
+            "چهارشنبه عصر",
+            "دوشنبه",
+            "شنبه",
+            "پنجشنبه صبح"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "آوا کجاها دنبال فرهنگ لغت می‌گردد؟",
+          "options": [
+            "روی میز معلم و در کلاس",
+            "در خانهٔ تینا",
+            "توی کیفش، زیر تختش و در آشپزخانه",
+            "در اتاق برادرش"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "تینا چه چیزی را به یاد آوا می‌آورد؟",
+          "options": [
+            "آوا فرهنگ لغت را به تینا داده است",
+            "فرهنگ لغت در کیف تیناست",
+            "آوا دوشنبه فرهنگ لغت را در باشگاه انگلیسی داشت",
+            "فرهنگ لغت در کتابخانه است"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "فرهنگ لغت در نهایت کجاست؟",
+          "options": [
+            "در کیف تینا",
+            "در یک جعبهٔ بزرگ پیش معلم باشگاه",
+            "زیر تخت آوا",
+            "روی میز آشپزخانه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "آوا پیش از امتحان چقدر یادداشت‌هایش را می‌خواند؟",
+          "options": [
+            "ده دقیقه",
+            "یک ساعت",
+            "نیم ساعت",
+            "تمام شب"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b6-listening-b",
+      "titleEn": "A Busy Day at the Office",
+      "titleFa": "روزی شلوغ در دفتر",
+      "names": [
+        "Shahram"
+      ],
+      "sentences": [
+        {
+          "en": "Shahram works at a small company in the city.",
+          "fa": "شهرام در یک شرکت کوچک در شهر کار می‌کند."
+        },
+        {
+          "en": "Today is a busy day because the company has a big meeting at ten.",
+          "fa": "امروز روز شلوغی است، چون شرکت ساعت ده یک جلسهٔ بزرگ دارد."
+        },
+        {
+          "en": "Shahram needs to show a report with some charts at the meeting.",
+          "fa": "شهرام باید در جلسه گزارشی با چند نمودار نشان دهد."
+        },
+        {
+          "en": "At nine o'clock, he turns on his computer, but it does not work.",
+          "fa": "ساعت نه کامپیوترش را روشن می‌کند، اما کار نمی‌کند."
+        },
+        {
+          "en": "His report and his charts are on the computer!",
+          "fa": "گزارش و نمودارهایش روی همان کامپیوتر است!"
+        },
+        {
+          "en": "He is afraid, and he calls a young worker from the computer room.",
+          "fa": "می‌ترسد و یک کارمند جوان را از اتاق کامپیوتر صدا می‌زند."
+        },
+        {
+          "en": "The worker looks at the computer for twenty minutes.",
+          "fa": "کارمند بیست دقیقه کامپیوتر را بررسی می‌کند."
+        },
+        {
+          "en": "\"There is a small problem, but it is easy,\" she says.",
+          "fa": "می‌گوید: «یک مشکل کوچک هست، اما آسان است.»"
+        },
+        {
+          "en": "At a quarter to ten, the computer works again.",
+          "fa": "یک ربع به ده، کامپیوتر دوباره کار می‌کند."
+        },
+        {
+          "en": "Shahram goes to the meeting with his report.",
+          "fa": "شهرام با گزارشش به جلسه می‌رود."
+        },
+        {
+          "en": "The meeting is a success, and everyone likes the charts.",
+          "fa": "جلسه موفق است و همه از نمودارها خوششان می‌آید."
+        },
+        {
+          "en": "After the meeting, Shahram buys a big cake for the young worker.",
+          "fa": "بعد از جلسه، شهرام برای آن کارمند جوان یک کیک بزرگ می‌خرد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "چرا امروز برای شهرام روز شلوغی است؟",
+          "options": [
+            "همکارش بیمار است",
+            "امتحان دارد",
+            "شرکت ساعت ده یک جلسهٔ بزرگ دارد",
+            "به سفر می‌رود"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "ساعت نه چه مشکلی پیش می‌آید؟",
+          "options": [
+            "چای روی گزارشش می‌ریزد",
+            "کامپیوترش کار نمی‌کند",
+            "گزارشش را پیدا نمی‌کند",
+            "دیر به دفتر می‌رسد"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "چه کسی به شهرام کمک می‌کند؟",
+          "options": [
+            "مدیر شرکت",
+            "یک کارمند جوان از اتاق کامپیوتر",
+            "همسرش",
+            "دوستش از دانشگاه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "کامپیوتر چه ساعتی دوباره کار می‌کند؟",
+          "options": [
+            "یک ربع به ده",
+            "ساعت نه",
+            "ده و ربع",
+            "نه و نیم"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "شهرام بعد از جلسه چه می‌کند؟",
+          "options": [
+            "به خانه می‌رود",
+            "کامپیوتر تازه‌ای می‌خرد",
+            "گزارش دیگری می‌نویسد",
+            "برای آن کارمند جوان یک کیک بزرگ می‌خرد"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

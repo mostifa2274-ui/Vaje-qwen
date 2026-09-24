@@ -11,9 +11,11 @@ import {
   canPrepareChapter,
   canTakeExam,
   chapterPrepared,
+  examDefinition,
   examPassed,
   examRemediationPending,
 } from '../engine/gates'
+import { faNum, percent } from '../engine/format'
 
 interface Props {
   state: GhesseState
@@ -23,14 +25,6 @@ interface Props {
   onOpenReview: () => void
   onOpenGlossary: () => void
   onOpenSettings: () => void
-}
-
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
-
-function percent(value: number): string {
-  return `${faNum(Math.round(value * 100))}٪`
 }
 
 const SKILL_LABELS: Record<SkillDimension, string> = {
@@ -203,9 +197,9 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
 
           return (
             <div key={meta.book}>
-              <section className={`book-section p-4 sm:p-5 ${!bookAvailable ? 'opacity-70' : ''}`} style={{ background: meta.tint }}>
+              <section className={`book-section p-4 sm:p-5 ${!bookAvailable ? 'is-locked' : ''}`} style={{ background: meta.tint }}>
+                <img src={meta.cover} alt="" className="book-banner" loading="lazy" width="800" height="300" />
                 <div className="flex items-center gap-3">
-                  <img src={meta.cover} alt="" className="book-thumb" loading="lazy" />
                   <div className="min-w-0 flex-1">
                     <h2 className="text-xl font-extrabold">کتاب {faNum(meta.book)}: {meta.titleFa}</h2>
                     <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>{meta.taglineFa}</p>
@@ -215,7 +209,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                       {bHealth.trouble > 0 && <span className="mastery-chip">{faNum(bHealth.trouble)} سخت</span>}
                     </div>
                   </div>
-                  {examPassed(state, bookExam) && <span className="book-status-icon" title="آزمون کتاب پاس شده" aria-label="آزمون کتاب پاس شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
+                  {examPassed(state, bookExam) && <span className="book-status-icon" title="آزمون پایان کتاب پاس شده" aria-label="آزمون پایان کتاب پاس شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
                 </div>
 
                 <div className="mt-4 flex flex-wrap items-center gap-2" dir="rtl">
@@ -225,6 +219,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                     const prepared = chapterPrepared(state, ch.id)
                     const accessible = canPrepareChapter(state, ch.id)
                     const nodeState = isDone ? 'is-done' : prepared && accessible ? 'is-ready' : accessible ? 'is-current' : 'is-locked'
+                    const status = isDone ? 'تمام شده' : prepared && accessible ? 'آمادهٔ خواندن' : accessible ? 'آموزش + آزمون واژه‌ها' : 'قفل'
 
                     return (
                       <div key={ch.id} className="flex items-center gap-2">
@@ -232,8 +227,8 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                           className={`node-circle h-11 w-11 text-sm ${nodeState}`}
                           disabled={!accessible}
                           onClick={() => onOpenChapter(ch.id)}
-                          title={isDone ? `${ch.titleFa} — تمام شده` : prepared ? `${ch.titleFa} — آمادهٔ خواندن` : accessible ? `${ch.titleFa} — آموزش + آزمون واژه‌ها` : `${ch.titleFa} — قفل`}
-                          aria-label={`فصل ${faNum(ch.n)}: ${ch.titleFa}`}
+                          title={`${ch.titleFa} — ${status}`}
+                          aria-label={`فصل ${faNum(ch.n)}: ${ch.titleFa} — ${status}`}
                           aria-current={nodeState === 'is-current' ? 'step' : undefined}
                         >
                           {isDone
@@ -260,7 +255,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                   </div>
                 )}
 
-                {done && <div className="mt-4"><ExamGate id={bookExam} title={`آزمون کتاب ${faNum(meta.book)}`} state={state} onOpen={onOpenExam} /></div>}
+                {done && <div className="mt-4"><ExamGate id={bookExam} title={examDefinition(bookExam)!.titleFa} state={state} onOpen={onOpenExam} /></div>}
               </section>
 
               {meta.book === 4 && <div className="mt-4"><ExamGate id={MIDPOINT_EXAM_ID} title="آزمون ویژهٔ کتاب‌های ۱ تا ۴" state={state} onOpen={onOpenExam} special /></div>}

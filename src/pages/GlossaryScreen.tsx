@@ -5,6 +5,8 @@ import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
 import { BackIcon, SearchIcon } from '../components/Icons'
+import { normalizePersianAnswer } from '../engine/persianTranslation'
+import { faNum } from '../engine/format'
 
 interface Props {
   state: GhesseState
@@ -14,9 +16,9 @@ interface Props {
 
 const PAGE_SIZE = 200
 
-function faNum(n: number): string {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[+d])
-}
+// Arabic-layout letters (ي/ك), ZWNJ vs. space, diacritics and punctuation
+// must not hide a word from a learner typing on a different keyboard.
+const SEARCH_KEYS = new Map(VOCAB.map(word => [word.id, `${normalizePersianAnswer(word.word)}\n${normalizePersianAnswer(word.fa)}`]))
 
 const LEVEL_FA: Record<MasteryLevel, string> = {
   new: 'تازه',
@@ -49,13 +51,13 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
   const trouble = useMemo(() => new Set(troubleWordIds(state.words)), [state.words])
 
   const list = useMemo(() => {
-    const q = query.trim().toLowerCase()
+    const q = normalizePersianAnswer(query)
     return VOCAB.filter(word => {
       const level = wordMastery(word.id, state)
       if (filter === 'trouble' && !trouble.has(word.id)) return false
       if (filter !== 'all' && filter !== 'trouble' && level !== filter) return false
       if (!q) return true
-      return word.word.toLowerCase().includes(q) || word.fa.includes(q)
+      return SEARCH_KEYS.get(word.id)?.includes(q) ?? false
     })
   }, [query, filter, state, trouble])
 
@@ -132,7 +134,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
             className="btn-paper mt-3 w-full py-2.5"
             onClick={() => setVisibleCount(count => Math.min(count + PAGE_SIZE, list.length))}
           >
-            نمایش واژه‌های بیشتر ({list.length - visibleCount} باقی مانده)
+            نمایش واژه‌های بیشتر ({faNum(list.length - visibleCount)} باقی مانده)
           </button>
         )}
 

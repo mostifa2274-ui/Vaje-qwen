@@ -16,7 +16,8 @@ The learner should understand, recall, hear, and use the vocabulary well enough 
 4. The story remains locked until both tests reach 100% coverage.
 5. Read the chapter with optional Persian translation and per-sentence audio.
 6. Complete 10 comprehension questions based on the chapter. Immediate feedback is shown; only missed questions return for correction. Chapter completion unlocks after all 10 have been corrected, while analytics retain the honest first-pass score.
-7. Continue into spaced review and gated book/midpoint/final exams.
+7. After each book, pass the end-of-book test. It gates the next book (after book 8, the final exam) and has four parts, each needing 80%: typed Persian translation of 12 words and listening recognition of 12 other words, drawn from every book so far; a new reading text with 5 questions; and a new listening text with 5 questions. The listening text is audio only until the test ends, when both texts, their translations and every answer are shown for review. Both texts use only words taught up to that book, and retakes alternate to a second pair of texts.
+8. Continue into spaced review and gated midpoint/final exams.
 
 ## Product principles
 - The task leads; decoration never competes with learning.

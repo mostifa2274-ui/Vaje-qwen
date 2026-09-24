@@ -1,5 +1,24 @@
 import { play } from './audio'
 
+/**
+ * Why a spoken prompt could not play. 'blocked': the browser refused audio
+ * without a recent tap (autoplay policy, e.g. after Android reloads a
+ * discarded tab), so one tap on a play button fixes it. 'unavailable': no
+ * working English speech path exists on this device.
+ */
+export type SpeechFailure = 'blocked' | 'unavailable'
+export type SpeechFailureHandler = (failure: SpeechFailure) => void
+
+export const BLOCKED_AUDIO_NOTICE = 'مرورگر پخش خودکار صدا را متوقف کرد. یک‌بار روی دکمهٔ پخش بزن تا صدا فعال شود.'
+
+export function speechFailureNotice(failure: SpeechFailure, unavailableNotice: string): string {
+  return failure === 'blocked' ? BLOCKED_AUDIO_NOTICE : unavailableNotice
+}
+
+function failureFromSpeechError(event: unknown): SpeechFailure {
+  return (event as { error?: unknown } | undefined)?.error === 'not-allowed' ? 'blocked' : 'unavailable'
+}
+
 // Consistent English narration for words, examples and story text.
 // We prefer the best natural/neural English voice exposed by the browser/OS
 // and briefly wait for Chrome's asynchronous voice catalogue before falling
@@ -14,6 +33,9 @@ export interface VoiceLike {
 }
 
 let speechRequestId = 0
+// Chrome can garbage-collect an utterance nothing else references and then
+// never fire its end event. Holding the active one keeps its callbacks alive.
+let activeUtterance: SpeechSynthesisUtterance | null = null
 let qualityVoiceKnown = false
 let initialVoiceGraceElapsed = false
 let warmVoiceListenerAttached = false
@@ -115,8 +137,20 @@ export function clampNarrationRate(rate: number): number {
   return Math.min(1.1, Math.max(0.75, rate))
 }
 
+/**
+ * Upper bound for one utterance. Some engines (notably after Android
+ * backgrounding) drop end events, which would otherwise leave a listening gate
+ * or teaching card waiting forever. The bound is generous: roughly three times
+ * the spoken length at the slowest narrator rate, plus a cloud-voice start-up
+ * allowance.
+ */
+export function speechWatchdogMs(text: string, rate: number): number {
+  return Math.round(8_000 + text.length * 140 / clampNarrationRate(rate))
+}
+
 export function cancelEnglishSpeech(): void {
   speechRequestId++
+  activeUtterance = null
   if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
 }
 
@@ -147,12 +181,12 @@ function speakWithAvailableVoices(
   voiceURI: string,
   rate: number,
   onEnd?: () => void,
-  onError?: () => void,
+  onError?: SpeechFailureHandler,
 ): void {
   if (typeof window === 'undefined' || requestId !== speechRequestId) return
   const synth = window.speechSynthesis
   if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-    onError?.()
+    onError?.('unavailable')
     return
   }
 
@@ -168,15 +202,35 @@ function speakWithAvailableVoices(
     utterance.rate = clampNarrationRate(rate)
     utterance.pitch = 1
     utterance.volume = 1
-    utterance.onend = () => {
-      if (requestId === speechRequestId) onEnd?.()
+
+    let started = false
+    let settled = false
+    let watchdog = 0
+    // Each utterance reports exactly one outcome, and only while it is still
+    // the current request.
+    const settle = (callback?: () => void, cancelEngine = false) => {
+      if (settled) return
+      settled = true
+      window.clearTimeout(watchdog)
+      if (activeUtterance === utterance) activeUtterance = null
+      if (requestId !== speechRequestId) return
+      if (cancelEngine) synth.cancel()
+      callback?.()
     }
-    utterance.onerror = () => {
-      if (requestId === speechRequestId) onError?.()
-    }
+    utterance.onstart = () => { started = true }
+    utterance.onend = () => settle(onEnd)
+    utterance.onerror = event => settle(() => onError?.(failureFromSpeechError(event)))
+    activeUtterance = utterance
     synth.speak(utterance)
+    watchdog = window.setTimeout(() => {
+      // Audio started but its end event was lost: the learner heard it.
+      // It never started: the engine is stuck, so clear it and report failure
+      // to let the caller fall back or offer a replay.
+      if (started) settle(onEnd)
+      else settle(() => onError?.('unavailable'), true)
+    }, speechWatchdogMs(text, rate))
   } catch {
-    onError?.()
+    onError?.('unavailable')
   }
 }
 
@@ -185,13 +239,15 @@ export function speakEnglish(
   voiceURI: string,
   rate: number,
   onEnd?: () => void,
-  onError?: () => void,
+  onError?: SpeechFailureHandler,
 ): boolean {
   if (typeof window === 'undefined' || !window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') return false
 
   const synth = window.speechSynthesis
-  synth.cancel()
+  // Supersede the previous request before cancelling it: some engines fire
+  // the cancelled utterance's error event synchronously inside cancel().
   const requestId = ++speechRequestId
+  synth.cancel()
   const voices = synth.getVoices()
   const decision = voiceURI
     ? narrationLaunchDecision(voices, voiceURI, initialVoiceGraceElapsed)
@@ -257,16 +313,16 @@ export function speakEnglishWithFallback(
   rate: number,
   fallbackSrc: string,
   onEnd?: () => void,
-  onUnavailable?: () => void,
+  onUnavailable?: SpeechFailureHandler,
 ): boolean {
   let fallbackAttempted = false
   let fallbackStarted = false
 
-  const startFallback = () => {
+  const startFallback = (speechFailure: SpeechFailure = 'unavailable') => {
     if (fallbackAttempted) return
     fallbackAttempted = true
     fallbackStarted = play(fallbackSrc, true, onEnd, onUnavailable)
-    if (!fallbackStarted) onUnavailable?.()
+    if (!fallbackStarted) onUnavailable?.(speechFailure)
   }
 
   const speechStarted = speakEnglish(

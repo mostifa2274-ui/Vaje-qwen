@@ -49,6 +49,25 @@ html {
   font-family: Tahoma, 'Noto Sans Arabic', Arial, system-ui, sans-serif;
 }
 
+/* Pre-bundle placeholder in index.html; must not depend on app scripts. */
+.boot-screen {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.boot-screen b {
+  color: var(--ink);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
 body {
   background-color: var(--paper);
   color: var(--ink);
@@ -796,6 +815,13 @@ button:disabled {
   .story-paragraph + .story-paragraph {
     margin-top: 2rem;
   }
+
+  /* With tablet width to spare, keep a sentence's controls on one row so a
+     one-line sentence stays one line tall and the chapter reads as prose. */
+  .story-sentence-actions {
+    flex-direction: row;
+    padding-top: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -873,14 +899,33 @@ button:disabled {
   border-radius: 18px;
   box-shadow: 0 6px 20px rgba(43,42,38,.07);
 }
-.book-thumb {
-  width: 4.5rem;
-  height: 4.5rem;
-  flex: 0 0 4.5rem;
-  object-fit: contain;
-  border-radius: 12px;
-  background: rgba(255,255,255,.26);
-  padding: .3rem;
+/* Illustrated banner heading each book; bleeds to the section edges. */
+.book-banner {
+  display: block;
+  width: calc(100% + 2rem);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 8 / 3;
+  margin: -1rem -1rem 1rem;
+  object-fit: cover;
+  border-radius: 17px 17px 0 0;
+  border-bottom: 1px solid var(--line-medium);
+  background: rgba(255,255,255,.3);
+}
+@media (min-width: 640px) {
+  .book-banner {
+    width: calc(100% + 2.5rem);
+    margin: -1.25rem -1.25rem 1.1rem;
+  }
+}
+.book-section {
+  overflow: hidden;
+}
+.book-section.is-locked > * {
+  opacity: .72;
+}
+.book-section.is-locked .book-banner {
+  filter: saturate(.55);
 }
 .book-status-icon {
   display: inline-flex;
@@ -910,13 +955,119 @@ button:disabled {
   .journey-overview-head {
     gap: .7rem;
   }
-  .book-thumb {
-    width: 3.75rem;
-    height: 3.75rem;
-    flex-basis: 3.75rem;
-  }
 }
 
+
+/* ---------- End-of-book test ---------- */
+.test-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.test-steps li {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: rgba(255,255,255,.3);
+  padding: .45rem .25rem;
+  color: var(--ink-soft);
+  font-size: .66rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+.test-steps li > :first-child {
+  display: grid;
+  width: 1.4rem;
+  height: 1.4rem;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.6);
+  font-size: .72rem;
+}
+.test-steps li.current {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--gold) 26%, var(--cream-soft));
+  color: var(--ink);
+}
+.test-steps li.done {
+  color: var(--ink);
+}
+.test-steps li.done > :first-child {
+  box-sizing: content-box;
+  padding: .2rem;
+  width: 1rem;
+  height: 1rem;
+  background: #dfead7;
+}
+.test-option[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--gold) 34%, var(--cream-soft));
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.test-passage {
+  margin-top: .6rem;
+  font-size: 1.05rem;
+  line-height: 1.95;
+}
+.test-passage-lines {
+  margin-top: .75rem;
+  list-style: none;
+  padding: 0;
+}
+.test-passage-lines li + li {
+  margin-top: .6rem;
+}
+.test-passage-lines .font-en {
+  font-family: Georgia, 'Times New Roman', serif;
+  text-align: left;
+  line-height: 1.7;
+}
+.test-player {
+  border: 1px dashed var(--line-medium);
+  border-radius: 14px;
+  background: rgba(255,255,255,.28);
+  padding: .9rem;
+}
+.test-intro-list {
+  display: grid;
+  gap: .55rem;
+  padding-inline-start: 1.2rem;
+  list-style: persian;
+  font-size: .92rem;
+  line-height: 1.8;
+}
+.test-review-details {
+  border: 1px solid var(--line-soft);
+  border-radius: 13px;
+  background: rgba(255,255,255,.28);
+  padding: .2rem .9rem .9rem;
+}
+.test-review-details summary {
+  min-height: 2.75rem;
+  cursor: pointer;
+  padding-top: .7rem;
+  font-size: .9rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+.test-review-item + .test-review-item {
+  border-top: 1px solid var(--line-soft);
+  padding-top: .75rem;
+}
+.review-mark-right { color: #3e7a4a; font-weight: 800; }
+.review-mark-wrong { color: var(--crimson-deep); font-weight: 800; }
+.metric-card.metric-fail {
+  border-color: color-mix(in srgb, var(--crimson) 45%, var(--line-soft));
+  background: #f7e3e1;
+}
 
 /* ---------- Resumable chapter preparation ---------- */
 .prep-resume-row {

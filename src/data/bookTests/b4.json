@@ -1,0 +1,458 @@
+{
+  "book": 4,
+  "reading": [
+    {
+      "id": "b4-reading-a",
+      "titleEn": "At the Market",
+      "titleFa": "در بازار",
+      "names": [
+        "Zahra",
+        "Babak"
+      ],
+      "sentences": [
+        {
+          "en": "Every Friday, Zahra goes to the market with her son Babak.",
+          "fa": "زهرا هر جمعه با پسرش بابک به بازار می‌رود."
+        },
+        {
+          "en": "She wants to buy fruit and vegetables for the week.",
+          "fa": "می‌خواهد برای هفته میوه و سبزی بخرد."
+        },
+        {
+          "en": "First, they go to a fruit shop next to the bank.",
+          "fa": "اول به یک میوه‌فروشی کنار بانک می‌روند."
+        },
+        {
+          "en": "The apples are red and very nice, but they are expensive.",
+          "fa": "سیب‌ها قرمز و خیلی خوب‌اند، اما گران‌اند."
+        },
+        {
+          "en": "The oranges are cheap, so Zahra buys two big bags.",
+          "fa": "پرتقال‌ها ارزان‌اند، پس زهرا دو کیسهٔ بزرگ می‌خرد."
+        },
+        {
+          "en": "Babak is hungry, and he eats a banana.",
+          "fa": "بابک گرسنه است و یک موز می‌خورد."
+        },
+        {
+          "en": "Then they buy potatoes, onions and tomatoes for soup.",
+          "fa": "بعد برای سوپ سیب‌زمینی، پیاز و گوجه‌فرنگی می‌خرند."
+        },
+        {
+          "en": "In another shop, Babak sees some chocolate and wants it.",
+          "fa": "در مغازهٔ دیگری، بابک شکلات می‌بیند و آن را می‌خواهد."
+        },
+        {
+          "en": "\"No, Babak, we have enough food,\" Zahra says.",
+          "fa": "زهرا می‌گوید: «نه بابک، به اندازهٔ کافی غذا داریم.»"
+        },
+        {
+          "en": "But Babak looks very sad, so she buys a small piece for him.",
+          "fa": "اما بابک خیلی ناراحت به نظر می‌رسد، پس زهرا یک تکهٔ کوچک برایش می‌خرد."
+        },
+        {
+          "en": "At home, Zahra prepares a delicious soup for lunch.",
+          "fa": "در خانه، زهرا برای ناهار یک سوپ خوشمزه درست می‌کند."
+        },
+        {
+          "en": "Babak eats all his soup, and then he has his chocolate.",
+          "fa": "بابک همهٔ سوپش را می‌خورد و بعد شکلاتش را می‌خورد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "زهرا هر جمعه کجا می‌رود؟",
+          "options": [
+            "به بازار",
+            "به بانک",
+            "به رستوران",
+            "به مزرعه"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "سیب‌ها چگونه‌اند؟",
+          "options": [
+            "ارزان و زرد",
+            "کوچک و ترش",
+            "سبز و ارزان",
+            "قرمز و خوب، اما گران"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "زهرا چند کیسه پرتقال می‌خرد؟",
+          "options": [
+            "یک کیسهٔ کوچک",
+            "سه کیسه",
+            "هیچ",
+            "دو کیسهٔ بزرگ"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "زهرا سیب‌زمینی، پیاز و گوجه‌فرنگی را برای چه می‌خرد؟",
+          "options": [
+            "برای سالاد",
+            "برای ساندویچ",
+            "برای سوپ",
+            "برای کیک"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "بابک کی شکلاتش را می‌خورد؟",
+          "options": [
+            "در بازار",
+            "بعد از سوپش",
+            "پیش از ناهار",
+            "شب پیش از خواب"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b4-reading-b",
+      "titleEn": "The Farm",
+      "titleFa": "مزرعه",
+      "names": [
+        "Ramin"
+      ],
+      "sentences": [
+        {
+          "en": "Ramin lives on a farm with his parents.",
+          "fa": "رامین با پدر و مادرش در یک مزرعه زندگی می‌کند."
+        },
+        {
+          "en": "They have cows, sheep, pigs, chickens and a horse.",
+          "fa": "آن‌ها گاو، گوسفند، خوک، مرغ و یک اسب دارند."
+        },
+        {
+          "en": "Ramin also has a brown dog.",
+          "fa": "رامین یک سگ قهوه‌ای هم دارد."
+        },
+        {
+          "en": "Every morning, he gives food and water to the animals.",
+          "fa": "هر روز صبح به حیوان‌ها غذا و آب می‌دهد."
+        },
+        {
+          "en": "The cows give milk, and the chickens give eggs.",
+          "fa": "گاوها شیر می‌دهند و مرغ‌ها تخم‌مرغ."
+        },
+        {
+          "en": "His mom sells the milk and eggs at the market in town.",
+          "fa": "مادرش شیر و تخم‌مرغ‌ها را در بازارِ شهر می‌فروشد."
+        },
+        {
+          "en": "One morning, the horse is not there.",
+          "fa": "یک روز صبح، اسب آنجا نیست."
+        },
+        {
+          "en": "Ramin feels very bad.",
+          "fa": "رامین خیلی ناراحت می‌شود."
+        },
+        {
+          "en": "He looks behind the house and in the garden, but it is not there.",
+          "fa": "پشت خانه و در باغچه را نگاه می‌کند، اما اسب آنجا نیست."
+        },
+        {
+          "en": "Then his dog runs to the road, and Ramin runs after it.",
+          "fa": "بعد سگش به طرف جاده می‌دود و رامین دنبالش می‌دود."
+        },
+        {
+          "en": "The horse is in the garden of a neighbor, and it eats his carrots!",
+          "fa": "اسب در باغچهٔ یک همسایه است و هویج‌هایش را می‌خورد!"
+        },
+        {
+          "en": "The neighbor laughs, and Ramin takes the horse home.",
+          "fa": "همسایه می‌خندد و رامین اسب را به خانه می‌برد."
+        },
+        {
+          "en": "The next day, Ramin gives the neighbor some cheese for his carrots.",
+          "fa": "روز بعد، رامین در عوض هویج‌ها کمی پنیر به همسایه می‌دهد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "رامین کجا زندگی می‌کند؟",
+          "options": [
+            "در آپارتمانی در شهر",
+            "در یک مزرعه",
+            "کنار بازار",
+            "در یک هتل"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "گاوها و مرغ‌ها چه می‌دهند؟",
+          "options": [
+            "گاوها شیر و مرغ‌ها تخم‌مرغ",
+            "گاوها گوشت و مرغ‌ها شیر",
+            "گاوها پنیر و مرغ‌ها گوشت",
+            "هیچ‌چیز"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "مادر رامین شیر و تخم‌مرغ را کجا می‌فروشد؟",
+          "options": [
+            "در بازار شهر",
+            "در مزرعه",
+            "در سوپرمارکت",
+            "در رستوران"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چه چیزی رامین را به طرف اسب می‌برد؟",
+          "options": [
+            "همسایه",
+            "مادرش",
+            "صدای اسب",
+            "سگش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "اسب در باغچهٔ همسایه چه می‌کند؟",
+          "options": [
+            "زیر درخت می‌خوابد",
+            "با سگ بازی می‌کند",
+            "هویج‌های همسایه را می‌خورد",
+            "آب می‌نوشد"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "b4-listening-a",
+      "titleEn": "Lunch at a Restaurant",
+      "titleFa": "ناهار در رستوران",
+      "names": [
+        "Farid",
+        "Nazanin"
+      ],
+      "sentences": [
+        {
+          "en": "Farid is twenty today, and his family has lunch at a restaurant.",
+          "fa": "فرید امروز بیست ساله می‌شود و خانواده‌اش در رستوران ناهار می‌خورند."
+        },
+        {
+          "en": "The restaurant is small, but the food is great.",
+          "fa": "رستوران کوچک است، اما غذایش عالی است."
+        },
+        {
+          "en": "The waiter brings the menu.",
+          "fa": "پیشخدمت منو را می‌آورد."
+        },
+        {
+          "en": "Farid orders chicken with rice and a salad.",
+          "fa": "فرید مرغ با برنج و یک سالاد سفارش می‌دهد."
+        },
+        {
+          "en": "His sister Nazanin does not like meat, so she chooses fish with potatoes.",
+          "fa": "خواهرش نازنین گوشت دوست ندارد، پس ماهی با سیب‌زمینی انتخاب می‌کند."
+        },
+        {
+          "en": "His dad orders a big sandwich and a bottle of water.",
+          "fa": "پدرش یک ساندویچ بزرگ و یک بطری آب سفارش می‌دهد."
+        },
+        {
+          "en": "The food comes, but the chicken is cold.",
+          "fa": "غذا می‌آید، اما مرغ سرد است."
+        },
+        {
+          "en": "Dad calls the waiter, and the waiter says, \"Sorry!\"",
+          "fa": "پدر پیشخدمت را صدا می‌زند و پیشخدمت می‌گوید: «ببخشید!»"
+        },
+        {
+          "en": "He brings hot chicken, and it is delicious.",
+          "fa": "مرغ داغ می‌آورد و خیلی خوشمزه است."
+        },
+        {
+          "en": "After lunch, the waiter brings a big chocolate cake.",
+          "fa": "بعد از ناهار، پیشخدمت یک کیک شکلاتی بزرگ می‌آورد."
+        },
+        {
+          "en": "Everyone sings \"Happy Birthday,\" and Farid laughs.",
+          "fa": "همه «تولدت مبارک» می‌خوانند و فرید می‌خندد."
+        },
+        {
+          "en": "Dad pays the bill, and they go home happy.",
+          "fa": "پدر صورت‌حساب را می‌پردازد و همه خوشحال به خانه می‌روند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "فرید امروز چند ساله می‌شود؟",
+          "options": [
+            "دوازده",
+            "بیست",
+            "دو",
+            "بیست و دو"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "فرید چه سفارش می‌دهد؟",
+          "options": [
+            "مرغ با برنج و سالاد",
+            "ماهی با سیب‌زمینی",
+            "یک ساندویچ بزرگ",
+            "سوپ و نان"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چرا نازنین ماهی انتخاب می‌کند؟",
+          "options": [
+            "چون گوشت دوست ندارد",
+            "چون ماهی ارزان است",
+            "چون مرغ تمام شده است",
+            "چون پیشخدمت پیشنهاد می‌دهد"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چه مشکلی در غذا پیش می‌آید؟",
+          "options": [
+            "ماهی شور است",
+            "سالاد نمی‌آید",
+            "غذا خیلی گران است",
+            "مرغ سرد است"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "بعد از ناهار پیشخدمت چه می‌آورد؟",
+          "options": [
+            "بستنی",
+            "چای",
+            "یک کیک شکلاتی بزرگ",
+            "میوه"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b4-listening-b",
+      "titleEn": "A Dog for Tara",
+      "titleFa": "سگی برای تارا",
+      "names": [
+        "Tara",
+        "Coco"
+      ],
+      "sentences": [
+        {
+          "en": "Tara is ten, and she wants a dog.",
+          "fa": "تارا ده ساله است و یک سگ می‌خواهد."
+        },
+        {
+          "en": "Her mom does not want an animal in the apartment.",
+          "fa": "مادرش حیوان در آپارتمان نمی‌خواهد."
+        },
+        {
+          "en": "Tara asks every day, and every day her mom says no.",
+          "fa": "تارا هر روز می‌پرسد و مادرش هر روز می‌گوید نه."
+        },
+        {
+          "en": "One Sunday, they go to a farm near the town.",
+          "fa": "یک روز یکشنبه، به مزرعه‌ای نزدیک شهر می‌روند."
+        },
+        {
+          "en": "There are many animals there: cows, sheep, horses and a small brown dog.",
+          "fa": "آنجا حیوان‌های زیادی هست: گاو، گوسفند، اسب و یک سگ کوچک قهوه‌ای."
+        },
+        {
+          "en": "The dog is very friendly, and it runs to Tara.",
+          "fa": "سگ خیلی مهربان است و به طرف تارا می‌دود."
+        },
+        {
+          "en": "A woman from the farm says, \"This dog has no home.\"",
+          "fa": "زنی از مزرعه می‌گوید: «این سگ خانه ندارد.»"
+        },
+        {
+          "en": "Tara looks at her mom, and her mom laughs.",
+          "fa": "تارا به مادرش نگاه می‌کند و مادرش می‌خندد."
+        },
+        {
+          "en": "\"Fine,\" says Mom, \"but you give her food and water every day.\"",
+          "fa": "مادر می‌گوید: «باشد، اما تو هر روز به او غذا و آب می‌دهی.»"
+        },
+        {
+          "en": "Tara is very happy.",
+          "fa": "تارا خیلی خوشحال است."
+        },
+        {
+          "en": "She names the dog Coco.",
+          "fa": "اسم سگ را کوکو می‌گذارد."
+        },
+        {
+          "en": "Now Coco sleeps on a small bed next to Tara every night.",
+          "fa": "حالا کوکو هر شب روی تختی کوچک کنار تارا می‌خوابد."
+        },
+        {
+          "en": "And now Mom loves Coco too.",
+          "fa": "و حالا مادر هم کوکو را دوست دارد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "تارا چند سال دارد؟",
+          "options": [
+            "ده",
+            "دوازده",
+            "هفت",
+            "بیست"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چرا مادر تارا اول سگ نمی‌خواهد؟",
+          "options": [
+            "از سگ می‌ترسد",
+            "سگ‌ها گران‌اند",
+            "تارا خیلی کوچک است",
+            "نمی‌خواهد حیوانی در آپارتمان باشد"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "خانواده یکشنبه کجا می‌روند؟",
+          "options": [
+            "به بازار",
+            "به پارک",
+            "به خانهٔ همسایه",
+            "به مزرعه‌ای نزدیک شهر"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "سگ کوچک چه رنگی است؟",
+          "options": [
+            "سیاه",
+            "سفید",
+            "قهوه‌ای",
+            "زرد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "مادر با چه شرطی قبول می‌کند؟",
+          "options": [
+            "تارا اتاقش را تمیز کند",
+            "تارا هر روز به سگ غذا و آب بدهد",
+            "سگ در حیاط بخوابد",
+            "تارا پول سگ را بدهد"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
