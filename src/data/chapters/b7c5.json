@@ -39,8 +39,8 @@
       "fa": "ساحلی طولانی دور آب آبی خم شده است."
     },
     {
-      "en": "Mina walks along the beach, watching for black cats.",
-      "fa": "مینا در امتداد ساحل راه می‌رود و دنبال گربه‌های سیاه می‌گردد."
+      "en": "Mina walks along the beach, watching for any little yellow chicken.",
+      "fa": "مینا در امتداد ساحل راه می‌رود و دنبال هر جوجه‌ی زرد کوچکی می‌گردد."
     },
     {
       "en": "The cold water touches her shoes when a wave comes in.",
@@ -71,8 +71,8 @@
       "fa": "رودخانه‌ای در سوی دیگر شهرک به اقیانوس می‌ریزد."
     },
     {
-      "en": "Mina follows the river path because cats sometimes hide near the rocks.",
-      "fa": "مینا مسیر کنار رودخانه را دنبال می‌کند چون گربه‌ها گاهی نزدیک سنگ‌ها پنهان می‌شوند."
+      "en": "Mina follows the river path because a small chicken could shelter near the rocks.",
+      "fa": "مینا مسیر کنار رودخانه را دنبال می‌کند چون یک جوجه‌ی کوچک ممکن است نزدیک سنگ‌ها پناه بگیرد."
     },
     {
       "en": "A small hotel stands between the river and the beach.",
@@ -111,8 +111,8 @@
       "fa": "فرودگاه نزدیک شهرک است، پس خانواده جاده‌ی آنجا را هم بررسی می‌کند."
     },
     {
-      "en": "Mina watches the airport gates for any small black cat.",
-      "fa": "مینا ورودی‌های فرودگاه را برای دیدن هر گربه‌ی سیاه کوچکی نگاه می‌کند."
+      "en": "Mina watches the airport gates for any little yellow chicken.",
+      "fa": "مینا ورودی‌های فرودگاه را برای دیدن هر جوجه‌ی زرد کوچکی نگاه می‌کند."
     },
     {
       "en": "The tourist's flight leaves today, and he must go soon.",
@@ -159,12 +159,12 @@
       "fa": "کافه‌بار نزدیک ورودی پر از مسافر است."
     },
     {
-      "en": "A man at the bar remembers seeing a black cat near the beach road.",
-      "fa": "مردی در کافه‌بار به یاد می‌آورد گربه‌ای سیاه نزدیک جاده‌ی ساحل دیده است."
+      "en": "A man at the cafe remembers seeing a little yellow chicken near the beach road.",
+      "fa": "مردی در کافه به یاد می‌آورد یک جوجه‌ی زرد کوچک نزدیک جاده‌ی ساحل دیده است."
     },
     {
-      "en": "Mina checks a small space under a bench where a cat could hide.",
-      "fa": "مینا فضای کوچکی زیر یک نیمکت را که گربه می‌تواند در آن پنهان شود بررسی می‌کند."
+      "en": "Mina checks a small space under a bench where a chicken could rest.",
+      "fa": "مینا فضای کوچکی زیر یک نیمکت را که جوجه می‌تواند آنجا استراحت کند بررسی می‌کند."
     },
     {
       "en": "The space is empty, but the new clue sends her back outside.",
@@ -191,16 +191,16 @@
       "fa": "مامان هم خسته است، اما کنار مینا می‌ماند."
     },
     {
-      "en": "Mina asks the fisherman if a lost cat can find its way back.",
-      "fa": "مینا از ماهیگیر می‌پرسد آیا یک گربه‌ی گمشده می‌تواند راه برگشت را پیدا کند."
+      "en": "Mina asks the fisherman if a lost chicken can remember familiar places.",
+      "fa": "مینا از ماهیگیر می‌پرسد آیا یک جوجه‌ی گمشده می‌تواند جاهای آشنا را به یاد بیاورد."
     },
     {
       "en": "The fisherman looks at Nino's picture and nods slowly.",
       "fa": "ماهیگیر به عکس نینو نگاه می‌کند و آرام سر تکان می‌دهد."
     },
     {
-      "en": "\"Cats sometimes come home after long trips,\" the fisherman says.",
-      "fa": "«گربه‌ها گاهی بعد از سفرهای طولانی به خانه برمی‌گردند»، ماهیگیر می‌گوید."
+      "en": "\"chickens sometimes come home after long trips,\" the fisherman says.",
+      "fa": "«جوجه‌ها گاهی بعد از سفرهای طولانی به خانه برمی‌گردند»، ماهیگیر می‌گوید."
     },
     {
       "en": "Mina looks across the dark ocean and lets herself believe him.",
@@ -223,7 +223,7 @@
       "a": "ocean"
     },
     {
-      "q": "مردی که ماهی می‌گیرد می‌گوید گربه‌ها گاهی کجا برمی‌گردند؟",
+      "q": "ماهیگیر می‌گوید حیوان‌ها گاهی دوباره چه چیزی را پیدا می‌کنند؟",
       "options": [
         "home",
         "fish",
