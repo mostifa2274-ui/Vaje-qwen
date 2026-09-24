@@ -1,9 +1,9 @@
 import { Clip, Cloud, Ground, Hills, Moon, Rain, Sky, Stars, Sun, ThoughtBubble } from '../kit'
 import { CRIMSON, INK, PAPER, outline } from '../tokens'
-import { Cast, Cat, Figure, Flock, Nino, Bird } from '../characters'
+import { Cast, Chicken, Figure, Flock, Nino, Bird } from '../characters'
 import { BROTHER, DAD, MINA, MOM } from '../cast'
 import { Balloon, Bowl, Cake, Calendar, Chair, Clock, Door, Frame, Glass, Lamp, Plate, Room, Table, WallMap, Window } from '../interior'
-import { Board, BrickWall, Building, CatPhoto, House, StreetLamp } from '../outdoor'
+import { Board, BrickWall, Building, House, StreetLamp } from '../outdoor'
 import type { Scene } from './types'
 
 export const BOOK3: Record<string, Scene> = {
@@ -31,7 +31,7 @@ export const BOOK3: Record<string, Scene> = {
     ),
   },
   b3c2: {
-    alt: 'مینا می‌شمارد: کنار دیوار بازار نُه گربه نشسته‌اند که هیچ‌کدام نینو نیستند؛ ده پرنده از روی چمن بلند می‌شوند و مینا با مداد در کتاب قرمزش آن‌ها را می‌شمارد. ساعت هشت را نشان می‌دهد.',
+    alt: 'مینا می‌شمارد: کنار دیوار بازار نُه پرندهٔ کوچک نشسته‌اند؛ ده پرندهٔ دیگر از روی چمن بلند می‌شوند و مینا با مداد در کتاب قرمزش آن‌ها را می‌شمارد. ساعت هشت را نشان می‌دهد.',
     draw: () => (
       <>
         <Sky time="morning" />
@@ -43,18 +43,8 @@ export const BOOK3: Record<string, Scene> = {
         <BrickWall x={0} y={292} w={800} h={100} color="#cf9f7f" />
         <Ground y={292} fill="#b9c79a" />
         <rect y={330} width={800} height={90} fill="#d8cdb6" />
-        {[
-          ['#8b8580', '#e3c74a', '#6d6763'],
-          ['#d9934a', '#b8d46a', undefined],
-          ['#f2ede4', '#8fb8d8', undefined],
-          ['#5b5552', '#e8b44a', undefined],
-          ['#c9a27a', '#8fd16f', '#9a7a58'],
-          ['#9c9794', '#e3c74a', undefined],
-          ['#e8d7bd', '#e39a4a', '#c9ad86'],
-          ['#6e5a4e', '#e3c74a', undefined],
-          ['#d8d2c8', '#8fb8d8', '#b0a89c'],
-        ].map(([coat, eyes, stripes], index) => (
-          <Cat key={index} x={52 + index * 64} y={300 - (index % 2) * 4} s={.46} coat={coat} eyes={eyes} stripes={stripes} flip={index % 2 === 1} pose={index === 4 ? 'loaf' : 'sit'} shade="#2a2725" />
+        {Array.from({ length: 9 }, (_, index) => (
+          <Bird key={index} x={52 + index * 64} y={296 - (index % 2) * 4} s={.46} color={['#8d8f93', '#b78858', '#d6c7ad'][index % 3]} flip={index % 2 === 1} />
         ))}
         <Cast who={MINA} x={640} y={404} flip arms={['point', 'hold']} holding={{ item: 'book', hand: 'right' }} expression="calm" />
         <Bird x={720} y={354} s={.6} color="#8d8f93" flip />
@@ -120,7 +110,7 @@ export const BOOK3: Record<string, Scene> = {
     ),
   },
   b3c5: {
-    alt: 'هزار گربه: مینا و پدر جلوی تابلوی اطلاعات شهر ایستاده‌اند که پر از عکس گربه‌های سیاه است؛ مینا همهٔ عکس‌ها را نگاه می‌کند، اما هیچ‌کدام نینو نیست.',
+    alt: 'هزار سرنخ: مینا و پدر جلوی تابلوی اطلاعات شهر ایستاده‌اند که پر از عکس‌ها و گزارش‌های جوجه‌های کوچک است؛ مینا همهٔ سرنخ‌ها را نگاه می‌کند، اما هیچ‌کدام نینو را واضح نشان نمی‌دهد.',
     draw: () => (
       <>
         <Room wall="#dfe1d6" pattern="#c9cdbd" floorY={330} floor="#b9ad98" />
@@ -131,7 +121,10 @@ export const BOOK3: Record<string, Scene> = {
         </Window>
         <Board x={80} y={56} w={430} h={196} color="#d9bf94">
           {Array.from({ length: 11 }, (_, index) => (
-            <CatPhoto key={index} x={40 + (index % 6) * 66 + (index >= 6 ? 33 : 0)} y={50 + Math.floor(index / 6) * 92} rotate={(index % 4) * 4 - 6} eyes={index === 7 ? '#e3c74a' : index % 2 ? '#e8b44a' : '#b8d46a'} />
+            <g key={index} transform={`translate(${40 + (index % 6) * 66 + (index >= 6 ? 33 : 0)} ${56 + Math.floor(index / 6) * 92}) scale(.28)`}>
+              <rect x="-54" y="-72" width="108" height="118" rx="5" fill={PAPER} {...outline(2)} />
+              <Chicken x={0} y={30} s={.72} feathers={['#f3c84b', '#e6b96a', '#f1d88b'][index % 3]} wing={['#dfad32', '#c99a55', '#dfc16b'][index % 3]} flip={index % 2 === 1} />
+            </g>
           ))}
         </Board>
         <rect x={60} y={300} width={470} height={30} fill="#a87a50" {...outline(2.2)} />
@@ -145,7 +138,7 @@ export const BOOK3: Record<string, Scene> = {
     ),
   },
   b3c6: {
-    alt: 'آخر هفته: خانواده دور میز آشپزخانه نقشهٔ شهر را پهن کرده و مسیر فردا را با خودکار قرمز علامت می‌زند؛ کنار کاسهٔ نینو یک لیوان شیر گذاشته‌اند تا اگر برگشت، آماده باشد.',
+    alt: 'آخر هفته: خانواده دور میز آشپزخانه نقشهٔ شهر را پهن کرده و مسیر فردا را با خودکار قرمز علامت می‌زند؛ کنار ظرف نینو یک لیوان آب گذاشته‌اند تا اگر برگشت، آماده باشد.',
     draw: () => (
       <>
         <Room wall="warm" pattern="#e2c49c" floorY={330} />
@@ -165,7 +158,7 @@ export const BOOK3: Record<string, Scene> = {
         </g>
         <Cast who={MINA} x={380} y={404} arms={['hold', 'down']} holding={{ item: 'book', hand: 'left' }} expression="calm" />
         <Bowl x={640} y={384} food />
-        <Glass x={680} y={386} milk s={.9} />
+        <Glass x={680} y={386} s={.9} />
       </>
     ),
   },
