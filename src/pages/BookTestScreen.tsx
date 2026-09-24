@@ -18,8 +18,7 @@ import {
   type BookTestSection,
 } from '../engine/bookTest'
 import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft } from '../engine/bookTestDraft'
-import { cancelEnglishSpeech, speakEnglish, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { stopAudio, wordSrc } from '../engine/audio'
+import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, BadgeCheckIcon, CheckIcon, PauseIcon, PlayIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import { faNum, percent } from '../engine/format'
 
@@ -80,7 +79,7 @@ function usePassagePlayer(sentences: readonly TestSentence[], voiceURI: string, 
   }, [])
 
   const play = useCallback(() => {
-    stopAudio()
+    cancelEnglishSpeech()
     const current = ++token.current
     setNotice('')
     const fail = (failure: SpeechFailure = 'unavailable') => {
@@ -101,7 +100,7 @@ function usePassagePlayer(sentences: readonly TestSentence[], voiceURI: string, 
       const next = () => {
         if (token.current === current) window.setTimeout(() => at(index + 1), 220)
       }
-      if (!speakEnglish(sentences[index].en, voiceURI, rate, next, fail)) fail()
+      if (!speakEnglishWithFallback(sentences[index].en, voiceURI, rate, 's', next, fail)) fail()
     }
     at(0)
   }, [rate, sentences, voiceURI])
@@ -261,7 +260,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
       setWordReady(false)
       setWordNotice(speechFailureNotice(failure, SPEECH_UNAVAILABLE))
     }
-    const started = speakEnglishWithFallback(listenWord.word, state.narratorVoiceURI, state.narratorRate, wordSrc(listenWord.id), () => {
+    const started = speakEnglishWithFallback(listenWord.word, state.narratorVoiceURI, state.narratorRate, 'w', () => {
       if (wordToken.current !== current) return
       setWordReady(true)
       setWordNotice('')

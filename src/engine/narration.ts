@@ -1,4 +1,5 @@
-import { play } from './audio'
+import { playClip, stopAudio } from './audio'
+import { recordedClip, type ClipKind } from './audioClips'
 
 /**
  * Why a spoken prompt could not play. 'blocked': the browser refused audio
@@ -151,6 +152,7 @@ export function speechWatchdogMs(text: string, rate: number): number {
 export function cancelEnglishSpeech(): void {
   speechRequestId++
   activeUtterance = null
+  stopAudio()
   if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
 }
 
@@ -303,40 +305,34 @@ export function speakEnglish(
 
 
 /**
- * Speak with the preferred system/browser English voice and fall back to the
- * optional bundled asset when speech synthesis is unavailable or errors.
- * Returns false only when neither path can even be started.
+ * Speak a course prompt. The natural pre-recorded clip plays when one exists
+ * for exactly this text; otherwise, or if the clip cannot load, the device's
+ * best English voice reads it. A clip the browser blocks (autoplay policy)
+ * is reported as blocked, because the device voice would be blocked too.
+ * Returns false only when neither path can even start.
  */
 export function speakEnglishWithFallback(
   text: string,
   voiceURI: string,
   rate: number,
-  fallbackSrc: string,
+  kind: ClipKind,
   onEnd?: () => void,
   onUnavailable?: SpeechFailureHandler,
 ): boolean {
-  let fallbackAttempted = false
-  let fallbackStarted = false
-
-  const startFallback = (speechFailure: SpeechFailure = 'unavailable') => {
-    if (fallbackAttempted) return
-    fallbackAttempted = true
-    fallbackStarted = play(fallbackSrc, true, onEnd, onUnavailable)
-    if (!fallbackStarted) onUnavailable?.(speechFailure)
+  const clip = recordedClip(kind, text)
+  if (clip) {
+    speechRequestId++
+    activeUtterance = null
+    if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
+    const started = playClip(clip, rate, onEnd, failure => {
+      if (failure === 'blocked') {
+        onUnavailable?.('blocked')
+        return
+      }
+      if (!speakEnglish(text, voiceURI, rate, onEnd, onUnavailable)) onUnavailable?.('unavailable')
+    })
+    if (started) return true
   }
-
-  const speechStarted = speakEnglish(
-    text,
-    voiceURI,
-    rate,
-    onEnd,
-    startFallback,
-  )
-
-  if (!speechStarted) {
-    startFallback()
-    return fallbackStarted
-  }
-
-  return true
+  stopAudio()
+  return speakEnglish(text, voiceURI, rate, onEnd, onUnavailable)
 }

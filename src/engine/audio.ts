@@ -1,54 +1,61 @@
-// Optional bundled-audio fallback. Production uses the selected system English voice;
-// set VITE_BUNDLED_AUDIO=1 only in builds that actually ship the MP3 pack.
+// Playback of the pre-recorded narration clips (see audioClips.ts). One audio
+// element is reused, so starting a clip always stops the previous one.
 import type { SpeechFailureHandler } from './narration'
 
 let el: HTMLAudioElement | null = null
-let currentSrc = ''
-const bundledAudioAvailable = import.meta.env.VITE_BUNDLED_AUDIO === '1'
+let request = 0
 
-function player(): HTMLAudioElement {
-  if (!el) el = new Audio()
+function player(): HTMLAudioElement | null {
+  if (typeof Audio === 'undefined') return null
+  if (!el) {
+    el = new Audio()
+    el.preload = 'auto'
+  }
   return el
 }
 
-export function sentenceSrc(chapterId: string, index: number): string {
-  return `${import.meta.env.BASE_URL}audio/sentences/${chapterId}_${String(index).padStart(3, '0')}.mp3`
+/** The recordings are made at a learner-friendly pace; the narrator-speed setting scales it. */
+export function clipPlaybackRate(rate: number): number {
+  const value = Number.isFinite(rate) ? rate : 0.92
+  return Math.min(1.25, Math.max(0.75, value / 0.92))
 }
 
-export function wordSrc(wordId: string): string {
-  return `${import.meta.env.BASE_URL}audio/words/${wordId}.mp3`
-}
-
-export function exampleSrc(wordId: string): string {
-  return `${import.meta.env.BASE_URL}audio/examples/${wordId}.mp3`
-}
-
-export function bundledAudioEnabled(): boolean {
-  return bundledAudioAvailable
-}
-
-export function play(
-  src: string,
-  enabled: boolean,
-  onEnd?: () => void,
-  onError?: SpeechFailureHandler,
-): boolean {
-  if (!enabled || !bundledAudioAvailable) return false
-  const a = player()
-  if (currentSrc !== src) {
-    a.src = src
-    currentSrc = src
+/**
+ * Plays a recorded clip. Returns false when no audio element exists at all.
+ * Exactly one of onEnd or onError is called, and only for the latest clip.
+ */
+export function playClip(src: string, rate: number, onEnd?: () => void, onError?: SpeechFailureHandler): boolean {
+  const audio = player()
+  if (!audio) return false
+  const current = ++request
+  let settled = false
+  const settle = (callback?: () => void) => {
+    if (settled || current !== request) return
+    settled = true
+    audio.onended = null
+    audio.onerror = null
+    callback?.()
   }
-  a.currentTime = 0
-  a.onended = onEnd ?? null
-  a.onerror = () => onError?.('unavailable')
-  void a.play().catch((error: unknown) => {
-    onError?.(error instanceof DOMException && error.name === 'NotAllowedError' ? 'blocked' : 'unavailable')
-  })
+  audio.onended = () => settle(onEnd)
+  audio.onerror = () => settle(() => onError?.('unavailable'))
+  try {
+    audio.src = src
+    audio.currentTime = 0
+    audio.playbackRate = clipPlaybackRate(rate)
+    const started = audio.play()
+    if (started && typeof started.catch === 'function') {
+      started.catch((error: unknown) => {
+        settle(() => onError?.(error instanceof DOMException && error.name === 'NotAllowedError' ? 'blocked' : 'unavailable'))
+      })
+    }
+  } catch {
+    settle(() => onError?.('unavailable'))
+  }
   return true
 }
 
 export function stopAudio(): void {
+  request++
   if (el) {
     el.onended = null
     el.onerror = null

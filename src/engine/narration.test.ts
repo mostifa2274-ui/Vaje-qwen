@@ -111,9 +111,9 @@ describe('speech completion guarantees', () => {
     const blocked = vi.fn()
     const broken = vi.fn()
 
-    speakEnglishWithFallback('cat', '', 0.92, '/audio/words/cat.mp3', undefined, blocked)
+    speakEnglishWithFallback('cat', '', 0.92, 'w', undefined, blocked)
     spoken[0].onerror?.({ error: 'not-allowed' })
-    speakEnglishWithFallback('dog', '', 0.92, '/audio/words/dog.mp3', undefined, broken)
+    speakEnglishWithFallback('dog', '', 0.92, 'w', undefined, broken)
     spoken[1].onerror?.({ error: 'synthesis-failed' })
 
     expect(blocked).toHaveBeenCalledWith('blocked')

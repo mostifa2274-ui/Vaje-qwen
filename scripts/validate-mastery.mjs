@@ -9,7 +9,6 @@ const chapters = fs.readdirSync(chapterDir)
   .filter(name => name.endsWith('.json'))
   .map(name => JSON.parse(fs.readFileSync(path.join(chapterDir, name), 'utf8')))
   .sort((a, b) => a.book - b.book || a.n - b.n)
-const stale = JSON.parse(fs.readFileSync(path.join(root, 'src/data/staleSentenceAudio.json'), 'utf8'))
 
 function assert(condition, message) {
   if (!condition) throw new Error(message)
@@ -88,13 +87,6 @@ const midpointPool = [...new Set(chapters.filter(ch => ch.book <= 4).flatMap(ch 
 assert(midpointPool.length >= 56, 'Midpoint pool is too small')
 assert(vocab.length >= 88, 'Final pool is too small')
 
-const sentenceKeys = new Set()
-for (const chapter of chapters) chapter.sentences.forEach((_, index) => sentenceKeys.add(`${chapter.id}:${index}`))
-assert(Array.isArray(stale), 'staleSentenceAudio.json must be an array')
-assert(stale.every(key => typeof key === 'string'), 'Every stale-audio key must be a string')
-assert(new Set(stale).size === stale.length, 'Duplicate stale-audio keys')
-for (const key of stale) assert(sentenceKeys.has(key), `Unknown stale-audio key ${key}`)
-
 // Validate that every target can support four distinct choices for both English
 // and Persian labels. The runtime generator also prefers same-topic distractors.
 for (const target of vocab) {
@@ -111,4 +103,4 @@ for (const target of vocab) {
   }
 }
 
-console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, end-of-book pools ${bookSizes.join('/')} with four texts each, 56-question midpoint pool, 88-question final pool, ${stale.length} stale-audio blocks.`)
+console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, end-of-book pools ${bookSizes.join('/')} with four texts each, 56-question midpoint pool, 88-question final pool.`)

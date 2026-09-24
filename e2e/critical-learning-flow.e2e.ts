@@ -2,6 +2,7 @@ import { expect, test, type Page } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { persianPartOfSpeech } from '../src/engine/partOfSpeech'
 import { faNum } from '../src/engine/format'
+import { clipId } from '../src/engine/audioClips'
 
 interface VocabularyEntry {
   id: string
@@ -15,6 +16,7 @@ interface ChapterFixture {
   id: string
   new: string[]
   check: Array<{ a: string }>
+  sentences: Array<{ en: string }>
 }
 
 const chapter = JSON.parse(
@@ -206,6 +208,16 @@ test.beforeEach(async ({ page }) => {
       }
     } catch {
       // The real app handles unavailable storage; this test starts from a clean origin.
+    }
+
+    // These flows assert on the fake speech engine below, so the recorded
+    // narration is hidden unless a test opts in with __ghesseRecordedAudio.
+    const realFetch = window.fetch.bind(window)
+    window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = input instanceof Request ? input.url : String(input)
+      const recorded = (window as Window & { __ghesseRecordedAudio?: boolean }).__ghesseRecordedAudio
+      if (!recorded && url.endsWith('/audio/index.json')) return Promise.resolve(new Response('', { status: 404 }))
+      return realFetch(input, init)
     }
 
     class FakeSpeechSynthesisUtterance {
@@ -583,6 +595,52 @@ test('opening and closing a story word gloss keeps the reading position', async 
   await expect(sheet).toHaveCount(0)
   await expect(word).toBeFocused()
   expect(await page.evaluate(() => window.scrollY)).toBe(before)
+})
+
+test('story sentences and words play the recorded natural voice', async ({ page }) => {
+  await page.addInitScript(() => {
+    const testWindow = window as Window & { __ghesseRecordedAudio?: boolean; __ghesseClips?: string[] }
+    testWindow.__ghesseRecordedAudio = true
+    testWindow.__ghesseClips = []
+    HTMLMediaElement.prototype.play = function play(this: HTMLMediaElement) {
+      testWindow.__ghesseClips?.push(new URL(this.src).pathname)
+      window.setTimeout(() => this.dispatchEvent(new Event('ended')), 20)
+      return Promise.resolve()
+    }
+  })
+  const total = chapter.new.length
+  await openWithProgress(page, '/read/b1c1', {
+    words: Object.fromEntries(chapter.new.map(id => [id, { introduced: true }])),
+    chapters: {
+      b1c1: {
+        preparedAt: 1,
+        prepAttempts: 1,
+        prepWrittenCorrect: total,
+        prepWrittenTotal: total,
+        prepListeningCorrect: total,
+        prepListeningTotal: total,
+        completed: false,
+        checksCorrect: 0,
+        checksTotal: 0,
+        reads: 0,
+      },
+    },
+  })
+  await page.waitForFunction(() => performance.getEntriesByType('resource').some(entry => entry.name.endsWith('/audio/index.json')))
+  const clips = () => page.evaluate(() => (window as Window & { __ghesseClips?: string[] }).__ghesseClips ?? [])
+
+  await page.getByRole('button', { name: 'شنیدن جمله' }).first().click()
+  await expect.poll(clips).toContain(`/audio/${clipId('s', chapter.sentences[0].en)}.mp3`)
+
+  const word = page.locator('.story-line').first().locator('.tok-word').first()
+  await word.click()
+  const heading = await page.getByRole('dialog').evaluate(sheet => (
+    document.getElementById(sheet.getAttribute('aria-labelledby') ?? '')?.textContent?.trim() ?? ''
+  ))
+  const entry = wordBySurface.get(heading)
+  expect(entry, `gloss heading ${heading} is a vocabulary word`).toBeDefined()
+  await expect.poll(clips).toContain(`/audio/${clipId('w', entry?.word ?? '')}.mp3`)
+  expect(await speechHistory(page)).toEqual([])
 })
 
 interface BookTestFixture {

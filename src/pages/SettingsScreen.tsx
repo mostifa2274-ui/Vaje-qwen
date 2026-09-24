@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
 import { clearSessionDrafts, importStateJson, MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
-import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speechFailureNotice, type SpeechFailure } from '../engine/narration'
+import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
 import { BUILD_COMMIT } from '../engine/release'
 import { faNum } from '../engine/format'
@@ -16,6 +16,9 @@ interface Props {
   validChapterIds: string[]
   validWordIds: string[]
 }
+
+// Recorded with the course clips (scripts/audio/extra-prompts.json).
+const VOICE_SAMPLE = 'Nino is home. Mina is happy to see him again.'
 
 function describeProgress(summary: ProgressSummary): string {
   return `${faNum(summary.completedChapters)} فصل تمام‌شده، ${faNum(summary.introducedWords)} واژهٔ آموخته و ${faNum(summary.passedExams)} آزمون قبول‌شده`
@@ -41,17 +44,14 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     }
   }, [])
 
-  function previewNarrator() {
+  function previewNarrator(deviceVoice = false) {
     if (!state.soundOn) return
     setVoiceMessage('')
     const unavailable = (failure: SpeechFailure = 'unavailable') => setVoiceMessage(speechFailureNotice(failure, 'صدای انگلیسی روی این دستگاه در دسترس نیست. در تنظیمات مرورگر یا سیستم، English Text-to-Speech را فعال کن.'))
-    const started = speakEnglish(
-      'Nino is home. Mina is happy to see him again.',
-      state.narratorVoiceURI,
-      state.narratorRate,
-      () => setVoiceMessage('نمونه با موفقیت پخش شد.'),
-      unavailable,
-    )
+    const done = () => setVoiceMessage('نمونه با موفقیت پخش شد.')
+    const started = deviceVoice
+      ? speakEnglish(VOICE_SAMPLE, state.narratorVoiceURI, state.narratorRate, done, unavailable)
+      : speakEnglishWithFallback(VOICE_SAMPLE, state.narratorVoiceURI, state.narratorRate, 's', done, unavailable)
     if (!started) unavailable()
   }
 
@@ -120,9 +120,9 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <div className="settings-section p-4 sm:p-5">
           <div className="font-bold">صدای راوی انگلیسی</div>
           <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-            قصه، واژه‌ها و مثال‌ها همگی از یک موتور گفتار استفاده می‌کنند. حالت خودکار بهترین صدای طبیعی/Neural انگلیسی موجود در Chrome یا سیستم‌عامل را انتخاب می‌کند و برای آماده‌شدن فهرست صداهای باکیفیت کمی صبر می‌کند.
+            همهٔ واژه‌ها، مثال‌ها، جمله‌های قصه و متن‌های آزمون با یک صدای طبیعی انگلیسی (آمریکایی) از پیش ضبط شده‌اند. اگر ضبطی بارگیری نشود، مثلاً بدون اینترنت، صدای انگلیسی دستگاه که این‌جا انتخاب می‌کنی جای آن را می‌گیرد؛ حالت خودکار بهترین صدای طبیعی/Neural موجود را برمی‌دارد.
           </p>
-          <label className="mt-3 block text-xs font-bold" htmlFor="narrator-voice">انتخاب صدا</label>
+          <label className="mt-3 block text-xs font-bold" htmlFor="narrator-voice">صدای جایگزین دستگاه</label>
           <select
             id="narrator-voice"
             className="settings-select mt-1 w-full px-3 py-3 text-sm"
@@ -161,9 +161,14 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
             aria-valuetext={`${state.narratorRate.toFixed(2)} برابر سرعت عادی`}
             onChange={event => onChange({ ...state, narratorRate: clampNarrationRate(Number(event.target.value)) })}
           />
-          <button type="button" className="btn-paper mt-3 w-full py-2.5" disabled={!state.soundOn} onClick={previewNarrator}>
-            <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />شنیدن نمونه</span>
-          </button>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator()}>
+              <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />شنیدن نمونه</span>
+            </button>
+            <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator(true)}>
+              <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />صدای دستگاه</span>
+            </button>
+          </div>
           {voiceMessage && <p className="mt-2 text-xs leading-6" role="status">{voiceMessage}</p>}
         </div>
 
@@ -243,7 +248,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <div className="settings-section p-4 sm:p-5">
           <div className="settings-section-title"><ShieldIcon className="h-5 w-5" aria-hidden="true" /><span>حریم خصوصی</span></div>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            قصه حساب کاربری یا سرور پیشرفت ندارد و دادهٔ یادگیری و تنظیمات در همین مرورگر می‌ماند. خواندن جمله‌های انگلیسی را موتور گفتار مرورگر/سیستم‌عامل انجام می‌دهد؛ بسته به صدایی که روی دستگاه انتخاب شده، خودِ سرویس گفتار ممکن است آنلاین یا آفلاین باشد.
+            قصه حساب کاربری یا سرور پیشرفت ندارد و دادهٔ یادگیری و تنظیمات در همین مرورگر می‌ماند. صداهای ضبط‌شده از همین سایت بارگیری می‌شوند؛ فقط وقتی ضبطی در دسترس نباشد موتور گفتار مرورگر/سیستم‌عامل جمله را می‌خواند، که بسته به صدای انتخاب‌شده ممکن است آنلاین یا آفلاین کار کند.
           </p>
         </div>
 
