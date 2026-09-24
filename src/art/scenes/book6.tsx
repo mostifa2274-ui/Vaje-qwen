@@ -1,9 +1,9 @@
 import { Rain } from '../kit'
 import { CRIMSON, PAPER, outline } from '../tokens'
-import { Cast, Chicken, Figure, Student } from '../characters'
+import { Cast, Chicken, Figure, Nino, Student } from '../characters'
 import { DAD, MINA } from '../cast'
 import { Clock, MissingNote, Printer, Room, Screen, Table, WallMap, Window } from '../interior'
-import { Blackboard, Building, CatPhoto, Flask, Globe, SchoolDesk } from '../outdoor'
+import { Blackboard, Building, Flask, Globe, SchoolDesk } from '../outdoor'
 import type { Scene } from './types'
 
 const TEACHER = { build: 'adult' as const, skin: '#e8b894', hair: '#5b3a2a', hairStyle: 'bob' as const, glasses: true, top: '#6f9ab0', bottom: '#56617e', outfit: 'skirt' as const, legs: '#e8b894', collar: '#fbfaf5' }
@@ -16,10 +16,9 @@ export const BOOK6: Record<string, Scene> = {
       <>
         <Room wall="#e3e6d9" pattern="#cfd5c2" floorY={330} floor="#c9a57c" />
         <Blackboard x={70} y={60} w={330} h={150}>
-          <path d="M150 110 C140 86 150 64 176 62 C200 64 210 86 200 110Z" />
-          <circle cx="176" cy="50" r="18" />
-          <path d="M162 40 L160 24 L172 34 M190 40 L192 24 L180 34" />
-          <path d="M200 102 C230 104 236 78 222 66" />
+          <ellipse cx="174" cy="88" rx="28" ry="21" />
+          <circle cx="198" cy="64" r="14" />
+          <path d="M211 64 L228 70 L211 75Z M194 50 q6 -12 12 0 q7 -9 10 3" />
           <path d="M30 40 H110 M30 62 H96 M30 84 H104" />
           <path d="M250 36 H300 M250 56 H292 M250 76 H306 M250 96 H284" />
         </Blackboard>
@@ -47,8 +46,8 @@ export const BOOK6: Record<string, Scene> = {
         <Figure {...TEACHER} x={440} y={392} arms={['point', 'down']} flip expression="talk" />
         <Cast who={MINA} x={330} y={404} arms={['down', 'hold']} holding={{ item: 'paper' }} expression="calm" />
         <Table x={620} y={400} w={220} h={86} />
-        <CatPhoto x={580} y={292} s={1.3} rotate={-8} />
-        <CatPhoto x={650} y={292} s={1.3} rotate={6} />
+        <g transform="translate(580 292) rotate(-8) scale(.55)"><rect x="-50" y="-78" width="100" height="112" rx="4" fill={PAPER} {...outline(2)} /><Nino x={0} y={22} s={.7} /></g>
+        <g transform="translate(650 292) rotate(6) scale(.55)"><rect x="-50" y="-78" width="100" height="112" rx="4" fill={PAPER} {...outline(2)} /><Nino x={0} y={22} s={.7} flip /></g>
         <path d="M636 238 l8 9 l16 -20" fill="none" stroke={CRIMSON} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
       </>
     ),
