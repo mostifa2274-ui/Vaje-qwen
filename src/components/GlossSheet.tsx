@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { WordEntry } from '../engine/types'
 import { exampleSrc, stopAudio, wordSrc } from '../engine/audio'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
@@ -83,7 +84,9 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
 
   if (!word) return null
 
-  return (
+  // Rendered at the document root so the sheet always rises from the bottom
+  // of the viewport, whatever the story page's own layout or animation does.
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-end justify-center"
       style={{ background: 'rgba(43,42,38,0.45)' }}
@@ -136,6 +139,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

@@ -564,13 +564,17 @@ test('opening and closing a story word gloss keeps the reading position', async 
     },
   })
 
-  const word = page.locator('.story-line').nth(1).locator('.tok-word').first()
+  // A word well down the story, so the page is scrolled when it is tapped.
+  const word = page.locator('.story-line').last().locator('.tok-word').first()
   await word.scrollIntoViewIfNeeded()
   const before = await page.evaluate(() => window.scrollY)
+  expect(before).toBeGreaterThan(0)
   await word.click()
 
+  // The meaning must appear on screen at once, not at the bottom of the page.
   const sheet = page.getByRole('dialog')
   await expect(sheet).toBeVisible()
+  await expect(sheet).toBeInViewport({ ratio: 1 })
   await expect(sheet.getByRole('button', { name: 'بستن' })).toBeFocused()
   await page.waitForTimeout(300)
   expect(await page.evaluate(() => window.scrollY)).toBe(before)
@@ -604,6 +608,9 @@ test('the end-of-book test checks words, a reading text and a listening text hid
   const lockedBefore = await lockedFirstChapters.count()
 
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
+  // Later books show their test on the map too, locked, with what it covers.
+  await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toBeVisible()
+  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن واژه‌های کتاب‌های ۱ تا ۲/)).toBeVisible()
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
