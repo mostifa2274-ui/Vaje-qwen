@@ -121,8 +121,8 @@
       "fa": "در اتاقی دیگر، دستگاهی در حال چاپ صفحه‌هاست."
     },
     {
-      "en": "The machine prints a new missing-cat notice for Mina.",
-      "fa": "دستگاه یک اعلامیه‌ی جدید برای گربه‌ی گمشده‌ی مینا چاپ می‌کند."
+      "en": "The machine prints a new missing-chicken notice for Mina.",
+      "fa": "دستگاه یک اعلامیه‌ی جدید برای جوجه‌ی گمشده‌ی مینا چاپ می‌کند."
     },
     {
       "en": "A computer program puts Nino's photo above the phone number.",
@@ -203,12 +203,12 @@
     {
       "q": "وبلاگ مینا درباره‌ی چیست؟",
       "options": [
-        "cat",
+        "chicken",
         "dog",
         "food",
         "school"
       ],
-      "a": "cat"
+      "a": "chicken"
     }
   ]
 }
