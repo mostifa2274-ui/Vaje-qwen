@@ -1410,3 +1410,11 @@ input[type="range"]:focus-visible {
     height: 12rem;
   }
 }
+
+
+/* ---------- Reviewed generated chapter artwork ---------- */
+.lesson-chapter-image {
+  object-fit: cover;
+  object-position: center;
+  background: var(--cream-soft);
+}
