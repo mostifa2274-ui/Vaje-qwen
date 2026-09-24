@@ -301,6 +301,9 @@ export function Figure({
   accent = CRIMSON,
   shadow = true,
 }: FigureProps) {
+  // Visual policy: every female-coded hairstyle in this storybook is rendered as a contemporary hijab.
+  // Male presets use short/curly/bald/cap styles, so this keeps every girl/woman covered even in one-off scenes.
+  const coveredHairStyle: HairStyle = ['ponytail', 'bun', 'long', 'bob'].includes(hairStyle) ? 'scarf' : hairStyle
   const geo = GEOMETRY[build]
   const drop = pose === 'kneel' ? -geo.waist * .36 : pose === 'sit' ? -geo.waist * .3 : 0
   const legColor = legs ?? (outfit === 'pants' || outfit === 'coat' ? bottom : skin)
@@ -344,7 +347,7 @@ export function Figure({
       {shadow && <Shadow x={0} y={0} rx={geo.sw * 1.9} />}
       {/* umbrella and long hair sit behind the body */}
       {holding?.item === 'umbrella' && <HeldItem item="umbrella" x={handFor[0]} y={handFor[1]} accent={accent} />}
-      <g transform={`translate(0 ${headY})`}><HairBack style={hairStyle} r={geo.headR} color={hair} /></g>
+      <g transform={`translate(0 ${headY})`}><HairBack style={coveredHairStyle} r={geo.headR} color={hair} /></g>
 
       {legPaths.map((d, index) => <path key={index} d={d} fill="none" stroke={legColor} strokeWidth={limb + 1} strokeLinecap="round" strokeLinejoin="round" />)}
       {legPaths.map((d, index) => <path key={`o${index}`} d={d} fill="none" stroke={INK} strokeWidth="1.2" strokeLinecap="round" opacity=".25" />)}
@@ -374,7 +377,7 @@ export function Figure({
         <circle cx={geo.headR} cy="2" r="3.4" fill={skin} />
         <circle cx="0" cy="0" r={geo.headR} fill={skin} {...outline(1.6)} />
         <Face r={geo.headR} expression={expression} glasses={glasses} beard={beard} hair={hair} />
-        <HairFront style={hairStyle} r={geo.headR} color={hair} />
+        <HairFront style={coveredHairStyle} r={geo.headR} color={hair} />
         {hat && (
           <g>
             <ellipse cx="0" cy={-geo.headR * .62} rx={geo.headR * 1.45} ry={geo.headR * .3} fill={hat} {...outline(1.6)} />
@@ -419,7 +422,7 @@ export interface CatProps {
   coat?: string
   shade?: string
   eyes?: string
-  /** Nino's white mark near his ear. */
+  /** Optional identifying facial mark for ordinary cat illustrations. */
   mark?: boolean
   collar?: string
   rim?: string
