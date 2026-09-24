@@ -12,6 +12,8 @@ import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type P
 import { isPersianTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import { faNum } from '../engine/format'
+import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
+import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   chapterId: string
@@ -376,12 +378,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
     const advanceTimer = window.setTimeout(() => {
       continueTeachRef.current()
-    }, 1400)
+    }, autoTeachReflectionPauseMs(currentTeachWord?.tr ?? ''))
 
     return () => window.clearTimeout(advanceTimer)
   }, [
     audioBlocked,
     currentTeachId,
+    currentTeachWord,
     phase,
     speakExample,
     teachAutoExampleDone,
@@ -432,6 +435,17 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           ))}
         </div>
 
+        {phase === 'teach' && (
+          <section className="teach-context-card mt-4 overflow-hidden" aria-label="تصویر زمینهٔ فصل">
+            <ChapterIllustration chapterId={chapterId} titleFa={chapter.titleFa} />
+            <div className="teach-context-copy">
+              <span>صحنهٔ این فصل</span>
+              <b>{chapter.titleFa}</b>
+              <small className="font-en" dir="ltr">{chapter.titleEn}</small>
+            </div>
+          </section>
+        )}
+
         {resumedDraft && !alreadyPrepared && (
           <div className="prep-resume-row mt-3" role="status">
             <span>پیشرفت این جلسه بازیابی شد؛ از همان‌جایی که رها کردی ادامه بده.</span>
@@ -473,7 +487,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             </div>
             {teachAutoPlay && (
               <p className="mt-2 text-left text-xs leading-6" dir="rtl" style={{ color: 'var(--ink-soft)' }}>
-                در حالت خودکار: تلفظ واژه ← مثال شنیداری ← مکث کوتاه ← واژهٔ بعدی
+                در حالت خودکار: تلفظ واژه ← مثال شنیداری ← زمان کافی برای خواندن ترجمه ← واژهٔ بعدی
               </p>
             )}
 
