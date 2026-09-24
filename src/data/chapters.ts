@@ -24,7 +24,7 @@ export const BOOKS: BookMeta[] = [
   { book: 1, titleFa: 'خانه', titleEn: 'Home', tint: '#e8d9c4', cover: publicAsset('art/book1.svg'), taglineFa: 'جایی که قصه آغاز می‌شود' },
   { book: 2, titleFa: 'شهر', titleEn: 'The City', tint: '#d4ddd2', cover: publicAsset('art/book2.svg'), taglineFa: 'جست‌وجو میان خیابان‌ها' },
   { book: 3, titleFa: 'روزها', titleEn: 'The Days', tint: '#e5dccb', cover: publicAsset('art/book3.svg'), taglineFa: 'روزها می‌گذرند' },
-  { book: 4, titleFa: 'بازار', titleEn: 'The Market', tint: '#ead7c8', cover: publicAsset('art/book4.svg'), taglineFa: 'هزار گربه، هیچ‌کدام نینو' },
+  { book: 4, titleFa: 'بازار', titleEn: 'The Market', tint: '#ead7c8', cover: publicAsset('art/book4.svg'), taglineFa: 'هزار سرنخ، هنوز بی‌نینو' },
   { book: 5, titleFa: 'حرف‌ها', titleEn: 'Words', tint: '#e0d5c5', cover: publicAsset('art/book5.svg'), taglineFa: 'یادداشت‌ها و زنگ‌ها' },
   { book: 6, titleFa: 'مدرسه', titleEn: 'School', tint: '#d8dede', cover: publicAsset('art/book6.svg'), taglineFa: 'امید و وارونه' },
   { book: 7, titleFa: 'راه و ساحل', titleEn: 'Road & Shore', tint: '#d9dfd5', cover: publicAsset('art/book7.svg'), taglineFa: 'سفر تا لبه‌ی دریا' },
