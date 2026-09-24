@@ -2,8 +2,8 @@
   "id": "b4c5",
   "book": 4,
   "n": 5,
-  "titleFa": "گربه‌ی سیاه",
-  "titleEn": "The Black Cat",
+  "titleFa": "جوجه‌ی طلایی",
+  "titleEn": "The Golden Chicken",
   "new": [
     "same",
     "different",
@@ -39,48 +39,48 @@
       "fa": "مینا صبح زود به بازار می‌رسد و هر گوشه‌ی آشنا را بررسی می‌کند."
     },
     {
-      "en": "Near the bread shop, she suddenly sees a black cat.",
-      "fa": "نزدیک نانوایی ناگهان یک گربه‌ی سیاه می‌بیند."
+      "en": "Near the bread shop, she suddenly sees a golden chicken.",
+      "fa": "نزدیک نانوایی ناگهان یک جوجه‌ی طلایی می‌بیند."
     },
     {
-      "en": "For one second, the cat is like Nino in shape and color.",
-      "fa": "برای یک لحظه، گربه از نظر شکل و رنگ شبیه نینو است."
+      "en": "For one second, the chicken is like Nino in shape and color.",
+      "fa": "برای یک لحظه، جوجه از نظر شکل و رنگ شبیه نینو است."
     },
     {
-      "en": "It has the same black coat and quick steps.",
-      "fa": "همان پوشش سیاه و قدم‌های سریع را دارد."
+      "en": "It has the same black feathers and quick steps.",
+      "fa": "همان پرهای طلایی و قدم‌های سریع را دارد."
     },
     {
-      "en": "Its tail moves in the same nervous way.",
-      "fa": "دمش هم به همان شکل عصبی حرکت می‌کند."
+      "en": "Its wing moves in the same nervous way.",
+      "fa": "بالش هم به همان شکل عصبی حرکت می‌کند."
     },
     {
       "en": "\"Nino!\" Mina calls, running toward it.",
       "fa": "مینا در حالی که به سمتش می‌دود صدا می‌زند: «نینو!»"
     },
     {
-      "en": "The cat stops and looks directly at her.",
-      "fa": "گربه می‌ایستد و مستقیم به او نگاه می‌کند."
+      "en": "The chicken stops and looks directly at her.",
+      "fa": "جوجه می‌ایستد و مستقیم به او نگاه می‌کند."
     },
     {
       "en": "Its eyes are different; they are yellow, not green.",
       "fa": "چشم‌هایش متفاوت‌اند؛ زرد هستند، نه سبز."
     },
     {
-      "en": "The white mark near its ear is different too.",
-      "fa": "علامت سفید کنار گوشش هم متفاوت است."
+      "en": "It does not have Nino's small white feather on the left wing.",
+      "fa": "پر سفید کوچک روی بال چپ نینو را هم ندارد."
     },
     {
-      "en": "Mina slows down and whispers, \"Wrong cat.\"",
-      "fa": "مینا آرام می‌شود و زمزمه می‌کند: «گربه‌ی اشتباهی.»"
+      "en": "Mina slows down and whispers, \"Wrong chicken.\"",
+      "fa": "مینا آرام می‌شود و زمزمه می‌کند: «جوجه‌ی اشتباهی.»"
     },
     {
-      "en": "It is true that the cat looks similar from far away.",
-      "fa": "درست است که از دور گربه شبیه به نظر می‌رسد."
+      "en": "It is true that the chicken looks similar from far away.",
+      "fa": "درست است که از دور جوجه شبیه به نظر می‌رسد."
     },
     {
-      "en": "This is a real cat, but it is not Nino.",
-      "fa": "این یک گربه‌ی واقعی است، اما نینو نیست."
+      "en": "This is a real chicken, but it is not Nino.",
+      "fa": "این یک جوجه‌ی واقعی است، اما نینو نیست."
     },
     {
       "en": "The bread man asks, \"Are you sure?\"",
@@ -95,8 +95,8 @@
       "fa": "می‌تواند حس کند هیجانش خیلی زود ناپدید می‌شود."
     },
     {
-      "en": "The bad feeling returns as the cat walks away.",
-      "fa": "وقتی گربه دور می‌شود، آن حس بد برمی‌گردد."
+      "en": "The bad feeling returns as the chicken walks away.",
+      "fa": "وقتی جوجه دور می‌شود، آن حس بد برمی‌گردد."
     },
     {
       "en": "\"I miss Nino so much,\" Mina tells Mom.",
@@ -143,8 +143,8 @@
       "fa": "سگ فقط یکی از حیوان‌های بازار شلوغ است."
     },
     {
-      "en": "The black cat is another animal looking for food.",
-      "fa": "گربه‌ی سیاه هم حیوان دیگری است که دنبال غذا می‌گردد."
+      "en": "The golden chicken is another animal looking for food.",
+      "fa": "جوجه‌ی طلایی هم حیوان دیگری است که دنبال غذا می‌گردد."
     },
     {
       "en": "A small mouse runs beneath a wooden shelf.",
@@ -155,8 +155,8 @@
       "fa": "پوستری نزدیک آنجا یک مزرعه بیرون شهر را معرفی می‌کند."
     },
     {
-      "en": "Mom suggests visiting the farm because cats sometimes hide there.",
-      "fa": "مامان پیشنهاد می‌دهد به مزرعه بروند چون گربه‌ها گاهی آنجا پنهان می‌شوند."
+      "en": "Mom suggests visiting the farm because small chickens often stay near barns and gardens.",
+      "fa": "مامان پیشنهاد می‌دهد به مزرعه بروند چون جوجه‌های کوچک اغلب نزدیک انبار و باغچه می‌مانند."
     },
     {
       "en": "At the farm, a farmer shows Mina several animals.",
@@ -207,8 +207,8 @@
       "fa": "خانواده پیش از غروب به بازار برمی‌گردد."
     },
     {
-      "en": "The same black market cat is sleeping by the shop.",
-      "fa": "همان گربه‌ی سیاه بازار کنار مغازه خوابیده است."
+      "en": "The same black market chicken is sleeping by the shop.",
+      "fa": "همان جوجه‌ی طلایی بازار کنار مغازه خوابیده است."
     },
     {
       "en": "Now Mina can see immediately how different it is from Nino.",
@@ -219,8 +219,8 @@
       "fa": "اول اشتباه کرده بود، اما آن اشتباه آن‌ها را به جای تازه‌ای برد."
     },
     {
-      "en": "Every real cat has small details that make it different.",
-      "fa": "هر گربه‌ی واقعی جزئیات کوچکی دارد که آن را متفاوت می‌کند."
+      "en": "Every real chicken has small details that make it different.",
+      "fa": "هر جوجه‌ی واقعی جزئیات کوچکی دارد که آن را متفاوت می‌کند."
     },
     {
       "en": "Mina is sure she will recognize Nino when she sees him.",
@@ -271,16 +271,16 @@
       "fa": "مار را کنار یک خط سبز بلند می‌کشد."
     },
     {
-      "en": "Finally, Mina draws a small black cat in the center.",
-      "fa": "در آخر، مینا یک گربه‌ی سیاه کوچک در مرکز می‌کشد."
+      "en": "Finally, Mina draws a small yellow chicken in the center.",
+      "fa": "در آخر، مینا یک جوجه‌ی زرد کوچک در مرکز می‌کشد."
     },
     {
-      "en": "This drawing looks like Nino, with the same green eyes.",
-      "fa": "این نقاشی شبیه نینو است و همان چشم‌های سبز را دارد."
+      "en": "This drawing looks like Nino, with the same orange beak and white wing feather.",
+      "fa": "این نقاشی شبیه نینو است و همان نوک نارنجی و پر سفید روی بال را دارد."
     },
     {
-      "en": "It is completely different from the market cat.",
-      "fa": "کاملاً با گربه‌ی بازار متفاوت است."
+      "en": "It is completely different from the market chicken.",
+      "fa": "کاملاً با جوجه‌ی بازار متفاوت است."
     },
     {
       "en": "\"I still miss you,\" Mina says to the picture before bed.",
@@ -289,7 +289,7 @@
   ],
   "check": [
     {
-      "q": "گربه‌ی بازار نینو است؟",
+      "q": "جوجه‌ی بازار نینو است؟",
       "options": [
         "no",
         "yes",
