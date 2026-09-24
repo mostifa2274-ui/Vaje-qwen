@@ -158,7 +158,7 @@ export const BOOK3: Record<string, Scene> = {
         </g>
         <Cast who={MINA} x={380} y={404} arms={['hold', 'down']} holding={{ item: 'book', hand: 'left' }} expression="calm" />
         <Bowl x={640} y={384} food />
-        <Glass x={680} y={386} s={.9} />
+        <Glass x={680} y={386} juice="#d8eef4" s={.9} />
       </>
     ),
   },
