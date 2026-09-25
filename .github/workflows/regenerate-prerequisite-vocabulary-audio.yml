@@ -16,7 +16,7 @@ jobs:
   audio:
     if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[audio-pack]') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v7
         with:
