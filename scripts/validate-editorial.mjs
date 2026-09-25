@@ -71,6 +71,28 @@ for (const bad of forbiddenEnglish) {
 }
 assert(!allPersian.some(text => text.includes('برویمین')), 'editorial regression: Persian typo برویمین')
 
+const chickenCanonRegressions = [
+  /\bNino\b[^.]*\bfur\b/i,
+  /\bNino\b[^.]*\bpurr/i,
+  /\bNino\b[^.]*\bpaw/i,
+  /\bNino\b[^.]*\bcollar\b/i,
+  /\bchicken\b[^.]*\bfur\b/i,
+  /\brubs? against (?:her|his) legs\b/i,
+  /\bcurls? up in Mina's arms\b/i,
+]
+for (const pattern of chickenCanonRegressions) {
+  const bad = allEnglish.find(text => pattern.test(text))
+  assert(!bad, `chicken-canon regression: ${bad}`)
+}
+
+for (const chapter of chapters) {
+  for (const sentence of chapter.sentences) {
+    if (/golden chicken/i.test(sentence.en)) {
+      assert(!sentence.fa.includes('سیاه'), `${chapter.id}: golden chicken cannot translate as black chicken`)
+    }
+  }
+}
+
 for (const chapter of chapters) {
   for (const [index, sentence] of chapter.sentences.entries()) {
     assert(sentence.en.trim().length > 0, `${chapter.id}:${index} empty English sentence`)
