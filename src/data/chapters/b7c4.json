@@ -5,54 +5,44 @@
   "titleFa": "مزرعه",
   "titleEn": "The Farm",
   "new": [
-    "farmer",
-    "grow",
     "plant",
-    "flower",
-    "tree",
-    "air",
-    "rain",
-    "weather",
-    "share",
-    "change",
+    "snow",
     "create",
     "build",
-    "fly",
-    "fire",
-    "snow"
+    "fire"
   ],
   "sentences": [
     {
-      "en": "The train pauses beside a quiet farm in the country.",
-      "fa": "قطار کنار یک مزرعه‌ی آرام در روستا توقف کوتاهی می‌کند."
+      "en": "The train stops near a quiet farm in the country.",
+      "fa": "قطار نزدیک یک مزرعه‌ی آرام در روستا می‌ایستد."
     },
     {
-      "en": "A farmer waves when Mina and her family step outside.",
-      "fa": "کشاورزی وقتی مینا و خانواده‌اش بیرون می‌آیند دست تکان می‌دهد."
+      "en": "A farmer says hello when Mina and her family go outside.",
+      "fa": "کشاورزی وقتی مینا و خانواده‌اش بیرون می‌روند سلام می‌کند."
     },
     {
-      "en": "The farmer listens carefully when Mina describes Nino.",
-      "fa": "کشاورز وقتی مینا نینو را توصیف می‌کند با دقت گوش می‌دهد."
+      "en": "The farmer listens when Mina describes Nino.",
+      "fa": "کشاورز وقتی مینا نینو را توصیف می‌کند گوش می‌دهد."
     },
     {
-      "en": "He says small chickens often stay near the barn and garden.",
-      "fa": "می‌گوید جوجه‌های کوچک اغلب نزدیک انبار و باغچه می‌مانند."
+      "en": "He says small chickens often stay near the house and garden.",
+      "fa": "می‌گوید جوجه‌های کوچک اغلب نزدیک خانه و باغچه می‌مانند."
     },
     {
-      "en": "Before searching, he shows them where vegetables grow.",
-      "fa": "پیش از جست‌وجو نشانشان می‌دهد سبزی‌ها کجا رشد می‌کنند."
+      "en": "Before they look, he shows them where vegetables grow.",
+      "fa": "پیش از جست‌وجو، نشانشان می‌دهد سبزی‌ها کجا رشد می‌کنند."
     },
     {
-      "en": "Rows of green plants grow behind the farmhouse.",
-      "fa": "ردیف‌های گیاهان سبز پشت خانه‌ی مزرعه رشد می‌کنند."
+      "en": "Green plants grow behind the house.",
+      "fa": "گیاهان سبز پشت خانه رشد می‌کنند."
     },
     {
-      "en": "The farmer explains how to plant seeds in straight lines.",
-      "fa": "کشاورز توضیح می‌دهد چگونه بذرها را در خط‌های صاف بکارند."
+      "en": "The farmer explains how to plant in lines.",
+      "fa": "کشاورز توضیح می‌دهد چگونه در خط‌ها بکارند."
     },
     {
-      "en": "Mina notices one red flower beside the path.",
-      "fa": "مینا یک گل قرمز کنار مسیر می‌بیند."
+      "en": "Mina sees one red flower next to the way.",
+      "fa": "مینا یک گل قرمز کنار راه می‌بیند."
     },
     {
       "en": "Another flower grows near a tall tree.",
@@ -63,23 +53,23 @@
       "fa": "درخت پر از پرنده و برگ‌های در حال حرکت است."
     },
     {
-      "en": "Fresh air feels good after the long train ride.",
-      "fa": "هوای تازه بعد از سفر طولانی با قطار حس خوبی دارد."
+      "en": "The air feels good after the long train ride.",
+      "fa": "هوا بعد از سفر طولانی با قطار حس خوبی دارد."
     },
     {
       "en": "The farmer says clean air helps the plants grow well.",
       "fa": "کشاورز می‌گوید هوای پاک به رشد خوب گیاه‌ها کمک می‌کند."
     },
     {
-      "en": "Dark clouds arrive, and light rain begins to fall.",
-      "fa": "ابرهای تیره می‌رسند و باران آرام شروع به باریدن می‌کند."
+      "en": "Dark weather arrives, and light rain begins to fall.",
+      "fa": "هوای تیره می‌رسد و باران آرام شروع به باریدن می‌کند."
     },
     {
-      "en": "The rain makes the soil darker around the flowers.",
-      "fa": "باران خاک اطراف گل‌ها را تیره‌تر می‌کند."
+      "en": "The rain makes the land darker around the flowers.",
+      "fa": "باران زمین اطراف گل‌ها را تیره‌تر می‌کند."
     },
     {
-      "en": "Mina asks whether the weather changes quickly here.",
+      "en": "Mina asks if the weather changes quickly here.",
       "fa": "مینا می‌پرسد آیا هوا اینجا سریع تغییر می‌کند."
     },
     {
@@ -87,23 +77,23 @@
       "fa": "کشاورز می‌گوید هوای کوهستان می‌تواند در چند دقیقه عوض شود."
     },
     {
-      "en": "In winter, snow sometimes covers the whole field.",
-      "fa": "زمستان گاهی برف تمام مزرعه را می‌پوشاند."
+      "en": "In winter, snow is sometimes over all the farm.",
+      "fa": "زمستان گاهی برف روی تمام مزرعه است."
     },
     {
       "en": "Today there is no snow, only cold rain.",
       "fa": "امروز برفی نیست و فقط باران سرد می‌بارد."
     },
     {
-      "en": "The farmer invites everyone inside to share warm bread.",
-      "fa": "کشاورز همه را دعوت می‌کند داخل بروند و نان گرم را با هم تقسیم کنند."
+      "en": "The farmer asks everyone to come in and share warm bread.",
+      "fa": "کشاورز از همه می‌خواهد داخل بیایند و نان گرم را با هم تقسیم کنند."
     },
     {
-      "en": "He likes to share food with travelers who stop nearby.",
-      "fa": "او دوست دارد غذا را با مسافرانی که نزدیک توقف می‌کنند تقسیم کند."
+      "en": "He likes to share food with people who travel and stop near the farm.",
+      "fa": "او دوست دارد غذا را با افرادی که سفر می‌کنند و نزدیک مزرعه توقف می‌کنند تقسیم کند."
     },
     {
-      "en": "Inside, Mina sees a drawing the farmer helped create.",
+      "en": "In the house, Mina sees a drawing the farmer helped create.",
       "fa": "داخل خانه، مینا نقاشی‌ای می‌بیند که کشاورز در ساختنش کمک کرده است."
     },
     {
@@ -115,52 +105,52 @@
       "fa": "خانواده‌اش پیش از زمستان اتاق را با هم خواهند ساخت."
     },
     {
-      "en": "A bird begins to fly across the wet yard.",
-      "fa": "پرنده‌ای شروع می‌کند به پرواز از روی حیاط خیس."
+      "en": "A bird begins to fly across the yard in the rain.",
+      "fa": "پرنده‌ای شروع می‌کند از روی حیاط در باران پرواز کند."
     },
     {
-      "en": "Mina watches it fly toward the barn roof.",
-      "fa": "مینا نگاه می‌کند که به سمت سقف انبار پرواز می‌کند."
+      "en": "Mina watches it fly to the house.",
+      "fa": "مینا نگاه می‌کند که پرنده به سمت خانه پرواز می‌کند."
     },
     {
-      "en": "A small fire burns safely inside the farmhouse stove.",
-      "fa": "آتش کوچکی با امنیت داخل بخاری خانه‌ی مزرعه روشن است."
+      "en": "A small fire is in the house.",
+      "fa": "آتش کوچکی داخل خانه است."
     },
     {
-      "en": "The fire keeps everyone warm while the rain continues.",
-      "fa": "آتش همه را گرم نگه می‌دارد و باران ادامه دارد."
+      "en": "The fire keeps everyone warm as the rain keeps falling.",
+      "fa": "آتش همه را گرم نگه می‌دارد و باران همچنان می‌بارد."
     },
     {
-      "en": "When the weather improves, Mina checks the barn.",
-      "fa": "وقتی هوا بهتر می‌شود، مینا انبار را بررسی می‌کند."
+      "en": "When the weather improves, Mina checks the house and garden.",
+      "fa": "وقتی هوا بهتر می‌شود، مینا خانه و باغچه را بررسی می‌کند."
     },
     {
-      "en": "The farmer helps her look behind boxes and tools.",
-      "fa": "کشاورز کمک می‌کند پشت جعبه‌ها و ابزارها را بگردد."
+      "en": "The farmer helps her look behind boxes and farm things.",
+      "fa": "کشاورز کمک می‌کند پشت جعبه‌ها و چیزهای مزرعه را بگردد."
     },
     {
-      "en": "They find tiny three-toed tracks, but they belong to another chicken.",
-      "fa": "رد پای سه‌انگشتی کوچکی پیدا می‌کنند، اما برای جوجه‌ی دیگری است."
+      "en": "They see where another chicken walked.",
+      "fa": "آن‌ها جایی را می‌بینند که جوجه‌ی دیگری راه رفته است."
     },
     {
-      "en": "Mina searches beneath the big tree and beside the plants.",
+      "en": "Mina looks under the big tree and next to the plants.",
       "fa": "مینا زیر درخت بزرگ و کنار گیاه‌ها را می‌گردد."
     },
     {
-      "en": "No little yellow chicken appears anywhere on the farm.",
-      "fa": "هیچ جوجه‌ی زرد کوچکی در هیچ جای مزرعه پیدا نمی‌شود."
+      "en": "There is no little yellow chicken on the farm.",
+      "fa": "هیچ جوجه‌ی زرد کوچکی در مزرعه نیست."
     },
     {
       "en": "The farmer gives Mina bread and one small flower.",
       "fa": "کشاورز به مینا نان و یک گل کوچک می‌دهد."
     },
     {
-      "en": "He says the search may change direction, but hope should stay.",
-      "fa": "می‌گوید جست‌وجو شاید مسیرش عوض شود، اما امید باید بماند."
+      "en": "He says the plan may change, but hope should stay.",
+      "fa": "می‌گوید برنامه شاید عوض شود، اما امید باید بماند."
     },
     {
-      "en": "Mina thanks him and returns to the train with a new clue.",
-      "fa": "مینا از او تشکر می‌کند و با سرنخی تازه به قطار برمی‌گردد."
+      "en": "Mina thanks him and returns to the train with new information.",
+      "fa": "مینا از او تشکر می‌کند و با اطلاعات تازه به قطار برمی‌گردد."
     }
   ],
   "check": [

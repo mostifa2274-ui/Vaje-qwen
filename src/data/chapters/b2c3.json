@@ -5,44 +5,53 @@
   "titleFa": "بازی در پارک",
   "titleEn": "Games in the Park",
   "new": [
-    "play",
-    "game",
-    "ball",
     "football",
+    "game",
+    "player",
+    "across",
     "basketball",
+    "team",
+    "practice",
+    "teacher",
+    "match",
     "tennis",
     "baseball",
+    "father",
+    "kind",
     "sport",
-    "player",
-    "team",
-    "match",
+    "pool",
     "win",
     "swim",
-    "swimming",
-    "pool",
-    "gym",
-    "teenager",
-    "group",
-    "together",
-    "young",
     "adult",
-    "people"
+    "swimming",
+    "lesson",
+    "note",
+    "gym",
+    "people",
+    "exercise",
+    "teenager",
+    "carry",
+    "same",
+    "bus",
+    "other",
+    "description",
+    "its"
   ],
   "sentences": [
     {
-      "en": "Mina reaches the park while children play near the gate.",
+      "en": "Mina comes to the park, and children play near the street.",
       "fa": "مینا به پارک می‌رسد و بچه‌ها نزدیک دروازه بازی می‌کنند."
     },
     {
-      "en": "Two boys play football on the grass.",
+      "en": "Two boys play football in the park.",
       "fa": "دو پسر روی چمن فوتبال بازی می‌کنند."
     },
     {
-      "en": "Their game stops when the ball rolls toward Mina.",
+      "en": "Their game stops when the ball moves to Mina.",
       "fa": "بازی آن‌ها وقتی توپ به سمت مینا می‌غلتد متوقف می‌شود."
     },
     {
-      "en": "Mina picks up the red ball and gives it back.",
+      "en": "Mina takes the red ball and gives it back.",
       "fa": "مینا توپ قرمز را برمی‌دارد و پس می‌دهد."
     },
     {
@@ -58,23 +67,23 @@
       "fa": "یک تیم بسکتبال نزدیک درخت‌ها تمرین می‌کند."
     },
     {
-      "en": "The girls play basketball and pass quickly.",
+      "en": "The girls play basketball together.",
       "fa": "دخترها بسکتبال بازی می‌کنند و سریع پاس می‌دهند."
     },
     {
-      "en": "Their coach says the next match is tomorrow.",
+      "en": "Their teacher says the next match is tomorrow.",
       "fa": "مربی‌شان می‌گوید مسابقه‌ی بعدی فرداست."
     },
     {
-      "en": "On another court, two friends play tennis.",
+      "en": "In another place, two friends play tennis.",
       "fa": "در زمین دیگری، دو دوست تنیس بازی می‌کنند."
     },
     {
-      "en": "A tennis ball bounces beside a bench.",
+      "en": "A tennis ball is next to a chair.",
       "fa": "توپ تنیس کنار یک نیمکت بالا و پایین می‌پرد."
     },
     {
-      "en": "Farther away, a boy plays baseball with his father.",
+      "en": "Far away, a boy plays baseball with his father.",
       "fa": "دورتر، پسری با پدرش بیس‌بال بازی می‌کند."
     },
     {
@@ -90,7 +99,7 @@
       "fa": "یک بازیکن جوان می‌گوید نزدیک استخر یک جوجه‌ی کوچک دیده است."
     },
     {
-      "en": "Mina follows him because the clue sounds important.",
+      "en": "Mina follows him because the information is important.",
       "fa": "مینا دنبالش می‌رود چون سرنخ مهم به نظر می‌رسد."
     },
     {
@@ -98,11 +107,11 @@
       "fa": "تیم او می‌ماند تا مسابقه را تمام کند."
     },
     {
-      "en": "They cheer when their side begins to win.",
+      "en": "They are happy when their team begins to win.",
       "fa": "وقتی تیمشان شروع به بردن می‌کند، تشویق می‌کنند."
     },
     {
-      "en": "The winning player waves before Mina walks on.",
+      "en": "The winning player says goodbye before Mina walks on.",
       "fa": "بازیکن برنده پیش از رفتن مینا برایش دست تکان می‌دهد."
     },
     {
@@ -118,11 +127,11 @@
       "fa": "یک دختر می‌تواند تمام مسیر را شنا کند."
     },
     {
-      "en": "Her brother waits beside the pool with a towel.",
+      "en": "Her brother waits next to the pool.",
       "fa": "برادرش با حوله کنار استخر منتظر است."
     },
     {
-      "en": "Mina looks carefully around the pool fence.",
+      "en": "Mina looks around the pool.",
       "fa": "مینا با دقت اطراف حصار استخر را نگاه می‌کند."
     },
     {
@@ -130,11 +139,11 @@
       "fa": "کنار آب هیچ جوجه‌ی زرد کوچکی نیست."
     },
     {
-      "en": "A sign points to a gym beside the park.",
+      "en": "A note says there is a gym next to the park.",
       "fa": "تابلویی به باشگاهی کنار پارک اشاره می‌کند."
     },
     {
-      "en": "Inside the gym, people are exercising together.",
+      "en": "In the gym, people exercise together.",
       "fa": "داخل باشگاه، مردم با هم ورزش می‌کنند."
     },
     {
@@ -142,7 +151,7 @@
       "fa": "یک نوجوان با کیف ورزشی از باشگاه بیرون می‌آید."
     },
     {
-      "en": "The teenager remembers seeing a small chicken earlier.",
+      "en": "The teenager remembers seeing a small chicken before.",
       "fa": "نوجوان به یاد می‌آورد که کمی قبل جوجه‌ی کوچکی دیده است."
     },
     {
@@ -150,7 +159,7 @@
       "fa": "«سیاه بود؟» مینا می‌پرسد."
     },
     {
-      "en": "A group of young people gathers around to help.",
+      "en": "A group of young people comes together to help.",
       "fa": "گروهی از جوان‌ها جمع می‌شوند تا کمک کنند."
     },
     {
@@ -158,7 +167,7 @@
       "fa": "آن‌ها با هم به عکس نینو نگاه می‌کنند."
     },
     {
-      "en": "One young woman thinks the chicken went toward the street.",
+      "en": "One young woman thinks the chicken went to the street.",
       "fa": "یک زن جوان فکر می‌کند جوجه به سمت خیابان رفته است."
     },
     {
@@ -166,15 +175,15 @@
       "fa": "یک مرد بزرگسال می‌گوید همان جوجه را نزدیک ایستگاه اتوبوس دیده است."
     },
     {
-      "en": "Other people nearby listen to the description.",
+      "en": "Other people near them listen to the description.",
       "fa": "مردم دیگری که نزدیک هستند به توضیحات گوش می‌دهند."
     },
     {
-      "en": "For a moment, everyone searches the bushes together.",
+      "en": "For a moment, everyone looks near the trees together.",
       "fa": "برای لحظه‌ای همه با هم میان بوته‌ها جست‌وجو می‌کنند."
     },
     {
-      "en": "A child finds only a toy ball under one bush.",
+      "en": "A child finds only a ball under one tree.",
       "fa": "بچه‌ای زیر یکی از بوته‌ها فقط یک توپ اسباب‌بازی پیدا می‌کند."
     },
     {
@@ -182,7 +191,7 @@
       "fa": "این بازی کوچک بچه‌های کوچک‌تر را می‌خنداند."
     },
     {
-      "en": "Mina smiles, but she keeps thinking about Nino.",
+      "en": "Mina is happy for a moment, but she keeps thinking about Nino.",
       "fa": "مینا لبخند می‌زند، اما همچنان به نینو فکر می‌کند."
     },
     {
@@ -190,7 +199,7 @@
       "fa": "پیش از رفتن مینا، تیم فوتبال مسابقه‌اش را تمام می‌کند."
     },
     {
-      "en": "The players win and shout happily.",
+      "en": "The players win and are very happy.",
       "fa": "بازیکن‌ها برنده می‌شوند و با خوشحالی فریاد می‌زنند."
     },
     {
@@ -198,15 +207,15 @@
       "fa": "مینا از مردمی که در جست‌وجو کمک کردند تشکر می‌کند."
     },
     {
-      "en": "She leaves the park with one new clue.",
+      "en": "She leaves the park with new information.",
       "fa": "او با یک سرنخ تازه پارک را ترک می‌کند."
     },
     {
-      "en": "The clue leads toward the bus stop, not back to the pool.",
+      "en": "The information takes them to the bus stop, not back to the pool.",
       "fa": "سرنخ به سمت ایستگاه اتوبوس می‌رود، نه دوباره به استخر."
     },
     {
-      "en": "Nino is not in the park, but the search is moving forward.",
+      "en": "Nino is not in the park, but they keep looking.",
       "fa": "نینو در پارک نیست، اما جست‌وجو رو به جلو می‌رود."
     }
   ],

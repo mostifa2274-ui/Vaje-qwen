@@ -5,40 +5,36 @@
   "titleFa": "تولد",
   "titleEn": "The Birthday",
   "new": [
+    "date",
+    "month",
+    "june",
+    "birthday",
+    "spring",
+    "summer",
+    "winter",
+    "cold",
     "january",
     "february",
     "march",
+    "year",
     "april",
-    "may",
-    "june",
     "july",
     "august",
     "september",
     "october",
     "november",
     "december",
-    "spring",
-    "summer",
-    "winter",
-    "year",
-    "month",
-    "birthday",
-    "date",
-    "beginning",
-    "last",
-    "next",
-    "once",
-    "twice",
+    "twelve",
     "party",
-    "happen",
-    "warm",
-    "cold",
-    "twelve"
+    "cake",
+    "fruit",
+    "special",
+    "twice"
   ],
   "sentences": [
     {
-      "en": "Dad points to the date on the kitchen calendar.",
-      "fa": "بابا تاریخ روی تقویم آشپزخانه را نشان می‌دهد."
+      "en": "Dad points to the date on a paper in the kitchen.",
+      "fa": "بابا تاریخ روی یک کاغذ در آشپزخانه را نشان می‌دهد."
     },
     {
       "en": "\"What month is it?\" he asks Mina.",
@@ -49,8 +45,8 @@
       "fa": "«ژوئن است»، مینا جواب می‌دهد."
     },
     {
-      "en": "June is Mina's birthday month, so everyone smiles.",
-      "fa": "ژوئن ماه تولد مینا است، پس همه لبخند می‌زنند."
+      "en": "June is Mina's birthday month, so everyone is happy.",
+      "fa": "ژوئن ماه تولد مینا است، پس همه خوشحال‌اند."
     },
     {
       "en": "Her birthday is on the third of June.",
@@ -65,8 +61,8 @@
       "fa": "بیرون، گل‌های بهاری هنوز باز هستند."
     },
     {
-      "en": "The afternoon already feels warm like summer.",
-      "fa": "بعدازظهر از حالا مثل تابستان گرم است."
+      "en": "The afternoon now feels warm like summer.",
+      "fa": "بعدازظهر حالا مثل تابستان گرم است."
     },
     {
       "en": "Summer days are warm and long.",
@@ -85,8 +81,8 @@
       "fa": "نینو در یک روز سرد زمستان از تخم بیرون آمد."
     },
     {
-      "en": "Dad turns the calendar back to January.",
-      "fa": "بابا تقویم را به ژانویه برمی‌گرداند."
+      "en": "Dad turns the month page back to January.",
+      "fa": "بابا صفحه‌ی ماه‌ها را به ژانویه برمی‌گرداند."
     },
     {
       "en": "\"January, then February,\" Mina says.",
@@ -113,16 +109,16 @@
       "fa": "مینا پنج نام اول را دوباره می‌خواند: ژانویه، فوریه، مارس، آوریل، مه."
     },
     {
-      "en": "Then she continues: June, July, August, September, October.",
-      "fa": "بعد ادامه می‌دهد: ژوئن، ژوئیه، اوت، سپتامبر، اکتبر."
+      "en": "Then she says: June, July, August, September, October.",
+      "fa": "بعد می‌گوید: ژوئن، ژوئیه، اوت، سپتامبر، اکتبر."
     },
     {
       "en": "\"And November, December,\" Dad says. \"That makes the year.\"",
       "fa": "«و نوامبر، دسامبر»، بابا می‌گوید. «این می‌شود یک سال.»"
     },
     {
-      "en": "August comes after July on the calendar.",
-      "fa": "اوت روی تقویم بعد از ژوئیه می‌آید."
+      "en": "August comes after July on the month page.",
+      "fa": "اوت روی صفحه‌ی ماه‌ها بعد از ژوئیه می‌آید."
     },
     {
       "en": "September is the next month.",
@@ -141,8 +137,8 @@
       "fa": "دسامبر آخرین ماه سال است."
     },
     {
-      "en": "Mina touches the last square on the calendar.",
-      "fa": "مینا آخرین خانه‌ی تقویم را لمس می‌کند."
+      "en": "Mina puts her hand on the last date on the month page.",
+      "fa": "مینا دستش را روی آخرین تاریخ صفحه‌ی ماه‌ها می‌گذارد."
     },
     {
       "en": "One year begins in January and ends in December.",
@@ -157,8 +153,8 @@
       "fa": "دوازده ماه یک سال را می‌سازند."
     },
     {
-      "en": "Dad circles the beginning of June for Mina's birthday.",
-      "fa": "بابا آغاز ژوئن را برای تولد مینا دایره می‌کشد."
+      "en": "Dad writes Mina's birthday at the beginning of June.",
+      "fa": "بابا تولد مینا را در آغاز ژوئن می‌نویسد."
     },
     {
       "en": "At the beginning of the party, Mina tries to enjoy the music.",
@@ -177,8 +173,8 @@
       "fa": "بعد مینا صدایی نزدیک در می‌شنود. می‌پرسد: «چه اتفاقی افتاد؟»"
     },
     {
-      "en": "Nothing special happens; it is only the wind, and Mina looks down.",
-      "fa": "اتفاق خاصی نمی‌افتد؛ فقط باد است و مینا سرش را پایین می‌اندازد."
+      "en": "Nothing special happens, and Mina looks down.",
+      "fa": "اتفاق خاصی نمی‌افتد و مینا سرش را پایین می‌اندازد."
     },
     {
       "en": "She checks the door once during the afternoon.",

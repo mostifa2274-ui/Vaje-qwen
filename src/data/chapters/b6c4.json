@@ -7,57 +7,54 @@
   "new": [
     "scientist",
     "problem",
-    "reason",
     "situation",
-    "action",
     "activity",
-    "thing",
-    "type",
-    "kind",
-    "part",
     "event",
     "success",
+    "leg",
+    "card",
     "object",
     "model",
-    "color",
-    "card",
     "present",
     "umbrella",
-    "cup",
-    "break"
+    "fall",
+    "break",
+    "however",
+    "type",
+    "future"
   ],
   "sentences": [
     {
-      "en": "The phone rings after dinner, and Mina answers quickly.",
-      "fa": "تلفن بعد از شام زنگ می‌زند و مینا سریع جواب می‌دهد."
+      "en": "The phone makes a sound after dinner, and Mina answers quickly.",
+      "fa": "تلفن بعد از شام صدا می‌دهد و مینا سریع جواب می‌دهد."
     },
     {
-      "en": "A woman introduces herself as a scientist from the university.",
-      "fa": "زنی خودش را دانشمندی از دانشگاه معرفی می‌کند."
+      "en": "A woman says she is a scientist from the university.",
+      "fa": "زنی می‌گوید دانشمندی از دانشگاه است."
     },
     {
-      "en": "The scientist says she saw Mina's missing-chicken note.",
-      "fa": "دانشمند می‌گوید یادداشت جوجه‌ی گمشده‌ی مینا را دیده است."
+      "en": "The scientist says she saw Mina's note about Nino.",
+      "fa": "دانشمند می‌گوید یادداشت مینا درباره‌ی نینو را دیده است."
     },
     {
-      "en": "The reason for her call is a small yellow chicken nearby.",
-      "fa": "دلیل تماسش یک جوجه‌ی زرد کوچک در نزدیکی است."
+      "en": "The reason for her call is a small yellow chicken near the university.",
+      "fa": "دلیل تماسش یک جوجه‌ی زرد کوچک نزدیک دانشگاه است."
     },
     {
-      "en": "Mina knows every false lead can become a problem.",
-      "fa": "مینا می‌داند هر سرنخ اشتباه می‌تواند مشکل شود."
+      "en": "Mina knows every false report can become a problem.",
+      "fa": "مینا می‌داند هر گزارش اشتباه می‌تواند مشکل شود."
     },
     {
       "en": "Still, the situation is important enough to check.",
       "fa": "با این حال، وضعیت آن‌قدر مهم هست که بررسی شود."
     },
     {
-      "en": "Their next action is to visit the university immediately.",
-      "fa": "اقدام بعدی‌شان این است که فوراً به دانشگاه بروند."
+      "en": "Their next action is to visit the university now.",
+      "fa": "اقدام بعدی‌شان این است که همین حالا به دانشگاه بروند."
     },
     {
-      "en": "The activity gives Mina hope, even though she stays careful.",
-      "fa": "این فعالیت به مینا امید می‌دهد، هرچند محتاط می‌ماند."
+      "en": "The activity gives Mina hope, but she still checks every detail.",
+      "fa": "این فعالیت به مینا امید می‌دهد، اما هنوز هر جزئیات را بررسی می‌کند."
     },
     {
       "en": "The main thing is to see the chicken closely.",
@@ -68,56 +65,56 @@
       "fa": "در راه، مینا می‌پرسد زن چه جور جوجه‌ای پیدا کرده است."
     },
     {
-      "en": "Dad asks what special markings the chicken has.",
-      "fa": "بابا می‌پرسد جوجه چه نشانه‌های خاصی دارد."
+      "en": "Dad asks what special colors the chicken has.",
+      "fa": "بابا می‌پرسد جوجه چه رنگ‌های خاصی دارد."
     },
     {
-      "en": "The scientist says the chicken is small, black, and young.",
-      "fa": "دانشمند می‌گوید جوجه کوچک، سیاه و جوان است."
+      "en": "The scientist says the chicken is small, yellow, and young.",
+      "fa": "دانشمند می‌گوید جوجه کوچک، زرد و جوان است."
     },
     {
       "en": "The university sits in an older part of the city.",
       "fa": "دانشگاه در بخش قدیمی‌تر شهر قرار دارد."
     },
     {
-      "en": "One part of Mina's search plan is checking every serious call.",
-      "fa": "یک بخش از برنامه‌ی جست‌وجوی مینا بررسی هر تماس جدی است."
+      "en": "One part of Mina's plan is checking every important call.",
+      "fa": "یک بخش از برنامه‌ی مینا بررسی هر تماس مهم است."
     },
     {
-      "en": "This visit becomes the biggest event of her evening.",
-      "fa": "این دیدار به بزرگ‌ترین رویداد عصرش تبدیل می‌شود."
+      "en": "This visit becomes the most important event of her evening.",
+      "fa": "این دیدار به مهم‌ترین رویداد عصرش تبدیل می‌شود."
     },
     {
       "en": "Mina hopes the event will finally bring success.",
       "fa": "مینا امیدوار است این رویداد بالاخره موفقیت بیاورد."
     },
     {
-      "en": "They arrive at the laboratory and meet the scientist.",
-      "fa": "به آزمایشگاه می‌رسند و دانشمند را می‌بینند."
+      "en": "They arrive at a university room and meet the scientist.",
+      "fa": "به یک اتاق دانشگاه می‌رسند و دانشمند را می‌بینند."
     },
     {
-      "en": "A small yellow chicken is waiting inside a low pen.",
-      "fa": "یک جوجه‌ی زرد کوچک داخل یک محوطه‌ی کوتاه منتظر است."
+      "en": "A small yellow chicken is waiting in a small pen.",
+      "fa": "یک جوجه‌ی زرد کوچک در یک محوطه‌ی کوچک منتظر است."
     },
     {
-      "en": "Its feather color is almost exactly like Nino's.",
-      "fa": "رنگ پرهایش تقریباً دقیقاً شبیه رنگ نینو است."
+      "en": "Its yellow color is very much like Nino's.",
+      "fa": "رنگ زردش خیلی شبیه رنگ نینو است."
     },
     {
       "en": "A small blue band is around the chicken's leg.",
       "fa": "یک حلقه‌ی آبی کوچک دور پای جوجه است."
     },
     {
-      "en": "The card has another family's phone number on it.",
-      "fa": "روی کارت شماره تلفن خانواده‌ی دیگری نوشته شده است."
+      "en": "The card has another family's phone on it.",
+      "fa": "روی کارت تلفن خانواده‌ی دیگری نوشته شده است."
     },
     {
-      "en": "Mina looks at the face and knows the truth.",
-      "fa": "مینا به چهره نگاه می‌کند و حقیقت را می‌فهمد."
+      "en": "Mina looks at the face and knows it is not Nino.",
+      "fa": "مینا به چهره نگاه می‌کند و می‌فهمد نینو نیست."
     },
     {
-      "en": "This chicken is not Nino, and the answer hurts.",
-      "fa": "این جوجه نینو نیست و این جواب دردناک است."
+      "en": "This chicken is not Nino, and Mina feels sad.",
+      "fa": "این جوجه نینو نیست و مینا ناراحت می‌شود."
     },
     {
       "en": "The scientist says she is sorry about the mistake.",
@@ -128,8 +125,8 @@
       "fa": "بعد به یک شیء کوچک روی میز اشاره می‌کند."
     },
     {
-      "en": "The object is a simple model of a bird.",
-      "fa": "آن شیء یک ماکت ساده‌ی پرنده است."
+      "en": "The object is a small model of a bird.",
+      "fa": "آن شیء یک ماکت کوچک از پرنده است."
     },
     {
       "en": "The model was made for a university project.",
@@ -140,39 +137,39 @@
       "fa": "دانشمند ماکت را به عنوان هدیه به مینا می‌دهد."
     },
     {
-      "en": "Mina accepts the present and thanks her quietly.",
-      "fa": "مینا هدیه را می‌پذیرد و آرام تشکر می‌کند."
+      "en": "Mina takes the present and thanks her quietly.",
+      "fa": "مینا هدیه را می‌گیرد و آرام تشکر می‌کند."
     },
     {
-      "en": "A red umbrella stands beside the laboratory door.",
-      "fa": "یک چتر قرمز کنار درِ آزمایشگاه قرار دارد."
+      "en": "A red umbrella stands next to the university room door.",
+      "fa": "یک چتر قرمز کنار درِ اتاق دانشگاه قرار دارد."
     },
     {
-      "en": "Mina leaves her wet umbrella next to it.",
-      "fa": "مینا چتر خیسش را کنار آن می‌گذارد."
+      "en": "Mina leaves her umbrella next to it.",
+      "fa": "مینا چترش را کنار آن می‌گذارد."
     },
     {
-      "en": "A white cup sits near the edge of a desk.",
-      "fa": "یک فنجان سفید نزدیک لبه‌ی میز است."
+      "en": "A white cup sits on a desk.",
+      "fa": "یک فنجان سفید روی میز است."
     },
     {
-      "en": "The chicken hops up and touches the cup.",
-      "fa": "جوجه بالا می‌پرد و به فنجان می‌خورد."
+      "en": "The chicken moves near the cup.",
+      "fa": "جوجه نزدیک فنجان حرکت می‌کند."
     },
     {
-      "en": "The cup starts to fall toward the floor.",
-      "fa": "فنجان شروع می‌کند به افتادن به سمت زمین."
+      "en": "The cup starts to fall to the floor.",
+      "fa": "فنجان شروع می‌کند به افتادن روی زمین."
     },
     {
-      "en": "The scientist catches it before it can break.",
+      "en": "The scientist takes it before it can break.",
       "fa": "دانشمند پیش از اینکه بشکند آن را می‌گیرد."
     },
     {
-      "en": "Everyone smiles because the cup is safe.",
-      "fa": "همه لبخند می‌زنند چون فنجان سالم است."
+      "en": "Everyone is happy because the cup does not break.",
+      "fa": "همه خوشحال‌اند چون فنجان نمی‌شکند."
     },
     {
-      "en": "Mina asks whether the visit was a success.",
+      "en": "Mina asks if the visit was a success.",
       "fa": "مینا می‌پرسد آیا این دیدار موفقیت بود."
     },
     {
@@ -180,64 +177,64 @@
       "fa": "بابا می‌گوید در پیدا کردن نینو موفقیت نبود."
     },
     {
-      "en": "However, the reason for checking the clue was still good.",
-      "fa": "با این حال، دلیل بررسی سرنخ هنوز خوب بود."
+      "en": "However, the reason for checking the information was still good.",
+      "fa": "با این حال، دلیل بررسی اطلاعات هنوز خوب بود."
     },
     {
-      "en": "The situation is clearer because this chicken is identified.",
-      "fa": "وضعیت روشن‌تر است چون هویت این جوجه مشخص شده است."
+      "en": "The situation is better because they know this chicken's family.",
+      "fa": "وضعیت بهتر است چون خانواده‌ی این جوجه را می‌شناسند."
     },
     {
-      "en": "Their next action is to mark the university as checked.",
-      "fa": "اقدام بعدی‌شان این است که دانشگاه را بررسی‌شده علامت بزنند."
+      "en": "Their next action is to put the university in the checked section of the plan.",
+      "fa": "اقدام بعدی‌شان این است که دانشگاه را در بخش بررسی‌شده‌ی برنامه قرار دهند."
     },
     {
-      "en": "Mina adds that activity to her red-book search record.",
-      "fa": "مینا آن فعالیت را به ثبت جست‌وجوی کتاب قرمزش اضافه می‌کند."
+      "en": "Mina adds that activity to her red book.",
+      "fa": "مینا آن فعالیت را به کتاب قرمزش اضافه می‌کند."
     },
     {
       "en": "One useful thing she learned is to check leg band details first.",
       "fa": "یک چیز مفید که یاد گرفت این است که اول جزئیات حلقه‌ی کوچک پا را بررسی کند."
     },
     {
-      "en": "This type of detail can save time on future calls.",
-      "fa": "این نوع جزئیات می‌تواند در تماس‌های آینده وقت ذخیره کند."
+      "en": "This type of detail can help on future calls.",
+      "fa": "این نوع جزئیات می‌تواند در تماس‌های آینده کمک کند."
     },
     {
-      "en": "The same kind of careful check will help with every lead.",
-      "fa": "همین نوع بررسی دقیق برای هر سرنخ کمک خواهد کرد."
+      "en": "The same kind of good check will help with every report.",
+      "fa": "همین نوع بررسی خوب برای هر گزارش کمک خواهد کرد."
     },
     {
       "en": "Mina writes the event in her book before leaving.",
       "fa": "مینا پیش از رفتن رویداد را در کتابش می‌نویسد."
     },
     {
-      "en": "The scientist gives her a card with the laboratory number.",
-      "fa": "دانشمند کارتی با شماره آزمایشگاه به او می‌دهد."
+      "en": "The scientist gives her a card with the university phone.",
+      "fa": "دانشمند کارتی با تلفن دانشگاه به او می‌دهد."
     },
     {
-      "en": "\"Call if you need help identifying another found bird,\" she says.",
-      "fa": "می‌گوید: «اگر برای شناسایی پرنده‌ی پیدا‌شده‌ی دیگری کمک خواستی تماس بگیر.»"
+      "en": "\"Call if you need help with another bird,\" she says.",
+      "fa": "می‌گوید: «اگر برای پرنده‌ی دیگری کمک خواستی تماس بگیر.»"
     },
     {
       "en": "The family leaves the university with the small model.",
       "fa": "خانواده با ماکت کوچک دانشگاه را ترک می‌کند."
     },
     {
-      "en": "Mina carries the present carefully inside her bag.",
-      "fa": "مینا هدیه را با دقت داخل کیفش حمل می‌کند."
+      "en": "Mina carries the present in her bag.",
+      "fa": "مینا هدیه را داخل کیفش حمل می‌کند."
     },
     {
-      "en": "She picks up her umbrella before stepping outside.",
+      "en": "She takes her umbrella before going outside.",
       "fa": "پیش از بیرون رفتن چترش را برمی‌دارد."
     },
     {
-      "en": "The cup stays safely on the desk and does not break.",
-      "fa": "فنجان با امنیت روی میز می‌ماند و نمی‌شکند."
+      "en": "The cup stays on the desk and does not break.",
+      "fa": "فنجان روی میز می‌ماند و نمی‌شکند."
     },
     {
-      "en": "Another clue is closed, but Mina continues the search.",
-      "fa": "سرنخ دیگری بسته می‌شود، اما مینا جست‌وجو را ادامه می‌دهد."
+      "en": "Another report is closed, but Mina keeps looking for Nino.",
+      "fa": "گزارش دیگری بسته می‌شود، اما مینا همچنان دنبال نینو می‌گردد."
     }
   ],
   "check": [

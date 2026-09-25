@@ -5,32 +5,31 @@
   "titleFa": "بازار",
   "titleEn": "The Market",
   "new": [
-    "market",
-    "shop",
-    "shopping",
     "store",
     "supermarket",
-    "food",
-    "fruit",
     "vegetable",
+    "buy",
     "apple",
     "banana",
-    "orange",
+    "like",
     "carrot",
     "potato",
     "tomato",
     "onion",
+    "cut",
     "salad",
-    "rice",
-    "meat",
     "cat",
     "fish",
-    "buy",
-    "sell",
+    "rice",
+    "compare",
+    "price",
     "cheap",
+    "meat",
     "expensive",
-    "black",
-    "white"
+    "ice",
+    "sell",
+    "pay",
+    "money"
   ],
   "sentences": [
     {
@@ -50,7 +49,7 @@
       "fa": "مینا معمولاً از خرید با مامان لذت می‌برد، اما امروز مدام دنبال نینو می‌گردد."
     },
     {
-      "en": "They enter a small store near the market.",
+      "en": "They go into a small store near the market.",
       "fa": "آن‌ها وارد یک فروشگاه کوچک نزدیک بازار می‌شوند."
     },
     {
@@ -70,68 +69,68 @@
       "fa": "از بخش میوه شروع می‌کنند چون نزدیک‌ترین قسمت به در است."
     },
     {
-      "en": "Mom picks a red apple while Mina checks beneath the display.",
-      "fa": "مامان یک سیب قرمز برمی‌دارد و مینا زیر قفسه را بررسی می‌کند."
+      "en": "Mom takes a red apple, and Mina checks under the fruit table.",
+      "fa": "مامان یک سیب قرمز برمی‌دارد و مینا زیر میز میوه را بررسی می‌کند."
     },
     {
-      "en": "Mina chooses a banana and then glances toward a movement near the baskets.",
-      "fa": "مینا یک موز انتخاب می‌کند و بعد به حرکتی نزدیک سبدها نگاه می‌کند."
+      "en": "Mina chooses a banana and then looks at something moving near the bags.",
+      "fa": "مینا یک موز انتخاب می‌کند و بعد به چیزی که نزدیک کیسه‌ها حرکت می‌کند نگاه می‌کند."
     },
     {
-      "en": "The banana is bright yellow, almost the color of the shop sign.",
-      "fa": "موز زرد روشن است، تقریباً هم‌رنگ تابلوی مغازه."
+      "en": "The banana is yellow, like Nino.",
+      "fa": "موز زرد است، مثل نینو."
     },
     {
-      "en": "She also takes an orange while Mom checks the shopping list.",
-      "fa": "هم‌زمان که مامان فهرست خرید را بررسی می‌کند، یک پرتقال هم برمی‌دارد."
+      "en": "She also takes an orange, and Mom checks the shopping list.",
+      "fa": "او یک پرتقال هم برمی‌دارد و مامان فهرست خرید را بررسی می‌کند."
     },
     {
-      "en": "The orange smells fresh, and Mina remembers how Nino looks into every bag.",
-      "fa": "پرتقال بوی تازه‌ای دارد و مینا یادش می‌آید نینو داخل هر کیسه‌ای را نگاه می‌کند."
+      "en": "Mina looks at the orange and remembers how Nino looks into every bag.",
+      "fa": "مینا به پرتقال نگاه می‌کند و یادش می‌آید نینو داخل هر کیسه‌ای را نگاه می‌کند."
     },
     {
-      "en": "Next they move to the vegetable section beside the cold shelves.",
-      "fa": "بعد به بخش سبزیجات کنار قفسه‌های سرد می‌روند."
+      "en": "Next they move to the vegetable section near the cold food.",
+      "fa": "بعد به بخش سبزیجات نزدیک غذاهای سرد می‌روند."
     },
     {
-      "en": "Mom puts a carrot in the basket while Mina looks behind a box.",
-      "fa": "مامان یک هویج در سبد می‌گذارد و مینا پشت جعبه‌ای را نگاه می‌کند."
+      "en": "Mom puts a carrot in the bag, and Mina looks behind a box.",
+      "fa": "مامان یک هویج در کیسه می‌گذارد و مینا پشت جعبه‌ای را نگاه می‌کند."
     },
     {
-      "en": "She adds some potato pieces from a large open sack.",
-      "fa": "چند سیب‌زمینی هم از کیسه‌ی بزرگ و باز اضافه می‌کند."
+      "en": "She adds some potato pieces from a large open bag.",
+      "fa": "چند تکه سیب‌زمینی هم از یک کیسه‌ی بزرگ و باز اضافه می‌کند."
     },
     {
-      "en": "Mina finds a red tomato and rolls it gently into the basket.",
-      "fa": "مینا یک گوجه‌ی قرمز پیدا می‌کند و آرام داخل سبد می‌گذارد."
+      "en": "Mina finds a red tomato and puts it in the bag.",
+      "fa": "مینا یک گوجه‌ی قرمز پیدا می‌کند و داخل کیسه می‌گذارد."
     },
     {
-      "en": "Mom chooses an onion from the pile beside the tomatoes.",
-      "fa": "مامان از توده‌ی کنار گوجه‌ها یک پیاز انتخاب می‌کند."
+      "en": "Mom chooses an onion from next to the tomatoes.",
+      "fa": "مامان از کنار گوجه‌ها یک پیاز انتخاب می‌کند."
     },
     {
-      "en": "The onion is white inside its thin brown skin.",
-      "fa": "پیاز زیر پوست نازک قهوه‌ای‌اش سفید است."
+      "en": "The onion is white when Mom cuts it.",
+      "fa": "وقتی مامان پیاز را می‌بُرد، داخلش سفید است."
     },
     {
-      "en": "Mom says the carrot, tomato, and onion will make a fresh salad.",
-      "fa": "مامان می‌گوید هویج، گوجه و پیاز یک سالاد تازه می‌سازند."
+      "en": "Mom says the carrot, tomato, and onion will make a good salad.",
+      "fa": "مامان می‌گوید هویج، گوجه و پیاز یک سالاد خوب می‌سازند."
     },
     {
       "en": "Mina helps carry the fruit and vegetables.",
       "fa": "مینا کمک می‌کند میوه‌ها و سبزیجات را حمل کنند."
     },
     {
-      "en": "Between them, Mina sees a black-and-white cat.",
-      "fa": "میان آن‌ها، مینا یک گربه‌ی سیاه‌وسفید می‌بیند."
+      "en": "Between them, Mina sees a black and white cat.",
+      "fa": "میان آن‌ها، مینا یک گربه‌ی سیاه و سفید می‌بیند."
     },
     {
-      "en": "The cat watches the fish stall while Mina keeps looking for Nino.",
-      "fa": "گربه به غرفه‌ی ماهی نگاه می‌کند و مینا همچنان دنبال نینو می‌گردد."
+      "en": "The cat watches the fish shop, and Mina keeps looking for Nino.",
+      "fa": "گربه به مغازه‌ی ماهی نگاه می‌کند و مینا همچنان دنبال نینو می‌گردد."
     },
     {
-      "en": "A little yellow chicken appears behind a basket, but it is not Nino.",
-      "fa": "یک جوجه‌ی زرد کوچک پشت سبد پیدا می‌شود، اما نینو نیست."
+      "en": "A little yellow chicken comes from behind a bag, but it is not Nino.",
+      "fa": "یک جوجه‌ی زرد کوچک از پشت کیسه‌ای می‌آید، اما نینو نیست."
     },
     {
       "en": "Mina feels sad and goes back to Mom.",
@@ -142,19 +141,19 @@
       "fa": "مامان بعد از مقایسه‌ی دو قیمت یک کیسه برنج می‌خرد."
     },
     {
-      "en": "The rice is cheap today, so she puts it straight into the cart.",
-      "fa": "برنج امروز ارزان است، پس آن را مستقیم داخل چرخ خرید می‌گذارد."
+      "en": "The rice is cheap today, so she puts it in the shopping bag.",
+      "fa": "برنج امروز ارزان است، پس آن را داخل کیسه‌ی خرید می‌گذارد."
     },
     {
-      "en": "At the meat counter, Mina pauses because another black shape moves nearby.",
-      "fa": "کنار بخش گوشت، مینا مکث می‌کند چون شکل سیاه دیگری نزدیک حرکت می‌کند."
+      "en": "Near the meat, Mina stops because something black moves near her.",
+      "fa": "نزدیک گوشت، مینا می‌ایستد چون چیزی سیاه نزدیک او حرکت می‌کند."
     },
     {
       "en": "The meat is expensive, and Mom decides to buy only a little.",
       "fa": "گوشت گران است و مامان تصمیم می‌گیرد فقط کمی بخرد."
     },
     {
-      "en": "The chicken is cheaper, so Mom chooses that for dinner instead.",
+      "en": "The chicken is cheaper, so Mom chooses that for dinner.",
       "fa": "مرغ ارزان‌تر است، پس مامان آن را برای شام انتخاب می‌کند."
     },
     {
@@ -162,8 +161,8 @@
       "fa": "مامان کمی مرغ برای شام می‌خرد."
     },
     {
-      "en": "Fresh fish lies on ice at the next counter, shining under the lights.",
-      "fa": "ماهی تازه روی یخ در پیشخوان بعدی زیر نور می‌درخشد."
+      "en": "Fish is on ice under the lights.",
+      "fa": "ماهی روی یخ زیر چراغ‌هاست."
     },
     {
       "en": "The fish is expensive, but Mina thinks about the rice Nino likes.",
@@ -174,8 +173,8 @@
       "fa": "مینا به برنج نگاه می‌کند و به نینو فکر می‌کند."
     },
     {
-      "en": "A man near the exit sells fruit from a wooden stand.",
-      "fa": "مردی نزدیک خروجی از یک غرفه‌ی چوبی میوه می‌فروشد."
+      "en": "A man near the door sells fruit from a small table.",
+      "fa": "مردی نزدیک در از یک میز کوچک میوه می‌فروشد."
     },
     {
       "en": "He can sell apples and oranges all day because the market stays busy.",
@@ -194,15 +193,15 @@
       "fa": "مرد می‌گوید گاهی نزدیک بازار جوجه‌های کوچک می‌بیند."
     },
     {
-      "en": "Mom pays for the shopping while Mina asks the cashier about a little yellow chicken.",
-      "fa": "مامان پول خرید را می‌دهد و مینا از صندوق‌دار درباره‌ی یک جوجه‌ی زرد کوچک می‌پرسد."
+      "en": "Mom pays for the shopping, and Mina asks the person taking the money about a little yellow chicken.",
+      "fa": "مامان پول خرید را می‌دهد و مینا از فردی که پول را می‌گیرد درباره‌ی یک جوجه‌ی زرد کوچک می‌پرسد."
     },
     {
       "en": "Mina carries one bag from the shop.",
       "fa": "مینا یک کیسه را از مغازه حمل می‌کند."
     },
     {
-      "en": "Her bag has fruit and vegetables inside.",
+      "en": "Her bag has fruit and vegetables in it.",
       "fa": "در کیسه‌ی او میوه و سبزیجات است."
     },
     {
@@ -214,7 +213,7 @@
       "fa": "آن‌ها از سوپرمارکت بیرون می‌آیند و دوباره به مغازه‌ها نگاه می‌کنند."
     },
     {
-      "en": "\"Maybe Nino is near the next shop,\" Mina says as they step back into the market.",
+      "en": "\"Maybe Nino is near the next shop,\" Mina says as they go back into the market.",
       "fa": "مینا وقتی دوباره وارد بازار می‌شوند می‌گوید: «شاید نینو نزدیک مغازه‌ی بعدی باشد.»"
     }
   ],

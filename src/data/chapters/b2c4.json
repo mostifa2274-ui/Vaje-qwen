@@ -5,30 +5,40 @@
   "titleFa": "آواز در خیابان",
   "titleEn": "Music in the Street",
   "new": [
-    "cafe",
     "restaurant",
+    "hungry",
     "waiter",
     "police",
     "policeman",
     "music",
-    "song",
     "sing",
+    "song",
     "singer",
+    "famous",
+    "neighborhood",
     "guitar",
     "piano",
     "band",
     "dance",
-    "dancing",
     "dancer",
+    "dancing",
+    "post",
     "concert",
+    "area",
     "actor",
     "actress",
-    "famous",
+    "introduce",
+    "study",
     "artist",
+    "draw",
     "writer",
     "reader",
+    "talk",
+    "read",
+    "word",
     "art",
-    "draw"
+    "most",
+    "orange"
   ],
   "sentences": [
     {
@@ -72,7 +82,7 @@
       "fa": "پلیس می‌گوید: «من دنبال او می‌گردم.»"
     },
     {
-      "en": "Then lively music reaches Mina from the street outside the restaurant.",
+      "en": "Then Mina hears music from the street outside the restaurant.",
       "fa": "بعد موسیقی پرنشاطی از خیابان بیرون رستوران به گوش مینا می‌رسد."
     },
     {
@@ -80,7 +90,7 @@
       "fa": "مینا و مامان می‌ایستند و به موسیقی گوش می‌دهند."
     },
     {
-      "en": "A man on the corner begins to sing a bright song.",
+      "en": "A man in the street begins to sing a good song.",
       "fa": "مردی در گوشه‌ی خیابان شروع می‌کند یک آهنگ شاد بخواند."
     },
     {
@@ -88,15 +98,15 @@
       "fa": "آهنگ شاد است و مردم می‌ایستند تا گوش کنند."
     },
     {
-      "en": "The singer smiles at the people.",
+      "en": "The singer looks happy.",
       "fa": "خواننده به مردم لبخند می‌زند."
     },
     {
-      "en": "The singer is famous in the neighborhood, so a crowd quickly forms.",
+      "en": "The singer is famous in the neighborhood, so many people come.",
       "fa": "خواننده در محله مشهور است، پس خیلی زود جمعیتی دورش شکل می‌گیرد."
     },
     {
-      "en": "A man beside her plays the guitar.",
+      "en": "A man next to her plays the guitar.",
       "fa": "مردی کنار او گیتار می‌نوازد."
     },
     {
@@ -108,11 +118,11 @@
       "fa": "زن دیگری پیانو می‌نوازد."
     },
     {
-      "en": "The black piano stands on a small platform beside the cafe.",
+      "en": "The black piano is in front of the cafe.",
       "fa": "پیانوی سیاه روی سکوی کوچکی کنار کافه قرار دارد."
     },
     {
-      "en": "Together, the singer, guitarist, and pianist make a small band.",
+      "en": "Together, the singer, a man with a guitar, and a man at the piano make a small band.",
       "fa": "خواننده، نوازنده‌ی گیتار و نوازنده‌ی پیانو با هم یک گروه کوچک تشکیل می‌دهند."
     },
     {
@@ -120,15 +130,15 @@
       "fa": "گروه آهنگ دیگری می‌نوازد."
     },
     {
-      "en": "When the next song begins, a young male dancer starts to dance.",
+      "en": "When the next song begins, a young man starts to dance.",
       "fa": "وقتی آهنگ بعدی شروع می‌شود، یک رقاص جوان مرد شروع به رقصیدن می‌کند."
     },
     {
-      "en": "Mina and Mom clap to the music.",
+      "en": "Mina and Mom move with the music.",
       "fa": "مینا و مامان با موسیقی دست می‌زنند."
     },
     {
-      "en": "The dancer's dancing makes Mina smile for the first time that afternoon.",
+      "en": "The dancer's dancing makes Mina happy for the first time that afternoon.",
       "fa": "رقصِ آن رقاص برای اولین بار آن بعدازظهر مینا را لبخند می‌اندازد."
     },
     {
@@ -136,7 +146,7 @@
       "fa": "یک رقاص جوان نزدیک گروه حرکت می‌کند."
     },
     {
-      "en": "The dancer moves so well that children clap for him.",
+      "en": "The dancer moves so well that the children are happy.",
       "fa": "رقاص آن‌قدر خوب حرکت می‌کند که بچه‌ها برایش دست می‌زنند."
     },
     {
@@ -144,7 +154,7 @@
       "fa": "روی یک پوستر نوشته شده است: «کنسرت در پارک»."
     },
     {
-      "en": "Mina and Mom follow the music toward the small concert area.",
+      "en": "Mina and Mom follow the music to the small concert area.",
       "fa": "مینا و مامان صدای موسیقی را تا محل کوچک کنسرت دنبال می‌کنند."
     },
     {
@@ -156,11 +166,11 @@
       "fa": "بازیگر یک داستان کوتاه تعریف می‌کند."
     },
     {
-      "en": "An actress joins the actor and asks the crowd to listen closely.",
+      "en": "An actress joins the actor and asks the people to listen.",
       "fa": "یک بازیگر زن به بازیگر مرد ملحق می‌شود و از جمعیت می‌خواهد با دقت گوش کنند."
     },
     {
-      "en": "The actress introduces the next song to the crowd.",
+      "en": "The actress introduces the next song to the people.",
       "fa": "بازیگر زن آهنگ بعدی را به جمعیت معرفی می‌کند."
     },
     {
@@ -176,7 +186,7 @@
       "fa": "مینا نقاشی کردن هنرمند را تماشا می‌کند."
     },
     {
-      "en": "A writer sits beside the artist and records small stories from the street.",
+      "en": "A writer sits next to the artist and writes small stories from the street.",
       "fa": "نویسنده‌ای کنار هنرمند می‌نشیند و داستان‌های کوچک خیابان را یادداشت می‌کند."
     },
     {
@@ -184,7 +194,7 @@
       "fa": "نویسنده در یک کتاب کوچک می‌نویسد."
     },
     {
-      "en": "A young reader nearby looks up from her book when Mina mentions Nino.",
+      "en": "A young reader near them looks up from her book when Mina talks about Nino.",
       "fa": "کتاب‌خوان جوانی که نزدیک نشسته با شنیدن نام نینو سرش را از کتاب بالا می‌آورد."
     },
     {
@@ -204,7 +214,7 @@
       "fa": "مینا تصمیم می‌گیرد چهره‌ای را بکشد که بیشتر از همه می‌خواهد همه به خاطر بسپارند."
     },
     {
-      "en": "She draws a small yellow chicken with an orange beak and one white wing feather.",
+      "en": "She draws a small yellow chicken with orange on its face and a small white part on the left.",
       "fa": "او یک جوجه‌ی زرد کوچک با نوک نارنجی و یک پر سفید روی بال می‌کشد."
     },
     {
@@ -212,7 +222,7 @@
       "fa": "مینا تصویر را به مردم اطرافش نشان می‌دهد و می‌گوید: «این نینو است.»"
     },
     {
-      "en": "The music continues while Mina draws.",
+      "en": "The music plays, and Mina draws.",
       "fa": "وقتی مینا نقاشی می‌کند، موسیقی ادامه دارد."
     }
   ],

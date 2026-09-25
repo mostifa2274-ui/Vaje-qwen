@@ -5,33 +5,17 @@
   "titleFa": "پول",
   "titleEn": "Money",
   "new": [
-    "money",
     "bank",
-    "bill",
-    "cent",
+    "menu",
     "cost",
     "dollar",
     "euro",
-    "free",
-    "pay",
-    "pound",
-    "price",
     "product",
-    "customer",
-    "order",
-    "menu",
-    "another",
-    "each",
-    "both",
-    "other",
-    "else",
-    "only",
-    "very",
-    "also",
-    "even",
-    "bag",
-    "bottle",
-    "box"
+    "free",
+    "bill",
+    "pound",
+    "cent",
+    "correct"
   ],
   "sentences": [
     {
@@ -39,7 +23,7 @@
       "fa": "مینا و مامان جلوی کافه‌ای کوچک نزدیک بازار می‌ایستند."
     },
     {
-      "en": "Mom checks the money in her bag before they go inside.",
+      "en": "Mom checks the money in her bag before they go in.",
       "fa": "مامان پیش از ورود پول داخل کیفش را بررسی می‌کند."
     },
     {
@@ -47,7 +31,7 @@
       "fa": "آن‌ها تازه از بانک آمده‌اند."
     },
     {
-      "en": "A customer at the door holds it open for them.",
+      "en": "A customer at the door keeps it open for them.",
       "fa": "مشتری‌ای کنار در آن را برایشان باز نگه می‌دارد."
     },
     {
@@ -55,7 +39,7 @@
       "fa": "مینا جایی می‌نشیند که بتواند خیابان را برای نینو زیر نظر بگیرد."
     },
     {
-      "en": "The menu is on the table beside a bottle of water.",
+      "en": "The menu is on the table next to a bottle of water.",
       "fa": "منو روی میز کنار یک بطری آب است."
     },
     {
@@ -71,51 +55,51 @@
       "fa": "یک تکه کیک دو یورو قیمت دارد."
     },
     {
-      "en": "Another product on the menu is fresh bread.",
-      "fa": "محصول دیگری در منو نان تازه است."
+      "en": "Another product on the menu is bread.",
+      "fa": "محصول دیگری در منو نان است."
     },
     {
       "en": "Mina asks how much the bread will cost.",
       "fa": "مینا می‌پرسد نان چقدر هزینه دارد."
     },
     {
-      "en": "The waiter smiles and says the bread is free for her.",
-      "fa": "پیشخدمت لبخند می‌زند و می‌گوید نان برای او رایگان است."
+      "en": "The waiter is happy and says the bread is free for her.",
+      "fa": "پیشخدمت خوشحال است و می‌گوید نان برای او رایگان است."
     },
     {
-      "en": "\"Free?\" Mina asks, surprised.",
-      "fa": "«رایگان؟» مینا با تعجب می‌پرسد."
+      "en": "\"Free?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «رایگان؟»"
     },
     {
       "en": "He has heard about Nino and wants to help.",
       "fa": "او ماجرای نینو را شنیده و می‌خواهد کمک کند."
     },
     {
-      "en": "Mom still has to pay the rest of the bill.",
-      "fa": "مامان هنوز باید بقیه‌ی صورتحساب را پرداخت کند."
+      "en": "Mom still has to pay the other part of the bill.",
+      "fa": "مامان هنوز باید بخش دیگر صورتحساب را پرداخت کند."
     },
     {
       "en": "She checks the bill before she pays.",
       "fa": "پیش از پرداخت، صورتحساب را بررسی می‌کند."
     },
     {
-      "en": "The final cost is written clearly at the bottom.",
-      "fa": "هزینه‌ی نهایی به‌وضوح پایین صورتحساب نوشته شده است."
+      "en": "The final cost is written on the bill.",
+      "fa": "هزینه‌ی نهایی روی صورتحساب نوشته شده است."
     },
     {
       "en": "Mom can pay in dollar, euro, or pound notes.",
       "fa": "مامان می‌تواند با اسکناس دلار، یورو یا پوند پرداخت کند."
     },
     {
-      "en": "She also has a few cent coins in her bag.",
-      "fa": "چند سکه‌ی سنت هم در کیفش دارد."
+      "en": "She also has a few cents in her bag.",
+      "fa": "چند سنت هم در کیفش دارد."
     },
     {
-      "en": "A pound coin rolls near Mina's shoe.",
-      "fa": "یک سکه‌ی پوند نزدیک کفش مینا می‌غلتد."
+      "en": "One pound is near Mina's shoe.",
+      "fa": "یک پوند نزدیک کفش میناست."
     },
     {
-      "en": "Mina picks it up and gives it back to Mom.",
+      "en": "Mina takes it and gives it back to Mom.",
       "fa": "مینا آن را برمی‌دارد و به مامان پس می‌دهد."
     },
     {
@@ -139,8 +123,8 @@
       "fa": "پیشخدمت برای هر نفر یک لیوان تمیز می‌آورد."
     },
     {
-      "en": "Mina asks for another bottle because theirs is almost empty.",
-      "fa": "مینا یک بطری دیگر می‌خواهد چون بطری‌شان تقریباً خالی است."
+      "en": "Mina asks for another bottle because their bottle has little water.",
+      "fa": "مینا یک بطری دیگر می‌خواهد چون بطری آن‌ها آب کمی دارد."
     },
     {
       "en": "The waiter brings a cold bottle and a small box.",
@@ -151,12 +135,12 @@
       "fa": "جعبه برای کیکی است که مامان می‌خواهد به خانه ببرد."
     },
     {
-      "en": "Mina watches the street while Mom finishes the order.",
+      "en": "Mina watches the street, and Mom finishes the order.",
       "fa": "مینا خیابان را نگاه می‌کند و مامان سفارش را کامل می‌کند."
     },
     {
-      "en": "Two chickens appear beside a market stall.",
-      "fa": "دو جوجه کنار یک غرفه‌ی بازار پیدا می‌شوند."
+      "en": "Two chickens come near a market shop.",
+      "fa": "دو جوجه نزدیک یک مغازه‌ی بازار می‌آیند."
     },
     {
       "en": "Both chickens turn when Mina calls Nino.",
@@ -167,52 +151,52 @@
       "fa": "یکی از جوجه‌ها قهوه‌ای روشن است و دیگری سفید."
     },
     {
-      "en": "Neither one is Nino.",
-      "fa": "هیچ‌کدام نینو نیستند."
+      "en": "They are not Nino.",
+      "fa": "آن‌ها نینو نیستند."
     },
     {
       "en": "Mina asks, \"Is there anything else I should check?\"",
       "fa": "مینا می‌پرسد: «جای دیگری هست که باید بررسی کنم؟»"
     },
     {
-      "en": "The waiter says there is another alley behind the cafe.",
-      "fa": "پیشخدمت می‌گوید کوچه‌ی دیگری پشت کافه هست."
+      "en": "The waiter says there is another small street behind the cafe.",
+      "fa": "پیشخدمت می‌گوید خیابان کوچک دیگری پشت کافه هست."
     },
     {
-      "en": "Only staff usually use that alley.",
-      "fa": "معمولاً فقط کارکنان از آن کوچه استفاده می‌کنند."
+      "en": "Only people who work there usually use that small street.",
+      "fa": "معمولاً فقط افرادی که آنجا کار می‌کنند از آن خیابان کوچک استفاده می‌کنند."
     },
     {
-      "en": "He takes Mina there because the search is very important.",
-      "fa": "او مینا را به آنجا می‌برد چون جست‌وجو خیلی مهم است."
+      "en": "He takes Mina there because looking for Nino is very important.",
+      "fa": "او مینا را به آنجا می‌برد چون پیدا کردن نینو خیلی مهم است."
     },
     {
       "en": "Even the cook comes outside to look.",
       "fa": "حتی آشپز هم برای جست‌وجو بیرون می‌آید."
     },
     {
-      "en": "The cook also checks behind several boxes.",
-      "fa": "آشپز چند جعبه را هم نگاه می‌کند."
+      "en": "The cook also checks behind some boxes.",
+      "fa": "آشپز پشت چند جعبه را هم بررسی می‌کند."
     },
     {
-      "en": "They find an empty bag but no chicken.",
-      "fa": "یک کیف خالی پیدا می‌کنند، اما جوجه‌ای نیست."
+      "en": "They find a bag but no chicken.",
+      "fa": "یک کیف پیدا می‌کنند، اما جوجه‌ای نیست."
     },
     {
-      "en": "Mina feels disappointed, but the free bread still makes her smile.",
-      "fa": "مینا ناامید می‌شود، اما نان رایگان هنوز لبخند روی لبش می‌آورد."
+      "en": "Mina feels sad, but the free bread makes her happy for a moment.",
+      "fa": "مینا ناراحت است، اما نان رایگان برای لحظه‌ای خوشحالش می‌کند."
     },
     {
       "en": "Back at the table, Mom is ready to pay.",
       "fa": "وقتی برمی‌گردند، مامان آماده‌ی پرداخت است."
     },
     {
-      "en": "She puts the money beside the bill.",
+      "en": "She puts the money next to the bill.",
       "fa": "پول را کنار صورتحساب می‌گذارد."
     },
     {
-      "en": "The waiter checks the amount and returns one cent.",
-      "fa": "پیشخدمت مبلغ را بررسی می‌کند و یک سنت پس می‌دهد."
+      "en": "The waiter checks the money and returns one cent.",
+      "fa": "پیشخدمت پول را بررسی می‌کند و یک سنت پس می‌دهد."
     },
     {
       "en": "The price was correct, so Mom thanks him.",
@@ -231,12 +215,12 @@
       "fa": "مینا یک بار دیگر به منو و مشتری‌های شلوغ نگاه می‌کند."
     },
     {
-      "en": "Then she follows Mom toward the alley the waiter mentioned.",
-      "fa": "بعد همراه مامان به سمت کوچه‌ای می‌رود که پیشخدمت گفته بود."
+      "en": "Then she follows Mom to the small street behind the cafe.",
+      "fa": "بعد همراه مامان به خیابان کوچک پشت کافه می‌رود."
     },
     {
-      "en": "The search continues, and every small clue now feels valuable.",
-      "fa": "جست‌وجو ادامه دارد و حالا هر سرنخ کوچک باارزش به نظر می‌رسد."
+      "en": "They keep looking for Nino, and all new information feels important.",
+      "fa": "آن‌ها همچنان دنبال نینو می‌گردند و همه‌ی اطلاعات تازه مهم به نظر می‌رسد."
     }
   ],
   "check": [

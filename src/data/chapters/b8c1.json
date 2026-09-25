@@ -5,28 +5,14 @@
   "titleFa": "کوه",
   "titleEn": "The Mountain",
   "new": [
+    "climb",
+    "cool",
+    "pink",
+    "purple",
     "aunt",
     "uncle",
     "cousin",
-    "father",
-    "mother",
-    "grandparent",
-    "mountain",
-    "up",
-    "climb",
-    "high",
-    "tall",
-    "short",
-    "large",
-    "quiet",
-    "cool",
-    "gray",
-    "green",
-    "pink",
-    "purple",
-    "into",
-    "its",
-    "own"
+    "grandparent"
   ],
   "sentences": [
     {
@@ -34,48 +20,48 @@
       "fa": "خانواده ایستگاه را ترک می‌کنند و شروع به بالا رفتن می‌کنند."
     },
     {
-      "en": "A narrow road goes up the mountain.",
-      "fa": "جاده‌ای باریک از کوه بالا می‌رود."
+      "en": "A small road goes up the mountain.",
+      "fa": "جاده‌ای کوچک از کوه بالا می‌رود."
     },
     {
-      "en": "The mountain rises high above the town.",
-      "fa": "کوه بلند بالای شهر قرار گرفته است."
+      "en": "The mountain is high above the town.",
+      "fa": "کوه بلند بالای شهر قرار دارد."
     },
     {
-      "en": "Mina looks up and sees a house near the top.",
-      "fa": "مینا بالا را نگاه می‌کند و خانه‌ای نزدیک قله می‌بیند."
+      "en": "Mina looks up and sees a house high above the town.",
+      "fa": "مینا بالا را نگاه می‌کند و خانه‌ای بالای شهر می‌بیند."
     },
     {
       "en": "\"Can we climb all the way?\" she asks Dad.",
       "fa": "«می‌توانیم تمام راه را بالا برویم؟» از بابا می‌پرسد."
     },
     {
-      "en": "They climb slowly, stopping once to rest.",
-      "fa": "آن‌ها آرام بالا می‌روند و یک بار برای استراحت می‌ایستند."
+      "en": "They climb slowly, stopping once for a short time.",
+      "fa": "آن‌ها آرام بالا می‌روند و یک بار برای مدت کوتاهی می‌ایستند."
     },
     {
-      "en": "A tall chimney appears above the trees.",
-      "fa": "یک دودکش بلند بالای درخت‌ها پیدا می‌شود."
+      "en": "A tall gray part of the house is above the trees.",
+      "fa": "بخش بلند و خاکستری خانه بالای درخت‌ها دیده می‌شود."
     },
     {
-      "en": "Beside the house stands an even taller tree.",
+      "en": "Next to the house stands an even taller tree.",
       "fa": "کنار خانه درختی حتی بلندتر ایستاده است."
     },
     {
-      "en": "Mina's short skirt moves in the mountain wind.",
-      "fa": "دامن کوتاه مینا در باد کوه تکان می‌خورد."
+      "en": "Mina's long coat moves in the cool mountain air.",
+      "fa": "پالتوی بلند مینا در هوای خنک کوه حرکت می‌کند."
     },
     {
-      "en": "She pulls her coat over her short pants because the air is cool.",
-      "fa": "چون هوا خنک است، پالتویش را روی شلوار کوتاهش می‌کشد."
+      "en": "She wears long pants under her coat because the air is cool.",
+      "fa": "چون هوا خنک است، مینا شلوار بلند زیر پالتویش پوشیده است."
     },
     {
-      "en": "At last they reach a large stone house.",
-      "fa": "بالاخره به یک خانه‌ی سنگی بزرگ می‌رسند."
+      "en": "At last they arrive at a large gray house.",
+      "fa": "بالاخره به یک خانه‌ی بزرگ و خاکستری می‌رسند."
     },
     {
-      "en": "A large garden stretches behind it.",
-      "fa": "یک باغ بزرگ پشت آن امتداد دارد."
+      "en": "A large garden is behind it.",
+      "fa": "یک باغ بزرگ پشت آن است."
     },
     {
       "en": "For a moment, the garden is completely quiet.",
@@ -94,52 +80,52 @@
       "fa": "«اینجا بالا همیشه خنک است»، بابا می‌گوید."
     },
     {
-      "en": "Gray rock covers one side of the mountain.",
-      "fa": "سنگ خاکستری یک سمت کوه را پوشانده است."
+      "en": "Gray land is on one part of the mountain.",
+      "fa": "زمین خاکستری در بخشی از کوه دیده می‌شود."
     },
     {
-      "en": "The road below looks like a thin gray line.",
-      "fa": "جاده‌ی پایین مثل یک خط خاکستری باریک دیده می‌شود."
+      "en": "The road below looks like a small gray line.",
+      "fa": "جاده‌ی پایین مثل یک خط خاکستری کوچک دیده می‌شود."
     },
     {
-      "en": "Around the house, the grass is deep green.",
-      "fa": "دور خانه، چمن سبز پررنگ است."
+      "en": "Around the house, the land is green.",
+      "fa": "دور خانه، زمین سبز است."
     },
     {
-      "en": "Tall green trees stand along the wall.",
-      "fa": "درخت‌های بلند و سبز در امتداد دیوار ایستاده‌اند."
+      "en": "Tall green trees stand by the wall.",
+      "fa": "درخت‌های بلند و سبز کنار دیوار ایستاده‌اند."
     },
     {
-      "en": "Pink flowers grow beside the front steps.",
-      "fa": "گل‌های صورتی کنار پله‌های جلویی رشد کرده‌اند."
+      "en": "Pink flowers grow near the front door.",
+      "fa": "گل‌های صورتی نزدیک درِ جلویی رشد کرده‌اند."
     },
     {
-      "en": "More pink flowers follow a path into the garden.",
-      "fa": "گل‌های صورتی بیشتری در امتداد مسیری به داخل باغ دیده می‌شوند."
+      "en": "More pink flowers grow from the front door into the garden.",
+      "fa": "گل‌های صورتی بیشتری از جلوی در تا داخل باغ رشد کرده‌اند."
     },
     {
       "en": "Purple flowers grow near the back door.",
       "fa": "گل‌های بنفش نزدیک درِ پشتی رشد کرده‌اند."
     },
     {
-      "en": "The purple and pink flowers make the green garden bright.",
-      "fa": "گل‌های بنفش و صورتی باغ سبز را روشن و زیبا کرده‌اند."
+      "en": "The purple and pink flowers make the green garden beautiful.",
+      "fa": "گل‌های بنفش و صورتی باغ سبز را زیبا کرده‌اند."
     },
     {
-      "en": "Mina's aunt comes outside first and waves.",
-      "fa": "خاله‌ی مینا اول بیرون می‌آید و دست تکان می‌دهد."
+      "en": "Mina's aunt comes outside first and says hello.",
+      "fa": "خاله‌ی مینا اول بیرون می‌آید و سلام می‌کند."
     },
     {
-      "en": "Her aunt hugs Mina and asks about the trip.",
-      "fa": "خاله‌اش مینا را بغل می‌کند و درباره‌ی سفر می‌پرسد."
+      "en": "Her aunt is happy to see Mina and asks about the trip.",
+      "fa": "خاله‌اش از دیدن مینا خوشحال است و درباره‌ی سفر می‌پرسد."
     },
     {
-      "en": "Then her uncle carries one of the bags inside.",
-      "fa": "بعد دایی‌اش یکی از کیف‌ها را به داخل می‌برد."
+      "en": "Then her uncle carries one of the bags into the house.",
+      "fa": "بعد دایی‌اش یکی از کیف‌ها را به داخل خانه می‌برد."
     },
     {
-      "en": "Her uncle jokes that the mountain keeps him strong.",
-      "fa": "دایی شوخی می‌کند که کوه او را قوی نگه می‌دارد."
+      "en": "Her uncle laughs and says the mountain keeps him strong.",
+      "fa": "دایی می‌خندد و می‌گوید کوه او را قوی نگه می‌دارد."
     },
     {
       "en": "Mina's cousin runs out behind him.",
@@ -154,8 +140,8 @@
       "fa": "مادر مینا به آشپزخانه می‌رود تا به مادربزرگ کمک کند."
     },
     {
-      "en": "Her father sits with Grandfather and tells him about the search for Nino.",
-      "fa": "پدرش کنار پدربزرگ می‌نشیند و درباره‌ی جست‌وجوی نینو برایش تعریف می‌کند."
+      "en": "Her father sits with Grandfather and tells him they are looking for Nino.",
+      "fa": "پدرش کنار پدربزرگ می‌نشیند و می‌گوید که دنبال نینو هستند."
     },
     {
       "en": "Grandmother calls Mina's mother from the kitchen.",
@@ -174,28 +160,28 @@
       "fa": "هرکدام از پدربزرگ و مادربزرگ از مینا می‌پرسند نینو چه شکلی است."
     },
     {
-      "en": "Everyone goes into the house when the wind grows stronger.",
-      "fa": "وقتی باد شدیدتر می‌شود، همه به داخل خانه می‌روند."
+      "en": "Everyone goes into the house when the air gets cold.",
+      "fa": "وقتی هوا سرد می‌شود، همه به داخل خانه می‌روند."
     },
     {
       "en": "Mina and her cousin run into the garden one more time.",
       "fa": "مینا و دخترخاله‌اش یک بار دیگر به داخل باغ می‌دوند."
     },
     {
-      "en": "The house has its own quiet garden behind a stone wall.",
-      "fa": "خانه باغ آرامِ خودش را پشت یک دیوار سنگی دارد."
+      "en": "The house has its own quiet garden behind a gray wall.",
+      "fa": "خانه باغ آرام خودش را پشت یک دیوار خاکستری دارد."
     },
     {
-      "en": "Mina thinks of Nino and hopes he has found his own safe place.",
-      "fa": "مینا به نینو فکر می‌کند و امیدوار است او هم جای امن خودش را پیدا کرده باشد."
+      "en": "Mina thinks of Nino and hopes he has found his own good place.",
+      "fa": "مینا به نینو فکر می‌کند و امیدوار است او هم جای خوبی برای خودش پیدا کرده باشد."
     },
     {
       "en": "Her cousin shows Mina a small room that can be her own.",
       "fa": "دخترخاله اتاق کوچکی را نشان می‌دهد که می‌تواند اتاق خودِ مینا باشد."
     },
     {
-      "en": "Mina sits on her own bed and wishes Nino were beside her.",
-      "fa": "مینا روی تخت خودش می‌نشیند و آرزو می‌کند نینو کنارش بود."
+      "en": "Mina sits on her own bed and says she wants Nino with her.",
+      "fa": "مینا روی تخت خودش می‌نشیند و می‌گوید دلش می‌خواهد نینو کنارش باشد."
     }
   ],
   "check": [

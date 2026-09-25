@@ -5,74 +5,72 @@
   "titleFa": "جوجه‌ی طلایی",
   "titleEn": "The Golden Chicken",
   "new": [
-    "same",
-    "different",
+    "color",
     "wrong",
     "true",
-    "real",
+    "similar",
     "sure",
-    "like",
-    "animal",
-    "dog",
+    "mistake",
+    "fine",
+    "funny",
+    "great",
+    "fun",
     "mouse",
+    "farm",
+    "farmer",
     "cow",
     "horse",
     "pig",
     "sheep",
     "elephant",
     "lion",
+    "green",
     "snake",
-    "miss",
-    "feel",
-    "feeling",
-    "fine",
-    "great",
+    "detail",
+    "better",
     "favorite",
-    "fun",
-    "funny",
-    "laugh",
-    "farm"
+    "complete"
   ],
   "sentences": [
     {
-      "en": "Mina reaches the market early and checks every familiar corner.",
-      "fa": "مینا صبح زود به بازار می‌رسد و هر گوشه‌ی آشنا را بررسی می‌کند."
+      "en": "Mina comes to the market early and checks every place she knows.",
+      "fa": "مینا صبح زود به بازار می‌آید و هر جایی را که می‌شناسد بررسی می‌کند."
     },
     {
-      "en": "Near the bread shop, she suddenly sees a golden chicken.",
-      "fa": "نزدیک نانوایی ناگهان یک جوجه‌ی طلایی می‌بیند."
+      "en": "Near the bread shop, she sees a yellow chicken.",
+      "fa": "نزدیک نانوایی یک جوجه‌ی زرد می‌بیند."
     },
     {
-      "en": "For one second, the chicken is like Nino in shape and color.",
-      "fa": "برای یک لحظه، جوجه از نظر شکل و رنگ شبیه نینو است."
+      "en": "For one second, the chicken looks like Nino.",
+      "fa": "برای یک لحظه، جوجه شبیه نینو به نظر می‌رسد."
     },
     {
-      "en": "It has the same golden feathers and quick steps.",
-      "fa": "همان پرهای طلایی و قدم‌های سریع را دارد."
+      "en": "It has the same yellow color and moves quickly.",
+      "fa": "همان رنگ زرد را دارد و سریع حرکت می‌کند."
     },
     {
-      "en": "Its wing moves in the same nervous way.",
-      "fa": "بالش هم به همان شکل عصبی حرکت می‌کند."
+      "en": "It moves in the same way as Nino.",
+      "fa": "به همان شکل نینو حرکت می‌کند."
     },
     {
-      "en": "\"Nino!\" Mina calls, running toward it.",
+      "en": "\"Nino!\" Mina calls, running to it.",
       "fa": "مینا در حالی که به سمتش می‌دود صدا می‌زند: «نینو!»"
     },
     {
-      "en": "The chicken stops and looks directly at her.",
-      "fa": "جوجه می‌ایستد و مستقیم به او نگاه می‌کند."
+      "en": "The chicken stops and looks at her.",
+      "fa": "جوجه می‌ایستد و به او نگاه می‌کند."
     },
     {
-      "en": "Its eyes are different; they are yellow, not green.",
-      "fa": "چشم‌هایش متفاوت‌اند؛ زرد هستند، نه سبز."
+      "en": "It is different because it is not as small as Nino.",
+      "fa": "این جوجه متفاوت است چون به کوچکی نینو نیست."
     },
     {
-      "en": "It does not have Nino's small white feather on the left wing.",
-      "fa": "پر سفید کوچک روی بال چپ نینو را هم ندارد."
+      "en": "Mina looks again and sees it is different from Nino.",
+      "fa": "مینا دوباره نگاه می‌کند و می‌بیند با نینو فرق دارد."
     },
     {
-      "en": "Mina slows down and whispers, \"Wrong chicken.\"",
-      "fa": "مینا آرام می‌شود و زمزمه می‌کند: «جوجه‌ی اشتباهی.»"
+      "en": "Mina stops and says, \"Wrong chicken.\"",
+      "fa": "مینا می‌ایستد و می‌گوید: «جوجه‌ی اشتباهی.»"
     },
     {
       "en": "It is true that the chicken looks similar from far away.",
@@ -91,8 +89,8 @@
       "fa": "مینا بعد از یک نگاه دیگر جواب می‌دهد: «مطمئنم.»"
     },
     {
-      "en": "She can feel her excitement disappear very quickly.",
-      "fa": "می‌تواند حس کند هیجانش خیلی زود ناپدید می‌شود."
+      "en": "She was happy for one second, but now she is sad again.",
+      "fa": "برای یک لحظه خوشحال بود، اما حالا دوباره ناراحت است."
     },
     {
       "en": "The bad feeling returns as the chicken walks away.",
@@ -103,39 +101,39 @@
       "fa": "مینا به مامان می‌گوید: «خیلی دلم برای نینو تنگ شده.»"
     },
     {
-      "en": "Mom asks how Mina feels after the false alarm.",
+      "en": "Mom asks how Mina feels after the mistake.",
       "fa": "مامان می‌پرسد مینا بعد از این اشتباه چه حسی دارد."
     },
     {
-      "en": "\"I am not fine yet,\" Mina says honestly.",
-      "fa": "مینا صادقانه می‌گوید: «هنوز خوب نیستم.»"
+      "en": "\"I am not fine,\" Mina says.",
+      "fa": "مینا می‌گوید: «حالم خوب نیست.»"
     },
     {
-      "en": "The bread man tries to give her something cheerful.",
-      "fa": "نانوا سعی می‌کند چیزی برای خوشحال کردنش بدهد."
+      "en": "The bread man tries to give her something funny.",
+      "fa": "نانوا سعی می‌کند چیزی خنده‌دار به او بدهد."
     },
     {
       "en": "Mina says, \"I like this bread, but I still miss Nino.\"",
       "fa": "مینا می‌گوید: «این نان را دوست دارم، اما هنوز دلم برای نینو تنگ شده.»"
     },
     {
-      "en": "\"That is great bread,\" Mina says with a weak smile.",
-      "fa": "مینا با لبخندی کم‌رنگ می‌گوید: «این نان عالی است.»"
+      "en": "\"That is great bread,\" Mina says and tries to laugh.",
+      "fa": "مینا می‌گوید: «این نان عالی است» و سعی می‌کند بخندد."
     },
     {
-      "en": "A funny dog runs between two market stalls.",
-      "fa": "سگی خنده‌دار میان دو غرفه‌ی بازار می‌دود."
+      "en": "A funny dog runs between two market shops.",
+      "fa": "یک سگ خنده‌دار میان دو مغازه‌ی بازار می‌دود."
     },
     {
-      "en": "Watching the dog is fun for the children nearby.",
-      "fa": "تماشای سگ برای بچه‌های اطراف سرگرم‌کننده است."
+      "en": "Watching the dog is fun for the children in the market.",
+      "fa": "تماشای سگ برای بچه‌های داخل بازار سرگرم‌کننده است."
     },
     {
-      "en": "People laugh when the dog steals an empty paper bag.",
-      "fa": "وقتی سگ یک پاکت کاغذی خالی را می‌دزدد، مردم می‌خندند."
+      "en": "People laugh when the dog takes a paper bag.",
+      "fa": "وقتی سگ یک پاکت کاغذی را برمی‌دارد، مردم می‌خندند."
     },
     {
-      "en": "Mina manages to laugh once before looking for Nino again.",
+      "en": "Mina laughs once before looking for Nino again.",
       "fa": "مینا یک بار می‌خندد و بعد دوباره دنبال نینو می‌گردد."
     },
     {
@@ -143,79 +141,79 @@
       "fa": "سگ فقط یکی از حیوان‌های بازار شلوغ است."
     },
     {
-      "en": "The golden chicken is another animal looking for food.",
-      "fa": "جوجه‌ی طلایی هم حیوان دیگری است که دنبال غذا می‌گردد."
+      "en": "The yellow chicken is another animal looking for food.",
+      "fa": "جوجه‌ی زرد هم حیوان دیگری است که دنبال غذا می‌گردد."
     },
     {
-      "en": "A small mouse runs beneath a wooden shelf.",
-      "fa": "موش کوچکی زیر یک قفسه‌ی چوبی می‌دود."
+      "en": "A small mouse runs under a table.",
+      "fa": "یک موش کوچک زیر میز می‌دود."
     },
     {
-      "en": "A poster nearby advertises a farm outside the city.",
-      "fa": "پوستری نزدیک آنجا یک مزرعه بیرون شهر را معرفی می‌کند."
+      "en": "A picture near them shows a farm outside the city.",
+      "fa": "تصویری نزدیک آن‌ها یک مزرعه بیرون شهر را نشان می‌دهد."
     },
     {
-      "en": "Mom suggests visiting the farm because small chickens often stay near barns and gardens.",
-      "fa": "مامان پیشنهاد می‌دهد به مزرعه بروند چون جوجه‌های کوچک اغلب نزدیک انبار و باغچه می‌مانند."
+      "en": "Mom says they can visit the farm because small chickens often stay near gardens.",
+      "fa": "مامان می‌گوید می‌توانند به مزرعه بروند چون جوجه‌های کوچک اغلب نزدیک باغچه‌ها می‌مانند."
     },
     {
-      "en": "At the farm, a farmer shows Mina several animals.",
-      "fa": "در مزرعه، کشاورز چند حیوان را به مینا نشان می‌دهد."
+      "en": "At the farm, a farmer shows Mina many animals.",
+      "fa": "در مزرعه، کشاورز حیوان‌های زیادی را به مینا نشان می‌دهد."
     },
     {
-      "en": "A cow watches them from behind a low fence.",
-      "fa": "یک گاو از پشت حصار کوتاه آن‌ها را نگاه می‌کند."
+      "en": "A cow watches them from behind a wall.",
+      "fa": "یک گاو از پشت دیوار آن‌ها را نگاه می‌کند."
     },
     {
-      "en": "A horse walks slowly across the wet field.",
-      "fa": "یک اسب آرام از میان زمین خیس عبور می‌کند."
+      "en": "A horse walks slowly across the farm.",
+      "fa": "یک اسب آرام از مزرعه عبور می‌کند."
     },
     {
-      "en": "A pig sleeps beside the warm barn wall.",
-      "fa": "یک خوک کنار دیوار گرم انبار خوابیده است."
+      "en": "A pig sleeps next to a warm wall.",
+      "fa": "یک خوک کنار یک دیوار گرم خوابیده است."
     },
     {
-      "en": "Several sheep stand together near the grass.",
-      "fa": "چند گوسفند کنار هم نزدیک علف‌ها ایستاده‌اند."
+      "en": "Some sheep stand together near a tree.",
+      "fa": "چند گوسفند کنار هم نزدیک یک درخت ایستاده‌اند."
     },
     {
-      "en": "The farmer says none of these animals saw Nino.",
-      "fa": "کشاورز می‌گوید هیچ‌کدام از این حیوان‌ها نینو را ندیده‌اند."
+      "en": "The farmer says the animals did not see Nino.",
+      "fa": "کشاورز می‌گوید حیوان‌ها نینو را ندیده‌اند."
     },
     {
-      "en": "Inside the farmhouse, Mina notices an old animal book.",
+      "en": "In the farm house, Mina sees an old animal book.",
       "fa": "داخل خانه‌ی مزرعه، مینا یک کتاب قدیمی درباره‌ی حیوان‌ها می‌بیند."
     },
     {
-      "en": "One page shows a huge elephant beside a river.",
-      "fa": "یک صفحه فیل بزرگی کنار رودخانه نشان می‌دهد."
+      "en": "One page shows a big elephant near a river.",
+      "fa": "یک صفحه یک فیل بزرگ نزدیک رودخانه نشان می‌دهد."
     },
     {
-      "en": "Another page has a lion resting under a tree.",
-      "fa": "صفحه‌ی دیگری شیری را نشان می‌دهد که زیر درخت استراحت می‌کند."
+      "en": "Another page has a lion under a tree.",
+      "fa": "صفحه‌ی دیگری یک شیر زیر درخت نشان می‌دهد."
     },
     {
-      "en": "A long green snake appears on the next page.",
-      "fa": "در صفحه‌ی بعد یک مار سبز بلند دیده می‌شود."
+      "en": "A long green snake is on the next page.",
+      "fa": "یک مار سبز بلند در صفحه‌ی بعد است."
     },
     {
-      "en": "Mina smiles because Nino would be curious about the pictures.",
-      "fa": "مینا لبخند می‌زند چون نینو درباره‌ی این تصویرها کنجکاو می‌شد."
+      "en": "Mina is happy because Nino would like the pictures.",
+      "fa": "مینا خوشحال است چون نینو این تصویرها را دوست داشت."
     },
     {
-      "en": "The family returns to the market before sunset.",
-      "fa": "خانواده پیش از غروب به بازار برمی‌گردد."
+      "en": "The family returns to the market before evening.",
+      "fa": "خانواده پیش از عصر به بازار برمی‌گردد."
     },
     {
-      "en": "The same black market chicken is sleeping by the shop.",
-      "fa": "همان جوجه‌ی طلایی بازار کنار مغازه خوابیده است."
+      "en": "The same yellow market chicken is sleeping by the shop.",
+      "fa": "همان جوجه‌ی زرد بازار کنار مغازه خوابیده است."
     },
     {
-      "en": "Now Mina can see immediately how different it is from Nino.",
-      "fa": "حالا مینا فوراً می‌بیند چقدر با نینو فرق دارد."
+      "en": "Now Mina can see at once how different it is from Nino.",
+      "fa": "حالا مینا همان لحظه می‌بیند چقدر با نینو فرق دارد."
     },
     {
-      "en": "She was wrong at first, but the mistake led to a new place.",
+      "en": "She was wrong at first, but the mistake took them to a new place.",
       "fa": "اول اشتباه کرده بود، اما آن اشتباه آن‌ها را به جای تازه‌ای برد."
     },
     {
@@ -223,7 +221,7 @@
       "fa": "هر جوجه‌ی واقعی جزئیات کوچکی دارد که آن را متفاوت می‌کند."
     },
     {
-      "en": "Mina is sure she will recognize Nino when she sees him.",
+      "en": "Mina is sure she will know Nino when she sees him.",
       "fa": "مینا مطمئن است وقتی نینو را ببیند او را خواهد شناخت."
     },
     {
@@ -231,28 +229,28 @@
       "fa": "کم‌کم احساس می‌کند کمی قوی‌تر از صبح شده است."
     },
     {
-      "en": "That stronger feeling helps her continue the search.",
-      "fa": "آن حس قوی‌تر کمک می‌کند جست‌وجو را ادامه دهد."
+      "en": "That stronger feeling helps her keep looking for Nino.",
+      "fa": "آن حس قوی‌تر کمک می‌کند همچنان دنبال نینو بگردد."
     },
     {
-      "en": "Mom asks whether Mina is fine enough to go home.",
-      "fa": "مامان می‌پرسد آیا مینا آن‌قدر حالش خوب هست که به خانه برود."
+      "en": "Mom asks if Mina is fine enough to go home.",
+      "fa": "مامان می‌پرسد آیا حال مینا آن‌قدر خوب هست که به خانه برود."
     },
     {
       "en": "Mina says the day was hard, but the farm visit was great.",
       "fa": "مینا می‌گوید روز سخت بود، اما دیدن مزرعه عالی بود."
     },
     {
-      "en": "She remembers the funny dog and smiles again.",
-      "fa": "سگ خنده‌دار را به یاد می‌آورد و دوباره لبخند می‌زند."
+      "en": "She remembers the funny dog and is happy again.",
+      "fa": "سگ خنده‌دار را به یاد می‌آورد و دوباره خوشحال می‌شود."
     },
     {
-      "en": "Even one small moment of fun made the long day easier.",
-      "fa": "حتی یک لحظه‌ی کوچک سرگرمی روز طولانی را آسان‌تر کرد."
+      "en": "Even one small moment of fun made the long day better.",
+      "fa": "حتی یک لحظه‌ی کوچک سرگرمی روز طولانی را بهتر کرد."
     },
     {
-      "en": "Bread is still her favorite food, especially when she is tired.",
-      "fa": "نان هنوز غذای مورد علاقه‌ی اوست، مخصوصاً وقتی خسته است."
+      "en": "Bread is still her favorite food when she is tired.",
+      "fa": "نان هنوز غذای مورد علاقه‌ی اوست وقتی خسته است."
     },
     {
       "en": "At home, Mina opens her red book to draw.",
@@ -267,7 +265,7 @@
       "fa": "بعد شیر را زیر یک درخت بزرگ اضافه می‌کند."
     },
     {
-      "en": "She draws the snake beside a long green line.",
+      "en": "She draws the snake next to a long green line.",
       "fa": "مار را کنار یک خط سبز بلند می‌کشد."
     },
     {
@@ -275,8 +273,8 @@
       "fa": "در آخر، مینا یک جوجه‌ی زرد کوچک در مرکز می‌کشد."
     },
     {
-      "en": "This drawing looks like Nino, with the same orange beak and white wing feather.",
-      "fa": "این نقاشی شبیه نینو است و همان نوک نارنجی و پر سفید روی بال را دارد."
+      "en": "This drawing looks like Nino, with the same orange and white colors.",
+      "fa": "این نقاشی شبیه نینو است و همان رنگ‌های نارنجی و سفید را دارد."
     },
     {
       "en": "It is completely different from the market chicken.",

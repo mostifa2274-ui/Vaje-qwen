@@ -5,31 +5,22 @@
   "titleFa": "قبل و بعد",
   "titleEn": "Before and After",
   "new": [
-    "quarter",
     "half",
-    "past",
+    "speak",
+    "quarter",
+    "sun",
     "midnight",
-    "early",
-    "late",
-    "soon",
-    "later",
-    "after",
-    "before",
-    "during",
-    "until",
     "ago",
-    "then",
-    "afternoon",
-    "tonight",
-    "tomorrow",
-    "yesterday",
+    "report",
+    "believe",
     "ever",
-    "end"
+    "hard",
+    "off"
   ],
   "sentences": [
     {
-      "en": "Mina wakes early because she wants more search time.",
-      "fa": "مینا زود بیدار می‌شود چون زمان بیشتری برای جست‌وجو می‌خواهد."
+      "en": "Mina wakes early because she wants more time to look for Nino.",
+      "fa": "مینا زود بیدار می‌شود چون زمان بیشتری برای پیدا کردن نینو می‌خواهد."
     },
     {
       "en": "She leaves home before breakfast to check the yard.",
@@ -40,19 +31,19 @@
       "fa": "برادرش پیش از شلوغ شدن محله به او می‌پیوندد."
     },
     {
-      "en": "After breakfast, Mina walks toward the park again.",
-      "fa": "بعد از صبحانه، مینا دوباره به سمت پارک می‌رود."
+      "en": "After breakfast, Mina walks to the park again.",
+      "fa": "بعد از صبحانه، مینا دوباره به پارک می‌رود."
     },
     {
       "en": "She checks two streets after leaving the park.",
       "fa": "بعد از ترک پارک دو خیابان را بررسی می‌کند."
     },
     {
-      "en": "At half past eight, she speaks to a shopkeeper.",
-      "fa": "ساعت هشت و نیم با یک مغازه‌دار صحبت می‌کند."
+      "en": "At half past eight, she speaks to a person in a shop.",
+      "fa": "ساعت هشت و نیم با یک نفر در مغازه صحبت می‌کند."
     },
     {
-      "en": "At half past nine, she reaches the bus stop.",
+      "en": "At half past nine, she comes to the bus stop.",
       "fa": "ساعت نه و نیم به ایستگاه اتوبوس می‌رسد."
     },
     {
@@ -60,59 +51,59 @@
       "fa": "ساعت ده و ربع، مینا نزدیک بازار است."
     },
     {
-      "en": "The quarter hour matters because a witness remembers that time.",
-      "fa": "آن ربع ساعت مهم است چون شاهدی آن زمان را به یاد دارد."
+      "en": "The quarter hour is important because one person remembers that time.",
+      "fa": "آن ربع ساعت مهم است چون یک نفر آن زمان را به یاد دارد."
     },
     {
-      "en": "Mina arrives late for her usual morning walk.",
-      "fa": "مینا برای پیاده‌روی معمول صبح دیر می‌رسد."
+      "en": "Mina arrives late for her morning walk.",
+      "fa": "مینا برای پیاده‌روی صبح دیر می‌رسد."
     },
     {
-      "en": "She worries the clue may disappear if she waits too long.",
-      "fa": "نگران است اگر زیاد صبر کند سرنخ از بین برود."
+      "en": "She is afraid the information may be gone if she waits too long.",
+      "fa": "می‌ترسد اگر زیاد صبر کند اطلاعات از بین برود."
     },
     {
-      "en": "During the afternoon, she follows the witness's directions.",
-      "fa": "در طول بعدازظهر، مسیر گفته‌شده توسط شاهد را دنبال می‌کند."
+      "en": "During the afternoon, she follows what the person told her.",
+      "fa": "در طول بعدازظهر، چیزی را که آن فرد گفته دنبال می‌کند."
     },
     {
-      "en": "The afternoon sun makes the pavement warm.",
-      "fa": "آفتاب بعدازظهر پیاده‌رو را گرم می‌کند."
+      "en": "The afternoon sun makes the street warm.",
+      "fa": "آفتاب بعدازظهر خیابان را گرم می‌کند."
     },
     {
       "en": "Before dinner, Mina checks one last garden.",
       "fa": "پیش از شام، مینا یک باغچه‌ی دیگر را بررسی می‌کند."
     },
     {
-      "en": "After dinner, Dad walks with her to the corner.",
-      "fa": "بعد از شام، بابا با او تا سر کوچه می‌رود."
+      "en": "After dinner, Dad walks with her to the end of the street.",
+      "fa": "بعد از شام، بابا با او تا انتهای خیابان می‌رود."
     },
     {
-      "en": "During their walk, Mina tells him about every clue.",
-      "fa": "در طول پیاده‌روی، مینا همه‌ی سرنخ‌ها را برایش تعریف می‌کند."
+      "en": "During their walk, Mina tells him about all the information.",
+      "fa": "در طول پیاده‌روی، مینا همه‌ی اطلاعات را برایش تعریف می‌کند."
     },
     {
-      "en": "They keep searching until the streetlights turn on.",
-      "fa": "تا روشن شدن چراغ‌های خیابان به جست‌وجو ادامه می‌دهند."
+      "en": "They keep looking until the lights on the street turn on.",
+      "fa": "تا روشن شدن چراغ‌های خیابان به نگاه کردن ادامه می‌دهند."
     },
     {
       "en": "Mina wants to stay outside until nine o'clock.",
       "fa": "مینا می‌خواهد تا ساعت نه بیرون بماند."
     },
     {
-      "en": "Dad says they cannot search safely until midnight.",
-      "fa": "بابا می‌گوید نمی‌توانند تا نیمه‌شب با امنیت جست‌وجو کنند."
+      "en": "Dad says they cannot keep looking outside until midnight.",
+      "fa": "بابا می‌گوید نمی‌توانند تا نیمه‌شب بیرون بگردند."
     },
     {
       "en": "At midnight, Mina wakes and listens from her bed.",
       "fa": "نیمه‌شب، مینا بیدار می‌شود و از تختش گوش می‌دهد."
     },
     {
-      "en": "The street is silent at midnight, with no chicken outside.",
-      "fa": "خیابان نیمه‌شب ساکت است و جوجه‌ای بیرون نیست."
+      "en": "The street is quiet at midnight, with no chicken outside.",
+      "fa": "خیابان نیمه‌شب آرام است و جوجه‌ای بیرون نیست."
     },
     {
-      "en": "A week ago, Nino slept beside her every night.",
+      "en": "A week ago, Nino slept next to her every night.",
       "fa": "یک هفته پیش، نینو هر شب کنار او می‌خوابید."
     },
     {
@@ -124,16 +115,16 @@
       "fa": "دیروز، مینا آن گزارش را دنبال کرد و نینو را پیدا نکرد."
     },
     {
-      "en": "Then another neighbor gave her a different direction.",
-      "fa": "بعد همسایه‌ی دیگری مسیر متفاوتی به او داد."
+      "en": "Then another neighbor gave her a different place to look.",
+      "fa": "بعد همسایه‌ی دیگری جای متفاوتی برای جست‌وجو به او داد."
     },
     {
-      "en": "Later, Mina discovered that clue led to a bird.",
-      "fa": "بعدتر، مینا فهمید آن سرنخ به یک پرنده ختم می‌شد."
+      "en": "Later, Mina found that the information was about a bird.",
+      "fa": "بعدتر، مینا فهمید آن اطلاعات درباره‌ی یک پرنده بود."
     },
     {
-      "en": "Mom says a real clue will come soon.",
-      "fa": "مامان می‌گوید به‌زودی یک سرنخ واقعی خواهد آمد."
+      "en": "Mom says real information will come soon.",
+      "fa": "مامان می‌گوید به‌زودی اطلاعات واقعی خواهد رسید."
     },
     {
       "en": "Mina wants to believe \"soon\" means tomorrow.",
@@ -148,20 +139,20 @@
       "fa": "برنامه‌ی فردا را در کتاب قرمزش می‌نویسد."
     },
     {
-      "en": "Mina asks whether Dad has ever lost a pet.",
-      "fa": "مینا می‌پرسد آیا بابا تا به حال حیوان خانگی گم کرده است."
+      "en": "Mina asks if Dad has ever looked for an animal.",
+      "fa": "مینا می‌پرسد آیا بابا تا به حال دنبال حیوانی گشته است."
     },
     {
       "en": "Dad says he has never ever stopped hoping for family.",
       "fa": "بابا می‌گوید هیچ‌وقت، هیچ‌وقت از امید به خانواده دست نکشیده است."
     },
     {
-      "en": "Tonight, Mina leaves a small bowl near the door.",
-      "fa": "امشب، مینا یک کاسه‌ی کوچک نزدیک در می‌گذارد."
+      "en": "Tonight, Mina leaves a small dish near the door.",
+      "fa": "امشب، مینا یک ظرف کوچک نزدیک در می‌گذارد."
     },
     {
-      "en": "She hopes Nino will smell the food tonight.",
-      "fa": "امیدوار است نینو امشب بوی غذا را حس کند."
+      "en": "She hopes Nino will find the food tonight.",
+      "fa": "امیدوار است نینو امشب غذا را پیدا کند."
     },
     {
       "en": "Before bed, she checks the clock one more time.",
@@ -172,20 +163,20 @@
       "fa": "دیر وقت است، اما برای یک صدای آخر گوش می‌دهد."
     },
     {
-      "en": "At the end of the day, no new clue appears.",
-      "fa": "در پایان روز، سرنخ تازه‌ای پیدا نمی‌شود."
+      "en": "At the end of the day, no new information comes.",
+      "fa": "در پایان روز، اطلاعات تازه‌ای نمی‌آید."
     },
     {
-      "en": "Still, Mina does not believe the search has reached its end.",
-      "fa": "با این حال، مینا باور ندارد جست‌وجو به پایان رسیده است."
+      "en": "Still, Mina does not believe looking for Nino is at its end.",
+      "fa": "با این حال، مینا باور ندارد جست‌وجوی نینو به پایان رسیده است."
     },
     {
       "en": "She closes the book and thinks about the past week.",
       "fa": "کتاب را می‌بندد و به هفته‌ی گذشته فکر می‌کند."
     },
     {
-      "en": "The past feels heavy, but tomorrow still feels possible.",
-      "fa": "گذشته سنگین به نظر می‌رسد، اما فردا هنوز ممکن است."
+      "en": "The past week feels hard, but Mina still has hope for tomorrow.",
+      "fa": "هفته‌ی گذشته سخت به نظر می‌رسد، اما مینا هنوز برای فردا امید دارد."
     },
     {
       "en": "Then Mina turns off the light and finally sleeps.",

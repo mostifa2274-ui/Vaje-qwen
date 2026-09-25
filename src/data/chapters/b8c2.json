@@ -5,53 +5,43 @@
   "titleFa": "دست‌ها و پاها",
   "titleEn": "Hands and Feet",
   "new": [
-    "arm",
     "body",
-    "ear",
-    "eye",
-    "face",
-    "fat",
-    "foot",
     "hair",
-    "hand",
-    "head",
-    "leg",
-    "mouth",
+    "ear",
     "nose",
+    "relax",
+    "mouth",
     "tooth",
     "blond",
-    "relax",
-    "lie",
+    "fat",
     "spend",
-    "hobby",
-    "their",
-    "them",
-    "yourself"
+    "yourself",
+    "hobby"
   ],
   "sentences": [
     {
-      "en": "After the mountain climb, Mina drops into a chair beside Grandmother.",
+      "en": "After the mountain climb, Mina sits in a chair next to Grandmother.",
       "fa": "بعد از بالا رفتن از کوه، مینا روی صندلی کنار مادربزرگ می‌نشیند."
     },
     {
-      "en": "Her whole body feels tired from the long walk.",
-      "fa": "تمام بدنش از راه رفتن طولانی خسته است."
+      "en": "Her body feels tired from the long walk.",
+      "fa": "بدنش از راه رفتن طولانی خسته است."
     },
     {
-      "en": "One leg aches more than the other.",
-      "fa": "یکی از پاهایش بیشتر از پای دیگر درد می‌کند."
+      "en": "One leg feels bad, and the other feels better.",
+      "fa": "یکی از پاهایش بدتر است و پای دیگر بهتر است."
     },
     {
-      "en": "Mina lifts one foot, then the other, and laughs weakly.",
-      "fa": "مینا یک پا و بعد پای دیگر را بالا می‌آورد و با خستگی می‌خندد."
+      "en": "Mina moves one foot, then the other, and laughs.",
+      "fa": "مینا یک پا و بعد پای دیگر را حرکت می‌دهد و می‌خندد."
     },
     {
-      "en": "Dad holds out an arm and helps her stand again.",
-      "fa": "بابا یک بازو را جلو می‌آورد و کمک می‌کند دوباره بایستد."
+      "en": "Dad gives Mina his arm and helps her stand again.",
+      "fa": "بابا بازویش را به مینا می‌دهد و کمک می‌کند دوباره بایستد."
     },
     {
-      "en": "Mina puts her hand in his hand and walks to the washroom.",
-      "fa": "مینا دستش را در دست او می‌گذارد و به دستشویی می‌رود."
+      "en": "Mina puts her hand in his hand and goes to wash her face.",
+      "fa": "مینا دستش را در دست او می‌گذارد و می‌رود صورتش را بشوید."
     },
     {
       "en": "Grandmother follows them and checks Mina's face.",
@@ -62,15 +52,15 @@
       "fa": "با مهربانی می‌گوید: «صورتت از بالا رفتن قرمز شده.»"
     },
     {
-      "en": "Mina touches her head and says she is only tired.",
-      "fa": "مینا سرش را لمس می‌کند و می‌گوید فقط خسته است."
+      "en": "Mina puts her hand on her head and says she is only tired.",
+      "fa": "مینا دستش را روی سرش می‌گذارد و می‌گوید فقط خسته است."
     },
     {
-      "en": "A strand of hair sticks to her forehead.",
-      "fa": "تکه‌ای از مو به پیشانی‌اش چسبیده است."
+      "en": "Some hair is over her eye.",
+      "fa": "کمی از موهایش جلوی چشمش است."
     },
     {
-      "en": "Grandmother brushes the hair away from Mina's eye.",
+      "en": "Grandmother moves the hair away from Mina's eye.",
       "fa": "مادربزرگ مو را از جلوی چشم مینا کنار می‌زند."
     },
     {
@@ -78,8 +68,8 @@
       "fa": "می‌گوید: «چشم‌هایت هم خسته به نظر می‌رسند.»"
     },
     {
-      "en": "Mina rubs one ear because the mountain wind made it cold.",
-      "fa": "مینا یک گوشش را می‌مالد چون باد کوه آن را سرد کرده است."
+      "en": "Mina puts her hand on one ear because the mountain air made it cold.",
+      "fa": "مینا دستش را روی یک گوشش می‌گذارد چون هوای کوه آن را سرد کرده است."
     },
     {
       "en": "Her other ear is cold, and so is her nose.",
@@ -90,96 +80,96 @@
       "fa": "مادربزرگ می‌گوید: «صورت و دست‌هایت را بشور، بعد استراحت کن.»"
     },
     {
-      "en": "Mina washes carefully and begins to relax.",
-      "fa": "مینا با دقت خودش را می‌شوید و کم‌کم آرام می‌شود."
+      "en": "Mina washes and begins to relax.",
+      "fa": "مینا خودش را می‌شوید و کم‌کم آرام می‌شود."
     },
     {
       "en": "Grandmother asks Mina to open her mouth before dinner.",
       "fa": "مادربزرگ از مینا می‌خواهد پیش از شام دهانش را باز کند."
     },
     {
-      "en": "\"You have a new tooth,\" she says with a smile.",
-      "fa": "با لبخند می‌گوید: «یک دندان تازه داری.»"
+      "en": "\"You have a new tooth,\" she says.",
+      "fa": "می‌گوید: «یک دندان تازه داری.»"
     },
     {
-      "en": "Mina touches the tooth with her tongue and smiles back.",
-      "fa": "مینا با زبانش دندان را لمس می‌کند و لبخند می‌زند."
+      "en": "Mina looks at the tooth and is happy.",
+      "fa": "مینا به دندان نگاه می‌کند و خوشحال می‌شود."
     },
     {
-      "en": "Her cousin arrives with long blond hair tied behind her head.",
-      "fa": "دخترخاله‌اش با موهای بلوند بلند که پشت سرش بسته شده می‌رسد."
+      "en": "Her cousin has long blond hair.",
+      "fa": "دخترخاله‌اش موهای بلوند بلند دارد."
     },
     {
-      "en": "The blond hair shines in the light from the window.",
-      "fa": "موهای بلوند در نور پنجره می‌درخشند."
+      "en": "The blond hair is easy to see in the light from the window.",
+      "fa": "موهای بلوند در نور پنجره به‌راحتی دیده می‌شوند."
     },
     {
       "en": "Her cousin sits close and shows Mina a funny picture.",
       "fa": "دخترخاله نزدیک می‌نشیند و عکس خنده‌داری به مینا نشان می‌دهد."
     },
     {
-      "en": "The picture shows a fat white chicken resting on a cushion.",
-      "fa": "عکس یک مرغ سفید و چاق را نشان می‌دهد که روی بالش استراحت می‌کند."
+      "en": "The picture shows a fat white chicken on a chair.",
+      "fa": "عکس یک مرغ سفید و چاق را روی صندلی نشان می‌دهد."
     },
     {
       "en": "\"That chicken is funny, but very happy,\" the cousin says.",
       "fa": "دخترخاله می‌گوید: «آن مرغ خنده‌دار است، اما خیلی خوشحال است.»"
     },
     {
-      "en": "They both laugh, and Mina forgets her sore leg for a moment.",
-      "fa": "هر دو می‌خندند و مینا برای لحظه‌ای درد پایش را فراموش می‌کند."
+      "en": "They both laugh, and Mina forgets her leg for a moment.",
+      "fa": "هر دو می‌خندند و مینا برای لحظه‌ای پایش را فراموش می‌کند."
     },
     {
-      "en": "Later, the children go outside and play in the garden.",
-      "fa": "بعدتر، بچه‌ها بیرون می‌روند و در باغ بازی می‌کنند."
+      "en": "Later, the children put on their coats and go outside to play in the garden.",
+      "fa": "بعدتر، بچه‌ها پالتوهایشان را می‌پوشند و برای بازی به باغ می‌روند."
     },
     {
-      "en": "Mina moves slowly because her foot still hurts a little.",
-      "fa": "مینا آرام حرکت می‌کند چون پایش هنوز کمی درد می‌کند."
+      "en": "Mina moves slowly because her foot still feels bad.",
+      "fa": "مینا آرام حرکت می‌کند چون پایش هنوز کمی بد است."
     },
     {
-      "en": "Her cousin takes Mina's hand when they cross the stones.",
-      "fa": "دخترخاله وقتی از روی سنگ‌ها رد می‌شوند دست مینا را می‌گیرد."
+      "en": "Her cousin takes Mina's hand when they walk outside.",
+      "fa": "دخترخاله وقتی بیرون راه می‌روند دست مینا را می‌گیرد."
     },
     {
       "en": "They spend the afternoon looking at flowers and playing quiet games.",
       "fa": "بعدازظهر را با دیدن گل‌ها و بازی‌های آرام می‌گذرانند."
     },
     {
-      "en": "Their games become softer as the sky grows dark.",
-      "fa": "با تاریک شدن آسمان، بازی‌هایشان آرام‌تر می‌شود."
+      "en": "Their games become quiet as it gets dark.",
+      "fa": "با تاریک شدن هوا، بازی‌هایشان آرام می‌شود."
     },
     {
-      "en": "Aunt calls them inside when dinner is ready.",
-      "fa": "خاله وقتی شام آماده می‌شود آن‌ها را به داخل صدا می‌زند."
+      "en": "Aunt calls them to dinner when it is ready.",
+      "fa": "خاله وقتی شام آماده می‌شود آن‌ها را صدا می‌کند."
     },
     {
       "en": "The children wash their hands before they sit down.",
       "fa": "بچه‌ها پیش از نشستن دست‌هایشان را می‌شویند."
     },
     {
-      "en": "After dinner, Mina says every part of her body wants rest.",
-      "fa": "بعد از شام، مینا می‌گوید تمام بدنش استراحت می‌خواهد."
+      "en": "After dinner, Mina says every part of her body wants to lie down.",
+      "fa": "بعد از شام، مینا می‌گوید تمام بدنش می‌خواهد دراز بکشد."
     },
     {
-      "en": "Grandmother laughs and points toward the bedroom.",
-      "fa": "مادربزرگ می‌خندد و به سمت اتاق‌خواب اشاره می‌کند."
+      "en": "Grandmother laughs and points to the bedroom.",
+      "fa": "مادربزرگ می‌خندد و به اتاق‌خواب اشاره می‌کند."
     },
     {
-      "en": "\"Lie down and let yourself rest,\" she tells Mina.",
-      "fa": "به مینا می‌گوید: «دراز بکش و به خودت اجازه بده استراحت کنی.»"
+      "en": "\"Lie down and let yourself relax,\" she tells Mina.",
+      "fa": "به مینا می‌گوید: «دراز بکش و به خودت اجازه بده آرام شوی.»"
     },
     {
-      "en": "Mina lies on the bed and pulls the blanket over her legs.",
-      "fa": "مینا روی تخت دراز می‌کشد و پتو را روی پاهایش می‌کشد."
+      "en": "Mina lies on the bed and keeps her legs warm.",
+      "fa": "مینا روی تخت دراز می‌کشد و پاهایش را گرم نگه می‌دارد."
     },
     {
-      "en": "Her head sinks into the soft pillow.",
-      "fa": "سرش در بالش نرم فرو می‌رود."
+      "en": "She puts her head down and begins to relax.",
+      "fa": "سرش را پایین می‌گذارد و شروع به آرام شدن می‌کند."
     },
     {
-      "en": "One arm rests beside her, and the other holds Nino's little photo.",
-      "fa": "یک بازویش کنارش استراحت می‌کند و دیگری عکس کوچک نینو را نگه داشته است."
+      "en": "One arm is next to her, and the other has Nino's little photo.",
+      "fa": "یک بازویش کنارش است و با بازوی دیگر عکس کوچک نینو را نگه داشته است."
     },
     {
       "en": "Grandmother sits by the bed and asks about Mina's favorite hobby.",
@@ -190,12 +180,12 @@
       "fa": "مینا می‌گوید: «سرگرمی من گوش دادن به قصه‌هاست.»"
     },
     {
-      "en": "Grandmother smiles because storytelling is her hobby too.",
-      "fa": "مادربزرگ لبخند می‌زند چون قصه گفتن سرگرمی او هم هست."
+      "en": "Grandmother is happy because stories are her hobby too.",
+      "fa": "مادربزرگ خوشحال است چون قصه‌ها سرگرمی او هم هستند."
     },
     {
-      "en": "She tells Mina that her parents spent many evenings listening to stories here.",
-      "fa": "به مینا می‌گوید پدر و مادرش عصرهای زیادی را اینجا با گوش دادن به قصه‌ها گذرانده‌اند."
+      "en": "She tells Mina that her parents listened to stories here on many evenings.",
+      "fa": "به مینا می‌گوید پدر و مادرش عصرهای زیادی اینجا به قصه‌ها گوش داده‌اند."
     },
     {
       "en": "\"They used to spend hours in this room,\" Grandmother remembers.",
@@ -210,52 +200,52 @@
       "fa": "مادربزرگ قصه‌ای درباره‌ی یک جوجه‌ی زرد کوچک انتخاب می‌کند."
     },
     {
-      "en": "Mina listens with both eyes open and her mouth almost smiling.",
-      "fa": "مینا با هر دو چشم باز گوش می‌دهد و دهانش تقریباً لبخند دارد."
+      "en": "Mina listens with both eyes open and is happy.",
+      "fa": "مینا با هر دو چشم باز گوش می‌دهد و خوشحال است."
     },
     {
       "en": "The story follows a chicken who loses his way in the mountains.",
       "fa": "قصه جوجه‌ای را دنبال می‌کند که راهش را در کوهستان گم می‌کند."
     },
     {
-      "en": "He hurts one foot but keeps walking toward home.",
-      "fa": "او یک پایش را زخمی می‌کند، اما به سمت خانه ادامه می‌دهد."
+      "en": "One foot feels bad, but he keeps walking home.",
+      "fa": "یکی از پاهایش بد است، اما همچنان به سمت خانه راه می‌رود."
     },
     {
       "en": "A kind child finds him and cleans his dirty face.",
       "fa": "کودکی مهربان او را پیدا می‌کند و صورت کثیفش را تمیز می‌کند."
     },
     {
-      "en": "The child gives him food and lets him sleep beside the fire.",
-      "fa": "کودک به او غذا می‌دهد و اجازه می‌دهد کنار آتش بخوابد."
+      "en": "The child gives him food and lets him sleep near the fire.",
+      "fa": "کودک به او غذا می‌دهد و اجازه می‌دهد نزدیک آتش بخوابد."
     },
     {
-      "en": "Mina imagines Nino safe with someone kind.",
-      "fa": "مینا نینو را تصور می‌کند که کنار فردی مهربان در امان است."
+      "en": "Mina imagines Nino with someone kind.",
+      "fa": "مینا نینو را کنار فردی مهربان تصور می‌کند."
     },
     {
-      "en": "Her body finally feels warm and quiet under the blanket.",
-      "fa": "بالاخره بدنش زیر پتو گرم و آرام احساس می‌شود."
+      "en": "Her body finally feels warm and quiet in bed.",
+      "fa": "بالاخره بدنش در تخت گرم و آرام احساس می‌شود."
     },
     {
-      "en": "Grandmother touches Mina's hair and says, \"Keep yourself warm.\"",
-      "fa": "مادربزرگ موهای مینا را لمس می‌کند و می‌گوید: «خودت را گرم نگه دار.»"
+      "en": "Grandmother looks at Mina's hair and says, \"Keep yourself warm.\"",
+      "fa": "مادربزرگ به موهای مینا نگاه می‌کند و می‌گوید: «خودت را گرم نگه دار.»"
     },
     {
       "en": "Mina asks, \"Will the chicken in your story find his way home?\"",
       "fa": "مینا می‌پرسد: «جوجه‌ی قصه‌ات راه خانه را پیدا می‌کند؟»"
     },
     {
-      "en": "Grandmother smiles and says, \"Listen, and you will see.\"",
-      "fa": "مادربزرگ لبخند می‌زند و می‌گوید: «گوش کن تا بفهمی.»"
+      "en": "Grandmother says, \"Listen, and you will see.\"",
+      "fa": "مادربزرگ می‌گوید: «گوش کن تا بفهمی.»"
     },
     {
-      "en": "Mina closes one eye, then the other, while Grandmother continues.",
-      "fa": "مینا یک چشم و بعد چشم دیگر را می‌بندد و مادربزرگ ادامه می‌دهد."
+      "en": "Mina closes one eye, then the other, as Grandmother keeps telling the story.",
+      "fa": "مینا یک چشم و بعد چشم دیگر را می‌بندد و مادربزرگ به قصه ادامه می‌دهد."
     },
     {
-      "en": "Before the story ends, Mina is almost asleep.",
-      "fa": "پیش از پایان قصه، مینا تقریباً خوابیده است."
+      "en": "Before the story ends, Mina closes both eyes.",
+      "fa": "پیش از پایان قصه، مینا هر دو چشمش را می‌بندد."
     }
   ],
   "check": [

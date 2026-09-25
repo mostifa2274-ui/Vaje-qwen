@@ -87,8 +87,8 @@ for (const pattern of chickenCanonRegressions) {
 
 for (const chapter of chapters) {
   for (const sentence of chapter.sentences) {
-    if (/golden chicken/i.test(sentence.en)) {
-      assert(!sentence.fa.includes('سیاه'), `${chapter.id}: golden chicken cannot translate as black chicken`)
+    if (/(?:golden|yellow) chicken/i.test(sentence.en)) {
+      assert(!sentence.fa.includes('سیاه'), `${chapter.id}: yellow/golden chicken cannot translate as black chicken`)
     }
   }
 }
