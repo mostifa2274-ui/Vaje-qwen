@@ -5,29 +5,23 @@
   "titleFa": "سفر",
   "titleEn": "The Trip",
   "new": [
-    "boot",
-    "clothes",
-    "coat",
-    "dress",
-    "hat",
+    "trip",
+    "grandfather",
+    "vacation",
     "jacket",
     "jeans",
     "pants",
     "shirt",
-    "shoe",
+    "dress",
     "skirt",
     "sweater",
+    "mountain",
     "t-shirt",
     "wear",
-    "map",
-    "way",
-    "trip",
+    "hat",
     "travel",
-    "visit",
-    "vacation",
-    "grandmother",
-    "grandfather",
-    "blue"
+    "boot",
+    "train"
   ],
   "sentences": [
     {
@@ -63,8 +57,8 @@
       "fa": "بعد یک ژاکت سیاه اضافه می‌کند."
     },
     {
-      "en": "She folds her blue jeans and puts them beside the jacket.",
-      "fa": "شلوار جین آبی‌اش را تا می‌کند و کنار ژاکت می‌گذارد."
+      "en": "She puts her blue jeans next to the jacket.",
+      "fa": "شلوار جین آبی‌اش را کنار ژاکت می‌گذارد."
     },
     {
       "en": "A pair of black pants goes in next.",
@@ -75,7 +69,7 @@
       "fa": "مینا برای دیدار یک پیراهن سفید انتخاب می‌کند."
     },
     {
-      "en": "She also packs a pretty dress.",
+      "en": "She also puts a pretty dress in the bag.",
       "fa": "او یک پیراهن زنانه‌ی زیبا هم در کیف می‌گذارد."
     },
     {
@@ -91,8 +85,8 @@
       "fa": "مینا یک تی‌شرت سفید هم اضافه می‌کند."
     },
     {
-      "en": "Now the bag is almost full of clothes.",
-      "fa": "حالا کیف تقریباً پر از لباس است."
+      "en": "Now the bag is very full of clothes.",
+      "fa": "حالا کیف خیلی پر از لباس است."
     },
     {
       "en": "\"What will you wear on the first day?\" Mom asks.",
@@ -123,11 +117,11 @@
       "fa": "بابا آن را زیر یک صندلی پیدا می‌کند."
     },
     {
-      "en": "Mina also packs a light shoe for warm weather.",
-      "fa": "مینا یک کفش سبک هم برای هوای گرم برمی‌دارد."
+      "en": "Mina also puts a light shoe in the bag for warm weather.",
+      "fa": "مینا یک کفش سبک هم برای هوای گرم در کیف می‌گذارد."
     },
     {
-      "en": "She leaves another pair of shoes beside the bag.",
+      "en": "She leaves another pair of shoes next to the bag.",
       "fa": "یک جفت کفش دیگر را کنار کیف می‌گذارد."
     },
     {
@@ -147,19 +141,19 @@
       "fa": "راه طولانی است، پس آن‌ها زود حرکت می‌کنند."
     },
     {
-      "en": "Mina follows the blue line on the map with her finger.",
-      "fa": "مینا با انگشتش خط آبی روی نقشه را دنبال می‌کند."
+      "en": "Mina follows the blue line on the map with her hand.",
+      "fa": "مینا با دستش خط آبی روی نقشه را دنبال می‌کند."
     },
     {
-      "en": "Our trip goes past the city and toward the mountains.",
-      "fa": "بابا می‌گوید: «سفر ما از کنار شهر می‌گذرد و به سمت کوه‌ها می‌رود.»"
+      "en": "Our trip goes past the city and to the mountains.",
+      "fa": "سفر ما از کنار شهر می‌گذرد و به کوه‌ها می‌رود."
     },
     {
-      "en": "Mina wonders if Nino could be somewhere on that way.",
-      "fa": "مینا فکر می‌کند شاید نینو جایی در همان مسیر باشد."
+      "en": "Mina thinks Nino could be on that way.",
+      "fa": "مینا فکر می‌کند شاید نینو در همان مسیر باشد."
     },
     {
-      "en": "We can look while we travel, Mom says.",
+      "en": "We can look as we travel, Mom says.",
       "fa": "مامان می‌گوید: «وقتی سفر می‌کنیم می‌توانیم نگاه کنیم.»"
     },
     {
@@ -167,16 +161,16 @@
       "fa": "خانواده بخشی از سفر را با قطار طی می‌کند."
     },
     {
-      "en": "Mina likes the idea of a train journey.",
+      "en": "Mina likes the idea of a train trip.",
       "fa": "مینا از فکر سفر با قطار خوشش می‌آید."
     },
     {
-      "en": "This vacation is not only for rest now.",
-      "fa": "این تعطیلات دیگر فقط برای استراحت نیست."
+      "en": "This vacation is not only for fun now.",
+      "fa": "این تعطیلات دیگر فقط برای سرگرمی نیست."
     },
     {
-      "en": "It is also another chance to look for Nino.",
-      "fa": "فرصت دیگری هم برای پیدا کردن نینو است."
+      "en": "It is also another way to look for Nino.",
+      "fa": "این هم راه دیگری برای پیدا کردن نینو است."
     },
     {
       "en": "Before bed, Mina checks her bag one more time.",
@@ -191,20 +185,20 @@
       "fa": "کلاه، چکمه و کفش او هم آماده‌اند."
     },
     {
-      "en": "Dad folds the map and puts it near the door.",
-      "fa": "بابا نقشه را تا می‌کند و نزدیک در می‌گذارد."
+      "en": "Dad closes the map and puts it near the door.",
+      "fa": "بابا نقشه را می‌بندد و نزدیک در می‌گذارد."
     },
     {
       "en": "Tomorrow we begin the trip, he says.",
       "fa": "می‌گوید: «فردا سفر را شروع می‌کنیم.»"
     },
     {
-      "en": "Mina smiles because she will visit Grandmother and Grandfather.",
-      "fa": "مینا لبخند می‌زند چون قرار است مادربزرگ و پدربزرگ را ببیند."
+      "en": "Mina is happy because she will visit Grandmother and Grandfather.",
+      "fa": "مینا خوشحال است چون قرار است مادربزرگ و پدربزرگ را ببیند."
     },
     {
-      "en": "Then she looks at Nino's picture and says, Maybe this trip will bring me closer to you.",
-      "fa": "بعد به عکس نینو نگاه می‌کند و می‌گوید: «شاید این سفر من را به تو نزدیک‌تر کند.»"
+      "en": "Then she looks at Nino's picture and says, Maybe this trip will help me find you.",
+      "fa": "بعد به عکس نینو نگاه می‌کند و می‌گوید: «شاید این سفر کمک کند پیدایت کنم.»"
     }
   ],
   "check": [

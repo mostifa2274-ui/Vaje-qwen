@@ -5,33 +5,78 @@
   "titleFa": "نینو می‌دود",
   "titleEn": "Nino Runs",
   "new": [
-    "a-an",
-    "the",
-    "and",
-    "be",
-    "have",
-    "do",
-    "i",
-    "my",
     "it",
-    "she",
-    "this",
-    "not",
-    "no",
-    "at",
-    "in",
-    "on",
-    "chicken",
-    "bird",
-    "run",
-    "look",
-    "see",
-    "home",
+    "be",
     "morning",
+    "at",
+    "home",
+    "have",
+    "a-an",
     "little",
-    "red",
     "yellow",
-    "book"
+    "chicken",
+    "name",
+    "she",
+    "red",
+    "book",
+    "on",
+    "her",
+    "bed",
+    "this",
+    "my",
+    "tell",
+    "the",
+    "stand",
+    "and",
+    "look",
+    "bird",
+    "land",
+    "open",
+    "window",
+    "turn",
+    "very",
+    "close",
+    "say",
+    "can",
+    "see",
+    "move",
+    "outside",
+    "go",
+    "from",
+    "into",
+    "yard",
+    "begin",
+    "to",
+    "run",
+    "door",
+    "do",
+    "not",
+    "away",
+    "call",
+    "but",
+    "past",
+    "fly",
+    "garden",
+    "follow",
+    "i",
+    "cannot",
+    "him",
+    "under",
+    "chair",
+    "behind",
+    "no",
+    "here",
+    "then",
+    "again",
+    "still",
+    "feel",
+    "different",
+    "in",
+    "near",
+    "wall",
+    "now",
+    "hand",
+    "for"
   ],
   "sentences": [
     {
@@ -71,11 +116,11 @@
       "fa": "نینو می‌تواند حرکت پرنده را بیرون ببیند."
     },
     {
-      "en": "The bird jumps from the window into the yard.",
-      "fa": "پرنده از پنجره به داخل حیاط می‌پرد."
+      "en": "The bird goes from the window into the yard.",
+      "fa": "پرنده از پنجره به داخل حیاط می‌رود."
     },
     {
-      "en": "Nino begins to run toward the open door.",
+      "en": "Nino begins to run to the open door.",
       "fa": "نینو شروع می‌کند به دویدن به سمت درِ باز."
     },
     {
@@ -91,16 +136,16 @@
       "fa": "پرنده به داخل باغ پرواز می‌کند و نینو دنبالش می‌رود."
     },
     {
-      "en": "Mina reaches the door and says, \"I cannot see him.\"",
-      "fa": "مینا به در می‌رسد و می‌گوید: «نمی‌توانم او را ببینم.»"
+      "en": "Mina goes to the door and says, \"I cannot see him.\"",
+      "fa": "مینا به در می‌رود و می‌گوید: «نمی‌توانم او را ببینم.»"
     },
     {
       "en": "She looks under the chair and behind the door.",
       "fa": "او زیر صندلی و پشت در را نگاه می‌کند."
     },
     {
-      "en": "\"No chicken here,\" Mina whispers to herself.",
-      "fa": "مینا آرام با خودش می‌گوید: «اینجا جوجه‌ای نیست.»"
+      "en": "\"No chicken here,\" Mina says.",
+      "fa": "مینا می‌گوید: «اینجا جوجه‌ای نیست.»"
     },
     {
       "en": "Then she goes outside and calls Nino again.",
@@ -119,12 +164,12 @@
       "fa": "پرنده‌ی قرمز را می‌بیند، اما جوجه‌اش را نه."
     },
     {
-      "en": "Nino is not at home anymore.",
-      "fa": "نینو دیگر در خانه نیست."
+      "en": "Nino is not at home now.",
+      "fa": "نینو حالا در خانه نیست."
     },
     {
-      "en": "Mina holds the red book close to her chest.",
-      "fa": "مینا کتاب قرمز را نزدیک سینه‌اش نگه می‌دارد."
+      "en": "Mina has the red book in her hands.",
+      "fa": "کتاب قرمز در دست‌های مینا است."
     },
     {
       "en": "Then Mina runs outside to look for her little chicken.",

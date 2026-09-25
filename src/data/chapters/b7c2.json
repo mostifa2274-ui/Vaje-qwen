@@ -5,148 +5,138 @@
   "titleFa": "قطار",
   "titleEn": "The Train",
   "new": [
-    "car",
-    "bus",
-    "train",
     "taxi",
     "truck",
-    "bicycle",
     "bike",
     "drive",
     "driver",
     "ride",
-    "station",
-    "stop",
     "ticket",
     "traffic",
-    "arrive",
-    "carry",
-    "fall",
-    "follow",
-    "meter",
+    "arm",
     "mile",
-    "country"
+    "meter"
   ],
   "sentences": [
     {
-      "en": "The family reaches the station early with their bags.",
+      "en": "The family arrives at the station early with their bags.",
       "fa": "خانواده با کیف‌هایشان زود به ایستگاه می‌رسند."
     },
     {
-      "en": "A car drops two passengers near the main entrance.",
-      "fa": "یک ماشین دو مسافر را نزدیک ورودی اصلی پیاده می‌کند."
+      "en": "Two people get out of a car near the station.",
+      "fa": "دو نفر نزدیک ایستگاه از یک ماشین پیاده می‌شوند."
     },
     {
-      "en": "A city bus stops beside the station and opens its doors.",
-      "fa": "یک اتوبوس شهری کنار ایستگاه می‌ایستد و درهایش را باز می‌کند."
+      "en": "A city bus stops near the station and opens its doors.",
+      "fa": "یک اتوبوس شهری نزدیک ایستگاه می‌ایستد و درهایش را باز می‌کند."
     },
     {
-      "en": "A yellow taxi waits behind the bus for another passenger.",
-      "fa": "یک تاکسی زرد پشت اتوبوس منتظر مسافر دیگری است."
+      "en": "A yellow taxi waits behind the bus for another person.",
+      "fa": "یک تاکسی زرد پشت اتوبوس منتظر فرد دیگری است."
     },
     {
-      "en": "Across the road, a truck carries food toward the market.",
-      "fa": "آن سوی جاده، کامیونی غذا را به سمت بازار حمل می‌کند."
+      "en": "Across the road, a truck carries food to the market.",
+      "fa": "آن سوی جاده، کامیونی غذا را به بازار حمل می‌کند."
     },
     {
-      "en": "Mina watches a man lock his bicycle near the platform.",
-      "fa": "مینا مردی را می‌بیند که دوچرخه‌اش را نزدیک سکو قفل می‌کند."
+      "en": "Mina watches a man leave his bicycle near the train.",
+      "fa": "مینا مردی را می‌بیند که دوچرخه‌اش را نزدیک قطار می‌گذارد."
     },
     {
-      "en": "A boy rolls a small bike toward the train door.",
-      "fa": "پسری دوچرخه‌ی کوچکش را به سمت در قطار می‌برد."
+      "en": "A boy takes a small bike to the train door.",
+      "fa": "پسری دوچرخه‌ی کوچکش را به در قطار می‌برد."
     },
     {
-      "en": "Dad says he could drive a car, but the train is easier today.",
-      "fa": "بابا می‌گوید می‌تواند ماشین براند، اما امروز قطار آسان‌تر است."
+      "en": "Dad says he could drive a car, but the train is easy today.",
+      "fa": "بابا می‌گوید می‌تواند ماشین براند، اما امروز قطار آسان است."
     },
     {
-      "en": "The train driver waves before checking the platform.",
-      "fa": "راننده‌ی قطار پیش از بررسی سکو دست تکان می‌دهد."
+      "en": "The train driver says hello before checking the station.",
+      "fa": "راننده‌ی قطار پیش از بررسی ایستگاه سلام می‌کند."
     },
     {
       "en": "Their long ride will take them far from the city.",
       "fa": "سفر طولانی آن‌ها را از شهر دور خواهد کرد."
     },
     {
-      "en": "Mina keeps each ticket inside her red book.",
-      "fa": "مینا هر بلیت را داخل کتاب قرمزش نگه می‌دارد."
+      "en": "Mina keeps each ticket in her red book.",
+      "fa": "مینا هر بلیت را در کتاب قرمزش نگه می‌دارد."
     },
     {
-      "en": "The ticket shows their station and departure time.",
-      "fa": "بلیت ایستگاه و زمان حرکتشان را نشان می‌دهد."
+      "en": "The ticket shows their station and time.",
+      "fa": "بلیت ایستگاه و زمانشان را نشان می‌دهد."
     },
     {
       "en": "When the doors close, the train begins to move.",
       "fa": "وقتی درها بسته می‌شوند، قطار شروع به حرکت می‌کند."
     },
     {
-      "en": "Heavy traffic fills the road beside the tracks.",
-      "fa": "ترافیک سنگین جاده‌ی کنار ریل را پر کرده است."
+      "en": "Traffic fills the road near the train.",
+      "fa": "ترافیک جاده‌ی نزدیک قطار را پر کرده است."
     },
     {
       "en": "From the window, Mina sees cars move very slowly.",
       "fa": "از پنجره، مینا می‌بیند ماشین‌ها خیلی آرام حرکت می‌کنند."
     },
     {
-      "en": "The train passes the traffic and leaves the city behind.",
-      "fa": "قطار از ترافیک عبور می‌کند و شهر را پشت سر می‌گذارد."
+      "en": "The train moves past the traffic and leaves the city behind.",
+      "fa": "قطار از کنار ترافیک می‌گذرد و شهر را پشت سر می‌گذارد."
     },
     {
-      "en": "A worker helps carry a large bag through the carriage.",
-      "fa": "کارگری کمک می‌کند یک کیف بزرگ را از واگن عبور دهند."
+      "en": "A worker helps carry a large bag through the train.",
+      "fa": "کارگری کمک می‌کند یک کیف بزرگ را از داخل قطار عبور دهند."
     },
     {
-      "en": "Mina carries her own small bag beside Mom.",
+      "en": "Mina carries her own small bag next to Mom.",
       "fa": "مینا کیف کوچک خودش را کنار مامان حمل می‌کند."
     },
     {
-      "en": "At the next stop, more passengers enter the train.",
-      "fa": "در ایستگاه بعدی، مسافران بیشتری وارد قطار می‌شوند."
+      "en": "At the next stop, more people come into the train.",
+      "fa": "در ایستگاه بعدی، افراد بیشتری وارد قطار می‌شوند."
     },
     {
       "en": "A family with a child gets off at that stop.",
       "fa": "خانواده‌ای با یک بچه در آن ایستگاه پیاده می‌شود."
     },
     {
-      "en": "Mina almost begins to fall when the train moves suddenly.",
-      "fa": "وقتی قطار ناگهان حرکت می‌کند، مینا نزدیک است بیفتد."
+      "en": "Mina begins to fall when the train moves fast.",
+      "fa": "وقتی قطار سریع حرکت می‌کند، مینا شروع به افتادن می‌کند."
     },
     {
-      "en": "Dad catches her arm, so she does not fall.",
+      "en": "Dad takes her arm, so she does not fall.",
       "fa": "بابا بازویش را می‌گیرد، پس نمی‌افتد."
     },
     {
-      "en": "They follow the map as fields replace city buildings.",
-      "fa": "نقشه را دنبال می‌کنند و زمین‌ها جای ساختمان‌های شهری را می‌گیرند."
+      "en": "They follow the map as the city ends and farms begin.",
+      "fa": "نقشه را دنبال می‌کنند و وقتی شهر تمام می‌شود، مزرعه‌ها شروع می‌شوند."
     },
     {
-      "en": "Mina follows each station name with her finger.",
-      "fa": "مینا هر نام ایستگاه را با انگشت دنبال می‌کند."
+      "en": "Mina follows each station name with her hand.",
+      "fa": "مینا هر نام ایستگاه را با دست دنبال می‌کند."
     },
     {
-      "en": "One mile outside the city, the view becomes greener.",
-      "fa": "یک مایل بیرون شهر، منظره سبزتر می‌شود."
+      "en": "One mile outside the city, everything becomes greener.",
+      "fa": "یک مایل بیرون شهر، همه‌چیز سبزتر می‌شود."
     },
     {
-      "en": "Another mile brings small houses and open fields.",
-      "fa": "مایل بعدی خانه‌های کوچک و زمین‌های باز را نشان می‌دهد."
+      "en": "Another mile brings small houses and open farms.",
+      "fa": "مایل بعدی خانه‌های کوچک و مزرعه‌های باز را نشان می‌دهد."
     },
     {
-      "en": "A sign says the next platform is one hundred meters away.",
-      "fa": "تابلویی می‌گوید سکوی بعدی صد متر فاصله دارد."
+      "en": "A note says the next stop is one hundred meters away.",
+      "fa": "یادداشتی می‌گوید ایستگاه بعدی صد متر فاصله دارد."
     },
     {
       "en": "Mina laughs because one meter now feels very small.",
       "fa": "مینا می‌خندد چون حالا یک متر خیلی کم به نظر می‌رسد."
     },
     {
-      "en": "The train travels deeper into the country.",
-      "fa": "قطار بیشتر به داخل کشور می‌رود."
+      "en": "The train travels into the country.",
+      "fa": "قطار به داخل کشور می‌رود."
     },
     {
-      "en": "Their country looks wide and bright from the window.",
-      "fa": "کشورشان از پنجره وسیع و روشن به نظر می‌رسد."
+      "en": "Their country looks big and green from the window.",
+      "fa": "کشورشان از پنجره بزرگ و سبز به نظر می‌رسد."
     },
     {
       "en": "Dad says they should arrive before the afternoon rain.",
@@ -157,12 +147,12 @@
       "fa": "بالاخره به یک ایستگاه آرام روستایی می‌رسند."
     },
     {
-      "en": "The driver slows the train beside the short platform.",
-      "fa": "راننده قطار را کنار سکوی کوتاه آهسته می‌کند."
+      "en": "The driver slows the train near the short station.",
+      "fa": "راننده قطار را نزدیک ایستگاه کوتاه آهسته می‌کند."
     },
     {
-      "en": "\"This is our stop,\" Dad says, lifting the bags.",
-      "fa": "بابا در حالی که کیف‌ها را بلند می‌کند می‌گوید: «این ایستگاه ماست.»"
+      "en": "\"This is our stop,\" Dad says, taking the bags.",
+      "fa": "بابا در حالی که کیف‌ها را برمی‌دارد می‌گوید: «این ایستگاه ماست.»"
     },
     {
       "en": "The train comes to a complete stop near the farm road.",
@@ -173,16 +163,16 @@
       "fa": "اتوبوسی محلی بیرون منتظر است، اما خانواده تصمیم می‌گیرد پیاده برود."
     },
     {
-      "en": "A taxi driver offers a ride, and Dad politely says no.",
-      "fa": "راننده‌ی تاکسی پیشنهاد سفر می‌دهد و بابا مؤدبانه نه می‌گوید."
+      "en": "A taxi driver asks if they want a ride, and Dad says no.",
+      "fa": "راننده‌ی تاکسی می‌پرسد آیا سفر می‌خواهند و بابا نه می‌گوید."
     },
     {
-      "en": "Mina sees the red bicycle and small bike leave with other passengers.",
-      "fa": "مینا می‌بیند دوچرخه‌ی قرمز و دوچرخه‌ی کوچک همراه مسافران دیگر دور می‌شوند."
+      "en": "Mina sees the red bicycle and small bike leave with other people.",
+      "fa": "مینا می‌بیند دوچرخه‌ی قرمز و دوچرخه‌ی کوچک همراه افراد دیگر دور می‌شوند."
     },
     {
-      "en": "Then the family follows the country road toward their next clue.",
-      "fa": "بعد خانواده جاده‌ی روستایی را به سمت سرنخ بعدی دنبال می‌کند."
+      "en": "Then the family follows the country road to the next information.",
+      "fa": "بعد خانواده جاده‌ی روستایی را تا اطلاعات بعدی دنبال می‌کند."
     }
   ],
   "check": [

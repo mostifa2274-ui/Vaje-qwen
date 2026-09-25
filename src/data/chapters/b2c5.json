@@ -5,33 +5,39 @@
   "titleFa": "شهر بزرگ است",
   "titleEn": "The City Is Big",
   "new": [
+    "tall",
+    "apartment",
+    "local",
     "wife",
-    "husband",
     "married",
-    "member",
-    "partner",
+    "large",
+    "husband",
+    "shop",
+    "anyone",
+    "visitor",
+    "question",
+    "town",
     "boyfriend",
     "girlfriend",
+    "arrive",
+    "amazing",
     "age",
     "born",
-    "life",
-    "anyone",
-    "anything",
-    "visitor",
-    "town",
-    "neighborhood",
-    "area",
-    "place",
-    "building",
-    "apartment",
+    "member",
+    "work",
+    "partner",
+    "between",
+    "dish",
     "address",
+    "blue",
+    "phone",
     "world",
-    "center",
-    "local"
+    "return",
+    "own"
   ],
   "sentences": [
     {
-      "en": "Mina follows the bus-stop clue into a busy neighborhood.",
+      "en": "Mina follows the information from the bus stop into a busy neighborhood.",
       "fa": "مینا سرنخ ایستگاه اتوبوس را تا یک محله‌ی شلوغ دنبال می‌کند."
     },
     {
@@ -43,11 +49,11 @@
       "fa": "او مردی محلی را که با همسرش راه می‌رود متوقف می‌کند."
     },
     {
-      "en": "His wife looks at Nino's picture carefully.",
+      "en": "His wife looks at Nino's picture.",
       "fa": "همسر مرد با دقت به عکس نینو نگاه می‌کند."
     },
     {
-      "en": "The man says he and his wife are married and live nearby.",
+      "en": "The man says he and his wife are married and live near here.",
       "fa": "مرد می‌گوید او و همسرش متأهل هستند و نزدیک آنجا زندگی می‌کنند."
     },
     {
@@ -59,7 +65,7 @@
       "fa": "زنی بیرون می‌آید و شوهرش را صدا می‌زند."
     },
     {
-      "en": "Her husband is carrying groceries from a local shop.",
+      "en": "Her husband is carrying food from a local shop.",
       "fa": "شوهرش خریدهای یک مغازه‌ی محلی را حمل می‌کند."
     },
     {
@@ -79,11 +85,11 @@
       "fa": "بازدیدکننده می‌گوید تازه به این شهرک آمده است."
     },
     {
-      "en": "He does not know the neighborhood well yet.",
+      "en": "He does not know the neighborhood well.",
       "fa": "او هنوز محله را خوب نمی‌شناسد."
     },
     {
-      "en": "Still, he offers to help Mina search the place.",
+      "en": "Still, he says he can help Mina look around the place.",
       "fa": "با این حال پیشنهاد می‌کند به مینا برای جست‌وجوی آنجا کمک کند."
     },
     {
@@ -91,27 +97,27 @@
       "fa": "آن سوی خیابان، زن جوانی با دوست‌پسرش راه می‌رود."
     },
     {
-      "en": "Her boyfriend checks behind a row of parked cars.",
+      "en": "Her boyfriend checks behind some cars.",
       "fa": "دوست‌پسرش پشت ردیفی از ماشین‌های پارک‌شده را نگاه می‌کند."
     },
     {
-      "en": "A young man nearby is waiting for his girlfriend.",
+      "en": "A young man near Mina is waiting for his girlfriend.",
       "fa": "مرد جوانی نزدیک آنجا منتظر دوست‌دخترش است."
     },
     {
-      "en": "His girlfriend arrives and joins the search too.",
+      "en": "His girlfriend arrives and looks for Nino too.",
       "fa": "دوست‌دخترش می‌رسد و او هم به جست‌وجو می‌پیوندد."
     },
     {
-      "en": "Mina is surprised that so many people want to help.",
+      "en": "Mina thinks it is amazing that so many people want to help.",
       "fa": "مینا تعجب می‌کند که این همه آدم می‌خواهند کمک کنند."
     },
     {
-      "en": "One woman asks Mina's age while they walk.",
+      "en": "One woman asks Mina's age, and they walk.",
       "fa": "زنی هنگام راه رفتن سن مینا را می‌پرسد."
     },
     {
-      "en": "Mina answers, then asks whether the woman was born here.",
+      "en": "Mina answers, then asks if the woman was born here.",
       "fa": "مینا جواب می‌دهد و بعد می‌پرسد آیا زن اینجا به دنیا آمده است."
     },
     {
@@ -119,7 +125,7 @@
       "fa": "زن می‌گوید: «بله، من در این شهرک به دنیا آمدم.»"
     },
     {
-      "en": "She knows almost every street in the center.",
+      "en": "She knows every street in the center.",
       "fa": "او تقریباً همه‌ی خیابان‌های مرکز را می‌شناسد."
     },
     {
@@ -127,7 +133,7 @@
       "fa": "زندگی در شهر شلوغ است، اما مردم مدام برای کمک می‌ایستند."
     },
     {
-      "en": "A family member from one building brings down a flashlight.",
+      "en": "A family member from one building brings down a light.",
       "fa": "یکی از اعضای خانواده از ساختمانی یک چراغ‌قوه پایین می‌آورد."
     },
     {
@@ -135,15 +141,15 @@
       "fa": "مینا توضیح می‌دهد: «نینو هم عضو خانواده‌ی ماست.»"
     },
     {
-      "en": "The woman nods and says every family member matters.",
+      "en": "The woman says every family member is important.",
       "fa": "زن سر تکان می‌دهد و می‌گوید هر عضو خانواده مهم است."
     },
     {
-      "en": "A male dancer leaving work walks with his partner.",
+      "en": "A man who dances walks from work with his partner.",
       "fa": "یک رقاص مرد که از کار بیرون می‌آید با همراهش راه می‌رود."
     },
     {
-      "en": "Her partner checks a narrow passage between two buildings.",
+      "en": "Her partner checks a small place between two buildings.",
       "fa": "همراهش گذر باریکی میان دو ساختمان را بررسی می‌کند."
     },
     {
@@ -155,19 +161,19 @@
       "fa": "مینا می‌پرسد: «پشت ساختمان بعدی چیزی هست؟»"
     },
     {
-      "en": "The group searches that area too.",
+      "en": "The group looks around that area too.",
       "fa": "گروه آن منطقه را هم می‌گردد."
     },
     {
-      "en": "At last, someone finds a food bowl beside an apartment door.",
+      "en": "At last, someone finds a dish with food next to an apartment door.",
       "fa": "بالاخره کسی کنار درِ یک آپارتمان ظرف غذا پیدا می‌کند."
     },
     {
-      "en": "The address on the door is written in blue numbers.",
+      "en": "The address on the door is written in blue.",
       "fa": "آدرس روی در با عددهای آبی نوشته شده است."
     },
     {
-      "en": "Mina copies the address into her phone.",
+      "en": "Mina writes the address in her phone.",
       "fa": "مینا آدرس را در تلفنش یادداشت می‌کند."
     },
     {
@@ -175,31 +181,31 @@
       "fa": "زن محلی سالخورده‌ای در را باز می‌کند."
     },
     {
-      "en": "She says the bowl belongs to another chicken.",
+      "en": "She says the dish is for another chicken.",
       "fa": "او می‌گوید ظرف برای جوجه‌ی دیگری است."
     },
     {
-      "en": "The news disappoints Mina, but the woman has a new clue.",
+      "en": "Mina is sad, but the woman has new information.",
       "fa": "این خبر مینا را ناامید می‌کند، اما زن سرنخ تازه‌ای دارد."
     },
     {
-      "en": "She saw a golden chicken heading toward the city center.",
-      "fa": "او جوجه‌ای طلایی دیده که به سمت مرکز شهر می‌رفته است."
+      "en": "She saw a yellow chicken going to the city center.",
+      "fa": "او جوجه‌ای زرد دیده که به سمت مرکز شهر می‌رفته است."
     },
     {
-      "en": "Mina looks toward the center, where the streets are crowded.",
+      "en": "Mina looks at the center, where many people are in the streets.",
       "fa": "مینا به سمت مرکز نگاه می‌کند، جایی که خیابان‌ها شلوغ‌اند."
     },
     {
-      "en": "The world suddenly feels very big to her.",
+      "en": "The world feels very big to her now.",
       "fa": "دنیا ناگهان برایش خیلی بزرگ به نظر می‌رسد."
     },
     {
-      "en": "Then the visitor says, \"A big world still has small places to search.\"",
+      "en": "Then the visitor says, \"A big world still has small places to look in.\"",
       "fa": "بعد بازدیدکننده می‌گوید: «حتی یک دنیای بزرگ هم جاهای کوچکی برای جست‌وجو دارد.»"
     },
     {
-      "en": "Mina smiles and thanks everyone in the group.",
+      "en": "Mina is happy for the help and thanks everyone in the group.",
       "fa": "مینا لبخند می‌زند و از همه‌ی افراد گروه تشکر می‌کند."
     },
     {
@@ -207,11 +213,11 @@
       "fa": "شوهر و همسر به آپارتمانشان برمی‌گردند."
     },
     {
-      "en": "The boyfriend, girlfriend, and other helpers go their own ways.",
+      "en": "The boyfriend, girlfriend, and other people who helped go their own ways.",
       "fa": "دوست‌پسر، دوست‌دختر و بقیه‌ی کمک‌کننده‌ها راه خودشان را می‌روند."
     },
     {
-      "en": "Mina leaves the neighborhood and walks toward the city center.",
+      "en": "Mina leaves the neighborhood and walks to the city center.",
       "fa": "مینا محله را ترک می‌کند و به سمت مرکز شهر می‌رود."
     },
     {

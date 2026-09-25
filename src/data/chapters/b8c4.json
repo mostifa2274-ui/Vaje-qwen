@@ -5,30 +5,18 @@
   "titleFa": "حرف‌های مادربزرگ",
   "titleEn": "Grandmother's Words",
   "new": [
-    "decide",
-    "difference",
     "guess",
-    "imagine",
-    "know",
-    "maybe",
-    "believe",
-    "become",
-    "die",
-    "future",
-    "final",
-    "interesting",
+    "smart",
+    "star",
     "natural",
+    "die",
     "personal",
+    "difference",
+    "interesting",
+    "popular",
     "poor",
     "rich",
-    "popular",
-    "similar",
-    "smart",
-    "style",
-    "could",
-    "would",
-    "will",
-    "when"
+    "style"
   ],
   "sentences": [
     {
@@ -36,16 +24,16 @@
       "fa": "بعد از شام، مینا با مادربزرگ می‌نشیند."
     },
     {
-      "en": "The fire burns warmly while rain taps softly against the window.",
-      "fa": "آتش گرم می‌سوزد و باران آرام به پنجره می‌زند."
+      "en": "The fire is warm, and rain falls outside the window.",
+      "fa": "آتش گرم است و باران بیرون پنجره می‌بارد."
     },
     {
       "en": "\"Grandmother,\" Mina says quietly.",
       "fa": "«مادربزرگ»، مینا آرام می‌گوید."
     },
     {
-      "en": "\"Will Nino come home?\" Mina finally asks, breaking the silence.",
-      "fa": "مینا بالاخره سکوت را می‌شکند و می‌پرسد: «نینو به خانه برمی‌گردد؟»"
+      "en": "\"Will Nino come home?\" Mina finally asks.",
+      "fa": "مینا بالاخره می‌پرسد: «نینو به خانه برمی‌گردد؟»"
     },
     {
       "en": "\"When will he come?\" she asks before Grandmother can answer.",
@@ -72,28 +60,28 @@
       "fa": "«آینده مثل یک در بسته است»، مادربزرگ می‌گوید. «نمی‌توانیم آن طرفش را ببینیم.»"
     },
     {
-      "en": "\"But I know animals,\" Grandmother continues, \"and familiar voices and places can stay in their memory.\"",
-      "fa": "مادربزرگ ادامه می‌دهد: «اما من حیوان‌ها را می‌شناسم؛ صداها و جاهای آشنا می‌توانند در خاطرشان بمانند.»"
+      "en": "\"But I know animals,\" Grandmother says. \"Chickens can remember people and places they know.\"",
+      "fa": "مادربزرگ می‌گوید: «اما من حیوان‌ها را می‌شناسم. جوجه‌ها می‌توانند آدم‌ها و جاهایی را که می‌شناسند به یاد بیاورند.»"
     },
     {
       "en": "\"But you know your little chicken,\" she says.",
       "fa": "می‌گوید: «اما تو جوجه‌ی کوچکت را می‌شناسی.»"
     },
     {
-      "en": "chickens can remember their homes, even after a long time away.",
+      "en": "Chickens can remember their homes, even after a long time away.",
       "fa": "جوجه‌ها می‌توانند خانه‌شان را حتی بعد از مدت زیادی دوری به یاد بیاورند."
     },
     {
-      "en": "\"Maybe he is near,\" Mina says, looking toward the dark window.",
-      "fa": "«شاید نزدیک باشد»، مینا در حالی که به پنجره‌ی تاریک نگاه می‌کند می‌گوید."
+      "en": "\"Maybe he is near,\" Mina says, looking at the dark window.",
+      "fa": "مینا در حالی که به پنجره‌ی تاریک نگاه می‌کند می‌گوید: «شاید نزدیک باشد.»"
     },
     {
       "en": "\"Maybe,\" Grandmother says. \"That is possible.\"",
       "fa": "«شاید»، مادربزرگ می‌گوید. «ممکن است.»"
     },
     {
-      "en": "\"Maybe he is on the road now, moving one street closer to home,\" Mina says.",
-      "fa": "مینا می‌گوید: «شاید همین حالا در راه باشد و یک خیابان به خانه نزدیک‌تر شده باشد.»"
+      "en": "\"Maybe he is on the road now and near home,\" Mina says.",
+      "fa": "مینا می‌گوید: «شاید همین حالا در راه باشد و نزدیک خانه شده باشد.»"
     },
     {
       "en": "\"I believe he is coming home,\" Mina says.",
@@ -112,56 +100,56 @@
       "fa": "«حدس بزن به چه فکر می‌کنم»، مینا می‌گوید."
     },
     {
-      "en": "\"I can guess,\" Grandmother says with a smile.",
-      "fa": "«می‌توانم حدس بزنم»، مادربزرگ با لبخند می‌گوید."
+      "en": "\"I can guess,\" Grandmother says.",
+      "fa": "مادربزرگ می‌گوید: «می‌توانم حدس بزنم.»"
     },
     {
-      "en": "Grandmother smiles. \"You would say Nino before anything else.\"",
-      "fa": "مادربزرگ لبخند می‌زند: «قبل از هر چیز دیگری اسم نینو را می‌گفتی.»"
+      "en": "Grandmother says, \"You would say Nino before anything else.\"",
+      "fa": "مادربزرگ می‌گوید: «قبل از هر چیز دیگری اسم نینو را می‌گفتی.»"
     },
     {
       "en": "\"I would,\" Mina says. \"I always think about Nino.\"",
       "fa": "«می‌گفتم»، مینا می‌گوید. «همیشه به نینو فکر می‌کنم.»"
     },
     {
-      "en": "\"I would know him among a thousand birds.\"",
-      "fa": "«او را میان هزار پرنده هم می‌شناختم.»"
+      "en": "\"I would know him with a thousand birds around him.\"",
+      "fa": "«حتی اگر هزار پرنده دورش باشند، او را می‌شناختم.»"
     },
     {
       "en": "\"Could he forget us?\" Mina asks.",
       "fa": "«ممکن است ما را فراموش کند؟» مینا می‌پرسد."
     },
     {
-      "en": "\"Could a chicken really forget the girl who raised him?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «واقعاً ممکن است یک جوجه دختری را که بزرگش کرده فراموش کند؟»"
+      "en": "\"Could a chicken really forget the girl who lived with him from when he was small?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «واقعاً ممکن است یک جوجه دختری را که از وقتی کوچک بود با او زندگی کرده فراموش کند؟»"
     },
     {
-      "en": "\"No,\" Grandmother says. \"He could not forget you so easily.\"",
-      "fa": "«نه»، مادربزرگ می‌گوید. «نمی‌تواند به این راحتی تو را فراموش کند.»"
+      "en": "\"No,\" Grandmother says. \"He could not forget you.\"",
+      "fa": "مادربزرگ می‌گوید: «نه. نمی‌تواند تو را فراموش کند.»"
     },
     {
-      "en": "\"chickens can be very smart,\" she says.",
-      "fa": "«جوجه‌ها می‌توانند خیلی باهوش باشند»، می‌گوید."
+      "en": "\"Chickens can be very smart,\" she says.",
+      "fa": "می‌گوید: «جوجه‌ها می‌توانند خیلی باهوش باشند.»"
     },
     {
-      "en": "A familiar voice or place can sometimes help a lost chicken move in the right direction.",
-      "fa": "گاهی یک صدای آشنا یا جای آشنا می‌تواند به جوجه‌ی گمشده کمک کند در مسیر درست حرکت کند."
+      "en": "A person or place he knows can sometimes help a chicken go home.",
+      "fa": "گاهی یک آدم یا جای آشنا می‌تواند به جوجه کمک کند به خانه برگردد."
     },
     {
-      "en": "\"Nino is smart,\" Mina says, remembering the paths he learned around their yard.",
+      "en": "\"Nino is smart,\" Mina says, remembering the ways he learned around their yard.",
       "fa": "مینا با یادآوری راه‌هایی که نینو در حیاط یاد گرفته بود می‌گوید: «نینو باهوش است.»"
     },
     {
-      "en": "\"Imagine him now,\" Grandmother says. \"Where might he be?\"",
-      "fa": "«حالا او را تصور کن»، مادربزرگ می‌گوید. «ممکن است کجا باشد؟»"
+      "en": "\"Imagine him now,\" Grandmother says. \"Where could he be?\"",
+      "fa": "مادربزرگ می‌گوید: «حالا او را تصور کن. ممکن است کجا باشد؟»"
     },
     {
-      "en": "\"Imagine his little feet on the road, still carrying him toward somewhere safe,\" Grandmother says.",
-      "fa": "مادربزرگ می‌گوید: «پاهای کوچکش را روی جاده تصور کن که هنوز او را به جایی امن می‌برند.»"
+      "en": "\"Imagine his little feet on the road, still carrying him home,\" Grandmother says.",
+      "fa": "مادربزرگ می‌گوید: «پاهای کوچکش را روی جاده تصور کن که هنوز او را به خانه می‌برند.»"
     },
     {
-      "en": "Mina closes her eyes and tries to imagine the road instead of the empty room.",
-      "fa": "مینا چشم‌هایش را می‌بندد و سعی می‌کند به جای اتاق خالی، جاده را تصور کند."
+      "en": "Mina closes her eyes and tries to imagine the road, not the room.",
+      "fa": "مینا چشم‌هایش را می‌بندد و سعی می‌کند جاده را تصور کند، نه اتاق را."
     },
     {
       "en": "\"I can imagine him on a road under the stars,\" Mina says.",
@@ -176,36 +164,36 @@
       "fa": "مادربزرگ توضیح می‌دهد دلتنگی برای کسی بخش طبیعی دوست داشتن اوست."
     },
     {
-      "en": "\"Love is natural too,\" she says, squeezing Mina's hand.",
-      "fa": "دست مینا را فشار می‌دهد و می‌گوید: «عشق هم طبیعی است.»"
+      "en": "\"Love is natural too,\" she says and takes Mina's hand.",
+      "fa": "دست مینا را می‌گیرد و می‌گوید: «عشق هم طبیعی است.»"
     },
     {
       "en": "\"I had a little chicken when I was young,\" Grandmother says.",
       "fa": "مادربزرگ می‌گوید: «وقتی جوان بودم یک جوجه‌ی کوچک داشتم.»"
     },
     {
-      "en": "\"Did he die?\" Mina asks softly.",
-      "fa": "«مرد؟» مینا آرام می‌پرسد."
+      "en": "\"Did he die?\" Mina asks in a quiet way.",
+      "fa": "مینا آرام می‌پرسد: «مرد؟»"
     },
     {
       "en": "\"Old chickens die, just as other old animals do,\" Grandmother says.",
       "fa": "«جوجه‌های پیر هم مثل حیوان‌های پیر دیگر می‌میرند»، مادربزرگ می‌گوید."
     },
     {
-      "en": "\"chickens die someday, and people do too, but love helps us remember them,\" Grandmother says.",
-      "fa": "مادربزرگ می‌گوید: «جوجه‌ها و آدم‌ها روزی می‌میرند، اما عشق کمک می‌کند به یادشان بمانیم.»"
+      "en": "\"Chickens die when they are old, and people do too, but love helps us remember them,\" Grandmother says.",
+      "fa": "مادربزرگ می‌گوید: «جوجه‌ها وقتی پیر می‌شوند می‌میرند و آدم‌ها هم همین‌طور، اما عشق کمک می‌کند به یادشان بمانیم.»"
     },
     {
       "en": "\"This is a personal story,\" she says. \"I do not tell it to everyone.\"",
       "fa": "«این یک قصه‌ی شخصی است»، می‌گوید. «آن را به همه نمی‌گویم.»"
     },
     {
-      "en": "\"I do not tell this story to everyone because some memories need a safe listener,\" she says.",
-      "fa": "می‌گوید: «این قصه را برای همه تعریف نمی‌کنم چون بعضی خاطره‌ها شنونده‌ی امن می‌خواهند.»"
+      "en": "\"I do not tell this story to everyone because some personal stories need someone kind to listen,\" she says.",
+      "fa": "می‌گوید: «این قصه را برای همه تعریف نمی‌کنم چون بعضی قصه‌های شخصی به کسی مهربان برای شنیدن نیاز دارند.»"
     },
     {
-      "en": "Mina understands that a personal story can feel like a gift.",
-      "fa": "مینا می‌فهمد یک قصه‌ی شخصی می‌تواند مثل یک هدیه باشد."
+      "en": "Mina understands that a personal story can feel special.",
+      "fa": "مینا می‌فهمد یک قصه‌ی شخصی می‌تواند حس خاصی داشته باشد."
     },
     {
       "en": "\"Was he like Nino?\" Mina asks.",
@@ -236,16 +224,16 @@
       "fa": "«جالب است»، مینا می‌گوید. «بیشتر بگو.»"
     },
     {
-      "en": "\"Tell me more interesting things about him,\" Mina asks, leaning closer.",
-      "fa": "مینا نزدیک‌تر می‌شود و می‌پرسد: «چیزهای جالب بیشتری درباره‌اش بگو.»"
+      "en": "\"Tell me more interesting things about him,\" Mina asks.",
+      "fa": "مینا می‌پرسد: «چیزهای جالب بیشتری درباره‌اش بگو.»"
     },
     {
       "en": "\"chickens are popular in this town,\" Grandmother says.",
       "fa": "«جوجه‌ها در این شهر محبوب‌اند»، مادربزرگ می‌گوید."
     },
     {
-      "en": "Grandmother says children in the town often help care for farm animals.",
-      "fa": "مادربزرگ می‌گوید بچه‌های شهر اغلب در مراقبت از حیوانات مزرعه کمک می‌کنند."
+      "en": "Grandmother says children in the town often help with farm animals.",
+      "fa": "مادربزرگ می‌گوید بچه‌های شهر اغلب به حیوانات مزرعه کمک می‌کنند."
     },
     {
       "en": "\"Are we poor or rich?\" Mina asks after a quiet moment.",
@@ -264,36 +252,36 @@
       "fa": "مادربزرگ قصه‌ها را به سبک خودش تعریف می‌کند."
     },
     {
-      "en": "Her style is slow and warm, with little pauses that make Mina listen carefully.",
-      "fa": "سبک او آرام و گرم است و مکث‌های کوچکش باعث می‌شود مینا با دقت گوش کند."
+      "en": "Her style is slow and warm, and Mina listens.",
+      "fa": "سبک او آرام و گرم است و مینا گوش می‌دهد."
     },
     {
       "en": "\"One day you will have your own style,\" Grandmother says.",
       "fa": "«یک روز سبک خودت را خواهی داشت»، مادربزرگ می‌گوید."
     },
     {
-      "en": "\"You could become a writer one day,\" Grandmother says, pointing to Mina's notebook.",
-      "fa": "مادربزرگ به دفتر مینا اشاره می‌کند و می‌گوید: «ممکن است یک روز نویسنده شوی.»"
+      "en": "\"You could become a writer one day,\" Grandmother says, pointing to Mina's red book.",
+      "fa": "مادربزرگ به کتاب قرمز مینا اشاره می‌کند و می‌گوید: «ممکن است یک روز نویسنده شوی.»"
     },
     {
-      "en": "\"A writer?\" Mina asks, surprised.",
-      "fa": "«نویسنده؟» مینا با تعجب می‌پرسد."
+      "en": "\"A writer?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «نویسنده؟»"
     },
     {
-      "en": "\"You already write in your little book whenever something matters to you,\" Grandmother reminds her.",
-      "fa": "مادربزرگ یادآوری می‌کند: «هر وقت چیزی برایت مهم است، همین حالا هم در کتاب کوچکت می‌نویسی.»"
+      "en": "\"You write in your little book when something is important to you,\" Grandmother says.",
+      "fa": "مادربزرگ می‌گوید: «وقتی چیزی برایت مهم است، در کتاب کوچکت می‌نویسی.»"
     },
     {
       "en": "Some writers begin with little books, just like yours.",
       "fa": "بعضی نویسنده‌ها با کتاب‌های کوچک شروع می‌کنند، درست مثل کتاب تو."
     },
     {
-      "en": "\"This will be my final story tonight,\" Grandmother says as the fire grows low.",
-      "fa": "مادربزرگ وقتی آتش کم‌نور می‌شود می‌گوید: «این آخرین قصه‌ی امشب من خواهد بود.»"
+      "en": "\"This will be my final story tonight,\" Grandmother says as the fire gets small.",
+      "fa": "مادربزرگ وقتی آتش کوچک می‌شود می‌گوید: «این آخرین قصه‌ی امشب من خواهد بود.»"
     },
     {
-      "en": "Her final story is always warm and hopeful.",
-      "fa": "آخرین قصه‌اش همیشه گرم و امیدوارکننده است."
+      "en": "Her final story is always warm and full of hope.",
+      "fa": "آخرین قصه‌اش همیشه گرم و پر از امید است."
     },
     {
       "en": "Before Grandmother finishes, Mina begins to decide what she wants to do next.",
@@ -308,8 +296,8 @@
       "fa": "«پس صبر می‌کنم و می‌نویسم»، مینا می‌گوید."
     },
     {
-      "en": "Waiting feels easier when Mina has a pen in her hand.",
-      "fa": "وقتی مینا قلمی در دست دارد، صبر کردن آسان‌تر به نظر می‌رسد."
+      "en": "Waiting feels better when Mina has a pen in her hand.",
+      "fa": "وقتی مینا قلمی در دست دارد، صبر کردن بهتر به نظر می‌رسد."
     }
   ],
   "check": [

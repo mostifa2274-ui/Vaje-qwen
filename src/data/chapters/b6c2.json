@@ -5,74 +5,69 @@
   "titleFa": "نقشه‌ی معلم",
   "titleEn": "The Teacher's Plan",
   "new": [
-    "correct",
-    "false",
-    "example",
+    "improve",
     "form",
+    "must",
     "chart",
     "paragraph",
-    "point",
-    "compare",
-    "complete",
-    "detail",
     "dictionary",
+    "difficult",
     "result",
     "rule",
     "skill",
-    "improve",
+    "grow",
+    "title",
     "course",
+    "project",
+    "reason",
     "college",
     "university",
-    "remember",
-    "repeat",
-    "put",
-    "plan",
-    "section"
+    "action"
   ],
   "sentences": [
     {
-      "en": "The next day, Mina shows her missing-chicken note to the teacher.",
-      "fa": "روز بعد، مینا یادداشت جوجه‌ی گمشده‌اش را به معلم نشان می‌دهد."
+      "en": "The next day, Mina shows her note about Nino to the teacher.",
+      "fa": "روز بعد، مینا یادداشتش درباره‌ی نینو را به معلم نشان می‌دهد."
     },
     {
       "en": "The teacher says the note is good but can improve.",
       "fa": "معلم می‌گوید یادداشت خوب است، اما می‌تواند بهتر شود."
     },
     {
-      "en": "First, they check whether the home address is correct.",
-      "fa": "اول بررسی می‌کنند آیا آدرس خانه درست است."
+      "en": "First, they check that the home address is correct.",
+      "fa": "اول بررسی می‌کنند که آدرس خانه درست است."
     },
     {
-      "en": "One old sentence is now false because the phone number changed.",
-      "fa": "یک جمله‌ی قدیمی حالا غلط است چون شماره تلفن عوض شده است."
+      "en": "One old sentence is now false because Mina uses a new phone.",
+      "fa": "یک جمله‌ی قدیمی حالا غلط است چون مینا از تلفن تازه‌ای استفاده می‌کند."
     },
     {
-      "en": "The teacher gives an example of a clearer sentence.",
-      "fa": "معلم یک مثال از جمله‌ای واضح‌تر می‌زند."
+      "en": "The teacher gives an example of an easy sentence.",
+      "fa": "معلم یک مثال از یک جمله‌ی آسان می‌دهد."
     },
     {
-      "en": "Then Mina begins a simple form with Nino's details.",
-      "fa": "بعد مینا یک فرم ساده با مشخصات نینو پر می‌کند."
+      "en": "Then Mina begins an easy form with Nino's details.",
+      "fa": "بعد مینا یک فرم آسان با جزئیات نینو شروع می‌کند."
     },
     {
-      "en": "She must complete every box before printing the note.",
-      "fa": "باید پیش از چاپ یادداشت همه‌ی کادرها را کامل کند."
+      "en": "She must complete every box before they put up the note.",
+      "fa": "باید پیش از نصب یادداشت همه‌ی کادرها را کامل کند."
     },
     {
       "en": "A wall chart shows streets around the school.",
       "fa": "یک نمودار دیواری خیابان‌های اطراف مدرسه را نشان می‌دهد."
     },
     {
-      "en": "Mina marks each searched street on the chart.",
-      "fa": "مینا هر خیابان جست‌وجوشده را روی نمودار علامت می‌زند."
+      "en": "Mina puts a point on each street they checked on the chart.",
+      "fa": "مینا روی هر خیابانی که بررسی کرده‌اند در نمودار یک نقطه می‌گذارد."
     },
     {
       "en": "The teacher asks her to write one short paragraph.",
       "fa": "معلم از او می‌خواهد یک پاراگراف کوتاه بنویسد."
     },
     {
-      "en": "The paragraph explains when and where Nino disappeared.",
-      "fa": "پاراگراف توضیح می‌دهد نینو چه وقت و کجا ناپدید شد."
+      "en": "The paragraph explains when and where Nino went away.",
+      "fa": "پاراگراف توضیح می‌دهد نینو چه وقت و کجا رفت."
     },
     {
       "en": "\"What is the main point?\" the teacher asks.",
@@ -83,16 +78,16 @@
       "fa": "مینا می‌گوید نکته‌ی اصلی این است که نینو به کمک نیاز دارد."
     },
     {
-      "en": "They compare two photos to choose the clearest one.",
-      "fa": "دو عکس را مقایسه می‌کنند تا واضح‌ترین را انتخاب کنند."
+      "en": "They compare two photos to choose the best one.",
+      "fa": "دو عکس را مقایسه می‌کنند تا بهترین را انتخاب کنند."
     },
     {
-      "en": "Mina uses the better photo so people can compare markings.",
-      "fa": "مینا از عکس بهتر استفاده می‌کند تا مردم بتوانند نشانه‌ها را مقایسه کنند."
+      "en": "Mina uses the better photo so people can compare details.",
+      "fa": "مینا از عکس بهتر استفاده می‌کند تا مردم بتوانند جزئیات را مقایسه کنند."
     },
     {
-      "en": "One important detail is the small white feather on Nino's left wing.",
-      "fa": "یک نشانه‌ی مهم، پر سفید کوچک روی بال چپ نینو است."
+      "en": "One important detail is a small white part on Nino's left.",
+      "fa": "یک جزئیات مهم، بخش سفید کوچکی در سمت چپ نینو است."
     },
     {
       "en": "Mina adds that detail below the photo.",
@@ -103,24 +98,24 @@
       "fa": "یک فرهنگ‌لغت باز می‌کند تا یک کلمه‌ی سخت را بررسی کند."
     },
     {
-      "en": "The dictionary gives a simpler word that more people know.",
-      "fa": "فرهنگ‌لغت کلمه‌ی ساده‌تری می‌دهد که افراد بیشتری می‌شناسند."
+      "en": "The dictionary gives an easy word that more people know.",
+      "fa": "فرهنگ‌لغت کلمه‌ی آسانی می‌دهد که افراد بیشتری می‌شناسند."
     },
     {
-      "en": "The result is a note that is easier to read.",
-      "fa": "نتیجه یادداشتی است که خواندنش آسان‌تر است."
+      "en": "The result is a note that is easy to read.",
+      "fa": "نتیجه یادداشتی است که خواندنش آسان است."
     },
     {
-      "en": "Mina smiles when she sees the improved result.",
-      "fa": "مینا وقتی نتیجه‌ی بهتر را می‌بیند لبخند می‌زند."
+      "en": "Mina is happy when she sees the improved result.",
+      "fa": "مینا وقتی نتیجه‌ی بهتر را می‌بیند خوشحال است."
     },
     {
       "en": "The teacher gives one writing rule: keep important facts first.",
       "fa": "معلم یک قانون نوشتن می‌دهد: اطلاعات مهم را اول بگذار."
     },
     {
-      "en": "Mina writes the rule in the corner of her notebook.",
-      "fa": "مینا آن قانون را گوشه‌ی دفترش می‌نویسد."
+      "en": "Mina writes the rule in her red book.",
+      "fa": "مینا آن قانون را در کتاب قرمزش می‌نویسد."
     },
     {
       "en": "Good writing is becoming a useful skill for her.",
@@ -135,40 +130,40 @@
       "fa": "مینا می‌خواهد یادداشت را یک بار دیگر بهتر کند."
     },
     {
-      "en": "Together they improve the title and phone-number line.",
-      "fa": "با هم عنوان و خط شماره تلفن را بهتر می‌کنند."
+      "en": "Together they improve the title and phone line.",
+      "fa": "با هم عنوان و خط تلفن را بهتر می‌کنند."
     },
     {
-      "en": "Their language course is working on clear messages this week.",
-      "fa": "دوره‌ی زبانشان این هفته روی پیام‌های واضح کار می‌کند."
+      "en": "Their language course is working on short messages this week.",
+      "fa": "دوره‌ی زبانشان این هفته روی پیام‌های کوتاه کار می‌کند."
     },
     {
       "en": "The course project gives Mina a useful reason to practice.",
       "fa": "پروژه‌ی دوره به مینا دلیل مفیدی برای تمرین می‌دهد."
     },
     {
-      "en": "Her brother studies at college and sees the new version.",
-      "fa": "برادرش در کالج درس می‌خواند و نسخه‌ی تازه را می‌بیند."
+      "en": "Her brother studies at college and sees the new note.",
+      "fa": "برادرش در کالج درس می‌خواند و یادداشت تازه را می‌بیند."
     },
     {
-      "en": "He hopes to attend university after college.",
+      "en": "He hopes to go to university after college.",
       "fa": "امیدوار است بعد از کالج به دانشگاه برود."
     },
     {
-      "en": "He says a university notice should be clear in the same way.",
-      "fa": "می‌گوید یک اطلاعیه‌ی دانشگاه هم باید به همین شکل واضح باشد."
+      "en": "He says a university message should be easy to read in the same way.",
+      "fa": "می‌گوید پیام دانشگاه هم باید به همین شکل آسان برای خواندن باشد."
     },
     {
       "en": "The teacher tells Mina to remember the most important facts.",
       "fa": "معلم به مینا می‌گوید مهم‌ترین اطلاعات را به خاطر بسپارد."
     },
     {
-      "en": "Mina can remember Nino's yellow feathers, orange beak, size, and favorite places.",
-      "fa": "مینا می‌تواند پرهای زرد، نوک نارنجی، اندازه و جاهای مورد علاقه‌ی نینو را به خاطر بسپارد."
+      "en": "Mina can remember Nino's yellow color and favorite places.",
+      "fa": "مینا می‌تواند رنگ زرد و جاهای مورد علاقه‌ی نینو را به خاطر بسپارد."
     },
     {
-      "en": "\"Repeat the phone number once,\" the teacher says.",
-      "fa": "معلم می‌گوید: «شماره تلفن را یک بار تکرار کن.»"
+      "en": "\"Repeat the phone once,\" the teacher says.",
+      "fa": "معلم می‌گوید: «تلفن را یک بار تکرار کن.»"
     },
     {
       "en": "Mina can repeat it without looking at the page.",
@@ -179,36 +174,36 @@
       "fa": "بعد تصمیم می‌گیرند یادداشت کامل‌شده را کجا نصب کنند."
     },
     {
-      "en": "They will put one copy at the school entrance.",
-      "fa": "یک نسخه را در ورودی مدرسه نصب خواهند کرد."
+      "en": "They will put one note at the school door.",
+      "fa": "یک یادداشت را کنار در مدرسه نصب خواهند کرد."
     },
     {
-      "en": "The teacher helps Mina make a simple search plan.",
-      "fa": "معلم کمک می‌کند مینا یک برنامه‌ی ساده‌ی جست‌وجو بسازد."
+      "en": "The teacher helps Mina make an easy plan to look for Nino.",
+      "fa": "معلم کمک می‌کند مینا یک برنامه‌ی آسان برای پیدا کردن نینو بسازد."
     },
     {
       "en": "The plan includes school, market, park, and river road.",
       "fa": "برنامه شامل مدرسه، بازار، پارک و جاده‌ی کنار رودخانه است."
     },
     {
-      "en": "One section of the plan lists places already checked.",
-      "fa": "یک بخش از برنامه جاهایی را فهرست می‌کند که قبلاً بررسی شده‌اند."
+      "en": "One section of the plan lists places they checked before.",
+      "fa": "یک بخش از برنامه جاهایی را فهرست می‌کند که قبلاً بررسی کرده‌اند."
     },
     {
-      "en": "Another section lists places they still need to search.",
-      "fa": "بخش دیگری جاهایی را فهرست می‌کند که هنوز باید بگردند."
+      "en": "Another section lists places they still need to check.",
+      "fa": "بخش دیگری جاهایی را فهرست می‌کند که هنوز باید بررسی کنند."
     },
     {
       "en": "The teacher checks that the form is complete.",
       "fa": "معلم بررسی می‌کند که فرم کامل باشد."
     },
     {
-      "en": "She also confirms that every important detail is correct.",
-      "fa": "همچنین تأیید می‌کند همه‌ی جزئیات مهم درست هستند."
+      "en": "She also checks that every important detail is correct.",
+      "fa": "همچنین بررسی می‌کند همه‌ی جزئیات مهم درست هستند."
     },
     {
-      "en": "The final result is a clear note and a practical plan.",
-      "fa": "نتیجه‌ی نهایی یک یادداشت واضح و یک برنامه‌ی عملی است."
+      "en": "The final result is a good note and a useful plan.",
+      "fa": "نتیجه‌ی نهایی یک یادداشت خوب و یک برنامه‌ی مفید است."
     },
     {
       "en": "Mina thanks the teacher for turning writing into action.",
@@ -219,8 +214,8 @@
       "fa": "یادداشت‌ها را بیرون می‌برد و شروع به نصب آن‌ها می‌کند."
     },
     {
-      "en": "With the new plan in hand, Mina continues searching for Nino.",
-      "fa": "مینا با برنامه‌ی تازه در دست به جست‌وجوی نینو ادامه می‌دهد."
+      "en": "With the new plan in hand, Mina keeps looking for Nino.",
+      "fa": "مینا با برنامه‌ی تازه در دست همچنان دنبال نینو می‌گردد."
     }
   ],
   "check": [

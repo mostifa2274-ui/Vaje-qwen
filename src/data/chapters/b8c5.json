@@ -5,45 +5,35 @@
   "titleFa": "ستاره‌ها",
   "titleEn": "The Stars",
   "new": [
-    "star",
-    "movie",
     "festival",
     "culture",
-    "design",
+    "movie",
+    "common",
     "paint",
     "painting",
-    "best",
-    "better",
-    "common",
-    "possible",
+    "design",
     "negative",
     "positive",
     "terrible",
     "statement",
-    "title",
-    "topic",
-    "which",
-    "why",
-    "than",
-    "as",
-    "without"
+    "topic"
   ],
   "sentences": [
     {
-      "en": "That night, the rain finally stops and the sky becomes clear.",
-      "fa": "آن شب، باران بالاخره بند می‌آید و آسمان صاف می‌شود."
+      "en": "That night, the rain finally stops, and Mina can see the stars.",
+      "fa": "آن شب، باران بالاخره بند می‌آید و مینا می‌تواند ستاره‌ها را ببیند."
     },
     {
-      "en": "Mina and Grandmother step outside and see the first star.",
+      "en": "Mina and Grandmother go outside and see the first star.",
       "fa": "مینا و مادربزرگ بیرون می‌روند و اولین ستاره را می‌بینند."
     },
     {
-      "en": "Soon another star appears, then dozens more.",
-      "fa": "خیلی زود ستاره‌ای دیگر و بعد ده‌ها ستاره‌ی دیگر ظاهر می‌شوند."
+      "en": "Soon they see another star, then many more.",
+      "fa": "خیلی زود ستاره‌ای دیگر و بعد ستاره‌های زیادی می‌بینند."
     },
     {
-      "en": "\"Look at the stars,\" Grandmother says. \"The sky is full tonight.\"",
-      "fa": "مادربزرگ می‌گوید: «به ستاره‌ها نگاه کن. امشب آسمان پر است.»"
+      "en": "\"Look at the stars,\" Grandmother says. \"There are so many tonight.\"",
+      "fa": "مادربزرگ می‌گوید: «به ستاره‌ها نگاه کن. امشب خیلی زیادند.»"
     },
     {
       "en": "\"Which star do you like best?\" Mina asks.",
@@ -54,32 +44,32 @@
       "fa": "مادربزرگ به ستاره‌ی کوچکی بالای دیوار باغ اشاره می‌کند."
     },
     {
-      "en": "\"That one,\" she says. \"It is small but very bright.\"",
-      "fa": "می‌گوید: «همان یکی. کوچک است، اما خیلی روشن.»"
+      "en": "\"That one,\" she says. \"It is small but has a lot of light.\"",
+      "fa": "می‌گوید: «همان یکی. کوچک است، اما نور زیادی دارد.»"
     },
     {
-      "en": "\"Why that one?\" Mina asks, leaning closer.",
-      "fa": "مینا نزدیک‌تر می‌شود و می‌پرسد: «چرا آن یکی؟»"
+      "en": "\"Why that one?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «چرا آن یکی؟»"
     },
     {
       "en": "\"Because small things can still carry a lot of light,\" Grandmother answers.",
       "fa": "مادربزرگ جواب می‌دهد: «چون چیزهای کوچک هم می‌توانند نور زیادی داشته باشند.»"
     },
     {
-      "en": "The little star looks brighter than the one beside it.",
-      "fa": "ستاره‌ی کوچک از ستاره‌ی کناری روشن‌تر به نظر می‌رسد."
+      "en": "The little star has more light than the one next to it.",
+      "fa": "ستاره‌ی کوچک از ستاره‌ی کناری نور بیشتری دارد."
     },
     {
-      "en": "Mina decides she likes it better than the larger stars.",
-      "fa": "مینا تصمیم می‌گیرد آن را بیشتر از ستاره‌های بزرگ‌تر دوست دارد."
+      "en": "Mina decides she likes it better than the big stars.",
+      "fa": "مینا تصمیم می‌گیرد آن را بیشتر از ستاره‌های بزرگ دوست دارد."
     },
     {
-      "en": "\"Maybe the best things are not always the biggest,\" she says.",
-      "fa": "می‌گوید: «شاید بهترین چیزها همیشه بزرگ‌ترین نباشند.»"
+      "en": "\"Maybe the best things are not always big,\" she says.",
+      "fa": "می‌گوید: «شاید بهترین چیزها همیشه بزرگ نباشند.»"
     },
     {
-      "en": "Music from the town reaches the garden a few minutes later.",
-      "fa": "چند دقیقه بعد صدای موسیقی شهر به باغ می‌رسد."
+      "en": "Music from the town comes to the garden a few minutes later.",
+      "fa": "چند دقیقه بعد صدای موسیقی شهر به باغ می‌آید."
     },
     {
       "en": "Grandmother explains that a summer festival has started below.",
@@ -90,16 +80,16 @@
       "fa": "جشن بخشی از فرهنگ شهر است و هر سال برگزار می‌شود."
     },
     {
-      "en": "Families gather there for food, music, and a movie outside.",
-      "fa": "خانواده‌ها برای غذا، موسیقی و تماشای فیلم در فضای باز آنجا جمع می‌شوند."
+      "en": "Families come there for food, music, and a movie outside.",
+      "fa": "خانواده‌ها برای غذا، موسیقی و تماشای فیلم در فضای باز آنجا می‌آیند."
     },
     {
       "en": "Mina and Grandmother walk down to watch the movie together.",
       "fa": "مینا و مادربزرگ با هم پایین می‌روند تا فیلم را ببینند."
     },
     {
-      "en": "The movie tells the story of a girl and her lost little chicken.",
-      "fa": "فیلم داستان دختری و جوجه‌ی کوچک گمشده‌اش را تعریف می‌کند."
+      "en": "The movie tells the story of a girl looking for her little chicken.",
+      "fa": "فیلم داستان دختری را تعریف می‌کند که دنبال جوجه‌ی کوچکش می‌گردد."
     },
     {
       "en": "Stories about animals are common in the town, Grandmother explains.",
@@ -110,40 +100,40 @@
       "fa": "می‌گوید: «جوجه‌ها در فرهنگ ما هم رایج هستند.»"
     },
     {
-      "en": "In one scene, the girl begins to paint her chicken.",
-      "fa": "در یکی از صحنه‌ها، دختر شروع می‌کند از جوجه‌اش نقاشی بکشد."
+      "en": "In the movie, the girl begins to paint her chicken.",
+      "fa": "در فیلم، دختر شروع می‌کند جوجه‌اش را نقاشی کند."
     },
     {
-      "en": "She uses yellow paint for the chicken and blue paint for the sky.",
-      "fa": "برای جوجه رنگ زرد و برای آسمان رنگ آبی استفاده می‌کند."
+      "en": "She uses yellow paint for the chicken and blue paint above it.",
+      "fa": "برای جوجه رنگ زرد و بالای آن رنگ آبی استفاده می‌کند."
     },
     {
-      "en": "The finished painting shows the chicken beneath several stars.",
-      "fa": "نقاشی تمام‌شده جوجه را زیر چند ستاره نشان می‌دهد."
+      "en": "The finished painting shows the chicken under many stars.",
+      "fa": "نقاشی تمام‌شده جوجه را زیر ستاره‌های زیادی نشان می‌دهد."
     },
     {
-      "en": "Mina studies the painting and likes its simple design.",
-      "fa": "مینا نقاشی را با دقت نگاه می‌کند و طرح ساده‌اش را دوست دارد."
+      "en": "Mina studies the painting and likes its easy design.",
+      "fa": "مینا نقاشی را نگاه می‌کند و طرح ساده‌اش را دوست دارد."
     },
     {
       "en": "\"I want to make a design like that for my book,\" Mina says.",
       "fa": "مینا می‌گوید: «می‌خواهم برای کتابم طرحی شبیه آن درست کنم.»"
     },
     {
-      "en": "Grandmother says a good design can be simple and still beautiful.",
+      "en": "Grandmother says a good design can be easy and still beautiful.",
       "fa": "مادربزرگ می‌گوید یک طرح خوب می‌تواند ساده و در عین حال زیبا باشد."
     },
     {
-      "en": "Back at the house, Mina opens her notebook under the stars.",
-      "fa": "وقتی به خانه برمی‌گردند، مینا دفترش را زیر ستاره‌ها باز می‌کند."
+      "en": "Back at the house, Mina opens her red book under the stars.",
+      "fa": "وقتی به خانه برمی‌گردند، مینا کتاب قرمزش را زیر ستاره‌ها باز می‌کند."
     },
     {
       "en": "She starts to paint a small picture of Nino.",
       "fa": "شروع می‌کند تصویر کوچکی از نینو نقاشی کند."
     },
     {
-      "en": "Her painting is not perfect, but it feels honest.",
-      "fa": "نقاشی‌اش بی‌نقص نیست، اما صادقانه به نظر می‌رسد."
+      "en": "Her painting is not perfect, but it feels real.",
+      "fa": "نقاشی‌اش بی‌نقص نیست، اما واقعی به نظر می‌رسد."
     },
     {
       "en": "\"Could I make it better?\" Mina asks.",
@@ -154,7 +144,7 @@
       "fa": "مادربزرگ می‌گوید: «البته. تمرین خیلی چیزها را ممکن می‌کند.»"
     },
     {
-      "en": "Mina asks whether it is possible that Nino can see the same stars.",
+      "en": "Mina asks if it is possible that Nino can see the same stars.",
       "fa": "مینا می‌پرسد آیا ممکن است نینو همین ستاره‌ها را ببیند."
     },
     {
@@ -162,28 +152,28 @@
       "fa": "مادربزرگ می‌گوید ممکن است، حتی اگر نتوانند با اطمینان بدانند."
     },
     {
-      "en": "For a moment, Mina's thoughts become negative again.",
-      "fa": "برای لحظه‌ای، فکرهای مینا دوباره منفی می‌شوند."
+      "en": "For a moment, Mina starts thinking something negative again.",
+      "fa": "برای لحظه‌ای، مینا دوباره به چیزی منفی فکر می‌کند."
     },
     {
       "en": "A negative thought tells her that Nino may never come back.",
       "fa": "یک فکر منفی به او می‌گوید شاید نینو هرگز برنگردد."
     },
     {
-      "en": "Grandmother notices and asks Mina to name one positive thought.",
-      "fa": "مادربزرگ متوجه می‌شود و از مینا می‌خواهد یک فکر مثبت نام ببرد."
+      "en": "Grandmother sees this and asks Mina to say one positive thing.",
+      "fa": "مادربزرگ این را می‌بیند و از مینا می‌خواهد یک چیز مثبت بگوید."
     },
     {
-      "en": "\"A positive thought is that he may be safe somewhere,\" Mina says.",
-      "fa": "مینا می‌گوید: «یک فکر مثبت این است که شاید جایی در امان باشد.»"
+      "en": "\"A positive thought is that he may be in a good place,\" Mina says.",
+      "fa": "مینا می‌گوید: «یک فکر مثبت این است که شاید در جای خوبی باشد.»"
     },
     {
-      "en": "The positive thought does not solve everything, but it gives her hope.",
-      "fa": "فکر مثبت همه‌چیز را حل نمی‌کند، اما به او امید می‌دهد."
+      "en": "The positive thought does not change everything, but it gives her hope.",
+      "fa": "فکر مثبت همه‌چیز را عوض نمی‌کند، اما به او امید می‌دهد."
     },
     {
-      "en": "\"Some nights without him are terrible,\" Mina admits.",
-      "fa": "مینا اعتراف می‌کند: «بعضی شب‌ها بدون او وحشتناک هستند.»"
+      "en": "\"Some nights without him are terrible,\" Mina says.",
+      "fa": "مینا می‌گوید: «بعضی شب‌ها بدون او وحشتناک هستند.»"
     },
     {
       "en": "The house feels different without Nino moving through it.",
@@ -194,76 +184,76 @@
       "fa": "مادربزرگ می‌گوید حتی یک شب وحشتناک هم می‌تواند با صبح تمام شود."
     },
     {
-      "en": "They sit without talking for a while and watch the sky.",
-      "fa": "مدتی بدون حرف زدن می‌نشینند و آسمان را تماشا می‌کنند."
+      "en": "They sit without talking for some time and watch the stars.",
+      "fa": "مدتی بدون حرف زدن می‌نشینند و ستاره‌ها را تماشا می‌کنند."
     },
     {
-      "en": "Then Grandmother asks Mina to make one clear statement.",
-      "fa": "بعد مادربزرگ از مینا می‌خواهد یک جمله‌ی روشن بگوید."
+      "en": "Then Grandmother asks Mina to make one short statement.",
+      "fa": "بعد مادربزرگ از مینا می‌خواهد یک جمله‌ی کوتاه بگوید."
     },
     {
       "en": "\"A statement about what I want most?\" Mina asks.",
       "fa": "مینا می‌پرسد: «یک جمله درباره‌ی چیزی که بیشتر از همه می‌خواهم؟»"
     },
     {
-      "en": "\"Yes,\" Grandmother says. \"Say it as simply as you can.\"",
-      "fa": "مادربزرگ می‌گوید: «بله. تا جایی که می‌توانی ساده بگو.»"
+      "en": "\"Yes,\" Grandmother says. \"Say it with easy words.\"",
+      "fa": "مادربزرگ می‌گوید: «بله. با کلمه‌های ساده بگو.»"
     },
     {
-      "en": "Mina looks at the small bright star and takes a breath.",
-      "fa": "مینا به ستاره‌ی کوچک و روشن نگاه می‌کند و نفس می‌کشد."
+      "en": "Mina looks at the small star and waits for a moment.",
+      "fa": "مینا به ستاره‌ی کوچک نگاه می‌کند و لحظه‌ای صبر می‌کند."
     },
     {
       "en": "\"My statement is this: Nino, come home,\" she says.",
       "fa": "می‌گوید: «جمله‌ی من این است: نینو، برگرد خانه.»"
     },
     {
-      "en": "Grandmother smiles and says it sounds like a title.",
-      "fa": "مادربزرگ لبخند می‌زند و می‌گوید شبیه یک عنوان است."
+      "en": "Grandmother is happy and says it sounds like a title.",
+      "fa": "مادربزرگ خوشحال است و می‌گوید شبیه یک عنوان است."
     },
     {
-      "en": "Mina writes the title at the top of a clean page.",
-      "fa": "مینا عنوان را بالای صفحه‌ای تمیز می‌نویسد."
+      "en": "Mina writes the title on the first line of a clean page.",
+      "fa": "مینا عنوان را در خط اول یک صفحه‌ی تمیز می‌نویسد."
     },
     {
       "en": "\"What will the topic of your book be?\" Grandmother asks.",
       "fa": "مادربزرگ می‌پرسد: «موضوع کتابت چه خواهد بود؟»"
     },
     {
-      "en": "Mina first says the topic is a lost little chicken.",
-      "fa": "مینا اول می‌گوید موضوع یک جوجه‌ی کوچک گمشده است."
+      "en": "Mina first says the topic is a little chicken away from home.",
+      "fa": "مینا اول می‌گوید موضوع یک جوجه‌ی کوچک دور از خانه است."
     },
     {
       "en": "Then she thinks again and says the topic is also love.",
       "fa": "بعد دوباره فکر می‌کند و می‌گوید موضوع همچنین عشق است."
     },
     {
-      "en": "Grandmother says the story can be about love as much as search.",
-      "fa": "مادربزرگ می‌گوید داستان می‌تواند همان‌قدر که درباره‌ی جست‌وجوست، درباره‌ی عشق هم باشد."
+      "en": "Grandmother says the story can be about love as much as looking for Nino.",
+      "fa": "مادربزرگ می‌گوید داستان می‌تواند همان‌قدر که درباره‌ی پیدا کردن نینوست، درباره‌ی عشق هم باشد."
     },
     {
-      "en": "Mina writes as carefully as she can beneath the title.",
-      "fa": "مینا تا جایی که می‌تواند با دقت زیر عنوان می‌نویسد."
+      "en": "Mina writes as slowly as she can under the title.",
+      "fa": "مینا تا جایی که می‌تواند آرام زیر عنوان می‌نویسد."
     },
     {
-      "en": "She compares one sentence with another and chooses which is clearer.",
-      "fa": "یک جمله را با جمله‌ی دیگر مقایسه می‌کند و انتخاب می‌کند کدام واضح‌تر است."
+      "en": "She compares one sentence with another and chooses which is easy to understand.",
+      "fa": "یک جمله را با جمله‌ی دیگر مقایسه می‌کند و انتخاب می‌کند کدام برای فهمیدن آسان است."
     },
     {
-      "en": "The quiet star still shines better than the brighter town lights for her.",
-      "fa": "برای مینا، ستاره‌ی آرام هنوز از چراغ‌های روشن‌تر شهر زیباتر می‌درخشد."
+      "en": "For Mina, the quiet star is still better than the town lights.",
+      "fa": "برای مینا، ستاره‌ی آرام هنوز از چراغ‌های شهر بهتر است."
     },
     {
-      "en": "Grandmother sits beside her without interrupting.",
-      "fa": "مادربزرگ بدون قطع کردن حرفش کنارش می‌نشیند."
+      "en": "Grandmother sits next to her without talking.",
+      "fa": "مادربزرگ بدون حرف زدن کنار او می‌نشیند."
     },
     {
-      "en": "Mina closes the book and looks at the sky one last time.",
-      "fa": "مینا کتاب را می‌بندد و برای آخرین بار به آسمان نگاه می‌کند."
+      "en": "Mina closes the book and looks at the stars one last time.",
+      "fa": "مینا کتاب را می‌بندد و برای آخرین بار به ستاره‌ها نگاه می‌کند."
     },
     {
-      "en": "On the cover she has written one title: \"Nino, Come Home.\"",
-      "fa": "روی جلد یک عنوان نوشته است: «نینو، برگرد خانه.»"
+      "en": "On the first page she has written one title: \"Nino, Come Home.\"",
+      "fa": "در صفحه‌ی اول یک عنوان نوشته است: «نینو، برگرد خانه.»"
     }
   ],
   "check": [
