@@ -60,7 +60,8 @@ const contractionForms = {
   "hasn't": ['have', 'not'],
   "hadn't": ['have', 'not'],
   "can't": ['can', 'not'],
-  "cannot": ['can', 'not'],
+  // "cannot" is its own controlled A1 vocabulary entry; keep the literal
+  // form available to lemmaOf() so first-use sequencing can assign it.
   "couldn't": ['could', 'not'],
   "won't": ['will', 'not'],
   "wouldn't": ['would', 'not'],
