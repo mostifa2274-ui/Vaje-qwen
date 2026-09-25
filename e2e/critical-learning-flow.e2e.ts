@@ -782,6 +782,10 @@ test('importing a backup asks before replacing progress', async ({ page }) => {
 })
 
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
+  // This is the full 72-word chapter flow. Written and listening gates intentionally
+  // exercise the product's 650 ms feedback/auto-advance timing for every word, so the
+  // default 120 s per-test budget is too small even when the app is behaving correctly.
+  test.setTimeout(360_000)
   await page.goto('/#/read/b1c1')
 
   // Direct reading is impossible before both preparation gates pass.
