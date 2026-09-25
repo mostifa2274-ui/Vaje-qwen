@@ -1,49 +1,48 @@
 # Ghesse visual story bible
 
-This file is the production reference for all generated chapter artwork. The structured source is `src/data/storyCanon.json`.
+The structured source of truth is `src/data/storyCanon.json`. Every generated chapter image must be reviewed against it before the image is added to `GENERATED_CHAPTER_ART`.
 
-## Setting
+## City identity
 
-The story takes place in **contemporary Tehran, Iran**. Keep the city identity stable from chapter to chapter.
+The story's default city is **contemporary Tehran, Iran**. Artwork must read as Iranian, not as a generic “Middle East” and not as an Arab-world setting.
 
-- Urban exteriors should look recognizably Tehran: Iranian storefronts, apartment façades, parks, sidewalks, buses/taxis, street furniture, and traffic patterns.
-- The **Alborz Mountains** can appear to the north in wider outdoor views.
-- **Milad Tower** is an occasional skyline anchor, not a decorative object to insert into every frame. Its relative direction must remain plausible across adjacent scenes.
-- Do not drift into a Mediterranean village, European old town, generic fantasy city, or isolated mountain village.
-- Within a chapter sequence, preserve time of day, weather, season, shadows, clothing layers, backpacks, vehicles, and route direction.
+- Use contemporary Tehran apartment architecture, parks, sidewalks, shops, taxis/buses, street furniture, and everyday urban details.
+- The Alborz Mountains can appear to the north when the camera direction makes them plausible.
+- Milad Tower is an occasional geographic anchor, not a decorative object placed in every image.
+- Do not drift into Gulf, Levantine, North African, Mediterranean-village, European-old-town, fantasy-city, or generic Arab-world styling.
+- Adjacent scenes must preserve geography, time of day, season, weather, shadows, route direction, recurring props, and recognizable locations.
 
-## Mina
+## Mina and family
 
-- Same child in every illustration: same age impression, facial proportions, warm brown eyes, and height.
-- Dark brown hair remains covered by hijab where required by the established design.
-- Signature outdoor look: deep red patterned headscarf, cream knit cardigan with small red floral embroidery, blue denim bottoms, red backpack.
-- Do not change her into a different child, alter her apparent age, or switch scarf identity between adjacent images.
+Mina keeps the same face, age impression, height, proportions, and warm brown eyes. Her clothing can vary: she should look like a contemporary Iranian child, not like she owns only one outfit.
+
+- In public/outdoor scenes Mina always wears hijab.
+- Hair exposure stays minimal; never generate Mina or another girl without hijab.
+- Contemporary Iranian headscarves, coats, manteau, knitwear, and modest casual combinations may vary by chapter.
+- Mother follows the same rule: contemporary Iranian modest hijab, with natural wardrobe variety and restrained hair exposure.
+- Father keeps the same face, curly dark hair and neat short beard, with contemporary Iranian casual/smart-casual clothing.
+- Prefer meaningful mother/father involvement. Mina may appear with her father, mother, or both.
+- Do not invent unrelated mixed groups of boys and girls. Family combinations are allowed; adult married couples are allowed when the story requires them.
 
 ## Nino
 
-- Nino is always a **small yellow chicken**.
-- Orange beak and orange feet.
-- Distinguishing feature: **one small white feather on the left wing**.
-- Keep body size, proportions, eye style, and feather color stable.
-- Nino must never become a cat, black bird, duck, adult hen, or generic chick without the white left-wing feather.
+Nino is always a small yellow chicken with orange beak and feet and **one small white feather on the left wing**.
 
-## Family
+- Never turn Nino into a cat, duck, black bird, adult hen, or generic chick without the left-wing marker.
+- During the missing-Nino portion of the story, do **not** show a living Nino standing beside the family. A printed photo or drawing of him is acceptable.
+- After the reunion, Nino may appear physically with Mina and her family.
 
-**Mother:** Iranian woman, contemporary modest hijab; muted green outerwear and floral scarf in the main outdoor sequence.
+## Acceptance checklist for every generated image
 
-**Father:** Iranian man, curly dark hair, short neat beard; neutral gray knit top/jacket in the main sequence.
+1. Contemporary Tehran/Iran identity is unmistakable and not Arab-world generic.
+2. Recurring faces match previous accepted images.
+3. All girls/women in public are in hijab with minimal hair exposure.
+4. Wardrobe variation is contemporary Iranian and does not break character continuity.
+5. No unrelated boy-girl peer mixture has been invented.
+6. Mother/father involvement matches the story and family scenes are preferred where appropriate.
+7. If Nino is visible, his body color, orange beak/feet, and white left-wing feather are correct.
+8. Nino is not physically present before the reunion chapter.
+9. Tehran geography, lighting, season, props, and route continuity fit adjacent scenes.
+10. No readable text is baked into the art.
 
-**Brother:** younger Iranian boy, curly dark hair; green hoodie in the main outdoor sequence.
-
-Keep each recurring face and body proportion stable. Do not substitute different-looking family members between scenes.
-
-## Generation rules
-
-1. Use the same character designs and wardrobe identity across all chapter images.
-2. Use Tehran as the only city unless the story explicitly introduces travel to another named place.
-3. Preserve scene geography between consecutive images: the same street, shop, home, park, bus stop, or landmark should retain recognizable architecture and layout.
-4. All female characters follow the established hijab policy.
-5. No readable text should be embedded in artwork.
-6. Do not introduce cats as a visual proxy for Nino or as a misleading recurring motif.
-7. Use cinematic storybook realism, natural expressions, child-friendly emotional clarity, and detailed Iranian environments.
-8. Before accepting an image, verify: character identity, Nino's left-wing white feather, city continuity, time/weather continuity, and absence of contradictory props.
+Only images that pass all applicable checks should be committed as production chapter artwork.
