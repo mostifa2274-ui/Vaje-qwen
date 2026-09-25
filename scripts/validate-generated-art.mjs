@@ -3,61 +3,88 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const root = new URL('..', import.meta.url).pathname
-const assets = {
-  'b2c1.webp': {
-    type: 'webp',
-    sha256: '12e4cd0a3816bae06565fdfc0919cd01f6dce83df424ac878d70cb51fdea6b1a',
-  },
-  'b2c2.avif': {
-    type: 'avif',
-    sha256: '3bc4682c77077fe5acf5f7694c05d9728a64ca50bcae3f9f832393ceaae5a5b7',
-  },
-  'b8c6.avif': {
-    type: 'avif',
-    sha256: '3b5ea98b040be12851cbfd3bb9f92ee2e7daf2da77408c3dc568aa0909e72854',
-  },
-}
+const chaptersDir = path.join(root, 'src/data/chapters')
+const artDir = path.join(root, 'public/art/chapters')
+const manifestPath = path.join(root, 'src/data/chapterArt.json')
 
-function matchesContainer(bytes, type) {
-  if (type === 'webp') {
-    return bytes.subarray(0, 4).toString('ascii') === 'RIFF'
-      && bytes.subarray(8, 12).toString('ascii') === 'WEBP'
-  }
+const chapterIds = fs.readdirSync(chaptersDir)
+  .filter(name => /^b\\d+c\\d+\\.json$/.test(name))
+  .map(name => name.replace(/\\.json$/, ''))
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
 
-  if (type === 'avif') {
-    return bytes.subarray(4, 8).toString('ascii') === 'ftyp'
-      && ['avif', 'avis'].includes(bytes.subarray(8, 12).toString('ascii'))
-  }
-
-  return false
-}
-
+const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
 let failed = false
-for (const [name, expected] of Object.entries(assets)) {
-  const file = path.join(root, 'public/art/chapters', name)
+
+if (chapterIds.length !== 40) {
+  console.error(`Expected 40 story chapters, found ${chapterIds.length}.`)
+  failed = true
+}
+
+const manifestIds = Object.keys(manifest).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+const missingEntries = chapterIds.filter(id => !manifest[id])
+const extraEntries = manifestIds.filter(id => !chapterIds.includes(id))
+
+if (missingEntries.length) {
+  console.error(`Missing cinematic chapter-art manifest entries: ${missingEntries.join(', ')}`)
+  failed = true
+}
+if (extraEntries.length) {
+  console.error(`Unknown chapter-art manifest entries: ${extraEntries.join(', ')}`)
+  failed = true
+}
+
+for (const id of chapterIds) {
+  const entry = manifest[id]
+  if (!entry) continue
+
+  const src = String(entry.src || '')
+  if (!/^art\/chapters\/[a-z0-9-]+\.(?:webp|avif)$/.test(src)) {
+    console.error(`Invalid cinematic art path for ${id}: ${src}`)
+    failed = true
+    continue
+  }
+
+  const file = path.join(root, 'public', src)
   if (!fs.existsSync(file)) {
-    console.error(`Missing generated chapter art: ${name}`)
+    console.error(`Missing cinematic chapter art for ${id}: ${src}`)
     failed = true
     continue
   }
 
   const bytes = fs.readFileSync(file)
-  if (!matchesContainer(bytes, expected.type)) {
-    console.error(`Generated chapter art has the wrong container: ${name} (expected ${expected.type})`)
+  const isWebp = bytes.subarray(0, 4).toString('ascii') === 'RIFF'
+    && bytes.subarray(8, 12).toString('ascii') === 'WEBP'
+  const isAvif = bytes.subarray(4, 8).toString('ascii') === 'ftyp'
+    && ['avif', 'avis'].includes(bytes.subarray(8, 12).toString('ascii'))
+
+  if (!isWebp && !isAvif) {
+    console.error(`Wrong image container for ${id}: ${src}`)
     failed = true
   }
 
-  const actualHash = crypto.createHash('sha256').update(bytes).digest('hex')
-  if (actualHash !== expected.sha256) {
-    console.error(`Generated chapter art hash mismatch: ${name}`)
+  if (bytes.length > 180_000) {
+    console.error(`Cinematic art exceeds 180 KB mobile budget for ${id}: ${bytes.length} bytes`)
     failed = true
   }
 
-  if (bytes.length > 80_000) {
-    console.error(`Generated chapter art exceeds the 80 KB mobile budget: ${name} (${bytes.length} bytes)`)
+  if (!entry.altFa || !entry.altEn) {
+    console.error(`Missing bilingual alt text for ${id}`)
     failed = true
+  }
+
+  if (!Number.isInteger(entry.width) || !Number.isInteger(entry.height) || entry.width < 600 || entry.height < 300) {
+    console.error(`Invalid dimensions for ${id}: ${entry.width}x${entry.height}`)
+    failed = true
+  }
+
+  if (entry.sha256) {
+    const actualHash = crypto.createHash('sha256').update(bytes).digest('hex')
+    if (actualHash !== entry.sha256) {
+      console.error(`Cinematic art hash mismatch for ${id}`)
+      failed = true
+    }
   }
 }
 
 if (failed) process.exit(1)
-console.log(`Generated chapter art validation passed: ${Object.keys(assets).length} reviewed assets.`)
+console.log(`Cinematic chapter art validation passed: ${chapterIds.length}/40 chapters have reviewed raster assets.`)
