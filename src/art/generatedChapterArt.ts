@@ -33,4 +33,11 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b8c6: {
+    src: publicAsset('art/chapters/b8c6.avif'),
+    altFa: 'پس از بازگشت نینو، مینا همراه مادر و پدرش در خانه کنار سبد نینو نقشه و عکس‌های جست‌وجو را مرور می‌کند.',
+    altEn: 'After Nino returns, Mina, her mother and father review the search map and photos at home beside Nino’s basket.',
+    width: 640,
+    height: 336,
+  },
 }

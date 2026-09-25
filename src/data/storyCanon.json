@@ -1,0 +1,68 @@
+{
+  "version": 2,
+  "setting": {
+    "city": "Tehran",
+    "country": "Iran",
+    "identity": "contemporary Iranian; never generic Arab-world styling",
+    "visualContinuity": [
+      "Use contemporary Tehran as the default city identity: Iranian apartment blocks, parks, shops, sidewalks, buses, taxis, street furniture, and signage shapes.",
+      "The Alborz Mountains may appear as the northern backdrop when geography is visible.",
+      "Milad Tower is an occasional skyline anchor only when a wide Tehran view makes it plausible; keep its relative direction stable between adjacent scenes.",
+      "Do not drift into Gulf, Levantine, North African, Mediterranean-village, European-old-town, fantasy-city, or generic Middle Eastern visual language.",
+      "Keep season, weather, time of day, shadows, route direction, recurring architecture, props, and vehicles continuous inside a sequence."
+    ]
+  },
+  "properNouns": [
+    "Mina",
+    "Nino",
+    "Tehran",
+    "Iran"
+  ],
+  "characters": {
+    "Mina": {
+      "role": "main child",
+      "continuity": "same face, age impression, height, body proportions, warm brown eyes, and overall identity throughout",
+      "appearance": "Iranian girl with dark brown hair covered by hijab",
+      "clothing": "contemporary Iranian modest styles may vary naturally by chapter; outdoor hijab is always present and only a very small amount of hair may show",
+      "familyRule": "Mina may appear with her mother, her father, or both; family involvement is preferred over unrelated mixed-gender peer groups"
+    },
+    "Nino": {
+      "role": "little chicken",
+      "continuity": "same size, proportions, feather color, beak, feet, and identifying feather throughout",
+      "appearance": "small soft yellow chicken, orange beak and feet, one small white feather on the left wing",
+      "restrictions": "never depict Nino as a cat, black bird, adult hen, duck, or generic chick without the white left-wing feather"
+    },
+    "Mother": {
+      "continuity": "same face and adult proportions throughout",
+      "appearance": "Iranian woman in contemporary modest Iranian hijab",
+      "clothing": "wardrobe may vary naturally between contemporary Iranian coat, manteau, knitwear, scarf, and modest casual styles; hijab remains present in public scenes with restrained hair exposure"
+    },
+    "Father": {
+      "continuity": "same face and adult proportions throughout",
+      "appearance": "Iranian man with curly dark hair and a short neat beard",
+      "clothing": "contemporary Iranian casual or smart-casual clothing appropriate to season and location",
+      "involvement": "include father in family search, planning, travel, or support scenes whenever the story context reasonably allows"
+    },
+    "Brother": {
+      "continuity": "same face and child proportions throughout",
+      "appearance": "younger Iranian boy with curly dark hair",
+      "clothing": "contemporary Iranian child clothing appropriate to season and scene"
+    }
+  },
+  "socialRules": [
+    "Do not stage unrelated boys and girls together as mixed peer groups.",
+    "Mina may be shown with her father, mother, or both; ordinary family combinations are allowed.",
+    "Adult family members and married adult couples may appear together when the story calls for them.",
+    "Prefer family-supported scenes for Mina instead of adding unrelated male peers."
+  ],
+  "imageRules": [
+    "Every girl or woman shown in a public/outdoor scene wears hijab; do not depict a girl without hijab.",
+    "Do not reveal a large amount of girls' or women's hair; keep visible hair minimal and consistent with the established contemporary Iranian styling.",
+    "Use a range of contemporary Iranian hijab and modest clothing styles rather than repeating one identical outfit everywhere.",
+    "Do not add a cat as a Nino substitute, clue, portrait, or reunion animal.",
+    "Do not show Nino physically present during the chapters in which he is still missing; a printed photo or drawing of him is allowed.",
+    "No readable text should be embedded in generated artwork.",
+    "Keep recurring faces, Nino's identifying feather, backpacks, vehicles, storefronts, home interiors, parks, and landmarks stable across adjacent scenes.",
+    "Use cinematic storybook realism with warm natural light, detailed Iranian environments, and child-friendly emotional expressions."
+  ]
+}
