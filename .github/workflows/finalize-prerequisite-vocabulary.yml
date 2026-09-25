@@ -1,0 +1,43 @@
+name: Finalize prerequisite vocabulary
+
+on:
+  push:
+    branches: [vocabulary-order-book8]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: finalize-prerequisite-vocabulary
+  cancel-in-progress: true
+
+jobs:
+  finalize:
+    if: ${{ !contains(github.event.head_commit.message, '[vocab-order]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: vocabulary-order-book8
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Resequence every target word to first story use
+        run: node scripts/resequence-chapter-vocabulary.mjs
+      - name: Verify every story word was reviewed in time
+        run: node scripts/validate-introductions.mjs
+      - name: Verify editorial continuity
+        run: node scripts/validate-editorial.mjs
+      - name: Commit prerequisite ordering
+        run: |
+          if git diff --quiet -- src/data/chapters; then
+            echo "Vocabulary assignments already match first story use."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/chapters
+          git commit -m "Resequence chapter vocabulary by first story use [vocab-order]"
+          git push origin HEAD:vocabulary-order-book8
