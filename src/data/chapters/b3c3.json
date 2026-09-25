@@ -5,26 +5,17 @@
   "titleFa": "قبل و بعد",
   "titleEn": "Before and After",
   "new": [
-    "quarter",
     "half",
-    "past",
+    "speak",
+    "quarter",
+    "sun",
     "midnight",
-    "early",
-    "late",
-    "soon",
-    "later",
-    "after",
-    "before",
-    "during",
-    "until",
     "ago",
-    "then",
-    "afternoon",
-    "tonight",
-    "tomorrow",
-    "yesterday",
+    "report",
+    "believe",
     "ever",
-    "end"
+    "hard",
+    "off"
   ],
   "sentences": [
     {

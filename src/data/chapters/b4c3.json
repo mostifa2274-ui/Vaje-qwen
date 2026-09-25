@@ -5,28 +5,17 @@
   "titleFa": "در کافه",
   "titleEn": "At the Cafe",
   "new": [
-    "juice",
+    "order",
     "tea",
     "coffee",
     "beer",
     "wine",
-    "ice",
     "ice-cream",
     "chocolate",
-    "thirsty",
-    "hungry",
-    "full",
-    "enough",
-    "extra",
+    "brown",
     "lot",
-    "many",
-    "much",
-    "more",
-    "most",
-    "few",
-    "pair",
-    "piece",
-    "brown"
+    "customer",
+    "extra"
   ],
   "sentences": [
     {

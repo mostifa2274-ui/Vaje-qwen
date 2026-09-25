@@ -5,27 +5,17 @@
   "titleFa": "قطار",
   "titleEn": "The Train",
   "new": [
-    "car",
-    "bus",
-    "train",
     "taxi",
     "truck",
-    "bicycle",
     "bike",
     "drive",
     "driver",
     "ride",
-    "station",
-    "stop",
     "ticket",
     "traffic",
-    "arrive",
-    "carry",
-    "fall",
-    "follow",
-    "meter",
+    "arm",
     "mile",
-    "country"
+    "meter"
   ],
   "sentences": [
     {

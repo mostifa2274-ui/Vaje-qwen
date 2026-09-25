@@ -5,25 +5,12 @@
   "titleFa": "شمال",
   "titleEn": "The North",
   "new": [
-    "north",
+    "capital",
     "south",
     "east",
     "west",
-    "capital",
-    "land",
-    "through",
-    "across",
-    "around",
-    "above",
-    "below",
-    "between",
-    "front",
-    "back",
-    "away",
-    "off",
-    "over",
-    "down",
-    "sun"
+    "gray",
+    "high"
   ],
   "sentences": [
     {

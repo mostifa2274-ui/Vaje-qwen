@@ -7,24 +7,21 @@
   "new": [
     "scientist",
     "problem",
-    "reason",
     "situation",
-    "action",
     "activity",
-    "thing",
-    "type",
-    "kind",
-    "part",
     "event",
     "success",
+    "leg",
+    "card",
     "object",
     "model",
-    "color",
-    "card",
     "present",
     "umbrella",
-    "cup",
-    "break"
+    "fall",
+    "break",
+    "however",
+    "type",
+    "future"
   ],
   "sentences": [
     {

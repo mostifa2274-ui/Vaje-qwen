@@ -5,11 +5,10 @@
   "titleFa": "اقیانوس",
   "titleEn": "The Ocean",
   "new": [
-    "beach",
     "ocean",
+    "beach",
     "boat",
     "island",
-    "river",
     "hotel",
     "tourist",
     "passport",
@@ -20,10 +19,7 @@
     "museum",
     "theater",
     "mall",
-    "bar",
-    "space",
-    "dark",
-    "tired"
+    "bar"
   ],
   "sentences": [
     {

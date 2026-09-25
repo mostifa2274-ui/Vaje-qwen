@@ -5,21 +5,11 @@
   "titleFa": "مزرعه",
   "titleEn": "The Farm",
   "new": [
-    "farmer",
-    "grow",
     "plant",
-    "flower",
-    "tree",
-    "air",
-    "rain",
-    "weather",
-    "share",
-    "change",
+    "snow",
     "create",
     "build",
-    "fly",
-    "fire",
-    "snow"
+    "fire"
   ],
   "sentences": [
     {
