@@ -20,9 +20,9 @@ review and the production asset check.
 
 ## Production rules
 
-Artwork is stored under `public/art/chapters/` as responsive WebP. The
+Artwork is stored under `public/art/chapters/` as reviewed responsive WebP or AVIF. The
 `GENERATED_CHAPTER_ART` manifest is the source of truth for chapters that use
 generated art. Unlisted chapters continue to render the existing SVG scenes.
 
-The validation gate checks file presence, WebP container signature, exact
+The validation gate checks file presence, the expected WebP/AVIF container signature, exact
 reviewed hashes and a per-image mobile size budget.
