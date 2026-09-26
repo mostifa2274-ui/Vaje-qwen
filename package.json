@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/stamp-release.mjs",
+    "build": "npm run materialize:chapter-art && tsc -b && vite build && node scripts/stamp-release.mjs",
     "lint": "eslint .",
     "test": "vitest run",
     "art:banners": "GHESSE_WRITE_ART=1 vitest run scripts/book-banners.test.tsx",
-    "check": "npm run validate:release-config && npm run validate:data && npm run validate:editorial && npm run validate:introductions && npm run validate:mastery && npm run validate:art-batch && npm run validate:generated-art && npm run lint && npm run test && npm run build",
+    "check": "npm run materialize:chapter-art && npm run validate:release-config && npm run validate:data && npm run validate:editorial && npm run validate:introductions && npm run validate:mastery && npm run validate:art-batch && npm run validate:generated-art && npm run lint && npm run test && npm run build",
     "preview": "vite preview",
     "validate:release-config": "node scripts/validate-release-config.mjs",
     "validate:data": "node scripts/validate-data.mjs",
@@ -20,7 +20,8 @@
     "cloudflare:build": "npm run check",
     "deploy": "npm ci --include=dev --ignore-scripts --no-audit --no-fund && npm run cloudflare:build && npx wrangler@4.135.0 deploy",
     "validate:generated-art": "node scripts/validate-generated-art.mjs",
-    "validate:art-batch": "node scripts/validate-chapter-art-batch.mjs"
+    "validate:art-batch": "node scripts/validate-chapter-art-batch.mjs",
+    "materialize:chapter-art": "node scripts/materialize-chapter-art.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
