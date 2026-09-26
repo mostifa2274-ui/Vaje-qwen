@@ -61,6 +61,13 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b3c3: {
+    src: publicAsset('art/chapters/b3c3.webp'),
+    altFa: 'مینا پس از یک روز طولانی جست‌وجو در دفتر قرمزش برنامهٔ فردا را می‌نویسد و عکس نینو کنار اوست.',
+    altEn: 'After a long day searching, Mina writes tomorrow’s plan in her red notebook beside a photo of Nino.',
+    width: 640,
+    height: 336,
+  },
   b3c2: {
     src: publicAsset('art/chapters/b3c2.webp'),
     altFa: 'مینا و برادرش با دفتر و مداد خانه‌ها و باغچه‌های خیابان‌های آرام را یکی‌یکی بررسی می‌کنند.',
