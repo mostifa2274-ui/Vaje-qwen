@@ -122,3 +122,24 @@ function writeVerified(name, bytes, expectedSha256) {
   }
   writeVerified('b7c1.webp', bytes, expectedSha256)
 }
+
+
+// b7c2 — reviewed Train platform scene.
+{
+  const partFiles = [
+    'src/art/encoded/b7c2.part1.b64',
+    'src/art/encoded/b7c2.part2.b64',
+    'src/art/encoded/b7c2.part3.b64',
+  ]
+  const base64 = partFiles
+    .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
+    .join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 23_280
+  const expectedSha256 = '6eaed484bb740740031d0a9f1dbbed420f70a542ba0ff65b669b657bf786ce56'
+
+  if (bytes.length !== expectedBytes) {
+    throw new Error(`b7c2 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  }
+  writeVerified('b7c2.webp', bytes, expectedSha256)
+}
