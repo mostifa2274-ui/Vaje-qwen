@@ -81,7 +81,10 @@ function writeVerified(name, bytes, expectedSha256) {
 {
   const partFiles = [
     'src/art/encoded/b4c5.part1.b64',
-    'src/art/encoded/b4c5.part2.b64',
+    'src/art/encoded/b4c5.part2a.b64',
+    'src/art/encoded/b4c5.part2b.b64',
+    'src/art/encoded/b4c5.part2c.b64',
+    'src/art/encoded/b4c5.part2d.b64',
     'src/art/encoded/b4c5.part3.b64',
     'src/art/encoded/b4c5.part4.b64',
   ]
