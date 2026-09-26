@@ -204,3 +204,35 @@ function writeVerified(name, bytes, expectedSha256) {
   }
   writeVerified('b5c2.webp', bytes, expectedSha256)
 }
+
+
+// b2c4 — reviewed Music in the Street scene.
+{
+  const partFiles = [
+    'src/art/encoded/b2c4.part1.b64',
+    'src/art/encoded/b2c4.part2.b64',
+    'src/art/encoded/b2c4.part3.b64',
+    'src/art/encoded/b2c4.part4.b64',
+    'src/art/encoded/b2c4.part5.b64',
+  ]
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 46_788
+  const expectedSha256 = 'f5b497e0f34b75c41ac99bdcae77d0ee69e133e3b223fac0d3a38fdd6349cc56'
+  if (bytes.length !== expectedBytes) throw new Error(`b2c4 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b2c4.webp', bytes, expectedSha256)
+}
+
+// b4c3 — reviewed At the Cafe scene.
+{
+  const partFiles = [
+    'src/art/encoded/b4c3.part1.b64',
+    'src/art/encoded/b4c3.part2.b64',
+  ]
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 14_410
+  const expectedSha256 = 'ae09a984f5dd9380d399bcda8cd330064c2fafce8f6251a1f138a504cfeab146'
+  if (bytes.length !== expectedBytes) throw new Error(`b4c3 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b4c3.webp', bytes, expectedSha256)
+}
