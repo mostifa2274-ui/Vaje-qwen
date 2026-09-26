@@ -110,6 +110,13 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b7c2: {
+    src: publicAsset('art/chapters/b7c2.webp'),
+    altFa: 'مینا با کوله‌پشتی و بلیت در سکوی قطار آمادهٔ ادامهٔ سفر خانوادگی است.',
+    altEn: 'Mina waits on the train platform with her backpack and ticket, ready to continue the family trip.',
+    width: 640,
+    height: 336,
+  },
   b8c6: {
     src: publicAsset('art/chapters/b8c6.avif'),
     altFa: 'پس از بازگشت نینو، مینا همراه مادر و پدرش در خانه کنار سبد نینو نقشه و عکس‌های جست‌وجو را مرور می‌کند.',
