@@ -108,7 +108,7 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     altFa: 'مینا همراه مادر و پدرش لباس‌ها و چمدان‌ها را برای سفر آماده می‌کند.',
     altEn: 'Mina packs clothes and luggage with her mother and father before the family trip.',
     width: 640,
-    height: 360,
+    height: 336,
   },
   b8c6: {
     src: publicAsset('art/chapters/b8c6.avif'),
