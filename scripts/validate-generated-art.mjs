@@ -64,6 +64,22 @@ const assets = {
     type: 'webp',
     sha256: 'a69eaf407e30008997b5636fb1acb0041e9cd61b3fd7c7f6157b5c19c44f1e00',
   },
+  'b4c2.webp': {
+    type: 'webp',
+    sha256: '732668b4f1945183936221ddecf2beb6581774537df92f17540575b811e11c74',
+  },
+  'b4c4.webp': {
+    type: 'webp',
+    sha256: 'c59a1d8b00dc7e2e3413a4381375781458a30fc564b0ef83e3164361a51de091',
+  },
+  'b5c3.webp': {
+    type: 'webp',
+    sha256: 'a2a79865f49657a794f28cec2efcec441b01b5f51dfab2854265795669e4b4c0',
+  },
+  'b6c2.webp': {
+    type: 'webp',
+    sha256: '97d70789a5ca019731e66637a1cdf0556252354b5e77fd83062963ab9d6a3291',
+  },
   'b4c5.webp': {
     type: 'webp',
     sha256: 'c0ff7b377cec762a87c024441ef47ecf5e9ebceacd27e2724fb68678ded7cc6b',
