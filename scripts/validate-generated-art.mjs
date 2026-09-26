@@ -54,7 +54,7 @@ const assets = {
   },
   'b7c1.webp': {
     type: 'webp',
-    sha256: '03abc25bd1c770bb86ccca15347b5a33f8950706a4bdd53b1dc2da124be3b836',
+    sha256: 'a11f2560a05a96bd786e3f1766a32f559dbd04ab88f7e40f040d63af1677dd03',
   },
   'b8c6.avif': {
     type: 'avif',
