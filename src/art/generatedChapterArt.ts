@@ -96,6 +96,13 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b4c5: {
+    src: publicAsset('art/chapters/b4c5.webp'),
+    altFa: 'مینا در بازار جوجهٔ زردی را که شبیه نینو است با دقت نگاه می‌کند و می‌فهمد نینو نیست.',
+    altEn: 'At the market, Mina studies a real yellow lookalike chicken and realizes it is not Nino.',
+    width: 640,
+    height: 336,
+  },
   b8c6: {
     src: publicAsset('art/chapters/b8c6.avif'),
     altFa: 'پس از بازگشت نینو، مینا همراه مادر و پدرش در خانه کنار سبد نینو نقشه و عکس‌های جست‌وجو را مرور می‌کند.',
