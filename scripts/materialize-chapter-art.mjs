@@ -143,3 +143,24 @@ function writeVerified(name, bytes, expectedSha256) {
   }
   writeVerified('b7c2.webp', bytes, expectedSha256)
 }
+
+
+// b4c1 — reviewed Market scene.
+{
+  const partFiles = [
+    'src/art/encoded/b4c1.part1.b64',
+    'src/art/encoded/b4c1.part2.b64',
+    'src/art/encoded/b4c1.part3.b64',
+  ]
+  const base64 = partFiles
+    .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
+    .join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 35_880
+  const expectedSha256 = 'a69eaf407e30008997b5636fb1acb0041e9cd61b3fd7c7f6157b5c19c44f1e00'
+
+  if (bytes.length !== expectedBytes) {
+    throw new Error(`b4c1 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  }
+  writeVerified('b4c1.webp', bytes, expectedSha256)
+}

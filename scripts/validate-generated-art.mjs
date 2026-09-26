@@ -48,6 +48,10 @@ const assets = {
     type: 'avif',
     sha256: '3bc4682c77077fe5acf5f7694c05d9728a64ca50bcae3f9f832393ceaae5a5b7',
   },
+  'b4c1.webp': {
+    type: 'webp',
+    sha256: 'a69eaf407e30008997b5636fb1acb0041e9cd61b3fd7c7f6157b5c19c44f1e00',
+  },
   'b4c5.webp': {
     type: 'webp',
     sha256: 'c0ff7b377cec762a87c024441ef47ecf5e9ebceacd27e2724fb68678ded7cc6b',
