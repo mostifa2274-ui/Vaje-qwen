@@ -66,19 +66,19 @@ const assets = {
   },
   'b4c2.webp': {
     type: 'webp',
-    sha256: '732668b4f1945183936221ddecf2beb6581774537df92f17540575b811e11c74',
+    sha256: '89490969e8a1949eb1a0985421157d546bd5b7ff455b1c7479d557f70a1e8a41',
   },
   'b4c4.webp': {
     type: 'webp',
-    sha256: 'c59a1d8b00dc7e2e3413a4381375781458a30fc564b0ef83e3164361a51de091',
+    sha256: 'b0f1c0f29ecd08dd774df0aa556732985af7fa0fe01ca68fc001c0305a6dbfcc',
   },
   'b5c3.webp': {
     type: 'webp',
-    sha256: 'a2a79865f49657a794f28cec2efcec441b01b5f51dfab2854265795669e4b4c0',
+    sha256: '33435725e15c20973d881e6c30109d9af8b5858f79849be43d5a4901519e7c81',
   },
   'b6c2.webp': {
     type: 'webp',
-    sha256: '97d70789a5ca019731e66637a1cdf0556252354b5e77fd83062963ab9d6a3291',
+    sha256: '330d5637416fceb61dc63ae10fe1f91d86b7a44cb95e645932c84ebc82d1c53d',
   },
   'b4c5.webp': {
     type: 'webp',
@@ -157,3 +157,4 @@ for (const [name, expected] of Object.entries(assets)) {
 
 if (failed) process.exit(1)
 console.log(`Generated chapter art validation passed: ${Object.keys(assets).length} reviewed assets.`)
+

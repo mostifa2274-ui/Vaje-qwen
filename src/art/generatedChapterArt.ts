@@ -133,8 +133,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b4c4: {
     src: publicAsset('art/chapters/b4c4.webp'),
-    altFa: 'مینا دربارهٔ پول و پرداخت در پیشخوان با یک کارمند صحبت می‌کند.',
-    altEn: 'Mina discusses money and payment with a clerk at the counter.',
+    altFa: 'مینا در کافه کنار مادرش نشسته است و پیشخدمت هنگام پرداخت صورتحساب، یک سکه به مادر برمی‌گرداند.',
+    altEn: 'At the cafe, Mina watches as the waiter returns a coin to her mother while she pays the bill.',
     width: 640,
     height: 336,
   },
@@ -147,8 +147,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b6c2: {
     src: publicAsset('art/chapters/b6c2.webp'),
-    altFa: 'مینا در کلاس برای اجرای برنامهٔ معلم دستش را بالا می‌برد و در فعالیت شرکت می‌کند.',
-    altEn: 'Mina raises her hand in class and takes part in the teacher’s plan.',
+    altFa: 'مینا یادداشت جست‌وجو را می‌نویسد و معلم به نمودار خیابان‌ها اشاره می‌کند؛ عکس نینو روی میز است.',
+    altEn: 'Mina improves her search note while her teacher points to a street chart; a flat photo of Nino lies on the desk.',
     width: 640,
     height: 336,
   },
@@ -209,3 +209,4 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     height: 336,
   },
 }
+
