@@ -145,6 +145,20 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b6c1: {
+    src: publicAsset('art/chapters/b6c1.webp'),
+    altFa: 'مینا در کلاس مدرسه همراه دانش‌آموزان دیگر مشغول نوشتن و یادگیری است.',
+    altEn: 'Mina writes and learns in her classroom with other students.',
+    width: 640,
+    height: 336,
+  },
+  b7c3: {
+    src: publicAsset('art/chapters/b7c3.webp'),
+    altFa: 'مینا از پنجرهٔ قطار به دشت‌های سبز و کوه‌های شمال نگاه می‌کند.',
+    altEn: 'Mina looks from the train window across green fields toward the northern mountains.',
+    width: 640,
+    height: 336,
+  },
   b7c1: {
     src: publicAsset('art/chapters/b7c1.webp'),
     altFa: 'مینا همراه مادر و پدرش لباس‌ها و چمدان‌ها را برای سفر آماده می‌کند.',
