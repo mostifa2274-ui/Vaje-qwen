@@ -19,6 +19,13 @@ function publicAsset(path: string): string {
  * breaking the learning flow.
  */
 export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
+  b1c1: {
+    src: publicAsset('art/chapters/b1c1.avif'),
+    altFa: 'نینو از خانه به‌دنبال پرندهٔ قرمز می‌دود و مینا با کتاب قرمزش به‌دنبالش می‌رود.',
+    altEn: 'Nino runs out after the red bird while Mina reacts and follows with her red book.',
+    width: 640,
+    height: 336,
+  },
   b2c1: {
     src: publicAsset('art/chapters/b2c1.webp'),
     altFa: 'مینا همراه پدر و مادرش در پارکی در تهران دنبال نینو می‌گردد.',
