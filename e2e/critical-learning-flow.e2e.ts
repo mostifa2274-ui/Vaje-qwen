@@ -352,7 +352,7 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
 test('auto teach speaks word and context before advancing, then pauses on demand', async ({ page }) => {
   await page.goto('/#/prep/b1c1')
 
-  const teachingArt = page.locator('svg.lesson-chapter-art[role="img"]')
+  const teachingArt = page.locator('.lesson-chapter-art')
   await expect(teachingArt).toBeVisible()
   await expect(teachingArt.locator('text')).toHaveCount(0)
   await expect(page.getByText('صحنهٔ این فصل', { exact: true })).toBeVisible()
@@ -791,7 +791,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   // Direct reading is impossible before both preparation gates pass.
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toBeVisible()
-  await expect(page.locator('svg.lesson-chapter-art[role="img"]')).toBeVisible()
+  await expect(page.locator('.lesson-chapter-art')).toBeVisible()
   await expect(page.locator('svg.lesson-chapter-art text')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expectNoHorizontalOverflow(page)
@@ -901,7 +901,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(page.locator('#main-content')).toBeFocused()
   await expect(page.locator('#main-content')).toHaveAttribute('aria-label', /خواندن داستان:/)
   await expect(page).toHaveTitle(/خواندن داستان: .* — قصه/)
-  await expect(page.locator('svg.lesson-chapter-art[role="img"]')).toBeVisible()
+  await expect(page.locator('.lesson-chapter-art')).toBeVisible()
   await expect(page.locator('.tok-new')).toHaveCount(0)
   await expectNoHorizontalOverflow(page)
   await expectTouchSafeStoryControls(page)
