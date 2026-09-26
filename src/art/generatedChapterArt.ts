@@ -61,6 +61,13 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b3c4: {
+    src: publicAsset('art/chapters/b3c4.webp'),
+    altFa: 'مینا در جشن کوچک خانوادگی تولد با شنیدن صدایی امیدوارانه به سوی در برمی‌گردد.',
+    altEn: 'At the small family birthday gathering, Mina turns hopefully toward the door after hearing a sound.',
+    width: 640,
+    height: 336,
+  },
   b3c3: {
     src: publicAsset('art/chapters/b3c3.webp'),
     altFa: 'مینا پس از یک روز طولانی جست‌وجو در دفتر قرمزش برنامهٔ فردا را می‌نویسد و عکس نینو کنار اوست.',
