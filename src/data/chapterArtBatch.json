@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "target": {
+    "totalChapters": 40,
+    "aspectRatio": "16:9",
+    "composition": "single_scene",
+    "contemporaryIranianSetting": true,
+    "hijabContinuityRequired": true,
+    "readableTextAllowed": false
+  },
+  "defaults": {
+    "status": "pending",
+    "ninoPolicy": "missing_absent"
+  },
+  "ninoPolicyOverrides": {
+    "b1c1": "present_then_runs",
+    "b4c5": "lookalike_only",
+    "b6c4": "lookalike_only",
+    "b8c6": "returned_present"
+  },
+  "approved": [
+    "b2c1",
+    "b2c2",
+    "b8c6"
+  ],
+  "rejectedCompositionTypes": [
+    "collage",
+    "grid",
+    "montage",
+    "storyboard"
+  ],
+  "notes": [
+    "Only chapter-specific reviewed raster art may move from pending to approved.",
+    "A missing-Nino chapter must not depict Nino physically unless its explicit policy override permits a lookalike.",
+    "Every approved asset must have a unique file hash and a matching chapter id."
+  ]
+}
