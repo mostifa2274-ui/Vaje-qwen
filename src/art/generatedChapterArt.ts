@@ -110,6 +110,20 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b5c1: {
+    src: publicAsset('art/chapters/b5c1.webp'),
+    altFa: 'مینا پس از یک روز جست‌وجو همراه پدر و مادرش دربارهٔ جاهای بررسی‌شده و برنامهٔ فردا صحبت می‌کند.',
+    altEn: 'After a long search day, Mina talks with her mother and father about where they looked and tomorrow’s plan.',
+    width: 640,
+    height: 336,
+  },
+  b5c2: {
+    src: publicAsset('art/chapters/b5c2.webp'),
+    altFa: 'مینا پشت میز نشسته و با مداد یادداشت تازه‌ای دربارهٔ نینو می‌نویسد.',
+    altEn: 'Mina sits at the table and writes a new note about Nino with a pencil.',
+    width: 640,
+    height: 336,
+  },
   b7c1: {
     src: publicAsset('art/chapters/b7c1.webp'),
     altFa: 'مینا همراه مادر و پدرش لباس‌ها و چمدان‌ها را برای سفر آماده می‌کند.',
