@@ -75,3 +75,31 @@ function writeVerified(name, bytes, expectedSha256) {
     writeVerified(asset.name, bytes, asset.sha256)
   }
 }
+
+
+// b4c5 — reviewed Golden Chicken lookalike scene.
+{
+  const partFiles = [
+    'src/art/encoded/b4c5.part1.b64',
+    'src/art/encoded/b4c5.c1.0.b64',
+    'src/art/encoded/b4c5.c1.1.b64',
+    'src/art/encoded/b4c5.c1.2.b64',
+    'src/art/encoded/b4c5.c1.3.b64',
+    'src/art/encoded/b4c5.part3.b64',
+    'src/art/encoded/b4c5.c3.0.b64',
+    'src/art/encoded/b4c5.c3.1.b64',
+    'src/art/encoded/b4c5.c3.2.b64',
+    'src/art/encoded/b4c5.c3.3.b64',
+  ]
+  const base64 = partFiles
+    .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
+    .join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 56_660
+  const expectedSha256 = 'c0ff7b377cec762a87c024441ef47ecf5e9ebceacd27e2724fb68678ded7cc6b'
+
+  if (bytes.length !== expectedBytes) {
+    throw new Error(`b4c5 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  }
+  writeVerified('b4c5.webp', bytes, expectedSha256)
+}
