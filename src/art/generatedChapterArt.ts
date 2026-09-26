@@ -96,6 +96,13 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b4c1: {
+    src: publicAsset('art/chapters/b4c1.webp'),
+    altFa: 'مینا در بازار شلوغ میان میوه‌ها و سبزی‌ها به دنبال نشانه‌ای از نینو می‌گردد.',
+    altEn: 'Mina searches a busy produce market for any sign of Nino.',
+    width: 640,
+    height: 336,
+  },
   b4c5: {
     src: publicAsset('art/chapters/b4c5.webp'),
     altFa: 'مینا در بازار جوجهٔ زردی را که شبیه نینو است با دقت نگاه می‌کند و می‌فهمد نینو نیست.',
