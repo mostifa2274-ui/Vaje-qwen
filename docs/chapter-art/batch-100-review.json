@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-09-27",
+  "baseMain": "bbab7f18bfdff70102ebd2191352072bf6b5ed2d",
+  "replacesUnmergedCandidates": true,
+  "reason": "Earlier PR candidates had panel borders, adjacent-scene fragments, or a bank setting inconsistent with Money chapter. Approved main assets are unchanged.",
+  "assets": [
+    {
+      "chapter": "b4c2",
+      "file": "b4c2.webp",
+      "size": 78648,
+      "width": 640,
+      "height": 336,
+      "sha256": "89490969e8a1949eb1a0985421157d546bd5b7ff455b1c7479d557f70a1e8a41",
+      "sourceSha256": "fd29db06d41ecc88d6db571e23ebd8fe321667226b238cdf2abd80dd054a2d6e",
+      "quality": 90,
+      "generator": "ChatGPT built-in image generation",
+      "composition": "single_scene",
+      "ninoPolicy": "missing_absent",
+      "storyBeat": "Mina and Mom meet the baker; hot bread, butter and cheese; Nino absent.",
+      "visualQA": {
+        "singleScene": true,
+        "noPanelBorders": true,
+        "contemporaryIranianSetting": true,
+        "modestHijab": true,
+        "noReadableTextAtDeliverySize": true,
+        "noPhysicalChicken": true,
+        "noAlcoholPorkDancingOrRomanticPosing": true
+      },
+      "transform": "Centered crop and Lanczos resize to 640x336; WebP quality 90, method 6.",
+      "chapterSourceSha256": "99563fdaf79532ca03a51428f705075aae65f66ccda5b25f78bc4de597a9babe"
+    },
+    {
+      "chapter": "b4c4",
+      "file": "b4c4.webp",
+      "size": 77218,
+      "width": 640,
+      "height": 336,
+      "sha256": "b0f1c0f29ecd08dd774df0aa556732985af7fa0fe01ca68fc001c0305a6dbfcc",
+      "sourceSha256": "c3f3dc4c48113077693653a296682ac38b89852eaa035dd6fe1f5fc71c1c201f",
+      "quality": 90,
+      "generator": "ChatGPT built-in image generation",
+      "composition": "single_scene",
+      "ninoPolicy": "missing_absent",
+      "storyBeat": "Cafe payment: Mom pays and waiter returns a coin, with Mina beside her.",
+      "visualQA": {
+        "singleScene": true,
+        "noPanelBorders": true,
+        "contemporaryIranianSetting": true,
+        "modestHijab": true,
+        "noReadableTextAtDeliverySize": true,
+        "noPhysicalChicken": true,
+        "noAlcoholPorkDancingOrRomanticPosing": true
+      },
+      "transform": "Centered crop and Lanczos resize to 640x336; WebP quality 90, method 6.",
+      "chapterSourceSha256": "18b4a57afdf36fdee8db986f3208ee46a08dd39aa260bc751a8df994ebcac2cc"
+    },
+    {
+      "chapter": "b5c3",
+      "file": "b5c3.webp",
+      "size": 75560,
+      "width": 640,
+      "height": 336,
+      "sha256": "33435725e15c20973d881e6c30109d9af8b5858f79849be43d5a4901519e7c81",
+      "sourceSha256": "82fd07ebe73610b3afa1983229be71e074fcf0c9f028d370af5dba8647391f3a",
+      "quality": 90,
+      "generator": "ChatGPT built-in image generation",
+      "composition": "single_scene",
+      "ninoPolicy": "missing_absent",
+      "storyBeat": "Mina receives news on the old black landline near the door with her parents.",
+      "visualQA": {
+        "singleScene": true,
+        "noPanelBorders": true,
+        "contemporaryIranianSetting": true,
+        "modestHijab": true,
+        "noReadableTextAtDeliverySize": true,
+        "noPhysicalChicken": true,
+        "noAlcoholPorkDancingOrRomanticPosing": true
+      },
+      "transform": "Centered crop and Lanczos resize to 640x336; WebP quality 90, method 6.",
+      "chapterSourceSha256": "6eca91d3b3e223dbc0e27072df0882570198472f45a1e0e5f9d3c4e4411dbcfc"
+    },
+    {
+      "chapter": "b6c2",
+      "file": "b6c2.webp",
+      "size": 63968,
+      "width": 640,
+      "height": 336,
+      "sha256": "330d5637416fceb61dc63ae10fe1f91d86b7a44cb95e645932c84ebc82d1c53d",
+      "sourceSha256": "0881c0c219f7a0bf99a1c124d5a62af43b83417ddd29404f5ce5340e4942be5d",
+      "quality": 90,
+      "generator": "ChatGPT built-in image generation",
+      "composition": "single_scene",
+      "ninoPolicy": "missing_absent",
+      "storyBeat": "Female teacher and Mina improve the note beside a street chart; only a flat photograph depicts Nino.",
+      "visualQA": {
+        "singleScene": true,
+        "noPanelBorders": true,
+        "contemporaryIranianSetting": true,
+        "modestHijab": true,
+        "noReadableTextAtDeliverySize": true,
+        "noPhysicalChicken": true,
+        "noAlcoholPorkDancingOrRomanticPosing": true
+      },
+      "transform": "Centered crop and Lanczos resize to 640x336; WebP quality 90, method 6.",
+      "chapterSourceSha256": "b1910e2fedaabf11d92a55603ea40557d85f3a858a90d7aff424169e1fd0f0af"
+    }
+  ]
+}

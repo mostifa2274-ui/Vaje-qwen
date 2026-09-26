@@ -64,6 +64,22 @@ const assets = {
     type: 'webp',
     sha256: 'a69eaf407e30008997b5636fb1acb0041e9cd61b3fd7c7f6157b5c19c44f1e00',
   },
+  'b4c2.webp': {
+    type: 'webp',
+    sha256: '89490969e8a1949eb1a0985421157d546bd5b7ff455b1c7479d557f70a1e8a41',
+  },
+  'b4c4.webp': {
+    type: 'webp',
+    sha256: 'b0f1c0f29ecd08dd774df0aa556732985af7fa0fe01ca68fc001c0305a6dbfcc',
+  },
+  'b5c3.webp': {
+    type: 'webp',
+    sha256: '33435725e15c20973d881e6c30109d9af8b5858f79849be43d5a4901519e7c81',
+  },
+  'b6c2.webp': {
+    type: 'webp',
+    sha256: '330d5637416fceb61dc63ae10fe1f91d86b7a44cb95e645932c84ebc82d1c53d',
+  },
   'b4c5.webp': {
     type: 'webp',
     sha256: 'c0ff7b377cec762a87c024441ef47ecf5e9ebceacd27e2724fb68678ded7cc6b',
@@ -141,3 +157,4 @@ for (const [name, expected] of Object.entries(assets)) {
 
 if (failed) process.exit(1)
 console.log(`Generated chapter art validation passed: ${Object.keys(assets).length} reviewed assets.`)
+

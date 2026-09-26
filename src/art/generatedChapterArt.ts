@@ -124,6 +124,34 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b4c2: {
+    src: publicAsset('art/chapters/b4c2.webp'),
+    altFa: 'مینا در مغازهٔ نان با نانوا دربارهٔ جوجهٔ زردی که صبح‌ها دیده می‌شود صحبت می‌کند.',
+    altEn: 'Mina speaks with the baker in the bread shop about the little yellow chicken seen there in the mornings.',
+    width: 640,
+    height: 336,
+  },
+  b4c4: {
+    src: publicAsset('art/chapters/b4c4.webp'),
+    altFa: 'مینا در کافه کنار مادرش نشسته است و پیشخدمت هنگام پرداخت صورتحساب، یک سکه به مادر برمی‌گرداند.',
+    altEn: 'At the cafe, Mina watches as the waiter returns a coin to her mother while she pays the bill.',
+    width: 640,
+    height: 336,
+  },
+  b5c3: {
+    src: publicAsset('art/chapters/b5c3.webp'),
+    altFa: 'مینا تلفن را پاسخ می‌دهد و اطلاعات تازه‌ای دربارهٔ نینو دریافت می‌کند.',
+    altEn: 'Mina answers the telephone and receives new information about Nino.',
+    width: 640,
+    height: 336,
+  },
+  b6c2: {
+    src: publicAsset('art/chapters/b6c2.webp'),
+    altFa: 'مینا یادداشت جست‌وجو را می‌نویسد و معلم به نمودار خیابان‌ها اشاره می‌کند؛ عکس نینو روی میز است.',
+    altEn: 'Mina improves her search note while her teacher points to a street chart; a flat photo of Nino lies on the desk.',
+    width: 640,
+    height: 336,
+  },
   b4c5: {
     src: publicAsset('art/chapters/b4c5.webp'),
     altFa: 'مینا در بازار جوجهٔ زردی را که شبیه نینو است با دقت نگاه می‌کند و می‌فهمد نینو نیست.',
@@ -181,3 +209,4 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     height: 336,
   },
 }
+

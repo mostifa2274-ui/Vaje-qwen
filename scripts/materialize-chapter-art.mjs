@@ -289,3 +289,45 @@ function writeVerified(name, bytes, expectedSha256) {
   if (bytes.length !== expectedBytes) throw new Error(`b7c3 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
   writeVerified('b7c3.webp', bytes, expectedSha256)
 }
+
+
+// b4c2 — standalone built-in scene reviewed against the chapter text.
+{
+  const base64 = fs.readFileSync(path.join(root, 'src/art/encoded/b4c2.b64'), 'utf8').trim()
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 78648
+  const expectedSha256 = '89490969e8a1949eb1a0985421157d546bd5b7ff455b1c7479d557f70a1e8a41'
+  if (bytes.length !== expectedBytes) throw new Error(`b4c2 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b4c2.webp', bytes, expectedSha256)
+}
+
+// b4c4 — standalone built-in scene reviewed against the chapter text.
+{
+  const base64 = fs.readFileSync(path.join(root, 'src/art/encoded/b4c4.b64'), 'utf8').trim()
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 77218
+  const expectedSha256 = 'b0f1c0f29ecd08dd774df0aa556732985af7fa0fe01ca68fc001c0305a6dbfcc'
+  if (bytes.length !== expectedBytes) throw new Error(`b4c4 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b4c4.webp', bytes, expectedSha256)
+}
+
+// b5c3 — standalone built-in scene reviewed against the chapter text.
+{
+  const base64 = fs.readFileSync(path.join(root, 'src/art/encoded/b5c3.b64'), 'utf8').trim()
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 75560
+  const expectedSha256 = '33435725e15c20973d881e6c30109d9af8b5858f79849be43d5a4901519e7c81'
+  if (bytes.length !== expectedBytes) throw new Error(`b5c3 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b5c3.webp', bytes, expectedSha256)
+}
+
+// b6c2 — standalone built-in scene reviewed against the chapter text.
+{
+  const base64 = fs.readFileSync(path.join(root, 'src/art/encoded/b6c2.b64'), 'utf8').trim()
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 63968
+  const expectedSha256 = '330d5637416fceb61dc63ae10fe1f91d86b7a44cb95e645932c84ebc82d1c53d'
+  if (bytes.length !== expectedBytes) throw new Error(`b6c2 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b6c2.webp', bytes, expectedSha256)
+}
+
