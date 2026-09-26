@@ -259,3 +259,33 @@ function writeVerified(name, bytes, expectedSha256) {
   }
   writeVerified('b3c6.webp', bytes, expectedSha256)
 }
+
+
+// b6c1 — reviewed School classroom scene.
+{
+  const partFiles = [
+    'src/art/encoded/b6c1.part1.b64',
+    'src/art/encoded/b6c1.part2.b64',
+  ]
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 16_570
+  const expectedSha256 = '161d7c9eb497018609fa5d8a73c832fcc89d7b8bb1dc7a3465ca1b7874139642'
+  if (bytes.length !== expectedBytes) throw new Error(`b6c1 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b6c1.webp', bytes, expectedSha256)
+}
+
+// b7c3 — reviewed North train-window scene.
+{
+  const partFiles = [
+    'src/art/encoded/b7c3.part1.b64',
+    'src/art/encoded/b7c3.part2.b64',
+    'src/art/encoded/b7c3.part3.b64',
+  ]
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 18_586
+  const expectedSha256 = 'f13bd6ef7e3a76390463f023447080b4a6826d229e8329c4d7b0a316afbb67e0'
+  if (bytes.length !== expectedBytes) throw new Error(`b7c3 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b7c3.webp', bytes, expectedSha256)
+}
