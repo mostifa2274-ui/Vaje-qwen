@@ -289,3 +289,48 @@ function writeVerified(name, bytes, expectedSha256) {
   if (bytes.length !== expectedBytes) throw new Error(`b7c3 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
   writeVerified('b7c3.webp', bytes, expectedSha256)
 }
+
+
+// b4c2 — reviewed Bread Shop scene.
+{
+  const partFiles = ['src/art/encoded/b4c2.part1.b64','src/art/encoded/b4c2.part2.b64','src/art/encoded/b4c2.part3.b64']
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 20_976
+  const expectedSha256 = '732668b4f1945183936221ddecf2beb6581774537df92f17540575b811e11c74'
+  if (bytes.length !== expectedBytes) throw new Error(`b4c2 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b4c2.webp', bytes, expectedSha256)
+}
+
+// b4c4 — reviewed Money scene.
+{
+  const partFiles = ['src/art/encoded/b4c4.part1.b64','src/art/encoded/b4c4.part2.b64']
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 15_946
+  const expectedSha256 = 'c59a1d8b00dc7e2e3413a4381375781458a30fc564b0ef83e3164361a51de091'
+  if (bytes.length !== expectedBytes) throw new Error(`b4c4 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b4c4.webp', bytes, expectedSha256)
+}
+
+// b5c3 — reviewed Telephone scene.
+{
+  const partFiles = ['src/art/encoded/b5c3.part1.b64','src/art/encoded/b5c3.part2.b64']
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 16_610
+  const expectedSha256 = 'a2a79865f49657a794f28cec2efcec441b01b5f51dfab2854265795669e4b4c0'
+  if (bytes.length !== expectedBytes) throw new Error(`b5c3 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b5c3.webp', bytes, expectedSha256)
+}
+
+// b6c2 — reviewed Teacher's Plan classroom scene.
+{
+  const partFiles = ['src/art/encoded/b6c2.part1.b64','src/art/encoded/b6c2.part2.b64']
+  const base64 = partFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim()).join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 17_118
+  const expectedSha256 = '97d70789a5ca019731e66637a1cdf0556252354b5e77fd83062963ab9d6a3291'
+  if (bytes.length !== expectedBytes) throw new Error(`b6c2 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  writeVerified('b6c2.webp', bytes, expectedSha256)
+}
