@@ -4,6 +4,10 @@ import path from 'node:path'
 
 const root = new URL('..', import.meta.url).pathname
 const assets = {
+  'b1c1.avif': {
+    type: 'avif',
+    sha256: '9b889befef58d5d632f23cb10af3d9a8ad1a24a29f522bf07ae32daac38fc2b2',
+  },
   'b2c1.webp': {
     type: 'webp',
     sha256: '12e4cd0a3816bae06565fdfc0919cd01f6dce83df424ac878d70cb51fdea6b1a',
