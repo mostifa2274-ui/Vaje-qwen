@@ -110,6 +110,13 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b3c6: {
+    src: publicAsset('art/chapters/b3c6.webp'),
+    altFa: 'مینا شب کنار در باز ایستاده است و آب و نان برای بازگشت نینو بیرون آماده مانده است.',
+    altEn: 'Mina stands at the open door at night while water and bread wait outside in case Nino returns.',
+    width: 640,
+    height: 336,
+  },
   b4c1: {
     src: publicAsset('art/chapters/b4c1.webp'),
     altFa: 'مینا در بازار شلوغ میان میوه‌ها و سبزی‌ها به دنبال نشانه‌ای از نینو می‌گردد.',
