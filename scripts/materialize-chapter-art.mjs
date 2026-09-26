@@ -100,3 +100,25 @@ function writeVerified(name, bytes, expectedSha256) {
   }
   writeVerified('b4c5.webp', bytes, expectedSha256)
 }
+
+
+// b7c1 — reviewed Trip packing scene.
+{
+  const partFiles = [
+    'src/art/encoded/b7c1.part1.b64',
+    'src/art/encoded/b7c1.part2.b64',
+    'src/art/encoded/b7c1.part3a.b64',
+    'src/art/encoded/b7c1.part3b.b64',
+  ]
+  const base64 = partFiles
+    .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
+    .join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 26_834
+  const expectedSha256 = 'a11f2560a05a96bd786e3f1766a32f559dbd04ab88f7e40f040d63af1677dd03'
+
+  if (bytes.length !== expectedBytes) {
+    throw new Error(`b7c1 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  }
+  writeVerified('b7c1.webp', bytes, expectedSha256)
+}
