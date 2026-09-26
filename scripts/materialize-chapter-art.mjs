@@ -81,15 +81,9 @@ function writeVerified(name, bytes, expectedSha256) {
 {
   const partFiles = [
     'src/art/encoded/b4c5.part1.b64',
-    'src/art/encoded/b4c5.c1.0.b64',
-    'src/art/encoded/b4c5.c1.1.b64',
-    'src/art/encoded/b4c5.c1.2.b64',
-    'src/art/encoded/b4c5.c1.3.b64',
+    'src/art/encoded/b4c5.part2.b64',
     'src/art/encoded/b4c5.part3.b64',
-    'src/art/encoded/b4c5.c3.0.b64',
-    'src/art/encoded/b4c5.c3.1.b64',
-    'src/art/encoded/b4c5.c3.2.b64',
-    'src/art/encoded/b4c5.c3.3.b64',
+    'src/art/encoded/b4c5.part4.b64',
   ]
   const base64 = partFiles
     .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
