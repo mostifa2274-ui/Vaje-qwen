@@ -164,3 +164,43 @@ function writeVerified(name, bytes, expectedSha256) {
   }
   writeVerified('b4c1.webp', bytes, expectedSha256)
 }
+
+
+// b5c1 — reviewed family planning conversation scene.
+{
+  const partFiles = [
+    'src/art/encoded/b5c1.part1.b64',
+    'src/art/encoded/b5c1.part2.b64',
+    'src/art/encoded/b5c1.part3.b64',
+  ]
+  const base64 = partFiles
+    .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
+    .join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 30_890
+  const expectedSha256 = '560a9873984fe584d764639ee0f8f7bbaeb4dcf9f3da9f4a59e9da9beabb1ecc'
+
+  if (bytes.length !== expectedBytes) {
+    throw new Error(`b5c1 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  }
+  writeVerified('b5c1.webp', bytes, expectedSha256)
+}
+
+// b5c2 — reviewed note-writing scene with Nino absent.
+{
+  const partFiles = [
+    'src/art/encoded/b5c2.part1.b64',
+    'src/art/encoded/b5c2.part2.b64',
+  ]
+  const base64 = partFiles
+    .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
+    .join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 17_064
+  const expectedSha256 = '29839ea91cc7b36db8f736bb42582b1e834d10be8280b8750ec596d84df1d1aa'
+
+  if (bytes.length !== expectedBytes) {
+    throw new Error(`b5c2 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  }
+  writeVerified('b5c2.webp', bytes, expectedSha256)
+}
