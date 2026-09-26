@@ -75,6 +75,20 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
     width: 640,
     height: 336,
   },
+  b2c4: {
+    src: publicAsset('art/chapters/b2c4.webp'),
+    altFa: 'مینا و مادرش در کافهٔ خیابانی به اجرای یک نوازندهٔ مرد گوش می‌دهند.',
+    altEn: 'Mina and her mother listen to a male street musician from a family cafe table.',
+    width: 640,
+    height: 336,
+  },
+  b4c3: {
+    src: publicAsset('art/chapters/b4c3.webp'),
+    altFa: 'مینا پس از قدم‌زدن در بازار در کافه نشسته و نوشیدنی می‌نوشد.',
+    altEn: 'After walking through the market, Mina sits at the cafe with a drink.',
+    width: 640,
+    height: 336,
+  },
   b3c2: {
     src: publicAsset('art/chapters/b3c2.webp'),
     altFa: 'مینا و برادرش با دفتر و مداد خانه‌ها و باغچه‌های خیابان‌های آرام را یکی‌یکی بررسی می‌کنند.',
