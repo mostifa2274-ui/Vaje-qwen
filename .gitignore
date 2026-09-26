@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 __pycache__/
+
+# Reconstructed reviewed chapter art
+public/art/chapters/b1c1.avif
