@@ -236,3 +236,26 @@ function writeVerified(name, bytes, expectedSha256) {
   if (bytes.length !== expectedBytes) throw new Error(`b4c3 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
   writeVerified('b4c3.webp', bytes, expectedSha256)
 }
+
+
+// b3c6 — reviewed Week Ends doorway scene.
+{
+  const partFiles = [
+    'src/art/encoded/b3c6.part1.b64',
+    'src/art/encoded/b3c6.part2.b64',
+    'src/art/encoded/b3c6.part3.b64',
+    'src/art/encoded/b3c6.part4.b64',
+    'src/art/encoded/b3c6.part5.b64',
+  ]
+  const base64 = partFiles
+    .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
+    .join('')
+  const bytes = Buffer.from(base64, 'base64')
+  const expectedBytes = 51_136
+  const expectedSha256 = '77b3db74f071b3946da19529a2e93a29e3cdbb6c78630314dd2b8001e80c9cfd'
+
+  if (bytes.length !== expectedBytes) {
+    throw new Error(`b3c6 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
+  }
+  writeVerified('b3c6.webp', bytes, expectedSha256)
+}
