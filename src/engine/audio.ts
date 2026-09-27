@@ -4,6 +4,9 @@ import type { SpeechFailureHandler } from './narration'
 
 let el: HTMLAudioElement | null = null
 let request = 0
+let activeWatchdog: ReturnType<typeof setTimeout> | null = null
+
+export const RECORDED_CLIP_WATCHDOG_MS = 45_000
 
 function player(): HTMLAudioElement | null {
   if (typeof Audio === 'undefined') return null
@@ -27,11 +30,21 @@ export function clipPlaybackRate(rate: number): number {
 export function playClip(src: string, rate: number, onEnd?: () => void, onError?: SpeechFailureHandler): boolean {
   const audio = player()
   if (!audio) return false
+  if (activeWatchdog !== null) {
+    clearTimeout(activeWatchdog)
+    activeWatchdog = null
+  }
   const current = ++request
   let settled = false
+  let watchdog: ReturnType<typeof setTimeout> | null = null
   const settle = (callback?: () => void) => {
     if (settled || current !== request) return
     settled = true
+    if (watchdog !== null) {
+      clearTimeout(watchdog)
+      if (activeWatchdog === watchdog) activeWatchdog = null
+      watchdog = null
+    }
     audio.onended = null
     audio.onerror = null
     callback?.()
@@ -43,6 +56,12 @@ export function playClip(src: string, rate: number, onEnd?: () => void, onError?
     audio.currentTime = 0
     audio.playbackRate = clipPlaybackRate(rate)
     const started = audio.play()
+    watchdog = setTimeout(() => {
+      if (current !== request) return
+      audio.pause()
+      settle(() => onError?.('unavailable'))
+    }, RECORDED_CLIP_WATCHDOG_MS)
+    activeWatchdog = watchdog
     if (started && typeof started.catch === 'function') {
       started.catch((error: unknown) => {
         settle(() => onError?.(error instanceof DOMException && error.name === 'NotAllowedError' ? 'blocked' : 'unavailable'))
@@ -56,6 +75,10 @@ export function playClip(src: string, rate: number, onEnd?: () => void, onError?
 
 export function stopAudio(): void {
   request++
+  if (activeWatchdog !== null) {
+    clearTimeout(activeWatchdog)
+    activeWatchdog = null
+  }
   if (el) {
     el.onended = null
     el.onerror = null
