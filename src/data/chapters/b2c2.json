@@ -196,17 +196,17 @@
   ],
   "check": [
     {
-      "q": "نگار کیست؟",
+      "q": "نگار در مدرسه برای مینا کیست؟",
       "options": [
         "friend",
-        "teacher",
-        "neighbor",
-        "sister"
+        "sister",
+        "mother",
+        "baby"
       ],
       "a": "friend"
     },
     {
-      "q": "پیرزن جوجه را کجا دیده است؟",
+      "q": "زن جوان جوجه را کجا دیده است؟",
       "options": [
         "park",
         "car",

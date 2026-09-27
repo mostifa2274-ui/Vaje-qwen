@@ -1,4 +1,4 @@
-import type { GhesseState } from './types'
+import type { GhesseState, WordProgress } from './types'
 import { blankWordProgress, scheduleAfterChapter } from './review'
 import { READING_QUESTION_COUNT } from './comprehension'
 
@@ -126,4 +126,27 @@ export function recordCompletedRead(
     next.currentChapter = successorId
   }
   return next
+}
+
+// A course update may move words between chapters of the same book without
+// relocking chapters the learner already finished. A word that now belongs to
+// such a chapter was never taught by its prep, so it is scheduled for review
+// the way finishing that chapter would have scheduled it.
+export function introduceWordsOfCompletedChapters(
+  state: GhesseState,
+  chapters: readonly { id: string; new: readonly string[] }[],
+  now: number,
+): GhesseState {
+  let words: Record<string, WordProgress> | undefined
+  for (const chapter of chapters) {
+    if (state.chapters[chapter.id]?.completed !== true) continue
+    for (const id of chapter.new) {
+      const existing = state.words[id]
+      if (existing?.introduced) continue
+      words ??= { ...state.words }
+      const base = existing ?? blankWordProgress(now)
+      words[id] = scheduleAfterChapter({ ...base, firstSeenAt: base.firstSeenAt ?? now }, now)
+    }
+  }
+  return words ? { ...state, words } : state
 }
