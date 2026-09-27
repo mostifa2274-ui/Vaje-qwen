@@ -5,266 +5,197 @@
   "titleFa": "حیاط و باغچه",
   "titleEn": "The Yard and the Garden",
   "new": [
-    "key",
-    "please",
-    "out",
-    "night",
-    "rain",
+    "have",
+    "make",
     "dirty",
-    "nothing",
-    "let",
-    "us",
-    "television",
-    "sound",
-    "down",
-    "maybe",
-    "tv",
-    "black",
-    "find",
-    "clean",
-    "thing",
-    "shoe",
-    "become",
-    "moment",
-    "else",
-    "point",
-    "about",
     "coat",
     "slow",
-    "up",
-    "sorry",
+    "past",
+    "just",
+    "black",
+    "point",
+    "your",
+    "way",
+    "so",
+    "time",
+    "think",
+    "key",
     "late",
     "afternoon",
-    "something",
-    "flower",
-    "may",
-    "get",
-    "dark",
-    "last",
-    "time"
+    "soon",
+    "close",
+    "tomorrow"
   ],
   "sentences": [
     {
-      "en": "After breakfast, Mina asks Mom for the yard key.",
-      "fa": "بعد از صبحانه، مینا کلید حیاط را از مامان می‌خواهد."
+      "en": "The rain in the night has made the yard dirty.",
+      "fa": "باران شب حیاط را کثیف کرده است."
     },
     {
-      "en": "Mom takes the key from the kitchen table.",
-      "fa": "مامان کلید را از روی میز آشپزخانه برمی‌دارد."
+      "en": "Aria puts on his coat and goes out first with his light.",
+      "fa": "آریا کتش را می‌پوشد و اول با چراغ‌قوه‌اش بیرون می‌رود."
     },
     {
-      "en": "\"The key, please,\" Mina says. \"I am ready to look.\"",
-      "fa": "مینا می‌گوید: «کلید را لطفاً. آماده‌ام بگردم.»"
+      "en": "Mina follows him with her paper in her hand.",
+      "fa": "مینا با کاغذش در دست دنبالش می‌رود."
     },
     {
-      "en": "\"Open the door, please,\" Mom says, and Mina goes out.",
-      "fa": "مامان می‌گوید: «در را باز کن، لطفاً»، و مینا بیرون می‌رود."
+      "en": "The garden is very quiet after the rain.",
+      "fa": "باغچه بعد از باران خیلی ساکت است."
     },
     {
-      "en": "Outside, the small yard is quiet after the night rain.",
-      "fa": "بیرون، حیاط کوچک بعد از باران شب آرام است."
+      "en": "Mina walks slowly past the flowers.",
+      "fa": "مینا آرام از کنار گل‌ها می‌گذرد."
     },
     {
-      "en": "The garden is dirty after the night rain.",
-      "fa": "باغچه بعد از باران شب کثیف است."
+      "en": "\"Nino? Nino, please come out,\" she says.",
+      "fa": "می‌گوید: «نینو؟ نینو، لطفاً بیا بیرون.»"
     },
     {
-      "en": "Mina walks through the garden and calls Nino's name.",
-      "fa": "مینا در باغچه راه می‌رود و اسم نینو را صدا می‌کند."
+      "en": "She looks under the garden table and behind every chair.",
+      "fa": "زیر میز باغچه و پشت همه‌ی صندلی‌ها را نگاه می‌کند."
     },
     {
-      "en": "\"Nino, come out, please!\" she calls from the garden.",
-      "fa": "او از باغچه صدا می‌زند: «نینو، بیا بیرون، لطفاً!»"
+      "en": "Aria turns his light to the dark space behind the boxes.",
+      "fa": "آریا چراغ‌قوه‌اش را به طرف جای تاریک پشت جعبه‌ها می‌گیرد."
     },
     {
-      "en": "She looks under the garden table.",
-      "fa": "او زیر میز باغچه را نگاه می‌کند."
+      "en": "\"Nothing,\" he says. \"Just a black shoe.\"",
+      "fa": "می‌گوید: «هیچی. فقط یک کفش سیاه.»"
     },
     {
-      "en": "The chicken is not under the table. There is nothing there.",
-      "fa": "جوجه زیر میز نیست. آنجا چیزی نیست."
+      "en": "\"That is Dad's old shoe,\" Mina says. \"It is not a chicken.\"",
+      "fa": "مینا می‌گوید: «آن کفش قدیمی باباست. جوجه که نیست.»"
     },
     {
-      "en": "Mina moves a chair and checks behind it.",
-      "fa": "مینا صندلی را جابه‌جا می‌کند و پشت آن را بررسی می‌کند."
+      "en": "They check every place on Mina's paper, one by one.",
+      "fa": "تک‌تک جاهای روی کاغذ مینا را بررسی می‌کنند."
     },
     {
-      "en": "There is nothing behind the chair.",
-      "fa": "پشت صندلی چیزی نیست."
+      "en": "But there is no Nino.",
+      "fa": "اما خبری از نینو نیست."
     },
     {
-      "en": "Her brother comes out with a small light.",
-      "fa": "برادرش با یک چراغ کوچک بیرون می‌آید."
+      "en": "Then something moves in the flowers near the wall.",
+      "fa": "بعد چیزی میان گل‌های نزدیک دیوار تکان می‌خورد."
     },
     {
-      "en": "\"Let's check my room too,\" he says.",
-      "fa": "او می‌گوید: «اتاق من را هم بررسی کنیم.»"
+      "en": "Mina stops, and her feet do not move.",
+      "fa": "مینا می‌ایستد و پاهایش تکان نمی‌خورند."
     },
     {
-      "en": "They go from the yard back into the house.",
-      "fa": "آن‌ها از حیاط دوباره وارد خانه می‌شوند."
+      "en": "Is it Nino?",
+      "fa": "نینوست؟"
     },
     {
-      "en": "In his room, the brother moves his desk away from the wall.",
-      "fa": "در اتاقش، برادر میز تحریرش را از دیوار دور می‌کند."
+      "en": "A red bird flies out of the flowers and up to the wall.",
+      "fa": "یک پرنده‌ی قرمز از میان گل‌ها بیرون می‌آید و بالای دیوار می‌رود."
     },
     {
-      "en": "Mina looks under the desk, and he looks behind the chair.",
-      "fa": "مینا زیر میز تحریر را نگاه می‌کند و او پشت صندلی را نگاه می‌کند."
+      "en": "\"Look! Is that Nino's bird?\" Aria asks.",
+      "fa": "آریا می‌پرسد: «نگاه کن! این همان پرنده‌ی نینوست؟»"
     },
     {
-      "en": "Nino is not there, so they move to the living room.",
-      "fa": "نینو آنجا نیست، پس به اتاق نشیمن می‌روند."
+      "en": "The bird looks down at Mina and Aria for a moment.",
+      "fa": "پرنده برای لحظه‌ای پایین را، به مینا و آریا، نگاه می‌کند."
     },
     {
-      "en": "The television is on, but Dad turns the sound down.",
-      "fa": "تلویزیون روشن است، اما بابا صدا را کم می‌کند."
+      "en": "Then it flies down to the old yard door and goes out under it.",
+      "fa": "بعد پایین می‌آید، به طرف درِ قدیمی حیاط، و از زیر آن بیرون می‌رود."
     },
     {
-      "en": "\"Maybe he is behind the TV,\" Dad says.",
-      "fa": "بابا می‌گوید: «شاید پشت تلویزیون باشد.»"
+      "en": "Mina runs to the door and gets down on the floor.",
+      "fa": "مینا به طرف در می‌دود و روی زمین خم می‌شود."
     },
     {
-      "en": "Mina checks behind the black TV.",
-      "fa": "مینا پشت تلویزیون سیاه را بررسی می‌کند."
+      "en": "There is a space under the old door.",
+      "fa": "زیر درِ قدیمی یک فاصله هست."
     },
     {
-      "en": "Again, she finds no chicken.",
-      "fa": "باز هم جوجه‌ای پیدا نمی‌کند."
+      "en": "The space is small, but Nino is small too.",
+      "fa": "فاصله کوچک است، اما نینو هم کوچک است."
     },
     {
-      "en": "Mom puts a glass of water on the kitchen table for Mina.",
-      "fa": "مامان یک لیوان آب روی میز آشپزخانه برای مینا می‌گذارد."
+      "en": "\"Aria, point your light here,\" she says.",
+      "fa": "می‌گوید: «آریا، چراغ‌قوه‌ات را این طرف بگیر.»"
     },
     {
-      "en": "Light from the window is on the glass.",
-      "fa": "نور پنجره روی لیوان است."
+      "en": "In the light, she can see the dirty space and the way out.",
+      "fa": "در نور، فاصله‌ی کثیف و راه بیرون را می‌بیند."
     },
     {
-      "en": "The kitchen is clean after breakfast.",
-      "fa": "آشپزخانه بعد از صبحانه تمیز است."
+      "en": "\"Nino followed the bird,\" Mina says. \"He went out through here!\"",
+      "fa": "مینا می‌گوید: «نینو دنبال پرنده رفت. از اینجا بیرون رفت!»"
     },
     {
-      "en": "Mom keeps it clean, and everyone moves things to look for Nino.",
-      "fa": "مامان آشپزخانه را تمیز نگه می‌دارد و همه وسایل را جابه‌جا می‌کنند تا دنبال نینو بگردند."
+      "en": "Aria looks at her. \"Outside? But there are so many houses outside.\"",
+      "fa": "آریا نگاهش می‌کند. «بیرون؟ اما بیرون این‌همه خانه هست.»"
     },
     {
-      "en": "Outside, Mina's shoes become dirty in the yard.",
-      "fa": "بیرون، کفش‌های مینا در حیاط کثیف می‌شوند."
+      "en": "Mina calls Mom and Dad, and they come quickly.",
+      "fa": "مینا مامان و بابا را صدا می‌زند و آن‌ها سریع می‌آیند."
     },
     {
-      "en": "Her brother's hands are dirty too from the garden.",
-      "fa": "دست‌های برادرش هم از باغچه کثیف شده‌اند."
+      "en": "Dad gets down and looks at the space for a long time.",
+      "fa": "بابا خم می‌شود و مدتی طولانی به آن فاصله نگاه می‌کند."
     },
     {
-      "en": "\"Did you find him?\" Mom asks when they come back in.",
-      "fa": "وقتی دوباره داخل می‌آیند، مامان می‌پرسد: «پیدایش کردید؟»"
+      "en": "\"I think so too,\" he says.",
+      "fa": "می‌گوید: «من هم همین فکر را می‌کنم.»"
     },
     {
-      "en": "\"No, I did not find him,\" Mina answers.",
-      "fa": "مینا جواب می‌دهد: «نه، پیدایش نکردم.»"
+      "en": "Mom gets the key and opens the yard door.",
+      "fa": "مامان کلید را می‌آورد و درِ حیاط را باز می‌کند."
     },
     {
-      "en": "Her answer makes the kitchen quiet for a moment.",
-      "fa": "جوابش برای لحظه‌ای آشپزخانه را ساکت می‌کند."
+      "en": "Outside, there are houses, walls and many, many places.",
+      "fa": "بیرون خانه‌ها و دیوارها و جاهای خیلی خیلی زیادی هست."
     },
     {
-      "en": "Dad tells Mina to ask her brother about Nino.",
-      "fa": "بابا به مینا می‌گوید درباره‌ی نینو از برادرش بپرسد."
+      "en": "They call Nino's name again and again, but nothing answers.",
+      "fa": "بارها و بارها اسم نینو را صدا می‌زنند، اما هیچ جوابی نمی‌آید."
     },
     {
-      "en": "Mina asks him, \"Where else should we look?\"",
-      "fa": "مینا از او می‌پرسد: «دیگر کجا را باید بگردیم؟»"
+      "en": "\"It is late in the afternoon,\" Mom says. \"It will be dark soon.\"",
+      "fa": "مامان می‌گوید: «اواخر بعدازظهر است. به‌زودی هوا تاریک می‌شود.»"
     },
     {
-      "en": "\"Look here next to the table,\" her brother answers.",
-      "fa": "برادرش جواب می‌دهد: «اینجا کنار میز را نگاه کن.»"
+      "en": "Dad closes the door slowly.",
+      "fa": "بابا در را آرام می‌بندد."
     },
     {
-      "en": "Mina checks, but Nino is not there.",
-      "fa": "مینا نگاه می‌کند، اما نینو آنجا نیست."
+      "en": "\"Tomorrow we go out and look for him,\" he says. \"All of us, together.\"",
+      "fa": "می‌گوید: «فردا بیرون می‌رویم و دنبالش می‌گردیم. همه‌مان با هم.»"
     },
     {
-      "en": "Dad points to the front room and asks, \"What about there?\"",
-      "fa": "بابا به اتاق جلویی اشاره می‌کند و می‌پرسد: «آنجا چطور؟»"
+      "en": "Mina looks at the door for one last moment.",
+      "fa": "مینا برای آخرین لحظه به در نگاه می‌کند."
     },
     {
-      "en": "Mina goes there and looks behind the coats.",
-      "fa": "مینا به آنجا می‌رود و پشت کت‌ها را نگاه می‌کند."
-    },
-    {
-      "en": "Nothing moves, and Mina slowly stands up.",
-      "fa": "چیزی تکان نمی‌خورد و مینا آرام بلند می‌شود."
-    },
-    {
-      "en": "\"I am sorry, Mina,\" Dad says.",
-      "fa": "بابا می‌گوید: «متأسفم، مینا.»"
-    },
-    {
-      "en": "Mom says she is sorry too, but they will keep looking.",
-      "fa": "مامان می‌گوید او هم متأسف است، اما به جست‌وجو ادامه می‌دهند."
-    },
-    {
-      "en": "Late in the afternoon, the light outside is not strong.",
-      "fa": "در اواخر بعدازظهر، نور بیرون قوی نیست."
-    },
-    {
-      "en": "Dad turns on the yard light so they can look once more.",
-      "fa": "بابا چراغ حیاط را روشن می‌کند تا یک بار دیگر جست‌وجو کنند."
-    },
-    {
-      "en": "Under the light, Mina sees something near a flower.",
-      "fa": "زیر نور، مینا چیزی نزدیک یک گل می‌بیند."
-    },
-    {
-      "en": "She runs outside again because it may be Nino.",
-      "fa": "دوباره به بیرون می‌دود چون شاید نینو باشد."
-    },
-    {
-      "en": "A bird flies out from behind the flower.",
-      "fa": "پرنده‌ای از پشت گل بیرون می‌پرد."
-    },
-    {
-      "en": "\"Close the door before it gets dark,\" Mom calls.",
-      "fa": "مامان صدا می‌زند: «قبل از تاریک شدن در را ببند.»"
-    },
-    {
-      "en": "Mina walks from the yard back to the house slowly.",
-      "fa": "مینا آرام از حیاط به خانه برمی‌گردد."
-    },
-    {
-      "en": "She looks back outside one last time.",
-      "fa": "برای آخرین بار به بیرون نگاه می‌کند."
-    },
-    {
-      "en": "\"Come home, Nino, please,\" Mina says.",
-      "fa": "مینا می‌گوید: «برگرد خانه، نینو، لطفاً.»"
-    },
-    {
-      "en": "Dad closes the window, and Mina closes the door.",
-      "fa": "بابا پنجره را می‌بندد و مینا در را می‌بندد."
+      "en": "Nino is out there, and now she knows it.",
+      "fa": "نینو آن بیرون است و حالا این را می‌داند."
     }
   ],
   "check": [
     {
-      "q": "آیا نینو زیر میز است؟",
+      "q": "چه چیزی از میان گل‌ها بیرون می‌آید؟",
       "options": [
-        "no",
-        "chicken",
         "bird",
+        "chicken",
+        "shoe",
         "key"
       ],
-      "a": "no"
+      "a": "bird"
     },
     {
-      "q": "آشپزخانه چطور است؟",
+      "q": "زیر درِ قدیمی حیاط چه هست؟",
       "options": [
-        "dirty",
-        "clean",
-        "little",
-        "black"
+        "space",
+        "shoe",
+        "box",
+        "flower"
       ],
-      "a": "clean"
+      "a": "space"
     }
   ]
 }

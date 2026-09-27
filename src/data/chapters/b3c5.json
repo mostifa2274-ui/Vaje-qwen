@@ -2,243 +2,206 @@
   "id": "b3c5",
   "book": 3,
   "n": 5,
-  "titleFa": "هزار سرنخ",
-  "titleEn": "A Thousand Clues",
+  "titleFa": "هزار چشم",
+  "titleEn": "A Thousand Eyes",
   "new": [
-    "eleven",
-    "second-2",
+    "twenty",
+    "section",
+    "sixty",
+    "million",
     "thirteen",
+    "sixteen",
+    "eighteen",
+    "hundred",
+    "seventeen",
+    "nineteen",
     "fourteen",
     "fifteen",
-    "sixteen",
-    "seventeen",
-    "eighteen",
-    "nineteen",
-    "message",
-    "twenty",
-    "thirty",
-    "forty",
-    "over",
-    "section",
-    "fifty",
-    "sixty",
-    "seventy",
-    "online",
-    "eighty",
-    "share",
-    "ninety",
-    "hundred",
-    "pair",
-    "eye",
-    "thousand",
     "would",
-    "million",
-    "which",
+    "online",
+    "share",
+    "message",
+    "thirty",
+    "fifty",
+    "seventy",
+    "eighty",
+    "ninety",
+    "thousand",
     "also",
+    "pair",
+    "few",
     "period"
   ],
   "sentences": [
     {
-      "en": "Mina and Dad visit the city information desk to plan where to look for Nino.",
-      "fa": "مینا و بابا به مرکز اطلاعات شهر می‌روند تا برنامه‌ریزی کنند کجا دنبال نینو بگردند."
+      "en": "Twenty days after Nino ran away, Dad takes Mina to the city's help desk for animals that are far from home.",
+      "fa": "بیست روز بعد از فرار نینو، بابا مینا را به میز کمک شهر برای حیوان‌هایی که از خانه دور افتاده‌اند می‌برد."
     },
     {
-      "en": "On the wall there are eleven photos from people who may have seen Nino.",
-      "fa": "روی دیوار یازده عکس از افرادی است که شاید نینو را دیده باشند."
+      "en": "The desk is in a large building near the city center.",
+      "fa": "این میز در ساختمان بزرگی نزدیک مرکز شهر است."
     },
     {
-      "en": "Mina checks all eleven photos, but they do not show Nino.",
-      "fa": "مینا هر یازده عکس را بررسی می‌کند، اما نینو در آن‌ها نیست."
+      "en": "On the wall, there is a big map of the city in sections.",
+      "fa": "روی دیوار، نقشه‌ی بزرگی از شهر هست که به چند بخش تقسیم شده است."
     },
     {
-      "en": "A second list has thirteen calls from people around the park.",
-      "fa": "فهرست دوم سیزده تماس از مردم اطراف پارک دارد."
+      "en": "Next to it, there are reports from people who have seen animals in the streets.",
+      "fa": "کنارش، گزارش‌های آدم‌هایی است که حیوان‌هایی را در خیابان‌ها دیده‌اند."
     },
     {
-      "en": "Thirteen people reported small birds or chickens, and Dad writes down every place.",
-      "fa": "سیزده نفر پرنده یا جوجه‌ی کوچکی گزارش کرده‌اند و بابا هر محل را یادداشت می‌کند."
+      "en": "\"We have sixty new reports this month,\" the woman at the desk says.",
+      "fa": "زنی که پشت میز است می‌گوید: «این ماه شصت گزارش تازه داریم.»"
     },
     {
-      "en": "The map shows fourteen streets around the newest information.",
-      "fa": "نقشه چهارده خیابان اطراف تازه‌ترین اطلاعات را نشان می‌دهد."
+      "en": "\"This city has more than eight million people, so we need many eyes.\"",
+      "fa": "«این شهر بیش از هشت میلیون نفر جمعیت دارد، پس چشم‌های زیادی لازم داریم.»"
     },
     {
-      "en": "People who help take the fourteen streets, and each person looks in one area.",
-      "fa": "افرادی که کمک می‌کنند چهارده خیابان را می‌گیرند و هر نفر در یک منطقه می‌گردد."
+      "en": "Two teenagers help at the desk in the summer. One is thirteen, and the other is sixteen.",
+      "fa": "دو نوجوان تابستان‌ها پشت این میز کمک می‌کنند. یکی سیزده سال دارد و دیگری شانزده."
     },
     {
-      "en": "Fifteen people in shops have Mina's note about Nino.",
-      "fa": "پانزده نفر در مغازه‌ها یادداشت مینا درباره‌ی نینو را دارند."
+      "en": "\"Last year, we helped eighteen hundred animals go back to their homes,\" the older one says.",
+      "fa": "بزرگ‌تره می‌گوید: «پارسال به هزار و هشتصد حیوان کمک کردیم به خانه‌شان برگردند.»"
     },
     {
-      "en": "One list shows the names of all fifteen shops.",
-      "fa": "یک فهرست نام هر پانزده مغازه را نشان می‌دهد."
+      "en": "The woman looks at Nino's picture. \"How old is he?\" she asks.",
+      "fa": "زن به عکس نینو نگاه می‌کند. می‌پرسد: «چند وقتش است؟»"
     },
     {
-      "en": "Sixteen houses stand next to the park road.",
-      "fa": "شانزده خانه کنار جاده‌ی پارک قرار دارند."
+      "en": "\"Seventeen weeks,\" Mina says. \"He is small, but he walks fast.\"",
+      "fa": "مینا می‌گوید: «هفده هفته. کوچک است، اما تند راه می‌رود.»"
     },
     {
-      "en": "By twelve o'clock, the team has checked all sixteen yards.",
-      "fa": "تا ساعت دوازده، گروه هر شانزده حیاط را بررسی کرده است."
+      "en": "The woman looks at the reports. \"This week, nineteen people have called about yellow birds,\" she says.",
+      "fa": "زن به گزارش‌ها نگاه می‌کند. می‌گوید: «این هفته نوزده نفر درباره‌ی پرنده‌های زرد زنگ زده‌اند.»"
     },
     {
-      "en": "Seventeen people meet Mina and Dad at the park.",
-      "fa": "هفده نفر در پارک با مینا و بابا ملاقات می‌کنند."
+      "en": "\"Fourteen of them were about one bird near the river.\"",
+      "fa": "«چهارده تا از آن‌ها درباره‌ی یک پرنده نزدیک رودخانه بودند.»"
     },
     {
-      "en": "Mina thanks all seventeen before they go to different streets to look.",
-      "fa": "مینا پیش از رفتن آن‌ها به خیابان‌های مختلف برای جست‌وجو از هر هفده نفر تشکر می‌کند."
+      "en": "\"And one was about a chicken near bus fifteen, three days ago.\"",
+      "fa": "«و یکی درباره‌ی یک جوجه نزدیک اتوبوس شماره‌ی پانزده، سه روز پیش.»"
     },
     {
-      "en": "Eighteen windows look down on the small street behind the cafe.",
-      "fa": "هجده پنجره به خیابان کوچک پشت کافه نگاه دارند."
+      "en": "\"Bus fifteen?\" Mina asks. \"Where does it go?\"",
+      "fa": "مینا می‌پرسد: «اتوبوس پانزده؟ کجا می‌رود؟»"
     },
     {
-      "en": "Dad says someone behind one of the eighteen windows may have seen Nino.",
-      "fa": "بابا می‌گوید شاید کسی پشت یکی از آن هجده پنجره نینو را دیده باشد."
+      "en": "Dad looks at the map. \"Across the center, to the big market,\" he says.",
+      "fa": "بابا به نقشه نگاه می‌کند. می‌گوید: «از وسط مرکز شهر، تا بازار بزرگ.»"
     },
     {
-      "en": "Nineteen new messages arrive on the family phone.",
-      "fa": "نوزده پیام تازه روی تلفن خانواده می‌رسد."
+      "en": "Mina writes in her red book: \"Bus fifteen. The market. Three days ago.\"",
+      "fa": "مینا در کتاب قرمزش می‌نویسد: «اتوبوس پانزده. بازار. سه روز پیش.»"
     },
     {
-      "en": "Mina reads all nineteen messages and keeps the useful ones.",
-      "fa": "مینا هر نوزده پیام را می‌خواند و موارد مفید را نگه می‌دارد."
+      "en": "\"Would you like to put Nino's picture online?\" the woman asks.",
+      "fa": "زن می‌پرسد: «دوست دارید عکس نینو را در اینترنت بگذارید؟»"
     },
     {
-      "en": "Twenty days without Nino now feel like a very long time.",
-      "fa": "حالا بیست روز بدون نینو زمان بسیار طولانی‌ای به نظر می‌رسد."
+      "en": "\"Many people share pictures from our page.\"",
+      "fa": "«خیلی‌ها عکس‌های صفحه‌ی ما را به اشتراک می‌گذارند.»"
     },
     {
-      "en": "\"Twenty days,\" Mina says, trying not to lose hope.",
-      "fa": "مینا می‌گوید: «بیست روز» و سعی می‌کند امیدش را از دست ندهد."
+      "en": "Dad says yes, and the teenagers put the picture on the page with a short message.",
+      "fa": "بابا قبول می‌کند و نوجوان‌ها عکس را با یک پیام کوتاه در صفحه می‌گذارند."
     },
     {
-      "en": "At a shop, thirty new notes are waiting for them.",
-      "fa": "در یک مغازه، سی یادداشت تازه منتظر آن‌هاست."
+      "en": "The message says: \"Have you seen Nino? A little yellow chicken with orange feet and a little white on his left.\"",
+      "fa": "پیام می‌گوید: «نینو را دیده‌اید؟ جوجه‌ای زرد و کوچک با پاهای نارنجی و کمی سفید در سمت چپش.»"
     },
     {
-      "en": "People who help take the thirty notes to shops, doors, and bus stops.",
-      "fa": "افرادی که کمک می‌کنند سی یادداشت را به مغازه‌ها، درها و ایستگاه‌های اتوبوس می‌برند."
+      "en": "At first, only twenty people share it.",
+      "fa": "اول فقط بیست نفر آن را به اشتراک می‌گذارند."
     },
     {
-      "en": "Mina and Dad look on the river road for forty minutes because of new information.",
-      "fa": "مینا و بابا به خاطر اطلاعات تازه چهل دقیقه در جاده‌ی کنار رودخانه می‌گردند."
+      "en": "By the afternoon, thirty people have shared it, and then fifty.",
+      "fa": "تا بعدازظهر سی نفر آن را به اشتراک گذاشته‌اند و بعد پنجاه نفر."
     },
     {
-      "en": "After forty minutes, a boy runs over with another message.",
-      "fa": "بعد از چهل دقیقه، پسری با پیام دیگری به سمتشان می‌دود."
+      "en": "In the evening, Dad looks at his phone. \"Seventy,\" he says.",
+      "fa": "عصر، بابا به تلفنش نگاه می‌کند. می‌گوید: «هفتاد.»"
     },
     {
-      "en": "The next map section has fifty houses.",
-      "fa": "بخش بعدی نقشه پنجاه خانه دارد."
+      "en": "Before bed, it is eighty, and then ninety.",
+      "fa": "پیش از خواب هشتاد است و بعد نود."
     },
     {
-      "en": "Different people visit different houses from the fifty on the list.",
-      "fa": "افراد مختلف از میان پنجاه خانه‌ی فهرست به خانه‌های مختلف سر می‌زنند."
+      "en": "The next morning, over a hundred people have shared Nino's picture.",
+      "fa": "صبح روز بعد، بیش از صد نفر عکس نینو را به اشتراک گذاشته‌اند."
     },
     {
-      "en": "\"Sixty minutes make one hour,\" Dad says when Mina checks the time.",
-      "fa": "وقتی مینا زمان را نگاه می‌کند، بابا می‌گوید: «شصت دقیقه یک ساعت می‌شود.»"
+      "en": "\"A hundred people are looking for Nino!\" Aria says.",
+      "fa": "آریا می‌گوید: «صد نفر دنبال نینو می‌گردند!»"
     },
     {
-      "en": "The last useful information came one hour—sixty minutes—ago.",
-      "fa": "آخرین اطلاعات مفید یک ساعت، یعنی شصت دقیقه، پیش آمده است."
+      "en": "\"More,\" Dad says. \"When a hundred people share it, a thousand people see it.\"",
+      "fa": "بابا می‌گوید: «بیشتر. وقتی صد نفر آن را به اشتراک بگذارند، هزار نفر آن را می‌بینند.»"
     },
     {
-      "en": "A local animal group has seventy reports.",
-      "fa": "یک گروه محلی حیوانات هفتاد گزارش دارد."
+      "en": "\"A thousand eyes,\" Mina says quietly.",
+      "fa": "مینا آرام می‌گوید: «هزار چشم.»"
     },
     {
-      "en": "Mina knows they cannot check all seventy reports in one afternoon.",
-      "fa": "مینا می‌داند نمی‌توانند هر هفتاد گزارش را در یک بعدازظهر بررسی کنند."
+      "en": "Messages also come from people who want to help.",
+      "fa": "پیام‌هایی هم از آدم‌هایی می‌رسد که می‌خواهند کمک کنند."
     },
     {
-      "en": "Online, eighty people have shared Nino's picture.",
-      "fa": "در اینترنت، هشتاد نفر عکس نینو را به اشتراک گذاشته‌اند."
+      "en": "One message has a picture of a pair of yellow shoes. \"Is this your chicken?\" it says.",
+      "fa": "یکی از پیام‌ها عکس یک جفت کفش زرد است. نوشته: «این جوجه‌ی شماست؟»"
     },
     {
-      "en": "Some of them live near the river road.",
-      "fa": "بعضی از آن‌ها نزدیک جاده‌ی کنار رودخانه زندگی می‌کنند."
+      "en": "Aria laughs for a long time.",
+      "fa": "آریا مدت زیادی می‌خندد."
     },
     {
-      "en": "A tall building near the station has ninety windows.",
-      "fa": "ساختمان بلندی نزدیک ایستگاه نود پنجره دارد."
+      "en": "Most messages are nice, but no one has seen Nino in the last few days.",
+      "fa": "بیشتر پیام‌ها مهربان‌اند، اما در این چند روز اخیر کسی نینو را ندیده است."
     },
     {
-      "en": "Mina looks up at the ninety windows, hoping one person saw Nino below.",
-      "fa": "مینا به نود پنجره بالا نگاه می‌کند و امیدوار است کسی نینو را پایین دیده باشد."
+      "en": "Then Mina stops. \"Wait a second,\" she says, and she reads one message again.",
+      "fa": "بعد مینا دست نگه می‌دارد. می‌گوید: «یک ثانیه صبر کن» و یک پیام را دوباره می‌خواند."
     },
     {
-      "en": "By afternoon, a hundred people know Nino's name.",
-      "fa": "تا بعدازظهر، صد نفر اسم نینو را می‌دانند."
+      "en": "\"I saw a small yellow chicken near the bread shop at the big market this morning.\"",
+      "fa": "«امروز صبح یک جوجه‌ی زرد کوچک نزدیک نانوایی بازار بزرگ دیدم.»"
     },
     {
-      "en": "A hundred pairs of eyes can see more than Mina.",
-      "fa": "صد جفت چشم می‌تواند بیشتر از مینا ببیند."
+      "en": "Mina looks at Dad. \"The market again,\" she says. \"Bus fifteen.\"",
+      "fa": "مینا به بابا نگاه می‌کند. می‌گوید: «باز هم بازار. اتوبوس پانزده.»"
     },
     {
-      "en": "\"There may be a thousand places to check in this city,\" Dad says.",
-      "fa": "بابا می‌گوید: «ممکن است در این شهر هزار جا برای بررسی باشد.»"
+      "en": "In a short period of time, many people in the city know Nino's face.",
+      "fa": "در مدت کوتاهی، آدم‌های زیادی در شهر صورت نینو را می‌شناسند."
     },
     {
-      "en": "A thousand pieces of information may come, but Mina would know Nino at once.",
-      "fa": "ممکن است هزار اطلاعات برسد، اما مینا نینو را همان لحظه می‌شناسد."
-    },
-    {
-      "en": "The city has millions of people, which once made Mina feel small.",
-      "fa": "شهر میلیون‌ها نفر جمعیت دارد و این قبلاً باعث می‌شد مینا احساس کوچکی کند."
-    },
-    {
-      "en": "Now she thinks that a city of millions also has many people who can help.",
-      "fa": "حالا فکر می‌کند شهری با میلیون‌ها نفر، آدم‌های زیادی هم دارد که می‌توانند کمک کنند."
-    },
-    {
-      "en": "Mina sees something yellow and says, \"Wait one second.\"",
-      "fa": "مینا چیزی زرد می‌بیند و می‌گوید: «یک ثانیه صبر کن.»"
-    },
-    {
-      "en": "For one second Mina thinks it may be Nino, but it is only a yellow bag.",
-      "fa": "برای یک ثانیه مینا فکر می‌کند شاید نینو باشد، اما فقط یک کیسه‌ی زرد است."
-    },
-    {
-      "en": "Dad asks her to wait a moment and checks behind it.",
-      "fa": "بابا از او می‌خواهد یک لحظه صبر کند و پشت آن را بررسی می‌کند."
-    },
-    {
-      "en": "That moment feels long, but Mina keeps watching.",
-      "fa": "آن لحظه طولانی به نظر می‌رسد، اما مینا همچنان نگاه می‌کند."
-    },
-    {
-      "en": "This hard period of looking for Nino has helped her learn to check all information.",
-      "fa": "این دوره‌ی سخت جست‌وجوی نینو به او کمک کرده یاد بگیرد همه‌ی اطلاعات را بررسی کند."
-    },
-    {
-      "en": "A month is a longer period than a week, and Mina hopes Nino returns before then.",
-      "fa": "یک ماه دوره‌ی طولانی‌تری از یک هفته است و مینا امیدوار است نینو پیش از آن برگردد."
+      "en": "Now Mina has a thousand eyes, and one real piece of information.",
+      "fa": "حالا مینا هزار چشم دارد و یک خبر واقعی."
     }
   ],
   "check": [
     {
-      "q": "بابا می‌گوید شاید چند جا برای بررسی وجود داشته باشد؟",
+      "q": "اتوبوس شماره‌ی پانزده به کجا می‌رود؟",
       "options": [
-        "thousand",
-        "hundred",
-        "eleven",
-        "twenty"
+        "market",
+        "river",
+        "station",
+        "park"
       ],
-      "a": "thousand"
+      "a": "market"
     },
     {
-      "q": "یک ساعت چند دقیقه است؟",
+      "q": "صبح روز بعد، بیش از چند نفر عکس نینو را به اشتراک گذاشته‌اند؟",
       "options": [
-        "sixty",
-        "forty",
-        "thirty",
-        "hundred"
+        "hundred",
+        "thousand",
+        "million",
+        "twenty"
       ],
-      "a": "sixty"
+      "a": "hundred"
     }
   ]
 }

@@ -5,197 +5,187 @@
   "titleFa": "یک هفته",
   "titleEn": "One Week",
   "new": [
-    "monday",
-    "early",
-    "yesterday",
-    "fast",
-    "head",
-    "tuesday",
-    "market",
-    "wednesday",
-    "always",
-    "thursday",
-    "never",
-    "friday",
-    "often",
-    "visit",
-    "saturday",
-    "weekend",
-    "sunday",
-    "river",
-    "sometimes",
     "week",
+    "saturday",
     "map",
-    "real",
-    "piece",
+    "line",
     "routine",
+    "early",
+    "fast",
+    "always",
+    "hard",
+    "sunday",
+    "visit",
+    "market",
+    "river",
+    "often",
+    "monday",
+    "tuesday",
+    "weather",
+    "sun",
+    "sometimes",
+    "wednesday",
+    "head",
+    "never",
     "learn",
-    "weather"
+    "piece",
+    "thursday",
+    "weekend",
+    "friday",
+    "yesterday",
+    "real",
+    "hour",
+    "over",
+    "seven"
   ],
   "sentences": [
     {
-      "en": "Saturday begins with an early walk to the park.",
-      "fa": "شنبه با یک پیاده‌روی زود به پارک شروع می‌شود."
+      "en": "In Iran, the week begins on Saturday, and this Saturday is the first day of Mina's new plan.",
+      "fa": "در ایران هفته از شنبه شروع می‌شود و این شنبه اولین روز برنامه‌ی تازه‌ی میناست."
     },
     {
-      "en": "She takes the same walk she took yesterday.",
-      "fa": "او همان مسیری را پیاده می‌رود که دیروز رفته بود."
+      "en": "Dad brings home a big map of the city, and Mina puts it on her bedroom wall.",
+      "fa": "بابا یک نقشه‌ی بزرگ شهر به خانه می‌آورد و مینا آن را به دیوار اتاق‌خوابش می‌زند."
     },
     {
-      "en": "Dad walks with her and carries Nino's picture.",
-      "fa": "بابا همراهش راه می‌رود و عکس نینو را با خود دارد."
+      "en": "Every place they check gets a red line on the map.",
+      "fa": "هر جایی که می‌گردند، روی نقشه یک خط قرمز می‌گیرد."
     },
     {
-      "en": "They know Nino can move fast when he is afraid.",
-      "fa": "می‌دانند نینو وقتی می‌ترسد می‌تواند سریع حرکت کند."
+      "en": "Now every day has the same routine.",
+      "fa": "حالا هر روز همان برنامه‌ی همیشگی را دارد."
     },
     {
-      "en": "A fast bird makes Mina turn her head at once.",
-      "fa": "یک پرنده‌ی سریع باعث می‌شود مینا همان لحظه سرش را برگرداند."
+      "en": "Mina wakes early, looks at the map and eats her breakfast fast.",
+      "fa": "مینا زود بیدار می‌شود، به نقشه نگاه می‌کند و صبحانه‌اش را سریع می‌خورد."
     },
     {
-      "en": "On Sunday, Mina and Mom check the market before school.",
-      "fa": "یکشنبه، مینا و مامان پیش از مدرسه بازار را بررسی می‌کنند."
+      "en": "Then she goes out with Mom or Dad and her red book.",
+      "fa": "بعد با مامان یا بابا و کتاب قرمزش بیرون می‌رود."
     },
     {
-      "en": "They ask the same person in the shop again about Nino.",
-      "fa": "دوباره از همان فرد داخل مغازه درباره‌ی نینو می‌پرسند."
+      "en": "On Saturday, Dad and Mina go to the city center, where the old woman saw a yellow chicken.",
+      "fa": "شنبه، بابا و مینا به مرکز شهر می‌روند؛ جایی که پیرزن یک جوجه‌ی زرد دیده بود."
     },
     {
-      "en": "\"Please call us if you see a little yellow chicken,\" Mom says.",
-      "fa": "مامان می‌گوید: «اگر جوجه‌ی زرد کوچکی دیدید، لطفاً به ما زنگ بزنید.»"
+      "en": "The center is always busy, and it is hard to see small things there.",
+      "fa": "مرکز شهر همیشه شلوغ است و آنجا دیدن چیزهای کوچک سخت است."
     },
     {
-      "en": "Monday brings rain, but Mina keeps looking for Nino.",
-      "fa": "دوشنبه باران می‌آید، اما مینا همچنان دنبال نینو می‌گردد."
+      "en": "On Sunday, Mom and Mina visit a small market near the river.",
+      "fa": "یکشنبه، مامان و مینا به بازار کوچکی نزدیک رودخانه سر می‌زنند."
     },
     {
-      "en": "She always checks the yard before leaving home.",
-      "fa": "او همیشه پیش از بیرون رفتن حیاط را بررسی می‌کند."
+      "en": "People often give bread to the birds there, but there is no Nino.",
+      "fa": "مردم آنجا اغلب به پرنده‌ها نان می‌دهند، اما خبری از نینو نیست."
     },
     {
-      "en": "Her brother always looks under the parked cars.",
-      "fa": "برادرش هم همیشه زیر ماشین‌های پارک‌شده را نگاه می‌کند."
+      "en": "Monday brings rain, and the streets are dark and dirty.",
+      "fa": "دوشنبه باران می‌آید و خیابان‌ها تاریک و کثیف‌اند."
     },
     {
-      "en": "On Tuesday, the family follows new information about one street.",
-      "fa": "سه‌شنبه، خانواده اطلاعات تازه‌ای درباره‌ی یک خیابان را دنبال می‌کند."
+      "en": "Mina and Dad still go out, and they come home with dirty shoes.",
+      "fa": "مینا و بابا باز هم بیرون می‌روند و با کفش‌های کثیف به خانه برمی‌گردند."
     },
     {
-      "en": "Mina never stops asking people about the chicken.",
-      "fa": "مینا هیچ‌وقت دست از پرسیدن درباره‌ی جوجه برنمی‌دارد."
+      "en": "On Tuesday, the weather is warm again, and the sun is out.",
+      "fa": "سه‌شنبه هوا دوباره گرم است و آفتاب درآمده."
     },
     {
-      "en": "At night she still listens for Nino near the door.",
-      "fa": "شب‌ها هنوز نزدیک در به صدای نینو گوش می‌دهد."
+      "en": "A woman in the market says she sometimes sees a small chicken near the river.",
+      "fa": "زنی در بازار می‌گوید گاهی یک جوجه‌ی کوچک نزدیک رودخانه می‌بیند."
     },
     {
-      "en": "Wednesday arrives, and Mina visits the park again with Dad.",
-      "fa": "چهارشنبه می‌رسد و مینا دوباره با بابا به پارک سر می‌زند."
+      "en": "So on Wednesday, Mom and Mina walk on the river road with the map.",
+      "fa": "پس چهارشنبه، مامان و مینا با نقشه در جاده‌ی کنار رودخانه قدم می‌زنند."
     },
     {
-      "en": "They often ask people in the park for help.",
-      "fa": "آن‌ها اغلب از مردم پارک کمک می‌خواهند."
+      "en": "They check under the trees and near the water.",
+      "fa": "زیر درخت‌ها و نزدیک آب را می‌گردند."
     },
     {
-      "en": "The family usually eats dinner together before looking for Nino.",
-      "fa": "خانواده معمولاً پیش از دنبال کردن نینو با هم شام می‌خورند."
+      "en": "Sometimes Mina hears a sound and turns her head fast.",
+      "fa": "گاهی مینا صدایی می‌شنود و سریع سرش را برمی‌گرداند."
     },
     {
-      "en": "The weekend begins on Thursday afternoon, and the family has more time to look.",
-      "fa": "آخر هفته از بعدازظهر پنجشنبه شروع می‌شود و خانواده وقت بیشتری برای گشتن دارد."
+      "en": "It is never Nino.",
+      "fa": "هیچ‌وقت نینو نیست."
     },
     {
-      "en": "On the weekend, more family members can help.",
-      "fa": "آخر هفته، افراد بیشتری از خانواده می‌توانند کمک کنند."
+      "en": "\"We will learn this city, piece by piece,\" Mom says.",
+      "fa": "مامان می‌گوید: «این شهر را تکه‌تکه یاد می‌گیریم.»"
     },
     {
-      "en": "Each adult in the family takes a small area of the neighborhood.",
-      "fa": "هر بزرگسال خانواده یک بخش کوچک از محله را برمی‌دارد."
+      "en": "On Thursday afternoon, Aria comes with them after school.",
+      "fa": "پنجشنبه بعدازظهر، آریا بعد از مدرسه همراهشان می‌آید."
     },
     {
-      "en": "On Friday, Mina checks the river road with Mom.",
-      "fa": "جمعه، مینا همراه مامان جاده‌ی کنار رودخانه را بررسی می‌کند."
+      "en": "He has his light, and he always checks the dark places first.",
+      "fa": "چراغ‌قوه‌اش همراهش است و همیشه اول جاهای تاریک را نگاه می‌کند."
     },
     {
-      "en": "Sometimes she stops to call Nino by name.",
-      "fa": "گاهی می‌ایستد تا نینو را به اسم صدا کند."
+      "en": "The weekend in Iran is Friday, and Dad does not work on that day.",
+      "fa": "آخر هفته در ایران جمعه است و بابا آن روز کار نمی‌کند."
     },
     {
-      "en": "Sometimes a small sound makes her hope for a moment.",
-      "fa": "گاهی صدای کوچکی برای لحظه‌ای امیدوارش می‌کند."
+      "en": "So on Friday, all the family goes to the river road together.",
+      "fa": "پس جمعه، همه‌ی خانواده با هم به جاده‌ی کنار رودخانه می‌روند."
     },
     {
-      "en": "The week feels long because Nino is still missing.",
-      "fa": "هفته طولانی به نظر می‌رسد چون نینو هنوز گم شده است."
+      "en": "Mom carries Yasi, and Dad carries the map.",
+      "fa": "مامان یاسی را بغل می‌کند و بابا نقشه را."
     },
     {
-      "en": "A week of looking for Nino has helped Mina know where to look.",
-      "fa": "یک هفته دنبال کردن نینو به مینا کمک کرده بداند کجا را نگاه کند."
+      "en": "They visit a small park next to the river and ask everyone there.",
+      "fa": "به پارک کوچکی کنار رودخانه سر می‌زنند و از همه‌ی آدم‌های آنجا می‌پرسند."
     },
     {
-      "en": "By the weekend, her map has many notes.",
-      "fa": "تا آخر هفته، نقشه‌اش یادداشت‌های زیادی دارد."
+      "en": "\"I saw a yellow chicken yesterday,\" a man says.",
+      "fa": "مردی می‌گوید: «دیروز یک جوجه‌ی زرد دیدم.»"
     },
     {
-      "en": "Friday is the day when most people do not work.",
-      "fa": "جمعه روزی است که بیشتر مردم کار نمی‌کنند."
+      "en": "Mina's face becomes happy. \"Where?\"",
+      "fa": "صورت مینا خوشحال می‌شود. «کجا؟»"
     },
     {
-      "en": "Mina just wants one real piece of information before Friday ends.",
-      "fa": "مینا فقط یک اطلاعات واقعی پیش از پایان جمعه می‌خواهد."
+      "en": "\"Here, near the water,\" he says. \"But maybe it was only a bird.\"",
+      "fa": "می‌گوید: «همین‌جا، نزدیک آب. اما شاید فقط یک پرنده بود.»"
     },
     {
-      "en": "She checks the time before they look for Nino every evening.",
-      "fa": "پیش از اینکه هر عصر دنبال نینو بگردند، ساعت را نگاه می‌کند."
+      "en": "\"Was it a real chicken, or a bird?\" Mina asks. The man does not know.",
+      "fa": "مینا می‌پرسد: «جوجه‌ی واقعی بود یا پرنده؟» مرد نمی‌داند."
     },
     {
-      "en": "Dinner time is short because everyone wants to keep looking.",
-      "fa": "زمان شام کوتاه است چون همه می‌خواهند به نگاه کردن ادامه دهند."
+      "en": "They look for an hour, but they find only birds.",
+      "fa": "یک ساعت می‌گردند، اما فقط پرنده پیدا می‌کنند."
     },
     {
-      "en": "After dinner, they watch the street from the window.",
-      "fa": "بعد از شام، خیابان را از پنجره تماشا می‌کنند."
+      "en": "In the evening, Mina looks at the map on her wall.",
+      "fa": "عصر، مینا به نقشه‌ی روی دیوارش نگاه می‌کند."
     },
     {
-      "en": "Mina can watch the park door for a long time.",
-      "fa": "مینا می‌تواند مدت زیادی درِ پارک را نگاه کند."
+      "en": "There are red lines all over it.",
+      "fa": "همه‌جایش خط قرمز است."
     },
     {
-      "en": "Looking for Nino has become part of her routine every day.",
-      "fa": "دنبال کردن نینو بخشی از برنامه‌ی هر روز او شده است."
+      "en": "\"One week,\" she says. \"Seven days, and still no Nino.\"",
+      "fa": "می‌گوید: «یک هفته. هفت روز و هنوز خبری از نینو نیست.»"
     },
     {
-      "en": "Her routine is easy: look, ask, listen, and wait.",
-      "fa": "برنامه‌اش آسان است: نگاه کن، بپرس، گوش بده و منتظر بمان."
+      "en": "\"It is only the first week,\" Dad says. \"And now we know more of the city.\"",
+      "fa": "بابا می‌گوید: «تازه هفته‌ی اول است. و حالا بیشتر شهر را می‌شناسیم.»"
     },
     {
-      "en": "When something moves fast outside, Mina checks the window.",
-      "fa": "وقتی چیزی بیرون سریع حرکت می‌کند، مینا پنجره را بررسی می‌کند."
+      "en": "Mina writes in her red book: \"Week one. The center, the market, the river.\"",
+      "fa": "مینا در کتاب قرمزش می‌نویسد: «هفته‌ی اول. مرکز شهر، بازار، رودخانه.»"
     },
     {
-      "en": "Sunday helped her learn to ask the same people again.",
-      "fa": "یکشنبه به او یاد داد دوباره از همان افراد بپرسد."
+      "en": "Then she closes the book and looks at the dark window.",
+      "fa": "بعد کتاب را می‌بندد و به پنجره‌ی تاریک نگاه می‌کند."
     },
     {
-      "en": "Monday showed her how to look in bad weather.",
-      "fa": "دوشنبه به او نشان داد چطور در هوای بد بگردد."
-    },
-    {
-      "en": "On Thursday and Friday, more people came to help the family look.",
-      "fa": "پنجشنبه و جمعه افراد بیشتری آمدند تا به خانواده در گشتن کمک کنند."
-    },
-    {
-      "en": "Friday ends without Nino, but Mina has not stopped.",
-      "fa": "جمعه بدون نینو تمام می‌شود، اما مینا دست نکشیده است."
-    },
-    {
-      "en": "She writes about all the week in her little red book.",
-      "fa": "او درباره‌ی تمام هفته در کتاب قرمز کوچکش می‌نویسد."
-    },
-    {
-      "en": "Then she closes the book and gets ready to look again.",
-      "fa": "بعد کتاب را می‌بندد و آماده می‌شود دوباره نگاه کند."
+      "en": "Next week, she will look again.",
+      "fa": "هفته‌ی بعد، دوباره می‌گردد."
     }
   ],
   "check": [
@@ -210,7 +200,7 @@
       "a": "look"
     },
     {
-      "q": "بیشتر مردم در کدام روز کار نمی‌کنند؟",
+      "q": "در ایران، آخر هفته کدام روز است؟",
       "options": [
         "friday",
         "monday",

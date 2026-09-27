@@ -2,272 +2,147 @@
   "id": "b8c2",
   "book": 8,
   "n": 2,
-  "titleFa": "دست‌ها و پاها",
-  "titleEn": "Hands and Feet",
+  "titleFa": "قصه‌ی مادربزرگ",
+  "titleEn": "Grandmother's Story",
   "new": [
     "body",
-    "hair",
-    "ear",
     "nose",
-    "relax",
-    "mouth",
     "tooth",
-    "blond",
-    "fat",
-    "spend",
-    "yourself",
-    "hobby"
+    "ear",
+    "sick",
+    "hobby",
+    "really"
   ],
   "sentences": [
     {
-      "en": "After the mountain climb, Mina sits in a chair next to Grandmother.",
-      "fa": "بعد از بالا رفتن از کوه، مینا روی صندلی کنار مادربزرگ می‌نشیند."
+      "en": "The next morning, Mina's body is tired from the climb, and her legs do not want to move.",
+      "fa": "صبح روز بعد، بدن مینا از کوه‌پیمایی خسته است و پاهایش نمی‌خواهند تکان بخورند."
     },
     {
-      "en": "Her body feels tired from the long walk.",
-      "fa": "بدنش از راه رفتن طولانی خسته است."
+      "en": "She stays in bed a little longer, with Nino's photo next to her.",
+      "fa": "کمی بیشتر در رختخواب می‌ماند، با عکس نینو کنارش."
     },
     {
-      "en": "One leg feels bad, and the other feels better.",
-      "fa": "یکی از پاهایش بدتر است و پای دیگر بهتر است."
+      "en": "The fat cat comes in and sits on her bed. It puts its cold nose on her hand.",
+      "fa": "گربه‌ی چاق داخل می‌آید و روی تختش می‌نشیند. دماغ سردش را روی دست او می‌گذارد."
     },
     {
-      "en": "Mina moves one foot, then the other, and laughs.",
-      "fa": "مینا یک پا و بعد پای دیگر را حرکت می‌دهد و می‌خندد."
+      "en": "Then Aria runs in. \"Come and see! Yasi has a new tooth!\"",
+      "fa": "بعد آریا می‌دود تو. «بیا ببین! یاسی یک دندان تازه درآورده!»"
     },
     {
-      "en": "Dad gives Mina his arm and helps her stand again.",
-      "fa": "بابا بازویش را به مینا می‌دهد و کمک می‌کند دوباره بایستد."
+      "en": "In the kitchen, Yasi opens her mouth, and everyone looks: a little white tooth.",
+      "fa": "در آشپزخانه، یاسی دهانش را باز می‌کند و همه نگاه می‌کنند: یک دندان کوچک سفید."
     },
     {
-      "en": "Mina puts her hand in his hand and goes to wash her face.",
-      "fa": "مینا دستش را در دست او می‌گذارد و می‌رود صورتش را بشوید."
+      "en": "\"Say something with your new tooth, Yasi,\" Dad says.",
+      "fa": "بابا می‌گوید: «با دندان تازه‌ات یک چیزی بگو، یاسی.»"
     },
     {
-      "en": "Grandmother follows them and checks Mina's face.",
-      "fa": "مادربزرگ دنبالشان می‌رود و صورت مینا را نگاه می‌کند."
+      "en": "\"Nino!\" Yasi says, and everyone laughs.",
+      "fa": "یاسی می‌گوید: «نینو!» و همه می‌خندند."
     },
     {
-      "en": "\"Your face is red from the climb,\" she says kindly.",
-      "fa": "با مهربانی می‌گوید: «صورتت از بالا رفتن قرمز شده.»"
+      "en": "Grandfather does not hear well in his left ear. \"What did she say?\" he asks.",
+      "fa": "گوش چپ پدربزرگ خوب نمی‌شنود. می‌پرسد: «چه گفت؟»"
     },
     {
-      "en": "Mina puts her hand on her head and says she is only tired.",
-      "fa": "مینا دستش را روی سرش می‌گذارد و می‌گوید فقط خسته است."
+      "en": "\"Nino!\" Aria says again, very near his ear, and Grandfather laughs too.",
+      "fa": "آریا خیلی نزدیک گوشش دوباره می‌گوید: «نینو!» و پدربزرگ هم می‌خندد."
     },
     {
-      "en": "Some hair is over her eye.",
-      "fa": "کمی از موهایش جلوی چشمش است."
+      "en": "Grandmother brings Mina some hot milk. \"Are you sick?\" she asks.",
+      "fa": "مادربزرگ برای مینا کمی شیر داغ می‌آورد. می‌پرسد: «مریضی؟»"
     },
     {
-      "en": "Grandmother moves the hair away from Mina's eye.",
-      "fa": "مادربزرگ مو را از جلوی چشم مینا کنار می‌زند."
+      "en": "\"No, only tired,\" Mina says.",
+      "fa": "مینا می‌گوید: «نه، فقط خسته‌ام.»"
     },
     {
-      "en": "\"Your eyes look tired too,\" she says.",
-      "fa": "می‌گوید: «چشم‌هایت هم خسته به نظر می‌رسند.»"
+      "en": "\"Then relax today,\" Grandmother says, and she sits on the bed.",
+      "fa": "مادربزرگ می‌گوید: «پس امروز استراحت کن» و لبه‌ی تخت می‌نشیند."
     },
     {
-      "en": "Mina puts her hand on one ear because the mountain air made it cold.",
-      "fa": "مینا دستش را روی یک گوشش می‌گذارد چون هوای کوه آن را سرد کرده است."
+      "en": "Grandmother has a hobby: stories. She knows a hundred of them.",
+      "fa": "مادربزرگ یک سرگرمی دارد: قصه. صدتا قصه بلد است."
     },
     {
-      "en": "Her other ear is cold, and so is her nose.",
-      "fa": "گوش دیگرش سرد است و بینی‌اش هم همین‌طور."
+      "en": "\"Tell me a story,\" Mina says. \"A real one.\"",
+      "fa": "مینا می‌گوید: «یک قصه برایم تعریف کن. یک قصه‌ی واقعی.»"
     },
     {
-      "en": "\"Wash your face and hands, then relax,\" Grandmother says.",
-      "fa": "مادربزرگ می‌گوید: «صورت و دست‌هایت را بشور، بعد استراحت کن.»"
+      "en": "\"When I was a girl, I had a little white goat,\" she says.",
+      "fa": "می‌گوید: «وقتی دختربچه بودم، یک بزغاله‌ی کوچک سفید داشتم.»"
     },
     {
-      "en": "Mina washes and begins to relax.",
-      "fa": "مینا خودش را می‌شوید و کم‌کم آرام می‌شود."
+      "en": "\"One winter day, my goat ran away into the mountains.\"",
+      "fa": "«یک روز زمستانی، بزغاله‌ام به کوه‌ها فرار کرد.»"
     },
     {
-      "en": "Grandmother asks Mina to open her mouth before dinner.",
-      "fa": "مادربزرگ از مینا می‌خواهد پیش از شام دهانش را باز کند."
+      "en": "\"There was a lot of snow. My father said, 'Nobody can live in that snow.'\"",
+      "fa": "«برف زیادی بود. پدرم گفت: 'هیچ‌کس در آن برف زنده نمی‌ماند.'»"
     },
     {
-      "en": "\"You have a new tooth,\" she says.",
-      "fa": "می‌گوید: «یک دندان تازه داری.»"
+      "en": "\"But every night, I put some food by our door, and my brothers laughed at me.\"",
+      "fa": "«اما هر شب کمی غذا کنار درمان می‌گذاشتم و برادرهایم به من می‌خندیدند.»"
     },
     {
-      "en": "Mina looks at the tooth and is happy.",
-      "fa": "مینا به دندان نگاه می‌کند و خوشحال می‌شود."
+      "en": "\"Then, one morning in spring, I opened the door...\"",
+      "fa": "«بعد، یک صبح بهاری، در را باز کردم...»"
     },
     {
-      "en": "Her cousin has long blond hair.",
-      "fa": "دخترخاله‌اش موهای بلوند بلند دارد."
+      "en": "\"And there was my goat, with a baby goat next to her!\"",
+      "fa": "«و بزغاله‌ام آنجا بود، با یک بزغاله‌ی کوچک کنارش!»"
     },
     {
-      "en": "The blond hair is easy to see in the light from the window.",
-      "fa": "موهای بلوند در نور پنجره به‌راحتی دیده می‌شوند."
+      "en": "Mina laughs. \"Really?\"",
+      "fa": "مینا می‌خندد. «واقعاً؟»"
     },
     {
-      "en": "Her cousin sits close and shows Mina a funny picture.",
-      "fa": "دخترخاله نزدیک می‌نشیند و عکس خنده‌داری به مینا نشان می‌دهد."
+      "en": "\"Really,\" Grandmother says. \"Every word of it.\"",
+      "fa": "مادربزرگ می‌گوید: «واقعاً. تک‌تک کلمه‌هایش.»"
     },
     {
-      "en": "The picture shows a fat white chicken on a chair.",
-      "fa": "عکس یک مرغ سفید و چاق را روی صندلی نشان می‌دهد."
+      "en": "\"Your Nino has no snow. He has a big city with many kind people.\"",
+      "fa": "«نینوی تو برف ندارد. یک شهر بزرگ دارد با کلی آدم مهربان.»"
     },
     {
-      "en": "\"That chicken is funny, but very happy,\" the cousin says.",
-      "fa": "دخترخاله می‌گوید: «آن مرغ خنده‌دار است، اما خیلی خوشحال است.»"
+      "en": "\"Does someone put food by your door every night?\"",
+      "fa": "«کسی هر شب کنار درتان غذا می‌گذارد؟»"
     },
     {
-      "en": "They both laugh, and Mina forgets her leg for a moment.",
-      "fa": "هر دو می‌خندند و مینا برای لحظه‌ای پایش را فراموش می‌کند."
+      "en": "\"Yes, Negar's mother,\" Mina says.",
+      "fa": "مینا می‌گوید: «بله، مادر نگار.»"
     },
     {
-      "en": "Later, the children put on their coats and go outside to play in the garden.",
-      "fa": "بعدتر، بچه‌ها پالتوهایشان را می‌پوشند و برای بازی به باغ می‌روند."
+      "en": "\"Good,\" Grandmother says. \"Then your door is open for him.\"",
+      "fa": "مادربزرگ می‌گوید: «خوب است. پس درِ خانه‌تان برایش باز است.»"
     },
     {
-      "en": "Mina moves slowly because her foot still feels bad.",
-      "fa": "مینا آرام حرکت می‌کند چون پایش هنوز کمی بد است."
-    },
-    {
-      "en": "Her cousin takes Mina's hand when they walk outside.",
-      "fa": "دخترخاله وقتی بیرون راه می‌روند دست مینا را می‌گیرد."
-    },
-    {
-      "en": "They spend the afternoon looking at flowers and playing quiet games.",
-      "fa": "بعدازظهر را با دیدن گل‌ها و بازی‌های آرام می‌گذرانند."
-    },
-    {
-      "en": "Their games become quiet as it gets dark.",
-      "fa": "با تاریک شدن هوا، بازی‌هایشان آرام می‌شود."
-    },
-    {
-      "en": "Her aunt calls them to dinner when it is ready.",
-      "fa": "خاله‌اش وقتی شام آماده است آن‌ها را صدا می‌زند."
-    },
-    {
-      "en": "The children wash their hands before they sit down.",
-      "fa": "بچه‌ها پیش از نشستن دست‌هایشان را می‌شویند."
-    },
-    {
-      "en": "After dinner, Mina says every part of her body wants to lie down.",
-      "fa": "بعد از شام، مینا می‌گوید تمام بدنش می‌خواهد دراز بکشد."
-    },
-    {
-      "en": "Grandmother laughs and points to the bedroom.",
-      "fa": "مادربزرگ می‌خندد و به اتاق‌خواب اشاره می‌کند."
-    },
-    {
-      "en": "\"Lie down and let yourself relax,\" she tells Mina.",
-      "fa": "به مینا می‌گوید: «دراز بکش و به خودت اجازه بده آرام شوی.»"
-    },
-    {
-      "en": "Mina lies on the bed and keeps her legs warm.",
-      "fa": "مینا روی تخت دراز می‌کشد و پاهایش را گرم نگه می‌دارد."
-    },
-    {
-      "en": "She puts her head down and begins to relax.",
-      "fa": "سرش را پایین می‌گذارد و شروع به آرام شدن می‌کند."
-    },
-    {
-      "en": "One arm is next to her, and in the other hand is Nino's little photo.",
-      "fa": "یک دستش کنارش است و در دست دیگرش عکس کوچک نینو است."
-    },
-    {
-      "en": "Grandmother sits by the bed and asks about Mina's favorite hobby.",
-      "fa": "مادربزرگ کنار تخت می‌نشیند و درباره‌ی سرگرمی مورد علاقه‌ی مینا می‌پرسد."
-    },
-    {
-      "en": "\"My hobby is listening to stories,\" Mina says.",
-      "fa": "مینا می‌گوید: «سرگرمی من گوش دادن به قصه‌هاست.»"
-    },
-    {
-      "en": "Grandmother is happy because stories are her hobby too.",
-      "fa": "مادربزرگ خوشحال است چون قصه‌ها سرگرمی او هم هستند."
-    },
-    {
-      "en": "She tells Mina that her mother listened to stories here as a child.",
-      "fa": "به مینا می‌گوید مادرش در کودکی اینجا به قصه‌ها گوش می‌داد."
-    },
-    {
-      "en": "\"She used to spend hours in this room,\" Grandmother remembers.",
-      "fa": "مادربزرگ به یاد می‌آورد: «او ساعت‌ها در این اتاق می‌ماند.»"
-    },
-    {
-      "en": "Mina asks to hear one of her mother's favorite stories.",
-      "fa": "مینا می‌خواهد یکی از قصه‌های مورد علاقه‌ی مادرش را بشنود."
-    },
-    {
-      "en": "Grandmother chooses a story about a little yellow chicken.",
-      "fa": "مادربزرگ قصه‌ای درباره‌ی یک جوجه‌ی زرد کوچک انتخاب می‌کند."
-    },
-    {
-      "en": "Mina listens with both eyes open and is happy.",
-      "fa": "مینا با هر دو چشم باز گوش می‌دهد و خوشحال است."
-    },
-    {
-      "en": "The story follows a chicken who loses his way in the mountains.",
-      "fa": "قصه جوجه‌ای را دنبال می‌کند که راهش را در کوهستان گم می‌کند."
-    },
-    {
-      "en": "One foot feels bad, but he keeps walking home.",
-      "fa": "یکی از پاهایش بد است، اما همچنان به سمت خانه راه می‌رود."
-    },
-    {
-      "en": "A kind child finds him and cleans his dirty face.",
-      "fa": "کودکی مهربان او را پیدا می‌کند و صورت کثیفش را تمیز می‌کند."
-    },
-    {
-      "en": "The child gives him food and lets him sleep near the fire.",
-      "fa": "کودک به او غذا می‌دهد و اجازه می‌دهد نزدیک آتش بخوابد."
-    },
-    {
-      "en": "Mina imagines Nino with someone kind.",
-      "fa": "مینا نینو را کنار فردی مهربان تصور می‌کند."
-    },
-    {
-      "en": "Her body finally feels warm and quiet in bed.",
-      "fa": "بالاخره بدنش در تخت گرم و آرام احساس می‌شود."
-    },
-    {
-      "en": "Grandmother looks at Mina's hair and says, \"Keep yourself warm.\"",
-      "fa": "مادربزرگ به موهای مینا نگاه می‌کند و می‌گوید: «خودت را گرم نگه دار.»"
-    },
-    {
-      "en": "Mina asks, \"Will the chicken in your story find his way home?\"",
-      "fa": "مینا می‌پرسد: «جوجه‌ی قصه‌ات راه خانه را پیدا می‌کند؟»"
-    },
-    {
-      "en": "Grandmother says, \"Listen, and you will see.\"",
-      "fa": "مادربزرگ می‌گوید: «گوش کن تا بفهمی.»"
-    },
-    {
-      "en": "Mina closes one eye, then the other, as Grandmother keeps telling the story.",
-      "fa": "مینا یک چشم و بعد چشم دیگر را می‌بندد و مادربزرگ به قصه ادامه می‌دهد."
-    },
-    {
-      "en": "Before the story ends, Mina closes both eyes.",
-      "fa": "پیش از پایان قصه، مینا هر دو چشمش را می‌بندد."
+      "en": "That night, Mina writes the story of the goat in her red book, next to the story of the old man's cat.",
+      "fa": "آن شب، مینا قصه‌ی بزغاله را در کتاب قرمزش می‌نویسد، کنار قصه‌ی گربه‌ی پیرمرد."
     }
   ],
   "check": [
     {
-      "q": "کدام قسمت بدن مینا از بالا رفتن خسته است؟",
+      "q": "یاسی چه چیز تازه‌ای دارد؟",
       "options": [
-        "leg",
-        "hand",
-        "ear",
-        "nose"
+        "tooth",
+        "hat",
+        "shoe",
+        "book"
       ],
-      "a": "leg"
+      "a": "tooth"
     },
     {
-      "q": "سرگرمی مادربزرگ چیست؟",
+      "q": "بزغاله‌ی مادربزرگ کی برگشت؟",
       "options": [
-        "story",
-        "job",
-        "sport",
-        "game"
+        "spring",
+        "winter",
+        "summer",
+        "night"
       ],
-      "a": "story"
+      "a": "spring"
     }
   ]
 }

@@ -9,224 +9,148 @@
     "beach",
     "boat",
     "island",
-    "hotel",
-    "tourist",
-    "passport",
-    "plane",
-    "airport",
-    "flight",
     "library",
     "museum",
-    "theater",
-    "mall",
-    "sea"
+    "theater"
   ],
   "sentences": [
     {
-      "en": "After another train ride, the family arrives at a small town by the sea.",
-      "fa": "بعد از یک سفر دیگر با قطار، خانواده به شهرک کوچکی کنار دریا می‌رسد."
+      "en": "At the end of the day, they arrive at a small town by the sea.",
+      "fa": "آخر روز، به شهر کوچکی کنار دریا می‌رسند."
     },
     {
-      "en": "The sea is so big that it looks like an ocean.",
-      "fa": "دریا آن‌قدر بزرگ است که مثل اقیانوس به نظر می‌رسد."
+      "en": "The sea is big and gray, and it goes on and on.",
+      "fa": "دریا بزرگ و خاکستری است و تا بی‌نهایت ادامه دارد."
     },
     {
-      "en": "A long beach goes around the blue water.",
-      "fa": "ساحلی طولانی دور آب آبی می‌رود."
+      "en": "\"Is this an ocean?\" Aria asks.",
+      "fa": "آریا می‌پرسد: «این اقیانوس است؟»"
     },
     {
-      "en": "Mina walks on the beach with Mom, watching for any little yellow chicken.",
-      "fa": "مینا همراه مامان روی ساحل راه می‌رود و دنبال هر جوجه‌ی زرد کوچکی می‌گردد."
+      "en": "\"No, it is a sea,\" Dad says. \"But it is so big, it looks like an ocean.\"",
+      "fa": "بابا می‌گوید: «نه، دریاست. اما آن‌قدر بزرگ است که شبیه اقیانوس است.»"
     },
     {
-      "en": "The cold water comes over her shoes.",
-      "fa": "آب سرد روی کفش‌هایش می‌آید."
+      "en": "Their hotel is small and white, next to the beach.",
+      "fa": "هتلشان کوچک و سفید است، کنار ساحل."
     },
     {
-      "en": "A fishing boat moves slowly across the sea.",
-      "fa": "یک قایق ماهیگیری آرام روی دریا حرکت می‌کند."
+      "en": "There are many tourists in the town: families from Tehran and some people from other countries.",
+      "fa": "گردشگرهای زیادی در شهر هستند: خانواده‌هایی از تهران و چند نفر از کشورهای دیگر."
     },
     {
-      "en": "A man with the fishing boat brings his boat close to the beach and says hello.",
-      "fa": "مردی با قایق ماهیگیری، قایقش را نزدیک ساحل می‌آورد و سلام می‌کند."
+      "en": "After dinner, Mina and Mom walk on the beach. Dad stays at the hotel with Aria and Yasi.",
+      "fa": "بعد از شام، مینا و مامان در ساحل قدم می‌زنند. بابا با آریا و یاسی در هتل می‌ماند."
     },
     {
-      "en": "Mina and Mom show him Nino's picture and ask for help.",
-      "fa": "مینا و مامان عکس نینو را به او نشان می‌دهند و کمک می‌خواهند."
+      "en": "The sun goes down in the west, and the water turns orange.",
+      "fa": "خورشید در غرب پایین می‌رود و آب نارنجی می‌شود."
     },
     {
-      "en": "Past the boat, a small island is in the water.",
-      "fa": "آن سوی قایق، جزیره‌ای کوچک در آب است."
+      "en": "Children ride their bikes on the beach road, and a family sits around a small fire.",
+      "fa": "بچه‌ها روی جاده‌ی ساحلی دوچرخه‌سواری می‌کنند و خانواده‌ای دور آتش کوچکی نشسته‌اند."
     },
     {
-      "en": "The island looks very small from the beach, but the man knows it well.",
-      "fa": "جزیره از ساحل خیلی کوچک به نظر می‌رسد، اما مرد آن را خوب می‌شناسد."
+      "en": "Some boats come back to the beach for the night.",
+      "fa": "چند قایق برای شب به ساحل برمی‌گردند."
     },
     {
-      "en": "A river meets the sea at the other end of town.",
-      "fa": "رودخانه‌ای در سوی دیگر شهرک به دریا می‌ریزد."
+      "en": "An old man is next to his small boat. The boat is full of fish.",
+      "fa": "پیرمردی کنار قایق کوچکش است. قایق پر از ماهی است."
     },
     {
-      "en": "Mina and Mom follow the river because a small chicken could stay near the water.",
-      "fa": "مینا و مامان کنار رودخانه می‌روند چون یک جوجه‌ی کوچک ممکن است نزدیک آب بماند."
+      "en": "Mom says good evening to him and shows him Nino's photo.",
+      "fa": "مامان به او عصر بخیر می‌گوید و عکس نینو را نشانش می‌دهد."
     },
     {
-      "en": "A small hotel stands between the river and the beach.",
-      "fa": "هتلی کوچک میان رودخانه و ساحل قرار دارد."
+      "en": "\"Our daughter's chicken ran away in Tehran,\" she says.",
+      "fa": "می‌گوید: «جوجه‌ی دخترمان در تهران فرار کرده.»"
     },
     {
-      "en": "A person at the hotel lets Mina check the garden and front door.",
-      "fa": "یک نفر در هتل اجازه می‌دهد مینا باغچه و درِ جلو را بررسی کند."
+      "en": "The old man looks at the photo for a long time.",
+      "fa": "پیرمرد مدت زیادی به عکس نگاه می‌کند."
     },
     {
-      "en": "Some tourists are waiting outside the hotel.",
-      "fa": "چند گردشگر بیرون هتل منتظر هستند."
+      "en": "\"When I was a boy, my cat ran away,\" he says to Mina. \"Everyone said, 'That cat is not coming back.'\"",
+      "fa": "به مینا می‌گوید: «وقتی پسربچه بودم، گربه‌ام فرار کرد. همه گفتند: 'آن گربه دیگر برنمی‌گردد.'»"
     },
     {
-      "en": "One tourist looks at Nino's photo.",
-      "fa": "یکی از گردشگران به عکس نینو نگاه می‌کند."
+      "en": "\"But after two months, she came back to our door. She was dirty and hungry, but she was home.\"",
+      "fa": "«اما بعد از دو ماه، برگشت دمِ درمان. کثیف و گرسنه بود، اما خانه بود.»"
     },
     {
-      "en": "His passport falls from his bag to the floor.",
-      "fa": "پاسپورتش از کیفش روی زمین می‌افتد."
+      "en": "\"Animals know their home,\" he says. \"Chickens come home too.\"",
+      "fa": "می‌گوید: «حیوان‌ها خانه‌شان را می‌شناسند. جوجه‌ها هم برمی‌گردند خانه.»"
     },
     {
-      "en": "Mina takes the red passport and gives it back.",
-      "fa": "مینا پاسپورت قرمز را برمی‌دارد و به او پس می‌دهد."
+      "en": "\"Do you believe that?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «شما این را باور دارید؟»"
     },
     {
-      "en": "A plane flies above them and turns to the airport.",
-      "fa": "هواپیمایی از بالای سرشان پرواز می‌کند و به سمت فرودگاه می‌چرخد."
+      "en": "\"I do,\" the old man says. \"Look over there.\"",
+      "fa": "پیرمرد می‌گوید: «بله. آنجا را نگاه کن.»"
     },
     {
-      "en": "The tourist says the plane may be for his flight home.",
-      "fa": "گردشگر می‌گوید شاید آن هواپیما برای پرواز برگشت او باشد."
+      "en": "He points to a small island not far from the beach. Many birds are flying to it.",
+      "fa": "به جزیره‌ی کوچکی نه‌چندان دور از ساحل اشاره می‌کند. پرنده‌های زیادی به طرفش پرواز می‌کنند."
     },
     {
-      "en": "The airport is near the town, so the family checks the road there.",
-      "fa": "فرودگاه نزدیک شهرک است، پس خانواده جاده‌ی آنجا را هم بررسی می‌کند."
+      "en": "\"They go away every morning, and every evening they come back to the island. They never forget.\"",
+      "fa": "«هر صبح می‌روند و هر عصر به جزیره برمی‌گردند. هیچ‌وقت فراموش نمی‌کنند.»"
     },
     {
-      "en": "Mina watches the airport doors for any little yellow chicken.",
-      "fa": "مینا درهای فرودگاه را برای دیدن هر جوجه‌ی زرد کوچکی نگاه می‌کند."
+      "en": "Mina watches the birds until the last one lands on the island.",
+      "fa": "مینا پرنده‌ها را تماشا می‌کند تا آخرینشان روی جزیره می‌نشیند."
     },
     {
-      "en": "The tourist's flight leaves today, and he must go soon.",
-      "fa": "پرواز گردشگر امروز است و او باید زود برود."
+      "en": "Then she writes in her red book: \"Animals know their home.\"",
+      "fa": "بعد در کتاب قرمزش می‌نویسد: «حیوان‌ها خانه‌شان را می‌شناسند.»"
     },
     {
-      "en": "He thanks Mina again and puts the passport in his bag.",
-      "fa": "او دوباره از مینا تشکر می‌کند و پاسپورت را در کیفش می‌گذارد."
+      "en": "On the way back, they walk past the town library, a small museum and an old theater.",
+      "fa": "در راه برگشت، از کنار کتابخانه‌ی شهر، یک موزه‌ی کوچک و یک تئاتر قدیمی می‌گذرند."
     },
     {
-      "en": "Back in town, Mina and Mom arrive at the library and check its front door.",
-      "fa": "در شهرک، مینا و مامان به کتابخانه می‌رسند و درِ جلوی آن را بررسی می‌کنند."
+      "en": "There is also a new mall with many lights, full of people.",
+      "fa": "یک مرکز خرید تازه هم هست با چراغ‌های زیاد، پر از آدم."
     },
     {
-      "en": "A woman at the library has not seen Nino, but she looks at the picture.",
-      "fa": "زنی در کتابخانه نینو را ندیده است، اما عکس را نگاه می‌کند."
+      "en": "Next to the library door, there is a wall for notes, and Mom puts one of Mina's notes on it.",
+      "fa": "کنار درِ کتابخانه دیواری برای یادداشت‌ها هست و مامان یکی از یادداشت‌های مینا را رویش می‌زند."
     },
     {
-      "en": "An old museum stands next to the library.",
-      "fa": "موزه‌ای قدیمی کنار کتابخانه قرار دارد."
+      "en": "That night, in the hotel, Mina cannot sleep. She can hear the sea.",
+      "fa": "آن شب، در هتل، خواب به چشم مینا نمی‌آید. صدای دریا را می‌شنود."
     },
     {
-      "en": "A worker at the museum joins them and looks behind the chairs.",
-      "fa": "یک کارمند موزه به آن‌ها می‌پیوندد و پشت صندلی‌ها را نگاه می‌کند."
+      "en": "She thinks about the old man's cat, and the birds, and Nino.",
+      "fa": "به گربه‌ی پیرمرد، به پرنده‌ها و به نینو فکر می‌کند."
     },
     {
-      "en": "Across the road, the theater is busy.",
-      "fa": "آن سوی جاده، تئاتر شلوغ است."
-    },
-    {
-      "en": "Two theater workers check another door before Mina moves on.",
-      "fa": "دو کارمند تئاتر پیش از رفتن مینا درِ دیگری را بررسی می‌کنند."
-    },
-    {
-      "en": "The mall is busy in the afternoon.",
-      "fa": "مرکز خرید در بعدازظهر شلوغ است."
-    },
-    {
-      "en": "The family walks through the mall and keeps watching every door.",
-      "fa": "خانواده از داخل مرکز خرید می‌گذرد و هر در را نگاه می‌کند."
-    },
-    {
-      "en": "From the mall window, they can see the sea.",
-      "fa": "از پنجره‌ی مرکز خرید، دریا را می‌بینند."
-    },
-    {
-      "en": "A man at a cafe in the mall remembers seeing a little yellow chicken near the beach road.",
-      "fa": "مردی در کافه‌ای داخل مرکز خرید به یاد می‌آورد یک جوجه‌ی زرد کوچک نزدیک جاده‌ی ساحل دیده است."
-    },
-    {
-      "en": "Mina checks a small space under a chair where a chicken could stay.",
-      "fa": "مینا فضای کوچکی زیر یک صندلی را بررسی می‌کند که جوجه می‌تواند آنجا بماند."
-    },
-    {
-      "en": "The space has no chicken, but the new information sends her back outside.",
-      "fa": "در آن فضا جوجه‌ای نیست، اما اطلاعات تازه او را دوباره به بیرون می‌فرستد."
-    },
-    {
-      "en": "The family returns to the beach as the sun goes down.",
-      "fa": "خانواده وقتی خورشید پایین می‌رود به ساحل برمی‌گردد."
-    },
-    {
-      "en": "Soon the streets grow dark and the shops turn on their lights.",
-      "fa": "خیلی زود خیابان‌ها تاریک می‌شوند و مغازه‌ها چراغ‌هایشان را روشن می‌کنند."
-    },
-    {
-      "en": "The beach is dark now, and only the sea is easy to hear.",
-      "fa": "حالا ساحل تاریک است و فقط صدای دریا به‌راحتی شنیده می‌شود."
-    },
-    {
-      "en": "Mina is tired after looking all around the town.",
-      "fa": "مینا بعد از گشتن در تمام شهرک خسته است."
-    },
-    {
-      "en": "Mom is tired too, but she stays next to Mina.",
-      "fa": "مامان هم خسته است، اما کنار مینا می‌ماند."
-    },
-    {
-      "en": "Mina asks the man with the boat if a chicken can remember places it knows.",
-      "fa": "مینا از مردی که قایق دارد می‌پرسد آیا جوجه می‌تواند جاهایی را که می‌شناسد به یاد بیاورد."
-    },
-    {
-      "en": "The man looks at Nino's picture and says yes slowly.",
-      "fa": "مرد به عکس نینو نگاه می‌کند و آرام می‌گوید بله."
-    },
-    {
-      "en": "\"Chickens sometimes come home after long trips,\" the man says.",
-      "fa": "مرد می‌گوید: «جوجه‌ها گاهی بعد از سفرهای طولانی به خانه برمی‌گردند.»"
-    },
-    {
-      "en": "Mina looks across the dark sea and believes him.",
-      "fa": "مینا به دریای تاریک نگاه می‌کند و حرفش را باور می‌کند."
-    },
-    {
-      "en": "They leave the beach without Nino, but with a little more hope.",
-      "fa": "آن‌ها ساحل را بدون نینو ترک می‌کنند، اما کمی امیدوارتر هستند."
+      "en": "\"Come home, Nino,\" she says. \"Your home is waiting for you.\"",
+      "fa": "می‌گوید: «برگرد خانه، نینو. خانه‌ات منتظرت است.»"
     }
   ],
   "check": [
     {
-      "q": "دریا آن‌قدر بزرگ است که مثل چه چیزی به نظر می‌رسد؟",
+      "q": "پیرمرد کنار چه چیزی ایستاده است؟",
       "options": [
-        "ocean",
-        "river",
-        "island",
-        "pool"
+        "boat",
+        "train",
+        "truck",
+        "bike"
       ],
-      "a": "ocean"
+      "a": "boat"
     },
     {
-      "q": "به گفته‌ی ماهیگیر، جوجه‌ها گاهی بعد از سفرهای طولانی به کجا برمی‌گردند؟",
+      "q": "پرنده‌ها هر عصر به کجا برمی‌گردند؟",
       "options": [
-        "home",
-        "fish",
-        "boat",
-        "water"
+        "island",
+        "beach",
+        "hotel",
+        "museum"
       ],
-      "a": "home"
+      "a": "island"
     }
   ]
 }

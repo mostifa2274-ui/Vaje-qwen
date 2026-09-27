@@ -6,187 +6,176 @@
   "titleEn": "The Birthday",
   "new": [
     "date",
-    "month",
     "june",
     "birthday",
-    "spring",
-    "summer",
-    "winter",
-    "cold",
-    "january",
-    "february",
-    "march",
+    "eleven",
     "year",
-    "april",
-    "july",
-    "august",
+    "special",
+    "party",
+    "january",
+    "cold",
+    "winter",
     "september",
+    "march",
+    "spring",
     "october",
+    "cake",
     "november",
     "december",
-    "twelve",
-    "party",
-    "cake",
+    "month",
+    "february",
+    "april",
+    "summer",
+    "july",
+    "august",
     "fruit",
-    "special",
+    "twelve",
     "twice"
   ],
   "sentences": [
     {
-      "en": "Dad points to the date on a paper in the kitchen.",
-      "fa": "بابا تاریخ روی یک کاغذ در آشپزخانه را نشان می‌دهد."
+      "en": "\"What is the date today?\" Dad asks at breakfast.",
+      "fa": "بابا سر صبحانه می‌پرسد: «امروز چندم است؟»"
     },
     {
-      "en": "\"What month is it?\" he asks Mina.",
-      "fa": "«چه ماهی است؟» از مینا می‌پرسد."
+      "en": "\"It is the third of June,\" Mina says, and then she stops.",
+      "fa": "مینا می‌گوید: «سوم ژوئن است» و بعد ساکت می‌شود."
     },
     {
-      "en": "\"It is June,\" Mina answers.",
-      "fa": "«ژوئن است»، مینا جواب می‌دهد."
+      "en": "The third of June is her birthday.",
+      "fa": "سوم ژوئن تولد اوست."
     },
     {
-      "en": "June is Mina's birthday month, so everyone is happy.",
-      "fa": "ژوئن ماه تولد مینا است، پس همه خوشحال‌اند."
+      "en": "Today she is eleven years old.",
+      "fa": "امروز یازده ساله می‌شود."
     },
     {
-      "en": "Her birthday is on the third of June.",
-      "fa": "تولدش سوم ژوئن است."
+      "en": "Every year, her birthday is a special day.",
+      "fa": "هر سال، تولدش روز خاصی است."
     },
     {
-      "en": "It comes near the end of spring.",
-      "fa": "تولدش نزدیک پایان بهار است."
+      "en": "But this year, Nino is not here.",
+      "fa": "اما امسال، نینو اینجا نیست."
     },
     {
-      "en": "Outside, spring flowers are still open.",
-      "fa": "بیرون، گل‌های بهاری هنوز باز هستند."
+      "en": "\"I do not want a party,\" Mina says. \"Not without Nino.\"",
+      "fa": "مینا می‌گوید: «جشن نمی‌خواهم. نه بدون نینو.»"
     },
     {
-      "en": "The afternoon now feels warm like summer.",
-      "fa": "بعدازظهر حالا مثل تابستان گرم است."
+      "en": "\"It can be a very small party,\" Mom says. \"Only the family.\"",
+      "fa": "مامان می‌گوید: «می‌تواند یک جشن خیلی کوچک باشد. فقط خانواده.»"
     },
     {
-      "en": "Summer days are warm and long.",
-      "fa": "روزهای تابستان گرم و طولانی هستند."
+      "en": "\"When is my birthday?\" Aria asks. \"Is it soon?\"",
+      "fa": "آریا می‌پرسد: «تولد من کی است؟ نزدیک است؟»"
     },
     {
-      "en": "Mina usually likes summer very much.",
-      "fa": "مینا معمولاً تابستان را خیلی دوست دارد."
+      "en": "\"No,\" Mom says. \"Your birthday is in January, in the cold of winter.\"",
+      "fa": "مامان می‌گوید: «نه. تولد تو در ژانویه است، در سرمای زمستان.»"
     },
     {
-      "en": "Winter is cold, and today feels very different.",
-      "fa": "زمستان سرد است و امروز کاملاً متفاوت به نظر می‌رسد."
+      "en": "\"And Yasi's is in September,\" Dad says, \"and Mom's is in March, at the beginning of spring.\"",
+      "fa": "بابا می‌گوید: «و تولد یاسی در سپتامبر است و تولد مامان در مارس، در آغاز بهار.»"
     },
     {
-      "en": "Nino came out of his egg on a cold day in winter.",
-      "fa": "نینو در یک روز سرد زمستان از تخم بیرون آمد."
+      "en": "\"And Dad's is in October,\" Aria says. \"I remember the big cake!\"",
+      "fa": "آریا می‌گوید: «و تولد بابا در اکتبر است. کیک بزرگش یادم هست!»"
     },
     {
-      "en": "Dad turns the month page back to January.",
-      "fa": "بابا صفحه‌ی ماه‌ها را به ژانویه برمی‌گرداند."
+      "en": "\"We have no birthdays in November or December,\" Dad says. \"They are very quiet months.\"",
+      "fa": "بابا می‌گوید: «در نوامبر و دسامبر هیچ تولدی نداریم. ماه‌های خیلی ساکتی‌اند.»"
     },
     {
-      "en": "\"January, then February,\" Mina says.",
-      "fa": "«ژانویه، بعد فوریه»، مینا می‌گوید."
+      "en": "\"What about Nino?\" Aria asks. \"When is his birthday?\"",
+      "fa": "آریا می‌پرسد: «نینو چه؟ تولد او کی است؟»"
     },
     {
-      "en": "She follows with March, the third month of the year.",
-      "fa": "بعد مارس را می‌گوید، سومین ماه سال."
+      "en": "\"He came out of his egg in February, on a cold day,\" Mina says.",
+      "fa": "مینا می‌گوید: «در فوریه، در یک روز سرد، از تخمش بیرون آمد.»"
     },
     {
-      "en": "April comes after March.",
-      "fa": "آوریل بعد از مارس می‌آید."
+      "en": "She says the months on her hand: \"February, March, April, May, June.\"",
+      "fa": "ماه‌ها را روی انگشت‌هایش می‌گوید: «فوریه، مارس، آوریل، مه، ژوئن.»"
     },
     {
-      "en": "May comes just before June.",
-      "fa": "مه درست پیش از ژوئن می‌آید."
+      "en": "\"So Nino is only four months old,\" Mom says.",
+      "fa": "مامان می‌گوید: «پس نینو فقط چهار ماهش است.»"
     },
     {
-      "en": "July will come after Mina's birthday month.",
-      "fa": "ژوئیه بعد از ماه تولد مینا می‌آید."
+      "en": "\"He is still a baby, and so is Yasi,\" Aria says.",
+      "fa": "آریا می‌گوید: «هنوز بچه است؛ یاسی هم همین‌طور.»"
     },
     {
-      "en": "Mina reads the first five names again: January, February, March, April, May.",
-      "fa": "مینا پنج نام اول را دوباره می‌خواند: ژانویه، فوریه، مارس، آوریل، مه."
+      "en": "Summer is coming. In July and August, the sun will be strong, and Nino is still out there in the city.",
+      "fa": "تابستان در راه است. در ژوئیه و اوت آفتاب تند می‌شود و نینو هنوز آن بیرون در شهر است."
     },
     {
-      "en": "Then she says: June, July, August, September, October.",
-      "fa": "بعد می‌گوید: ژوئن، ژوئیه، اوت، سپتامبر، اکتبر."
+      "en": "In the afternoon, Mina helps Mom with the fruit.",
+      "fa": "بعدازظهر، مینا در آماده کردن میوه به مامان کمک می‌کند."
     },
     {
-      "en": "\"And November, December,\" Dad says. \"That makes the year.\"",
-      "fa": "«و نوامبر، دسامبر»، بابا می‌گوید. «این می‌شود یک سال.»"
+      "en": "Aria puts twelve small lights around the kitchen.",
+      "fa": "آریا دوازده چراغ کوچک دور آشپزخانه می‌گذارد."
     },
     {
-      "en": "August comes after July on the month page.",
-      "fa": "اوت روی صفحه‌ی ماه‌ها بعد از ژوئیه می‌آید."
+      "en": "\"Why twelve?\" Mina asks. \"I am eleven.\"",
+      "fa": "مینا می‌پرسد: «چرا دوازده تا؟ من یازده سالمه.»"
     },
     {
-      "en": "September is the next month.",
-      "fa": "سپتامبر ماه بعدی است."
+      "en": "\"One more for next year,\" Aria says.",
+      "fa": "آریا می‌گوید: «یکی هم برای سال بعد.»"
     },
     {
-      "en": "October comes next after September.",
-      "fa": "بعد از سپتامبر، اکتبر می‌آید."
+      "en": "Dad comes home with a cake, and the family sits at the table together.",
+      "fa": "بابا با یک کیک به خانه می‌آید و خانواده دور میز می‌نشینند."
     },
     {
-      "en": "November is often cold here.",
-      "fa": "نوامبر اینجا اغلب سرد است."
+      "en": "There is cake and fruit and a warm drink.",
+      "fa": "کیک و میوه و یک نوشیدنی گرم هست."
     },
     {
-      "en": "December is the last month of the year.",
-      "fa": "دسامبر آخرین ماه سال است."
+      "en": "They sing \"Happy Birthday,\" and Mina tries to be happy.",
+      "fa": "«تولدت مبارک» می‌خوانند و مینا سعی می‌کند خوشحال باشد."
     },
     {
-      "en": "Mina puts her hand on the last date on the month page.",
-      "fa": "مینا دستش را روی آخرین تاریخ صفحه‌ی ماه‌ها می‌گذارد."
+      "en": "Then there is a sound at the door.",
+      "fa": "بعد صدایی از دمِ در می‌آید."
     },
     {
-      "en": "One year begins in January and ends in December.",
-      "fa": "یک سال در ژانویه شروع می‌شود و در دسامبر پایان می‌یابد."
+      "en": "Mina turns and looks at the door. Is it Nino?",
+      "fa": "مینا برمی‌گردد و به در نگاه می‌کند. نینوست؟"
     },
     {
-      "en": "\"How many months?\" Dad asks. \"Twelve,\" Mina answers.",
-      "fa": "«چند ماه؟» بابا می‌پرسد. «دوازده»، مینا جواب می‌دهد."
+      "en": "Dad opens it. It is Negar and her mother.",
+      "fa": "بابا در را باز می‌کند. نگار و مادرش هستند."
     },
     {
-      "en": "Twelve months make one year.",
-      "fa": "دوازده ماه یک سال را می‌سازند."
+      "en": "Negar has a picture for Mina: a drawing of a little yellow chicken.",
+      "fa": "نگار یک نقاشی برای مینا آورده: تصویر یک جوجه‌ی زرد کوچک."
     },
     {
-      "en": "Dad writes Mina's birthday at the beginning of June.",
-      "fa": "بابا تولد مینا را در آغاز ژوئن می‌نویسد."
+      "en": "Under it, she has written: \"Nino will come home.\"",
+      "fa": "زیرش نوشته است: «نینو به خانه برمی‌گردد.»"
     },
     {
-      "en": "At the beginning of the party, Mina tries to be happy.",
-      "fa": "در آغاز مهمانی، مینا سعی می‌کند خوشحال باشد."
+      "en": "Mina looks at it twice, and then she laughs for the first time that day.",
+      "fa": "مینا دو بار به آن نگاه می‌کند و بعد برای اولین بار در آن روز می‌خندد."
     },
     {
-      "en": "Her family has a small party at home.",
-      "fa": "خانواده‌اش در خانه یک مهمانی کوچک دارند."
+      "en": "\"It is the best picture of Nino,\" she says.",
+      "fa": "می‌گوید: «این بهترین تصویر نینوست.»"
     },
     {
-      "en": "There is cake, fruit, and a warm drink on the table.",
-      "fa": "روی میز کیک، میوه و یک نوشیدنی گرم است."
+      "en": "After the party, Mina puts the picture on the wall, next to her list.",
+      "fa": "بعد از جشن، مینا تصویر را روی دیوار، کنار فهرستش می‌زند."
     },
     {
-      "en": "Then Mina hears a sound near the door. \"What happened?\" she asks.",
-      "fa": "بعد مینا صدایی نزدیک در می‌شنود. می‌پرسد: «چه اتفاقی افتاد؟»"
+      "en": "She writes the date in her red book: \"June third. Eleven. Still no Nino.\"",
+      "fa": "تاریخ را در کتاب قرمزش می‌نویسد: «سوم ژوئن. یازده سالگی. هنوز خبری از نینو نیست.»"
     },
     {
-      "en": "Nothing special happens, and Mina looks down.",
-      "fa": "اتفاق خاصی نمی‌افتد و مینا سرش را پایین می‌اندازد."
-    },
-    {
-      "en": "She checks the door once during the afternoon.",
-      "fa": "او در طول بعدازظهر یک بار در را بررسی می‌کند."
-    },
-    {
-      "en": "Later she checks it twice more.",
-      "fa": "بعدتر دو بار دیگر در را بررسی می‌کند."
-    },
-    {
-      "en": "Each time, she hopes Nino will be there when she opens it.",
-      "fa": "هر بار امیدوار است وقتی در را باز می‌کند نینو آنجا باشد."
+      "en": "Then she adds: \"On my next birthday, Nino will be here.\"",
+      "fa": "بعد اضافه می‌کند: «تولد بعدی‌ام، نینو اینجا خواهد بود.»"
     }
   ],
   "check": [
@@ -201,14 +190,14 @@
       "a": "june"
     },
     {
-      "q": "نینو در کدام فصل به دنیا آمده است؟",
+      "q": "نینو در کدام ماه از تخمش بیرون آمد؟",
       "options": [
-        "winter",
-        "spring",
-        "summer",
-        "party"
+        "february",
+        "october",
+        "july",
+        "september"
       ],
-      "a": "winter"
+      "a": "february"
     }
   ]
 }

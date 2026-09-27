@@ -2,220 +2,123 @@
   "id": "b3c6",
   "book": 3,
   "n": 6,
-  "titleFa": "آخر هفته",
+  "titleFa": "پایان هفته",
   "titleEn": "The Week Ends",
   "new": [
     "fill",
-    "few",
-    "forget",
     "pen",
-    "line",
-    "above",
-    "main"
+    "main",
+    "forget"
   ],
   "sentences": [
     {
-      "en": "The week ends on Friday evening, but Mina is still thinking about Nino.",
-      "fa": "هفته عصر جمعه تمام می‌شود، اما مینا هنوز به نینو فکر می‌کند."
+      "en": "On Friday evening, the week ends, and the house is quiet.",
+      "fa": "عصر جمعه، هفته تمام می‌شود و خانه ساکت است."
     },
     {
-      "en": "\"Fill this little dish with water for Nino,\" Mom says.",
-      "fa": "مامان می‌گوید: «این ظرف کوچک را برای نینو با آب پر کن.»"
+      "en": "Mina fills a small cup with water and puts a few pieces of bread next to it.",
+      "fa": "مینا فنجان کوچکی را پر از آب می‌کند و چند تکه نان کنارش می‌گذارد."
     },
     {
-      "en": "Mina fills it and puts a few small pieces of bread next to it.",
-      "fa": "مینا آن را پر می‌کند و چند تکه‌ی کوچک نان کنارش می‌گذارد."
+      "en": "She puts them outside the front door, the same as every night.",
+      "fa": "مثل هر شب، آن‌ها را بیرون درِ جلویی می‌گذارد."
     },
     {
-      "en": "\"If he comes home tonight, the water and bread will be ready,\" Mina says.",
-      "fa": "مینا می‌گوید: «اگر امشب به خانه برگردد، آب و نان آماده‌اند.»"
+      "en": "Then the family sits at the table with the big map.",
+      "fa": "بعد خانواده با نقشه‌ی بزرگ دور میز می‌نشینند."
     },
     {
-      "en": "\"Finish your dinner first,\" Dad says, opening Mina's red book.",
-      "fa": "بابا می‌گوید: «اول شامت را تمام کن» و کتاب قرمز مینا را باز می‌کند."
+      "en": "Dad takes a red pen and makes a line from their house to the big market.",
+      "fa": "بابا خودکار قرمزی برمی‌دارد و از خانه‌شان تا بازار بزرگ یک خط می‌کشد."
     },
     {
-      "en": "Mina finishes dinner, then carries her dish to the kitchen.",
-      "fa": "مینا شامش را تمام می‌کند و بعد ظرفش را به آشپزخانه می‌برد."
+      "en": "\"Bus fifteen stops on the main street, next to the market,\" he says.",
+      "fa": "می‌گوید: «اتوبوس پانزده در خیابان اصلی، کنار بازار می‌ایستد.»"
     },
     {
-      "en": "\"Do not forget the places we checked this week,\" Mom says.",
-      "fa": "«جاهایی را که این هفته بررسی کردیم فراموش نکن»، مامان می‌گوید."
+      "en": "\"We go tomorrow morning,\" Mom says. \"All of us.\"",
+      "fa": "مامان می‌گوید: «فردا صبح می‌رویم. همه‌مان.»"
     },
     {
-      "en": "Mina writes them down because she never wants to forget Nino.",
-      "fa": "مینا آن‌ها را می‌نویسد چون هیچ‌وقت نمی‌خواهد نینو را فراموش کند."
+      "en": "\"And we do not forget the bread,\" Aria says.",
+      "fa": "آریا می‌گوید: «و نان را فراموش نمی‌کنیم.»"
     },
     {
-      "en": "\"Get the city map,\" Dad says. \"We can plan tomorrow.\"",
-      "fa": "«نقشه‌ی شهر را بیاور»، بابا می‌گوید. «می‌توانیم برای فردا برنامه بریزیم.»"
+      "en": "Then Yasi looks at Nino's picture on the wall and says a new word.",
+      "fa": "بعد یاسی به عکس نینو روی دیوار نگاه می‌کند و کلمه‌ای تازه می‌گوید."
     },
     {
-      "en": "Mina gets the map and puts it on the table.",
-      "fa": "مینا نقشه را می‌آورد و روی میز می‌گذارد."
+      "en": "\"Nino!\" she says.",
+      "fa": "می‌گوید: «نینو!»"
     },
     {
-      "en": "\"Give me the red pen,\" her brother says.",
-      "fa": "«خودکار قرمز را به من بده»، برادرش می‌گوید."
+      "en": "Everyone looks at her. \"That is her first word!\" Mom says.",
+      "fa": "همه نگاهش می‌کنند. مامان می‌گوید: «این اولین کلمه‌اش است!»"
     },
     {
-      "en": "Mina gives him the pen, and he draws a line around the park.",
-      "fa": "مینا خودکار را به او می‌دهد و او دور پارک یک خط می‌کشد."
+      "en": "Aria laughs, and even Mina laughs.",
+      "fa": "آریا می‌خندد و حتی مینا هم می‌خندد."
     },
     {
-      "en": "\"Help me remember the small streets near the market,\" Mina says.",
-      "fa": "«کمکم کن خیابان‌های کوچک نزدیک بازار را به یاد بیاورم»، مینا می‌گوید."
+      "en": "Mina writes the plan on a new page: \"Saturday. Bus fifteen. The bread shop.\"",
+      "fa": "مینا برنامه را در صفحه‌ای تازه می‌نویسد: «شنبه. اتوبوس پانزده. نانوایی.»"
     },
     {
-      "en": "Her brother agrees to help and points to two streets.",
-      "fa": "برادرش قبول می‌کند کمک کند و دو خیابان را نشان می‌دهد."
+      "en": "Then she looks at all the pages before it.",
+      "fa": "بعد به همه‌ی صفحه‌های قبل از آن نگاه می‌کند."
     },
     {
-      "en": "\"Join us,\" Dad calls to Mom.",
-      "fa": "بابا مامان را صدا می‌زند: «بیا پیش ما.»"
+      "en": "Three weeks of pages, and still no Nino.",
+      "fa": "سه هفته صفحه و هنوز خبری از نینو نیست."
     },
     {
-      "en": "Mom joins them, and the family studies the map together.",
-      "fa": "مامان به آن‌ها می‌پیوندد و خانواده با هم نقشه را بررسی می‌کنند."
+      "en": "\"Are we ever going to find him?\" she asks quietly.",
+      "fa": "آرام می‌پرسد: «هیچ‌وقت پیدایش می‌کنیم؟»"
     },
     {
-      "en": "\"Keep the front door open a little,\" Mina asks.",
-      "fa": "«درِ جلویی را کمی باز نگه دار»، مینا می‌خواهد."
+      "en": "Dad is quiet for a moment.",
+      "fa": "بابا لحظه‌ای ساکت است."
     },
     {
-      "en": "Dad keeps it open so Nino can walk in.",
-      "fa": "بابا در را باز نگه می‌دارد تا نینو بتواند وارد شود."
+      "en": "\"I do not know,\" he says. \"But I know you will never forget him.\"",
+      "fa": "می‌گوید: «نمی‌دانم. اما می‌دانم تو هیچ‌وقت فراموشش نمی‌کنی.»"
     },
     {
-      "en": "\"Leave the light outside the door on too,\" Mom says.",
-      "fa": "مامان می‌گوید: «چراغ بیرون در را هم روشن بگذار.»"
+      "en": "\"And he will never forget you,\" Mom says.",
+      "fa": "مامان می‌گوید: «و او هم هیچ‌وقت تو را فراموش نمی‌کند.»"
     },
     {
-      "en": "They leave a small light on next to the door.",
-      "fa": "آن‌ها یک چراغ کوچک را کنار در روشن می‌گذارند."
+      "en": "After dinner, everyone goes to bed, but Mina stays by the open door.",
+      "fa": "بعد از شام، همه به رختخواب می‌روند، اما مینا کنار درِ باز می‌ماند."
     },
     {
-      "en": "\"Let Nino find a quiet way in,\" Mina says.",
-      "fa": "مینا می‌گوید: «بگذار نینو یک راه آرام برای ورود پیدا کند.»"
+      "en": "The street is dark, and the lights above the doors are on.",
+      "fa": "خیابان تاریک است و چراغ‌های بالای درها روشن‌اند."
     },
     {
-      "en": "\"Let the way stay open for him,\" Dad says.",
-      "fa": "بابا می‌گوید: «بگذار راه برایش باز بماند.»"
+      "en": "A few cars go by. Then everything is quiet.",
+      "fa": "چند ماشین رد می‌شوند. بعد همه‌چیز ساکت است."
     },
     {
-      "en": "\"I am afraid we may never find him,\" Mina says.",
-      "fa": "مینا می‌گوید: «می‌ترسم شاید هیچ‌وقت پیدایش نکنیم.»"
+      "en": "She listens and waits.",
+      "fa": "گوش می‌دهد و منتظر می‌ماند."
     },
     {
-      "en": "Dad says, \"We did not lose hope. You should not lose hope.\"",
-      "fa": "بابا می‌گوید: «ما امیدمان را از دست ندادیم. تو هم نباید امیدت را از دست بدهی.»"
+      "en": "\"Where are you, Nino?\" she says to the night. \"Tomorrow, I will look for you at the market.\"",
+      "fa": "رو به شب می‌گوید: «کجایی، نینو؟ فردا در بازار دنبالت می‌گردم.»"
     },
     {
-      "en": "\"Make a new list for Saturday,\" Mom says.",
-      "fa": "مامان می‌گوید: «برای شنبه یک فهرست تازه درست کن.»"
+      "en": "Before she closes the door, she looks at the bread and water one last time.",
+      "fa": "پیش از بستن در، برای آخرین بار به نان و آب نگاه می‌کند."
     },
     {
-      "en": "Mina writes three places to look on the page.",
-      "fa": "مینا سه جا برای گشتن روی صفحه می‌نویسد."
-    },
-    {
-      "en": "\"Move the park to the first stop,\" her brother says.",
-      "fa": "«پارک را بگذار اولین توقف»، برادرش می‌گوید."
-    },
-    {
-      "en": "Mina moves it above the market and the bread shop.",
-      "fa": "مینا آن را بالاتر از بازار و نانوایی قرار می‌دهد."
-    },
-    {
-      "en": "\"We need an early start before the streets get busy,\" Dad says.",
-      "fa": "«قبل از شلوغ شدن خیابان‌ها باید زود شروع کنیم»، بابا می‌گوید."
-    },
-    {
-      "en": "Mina writes four things they need: a map, water, her red book, and Nino's photo.",
-      "fa": "مینا چهار چیز لازم را می‌نویسد: نقشه، آب، کتاب قرمزش و عکس نینو."
-    },
-    {
-      "en": "\"Start at the park just after breakfast,\" Mom says.",
-      "fa": "«درست بعد از صبحانه از پارک شروع کنید»، مامان می‌گوید."
-    },
-    {
-      "en": "\"We will start there and walk to the market,\" Dad answers.",
-      "fa": "بابا جواب می‌دهد: «از آنجا شروع می‌کنیم و به بازار می‌رویم.»"
-    },
-    {
-      "en": "\"Stay close to us when we go across the big road,\" Dad says.",
-      "fa": "بابا می‌گوید: «وقتی از خیابان بزرگ رد می‌شویم نزدیک ما بمان.»"
-    },
-    {
-      "en": "Mina says she will stay next to him in the morning.",
-      "fa": "مینا می‌گوید صبح کنار او خواهد ماند."
-    },
-    {
-      "en": "\"Take your red book and one good photo of Nino,\" Mom says.",
-      "fa": "مامان می‌گوید: «کتاب قرمزت و یک عکس خوب از نینو را بردار.»"
-    },
-    {
-      "en": "Mina takes both and puts them near her shoes.",
-      "fa": "مینا هر دو را برمی‌دارد و کنار کفش‌هایش می‌گذارد."
-    },
-    {
-      "en": "\"Try the quiet way behind the park first,\" Dad says.",
-      "fa": "بابا می‌گوید: «اول راه آرام پشت پارک را امتحان کن.»"
-    },
-    {
-      "en": "Mina writes, \"Try the quiet way before the main street.\"",
-      "fa": "مینا می‌نویسد: «قبل از خیابان اصلی، راه آرام را امتحان کن.»"
-    },
-    {
-      "en": "\"Turn left in the park, then check the chairs,\" Mom says.",
-      "fa": "مامان می‌گوید: «در پارک به چپ بپیچ، بعد صندلی‌ها را بررسی کن.»"
-    },
-    {
-      "en": "Mina draws a line where they need to turn.",
-      "fa": "مینا جایی که باید بپیچند یک خط می‌کشد."
-    },
-    {
-      "en": "\"Use the photo when you ask people about Nino,\" Dad says.",
-      "fa": "«وقتی از مردم درباره‌ی نینو می‌پرسی از عکس استفاده کن»، بابا می‌گوید."
-    },
-    {
-      "en": "Mina plans to use it at every shop they visit.",
-      "fa": "مینا تصمیم دارد در هر مغازه‌ای که می‌روند از آن استفاده کند."
-    },
-    {
-      "en": "\"Begin with the park, but do not go too fast,\" Mom says.",
-      "fa": "مامان می‌گوید: «از پارک شروع کن، اما خیلی سریع نرو.»"
-    },
-    {
-      "en": "The next morning begins with Mina waiting by the door.",
-      "fa": "صبح روز بعد با انتظار مینا کنار در آغاز می‌شود."
-    },
-    {
-      "en": "\"Add a little more water before we go,\" Dad says.",
-      "fa": "بابا می‌گوید: «قبل از رفتن کمی آب بیشتر اضافه کن.»"
-    },
-    {
-      "en": "Mina adds new water and checks that the door is open.",
-      "fa": "مینا آب تازه اضافه می‌کند و بررسی می‌کند که در باز باشد."
-    },
-    {
-      "en": "\"Come with us,\" Dad says. \"Today we will look for Nino together.\"",
-      "fa": "بابا می‌گوید: «با ما بیا. امروز با هم دنبال نینو می‌گردیم.»"
+      "en": "Maybe tonight. Maybe tomorrow.",
+      "fa": "شاید امشب. شاید فردا."
     }
   ],
   "check": [
     {
-      "q": "مینا می‌خواهد درِ جلویی چطور بماند؟",
-      "options": [
-        "open",
-        "close",
-        "clean",
-        "dirty"
-      ],
-      "a": "open"
-    },
-    {
-      "q": "مینا ظرف کوچک را با چه چیزی پر می‌کند؟",
+      "q": "مینا فنجان کوچک را با چه چیزی پر می‌کند؟",
       "options": [
         "water",
         "milk",
@@ -223,6 +126,16 @@
         "egg"
       ],
       "a": "water"
+    },
+    {
+      "q": "یاسی به عکسِ کدام حیوان نگاه می‌کند و اولین کلمه‌اش را می‌گوید؟",
+      "options": [
+        "chicken",
+        "bird",
+        "dog",
+        "baby"
+      ],
+      "a": "chicken"
     }
   ]
 }

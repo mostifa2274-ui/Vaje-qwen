@@ -6,238 +6,158 @@
   "titleEn": "The Teacher's Plan",
   "new": [
     "improve",
-    "form",
     "must",
-    "chart",
-    "paragraph",
-    "dictionary",
-    "difficult",
-    "result",
-    "rule",
-    "skill",
-    "grow",
     "title",
-    "course",
+    "paragraph",
+    "chart",
     "project",
+    "course",
     "reason",
-    "college",
-    "university",
-    "action"
+    "grow",
+    "form"
   ],
   "sentences": [
     {
-      "en": "The next day, Mina shows her note about Nino to the teacher.",
-      "fa": "روز بعد، مینا یادداشتش درباره‌ی نینو را به معلم نشان می‌دهد."
+      "en": "The next morning, Mina brings her note to class.",
+      "fa": "صبح روز بعد، مینا یادداشتش را به کلاس می‌آورد."
     },
     {
-      "en": "The teacher says the note is good but can improve.",
-      "fa": "معلم می‌گوید یادداشت خوب است، اما می‌تواند بهتر شود."
+      "en": "The teacher puts it on her desk. \"Let's improve it together,\" she says.",
+      "fa": "معلم آن را روی میزش می‌گذارد. می‌گوید: «بیا با هم بهترش کنیم.»"
     },
     {
-      "en": "First, they check that the home address is correct.",
-      "fa": "اول بررسی می‌کنند که آدرس خانه درست است."
+      "en": "\"A good note must have a title.\"",
+      "fa": "«یک یادداشت خوب باید عنوان داشته باشد.»"
     },
     {
-      "en": "One old sentence is now false because the family uses a new phone.",
-      "fa": "یک جمله‌ی قدیمی حالا غلط است چون خانواده از تلفن تازه‌ای استفاده می‌کند."
+      "en": "Mina thinks. Then she writes a title in big letters: \"Have You Seen Nino?\"",
+      "fa": "مینا فکر می‌کند. بعد با حروف درشت یک عنوان می‌نویسد: «نینو را دیده‌اید؟»"
     },
     {
-      "en": "The teacher gives an example of an easy sentence.",
-      "fa": "معلم یک مثال از یک جمله‌ی آسان می‌دهد."
+      "en": "\"Good,\" the teacher says. \"Now write one short paragraph.\"",
+      "fa": "معلم می‌گوید: «خوب است. حالا یک بند کوتاه بنویس.»"
     },
     {
-      "en": "Then Mina begins an easy form with Nino's details.",
-      "fa": "بعد مینا یک فرم آسان با جزئیات نینو شروع می‌کند."
+      "en": "\"Say who Nino is, what he looks like and where people saw him.\"",
+      "fa": "«بگو نینو کیست، چه شکلی است و مردم کجا دیده‌اندش.»"
     },
     {
-      "en": "She must complete every box before they put up the note.",
-      "fa": "باید پیش از نصب یادداشت همه‌ی کادرها را کامل کند."
+      "en": "Mina writes the paragraph, and the teacher helps her with two words.",
+      "fa": "مینا بند را می‌نویسد و معلم در دو کلمه کمکش می‌کند."
     },
     {
-      "en": "A wall chart shows streets around the school.",
-      "fa": "یک نمودار دیواری خیابان‌های اطراف مدرسه را نشان می‌دهد."
+      "en": "Then the teacher puts a big paper on the wall and draws some streets.",
+      "fa": "بعد معلم کاغذ بزرگی روی دیوار می‌زند و چند خیابان می‌کشد."
     },
     {
-      "en": "Mina puts a point on each street they checked on the chart.",
-      "fa": "مینا روی هر خیابانی که بررسی کرده‌اند در نمودار یک نقطه می‌گذارد."
+      "en": "\"This is a chart of the city,\" she says. \"Let's put every place where people saw Nino on it.\"",
+      "fa": "می‌گوید: «این نمودار شهر است. بیایید هر جایی را که مردم نینو را دیده‌اند رویش بگذاریم.»"
     },
     {
-      "en": "The teacher asks her to write one short paragraph.",
-      "fa": "معلم از او می‌خواهد یک پاراگراف کوتاه بنویسد."
+      "en": "Mina gives her the places, one by one.",
+      "fa": "مینا جاها را یکی‌یکی به او می‌گوید."
     },
     {
-      "en": "The paragraph explains when and where Nino went away.",
-      "fa": "پاراگراف توضیح می‌دهد نینو چه وقت و کجا رفت."
+      "en": "The bus stop. The busy neighborhood with the blue door. The city center. The bread shop. The river road.",
+      "fa": "ایستگاه اتوبوس. محله‌ی شلوغ با درِ آبی. مرکز شهر. نانوایی. جاده‌ی کنار رودخانه."
     },
     {
-      "en": "\"What is the main point?\" the teacher asks.",
-      "fa": "معلم می‌پرسد: «نکته‌ی اصلی چیست؟»"
+      "en": "The teacher draws a line between them.",
+      "fa": "معلم خطی بین آن‌ها می‌کشد."
     },
     {
-      "en": "Mina says the main point is that Nino needs help.",
-      "fa": "مینا می‌گوید نکته‌ی اصلی این است که نینو به کمک نیاز دارد."
+      "en": "\"Look,\" she says. \"The places are all on one line, from your house to the river.\"",
+      "fa": "می‌گوید: «نگاه کنید. همه‌ی جاها روی یک خط‌اند، از خانه‌ی شما تا رودخانه.»"
     },
     {
-      "en": "They compare two photos to choose the best one.",
-      "fa": "دو عکس را مقایسه می‌کنند تا بهترین را انتخاب کنند."
+      "en": "Mina looks at the chart for a long time. Before today, she did not see it that way.",
+      "fa": "مینا مدت زیادی به نمودار نگاه می‌کند. تا امروز این‌طوری به آن نگاه نکرده بود."
     },
     {
-      "en": "Mina uses the better photo so people can compare details.",
-      "fa": "مینا از عکس بهتر استفاده می‌کند تا مردم بتوانند جزئیات را مقایسه کنند."
+      "en": "\"Now our class has a project,\" the teacher says to the students.",
+      "fa": "معلم به دانش‌آموزها می‌گوید: «حالا کلاس ما یک پروژه دارد.»"
     },
     {
-      "en": "One important detail is a little white on Nino's left.",
-      "fa": "یک جزئیات مهم کمی سفید در سمت چپ نینو است."
+      "en": "\"Our course is four weeks. In this project, every student takes Nino's note home.\"",
+      "fa": "«دوره‌ی ما چهار هفته است. در این پروژه، هر دانش‌آموز یادداشت نینو را به خانه می‌برد.»"
     },
     {
-      "en": "Mina adds that detail below the photo.",
-      "fa": "مینا آن جزئیات را زیر عکس اضافه می‌کند."
+      "en": "\"Put it on a wall near your house, and ask your family and your neighbors.\"",
+      "fa": "«آن را روی دیواری نزدیک خانه‌تان بزنید و از خانواده و همسایه‌هایتان بپرسید.»"
     },
     {
-      "en": "She opens a dictionary to check one difficult word.",
-      "fa": "یک فرهنگ‌لغت باز می‌کند تا یک کلمه‌ی سخت را بررسی کند."
+      "en": "The girls are excited. A real project about a real chicken!",
+      "fa": "دخترها هیجان‌زده‌اند. یک پروژه‌ی واقعی درباره‌ی یک جوجه‌ی واقعی!"
     },
     {
-      "en": "The dictionary gives an easy word that more people know.",
-      "fa": "فرهنگ‌لغت کلمه‌ی آسانی می‌دهد که افراد بیشتری می‌شناسند."
+      "en": "\"What is the reason for the chart?\" a student asks.",
+      "fa": "دانش‌آموزی می‌پرسد: «دلیل نمودار چیست؟»"
     },
     {
-      "en": "The result is a note that is easy to read.",
-      "fa": "نتیجه یادداشتی است که خواندنش آسان است."
+      "en": "\"A chart helps us think,\" the teacher says. \"That is the reason.\"",
+      "fa": "معلم می‌گوید: «نمودار به ما کمک می‌کند فکر کنیم. دلیلش همین است.»"
     },
     {
-      "en": "Mina is happy when she sees the improved result.",
-      "fa": "مینا وقتی نتیجه‌ی بهتر را می‌بیند خوشحال است."
+      "en": "Negar has a question too. \"Nino ran away many weeks ago. Does he look the same now?\"",
+      "fa": "نگار هم سؤالی دارد. «نینو هفته‌ها پیش فرار کرد. هنوز همان شکلی است؟»"
     },
     {
-      "en": "The teacher gives one writing rule: keep important facts first.",
-      "fa": "معلم یک قانون نوشتن می‌دهد: اطلاعات مهم را اول بگذار."
+      "en": "\"That is a very good question,\" the teacher says.",
+      "fa": "معلم می‌گوید: «سؤال خیلی خوبی است.»"
     },
     {
-      "en": "Mina writes the rule in her red book.",
-      "fa": "مینا آن قانون را در کتاب قرمزش می‌نویسد."
+      "en": "\"Chickens grow fast. Maybe Nino is not so small now.\"",
+      "fa": "«جوجه‌ها زود بزرگ می‌شوند. شاید نینو حالا دیگر آن‌قدر کوچک نباشد.»"
     },
     {
-      "en": "Good writing is becoming a useful skill for her.",
-      "fa": "نوشتن خوب دارد به مهارتی مفید برای او تبدیل می‌شود."
+      "en": "Mina did not think of that. In every picture, her Nino is very small.",
+      "fa": "مینا به این فکر نکرده بود. در همه‌ی عکس‌ها، نینوی او خیلی کوچک است."
     },
     {
-      "en": "The teacher says every skill grows with practice.",
-      "fa": "معلم می‌گوید هر مهارت با تمرین رشد می‌کند."
+      "en": "\"Nino can grow,\" she says, \"but the white on his left stays.\"",
+      "fa": "می‌گوید: «نینو می‌تواند بزرگ شود، اما سفیدیِ سمت چپش می‌ماند.»"
     },
     {
-      "en": "Mina wants to improve the note one more time.",
-      "fa": "مینا می‌خواهد یادداشت را یک بار دیگر بهتر کند."
+      "en": "\"Then put that in your paragraph,\" the teacher says, and Mina does.",
+      "fa": "معلم می‌گوید: «پس این را در بندت بنویس» و مینا می‌نویسد."
     },
     {
-      "en": "Together they improve the title and phone line.",
-      "fa": "با هم عنوان و خط تلفن را بهتر می‌کنند."
+      "en": "That evening, Mina fills in a form for the class project with her name and address.",
+      "fa": "آن شب، مینا فرم پروژه‌ی کلاس را با اسم و آدرسش پر می‌کند."
     },
     {
-      "en": "Their language course is working on short messages this week.",
-      "fa": "دوره‌ی زبانشان این هفته روی پیام‌های کوتاه کار می‌کند."
+      "en": "Next to the word \"Reason,\" she writes: \"To bring Nino home.\"",
+      "fa": "کنار کلمه‌ی «دلیل» می‌نویسد: «برای اینکه نینو را به خانه برگردانیم.»"
     },
     {
-      "en": "The course project gives Mina a useful reason to practice.",
-      "fa": "پروژه‌ی دوره به مینا دلیل مفیدی برای تمرین می‌دهد."
+      "en": "Then she draws the chart in her red book: her house, the bus stop, the blue door, the river.",
+      "fa": "بعد نمودار را در کتاب قرمزش می‌کشد: خانه‌اش، ایستگاه اتوبوس، درِ آبی، رودخانه."
     },
     {
-      "en": "The teacher says she studied writing at college.",
-      "fa": "معلم می‌گوید در کالج نویسندگی خوانده است."
-    },
-    {
-      "en": "Later, she studied at a university in the city.",
-      "fa": "بعد در یک دانشگاه در همین شهر درس خوانده است."
-    },
-    {
-      "en": "She says even a university message should be easy to read.",
-      "fa": "می‌گوید حتی پیام یک دانشگاه هم باید آسان خوانده شود."
-    },
-    {
-      "en": "The teacher tells Mina to remember the most important facts.",
-      "fa": "معلم به مینا می‌گوید مهم‌ترین اطلاعات را به خاطر بسپارد."
-    },
-    {
-      "en": "Mina can remember Nino's yellow color and favorite places.",
-      "fa": "مینا می‌تواند رنگ زرد و جاهای مورد علاقه‌ی نینو را به خاطر بسپارد."
-    },
-    {
-      "en": "\"Repeat the phone once,\" the teacher says.",
-      "fa": "معلم می‌گوید: «تلفن را یک بار تکرار کن.»"
-    },
-    {
-      "en": "Mina can repeat it without looking at the page.",
-      "fa": "مینا می‌تواند بدون نگاه کردن به صفحه آن را تکرار کند."
-    },
-    {
-      "en": "Next, they decide where to put the finished note.",
-      "fa": "بعد تصمیم می‌گیرند یادداشت کامل‌شده را کجا نصب کنند."
-    },
-    {
-      "en": "They will put one note at the school door.",
-      "fa": "یک یادداشت را کنار در مدرسه نصب خواهند کرد."
-    },
-    {
-      "en": "The teacher helps Mina make an easy plan to look for Nino.",
-      "fa": "معلم کمک می‌کند مینا یک برنامه‌ی آسان برای پیدا کردن نینو بسازد."
-    },
-    {
-      "en": "The plan includes school, market, park, and river road.",
-      "fa": "برنامه شامل مدرسه، بازار، پارک و جاده‌ی کنار رودخانه است."
-    },
-    {
-      "en": "One section of the plan lists places they checked before.",
-      "fa": "یک بخش از برنامه جاهایی را فهرست می‌کند که قبلاً بررسی کرده‌اند."
-    },
-    {
-      "en": "Another section lists places they still need to check.",
-      "fa": "بخش دیگری جاهایی را فهرست می‌کند که هنوز باید بررسی کنند."
-    },
-    {
-      "en": "The teacher checks that the form is complete.",
-      "fa": "معلم بررسی می‌کند که فرم کامل باشد."
-    },
-    {
-      "en": "She also checks that every important detail is correct.",
-      "fa": "همچنین بررسی می‌کند همه‌ی جزئیات مهم درست هستند."
-    },
-    {
-      "en": "The final result is a good note and a useful plan.",
-      "fa": "نتیجه‌ی نهایی یک یادداشت خوب و یک برنامه‌ی مفید است."
-    },
-    {
-      "en": "Mina thanks the teacher for turning writing into action.",
-      "fa": "مینا از معلم تشکر می‌کند که نوشتن را به عمل تبدیل کرده است."
-    },
-    {
-      "en": "After school, Mina and Mom begin to put up the notes.",
-      "fa": "بعد از مدرسه، مینا و مامان شروع به نصب یادداشت‌ها می‌کنند."
-    },
-    {
-      "en": "With the new plan in hand, Mina keeps looking for Nino.",
-      "fa": "مینا با برنامه‌ی تازه در دست همچنان دنبال نینو می‌گردد."
+      "en": "\"Where are you, Nino?\" she says to the dark window. \"Are you on this line?\"",
+      "fa": "رو به پنجره‌ی تاریک می‌گوید: «کجایی، نینو؟ روی این خط هستی؟»"
     }
   ],
   "check": [
     {
-      "q": "معلم به مینا کمک می‌کند چه چیزی را بهتر کند؟",
+      "q": "یادداشت خوب باید چه چیزی داشته باشد؟",
       "options": [
-        "note",
-        "bag",
-        "pen",
-        "desk"
+        "title",
+        "cake",
+        "key",
+        "box"
       ],
-      "a": "note"
+      "a": "title"
     },
     {
-      "q": "یادداشت را کجا می‌گذارند؟",
+      "q": "خط روی نمودار از خانه‌ی مینا تا کجا می‌رود؟",
       "options": [
+        "river",
         "school",
-        "floor",
-        "yard",
-        "pool"
+        "farm",
+        "market"
       ],
-      "a": "school"
+      "a": "river"
     }
   ]
 }

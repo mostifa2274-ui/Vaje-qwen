@@ -2,218 +2,155 @@
   "id": "b4c2",
   "book": 4,
   "n": 2,
-  "titleFa": "مغازه‌ی نان",
+  "titleFa": "نانوایی",
   "titleEn": "The Bread Shop",
   "new": [
-    "air",
     "hot",
-    "prefer",
+    "air",
     "butter",
     "cream",
+    "sugar",
     "delicious",
     "soup",
-    "meal",
+    "sandwich",
+    "prefer",
+    "order",
     "prepare",
-    "sugar",
+    "meal",
     "salt",
     "pepper",
-    "sandwich",
     "cooking"
   ],
   "sentences": [
     {
-      "en": "Mina and Mom stop at a small bread shop.",
-      "fa": "مینا و مامان جلوی یک نانوایی کوچک می‌ایستند."
+      "en": "The bread shop is small, and hot air comes out of the open door.",
+      "fa": "نانوایی کوچک است و هوای داغ از درِ بازش بیرون می‌آید."
     },
     {
-      "en": "Warm air comes through the open door.",
-      "fa": "هوای گرم از درِ باز بیرون می‌آید."
+      "en": "A man in white clothes is making bread.",
+      "fa": "مردی با لباس سفید دارد نان می‌پزد."
     },
     {
-      "en": "A man is bringing hot bread from the kitchen.",
-      "fa": "مردی نان داغ را از آشپزخانه می‌آورد."
+      "en": "\"Hello,\" he says. \"The bread is still hot. Do you want some?\"",
+      "fa": "می‌گوید: «سلام. نان هنوز داغ است. می‌خواهید؟»"
     },
     {
-      "en": "\"This bread is still hot,\" he tells Mina.",
-      "fa": "«این نان هنوز داغ است»، مرد به مینا می‌گوید."
+      "en": "Mina shows him Nino's picture before she answers.",
+      "fa": "مینا پیش از جواب دادن، عکس نینو را نشانش می‌دهد."
     },
     {
-      "en": "The hot bread makes Mina hungry.",
-      "fa": "نان داغ مینا را گرسنه می‌کند."
+      "en": "The bread man looks at it, and then he looks at Mina.",
+      "fa": "نانوا به عکس نگاه می‌کند و بعد به مینا."
     },
     {
-      "en": "He cuts one long piece of bread.",
-      "fa": "او یک تکه‌ی بلند نان را می‌بُرد."
+      "en": "\"A little yellow chicken?\" he says. \"Yes! One comes here most mornings.\"",
+      "fa": "می‌گوید: «یک جوجه‌ی زرد کوچک؟ بله! بیشتر صبح‌ها یکی اینجا می‌آید.»"
     },
     {
-      "en": "Then he cuts a small piece for Mina.",
-      "fa": "بعد یک تکه‌ی کوچک برای مینا می‌بُرد."
+      "en": "For a moment, Mina cannot speak.",
+      "fa": "برای لحظه‌ای مینا نمی‌تواند حرف بزند."
     },
     {
-      "en": "He brings the bread to the table.",
-      "fa": "او نان را به میز می‌آورد."
+      "en": "\"When does it come?\" Dad asks.",
+      "fa": "بابا می‌پرسد: «کی می‌آید؟»"
     },
     {
-      "en": "He also brings dishes for the people waiting.",
-      "fa": "برای آدم‌هایی که منتظرند ظرف هم می‌آورد."
+      "en": "\"Early, before the shop gets busy,\" the bread man says. \"At six o'clock, or a little before.\"",
+      "fa": "نانوا می‌گوید: «زود، پیش از شلوغ شدن مغازه. ساعت شش یا کمی زودتر.»"
     },
     {
-      "en": "Some people choose dark bread.",
-      "fa": "بعضی‌ها نان تیره را انتخاب می‌کنند."
+      "en": "\"It eats the little pieces of bread by my door, and then it goes away.\"",
+      "fa": "«تکه‌های کوچک نان کنار درم را می‌خورد و بعد می‌رود.»"
     },
     {
-      "en": "Others choose the hot white bread.",
-      "fa": "بقیه نان سفید و داغ را انتخاب می‌کنند."
+      "en": "\"Where does it go?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «کجا می‌رود؟»"
     },
     {
-      "en": "Mina prefers a small piece of hot bread.",
-      "fa": "مینا یک تکه‌ی کوچک نان داغ را ترجیح می‌دهد."
+      "en": "\"I do not know,\" the bread man says. \"I am always busy with my bread.\"",
+      "fa": "نانوا می‌گوید: «نمی‌دانم. همیشه سرم با نان‌هایم گرم است.»"
     },
     {
-      "en": "\"I prefer it hot,\" she says.",
-      "fa": "«من داغش را ترجیح می‌دهم»، می‌گوید."
+      "en": "Mina looks at Dad, and Dad looks at Mina.",
+      "fa": "مینا به بابا نگاه می‌کند و بابا به مینا."
     },
     {
-      "en": "Next to the bread, the man sells butter and cheese.",
-      "fa": "کنار نان، مرد کره و پنیر هم می‌فروشد."
+      "en": "\"Tomorrow at six o'clock, we will be here,\" Dad says.",
+      "fa": "بابا می‌گوید: «فردا ساعت شش اینجا هستیم.»"
     },
     {
-      "en": "Mina sees yellow butter in a little dish.",
-      "fa": "مینا کره‌ی زرد را در یک ظرف کوچک می‌بیند."
+      "en": "The bread man cuts a long piece of hot bread for the family.",
+      "fa": "نانوا یک تکه‌ی بلند نان داغ برای خانواده می‌بُرد."
     },
     {
-      "en": "Next to it is a piece of cheese.",
-      "fa": "کنار آن یک تکه پنیر است."
+      "en": "He puts butter and cream on it for Aria, and a little sugar for Yasi.",
+      "fa": "برای آریا رویش کره و خامه می‌مالد و برای یاسی کمی شکر می‌ریزد."
     },
     {
-      "en": "The cheese is white and easy to cut.",
-      "fa": "پنیر سفید است و به‌راحتی بریده می‌شود."
+      "en": "\"Delicious!\" Aria says.",
+      "fa": "آریا می‌گوید: «خوشمزه است!»"
     },
     {
-      "en": "A dish of cream is in a cold place.",
-      "fa": "یک ظرف خامه در جای سردی است."
+      "en": "The bread man also makes soup and sandwiches for lunch.",
+      "fa": "نانوا برای ناهار سوپ و ساندویچ هم درست می‌کند."
     },
     {
-      "en": "\"The cream is for our cake,\" the man explains.",
-      "fa": "«خامه برای کیک ماست»، مرد توضیح می‌دهد."
+      "en": "\"Do you prefer soup or a sandwich?\" he asks.",
+      "fa": "می‌پرسد: «سوپ را ترجیح می‌دهید یا ساندویچ؟»"
     },
     {
-      "en": "Mina eats some cake and says, \"Delicious!\"",
-      "fa": "مینا کمی کیک می‌خورد و می‌گوید: «خوشمزه است!»"
+      "en": "Mina prefers soup, and Dad orders sandwiches for everyone else.",
+      "fa": "مینا سوپ را ترجیح می‌دهد و بابا برای بقیه ساندویچ سفارش می‌دهد."
     },
     {
-      "en": "The soup is delicious too.",
-      "fa": "سوپ هم خوشمزه است."
+      "en": "The bread man prepares their meal at a small table by the window.",
+      "fa": "نانوا غذایشان را روی میز کوچکی کنار پنجره آماده می‌کند."
     },
     {
-      "en": "The soup is very hot.",
-      "fa": "سوپ خیلی داغ است."
+      "en": "There is salt and pepper on the table, and the soup is very hot.",
+      "fa": "روی میز نمک و فلفل هست و سوپ خیلی داغ است."
     },
     {
-      "en": "Mom chooses a warm dish for lunch.",
-      "fa": "مامان یک غذای گرم برای ناهار انتخاب می‌کند."
+      "en": "\"Cooking is my life,\" the bread man says, and everyone laughs.",
+      "fa": "نانوا می‌گوید: «آشپزی زندگی من است» و همه می‌خندند."
     },
     {
-      "en": "Mina eats a little and likes the dish.",
-      "fa": "مینا کمی می‌خورد و غذا را دوست دارد."
+      "en": "When they eat, Mina watches the door.",
+      "fa": "وقتی غذا می‌خورند، مینا در را نگاه می‌کند."
     },
     {
-      "en": "The man prepares their meal at a small table.",
-      "fa": "مرد غذایشان را روی یک میز کوچک آماده می‌کند."
+      "en": "She puts a piece of her bread in her bag. \"For Nino, tomorrow,\" she says.",
+      "fa": "یک تکه از نانش را در کیفش می‌گذارد. می‌گوید: «برای نینو، فردا.»"
     },
     {
-      "en": "Soon their meal is ready.",
-      "fa": "خیلی زود غذایشان آماده است."
+      "en": "Before they leave, the bread man gives her a small bag of bread pieces.",
+      "fa": "پیش از رفتنشان، نانوا یک کیسه‌ی کوچک تکه‌نان به او می‌دهد."
     },
     {
-      "en": "Mom eats her lunch, and Mina watches the door.",
-      "fa": "مامان ناهارش را می‌خورد و مینا در را نگاه می‌کند."
-    },
-    {
-      "en": "Mina eats slowly because she is still thinking about Nino.",
-      "fa": "مینا آرام غذا می‌خورد چون هنوز به نینو فکر می‌کند."
-    },
-    {
-      "en": "On another table she sees sugar.",
-      "fa": "روی میز دیگری شکر می‌بیند."
-    },
-    {
-      "en": "The sugar is in a glass.",
-      "fa": "شکر داخل یک لیوان است."
-    },
-    {
-      "en": "The salt is next to it.",
-      "fa": "نمک کنار آن است."
-    },
-    {
-      "en": "The salt looks white like the sugar.",
-      "fa": "نمک مثل شکر سفید به نظر می‌رسد."
-    },
-    {
-      "en": "A small box of pepper is next to the salt.",
-      "fa": "یک جعبه‌ی کوچک فلفل کنار نمک است."
-    },
-    {
-      "en": "The butter is yellow, and Mina then thinks of Nino.",
-      "fa": "کره زرد است و مینا بعد به نینو فکر می‌کند."
-    },
-    {
-      "en": "She puts half her sandwich in a paper bag.",
-      "fa": "نصف ساندویچش را داخل یک پاکت کاغذی می‌گذارد."
-    },
-    {
-      "en": "\"I will keep this small piece of bread for Nino if I find him,\" she says.",
-      "fa": "می‌گوید: «اگر نینو را پیدا کنم، این تکه‌ی کوچک نان را برایش نگه می‌دارم.»"
-    },
-    {
-      "en": "The man is happy and asks why she is keeping bread for a chicken.",
-      "fa": "مرد خوشحال است و می‌پرسد چرا برای یک جوجه نان نگه می‌دارد."
-    },
-    {
-      "en": "Mina tells him all the story, and he keeps cooking.",
-      "fa": "مینا تمام داستان را برایش تعریف می‌کند و او همچنان آشپزی می‌کند."
-    },
-    {
-      "en": "It has been a long morning of looking for Nino.",
-      "fa": "صبح طولانی‌ای از جست‌وجوی نینو گذشته است."
-    },
-    {
-      "en": "For Mina, every day without Nino feels long.",
-      "fa": "برای مینا هر روز بدون نینو طولانی به نظر می‌رسد."
-    },
-    {
-      "en": "The man becomes quiet. \"I see a little yellow chicken here most mornings,\" he says.",
-      "fa": "مرد ساکت می‌شود. می‌گوید: «بیشتر صبح‌ها یک جوجه‌ی زرد کوچک اینجا می‌بینم.»"
-    },
-    {
-      "en": "\"It often comes early, before the shop gets busy.\"",
-      "fa": "«اغلب زود می‌آید، قبل از اینکه مغازه شلوغ شود.»"
-    },
-    {
-      "en": "Mina stands up quickly, happy to have new information.",
-      "fa": "مینا سریع بلند می‌شود و از داشتن اطلاعات تازه خوشحال است."
+      "en": "\"For the morning,\" he says. \"Chickens love my bread.\"",
+      "fa": "می‌گوید: «برای صبح. جوجه‌ها عاشق نان من‌اند.»"
     }
   ],
   "check": [
     {
-      "q": "نان چطور است؟",
+      "q": "جوجه‌ی زرد کی به نانوایی می‌آید؟",
       "options": [
-        "hot",
-        "cold",
-        "cheap",
-        "expensive"
+        "morning",
+        "evening",
+        "night",
+        "afternoon"
       ],
-      "a": "hot"
+      "a": "morning"
     },
     {
-      "q": "مردِ نان‌فروش صبح‌ها چه می‌بیند؟",
+      "q": "مینا برای ناهار چه چیزی را ترجیح می‌دهد؟",
       "options": [
-        "chicken",
-        "bird",
-        "cake",
-        "soup"
+        "soup",
+        "sandwich",
+        "salad",
+        "rice"
       ],
-      "a": "chicken"
+      "a": "soup"
     }
   ]
 }

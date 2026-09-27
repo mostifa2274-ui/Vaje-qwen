@@ -2,261 +2,192 @@
   "id": "b6c4",
   "book": 6,
   "n": 4,
-  "titleFa": "یک زنگ",
-  "titleEn": "A Phone Call",
+  "titleFa": "دانشمند",
+  "titleEn": "The Scientist",
   "new": [
-    "scientist",
-    "problem",
-    "situation",
-    "activity",
-    "event",
-    "success",
-    "leg",
-    "card",
+    "fall",
+    "umbrella",
     "object",
     "model",
-    "present",
-    "umbrella",
-    "fall",
-    "break",
     "however",
+    "leg",
     "type",
-    "future"
+    "situation",
+    "present",
+    "card",
+    "club",
+    "activity",
+    "event",
+    "break",
+    "success",
+    "problem"
   ],
   "sentences": [
     {
-      "en": "The phone makes a sound after dinner, and Dad answers quickly.",
-      "fa": "تلفن بعد از شام صدا می‌دهد و بابا سریع جواب می‌دهد."
+      "en": "In the morning, Dad calls the scientist, and she says, \"Come at ten o'clock.\"",
+      "fa": "صبح، بابا به دانشمند زنگ می‌زند و او می‌گوید: «ساعت ده بیایید.»"
     },
     {
-      "en": "A woman says she is a scientist from the university.",
-      "fa": "زنی می‌گوید دانشمندی از دانشگاه است."
+      "en": "Summer rain falls on the city, so Mina takes her umbrella.",
+      "fa": "باران تابستانی روی شهر می‌بارد، پس مینا چترش را برمی‌دارد."
     },
     {
-      "en": "The scientist says she saw Mina's note about Nino.",
-      "fa": "دانشمند می‌گوید یادداشت مینا درباره‌ی نینو را دیده است."
+      "en": "The university is very big, with old trees and many buildings.",
+      "fa": "دانشگاه خیلی بزرگ است، با درخت‌های قدیمی و ساختمان‌های زیاد."
     },
     {
-      "en": "The reason for her call is a small yellow chicken near the university.",
-      "fa": "دلیل تماسش یک جوجه‌ی زرد کوچک نزدیک دانشگاه است."
+      "en": "The scientist meets them at the door of a building. She is a tall woman with a friendly face.",
+      "fa": "دانشمند دمِ در یک ساختمان به استقبالشان می‌آید. زن بلندقدی است با چهره‌ای مهربان."
     },
     {
-      "en": "On the phone, Dad asks what kind of chicken the woman found.",
-      "fa": "بابا پشت تلفن می‌پرسد زن چه جور جوجه‌ای پیدا کرده است."
+      "en": "\"Come in,\" she says. \"The chicken is in my room.\"",
+      "fa": "می‌گوید: «بفرمایید تو. جوجه در اتاق من است.»"
     },
     {
-      "en": "He also asks what special colors the chicken has.",
-      "fa": "همچنین می‌پرسد جوجه چه رنگ‌های خاصی دارد."
+      "en": "Mina walks fast. She cannot wait.",
+      "fa": "مینا تند راه می‌رود. طاقت ندارد."
     },
     {
-      "en": "The scientist says the chicken is small, yellow, and young.",
-      "fa": "دانشمند می‌گوید جوجه کوچک، زرد و جوان است."
+      "en": "In the scientist's room, there are many objects: old books, pictures of birds and a model of a big bird.",
+      "fa": "در اتاق دانشمند چیزهای زیادی هست: کتاب‌های قدیمی، عکس‌های پرنده و ماکت یک پرنده‌ی بزرگ."
     },
     {
-      "en": "Mina knows every false report can become a problem.",
-      "fa": "مینا می‌داند هر گزارش اشتباه می‌تواند مشکل شود."
+      "en": "And in a box next to the window, there is a small yellow chicken.",
+      "fa": "و در جعبه‌ای کنار پنجره، یک جوجه‌ی زرد کوچک هست."
     },
     {
-      "en": "Still, the situation is important enough to check.",
-      "fa": "با این حال، وضعیت آن‌قدر مهم هست که بررسی شود."
+      "en": "\"Nino?\" Mina says.",
+      "fa": "مینا می‌گوید: «نینو؟»"
     },
     {
-      "en": "Their next action is to visit the university now.",
-      "fa": "اقدام بعدی‌شان این است که همین حالا به دانشگاه بروند."
+      "en": "The chicken looks at her. It is small and yellow, with orange feet.",
+      "fa": "جوجه به او نگاه می‌کند. کوچک و زرد است، با پاهای نارنجی."
     },
     {
-      "en": "The activity gives Mina hope, but she still checks every detail.",
-      "fa": "این فعالیت به مینا امید می‌دهد، اما هنوز هر جزئیات را بررسی می‌کند."
+      "en": "However, there is something on its leg: a small blue band.",
+      "fa": "اما چیزی روی پایش هست: یک حلقه‌ی کوچک آبی."
     },
     {
-      "en": "The main thing is to see the chicken closely.",
-      "fa": "نکته‌ی اصلی این است که جوجه را از نزدیک ببینند."
+      "en": "And there is no white on its left.",
+      "fa": "و هیچ سفیدی در سمت چپش نیست."
     },
     {
-      "en": "The university sits in an older part of the city.",
-      "fa": "دانشگاه در بخش قدیمی‌تر شهر قرار دارد."
+      "en": "\"It is not Nino,\" Mina says quietly.",
+      "fa": "مینا آرام می‌گوید: «نینو نیست.»"
     },
     {
-      "en": "One part of Mina's plan is checking every important call.",
-      "fa": "یک بخش از برنامه‌ی مینا بررسی هر تماس مهم است."
+      "en": "\"I am sorry,\" the scientist says. \"I was not sure, so I called.\"",
+      "fa": "دانشمند می‌گوید: «متأسفم. مطمئن نبودم، برای همین تماس گرفتم.»"
     },
     {
-      "en": "This visit becomes the most important event of her evening.",
-      "fa": "این دیدار به مهم‌ترین رویداد عصرش تبدیل می‌شود."
+      "en": "\"This chicken is from our science project. The blue band on its leg is from us.\"",
+      "fa": "«این جوجه مال پروژه‌ی علمی ماست. حلقه‌ی آبی روی پایش را ما گذاشته‌ایم.»"
     },
     {
-      "en": "Mina hopes the event will finally bring success.",
-      "fa": "مینا امیدوار است این رویداد بالاخره موفقیت بیاورد."
+      "en": "\"It is a different type of chicken, and it ran out of our building last week.\"",
+      "fa": "«نوع دیگری از جوجه است و هفته‌ی پیش از ساختمان ما بیرون دوید.»"
     },
     {
-      "en": "They arrive at a university room and meet the scientist.",
-      "fa": "به یک اتاق دانشگاه می‌رسند و دانشمند را می‌بینند."
+      "en": "Mina is quiet for a long time.",
+      "fa": "مینا مدت زیادی ساکت است."
     },
     {
-      "en": "A little yellow chicken is waiting in a small box.",
-      "fa": "یک جوجه‌ی زرد کوچک داخل یک جعبه‌ی کوچک منتظر است."
+      "en": "\"This is a difficult situation,\" the scientist says. \"Can I help you in a different way?\"",
+      "fa": "دانشمند می‌گوید: «موقعیت سختی است. می‌توانم جور دیگری کمکت کنم؟»"
     },
     {
-      "en": "Its yellow color is very much like Nino's.",
-      "fa": "رنگ زردش خیلی شبیه رنگ نینو است."
+      "en": "She shows Mina the model of the bird. \"Chickens do not fly far,\" she says. \"They walk.\"",
+      "fa": "ماکت پرنده را به مینا نشان می‌دهد. می‌گوید: «جوجه‌ها دور پرواز نمی‌کنند. راه می‌روند.»"
     },
     {
-      "en": "A small blue band is around the chicken's leg.",
-      "fa": "یک حلقه‌ی آبی کوچک دور پای جوجه است."
+      "en": "\"When a chicken finds a place with food and water every day, it usually stays there.\"",
+      "fa": "«وقتی جوجه جایی پیدا کند که هر روز غذا و آب دارد، معمولاً همان‌جا می‌ماند.»"
     },
     {
-      "en": "The band has another family's phone on it.",
-      "fa": "روی حلقه تلفن خانواده‌ی دیگری نوشته شده است."
+      "en": "\"And chickens like other birds. They do not like to be without friends.\"",
+      "fa": "«و جوجه‌ها پرنده‌های دیگر را دوست دارند. دوست ندارند بی‌دوست باشند.»"
     },
     {
-      "en": "Mina looks at the face and knows it is not Nino.",
-      "fa": "مینا به چهره نگاه می‌کند و می‌فهمد نینو نیست."
+      "en": "Mina writes it in her red book: \"Food and water every day. Other birds.\"",
+      "fa": "مینا این را در کتاب قرمزش می‌نویسد: «غذا و آب هر روز. پرنده‌های دیگر.»"
     },
     {
-      "en": "This chicken is not Nino, and Mina feels sad.",
-      "fa": "این جوجه نینو نیست و مینا ناراحت می‌شود."
+      "en": "Then she stops. She remembers a dish of food next to a blue door.",
+      "fa": "بعد دست نگه می‌دارد. ظرف غذایی را کنار یک درِ آبی به یاد می‌آورد."
     },
     {
-      "en": "The scientist says she is sorry about the mistake.",
-      "fa": "دانشمند می‌گوید بابت اشتباه متأسف است."
+      "en": "\"Dad,\" she says, \"the old woman with the blue door gives food to birds every day!\"",
+      "fa": "می‌گوید: «بابا، پیرزنی که درِ آبی دارد هر روز به پرنده‌ها غذا می‌دهد!»"
     },
     {
-      "en": "Then she points to a small object on the desk.",
-      "fa": "بعد به یک شیء کوچک روی میز اشاره می‌کند."
+      "en": "\"You are right,\" Dad says. \"We can go there again.\"",
+      "fa": "بابا می‌گوید: «راست می‌گویی. می‌توانیم دوباره برویم آنجا.»"
     },
     {
-      "en": "The object is a small model of a bird.",
-      "fa": "آن شیء یک ماکت کوچک از پرنده است."
+      "en": "Before they leave, the scientist gives Mina a present: a card with a yellow bird on it.",
+      "fa": "قبل از رفتنشان، دانشمند یک هدیه به مینا می‌دهد: کارتی با یک پرنده‌ی زرد رویش."
     },
     {
-      "en": "The model was made for a university project.",
-      "fa": "ماکت برای یک پروژه‌ی دانشگاهی ساخته شده بود."
+      "en": "On the card, she writes her phone. \"If I hear anything, I will call you,\" she says.",
+      "fa": "تلفنش را روی کارت می‌نویسد. می‌گوید: «اگر چیزی شنیدم، به تو زنگ می‌زنم.»"
     },
     {
-      "en": "The scientist gives the model to Mina as a present.",
-      "fa": "دانشمند ماکت را به عنوان هدیه به مینا می‌دهد."
+      "en": "\"And we have a science club for children in the summer, with fun activities and events.\"",
+      "fa": "«و تابستان‌ها یک باشگاه علمی برای بچه‌ها داریم، با فعالیت‌ها و برنامه‌های سرگرم‌کننده.»"
     },
     {
-      "en": "Mina takes the present and thanks her quietly.",
-      "fa": "مینا هدیه را می‌گیرد و آرام تشکر می‌کند."
+      "en": "\"Thank you,\" Mina says. \"Maybe in the future.\"",
+      "fa": "مینا می‌گوید: «ممنونم. شاید در آینده.»"
     },
     {
-      "en": "A red umbrella stands next to the university room door.",
-      "fa": "یک چتر قرمز کنار درِ اتاق دانشگاه قرار دارد."
+      "en": "Outside, the rain stops. They take a break under a tree and eat a sandwich.",
+      "fa": "بیرون، باران بند می‌آید. زیر درختی استراحت می‌کنند و ساندویچ می‌خورند."
     },
     {
-      "en": "Mina leaves her umbrella next to it.",
-      "fa": "مینا چترش را کنار آن می‌گذارد."
+      "en": "\"Today was not a success,\" Mina says.",
+      "fa": "مینا می‌گوید: «امروز موفق نبودیم.»"
     },
     {
-      "en": "A white cup sits on a desk.",
-      "fa": "یک فنجان سفید روی میز است."
+      "en": "\"No,\" Dad says. \"However, we learned something important. The city is big, and that is our problem.\"",
+      "fa": "بابا می‌گوید: «نه. ولی چیز مهمی یاد گرفتیم. شهر بزرگ است و مشکل ما همین است.»"
     },
     {
-      "en": "The chicken moves near the cup.",
-      "fa": "جوجه نزدیک فنجان حرکت می‌کند."
+      "en": "\"But now we know where to look.\"",
+      "fa": "«اما حالا می‌دانیم کجا را بگردیم.»"
     },
     {
-      "en": "The cup starts to fall to the floor.",
-      "fa": "فنجان شروع می‌کند به افتادن روی زمین."
+      "en": "That evening, the telephone in the kitchen makes a sound. It is Grandmother, from the north.",
+      "fa": "آن شب، تلفن آشپزخانه زنگ می‌زند. مادربزرگ است، از شمال."
     },
     {
-      "en": "The scientist takes it before it can break.",
-      "fa": "دانشمند پیش از اینکه بشکند آن را می‌گیرد."
+      "en": "\"Mina, my dear,\" she says. \"School is finished. Come to us for the summer, all of you.\"",
+      "fa": "می‌گوید: «مینا جان، مدرسه تمام شده. همه‌تان تابستان بیایید پیش ما.»"
     },
     {
-      "en": "Everyone is happy because the cup does not break.",
-      "fa": "همه خوشحال‌اند چون فنجان نمی‌شکند."
-    },
-    {
-      "en": "Mina asks if the visit was a success.",
-      "fa": "مینا می‌پرسد آیا این دیدار موفقیت بود."
-    },
-    {
-      "en": "Dad says it was not a success in finding Nino.",
-      "fa": "بابا می‌گوید در پیدا کردن نینو موفقیت نبود."
-    },
-    {
-      "en": "However, the reason for checking the information was still good.",
-      "fa": "با این حال، دلیل بررسی اطلاعات هنوز خوب بود."
-    },
-    {
-      "en": "The situation is better because this chicken can now go back to its family.",
-      "fa": "وضعیت بهتر است چون این جوجه حالا می‌تواند پیش خانواده‌اش برگردد."
-    },
-    {
-      "en": "Their next action is to put the university in the checked section of the plan.",
-      "fa": "اقدام بعدی‌شان این است که دانشگاه را در بخش بررسی‌شده‌ی برنامه قرار دهند."
-    },
-    {
-      "en": "Mina adds that activity to her red book.",
-      "fa": "مینا آن فعالیت را به کتاب قرمزش اضافه می‌کند."
-    },
-    {
-      "en": "One useful thing she learned is to check leg band details first.",
-      "fa": "یک چیز مفید که یاد گرفت این است که اول جزئیات حلقه‌ی کوچک پا را بررسی کند."
-    },
-    {
-      "en": "This type of detail can help on future calls.",
-      "fa": "این نوع جزئیات می‌تواند در تماس‌های آینده کمک کند."
-    },
-    {
-      "en": "The same kind of good check will help with every report.",
-      "fa": "همین نوع بررسی خوب برای هر گزارش کمک خواهد کرد."
-    },
-    {
-      "en": "Mina writes the event in her book before leaving.",
-      "fa": "مینا پیش از رفتن رویداد را در کتابش می‌نویسد."
-    },
-    {
-      "en": "The scientist gives her a card with the university phone.",
-      "fa": "دانشمند کارتی با تلفن دانشگاه به او می‌دهد."
-    },
-    {
-      "en": "\"Call if you need help with another bird,\" she says.",
-      "fa": "می‌گوید: «اگر برای پرنده‌ی دیگری کمک خواستی تماس بگیر.»"
-    },
-    {
-      "en": "The family leaves the university with the small model.",
-      "fa": "خانواده با ماکت کوچک دانشگاه را ترک می‌کند."
-    },
-    {
-      "en": "Mina carries the present in her bag.",
-      "fa": "مینا هدیه را داخل کیفش حمل می‌کند."
-    },
-    {
-      "en": "She takes her umbrella before going outside.",
-      "fa": "پیش از بیرون رفتن چترش را برمی‌دارد."
-    },
-    {
-      "en": "The cup stays on the desk and does not break.",
-      "fa": "فنجان روی میز می‌ماند و نمی‌شکند."
-    },
-    {
-      "en": "Another report is closed, but Mina keeps looking for Nino.",
-      "fa": "گزارش دیگری بسته می‌شود، اما مینا همچنان دنبال نینو می‌گردد."
+      "en": "Mina looks at Mom. The class, the notes, the blue door, Nino... Can she go now?",
+      "fa": "مینا به مامان نگاه می‌کند. کلاس، یادداشت‌ها، درِ آبی، نینو... حالا می‌تواند برود؟"
     }
   ],
   "check": [
     {
-      "q": "جوجه‌ی دانشگاه نینو بود؟",
+      "q": "روی پای جوجه‌ی دانشگاه چه رنگی است؟",
       "options": [
-        "no",
-        "yes",
-        "model",
-        "card"
+        "blue",
+        "red",
+        "white",
+        "black"
       ],
-      "a": "no"
+      "a": "blue"
     },
     {
       "q": "دانشمند به مینا چه می‌دهد؟",
       "options": [
-        "present",
-        "cup",
+        "card",
+        "cake",
         "umbrella",
-        "color"
+        "model"
       ],
-      "a": "present"
+      "a": "card"
     }
   ]
 }

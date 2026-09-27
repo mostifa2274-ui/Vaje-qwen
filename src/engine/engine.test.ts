@@ -13,7 +13,7 @@ globalThis.localStorage = {
 import { buildLemmaMap, lemmaOf, preprocess, tokenizeSentence } from './lemmatize'
 import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
-import { recordCompletedRead, recordPreparedChapter } from './progress'
+import { introduceWordsOfCompletedChapters, recordCompletedRead, recordPreparedChapter } from './progress'
 import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
 import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
@@ -590,4 +590,27 @@ describe('mastery certification', () => {
   })
 
 
+})
+
+describe('course updates', () => {
+  it('schedules words moved into an already finished chapter for review', () => {
+    const chapter = CHAPTERS[0]
+    const [moved, ...taught] = chapter.new
+    const state = {
+      ...emptyState(1, chapter.id),
+      chapters: { [chapter.id]: { preparedAt: 5, prepAttempts: 1, completed: true, completedAt: 5, checksCorrect: 10, checksTotal: 10, reads: 1 } },
+      words: Object.fromEntries(taught.map(id => [id, { ...blankWordProgress(5), dueAt: 99 }])),
+    }
+    const next = introduceWordsOfCompletedChapters(state, CHAPTERS, 50)
+    const day = 24 * 60 * 60 * 1000
+    expect(next.words[moved]).toMatchObject({ introduced: true, firstSeenAt: 50, dueAt: 50 + day })
+    expect(dueWordIds(next.words, 50 + day)).toContain(moved)
+    for (const id of taught) expect(next.words[id]).toBe(state.words[id])
+    expect(introduceWordsOfCompletedChapters(next, CHAPTERS, 60)).toBe(next)
+  })
+
+  it('leaves unfinished chapters to their own prep', () => {
+    const state = emptyState(1, CHAPTERS[0].id)
+    expect(introduceWordsOfCompletedChapters(state, CHAPTERS, 50)).toBe(state)
+  })
 })

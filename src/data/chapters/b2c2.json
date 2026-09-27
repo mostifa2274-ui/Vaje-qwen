@@ -5,251 +5,215 @@
   "titleFa": "همسایه‌ها",
   "titleEn": "The Neighbors",
   "new": [
-    "neighbor",
     "hello",
     "friendly",
-    "easy",
     "life",
-    "hi",
+    "why",
     "story",
-    "friend",
-    "school",
     "best",
-    "car",
+    "school",
+    "hi",
+    "join",
+    "group",
     "hey",
+    "everybody",
     "shopping",
     "laugh",
-    "white",
-    "group",
-    "everybody",
-    "no-one",
-    "mother",
-    "why",
-    "nice",
-    "join",
+    "apartment",
     "juice",
-    "choose",
     "thirsty",
+    "choose",
+    "question",
+    "orange",
+    "white",
+    "description",
+    "easy",
     "ten",
     "minute",
-    "bye",
+    "no-one",
+    "pool",
+    "thank",
     "goodbye",
-    "thank"
+    "bye"
   ],
   "sentences": [
     {
-      "en": "Mina and Dad go to a neighbor's door near the house.",
-      "fa": "مینا و بابا به درِ خانه‌ی همسایه‌ای نزدیک خانه می‌روند."
+      "en": "After lunch, Mina, Mom and Dad walk to the first house on their street.",
+      "fa": "بعد از ناهار، مینا و مامان و بابا به اولین خانه‌ی خیابانشان می‌روند."
     },
     {
-      "en": "An older neighbor opens the door and looks at Nino's picture.",
-      "fa": "همسایه‌ای مسن در را باز می‌کند و به عکس نینو نگاه می‌کند."
+      "en": "Their old neighbor opens the door and says hello.",
+      "fa": "همسایه‌ی پیرشان در را باز می‌کند و سلام می‌کند."
     },
     {
-      "en": "\"Hello,\" Mina says. \"We are looking for our little chicken.\"",
-      "fa": "مینا می‌گوید: «سلام. دنبال جوجه‌ی کوچکمان می‌گردیم.»"
+      "en": "He is a friendly man, and he has lived on this street all his life.",
+      "fa": "مرد مهربانی است و تمام عمرش در این خیابان زندگی کرده است."
     },
     {
-      "en": "The man is friendly and listens to them.",
-      "fa": "مرد مهربان است و به حرفشان گوش می‌دهد."
+      "en": "\"Hello, Mina,\" he says. \"Why is your face so sad today?\"",
+      "fa": "می‌گوید: «سلام، مینا. چرا امروز این‌قدر غمگینی؟»"
     },
     {
-      "en": "\"What is your name?\" the neighbor asks.",
-      "fa": "همسایه می‌پرسد: «اسمت چیست؟»"
+      "en": "Mina shows him Nino's picture and tells him the story of the red bird.",
+      "fa": "مینا عکس نینو را نشانش می‌دهد و ماجرای پرنده‌ی قرمز را برایش تعریف می‌کند."
     },
     {
-      "en": "\"My name is Mina, and my little chicken is Nino,\" she answers.",
-      "fa": "او جواب می‌دهد: «اسم من میناست و جوجه‌ی کوچکم نینو است.»"
+      "en": "\"Nino? The little chicken who makes a sound every morning?\" he asks.",
+      "fa": "می‌پرسد: «نینو؟ همان جوجه‌ی کوچکی که هر صبح سروصدا می‌کند؟»"
     },
     {
-      "en": "The name of the chicken is easy for the man to remember.",
-      "fa": "به خاطر سپردن اسم جوجه برای مرد آسان است."
+      "en": "\"Yes, that is him,\" Mina says.",
+      "fa": "مینا می‌گوید: «بله، خودش است.»"
     },
     {
-      "en": "He looks at the picture and asks where Nino went.",
-      "fa": "به عکس نگاه می‌کند و می‌پرسد نینو کجا رفت."
+      "en": "\"I miss that sound,\" the old man says, and he looks in his garden and behind his car.",
+      "fa": "پیرمرد می‌گوید: «دلم برای آن صدا تنگ شده» و باغچه‌اش و پشت ماشینش را نگاه می‌کند."
     },
     {
-      "en": "Mina tells him about the red bird and the open door.",
-      "fa": "مینا درباره‌ی پرنده‌ی قرمز و درِ باز برایش تعریف می‌کند."
+      "en": "Nino is not there.",
+      "fa": "نینو آنجا نیست."
     },
     {
-      "en": "Next they meet a woman who lives two doors away.",
-      "fa": "بعد با زنی ملاقات می‌کنند که دو خانه آن‌طرف‌تر زندگی می‌کند."
+      "en": "Two doors away lives a woman with her daughter, Negar.",
+      "fa": "دو خانه آن‌طرف‌تر، زنی با دخترش، نگار، زندگی می‌کند."
     },
     {
-      "en": "\"Hi, Mina,\" the woman says after hearing her story.",
-      "fa": "زن بعد از شنیدن ماجرا می‌گوید: «سلام، مینا.»"
+      "en": "Negar is Mina's best friend from school.",
+      "fa": "نگار بهترین دوست مینا در مدرسه است."
     },
     {
-      "en": "Her young daughter comes outside and says hello.",
-      "fa": "دختر کوچکش بیرون می‌آید و سلام می‌کند."
+      "en": "\"Hi, Mina!\" Negar says. \"What happened?\"",
+      "fa": "نگار می‌گوید: «سلام، مینا! چه شده؟»"
     },
     {
-      "en": "The girl is Mina's friend from school.",
-      "fa": "آن دختر دوست مینا در مدرسه است."
+      "en": "When she hears the story, she runs to get her shoes.",
+      "fa": "وقتی ماجرا را می‌شنود، می‌دود تا کفش‌هایش را بیاورد."
     },
     {
-      "en": "\"Nino is my best friend too,\" Mina tells her.",
-      "fa": "مینا به او می‌گوید: «نینو هم بهترین دوست من است.»"
+      "en": "\"I can help,\" she says. \"My mother can come too.\"",
+      "fa": "می‌گوید: «من می‌توانم کمک کنم. مادرم هم می‌تواند بیاید.»"
     },
     {
-      "en": "The woman is friendly and says she can help.",
-      "fa": "زن مهربان است و می‌گوید می‌تواند کمک کند."
+      "en": "Negar and her mother join them, and now they are a small group.",
+      "fa": "نگار و مادرش به آن‌ها می‌پیوندند و حالا گروه کوچکی هستند."
     },
     {
-      "en": "Another friendly neighbor checks the space behind his car.",
-      "fa": "همسایه‌ی مهربان دیگری فضای پشت ماشینش را بررسی می‌کند."
+      "en": "They walk from house to house together.",
+      "fa": "با هم خانه به خانه می‌روند."
     },
     {
-      "en": "\"Hey, I see something yellow!\" the girl calls.",
-      "fa": "دختر صدا می‌زند: «هی، یک چیز زرد می‌بینم!»"
+      "en": "Then Negar calls, \"Hey! I see something yellow under that car!\"",
+      "fa": "بعد نگار صدا می‌زند: «هی! یک چیز زرد زیر آن ماشین می‌بینم!»"
     },
     {
-      "en": "Everyone turns, but the yellow thing is only a shopping bag.",
-      "fa": "همه برمی‌گردند، اما آن چیز زرد فقط یک کیسه‌ی خرید است."
+      "en": "Everybody runs to the car.",
+      "fa": "همه به طرف ماشین می‌دوند."
     },
     {
-      "en": "Mina laughs a little and says, \"Hey, I thought it was Nino too.\"",
-      "fa": "مینا کمی می‌خندد و می‌گوید: «هی، من هم فکر کردم نینو است.»"
+      "en": "But it is only a yellow shopping bag.",
+      "fa": "اما فقط یک کیسه‌ی خرید زرد است."
     },
     {
-      "en": "She asks the neighbors about their gardens and buildings.",
-      "fa": "از همسایه‌ها درباره‌ی باغچه‌ها و ساختمان‌هایشان می‌پرسد."
+      "en": "Negar laughs, and Mina laughs a little too.",
+      "fa": "نگار می‌خندد و مینا هم کمی می‌خندد."
     },
     {
-      "en": "\"Was Nino yellow or white?\" one neighbor asks.",
-      "fa": "یکی از همسایه‌ها می‌پرسد: «نینو زرد بود یا سفید؟»"
+      "en": "It is Mina's first laugh in two days.",
+      "fa": "اولین خنده‌ی مینا در این دو روز است."
     },
     {
-      "en": "\"Yellow,\" Mina says, showing the photo again.",
-      "fa": "مینا دوباره عکس را نشان می‌دهد و می‌گوید: «زرد.»"
+      "en": "At the end of the street, a new family is moving into an apartment.",
+      "fa": "ته خیابان، خانواده‌ی تازه‌ای دارند به یک آپارتمان اسباب‌کشی می‌کنند."
     },
     {
-      "en": "So the small group begins checking the street together.",
-      "fa": "پس گروه کوچک شروع می‌کند با هم خیابان را بررسی کند."
+      "en": "The mother of the new family is very nice.",
+      "fa": "مادرِ خانواده‌ی تازه خیلی مهربان است."
     },
     {
-      "en": "Mina keeps looking because Nino is still missing.",
-      "fa": "مینا به جست‌وجو ادامه می‌دهد چون نینو هنوز گم شده است."
+      "en": "\"It is a warm day,\" she says. \"Do you want water or juice?\"",
+      "fa": "می‌گوید: «روز گرمی است. آب می‌خواهید یا آب‌میوه؟»"
     },
     {
-      "en": "Soon everyone on the street knows what Nino looks like.",
-      "fa": "خیلی زود همه‌ی کسانی که در این خیابان هستند می‌دانند نینو چه شکلی است."
+      "en": "Mina is thirsty, and she chooses water.",
+      "fa": "مینا تشنه است و آب را انتخاب می‌کند."
     },
     {
-      "en": "Everybody wants to help before the afternoon ends.",
-      "fa": "همه می‌خواهند پیش از پایان بعدازظهر کمک کنند."
+      "en": "The woman looks at Nino's picture and asks many questions.",
+      "fa": "زن به عکس نینو نگاه می‌کند و سؤال‌های زیادی می‌پرسد."
     },
     {
-      "en": "One woman checks everything in her building.",
-      "fa": "زنی همه‌چیز را در ساختمانش بررسی می‌کند."
+      "en": "\"Is he all yellow?\" she asks.",
+      "fa": "می‌پرسد: «همه‌اش زرد است؟»"
     },
     {
-      "en": "A boy checks behind the front door.",
-      "fa": "پسری پشت درِ جلویی را بررسی می‌کند."
+      "en": "\"Yellow, with orange feet,\" Mina says. \"And there is a little white on his left.\"",
+      "fa": "مینا می‌گوید: «زرد، با پاهای نارنجی. و سمت چپش کمی سفید است.»"
     },
     {
-      "en": "No one sees Nino near the houses.",
-      "fa": "هیچ‌کس نینو را نزدیک خانه‌ها نمی‌بیند."
+      "en": "\"That is a good description,\" the woman says. \"It is easy to remember.\"",
+      "fa": "زن می‌گوید: «توصیف خوبی است. به خاطر سپردنش آسان است.»"
     },
     {
-      "en": "No one remembers seeing him that morning.",
-      "fa": "هیچ‌کس هم به یاد نمی‌آورد آن صبح او را دیده باشد."
+      "en": "For ten more minutes, the group looks in gardens and behind buildings.",
+      "fa": "ده دقیقه‌ی دیگر، گروه باغچه‌ها و پشت ساختمان‌ها را می‌گردند."
     },
     {
-      "en": "Nobody finds anything that shows Nino was in the garden.",
-      "fa": "هیچ‌کس چیزی پیدا نمی‌کند که نشان دهد نینو در باغچه بوده است."
+      "en": "No one has seen Nino.",
+      "fa": "هیچ‌کس نینو را ندیده است."
     },
     {
-      "en": "Nobody wants Mina to give up, so they keep looking.",
-      "fa": "هیچ‌کس نمی‌خواهد مینا منصرف شود، پس به جست‌وجو ادامه می‌دهند."
+      "en": "Then a young woman comes out of her house with her shopping.",
+      "fa": "بعد زن جوانی با خریدهایش از خانه‌اش بیرون می‌آید."
     },
     {
-      "en": "Mina sees nothing behind the last wall.",
-      "fa": "مینا پشت آخرین دیوار چیزی نمی‌بیند."
+      "en": "She listens to the story and thinks for a moment.",
+      "fa": "ماجرا را گوش می‌دهد و لحظه‌ای فکر می‌کند."
     },
     {
-      "en": "\"There is nothing in the shed,\" the older man says.",
-      "fa": "مرد مسن می‌گوید: «داخل انبار چیزی نیست.»"
+      "en": "\"I saw a small yellow chicken this morning,\" she says. \"It was in the park, near the pool.\"",
+      "fa": "می‌گوید: «امروز صبح یک جوجه‌ی زرد کوچک دیدم. در پارک بود، نزدیک استخر.»"
     },
     {
-      "en": "Then they meet a new family moving into the street.",
-      "fa": "بعد با خانواده‌ی جدیدی ملاقات می‌کنند که دارد به خیابان اسباب‌کشی می‌کند."
+      "en": "Mina looks at Mom. \"The park again!\" she says.",
+      "fa": "مینا به مامان نگاه می‌کند. می‌گوید: «باز هم پارک!»"
     },
     {
-      "en": "The new mother says hello and asks why everyone is looking for Nino.",
-      "fa": "مادرِ خانواده‌ی جدید سلام می‌کند و می‌پرسد چرا همه دنبال نینو می‌گردند."
+      "en": "\"Tomorrow morning,\" Mom says. \"Now it is late.\"",
+      "fa": "مامان می‌گوید: «فردا صبح. حالا دیر است.»"
     },
     {
-      "en": "She is nice and looks at Nino's picture.",
-      "fa": "او مهربان است و به عکس نینو نگاه می‌کند."
+      "en": "\"Thank you, everybody,\" Mina says, and the neighbors say goodbye.",
+      "fa": "مینا می‌گوید: «از همه ممنونم» و همسایه‌ها خداحافظی می‌کنند."
     },
     {
-      "en": "Her nice daughter joins Mina next to the door.",
-      "fa": "دختر مهربانش کنار در پیش مینا می‌آید."
+      "en": "\"Bye, Mina! We will watch for him,\" Negar says.",
+      "fa": "نگار می‌گوید: «خداحافظ، مینا! حواسمان به او هست.»"
     },
     {
-      "en": "\"Do you want water or juice?\" the new neighbor asks.",
-      "fa": "همسایه‌ی جدید می‌پرسد: «آب می‌خواهی یا آب‌میوه؟»"
-    },
-    {
-      "en": "Mina chooses water because she is thirsty.",
-      "fa": "مینا آب را انتخاب می‌کند چون تشنه است."
-    },
-    {
-      "en": "The neighbors look for Nino for another ten minutes before evening.",
-      "fa": "همسایه‌ها پیش از عصر ده دقیقه‌ی دیگر دنبال نینو می‌گردند."
-    },
-    {
-      "en": "The woman says she is sorry they did not find Nino.",
-      "fa": "زن می‌گوید متأسف است که نینو را پیدا نکردند."
-    },
-    {
-      "en": "\"Bye, Mina,\" the old neighbor says as he goes in the house.",
-      "fa": "همسایه‌ی مسن هنگام رفتن به داخل می‌گوید: «خداحافظ، مینا.»"
-    },
-    {
-      "en": "The girl says bye too and says she will keep watching.",
-      "fa": "دختر هم خداحافظی می‌کند و می‌گوید همچنان حواسش هست."
-    },
-    {
-      "en": "\"Goodbye, and thank you,\" Mina says to the group.",
-      "fa": "مینا به گروه می‌گوید: «خداحافظ و ممنون.»"
-    },
-    {
-      "en": "Mina and Dad start home, but the new neighbor calls them back.",
-      "fa": "مینا و بابا راه خانه را می‌گیرند، اما همسایه‌ی جدید آن‌ها را صدا می‌زند."
-    },
-    {
-      "en": "She has found chicken food next to a road that goes to the park.",
-      "fa": "او کنار مسیری که به پارک می‌رود غذای جوجه پیدا کرده است."
-    },
-    {
-      "en": "The information gives Mina a new place to look.",
-      "fa": "این اطلاعات جای تازه‌ای برای گشتن به مینا می‌دهد."
+      "en": "That night, Mina writes in her red book: \"The park. The pool. Tomorrow.\"",
+      "fa": "آن شب، مینا در کتاب قرمزش می‌نویسد: «پارک. استخر. فردا.»"
     }
   ],
   "check": [
     {
-      "q": "همسایه‌ها چطور هستند؟",
+      "q": "نگار در مدرسه برای مینا کیست؟",
       "options": [
-        "friendly",
-        "sad",
-        "dirty",
-        "far"
+        "friend",
+        "sister",
+        "mother",
+        "baby"
       ],
-      "a": "friendly"
+      "a": "friend"
     },
     {
-      "q": "چه کسی نینو را می‌بیند؟",
+      "q": "زن جوان جوجه را کجا دیده است؟",
       "options": [
-        "no-one",
-        "everyone",
-        "friend",
-        "neighbor"
+        "park",
+        "car",
+        "school",
+        "shopping"
       ],
-      "a": "no-one"
+      "a": "park"
     }
   ]
 }

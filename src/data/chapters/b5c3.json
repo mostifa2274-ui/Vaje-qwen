@@ -6,262 +6,176 @@
   "titleEn": "The Telephone",
   "new": [
     "telephone",
+    "article",
+    "describe",
+    "repeat",
     "computer",
     "email",
+    "photograph",
     "include",
     "internet",
     "website",
-    "photograph",
-    "camera",
+    "dvd",
     "video",
-    "newspaper",
-    "article",
-    "magazine",
-    "radio",
-    "repeat",
-    "describe",
-    "possible",
     "cd",
-    "dvd"
+    "possible",
+    "camera",
+    "magazine"
   ],
   "sentences": [
     {
-      "en": "The telephone makes a sound as Mina checks her new note.",
-      "fa": "تلفن وقتی مینا یادداشت تازه‌اش را بررسی می‌کند صدا می‌دهد."
+      "en": "Two days later, the telephone in the kitchen makes a sound.",
+      "fa": "دو روز بعد، تلفن آشپزخانه زنگ می‌زند."
     },
     {
-      "en": "Dad answers the old black telephone near the door.",
-      "fa": "بابا تلفن سیاه قدیمی نزدیک در را جواب می‌دهد."
+      "en": "Dad answers it, and then he gives it to Mina. \"It is for you,\" he says, and he stays next to her.",
+      "fa": "بابا جواب می‌دهد و بعد گوشی را به مینا می‌دهد. می‌گوید: «با تو کار دارند» و کنارش می‌ماند."
     },
     {
-      "en": "Then he gives the phone to Mina and stays next to her.",
-      "fa": "بعد گوشی را به مینا می‌دهد و کنارش می‌ماند."
+      "en": "\"Hello, is this Mina?\" a woman asks. \"I am from the city newspaper.\"",
+      "fa": "زنی می‌پرسد: «سلام، مینا هستی؟ از روزنامه‌ی شهر تماس می‌گیرم.»"
     },
     {
-      "en": "A man is calling because he saw Mina's note.",
-      "fa": "مردی زنگ زده چون یادداشت مینا را دیده است."
+      "en": "\"We have your father's letter, and we want to write an article about Nino.\"",
+      "fa": "«نامه‌ی پدرت به دستمان رسیده و می‌خواهیم مقاله‌ای درباره‌ی نینو بنویسیم.»"
     },
     {
-      "en": "He says a little yellow chicken is near the park.",
-      "fa": "می‌گوید یک جوجه‌ی زرد کوچک نزدیک پارک است."
+      "en": "Mina cannot believe it. \"An article about Nino?\"",
+      "fa": "مینا باورش نمی‌شود. «مقاله‌ای درباره‌ی نینو؟»"
     },
     {
-      "en": "The family goes there quickly to check the new information.",
-      "fa": "خانواده سریع به آنجا می‌روند تا اطلاعات تازه را بررسی کنند."
+      "en": "\"Can you describe him for our readers?\" the woman asks.",
+      "fa": "زن می‌پرسد: «می‌توانی او را برای خواننده‌هایمان توصیف کنی؟»"
     },
     {
-      "en": "The chicken is not Nino, so they return home.",
-      "fa": "جوجه نینو نیست، پس به خانه برمی‌گردند."
+      "en": "Mina describes him, and the woman asks her to repeat the last part.",
+      "fa": "مینا او را توصیف می‌کند و زن از او می‌خواهد قسمت آخر را تکرار کند."
     },
     {
-      "en": "Mom decides they need to tell more people they are looking for Nino.",
-      "fa": "مامان تصمیم می‌گیرد به آدم‌های بیشتری بگویند که دنبال نینو هستند."
+      "en": "\"A little white on his left,\" Mina says again.",
+      "fa": "مینا دوباره می‌گوید: «کمی سفید در سمت چپش.»"
     },
     {
-      "en": "She turns on the computer at the kitchen desk.",
-      "fa": "رایانه‌ی روی میز آشپزخانه را روشن می‌کند."
+      "en": "That evening, Dad turns on the computer.",
+      "fa": "آن شب، بابا رایانه را روشن می‌کند."
     },
     {
-      "en": "Mom writes an email about Nino and the note.",
-      "fa": "مامان ایمیلی درباره‌ی نینو و یادداشت می‌نویسد."
+      "en": "He sends an email to the newspaper with Nino's best photograph.",
+      "fa": "ایمیلی با بهترین عکس نینو برای روزنامه می‌فرستد."
     },
     {
-      "en": "The email will include the family phone and address.",
-      "fa": "ایمیل شامل تلفن و آدرس خانواده خواهد بود."
+      "en": "The email includes their address and phone.",
+      "fa": "ایمیل شامل آدرس و تلفن آن‌هاست."
     },
     {
-      "en": "Mina uses the internet to find local animal groups.",
-      "fa": "مینا از اینترنت برای پیدا کردن گروه‌های محلی حیوانات استفاده می‌کند."
+      "en": "Then they look on the internet for more help.",
+      "fa": "بعد در اینترنت دنبال کمک بیشتر می‌گردند."
     },
     {
-      "en": "Soon the family is online together at the table.",
-      "fa": "خیلی زود خانواده با هم پشت میز آنلاین هستند."
+      "en": "There is a website for people who look for animals, and Mom puts Nino's picture on it.",
+      "fa": "وب‌سایتی برای آدم‌هایی هست که دنبال حیوان‌ها می‌گردند و مامان عکس نینو را آنجا می‌گذارد."
     },
     {
-      "en": "They find a neighborhood website and post Nino's picture there.",
-      "fa": "یک وب‌سایت محلی پیدا می‌کنند و تصویر نینو را آنجا منتشر می‌کنند."
+      "en": "Aria finds an old DVD with a video of Nino as a baby chicken.",
+      "fa": "آریا یک دی‌وی‌دی قدیمی پیدا می‌کند که ویدیویی از نینو در جوجگی دارد."
     },
     {
-      "en": "Mina puts a good photo of Nino on the website.",
-      "fa": "مینا یک عکس خوب از نینو روی وب‌سایت می‌گذارد."
+      "en": "In the video, Nino is very small, and he walks on Mina's desk.",
+      "fa": "در ویدیو، نینو خیلی کوچک است و روی میز مینا راه می‌رود."
     },
     {
-      "en": "Dad also finds an older photograph from last winter.",
-      "fa": "بابا یک عکس قدیمی‌تر از زمستان گذشته هم پیدا می‌کند."
+      "en": "Everyone watches it twice.",
+      "fa": "همه دو بار آن را تماشا می‌کنند."
     },
     {
-      "en": "Mina chooses the newer picture because Nino is easy to see.",
-      "fa": "مینا تصویر جدیدتر را انتخاب می‌کند چون نینو در آن راحت دیده می‌شود."
+      "en": "Dad also finds a CD with family photographs.",
+      "fa": "بابا یک سی‌دی با عکس‌های خانوادگی هم پیدا می‌کند."
     },
     {
-      "en": "Dad uses his camera to take a picture of the note.",
-      "fa": "بابا با دوربینش از یادداشت عکس می‌گیرد."
+      "en": "\"Is it possible to put the video on the website?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «ممکن است ویدیو را روی وب‌سایت بگذاریم؟»"
     },
     {
-      "en": "A short video explains how neighbors can help look for Nino.",
-      "fa": "یک ویدیوی کوتاه توضیح می‌دهد همسایه‌ها چگونه می‌توانند در پیدا کردن نینو کمک کنند."
+      "en": "\"Yes,\" Dad says, and he takes a new photograph of Mina's drawing with his camera too.",
+      "fa": "بابا می‌گوید: «بله» و با دوربینش از نقاشی مینا هم عکس تازه‌ای می‌گیرد."
     },
     {
-      "en": "Mina watches the video and adds one useful idea to her plan.",
-      "fa": "مینا ویدیو را می‌بیند و یک ایده‌ی مفید به برنامه‌اش اضافه می‌کند."
+      "en": "Two days later, the article is in the newspaper.",
+      "fa": "دو روز بعد، مقاله در روزنامه چاپ می‌شود."
     },
     {
-      "en": "By evening, the local news has heard about Nino.",
-      "fa": "تا عصر، خبر محلی درباره‌ی نینو شنیده است."
+      "en": "There is Nino's photograph, and under it is Mina's description.",
+      "fa": "عکس نینو هست و زیرش توصیف مینا."
     },
     {
-      "en": "A small news report asks people to watch for a little yellow chicken.",
-      "fa": "یک گزارش خبری کوتاه از مردم می‌خواهد مراقب یک جوجه‌ی زرد کوچک باشند."
+      "en": "A local magazine also puts Nino's picture on one of its pages.",
+      "fa": "یک مجله‌ی محلی هم عکس نینو را در یکی از صفحه‌هایش می‌گذارد."
     },
     {
-      "en": "The next morning, Mom buys a newspaper at a shop near home.",
-      "fa": "صبح بعد، مامان از مغازه‌ای نزدیک خانه روزنامه می‌خرد."
+      "en": "On Friday, the radio reads a short message about Nino.",
+      "fa": "جمعه، رادیو پیام کوتاهی درباره‌ی نینو می‌خواند."
     },
     {
-      "en": "An article in the newspaper is about Mina looking for Nino.",
-      "fa": "مقاله‌ای در روزنامه درباره‌ی جست‌وجوی مینا برای نینو است."
+      "en": "The family listens to it together in the kitchen.",
+      "fa": "خانواده با هم در آشپزخانه به آن گوش می‌دهند."
     },
     {
-      "en": "A local magazine also agrees to show Nino's picture.",
-      "fa": "یک مجله‌ی محلی هم قبول می‌کند تصویر نینو را نشان دهد."
+      "en": "\"A little yellow chicken named Nino is far from home,\" the radio says.",
+      "fa": "رادیو می‌گوید: «جوجه‌ی زرد کوچکی به نام نینو از خانه دور افتاده است.»"
     },
     {
-      "en": "Mina keeps the magazine page next to her red book.",
-      "fa": "مینا صفحه‌ی مجله را کنار کتاب قرمزش نگه می‌دارد."
+      "en": "Mina closes her eyes and listens to every word.",
+      "fa": "مینا چشم‌هایش را می‌بندد و به تک‌تک کلمه‌ها گوش می‌دهد."
     },
     {
-      "en": "The radio station reads the message about Nino that afternoon.",
-      "fa": "ایستگاه رادیو بعدازظهر پیام درباره‌ی نینو را می‌خواند."
+      "en": "Across the city, in a small garden full of birds, an old woman listens to the radio too.",
+      "fa": "آن سوی شهر، در باغچه‌ی کوچکی پر از پرنده، پیرزنی هم به رادیو گوش می‌دهد."
     },
     {
-      "en": "Hearing the radio makes Mina feel that more people are helping.",
-      "fa": "شنیدن رادیو باعث می‌شود مینا احساس کند آدم‌های بیشتری کمک می‌کنند."
+      "en": "That night, the telephone makes a sound three times.",
+      "fa": "آن شب، تلفن سه بار زنگ می‌زند."
     },
     {
-      "en": "The newspaper, magazine, website, and radio repeat the same important information.",
-      "fa": "روزنامه، مجله، وب‌سایت و رادیو همان اطلاعات مهم را تکرار می‌کنند."
+      "en": "The first call is about a yellow bird.",
+      "fa": "تماس اول درباره‌ی یک پرنده‌ی زرد است."
     },
     {
-      "en": "The post should include a good photo, address, and phone.",
-      "fa": "آگهی باید شامل یک عکس خوب، آدرس و تلفن باشد."
+      "en": "The second call is about a yellow shopping bag.",
+      "fa": "تماس دوم درباره‌ی یک کیسه‌ی خرید زرد است."
     },
     {
-      "en": "Mina writes a short description under Nino's picture.",
-      "fa": "مینا یک توصیف کوتاه زیر تصویر نینو می‌نویسد."
+      "en": "The third call is from Negar. \"You are on the radio!\" she says, and she is very happy.",
+      "fa": "تماس سوم از نگار است. می‌گوید: «تو توی رادیو هستی!» و خیلی خوشحال است."
     },
     {
-      "en": "She uses three words to describe him: little, yellow, fast.",
-      "fa": "با سه کلمه او را توصیف می‌کند: کوچک، زرد، سریع."
+      "en": "Mina goes to bed with a lot of hope and a lot of questions.",
+      "fa": "مینا با کلی امید و کلی سؤال به رختخواب می‌رود."
     },
     {
-      "en": "Later, the phone makes a sound again with another possible report.",
-      "fa": "بعدتر، تلفن دوباره با یک گزارش احتمالی دیگر صدا می‌دهد."
-    },
-    {
-      "en": "The caller says she read the note on the website.",
-      "fa": "تماس‌گیرنده می‌گوید یادداشت را در وب‌سایت خوانده است."
-    },
-    {
-      "en": "She sends an email with the place where she saw the chicken.",
-      "fa": "ایمیلی با محل دیدن جوجه می‌فرستد."
-    },
-    {
-      "en": "Mina checks the online map before leaving home.",
-      "fa": "مینا پیش از بیرون رفتن نقشه‌ی آنلاین را بررسی می‌کند."
-    },
-    {
-      "en": "The computer shows the shortest way to the new address.",
-      "fa": "رایانه کوتاه‌ترین راه تا آدرس تازه را نشان می‌دهد."
-    },
-    {
-      "en": "Dad takes a photo of the computer picture with his camera so they can show people outside.",
-      "fa": "بابا با دوربینش از تصویر رایانه عکس می‌گیرد تا بتوانند آن را بیرون به مردم نشان دهند."
-    },
-    {
-      "en": "He carries the camera because they may need a new picture.",
-      "fa": "دوربین را با خود می‌برد چون شاید به تصویر تازه‌ای نیاز داشته باشند."
-    },
-    {
-      "en": "The newspaper article helps one person in a shop remember Nino's name.",
-      "fa": "مقاله‌ی روزنامه کمک می‌کند یک نفر در مغازه نام نینو را به یاد بیاورد."
-    },
-    {
-      "en": "The magazine picture goes to people in another neighborhood.",
-      "fa": "تصویر مجله به مردم محله‌ی دیگری می‌رسد."
-    },
-    {
-      "en": "The radio asks people to call if they see anything useful.",
-      "fa": "رادیو از مردم می‌خواهد اگر چیز مفیدی دیدند تماس بگیرند."
-    },
-    {
-      "en": "For one day, Nino becomes a small piece of local news.",
-      "fa": "برای یک روز، نینو به بخش کوچکی از خبرهای محلی تبدیل می‌شود."
-    },
-    {
-      "en": "Dad finds an old CD with family photographs of Nino.",
-      "fa": "بابا یک سی‌دی قدیمی با عکس‌های خانوادگی نینو پیدا می‌کند."
-    },
-    {
-      "en": "One CD photograph shows a little white on Nino's left.",
-      "fa": "یکی از عکس‌های سی‌دی کمی سفید در سمت چپ نینو نشان می‌دهد."
-    },
-    {
-      "en": "Mina also finds a DVD about chickens at home.",
-      "fa": "مینا یک دی‌وی‌دی درباره‌ی جوجه‌ها در خانه هم پیدا می‌کند."
-    },
-    {
-      "en": "The DVD gives no new information, but Mina keeps waiting and hoping.",
-      "fa": "دی‌وی‌دی اطلاعات تازه‌ای نمی‌دهد، اما مینا همچنان منتظر می‌ماند و امیدوار است."
-    },
-    {
-      "en": "All the information now points to some areas to check.",
-      "fa": "حالا همه‌ی اطلاعات به چند منطقه برای بررسی اشاره می‌کنند."
-    },
-    {
-      "en": "Mina keeps the same description in every message.",
-      "fa": "مینا همان توصیف را در همه‌ی پیام‌ها نگه می‌دارد."
-    },
-    {
-      "en": "She asks everyone to use many words to describe any little yellow chicken.",
-      "fa": "از همه می‌خواهد برای توصیف هر جوجه‌ی زرد کوچک از کلمات زیادی استفاده کنند."
-    },
-    {
-      "en": "The next caller says he is calling about the wall note.",
-      "fa": "تماس‌گیرنده‌ی بعدی می‌گوید درباره‌ی یادداشت روی دیوار زنگ زده است."
-    },
-    {
-      "en": "The family checks his information, but that chicken is not Nino.",
-      "fa": "خانواده اطلاعات او را بررسی می‌کند، اما آن جوجه نینو نیست."
-    },
-    {
-      "en": "Mina returns home and puts the phone next to her book.",
-      "fa": "مینا به خانه برمی‌گردد و گوشی را کنار کتابش می‌گذارد."
-    },
-    {
-      "en": "She keeps the telephone close because the next call may be important.",
-      "fa": "تلفن را نزدیک نگه می‌دارد چون شاید تماس بعدی مهم باشد."
+      "en": "\"So many people know your name now, Nino,\" she says. \"Please come home.\"",
+      "fa": "می‌گوید: «حالا این‌همه آدم اسمت را می‌دانند، نینو. لطفاً برگرد خانه.»"
     }
   ],
   "check": [
     {
-      "q": "مرد درباره‌ی چه چیزی زنگ می‌زند؟",
+      "q": "زنی که تلفن می‌زند از کجاست؟",
       "options": [
-        "note",
-        "email",
-        "video",
-        "news"
+        "newspaper",
+        "radio",
+        "school",
+        "market"
       ],
-      "a": "note"
+      "a": "newspaper"
     },
     {
-      "q": "جوجه‌ی نزدیک پارک نینو بود؟",
+      "q": "آریا چه چیزی با ویدیوی نینو پیدا می‌کند؟",
       "options": [
-        "no",
-        "yes",
-        "photo",
-        "video"
+        "dvd",
+        "cd",
+        "camera",
+        "computer"
       ],
-      "a": "no"
+      "a": "dvd"
     }
   ]
 }

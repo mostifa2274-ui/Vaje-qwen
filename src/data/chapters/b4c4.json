@@ -5,244 +5,132 @@
   "titleFa": "پول",
   "titleEn": "Money",
   "new": [
-    "bank",
+    "bill",
     "menu",
-    "cost",
     "dollar",
     "euro",
-    "product",
-    "free",
-    "bill",
     "pound",
     "cent",
-    "correct"
+    "bank",
+    "correct",
+    "free",
+    "cost",
+    "product"
   ],
   "sentences": [
     {
-      "en": "Mina and Mom stop at a small cafe near the market.",
-      "fa": "مینا و مامان جلوی کافه‌ای کوچک نزدیک بازار می‌ایستند."
+      "en": "When they are ready to go, Mom asks for the bill.",
+      "fa": "وقتی آماده‌ی رفتن‌اند، مامان صورت‌حساب را می‌خواهد."
     },
     {
-      "en": "Mom checks the money in her bag before they go in.",
-      "fa": "مامان پیش از ورود پول داخل کیفش را بررسی می‌کند."
+      "en": "She looks at the menu and checks the bill.",
+      "fa": "به منو نگاه می‌کند و صورت‌حساب را بررسی می‌کند."
     },
     {
-      "en": "They have just come from the bank.",
-      "fa": "آن‌ها تازه از بانک آمده‌اند."
+      "en": "\"Coffee, tea, juice, ice cream and a cookie,\" she says.",
+      "fa": "می‌گوید: «قهوه، چای، آب‌میوه، بستنی و یک کلوچه.»"
     },
     {
-      "en": "A customer at the door keeps it open for them.",
-      "fa": "مشتری‌ای کنار در آن را برایشان باز نگه می‌دارد."
+      "en": "The menu also shows the prices for visitors in dollars and euros.",
+      "fa": "منو قیمت‌ها را برای بازدیدکننده‌ها به دلار و یورو هم نشان می‌دهد."
     },
     {
-      "en": "Mina sits where she can watch the street for Nino.",
-      "fa": "مینا جایی می‌نشیند که بتواند خیابان را برای نینو زیر نظر بگیرد."
+      "en": "At the next table, two visitors are paying in dollars.",
+      "fa": "پشت میز کناری، دو بازدیدکننده دارند با دلار پول می‌دهند."
     },
     {
-      "en": "The menu is on the table next to a bottle of water.",
-      "fa": "منو روی میز کنار یک بطری آب است."
+      "en": "\"Why do they pay in dollars?\" Aria asks.",
+      "fa": "آریا می‌پرسد: «چرا با دلار پول می‌دهند؟»"
     },
     {
-      "en": "Mom reads the menu and asks about the price of the soup.",
-      "fa": "مامان منو را می‌خواند و درباره‌ی قیمت سوپ می‌پرسد."
+      "en": "\"They come from far away,\" Dad says. \"They have their own money: dollars, euros, pounds and cents.\"",
+      "fa": "بابا می‌گوید: «از جای دوری آمده‌اند. پول خودشان را دارند: دلار، یورو، پوند و سنت.»"
     },
     {
-      "en": "The menu says the soup costs one dollar for visitors.",
-      "fa": "در منو نوشته که سوپ برای بازدیدکننده‌ها یک دلار است."
+      "en": "Then Mina sees a pound on the floor, under the visitor's chair.",
+      "fa": "بعد مینا یک پوند روی زمین، زیر صندلی آن بازدیدکننده، می‌بیند."
     },
     {
-      "en": "For visitors, a piece of cake costs two euros.",
-      "fa": "برای بازدیدکننده‌ها، یک تکه کیک دو یورو است."
+      "en": "She takes it and gives it back to him.",
+      "fa": "آن را برمی‌دارد و به او پس می‌دهد."
     },
     {
-      "en": "Another product on the menu is bread.",
-      "fa": "محصول دیگری در منو نان است."
+      "en": "\"Thank you!\" the visitor says. \"You are a good girl.\"",
+      "fa": "بازدیدکننده می‌گوید: «ممنونم! دختر خوبی هستی.»"
     },
     {
-      "en": "Mina asks how much the bread will cost.",
-      "fa": "مینا می‌پرسد نان چقدر هزینه دارد."
+      "en": "Mom pays with the money she got from the bank that morning.",
+      "fa": "مامان با پولی که آن روز صبح از بانک گرفته، حساب را می‌پردازد."
     },
     {
-      "en": "The waiter is happy and says the bread is free for her.",
-      "fa": "پیشخدمت خوشحال است و می‌گوید نان برای او رایگان است."
+      "en": "The waiter checks the money and gives a little back to her.",
+      "fa": "پیشخدمت پول را بررسی می‌کند و کمی از آن را به او پس می‌دهد."
     },
     {
-      "en": "\"Free?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «رایگان؟»"
+      "en": "\"The bill is correct,\" Mom says, \"but the extra water is not on it.\"",
+      "fa": "مامان می‌گوید: «صورت‌حساب درست است، اما آب اضافه در آن نیست.»"
     },
     {
-      "en": "He has heard about Nino and wants to help.",
-      "fa": "او ماجرای نینو را شنیده و می‌خواهد کمک کند."
+      "en": "\"The water is free,\" the waiter says. \"Water costs nothing here.\"",
+      "fa": "پیشخدمت می‌گوید: «آب رایگان است. اینجا آب پولی نیست.»"
     },
     {
-      "en": "Mom still has to pay the other part of the bill.",
-      "fa": "مامان هنوز باید بخش دیگر صورتحساب را پرداخت کند."
+      "en": "Then he gives Mina a small paper bag.",
+      "fa": "بعد یک پاکت کاغذی کوچک به مینا می‌دهد."
     },
     {
-      "en": "She checks the bill before she pays.",
-      "fa": "پیش از پرداخت، صورتحساب را بررسی می‌کند."
+      "en": "\"Bread for your chicken,\" he says. \"It is free too.\"",
+      "fa": "می‌گوید: «نان برای جوجه‌ات. این هم رایگان است.»"
     },
     {
-      "en": "The final cost is written on the bill.",
-      "fa": "هزینه‌ی نهایی روی صورتحساب نوشته شده است."
+      "en": "Mina thanks him, and she puts the bag with the other bread.",
+      "fa": "مینا از او تشکر می‌کند و پاکت را کنار بقیه‌ی نان‌ها می‌گذارد."
     },
     {
-      "en": "Visitors can pay in dollar, euro, or pound notes.",
-      "fa": "بازدیدکننده‌ها می‌توانند با اسکناس دلار، یورو یا پوند پرداخت کنند."
+      "en": "Near the door, a small shop sells market products: cheese, butter and eggs.",
+      "fa": "نزدیک در، مغازه‌ی کوچکی محصولات بازار را می‌فروشد: پنیر، کره و تخم‌مرغ."
     },
     {
-      "en": "A visitor at the next table has a few cents in his hand.",
-      "fa": "بازدیدکننده‌ای پشت میز کناری چند سنت در دستش دارد."
+      "en": "Mom buys some eggs, and she shows Nino's picture to the shop man too.",
+      "fa": "مامان چند تخم‌مرغ می‌خرد و عکس نینو را به مرد مغازه‌دار هم نشان می‌دهد."
     },
     {
-      "en": "A pound is on the floor near Mina's shoe.",
-      "fa": "یک پوند روی زمین نزدیک کفش مینا است."
+      "en": "\"Many people ask about chickens here,\" he says. \"Most are looking for eggs, not for a friend.\"",
+      "fa": "می‌گوید: «اینجا خیلی‌ها درباره‌ی مرغ و جوجه می‌پرسند. بیشترشان دنبال تخم‌مرغ‌اند، نه دنبال یک دوست.»"
     },
     {
-      "en": "Mina takes it and gives it back to the visitor.",
-      "fa": "مینا آن را برمی‌دارد و به بازدیدکننده پس می‌دهد."
+      "en": "In the evening, the family takes bus fifteen home.",
+      "fa": "عصر، خانواده با اتوبوس پانزده به خانه برمی‌گردند."
     },
     {
-      "en": "At the next table, another customer is ready to order.",
-      "fa": "پشت میز کناری، مشتری دیگری آماده‌ی سفارش دادن است."
+      "en": "Mina has two bags of bread in her hands and one question in her head.",
+      "fa": "مینا دو کیسه نان در دست دارد و یک سؤال در سر."
     },
     {
-      "en": "Each customer points to something different on the menu.",
-      "fa": "هر مشتری به چیز متفاوتی در منو اشاره می‌کند."
-    },
-    {
-      "en": "One orders salad, and the other orders rice.",
-      "fa": "یکی سالاد سفارش می‌دهد و دیگری برنج."
-    },
-    {
-      "en": "Both customers also ask for water.",
-      "fa": "هر دو مشتری آب هم می‌خواهند."
-    },
-    {
-      "en": "The waiter brings each person a clean glass.",
-      "fa": "پیشخدمت برای هر نفر یک لیوان تمیز می‌آورد."
-    },
-    {
-      "en": "Mina asks for another bottle because their bottle has little water.",
-      "fa": "مینا یک بطری دیگر می‌خواهد چون بطری آن‌ها آب کمی دارد."
-    },
-    {
-      "en": "The waiter brings a cold bottle and a small box.",
-      "fa": "پیشخدمت یک بطری سرد و یک جعبه‌ی کوچک می‌آورد."
-    },
-    {
-      "en": "The box is for the cake Mom wants to take home.",
-      "fa": "جعبه برای کیکی است که مامان می‌خواهد به خانه ببرد."
-    },
-    {
-      "en": "Mina watches the street, and Mom finishes the order.",
-      "fa": "مینا خیابان را نگاه می‌کند و مامان سفارش را کامل می‌کند."
-    },
-    {
-      "en": "Two chickens come near a market shop.",
-      "fa": "دو جوجه نزدیک یک مغازه‌ی بازار می‌آیند."
-    },
-    {
-      "en": "Both chickens turn when Mina calls Nino.",
-      "fa": "هر دو جوجه وقتی مینا نینو را صدا می‌کند برمی‌گردند."
-    },
-    {
-      "en": "One chicken is light brown, and the other is white.",
-      "fa": "یکی از جوجه‌ها قهوه‌ای روشن است و دیگری سفید."
-    },
-    {
-      "en": "They are not Nino.",
-      "fa": "آن‌ها نینو نیستند."
-    },
-    {
-      "en": "Mina asks, \"Is there anything else I should check?\"",
-      "fa": "مینا می‌پرسد: «جای دیگری هست که باید بررسی کنم؟»"
-    },
-    {
-      "en": "The waiter says there is another small street behind the cafe.",
-      "fa": "پیشخدمت می‌گوید خیابان کوچک دیگری پشت کافه هست."
-    },
-    {
-      "en": "Only people who work there usually use that small street.",
-      "fa": "معمولاً فقط افرادی که آنجا کار می‌کنند از آن خیابان کوچک استفاده می‌کنند."
-    },
-    {
-      "en": "Mom and Mina go there with him because looking for Nino is very important.",
-      "fa": "مامان و مینا همراه او به آنجا می‌روند چون پیدا کردن نینو خیلی مهم است."
-    },
-    {
-      "en": "Even the cook comes outside to look.",
-      "fa": "حتی آشپز هم برای جست‌وجو بیرون می‌آید."
-    },
-    {
-      "en": "The cook also checks behind some boxes.",
-      "fa": "آشپز پشت چند جعبه را هم بررسی می‌کند."
-    },
-    {
-      "en": "They find a bag but no chicken.",
-      "fa": "یک کیف پیدا می‌کنند، اما جوجه‌ای نیست."
-    },
-    {
-      "en": "Mina feels sad, but the free bread makes her happy for a moment.",
-      "fa": "مینا ناراحت است، اما نان رایگان برای لحظه‌ای خوشحالش می‌کند."
-    },
-    {
-      "en": "Back at the table, Mom is ready to pay.",
-      "fa": "وقتی برمی‌گردند، مامان آماده‌ی پرداخت است."
-    },
-    {
-      "en": "She puts the money next to the bill.",
-      "fa": "پول را کنار صورتحساب می‌گذارد."
-    },
-    {
-      "en": "The waiter checks the money and gives some back.",
-      "fa": "پیشخدمت پول را بررسی می‌کند و مقداری پس می‌دهد."
-    },
-    {
-      "en": "The price was correct, so Mom thanks him.",
-      "fa": "قیمت درست بود، پس مامان از او تشکر می‌کند."
-    },
-    {
-      "en": "Before they leave, he gives Mina the cake box.",
-      "fa": "پیش از رفتن، جعبه‌ی کیک را به مینا می‌دهد."
-    },
-    {
-      "en": "The bottle goes into Mom's bag.",
-      "fa": "بطری داخل کیف مامان می‌رود."
-    },
-    {
-      "en": "Mina looks once more at the menu and the busy customers.",
-      "fa": "مینا یک بار دیگر به منو و مشتری‌های شلوغ نگاه می‌کند."
-    },
-    {
-      "en": "Then she follows Mom out to the busy street.",
-      "fa": "بعد همراه مامان به خیابان شلوغ بیرون می‌رود."
-    },
-    {
-      "en": "They keep looking for Nino, and all new information feels important.",
-      "fa": "آن‌ها همچنان دنبال نینو می‌گردند و همه‌ی اطلاعات تازه مهم به نظر می‌رسد."
+      "en": "Is the chicken at the bread shop Nino?",
+      "fa": "آیا جوجه‌ی نانوایی نینوست؟"
     }
   ],
   "check": [
     {
-      "q": "نان برای مینا چقدر است؟",
+      "q": "بازدیدکننده‌ها با چه پولی حساب را می‌پردازند؟",
       "options": [
-        "free",
-        "expensive",
         "dollar",
-        "bill"
+        "pound",
+        "euro",
+        "cent"
       ],
-      "a": "free"
+      "a": "dollar"
     },
     {
-      "q": "مامان با چه چیزی پرداخت می‌کند؟",
+      "q": "پیشخدمت می‌گوید چه چیزی رایگان است؟",
       "options": [
-        "money",
-        "menu",
-        "bag",
-        "box"
+        "water",
+        "coffee",
+        "tea",
+        "cookie"
       ],
-      "a": "money"
+      "a": "water"
     }
   ]
 }

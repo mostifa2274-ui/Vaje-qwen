@@ -7,268 +7,130 @@
   "new": [
     "festival",
     "culture",
-    "movie",
     "common",
+    "popular",
     "paint",
     "painting",
+    "style",
     "design",
-    "negative",
-    "positive",
-    "terrible",
-    "statement",
-    "topic"
+    "movie",
+    "star"
   ],
   "sentences": [
     {
-      "en": "That night, the rain finally stops, and Mina can see the stars.",
-      "fa": "آن شب، باران بالاخره بند می‌آید و مینا می‌تواند ستاره‌ها را ببیند."
+      "en": "On Thursday, there is a summer festival in the town by the sea.",
+      "fa": "پنجشنبه، در شهر کنار دریا یک جشنواره‌ی تابستانی برپاست."
     },
     {
-      "en": "Mina and Grandmother go outside and see the first star.",
-      "fa": "مینا و مادربزرگ بیرون می‌روند و اولین ستاره را می‌بینند."
+      "en": "All the family goes, and Uncle comes too. His arm is much better now.",
+      "fa": "همه‌ی خانواده می‌روند و دایی هم می‌آید. حالا دستش خیلی بهتر است."
     },
     {
-      "en": "Soon they see another star, then many more.",
-      "fa": "خیلی زود ستاره‌ای دیگر و بعد ستاره‌های زیادی می‌بینند."
+      "en": "The festival shows the culture of the north: local food, music, old clothes and beautiful things made by hand.",
+      "fa": "جشنواره فرهنگ شمال را نشان می‌دهد: غذای محلی، موسیقی، لباس‌های قدیمی و چیزهای زیبای دست‌ساز."
     },
     {
-      "en": "\"Look at the stars,\" Grandmother says. \"There are so many tonight.\"",
-      "fa": "مادربزرگ می‌گوید: «به ستاره‌ها نگاه کن. امشب خیلی زیادند.»"
+      "en": "Fish with rice is a common meal here, and it is very popular at the festival.",
+      "fa": "ماهی با برنج اینجا غذای رایجی است و در جشنواره خیلی طرفدار دارد."
     },
     {
-      "en": "\"Which star do you like best?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «کدام ستاره را بیشتر از همه دوست داری؟»"
+      "en": "There is a place where children can paint, with paper and many colors.",
+      "fa": "جایی هست که بچه‌ها می‌توانند نقاشی کنند، با کاغذ و کلی رنگ."
     },
     {
-      "en": "Grandmother points to one small star above the garden wall.",
-      "fa": "مادربزرگ به ستاره‌ی کوچکی بالای دیوار باغ اشاره می‌کند."
+      "en": "Mina's cousin paints the sea. Aria paints Grandfather's truck, of course.",
+      "fa": "دختردایی مینا دریا را می‌کشد. آریا هم البته کامیون پدربزرگ را."
     },
     {
-      "en": "\"That one,\" she says. \"It is small but has a lot of light.\"",
-      "fa": "می‌گوید: «همان یکی. کوچک است، اما نور زیادی دارد.»"
+      "en": "Mina paints Nino: yellow, with orange feet and a little white on his left.",
+      "fa": "مینا نینو را می‌کشد: زرد، با پاهای نارنجی و کمی سفید در سمت چپش."
     },
     {
-      "en": "\"Why that one?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «چرا آن یکی؟»"
+      "en": "Next to him, she paints a red bird.",
+      "fa": "کنارش یک پرنده‌ی قرمز می‌کشد."
     },
     {
-      "en": "\"Because small things can still carry a lot of light,\" Grandmother answers.",
-      "fa": "مادربزرگ جواب می‌دهد: «چون چیزهای کوچک هم می‌توانند نور زیادی داشته باشند.»"
+      "en": "A woman who teaches painting looks at it. \"What a beautiful painting,\" she says. \"You have your own style.\"",
+      "fa": "زنی که نقاشی درس می‌دهد به آن نگاه می‌کند. می‌گوید: «چه نقاشی قشنگی. سبک خودت را داری.»"
     },
     {
-      "en": "The little star has more light than the one next to it.",
-      "fa": "ستاره‌ی کوچک از ستاره‌ی کناری نور بیشتری دارد."
+      "en": "\"Thank you,\" Mina says. \"He is my chicken. He is not home.\"",
+      "fa": "مینا می‌گوید: «ممنونم. او جوجه‌ی من است. خانه نیست.»"
     },
     {
-      "en": "Mina decides she likes it better than the big stars.",
-      "fa": "مینا تصمیم می‌گیرد آن را بیشتر از ستاره‌های بزرگ دوست دارد."
+      "en": "\"Then let's design a new note with your painting,\" the woman says, and she helps Mina.",
+      "fa": "زن می‌گوید: «پس بیا با نقاشی‌ات یک یادداشت تازه طراحی کنیم» و به مینا کمک می‌کند."
     },
     {
-      "en": "\"Maybe the best things are not always big,\" she says.",
-      "fa": "می‌گوید: «شاید بهترین چیزها همیشه بزرگ نباشند.»"
+      "en": "Over the picture, Mina writes a title in big letters: \"Nino, Come Home.\"",
+      "fa": "بالای تصویر، مینا با حروف درشت یک عنوان می‌نویسد: «نینو، برگرد خانه.»"
     },
     {
-      "en": "Music from the town comes to the garden a few minutes later.",
-      "fa": "چند دقیقه بعد صدای موسیقی شهر به باغ می‌آید."
+      "en": "\"Cool!\" her cousin says.",
+      "fa": "دختردایی‌اش می‌گوید: «چه باحال!»"
     },
     {
-      "en": "Grandmother explains that a summer festival has started below.",
-      "fa": "مادربزرگ توضیح می‌دهد جشن تابستانی در پایین شهر شروع شده است."
+      "en": "In the evening, there is a movie for families outside, next to the sea.",
+      "fa": "عصر، کنار دریا، یک فیلم برای خانواده‌ها در فضای باز پخش می‌شود."
     },
     {
-      "en": "The festival is part of the town's culture and happens every year.",
-      "fa": "جشن بخشی از فرهنگ شهر است و هر سال برگزار می‌شود."
+      "en": "It is a popular movie about a dog who travels a long way to find his family.",
+      "fa": "فیلم پرطرفداری است درباره‌ی سگی که راه درازی سفر می‌کند تا خانواده‌اش را پیدا کند."
     },
     {
-      "en": "Families come there for food, music, and a movie outside.",
-      "fa": "خانواده‌ها برای غذا، موسیقی و تماشای فیلم در فضای باز آنجا می‌آیند."
+      "en": "At the end, the dog comes home, and everyone is happy.",
+      "fa": "آخرش، سگ به خانه برمی‌گردد و همه خوشحال‌اند."
     },
     {
-      "en": "Mina and Grandmother walk down to watch the movie together.",
-      "fa": "مینا و مادربزرگ با هم پایین می‌روند تا فیلم را ببینند."
+      "en": "\"That is a movie about Nino!\" Aria says.",
+      "fa": "آریا می‌گوید: «این فیلمِ نینوست!»"
     },
     {
-      "en": "The movie tells the story of a girl looking for her little chicken.",
-      "fa": "فیلم داستان دختری را تعریف می‌کند که دنبال جوجه‌ی کوچکش می‌گردد."
+      "en": "Late at night, back at the house, Mina sits in the garden with Grandmother.",
+      "fa": "دیروقت، در خانه، مینا با مادربزرگ در باغ می‌نشیند."
     },
     {
-      "en": "Grandmother explains that stories about animals are common in the town.",
-      "fa": "مادربزرگ توضیح می‌دهد که داستان‌های حیوان‌ها در این شهر رایج‌اند."
+      "en": "There are hundreds of stars. In Tehran, you cannot see so many.",
+      "fa": "صدها ستاره هست. در تهران نمی‌شود این‌همه ستاره دید."
     },
     {
-      "en": "\"Chickens are common in our culture too,\" she says.",
-      "fa": "می‌گوید: «جوجه‌ها در فرهنگ ما هم رایج هستند.»"
+      "en": "In the light from the kitchen window, Mina paints one more picture of Nino.",
+      "fa": "در نورِ پنجره‌ی آشپزخانه، مینا یک تصویر دیگر از نینو می‌کشد."
     },
     {
-      "en": "In the movie, the girl begins to paint her chicken.",
-      "fa": "در فیلم، دختر شروع می‌کند جوجه‌اش را نقاشی کند."
+      "en": "Grandmother points to a big star. \"Do you see that one?\" she asks.",
+      "fa": "مادربزرگ به یک ستاره‌ی بزرگ اشاره می‌کند. می‌پرسد: «آن یکی را می‌بینی؟»"
     },
     {
-      "en": "She uses yellow paint for the chicken and blue paint above it.",
-      "fa": "برای جوجه رنگ زرد و بالای آن رنگ آبی استفاده می‌کند."
+      "en": "\"When I was a girl, I talked to that star every night about my goat.\"",
+      "fa": "«وقتی دختربچه بودم، هر شب با آن ستاره درباره‌ی بزغاله‌ام حرف می‌زدم.»"
     },
     {
-      "en": "The finished painting shows the chicken under many stars.",
-      "fa": "نقاشی تمام‌شده جوجه را زیر ستاره‌های زیادی نشان می‌دهد."
+      "en": "\"It is the same star in Tehran. Tonight, Nino can see it too.\"",
+      "fa": "«در تهران هم همین ستاره است. امشب نینو هم می‌تواند ببیندش.»"
     },
     {
-      "en": "Mina studies the painting and likes its design.",
-      "fa": "مینا نقاشی را نگاه می‌کند و از طرحش خوشش می‌آید."
+      "en": "Mina looks at the star for a long time.",
+      "fa": "مینا مدت زیادی به ستاره نگاه می‌کند."
     },
     {
-      "en": "\"I want to make a design like that for my book,\" Mina says.",
-      "fa": "مینا می‌گوید: «می‌خواهم برای کتابم طرحی شبیه آن درست کنم.»"
-    },
-    {
-      "en": "Grandmother says a good design can be easy to make and still beautiful.",
-      "fa": "مادربزرگ می‌گوید یک طرح خوب می‌تواند آسان ساخته شود و باز هم زیبا باشد."
-    },
-    {
-      "en": "Back at the house, Mina opens her red book under the stars.",
-      "fa": "وقتی به خانه برمی‌گردند، مینا کتاب قرمزش را زیر ستاره‌ها باز می‌کند."
-    },
-    {
-      "en": "She starts to paint a small picture of Nino.",
-      "fa": "شروع می‌کند تصویر کوچکی از نینو نقاشی کند."
-    },
-    {
-      "en": "Her painting is not perfect, but it feels real.",
-      "fa": "نقاشی‌اش بی‌نقص نیست، اما واقعی به نظر می‌رسد."
-    },
-    {
-      "en": "\"Could I make it better?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «می‌توانم بهترش کنم؟»"
-    },
-    {
-      "en": "\"Of course,\" Grandmother says. \"Practice makes many things possible.\"",
-      "fa": "مادربزرگ می‌گوید: «البته. تمرین خیلی چیزها را ممکن می‌کند.»"
-    },
-    {
-      "en": "Mina asks if it is possible that Nino can see the same stars.",
-      "fa": "مینا می‌پرسد آیا ممکن است نینو همین ستاره‌ها را ببیند."
-    },
-    {
-      "en": "Grandmother says it is possible, even if they cannot know for sure.",
-      "fa": "مادربزرگ می‌گوید ممکن است، حتی اگر نتوانند با اطمینان بدانند."
-    },
-    {
-      "en": "For a moment, Mina starts thinking something negative again.",
-      "fa": "برای لحظه‌ای، مینا دوباره به چیزی منفی فکر می‌کند."
-    },
-    {
-      "en": "A negative thought tells her that Nino may never come back.",
-      "fa": "یک فکر منفی به او می‌گوید شاید نینو هرگز برنگردد."
-    },
-    {
-      "en": "Grandmother sees this and asks Mina to say one positive thing.",
-      "fa": "مادربزرگ این را می‌بیند و از مینا می‌خواهد یک چیز مثبت بگوید."
-    },
-    {
-      "en": "\"A positive thought is that he may be in a good place,\" Mina says.",
-      "fa": "مینا می‌گوید: «یک فکر مثبت این است که شاید در جای خوبی باشد.»"
-    },
-    {
-      "en": "The positive thought does not change everything, but it gives her hope.",
-      "fa": "فکر مثبت همه‌چیز را عوض نمی‌کند، اما به او امید می‌دهد."
-    },
-    {
-      "en": "\"Some nights without him are terrible,\" Mina says.",
-      "fa": "مینا می‌گوید: «بعضی شب‌ها بدون او وحشتناک هستند.»"
-    },
-    {
-      "en": "The house feels different without Nino moving through it.",
-      "fa": "خانه بدون حرکت نینو در آن متفاوت به نظر می‌رسد."
-    },
-    {
-      "en": "Grandmother says a terrible night can still end with morning.",
-      "fa": "مادربزرگ می‌گوید حتی یک شب وحشتناک هم می‌تواند با صبح تمام شود."
-    },
-    {
-      "en": "They sit without talking for some time and watch the stars.",
-      "fa": "مدتی بدون حرف زدن می‌نشینند و ستاره‌ها را تماشا می‌کنند."
-    },
-    {
-      "en": "Then Grandmother asks Mina to make one short statement.",
-      "fa": "بعد مادربزرگ از مینا می‌خواهد یک جمله‌ی کوتاه بگوید."
-    },
-    {
-      "en": "\"A statement about what I want most?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «یک جمله درباره‌ی چیزی که بیشتر از همه می‌خواهم؟»"
-    },
-    {
-      "en": "\"Yes,\" Grandmother says. \"Say it with easy words.\"",
-      "fa": "مادربزرگ می‌گوید: «بله. با کلمه‌های ساده بگو.»"
-    },
-    {
-      "en": "Mina looks at the small star and waits for a moment.",
-      "fa": "مینا به ستاره‌ی کوچک نگاه می‌کند و لحظه‌ای صبر می‌کند."
-    },
-    {
-      "en": "\"My statement is this: Nino, come home,\" she says.",
-      "fa": "می‌گوید: «جمله‌ی من این است: نینو، برگرد خانه.»"
-    },
-    {
-      "en": "Grandmother is happy and says it sounds like a title.",
-      "fa": "مادربزرگ خوشحال است و می‌گوید شبیه یک عنوان است."
-    },
-    {
-      "en": "Mina writes the title on the first line of a clean page.",
-      "fa": "مینا عنوان را در خط اول یک صفحه‌ی تمیز می‌نویسد."
-    },
-    {
-      "en": "\"What will the topic of your book be?\" Grandmother asks.",
-      "fa": "مادربزرگ می‌پرسد: «موضوع کتابت چه خواهد بود؟»"
-    },
-    {
-      "en": "Mina first says the topic is a little chicken away from home.",
-      "fa": "مینا اول می‌گوید موضوع یک جوجه‌ی کوچک دور از خانه است."
-    },
-    {
-      "en": "Then she thinks again and says the topic is also love.",
-      "fa": "بعد دوباره فکر می‌کند و می‌گوید موضوع همچنین عشق است."
-    },
-    {
-      "en": "Grandmother says the story can be about love as much as looking for Nino.",
-      "fa": "مادربزرگ می‌گوید داستان می‌تواند همان‌قدر که درباره‌ی پیدا کردن نینوست، درباره‌ی عشق هم باشد."
-    },
-    {
-      "en": "Mina writes as slowly as she can under the title.",
-      "fa": "مینا تا جایی که می‌تواند آرام زیر عنوان می‌نویسد."
-    },
-    {
-      "en": "She compares one sentence with another and chooses which is easy to understand.",
-      "fa": "یک جمله را با جمله‌ی دیگر مقایسه می‌کند و انتخاب می‌کند کدام برای فهمیدن آسان است."
-    },
-    {
-      "en": "For Mina, the quiet star is still better than the town lights.",
-      "fa": "برای مینا، ستاره‌ی آرام هنوز از چراغ‌های شهر بهتر است."
-    },
-    {
-      "en": "Grandmother sits next to her without talking.",
-      "fa": "مادربزرگ بدون حرف زدن کنار او می‌نشیند."
-    },
-    {
-      "en": "Mina closes the book and looks at the stars one last time.",
-      "fa": "مینا کتاب را می‌بندد و برای آخرین بار به ستاره‌ها نگاه می‌کند."
-    },
-    {
-      "en": "On the first page she has written one title: \"Nino, Come Home.\"",
-      "fa": "در صفحه‌ی اول یک عنوان نوشته است: «نینو، برگرد خانه.»"
+      "en": "\"Good night, Nino,\" she says. \"Tomorrow, I am coming home.\"",
+      "fa": "می‌گوید: «شب بخیر، نینو. فردا دارم می‌آیم خانه.»"
     }
   ],
   "check": [
     {
-      "q": "مینا و مادربزرگ به چه چیزی نگاه می‌کنند؟",
+      "q": "مینا در جشنواره چه چیزی را نقاشی می‌کند؟",
       "options": [
-        "star",
-        "movie",
-        "fire",
-        "garden"
+        "chicken",
+        "sea",
+        "truck",
+        "star"
       ],
-      "a": "star"
+      "a": "chicken"
     },
     {
-      "q": "در عنوان کتاب مینا، نینو باید کجا بیاید؟",
+      "q": "عنوان یادداشت تازه: «نینو، برگرد ...»",
       "options": [
         "home",
         "school",

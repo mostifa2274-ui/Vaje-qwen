@@ -2,255 +2,243 @@
   "id": "b1c2",
   "book": 1,
   "n": 2,
-  "titleFa": "همه نگاه می‌کنند",
+  "titleFa": "همه دنبالش می‌گردند",
   "titleEn": "Everyone Looks",
   "new": [
-    "house",
-    "family",
-    "mom",
     "kitchen",
     "wash",
     "cup",
-    "dad",
+    "table",
+    "his",
+    "first",
+    "glass",
+    "water",
+    "they",
     "sad",
     "face",
-    "only",
-    "where",
+    "ask",
+    "i",
+    "find",
+    "tell",
+    "about",
+    "maybe",
+    "can",
+    "go",
+    "many",
+    "place",
     "we",
     "will",
     "together",
-    "room",
+    "put",
     "brother",
-    "his",
-    "first",
-    "he",
-    "after",
+    "downstairs",
+    "ready",
+    "day",
+    "what",
+    "happen",
+    "here",
+    "answer",
+    "help",
+    "us",
+    "please",
+    "family",
+    "every",
     "check",
-    "sister",
+    "take",
+    "photo",
+    "desk",
+    "keep",
+    "important",
+    "something",
+    "everyone",
+    "only",
+    "shoe",
     "baby",
     "sleep",
     "next",
     "wake",
-    "all",
-    "every",
-    "our",
-    "many",
-    "small",
-    "place",
-    "photo",
-    "too",
-    "answer",
-    "parent",
-    "both",
-    "keep",
-    "know",
-    "important",
-    "they",
-    "live",
-    "one",
-    "so",
-    "should",
-    "way",
-    "back",
-    "two",
-    "daughter",
-    "son",
-    "their",
-    "old",
-    "young",
+    "bathroom",
     "front",
-    "come",
-    "or",
-    "next-to",
-    "ask",
-    "quiet",
-    "remember",
-    "what",
-    "happen",
-    "that",
-    "through",
-    "hear",
-    "me",
-    "take"
+    "box",
+    "all",
+    "floor",
+    "know",
+    "our",
+    "when",
+    "too",
+    "both",
+    "parent",
+    "eat",
+    "give",
+    "milk",
+    "get",
+    "dark",
+    "night",
+    "lie",
+    "rain"
   ],
   "sentences": [
     {
-      "en": "Mina runs into the house and calls for her family.",
-      "fa": "مینا به داخل خانه می‌دود و خانواده‌اش را صدا می‌کند."
+      "en": "Mom is in the kitchen, and she is washing a cup.",
+      "fa": "مامان در آشپزخانه است و فنجانی را می‌شوید."
     },
     {
-      "en": "\"Mom!\" she says from the kitchen door.",
-      "fa": "از کنار درِ آشپزخانه می‌گوید: «مامان!»"
+      "en": "Dad sits at the table with his first glass of water.",
+      "fa": "بابا با اولین لیوان آبش پشت میز نشسته است."
     },
     {
-      "en": "Mom is in the kitchen, washing a cup.",
-      "fa": "مامان در آشپزخانه مشغول شستن یک فنجان است."
+      "en": "Mina runs into the kitchen, and they see her sad face.",
+      "fa": "مینا به آشپزخانه می‌دود و آن‌ها صورت غمگینش را می‌بینند."
     },
     {
-      "en": "Dad stands at the door and sees Mina's sad face.",
-      "fa": "بابا کنار در ایستاده و صورت غمگین مینا را می‌بیند."
+      "en": "\"Where is Nino?\" she asks. \"I cannot find him!\"",
+      "fa": "می‌پرسد: «نینو کجاست؟ نمی‌توانم پیدایش کنم!»"
     },
     {
-      "en": "Mina can only say, \"Where is Nino?\"",
-      "fa": "مینا فقط می‌تواند بگوید: «نینو کجاست؟»"
+      "en": "She tells Mom and Dad about the red bird and the open door.",
+      "fa": "درباره‌ی پرنده‌ی قرمز و درِ باز برای مامان و بابا تعریف می‌کند."
     },
     {
-      "en": "Nino is not in the house, and Mina feels very sad.",
-      "fa": "نینو در خانه نیست و مینا خیلی غمگین است."
+      "en": "\"He ran after the bird, and now he is not in the garden,\" she says.",
+      "fa": "می‌گوید: «دنبال پرنده دوید و حالا در باغچه نیست.»"
     },
     {
-      "en": "\"We will look for him together,\" Mom says.",
-      "fa": "مامان می‌گوید: «همه با هم دنبالش می‌گردیم.»"
+      "en": "Dad stands up. \"Maybe he came back into the house,\" he says.",
+      "fa": "بابا بلند می‌شود. می‌گوید: «شاید برگشته باشد توی خانه.»"
     },
     {
-      "en": "Dad says, \"We can go from room to room.\"",
-      "fa": "بابا می‌گوید: «می‌توانیم اتاق به اتاق بگردیم.»"
+      "en": "\"A small chicken can go into many small places.\"",
+      "fa": "«یک جوجه‌ی کوچک می‌تواند به خیلی جاهای کوچک برود.»"
     },
     {
-      "en": "Her brother opens the door to his room first.",
-      "fa": "برادرش اول درِ اتاق خودش را باز می‌کند."
+      "en": "\"We will look for him together,\" Mom says, and she puts down the cup.",
+      "fa": "مامان فنجان را زمین می‌گذارد و می‌گوید: «با هم دنبالش می‌گردیم.»"
     },
     {
-      "en": "\"He is not here,\" her brother says after checking the bed.",
-      "fa": "برادرش بعد از بررسی تخت می‌گوید: «اینجا نیست.»"
+      "en": "Mina's little brother, Aria, comes downstairs, ready for the day.",
+      "fa": "برادر کوچک مینا، آریا، آماده برای شروع روز، پایین می‌آید."
     },
     {
-      "en": "Mina's sister is a baby sleeping in the next room.",
-      "fa": "خواهر مینا نوزادی است که در اتاق کناری خوابیده است."
+      "en": "\"What happened?\" he asks.",
+      "fa": "می‌پرسد: «چه شده؟»"
     },
     {
-      "en": "The baby wakes and looks at Mina.",
-      "fa": "نوزاد بیدار می‌شود و به مینا نگاه می‌کند."
+      "en": "\"Nino is not here,\" Mina answers. \"Help us, please.\"",
+      "fa": "مینا جواب می‌دهد: «نینو اینجا نیست. لطفاً کمکمان کن.»"
     },
     {
-      "en": "Mom closes her door, and the baby goes to sleep.",
-      "fa": "مامان درِ اتاق او را می‌بندد و نوزاد می‌خوابد."
+      "en": "The family goes from room to room.",
+      "fa": "خانواده اتاق به اتاق می‌گردند."
     },
     {
-      "en": "All the family looks in the house together.",
-      "fa": "تمام خانواده با هم داخل خانه را می‌گردند."
+      "en": "Dad opens every door, and Mom checks behind every chair.",
+      "fa": "بابا همه‌ی درها را باز می‌کند و مامان پشت همه‌ی صندلی‌ها را نگاه می‌کند."
     },
     {
-      "en": "Dad opens every door, and Mina calls Nino's name.",
-      "fa": "بابا هر در را باز می‌کند و مینا اسم نینو را صدا می‌زند."
+      "en": "Mina takes Nino's photo from her desk and keeps it in her hand.",
+      "fa": "مینا عکس نینو را از روی میزش برمی‌دارد و در دستش نگه می‌دارد."
     },
     {
-      "en": "Mom checks behind the chairs in the kitchen.",
-      "fa": "مامان پشت صندلی‌های آشپزخانه را بررسی می‌کند."
+      "en": "In the photo, Nino is on her bed, yellow and small and very important.",
+      "fa": "در عکس، نینو روی تخت اوست؛ زرد و کوچک و خیلی مهم."
     },
     {
-      "en": "\"Our little chicken can go into many small places,\" her brother says.",
-      "fa": "برادرش می‌گوید: «جوجه‌ی کوچک ما می‌تواند وارد خیلی از جاهای کوچک شود.»"
+      "en": "Aria looks under his bed first.",
+      "fa": "آریا اول زیر تختش را نگاه می‌کند."
     },
     {
-      "en": "\"He is my chicken,\" Mina says, and she has Nino's photo.",
-      "fa": "مینا می‌گوید: «او جوجه‌ی من است» و عکس نینو را در دست دارد."
+      "en": "\"I see something yellow!\" he calls.",
+      "fa": "صدا می‌زند: «یک چیز زرد می‌بینم!»"
     },
     {
-      "en": "\"And he is our chicken too,\" her brother answers.",
-      "fa": "برادرش جواب می‌دهد: «و او جوجه‌ی ما هم هست.»"
+      "en": "Everyone runs to his room, but it is only a small yellow shoe.",
+      "fa": "همه به اتاقش می‌دوند، اما فقط یک کفش زرد کوچک است."
     },
     {
-      "en": "Mom and Dad are Mina's parents, and both keep looking.",
-      "fa": "مامان و بابا پدر و مادر مینا هستند و هر دو به جست‌وجو ادامه می‌دهند."
+      "en": "\"That is Yasi's shoe,\" Mom says.",
+      "fa": "مامان می‌گوید: «آن کفشِ یاسی است.»"
     },
     {
-      "en": "Both parents know that Nino is very important to Mina.",
-      "fa": "پدر و مادر هر دو می‌دانند نینو برای مینا خیلی مهم است."
+      "en": "Yasi is the baby of the family, and she is sleeping in the next room.",
+      "fa": "یاسی بچه‌ی کوچک خانواده است و در اتاق کناری خوابیده است."
     },
     {
-      "en": "They live in this house, and Nino knows every room.",
-      "fa": "آن‌ها در این خانه زندگی می‌کنند و نینو هر اتاق را می‌شناسد."
+      "en": "Now she wakes and looks at everyone.",
+      "fa": "حالا بیدار می‌شود و به همه نگاه می‌کند."
     },
     {
-      "en": "Mina and her brother go from one room to the next.",
-      "fa": "مینا و برادرش از یک اتاق به اتاق بعدی می‌روند."
+      "en": "Mom takes the baby, and they keep looking.",
+      "fa": "مامان بچه را بغل می‌کند و به گشتن ادامه می‌دهند."
     },
     {
-      "en": "\"We live here together, so he should know the way back,\" Mina says.",
-      "fa": "مینا می‌گوید: «ما اینجا با هم زندگی می‌کنیم، پس او باید راه برگشت را بلد باشد.»"
+      "en": "They check the bathroom, the kitchen and the front room.",
+      "fa": "حمام، آشپزخانه و اتاق جلویی را می‌گردند."
     },
     {
-      "en": "\"Our house is his home too,\" Mom tells her.",
-      "fa": "مامان به او می‌گوید: «خانه‌ی ما خانه‌ی او هم هست.»"
+      "en": "They look behind the boxes and under all the beds.",
+      "fa": "پشت جعبه‌ها و زیر همه‌ی تخت‌ها را نگاه می‌کنند."
     },
     {
-      "en": "Mom and Dad have two daughters and one son.",
-      "fa": "مامان و بابا دو دختر و یک پسر دارند."
+      "en": "Nino is not in the house.",
+      "fa": "نینو در خانه نیست."
     },
     {
-      "en": "Mina is their older daughter.",
-      "fa": "مینا دختر بزرگ‌تر آن‌هاست."
+      "en": "Mina sits down on the floor with the photo.",
+      "fa": "مینا با عکس روی زمین می‌نشیند."
     },
     {
-      "en": "The baby sister is their younger daughter.",
-      "fa": "خواهر نوزاد دختر کوچک‌تر آن‌هاست."
+      "en": "\"He knows our home,\" she says. \"When will he come back?\"",
+      "fa": "می‌گوید: «او خانه‌ی ما را می‌شناسد. کی برمی‌گردد؟»"
     },
     {
-      "en": "Mina's brother is their son, and he checks the front room again.",
-      "fa": "برادر مینا پسر آن‌هاست و دوباره اتاق جلویی را بررسی می‌کند."
+      "en": "Mom sits next to her. \"We do not know where he is,\" she says.",
+      "fa": "مامان کنارش می‌نشیند. می‌گوید: «نمی‌دانیم کجاست.»"
     },
     {
-      "en": "Nino is not in his room, so Dad looks at the front window.",
-      "fa": "نینو در اتاق او نیست، پس بابا به پنجره‌ی جلویی نگاه می‌کند."
+      "en": "\"But he is our chicken too. We will find him.\"",
+      "fa": "«اما او جوجه‌ی ما هم هست. پیدایش می‌کنیم.»"
     },
     {
-      "en": "\"Come to the window, Mina,\" Mom says.",
-      "fa": "مامان می‌گوید: «بیا کنار پنجره، مینا.»"
+      "en": "All day, the family looks in the house and in the yard.",
+      "fa": "تمام روز، خانواده خانه و حیاط را می‌گردند."
     },
     {
-      "en": "Mina comes to the window and looks outside.",
-      "fa": "مینا کنار پنجره می‌آید و بیرون را نگاه می‌کند."
+      "en": "Both parents stop only to eat and to give Yasi her milk.",
+      "fa": "پدر و مادر فقط برای غذا خوردن و شیر دادن به یاسی دست می‌کشند."
     },
     {
-      "en": "Nino is not at the window or next to the door.",
-      "fa": "نینو کنار پنجره یا کنار در نیست."
+      "en": "When it gets dark, Nino is still not home.",
+      "fa": "وقتی هوا تاریک می‌شود، نینو هنوز خانه نیست."
     },
     {
-      "en": "\"Where did he go?\" Mom asks quietly.",
-      "fa": "مامان آرام می‌پرسد: «او کجا رفت؟»"
+      "en": "That night, Mina lies in her bed and listens.",
+      "fa": "آن شب، مینا در تختش دراز می‌کشد و گوش می‌دهد."
     },
     {
-      "en": "A red bird lands outside, and Mina remembers what happened.",
-      "fa": "پرنده‌ای قرمز بیرون می‌نشیند و مینا اتفاقی را که افتاد به یاد می‌آورد."
-    },
-    {
-      "en": "\"He ran after that bird,\" Mina says.",
-      "fa": "مینا می‌گوید: «او دنبال آن پرنده دوید.»"
-    },
-    {
-      "en": "\"Come home, Nino!\" she calls through the open door.",
-      "fa": "او از میان درِ باز صدا می‌زند: «برگرد خانه، نینو!»"
-    },
-    {
-      "en": "\"Can he hear me?\" Mina asks Dad.",
-      "fa": "مینا از بابا می‌پرسد: «می‌تواند صدای من را بشنود؟»"
-    },
-    {
-      "en": "Dad takes her hand and says, \"We will keep looking for him.\"",
-      "fa": "بابا دستش را می‌گیرد و می‌گوید: «ما به جست‌وجو برای او ادامه می‌دهیم.»"
+      "en": "Is that Nino at the window? No. It is only the rain.",
+      "fa": "آن نینوست که پشت پنجره است؟ نه. فقط باران است."
     }
   ],
   "check": [
     {
-      "q": "مامان کجاست؟",
+      "q": "مامان وقتی مینا می‌آید کجاست؟",
       "options": [
         "kitchen",
-        "door",
-        "window",
-        "bird"
+        "bathroom",
+        "yard",
+        "bedroom"
       ],
       "a": "kitchen"
     },
     {
-      "q": "خواهر مینا کیست؟",
+      "q": "آریا زیر تختش چه چیزی پیدا می‌کند؟",
       "options": [
-        "baby",
-        "brother",
-        "son",
-        "dad"
+        "shoe",
+        "chicken",
+        "book",
+        "cup"
       ],
-      "a": "baby"
+      "a": "shoe"
     }
   ]
 }

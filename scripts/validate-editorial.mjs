@@ -155,14 +155,14 @@ assert(!persian.some(text => text.includes('ـ')), 'Persian text contains a tatw
 const byId = new Map(chapters.map(c => [c.id, c]))
 const expectedChecks = {
   b3c1: [['look'], ['friday']],
-  b3c3: [['look'], ['midnight']],
-  b7c3: [['north'], ['dad']],
-  b7c5: [['ocean'], ['home']],
-  b8c2: [['leg'], ['story']],
-  b8c3: [['hospital'], ['exercise']],
-  b8c4: [['no-one'], ['write']],
-  b8c5: [['star'], ['home']],
-  b8c6: [['chicken'], ['home']],
+  b3c3: [['chicken'], ['midnight']],
+  b7c3: [['snow'], ['north']],
+  b7c5: [['boat'], ['island']],
+  b8c2: [['tooth'], ['spring']],
+  b8c3: [['hospital'], ['ok']],
+  b8c4: [['two'], ['hope']],
+  b8c5: [['chicken'], ['home']],
+  b8c6: [['woman'], ['home']],
 }
 for (const [id, expected] of Object.entries(expectedChecks)) {
   const chapter = byId.get(id)

@@ -2,227 +2,196 @@
   "id": "b6c1",
   "book": 6,
   "n": 1,
-  "titleFa": "مدرسه",
-  "titleEn": "School",
+  "titleFa": "کلاس تابستانی",
+  "titleEn": "The Summer Class",
   "new": [
     "class",
-    "student",
     "classroom",
+    "student",
     "teach",
     "subject",
     "science",
     "language",
     "geography",
-    "north",
-    "country",
-    "grandmother",
     "history",
+    "country",
+    "north",
+    "grandmother",
+    "difficult",
+    "dictionary",
     "test",
     "exam",
-    "homework"
+    "rule",
+    "homework",
+    "result",
+    "skill"
   ],
   "sentences": [
     {
-      "en": "Mina goes to school with her red book in her bag.",
-      "fa": "مینا با کتاب قرمزش در کیف به مدرسه می‌رود."
+      "en": "On Sunday morning, Mom takes Mina to a summer class for girls.",
+      "fa": "یکشنبه صبح، مامان مینا را به یک کلاس تابستانی دخترانه می‌برد."
     },
     {
-      "en": "The school is big, but her class is small.",
-      "fa": "مدرسه بزرگ است، اما کلاس او کوچک است."
+      "en": "The class is in a school near the park. Mom will come back for her at twelve o'clock.",
+      "fa": "کلاس در مدرسه‌ای نزدیک پارک است. مامان ساعت دوازده برمی‌گردد دنبالش."
     },
     {
-      "en": "There are ten students in the class.",
-      "fa": "ده دانش‌آموز در کلاس هستند."
+      "en": "The classroom is big, with twenty desks and a map on the wall.",
+      "fa": "کلاس بزرگ است، با بیست میز و یک نقشه روی دیوار."
     },
     {
-      "en": "Their classroom is quiet in the morning.",
-      "fa": "کلاس آن‌ها صبح آرام است."
+      "en": "There are eighteen students, and Mina knows one of them: Negar!",
+      "fa": "هجده دانش‌آموز هستند و مینا یکی از آن‌ها را می‌شناسد: نگار!"
     },
     {
-      "en": "The teacher says hello to every student at the door.",
-      "fa": "معلم کنار در به هر دانش‌آموز سلام می‌کند."
+      "en": "\"Sit with me,\" Negar says, and Mina sits next to her.",
+      "fa": "نگار می‌گوید: «پیش من بنشین» و مینا کنارش می‌نشیند."
     },
     {
-      "en": "Mina likes her teacher because she listens to her.",
-      "fa": "مینا معلمش را دوست دارد چون به او گوش می‌دهد."
+      "en": "The teacher is a young woman with a warm face.",
+      "fa": "معلم زن جوانی است با چهره‌ای مهربان."
     },
     {
-      "en": "Today the teacher will teach a lesson about animals.",
-      "fa": "امروز معلم قرار است درسی درباره‌ی حیوان‌ها بدهد."
+      "en": "\"Good morning, girls,\" she says. \"In this class, I teach four subjects.\"",
+      "fa": "می‌گوید: «صبح بخیر، دخترها. در این کلاس من چهار درس درس می‌دهم.»"
     },
     {
-      "en": "The first subject is science.",
-      "fa": "اولین درس علوم است."
+      "en": "\"Science, language, geography and history.\"",
+      "fa": "«علوم، زبان، جغرافیا و تاریخ.»"
     },
     {
-      "en": "In science, the students learn how animals live.",
-      "fa": "در علوم، دانش‌آموزان یاد می‌گیرند حیوان‌ها چگونه زندگی می‌کنند."
+      "en": "The first subject is geography.",
+      "fa": "اولین درس جغرافیاست."
     },
     {
-      "en": "Mina thinks about Nino as they study birds and farm animals.",
-      "fa": "مینا هنگام درس خواندن درباره‌ی پرنده‌ها و حیوانات مزرعه به نینو فکر می‌کند."
+      "en": "The teacher points to the map of Iran. \"This is our country,\" she says.",
+      "fa": "معلم به نقشه‌ی ایران اشاره می‌کند. می‌گوید: «این کشور ماست.»"
     },
     {
-      "en": "The teacher asks Mina to read a short page.",
-      "fa": "معلم از مینا می‌خواهد یک صفحه‌ی کوتاه بخواند."
+      "en": "\"Here is Tehran, and up here is the north. In the north, it rains a lot, and everything is green.\"",
+      "fa": "«این تهران است و این بالا شمال. در شمال زیاد باران می‌بارد و همه‌جا سبز است.»"
     },
     {
-      "en": "Mina reads slowly.",
-      "fa": "مینا آرام می‌خواند."
+      "en": "Mina puts up her hand. \"My grandmother lives in the north,\" she says.",
+      "fa": "مینا دستش را بالا می‌برد. می‌گوید: «مادربزرگ من در شمال زندگی می‌کند.»"
     },
     {
-      "en": "Reading in this language is still new for her.",
-      "fa": "خواندن به این زبان هنوز برای او تازه است."
+      "en": "\"How nice,\" the teacher says. \"Do you visit her?\"",
+      "fa": "معلم می‌گوید: «چه خوب. به دیدنش می‌روی؟»"
     },
     {
-      "en": "She is learning the language one word at a time.",
-      "fa": "او زبان را کلمه‌به‌کلمه یاد می‌گیرد."
+      "en": "\"Sometimes, in the summer,\" Mina says.",
+      "fa": "مینا می‌گوید: «گاهی، تابستان‌ها.»"
     },
     {
-      "en": "The teacher says practice will make reading easy.",
-      "fa": "معلم می‌گوید تمرین خواندن را آسان می‌کند."
+      "en": "Then comes science. The teacher talks about animals and birds.",
+      "fa": "بعد نوبت علوم است. معلم درباره‌ی حیوان‌ها و پرنده‌ها حرف می‌زند."
     },
     {
-      "en": "So Mina practices the new words with a friend.",
-      "fa": "پس مینا کلمات تازه را با یک دوست تمرین می‌کند."
+      "en": "\"Birds remember places,\" she says. \"They often go back to places with food and water.\"",
+      "fa": "می‌گوید: «پرنده‌ها جاها را به یاد می‌آورند. اغلب به جاهایی برمی‌گردند که غذا و آب دارد.»"
     },
     {
-      "en": "She makes one small mistake.",
-      "fa": "او یک اشتباه کوچک می‌کند."
+      "en": "Mina writes it in her red book. It sounds important.",
+      "fa": "مینا این را در کتاب قرمزش می‌نویسد. به نظر مهم می‌آید."
     },
     {
-      "en": "The teacher helps her with the mistake.",
-      "fa": "معلم در اشتباه به او کمک می‌کند."
+      "en": "History is next: a story about a city from three thousand years ago.",
+      "fa": "بعد تاریخ است: داستانی درباره‌ی شهری از سه هزار سال پیش."
     },
     {
-      "en": "\"A mistake is part of learning,\" the teacher says.",
-      "fa": "معلم می‌گوید: «اشتباه بخشی از یادگیری است.»"
+      "en": "The language lesson is difficult. There are many new words.",
+      "fa": "درس زبان سخت است. کلی کلمه‌ی جدید دارد."
     },
     {
-      "en": "After reading, the class starts geography.",
-      "fa": "بعد از خواندن، کلاس جغرافیا را شروع می‌کند."
+      "en": "\"Use your dictionary,\" the teacher says. \"A dictionary is a good friend.\"",
+      "fa": "معلم می‌گوید: «از فرهنگ لغتتان استفاده کنید. فرهنگ لغت دوست خوبی است.»"
     },
     {
-      "en": "Geography shows places on a map.",
-      "fa": "جغرافیا جاها را روی نقشه نشان می‌دهد."
+      "en": "Negar finds a long word in her dictionary and reads the meaning to Mina.",
+      "fa": "نگار کلمه‌ی بلندی را در فرهنگ لغتش پیدا می‌کند و معنی‌اش را برای مینا می‌خواند."
     },
     {
-      "en": "Mina studies the north of the country.",
-      "fa": "مینا شمال کشور را مطالعه می‌کند."
+      "en": "At the end of the morning, there is a short test.",
+      "fa": "آخر صبح، یک آزمون کوتاه هست."
     },
     {
-      "en": "She remembers that Grandmother lives in the north.",
-      "fa": "یادش می‌آید که مادربزرگ در شمال زندگی می‌کند."
+      "en": "The first questions are easy, but the last question is difficult.",
+      "fa": "سؤال‌های اول آسان‌اند، اما سؤال آخر سخت است."
     },
     {
-      "en": "Next comes history, another school subject.",
-      "fa": "بعد نوبت تاریخ است، یکی دیگر از درس‌های مدرسه."
+      "en": "\"Do not be afraid,\" the teacher says. \"This is not an exam. It is only a test for me.\"",
+      "fa": "معلم می‌گوید: «نترسید. این امتحان نیست. فقط یک آزمون برای خود من است.»"
     },
     {
-      "en": "The history lesson is about the town long ago.",
-      "fa": "درس تاریخ درباره‌ی شهر در زمان‌های قدیم است."
+      "en": "\"Our class has three rules,\" she says. \"Listen, ask questions and help each other.\"",
+      "fa": "می‌گوید: «کلاس ما سه قانون دارد. گوش بدهید، سؤال بپرسید و به هم کمک کنید.»"
     },
     {
-      "en": "Mina likes history because every place has a story.",
-      "fa": "مینا تاریخ را دوست دارد چون هر جا داستانی دارد."
+      "en": "\"And do your homework!\" Negar says, and all the girls laugh.",
+      "fa": "نگار می‌گوید: «و تکلیفتان را انجام بدهید!» و همه‌ی دخترها می‌خندند."
     },
     {
-      "en": "Before lunch, the teacher gives the class a short test.",
-      "fa": "پیش از ناهار، معلم یک آزمون کوتاه به کلاس می‌دهد."
+      "en": "The teacher reads the results. Mina's result is good.",
+      "fa": "معلم نتیجه‌ها را می‌خواند. نتیجه‌ی مینا خوب است."
     },
     {
-      "en": "Mina looks at the test and waits for a moment.",
-      "fa": "مینا به آزمون نگاه می‌کند و لحظه‌ای صبر می‌کند."
+      "en": "\"You have a good writing skill,\" the teacher says to her. \"Your sentences are short and good.\"",
+      "fa": "معلم به او می‌گوید: «مهارت نوشتنت خوب است. جمله‌هایت کوتاه و خوب‌اند.»"
     },
     {
-      "en": "The first question looks hard.",
-      "fa": "سؤال اول سخت به نظر می‌رسد."
+      "en": "\"I write a lot,\" Mina says. \"I write notes about my chicken, Nino.\"",
+      "fa": "مینا می‌گوید: «من زیاد می‌نویسم. درباره‌ی جوجه‌ام، نینو، یادداشت می‌نویسم.»"
     },
     {
-      "en": "Then Mina remembers the lesson and answers it.",
-      "fa": "بعد مینا درس را به یاد می‌آورد و پاسخ می‌دهد."
+      "en": "She opens her red book and shows the teacher Nino's picture and her note.",
+      "fa": "کتاب قرمزش را باز می‌کند و عکس نینو و یادداشتش را به معلم نشان می‌دهد."
     },
     {
-      "en": "The next questions are easy for her.",
-      "fa": "سؤال‌های بعدی برای او آسان هستند."
+      "en": "The teacher reads the note twice. \"Nino ran away in May?\" she asks.",
+      "fa": "معلم یادداشت را دو بار می‌خواند. می‌پرسد: «نینو ماه مه فرار کرد؟»"
     },
     {
-      "en": "At the end, the exam does not feel so hard.",
-      "fa": "در پایان، امتحان دیگر آن‌قدر سخت به نظر نمی‌رسد."
+      "en": "\"Yes,\" Mina says. \"People saw him at the bus stop, in the city center and near the river road.\"",
+      "fa": "مینا می‌گوید: «بله. مردم او را کنار ایستگاه اتوبوس، در مرکز شهر و نزدیک جاده‌ی کنار رودخانه دیده‌اند.»"
     },
     {
-      "en": "The teacher is happy and says, \"Good work.\"",
-      "fa": "معلم خوشحال است و می‌گوید: «آفرین.»"
+      "en": "The teacher thinks for a moment. \"Bring your note tomorrow,\" she says. \"I have a plan.\"",
+      "fa": "معلم لحظه‌ای فکر می‌کند. می‌گوید: «فردا یادداشتت را بیاور. من یک نقشه دارم.»"
     },
     {
-      "en": "After the test, Mina has time to show her red book.",
-      "fa": "بعد از آزمون، مینا وقت دارد کتاب قرمزش را نشان دهد."
+      "en": "At twelve o'clock, Mom is at the school door.",
+      "fa": "ساعت دوازده، مامان دمِ در مدرسه است."
     },
     {
-      "en": "She shows the teacher the picture of Nino.",
-      "fa": "او عکس نینو را به معلم نشان می‌دهد."
+      "en": "\"How was your class?\" Mom asks.",
+      "fa": "مامان می‌پرسد: «کلاست چطور بود؟»"
     },
     {
-      "en": "She also shows the note she wrote about him.",
-      "fa": "یادداشتی را هم که درباره‌ی او نوشته نشان می‌دهد."
-    },
-    {
-      "en": "The teacher reads the note with Mina.",
-      "fa": "معلم یادداشت را همراه مینا می‌خواند."
-    },
-    {
-      "en": "\"This can be part of your homework,\" she says.",
-      "fa": "معلم می‌گوید: «این می‌تواند بخشی از تکلیف تو باشد.»"
-    },
-    {
-      "en": "For homework, Mina will write three easy sentences about Nino.",
-      "fa": "برای تکلیف، مینا سه جمله‌ی آسان درباره‌ی نینو می‌نویسد."
-    },
-    {
-      "en": "She can practice the language and help people know her little chicken at the same time.",
-      "fa": "او می‌تواند زبان را تمرین کند و هم‌زمان به مردم کمک کند جوجه‌ی کوچکش را بشناسند."
-    },
-    {
-      "en": "The class likes Mina's idea.",
-      "fa": "کلاس از ایده‌ی مینا خوشش می‌آید."
-    },
-    {
-      "en": "One student says she will read the note to her family.",
-      "fa": "یکی از دانش‌آموزها می‌گوید یادداشت را برای خانواده‌اش می‌خواند."
-    },
-    {
-      "en": "Another student wants to help look for Nino after school.",
-      "fa": "دانش‌آموز دیگری می‌خواهد بعد از مدرسه برای پیدا کردن نینو کمک کند."
-    },
-    {
-      "en": "Mina leaves the classroom with hope.",
-      "fa": "مینا با امید از کلاس بیرون می‌آید."
-    },
-    {
-      "en": "School has given her a new way to keep looking for Nino.",
-      "fa": "مدرسه راه تازه‌ای برای ادامه‌ی پیدا کردن نینو به او داده است."
+      "en": "\"Difficult,\" Mina says, \"but good. And the teacher has a plan!\"",
+      "fa": "مینا می‌گوید: «سخت، اما خوب. و معلم یک نقشه دارد!»"
     }
   ],
   "check": [
     {
-      "q": "مینا بعد از آزمون وقت دارد چه چیزی را نشان دهد؟",
+      "q": "مادربزرگ مینا کجا زندگی می‌کند؟",
       "options": [
-        "book",
-        "pen",
-        "bag",
-        "desk"
+        "north",
+        "city",
+        "market",
+        "school"
       ],
-      "a": "book"
+      "a": "north"
     },
     {
-      "q": "سؤال‌های بعدی آزمون برای مینا چطور هستند؟",
+      "q": "کلاس چند قانون دارد؟",
       "options": [
-        "easy",
-        "hard",
-        "bad",
-        "long"
+        "three",
+        "two",
+        "four",
+        "five"
       ],
-      "a": "easy"
+      "a": "three"
     }
   ]
 }

@@ -2,249 +2,254 @@
   "id": "b2c5",
   "book": 2,
   "n": 5,
-  "titleFa": "شهر بزرگ است",
-  "titleEn": "The City Is Big",
+  "titleFa": "درِ آبی",
+  "titleEn": "The Blue Door",
   "new": [
-    "tall",
-    "apartment",
+    "between",
+    "arrive",
     "local",
     "wife",
     "married",
     "large",
-    "husband",
-    "shop",
     "anyone",
     "visitor",
-    "question",
     "town",
-    "grandson",
-    "granddaughter",
-    "arrive",
-    "amazing",
-    "age",
-    "born",
-    "member",
-    "work",
-    "partner",
-    "between",
-    "dish",
-    "address",
+    "husband",
     "blue",
+    "dish",
+    "grandson",
+    "explain",
+    "amazing",
+    "born",
+    "age",
+    "center",
+    "address",
+    "own",
+    "member",
     "phone",
+    "granddaughter",
+    "partner",
     "world",
-    "return",
-    "own"
+    "return"
   ],
   "sentences": [
     {
-      "en": "Mina and Dad follow the information from the bus stop into a busy neighborhood.",
-      "fa": "مینا و بابا اطلاعات ایستگاه اتوبوس را تا یک محله‌ی شلوغ دنبال می‌کنند."
+      "en": "The next day, Dad takes Mina on bus ten.",
+      "fa": "روز بعد، بابا مینا را با اتوبوس شماره‌ی ده می‌برد."
     },
     {
-      "en": "The neighborhood has old houses and tall apartment buildings.",
-      "fa": "محله خانه‌های قدیمی و ساختمان‌های آپارتمانی بلند دارد."
+      "en": "The bus is full, so Mina stands between Dad and the window.",
+      "fa": "اتوبوس پر است، پس مینا بین بابا و پنجره می‌ایستد."
+    },
+    {
+      "en": "They arrive in a busy neighborhood with old houses and tall apartment buildings.",
+      "fa": "به محله‌ای شلوغ با خانه‌های قدیمی و ساختمان‌های آپارتمانی بلند می‌رسند."
+    },
+    {
+      "en": "Everything is new to Mina.",
+      "fa": "همه‌چیز برای مینا تازه است."
     },
     {
       "en": "Dad stops a local man who is walking with his wife.",
-      "fa": "بابا مردی محلی را که با همسرش راه می‌رود صدا می‌زند."
+      "fa": "بابا مرد محلی‌ای را که با همسرش قدم می‌زند صدا می‌زند."
     },
     {
-      "en": "His wife looks at Nino's picture.",
-      "fa": "همسرش به عکس نینو نگاه می‌کند."
+      "en": "\"We are looking for a little yellow chicken,\" he says, and Mina shows the picture.",
+      "fa": "می‌گوید: «دنبال یک جوجه‌ی زرد کوچک می‌گردیم» و مینا عکس را نشان می‌دهد."
     },
     {
-      "en": "The man says he and his wife are married and live near here.",
-      "fa": "مرد می‌گوید او و همسرش متأهل هستند و نزدیک آنجا زندگی می‌کنند."
+      "en": "The man and his wife have lived here all their married life.",
+      "fa": "مرد و همسرش تمام زندگی مشترکشان را اینجا گذرانده‌اند."
     },
     {
-      "en": "Their apartment is in the large building across the street.",
-      "fa": "آپارتمانشان در ساختمان بزرگ آن سوی خیابان است."
+      "en": "\"We see many birds, but no chickens,\" the wife says.",
+      "fa": "همسرش می‌گوید: «پرنده زیاد می‌بینیم، اما جوجه نه.»"
     },
     {
-      "en": "A woman comes out and calls for her husband.",
-      "fa": "زنی بیرون می‌آید و شوهرش را صدا می‌زند."
+      "en": "Next, Dad goes into a large shop.",
+      "fa": "بعد، بابا وارد یک مغازه‌ی بزرگ می‌شود."
     },
     {
-      "en": "Her husband is carrying food from a local shop.",
-      "fa": "شوهرش از یک مغازه‌ی محلی غذا می‌آورد."
+      "en": "\"Has anyone seen this chicken?\" he asks.",
+      "fa": "می‌پرسد: «کسی این جوجه را دیده است؟»"
     },
     {
-      "en": "They have both seen chickens in this area before.",
-      "fa": "هر دوی آن‌ها قبلاً در این منطقه جوجه دیده‌اند."
+      "en": "A visitor at a table outside the shop hears the question.",
+      "fa": "بازدیدکننده‌ای که پشت میزی بیرون مغازه نشسته سؤال را می‌شنود."
     },
     {
-      "en": "Dad asks if anyone has seen a little yellow chicken today.",
-      "fa": "بابا می‌پرسد آیا کسی امروز جوجه‌ی زرد کوچکی دیده است."
+      "en": "\"I am new to this town, but I will watch for him,\" he says.",
+      "fa": "می‌گوید: «در این شهر تازه‌واردم، اما حواسم به او هست.»"
     },
     {
-      "en": "A visitor sitting outside a cafe hears the question.",
-      "fa": "بازدیدکننده‌ای که بیرون کافه نشسته سؤال را می‌شنود."
+      "en": "Then a woman comes out of an apartment and calls her husband.",
+      "fa": "بعد زنی از یک آپارتمان بیرون می‌آید و شوهرش را صدا می‌زند."
     },
     {
-      "en": "The visitor says he is new to this town.",
-      "fa": "بازدیدکننده می‌گوید در این شهر تازه‌وارد است."
+      "en": "He is carrying food home from work.",
+      "fa": "او دارد از سر کار غذا به خانه می‌آورد."
     },
     {
-      "en": "He does not know the neighborhood well.",
-      "fa": "او هنوز محله را خوب نمی‌شناسد."
+      "en": "He looks at the picture and thinks.",
+      "fa": "به عکس نگاه می‌کند و فکر می‌کند."
     },
     {
-      "en": "Still, he says he can help them look around the place.",
-      "fa": "با این حال، می‌گوید می‌تواند در گشتن اطراف آنجا به آن‌ها کمک کند."
+      "en": "\"Ask the old woman with the blue door,\" he says. \"She gives food to all the birds in this area.\"",
+      "fa": "می‌گوید: «از پیرزنی که درِ آبی دارد بپرسید. او به همه‌ی پرنده‌های این منطقه غذا می‌دهد.»"
     },
     {
-      "en": "Across the road, an old woman walks with her grandson.",
-      "fa": "آن سوی خیابان، پیرزنی با نوه‌اش، پسری نوجوان، راه می‌رود."
+      "en": "Mina and Dad walk down the street and look at every door.",
+      "fa": "مینا و بابا خیابان را پایین می‌روند و به همه‌ی درها نگاه می‌کنند."
     },
     {
-      "en": "Her grandson checks behind some cars.",
-      "fa": "نوه‌اش پشت چند ماشین را نگاه می‌کند."
+      "en": "Then Mina sees it: a blue door between two tall buildings.",
+      "fa": "بعد مینا آن را می‌بیند: یک درِ آبی میان دو ساختمان بلند."
     },
     {
-      "en": "An old man near them is waiting for his granddaughter.",
-      "fa": "پیرمردی نزدیک آن‌ها منتظر نوه‌اش است."
+      "en": "Next to the door, there is a small dish with bread and water.",
+      "fa": "کنار در، ظرف کوچکی با نان و آب هست."
     },
     {
-      "en": "His granddaughter arrives and looks for Nino too.",
-      "fa": "نوه‌ی او، دختری جوان، می‌رسد و او هم دنبال نینو می‌گردد."
+      "en": "An old woman comes to the door with her grandson.",
+      "fa": "پیرزنی همراه نوه‌اش دمِ در می‌آید."
     },
     {
-      "en": "Mina thinks it is amazing that so many people want to help.",
-      "fa": "مینا فکر می‌کند شگفت‌انگیز است که این همه آدم می‌خواهند کمک کنند."
+      "en": "\"Hello,\" she says. \"Can I help you?\"",
+      "fa": "می‌گوید: «سلام. کمکی از دستم برمی‌آید؟»"
     },
     {
-      "en": "One woman asks Mina's age as they walk.",
-      "fa": "زنی در راه سن مینا را می‌پرسد."
+      "en": "Dad explains about Nino, and Mina shows her the picture.",
+      "fa": "بابا ماجرای نینو را توضیح می‌دهد و مینا عکس را نشانش می‌دهد."
     },
     {
-      "en": "Mina answers, then asks if the woman was born here.",
-      "fa": "مینا جواب می‌دهد و بعد می‌پرسد آیا زن اینجا به دنیا آمده است."
+      "en": "The old woman looks at it for a long time, and her grandson looks too.",
+      "fa": "پیرزن مدت زیادی به آن نگاه می‌کند و نوه‌اش هم نگاه می‌کند."
     },
     {
-      "en": "\"Yes, I was born in this town,\" the woman says.",
-      "fa": "زن می‌گوید: «بله، من در این شهرک به دنیا آمدم.»"
+      "en": "\"Is this dish for a chicken?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «این ظرف برای یک جوجه است؟»"
     },
     {
-      "en": "She knows every street in the center.",
-      "fa": "او همه‌ی خیابان‌های مرکز را می‌شناسد."
+      "en": "\"No, it is for the birds,\" the old woman says. \"They come to my little garden every day.\"",
+      "fa": "پیرزن می‌گوید: «نه، برای پرنده‌هاست. هر روز به باغچه‌ی کوچکم می‌آیند.»"
     },
     {
-      "en": "Life in the city feels busy, but people keep stopping to help.",
-      "fa": "زندگی در شهر شلوغ است، اما مردم مدام برای کمک می‌ایستند."
+      "en": "Through the open door, Mina can see a little garden full of birds.",
+      "fa": "از لای درِ باز، مینا باغچه‌ی کوچکی پر از پرنده می‌بیند."
     },
     {
-      "en": "A family member from one building brings down a light.",
-      "fa": "یکی از اعضای خانواده‌ای در یک ساختمان، چراغی پایین می‌آورد."
+      "en": "\"Amazing,\" she says quietly.",
+      "fa": "آرام می‌گوید: «چه عالی.»"
     },
     {
-      "en": "\"Nino is a member of our family too,\" Mina explains.",
-      "fa": "مینا توضیح می‌دهد: «نینو هم عضو خانواده‌ی ماست.»"
+      "en": "\"I was born in this house, and the birds are my family,\" the old woman says.",
+      "fa": "پیرزن می‌گوید: «من در این خانه به دنیا آمده‌ام و پرنده‌ها خانواده‌ی من‌اند.»"
     },
     {
-      "en": "The woman says every family member is important.",
-      "fa": "زن می‌گوید هر عضو خانواده مهم است."
+      "en": "Her grandson asks Mina her age. \"I am ten,\" she says.",
+      "fa": "نوه‌اش سن مینا را می‌پرسد. مینا می‌گوید: «ده سالم است.»"
     },
     {
-      "en": "A man walks home from work with his shop partner.",
-      "fa": "مردی با شریک مغازه‌اش از سر کار به خانه برمی‌گردد."
+      "en": "\"A little yellow chicken?\" the old woman says slowly. \"Yes, I think I saw one.\"",
+      "fa": "پیرزن آرام می‌گوید: «یک جوجه‌ی زرد کوچک؟ بله، فکر کنم یکی دیدم.»"
     },
     {
-      "en": "His partner checks a small place between two buildings.",
-      "fa": "شریکش گذر کوچکی میان دو ساختمان را بررسی می‌کند."
+      "en": "\"Where?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «کجا؟»"
     },
     {
-      "en": "They do not find anything there.",
-      "fa": "آنجا چیزی پیدا نمی‌کنند."
+      "en": "\"This morning, near the shops. It was walking to the city center.\"",
+      "fa": "«امروز صبح، نزدیک مغازه‌ها. داشت به طرف مرکز شهر می‌رفت.»"
     },
     {
-      "en": "Mina asks, \"Is there anything behind the next building?\"",
-      "fa": "مینا می‌پرسد: «پشت ساختمان بعدی چیزی هست؟»"
+      "en": "She points down the street to the center.",
+      "fa": "پایین خیابان را، به طرف مرکز، نشان می‌دهد."
     },
     {
-      "en": "The group looks around that area too.",
-      "fa": "گروه آن منطقه را هم می‌گردد."
+      "en": "Mina writes in her red book: \"The blue door. The birds. The city center.\"",
+      "fa": "مینا در کتاب قرمزش می‌نویسد: «درِ آبی. پرنده‌ها. مرکز شهر.»"
     },
     {
-      "en": "At last, someone finds a dish with food next to an apartment door.",
-      "fa": "بالاخره کسی کنار درِ یک آپارتمان ظرف غذا پیدا می‌کند."
+      "en": "Then she writes their address on a note and gives it to the old woman.",
+      "fa": "بعد آدرسشان را روی یادداشتی می‌نویسد و به پیرزن می‌دهد."
     },
     {
-      "en": "The address on the door is written in blue.",
-      "fa": "آدرس روی در با رنگ آبی نوشته شده است."
+      "en": "\"This is our address,\" she says. \"If you see Nino, please bring him home.\"",
+      "fa": "می‌گوید: «این آدرس ماست. اگر نینو را دیدید، لطفاً او را به خانه بیاورید.»"
     },
     {
-      "en": "Dad writes the address in his phone.",
-      "fa": "بابا آدرس را در تلفنش یادداشت می‌کند."
+      "en": "The old woman puts the note in her own bag.",
+      "fa": "پیرزن یادداشت را در کیف خودش می‌گذارد."
     },
     {
-      "en": "An older local woman opens the door.",
-      "fa": "زن محلی سالخورده‌ای در را باز می‌کند."
+      "en": "\"He is a member of your family,\" she says. \"I know how that feels.\"",
+      "fa": "می‌گوید: «او عضوی از خانواده‌ی شماست. می‌دانم چه حسی دارد.»"
     },
     {
-      "en": "She says the dish is for another chicken.",
-      "fa": "او می‌گوید ظرف برای جوجه‌ی دیگری است."
+      "en": "Dad writes her address in his phone too.",
+      "fa": "بابا هم آدرس او را در تلفنش می‌نویسد."
     },
     {
-      "en": "Mina is sad, but the woman has new information.",
-      "fa": "مینا غمگین است، اما زن اطلاعات تازه‌ای دارد."
+      "en": "Across the street, an old man waits for his granddaughter to come home from school.",
+      "fa": "آن سوی خیابان، پیرمردی منتظر است نوه‌اش از مدرسه به خانه برگردد."
     },
     {
-      "en": "She saw a yellow chicken going to the city center.",
-      "fa": "او جوجه‌ای زرد دیده که به سمت مرکز شهر می‌رفته است."
+      "en": "When she arrives, she helps them look for ten minutes.",
+      "fa": "وقتی می‌رسد، ده دقیقه در گشتن کمکشان می‌کند."
     },
     {
-      "en": "Mina looks at the center, where many people are in the streets.",
-      "fa": "مینا به سمت مرکز نگاه می‌کند، جایی که مردم زیادی در خیابان‌ها هستند."
+      "en": "A shop man and his partner check the space between two buildings.",
+      "fa": "مرد مغازه‌دار و شریکش فاصله‌ی بین دو ساختمان را بررسی می‌کنند."
     },
     {
-      "en": "The world feels very big to her now.",
-      "fa": "حالا دنیا برایش خیلی بزرگ به نظر می‌رسد."
+      "en": "But Nino is not there.",
+      "fa": "اما نینو آنجا نیست."
     },
     {
-      "en": "Then the visitor says, \"A big world still has small places to look in.\"",
-      "fa": "بعد بازدیدکننده می‌گوید: «حتی یک دنیای بزرگ هم جاهای کوچکی برای جست‌وجو دارد.»"
+      "en": "At the end of the day, Mina and Dad stand at the bus stop and look at the city center.",
+      "fa": "آخر روز، مینا و بابا در ایستگاه اتوبوس می‌ایستند و به مرکز شهر نگاه می‌کنند."
     },
     {
-      "en": "Mina is happy for the help and thanks everyone in the group.",
-      "fa": "مینا از این کمک خوشحال است و از همه‌ی افراد گروه تشکر می‌کند."
+      "en": "There are so many streets, so many people, so many places.",
+      "fa": "این‌همه خیابان، این‌همه آدم، این‌همه جا."
     },
     {
-      "en": "The husband and wife return to their apartment.",
-      "fa": "شوهر و همسر به آپارتمانشان برمی‌گردند."
+      "en": "\"The world is so big,\" Mina says.",
+      "fa": "مینا می‌گوید: «دنیا خیلی بزرگ است.»"
     },
     {
-      "en": "The grandson, the granddaughter, and the other people who helped go their own ways.",
-      "fa": "آن دو نوه و بقیه‌ی کسانی که کمک کردند به راه خودشان می‌روند."
+      "en": "\"Yes,\" Dad says, \"but it is full of good people too.\"",
+      "fa": "بابا می‌گوید: «بله، اما پر از آدم‌های خوب هم هست.»"
     },
     {
-      "en": "Mina and Dad leave the neighborhood and walk to the city center.",
-      "fa": "مینا و بابا محله را ترک می‌کنند و به سمت مرکز شهر می‌روند."
+      "en": "On the bus, they return home, and Mina thinks about the blue door.",
+      "fa": "با اتوبوس به خانه برمی‌گردند و مینا به درِ آبی فکر می‌کند."
     },
     {
-      "en": "The city is big, but now she knows where to look next.",
-      "fa": "شهر بزرگ است، اما حالا می‌داند بعد کجا را بگردد."
+      "en": "One day, she will see that blue door again.",
+      "fa": "یک روز، دوباره آن درِ آبی را خواهد دید."
     }
   ],
   "check": [
     {
-      "q": "نینو عضو چیست؟",
+      "q": "درِ خانه‌ی پیرزن چه رنگی است؟",
       "options": [
-        "family",
-        "team",
-        "band",
-        "world"
+        "blue",
+        "white",
+        "orange",
+        "yellow"
       ],
-      "a": "family"
+      "a": "blue"
     },
     {
-      "q": "زن با کی زندگی می‌کند؟",
+      "q": "مینا روی یادداشت چه می‌نویسد؟",
       "options": [
-        "husband",
-        "grandson",
-        "visitor",
-        "singer"
+        "address",
+        "picture",
+        "song",
+        "poem"
       ],
-      "a": "husband"
+      "a": "address"
     }
   ]
 }

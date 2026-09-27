@@ -6,218 +6,138 @@
   "titleEn": "The Note",
   "new": [
     "writing",
-    "dear",
     "sentence",
-    "phrase",
-    "spelling",
+    "dear",
+    "fact",
     "spell",
     "letter",
-    "fact",
-    "text",
-    "send"
+    "spelling",
+    "phrase",
+    "send",
+    "text"
   ],
   "sentences": [
     {
-      "en": "Mina sits at the kitchen table to write a new note about Nino.",
-      "fa": "مینا پشت میز آشپزخانه می‌نشیند تا یادداشت تازه‌ای درباره‌ی نینو بنویسد."
+      "en": "The next morning, Mina sits at the kitchen table with paper and a pencil.",
+      "fa": "صبح روز بعد، مینا با کاغذ و مداد پشت میز آشپزخانه می‌نشیند."
     },
     {
-      "en": "She puts a pen, a pencil, and some paper next to her book.",
-      "fa": "یک خودکار، یک مداد و چند برگ کاغذ کنار کتابش می‌گذارد."
+      "en": "Writing a good note is not easy.",
+      "fa": "نوشتن یک یادداشت خوب آسان نیست."
     },
     {
-      "en": "Her first page has no words for a moment.",
-      "fa": "صفحه‌ی اول برای لحظه‌ای هیچ کلمه‌ای ندارد."
+      "en": "Her first sentence is: \"Dear neighbors.\"",
+      "fa": "اولین جمله‌اش این است: «همسایه‌های عزیز.»"
     },
     {
-      "en": "Then Mina begins writing slowly.",
-      "fa": "بعد مینا آرام شروع به نوشتن می‌کند."
+      "en": "Then she writes: \"Our little chicken, Nino, is not home.\"",
+      "fa": "بعد می‌نویسد: «جوجه‌ی کوچکمان، نینو، خانه نیست.»"
     },
     {
-      "en": "She writes the first word with the red pen.",
-      "fa": "اولین کلمه را با خودکار قرمز می‌نویسد."
+      "en": "Next comes the description, and every word is important.",
+      "fa": "بعد نوبت توصیف است و هر کلمه‌اش مهم است."
     },
     {
-      "en": "When the pen stops working, she uses the pencil.",
-      "fa": "وقتی خودکار از کار می‌افتد، از مداد استفاده می‌کند."
+      "en": "\"Small and yellow, with orange feet and a little white on his left.\"",
+      "fa": "«کوچک و زرد، با پاهای نارنجی و کمی سفید در سمت چپش.»"
     },
     {
-      "en": "On the first line she writes, \"Dear neighbors.\"",
-      "fa": "در خط اول می‌نویسد: «همسایه‌های عزیز.»"
+      "en": "Mom reads it. \"Good. Now add the facts,\" she says.",
+      "fa": "مامان آن را می‌خواند. می‌گوید: «خوب است. حالا واقعیت‌ها را اضافه کن.»"
     },
     {
-      "en": "On the next line she adds, \"Dear friends.\"",
-      "fa": "در خط بعد اضافه می‌کند: «دوستان عزیز.»"
+      "en": "Mina writes three facts: when Nino ran away, where people saw him, and their phone.",
+      "fa": "مینا سه واقعیت را می‌نویسد: نینو کی فرار کرد، مردم کجا دیدندش و تلفن خانه."
     },
     {
-      "en": "She wants every word to be easy to read.",
-      "fa": "می‌خواهد هر کلمه به‌راحتی خوانده شود."
+      "en": "\"How do you spell yellow?\" Aria asks.",
+      "fa": "آریا می‌پرسد: «yellow را چطور هجی می‌کنند؟»"
     },
     {
-      "en": "Mom asks what message the note should give first.",
-      "fa": "مامان می‌پرسد یادداشت اول چه پیامی باید بدهد."
+      "en": "Mina spells it for him, letter by letter.",
+      "fa": "مینا آن را حرف‌به‌حرف برایش هجی می‌کند."
     },
     {
-      "en": "Mina writes a short sentence: \"Nino is missing.\"",
-      "fa": "مینا جمله‌ی کوتاهی می‌نویسد: «نینو گم شده است.»"
+      "en": "\"Check your spelling,\" Mom says. \"People need to understand every word.\"",
+      "fa": "مامان می‌گوید: «املایت را بررسی کن. مردم باید همه‌ی کلمه‌ها را بفهمند.»"
     },
     {
-      "en": "The next sentence says he is a small yellow chicken.",
-      "fa": "جمله‌ی بعد می‌گوید او یک جوجه‌ی زرد کوچک است."
+      "en": "Mina checks it twice.",
+      "fa": "مینا دو بار آن را بررسی می‌کند."
     },
     {
-      "en": "Mina adds a phrase below it: \"Please help us look.\"",
-      "fa": "مینا زیر آن عبارتی اضافه می‌کند: «لطفاً به ما در جست‌وجو کمک کنید.»"
+      "en": "At the end, she adds a short phrase in big letters: \"Please help us!\"",
+      "fa": "در آخر، یک عبارت کوتاه با حروف درشت اضافه می‌کند: «لطفاً کمکمان کنید!»"
     },
     {
-      "en": "Then she writes the phrase, \"Come home, Nino.\"",
-      "fa": "بعد عبارت «برگرد خانه، نینو» را می‌نویسد."
+      "en": "Then she draws Nino under the words.",
+      "fa": "بعد زیر کلمه‌ها نینو را می‌کشد."
     },
     {
-      "en": "She checks the spelling of Nino's name twice.",
-      "fa": "املای اسم نینو را دو بار بررسی می‌کند."
+      "en": "Aria helps her, and they write the note ten more times.",
+      "fa": "آریا کمکش می‌کند و یادداشت را ده بار دیگر می‌نویسند."
     },
     {
-      "en": "\"Can you spell it for me?\" Mom asks.",
-      "fa": "مامان می‌پرسد: «می‌توانی برایم هجی کنی؟»"
+      "en": "Dad writes a letter to the city newspaper about Nino.",
+      "fa": "بابا نامه‌ای درباره‌ی نینو به روزنامه‌ی شهر می‌نویسد."
     },
     {
-      "en": "Mina spells each letter slowly.",
-      "fa": "مینا هر حرف را آرام هجی می‌کند."
+      "en": "Mom sends a text with Nino's picture to all her friends.",
+      "fa": "مامان یک پیامک با عکس نینو برای همه‌ی دوستانش می‌فرستد."
     },
     {
-      "en": "The spelling is correct, so she keeps writing.",
-      "fa": "املا درست است، پس به نوشتن ادامه می‌دهد."
+      "en": "In the afternoon, they put the notes on walls around the neighborhood.",
+      "fa": "بعدازظهر، یادداشت‌ها را روی دیوارهای اطراف محله می‌زنند."
     },
     {
-      "en": "She makes a list of three facts: yellow, small, fast.",
-      "fa": "فهرستی از سه حقیقت می‌نویسد: زرد، کوچک، سریع."
+      "en": "One note goes near the bus stop, one near the park, and one next to the yard door.",
+      "fa": "یک یادداشت نزدیک ایستگاه اتوبوس، یکی نزدیک پارک و یکی کنار درِ حیاط می‌رود."
     },
     {
-      "en": "Each fact may help someone know it is Nino.",
-      "fa": "هر حقیقت ممکن است به کسی کمک کند بفهمد آن جوجه نینو است."
+      "en": "Negar and her mother help them.",
+      "fa": "نگار و مادرش کمکشان می‌کنند."
     },
     {
-      "en": "She draws a line under the list.",
-      "fa": "زیر فهرست یک خط می‌کشد."
+      "en": "\"Your writing is very nice,\" Negar says.",
+      "fa": "نگار می‌گوید: «خطت خیلی قشنگ است.»"
     },
     {
-      "en": "Below the line, Mina writes their address.",
-      "fa": "پایین خط، مینا آدرسشان را می‌نویسد."
+      "en": "A woman stops and reads the note on the wall. \"Did you write this?\" she asks.",
+      "fa": "زنی می‌ایستد و یادداشت روی دیوار را می‌خواند. می‌پرسد: «این را تو نوشته‌ای؟»"
     },
     {
-      "en": "Her brother says the note should also introduce Nino.",
-      "fa": "برادرش می‌گوید یادداشت باید نینو را هم معرفی کند."
+      "en": "\"Yes,\" Mina says. \"He is my chicken.\"",
+      "fa": "مینا می‌گوید: «بله. او جوجه‌ی من است.»"
     },
     {
-      "en": "Mina adds one sentence to introduce him to people who do not know him.",
-      "fa": "مینا یک جمله اضافه می‌کند تا نینو را به آدم‌هایی که او را نمی‌شناسند معرفی کند."
+      "en": "\"I will send it to my friends,\" the woman says.",
+      "fa": "زن می‌گوید: «آن را برای دوستانم می‌فرستم.»"
     },
     {
-      "en": "The text now explains why Nino is special to the family.",
-      "fa": "حالا متن توضیح می‌دهد چرا نینو برای خانواده خاص است."
-    },
-    {
-      "en": "Mina reads all the text to Mom.",
-      "fa": "مینا تمام متن را برای مامان می‌خواند."
-    },
-    {
-      "en": "Mom says one more word: \"home.\"",
-      "fa": "مامان یک کلمه‌ی دیگر می‌گوید: «خانه.»"
-    },
-    {
-      "en": "Mina adds that word near the end of the page.",
-      "fa": "مینا آن کلمه را نزدیک پایان صفحه اضافه می‌کند."
-    },
-    {
-      "en": "They decide to make a second note for another street.",
-      "fa": "تصمیم می‌گیرند یادداشت دومی برای خیابان دیگری درست کنند."
-    },
-    {
-      "en": "The second page uses the same message but big writing.",
-      "fa": "صفحه‌ی دوم همان پیام را با نوشته‌ی بزرگ دارد."
-    },
-    {
-      "en": "Mina writes the important sentence again with the pencil.",
-      "fa": "مینا جمله‌ی مهم را دوباره با مداد می‌نویسد."
-    },
-    {
-      "en": "Her brother writes a short letter to the neighbors upstairs.",
-      "fa": "برادرش نامه‌ی کوتاهی برای همسایه‌های طبقه‌ی بالا می‌نویسد."
-    },
-    {
-      "en": "The letter asks them to check cars and gardens.",
-      "fa": "نامه از آن‌ها می‌خواهد ماشین‌ها و باغچه‌ها را بررسی کنند."
-    },
-    {
-      "en": "Mom says they can put the letter under each door.",
-      "fa": "مامان می‌گوید می‌توانند نامه را زیر هر در بگذارند."
-    },
-    {
-      "en": "Mina also writes a text message for the family.",
-      "fa": "مینا همچنین یک پیام متنی برای خانواده می‌نویسد."
-    },
-    {
-      "en": "She will send the message before they leave home.",
-      "fa": "پیش از بیرون رفتن پیام را می‌فرستد."
-    },
-    {
-      "en": "Outside, they post the first note on a wall.",
-      "fa": "بیرون، اولین یادداشت را روی یک دیوار نصب می‌کنند."
-    },
-    {
-      "en": "They post the second note near the bus stop.",
-      "fa": "یادداشت دوم را نزدیک ایستگاه اتوبوس نصب می‌کنند."
-    },
-    {
-      "en": "A woman stops to read what Mina wrote.",
-      "fa": "زنی می‌ایستد تا نوشته‌ی مینا را بخواند."
-    },
-    {
-      "en": "\"Did you write this note?\" the woman asks.",
-      "fa": "زن می‌پرسد: «این یادداشت را تو نوشته‌ای؟»"
-    },
-    {
-      "en": "Mina says yes and explains one fact about Nino.",
-      "fa": "مینا بله می‌گوید و یک حقیقت درباره‌ی نینو توضیح می‌دهد."
-    },
-    {
-      "en": "The woman says she will send the message to her friends.",
-      "fa": "زن می‌گوید پیام را برای دوستانش خواهد فرستاد."
-    },
-    {
-      "en": "Mina looks at the page and is happy with her writing.",
-      "fa": "مینا به صفحه نگاه می‌کند و از نوشته‌اش خوشحال است."
-    },
-    {
-      "en": "The last word on the note is still \"home.\"",
-      "fa": "آخرین کلمه‌ی یادداشت هنوز «خانه» است."
-    },
-    {
-      "en": "She hopes someone will read it and help Nino come home.",
-      "fa": "امیدوار است کسی آن را بخواند و کمک کند نینو به خانه برگردد."
+      "en": "That night, Mina writes the same phrase in her red book: \"Please help us.\"",
+      "fa": "آن شب، مینا همان عبارت را در کتاب قرمزش می‌نویسد: «لطفاً کمکمان کنید.»"
     }
   ],
   "check": [
     {
-      "q": "مینا با چه چیزی می‌نویسد؟",
+      "q": "اولین جمله‌ی یادداشت مینا چیست؟",
       "options": [
-        "pen",
-        "book",
-        "page",
-        "wall"
+        "dear",
+        "please",
+        "help",
+        "home"
       ],
-      "a": "pen"
+      "a": "dear"
     },
     {
-      "q": "یادداشت روی کجا نصب می‌شود؟",
+      "q": "بابا نامه‌اش را برای چه کسی می‌نویسد؟",
       "options": [
-        "wall",
-        "door",
-        "table",
-        "floor"
+        "newspaper",
+        "radio",
+        "teacher",
+        "neighbor"
       ],
-      "a": "wall"
+      "a": "newspaper"
     }
   ]
 }

@@ -7,6 +7,7 @@ import MapScreen from './pages/MapScreen'
 import { warmEnglishVoices } from './engine/narration'
 import { loadClipIndex } from './engine/audioClips'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
+import { introduceWordsOfCompletedChapters } from './engine/progress'
 
 const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
 const ReaderScreen = lazy(() => import('./pages/ReaderScreen'))
@@ -106,8 +107,13 @@ function viewLabel(view: View): string {
   return 'مسیر یادگیری'
 }
 
+function loadCourseState(): GhesseState {
+  const now = Date.now()
+  return introduceWordsOfCompletedChapters(loadState(now, FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS), CHAPTERS, now)
+}
+
 export default function App() {
-  const [state, setState] = useState<GhesseState>(() => loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS))
+  const [state, setState] = useState<GhesseState>(() => loadCourseState())
   const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), state))
   const [persistOk, setPersistOk] = useState(true)
   const [syncConflict, setSyncConflict] = useState(false)
@@ -247,7 +253,7 @@ export default function App() {
   useEffect(() => {
     const onStorage = (event: StorageEvent) => {
       if (event.key !== STORAGE_KEY) return
-      const next = loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)
+      const next = loadCourseState()
       stateRef.current = next
       setState(next)
       setView(current => resolveView(current, next))

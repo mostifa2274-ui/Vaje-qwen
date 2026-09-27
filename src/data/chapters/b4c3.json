@@ -5,216 +5,135 @@
   "titleFa": "در کافه",
   "titleEn": "At the Cafe",
   "new": [
-    "order",
-    "tea",
     "coffee",
+    "tea",
     "lemon",
-    "cookie",
     "ice-cream",
-    "chocolate",
-    "brown",
+    "cookie",
     "lot",
     "customer",
-    "extra"
+    "chocolate",
+    "extra",
+    "sure"
   ],
   "sentences": [
     {
-      "en": "The family stops at a cafe after looking around the market.",
-      "fa": "خانواده بعد از گشتن در بازار در یک کافه می‌ایستد."
+      "en": "In the afternoon, after many hours in the market, the family is tired.",
+      "fa": "بعدازظهر، بعد از ساعت‌ها گشتن در بازار، خانواده خسته است."
     },
     {
-      "en": "Mina is thirsty after walking through the busy streets.",
-      "fa": "مینا بعد از راه رفتن در خیابان‌های شلوغ تشنه است."
+      "en": "They sit at a cafe near the bread shop, where Mina can watch the street.",
+      "fa": "در کافه‌ای نزدیک نانوایی می‌نشینند؛ جایی که مینا می‌تواند خیابان را ببیند."
     },
     {
-      "en": "Her brother is hungry and looks at the food table.",
-      "fa": "برادرش گرسنه است و به میز غذا نگاه می‌کند."
+      "en": "Dad orders coffee, and Mom orders tea with lemon.",
+      "fa": "بابا قهوه سفارش می‌دهد و مامان چای با لیمو."
     },
     {
-      "en": "Mom says everyone can sit for a few minutes.",
-      "fa": "مامان می‌گوید همه می‌توانند چند دقیقه بنشینند."
+      "en": "Mina orders orange juice with ice.",
+      "fa": "مینا آب‌پرتقال با یخ سفارش می‌دهد."
     },
     {
-      "en": "Mina orders orange juice and sits by the window.",
-      "fa": "مینا آب‌پرتقال سفارش می‌دهد و کنار پنجره می‌نشیند."
+      "en": "Aria wants ice cream, and Yasi gets a small cookie.",
+      "fa": "آریا بستنی می‌خواهد و یاسی یک کلوچه‌ی کوچک می‌گیرد."
     },
     {
-      "en": "The juice arrives cold with two pieces of ice.",
-      "fa": "آب‌میوه سرد با دو تکه یخ می‌رسد."
+      "en": "A lot of customers come and go.",
+      "fa": "مشتری‌های زیادی می‌آیند و می‌روند."
     },
     {
-      "en": "Mom chooses tea because she wants something warm.",
-      "fa": "مامان چای انتخاب می‌کند چون نوشیدنی گرم می‌خواهد."
+      "en": "At the next table, a woman is eating a piece of chocolate cake.",
+      "fa": "پشت میز کناری، زنی یک تکه کیک شکلاتی می‌خورد."
     },
     {
-      "en": "Dad orders coffee and opens the map again.",
-      "fa": "بابا قهوه سفارش می‌دهد و دوباره نقشه را باز می‌کند."
+      "en": "Mina drinks her juice slowly and watches the street.",
+      "fa": "مینا آب‌میوه‌اش را آرام می‌نوشد و خیابان را تماشا می‌کند."
     },
     {
-      "en": "At another table, an old man orders tea with lemon.",
-      "fa": "پشت میز دیگری، پیرمردی چای با لیمو سفارش می‌دهد."
+      "en": "Then a small brown chicken walks past the cafe!",
+      "fa": "بعد یک جوجه‌ی قهوه‌ای کوچک از جلوی کافه رد می‌شود!"
     },
     {
-      "en": "A woman near the door eats a small cookie.",
-      "fa": "زنی نزدیک در یک کلوچه‌ی کوچک می‌خورد."
+      "en": "Mina stands up quickly, but the chicken is brown, not yellow.",
+      "fa": "مینا سریع بلند می‌شود، اما جوجه قهوه‌ای است، نه زرد."
     },
     {
-      "en": "Mina keeps watching the market, not the other tables.",
-      "fa": "مینا همچنان بازار را نگاه می‌کند، نه میزهای دیگر را."
+      "en": "\"This market has a lot of chickens,\" Dad says.",
+      "fa": "بابا می‌گوید: «این بازار کلی جوجه دارد.»"
     },
     {
-      "en": "She asks for ice cream when the waiter returns.",
-      "fa": "وقتی پیشخدمت برمی‌گردد، مینا بستنی می‌خواهد."
+      "en": "\"Maybe Nino has friends here,\" Aria says.",
+      "fa": "آریا می‌گوید: «شاید نینو اینجا دوست دارد.»"
     },
     {
-      "en": "Her brother chooses chocolate cake.",
-      "fa": "برادرش کیک شکلاتی انتخاب می‌کند."
+      "en": "Mina sits down again. She feels tired and sad.",
+      "fa": "مینا دوباره می‌نشیند. خسته و غمگین است."
     },
     {
-      "en": "The chocolate is dark brown and very good.",
-      "fa": "شکلات قهوه‌ای تیره و خیلی خوب است."
+      "en": "The waiter brings an extra glass of water for Yasi.",
+      "fa": "پیشخدمت یک لیوان آب اضافه برای یاسی می‌آورد."
     },
     {
-      "en": "Then a small brown chicken comes near the market.",
-      "fa": "بعد یک جوجه‌ی قهوه‌ای کوچک نزدیک بازار می‌آید."
+      "en": "He sees Nino's picture on the table. \"Is this your chicken?\" he asks.",
+      "fa": "عکس نینو را روی میز می‌بیند. می‌پرسد: «این جوجه‌ی شماست؟»"
     },
     {
-      "en": "Mina stands quickly, but the chicken is not Nino.",
-      "fa": "مینا سریع بلند می‌شود، اما جوجه نینو نیست."
+      "en": "\"Yes. Have you seen him?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «بله. او را دیده‌اید؟»"
     },
     {
-      "en": "There are a lot of people between the cafe and market.",
-      "fa": "آدم‌های زیادی میان کافه و بازار هستند."
+      "en": "\"I am not sure,\" he says. \"But ask the customers. Many of them come here every morning.\"",
+      "fa": "می‌گوید: «مطمئن نیستم. اما از مشتری‌ها بپرسید. خیلی‌هایشان هر صبح اینجا می‌آیند.»"
     },
     {
-      "en": "A lot of people are carrying bags and boxes.",
-      "fa": "آدم‌های زیادی کیف و جعبه حمل می‌کنند."
+      "en": "An old customer with a cup of coffee is listening.",
+      "fa": "مشتری پیری با یک فنجان قهوه دارد گوش می‌دهد."
     },
     {
-      "en": "Many people stop when Mina shows Nino's picture.",
-      "fa": "افراد زیادی وقتی مینا عکس نینو را نشان می‌دهد می‌ایستند."
+      "en": "\"Many chickens come to the market in the morning, when the shops open,\" he says.",
+      "fa": "می‌گوید: «صبح‌ها، وقتی مغازه‌ها باز می‌شوند، جوجه‌های زیادی به بازار می‌آیند.»"
     },
     {
-      "en": "Many chickens also move between the market shops.",
-      "fa": "جوجه‌های زیادی هم میان مغازه‌های بازار حرکت می‌کنند."
+      "en": "\"They like the bread shop best. It is warm, and there is food.\"",
+      "fa": "«نانوایی را از همه بیشتر دوست دارند. گرم است و غذا هست.»"
     },
     {
-      "en": "Mina does not drink much because she keeps getting up.",
-      "fa": "مینا زیاد نمی‌نوشد چون مدام از جایش بلند می‌شود."
+      "en": "Mina writes in her red book: \"Bread shop. Six o'clock. Tomorrow.\"",
+      "fa": "مینا در کتاب قرمزش می‌نویسد: «نانوایی. ساعت شش. فردا.»"
     },
     {
-      "en": "Her brother does not eat much and helps her watch.",
-      "fa": "برادرش زیاد غذا نمی‌خورد و به او در نگاه کردن کمک می‌کند."
+      "en": "Aria eats the last of his ice cream and looks at Mina.",
+      "fa": "آریا آخرین قاشق بستنی‌اش را می‌خورد و به مینا نگاه می‌کند."
     },
     {
-      "en": "Some minutes later, Mina asks for more juice.",
-      "fa": "چند دقیقه بعد، مینا آب‌میوه‌ی بیشتری می‌خواهد."
+      "en": "\"Can I come tomorrow?\" he asks.",
+      "fa": "می‌پرسد: «من هم فردا بیایم؟»"
     },
     {
-      "en": "The waiter brings more and fills half her glass.",
-      "fa": "پیشخدمت بیشتر می‌آورد و نصف لیوانش را پر می‌کند."
-    },
-    {
-      "en": "Most people in the cafe now know about Nino.",
-      "fa": "حالا بیشتر آدم‌های کافه درباره‌ی نینو می‌دانند."
-    },
-    {
-      "en": "Most of the chickens outside are not yellow.",
-      "fa": "بیشتر جوجه‌های بیرون زرد نیستند."
-    },
-    {
-      "en": "A few customers say they saw a yellow chicken before.",
-      "fa": "چند مشتری می‌گویند قبلاً یک جوجه‌ی زرد دیده‌اند."
-    },
-    {
-      "en": "Only a few remember where it went.",
-      "fa": "فقط چند نفر یادشان است کجا رفته."
-    },
-    {
-      "en": "Mina takes one piece of cake for later.",
-      "fa": "مینا یک تکه کیک برای بعد برمی‌دارد."
-    },
-    {
-      "en": "Outside the window, a pair of chickens goes across the street.",
-      "fa": "بیرون پنجره، یک جفت جوجه از خیابان رد می‌شوند."
-    },
-    {
-      "en": "The pair goes behind a fruit shop.",
-      "fa": "آن جفت پشت یک مغازه‌ی میوه می‌روند."
-    },
-    {
-      "en": "Dad's coffee cup is still full.",
-      "fa": "فنجان قهوه‌ی بابا هنوز پر است."
-    },
-    {
-      "en": "The cafe becomes full as more people come in.",
-      "fa": "با ورود افراد بیشتر، کافه پر می‌شود."
-    },
-    {
-      "en": "Mina decides she has had enough juice.",
-      "fa": "مینا تصمیم می‌گیرد به اندازه‌ی کافی آب‌میوه خورده است."
-    },
-    {
-      "en": "\"That is enough for me,\" she tells Mom.",
-      "fa": "به مامان می‌گوید: «برای من کافی است.»"
-    },
-    {
-      "en": "The waiter leaves an extra glass on the table.",
-      "fa": "پیشخدمت یک لیوان اضافی روی میز می‌گذارد."
-    },
-    {
-      "en": "Mom asks for extra bread to take with them.",
-      "fa": "مامان نان اضافی می‌خواهد تا با خود ببرند."
-    },
-    {
-      "en": "Mina puts the extra bread in her bag for Nino.",
-      "fa": "مینا نان اضافی را در کیفش برای نینو می‌گذارد."
-    },
-    {
-      "en": "A customer gives them one more piece of information.",
-      "fa": "یک مشتری یک اطلاعات احتمالی دیگر به آن‌ها می‌دهد."
-    },
-    {
-      "en": "He saw a yellow chicken behind the cafe not long ago.",
-      "fa": "کمی قبل یک جوجه‌ی زرد پشت کافه دیده است."
-    },
-    {
-      "en": "Mina is no longer hungry or thirsty.",
-      "fa": "مینا دیگر نه گرسنه است و نه تشنه."
-    },
-    {
-      "en": "She only wants to check the new information quickly.",
-      "fa": "فقط می‌خواهد اطلاعات تازه را سریع بررسی کند."
-    },
-    {
-      "en": "The family leaves the busy cafe together.",
-      "fa": "خانواده با هم کافه‌ی شلوغ را ترک می‌کند."
-    },
-    {
-      "en": "Mina carries the bread and follows Dad to the small street.",
-      "fa": "مینا نان را حمل می‌کند و دنبال بابا به خیابان کوچک می‌رود."
+      "en": "\"Six o'clock is too early for you,\" Mom says, and Aria is not happy.",
+      "fa": "مامان می‌گوید: «ساعت شش برای تو خیلی زود است» و آریا خوشحال نیست."
     }
   ],
   "check": [
     {
-      "q": "مینا چه می‌نوشد؟",
+      "q": "مامان در کافه چه سفارش می‌دهد؟",
       "options": [
-        "juice",
         "tea",
         "coffee",
+        "juice",
         "milk"
       ],
-      "a": "juice"
+      "a": "tea"
     },
     {
-      "q": "مینا نانِ اضافی را برای چه کسی نگه می‌دارد؟",
+      "q": "جوجه‌ای که از جلوی کافه رد می‌شود چه رنگی است؟",
       "options": [
-        "chicken",
-        "baby",
-        "man",
-        "bird"
+        "brown",
+        "yellow",
+        "white",
+        "black"
       ],
-      "a": "chicken"
+      "a": "brown"
     }
   ]
 }

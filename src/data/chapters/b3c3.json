@@ -5,201 +5,169 @@
   "titleFa": "قبل و بعد",
   "titleEn": "Before and After",
   "new": [
-    "half",
-    "speak",
-    "quarter",
-    "sun",
-    "midnight",
-    "ago",
-    "report",
     "believe",
+    "report",
+    "ago",
+    "eye",
     "ever",
-    "hard",
-    "off"
+    "off",
+    "midnight"
   ],
   "sentences": [
     {
-      "en": "Mina wakes early because she wants more time to look for Nino.",
-      "fa": "مینا زود بیدار می‌شود چون زمان بیشتری برای پیدا کردن نینو می‌خواهد."
+      "en": "The next morning, Mina wakes before the sun.",
+      "fa": "صبح روز بعد، مینا پیش از آفتاب بیدار می‌شود."
     },
     {
-      "en": "She goes out before breakfast to check the yard.",
-      "fa": "پیش از صبحانه بیرون می‌رود تا حیاط را بررسی کند."
+      "en": "At half past seven, she and Dad are on the bus to the station.",
+      "fa": "ساعت هفت و نیم، او و بابا در اتوبوسِ ایستگاه هستند."
     },
     {
-      "en": "Her brother joins her before the neighborhood gets busy.",
-      "fa": "برادرش پیش از شلوغ شدن محله به او می‌پیوندد."
+      "en": "At eight o'clock, they stand below the station clock and wait.",
+      "fa": "ساعت هشت، زیر ساعت ایستگاه می‌ایستند و منتظر می‌مانند."
     },
     {
-      "en": "After breakfast, Mina and Mom walk to the park again.",
-      "fa": "بعد از صبحانه، مینا و مامان دوباره به پارک می‌روند."
+      "en": "A quarter of an hour goes by. Then half an hour.",
+      "fa": "یک ربع می‌گذرد. بعد نیم ساعت."
     },
     {
-      "en": "They check two streets after leaving the park.",
-      "fa": "بعد از ترک پارک دو خیابان را بررسی می‌کنند."
+      "en": "Birds come for the bread, but no chicken comes.",
+      "fa": "پرنده‌ها برای نان می‌آیند، اما هیچ جوجه‌ای نمی‌آید."
     },
     {
-      "en": "At half past eight, Mom speaks to a person in a shop.",
-      "fa": "ساعت هشت و نیم، مامان با یک نفر در مغازه صحبت می‌کند."
+      "en": "\"Maybe the man saw a bird,\" Dad says.",
+      "fa": "بابا می‌گوید: «شاید آن مرد یک پرنده دیده.»"
     },
     {
-      "en": "At half past nine, they come to the bus stop.",
-      "fa": "ساعت نه و نیم به ایستگاه اتوبوس می‌رسند."
+      "en": "Mina does not want to believe it, but it is hard not to.",
+      "fa": "مینا نمی‌خواهد باور کند، اما باور نکردنش سخت است."
     },
     {
-      "en": "A quarter past ten finds Mina near the market.",
-      "fa": "ساعت ده و ربع، مینا نزدیک بازار است."
+      "en": "Then a woman speaks to them. \"Are you looking for a chicken?\" she asks.",
+      "fa": "بعد زنی با آن‌ها حرف می‌زند. می‌پرسد: «دنبال یک جوجه می‌گردید؟»"
     },
     {
-      "en": "The quarter hour is important because one person saw a chicken at that time.",
-      "fa": "آن ربع ساعت مهم است چون یک نفر در همان زمان جوجه‌ای دیده است."
+      "en": "She tells them about a report from her street: two days ago, someone saw a chicken in a garden.",
+      "fa": "درباره‌ی گزارشی از خیابانشان می‌گوید: دو روز پیش، کسی یک جوجه در یک باغچه دیده است."
     },
     {
-      "en": "But Mina arrives too late, and the chicken is gone.",
-      "fa": "اما مینا خیلی دیر می‌رسد و جوجه رفته است."
+      "en": "They go there quickly, but it is a neighbor's chicken, big and black.",
+      "fa": "سریع به آنجا می‌روند، اما جوجه‌ی یکی از همسایه‌هاست؛ بزرگ و سیاه."
     },
     {
-      "en": "She is afraid it may be far away now.",
-      "fa": "می‌ترسد حالا خیلی دور شده باشد."
+      "en": "After lunch, Mina sits at her desk with Nino's photo.",
+      "fa": "بعد از ناهار، مینا با عکس نینو پشت میزش می‌نشیند."
     },
     {
-      "en": "During the afternoon, they follow what the person told them.",
-      "fa": "در طول بعدازظهر، چیزی را که آن فرد گفته بود دنبال می‌کنند."
+      "en": "She looks at it and remembers the time before.",
+      "fa": "به آن نگاه می‌کند و آن روزهای قبل را به یاد می‌آورد."
     },
     {
-      "en": "The afternoon sun makes the street warm.",
-      "fa": "آفتاب بعدازظهر خیابان را گرم می‌کند."
+      "en": "Before, Nino was always there when she opened her eyes.",
+      "fa": "قبلاً، هر وقت چشم‌هایش را باز می‌کرد، نینو همیشه آنجا بود."
     },
     {
-      "en": "Before dinner, Mina and Dad check one last garden.",
-      "fa": "پیش از شام، مینا و بابا آخرین باغچه را بررسی می‌کنند."
+      "en": "Before, he ate bread from her hand and slept at the foot of her bed.",
+      "fa": "قبلاً، از دستش نان می‌خورد و پایین تختش می‌خوابید."
     },
     {
-      "en": "After dinner, Dad walks with her to the end of the street.",
-      "fa": "بعد از شام، بابا با او تا انتهای خیابان می‌رود."
+      "en": "Ten days ago, he was here.",
+      "fa": "ده روز پیش، اینجا بود."
     },
     {
-      "en": "During their walk, Mina tells him about all the information.",
-      "fa": "در طول پیاده‌روی، مینا همه‌ی اطلاعات را برایش تعریف می‌کند."
+      "en": "After, the house is quieter.",
+      "fa": "حالا، خانه ساکت‌تر است."
     },
     {
-      "en": "They keep looking until the lights on the street turn on.",
-      "fa": "تا روشن شدن چراغ‌های خیابان به نگاه کردن ادامه می‌دهند."
+      "en": "After, every morning begins with the same question: where is he?",
+      "fa": "حالا، هر صبح با همان سؤال شروع می‌شود: او کجاست؟"
     },
     {
-      "en": "Mina wants to stay outside until midnight.",
-      "fa": "مینا می‌خواهد تا نیمه‌شب بیرون بماند."
+      "en": "Mom sees her face. \"Do you want to speak about it?\" she asks.",
+      "fa": "مامان صورتش را می‌بیند. می‌پرسد: «می‌خواهی درباره‌اش حرف بزنی؟»"
     },
     {
-      "en": "Dad says they cannot keep looking outside until midnight.",
-      "fa": "بابا می‌گوید نمی‌توانند تا نیمه‌شب بیرون بگردند."
+      "en": "\"Did you ever have an animal, Mom?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «مامان، تو هیچ‌وقت حیوانی داشتی؟»"
     },
     {
-      "en": "At midnight, Mina wakes and listens from her bed.",
-      "fa": "نیمه‌شب، مینا بیدار می‌شود و از تختش گوش می‌دهد."
+      "en": "\"Yes, a small bird, when I was young,\" Mom says. \"One day, it went out through the window.\"",
+      "fa": "مامان می‌گوید: «بله، یک پرنده‌ی کوچک، وقتی جوان بودم. یک روز از پنجره بیرون رفت.»"
     },
     {
-      "en": "The street is quiet at midnight, with no chicken outside.",
-      "fa": "خیابان نیمه‌شب آرام است و جوجه‌ای بیرون نیست."
+      "en": "\"Did it come back?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «برگشت؟»"
     },
     {
-      "en": "Until a week ago, Nino slept next to her every night.",
-      "fa": "تا یک هفته پیش، نینو هر شب کنار او می‌خوابید."
+      "en": "Mom is quiet for a moment. \"No,\" she says. \"But I believe Nino will.\"",
+      "fa": "مامان لحظه‌ای ساکت است. می‌گوید: «نه. اما باور دارم نینو برمی‌گردد.»"
     },
     {
-      "en": "Two days ago, someone reported a little yellow chicken near the river.",
-      "fa": "دو روز پیش، کسی یک جوجه‌ی زرد کوچک نزدیک رودخانه گزارش کرد."
+      "en": "In the evening, Mina writes tomorrow's plan in her red book.",
+      "fa": "عصر، مینا برنامه‌ی فردا را در کتاب قرمزش می‌نویسد."
     },
     {
-      "en": "Yesterday, Mina followed that report without finding Nino.",
-      "fa": "دیروز، مینا آن گزارش را دنبال کرد و نینو را پیدا نکرد."
+      "en": "\"Before breakfast: the station again. After breakfast: the river road.\"",
+      "fa": "«قبل از صبحانه: دوباره ایستگاه. بعد از صبحانه: جاده‌ی کنار رودخانه.»"
     },
     {
-      "en": "Then another neighbor gave her a different place to look.",
-      "fa": "بعد همسایه‌ی دیگری جای متفاوتی برای جست‌وجو به او داد."
+      "en": "She turns off the light at ten o'clock, but she cannot sleep.",
+      "fa": "ساعت ده چراغ را خاموش می‌کند، اما خوابش نمی‌برد."
     },
     {
-      "en": "Later, Mina found that the information was about a bird.",
-      "fa": "بعدتر، مینا فهمید آن اطلاعات درباره‌ی یک پرنده بود."
+      "en": "At midnight, she hears a sound in the yard.",
+      "fa": "نیمه‌شب صدایی از حیاط می‌شنود."
     },
     {
-      "en": "Mom says real information will come soon.",
-      "fa": "مامان می‌گوید به‌زودی اطلاعات واقعی خواهد رسید."
+      "en": "She runs downstairs and opens the door.",
+      "fa": "به طبقه‌ی پایین می‌دود و در را باز می‌کند."
     },
     {
-      "en": "Mina wants to believe \"soon\" means tomorrow.",
-      "fa": "مینا می‌خواهد باور کند «به‌زودی» یعنی فردا."
+      "en": "The bread and water are still there, and nothing moves in the dark yard.",
+      "fa": "نان و آب هنوز آنجاست و در حیاط تاریک هیچ چیز تکان نمی‌خورد."
     },
     {
-      "en": "Tomorrow she will start with the river road again.",
-      "fa": "فردا دوباره از جاده‌ی کنار رودخانه شروع خواهد کرد."
+      "en": "Dad comes down after her. \"It is midnight, Mina,\" he says quietly.",
+      "fa": "بابا پشت سرش پایین می‌آید. آرام می‌گوید: «نیمه‌شب است، مینا.»"
     },
     {
-      "en": "She writes tomorrow's plan in her red book.",
-      "fa": "برنامه‌ی فردا را در کتاب قرمزش می‌نویسد."
+      "en": "\"I believed it was Nino,\" she says.",
+      "fa": "می‌گوید: «فکر کردم نینوست.»"
     },
     {
-      "en": "Mina asks if Dad has ever looked for an animal.",
-      "fa": "مینا می‌پرسد آیا بابا تا به حال دنبال حیوانی گشته است."
+      "en": "Dad sits with her by the door.",
+      "fa": "بابا کنارش، دمِ در، می‌نشیند."
     },
     {
-      "en": "Dad says no, but he has never stopped hoping to find Nino.",
-      "fa": "بابا می‌گوید نه، اما هیچ‌وقت از امید به پیدا کردن نینو دست نکشیده است."
+      "en": "\"Every day has a before and an after,\" he says.",
+      "fa": "می‌گوید: «هر روز یک قبل دارد و یک بعد.»"
     },
     {
-      "en": "Tonight, Mina leaves a small dish near the door.",
-      "fa": "امشب، مینا یک ظرف کوچک نزدیک در می‌گذارد."
+      "en": "\"Maybe tomorrow is the day before Nino comes home.\"",
+      "fa": "«شاید فردا روزِ پیش از برگشتن نینو باشد.»"
     },
     {
-      "en": "She hopes Nino will find the food tonight.",
-      "fa": "امیدوار است نینو امشب غذا را پیدا کند."
-    },
-    {
-      "en": "Before bed, she checks the clock one more time.",
-      "fa": "پیش از خواب، یک بار دیگر ساعت را بررسی می‌کند."
-    },
-    {
-      "en": "It is late, but she listens for one final sound.",
-      "fa": "دیر وقت است، اما برای یک صدای آخر گوش می‌دهد."
-    },
-    {
-      "en": "At the end of the day, no new information comes.",
-      "fa": "در پایان روز، اطلاعات تازه‌ای نمی‌آید."
-    },
-    {
-      "en": "Still, Mina does not believe that it is the end.",
-      "fa": "با این حال، مینا باور نمی‌کند که این پایان کار است."
-    },
-    {
-      "en": "She closes the book and thinks about the past week.",
-      "fa": "کتاب را می‌بندد و به هفته‌ی گذشته فکر می‌کند."
-    },
-    {
-      "en": "The past week feels hard, but Mina still has hope for tomorrow.",
-      "fa": "هفته‌ی گذشته سخت به نظر می‌رسد، اما مینا هنوز برای فردا امید دارد."
-    },
-    {
-      "en": "Then Mina turns off the light and finally sleeps.",
-      "fa": "بعد مینا چراغ را خاموش می‌کند و بالاخره می‌خوابد."
+      "en": "Mina looks at the dark yard one more time. Then she goes back to bed and finally sleeps.",
+      "fa": "مینا یک بار دیگر به حیاط تاریک نگاه می‌کند. بعد به تختش برمی‌گردد و بالاخره خوابش می‌برد."
     }
   ],
   "check": [
     {
-      "q": "مینا قبل از صبحانه چه کار می‌کند؟",
+      "q": "مینا و بابا ساعت هشت کنار ساعت ایستگاه منتظر چه هستند؟",
       "options": [
-        "look",
-        "sleep",
-        "eat",
-        "cook"
+        "chicken",
+        "bus",
+        "bread",
+        "clock"
       ],
-      "a": "look"
+      "a": "chicken"
     },
     {
-      "q": "بابا می‌گوید نمی‌توانند تا کِی بیرون بگردند؟",
+      "q": "مینا کِی صدایی در حیاط می‌شنود؟",
       "options": [
         "midnight",
         "morning",
-        "dinner",
+        "lunch",
         "breakfast"
       ],
       "a": "midnight"
