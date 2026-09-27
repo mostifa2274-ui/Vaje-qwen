@@ -109,7 +109,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
             aria-checked={state.soundOn}
             className={state.soundOn ? 'btn-ink px-4 py-2' : 'btn-paper px-4 py-2'}
             onClick={() => {
-              if (state.soundOn && typeof window !== 'undefined') window.speechSynthesis?.cancel()
+              if (state.soundOn) cancelEnglishSpeech()
               onChange({ ...state, soundOn: !state.soundOn })
             }}
           >
