@@ -8,8 +8,8 @@
     "order",
     "tea",
     "coffee",
-    "beer",
-    "wine",
+    "lemon",
+    "cookie",
     "ice-cream",
     "chocolate",
     "brown",
@@ -51,12 +51,12 @@
       "fa": "بابا قهوه سفارش می‌دهد و دوباره نقشه را باز می‌کند."
     },
     {
-      "en": "At another table, an adult orders beer with lunch.",
-      "fa": "پشت میز دیگری، یک بزرگسال همراه ناهار آبجو سفارش می‌دهد."
+      "en": "At another table, an old man orders tea with lemon.",
+      "fa": "پشت میز دیگری، پیرمردی چای با لیمو سفارش می‌دهد."
     },
     {
-      "en": "A woman near the door has a small glass of wine.",
-      "fa": "زنی نزدیک در یک لیوان کوچک شراب دارد."
+      "en": "A woman near the door eats a small cookie.",
+      "fa": "زنی نزدیک در یک کلوچه‌ی کوچک می‌خورد."
     },
     {
       "en": "Mina keeps watching the market, not the other tables.",
@@ -119,8 +119,8 @@
       "fa": "حالا بیشتر آدم‌های کافه درباره‌ی نینو می‌دانند."
     },
     {
-      "en": "Most of the chickens outside are not black.",
-      "fa": "بیشتر جوجه‌های بیرون سیاه نیستند."
+      "en": "Most of the chickens outside are not yellow.",
+      "fa": "بیشتر جوجه‌های بیرون زرد نیستند."
     },
     {
       "en": "A few customers say they saw a yellow chicken before.",
@@ -202,7 +202,7 @@
         "juice",
         "tea",
         "coffee",
-        "wine"
+        "milk"
       ],
       "a": "juice"
     },

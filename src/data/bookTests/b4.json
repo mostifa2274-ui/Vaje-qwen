@@ -125,8 +125,8 @@
           "fa": "رامین با پدر و مادرش در یک مزرعه زندگی می‌کند."
         },
         {
-          "en": "They have cows, sheep, pigs, chickens and a horse.",
-          "fa": "آن‌ها گاو، گوسفند، خوک، مرغ و یک اسب دارند."
+          "en": "They have cows, sheep, goats, chickens and a horse.",
+          "fa": "آن‌ها گاو، گوسفند، بز، مرغ و یک اسب دارند."
         },
         {
           "en": "Ramin also has a brown dog.",
@@ -341,16 +341,16 @@
     },
     {
       "id": "b4-listening-b",
-      "titleEn": "A Dog for Tara",
-      "titleFa": "سگی برای تارا",
+      "titleEn": "A Cat for Tara",
+      "titleFa": "گربه‌ای برای تارا",
       "names": [
         "Tara",
         "Coco"
       ],
       "sentences": [
         {
-          "en": "Tara is ten, and she wants a dog.",
-          "fa": "تارا ده ساله است و یک سگ می‌خواهد."
+          "en": "Tara is ten, and she wants a cat.",
+          "fa": "تارا ده ساله است و یک گربه می‌خواهد."
         },
         {
           "en": "Her mom does not want an animal in the apartment.",
@@ -365,16 +365,16 @@
           "fa": "یک روز یکشنبه، به مزرعه‌ای نزدیک شهر می‌روند."
         },
         {
-          "en": "There are many animals there: cows, sheep, horses and a small brown dog.",
-          "fa": "آنجا حیوان‌های زیادی هست: گاو، گوسفند، اسب و یک سگ کوچک قهوه‌ای."
+          "en": "There are many animals there: cows, sheep, horses and a small brown cat.",
+          "fa": "آنجا حیوان‌های زیادی هست: گاو، گوسفند، اسب و یک گربهٔ کوچک قهوه‌ای."
         },
         {
-          "en": "The dog is very friendly, and it runs to Tara.",
-          "fa": "سگ خیلی مهربان است و به طرف تارا می‌دود."
+          "en": "The cat is very friendly, and it runs to Tara.",
+          "fa": "گربه خیلی مهربان است و به طرف تارا می‌دود."
         },
         {
-          "en": "A woman from the farm says, \"This dog has no home.\"",
-          "fa": "زنی از مزرعه می‌گوید: «این سگ خانه ندارد.»"
+          "en": "A woman from the farm says, \"This cat has no home.\"",
+          "fa": "زنی از مزرعه می‌گوید: «این گربه خانه ندارد.»"
         },
         {
           "en": "Tara looks at her mom, and her mom laughs.",
@@ -389,8 +389,8 @@
           "fa": "تارا خیلی خوشحال است."
         },
         {
-          "en": "She names the dog Coco.",
-          "fa": "اسم سگ را کوکو می‌گذارد."
+          "en": "She names the cat Coco.",
+          "fa": "اسم گربه را کوکو می‌گذارد."
         },
         {
           "en": "Now Coco sleeps on a small bed next to Tara every night.",
@@ -413,10 +413,10 @@
           "answer": 0
         },
         {
-          "q": "چرا مادر تارا اول سگ نمی‌خواهد؟",
+          "q": "چرا مادر تارا اول گربه نمی‌خواهد؟",
           "options": [
-            "از سگ می‌ترسد",
-            "سگ‌ها گران‌اند",
+            "از گربه می‌ترسد",
+            "گربه‌ها گران‌اند",
             "تارا خیلی کوچک است",
             "نمی‌خواهد حیوانی در آپارتمان باشد"
           ],
@@ -433,7 +433,7 @@
           "answer": 3
         },
         {
-          "q": "سگ کوچک چه رنگی است؟",
+          "q": "گربهٔ کوچک چه رنگی است؟",
           "options": [
             "سیاه",
             "سفید",
@@ -446,9 +446,9 @@
           "q": "مادر با چه شرطی قبول می‌کند؟",
           "options": [
             "تارا اتاقش را تمیز کند",
-            "تارا هر روز به سگ غذا و آب بدهد",
-            "سگ در حیاط بخوابد",
-            "تارا پول سگ را بدهد"
+            "تارا هر روز به گربه غذا و آب بدهد",
+            "گربه در حیاط بخوابد",
+            "تارا پول گربه را بدهد"
           ],
           "answer": 1
         }

@@ -2,8 +2,8 @@
   "id": "b7c5",
   "book": 7,
   "n": 5,
-  "titleFa": "اقیانوس",
-  "titleEn": "The Ocean",
+  "titleFa": "دریا",
+  "titleEn": "The Sea",
   "new": [
     "ocean",
     "beach",
@@ -19,40 +19,40 @@
     "museum",
     "theater",
     "mall",
-    "bar"
+    "sea"
   ],
   "sentences": [
     {
-      "en": "After another train ride, the family arrives at a small town near the ocean.",
-      "fa": "بعد از یک سفر دیگر با قطار، خانواده به شهرک کوچکی نزدیک اقیانوس می‌رسند."
+      "en": "After another train ride, the family arrives at a small town by the sea.",
+      "fa": "بعد از یک سفر دیگر با قطار، خانواده به شهرک کوچکی کنار دریا می‌رسد."
     },
     {
-      "en": "The ocean goes far past the quiet town.",
-      "fa": "اقیانوس تا دوردست از کنار شهرک آرام ادامه دارد."
+      "en": "The sea is so big that it looks like an ocean.",
+      "fa": "دریا آن‌قدر بزرگ است که مثل اقیانوس به نظر می‌رسد."
     },
     {
       "en": "A long beach goes around the blue water.",
       "fa": "ساحلی طولانی دور آب آبی می‌رود."
     },
     {
-      "en": "Mina walks on the beach, watching for any little yellow chicken.",
-      "fa": "مینا روی ساحل راه می‌رود و دنبال هر جوجه‌ی زرد کوچکی می‌گردد."
+      "en": "Mina walks on the beach with Mom, watching for any little yellow chicken.",
+      "fa": "مینا همراه مامان روی ساحل راه می‌رود و دنبال هر جوجه‌ی زرد کوچکی می‌گردد."
     },
     {
       "en": "The cold water comes over her shoes.",
       "fa": "آب سرد روی کفش‌هایش می‌آید."
     },
     {
-      "en": "A fishing boat moves slowly across the ocean.",
-      "fa": "یک قایق ماهیگیری آرام روی اقیانوس حرکت می‌کند."
+      "en": "A fishing boat moves slowly across the sea.",
+      "fa": "یک قایق ماهیگیری آرام روی دریا حرکت می‌کند."
     },
     {
       "en": "A man with the fishing boat brings his boat close to the beach and says hello.",
       "fa": "مردی با قایق ماهیگیری، قایقش را نزدیک ساحل می‌آورد و سلام می‌کند."
     },
     {
-      "en": "Mina shows him Nino's picture and asks for help.",
-      "fa": "مینا عکس نینو را به او نشان می‌دهد و کمک می‌خواهد."
+      "en": "Mina and Mom show him Nino's picture and ask for help.",
+      "fa": "مینا و مامان عکس نینو را به او نشان می‌دهند و کمک می‌خواهند."
     },
     {
       "en": "Past the boat, a small island is in the water.",
@@ -63,12 +63,12 @@
       "fa": "جزیره از ساحل خیلی کوچک به نظر می‌رسد، اما مرد آن را خوب می‌شناسد."
     },
     {
-      "en": "A river meets the ocean at the other end of town.",
-      "fa": "رودخانه‌ای در سوی دیگر شهرک به اقیانوس می‌ریزد."
+      "en": "A river meets the sea at the other end of town.",
+      "fa": "رودخانه‌ای در سوی دیگر شهرک به دریا می‌ریزد."
     },
     {
-      "en": "Mina follows the river because a small chicken could stay near the water.",
-      "fa": "مینا کنار رودخانه می‌رود چون یک جوجه‌ی کوچک ممکن است نزدیک آب بماند."
+      "en": "Mina and Mom follow the river because a small chicken could stay near the water.",
+      "fa": "مینا و مامان کنار رودخانه می‌روند چون یک جوجه‌ی کوچک ممکن است نزدیک آب بماند."
     },
     {
       "en": "A small hotel stands between the river and the beach.",
@@ -119,8 +119,8 @@
       "fa": "او دوباره از مینا تشکر می‌کند و پاسپورت را در کیفش می‌گذارد."
     },
     {
-      "en": "Back in town, Mina arrives at the library and checks its front door.",
-      "fa": "در شهرک، مینا به کتابخانه می‌رسد و درِ جلوی آن را بررسی می‌کند."
+      "en": "Back in town, Mina and Mom arrive at the library and check its front door.",
+      "fa": "در شهرک، مینا و مامان به کتابخانه می‌رسند و درِ جلوی آن را بررسی می‌کنند."
     },
     {
       "en": "A woman at the library has not seen Nino, but she looks at the picture.",
@@ -131,8 +131,8 @@
       "fa": "موزه‌ای قدیمی کنار کتابخانه قرار دارد."
     },
     {
-      "en": "A worker at the museum joins Mina and looks behind the chairs.",
-      "fa": "یک کارمند موزه به مینا می‌پیوندد و پشت صندلی‌ها را نگاه می‌کند."
+      "en": "A worker at the museum joins them and looks behind the chairs.",
+      "fa": "یک کارمند موزه به آن‌ها می‌پیوندد و پشت صندلی‌ها را نگاه می‌کند."
     },
     {
       "en": "Across the road, the theater is busy.",
@@ -151,12 +151,12 @@
       "fa": "خانواده از داخل مرکز خرید می‌گذرد و هر در را نگاه می‌کند."
     },
     {
-      "en": "A bar near the door is full of people.",
-      "fa": "کافه‌بار نزدیک در پر از آدم است."
+      "en": "From the mall window, they can see the sea.",
+      "fa": "از پنجره‌ی مرکز خرید، دریا را می‌بینند."
     },
     {
-      "en": "A man at the cafe remembers seeing a little yellow chicken near the beach road.",
-      "fa": "مردی در کافه به یاد می‌آورد یک جوجه‌ی زرد کوچک نزدیک جاده‌ی ساحل دیده است."
+      "en": "A man at a cafe in the mall remembers seeing a little yellow chicken near the beach road.",
+      "fa": "مردی در کافه‌ای داخل مرکز خرید به یاد می‌آورد یک جوجه‌ی زرد کوچک نزدیک جاده‌ی ساحل دیده است."
     },
     {
       "en": "Mina checks a small space under a chair where a chicken could stay.",
@@ -167,16 +167,16 @@
       "fa": "در آن فضا جوجه‌ای نیست، اما اطلاعات تازه او را دوباره به بیرون می‌فرستد."
     },
     {
-      "en": "The family returns to the beach as the sun begins to fall.",
-      "fa": "خانواده وقتی خورشید رو به پایین می‌رود به ساحل برمی‌گردد."
+      "en": "The family returns to the beach as the sun goes down.",
+      "fa": "خانواده وقتی خورشید پایین می‌رود به ساحل برمی‌گردد."
     },
     {
       "en": "Soon the streets grow dark and the shops turn on their lights.",
       "fa": "خیلی زود خیابان‌ها تاریک می‌شوند و مغازه‌ها چراغ‌هایشان را روشن می‌کنند."
     },
     {
-      "en": "The beach is dark now, and only the ocean is easy to hear.",
-      "fa": "حالا ساحل تاریک است و فقط صدای اقیانوس به‌راحتی شنیده می‌شود."
+      "en": "The beach is dark now, and only the sea is easy to hear.",
+      "fa": "حالا ساحل تاریک است و فقط صدای دریا به‌راحتی شنیده می‌شود."
     },
     {
       "en": "Mina is tired after looking all around the town.",
@@ -199,8 +199,8 @@
       "fa": "مرد می‌گوید: «جوجه‌ها گاهی بعد از سفرهای طولانی به خانه برمی‌گردند.»"
     },
     {
-      "en": "Mina looks across the dark ocean and believes him.",
-      "fa": "مینا به اقیانوس تاریک نگاه می‌کند و حرفش را باور می‌کند."
+      "en": "Mina looks across the dark sea and believes him.",
+      "fa": "مینا به دریای تاریک نگاه می‌کند و حرفش را باور می‌کند."
     },
     {
       "en": "They leave the beach without Nino, but with a little more hope.",
@@ -209,17 +209,17 @@
   ],
   "check": [
     {
-      "q": "قایق مردِ ماهی‌گیر کجاست؟",
+      "q": "دریا آن‌قدر بزرگ است که مثل چه چیزی به نظر می‌رسد؟",
       "options": [
         "ocean",
         "river",
-        "beach",
-        "island"
+        "island",
+        "pool"
       ],
       "a": "ocean"
     },
     {
-      "q": "ماهیگیر می‌گوید حیوان‌ها گاهی دوباره چه چیزی را پیدا می‌کنند؟",
+      "q": "به گفته‌ی ماهیگیر، جوجه‌ها گاهی بعد از سفرهای طولانی به کجا برمی‌گردند؟",
       "options": [
         "home",
         "fish",

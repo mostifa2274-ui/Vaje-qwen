@@ -13,12 +13,12 @@
   ],
   "sentences": [
     {
-      "en": "The train stops near a quiet farm in the country.",
-      "fa": "قطار نزدیک یک مزرعه‌ی آرام در روستا می‌ایستد."
+      "en": "The family gets off the train at a quiet farm in the country.",
+      "fa": "خانواده کنار یک مزرعه‌ی آرام در روستا از قطار پیاده می‌شوند."
     },
     {
-      "en": "A farmer says hello when Mina and her family go outside.",
-      "fa": "کشاورزی وقتی مینا و خانواده‌اش بیرون می‌روند سلام می‌کند."
+      "en": "A farmer says hello when Mina and her family arrive.",
+      "fa": "کشاورزی وقتی مینا و خانواده‌اش می‌رسند سلام می‌کند."
     },
     {
       "en": "The farmer listens when Mina describes Nino.",
@@ -38,11 +38,11 @@
     },
     {
       "en": "The farmer explains how to plant in lines.",
-      "fa": "کشاورز توضیح می‌دهد چگونه در خط‌ها بکارند."
+      "fa": "کشاورز توضیح می‌دهد چطور در ردیف بکارند."
     },
     {
-      "en": "Mina sees one red flower next to the way.",
-      "fa": "مینا یک گل قرمز کنار راه می‌بیند."
+      "en": "Mina sees one red flower next to the road.",
+      "fa": "مینا یک گل قرمز کنار جاده می‌بیند."
     },
     {
       "en": "Another flower grows near a tall tree.",
@@ -149,28 +149,28 @@
       "fa": "می‌گوید برنامه شاید عوض شود، اما امید باید بماند."
     },
     {
-      "en": "Mina thanks him and returns to the train with new information.",
-      "fa": "مینا از او تشکر می‌کند و با اطلاعات تازه به قطار برمی‌گردد."
+      "en": "Mina thanks him, and the family goes back to the station.",
+      "fa": "مینا از او تشکر می‌کند و خانواده به ایستگاه برمی‌گردد."
     }
   ],
   "check": [
     {
-      "q": "کشاورز چه می‌کارد؟",
+      "q": "کشاورز به مینا نان و چه چیزی می‌دهد؟",
       "options": [
         "flower",
-        "bread",
         "fire",
-        "rain"
+        "rain",
+        "snow"
       ],
       "a": "flower"
     },
     {
-      "q": "هوا در مزرعه چطور است؟",
+      "q": "کشاورز می‌گوید چه نوع هوایی به رشد گیاه‌ها کمک می‌کند؟",
       "options": [
         "clean",
         "dirty",
-        "bad",
-        "cold"
+        "dark",
+        "hot"
       ],
       "a": "clean"
     }

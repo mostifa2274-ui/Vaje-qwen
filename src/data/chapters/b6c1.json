@@ -95,7 +95,7 @@
       "fa": "معلم در اشتباه به او کمک می‌کند."
     },
     {
-      "en": "A mistake is part of learning, the teacher says.",
+      "en": "\"A mistake is part of learning,\" the teacher says.",
       "fa": "معلم می‌گوید: «اشتباه بخشی از یادگیری است.»"
     },
     {
@@ -111,8 +111,8 @@
       "fa": "مینا شمال کشور را مطالعه می‌کند."
     },
     {
-      "en": "She remembers that Grandmother lives far away.",
-      "fa": "یادش می‌آید که مادربزرگ دور زندگی می‌کند."
+      "en": "She remembers that Grandmother lives in the north.",
+      "fa": "یادش می‌آید که مادربزرگ در شمال زندگی می‌کند."
     },
     {
       "en": "Next comes history, another school subject.",
@@ -151,7 +151,7 @@
       "fa": "در پایان، امتحان دیگر آن‌قدر سخت به نظر نمی‌رسد."
     },
     {
-      "en": "The teacher is happy and says, Good work.",
+      "en": "The teacher is happy and says, \"Good work.\"",
       "fa": "معلم خوشحال است و می‌گوید: «آفرین.»"
     },
     {
@@ -171,7 +171,7 @@
       "fa": "معلم یادداشت را همراه مینا می‌خواند."
     },
     {
-      "en": "This can be part of your homework, she says.",
+      "en": "\"This can be part of your homework,\" she says.",
       "fa": "معلم می‌گوید: «این می‌تواند بخشی از تکلیف تو باشد.»"
     },
     {
@@ -187,7 +187,7 @@
       "fa": "کلاس از ایده‌ی مینا خوشش می‌آید."
     },
     {
-      "en": "One student says he will read the note to his family.",
+      "en": "One student says she will read the note to her family.",
       "fa": "یکی از دانش‌آموزها می‌گوید یادداشت را برای خانواده‌اش می‌خواند."
     },
     {
@@ -205,17 +205,17 @@
   ],
   "check": [
     {
-      "q": "مینا در مدرسه چه چیزی را نشان می‌دهد؟",
+      "q": "مینا بعد از آزمون وقت دارد چه چیزی را نشان دهد؟",
       "options": [
         "book",
         "pen",
-        "photo",
-        "bag"
+        "bag",
+        "desk"
       ],
       "a": "book"
     },
     {
-      "q": "آزمون برای مینا چطور است؟",
+      "q": "سؤال‌های بعدی آزمون برای مینا چطور هستند؟",
       "options": [
         "easy",
         "hard",

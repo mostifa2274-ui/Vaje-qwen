@@ -45,8 +45,8 @@
   ],
   "sentences": [
     {
-      "en": "The next morning, Mina asks Mom for the yard key.",
-      "fa": "صبح روز بعد، مینا از مامان کلید حیاط را می‌خواهد."
+      "en": "After breakfast, Mina asks Mom for the yard key.",
+      "fa": "بعد از صبحانه، مینا کلید حیاط را از مامان می‌خواهد."
     },
     {
       "en": "Mom takes the key from the kitchen table.",
@@ -169,20 +169,20 @@
       "fa": "جوابش برای لحظه‌ای آشپزخانه را ساکت می‌کند."
     },
     {
-      "en": "Dad tells Mina to ask her brother where Nino usually sleeps.",
-      "fa": "بابا به مینا می‌گوید از برادرش بپرسد نینو معمولاً کجا می‌خوابد."
+      "en": "Dad tells Mina to ask her brother about Nino.",
+      "fa": "بابا به مینا می‌گوید درباره‌ی نینو از برادرش بپرسد."
     },
     {
-      "en": "Mina asks, \"Where else should we look?\"",
-      "fa": "مینا می‌پرسد: «دیگر کجا باید نگاه کنیم؟»"
+      "en": "Mina asks him, \"Where else should we look?\"",
+      "fa": "مینا از او می‌پرسد: «دیگر کجا را باید بگردیم؟»"
     },
     {
       "en": "\"Look here next to the table,\" her brother answers.",
       "fa": "برادرش جواب می‌دهد: «اینجا کنار میز را نگاه کن.»"
     },
     {
-      "en": "Mina checks, but Nino is not here.",
-      "fa": "مینا بررسی می‌کند، اما نینو اینجا نیست."
+      "en": "Mina checks, but Nino is not there.",
+      "fa": "مینا نگاه می‌کند، اما نینو آنجا نیست."
     },
     {
       "en": "Dad points to the front room and asks, \"What about there?\"",
@@ -229,10 +229,6 @@
       "fa": "مامان صدا می‌زند: «قبل از تاریک شدن در را ببند.»"
     },
     {
-      "en": "Dad closes the window, and Mina closes the door.",
-      "fa": "بابا پنجره را می‌بندد و مینا در را می‌بندد."
-    },
-    {
       "en": "Mina walks from the yard back to the house slowly.",
       "fa": "مینا آرام از حیاط به خانه برمی‌گردد."
     },
@@ -243,6 +239,10 @@
     {
       "en": "\"Come home, Nino, please,\" Mina says.",
       "fa": "مینا می‌گوید: «برگرد خانه، نینو، لطفاً.»"
+    },
+    {
+      "en": "Dad closes the window, and Mina closes the door.",
+      "fa": "بابا پنجره را می‌بندد و مینا در را می‌بندد."
     }
   ],
   "check": [

@@ -25,8 +25,8 @@
   ],
   "sentences": [
     {
-      "en": "The phone makes a sound after dinner, and Mina answers quickly.",
-      "fa": "تلفن بعد از شام صدا می‌دهد و مینا سریع جواب می‌دهد."
+      "en": "The phone makes a sound after dinner, and Dad answers quickly.",
+      "fa": "تلفن بعد از شام صدا می‌دهد و بابا سریع جواب می‌دهد."
     },
     {
       "en": "A woman says she is a scientist from the university.",
@@ -39,6 +39,18 @@
     {
       "en": "The reason for her call is a small yellow chicken near the university.",
       "fa": "دلیل تماسش یک جوجه‌ی زرد کوچک نزدیک دانشگاه است."
+    },
+    {
+      "en": "On the phone, Dad asks what kind of chicken the woman found.",
+      "fa": "بابا پشت تلفن می‌پرسد زن چه جور جوجه‌ای پیدا کرده است."
+    },
+    {
+      "en": "He also asks what special colors the chicken has.",
+      "fa": "همچنین می‌پرسد جوجه چه رنگ‌های خاصی دارد."
+    },
+    {
+      "en": "The scientist says the chicken is small, yellow, and young.",
+      "fa": "دانشمند می‌گوید جوجه کوچک، زرد و جوان است."
     },
     {
       "en": "Mina knows every false report can become a problem.",
@@ -61,18 +73,6 @@
       "fa": "نکته‌ی اصلی این است که جوجه را از نزدیک ببینند."
     },
     {
-      "en": "On the way, Mina asks what kind of chicken the woman found.",
-      "fa": "در راه، مینا می‌پرسد زن چه جور جوجه‌ای پیدا کرده است."
-    },
-    {
-      "en": "Dad asks what special colors the chicken has.",
-      "fa": "بابا می‌پرسد جوجه چه رنگ‌های خاصی دارد."
-    },
-    {
-      "en": "The scientist says the chicken is small, yellow, and young.",
-      "fa": "دانشمند می‌گوید جوجه کوچک، زرد و جوان است."
-    },
-    {
       "en": "The university sits in an older part of the city.",
       "fa": "دانشگاه در بخش قدیمی‌تر شهر قرار دارد."
     },
@@ -93,8 +93,8 @@
       "fa": "به یک اتاق دانشگاه می‌رسند و دانشمند را می‌بینند."
     },
     {
-      "en": "A small yellow chicken is waiting in a small pen.",
-      "fa": "یک جوجه‌ی زرد کوچک در یک محوطه‌ی کوچک منتظر است."
+      "en": "A little yellow chicken is waiting in a small box.",
+      "fa": "یک جوجه‌ی زرد کوچک داخل یک جعبه‌ی کوچک منتظر است."
     },
     {
       "en": "Its yellow color is very much like Nino's.",
@@ -105,8 +105,8 @@
       "fa": "یک حلقه‌ی آبی کوچک دور پای جوجه است."
     },
     {
-      "en": "The card has another family's phone on it.",
-      "fa": "روی کارت تلفن خانواده‌ی دیگری نوشته شده است."
+      "en": "The band has another family's phone on it.",
+      "fa": "روی حلقه تلفن خانواده‌ی دیگری نوشته شده است."
     },
     {
       "en": "Mina looks at the face and knows it is not Nino.",
@@ -181,8 +181,8 @@
       "fa": "با این حال، دلیل بررسی اطلاعات هنوز خوب بود."
     },
     {
-      "en": "The situation is better because they know this chicken's family.",
-      "fa": "وضعیت بهتر است چون خانواده‌ی این جوجه را می‌شناسند."
+      "en": "The situation is better because this chicken can now go back to its family.",
+      "fa": "وضعیت بهتر است چون این جوجه حالا می‌تواند پیش خانواده‌اش برگردد."
     },
     {
       "en": "Their next action is to put the university in the checked section of the plan.",

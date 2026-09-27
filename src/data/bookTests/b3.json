@@ -11,12 +11,12 @@
       ],
       "sentences": [
         {
-          "en": "On Saturdays, Parisa usually wakes at ten o'clock.",
-          "fa": "پریسا شنبه‌ها معمولاً ساعت ده بیدار می‌شود."
+          "en": "On Fridays, Parisa usually wakes at ten o'clock.",
+          "fa": "پریسا جمعه‌ها معمولاً ساعت ده بیدار می‌شود."
         },
         {
-          "en": "But this Saturday, she wakes early, at half past six.",
-          "fa": "اما این شنبه زود بیدار می‌شود، ساعت شش و نیم."
+          "en": "But this Friday, she wakes early, at half past six.",
+          "fa": "اما این جمعه زود بیدار می‌شود، ساعت شش و نیم."
         },
         {
           "en": "Today her brother Kaveh is eighteen.",
@@ -55,13 +55,13 @@
           "fa": "کاوه پایین می‌آید و همه می‌گویند: «تولدت مبارک!»"
         },
         {
-          "en": "Kaveh is happy, and they sing and dance until midnight.",
-          "fa": "کاوه خوشحال است و آن‌ها تا نیمه‌شب آواز می‌خوانند و می‌رقصند."
+          "en": "Kaveh is happy, and they eat cake and talk until midnight.",
+          "fa": "کاوه خوشحال است و تا نیمه‌شب کیک می‌خورند و حرف می‌زنند."
         }
       ],
       "questions": [
         {
-          "q": "پریسا شنبه‌ها معمولاً چه ساعتی بیدار می‌شود؟",
+          "q": "پریسا جمعه‌ها معمولاً چه ساعتی بیدار می‌شود؟",
           "options": [
             "ساعت شش و نیم",
             "ساعت ده",
@@ -126,48 +126,48 @@
           "fa": "هفته‌ای سرد در ماه ژانویه است."
         },
         {
-          "en": "On Monday, Shirin stays at home all day.",
-          "fa": "دوشنبه، شیرین تمام روز در خانه می‌ماند."
+          "en": "On Saturday, Shirin stays at home all day.",
+          "fa": "شنبه، شیرین تمام روز در خانه می‌ماند."
         },
         {
           "en": "She watches TV and plays the piano.",
           "fa": "تلویزیون تماشا می‌کند و پیانو می‌زند."
         },
         {
-          "en": "On Tuesday, she walks to the gym with her friend Mahsa.",
-          "fa": "سه‌شنبه، با دوستش مهسا پیاده به باشگاه می‌رود."
+          "en": "On Sunday, she walks to the gym with her friend Mahsa.",
+          "fa": "یکشنبه، با دوستش مهسا پیاده به باشگاه می‌رود."
         },
         {
           "en": "They swim in the warm pool for an hour.",
           "fa": "یک ساعت در استخر گرم شنا می‌کنند."
         },
         {
-          "en": "On Wednesday, Shirin forgets her key, and she waits outside for twenty minutes.",
-          "fa": "چهارشنبه، شیرین کلیدش را فراموش می‌کند و بیست دقیقه بیرون منتظر می‌ماند."
+          "en": "On Monday, Shirin forgets her key, and she waits outside for twenty minutes.",
+          "fa": "دوشنبه، شیرین کلیدش را فراموش می‌کند و بیست دقیقه بیرون منتظر می‌ماند."
         },
         {
           "en": "Her mom comes home at half past four and opens the door.",
           "fa": "مادرش ساعت چهار و نیم به خانه می‌آید و در را باز می‌کند."
         },
         {
-          "en": "On Thursday, Shirin stays in bed until the afternoon.",
-          "fa": "پنجشنبه، شیرین تا بعدازظهر در رختخواب می‌ماند."
+          "en": "On Tuesday, there is no school because it is very cold, so Shirin stays in bed until the afternoon.",
+          "fa": "سه‌شنبه، چون هوا خیلی سرد است مدرسه تعطیل است و شیرین تا بعدازظهر در رختخواب می‌ماند."
         },
         {
-          "en": "On Friday, she helps her dad in the kitchen.",
-          "fa": "جمعه، در آشپزخانه به پدرش کمک می‌کند."
+          "en": "On Wednesday, she helps her dad in the kitchen.",
+          "fa": "چهارشنبه، در آشپزخانه به پدرش کمک می‌کند."
         },
         {
-          "en": "On Saturday, Mahsa has a birthday party.",
-          "fa": "شنبه، مهسا جشن تولد دارد."
+          "en": "On Thursday, Mahsa has a birthday party.",
+          "fa": "پنجشنبه، مهسا جشن تولد دارد."
         },
         {
           "en": "Shirin gives her friend a little red book.",
           "fa": "شیرین یک کتاب قرمز کوچک به دوستش می‌دهد."
         },
         {
-          "en": "Now it is Sunday, and Shirin says, \"I want summer!\"",
-          "fa": "حالا یکشنبه است و شیرین می‌گوید: «من تابستان می‌خواهم!»"
+          "en": "Now it is Friday, and Shirin says, \"I want summer!\"",
+          "fa": "حالا جمعه است و شیرین می‌گوید: «من تابستان می‌خواهم!»"
         }
       ],
       "questions": [
@@ -182,7 +182,7 @@
           "answer": 0
         },
         {
-          "q": "شیرین سه‌شنبه چه کار می‌کند؟",
+          "q": "شیرین یکشنبه چه کار می‌کند؟",
           "options": [
             "در خانه تلویزیون تماشا می‌کند",
             "در آشپزخانه به پدرش کمک می‌کند",
@@ -192,7 +192,7 @@
           "answer": 3
         },
         {
-          "q": "چرا شیرین چهارشنبه بیرون منتظر می‌ماند؟",
+          "q": "چرا شیرین دوشنبه بیرون منتظر می‌ماند؟",
           "options": [
             "چون منتظر دوستش است",
             "چون در خانه مهمان دارند",
@@ -238,12 +238,12 @@
           "fa": "آرمان یک ساعت قدیمی کنار تختش دارد."
         },
         {
-          "en": "On Saturday, he has a football match at nine o'clock.",
-          "fa": "شنبه ساعت نه مسابقهٔ فوتبال دارد."
+          "en": "On Friday, he has a football match at nine o'clock.",
+          "fa": "جمعه ساعت نه مسابقهٔ فوتبال دارد."
         },
         {
-          "en": "He wakes on Saturday morning, and the clock says six o'clock.",
-          "fa": "شنبه صبح بیدار می‌شود و ساعت، شش را نشان می‌دهد."
+          "en": "He wakes on Friday morning, and the clock says six o'clock.",
+          "fa": "جمعه صبح بیدار می‌شود و ساعت، شش را نشان می‌دهد."
         },
         {
           "en": "It is early, so he sleeps again.",
@@ -353,8 +353,8 @@
           "fa": "سپیده و خانواده‌اش هر تابستان پیش دوستانشان در شهری کوچک می‌مانند."
         },
         {
-          "en": "This year they leave on Friday afternoon.",
-          "fa": "امسال جمعه بعدازظهر راه می‌افتند."
+          "en": "This year they leave on Thursday afternoon.",
+          "fa": "امسال پنجشنبه بعدازظهر راه می‌افتند."
         },
         {
           "en": "The town is far from the city, and it takes three hours to get there.",
@@ -369,20 +369,20 @@
           "fa": "سپیده آنجا دوستی دارد که اسمش رویاست."
         },
         {
-          "en": "On Saturday, the two girls swim in the town pool.",
-          "fa": "شنبه، دو دختر در استخرِ شهر شنا می‌کنند."
+          "en": "On Friday morning, the two girls swim in the town pool.",
+          "fa": "جمعه صبح، دو دختر در استخرِ شهر شنا می‌کنند."
         },
         {
-          "en": "In the afternoon, they make a big dinner with Roya and her mom.",
-          "fa": "بعدازظهر، با رویا و مادرش یک شام مفصل درست می‌کنند."
+          "en": "In the afternoon, they help Roya and her mom make a big dinner.",
+          "fa": "بعدازظهر، به رویا و مادرش کمک می‌کنند یک شام مفصل درست کنند."
         },
         {
-          "en": "On Sunday, Sepideh forgets the time and plays with Roya until late.",
-          "fa": "یکشنبه، سپیده گذشت زمان را فراموش می‌کند و تا دیروقت با رویا بازی می‌کند."
+          "en": "After dinner, Sepideh forgets the time and plays with Roya.",
+          "fa": "بعد از شام، سپیده گذشت زمان را فراموش می‌کند و با رویا بازی می‌کند."
         },
         {
-          "en": "Her dad says, \"We need to go! It is five o'clock.\"",
-          "fa": "پدرش می‌گوید: «باید برویم! ساعت پنج است.»"
+          "en": "Her dad says, \"We need to go! It is nine o'clock.\"",
+          "fa": "پدرش می‌گوید: «باید برویم! ساعت نه است.»"
         },
         {
           "en": "Sepideh does not want to leave.",
@@ -411,10 +411,10 @@
         {
           "q": "خانوادهٔ سپیده چه روزی راه می‌افتند؟",
           "options": [
-            "جمعه بعدازظهر",
+            "پنجشنبه بعدازظهر",
             "شنبه صبح",
             "یکشنبه عصر",
-            "پنجشنبه شب"
+            "جمعه شب"
           ],
           "answer": 0
         },
@@ -429,7 +429,7 @@
           "answer": 0
         },
         {
-          "q": "دو دختر شنبه چه کار می‌کنند؟",
+          "q": "دو دختر جمعه صبح چه کار می‌کنند؟",
           "options": [
             "به کنسرت می‌روند",
             "فوتبال بازی می‌کنند",

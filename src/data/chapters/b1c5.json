@@ -2,8 +2,8 @@
   "id": "b1c5",
   "book": 1,
   "n": 5,
-  "titleFa": "شبِ اول",
-  "titleEn": "The First Night",
+  "titleFa": "شبِ بی‌نینو",
+  "titleEn": "A Night Without Nino",
   "new": [
     "evening",
     "cook",
@@ -47,16 +47,16 @@
       "fa": "عصر می‌رسد و نینو هنوز خانه نیست."
     },
     {
-      "en": "The family goes in the house as evening comes.",
-      "fa": "با رسیدن عصر، خانواده وارد خانه می‌شود."
+      "en": "The family stays in the house together.",
+      "fa": "خانواده با هم در خانه می‌مانند."
     },
     {
       "en": "Mom begins to cook dinner in the kitchen.",
       "fa": "مامان در آشپزخانه شروع به پختن شام می‌کند."
     },
     {
-      "en": "Mina tries to help cook, but she keeps listening outside.",
-      "fa": "مینا سعی می‌کند در پختن کمک کند، اما مدام بیرون را گوش می‌دهد."
+      "en": "Mina tries to help cook, but she keeps listening for Nino.",
+      "fa": "مینا سعی می‌کند در پختن کمک کند، اما مدام گوش می‌دهد تا شاید صدای نینو را بشنود."
     },
     {
       "en": "When dinner is ready, everyone comes to the table.",
@@ -87,16 +87,16 @@
       "fa": "بعد صدای کوچکی باعث می‌شود سریع بایستد."
     },
     {
-      "en": "She goes to stand by the window and look outside.",
-      "fa": "می‌رود کنار پنجره بایستد و بیرون را نگاه کند."
+      "en": "She stands by the window and looks outside.",
+      "fa": "کنار پنجره می‌ایستد و بیرون را نگاه می‌کند."
     },
     {
       "en": "Mina opens the door and calls Nino.",
       "fa": "مینا در را باز می‌کند و نینو را صدا می‌زند."
     },
     {
-      "en": "She makes one more call into the dark yard.",
-      "fa": "یک بار دیگر در حیاط تاریک صدایش می‌کند."
+      "en": "She calls one more time into the dark yard.",
+      "fa": "یک بار دیگر رو به حیاط تاریک صدایش می‌زند."
     },
     {
       "en": "Dad says, \"We can wait here a little longer.\"",
@@ -211,8 +211,8 @@
       "fa": "بله می‌گوید چون نمی‌خواهد مامان غمگین شود."
     },
     {
-      "en": "But as the first night ends, Mina still misses Nino.",
-      "fa": "اما با پایان شب اول، مینا هنوز دلش برای نینو تنگ است."
+      "en": "But as the night ends, Mina still misses Nino.",
+      "fa": "اما وقتی شب به پایان می‌رسد، مینا هنوز دلش برای نینو تنگ است."
     }
   ],
   "check": [

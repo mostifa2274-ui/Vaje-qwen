@@ -95,12 +95,12 @@
       "fa": "مینا در تختش بیدار می‌شود و دنبال نینو می‌گردد."
     },
     {
-      "en": "She says his name and does not wake the baby next door.",
-      "fa": "اسم نینو را می‌گوید و نوزادِ اتاق کناری را بیدار نمی‌کند."
+      "en": "She says his name quietly, so she does not wake the baby next door.",
+      "fa": "اسم نینو را آرام می‌گوید تا نوزادِ اتاق کناری بیدار نشود."
     },
     {
       "en": "The space at the foot of the bed makes Mina remember everything.",
-      "fa": "جای پایین تخت باعث می‌شود مینا همه‌چیز را به یاد بیاورد."
+      "fa": "جای خالیِ پایین تخت همه‌چیز را به یاد مینا می‌آورد."
     },
     {
       "en": "She leaves the bedroom and walks to the bathroom.",
@@ -111,8 +111,8 @@
       "fa": "برادرش بیرون دستشویی منتظر است."
     },
     {
-      "en": "Dad is finishing his shower when Mina comes to the bathroom.",
-      "fa": "وقتی مینا به حمام می‌آید، بابا در حال تمام کردن دوش است."
+      "en": "When Dad finishes his shower, Mina is waiting by the bathroom door.",
+      "fa": "وقتی بابا دوشش را تمام می‌کند، مینا کنار درِ حمام منتظر است."
     },
     {
       "en": "\"Your turn next,\" Dad says.",
@@ -127,8 +127,8 @@
       "fa": "بعد از دوش، صورت و دست‌هایش را می‌شوید."
     },
     {
-      "en": "After the shower, she stops to wash her face and hands.",
-      "fa": "بعد از دوش، می‌ایستد تا صورت و دست‌هایش را بشوید."
+      "en": "Then she walks back to her bedroom.",
+      "fa": "بعد به اتاق‌خوابش برمی‌گردد."
     },
     {
       "en": "Mina usually enjoys a warm bath, but not this morning.",
@@ -163,8 +163,8 @@
       "fa": "مامان می‌گوید: «صبحانه‌ات را بخور.»"
     },
     {
-      "en": "Mina tries to eat the egg, but she is afraid.",
-      "fa": "مینا سعی می‌کند تخم‌مرغ را بخورد، اما نگران است."
+      "en": "Mina tries to eat the egg, but she is afraid for Nino.",
+      "fa": "مینا سعی می‌کند تخم‌مرغ را بخورد، اما برای نینو نگران است."
     },
     {
       "en": "Her brother eats bread with cheese and watches her quietly.",
@@ -175,8 +175,8 @@
       "fa": "نوزاد از یک فنجان کوچک آب می‌نوشد."
     },
     {
-      "en": "The baby has water to drink from a small cup.",
-      "fa": "نوزاد از یک فنجان کوچک آب برای نوشیدن دارد."
+      "en": "Mom gives the baby a little milk.",
+      "fa": "مامان کمی شیر به نوزاد می‌دهد."
     },
     {
       "en": "They eat, and the family makes a new plan to look for Nino.",
@@ -187,8 +187,8 @@
       "fa": "بابا می‌گوید: «امروز دوباره در همه‌ی اتاق‌ها دنبال نینو می‌گردیم.»"
     },
     {
-      "en": "Mom adds, \"And we check every room.\"",
-      "fa": "مامان اضافه می‌کند: «و همه‌ی اتاق‌ها را بررسی می‌کنیم.»"
+      "en": "Mom adds, \"And we check the yard and the garden.\"",
+      "fa": "مامان اضافه می‌کند: «و حیاط و باغچه را هم بررسی می‌کنیم.»"
     },
     {
       "en": "\"Every place Nino likes,\" Mina says, feeling stronger.",
@@ -199,8 +199,8 @@
       "fa": "بابا می‌گوید: «حالا شروع می‌کنیم.»"
     },
     {
-      "en": "Mina writes all the places they need to check on a small paper.",
-      "fa": "مینا همه‌ی جاهایی را که باید بررسی کنند روی کاغذ کوچکی می‌نویسد."
+      "en": "Mina takes paper and writes all the places they need to check.",
+      "fa": "مینا کاغذی برمی‌دارد و همه‌ی جاهایی را که باید بگردند می‌نویسد."
     },
     {
       "en": "She goes upstairs first and opens her bedroom door.",
@@ -223,8 +223,8 @@
       "fa": "مینا هر قسمت از کف اتاق‌خواب را بررسی می‌کند."
     },
     {
-      "en": "Her brother puts the light on the wall and behind the chair.",
-      "fa": "برادرش نور را روی دیوار و پشت صندلی می‌اندازد."
+      "en": "Her brother turns the light to the wall and behind the chair.",
+      "fa": "برادرش نور را به سمت دیوار و پشت صندلی می‌گیرد."
     },
     {
       "en": "There is no Nino in the bedroom.",
@@ -251,8 +251,8 @@
       "fa": "خانواده دوباره کنار درِ آشپزخانه جمع می‌شود."
     },
     {
-      "en": "The day is only at the beginning, and nobody wants to stop.",
-      "fa": "روز تازه در آغاز است و هیچ‌کس نمی‌خواهد متوقف شود."
+      "en": "It is only the beginning of the day, and nobody wants to stop.",
+      "fa": "تازه اول روز است و هیچ‌کس نمی‌خواهد دست بکشد."
     },
     {
       "en": "They will keep looking all day.",
@@ -281,22 +281,22 @@
   ],
   "check": [
     {
-      "q": "مینا برای صبحانه نان و چه چیزی دارد؟",
+      "q": "روی میز، برای مینا نان و یک ... هست.",
       "options": [
         "egg",
-        "milk",
-        "water",
-        "chicken"
+        "cheese",
+        "chicken",
+        "book"
       ],
       "a": "egg"
     },
     {
-      "q": "مینا و خانواده‌اش چه زمانی دنبال نینو می‌گردند؟",
+      "q": "بابا می‌گوید کِی دوباره در همه‌ی اتاق‌ها دنبال نینو می‌گردند؟",
       "options": [
         "today",
-        "morning",
-        "home",
-        "day"
+        "tonight",
+        "later",
+        "before"
       ],
       "a": "today"
     }

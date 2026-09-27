@@ -31,6 +31,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Persian is the interface language; English content keeps clear LTR typography.
 - Mobile and tablet are primary. Touch targets must remain comfortable and core functionality must work offline where possible.
 - Progress must be explainable. Learners should always know what is required to unlock the next stage.
+- Stories fit an Iranian family audience: Mina is always with a parent or relative outside home, adults speak to strangers, schools and pools are for girls or boys, Friday is the day off, and there is no alcohol, dancing, dating or pork anywhere in the course (`validate-editorial.mjs` guards the words).
 
 ## Non-goals
 - Gamification that distracts from reading.

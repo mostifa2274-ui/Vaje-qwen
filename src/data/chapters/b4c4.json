@@ -47,12 +47,12 @@
       "fa": "مامان منو را می‌خواند و درباره‌ی قیمت سوپ می‌پرسد."
     },
     {
-      "en": "The waiter says the soup costs one dollar.",
-      "fa": "پیشخدمت می‌گوید سوپ یک دلار قیمت دارد."
+      "en": "The menu says the soup costs one dollar for visitors.",
+      "fa": "در منو نوشته که سوپ برای بازدیدکننده‌ها یک دلار است."
     },
     {
-      "en": "A piece of cake costs two euros.",
-      "fa": "یک تکه کیک دو یورو قیمت دارد."
+      "en": "For visitors, a piece of cake costs two euros.",
+      "fa": "برای بازدیدکننده‌ها، یک تکه کیک دو یورو است."
     },
     {
       "en": "Another product on the menu is bread.",
@@ -87,20 +87,20 @@
       "fa": "هزینه‌ی نهایی روی صورتحساب نوشته شده است."
     },
     {
-      "en": "Mom can pay in dollar, euro, or pound notes.",
-      "fa": "مامان می‌تواند با اسکناس دلار، یورو یا پوند پرداخت کند."
+      "en": "Visitors can pay in dollar, euro, or pound notes.",
+      "fa": "بازدیدکننده‌ها می‌توانند با اسکناس دلار، یورو یا پوند پرداخت کنند."
     },
     {
-      "en": "She also has a few cents in her bag.",
-      "fa": "چند سنت هم در کیفش دارد."
+      "en": "A visitor at the next table has a few cents in his hand.",
+      "fa": "بازدیدکننده‌ای پشت میز کناری چند سنت در دستش دارد."
     },
     {
-      "en": "One pound is near Mina's shoe.",
-      "fa": "یک پوند نزدیک کفش میناست."
+      "en": "A pound is on the floor near Mina's shoe.",
+      "fa": "یک پوند روی زمین نزدیک کفش مینا است."
     },
     {
-      "en": "Mina takes it and gives it back to Mom.",
-      "fa": "مینا آن را برمی‌دارد و به مامان پس می‌دهد."
+      "en": "Mina takes it and gives it back to the visitor.",
+      "fa": "مینا آن را برمی‌دارد و به بازدیدکننده پس می‌دهد."
     },
     {
       "en": "At the next table, another customer is ready to order.",
@@ -167,8 +167,8 @@
       "fa": "معمولاً فقط افرادی که آنجا کار می‌کنند از آن خیابان کوچک استفاده می‌کنند."
     },
     {
-      "en": "He takes Mina there because looking for Nino is very important.",
-      "fa": "او مینا را به آنجا می‌برد چون پیدا کردن نینو خیلی مهم است."
+      "en": "Mom and Mina go there with him because looking for Nino is very important.",
+      "fa": "مامان و مینا همراه او به آنجا می‌روند چون پیدا کردن نینو خیلی مهم است."
     },
     {
       "en": "Even the cook comes outside to look.",
@@ -195,8 +195,8 @@
       "fa": "پول را کنار صورتحساب می‌گذارد."
     },
     {
-      "en": "The waiter checks the money and returns one cent.",
-      "fa": "پیشخدمت پول را بررسی می‌کند و یک سنت پس می‌دهد."
+      "en": "The waiter checks the money and gives some back.",
+      "fa": "پیشخدمت پول را بررسی می‌کند و مقداری پس می‌دهد."
     },
     {
       "en": "The price was correct, so Mom thanks him.",
@@ -215,8 +215,8 @@
       "fa": "مینا یک بار دیگر به منو و مشتری‌های شلوغ نگاه می‌کند."
     },
     {
-      "en": "Then she follows Mom to the small street behind the cafe.",
-      "fa": "بعد همراه مامان به خیابان کوچک پشت کافه می‌رود."
+      "en": "Then she follows Mom out to the busy street.",
+      "fa": "بعد همراه مامان به خیابان شلوغ بیرون می‌رود."
     },
     {
       "en": "They keep looking for Nino, and all new information feels important.",

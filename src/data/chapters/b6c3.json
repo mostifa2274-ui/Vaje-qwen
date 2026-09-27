@@ -22,8 +22,8 @@
   ],
   "sentences": [
     {
-      "en": "After school, Mina goes to Dad's work.",
-      "fa": "بعد از مدرسه، مینا به محل کار بابا می‌رود."
+      "en": "After school, Mom brings Mina to Dad's work.",
+      "fa": "بعد از مدرسه، مامان مینا را به محل کار بابا می‌برد."
     },
     {
       "en": "He works in an office near the city center.",
@@ -35,11 +35,11 @@
     },
     {
       "en": "At the front desk, a worker asks who she wants to see.",
-      "fa": "پشت میز ورودی، یک کارگر می‌پرسد مینا دنبال چه کسی است."
+      "fa": "پشت میز ورودی، یک کارمند می‌پرسد مینا با چه کسی کار دارد."
     },
     {
       "en": "Many workers are busy with phones and computers.",
-      "fa": "کارگران زیادی با تلفن‌ها و رایانه‌ها مشغول هستند."
+      "fa": "کارمندان زیادی با تلفن‌ها و رایانه‌ها مشغول‌اند."
     },
     {
       "en": "Dad is busy too, but he comes out to meet her.",
@@ -74,20 +74,20 @@
       "fa": "این شرکت بخش مهمی از مسیر حرفه‌ای او شده است."
     },
     {
-      "en": "Mom has her own career at a different place.",
-      "fa": "مامان هم در جای دیگری مسیر حرفه‌ای خودش را دارد."
+      "en": "Mom has her own career at a different place, so she goes back to work.",
+      "fa": "مامان هم در جای دیگری کار خودش را دارد، پس به سر کارش برمی‌گردد."
     },
     {
-      "en": "In the waiting room, Mina's brother practices for an interview.",
-      "fa": "در اتاق انتظار، برادر مینا برای یک مصاحبه تمرین می‌کند."
+      "en": "In the waiting room, a young man practices for an interview.",
+      "fa": "در اتاق انتظار، مرد جوانی برای یک مصاحبه تمرین می‌کند."
     },
     {
       "en": "His interview is for a new job.",
       "fa": "مصاحبه‌اش برای یک کار جدید است."
     },
     {
-      "en": "Dad has a meeting at nine, but he has a few minutes first.",
-      "fa": "بابا ساعت نه جلسه دارد، اما اول چند دقیقه وقت دارد."
+      "en": "Dad has a meeting at three, but he has a few minutes first.",
+      "fa": "بابا ساعت سه جلسه دارد، اما اول چند دقیقه وقت دارد."
     },
     {
       "en": "He takes Mina into the meeting room.",
@@ -126,8 +126,8 @@
       "fa": "بابا به مینا نشان می‌دهد چطور از برنامه استفاده کند."
     },
     {
-      "en": "Mina also opens her blog about Nino.",
-      "fa": "مینا وبلاگش درباره‌ی نینو را هم باز می‌کند."
+      "en": "Mina also opens the family blog about Nino.",
+      "fa": "مینا وبلاگ خانواده درباره‌ی نینو را هم باز می‌کند."
     },
     {
       "en": "She adds the new note to the blog.",
@@ -150,14 +150,6 @@
       "fa": "یک یادداشت را کنار درِ دفتر اصلی می‌گذارد."
     },
     {
-      "en": "The main street outside is full of people.",
-      "fa": "خیابان اصلی بیرون پر از آدم است."
-    },
-    {
-      "en": "Mina carries more notes down that street.",
-      "fa": "مینا یادداشت‌های بیشتری در آن خیابان می‌برد."
-    },
-    {
       "en": "Dad's office is modern, with glass walls and big rooms.",
       "fa": "دفتر بابا مدرن است و دیوارهای شیشه‌ای و اتاق‌های بزرگ دارد."
     },
@@ -172,6 +164,14 @@
     {
       "en": "\"Very useful,\" Dad answers as the machine makes one last page.",
       "fa": "بابا جواب می‌دهد: «خیلی مفید» و دستگاه آخرین صفحه را آماده می‌کند."
+    },
+    {
+      "en": "The main street outside is full of people.",
+      "fa": "خیابان اصلی بیرون پر از آدم است."
+    },
+    {
+      "en": "After the meeting, Mina and Dad carry more notes down that street.",
+      "fa": "بعد از جلسه، مینا و بابا یادداشت‌های بیشتری را به آن خیابان می‌برند."
     },
     {
       "en": "On the way home, they stop at a club for workers.",
@@ -194,7 +194,7 @@
       "a": "office"
     },
     {
-      "q": "وبلاگ مینا درباره‌ی چیست؟",
+      "q": "وبلاگ خانواده درباره‌ی چیست؟",
       "options": [
         "chicken",
         "dog",
