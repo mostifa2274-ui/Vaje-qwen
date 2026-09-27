@@ -40,7 +40,8 @@ if (rawServiceWorker.split(assetsPlaceholder).length !== 2) {
 }
 
 const viteAssets = await collectFiles(assetsDir)
-const chapterArtAssets = await collectFiles(chapterArtDir)
+const chapterArtAssets = (await collectFiles(chapterArtDir))
+  .filter(file => /\.(?:avif|webp)$/i.test(file))
 const buildAssets = [...new Set([...viteAssets, ...chapterArtAssets]
   .map(file => `./${relative(distDir, file).split(sep).join('/')}`))]
   .sort()
