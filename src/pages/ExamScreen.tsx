@@ -41,8 +41,15 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   // Opened through explore mode before the learner reached it: a preview
   // whose answers are never recorded.
   const [preview] = useState(() => !canTakeExam(state, examId))
+  // Explore mode can move between questions without answering. An attempt
+  // with a skipped question is practice: scored, but never recorded.
+  const explore = state.exploreAll
+  const [practice, setPractice] = useState(false)
+  const unrecorded = preview || practice
   const [initialDraft] = useState(() => exam ? loadExamDraft(examId, attempt, exam) : undefined)
   const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
+  // Set once a question is skipped: the saved draft may then have gaps.
+  const [skipped, setSkipped] = useState(() => initialDraft?.skipped === true)
   const [index, setIndex] = useState(() => initialDraft?.index ?? 0)
   const [answers, setAnswers] = useState<Record<number, boolean>>(() => initialDraft?.answers ?? {})
   const [timings, setTimings] = useState<Record<number, number>>(() => initialDraft?.timings ?? {})
@@ -71,7 +78,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   useEffect(() => {
     if (!exam || result) return
-    const hasMeaningfulProgress = index > 0 || typed.length > 0 || onBreak
+    const hasMeaningfulProgress = index > 0 || typed.length > 0 || onBreak || Object.keys(answers).length > 0
     if (!hasMeaningfulProgress) {
       clearExamDraft(examId)
       return
@@ -86,9 +93,10 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       timings,
       typed,
       onBreak,
+      ...(skipped ? { skipped: true as const } : {}),
       updatedAt: Date.now(),
     }, exam)
-  }, [answers, attempt, exam, examId, index, onBreak, result, timings, typed])
+  }, [answers, attempt, exam, examId, index, onBreak, result, skipped, timings, typed])
 
   const question = exam?.questions[index]
   const word = question ? WORD_BY_ID.get(question.wordId) : undefined
@@ -139,7 +147,9 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   function finalize(nextAnswers: Record<number, boolean>, nextTimings: Record<number, number>, built: BuiltExam) {
     clearExamDraft(examId)
     const scored = scoreExam(built, nextAnswers)
-    if (preview) {
+    const skipped = built.questions.some(item => nextAnswers[item.index] === undefined)
+    setPractice(skipped)
+    if (preview || skipped) {
       setResult(scored)
       return
     }
@@ -191,6 +201,21 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       setIndex(nextIndex)
       if (nextIndex % EXAM_BREAK_EVERY === 0) setOnBreak(true)
     }
+  }
+
+  function moveTo(nextIndex: number) {
+    if (!explore || result) return
+    if (resumedDraft) setResumedDraft(false)
+    setSkipped(true)
+    setTyped('')
+    setAudioBlocked(false)
+    setAudioNotice('')
+    setAudioReady(false)
+    if (nextIndex >= builtExam.questions.length) {
+      finalize(answers, timings, builtExam)
+      return
+    }
+    setIndex(Math.max(0, nextIndex))
   }
 
   function submitTyped() {
@@ -253,6 +278,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             حد عبور: {percent(def.passRate)} کل و {percent(def.productivePassRate)} در پاسخ‌های بدون گزینه.
             {preview
               ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
+              : practice
+              ? ' تمرین در حالت کاوش: چون سؤالی رد شد، این نتیجه ثبت نمی‌شود.'
               : passedNow
               ? result.missedWordIds.length
                 ? ` حد نصاب آزمون را پاس کردی، اما مسیر بعدی بعد از بازیابی مستقل ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته باز می‌شود.`
@@ -274,12 +301,12 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
           <div className="mt-5 grid grid-cols-2 gap-2">
             <button type="button" className="btn-paper py-3" onClick={onBack}>مسیر یادگیری</button>
-            {!preview && (!passedNow || result.missedWordIds.length > 0) ? (
+            {!unrecorded && (!passedNow || result.missedWordIds.length > 0) ? (
               <button type="button" className="btn-crimson py-3" onClick={onReview}>مرور جبرانی</button>
             ) : (
               <button type="button" className="btn-ink py-3" onClick={onBack}>ادامهٔ مسیر ←</button>
             )}
-            {gateRemainsOpen && !passedNow && !preview && (
+            {gateRemainsOpen && !passedNow && !unrecorded && (
               <button type="button" className="btn-paper col-span-2 py-2.5 text-sm" onClick={onBack}>قبولی قبلی حفظ شده؛ بازگشت به مسیر</button>
             )}
           </div>
@@ -399,6 +426,20 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
                 ))}
               </div>
               <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" onClick={() => answer(false)}>نمی‌دانم — بعدی</button>
+            </div>
+          )}
+
+          {explore && (
+            <div className="mt-5 border-t pt-4" style={{ borderColor: 'var(--line-soft)' }}>
+              <div className="grid grid-cols-2 gap-2">
+                <button type="button" className="btn-quiet py-2.5 text-sm" disabled={index === 0} onClick={() => moveTo(index - 1)}>سؤال قبلی</button>
+                <button type="button" className="btn-quiet py-2.5 text-sm" onClick={() => moveTo(index + 1)}>
+                  {index + 1 >= builtExam.questions.length ? 'پایان و دیدن نتیجه' : 'رد کردن ←'}
+                </button>
+              </div>
+              <p className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+                در حالت کاوش می‌توانی سؤال‌ها را جابه‌جا کنی؛ اگر سؤالی بی‌پاسخ بماند، نتیجه فقط تمرین است و ثبت نمی‌شود.
+              </p>
             </div>
           )}
         </div>

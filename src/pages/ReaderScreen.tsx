@@ -53,11 +53,15 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [answers, setAnswers] = useState<Record<number, string>>(() => initialReadingDraft?.answers ?? {})
   const [checkIndex, setCheckIndex] = useState(() => initialReadingDraft?.checkIndex ?? 0)
   const [firstPassCorrect, setFirstPassCorrect] = useState<number | undefined>(() => initialReadingDraft?.firstPassCorrect)
+  // Set once explore mode jumps between questions: the saved draft may then have gaps.
+  const [unordered, setUnordered] = useState(() => initialReadingDraft?.unordered === true)
   const [finished, setFinished] = useState(false)
   const [wasAlreadyDone] = useState(() => state.chapters[chapterId]?.completed === true)
   // Opened through explore mode before the learner reached it: a preview
   // whose taps and answers are never recorded.
   const [preview] = useState(() => !canReadChapter(state, chapterId))
+  // Explore mode lets the learner move to any comprehension question.
+  const explore = state.exploreAll
   const [audioNotice, setAudioNotice] = useState('')
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
@@ -121,9 +125,10 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       checkIndex,
       answers,
       firstPassCorrect,
+      ...(unordered ? { unordered: true as const } : {}),
       updatedAt: Date.now(),
     }, questions)
-  }, [answers, chapterId, checkIndex, finished, firstPassCorrect, questions])
+  }, [answers, chapterId, checkIndex, finished, firstPassCorrect, questions, unordered])
 
   useEffect(() => {
     if (!playAll || playIdx < 0 || typeof window === 'undefined') return
@@ -229,6 +234,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       checkIndex: questionIndex,
       answers: nextAnswers,
       firstPassCorrect,
+      ...(unordered ? { unordered: true as const } : {}),
       updatedAt: clockRef.current(),
     }, questions)
     pendingFocusRef.current = 'followUp'
@@ -247,13 +253,28 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     onChange({ ...state, words: nextWords })
   }
 
+  // The next open question after the current one; after explore-mode jumps,
+  // wrap around to an earlier one that is still open.
+  function nextUnansweredIndex(): number {
+    const after = questions.findIndex((_, index) => index > checkIndex && answers[index] === undefined)
+    return after >= 0 ? after : questions.findIndex((_, index) => index !== checkIndex && answers[index] === undefined)
+  }
+
   function continueQuestion() {
     if (currentAnswer === undefined) return
     if (resumedReading) setResumedReading(false)
-    const nextUnanswered = questions.findIndex((_, index) => index > checkIndex && answers[index] === undefined)
+    const nextUnanswered = nextUnansweredIndex()
     if (nextUnanswered < 0) return
     pendingFocusRef.current = 'question'
     setCheckIndex(nextUnanswered)
+  }
+
+  function jumpToQuestion(index: number) {
+    if (finished || index === checkIndex) return
+    if (resumedReading) setResumedReading(false)
+    pendingFocusRef.current = 'question'
+    setUnordered(true)
+    setCheckIndex(index)
   }
 
   function beginCorrectionRound() {
@@ -281,6 +302,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       checkIndex: nextIndex,
       answers: correctedAnswers,
       firstPassCorrect: initialScore,
+      ...(unordered ? { unordered: true as const } : {}),
       updatedAt: clockRef.current(),
     }, questions)
   }
@@ -298,6 +320,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       checkIndex,
       answers: nextAnswers,
       firstPassCorrect,
+      ...(unordered ? { unordered: true as const } : {}),
       updatedAt: clockRef.current(),
     }, questions)
   }
@@ -468,6 +491,27 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </div>
           )}
 
+          {explore && !finished && (
+            <nav className="question-jump mt-4" aria-label="پرش به سؤال‌ها">
+              {questions.map((question, index) => {
+                const chosen = answers[index]
+                const mark = chosen === undefined ? '' : chosen === question.answerId ? 'right' : 'wrong'
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`question-jump-button ${mark} ${index === checkIndex ? 'active' : ''}`}
+                    aria-label={`سؤال ${faNum(index + 1)}`}
+                    aria-current={index === checkIndex ? 'step' : undefined}
+                    onClick={() => jumpToQuestion(index)}
+                  >
+                    {faNum(index + 1)}
+                  </button>
+                )
+              })}
+            </nav>
+          )}
+
           {currentQuestion && !finished && (
             <div ref={questionRef} className="paper-card question-card mt-4 p-4 sm:p-5">
               <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>
@@ -527,7 +571,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
               {currentAnswer !== undefined
                 && (!correctionMode || currentAnswer === currentQuestion.answerId)
-                && questions.some((_, index) => index > checkIndex && answers[index] === undefined) && (
+                && nextUnansweredIndex() >= 0 && (
                 <button ref={followUpRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueQuestion}>
                   سؤال بعدی ←
                 </button>

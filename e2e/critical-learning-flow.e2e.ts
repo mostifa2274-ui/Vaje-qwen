@@ -525,6 +525,7 @@ async function openWithProgress(page: Page, route: string, progress: {
   words?: Record<string, Record<string, unknown>>
   chapters?: Record<string, Record<string, unknown>>
   exams?: Record<string, Record<string, unknown>>
+  exploreAll?: boolean
 }): Promise<void> {
   await page.goto('/#/map')
   await page.evaluate(({ route, progress }) => {
@@ -540,6 +541,7 @@ async function openWithProgress(page: Page, route: string, progress: {
       narratorVoiceURI: '',
       narratorRate: 0.92,
       dailyReviewGoal: 15,
+      exploreAll: progress.exploreAll === true,
       created: now - 2 * 86_400_000,
     }))
     window.location.hash = route
@@ -859,6 +861,68 @@ test('explore mode opens every chapter as an unrecorded preview and closes again
   await expect(page.getByText('حالت کاوش روشن است.')).toHaveCount(0)
   await expect(page.getByRole('button', { name: lastNodeName('قفل') })).toBeDisabled()
   expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters)).toEqual({})
+})
+
+test('explore mode opens every step of the lessons, tests and review without prerequisites', async ({ page }) => {
+  const open = async (route: string) => {
+    await page.goto(`/#${route}`)
+    await page.reload()
+  }
+  await openWithProgress(page, '/prep/b1c1', { exploreAll: true })
+  const saved = await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))
+
+  // Lessons: each step of the chapter opens directly from the stepper.
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
+  const steps = page.getByRole('list', { name: 'مرحله‌های آمادگی' })
+  await steps.getByRole('button', { name: /شنیداری/ }).click()
+  await expect(page.getByTestId('listening-options')).toBeVisible()
+  await steps.getByRole('button', { name: /ترجمهٔ نوشتاری/ }).click()
+  await expect(page.getByTestId('written-headword')).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  await steps.getByRole('button', { name: /قصه/ }).click()
+  await expect(page).toHaveURL(/#\/read\/b1c1$/)
+
+  // Reading: any comprehension question opens directly.
+  await page.getByRole('navigation', { name: 'پرش به سؤال‌ها' }).getByRole('button', { name: 'سؤال ۵' }).click()
+  await expect(page.getByText('سؤال ۵ از ۱۰')).toBeVisible()
+  await page.getByTestId('comprehension-options').getByRole('button').first().click()
+  await expect(page.locator('.feedback-panel')).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  // The out-of-order answer survives a reload instead of being asked again.
+  await page.reload()
+  await expect(page.getByText('سؤال ۵ از ۱۰')).toBeVisible()
+  await expect(page.locator('.feedback-panel')).toBeVisible()
+
+  // Book test: any section opens directly; skipping makes the run practice.
+  await open('/exam/book-1')
+  await page.getByRole('button', { name: 'شروع آزمون' }).click()
+  await page.getByRole('list', { name: 'بخش‌های آزمون' }).getByRole('button', { name: /درک مطلب خواندنی/ }).click()
+  await expect(page.getByRole('heading', { level: 2, name: 'درک مطلب خواندنی' })).toBeVisible()
+  await page.getByRole('group').first().getByRole('button').first().click()
+  await expectRenderedAccessibilityContract(page)
+  await page.reload()
+  await expect(page.getByRole('heading', { level: 2, name: 'درک مطلب خواندنی' })).toBeVisible()
+  await expect(page.getByText('پیشرفت این آزمون بازیابی شد؛ از همان‌جا ادامه می‌دهی.')).toBeVisible()
+
+  // Midpoint exam: questions can be skipped and revisited.
+  await open('/exam/midpoint-4')
+  await expect(page.getByText(/^سؤال ۱ از /)).toBeVisible()
+  await page.getByRole('button', { name: 'رد کردن ←' }).click()
+  await expect(page.getByText(/^سؤال ۲ از /)).toBeVisible()
+  await page.reload()
+  await expect(page.getByText(/^سؤال ۲ از /)).toBeVisible()
+  await page.getByRole('button', { name: 'سؤال قبلی' }).click()
+  await expect(page.getByText(/^سؤال ۱ از /)).toBeVisible()
+
+  // Review: with nothing learned yet, explore offers a practice session.
+  await open('/review')
+  await expect(page.getByText('تمرین آزاد در حالت کاوش')).toBeVisible()
+  await page.getByRole('button', { name: 'نمی‌دانم — پاسخ را نشان بده' }).click()
+  await expect(page.locator('.feedback-panel')).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+
+  // None of it is recorded.
+  expect(await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))).toBe(saved)
 })
 
 test('importing a backup asks before replacing progress', async ({ page }) => {

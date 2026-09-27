@@ -12,6 +12,8 @@ export interface ExamDraft {
   timings: Record<number, number>
   typed: string
   onBreak: boolean
+  /** Explore mode skipped questions, so answers may have gaps. */
+  skipped?: true
   updatedAt: number
 }
 
@@ -32,35 +34,41 @@ export function examSignature(exam: BuiltExam): string {
   ]))
 }
 
-function safeSequentialAnswers(raw: unknown, index: number): Record<number, boolean> | undefined {
+// Normally every question before the current one is answered. A draft from
+// explore mode (`skipped`) may hold any answered subset of the exam instead.
+function safeSequentialAnswers(raw: unknown, index: number, total: number, skipped: boolean): Record<number, boolean> | undefined {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined
   const result: Record<number, boolean> = {}
+  const limit = skipped ? total : index
   for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
     const parsed = Number(key)
-    if (!Number.isInteger(parsed) || parsed < 0 || parsed >= index || typeof value !== 'boolean') return undefined
+    if (!Number.isInteger(parsed) || parsed < 0 || parsed >= limit || typeof value !== 'boolean') return undefined
     result[parsed] = value
   }
+  if (skipped) return result
   for (let i = 0; i < index; i++) {
     if (typeof result[i] !== 'boolean') return undefined
   }
   return result
 }
 
-function safeSequentialTimings(raw: unknown, index: number): Record<number, number> | undefined {
+function safeSequentialTimings(raw: unknown, index: number, total: number, skipped: boolean): Record<number, number> | undefined {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined
   const result: Record<number, number> = {}
+  const limit = skipped ? total : index
   for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
     const parsed = Number(key)
     if (
       !Number.isInteger(parsed)
       || parsed < 0
-      || parsed >= index
+      || parsed >= limit
       || typeof value !== 'number'
       || !Number.isFinite(value)
       || value <= 0
     ) return undefined
     result[parsed] = Math.min(MAX_TIMING_MS, Math.max(1, Math.floor(value)))
   }
+  if (skipped) return result
   for (let i = 0; i < index; i++) {
     if (typeof result[i] !== 'number') return undefined
   }
@@ -89,8 +97,10 @@ export function sanitizeExamDraft(
   ) return undefined
   const index = indexRaw
 
-  const answers = safeSequentialAnswers(value.answers, index)
-  const timings = safeSequentialTimings(value.timings, index)
+  const skipped = value.skipped === true
+  const total = exam.questions.length
+  const answers = safeSequentialAnswers(value.answers, index, total, skipped)
+  const timings = safeSequentialTimings(value.timings, index, total, skipped)
   if (!answers || !timings) return undefined
 
   const onBreak = value.onBreak === true && index > 0 && index % EXAM_BREAK_EVERY === 0
@@ -106,6 +116,7 @@ export function sanitizeExamDraft(
     timings,
     typed,
     onBreak,
+    ...(skipped ? { skipped: true as const } : {}),
     updatedAt: typeof value.updatedAt === 'number' && Number.isFinite(value.updatedAt) && value.updatedAt > 0
       ? value.updatedAt
       : Date.now(),

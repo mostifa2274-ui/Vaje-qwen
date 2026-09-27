@@ -73,6 +73,21 @@ describe('end-of-book test drafts', () => {
     expect(sanitizeBookTestDraft(unknownOption, test, 1_000)).toBeUndefined()
   })
 
+  it('keeps sections opened out of order only in a draft marked by explore mode', () => {
+    const test = bookOneTest()
+    const jumped = draft(test, { section: 'reading', jumped: true })
+    jumped.answers.translation = []
+    jumped.answers.listeningWords = []
+    jumped.answers.reading[0] = 1
+    saveBookTestDraft(test, jumped, 1_000)
+    expect(loadBookTestDraft(test, 2_000)).toEqual(jumped)
+    expect(sanitizeBookTestDraft({ ...jumped, jumped: undefined }, test, 1_000)).toBeUndefined()
+    // Listening answers still need the text to have been heard.
+    const unheard = draft(test, { section: 'reading', jumped: true })
+    unheard.answers.listening[0] = 2
+    expect(sanitizeBookTestDraft(unheard, test, 1_000)).toBeUndefined()
+  })
+
   it('keeps listening answers only once the text was heard', () => {
     const test = bookOneTest()
     const listening = draft(test, { section: 'listening' })

@@ -97,6 +97,15 @@ describe('exam session drafts', () => {
     expect(sanitizeExamDraft(draft(exam, { answers: { 0: true, 1: false, 2: true } }), 'book-1', 1, exam)).toBeUndefined()
   })
 
+  it('keeps skipped questions only in a draft marked by explore mode', () => {
+    const exam = builtExam()
+    const skipped = draft(exam, { index: 0, answers: { 2: true }, timings: { 2: 900 }, skipped: true })
+    expect(saveExamDraft(skipped, exam)).toBe(true)
+    expect(loadExamDraft('book-1', 1, exam)).toMatchObject({ index: 0, answers: { 2: true }, timings: { 2: 900 }, skipped: true })
+    expect(sanitizeExamDraft({ ...skipped, skipped: undefined }, 'book-1', 1, exam)).toBeUndefined()
+    expect(sanitizeExamDraft({ ...skipped, answers: { 99: true } }, 'book-1', 1, exam)).toBeUndefined()
+  })
+
   it('restores a break only at the configured break boundary', () => {
     const exam = builtExam(EXAM_BREAK_EVERY + 1)
     const answers = Object.fromEntries(Array.from({ length: EXAM_BREAK_EVERY }, (_, i) => [i, i % 2 === 0])) as Record<number, boolean>

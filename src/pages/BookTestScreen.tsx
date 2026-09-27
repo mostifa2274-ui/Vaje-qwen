@@ -52,6 +52,12 @@ function wallClockNow(): number {
   return Date.now()
 }
 
+function sectionDone(test: BookTest, answers: BookTestAnswers, section: BookTestSection): boolean {
+  if (section === 'translation') return answers.translation.length >= test.translation.length
+  if (section === 'listeningWords') return answers.listeningWords.length >= test.listeningWords.length
+  return answers[section].every(choice => choice !== null)
+}
+
 function isSection(phase: Phase): phase is BookTestSection {
   return phase !== 'intro' && phase !== 'result'
 }
@@ -201,6 +207,11 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   // whose attempts are never recorded.
   const [preview] = useState(() => !canTakeExam(state, examId))
   const [previewRuns, setPreviewRuns] = useState(0)
+  // Explore mode can open any section directly. An attempt that skipped a
+  // section is practice: it is scored and reviewed but never recorded.
+  const explore = state.exploreAll
+  const [practice, setPractice] = useState(false)
+  const unrecorded = preview || practice
   const [test, setTest] = useState<BookTest>(() => buildBookTest(book, state, (state.exams[examId]?.attempts ?? 0) + 1)!)
   const [initialDraft] = useState(() => loadBookTestDraft(test))
   const [resumed, setResumed] = useState(Boolean(initialDraft))
@@ -208,6 +219,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   const [answers, setAnswers] = useState<BookTestAnswers>(() => initialDraft?.answers ?? emptyBookTestAnswers(test))
   const [timings, setTimings] = useState<Record<string, number>>(() => initialDraft?.timings ?? {})
   const [listeningHeard, setListeningHeard] = useState(() => initialDraft?.listeningHeard ?? false)
+  // Set once explore mode opens a section out of order, so the draft keeps it.
+  const [jumped, setJumped] = useState(() => initialDraft?.jumped === true)
   const [typed, setTyped] = useState('')
   const [wordReady, setWordReady] = useState(false)
   const [wordNotice, setWordNotice] = useState('')
@@ -251,8 +264,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   useEffect(() => {
     if (!isSection(phase)) return
     if (phase === 'translation' && answers.translation.length === 0) return
-    saveBookTestDraft(test, { section: phase, answers, timings, listeningHeard })
-  }, [answers, listeningHeard, phase, test, timings])
+    saveBookTestDraft(test, { section: phase, answers, timings, listeningHeard, ...(jumped ? { jumped: true as const } : {}) })
+  }, [answers, jumped, listeningHeard, phase, test, timings])
 
   const speakWord = useCallback(() => {
     if (!listenWord || !state.soundOn) return
@@ -296,7 +309,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setAnswers({ ...answers, translation })
     setTimings({ ...timings, [`translation:${translationIndex}`]: elapsed })
     setTyped('')
-    if (translation.length >= test.translation.length) setPhase('listeningWords')
+    if (translation.length >= test.translation.length) setPhase(nextOpenSection({ ...answers, translation }, 'translation'))
   }
 
   function answerListeningWord(chosen: string) {
@@ -309,7 +322,29 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setTimings({ ...timings, [`listeningWords:${listenIndex}`]: elapsed })
     setWordReady(false)
     setWordNotice('')
-    if (listeningWords.length >= test.listeningWords.length) setPhase('reading')
+    if (listeningWords.length >= test.listeningWords.length) setPhase(nextOpenSection({ ...answers, listeningWords }, 'listeningWords'))
+  }
+
+  // The next section still to do; in the normal order that is simply the next one.
+  function nextOpenSection(next: BookTestAnswers, from: BookTestSection): BookTestSection {
+    return BOOK_TEST_SECTIONS
+      .slice(BOOK_TEST_SECTIONS.indexOf(from) + 1)
+      .find(section => !sectionDone(test, next, section)) ?? 'listening'
+  }
+
+  function jumpToSection(section: BookTestSection) {
+    if (!explore || section === phase) return
+    setResumed(false)
+    setJumped(true)
+    passage.stop()
+    wordToken.current++
+    setTyped('')
+    setWordReady(false)
+    setWordNotice('')
+    // A finished word section starts over when reopened; any other keeps its answers.
+    if (section === 'translation' && sectionDone(test, answers, section)) setAnswers({ ...answers, translation: [] })
+    if (section === 'listeningWords' && sectionDone(test, answers, section)) setAnswers({ ...answers, listeningWords: [] })
+    setPhase(section)
   }
 
   function choose(section: 'reading' | 'listening', question: number, option: number) {
@@ -324,7 +359,9 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     passage.stop()
     const scored = scoreBookTest(test, answers)
     clearBookTestDraft(book)
-    if (!preview) onChange(recordBookTest(state, test, answers, scored, wallClockNow(), timings))
+    const fullAttempt = BOOK_TEST_SECTIONS.every(section => sectionDone(test, answers, section))
+    setPractice(!fullAttempt)
+    if (!preview && fullAttempt) onChange(recordBookTest(state, test, answers, scored, wallClockNow(), timings))
     setResult(scored)
     setPhase('result')
   }
@@ -343,6 +380,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setWordNotice('')
     setResumed(false)
     setResult(null)
+    setPractice(false)
+    setJumped(false)
   }
 
   function restart() {
@@ -351,9 +390,9 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   }
 
   function retake() {
-    // A preview records no attempt, so it counts its own to vary the texts.
-    const extra = preview ? previewRuns + 1 : 0
-    if (preview) setPreviewRuns(extra)
+    // An unrecorded run adds no attempt, so it counts its own to vary the texts.
+    const extra = unrecorded ? previewRuns + 1 : 0
+    if (unrecorded) setPreviewRuns(extra)
     reset(buildBookTest(book, state, (state.exams[examId]?.attempts ?? 0) + 1 + extra)!)
     setPhase('intro')
   }
@@ -388,7 +427,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             given: item.options.find(option => option.id === answers.listeningWords[index])?.label ?? 'نمی‌دانم',
           }]),
     ]
-    const canRetake = preview || (!result.passed && result.missedWordIds.length === 0 && canTakeExam(state, examId))
+    const canRetake = unrecorded || (!result.passed && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     const next = book === 8 ? 'آزمون نهایی' : `کتاب ${faNum(book + 1)}`
     return (
       <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-6" style={{ background: 'var(--cream)' }}>
@@ -418,6 +457,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             برای قبولی، هر چهار بخش دست‌کم {percent(BOOK_TEST_PASS_RATE)} لازم دارد.
             {preview
               ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
+              : practice
+              ? ' تمرین در حالت کاوش: چون بخشی از آزمون رد شد، این نتیجه ثبت نمی‌شود.'
               : result.passed
               ? result.missedWordIds.length
                 ? ` راه ${next} پس از آن باز می‌شود که ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته را در مرور هوشمند بدون کمک به یاد بیاوری.`
@@ -429,7 +470,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
           <div className="mt-5 grid grid-cols-2 gap-2">
             <button type="button" className="btn-paper py-3" onClick={onBack}>مسیر یادگیری</button>
-            {result.missedWordIds.length > 0 && !preview ? (
+            {result.missedWordIds.length > 0 && !unrecorded ? (
               <button type="button" className="btn-crimson py-3" onClick={onReview}>مرور جبرانی</button>
             ) : canRetake ? (
               <button type="button" className="btn-crimson py-3" onClick={retake}>دوباره امتحان کن</button>
@@ -525,13 +566,28 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
       {header}
 
       <ol className="test-steps mt-6" aria-label="بخش‌های آزمون">
-        {BOOK_TEST_SECTIONS.map((section, index) => (
-          <li key={section} className={index < sectionNumber ? 'done' : index === sectionNumber ? 'current' : ''} aria-current={index === sectionNumber ? 'step' : undefined}>
-            {index < sectionNumber ? <CheckIcon className="h-3.5 w-3.5" aria-hidden="true" /> : <span aria-hidden="true">{faNum(index + 1)}</span>}
-            <span>{SECTION_LABELS[section]}</span>
-          </li>
-        ))}
+        {BOOK_TEST_SECTIONS.map((section, index) => {
+          const done = explore ? index !== sectionNumber && sectionDone(test, answers, section) : index < sectionNumber
+          const content = (
+            <>
+              {done ? <CheckIcon className="h-3.5 w-3.5" aria-hidden="true" /> : <span aria-hidden="true">{faNum(index + 1)}</span>}
+              <span>{SECTION_LABELS[section]}</span>
+            </>
+          )
+          return (
+            <li key={section} className={done ? 'done' : index === sectionNumber ? 'current' : ''} aria-current={index === sectionNumber ? 'step' : undefined}>
+              {explore
+                ? <button type="button" className="test-step-jump" onClick={() => jumpToSection(section)}>{content}</button>
+                : content}
+            </li>
+          )
+        })}
       </ol>
+      {explore && (
+        <p className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+          در حالت کاوش هر بخش را می‌توانی مستقیم باز کنی؛ اگر بخشی رد شود، نتیجه فقط تمرین است و ثبت نمی‌شود.
+        </p>
+      )}
 
       {resumed && (
         <div className="prep-resume-row mt-3" role="status">

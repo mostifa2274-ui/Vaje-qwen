@@ -7,6 +7,8 @@ export interface ReadingDraft {
   checkIndex: number
   answers: Record<number, string>
   firstPassCorrect?: number
+  /** Explore mode jumped between questions, so answers may have gaps. */
+  unordered?: true
   updatedAt: number
 }
 
@@ -32,6 +34,7 @@ function safeAnswers(
   checkIndex: number,
   questions: readonly ReadingQuestion[],
   correctionMode: boolean,
+  unordered: boolean,
 ): Record<number, string> | undefined {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined
   const answers: Record<number, string> = {}
@@ -39,7 +42,7 @@ function safeAnswers(
   for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
     const index = Number(key)
     if (!Number.isInteger(index) || index < 0 || index >= questions.length || typeof value !== 'string') return undefined
-    if (!correctionMode && index > checkIndex) return undefined
+    if (!correctionMode && !unordered && index > checkIndex) return undefined
     const question = questions[index]
     if (!question || !question.options.some(option => option.id === value)) return undefined
     if (correctionMode && index !== checkIndex && value !== question.answerId) return undefined
@@ -47,7 +50,9 @@ function safeAnswers(
   }
 
   // All questions before the active question must already be answered. In a
-  // correction round they must also already be corrected.
+  // correction round they must also already be corrected. Explore mode may
+  // leave gaps anywhere; its answered corrections are still checked above.
+  if (unordered) return answers
   for (let index = 0; index < checkIndex; index++) {
     if (typeof answers[index] !== 'string') return undefined
     if (correctionMode && answers[index] !== questions[index].answerId) return undefined
@@ -85,7 +90,8 @@ export function sanitizeReadingDraft(
   }
 
   const correctionMode = firstPassCorrect !== undefined
-  const answers = safeAnswers(value.answers, value.checkIndex, questions, correctionMode)
+  const unordered = value.unordered === true
+  const answers = safeAnswers(value.answers, value.checkIndex, questions, correctionMode, unordered)
   if (!answers) return undefined
 
   if (correctionMode) {
@@ -109,6 +115,7 @@ export function sanitizeReadingDraft(
     checkIndex: value.checkIndex,
     answers,
     firstPassCorrect,
+    ...(unordered ? { unordered: true as const } : {}),
     updatedAt,
   }
 }

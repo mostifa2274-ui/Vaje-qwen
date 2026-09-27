@@ -11,6 +11,8 @@ export interface BookTestDraft {
   timings: Record<string, number>
   /** The listening text has been heard in full at least once. */
   listeningHeard: boolean
+  /** Explore mode opened sections out of order. */
+  jumped?: true
   updatedAt: number
 }
 
@@ -55,7 +57,9 @@ export function sanitizeBookTestDraft(raw: unknown, test: BookTest, now = Date.n
   if (!translation || !listeningWords || !reading || !listening) return undefined
 
   // Sections are taken in order: everything before the current one is done,
-  // nothing after it has started.
+  // nothing after it has started. Explore mode (`jumped`) may open them in
+  // any order.
+  const jumped = value.jumped === true
   const sectionIndex = BOOK_TEST_SECTIONS.indexOf(value.section)
   const complete: Record<BookTestSection, boolean> = {
     translation: translation.length === test.translation.length,
@@ -70,10 +74,11 @@ export function sanitizeBookTestDraft(raw: unknown, test: BookTest, now = Date.n
     listening: listening.some(choice => choice !== null),
   }
   for (const [index, section] of BOOK_TEST_SECTIONS.entries()) {
+    if (jumped) break
     if (index < sectionIndex && !complete[section]) return undefined
     if (index > sectionIndex && started[section]) return undefined
   }
-  if (value.section === 'listening' && started.listening && value.listeningHeard !== true) return undefined
+  if ((jumped || value.section === 'listening') && started.listening && value.listeningHeard !== true) return undefined
 
   const timings: Record<string, number> = {}
   if (value.timings && typeof value.timings === 'object' && !Array.isArray(value.timings)) {
@@ -91,6 +96,7 @@ export function sanitizeBookTestDraft(raw: unknown, test: BookTest, now = Date.n
     answers: { translation: [...translation], listeningWords: [...listeningWords], reading: [...reading], listening: [...listening] },
     timings,
     listeningHeard: value.listeningHeard === true,
+    ...(jumped ? { jumped: true as const } : {}),
     updatedAt: value.updatedAt,
   }
 }
@@ -110,7 +116,7 @@ export function loadBookTestDraft(test: BookTest, now = Date.now()): BookTestDra
 
 export function saveBookTestDraft(
   test: BookTest,
-  progress: Pick<BookTestDraft, 'section' | 'answers' | 'timings' | 'listeningHeard'>,
+  progress: Pick<BookTestDraft, 'section' | 'answers' | 'timings' | 'listeningHeard' | 'jumped'>,
   now = Date.now(),
 ): void {
   if (typeof sessionStorage === 'undefined') return

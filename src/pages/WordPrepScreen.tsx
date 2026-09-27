@@ -21,6 +21,13 @@ interface Props {
   onReady: () => void
 }
 
+const PREP_STEPS: { label: string; target: PrepPhase | 'story' }[] = [
+  { label: 'آموزش', target: 'teach' },
+  { label: 'ترجمهٔ نوشتاری', target: 'written' },
+  { label: 'شنیداری', target: 'listening' },
+  { label: 'قصه', target: 'story' },
+]
+
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
@@ -28,6 +35,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   // Opened through explore mode before the learner reached it: the lessons
   // and tests work as practice, but passing them records nothing.
   const [preview] = useState(() => !canPrepareChapter(state, chapterId))
+  // Explore mode opens every step of the prep at once: the lesson cards move
+  // on without waiting for audio and the stepper jumps to any step. Passing
+  // still records only when both tests were fully passed (recordPreparedChapter).
+  const explore = state.exploreAll
   const { writtenOrder, listeningOrder } = useMemo(
     () => buildPrepTestOrders(chapterId, chapter.new),
     [chapter.new, chapterId],
@@ -251,8 +262,38 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setTeachAutoExampleDone(false)
   }
 
+  function jumpTo(target: PrepPhase | 'story') {
+    setFeedback(null)
+    setSelected('')
+    setTyped('')
+    setAudioBlocked(false)
+    setAudioNotice('')
+    setTeachAutoPlay(false)
+    setTeachAutoExampleDone(false)
+    if (target === 'story') {
+      onReady()
+      return
+    }
+    if (target === 'teach') {
+      setTeachIndex(0)
+      setTeachAudioReady(false)
+    }
+    if (target === 'written') {
+      setWrittenQueue([...writtenOrder])
+      setWrittenPassed(new Set())
+      setWrittenMissed(new Set())
+    }
+    if (target === 'listening') {
+      setListeningQueue([...listeningOrder])
+      setListeningPassed(new Set())
+      setListeningMissed(new Set())
+      setListeningReady(false)
+    }
+    setPhase(target)
+  }
+
   function previousTeach() {
-    if (!teachAudioReady || teachIndex === 0) return
+    if ((!teachAudioReady && !explore) || teachIndex === 0) return
     setTeachAutoPlay(false)
     setTeachAudioReady(false)
     setTeachAutoExampleDone(false)
@@ -260,7 +301,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }
 
   function continueTeach() {
-    if (!currentTeachWord || !teachAudioReady) return
+    if (!currentTeachWord || (!teachAudioReady && !explore)) return
     if (teachIndex + 1 < chapter.new.length) {
       setTeachAudioReady(false)
       setTeachAutoExampleDone(false)
@@ -444,16 +485,23 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         <ol className="prep-stepper" aria-label="مرحله‌های آمادگی">
-          {['آموزش', 'ترجمهٔ نوشتاری', 'شنیداری', 'قصه'].map((label, index) => (
+          {PREP_STEPS.map(({ label, target }, index) => (
             <li
               key={label}
               className={step === index + 1 ? 'active' : step > index + 1 ? 'done' : ''}
               aria-current={step === index + 1 ? 'step' : undefined}
             >
-              {faNum(index + 1)}. {label}
+              {explore
+                ? <button type="button" className="prep-step-jump" onClick={() => jumpTo(target)}>{faNum(index + 1)}. {label}</button>
+                : <>{faNum(index + 1)}. {label}</>}
             </li>
           ))}
         </ol>
+        {explore && (
+          <p className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+            در حالت کاوش هر مرحله را می‌توانی مستقیم باز کنی؛ آمادگی فصل فقط وقتی ثبت می‌شود که هر دو آزمون کامل پاس شوند.
+          </p>
+        )}
 
         {resumedDraft && !alreadyPrepared && (
           <div className="prep-resume-row mt-3" role="status">
@@ -502,7 +550,9 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
             {!state.soundOn && (
               <div className="paper-note mt-4">
-                آموزش هر واژه با شنیدن تلفظ آن کامل می‌شود؛ تا صدا روشن نشود، واژهٔ بعدی باز نمی‌شود.
+                {explore
+                  ? 'برای شنیدن تلفظ و مثال‌ها صدا را روشن کن.'
+                  : 'آموزش هر واژه با شنیدن تلفظ آن کامل می‌شود؛ تا صدا روشن نشود، واژهٔ بعدی باز نمی‌شود.'}
                 <button type="button" className="btn-ink mt-2 w-full py-2.5" onClick={enableSound}>روشن کردن صدا</button>
               </div>
             )}
@@ -548,12 +598,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <button
                 type="button"
                 className="btn-quiet py-3 text-sm"
-                disabled={!teachAudioReady || teachIndex === 0}
+                disabled={(!teachAudioReady && !explore) || teachIndex === 0}
                 onClick={previousTeach}
               >
                 قبلی
               </button>
-              <button type="button" className="btn-ink col-span-2 py-3" disabled={!teachAudioReady} onClick={continueTeach}>
+              <button type="button" className="btn-ink col-span-2 py-3" disabled={!teachAudioReady && !explore} onClick={continueTeach}>
                 {teachIndex + 1 < chapter.new.length ? 'واژهٔ بعدی ←' : 'شروع آزمون ترجمهٔ نوشتاری ←'}
               </button>
             </div>
