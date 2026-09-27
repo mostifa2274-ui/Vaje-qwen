@@ -15,7 +15,7 @@ function memoryStorage(): Storage {
 globalThis.localStorage = memoryStorage()
 globalThis.sessionStorage = memoryStorage()
 
-import { clearSessionDrafts, emptyState, resetState, saveState, summarizeProgress } from './store'
+import { clearSessionDrafts, emptyState, importStateJson, resetState, saveState, summarizeProgress } from './store'
 
 describe('progress replacement', () => {
   beforeEach(() => {
@@ -74,5 +74,50 @@ describe('progress replacement', () => {
     state.exams['book-1'] = { attempts: 1, passed: true, lastScore: 0.9, bestScore: 0.9, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] }
 
     expect(summarizeProgress(state)).toEqual({ completedChapters: 1, introducedWords: 0, passedExams: 1 })
+  })
+})
+
+
+describe('progress import validation', () => {
+  const chapters = ['b1c1', 'b1c2']
+  const words = ['w1', 'w2']
+
+  it('rejects unrelated JSON instead of converting it into empty progress', () => {
+    expect(() => importStateJson(
+      JSON.stringify({ version: 6, theme: 'dark', preferences: {} }),
+      100,
+      'b1c1',
+      chapters,
+      words,
+    )).toThrow('این فایل پشتیبان معتبر قصه نیست.')
+  })
+
+  it('rejects backups from an unsupported future state version', () => {
+    expect(() => importStateJson(
+      JSON.stringify({ version: 99, currentChapter: 'b1c1', chapters: {}, words: {}, exams: {} }),
+      100,
+      'b1c1',
+      chapters,
+      words,
+    )).toThrow('این فایل پشتیبان معتبر قصه نیست.')
+  })
+
+  it('still accepts a recognizable supported legacy backup', () => {
+    const imported = importStateJson(
+      JSON.stringify({
+        version: 5,
+        currentChapter: 'b1c2',
+        chapters: {},
+        words: { w1: { introduced: true } },
+      }),
+      100,
+      'b1c1',
+      chapters,
+      words,
+    )
+
+    expect(imported.version).toBe(6)
+    expect(imported.currentChapter).toBe('b1c2')
+    expect(imported.words.w1?.introduced).toBe(true)
   })
 })
