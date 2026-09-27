@@ -336,7 +336,27 @@ export function saveState(state: GhesseState): boolean {
 }
 
 function sameJsonValue(left: unknown, right: unknown): boolean {
-  return JSON.stringify(left) === JSON.stringify(right)
+  if (Object.is(left, right)) return true
+  if (Array.isArray(left) || Array.isArray(right)) {
+    if (!Array.isArray(left) || !Array.isArray(right) || left.length !== right.length) return false
+    return left.every((value, index) => sameJsonValue(value, right[index]))
+  }
+  if (
+    left && right
+    && typeof left === 'object'
+    && typeof right === 'object'
+  ) {
+    const leftRecord = left as Record<string, unknown>
+    const rightRecord = right as Record<string, unknown>
+    const leftKeys = Object.keys(leftRecord).sort()
+    const rightKeys = Object.keys(rightRecord).sort()
+    if (leftKeys.length !== rightKeys.length) return false
+    return leftKeys.every((key, index) => (
+      key === rightKeys[index]
+      && sameJsonValue(leftRecord[key], rightRecord[key])
+    ))
+  }
+  return false
 }
 
 function mergeConcurrentValue<T>(base: T, local: T, remote: T): T | undefined {
