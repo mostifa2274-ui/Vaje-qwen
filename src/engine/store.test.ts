@@ -36,16 +36,19 @@ describe('progress replacement', () => {
     expect(sessionStorage.getItem('other-app')).toBe('keep')
   })
 
-  it('reset clears saved progress and resumable drafts together', () => {
+  it('reset replaces saved progress with an explicit fresh snapshot and clears drafts', () => {
     const state = emptyState(1, 'b1c1')
     state.chapters.b1c1 = { preparedAt: 2, prepAttempts: 1, completed: true, checksCorrect: 10, checksTotal: 10, reads: 1 }
     expect(saveState(state)).toBe(true)
     sessionStorage.setItem('ghesse:prep:v1:b1c2', '{}')
 
     const fresh = resetState('b1c1')
+    const persisted = JSON.parse(localStorage.getItem('ghesse:state:v6') ?? '{}')
 
     expect(fresh.chapters).toEqual({})
-    expect(localStorage.length).toBe(0)
+    expect(persisted.chapters).toEqual({})
+    expect(persisted.words).toEqual({})
+    expect(localStorage.getItem('ghesse:state:v6:backup')).toBeNull()
     expect(sessionStorage.length).toBe(0)
   })
 
