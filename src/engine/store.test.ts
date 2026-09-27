@@ -15,7 +15,7 @@ function memoryStorage(): Storage {
 globalThis.localStorage = memoryStorage()
 globalThis.sessionStorage = memoryStorage()
 
-import { clearSessionDrafts, emptyState, importStateJson, resetState, saveState, summarizeProgress } from './store'
+import { clearSessionDrafts, emptyState, importStateJson, mergeConcurrentState, resetState, saveState, summarizeProgress } from './store'
 
 describe('progress replacement', () => {
   beforeEach(() => {
@@ -119,5 +119,70 @@ describe('progress import validation', () => {
     expect(imported.version).toBe(6)
     expect(imported.currentChapter).toBe('b1c2')
     expect(imported.words.w1?.introduced).toBe(true)
+  })
+})
+
+
+describe('concurrent progress reconciliation', () => {
+  const chapterProgress = () => ({
+    prepAttempts: 0,
+    completed: false,
+    checksCorrect: 0,
+    checksTotal: 0,
+    reads: 0,
+  })
+
+  it('preserves independent changes made by a stale tab and the persisted tab', () => {
+    const base = emptyState(100, 'b1c1')
+    const local = { ...base, dailyReviewGoal: 20 as const, chapters: { b1c1: chapterProgress() } }
+    const remote = { ...base, showFaDefault: true, chapters: { b1c2: chapterProgress() } }
+
+    const merged = mergeConcurrentState(base, local, remote)
+
+    expect(merged).toBeDefined()
+    expect(merged?.dailyReviewGoal).toBe(20)
+    expect(merged?.showFaDefault).toBe(true)
+    expect(Object.keys(merged?.chapters ?? {}).sort()).toEqual(['b1c1', 'b1c2'])
+  })
+
+  it('rejects divergent edits to the same learning record', () => {
+    const original = chapterProgress()
+    const base = { ...emptyState(100, 'b1c1'), chapters: { b1c1: original } }
+    const local = {
+      ...base,
+      chapters: { b1c1: { ...original, checksCorrect: 1 } },
+    }
+    const remote = {
+      ...base,
+      chapters: { b1c1: { ...original, reads: 1 } },
+    }
+
+    expect(mergeConcurrentState(base, local, remote)).toBeUndefined()
+  })
+
+  it('does not let a stale tab restore a learning record removed by reset', () => {
+    const original = chapterProgress()
+    const base = { ...emptyState(100, 'b1c1'), chapters: { b1c1: original } }
+    const staleLocal = {
+      ...base,
+      chapters: { b1c1: { ...original, checksCorrect: 1 } },
+    }
+    const resetRemote = emptyState(200, 'b1c1')
+
+    expect(mergeConcurrentState(base, staleLocal, resetRemote)).toBeUndefined()
+  })
+
+  it('lets a stale settings-only change coexist with a reset without restoring progress', () => {
+    const original = chapterProgress()
+    const base = { ...emptyState(100, 'b1c1'), chapters: { b1c1: original } }
+    const staleLocal = { ...base, dailyReviewGoal: 20 as const }
+    const resetRemote = emptyState(200, 'b1c1')
+
+    const merged = mergeConcurrentState(base, staleLocal, resetRemote)
+
+    expect(merged).toBeDefined()
+    expect(merged?.chapters).toEqual({})
+    expect(merged?.dailyReviewGoal).toBe(20)
+    expect(merged?.created).toBe(200)
   })
 })
