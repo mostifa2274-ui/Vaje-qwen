@@ -1,10 +1,10 @@
 """Flag word clips that start with a vowel the word does not have.
 
 Kokoro can open a single word with a short "uh" before its first consonant,
-so "sit" plays as "uh-sit". The reliable place to hear that by machine is a
-word whose first sound is a hiss (s, f, sh): its clip must begin with noise,
-not with a pitched vowel. This checks every such word clip and exits 1 if any
-begins voiced.
+so "sit" plays as "uh-sit" (see LEAD_IN_FRAMES in generate_audio.py). The
+reliable place to hear that by machine is a word whose first sound is a hiss
+(s, f, sh): nothing pitched may come before the hiss. This checks every such
+word clip and exits 1 if any has 30 ms or more of voicing before it.
 
 usage: python scripts/audio/check_word_onsets.py [--audio public/audio]
 Needs numpy and miniaudio (pip install numpy miniaudio).
@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -54,9 +55,13 @@ def frame_labels(audio: np.ndarray, sample_rate: int) -> str:
     return "".join(labels)
 
 
-def starts_voiced(labels: str) -> bool:
-    """The first 50 ms of sound are (almost all) a pitched vowel."""
-    return labels.lstrip(".")[:5].count("V") >= 4
+def voicing_before_hiss(labels: str) -> int | None:
+    """Voiced 10 ms frames before the first 30 ms of hiss, or None if the clip
+    does not open with hiss (a weak "f" can read as '~' and cannot be judged)."""
+    hiss = re.search(r"N{3,}", labels)
+    if not hiss or hiss.start() > 40:
+        return None
+    return labels[:hiss.start()].count("V")
 
 
 def decode(path: Path) -> tuple[np.ndarray, int]:
@@ -73,16 +78,22 @@ def main() -> int:
 
     vocabulary = json.loads((ROOT / "src/data/vocabulary.json").read_text("utf-8"))
     words = sorted({entry["word"] for entry in vocabulary if hiss_initial(entry["ipa"]) and " " not in entry["word"]})
+    judged = 0
     voiced = []
     for word in words:
         path = args.audio / f"{clip_id('w', word)}.mp3"
         if not path.exists():
             continue
         labels = frame_labels(*decode(path))
-        if starts_voiced(labels):
-            voiced.append((word, labels.lstrip(".")[:30]))
+        frames = voicing_before_hiss(labels)
+        if frames is None:
+            continue
+        judged += 1
+        if frames >= 3:
+            voiced.append((word, labels.strip(".")[:30]))
 
-    print(f"{len(words)} word clips start with s, f or sh; {len(voiced)} begin with a vowel instead")
+    print(f"{len(words)} word clips start with s, f or sh; {judged} open with clear hiss, "
+          f"and {len(voiced)} of those have a vowel before it")
     for word, labels in voiced:
         print(f"  {word:14s} {labels}")
     return 1 if voiced else 0

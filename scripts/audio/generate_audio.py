@@ -30,6 +30,12 @@ SAMPLE_RATE = 24_000
 # Sentences are recorded at the app's default narrator speed; clipPlaybackRate()
 # in src/engine/audio.ts scales them from 0.92 when the learner changes it.
 SPEED = {"w": 0.86, "s": 0.92}
+# Kokoro gives the pad token that opens every input a silent lead-in, and
+# for a lone word it predicts 19-23 frames where a sentence gets 14-18. The
+# model then fills the end of that long silence with a short "uh", so words
+# played as "uh-sit". Capping the lead-in at the longest a sentence gets
+# (25 ms per frame) removes it; see cap_lead_in().
+LEAD_IN_FRAMES = 18
 LEAD_MS = {"w": 60, "s": 80}
 TAIL_MS = {"w": 140, "s": 220}
 BITRATE_KBPS = 40
@@ -144,9 +150,12 @@ class Speaker:
         import onnxruntime as ort
         from misaki import en, espeak
 
+        import onnx
+
         options = ort.SessionOptions()
         options.intra_op_num_threads = threads
-        self.session = ort.InferenceSession(str(model), options, providers=["CPUExecutionProvider"])
+        graph = cap_lead_in(onnx.load(str(model)), LEAD_IN_FRAMES)
+        self.session = ort.InferenceSession(graph.SerializeToString(), options, providers=["CPUExecutionProvider"])
         # The onnx-community export names its token input "input_ids"; the
         # kokoro-onnx export of the same weights calls it "tokens".
         inputs = {item.name for item in self.session.get_inputs()}
@@ -174,6 +183,43 @@ class Speaker:
         if not np.isfinite(audio).all() or float(np.abs(audio).max()) < 0.05:
             raise RuntimeError(f"no audible speech for {kind} {text!r}; use the float32 model (upcast_model.py)")
         return trim(audio, kind)
+
+
+def cap_lead_in(model, frames: int):
+    """Limit the duration Kokoro predicts for the opening pad token.
+
+    Durations are rounded and clamped to at least one frame (Round, then
+    Clip) before they place the audio; the first value belongs to the pad
+    token. This inserts min(first, frames) after the clamp.
+    """
+    from onnx import TensorProto, helper
+
+    graph = model.graph
+    rounds = [node for node in graph.node if node.op_type == "Round"]
+    clamps = [node for node in graph.node if node.op_type == "Clip" and rounds and rounds[0].output[0] in node.input]
+    if len(rounds) != 1 or len(clamps) != 1:
+        raise RuntimeError("cannot find Kokoro's duration rounding in this model, so the lead-in cannot be capped")
+    durations = clamps[0].output[0]
+    consumers = [(node, index) for node in graph.node for index, name in enumerate(node.input) if name == durations]
+    graph.initializer.extend([
+        helper.make_tensor("lead_in/zero", TensorProto.INT64, [1], [0]),
+        helper.make_tensor("lead_in/one", TensorProto.INT64, [1], [1]),
+        helper.make_tensor("lead_in/end", TensorProto.INT64, [1], [2**62]),
+        helper.make_tensor("lead_in/last_axis", TensorProto.INT64, [1], [-1]),
+        helper.make_tensor("lead_in/frames", TensorProto.FLOAT, [], [float(frames)]),
+    ])
+    added = [
+        helper.make_node("Slice", [durations, "lead_in/zero", "lead_in/one", "lead_in/last_axis"], ["lead_in/first"]),
+        helper.make_node("Slice", [durations, "lead_in/one", "lead_in/end", "lead_in/last_axis"], ["lead_in/rest"]),
+        helper.make_node("Min", ["lead_in/first", "lead_in/frames"], ["lead_in/capped"]),
+        helper.make_node("Concat", ["lead_in/capped", "lead_in/rest"], ["lead_in/durations"], axis=-1),
+    ]
+    for node, index in consumers:
+        node.input[index] = "lead_in/durations"
+    position = list(graph.node).index(clamps[0]) + 1
+    for offset, node in enumerate(added):
+        graph.node.insert(position + offset, node)
+    return model
 
 
 def load_voice(path: Path, name: str) -> np.ndarray:
