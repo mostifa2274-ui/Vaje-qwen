@@ -2,7 +2,7 @@
   "schema": 1,
   "target": {
     "totalChapters": 40,
-    "aspectRatio": "16:9",
+    "aspectRatio": "40:21",
     "composition": "single_scene",
     "contemporaryIranianSetting": true,
     "hijabContinuityRequired": true,
