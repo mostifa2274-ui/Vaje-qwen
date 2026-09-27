@@ -550,8 +550,12 @@ test('glossary search tolerates Arabic-layout Persian letters', async ({ page })
   await expect(page.locator('.glossary-row').first()).toContainText('book')
 })
 
-test('map chapter buttons announce their status', async ({ page }) => {
+test('map book cards use reviewed generated artwork and announce chapter status', async ({ page }) => {
   await page.goto('/#/map')
+  const firstBookArt = page.getByRole('img', { name: 'تصویر کتاب ۱: خانه' })
+  await expect(firstBookArt).toBeVisible()
+  await expect(firstBookArt).toHaveAttribute('src', /art\/chapters\/b1c1\.avif$/)
+  await expect(page.locator('.book-banner img')).toHaveCount(8)
   await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
   await expect(page.getByRole('button', { name: /^فصل ۲: .+ — قفل$/ }).first()).toBeDisabled()
 })
