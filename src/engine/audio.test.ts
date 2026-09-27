@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { clipPlaybackRate } from './audio'
+import { clipPlaybackRate, RECORDED_CLIP_WATCHDOG_MS } from './audio'
 import { clipId, loadClipIndex, recordedClip, setClipIndex } from './audioClips'
 import { speakEnglishWithFallback } from './narration'
 
@@ -91,6 +91,24 @@ describe('recorded clip lookup', () => {
     await loadClipIndex(() => Promise.resolve(new Response(body, { status: 200 })))
     expect(recordedClip('w', 'cat')).toBe('/audio/effe6cb2b6475943.mp3')
   })
+
+  it('retries the catalogue after a transient HTTP failure', async () => {
+    setClipIndex(null)
+    let attempts = 0
+    const fetcher = () => {
+      attempts++
+      if (attempts === 1) return Promise.resolve(new Response('', { status: 503 }))
+      const body = JSON.stringify({ voice: 'test', clips: [clipId('w', 'cat')] })
+      return Promise.resolve(new Response(body, { status: 200 }))
+    }
+
+    await loadClipIndex(fetcher)
+    expect(recordedClip('w', 'cat')).toBeUndefined()
+
+    await loadClipIndex(fetcher)
+    expect(attempts).toBe(2)
+    expect(recordedClip('w', 'cat')).toBe('/audio/effe6cb2b6475943.mp3')
+  })
 })
 
 describe('narration prefers recordings', () => {
@@ -134,6 +152,25 @@ describe('narration prefers recordings', () => {
     player().onerror?.()
 
     expect(spoken.map(utterance => utterance.text)).toEqual(['cat'])
+  })
+
+  it('falls back instead of hanging when a recorded clip never finishes', () => {
+    vi.useFakeTimers()
+    try {
+      const spoken = installSpeech()
+      const onEnd = vi.fn()
+
+      speakEnglishWithFallback('cat', '', 0.92, 'w', onEnd)
+      expect(spoken).toHaveLength(0)
+
+      vi.advanceTimersByTime(RECORDED_CLIP_WATCHDOG_MS)
+
+      expect(player().pause).toHaveBeenCalled()
+      expect(spoken.map(utterance => utterance.text)).toEqual(['cat'])
+      expect(onEnd).not.toHaveBeenCalled()
+    } finally {
+      vi.useRealTimers()
+    }
   })
 
   it('reports an autoplay refusal as blocked without trying the device voice', async () => {

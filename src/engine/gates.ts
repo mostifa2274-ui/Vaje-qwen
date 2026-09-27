@@ -70,19 +70,22 @@ export function examDefinition(id: string): ExamDefinition | undefined {
 
 export function chapterPrepared(state: GhesseState, chapterId: string): boolean {
   const progress = state.chapters[chapterId]
-  if (!progress) return false
+  const chapter = CHAPTERS.find(item => item.id === chapterId)
+  if (!progress || !chapter) return false
   // Never relock a chapter the learner has already completed in an older app
-  // version. For every unfinished chapter, however, legacy preparedAt alone
-  // is intentionally insufficient: both new prep tests must be 100%.
+  // version. For every unfinished chapter, however, imported/corrupted totals
+  // must match the chapter's real assignment and both prep tests must be 100%.
   if (progress.completed) return true
+  const required = chapter.new.length
   const writtenTotal = progress.prepWrittenTotal ?? 0
   const listeningTotal = progress.prepListeningTotal ?? 0
   return Boolean(
     progress.preparedAt
-    && writtenTotal > 0
-    && listeningTotal > 0
-    && progress.prepWrittenCorrect === writtenTotal
-    && progress.prepListeningCorrect === listeningTotal,
+    && required > 0
+    && writtenTotal === required
+    && listeningTotal === required
+    && progress.prepWrittenCorrect === required
+    && progress.prepListeningCorrect === required,
   )
 }
 
@@ -172,8 +175,8 @@ export function canTakeExam(state: GhesseState, id: string): boolean {
 
 export function nextGateAfterBook(state: GhesseState, book: number): string | undefined {
   const bookId = bookExamId(book)
-  if (!examPassed(state, bookId)) return bookId
-  if (book === 4 && !examPassed(state, MIDPOINT_EXAM_ID)) return MIDPOINT_EXAM_ID
-  if (book === 8 && !examPassed(state, FINAL_EXAM_ID)) return FINAL_EXAM_ID
+  if (!examCleared(state, bookId)) return bookId
+  if (book === 4 && !examCleared(state, MIDPOINT_EXAM_ID)) return MIDPOINT_EXAM_ID
+  if (book === 8 && !examCleared(state, FINAL_EXAM_ID)) return FINAL_EXAM_ID
   return undefined
 }

@@ -24,6 +24,9 @@ const fail = (message) => {
 if (ids.length !== manifest.target.totalChapters) {
   fail(`Chapter art manifest expects ${manifest.target.totalChapters} chapters but found ${ids.length}.`)
 }
+if (manifest.target.aspectRatio !== '40:21') {
+  fail(`Chapter art manifest must match the reviewed 640x336 geometry (40:21), found ${manifest.target.aspectRatio}.`)
+}
 
 if (idSet.size !== ids.length) fail('Duplicate chapter ids found in chapter data.')
 

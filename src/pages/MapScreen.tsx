@@ -11,6 +11,7 @@ import {
   canTakeExam,
   chapterPrepared,
   examDefinition,
+  examCleared,
   examPassed,
   examRemediationPending,
 } from '../engine/gates'
@@ -56,7 +57,7 @@ function ExamGate({
   return (
     <div className={`exam-gate ${special ? 'special' : ''} ${passed ? 'passed' : ''}`}>
       <div className="exam-gate-icon" aria-hidden="true">
-        {passed ? <CheckIcon className="h-5 w-5" /> : available ? <PlayIcon className="h-5 w-5" /> : <LockIcon className="h-4 w-4" />}
+        {remediation ? <RefreshCcwIcon className="h-5 w-5" /> : passed ? <CheckIcon className="h-5 w-5" /> : available ? <PlayIcon className="h-5 w-5" /> : <LockIcon className="h-4 w-4" />}
       </div>
       <div className="min-w-0 flex-1">
         <div className="font-extrabold">{title}</div>
@@ -202,10 +203,12 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                 <div className="book-banner">
                   <img
                     src={meta.cover}
-                    alt={`تصویر کتاب ${faNum(meta.book)}: ${meta.titleFa}`}
+                    alt=""
                     width={640}
                     height={336}
                     decoding="async"
+                    loading={meta.book === 1 ? 'eager' : 'lazy'}
+                    fetchPriority={meta.book === 1 ? 'high' : 'auto'}
                   />
                 </div>
                 <div className="flex items-center gap-3">
@@ -218,7 +221,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                       {bHealth.trouble > 0 && <span className="mastery-chip">{faNum(bHealth.trouble)} سخت</span>}
                     </div>
                   </div>
-                  {examPassed(state, bookExam) && <span className="book-status-icon" title="آزمون پایان کتاب پاس شده" aria-label="آزمون پایان کتاب پاس شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
+                  {examCleared(state, bookExam) && <span className="book-status-icon" title="آزمون پایان کتاب پاس و جبران کامل شده" aria-label="آزمون پایان کتاب پاس و جبران کامل شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
                 </div>
 
                 <div className="mt-4 flex flex-wrap items-center gap-2" dir="rtl">

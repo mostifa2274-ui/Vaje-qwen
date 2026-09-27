@@ -117,8 +117,19 @@ assert(
   serviceWorkerSource.split(swAssetsPlaceholder).length === 2,
   'public/sw.js must contain exactly one build-assets placeholder for release stamping',
 )
+const chapterArtDir = join(publicDir, 'art', 'chapters')
+assert(existsSync(chapterArtDir), 'missing reviewed chapter-art directory: public/art/chapters')
+const chapterArtFiles = readdirSync(chapterArtDir)
+  .filter(name => /\.(?:avif|webp)$/i.test(name))
+const chapterArtIds = chapterArtFiles.map(name => name.replace(/\.(?:avif|webp)$/i, ''))
+assert(chapterArtFiles.length === 40, `expected 40 reviewed chapter images, found ${chapterArtFiles.length}`)
+assert(new Set(chapterArtIds).size === 40, 'reviewed chapter artwork must have exactly one raster per chapter')
+for (const chapter of chapters) {
+  assert(chapterArtIds.includes(chapter.id), `missing reviewed chapter artwork: ${chapter.id}`)
+}
 for (let book = 1; book <= 8; book++) {
-  assert(existsSync(join(publicDir, 'art', `book${book}.svg`)), `missing lesson artwork: art/book${book}.svg`)
+  const firstChapter = chapters.find(chapter => chapter.book === book)
+  assert(firstChapter && chapterArtIds.includes(firstChapter.id), `missing reviewed book-cover artwork for book ${book}`)
 }
 
 console.log(`Validated ${vocab.length} words, ${chapters.length} chapters, ${sentenceCount} sentences, ${checkpointCount} checkpoints, and ${prompts.size - unrecorded.length}/${prompts.size} recorded prompts (${audioIndex.voice}).`)

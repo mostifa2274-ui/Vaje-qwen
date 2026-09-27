@@ -40,20 +40,30 @@ function base(): string {
   return import.meta.env.BASE_URL ?? '/'
 }
 
-/** Fetches the list of recorded clips once. Without it, every prompt uses the device voice. */
+/**
+ * Fetches the recorded-clip catalogue. A successful load is cached for the app
+ * lifetime; a transient network/HTTP failure is not, so a later online or
+ * visibility retry can restore the high-quality course recordings.
+ */
 export function loadClipIndex(fetcher: typeof fetch = fetch): Promise<void> {
-  if (!loading) {
-    loading = fetcher(`${base()}audio/index.json`)
-      .then(response => (response.ok ? response.json() : null))
-      .then((index: { clips?: unknown } | null) => {
-        const clips = Array.isArray(index?.clips) ? index.clips.filter((clip): clip is string => typeof clip === 'string') : []
-        available = new Set(clips)
-      })
-      .catch(() => {
-        available = new Set()
-      })
-  }
-  return loading
+  if (loading) return loading
+
+  const attempt: Promise<void> = fetcher(`${base()}audio/index.json`)
+    .then(response => {
+      if (!response.ok) throw new Error(`Audio index HTTP ${response.status}`)
+      return response.json()
+    })
+    .then((index: { clips?: unknown }) => {
+      const clips = Array.isArray(index?.clips) ? index.clips.filter((clip): clip is string => typeof clip === 'string') : []
+      available = new Set(clips)
+    })
+    .catch(() => {
+      available = new Set()
+      if (loading === attempt) loading = null
+    })
+
+  loading = attempt
+  return attempt
 }
 
 /** For tests: replace the loaded index. */
