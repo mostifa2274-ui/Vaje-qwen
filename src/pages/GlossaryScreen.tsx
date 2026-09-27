@@ -5,7 +5,7 @@ import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
 import { BackIcon, SearchIcon } from '../components/Icons'
-import { normalizePersianAnswer } from '../engine/persianTranslation'
+import { compactPersianAnswer } from '../engine/persianTranslation'
 import { faNum } from '../engine/format'
 
 interface Props {
@@ -16,9 +16,10 @@ interface Props {
 
 const PAGE_SIZE = 200
 
-// Arabic-layout letters (ي/ك), ZWNJ vs. space, diacritics and punctuation
-// must not hide a word from a learner typing on a different keyboard.
-const SEARCH_KEYS = new Map(VOCAB.map(word => [word.id, `${normalizePersianAnswer(word.word)}\n${normalizePersianAnswer(word.fa)}`]))
+// Arabic-layout letters (ي/ك), a half-space typed as a space or left out,
+// diacritics and punctuation must not hide a word from a learner typing on a
+// different keyboard.
+const SEARCH_KEYS = new Map(VOCAB.map(word => [word.id, `${compactPersianAnswer(word.word)}\n${compactPersianAnswer(word.fa)}`]))
 
 const LEVEL_FA: Record<MasteryLevel, string> = {
   new: 'تازه',
@@ -51,7 +52,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
   const trouble = useMemo(() => new Set(troubleWordIds(state.words)), [state.words])
 
   const list = useMemo(() => {
-    const q = normalizePersianAnswer(query)
+    const q = compactPersianAnswer(query)
     return VOCAB.filter(word => {
       const level = wordMastery(word.id, state)
       if (filter === 'trouble' && !trouble.has(word.id)) return false
@@ -94,7 +95,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         />
       </label>
 
-      <div className="strip-scroll mt-3 flex gap-2 overflow-x-auto pb-1" aria-label="فیلتر سطح تسلط">
+      <div className="strip-scroll mt-3 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="فیلتر سطح تسلط">
         {(['all', 'trouble', 'mastered', 'strong', 'learning', 'seen', 'new'] as const).map(value => (
           <button
             type="button"

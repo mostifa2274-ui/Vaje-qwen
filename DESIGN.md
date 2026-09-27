@@ -42,6 +42,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - One focus surface at a time
 - Progress rail shows Teach → Written → Listening → Story
 - Word, Persian meaning and example dominate the teach phase
+- No chapter illustration: teaching and both tests open directly on the word card
 - Automatic pronunciation is expected; replay is secondary
 - Wrong answers explain the correction and return later in the same test
 - Advancing to a new item scrolls the focus surface back into view
@@ -57,7 +58,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 
 ## Illustration
 - The production visual system is the 40 reviewed raster scenes registered in `src/art/generatedChapterArt.ts` and materialized into `public/art/chapters/` during the build. The chapter-art validator must remain 40 approved / 0 pending.
-- Chapter and preparation screens use those reviewed scenes directly. Book overview cards reuse one reviewed scene per book; legacy inline/vector banners are not a production fallback.
+- Story chapters use those reviewed scenes directly; the preparation screen shows none, so the word card stays the only focus. Book overview cards reuse one reviewed scene per book; legacy inline/vector banners are not a production fallback.
 - Nino is always a small yellow chicken with an orange beak and feet and one small white feather on the left wing. Never depict him as the former cat concept, a duck, an adult hen, or an unmarked generic chick.
 - Mina keeps the same face and age impression while her contemporary Iranian modest clothing may vary by chapter. Girls and women are never shown without hijab; public/outdoor scenes keep hair exposure minimal. Mina's red book and the crimson bird remain recurring visual anchors.
 - No readable text or logos inside illustrations. Each chapter image has a Persian accessible description.

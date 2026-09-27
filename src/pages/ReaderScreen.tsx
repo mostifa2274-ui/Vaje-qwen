@@ -435,7 +435,15 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </span>
           </div>
 
-          <div className="mastery-progress mt-3" aria-label={`${faNum(checksCorrect)} از ${faNum(questions.length)} پاسخ تأیید شده`}>
+          <div
+            className="mastery-progress mt-3"
+            role="progressbar"
+            aria-label="پاسخ‌های تأییدشدهٔ درک مطلب"
+            aria-valuemin={0}
+            aria-valuemax={questions.length}
+            aria-valuenow={checksCorrect}
+            aria-valuetext={`${faNum(checksCorrect)} از ${faNum(questions.length)}`}
+          >
             <span style={{ width: `${(checksCorrect / questions.length) * 100}%` }} />
           </div>
 
@@ -528,7 +536,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
           {finished && (
             <div className="paper-card p-5 text-center" role="status">
-              <div className="text-4xl" aria-hidden="true">🐈‍⬛</div>
+              <div className="text-4xl" aria-hidden="true">🐥</div>
               <div className="mt-2 font-extrabold">{wasAlreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
                 {isLastOfBook

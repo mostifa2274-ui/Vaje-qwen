@@ -1,18 +1,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
-import { buildReviewQuestion } from '../engine/review'
+import { listeningChoiceOptions } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
-import { isPersianTranslationCorrect } from '../engine/persianTranslation'
+import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import { faNum } from '../engine/format'
 import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
-import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   chapterId: string
@@ -50,6 +49,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
   const [listeningReady, setListeningReady] = useState(false)
+  // Counts listening items shown. A missed word goes back into the queue and,
+  // when it is the only one left, returns at once with the same id; the new
+  // turn still speaks it again, so its answers unlock without a manual replay.
+  const [listeningTurn, setListeningTurn] = useState(0)
   const [teachAudioReady, setTeachAudioReady] = useState(false)
   const [teachAutoPlay, setTeachAutoPlay] = useState(false)
   const [teachAutoExampleDone, setTeachAutoExampleDone] = useState(false)
@@ -70,12 +73,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   const currentListeningId = listeningQueue[0]
   const currentListeningWord = currentListeningId ? WORD_BY_ID.get(currentListeningId) : undefined
-  const listeningQuestion = useMemo(
+  const listeningOptions = useMemo(
     () => currentListeningWord
-      ? buildReviewQuestion(
+      ? listeningChoiceOptions(
           currentListeningWord,
           VOCAB,
-          'reverse',
           `${chapterId}:prep-listening:${listeningPassed.size}:${listeningQueue.length}:${currentListeningId}`,
         )
       : undefined,
@@ -155,7 +157,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       speak(word.word, phase === 'listening', phase === 'teach')
     }, 90)
     return () => window.clearTimeout(timer)
-  }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
+  }, [currentListeningWord, currentTeachWord, listeningTurn, phase, speak, state.soundOn])
 
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -274,7 +276,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   function submitWritten() {
     if (!currentWrittenWord || !currentWrittenId || !typed.trim() || feedback) return
-    const correct = isPersianTranslationCorrect(typed, currentWrittenWord)
+    const correct = isHeadwordTranslationCorrect(typed, currentWrittenWord, VOCAB)
     if (!correct) setWrittenMissed(previous => new Set(previous).add(currentWrittenId))
     focusRetryContinueRef.current = !correct
     setFeedback(correct ? 'correct' : 'wrong')
@@ -312,8 +314,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }
 
   function chooseListening(optionId: string) {
-    if (!listeningQuestion || !currentListeningId || feedback || !state.soundOn || audioBlocked || !listeningReady) return
-    const correct = optionId === listeningQuestion.answerId
+    if (!listeningOptions || !currentListeningId || feedback || !state.soundOn || audioBlocked || !listeningReady) return
+    const correct = optionId === currentListeningId
     setSelected(optionId)
     if (!correct) setListeningMissed(previous => new Set(previous).add(currentListeningId))
     focusRetryContinueRef.current = !correct
@@ -338,6 +340,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
     setListeningPassed(passed)
     setListeningQueue(nextQueue)
+    setListeningTurn(turn => turn + 1)
     setFeedback(null)
     setSelected('')
     setListeningReady(false)
@@ -426,24 +429,17 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           </div>
         )}
 
-        <div className="prep-stepper" aria-label="مرحله‌های آمادگی">
+        <ol className="prep-stepper" aria-label="مرحله‌های آمادگی">
           {['آموزش', 'ترجمهٔ نوشتاری', 'شنیداری', 'قصه'].map((label, index) => (
-            <span key={label} className={step === index + 1 ? 'active' : step > index + 1 ? 'done' : ''}>
+            <li
+              key={label}
+              className={step === index + 1 ? 'active' : step > index + 1 ? 'done' : ''}
+              aria-current={step === index + 1 ? 'step' : undefined}
+            >
               {faNum(index + 1)}. {label}
-            </span>
+            </li>
           ))}
-        </div>
-
-        {phase === 'teach' && (
-          <section className="teach-context-card mt-4 overflow-hidden" aria-label="تصویر زمینهٔ فصل">
-            <ChapterIllustration chapterId={chapterId} titleFa={chapter.titleFa} />
-            <div className="teach-context-copy">
-              <span>صحنهٔ این فصل</span>
-              <b>{chapter.titleFa}</b>
-              <small className="font-en" dir="ltr">{chapter.titleEn}</small>
-            </div>
-          </section>
-        )}
+        </ol>
 
         {resumedDraft && !alreadyPrepared && (
           <div className="prep-resume-row mt-3" role="status">
@@ -608,7 +604,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           </div>
         )}
 
-        {phase === 'listening' && currentListeningWord && listeningQuestion && (
+        {phase === 'listening' && currentListeningWord && listeningOptions && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
@@ -643,8 +639,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </div>
 
                 <div data-testid="listening-options" className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2" dir="rtl">
-                  {listeningQuestion.options?.map(option => {
-                    const isAnswer = option.id === listeningQuestion.answerId
+                  {listeningOptions.map(option => {
+                    const isAnswer = option.id === currentListeningId
                     const isSelected = selected === option.id
                     let className = 'btn-paper min-h-14 px-3 py-3'
                     if (feedback && isAnswer) className += ' answer-correct'

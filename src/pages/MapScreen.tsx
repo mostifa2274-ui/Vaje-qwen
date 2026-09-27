@@ -106,11 +106,11 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
           <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ از اولین برخورد تا تسلط پایدار</p>
         </div>
         <div className="home-toolbar">
-          <button className="btn-paper home-toolbar-button px-3 text-sm" onClick={onOpenGlossary} aria-label="واژه‌نامه">
+          <button type="button" className="btn-paper home-toolbar-button px-3 text-sm" onClick={onOpenGlossary} aria-label="واژه‌نامه">
             <BookOpenTextIcon className="h-5 w-5" />
             <span>واژه‌نامه</span>
           </button>
-          <button className="btn-paper home-toolbar-icon" onClick={onOpenSettings} aria-label="تنظیمات">
+          <button type="button" className="btn-paper home-toolbar-icon" onClick={onOpenSettings} aria-label="تنظیمات">
             <SettingsIcon className="h-5 w-5" />
           </button>
         </div>
@@ -122,7 +122,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{action.detail}</p>
         </div>
         {action.kind !== 'complete' && <button type="button" className="btn-crimson shrink-0 px-4 py-3" onClick={runNextAction}>{actionLabel}</button>}
-        {action.kind === 'complete' && <BadgeCheckIcon className="h-8 w-8 shrink-0" aria-label="مسیر کامل شده" />}
+        {action.kind === 'complete' && <BadgeCheckIcon className="h-8 w-8 shrink-0" role="img" aria-hidden={false} aria-label="مسیر کامل شده" />}
       </section>
 
       <section className="journey-overview mt-4">
@@ -221,7 +221,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                       {bHealth.trouble > 0 && <span className="mastery-chip">{faNum(bHealth.trouble)} سخت</span>}
                     </div>
                   </div>
-                  {examCleared(state, bookExam) && <span className="book-status-icon" title="آزمون پایان کتاب پاس و جبران کامل شده" aria-label="آزمون پایان کتاب پاس و جبران کامل شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
+                  {examCleared(state, bookExam) && <span className="book-status-icon" role="img" title="آزمون پایان کتاب پاس و جبران کامل شده" aria-label="آزمون پایان کتاب پاس و جبران کامل شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
                 </div>
 
                 <div className="mt-4 flex flex-wrap items-center gap-2" dir="rtl">
@@ -236,6 +236,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                     return (
                       <div key={ch.id} className="flex items-center gap-2">
                         <button
+                          type="button"
                           className={`node-circle h-11 w-11 text-sm ${nodeState}`}
                           disabled={!accessible}
                           onClick={() => onOpenChapter(ch.id)}

@@ -30,6 +30,25 @@ describe('Persian written-translation grading', () => {
     expect(isPersianTranslationCorrect('برادر', { fa: 'والد؛ پدر یا مادر' })).toBe(false)
   })
 
+  it('accepts a half-space typed as a space or left out entirely', () => {
+    expect(isPersianTranslationCorrect('لباسها', { fa: 'لباس‌ها' })).toBe(true)
+    expect(isPersianTranslationCorrect('لباس ها', { fa: 'لباس‌ها' })).toBe(true)
+    expect(isPersianTranslationCorrect('میتوانست', { fa: 'می‌توانست؛ می‌توانستم' })).toBe(true)
+    expect(isPersianTranslationCorrect('خسته کننده', { fa: 'خسته‌کننده' })).toBe(true)
+    // Only the spacing may differ: other letters still have to match.
+    expect(isPersianTranslationCorrect('لباس', { fa: 'لباس‌ها' })).toBe(false)
+    expect(isPersianTranslationCorrect('میتوان', { fa: 'می‌توانست؛ می‌توانستم' })).toBe(false)
+  })
+
+  it('folds Arabic-keyboard letter forms, digits and invisible marks', () => {
+    expect(normalizePersianAnswer('خانۀ')).toBe('خانه')
+    expect(normalizePersianAnswer('خانهٔ')).toBe('خانه')
+    expect(normalizePersianAnswer('أب')).toBe('اب')
+    expect(normalizePersianAnswer('۱۲ ٣')).toBe('12 3')
+    expect(normalizePersianAnswer('‏کتاب‍')).toBe('کتاب')
+    expect(isPersianTranslationCorrect('همۀ', { fa: 'هر؛ همهٔ' })).toBe(true)
+  })
+
   it('retains the normalized full gloss as an accepted answer', () => {
     expect(acceptedPersianAnswers({ fa: 'او را؛ به او (مذکر)' })).toContain('او را به او مذکر')
   })

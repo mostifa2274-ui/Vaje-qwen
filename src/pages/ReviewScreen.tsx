@@ -16,6 +16,7 @@ import {
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { examRemediationWordIds } from '../engine/gates'
 import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
+import SpellingHint from '../components/SpellingHint'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
 import { faNum } from '../engine/format'
 
@@ -323,6 +324,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
             {mode === 'spelling' ? (
               <>
                 <div className="text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن؛ متن انگلیسی پنهان می‌ماند.</div>
+                {question.hintFa && <SpellingHint meaning={question.hintFa} />}
                 <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={() => { setAudioReady(false); speakCurrent() }}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
                 {audioNotice && <div className="paper-note mt-3 text-right" role="alert">{audioNotice}</div>}
                 {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}

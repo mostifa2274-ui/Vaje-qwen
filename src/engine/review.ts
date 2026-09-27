@@ -1,5 +1,6 @@
 import type { RetrievalMode, SkillDimension, WordEntry, WordProgress } from './types'
 import { forgottenStability, inferFsrsGrade, initialDifficulty, initialStability, intervalForRetention, nextDifficulty, retrievability, sameDayStability, successfulStability } from './fsrs'
+import { differentlySpelledHomophones, soundsAlike } from './homophones'
 
 export type ReviewMode = RetrievalMode
 export type ReviewSource = 'review' | 'exam' | 'relearn'
@@ -19,6 +20,12 @@ export interface ReviewQuestion {
   answerId: string
   acceptedAnswers: string[]
   audioCue?: boolean
+  /**
+   * Persian meaning shown beside an audio-only prompt whose sound another
+   * deck word shares with a different spelling (right/write), so the learner
+   * knows which spelling is asked for.
+   */
+  hintFa?: string
 }
 
 function clamp(min: number, max: number, value: number): number {
@@ -256,6 +263,11 @@ export function recordRetrieval(
       next.stabilityDays = modelStability
       next.dueAt = now + interval * DAY
       next.difficulty = modelDifficulty
+    } else if (progress.dueAt !== undefined && progress.dueAt <= now) {
+      // It does close today's relearning, though. A word that lapsed after an
+      // earlier success today comes back tomorrow, when a correct answer is
+      // new spaced evidence, instead of staying due for the rest of the day.
+      next.dueAt = now + DAY
     }
   } else {
     const grade = inferFsrsGrade(false, mode, elapsedMs)
@@ -456,6 +468,7 @@ export function buildReviewQuestion(
       answerId: target.id,
       acceptedAnswers: acceptedAnswers(target),
       audioCue: true,
+      hintFa: differentlySpelledHomophones(target, vocab).length > 0 ? target.fa : undefined,
     }
   }
 
@@ -491,6 +504,16 @@ export function buildReviewQuestion(
     answerId: target.id,
     acceptedAnswers: acceptedAnswers(target),
   }
+}
+
+/**
+ * Meaning options for a word the learner only hears. A deck word that sounds
+ * the same (right/write, the two "like" entries) is never offered beside it,
+ * because the audio alone cannot tell them apart.
+ */
+export function listeningChoiceOptions(target: WordEntry, vocab: WordEntry[], seed: string): Array<{ id: string; label: string }> {
+  const pool = vocab.filter(word => word.id === target.id || !soundsAlike(word, target))
+  return buildReviewQuestion(target, pool, 'reverse', seed).options ?? []
 }
 
 function weaknessScore(progress: WordProgress | undefined): number {

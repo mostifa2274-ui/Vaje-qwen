@@ -359,11 +359,9 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
 test('auto teach speaks word and context before advancing, then pauses on demand', async ({ page }) => {
   await page.goto('/#/prep/b1c1')
 
-  const teachingArt = page.locator('.lesson-chapter-art')
-  await expect(teachingArt).toBeVisible()
-  await expect(teachingArt.locator('text')).toHaveCount(0)
-  await expect(page.getByText('صحنهٔ این فصل', { exact: true })).toBeVisible()
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
+  // Teaching and testing keep the word card as the only focus: no chapter art.
+  await expect(page.locator('.lesson-chapter-art')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
 
   const startAuto = page.getByRole('button', { name: 'شروع آموزش خودکار' })
@@ -461,6 +459,48 @@ test('listening gate fails closed when no English audio path can start', async (
   await expect(page.getByRole('button', { name: 'نمی‌دانم — نشان بده و دوباره بپرس' })).toBeDisabled()
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expectNoHorizontalOverflow(page)
+})
+
+test('a missed listening word replays by itself when it comes straight back', async ({ page }) => {
+  const last = chapterWords[0]
+  await page.goto('/#/map')
+  await page.evaluate(({ chapterWordIds, lastId, teachIndex }) => {
+    window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify({
+      version: 1,
+      chapterId: 'b1c1',
+      phase: 'listening',
+      teachIndex,
+      writtenQueue: [],
+      writtenPassed: chapterWordIds,
+      writtenMissed: [],
+      listeningQueue: [lastId],
+      listeningPassed: chapterWordIds.filter(id => id !== lastId),
+      listeningMissed: [],
+      feedback: null,
+      selected: '',
+      typed: '',
+      updatedAt: Date.now(),
+    }))
+    window.location.hash = '/prep/b1c1'
+  }, {
+    chapterWordIds: chapter.new,
+    lastId: last.id,
+    teachIndex: chapter.new.length - 1,
+  })
+
+  const options = page.getByTestId('listening-options').getByRole('button')
+  await expect(options.first()).toBeEnabled()
+  expect(await speechHistory(page)).toEqual([last.word])
+
+  await page.getByRole('button', { name: 'نمی‌دانم — نشان بده و دوباره بپرس' }).click()
+  await page.getByRole('button', { name: 'ادامه و تکرار این واژه ←' }).click()
+
+  // The only word left is the one just missed: it must play again without a
+  // manual replay, or its answers would stay locked.
+  await expect.poll(() => speechHistory(page)).toEqual([last.word, last.word])
+  await expect(options.first()).toBeEnabled()
+  await page.getByTestId('listening-options').getByRole('button', { name: last.fa, exact: true }).click()
+  await expect(page).toHaveURL(/#\/read\/b1c1$/)
 })
 
 async function openWithProgress(page: Page, route: string, progress: {
@@ -804,8 +844,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   // Direct reading is impossible before both preparation gates pass.
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toBeVisible()
-  await expect(page.locator('.lesson-chapter-art')).toBeVisible()
-  await expect(page.locator('svg.lesson-chapter-art text')).toHaveCount(0)
+  await expect(page.locator('.lesson-chapter-art')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expectNoHorizontalOverflow(page)
 

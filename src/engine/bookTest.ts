@@ -2,8 +2,9 @@ import { CHAPTERS, VOCAB, WORD_BY_ID } from '../data/chapters'
 import { BOOK_TEST_CONTENT, type TestText } from '../data/bookTests'
 import type { ExamProgress, GhesseState, WordEntry } from './types'
 import { bookExamId } from './gates'
-import { buildReviewQuestion, normalizeTypedAnswer, recordRetrieval, seededSample, selectWeakestWordIds } from './review'
-import { isPersianTranslationCorrect } from './persianTranslation'
+import { listeningChoiceOptions, recordRetrieval, seededSample, selectWeakestWordIds } from './review'
+import { isHeadwordTranslationCorrect } from './persianTranslation'
+import { sameHeadwordEntries } from './homophones'
 
 // The end-of-book test. After book N the learner proves four things, each
 // scored on its own so a strength in one cannot hide a gap in another:
@@ -90,29 +91,6 @@ export function isBookTestBook(book: number): boolean {
 // "the" or hearing "of" in isolation says little about real understanding.
 const CONTEXT_ONLY_TOPICS = new Set(['grammar', 'pronouns', 'prepositions', 'linking', 'question_words'])
 
-// Words that sound alike must never share one listening question.
-const HOMOPHONES: readonly string[][] = [
-  ['to', 'too', 'two'], ['right', 'write'], ['hear', 'here'], ['son', 'sun'], ['I', 'eye'],
-  ['know', 'no'], ['meet', 'meat'], ['by', 'buy', 'bye'], ['there', 'their'], ['our', 'hour'],
-  ['wear', 'where'], ['for', 'four'], ['hi', 'high'],
-]
-const soundGroup = new Map<string, number>()
-HOMOPHONES.forEach((group, index) => group.forEach(surface => soundGroup.set(surface.toLowerCase(), index)))
-
-function surface(word: WordEntry): string {
-  return normalizeTypedAnswer(word.word)
-}
-
-const surfaceCounts = new Map<string, number>()
-for (const word of VOCAB) surfaceCounts.set(surface(word), (surfaceCounts.get(surface(word)) ?? 0) + 1)
-const sharedSurfaces = new Set([...surfaceCounts].filter(([, count]) => count > 1).map(([value]) => value))
-
-function soundsAlike(a: WordEntry, b: WordEntry): boolean {
-  if (surface(a) === surface(b)) return true
-  const group = soundGroup.get(surface(a))
-  return group !== undefined && group === soundGroup.get(surface(b))
-}
-
 function eligibleForTranslation(word: WordEntry): boolean {
   return !CONTEXT_ONLY_TOPICS.has(word.topic)
 }
@@ -120,7 +98,7 @@ function eligibleForTranslation(word: WordEntry): boolean {
 function eligibleForListening(word: WordEntry): boolean {
   // "a, an" is two words, and "like"/"second" each name two deck entries:
   // hearing them alone cannot tell the learner which meaning is asked for.
-  return eligibleForTranslation(word) && !word.word.includes(',') && !sharedSurfaces.has(surface(word))
+  return eligibleForTranslation(word) && !word.word.includes(',') && sameHeadwordEntries(word, VOCAB).length === 1
 }
 
 const wordsByBook = new Map<number, string[]>()
@@ -203,15 +181,6 @@ function selectSection(
   return order.map(wordId => picked.find(item => item.wordId === wordId)!)
 }
 
-function listeningOptions(word: WordEntry, seed: string): Array<{ id: string; label: string }> {
-  for (let retry = 0; retry < 12; retry++) {
-    const options = buildReviewQuestion(word, VOCAB, 'reverse', `${seed}:${retry}`).options ?? []
-    const clash = options.some(option => option.id !== word.id && soundsAlike(word, WORD_BY_ID.get(option.id)!))
-    if (!clash) return options
-  }
-  throw new Error(`No unambiguous listening options for ${word.id}`)
-}
-
 export function buildBookTest(book: number, state: GhesseState, attempt: number): BookTest | undefined {
   const content = BOOK_TEST_CONTENT.get(book)
   if (!content) return undefined
@@ -219,7 +188,9 @@ export function buildBookTest(book: number, state: GhesseState, attempt: number)
   const translation = selectSection(book, state, attempt, 'translation', eligibleForTranslation, taken)
   const listeningWords = selectSection(book, state, attempt, 'listeningWords', eligibleForListening, taken).map(item => ({
     ...item,
-    options: listeningOptions(WORD_BY_ID.get(item.wordId)!, `book-test:${book}:${attempt}:listen:${item.wordId}`),
+    // The ':0' suffix keeps option sets identical to earlier releases, so a
+    // test in progress when the app updates still matches its saved draft.
+    options: listeningChoiceOptions(WORD_BY_ID.get(item.wordId)!, VOCAB, `book-test:${book}:${attempt}:listen:${item.wordId}:0`),
   }))
   const variant = (Math.max(1, attempt) - 1) % 2
   return {
@@ -246,7 +217,7 @@ export function bookTestSignature(test: BookTest): string {
 
 export function translationCorrect(test: BookTest, index: number, typed: string | undefined): boolean {
   const word = WORD_BY_ID.get(test.translation[index]?.wordId ?? '')
-  return Boolean(word && typed && isPersianTranslationCorrect(typed, word))
+  return Boolean(word && typed && isHeadwordTranslationCorrect(typed, word, VOCAB))
 }
 
 export function listeningWordCorrect(test: BookTest, index: number, chosen: string | undefined): boolean {
