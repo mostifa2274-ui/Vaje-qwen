@@ -7,6 +7,7 @@ const target = new URL('../dist/release.json', import.meta.url)
 const serviceWorkerTarget = new URL('../dist/sw.js', import.meta.url)
 const distDir = dirname(fileURLToPath(target))
 const assetsDir = join(distDir, 'assets')
+const chapterArtDir = join(distDir, 'art', 'chapters')
 const base = JSON.parse(await readFile(source, 'utf8'))
 const commit = process.env.WORKERS_CI_COMMIT_SHA || process.env.GITHUB_SHA || 'local'
 const branch = process.env.WORKERS_CI_BRANCH || process.env.GITHUB_REF_NAME || 'local'
@@ -38,12 +39,17 @@ if (rawServiceWorker.split(assetsPlaceholder).length !== 2) {
   throw new Error('Service worker build-assets placeholder missing or duplicated in dist/sw.js')
 }
 
-const buildAssets = (await collectFiles(assetsDir))
-  .map(file => `./${relative(distDir, file).split(sep).join('/')}`)
+const viteAssets = await collectFiles(assetsDir)
+const chapterArtAssets = await collectFiles(chapterArtDir)
+const buildAssets = [...new Set([...viteAssets, ...chapterArtAssets]
+  .map(file => `./${relative(distDir, file).split(sep).join('/')}`))]
   .sort()
 
-if (buildAssets.length === 0) {
+if (viteAssets.length === 0) {
   throw new Error('No generated Vite assets found for offline precaching')
+}
+if (chapterArtAssets.length !== 40) {
+  throw new Error(`Expected 40 reviewed chapter illustrations in dist, found ${chapterArtAssets.length}`)
 }
 
 const stampedServiceWorker = rawServiceWorker
@@ -54,4 +60,4 @@ await writeFile(serviceWorkerTarget, stampedServiceWorker, 'utf8')
 
 console.log(`Stamped dist/release.json for ${commit} (${branch})`)
 console.log(`Stamped dist/sw.js cache as ghesse-shell-${cacheTag}`)
-console.log(`Stamped ${buildAssets.length} generated assets for offline precaching`)
+console.log(`Stamped ${viteAssets.length} generated Vite assets and ${chapterArtAssets.length} reviewed chapter illustrations for offline precaching`)
