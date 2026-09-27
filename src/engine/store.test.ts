@@ -15,7 +15,7 @@ function memoryStorage(): Storage {
 globalThis.localStorage = memoryStorage()
 globalThis.sessionStorage = memoryStorage()
 
-import { clearSessionDrafts, emptyState, importStateJson, resetState, saveState, summarizeProgress } from './store'
+import { clearSessionDrafts, emptyState, importStateJson, mergeConcurrentState, resetState, saveState, summarizeProgress } from './store'
 
 describe('progress replacement', () => {
   beforeEach(() => {
@@ -36,16 +36,19 @@ describe('progress replacement', () => {
     expect(sessionStorage.getItem('other-app')).toBe('keep')
   })
 
-  it('reset clears saved progress and resumable drafts together', () => {
+  it('reset replaces saved progress with an explicit fresh snapshot and clears drafts', () => {
     const state = emptyState(1, 'b1c1')
     state.chapters.b1c1 = { preparedAt: 2, prepAttempts: 1, completed: true, checksCorrect: 10, checksTotal: 10, reads: 1 }
     expect(saveState(state)).toBe(true)
     sessionStorage.setItem('ghesse:prep:v1:b1c2', '{}')
 
     const fresh = resetState('b1c1')
+    const persisted = JSON.parse(localStorage.getItem('ghesse:state:v6') ?? '{}')
 
     expect(fresh.chapters).toEqual({})
-    expect(localStorage.length).toBe(0)
+    expect(persisted.chapters).toEqual({})
+    expect(persisted.words).toEqual({})
+    expect(localStorage.getItem('ghesse:state:v6:backup')).toBeNull()
     expect(sessionStorage.length).toBe(0)
   })
 
@@ -119,5 +122,70 @@ describe('progress import validation', () => {
     expect(imported.version).toBe(6)
     expect(imported.currentChapter).toBe('b1c2')
     expect(imported.words.w1?.introduced).toBe(true)
+  })
+})
+
+
+describe('concurrent progress reconciliation', () => {
+  const chapterProgress = () => ({
+    prepAttempts: 0,
+    completed: false,
+    checksCorrect: 0,
+    checksTotal: 0,
+    reads: 0,
+  })
+
+  it('preserves independent changes made by a stale tab and the persisted tab', () => {
+    const base = emptyState(100, 'b1c1')
+    const local = { ...base, dailyReviewGoal: 20 as const, chapters: { b1c1: chapterProgress() } }
+    const remote = { ...base, showFaDefault: true, chapters: { b1c2: chapterProgress() } }
+
+    const merged = mergeConcurrentState(base, local, remote)
+
+    expect(merged).toBeDefined()
+    expect(merged?.dailyReviewGoal).toBe(20)
+    expect(merged?.showFaDefault).toBe(true)
+    expect(Object.keys(merged?.chapters ?? {}).sort()).toEqual(['b1c1', 'b1c2'])
+  })
+
+  it('rejects divergent edits to the same learning record', () => {
+    const original = chapterProgress()
+    const base = { ...emptyState(100, 'b1c1'), chapters: { b1c1: original } }
+    const local = {
+      ...base,
+      chapters: { b1c1: { ...original, checksCorrect: 1 } },
+    }
+    const remote = {
+      ...base,
+      chapters: { b1c1: { ...original, reads: 1 } },
+    }
+
+    expect(mergeConcurrentState(base, local, remote)).toBeUndefined()
+  })
+
+  it('does not let a stale tab restore a learning record removed by reset', () => {
+    const original = chapterProgress()
+    const base = { ...emptyState(100, 'b1c1'), chapters: { b1c1: original } }
+    const staleLocal = {
+      ...base,
+      chapters: { b1c1: { ...original, checksCorrect: 1 } },
+    }
+    const resetRemote = emptyState(200, 'b1c1')
+
+    expect(mergeConcurrentState(base, staleLocal, resetRemote)).toBeUndefined()
+  })
+
+  it('lets a stale settings-only change coexist with a reset without restoring progress', () => {
+    const original = chapterProgress()
+    const base = { ...emptyState(100, 'b1c1'), chapters: { b1c1: original } }
+    const staleLocal = { ...base, dailyReviewGoal: 20 as const }
+    const resetRemote = emptyState(200, 'b1c1')
+
+    const merged = mergeConcurrentState(base, staleLocal, resetRemote)
+
+    expect(merged).toBeDefined()
+    expect(merged?.chapters).toEqual({})
+    expect(merged?.dailyReviewGoal).toBe(20)
+    expect(merged?.created).toBe(200)
   })
 })

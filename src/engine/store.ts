@@ -229,12 +229,12 @@ function parseStored(
   }
 }
 
-export function loadState(
+export function loadPersistedState(
   now: number,
   firstChapterId: string,
   validChapterIds?: Iterable<string>,
   validWordIds?: Iterable<string>,
-): GhesseState {
+): GhesseState | undefined {
   const validChapters = validChapterIds ? new Set(validChapterIds) : undefined
   const validWords = validWordIds ? new Set(validWordIds) : undefined
   try {
@@ -249,7 +249,17 @@ export function loadState(
   } catch {
     // Keep app usable in memory when persistent storage is unavailable.
   }
-  return emptyState(now, firstChapterId)
+  return undefined
+}
+
+export function loadState(
+  now: number,
+  firstChapterId: string,
+  validChapterIds?: Iterable<string>,
+  validWordIds?: Iterable<string>,
+): GhesseState {
+  return loadPersistedState(now, firstChapterId, validChapterIds, validWordIds)
+    ?? emptyState(now, firstChapterId)
 }
 
 function isPlainRecord(value: unknown): value is Record<string, unknown> {
@@ -325,6 +335,116 @@ export function saveState(state: GhesseState): boolean {
   }
 }
 
+function sameJsonValue(left: unknown, right: unknown): boolean {
+  if (Object.is(left, right)) return true
+  if (Array.isArray(left) || Array.isArray(right)) {
+    if (!Array.isArray(left) || !Array.isArray(right) || left.length !== right.length) return false
+    return left.every((value, index) => sameJsonValue(value, right[index]))
+  }
+  if (
+    left && right
+    && typeof left === 'object'
+    && typeof right === 'object'
+  ) {
+    const leftRecord = left as Record<string, unknown>
+    const rightRecord = right as Record<string, unknown>
+    const leftKeys = Object.keys(leftRecord).sort()
+    const rightKeys = Object.keys(rightRecord).sort()
+    if (leftKeys.length !== rightKeys.length) return false
+    return leftKeys.every((key, index) => (
+      key === rightKeys[index]
+      && sameJsonValue(leftRecord[key], rightRecord[key])
+    ))
+  }
+  return false
+}
+
+function mergeConcurrentValue<T>(base: T, local: T, remote: T): T | undefined {
+  if (sameJsonValue(local, remote)) return local
+  if (sameJsonValue(local, base)) return remote
+  if (sameJsonValue(remote, base)) return local
+  return undefined
+}
+
+function mergeConcurrentRecord<T>(
+  base: Record<string, T>,
+  local: Record<string, T>,
+  remote: Record<string, T>,
+): Record<string, T> | undefined {
+  const merged: Record<string, T> = {}
+  const keys = new Set([...Object.keys(base), ...Object.keys(local), ...Object.keys(remote)])
+  for (const key of keys) {
+    const value = mergeConcurrentValue(base[key], local[key], remote[key])
+    if (value === undefined) {
+      const baseHas = Object.prototype.hasOwnProperty.call(base, key)
+      const localHas = Object.prototype.hasOwnProperty.call(local, key)
+      const remoteHas = Object.prototype.hasOwnProperty.call(remote, key)
+      // A genuine three-way deletion can resolve to "missing"; only treat
+      // undefined as a conflict when one side still has a record to preserve.
+      if (baseHas || localHas || remoteHas) {
+        const localSameAsBase = sameJsonValue(local[key], base[key]) && localHas === baseHas
+        const remoteSameAsBase = sameJsonValue(remote[key], base[key]) && remoteHas === baseHas
+        if (localSameAsBase && !remoteHas) continue
+        if (remoteSameAsBase && !localHas) continue
+        if (!localHas && !remoteHas) continue
+        return undefined
+      }
+      continue
+    }
+    merged[key] = value
+  }
+  return merged
+}
+
+/**
+ * Three-way merge for a full state snapshot produced by a screen that may be
+ * stale relative to localStorage. Learning records are atomic: independent
+ * records can merge, but divergent edits to the same chapter/word/exam are
+ * rejected rather than fabricating mastery evidence.
+ */
+export function mergeConcurrentState(
+  base: GhesseState,
+  local: GhesseState,
+  remote: GhesseState,
+): GhesseState | undefined {
+  const chapters = mergeConcurrentRecord(base.chapters, local.chapters, remote.chapters)
+  const words = mergeConcurrentRecord(base.words, local.words, remote.words)
+  const exams = mergeConcurrentRecord(base.exams, local.exams, remote.exams)
+  if (!chapters || !words || !exams) return undefined
+
+  const currentChapter = mergeConcurrentValue(base.currentChapter, local.currentChapter, remote.currentChapter)
+  const soundOn = mergeConcurrentValue(base.soundOn, local.soundOn, remote.soundOn)
+  const showFaDefault = mergeConcurrentValue(base.showFaDefault, local.showFaDefault, remote.showFaDefault)
+  const narratorVoiceURI = mergeConcurrentValue(base.narratorVoiceURI, local.narratorVoiceURI, remote.narratorVoiceURI)
+  const narratorRate = mergeConcurrentValue(base.narratorRate, local.narratorRate, remote.narratorRate)
+  const dailyReviewGoal = mergeConcurrentValue(base.dailyReviewGoal, local.dailyReviewGoal, remote.dailyReviewGoal)
+  const created = mergeConcurrentValue(base.created, local.created, remote.created)
+
+  if (
+    currentChapter === undefined
+    || soundOn === undefined
+    || showFaDefault === undefined
+    || narratorVoiceURI === undefined
+    || narratorRate === undefined
+    || dailyReviewGoal === undefined
+    || created === undefined
+  ) return undefined
+
+  return {
+    version: CURRENT_STATE_VERSION,
+    currentChapter,
+    chapters,
+    words,
+    exams,
+    soundOn,
+    showFaDefault,
+    narratorVoiceURI,
+    narratorRate,
+    dailyReviewGoal,
+    created,
+  }
+}
+
 export interface ProgressSummary {
   completedChapters: number
   introducedWords: number
@@ -358,13 +478,18 @@ export function clearSessionDrafts(): void {
 }
 
 export function resetState(firstChapterId: string): GhesseState {
+  const fresh = emptyState(Date.now(), firstChapterId)
   try {
     localStorage.removeItem(STORAGE_KEY)
     localStorage.removeItem(BACKUP_KEY)
     for (const key of LEGACY_KEYS) localStorage.removeItem(key)
+    // Persist the reset before returning. Other open tabs then see an explicit
+    // fresh snapshot instead of a momentary missing key they could overwrite
+    // with an older full-state save.
+    saveState(fresh)
   } catch {
     // Keep reset semantics in memory.
   }
   clearSessionDrafts()
-  return emptyState(Date.now(), firstChapterId)
+  return fresh
 }

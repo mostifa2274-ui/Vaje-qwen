@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { GhesseState } from './engine/types'
-import { loadState, saveState, STORAGE_KEY } from './engine/store'
+import { loadPersistedState, loadState, mergeConcurrentState, saveState, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canPrepareChapter, canReadChapter, canTakeExam, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
@@ -38,22 +38,30 @@ const FIRST = CHAPTERS[0].id
 const VALID_CHAPTER_IDS = CHAPTERS.map(ch => ch.id)
 const VALID_WORD_IDS = VOCAB.map(word => word.id)
 
+function safeDecodeRouteSegment(value: string): string | undefined {
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return undefined
+  }
+}
+
 function rawViewFromHash(): View {
   const hash = window.location.hash.replace(/^#\/?/, '')
   if (hash === 'review') return { name: 'review' }
   if (hash === 'glossary') return { name: 'glossary' }
   if (hash === 'settings') return { name: 'settings' }
   if (hash.startsWith('prep/')) {
-    const chapterId = decodeURIComponent(hash.slice(5))
-    if (CHAPTER_BY_ID.has(chapterId)) return { name: 'prep', chapterId }
+    const chapterId = safeDecodeRouteSegment(hash.slice(5))
+    if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'prep', chapterId }
   }
   if (hash.startsWith('read/')) {
-    const chapterId = decodeURIComponent(hash.slice(5))
-    if (CHAPTER_BY_ID.has(chapterId)) return { name: 'read', chapterId }
+    const chapterId = safeDecodeRouteSegment(hash.slice(5))
+    if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'read', chapterId }
   }
   if (hash.startsWith('exam/')) {
-    const examId = decodeURIComponent(hash.slice(5))
-    if (examDefinition(examId)) return { name: 'exam', examId }
+    const examId = safeDecodeRouteSegment(hash.slice(5))
+    if (examId && examDefinition(examId)) return { name: 'exam', examId }
   }
   return { name: 'map' }
 }
@@ -101,6 +109,7 @@ export default function App() {
   const [state, setState] = useState<GhesseState>(() => loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS))
   const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), state))
   const [persistOk, setPersistOk] = useState(true)
+  const [syncConflict, setSyncConflict] = useState(false)
   const [now, setNow] = useState(() => Date.now())
   const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
   const [dismissedCommit, setDismissedCommit] = useState<string | null>(null)
@@ -109,9 +118,27 @@ export default function App() {
   const routeFocusReadyRef = useRef(false)
 
   const update = useCallback((next: GhesseState) => {
-    setState(next)
-    setPersistOk(saveState(next))
-  }, [])
+    const base = state
+    const remote = loadPersistedState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)
+    const reconciled = remote ? mergeConcurrentState(base, next, remote) : next
+
+    if (!reconciled && remote) {
+      // A stale screen and another tab changed the same atomic learning record
+      // differently. Never invent a merge that could overstate mastery.
+      stateRef.current = remote
+      setState(remote)
+      setView(current => resolveView(current, remote))
+      setPersistOk(saveState(remote))
+      setSyncConflict(true)
+      return
+    }
+
+    const resolved = reconciled ?? next
+    stateRef.current = resolved
+    setState(resolved)
+    setSyncConflict(false)
+    setPersistOk(saveState(resolved))
+  }, [state])
 
   const navigate = useCallback((next: View, replace = false) => {
     const currentDepth = typeof history.state?.ghesseDepth === 'number' ? history.state.ghesseDepth : 0
@@ -127,10 +154,15 @@ export default function App() {
     else navigate({ name: 'map' }, true)
   }, [navigate])
 
-  const reset = useCallback((next: GhesseState) => {
-    update(next)
+  const replaceProgress = useCallback((next: GhesseState) => {
+    // Reset/import are explicit replacement actions, not ordinary stale-screen
+    // edits, so they intentionally replace the persisted snapshot exactly.
+    stateRef.current = next
+    setState(next)
+    setSyncConflict(false)
+    setPersistOk(saveState(next))
     navigate({ name: 'map' }, true)
-  }, [navigate, update])
+  }, [navigate])
 
   const openChapter = useCallback((chapterId: string) => {
     if (!canPrepareChapter(state, chapterId)) return
@@ -208,9 +240,11 @@ export default function App() {
     const onStorage = (event: StorageEvent) => {
       if (event.key !== STORAGE_KEY) return
       const next = loadState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)
+      stateRef.current = next
       setState(next)
       setView(current => resolveView(current, next))
       setPersistOk(true)
+      setSyncConflict(false)
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
@@ -309,8 +343,8 @@ export default function App() {
           state={state}
           onChange={update}
           onBack={backToMap}
-          onReset={reset}
-          onImport={reset}
+          onReset={replaceProgress}
+          onImport={replaceProgress}
           firstChapterId={FIRST}
           validChapterIds={VALID_CHAPTER_IDS}
           validWordIds={VALID_WORD_IDS}
@@ -349,6 +383,11 @@ export default function App() {
       {!persistOk && (
         <div className="storage-warning" role="alert">
           ذخیره‌سازی مرورگر در دسترس نیست؛ پیشرفت این جلسه ممکن است پس از بستن صفحه از بین برود. از تنظیمات نسخهٔ پشتیبان بگیر.
+        </div>
+      )}
+      {syncConflict && (
+        <div className="storage-warning" role="alert">
+          پیشرفت در برگهٔ دیگری هم‌زمان تغییر کرده بود. برای جلوگیری از بازنویسی، نسخهٔ ذخیره‌شده نگه داشته شد؛ دوباره تلاش کن.
         </div>
       )}
       {updateAvailable && deployedCommit && (
