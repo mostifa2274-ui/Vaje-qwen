@@ -301,6 +301,24 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
   }
 })
 
+
+test('locked books and preparation steps keep readable text opacity', async ({ page }) => {
+  await page.goto('/#/map')
+
+  const locked = page.locator('.book-section.is-locked').first()
+  await expect(locked).toBeVisible()
+  expect(await locked.evaluate(element => getComputedStyle(element).opacity)).toBe('1')
+  expect(await locked.locator('h2').evaluate(element => getComputedStyle(element).opacity)).toBe('1')
+  expect(await locked.locator('.book-banner').evaluate(element => getComputedStyle(element).opacity)).toBe('0.72')
+
+  await page.goto('/#/prep/b1c1')
+  const steps = page.locator('.prep-stepper li')
+  await expect(steps).toHaveCount(4)
+  for (let index = 0; index < 4; index++) {
+    expect(await steps.nth(index).evaluate(element => getComputedStyle(element).opacity)).toBe('1')
+  }
+})
+
 test('fresh install can open an unloaded lazy route offline', async ({ page, context }) => {
   await page.goto('/#/map')
   await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
