@@ -1,6 +1,7 @@
 import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, RetrievalMode, SkillDimension, SkillStat } from './types'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
+const CURRENT_STATE_VERSION = 6
 const BACKUP_KEY = 'ghesse:state:v6:backup'
 const LEGACY_KEYS = ['ghesse:state:v5', 'ghesse:state:v4', 'ghesse:state:v3', 'ghesse:state:v2', 'ghesse:state:v1'] as const
 // Prep, reading, review and exam drafts all live under this sessionStorage prefix.
@@ -9,7 +10,7 @@ export const MAX_IMPORT_BYTES = 2 * 1024 * 1024
 
 export function emptyState(now: number, firstChapterId: string): GhesseState {
   return {
-    version: 6,
+    version: CURRENT_STATE_VERSION,
     currentChapter: firstChapterId,
     chapters: {},
     words: {},
@@ -178,6 +179,7 @@ function normalizeState(
 ): GhesseState | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const p = raw as Partial<GhesseState> & { version?: number }
+  if (typeof p.version === 'number' && (!Number.isInteger(p.version) || p.version < 1 || p.version > CURRENT_STATE_VERSION)) return undefined
   const chapters: Record<string, ChapterProgress> = {}
   for (const [id, c] of Object.entries(p.chapters ?? {})) {
     if (validChapterIds && !validChapterIds.has(id)) continue
@@ -250,6 +252,24 @@ export function loadState(
   return emptyState(now, firstChapterId)
 }
 
+function isPlainRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value && typeof value === 'object' && !Array.isArray(value))
+}
+
+function isRecognizableProgressBackup(raw: unknown): boolean {
+  if (!isPlainRecord(raw)) return false
+  const version = raw.version
+  if (typeof version !== 'number' || !Number.isInteger(version) || version < 1 || version > CURRENT_STATE_VERSION) return false
+
+  // Exported progress files always identify the current chapter and contain
+  // the chapter/word maps. Older supported backups may predate exams, so that
+  // map is optional, but when present it still has to be an object.
+  return typeof raw.currentChapter === 'string'
+    && isPlainRecord(raw.chapters)
+    && isPlainRecord(raw.words)
+    && (raw.exams === undefined || isPlainRecord(raw.exams))
+}
+
 export function importStateJson(
   json: string,
   now: number,
@@ -264,6 +284,7 @@ export function importStateJson(
   } catch {
     throw new Error('فایل پیشرفت JSON معتبر نیست.')
   }
+  if (!isRecognizableProgressBackup(raw)) throw new Error('این فایل پشتیبان معتبر قصه نیست.')
   const state = normalizeState(
     raw,
     now,
