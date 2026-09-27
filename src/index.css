@@ -426,6 +426,16 @@ button:disabled {
   opacity: 0.55;
 }
 
+.spelling-hint {
+  display: inline-block;
+  max-width: 100%;
+  background: var(--cream-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 6px 12px;
+  color: var(--ink);
+}
+
 .paper-note {
   background: #fff8dc;
   border: 1px solid color-mix(in srgb, var(--gold) 45%, var(--ink));

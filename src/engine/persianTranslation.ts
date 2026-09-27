@@ -1,4 +1,5 @@
 import type { WordEntry } from './types'
+import { sameHeadwordEntries } from './homophones'
 
 export function normalizePersianAnswer(value: string): string {
   return value
@@ -75,4 +76,13 @@ export function isPersianTranslationCorrect(input: string, word: Pick<WordEntry,
   const normalized = normalizePersianAnswer(input)
   if (!normalized) return false
   return acceptedPersianAnswers(word).includes(normalized)
+}
+
+/**
+ * Grade a typed meaning for an English headword. A headword that names two
+ * deck entries ("like" prep. / "like" v.) accepts the meaning of either,
+ * because the prompt shows only the English word.
+ */
+export function isHeadwordTranslationCorrect(input: string, word: WordEntry, vocab: readonly WordEntry[]): boolean {
+  return sameHeadwordEntries(word, vocab).some(entry => isPersianTranslationCorrect(input, entry))
 }

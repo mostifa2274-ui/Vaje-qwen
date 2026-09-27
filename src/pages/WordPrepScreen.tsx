@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
-import { buildReviewQuestion } from '../engine/review'
+import { listeningChoiceOptions } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
-import { isPersianTranslationCorrect } from '../engine/persianTranslation'
+import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import { faNum } from '../engine/format'
 import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
@@ -70,12 +70,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   const currentListeningId = listeningQueue[0]
   const currentListeningWord = currentListeningId ? WORD_BY_ID.get(currentListeningId) : undefined
-  const listeningQuestion = useMemo(
+  const listeningOptions = useMemo(
     () => currentListeningWord
-      ? buildReviewQuestion(
+      ? listeningChoiceOptions(
           currentListeningWord,
           VOCAB,
-          'reverse',
           `${chapterId}:prep-listening:${listeningPassed.size}:${listeningQueue.length}:${currentListeningId}`,
         )
       : undefined,
@@ -274,7 +273,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   function submitWritten() {
     if (!currentWrittenWord || !currentWrittenId || !typed.trim() || feedback) return
-    const correct = isPersianTranslationCorrect(typed, currentWrittenWord)
+    const correct = isHeadwordTranslationCorrect(typed, currentWrittenWord, VOCAB)
     if (!correct) setWrittenMissed(previous => new Set(previous).add(currentWrittenId))
     focusRetryContinueRef.current = !correct
     setFeedback(correct ? 'correct' : 'wrong')
@@ -312,8 +311,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }
 
   function chooseListening(optionId: string) {
-    if (!listeningQuestion || !currentListeningId || feedback || !state.soundOn || audioBlocked || !listeningReady) return
-    const correct = optionId === listeningQuestion.answerId
+    if (!listeningOptions || !currentListeningId || feedback || !state.soundOn || audioBlocked || !listeningReady) return
+    const correct = optionId === currentListeningId
     setSelected(optionId)
     if (!correct) setListeningMissed(previous => new Set(previous).add(currentListeningId))
     focusRetryContinueRef.current = !correct
@@ -608,7 +607,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           </div>
         )}
 
-        {phase === 'listening' && currentListeningWord && listeningQuestion && (
+        {phase === 'listening' && currentListeningWord && listeningOptions && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
@@ -643,8 +642,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </div>
 
                 <div data-testid="listening-options" className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2" dir="rtl">
-                  {listeningQuestion.options?.map(option => {
-                    const isAnswer = option.id === listeningQuestion.answerId
+                  {listeningOptions.map(option => {
+                    const isAnswer = option.id === currentListeningId
                     const isSelected = selected === option.id
                     let className = 'btn-paper min-h-14 px-3 py-3'
                     if (feedback && isAnswer) className += ' answer-correct'
