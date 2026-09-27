@@ -12,7 +12,6 @@ import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import { faNum } from '../engine/format'
 import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
-import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   chapterId: string
@@ -441,17 +440,6 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             </li>
           ))}
         </ol>
-
-        {phase === 'teach' && (
-          <section className="teach-context-card mt-4 overflow-hidden" aria-label="تصویر زمینهٔ فصل">
-            <ChapterIllustration chapterId={chapterId} titleFa={chapter.titleFa} />
-            <div className="teach-context-copy">
-              <span>صحنهٔ این فصل</span>
-              <b>{chapter.titleFa}</b>
-              <small className="font-en" dir="ltr">{chapter.titleEn}</small>
-            </div>
-          </section>
-        )}
 
         {resumedDraft && !alreadyPrepared && (
           <div className="prep-resume-row mt-3" role="status">

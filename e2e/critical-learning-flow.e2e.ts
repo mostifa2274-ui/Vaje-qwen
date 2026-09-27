@@ -359,11 +359,9 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
 test('auto teach speaks word and context before advancing, then pauses on demand', async ({ page }) => {
   await page.goto('/#/prep/b1c1')
 
-  const teachingArt = page.locator('.lesson-chapter-art')
-  await expect(teachingArt).toBeVisible()
-  await expect(teachingArt.locator('text')).toHaveCount(0)
-  await expect(page.getByText('صحنهٔ این فصل', { exact: true })).toBeVisible()
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
+  // Teaching and testing keep the word card as the only focus: no chapter art.
+  await expect(page.locator('.lesson-chapter-art')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
 
   const startAuto = page.getByRole('button', { name: 'شروع آموزش خودکار' })
@@ -846,8 +844,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   // Direct reading is impossible before both preparation gates pass.
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toBeVisible()
-  await expect(page.locator('.lesson-chapter-art')).toBeVisible()
-  await expect(page.locator('svg.lesson-chapter-art text')).toHaveCount(0)
+  await expect(page.locator('.lesson-chapter-art')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expectNoHorizontalOverflow(page)
 
