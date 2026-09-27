@@ -8,7 +8,8 @@ this script runs again, and the app then uses the device voice for it.
 Inputs (not committed; see scripts/audio/README.md):
   --model   Kokoro-82M v1.0 ONNX at float32 precision (model.onnx, or
             model_fp16.onnx converted by upcast_model.py)
-  --voice   a Kokoro v1.0 voice pack, e.g. af_heart.bin
+  --voice   a Kokoro v1.0 voice: a single-voice file such as af_heart.bin,
+            or kokoro-onnx's voices-v1.0.bin pack with --voice-name
 
 Output: public/audio/<hash>.mp3 and public/audio/index.json.
 """
@@ -19,18 +20,22 @@ import argparse
 import json
 import sys
 import time
+import zipfile
 from pathlib import Path
 
-import lameenc
 import numpy as np
-import onnxruntime as ort
-from misaki import en, espeak
 
 ROOT = Path(__file__).resolve().parents[2]
 SAMPLE_RATE = 24_000
 # Sentences are recorded at the app's default narrator speed; clipPlaybackRate()
 # in src/engine/audio.ts scales them from 0.92 when the learner changes it.
 SPEED = {"w": 0.86, "s": 0.92}
+# Kokoro gives the pad token that opens every input a silent lead-in, and
+# for a lone word it predicts 19-23 frames where a sentence gets 14-18. The
+# model then fills the end of that long silence with a short "uh", so words
+# played as "uh-sit". Capping the lead-in at the longest a sentence gets
+# (25 ms per frame) removes it; see cap_lead_in().
+LEAD_IN_FRAMES = 18
 LEAD_MS = {"w": 60, "s": 80}
 TAIL_MS = {"w": 140, "s": 220}
 BITRATE_KBPS = 40
@@ -140,11 +145,22 @@ def collect() -> dict[str, tuple[str, str]]:
 
 
 class Speaker:
-    def __init__(self, model: Path, voice: Path, threads: int) -> None:
+    def __init__(self, model: Path, voice: Path, threads: int, voice_name: str = "af_heart") -> None:
+        # Imported here so clip_id() and collect() load without the model stack.
+        import onnxruntime as ort
+        from misaki import en, espeak
+
+        import onnx
+
         options = ort.SessionOptions()
         options.intra_op_num_threads = threads
-        self.session = ort.InferenceSession(str(model), options, providers=["CPUExecutionProvider"])
-        self.voice = np.fromfile(voice, dtype=np.float32).reshape(-1, 1, 256)
+        graph = cap_lead_in(onnx.load(str(model)), LEAD_IN_FRAMES)
+        self.session = ort.InferenceSession(graph.SerializeToString(), options, providers=["CPUExecutionProvider"])
+        # The onnx-community export names its token input "input_ids"; the
+        # kokoro-onnx export of the same weights calls it "tokens".
+        inputs = {item.name for item in self.session.get_inputs()}
+        self.token_input = "input_ids" if "input_ids" in inputs else "tokens"
+        self.voice = load_voice(voice, voice_name)
         self.g2p = en.G2P(trf=False, british=False, fallback=espeak.EspeakFallback(british=False))
 
     def phonemes(self, kind: str, text: str) -> str:
@@ -158,7 +174,7 @@ class Speaker:
         tokens = [VOCAB[ch] for ch in phonemes if ch in VOCAB][:510]
         style = self.voice[min(len(tokens), len(self.voice) - 1)]
         audio = np.asarray(self.session.run(None, {
-            "input_ids": np.array([[0, *tokens, 0]], dtype=np.int64),
+            self.token_input: np.array([[0, *tokens, 0]], dtype=np.int64),
             "style": style.astype(np.float32),
             "speed": np.array([SPEED[kind]], dtype=np.float32),
         })[0], dtype=np.float32).reshape(-1)
@@ -167,6 +183,50 @@ class Speaker:
         if not np.isfinite(audio).all() or float(np.abs(audio).max()) < 0.05:
             raise RuntimeError(f"no audible speech for {kind} {text!r}; use the float32 model (upcast_model.py)")
         return trim(audio, kind)
+
+
+def cap_lead_in(model, frames: int):
+    """Limit the duration Kokoro predicts for the opening pad token.
+
+    Durations are rounded and clamped to at least one frame (Round, then
+    Clip) before they place the audio; the first value belongs to the pad
+    token. This inserts min(first, frames) after the clamp.
+    """
+    from onnx import TensorProto, helper
+
+    graph = model.graph
+    rounds = [node for node in graph.node if node.op_type == "Round"]
+    clamps = [node for node in graph.node if node.op_type == "Clip" and rounds and rounds[0].output[0] in node.input]
+    if len(rounds) != 1 or len(clamps) != 1:
+        raise RuntimeError("cannot find Kokoro's duration rounding in this model, so the lead-in cannot be capped")
+    durations = clamps[0].output[0]
+    consumers = [(node, index) for node in graph.node for index, name in enumerate(node.input) if name == durations]
+    graph.initializer.extend([
+        helper.make_tensor("lead_in/zero", TensorProto.INT64, [1], [0]),
+        helper.make_tensor("lead_in/one", TensorProto.INT64, [1], [1]),
+        helper.make_tensor("lead_in/end", TensorProto.INT64, [1], [2**62]),
+        helper.make_tensor("lead_in/last_axis", TensorProto.INT64, [1], [-1]),
+        helper.make_tensor("lead_in/frames", TensorProto.FLOAT, [], [float(frames)]),
+    ])
+    added = [
+        helper.make_node("Slice", [durations, "lead_in/zero", "lead_in/one", "lead_in/last_axis"], ["lead_in/first"]),
+        helper.make_node("Slice", [durations, "lead_in/one", "lead_in/end", "lead_in/last_axis"], ["lead_in/rest"]),
+        helper.make_node("Min", ["lead_in/first", "lead_in/frames"], ["lead_in/capped"]),
+        helper.make_node("Concat", ["lead_in/capped", "lead_in/rest"], ["lead_in/durations"], axis=-1),
+    ]
+    for node, index in consumers:
+        node.input[index] = "lead_in/durations"
+    position = list(graph.node).index(clamps[0]) + 1
+    for offset, node in enumerate(added):
+        graph.node.insert(position + offset, node)
+    return model
+
+
+def load_voice(path: Path, name: str) -> np.ndarray:
+    """A voice's style vectors, from a single-voice file or a kokoro-onnx voice pack."""
+    if zipfile.is_zipfile(path):
+        return np.load(path)[name].reshape(-1, 1, 256)
+    return np.fromfile(path, dtype=np.float32).reshape(-1, 1, 256)
 
 
 def trim(audio: np.ndarray, kind: str) -> np.ndarray:
@@ -183,6 +243,8 @@ def trim(audio: np.ndarray, kind: str) -> np.ndarray:
 
 
 def mp3(audio: np.ndarray) -> bytes:
+    import lameenc
+
     encoder = lameenc.Encoder()
     encoder.set_bit_rate(BITRATE_KBPS)
     encoder.set_in_sample_rate(SAMPLE_RATE)
@@ -196,15 +258,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--voice", type=Path, required=True)
+    parser.add_argument("--voice-name", default="af_heart", help="the voice to use from a multi-voice pack")
     parser.add_argument("--out", type=Path, default=ROOT / "public/audio")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--limit", type=int, default=0, help="only generate this many new clips (for a trial run)")
+    parser.add_argument("--rerecord", choices=["w", "s"], help="record every clip of this kind again, e.g. after a voice fix")
     args = parser.parse_args()
 
     clips = collect()
     args.out.mkdir(parents=True, exist_ok=True)
-    speaker = Speaker(args.model, args.voice, args.threads)
-    todo = [key for key in sorted(clips) if not (args.out / f"{key}.mp3").exists()]
+    speaker = Speaker(args.model, args.voice, args.threads, args.voice_name)
+    # A clip's name hashes only its text, so a voice fix needs --rerecord.
+    todo = [key for key in sorted(clips) if clips[key][0] == args.rerecord or not (args.out / f"{key}.mp3").exists()]
     if args.limit:
         todo = todo[: args.limit]
     print(f"{len(clips)} clips in the course, {len(todo)} to generate", flush=True)
@@ -222,7 +287,8 @@ def main() -> int:
         if stale.stem not in clips and not args.limit:
             stale.unlink()
     available = sorted(path.stem for path in args.out.glob("*.mp3"))
-    (args.out / "index.json").write_text(json.dumps({"voice": f"kokoro-v1.0:{args.voice.stem}", "clips": available}, separators=(",", ":")) + "\n")
+    voice = args.voice_name if zipfile.is_zipfile(args.voice) else args.voice.stem
+    (args.out / "index.json").write_text(json.dumps({"voice": f"kokoro-v1.0:{voice}", "clips": available}, separators=(",", ":")) + "\n")
     print(f"index lists {len(available)} clips", flush=True)
     return 0
 
