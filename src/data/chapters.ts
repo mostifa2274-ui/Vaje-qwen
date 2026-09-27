@@ -21,14 +21,14 @@ function publicAsset(path: string): string {
 }
 
 export const BOOKS: BookMeta[] = [
-  { book: 1, titleFa: 'خانه', titleEn: 'Home', tint: '#e8d9c4', cover: publicAsset('art/book1.svg'), taglineFa: 'جایی که قصه آغاز می‌شود' },
-  { book: 2, titleFa: 'شهر', titleEn: 'The City', tint: '#d4ddd2', cover: publicAsset('art/book2.svg'), taglineFa: 'جست‌وجو میان خیابان‌ها' },
-  { book: 3, titleFa: 'روزها', titleEn: 'The Days', tint: '#e5dccb', cover: publicAsset('art/book3.svg'), taglineFa: 'روزها می‌گذرند' },
-  { book: 4, titleFa: 'بازار', titleEn: 'The Market', tint: '#ead7c8', cover: publicAsset('art/book4.svg'), taglineFa: 'هزار سرنخ، هنوز بی‌نینو' },
-  { book: 5, titleFa: 'حرف‌ها', titleEn: 'Words', tint: '#e0d5c5', cover: publicAsset('art/book5.svg'), taglineFa: 'یادداشت‌ها و زنگ‌ها' },
-  { book: 6, titleFa: 'مدرسه', titleEn: 'School', tint: '#d8dede', cover: publicAsset('art/book6.svg'), taglineFa: 'امید و وارونه' },
-  { book: 7, titleFa: 'راه و ساحل', titleEn: 'Road & Shore', tint: '#d9dfd5', cover: publicAsset('art/book7.svg'), taglineFa: 'سفر تا لبه‌ی دریا' },
-  { book: 8, titleFa: 'کوه و ستاره‌ها', titleEn: 'Mountain & Stars', tint: '#d5d4e0', cover: publicAsset('art/book8.svg'), taglineFa: 'بازگشت زیر ستاره‌ها' },
+  { book: 1, titleFa: 'خانه', titleEn: 'Home', tint: '#e8d9c4', cover: publicAsset('art/chapters/b1c1.avif'), taglineFa: 'جایی که قصه آغاز می‌شود' },
+  { book: 2, titleFa: 'شهر', titleEn: 'The City', tint: '#d4ddd2', cover: publicAsset('art/chapters/b2c1.webp'), taglineFa: 'جست‌وجو میان خیابان‌ها' },
+  { book: 3, titleFa: 'روزها', titleEn: 'The Days', tint: '#e5dccb', cover: publicAsset('art/chapters/b3c1.webp'), taglineFa: 'روزها می‌گذرند' },
+  { book: 4, titleFa: 'بازار', titleEn: 'The Market', tint: '#ead7c8', cover: publicAsset('art/chapters/b4c1.webp'), taglineFa: 'هزار سرنخ، هنوز بی‌نینو' },
+  { book: 5, titleFa: 'حرف‌ها', titleEn: 'Words', tint: '#e0d5c5', cover: publicAsset('art/chapters/b5c1.webp'), taglineFa: 'یادداشت‌ها و زنگ‌ها' },
+  { book: 6, titleFa: 'مدرسه', titleEn: 'School', tint: '#d8dede', cover: publicAsset('art/chapters/b6c1.webp'), taglineFa: 'امید و وارونه' },
+  { book: 7, titleFa: 'راه و ساحل', titleEn: 'Road & Shore', tint: '#d9dfd5', cover: publicAsset('art/chapters/b7c1.webp'), taglineFa: 'سفر تا لبه‌ی دریا' },
+  { book: 8, titleFa: 'کوه و ستاره‌ها', titleEn: 'Mountain & Stars', tint: '#d5d4e0', cover: publicAsset('art/chapters/b8c1.webp'), taglineFa: 'بازگشت زیر ستاره‌ها' },
 ]
 
 export const lemmaMap = buildLemmaMap(VOCAB)
