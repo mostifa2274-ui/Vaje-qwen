@@ -528,7 +528,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
           {finished && (
             <div className="paper-card p-5 text-center" role="status">
-              <div className="text-4xl" aria-hidden="true">🐈‍⬛</div>
+              <div className="text-4xl" aria-hidden="true">🐥</div>
               <div className="mt-2 font-extrabold">{wasAlreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
                 {isLastOfBook

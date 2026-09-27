@@ -12,11 +12,10 @@ function publicAsset(path: string): string {
 }
 
 /**
- * Production-generated chapter illustrations.
+ * Production chapter illustrations: one reviewed raster scene per chapter.
  *
- * Only reviewed assets are listed here. Every other chapter keeps using the
- * existing vector scene, so artwork can be rolled out incrementally without
- * breaking the learning flow.
+ * Only reviewed assets are listed here, and every chapter must have one
+ * (ChapterIllustration.test.tsx, scripts/validate-generated-art.mjs).
  */
 export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   b1c1: {
