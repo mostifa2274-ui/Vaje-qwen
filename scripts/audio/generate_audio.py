@@ -202,12 +202,14 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=ROOT / "public/audio")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--limit", type=int, default=0, help="only generate this many new clips (for a trial run)")
+    parser.add_argument("--rerecord", choices=["w", "s"], help="record every clip of this kind again, e.g. after a voice fix")
     args = parser.parse_args()
 
     clips = collect()
     args.out.mkdir(parents=True, exist_ok=True)
     speaker = Speaker(args.model, args.voice, args.threads)
-    todo = [key for key in sorted(clips) if not (args.out / f"{key}.mp3").exists()]
+    # A clip's name hashes only its text, so a voice fix needs --rerecord.
+    todo = [key for key in sorted(clips) if clips[key][0] == args.rerecord or not (args.out / f"{key}.mp3").exists()]
     if args.limit:
         todo = todo[: args.limit]
     print(f"{len(clips)} clips in the course, {len(todo)} to generate", flush=True)
