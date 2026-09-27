@@ -852,6 +852,91 @@ test('backup import rejects unrelated JSON before replacement confirmation', asy
 })
 
 
+test('malformed encoded routes recover to the map instead of crashing', async ({ page }) => {
+  await page.goto('/#/read/%E0%A4%A')
+  await expect(page).toHaveURL(/#\/map$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+  await expect(page.locator('#main-content')).toBeVisible()
+})
+
+test('a stale tab save preserves unrelated progress written after its render', async ({ page }) => {
+  await openWithProgress(page, '/settings', {})
+
+  const remoteWordId = chapterWords[0].id
+  await page.evaluate(({ remoteWordId }) => {
+    const state = JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}')
+    state.words[remoteWordId] = {
+      introduced: true,
+      taps: 0,
+      checkCorrect: 0,
+      checkWrong: 0,
+      reviewStage: 0,
+      reviewCorrect: 0,
+      reviewWrong: 0,
+      reviewStreak: 0,
+      intervalDays: 0,
+      productiveCorrect: 0,
+      successDays: [],
+      productiveSuccessDays: [],
+      difficulty: 5,
+      stabilityDays: 0,
+      lapses: 0,
+      retrievalMsTotal: 0,
+      retrievalMsCount: 0,
+      skillStats: {
+        meaning: { correct: 0, wrong: 0 },
+        context: { correct: 0, wrong: 0 },
+        production: { correct: 0, wrong: 0 },
+        form: { correct: 0, wrong: 0 },
+      },
+    }
+    window.localStorage.setItem('ghesse:state:v6', JSON.stringify(state))
+  }, { remoteWordId })
+
+  await page.getByRole('group', { name: 'هدف مرور روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
+
+  const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
+  expect(stored.dailyReviewGoal).toBe(20)
+  expect(stored.words?.[remoteWordId]?.introduced).toBe(true)
+})
+
+test('conflicting stale-tab settings are rejected instead of overwriting persisted state', async ({ page }) => {
+  await openWithProgress(page, '/settings', {})
+
+  await page.evaluate(() => {
+    const state = JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}')
+    state.dailyReviewGoal = 20
+    window.localStorage.setItem('ghesse:state:v6', JSON.stringify(state))
+  })
+
+  await page.getByRole('group', { name: 'هدف مرور روزانه' }).getByRole('button', { name: faNum(25), exact: true }).click()
+
+  await expect(page.getByRole('alert')).toContainText('پیشرفت در برگهٔ دیگری هم‌زمان تغییر کرده بود')
+  const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
+  expect(stored.dailyReviewGoal).toBe(20)
+})
+
+test('a reset propagates across tabs and later settings saves cannot resurrect old progress', async ({ page, context }) => {
+  await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
+
+  const other = await context.newPage()
+  await other.goto('/#/settings')
+  await other.getByRole('button', { name: 'پاک کردن پیشرفت' }).click()
+  await other.getByRole('group', { name: 'تأیید پاک کردن پیشرفت' }).getByRole('button', { name: 'بله، پاک کن' }).click()
+
+  await expect.poll(async () => page.evaluate(() => {
+    const state = JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}')
+    return Object.keys(state.words ?? {}).length
+  })).toBe(0)
+
+  await page.getByRole('group', { name: 'هدف مرور روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
+  const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
+  expect(stored.words).toEqual({})
+  expect(stored.dailyReviewGoal).toBe(20)
+  await other.close()
+})
+
+
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
   // This is the full 72-word chapter flow. Written and listening gates intentionally
   // exercise the product's 650 ms feedback/auto-advance timing for every word, so the
