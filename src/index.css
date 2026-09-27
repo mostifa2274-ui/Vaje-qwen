@@ -666,11 +666,13 @@ button:disabled {
   padding: .6rem .25rem .7rem;
   text-align: center;
   color: var(--ink-soft);
-  opacity: .58;
+  /* Small status text must stay readable; state is conveyed by color,
+     weight and the active underline instead of blanket transparency. */
+  opacity: 1;
 }
 .prep-stepper li.done {
   color: var(--ink);
-  opacity: .82;
+  opacity: 1;
 }
 .prep-stepper li.active {
   box-shadow: inset 0 -3px 0 var(--crimson);
@@ -944,11 +946,11 @@ button:disabled {
 .book-section {
   overflow: hidden;
 }
-.book-section.is-locked > * {
-  opacity: .72;
-}
 .book-section.is-locked .book-banner {
+  /* Keep the locked visual treatment on imagery only. Dimming the whole
+     section also dimmed small instructional text below WCAG AA contrast. */
   filter: saturate(.55);
+  opacity: .72;
 }
 .book-status-icon {
   display: inline-flex;
