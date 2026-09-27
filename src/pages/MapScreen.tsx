@@ -202,10 +202,12 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                 <div className="book-banner">
                   <img
                     src={meta.cover}
-                    alt={`تصویر کتاب ${faNum(meta.book)}: ${meta.titleFa}`}
+                    alt=""
                     width={640}
                     height={336}
                     decoding="async"
+                    loading={meta.book === 1 ? 'eager' : 'lazy'}
+                    fetchPriority={meta.book === 1 ? 'high' : 'auto'}
                   />
                 </div>
                 <div className="flex items-center gap-3">
