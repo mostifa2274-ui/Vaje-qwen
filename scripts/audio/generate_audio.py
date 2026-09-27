@@ -21,10 +21,7 @@ import sys
 import time
 from pathlib import Path
 
-import lameenc
 import numpy as np
-import onnxruntime as ort
-from misaki import en, espeak
 
 ROOT = Path(__file__).resolve().parents[2]
 SAMPLE_RATE = 24_000
@@ -141,6 +138,10 @@ def collect() -> dict[str, tuple[str, str]]:
 
 class Speaker:
     def __init__(self, model: Path, voice: Path, threads: int) -> None:
+        # Imported here so clip_id() and collect() load without the model stack.
+        import onnxruntime as ort
+        from misaki import en, espeak
+
         options = ort.SessionOptions()
         options.intra_op_num_threads = threads
         self.session = ort.InferenceSession(str(model), options, providers=["CPUExecutionProvider"])
@@ -183,6 +184,8 @@ def trim(audio: np.ndarray, kind: str) -> np.ndarray:
 
 
 def mp3(audio: np.ndarray) -> bytes:
+    import lameenc
+
     encoder = lameenc.Encoder()
     encoder.set_bit_rate(BITRATE_KBPS)
     encoder.set_in_sample_rate(SAMPLE_RATE)
