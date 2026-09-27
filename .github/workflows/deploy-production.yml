@@ -15,11 +15,13 @@ concurrency:
 
 jobs:
   deploy:
+    # A manual run can target any branch; only main may reach production.
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
       SOURCE_SHA: ${{ github.sha }}
-      SOURCE_BRANCH: ${{ github.ref_name }}
+      SOURCE_BRANCH: main
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 

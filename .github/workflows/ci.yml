@@ -8,9 +8,6 @@ concurrency:
   cancel-in-progress: true
 jobs:
   quality:
-    # A squash-merged PR reaches main as "Title (#123)" right after CI passed
-    # on that PR, so only direct pushes to main run it again.
-    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, ' (#') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     permissions:
