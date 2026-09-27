@@ -49,6 +49,25 @@ self.addEventListener('fetch', event => {
     return
   }
 
+  // Reviewed artwork and the narration catalogue keep stable public URLs
+  // across releases. Revalidate them online so an older controlling worker
+  // cannot pin stale content after a deploy, while keeping a cached copy for
+  // offline use.
+  if (url.pathname.includes('/art/chapters/') || url.pathname.endsWith('/audio/index.json')) {
+    event.respondWith(
+      fetch(request, { cache: 'no-cache' })
+        .then(response => {
+          if (response.ok) {
+            const copy = response.clone()
+            void caches.open(CACHE).then(cache => cache.put(request, copy))
+          }
+          return response
+        })
+        .catch(async () => (await caches.match(request)) || new Response('', { status: 503, statusText: 'Offline' }))
+    )
+    return
+  }
+
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
