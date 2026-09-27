@@ -218,6 +218,24 @@ describe('chapter prep and gate progression', () => {
     expect(canReadChapter(state, 'b1c1')).toBe(false)
   })
 
+  it('rejects sparse imported prep totals that do not cover the real chapter assignment', () => {
+    const state = emptyState(1, 'b1c1')
+    expect(CHAPTERS[0].new.length).toBeGreaterThan(1)
+    state.chapters.b1c1 = {
+      preparedAt: 10,
+      prepAttempts: 1,
+      prepWrittenCorrect: 1,
+      prepWrittenTotal: 1,
+      prepListeningCorrect: 1,
+      prepListeningTotal: 1,
+      completed: false,
+      checksCorrect: 0,
+      checksTotal: 0,
+      reads: 0,
+    }
+    expect(canReadChapter(state, 'b1c1')).toBe(false)
+  })
+
   it('fails closed when either prep test has not passed every word', () => {
     let state = emptyState(1, 'b1c1')
     const ids = CHAPTERS[0].new.slice(0, 2)
