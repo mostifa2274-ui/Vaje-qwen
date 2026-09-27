@@ -2,7 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNod
 import type { GhesseState } from './engine/types'
 import { loadPersistedState, loadState, mergeConcurrentState, saveState, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
-import { canPrepareChapter, canReadChapter, canTakeExam, examDefinition } from './engine/gates'
+import { canOpenChapter, canOpenExam, canOpenStory, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
 import { warmEnglishVoices } from './engine/narration'
 import { loadClipIndex } from './engine/audioClips'
@@ -68,14 +68,15 @@ function rawViewFromHash(): View {
 
 function resolveView(view: View, state: GhesseState): View {
   if (view.name === 'read') {
-    if (!canPrepareChapter(state, view.chapterId)) return { name: 'map' }
-    if (!canReadChapter(state, view.chapterId)) return { name: 'prep', chapterId: view.chapterId }
+    if (!canOpenChapter(state, view.chapterId)) return { name: 'map' }
+    if (!canOpenStory(state, view.chapterId)) return { name: 'prep', chapterId: view.chapterId }
   }
   if (view.name === 'prep') {
-    if (!canPrepareChapter(state, view.chapterId)) return { name: 'map' }
-    if (canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
+    if (!canOpenChapter(state, view.chapterId)) return { name: 'map' }
+    // A prepared chapter goes straight to its story; explore mode may revisit its words.
+    if (!state.exploreAll && canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
   }
-  if (view.name === 'exam' && !canTakeExam(state, view.examId)) return { name: 'map' }
+  if (view.name === 'exam' && !canOpenExam(state, view.examId)) return { name: 'map' }
   return view
 }
 
@@ -165,12 +166,19 @@ export default function App() {
   }, [navigate])
 
   const openChapter = useCallback((chapterId: string) => {
-    if (!canPrepareChapter(state, chapterId)) return
-    navigate(canReadChapter(state, chapterId) ? { name: 'read', chapterId } : { name: 'prep', chapterId })
+    if (!canOpenChapter(state, chapterId)) return
+    // A chapter on the learner's path opens as usual; one reached only through
+    // explore mode opens on its story, which links to its words.
+    const onPath = canPrepareChapter(state, chapterId)
+    navigate(!onPath || canReadChapter(state, chapterId) ? { name: 'read', chapterId } : { name: 'prep', chapterId })
+  }, [navigate, state])
+
+  const openPrep = useCallback((chapterId: string) => {
+    if (canOpenChapter(state, chapterId)) navigate({ name: 'prep', chapterId })
   }, [navigate, state])
 
   const openExam = useCallback((examId: string) => {
-    if (canTakeExam(state, examId)) navigate({ name: 'exam', examId })
+    if (canOpenExam(state, examId)) navigate({ name: 'exam', examId })
   }, [navigate, state])
 
   useEffect(() => {
@@ -304,6 +312,7 @@ export default function App() {
           onChange={update}
           onBack={backToMap}
           onOpenChapter={openChapter}
+          onOpenPrep={openPrep}
           onOpenExam={openExam}
         />
       )
@@ -356,6 +365,7 @@ export default function App() {
         <MapScreen
           state={state}
           now={now}
+          onChange={update}
           onOpenChapter={openChapter}
           onOpenExam={openExam}
           onOpenReview={() => navigate({ name: 'review' })}

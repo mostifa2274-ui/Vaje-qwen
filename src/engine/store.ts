@@ -20,6 +20,7 @@ export function emptyState(now: number, firstChapterId: string): GhesseState {
     narratorVoiceURI: '',
     narratorRate: 0.92,
     dailyReviewGoal: 15,
+    exploreAll: false,
     created: now,
   }
 }
@@ -210,6 +211,7 @@ function normalizeState(
     narratorVoiceURI: text(p.narratorVoiceURI),
     narratorRate: narratorRate(p.narratorRate),
     dailyReviewGoal: reviewGoal(p.dailyReviewGoal),
+    exploreAll: p.exploreAll === true,
     created: num(p.created, now),
   }
 }
@@ -418,6 +420,7 @@ export function mergeConcurrentState(
   const narratorVoiceURI = mergeConcurrentValue(base.narratorVoiceURI, local.narratorVoiceURI, remote.narratorVoiceURI)
   const narratorRate = mergeConcurrentValue(base.narratorRate, local.narratorRate, remote.narratorRate)
   const dailyReviewGoal = mergeConcurrentValue(base.dailyReviewGoal, local.dailyReviewGoal, remote.dailyReviewGoal)
+  const exploreAll = mergeConcurrentValue(base.exploreAll, local.exploreAll, remote.exploreAll)
   const created = mergeConcurrentValue(base.created, local.created, remote.created)
 
   if (
@@ -427,6 +430,7 @@ export function mergeConcurrentState(
     || narratorVoiceURI === undefined
     || narratorRate === undefined
     || dailyReviewGoal === undefined
+    || exploreAll === undefined
     || created === undefined
   ) return undefined
 
@@ -441,6 +445,7 @@ export function mergeConcurrentState(
     narratorVoiceURI,
     narratorRate,
     dailyReviewGoal,
+    exploreAll,
     created,
   }
 }

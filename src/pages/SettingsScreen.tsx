@@ -210,6 +210,25 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           </button>
         </div>
 
+        <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
+          <div>
+            <div id="explore-mode-title" className="font-bold">حالت کاوش: باز کردن همهٔ فصل‌ها</div>
+            <div className="text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+              همهٔ فصل‌ها، واژه‌ها و آزمون‌ها برای دیدن باز می‌شوند. بخش‌هایی که هنوز به آن‌ها نرسیده‌ای فقط پیش‌نمایش‌اند و در پیشرفت ثبت نمی‌شوند؛ با خاموش کردن، مسیر عادی برمی‌گردد.
+            </div>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={state.exploreAll}
+            aria-labelledby="explore-mode-title"
+            className={state.exploreAll ? 'btn-ink px-4 py-2' : 'btn-paper px-4 py-2'}
+            onClick={() => onChange({ ...state, exploreAll: !state.exploreAll })}
+          >
+            {state.exploreAll ? 'روشن' : 'خاموش'}
+          </button>
+        </div>
+
         <div className="settings-section p-4 sm:p-5">
           <div className="font-bold">پشتیبان پیشرفت</div>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>

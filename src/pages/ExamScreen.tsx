@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState, RetrievalMode, SkillDimension } from '../engine/types'
 import { buildExam, examPool, scoreExam, type BuiltExam, type ExamResult } from '../engine/exams'
-import { examDefinition } from '../engine/gates'
+import { canTakeExam, examDefinition } from '../engine/gates'
 import { WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
@@ -38,6 +38,9 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const previousExam = state.exams[examId]
   const attempt = (previousExam?.attempts ?? 0) + 1
   const [exam] = useState(() => buildExam(examId, state, attempt))
+  // Opened through explore mode before the learner reached it: a preview
+  // whose answers are never recorded.
+  const [preview] = useState(() => !canTakeExam(state, examId))
   const [initialDraft] = useState(() => exam ? loadExamDraft(examId, attempt, exam) : undefined)
   const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
   const [index, setIndex] = useState(() => initialDraft?.index ?? 0)
@@ -136,6 +139,10 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   function finalize(nextAnswers: Record<number, boolean>, nextTimings: Record<number, number>, built: BuiltExam) {
     clearExamDraft(examId)
     const scored = scoreExam(built, nextAnswers)
+    if (preview) {
+      setResult(scored)
+      return
+    }
     const now = Date.now()
     const words = { ...state.words }
     for (const item of built.questions) {
@@ -244,7 +251,9 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             حد عبور: {percent(def.passRate)} کل و {percent(def.productivePassRate)} در پاسخ‌های بدون گزینه.
-            {passedNow
+            {preview
+              ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
+              : passedNow
               ? result.missedWordIds.length
                 ? ` حد نصاب آزمون را پاس کردی، اما مسیر بعدی بعد از بازیابی مستقل ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته باز می‌شود.`
                 : ' قبولی پاک مسیر را باز می‌کند، اما «مسلط» فقط با بازیابی موفق در روزهای مختلف و فاصلهٔ واقعی به دست می‌آید.'
@@ -265,12 +274,12 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
           <div className="mt-5 grid grid-cols-2 gap-2">
             <button type="button" className="btn-paper py-3" onClick={onBack}>مسیر یادگیری</button>
-            {!passedNow || result.missedWordIds.length > 0 ? (
+            {!preview && (!passedNow || result.missedWordIds.length > 0) ? (
               <button type="button" className="btn-crimson py-3" onClick={onReview}>مرور جبرانی</button>
             ) : (
               <button type="button" className="btn-ink py-3" onClick={onBack}>ادامهٔ مسیر ←</button>
             )}
-            {gateRemainsOpen && !passedNow && (
+            {gateRemainsOpen && !passedNow && !preview && (
               <button type="button" className="btn-paper col-span-2 py-2.5 text-sm" onClick={onBack}>قبولی قبلی حفظ شده؛ بازگشت به مسیر</button>
             )}
           </div>
@@ -317,6 +326,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
         <span>تلاش {faNum(attempt)}</span>
       </div>
       <div className="mastery-progress mt-2"><span style={{ width: `${(index / builtExam.questions.length) * 100}%` }} /></div>
+
+      {preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>}
 
       <div className="paper-note mt-4">
         هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. آزمون معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد و نتیجهٔ هر مهارت را در پایان نشان می‌دهد.

@@ -5,7 +5,7 @@ import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglishWithFallback, ty
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
 import { blankWordProgress } from '../engine/review'
-import { bookExamId } from '../engine/gates'
+import { bookExamId, canReadChapter } from '../engine/gates'
 import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
 import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
@@ -19,6 +19,7 @@ interface Props {
   onChange: (next: GhesseState) => void
   onBack: () => void
   onOpenChapter: (id: string) => void
+  onOpenPrep: (id: string) => void
   onOpenExam: (id: string) => void
 }
 
@@ -26,7 +27,7 @@ function wallClockNow(): number {
   return Date.now()
 }
 
-export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenExam }: Props) {
+export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenPrep, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
   const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS), [chapter])
@@ -54,6 +55,9 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const [firstPassCorrect, setFirstPassCorrect] = useState<number | undefined>(() => initialReadingDraft?.firstPassCorrect)
   const [finished, setFinished] = useState(false)
   const [wasAlreadyDone] = useState(() => state.chapters[chapterId]?.completed === true)
+  // Opened through explore mode before the learner reached it: a preview
+  // whose taps and answers are never recorded.
+  const [preview] = useState(() => !canReadChapter(state, chapterId))
   const [audioNotice, setAudioNotice] = useState('')
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
@@ -202,7 +206,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     stopReaderAudio()
     setGloss(entry)
     const word = state.words[wordId]
-    if (word?.introduced) {
+    if (word?.introduced && !preview) {
       onChange({
         ...state,
         words: { ...state.words, [wordId]: { ...word, taps: word.taps + 1 } },
@@ -230,7 +234,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     pendingFocusRef.current = 'followUp'
     setAnswers(nextAnswers)
 
-    if (!question.evidenceWordId) return
+    if (!question.evidenceWordId || preview) return
     const now = clockRef.current()
     const nextWords = { ...state.words }
     const current = nextWords[question.evidenceWordId] ?? blankWordProgress(now)
@@ -299,7 +303,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   }
 
   function finishChapter() {
-    if (checksCorrect !== questions.length) return
+    if (checksCorrect !== questions.length || preview) return
     const successor = nextChapter(chapterId)
     const nextState = recordCompletedRead(
       state,
@@ -363,6 +367,17 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </div>
           </div>
         </section>
+
+        {state.exploreAll && (
+          <div className="explore-note mt-4" role="status">
+            <span>
+              {preview
+                ? <><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این فصل نرسیده‌ای؛ خواندن و پاسخ‌های اینجا ثبت نمی‌شوند.</>
+                : <><b>حالت کاوش.</b> واژه‌های این فصل را هم می‌توانی دوباره ببینی.</>}
+            </span>
+            <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={() => onOpenPrep(chapterId)}>واژه‌های این فصل</button>
+          </div>
+        )}
 
         <div className="reading-guidance mt-4">
           واژه‌های تازه را قبل از ورود به قصه یاد گرفته و آزمون داده‌ای. اینجا روی <b>فهم داستان</b> تمرکز کن؛ هر واژه را هم می‌توانی برای دیدن معنی لمس کنی.
@@ -528,7 +543,14 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </button>
           )}
 
-          {checksCorrect === questions.length && !finished && (
+          {checksCorrect === questions.length && !finished && preview && (
+            <div className="explore-note" role="status">
+              <span>همهٔ پاسخ‌ها درست است. این پیش‌نمایش ثبت نمی‌شود؛ برای ثبت فصل، از آموزش واژه‌ها شروع کن.</span>
+              <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={() => onOpenPrep(chapterId)}>آموزش واژه‌ها</button>
+            </div>
+          )}
+
+          {checksCorrect === questions.length && !finished && !preview && (
             <button ref={followUpRef} type="button" className="btn-crimson pop w-full py-3.5 text-lg" onClick={finishChapter}>
               {wasAlreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(questions.length)} از {faNum(questions.length)} تأیید شد
             </button>

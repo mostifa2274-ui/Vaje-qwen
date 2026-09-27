@@ -132,6 +132,19 @@ export function canReadChapter(state: GhesseState, chapterId: string): boolean {
   return canPrepareChapter(state, chapterId) && chapterPrepared(state, chapterId)
 }
 
+// Explore mode (Settings) opens every chapter and test for looking around.
+// These decide only what can be opened; the strict checks above still decide
+// whether anything done there is recorded.
+export function canOpenChapter(state: GhesseState, chapterId: string): boolean {
+  if (state.exploreAll) return CHAPTERS.some(ch => ch.id === chapterId)
+  return canPrepareChapter(state, chapterId)
+}
+
+export function canOpenStory(state: GhesseState, chapterId: string): boolean {
+  if (state.exploreAll) return CHAPTERS.some(ch => ch.id === chapterId)
+  return canReadChapter(state, chapterId)
+}
+
 export function examRemediationWordIds(state: GhesseState): string[] {
   const unresolved = new Set<string>()
   for (const progress of Object.values(state.exams)) {
@@ -171,6 +184,11 @@ function examPrerequisitesMet(state: GhesseState, id: string): boolean {
 
 export function canTakeExam(state: GhesseState, id: string): boolean {
   return examPrerequisitesMet(state, id) && !examRemediationPending(state, id)
+}
+
+export function canOpenExam(state: GhesseState, id: string): boolean {
+  if (state.exploreAll) return Boolean(examDefinition(id))
+  return canTakeExam(state, id)
 }
 
 export function nextGateAfterBook(state: GhesseState, book: number): string | undefined {
