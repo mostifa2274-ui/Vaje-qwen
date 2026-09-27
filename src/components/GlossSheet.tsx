@@ -5,6 +5,7 @@ import { stopAudio } from '../engine/audio'
 import type { ClipKind } from '../engine/audioClips'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { SpeakerIcon } from './Icons'
+import { persianPartOfSpeech } from '../engine/partOfSpeech'
 
 interface Props {
   word: WordEntry | null
@@ -105,8 +106,9 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div id={titleId} className="font-en text-3xl font-bold" dir="ltr">{word.word}</div>
-            <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }} dir="ltr">
-              {word.ipa} · {word.pos}
+            <div className="mt-1 flex flex-wrap items-center gap-2 text-sm" style={{ color: 'var(--ink-soft)' }}>
+              {word.ipa && <span className="font-en" dir="ltr">/{word.ipa}/</span>}
+              <span className="lexical-role-chip">{persianPartOfSpeech(word.pos)}</span>
             </div>
           </div>
           <button

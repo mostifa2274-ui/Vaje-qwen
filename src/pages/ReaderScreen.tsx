@@ -435,7 +435,15 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </span>
           </div>
 
-          <div className="mastery-progress mt-3" aria-label={`${faNum(checksCorrect)} از ${faNum(questions.length)} پاسخ تأیید شده`}>
+          <div
+            className="mastery-progress mt-3"
+            role="progressbar"
+            aria-label="پاسخ‌های تأییدشدهٔ درک مطلب"
+            aria-valuemin={0}
+            aria-valuemax={questions.length}
+            aria-valuenow={checksCorrect}
+            aria-valuetext={`${faNum(checksCorrect)} از ${faNum(questions.length)}`}
+          >
             <span style={{ width: `${(checksCorrect / questions.length) * 100}%` }} />
           </div>
 

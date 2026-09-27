@@ -430,13 +430,17 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           </div>
         )}
 
-        <div className="prep-stepper" aria-label="مرحله‌های آمادگی">
+        <ol className="prep-stepper" aria-label="مرحله‌های آمادگی">
           {['آموزش', 'ترجمهٔ نوشتاری', 'شنیداری', 'قصه'].map((label, index) => (
-            <span key={label} className={step === index + 1 ? 'active' : step > index + 1 ? 'done' : ''}>
+            <li
+              key={label}
+              className={step === index + 1 ? 'active' : step > index + 1 ? 'done' : ''}
+              aria-current={step === index + 1 ? 'step' : undefined}
+            >
               {faNum(index + 1)}. {label}
-            </span>
+            </li>
           ))}
-        </div>
+        </ol>
 
         {phase === 'teach' && (
           <section className="teach-context-card mt-4 overflow-hidden" aria-label="تصویر زمینهٔ فصل">

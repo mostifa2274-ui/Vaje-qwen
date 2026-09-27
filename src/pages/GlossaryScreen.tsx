@@ -95,7 +95,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         />
       </label>
 
-      <div className="strip-scroll mt-3 flex gap-2 overflow-x-auto pb-1" aria-label="فیلتر سطح تسلط">
+      <div className="strip-scroll mt-3 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="فیلتر سطح تسلط">
         {(['all', 'trouble', 'mastered', 'strong', 'learning', 'seen', 'new'] as const).map(value => (
           <button
             type="button"

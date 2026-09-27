@@ -64,7 +64,8 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     document.body.appendChild(anchor)
     anchor.click()
     anchor.remove()
-    URL.revokeObjectURL(url)
+    // Revoking in the same task can cancel the download in some browsers.
+    window.setTimeout(() => URL.revokeObjectURL(url), 30_000)
   }
 
   async function importProgress(file: File) {
