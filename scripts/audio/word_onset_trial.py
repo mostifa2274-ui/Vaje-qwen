@@ -1,7 +1,7 @@
 """Temporary trial: which way of feeding a single word to Kokoro removes the
 "uh" it can say before the word? Prints a comparison; writes nothing.
 
-usage: python word_onset_trial.py --model model_fp32.onnx --voice af_heart.bin
+usage: python word_onset_trial.py --model model_fp32.onnx --voice af_heart.bin --strategy period
 """
 
 from __future__ import annotations
@@ -22,12 +22,10 @@ from generate_audio import ROOT, SAMPLE_RATE, SPEED, VOCAB, Speaker, clip_id, tr
 STRATEGIES = {
     "base": ("", "", lambda n: n),
     "period": ("", ".", lambda n: n),
-    "ref_index": ("", "", lambda n: max(0, n - 1)),
-    "style16": ("", "", lambda n: max(n, 16)),
     "style32": ("", "", lambda n: max(n, 32)),
-    "period16": ("", ".", lambda n: max(n, 16)),
     "period32": ("", ".", lambda n: max(n, 32)),
     "wrap": ("… ", ".", lambda n: n),
+    "space_period": (" ", ".", lambda n: n),
 }
 
 
@@ -57,7 +55,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--voice", type=Path, required=True)
+    parser.add_argument("--strategy", choices=sorted(STRATEGIES), required=True)
     args = parser.parse_args()
+    name = args.strategy
 
     vocabulary = json.loads((ROOT / "src/data/vocabulary.json").read_text("utf-8"))
     singles = [entry for entry in vocabulary if re.fullmatch(r"[A-Za-z']+", entry["word"])]
@@ -66,41 +66,35 @@ def main() -> int:
     others = others[::max(1, len(others) // 60)][:60]
     speaker = Speaker(args.model, args.voice, 4)
 
-    # 1. The pipeline here reproduces the committed clips.
-    committed = [frame_labels(*decode(ROOT / "public/audio" / f"{clip_id('w', word)}.mp3")) for word in hiss]
-    fresh = [synth(speaker, word, "base") for word in hiss]
-    same = sum(starts_voiced(a) == starts_voiced(frame_labels(b, SAMPLE_RATE)) for a, b in zip(committed, fresh))
-    print(f"reproduction: base run agrees with committed clips on {same}/{len(hiss)} hiss words")
+    clips = {word: synth(speaker, word, name) for word in hiss + others}
+    bad = [word for word in hiss if starts_voiced(frame_labels(clips[word], SAMPLE_RATE))]
+    lengths = [len(clip) / SAMPLE_RATE for clip in clips.values()]
+    print(f"{name}: vowel before the hiss in {len(bad)}/{len(hiss)} words, median {np.median(lengths):.2f}s", flush=True)
+    print(f"{name}: e.g. {bad[:12]}", flush=True)
 
-    # 2. Acoustic onset check for every strategy.
-    audio: dict[str, dict[str, np.ndarray]] = {}
-    ranking = []
-    for name in STRATEGIES:
-        audio[name] = {word: synth(speaker, word, name) for word in hiss + others}
-        bad = [word for word in hiss if starts_voiced(frame_labels(audio[name][word], SAMPLE_RATE))]
-        lengths = [len(audio[name][word]) / SAMPLE_RATE for word in hiss + others]
-        ranking.append((len(bad), name))
-        print(f"{name:10s} vowel-before-hiss {len(bad):3d}/{len(hiss)}  median {np.median(lengths):.2f}s  e.g. {bad[:6]}")
+    if name == "base":
+        # The pipeline here reproduces the committed clips.
+        committed = {word: starts_voiced(frame_labels(*decode(ROOT / "public/audio" / f"{clip_id('w', word)}.mp3"))) for word in hiss}
+        agree = sum(committed[word] == (word in bad) for word in hiss)
+        print(f"base: agrees with the committed clips on {agree}/{len(hiss)} words", flush=True)
 
-    # 3. Does speech recognition hear the right word (and no "a" before it)?
+    # Does speech recognition hear the right word, and no "a" before it?
     from faster_whisper import WhisperModel
 
-    asr = WhisperModel("small.en", device="cpu", compute_type="int8")
-    checked = ["base"] + [name for _, name in sorted(ranking) if name != "base"][:3]
-    for name in checked:
-        right, prefixed, misses = 0, [], []
-        for word in hiss + others:
-            segments, _ = asr.transcribe(to_16k(audio[name][word]), language="en", beam_size=5,
-                                         without_timestamps=True, condition_on_previous_text=False)
-            heard = clean("".join(segment.text for segment in segments))
-            if heard == word.lower():
-                right += 1
-            elif re.fullmatch(rf"(a|uh|ah|the|an) {re.escape(word.lower())}", heard):
-                prefixed.append(heard)
-            else:
-                misses.append(f"{word}->{heard or '∅'}")
-        total = len(hiss) + len(others)
-        print(f"ASR {name:10s} exact {right}/{total}  heard a prefix {len(prefixed)} {prefixed[:6]}  other {misses[:8]}")
+    asr = WhisperModel("base.en", device="cpu", compute_type="int8")
+    right, prefixed, misses = 0, [], []
+    for word, clip in clips.items():
+        segments, _ = asr.transcribe(to_16k(clip), language="en", beam_size=5,
+                                     without_timestamps=True, condition_on_previous_text=False)
+        heard = clean("".join(segment.text for segment in segments))
+        if heard == word.lower():
+            right += 1
+        elif re.fullmatch(rf"(a|uh|ah|the|an) {re.escape(word.lower())}", heard):
+            prefixed.append(heard)
+        else:
+            misses.append(f"{word}->{heard or '-'}")
+    print(f"{name}: ASR exact {right}/{len(clips)}, heard a prefix {len(prefixed)} {prefixed[:8]}", flush=True)
+    print(f"{name}: ASR other {len(misses)} {misses[:20]}", flush=True)
     return 0
 
 

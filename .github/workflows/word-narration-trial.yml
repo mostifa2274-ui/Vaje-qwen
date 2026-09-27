@@ -17,7 +17,11 @@ concurrency:
 jobs:
   trial:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        name: [base, period, style32, period32, wrap, space_period]
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
@@ -34,5 +38,5 @@ jobs:
           echo "ba4527a874b42b21e35f468c10d326fdff3c7fc8cac1f85e9eb6c0dfc35c334a  /tmp/model_fp16.onnx" | sha256sum -c -
           echo "d583ccff3cdca2f7fae535cb998ac07e9fcb90f09737b9a41fa2734ec44a8f0b  /tmp/af_heart.bin" | sha256sum -c -
           python scripts/audio/upcast_model.py /tmp/model_fp16.onnx /tmp/model_fp32.onnx
-      - name: Compare single-word strategies
-        run: python scripts/audio/word_onset_trial.py --model /tmp/model_fp32.onnx --voice /tmp/af_heart.bin
+      - name: Try one single-word strategy
+        run: python -u scripts/audio/word_onset_trial.py --model /tmp/model_fp32.onnx --voice /tmp/af_heart.bin --strategy ${{ matrix.name }}
