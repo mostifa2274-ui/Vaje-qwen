@@ -4,7 +4,8 @@ export default defineConfig({
   testDir: './e2e',
   testMatch: '**/*.e2e.ts',
   fullyParallel: false,
-  workers: 1,
+  // Phone and tablet run side by side; each keeps its tests in order.
+  workers: 2,
   retries: 1,
   timeout: 120_000,
   expect: {

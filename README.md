@@ -78,7 +78,7 @@ npm run build
 
 `npm run deploy` وابستگی‌ها را از lockfile نصب می‌کند، همهٔ بررسی‌های محتوا و کیفیت، lint، test و build را اجرا می‌کند، سپس Wrangler را اجرا می‌کند. اگر تنظیمات Cloudflare دو فرمان جداگانه می‌خواهد، Build command را `npm run cloudflare:build` و Deploy command را `npx wrangler@4.135.0 deploy` قرار بده. `dist/` باید پیش از اجرای Wrangler ساخته شده باشد.
 
-`.github/workflows/live-smoke.yml` پس از هر push روی `main` منتظر انتشار Cloudflare می‌ماند و `/release.json` را با commit بررسی می‌کند. `.github/workflows/deploy-production.yml` تنها در صورت وجود دو secret استاندارد `CLOUDFLARE_API_TOKEN` و `CLOUDFLARE_ACCOUNT_ID` انتشار مستقیم جایگزین را انجام می‌دهد؛ سبز شدن این workflow هنگام نبود secret به معنی انتشار نیست.
+برای ماندن در سهمیهٔ رایگان GitHub Actions، CI روی هر PR اجرا می‌شود و روی `main` فقط برای push مستقیم؛ commit ادغام یک PR (با «(#شماره)» در عنوان) که روی همان PR آزموده شده دوباره اجرا نمی‌شود، و ساخت Cloudflare پیش از هر انتشار `npm run check` را اجرا می‌کند. `.github/workflows/live-smoke.yml` و `.github/workflows/deploy-production.yml` فقط دستی (زبانهٔ Actions، «Run workflow») اجرا می‌شوند: اولی منتظر انتشار Cloudflare می‌ماند و `/release.json` را با commit بررسی می‌کند، و دومی تنها در صورت وجود دو secret استاندارد `CLOUDFLARE_API_TOKEN` و `CLOUDFLARE_ACCOUNT_ID` انتشار مستقیم جایگزین را انجام می‌دهد؛ سبز شدن آن هنگام نبود secret به معنی انتشار نیست.
 
 ## Provenance
 
