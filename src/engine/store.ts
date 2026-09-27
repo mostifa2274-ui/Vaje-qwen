@@ -275,11 +275,28 @@ export function importStateJson(
   return state
 }
 
+function isValidStoredObject(raw: string): boolean {
+  try {
+    const parsed = JSON.parse(raw)
+    return Boolean(parsed && typeof parsed === 'object' && !Array.isArray(parsed))
+  } catch {
+    return false
+  }
+}
+
 export function saveState(state: GhesseState): boolean {
   try {
     const previous = localStorage.getItem(STORAGE_KEY)
-    if (previous) localStorage.setItem(BACKUP_KEY, previous)
     const next = JSON.stringify(state)
+
+    // Rotate only a parseable previous primary into the backup slot. If the
+    // primary was corrupted and loadState recovered from the backup, the
+    // startup save must repair the primary without destroying that last-known
+    // good backup with the corrupted bytes.
+    if (previous && previous !== next && isValidStoredObject(previous)) {
+      localStorage.setItem(BACKUP_KEY, previous)
+    }
+
     localStorage.setItem(STORAGE_KEY, next)
     return localStorage.getItem(STORAGE_KEY) === next
   } catch {
