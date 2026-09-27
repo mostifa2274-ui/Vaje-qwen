@@ -10,6 +10,7 @@ import {
   isTypedMode,
   modeForProgress,
   recordRetrieval,
+  seededSample,
   selectWeakestWordIds,
   troubleWordIds,
 } from '../engine/review'
@@ -49,7 +50,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const trouble = useMemo(() => troubleWordIds(state.words), [state.words])
   const remediation = useMemo(() => examRemediationWordIds(state), [state])
   const introduced = useMemo(() => VOCAB.filter(w => state.words[w.id]?.introduced).map(w => w.id), [state.words])
-  const initial = useMemo(() => {
+  const scheduled = useMemo(() => {
     if (remediation.length) {
       const restDue = due.filter(id => !remediation.includes(id))
       return [...remediation, ...restDue].slice(0, Math.max(state.dailyReviewGoal, Math.min(20, remediation.length)))
@@ -58,9 +59,18 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     if (trouble.length) return trouble.slice(0, Math.min(10, state.dailyReviewGoal))
     return selectWeakestWordIds(introduced, state.words, Math.min(10, state.dailyReviewGoal), `extra:${Math.floor(now / 86_400_000)}`)
   }, [due, introduced, now, remediation, state.dailyReviewGoal, state.words, trouble])
+  // Explore mode with nothing to review yet: practise course words instead.
+  // Such a session only practises; no word has progress to record.
+  const initial = useMemo(
+    () => scheduled.length || !state.exploreAll
+      ? scheduled
+      : seededSample(VOCAB.map(w => w.id), state.dailyReviewGoal, `explore:${Math.floor(now / 86_400_000)}`),
+    [now, scheduled, state.dailyReviewGoal, state.exploreAll],
+  )
   const suggestedKind: ReviewSessionKind = remediation.length ? 'remediation' : due.length ? 'due' : trouble.length ? 'trouble' : 'extra'
 
   const [initialDraft] = useState(() => loadReviewDraft(introduced))
+  const [practiceSession] = useState(() => !initialDraft && scheduled.length === 0 && initial.length > 0)
   const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
   const [queue, setQueue] = useState<string[]>(() => initialDraft?.queue ?? initial)
   const [sessionTotal] = useState(() => initialDraft?.sessionTotal ?? initial.length)
@@ -130,7 +140,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   }, [feedback])
 
   useEffect(() => {
-    if (sessionTotal === 0) {
+    if (sessionTotal === 0 || practiceSession) {
       clearReviewDraft()
       return
     }
@@ -163,6 +173,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     correctCount,
     feedback,
     introduced,
+    practiceSession,
     queue,
     relearnedCount,
     selected,
@@ -203,13 +214,23 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   }, [cardKey, feedback, mode, speakCurrent])
 
   function commit(correct: boolean) {
-    if (!currentId || !currentWord || !progress || feedback) return
+    if (!currentId || !currentWord || feedback) return
+    if (!progress && !practiceSession) return
     if (answerLocked) return
     if (resumedDraft) setResumedDraft(false)
     const elapsedMs = Date.now() - startedAtRef.current
     const source = (attemptNumber[currentId] ?? 0) > 0 ? 'relearn' : 'review'
     const nextCorrectCount = correct && source === 'review' ? correctCount + 1 : correctCount
     const nextRelearnedCount = correct && source === 'relearn' ? relearnedCount + 1 : relearnedCount
+
+    if (!progress) {
+      setGradedCard({ key: cardKey, mode })
+      focusNextCardRef.current = true
+      setFeedback(correct ? 'correct' : 'wrong')
+      setCorrectCount(nextCorrectCount)
+      setRelearnedCount(nextRelearnedCount)
+      return
+    }
 
     // Persist the already-graded transition before permanent word state changes.
     // The draft sanitizer settles this feedback to the next safe queue state, so
@@ -260,7 +281,9 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     setAudioReady(false)
   }
 
-  const sessionLabel = sessionKind === 'remediation'
+  const sessionLabel = practiceSession
+    ? 'تمرین آزاد در حالت کاوش'
+    : sessionKind === 'remediation'
     ? 'ترمیم آزمون'
     : sessionKind === 'due'
       ? 'مرورهای سررسید'
@@ -303,7 +326,9 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
           <BadgeCheckIcon className="mx-auto h-10 w-10" aria-hidden="true" />
           <h2 className="mt-3 text-2xl font-extrabold">جلسه تمام شد</h2>
           <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            {faNum(correctCount)} بازیابی مستقل ثبت شد و {faNum(relearnedCount)} واژه بعد از بازخورد دوباره ساخته شد. پاسخ درست پس از دیدن جواب عمداً شواهد تسلط محسوب نمی‌شود.
+            {practiceSession
+              ? `${faNum(correctCount)} پاسخ درست در اولین تلاش. این تمرین در حالت کاوش بود و در پیشرفتت ثبت نمی‌شود.`
+              : `${faNum(correctCount)} بازیابی مستقل ثبت شد و ${faNum(relearnedCount)} واژه بعد از بازخورد دوباره ساخته شد. پاسخ درست پس از دیدن جواب عمداً شواهد تسلط محسوب نمی‌شود.`}
           </p>
           <button type="button" className="btn-ink mt-5 w-full py-3" onClick={() => { clearReviewDraft(); onBack() }}>بازگشت به مسیر</button>
         </div>
@@ -389,9 +414,11 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
           {feedback && (
             <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
               {feedback === 'correct' ? (
+                practiceSession ? <><b>درست.</b> این تمرین ثبت نمی‌شود.</> : (
                 <>
                   <b>درست.</b> این پاسخ به مهارت «{weaknessLabel(mode)}» همان واژه اضافه شد. اگر بازیابی مستقل و در یک روز جدید باشد، زمان مرور بعدی بر اساس مدل حافظه تنظیم می‌شود.
                 </>
+                )
               ) : (
                 <div>
                   <div className="text-xs font-bold" style={{ color: 'var(--crimson-deep)' }}>ترمیم ضعف: {weaknessLabel(mode)}</div>

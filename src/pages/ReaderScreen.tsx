@@ -58,6 +58,8 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   // Opened through explore mode before the learner reached it: a preview
   // whose taps and answers are never recorded.
   const [preview] = useState(() => !canReadChapter(state, chapterId))
+  // Explore mode lets the learner move to any comprehension question.
+  const explore = state.exploreAll
   const [audioNotice, setAudioNotice] = useState('')
   const playbackToken = useRef(0)
   const clockRef = useRef(wallClockNow)
@@ -254,6 +256,13 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     if (nextUnanswered < 0) return
     pendingFocusRef.current = 'question'
     setCheckIndex(nextUnanswered)
+  }
+
+  function jumpToQuestion(index: number) {
+    if (finished || index === checkIndex) return
+    if (resumedReading) setResumedReading(false)
+    pendingFocusRef.current = 'question'
+    setCheckIndex(index)
   }
 
   function beginCorrectionRound() {
@@ -466,6 +475,27 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             <div className="paper-note mt-3" role="status">
               پاسخ‌های درستت حفظ شده‌اند. فقط سؤال‌های از‌دست‌رفته را اصلاح می‌کنی؛ امتیاز مرحلهٔ اول برای گزارش واقعی یادگیری نگه داشته می‌شود.
             </div>
+          )}
+
+          {explore && !finished && (
+            <nav className="question-jump mt-4" aria-label="پرش به سؤال‌ها">
+              {questions.map((question, index) => {
+                const chosen = answers[index]
+                const mark = chosen === undefined ? '' : chosen === question.answerId ? 'right' : 'wrong'
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`question-jump-button ${mark} ${index === checkIndex ? 'active' : ''}`}
+                    aria-label={`سؤال ${faNum(index + 1)}`}
+                    aria-current={index === checkIndex ? 'step' : undefined}
+                    onClick={() => jumpToQuestion(index)}
+                  >
+                    {faNum(index + 1)}
+                  </button>
+                )
+              })}
+            </nav>
           )}
 
           {currentQuestion && !finished && (
