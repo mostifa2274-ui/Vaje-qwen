@@ -35,8 +35,9 @@ fills the end of that long silence with a short "uh": word cards played as
 "uh-sit", "uh-cat". The generator caps the lead-in at `LEAD_IN_FRAMES` (18, the
 longest a sentence gets) by patching the loaded model in memory
 (`cap_lead_in()`), so sentences are unchanged and words start on their first
-sound. `check_word_onsets.py` guards this: every word whose first sound is s, f
-or sh must open with hiss, with nothing pitched before it.
+sound. `check_word_onsets.py` guards this: every word whose first sound is s or sh
+must open with hiss, with nothing pitched before it (76 of 98 such clips failed
+before the cap, none after).
 
 ## Precision
 

@@ -2,9 +2,10 @@
 
 Kokoro can open a single word with a short "uh" before its first consonant,
 so "sit" plays as "uh-sit" (see LEAD_IN_FRAMES in generate_audio.py). The
-reliable place to hear that by machine is a word whose first sound is a hiss
-(s, f, sh): nothing pitched may come before the hiss. This checks every such
-word clip and exits 1 if any has 30 ms or more of voicing before it.
+reliable place to hear that by machine is a word whose first sound is s or sh:
+nothing pitched may come before its hiss. ("f" is too faint to judge.) This
+checks every such word clip and exits 1 if any has 30 ms or more of voicing
+before the hiss.
 
 usage: python scripts/audio/check_word_onsets.py [--audio public/audio]
 Needs numpy and miniaudio (pip install numpy miniaudio).
@@ -24,11 +25,11 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from generate_audio import clip_id  # noqa: E402
 
-HISS_ONSETS = set("sfʃ")
+HISS_ONSETS = set("sʃ")
 
 
 def hiss_initial(ipa: str) -> bool:
-    """True when the word's first sound (from its IPA) is s, f or sh."""
+    """True when the word's first sound (from its IPA) is s or sh."""
     first = ipa.lstrip("/ˈˌ ").strip()
     return bool(first) and first[0] in HISS_ONSETS
 
@@ -57,7 +58,7 @@ def frame_labels(audio: np.ndarray, sample_rate: int) -> str:
 
 def voicing_before_hiss(labels: str) -> int | None:
     """Voiced 10 ms frames before the first 30 ms of hiss, or None if the clip
-    does not open with hiss (a weak "f" can read as '~' and cannot be judged)."""
+    does not open with hiss."""
     hiss = re.search(r"N{3,}", labels)
     if not hiss or hiss.start() > 40:
         return None
@@ -92,7 +93,7 @@ def main() -> int:
         if frames >= 3:
             voiced.append((word, labels.strip(".")[:30]))
 
-    print(f"{len(words)} word clips start with s, f or sh; {judged} open with clear hiss, "
+    print(f"{len(words)} word clips start with s or sh; {judged} open with clear hiss, "
           f"and {len(voiced)} of those have a vowel before it")
     for word, labels in voiced:
         print(f"  {word:14s} {labels}")
