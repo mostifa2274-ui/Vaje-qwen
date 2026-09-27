@@ -4,21 +4,14 @@ const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './icons/icon.svg',
-  './art/book1.svg',
-  './art/book2.svg',
-  './art/book3.svg',
-  './art/book4.svg',
-  './art/book5.svg',
-  './art/book6.svg',
-  './art/book7.svg',
-  './art/book8.svg'
+  './icons/icon.svg'
 ]
 
 async function precacheShell() {
   const cache = await caches.open(CACHE)
-  // BUILD_ASSETS is stamped from the exact Vite output after build. This keeps
-  // route-level lazy chunks and fonts available on a first-install offline run.
+  // BUILD_ASSETS is stamped from the exact production output after build. It
+  // includes lazy Vite chunks and every reviewed chapter illustration, so a
+  // first-install offline session never falls back to obsolete artwork.
   await cache.addAll([...CORE, ...BUILD_ASSETS])
 }
 
