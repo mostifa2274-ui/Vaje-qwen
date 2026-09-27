@@ -463,6 +463,48 @@ test('listening gate fails closed when no English audio path can start', async (
   await expectNoHorizontalOverflow(page)
 })
 
+test('a missed listening word replays by itself when it comes straight back', async ({ page }) => {
+  const last = chapterWords[0]
+  await page.goto('/#/map')
+  await page.evaluate(({ chapterWordIds, lastId, teachIndex }) => {
+    window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify({
+      version: 1,
+      chapterId: 'b1c1',
+      phase: 'listening',
+      teachIndex,
+      writtenQueue: [],
+      writtenPassed: chapterWordIds,
+      writtenMissed: [],
+      listeningQueue: [lastId],
+      listeningPassed: chapterWordIds.filter(id => id !== lastId),
+      listeningMissed: [],
+      feedback: null,
+      selected: '',
+      typed: '',
+      updatedAt: Date.now(),
+    }))
+    window.location.hash = '/prep/b1c1'
+  }, {
+    chapterWordIds: chapter.new,
+    lastId: last.id,
+    teachIndex: chapter.new.length - 1,
+  })
+
+  const options = page.getByTestId('listening-options').getByRole('button')
+  await expect(options.first()).toBeEnabled()
+  expect(await speechHistory(page)).toEqual([last.word])
+
+  await page.getByRole('button', { name: 'نمی‌دانم — نشان بده و دوباره بپرس' }).click()
+  await page.getByRole('button', { name: 'ادامه و تکرار این واژه ←' }).click()
+
+  // The only word left is the one just missed: it must play again without a
+  // manual replay, or its answers would stay locked.
+  await expect.poll(() => speechHistory(page)).toEqual([last.word, last.word])
+  await expect(options.first()).toBeEnabled()
+  await page.getByTestId('listening-options').getByRole('button', { name: last.fa, exact: true }).click()
+  await expect(page).toHaveURL(/#\/read\/b1c1$/)
+})
+
 async function openWithProgress(page: Page, route: string, progress: {
   words?: Record<string, Record<string, unknown>>
   chapters?: Record<string, Record<string, unknown>>

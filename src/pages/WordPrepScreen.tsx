@@ -50,6 +50,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
   const [listeningReady, setListeningReady] = useState(false)
+  // Counts listening items shown. A missed word goes back into the queue and,
+  // when it is the only one left, returns at once with the same id; the new
+  // turn still speaks it again, so its answers unlock without a manual replay.
+  const [listeningTurn, setListeningTurn] = useState(0)
   const [teachAudioReady, setTeachAudioReady] = useState(false)
   const [teachAutoPlay, setTeachAutoPlay] = useState(false)
   const [teachAutoExampleDone, setTeachAutoExampleDone] = useState(false)
@@ -154,7 +158,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       speak(word.word, phase === 'listening', phase === 'teach')
     }, 90)
     return () => window.clearTimeout(timer)
-  }, [currentListeningWord, currentTeachWord, phase, speak, state.soundOn])
+  }, [currentListeningWord, currentTeachWord, listeningTurn, phase, speak, state.soundOn])
 
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -337,6 +341,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
     setListeningPassed(passed)
     setListeningQueue(nextQueue)
+    setListeningTurn(turn => turn + 1)
     setFeedback(null)
     setSelected('')
     setListeningReady(false)
