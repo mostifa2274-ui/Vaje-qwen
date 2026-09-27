@@ -1,13 +1,21 @@
 import type { WordEntry } from './types'
 import { sameHeadwordEntries } from './homophones'
 
+const EASTERN_DIGITS = /[\u06F0-\u06F9\u0660-\u0669]/g
+
 export function normalizePersianAnswer(value: string): string {
   return value
     .normalize('NFKC')
     .trim()
     .toLowerCase()
+    // Direction marks and invisible joiners some mobile keyboards insert.
+    .replace(/[\u200b\u200d-\u200f\u2066-\u2069\ufeff]/g, '')
     .replace(/[يى]/g, 'ی')
     .replace(/ك/g, 'ک')
+    .replace(/[ۀەة]/g, 'ه')
+    .replace(/[أإٱ]/g, 'ا')
+    .replace(/ؤ/g, 'و')
+    .replace(EASTERN_DIGITS, digit => String(digit.charCodeAt(0) & 0xf))
     .replace(/[\u064B-\u065F\u0670]/g, '')
     .replace(/\u0640/g, '')
     .replace(/\u200c/g, ' ')
@@ -72,10 +80,19 @@ export function acceptedPersianAnswers(word: Pick<WordEntry, 'fa'>): string[] {
   return [...surfaces]
 }
 
+/**
+ * A normalized answer without its spaces. Learners type the half-space in
+ * compounds and plurals (لباس‌ها، می‌توانم) as a space, as nothing, or not at
+ * all, and each spelling is the same answer.
+ */
+export function compactPersianAnswer(value: string): string {
+  return normalizePersianAnswer(value).replace(/ /g, '')
+}
+
 export function isPersianTranslationCorrect(input: string, word: Pick<WordEntry, 'fa'>): boolean {
-  const normalized = normalizePersianAnswer(input)
-  if (!normalized) return false
-  return acceptedPersianAnswers(word).includes(normalized)
+  const typed = compactPersianAnswer(input)
+  if (!typed) return false
+  return acceptedPersianAnswers(word).some(answer => answer.replace(/ /g, '') === typed)
 }
 
 /**

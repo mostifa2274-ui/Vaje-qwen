@@ -77,3 +77,7 @@ public/art/chapters/b8c2.webp
 public/art/chapters/b8c3.webp
 public/art/chapters/b8c4.webp
 public/art/chapters/b8c5.webp
+
+# Playwright output
+test-results/
+playwright-report/
