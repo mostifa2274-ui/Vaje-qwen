@@ -4,6 +4,58 @@ import path from 'node:path'
 
 const root = new URL('..', import.meta.url).pathname
 const assets = {
+  'b2c5.webp': {
+    type: 'webp',
+    sha256: 'dba58216f8fbdf38e3426636f1cbf209ce74fbda99f7a7dc5d0e4eeaec9d8d25',
+  },
+  'b3c1.webp': {
+    type: 'webp',
+    sha256: '189592526fe66c96c667bdda0e2ed7ae8d7bfa35922025e03b4294fa30074359',
+  },
+  'b3c5.webp': {
+    type: 'webp',
+    sha256: '582bf5656a97949605518981242868effb7c5b5cfb1c4d2a1c6ad7bd6d2fd7bf',
+  },
+  'b5c4.webp': {
+    type: 'webp',
+    sha256: 'c6f7ff3adc2acf706515bf19d7679d68b27874aef80ef3446b190b9ff891da37',
+  },
+  'b6c3.webp': {
+    type: 'webp',
+    sha256: '3bf781a0e7816fa081c92541824dd96931ed9c253e25915f9e796296d4decf03',
+  },
+  'b6c4.webp': {
+    type: 'webp',
+    sha256: '1d6e3bd7f27f8e84633eefc3eb1906d231101025d5ec73743f9f86255a17d5d1',
+  },
+  'b7c4.webp': {
+    type: 'webp',
+    sha256: 'c672fae5344f6bd4224f9789ec7cf97433c334056b4ca19c043fd609b130b092',
+  },
+  'b7c5.webp': {
+    type: 'webp',
+    sha256: 'fdc0c82b03a27d76c6ef3075cdbf1cb20f68339ddb7989d4faacf720e9462d02',
+  },
+  'b8c1.webp': {
+    type: 'webp',
+    sha256: '585663ee57eced82608838794e06701365bef2470f0891b0b3625f9240e812f8',
+  },
+  'b8c2.webp': {
+    type: 'webp',
+    sha256: '940108358664b5d85d061a19ba1e0ca4eff80c4d1edaa47d1024f642d355def4',
+  },
+  'b8c3.webp': {
+    type: 'webp',
+    sha256: '9e3a6f07f96f404e44df22d08d4e3583b9b83b85aed1652ff13adf2641ff0cc1',
+  },
+  'b8c4.webp': {
+    type: 'webp',
+    sha256: '78c5c93d388827a408e1f6cde358a02c2c755125bda10138ea451957dd150633',
+  },
+  'b8c5.webp': {
+    type: 'webp',
+    sha256: '444e514b60208c481e81b175601159c90d618ed9b549bda207e9a18bc1065228',
+  },
   'b1c1.avif': {
     type: 'avif',
     sha256: '9b889befef58d5d632f23cb10af3d9a8ad1a24a29f522bf07ae32daac38fc2b2',

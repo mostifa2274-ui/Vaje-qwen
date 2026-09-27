@@ -331,3 +331,30 @@ function writeVerified(name, bytes, expectedSha256) {
   writeVerified('b6c2.webp', bytes, expectedSha256)
 }
 
+
+
+// Remaining 13 chapter-specific scenes, reviewed at delivery size.
+{
+  const assets = [
+    { name: 'b2c5.webp', size: 68300, sha256: 'dba58216f8fbdf38e3426636f1cbf209ce74fbda99f7a7dc5d0e4eeaec9d8d25' },
+    { name: 'b3c1.webp', size: 75428, sha256: '189592526fe66c96c667bdda0e2ed7ae8d7bfa35922025e03b4294fa30074359' },
+    { name: 'b3c5.webp', size: 69132, sha256: '582bf5656a97949605518981242868effb7c5b5cfb1c4d2a1c6ad7bd6d2fd7bf' },
+    { name: 'b5c4.webp', size: 73718, sha256: 'c6f7ff3adc2acf706515bf19d7679d68b27874aef80ef3446b190b9ff891da37' },
+    { name: 'b6c3.webp', size: 70972, sha256: '3bf781a0e7816fa081c92541824dd96931ed9c253e25915f9e796296d4decf03' },
+    { name: 'b6c4.webp', size: 58254, sha256: '1d6e3bd7f27f8e84633eefc3eb1906d231101025d5ec73743f9f86255a17d5d1' },
+    { name: 'b7c4.webp', size: 79208, sha256: 'c672fae5344f6bd4224f9789ec7cf97433c334056b4ca19c043fd609b130b092' },
+    { name: 'b7c5.webp', size: 65626, sha256: 'fdc0c82b03a27d76c6ef3075cdbf1cb20f68339ddb7989d4faacf720e9462d02' },
+    { name: 'b8c1.webp', size: 76292, sha256: '585663ee57eced82608838794e06701365bef2470f0891b0b3625f9240e812f8' },
+    { name: 'b8c2.webp', size: 73842, sha256: '940108358664b5d85d061a19ba1e0ca4eff80c4d1edaa47d1024f642d355def4' },
+    { name: 'b8c3.webp', size: 59242, sha256: '9e3a6f07f96f404e44df22d08d4e3583b9b83b85aed1652ff13adf2641ff0cc1' },
+    { name: 'b8c4.webp', size: 72930, sha256: '78c5c93d388827a408e1f6cde358a02c2c755125bda10138ea451957dd150633' },
+    { name: 'b8c5.webp', size: 74252, sha256: '444e514b60208c481e81b175601159c90d618ed9b549bda207e9a18bc1065228' },
+  ]
+  for (const asset of assets) {
+    const id = asset.name.replace(/\.webp$/, '')
+    const base64 = fs.readFileSync(path.join(root, `src/art/encoded/${id}.b64`), 'utf8').trim()
+    const bytes = Buffer.from(base64, 'base64')
+    if (bytes.length !== asset.size) throw new Error(`${id} artwork byte length mismatch: expected ${asset.size}, got ${bytes.length}`)
+    writeVerified(asset.name, bytes, asset.sha256)
+  }
+}
