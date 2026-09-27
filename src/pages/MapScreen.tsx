@@ -15,7 +15,6 @@ import {
   examRemediationPending,
 } from '../engine/gates'
 import { faNum, percent } from '../engine/format'
-import { BookBanner } from '../art/banners'
 
 interface Props {
   state: GhesseState
@@ -200,7 +199,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
           return (
             <div key={meta.book}>
               <section className={`book-section p-4 sm:p-5 ${!bookAvailable ? 'is-locked' : ''}`} style={{ background: meta.tint }}>
-                <div className="book-banner" aria-hidden="true"><BookBanner book={meta.book} /></div>
+                <div className="book-banner">\n                  <img\n                    src={meta.cover}\n                    alt={`تصویر کتاب ${faNum(meta.book)}: ${meta.titleFa}`}\n                    width={640}\n                    height={336}\n                    decoding="async"\n                  />\n                </div>
                 <div className="flex items-center gap-3">
                   <div className="min-w-0 flex-1">
                     <h2 className="text-xl font-extrabold">کتاب {faNum(meta.book)}: {meta.titleFa}</h2>
