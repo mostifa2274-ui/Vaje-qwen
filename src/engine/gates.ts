@@ -172,8 +172,8 @@ export function canTakeExam(state: GhesseState, id: string): boolean {
 
 export function nextGateAfterBook(state: GhesseState, book: number): string | undefined {
   const bookId = bookExamId(book)
-  if (!examPassed(state, bookId)) return bookId
-  if (book === 4 && !examPassed(state, MIDPOINT_EXAM_ID)) return MIDPOINT_EXAM_ID
-  if (book === 8 && !examPassed(state, FINAL_EXAM_ID)) return FINAL_EXAM_ID
+  if (!examCleared(state, bookId)) return bookId
+  if (book === 4 && !examCleared(state, MIDPOINT_EXAM_ID)) return MIDPOINT_EXAM_ID
+  if (book === 8 && !examCleared(state, FINAL_EXAM_ID)) return FINAL_EXAM_ID
   return undefined
 }
