@@ -48,8 +48,7 @@ function base(): string {
 export function loadClipIndex(fetcher: typeof fetch = fetch): Promise<void> {
   if (loading) return loading
 
-  let attempt: Promise<void>
-  attempt = fetcher(`${base()}audio/index.json`)
+  const attempt: Promise<void> = fetcher(`${base()}audio/index.json`)
     .then(response => {
       if (!response.ok) throw new Error(`Audio index HTTP ${response.status}`)
       return response.json()
