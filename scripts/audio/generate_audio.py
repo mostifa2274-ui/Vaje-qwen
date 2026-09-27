@@ -8,7 +8,8 @@ this script runs again, and the app then uses the device voice for it.
 Inputs (not committed; see scripts/audio/README.md):
   --model   Kokoro-82M v1.0 ONNX at float32 precision (model.onnx, or
             model_fp16.onnx converted by upcast_model.py)
-  --voice   a Kokoro v1.0 voice pack, e.g. af_heart.bin
+  --voice   a Kokoro v1.0 voice: a single-voice file such as af_heart.bin,
+            or kokoro-onnx's voices-v1.0.bin pack with --voice-name
 
 Output: public/audio/<hash>.mp3 and public/audio/index.json.
 """
@@ -19,6 +20,7 @@ import argparse
 import json
 import sys
 import time
+import zipfile
 from pathlib import Path
 
 import numpy as np
@@ -137,7 +139,7 @@ def collect() -> dict[str, tuple[str, str]]:
 
 
 class Speaker:
-    def __init__(self, model: Path, voice: Path, threads: int) -> None:
+    def __init__(self, model: Path, voice: Path, threads: int, voice_name: str = "af_heart") -> None:
         # Imported here so clip_id() and collect() load without the model stack.
         import onnxruntime as ort
         from misaki import en, espeak
@@ -145,7 +147,11 @@ class Speaker:
         options = ort.SessionOptions()
         options.intra_op_num_threads = threads
         self.session = ort.InferenceSession(str(model), options, providers=["CPUExecutionProvider"])
-        self.voice = np.fromfile(voice, dtype=np.float32).reshape(-1, 1, 256)
+        # The onnx-community export names its token input "input_ids"; the
+        # kokoro-onnx export of the same weights calls it "tokens".
+        inputs = {item.name for item in self.session.get_inputs()}
+        self.token_input = "input_ids" if "input_ids" in inputs else "tokens"
+        self.voice = load_voice(voice, voice_name)
         self.g2p = en.G2P(trf=False, british=False, fallback=espeak.EspeakFallback(british=False))
 
     def phonemes(self, kind: str, text: str) -> str:
@@ -159,7 +165,7 @@ class Speaker:
         tokens = [VOCAB[ch] for ch in phonemes if ch in VOCAB][:510]
         style = self.voice[min(len(tokens), len(self.voice) - 1)]
         audio = np.asarray(self.session.run(None, {
-            "input_ids": np.array([[0, *tokens, 0]], dtype=np.int64),
+            self.token_input: np.array([[0, *tokens, 0]], dtype=np.int64),
             "style": style.astype(np.float32),
             "speed": np.array([SPEED[kind]], dtype=np.float32),
         })[0], dtype=np.float32).reshape(-1)
@@ -168,6 +174,13 @@ class Speaker:
         if not np.isfinite(audio).all() or float(np.abs(audio).max()) < 0.05:
             raise RuntimeError(f"no audible speech for {kind} {text!r}; use the float32 model (upcast_model.py)")
         return trim(audio, kind)
+
+
+def load_voice(path: Path, name: str) -> np.ndarray:
+    """A voice's style vectors, from a single-voice file or a kokoro-onnx voice pack."""
+    if zipfile.is_zipfile(path):
+        return np.load(path)[name].reshape(-1, 1, 256)
+    return np.fromfile(path, dtype=np.float32).reshape(-1, 1, 256)
 
 
 def trim(audio: np.ndarray, kind: str) -> np.ndarray:
@@ -199,6 +212,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--voice", type=Path, required=True)
+    parser.add_argument("--voice-name", default="af_heart", help="the voice to use from a multi-voice pack")
     parser.add_argument("--out", type=Path, default=ROOT / "public/audio")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--limit", type=int, default=0, help="only generate this many new clips (for a trial run)")
@@ -207,7 +221,7 @@ def main() -> int:
 
     clips = collect()
     args.out.mkdir(parents=True, exist_ok=True)
-    speaker = Speaker(args.model, args.voice, args.threads)
+    speaker = Speaker(args.model, args.voice, args.threads, args.voice_name)
     # A clip's name hashes only its text, so a voice fix needs --rerecord.
     todo = [key for key in sorted(clips) if clips[key][0] == args.rerecord or not (args.out / f"{key}.mp3").exists()]
     if args.limit:
@@ -227,7 +241,8 @@ def main() -> int:
         if stale.stem not in clips and not args.limit:
             stale.unlink()
     available = sorted(path.stem for path in args.out.glob("*.mp3"))
-    (args.out / "index.json").write_text(json.dumps({"voice": f"kokoro-v1.0:{args.voice.stem}", "clips": available}, separators=(",", ":")) + "\n")
+    voice = args.voice_name if zipfile.is_zipfile(args.voice) else args.voice.stem
+    (args.out / "index.json").write_text(json.dumps({"voice": f"kokoro-v1.0:{voice}", "clips": available}, separators=(",", ":")) + "\n")
     print(f"index lists {len(available)} clips", flush=True)
     return 0
 
