@@ -5,259 +5,224 @@
   "titleFa": "خیابان",
   "titleEn": "The Street",
   "new": [
+    "friend",
     "street",
     "picture",
     "busy",
+    "car",
+    "bus",
+    "them",
+    "people",
+    "building",
     "city",
     "big",
-    "road",
     "park",
     "short",
-    "far",
+    "tree",
+    "road",
+    "left",
     "cafe",
     "opposite",
-    "left",
-    "right",
-    "tree",
+    "tall",
+    "full",
     "boy",
     "play",
     "ball",
     "girl",
-    "dog",
+    "mother",
     "man",
     "reading",
     "woman",
-    "child",
-    "person",
-    "who",
-    "show",
-    "explain",
-    "some",
     "around",
-    "any",
-    "someone",
-    "full",
-    "false",
-    "information",
-    "useful",
-    "idea",
-    "lunch",
-    "bring",
-    "them",
-    "until",
+    "child",
+    "some",
     "each",
-    "building",
+    "person",
+    "show",
+    "who",
+    "nice",
+    "right",
+    "dog",
+    "across",
+    "until",
+    "lunch",
+    "information",
+    "false",
+    "talk",
+    "idea",
+    "neighbor",
+    "useful",
     "thanks",
-    "center"
+    "someone"
   ],
   "sentences": [
     {
-      "en": "Mina and her parents go to the street with Nino's picture.",
-      "fa": "مینا و پدر و مادرش با عکس نینو به خیابان می‌روند."
+      "en": "The next morning, Mom's friend comes to stay with Aria and Yasi.",
+      "fa": "صبح روز بعد، دوست مامان می‌آید تا پیش آریا و یاسی بماند."
     },
     {
-      "en": "The street near her house is busy.",
-      "fa": "خیابان نزدیک خانه‌اش شلوغ است."
+      "en": "Mina, Mom and Dad open the yard door and go out into the street.",
+      "fa": "مینا و مامان و بابا درِ حیاط را باز می‌کنند و به خیابان می‌روند."
     },
     {
-      "en": "The city feels very big when she looks for Nino.",
-      "fa": "وقتی دنبال نینو می‌گردد، شهر خیلی بزرگ به نظر می‌رسد."
+      "en": "Mina has Nino's picture in her hand.",
+      "fa": "عکس نینو در دست میناست."
     },
     {
-      "en": "They follow the road to the park.",
-      "fa": "جاده را تا پارک دنبال می‌کنند."
+      "en": "The street is busy. Cars go past, and a bus stops near them.",
+      "fa": "خیابان شلوغ است. ماشین‌ها رد می‌شوند و اتوبوسی نزدیکشان می‌ایستد."
     },
     {
-      "en": "The park is only a short walk from home.",
-      "fa": "تا پارک فقط کمی پیاده‌روی است."
+      "en": "Mina looks at all the people and all the buildings.",
+      "fa": "مینا به همه‌ی آدم‌ها و همه‌ی ساختمان‌ها نگاه می‌کند."
     },
     {
-      "en": "Mina checks every door near the park.",
-      "fa": "مینا هر دری را نزدیک پارک بررسی می‌کند."
+      "en": "The city feels very big, and Nino is very small.",
+      "fa": "شهر خیلی بزرگ به نظر می‌رسد و نینو خیلی کوچک است."
     },
     {
-      "en": "She hopes Nino has not gone far.",
-      "fa": "امیدوار است نینو خیلی دور نرفته باشد."
+      "en": "\"Where do we start?\" she asks.",
+      "fa": "می‌پرسد: «از کجا شروع کنیم؟»"
     },
     {
-      "en": "A small cafe is next to the park.",
-      "fa": "یک کافه‌ی کوچک کنار پارک است."
+      "en": "\"At the park,\" Dad says. \"It is only a short walk, and it has many trees and birds.\"",
+      "fa": "بابا می‌گوید: «از پارک. فقط کمی راه است و درخت‌ها و پرنده‌های زیادی دارد.»"
     },
     {
-      "en": "An old house is opposite the cafe.",
-      "fa": "خانه‌ای قدیمی روبه‌روی کافه قرار دارد."
+      "en": "They follow the road to the park and turn left at the old cafe.",
+      "fa": "جاده را تا پارک دنبال می‌کنند و کنار کافه‌ی قدیمی به چپ می‌پیچند."
     },
     {
-      "en": "They turn left next to the old house.",
-      "fa": "کنار خانه‌ی قدیمی به چپ می‌پیچند."
+      "en": "The park is opposite a tall building, and it is full of people.",
+      "fa": "پارک روبه‌روی یک ساختمان بلند است و پر از آدم است."
     },
     {
-      "en": "Then they turn right to the trees.",
-      "fa": "بعد به راست و به سمت درخت‌ها می‌پیچند."
+      "en": "A boy plays with a ball, and a girl sits under a tree with her mother.",
+      "fa": "پسری با توپ بازی می‌کند و دختری با مادرش زیر درختی نشسته است."
     },
     {
-      "en": "A boy plays with a ball next to the road.",
-      "fa": "پسری کنار جاده با توپ بازی می‌کند."
+      "en": "An old man sits on a chair and is reading.",
+      "fa": "مردی پیر روی صندلی نشسته و مشغول خواندن است."
     },
     {
-      "en": "A girl sits near them with her mom.",
-      "fa": "دختری با مادرش نزدیک آن‌ها نشسته است."
+      "en": "A woman walks around the park with a small child.",
+      "fa": "زنی با یک بچه‌ی کوچک دور پارک قدم می‌زند."
     },
     {
-      "en": "An old man is reading in the park.",
-      "fa": "مردی پیر در پارک مشغول خواندن است."
+      "en": "Some people give bread to the birds near the trees.",
+      "fa": "چند نفر نزدیک درخت‌ها به پرنده‌ها نان می‌دهند."
     },
     {
-      "en": "A woman is walking slowly behind him.",
-      "fa": "زنی آرام پشت سر او راه می‌رود."
+      "en": "Mom goes to each person and shows them the picture.",
+      "fa": "مامان پیش تک‌تک آدم‌ها می‌رود و عکس را نشانشان می‌دهد."
     },
     {
-      "en": "A child runs past Mina and stops near her.",
-      "fa": "بچه‌ای از کنار مینا می‌دود و نزدیک او می‌ایستد."
+      "en": "\"Who has seen this little yellow chicken?\" she asks.",
+      "fa": "می‌پرسد: «چه کسی این جوجه‌ی زرد کوچک را دیده است؟»"
     },
     {
-      "en": "Another person brings food for the birds in the park.",
-      "fa": "فرد دیگری برای پرنده‌های پارک غذا می‌آورد."
+      "en": "The old man looks at the picture for a long time.",
+      "fa": "مرد پیر مدت زیادی به عکس نگاه می‌کند."
     },
     {
-      "en": "\"Who has seen a little yellow chicken?\" Mom asks.",
-      "fa": "مامان می‌پرسد: «چه کسی یک جوجه‌ی زرد کوچک دیده است؟»"
+      "en": "\"No, I am sorry,\" he says. \"But he has a nice face.\"",
+      "fa": "می‌گوید: «نه، متأسفم. اما صورت قشنگی دارد.»"
     },
     {
-      "en": "The old man looks up and asks who they are looking for.",
-      "fa": "مرد پیر سر بلند می‌کند و می‌پرسد دنبال چه کسی می‌گردند."
+      "en": "Then the woman with the child says, \"I saw something yellow in that tree.\"",
+      "fa": "بعد زنی که بچه همراهش است می‌گوید: «چیز زردی توی آن درخت دیدم.»"
     },
     {
-      "en": "Mina shows the picture, and Mom explains what Nino looks like.",
-      "fa": "مینا عکس را نشان می‌دهد و مامان توضیح می‌دهد نینو چه شکلی است."
+      "en": "Mina runs to the tree with Mom right behind her.",
+      "fa": "مینا به طرف درخت می‌دود و مامان درست پشت سرش است."
     },
     {
-      "en": "\"What did you see this morning?\" Mom asks the woman.",
-      "fa": "مامان از زن می‌پرسد: «امروز صبح چه دیدید؟»"
+      "en": "She looks up, and her face becomes happy for a moment.",
+      "fa": "بالا را نگاه می‌کند و برای لحظه‌ای صورتش خوشحال می‌شود."
     },
     {
-      "en": "The woman says she saw something yellow near the trees.",
-      "fa": "زن می‌گوید چیزی زرد نزدیک درخت‌ها دیده است."
+      "en": "But the yellow thing is only a bird.",
+      "fa": "اما آن چیز زرد فقط یک پرنده است."
     },
     {
-      "en": "Mina and Mom go to it, but the yellow thing is a bird.",
-      "fa": "مینا و مامان به سمتش می‌روند، اما آن چیز زرد یک پرنده است."
+      "en": "\"It is not Nino,\" Mina says quietly.",
+      "fa": "مینا آرام می‌گوید: «نینو نیست.»"
     },
     {
-      "en": "\"That is not Nino,\" Mina says, and she is sad.",
-      "fa": "مینا می‌گوید: «آن نینو نیست» و غمگین می‌شود."
+      "en": "Then a big dog runs across the park to them.",
+      "fa": "بعد سگ بزرگی از آن سوی پارک به طرفشان می‌دود."
     },
     {
-      "en": "Some women help them look behind the chairs.",
-      "fa": "چند زن کمک می‌کنند پشت صندلی‌ها را بگردند."
+      "en": "Mina is afraid, so she takes Mom's hand.",
+      "fa": "مینا می‌ترسد، پس دست مامان را می‌گیرد."
     },
     {
-      "en": "Some girls look around the park too.",
-      "fa": "چند دختر هم اطراف پارک را می‌گردند."
+      "en": "A man calls the dog, and it runs back to him.",
+      "fa": "مردی سگ را صدا می‌زند و سگ پیش او برمی‌گردد."
     },
     {
-      "en": "Mom asks if they saw any chicken near the road.",
-      "fa": "مامان می‌پرسد آیا جوجه‌ای نزدیک جاده دیده‌اند."
+      "en": "\"Stay close to us,\" Dad says. \"The city is different from home.\"",
+      "fa": "بابا می‌گوید: «نزدیک ما بمان. شهر با خانه فرق دارد.»"
     },
     {
-      "en": "The old man says he did not see any little yellow chicken.",
-      "fa": "مرد پیر می‌گوید هیچ جوجه‌ی زرد کوچکی ندیده است."
+      "en": "They look around the park until lunch.",
+      "fa": "تا ظهر اطراف پارک را می‌گردند."
     },
     {
-      "en": "Someone in the park calls, \"Look there!\"",
-      "fa": "کسی در پارک صدا می‌زند: «آنجا را نگاه کنید!»"
+      "en": "They check under each chair and behind every tree.",
+      "fa": "زیر هر صندلی و پشت همه‌ی درخت‌ها را نگاه می‌کنند."
     },
     {
-      "en": "It is the girl who sits with her mom.",
-      "fa": "همان دختری است که با مادرش نشسته است."
+      "en": "Some information is false, and some people do not want to talk.",
+      "fa": "بعضی اطلاعات غلط است و بعضی آدم‌ها نمی‌خواهند حرف بزنند."
     },
     {
-      "en": "She points to something moving behind a tree.",
-      "fa": "او به چیزی که پشت درخت حرکت می‌کند اشاره می‌کند."
+      "en": "Before they leave, the old man calls to Dad.",
+      "fa": "پیش از رفتنشان، مرد پیر بابا را صدا می‌زند."
     },
     {
-      "en": "Mina and Mom go quickly, but they find only another bird.",
-      "fa": "مینا و مامان سریع می‌روند، اما فقط پرنده‌ی دیگری پیدا می‌کنند."
+      "en": "\"I have an idea,\" he says. \"Small animals stay near houses with gardens.\"",
+      "fa": "می‌گوید: «فکری دارم. حیوان‌های کوچک نزدیک خانه‌هایی می‌مانند که باغچه دارند.»"
     },
     {
-      "en": "The big city now feels full of false information.",
-      "fa": "شهر بزرگ حالا پر از اطلاعات غلط به نظر می‌رسد."
+      "en": "\"Ask your neighbors. They see everything.\"",
+      "fa": "«از همسایه‌هایتان بپرسید. آن‌ها همه‌چیز را می‌بینند.»"
     },
     {
-      "en": "Still, the old man gives them one useful idea.",
-      "fa": "با این حال، مرد پیر ایده‌ی مفیدی به آن‌ها می‌دهد."
+      "en": "\"That is a useful idea,\" Dad says. \"Thanks!\"",
+      "fa": "بابا می‌گوید: «فکر مفیدی است. ممنون!»"
     },
     {
-      "en": "The quiet road behind the park has many gardens.",
-      "fa": "جاده‌ی آرام پشت پارک باغچه‌های زیادی دارد."
+      "en": "They walk home past the old cafe.",
+      "fa": "از کنار کافه‌ی قدیمی به خانه برمی‌گردند."
     },
     {
-      "en": "It is near enough to check before lunch.",
-      "fa": "آن‌قدر نزدیک هست که پیش از ناهار بررسی شود."
+      "en": "At the door, Mina looks at the picture again.",
+      "fa": "دمِ در، مینا دوباره به عکس نگاه می‌کند."
     },
     {
-      "en": "It is not far from the place where the bird was.",
-      "fa": "از جایی که پرنده دیده شد خیلی دور نیست."
-    },
-    {
-      "en": "The girl's mom says they can walk part of the road together.",
-      "fa": "مادرِ آن دختر می‌گوید می‌توانند بخشی از جاده را با هم بروند."
-    },
-    {
-      "en": "A big dog walks by, and Mina takes Mom's hand.",
-      "fa": "سگ بزرگی از کنارشان رد می‌شود و مینا دست مامان را می‌گیرد."
-    },
-    {
-      "en": "Mom tells Mina to stay close to her on the road.",
-      "fa": "مامان به مینا می‌گوید در جاده نزدیک او بماند."
-    },
-    {
-      "en": "The old man watches until they turn to the next street.",
-      "fa": "مرد پیر نگاه می‌کند تا آن‌ها به خیابان بعدی بپیچند."
-    },
-    {
-      "en": "The two families check each garden, and Mina calls Nino.",
-      "fa": "دو خانواده هر باغچه را بررسی می‌کنند و مینا نینو را صدا می‌زند."
-    },
-    {
-      "en": "One person checks the space next to a building.",
-      "fa": "یک نفر فضای کنار یک ساختمان را بررسی می‌کند."
-    },
-    {
-      "en": "Another looks opposite the houses by the wall.",
-      "fa": "دیگری روبه‌روی خانه‌ها کنار دیوار را نگاه می‌کند."
-    },
-    {
-      "en": "They look left and right, but find no chicken.",
-      "fa": "چپ و راست را می‌گردند، اما جوجه‌ای پیدا نمی‌کنند."
-    },
-    {
-      "en": "Nino is not in the park or on that road.",
-      "fa": "نینو نه در پارک است و نه در آن جاده."
-    },
-    {
-      "en": "Mina thanks everyone, and they walk home past the city center.",
-      "fa": "مینا از همه تشکر می‌کند و از کنار مرکز شهر به خانه برمی‌گردند."
+      "en": "\"After lunch, we ask the neighbors,\" she says. \"Maybe someone knows something.\"",
+      "fa": "می‌گوید: «بعد از ناهار از همسایه‌ها می‌پرسیم. شاید یک نفر چیزی بداند.»"
     }
   ],
   "check": [
     {
-      "q": "پارک کجاست؟",
+      "q": "خانواده اول کجا دنبال نینو می‌گردند؟",
       "options": [
-        "near",
-        "far",
-        "big",
-        "old"
+        "park",
+        "school",
+        "cafe",
+        "city"
       ],
-      "a": "near"
+      "a": "park"
     },
     {
-      "q": "چیز زردی که مینا و مامان نزدیک درخت‌ها پیدا می‌کنند چیست؟",
+      "q": "چیز زردی که در درخت است چیست؟",
       "options": [
         "bird",
         "chicken",
-        "boy",
-        "house"
+        "ball",
+        "dog"
       ],
       "a": "bird"
     }

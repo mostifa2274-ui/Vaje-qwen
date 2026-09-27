@@ -5,247 +5,224 @@
   "titleFa": "آواز در خیابان",
   "titleEn": "Music in the Street",
   "new": [
-    "restaurant",
+    "shop",
     "hungry",
+    "restaurant",
     "waiter",
+    "bring",
+    "neighborhood",
     "police",
     "policeman",
     "music",
-    "sing",
-    "song",
-    "singer",
-    "famous",
-    "neighborhood",
     "guitar",
+    "sing",
+    "famous",
+    "singer",
     "piano",
     "band",
-    "poem",
+    "song",
+    "word",
     "poet",
+    "read",
     "crowd",
-    "post",
-    "concert",
-    "area",
-    "actor",
-    "actress",
-    "introduce",
-    "study",
+    "poem",
+    "far",
     "artist",
     "draw",
     "writer",
-    "reader",
-    "talk",
-    "read",
-    "word",
     "art",
     "most",
-    "orange"
+    "reader",
+    "area",
+    "post",
+    "concert",
+    "actor",
+    "actress",
+    "introduce",
+    "study"
   ],
   "sentences": [
     {
-      "en": "Mina and Mom leave the park and go to a cafe.",
-      "fa": "مینا و مامان از پارک بیرون می‌آیند و به یک کافه می‌روند."
+      "en": "The bus stop is on a busy street full of shops.",
+      "fa": "ایستگاه اتوبوس در خیابانی شلوغ و پر از مغازه است."
     },
     {
-      "en": "The cafe is near a small restaurant.",
-      "fa": "کافه نزدیک یک رستوران کوچک است."
+      "en": "Mina and Mom look under the chairs at the stop and behind every tree.",
+      "fa": "مینا و مامان زیر صندلی‌های ایستگاه و پشت همه‌ی درخت‌ها را نگاه می‌کنند."
     },
     {
-      "en": "They stop at the restaurant because Mina is hungry.",
-      "fa": "آن‌ها در رستوران می‌ایستند چون مینا گرسنه است."
+      "en": "There is no chicken, only people who wait for the bus.",
+      "fa": "جوجه‌ای نیست، فقط آدم‌هایی که منتظر اتوبوس‌اند."
     },
     {
-      "en": "A waiter brings food to their table.",
-      "fa": "یک گارسون برای میز آن‌ها غذا می‌آورد."
+      "en": "\"I am hungry,\" Mina says, and Mom agrees.",
+      "fa": "مینا می‌گوید: «گرسنه‌ام» و مامان هم موافق است."
     },
     {
-      "en": "The waiter is friendly and asks about Nino.",
-      "fa": "گارسون مهربان است و درباره‌ی نینو می‌پرسد."
+      "en": "They sit at a table outside a small cafe, next to a restaurant.",
+      "fa": "پشت میزی بیرونِ یک کافه‌ی کوچک، کنار یک رستوران می‌نشینند."
     },
     {
-      "en": "Mina shows the waiter a picture of her little yellow chicken.",
-      "fa": "مینا عکس جوجه‌ی زرد کوچکش را به گارسون نشان می‌دهد."
+      "en": "A friendly waiter brings them bread, cheese and orange juice.",
+      "fa": "پیشخدمتی مهربان برایشان نان، پنیر و آب‌پرتقال می‌آورد."
+    },
+    {
+      "en": "He sees Nino's picture and asks about him.",
+      "fa": "عکس نینو را می‌بیند و درباره‌ی او می‌پرسد."
+    },
+    {
+      "en": "\"I will tell everyone in the neighborhood,\" he says.",
+      "fa": "می‌گوید: «به همه‌ی اهل محل می‌گویم.»"
     },
     {
       "en": "A police car stops near the cafe.",
       "fa": "یک ماشین پلیس نزدیک کافه می‌ایستد."
     },
     {
-      "en": "Mina and Mom go to the police car with Nino's picture.",
-      "fa": "مینا و مامان با عکس نینو پیش ماشین پلیس می‌روند."
+      "en": "Mom goes to the policeman and shows him the picture.",
+      "fa": "مامان پیش پلیس می‌رود و عکس را نشانش می‌دهد."
     },
     {
-      "en": "A policeman looks at Nino's picture.",
-      "fa": "یک پلیس به عکس نینو نگاه می‌کند."
+      "en": "\"We will look for your chicken,\" he says, and he writes Nino's description in his book.",
+      "fa": "می‌گوید: «دنبال جوجه‌تان می‌گردیم» و توصیف نینو را در دفترش می‌نویسد."
     },
     {
-      "en": "\"I will look for him,\" the policeman says.",
-      "fa": "پلیس می‌گوید: «من دنبال او می‌گردم.»"
+      "en": "Then Mina hears music from across the street.",
+      "fa": "بعد مینا صدای موسیقی را از آن سوی خیابان می‌شنود."
     },
     {
-      "en": "Then Mina hears music from the street outside the restaurant.",
-      "fa": "بعد مینا از خیابانِ بیرون رستوران صدای موسیقی می‌شنود."
+      "en": "A man with a guitar begins to sing.",
+      "fa": "مردی با گیتار شروع به خواندن می‌کند."
     },
     {
-      "en": "Mina and Mom stop and listen to the music.",
-      "fa": "مینا و مامان می‌ایستند و به موسیقی گوش می‌دهند."
+      "en": "He is a famous singer in this neighborhood, and people stop to listen.",
+      "fa": "او خواننده‌ی معروف این محله است و مردم می‌ایستند تا گوش کنند."
     },
     {
-      "en": "A man in the street begins to sing a song about home.",
-      "fa": "مردی در خیابان شروع می‌کند آوازی درباره‌ی خانه بخواند."
+      "en": "Next to him, another man plays the piano, and together they are a small band.",
+      "fa": "کنارش مرد دیگری پیانو می‌زند و با هم گروه کوچکی هستند."
     },
     {
-      "en": "The song is warm, and people stop to listen.",
-      "fa": "آواز گرمی است و مردم می‌ایستند تا گوش کنند."
+      "en": "The song is about home.",
+      "fa": "آهنگ درباره‌ی خانه است."
     },
     {
-      "en": "The singer looks happy.",
-      "fa": "خواننده خوشحال به نظر می‌رسد."
+      "en": "\"Come home, come home,\" the words say.",
+      "fa": "کلمه‌هایش می‌گویند: «برگرد خانه، برگرد خانه.»"
     },
     {
-      "en": "The singer is famous in the neighborhood, so many people come.",
-      "fa": "خواننده در محله مشهور است، پس خیلی‌ها می‌آیند."
-    },
-    {
-      "en": "A man next to him plays the guitar.",
-      "fa": "مردی کنار او گیتار می‌نوازد."
-    },
-    {
-      "en": "Mina likes the sound of the guitar.",
-      "fa": "مینا صدای گیتار را دوست دارد."
-    },
-    {
-      "en": "Another man plays the piano.",
-      "fa": "مرد دیگری پیانو می‌نوازد."
-    },
-    {
-      "en": "The black piano is in front of the cafe.",
-      "fa": "پیانوی سیاه جلوی کافه است."
-    },
-    {
-      "en": "Together, the singer, a man with a guitar, and a man at the piano make a small band.",
-      "fa": "خواننده، نوازنده‌ی گیتار و نوازنده‌ی پیانو با هم یک گروه کوچک تشکیل می‌دهند."
-    },
-    {
-      "en": "The band plays another song.",
-      "fa": "گروه آهنگ دیگری می‌نوازد."
+      "en": "Mina puts her hand on Mom's hand and listens.",
+      "fa": "مینا دستش را روی دست مامان می‌گذارد و گوش می‌دهد."
     },
     {
       "en": "When the song ends, an old poet stands up to read.",
-      "fa": "وقتی آواز تمام می‌شود، شاعری پیر بلند می‌شود تا شعر بخواند."
+      "fa": "وقتی آهنگ تمام می‌شود، شاعری پیر بلند می‌شود تا شعر بخواند."
     },
     {
       "en": "A small crowd comes around him.",
       "fa": "جمعیت کوچکی دورش جمع می‌شوند."
     },
     {
-      "en": "The poet reads a short poem about a bird far from home.",
-      "fa": "شاعر شعر کوتاهی درباره‌ی پرنده‌ای دور از خانه می‌خواند."
+      "en": "He reads a short poem about a bird far from home.",
+      "fa": "شعر کوتاهی درباره‌ی پرنده‌ای دور از خانه می‌خواند."
     },
     {
-      "en": "The poem makes Mina think of Nino.",
-      "fa": "شعر مینا را یاد نینو می‌اندازد."
+      "en": "In the poem, the bird is tired and afraid, but it does not stop.",
+      "fa": "در شعر، پرنده خسته است و می‌ترسد، اما دست نمی‌کشد."
     },
     {
-      "en": "The bird in the poem finds its way home, and the crowd is happy.",
-      "fa": "پرنده‌ی شعر راه خانه را پیدا می‌کند و جمعیت خوشحال است."
+      "en": "At the end, it finds its way home.",
+      "fa": "در آخر، راه خانه‌اش را پیدا می‌کند."
     },
     {
-      "en": "A poster says, \"Concert in the Park.\"",
-      "fa": "روی یک پوستر نوشته شده است: «کنسرت در پارک»."
+      "en": "The crowd is quiet, and then everyone thanks the poet.",
+      "fa": "جمعیت ساکت است و بعد همه از شاعر تشکر می‌کنند."
     },
     {
-      "en": "Mina and Mom follow the music to the small concert area.",
-      "fa": "مینا و مامان صدای موسیقی را تا محل کوچک کنسرت دنبال می‌کنند."
+      "en": "\"That poem is for Nino,\" Mina says.",
+      "fa": "مینا می‌گوید: «آن شعر برای نیناست.»"
     },
     {
-      "en": "An actor stands in front of the band.",
-      "fa": "یک بازیگر جلوی گروه می‌ایستد."
+      "en": "Next to the cafe, an artist draws people's faces.",
+      "fa": "کنار کافه، هنرمندی صورت آدم‌ها را نقاشی می‌کند."
     },
     {
-      "en": "The actor tells a short story.",
-      "fa": "بازیگر یک داستان کوتاه تعریف می‌کند."
-    },
-    {
-      "en": "An actress joins the actor and asks the people to listen.",
-      "fa": "یک بازیگر زن کنار بازیگر مرد می‌آید و از مردم می‌خواهد گوش کنند."
-    },
-    {
-      "en": "The actress introduces the next song to the people.",
-      "fa": "بازیگر زن آواز بعدی را به مردم معرفی می‌کند."
-    },
-    {
-      "en": "The actor and actress are both famous, but they stop to study Nino's picture.",
-      "fa": "بازیگر مرد و زن هر دو مشهورند، اما می‌ایستند تا عکس نینو را با دقت نگاه کنند."
-    },
-    {
-      "en": "An artist sits near the cafe and draws people.",
-      "fa": "یک هنرمند نزدیک کافه می‌نشیند و مردم را نقاشی می‌کند."
-    },
-    {
-      "en": "Mina watches the artist draw.",
-      "fa": "مینا نقاشی کردن هنرمند را تماشا می‌کند."
-    },
-    {
-      "en": "A writer sits next to the artist and writes small stories from the street.",
-      "fa": "نویسنده‌ای کنار هنرمند می‌نشیند و داستان‌های کوچکی از خیابان می‌نویسد."
-    },
-    {
-      "en": "The writer writes in a little book.",
-      "fa": "نویسنده در یک کتاب کوچک می‌نویسد."
-    },
-    {
-      "en": "A young reader near them looks up from her book when Mina talks about Nino.",
-      "fa": "کتاب‌خوان جوانی که نزدیکشان است، وقتی مینا از نینو حرف می‌زند سرش را از کتابش بالا می‌آورد."
-    },
-    {
-      "en": "The reader reads the writer's words.",
-      "fa": "کتاب‌خوان نوشته‌های نویسنده را می‌خواند."
+      "en": "A writer sits next to the artist and writes in a little book.",
+      "fa": "نویسنده‌ای کنار هنرمند نشسته و در دفتر کوچکی می‌نویسد."
     },
     {
       "en": "\"Art can tell a story,\" Mom says.",
-      "fa": "مامان می‌گوید: «هنر می‌تواند یک داستان تعریف کند.»"
+      "fa": "مامان می‌گوید: «هنر می‌تواند یک داستان را تعریف کند.»"
     },
     {
-      "en": "Mina likes art and opens her red book.",
-      "fa": "مینا هنر را دوست دارد و کتاب قرمزش را باز می‌کند."
+      "en": "Mina opens her red book and begins to draw.",
+      "fa": "مینا کتاب قرمزش را باز می‌کند و شروع به نقاشی می‌کند."
     },
     {
-      "en": "Mina decides to draw the one face she most wants everyone to remember.",
-      "fa": "مینا تصمیم می‌گیرد چهره‌ای را بکشد که بیشتر از همه می‌خواهد همه به خاطر بسپارند."
+      "en": "She draws Nino: small and yellow, with orange feet and a little white on the left.",
+      "fa": "نینو را می‌کشد: کوچک و زرد، با پاهای نارنجی و کمی سفید در سمت چپ."
     },
     {
-      "en": "She draws a small yellow chicken with orange feet and a little white on the left.",
-      "fa": "او یک جوجه‌ی زرد کوچک با پاهای نارنجی و کمی سفید در سمت چپ می‌کشد."
+      "en": "She shows her drawing to the people in the crowd.",
+      "fa": "نقاشی‌اش را به آدم‌های جمعیت نشان می‌دهد."
     },
     {
-      "en": "\"This is Nino,\" Mina says, showing the picture to the people around her.",
-      "fa": "مینا تصویر را به مردم اطرافش نشان می‌دهد و می‌گوید: «این نینو است.»"
+      "en": "Most people say no, but one reader looks up from her book.",
+      "fa": "بیشتر آدم‌ها می‌گویند نه، اما یک کتاب‌خوان سرش را از کتابش بالا می‌آورد."
     },
     {
-      "en": "The music plays, and Mina draws.",
-      "fa": "موسیقی پخش می‌شود و مینا نقاشی می‌کشد."
+      "en": "\"I saw this chicken!\" she says. \"Near the stop for bus ten.\"",
+      "fa": "می‌گوید: «این جوجه را دیدم! نزدیک ایستگاه اتوبوس شماره‌ی ده.»"
+    },
+    {
+      "en": "\"Bus ten goes to a busy area of the city,\" the waiter says.",
+      "fa": "پیشخدمت می‌گوید: «اتوبوس شماره‌ی ده به یک منطقه‌ی شلوغ شهر می‌رود.»"
+    },
+    {
+      "en": "Mom and the waiter talk about the way there.",
+      "fa": "مامان و پیشخدمت درباره‌ی راه آنجا حرف می‌زنند."
+    },
+    {
+      "en": "On the cafe wall, a poster says, \"Concert in the Park.\"",
+      "fa": "روی دیوار کافه، پوستری نوشته است: «کنسرت در پارک.»"
+    },
+    {
+      "en": "On the poster, a famous actor and actress introduce the band.",
+      "fa": "روی پوستر، یک بازیگر مرد و یک بازیگر زنِ معروف گروه را معرفی می‌کنند."
+    },
+    {
+      "en": "Mina studies the poster, but she is thinking about bus ten.",
+      "fa": "مینا به پوستر خیره می‌شود، اما به اتوبوس شماره‌ی ده فکر می‌کند."
+    },
+    {
+      "en": "\"Tomorrow, Dad can take you there,\" Mom says.",
+      "fa": "مامان می‌گوید: «فردا بابا می‌تواند تو را آنجا ببرد.»"
+    },
+    {
+      "en": "Mina closes her red book. There is a new word in it: \"Bus ten.\"",
+      "fa": "مینا کتاب قرمزش را می‌بندد. یک کلمه‌ی تازه در آن هست: «اتوبوس ده.»"
     }
   ],
   "check": [
     {
-      "q": "مینا در کتابش چه می‌کشد؟",
+      "q": "آهنگ خواننده درباره‌ی چیست؟",
       "options": [
-        "chicken",
+        "home",
         "bird",
-        "ball",
-        "song"
+        "city",
+        "bus"
       ],
-      "a": "chicken"
+      "a": "home"
     },
     {
       "q": "مردی که کنار خواننده است چه می‌نوازد؟",
       "options": [
-        "guitar",
         "piano",
+        "guitar",
         "ball",
         "book"
       ],
-      "a": "guitar"
+      "a": "piano"
     }
   ]
 }

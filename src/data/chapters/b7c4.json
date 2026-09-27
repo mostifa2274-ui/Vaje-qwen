@@ -5,174 +5,141 @@
   "titleFa": "مزرعه",
   "titleEn": "The Farm",
   "new": [
-    "plant",
-    "snow",
-    "create",
+    "fire",
     "build",
-    "fire"
+    "create",
+    "boot"
   ],
   "sentences": [
     {
-      "en": "The family gets off the train at a quiet farm in the country.",
-      "fa": "خانواده کنار یک مزرعه‌ی آرام در روستا از قطار پیاده می‌شوند."
+      "en": "The farmer's house is small and warm.",
+      "fa": "خانه‌ی کشاورز کوچک و گرم است."
     },
     {
-      "en": "A farmer says hello when Mina and her family arrive.",
-      "fa": "کشاورزی وقتی مینا و خانواده‌اش می‌رسند سلام می‌کند."
+      "en": "His wife brings hot tea and bread for everyone, and the driver comes in too.",
+      "fa": "همسرش برای همه چای داغ و نان می‌آورد و راننده هم داخل می‌آید."
     },
     {
-      "en": "The farmer listens when Mina describes Nino.",
-      "fa": "کشاورز وقتی مینا نینو را توصیف می‌کند گوش می‌دهد."
+      "en": "Outside, the rain does not stop.",
+      "fa": "بیرون، باران بند نمی‌آید."
     },
     {
-      "en": "He says small chickens often stay near the house and garden.",
-      "fa": "می‌گوید جوجه‌های کوچک اغلب نزدیک خانه و باغچه می‌مانند."
+      "en": "The farmer makes a fire, and everyone sits near it.",
+      "fa": "کشاورز آتشی روشن می‌کند و همه نزدیکش می‌نشینند."
     },
     {
-      "en": "Before they look, he shows them where vegetables grow.",
-      "fa": "پیش از جست‌وجو، نشانشان می‌دهد سبزی‌ها کجا رشد می‌کنند."
+      "en": "The farmer and his wife have a daughter. She is eleven, the same age as Mina.",
+      "fa": "کشاورز و همسرش یک دختر دارند. یازده ساله است، هم‌سن مینا."
     },
     {
-      "en": "Green plants grow behind the house.",
-      "fa": "گیاهان سبز پشت خانه رشد می‌کنند."
+      "en": "She builds a little house for Yasi with cups, and Yasi laughs and laughs.",
+      "fa": "با فنجان‌ها برای یاسی یک خانه‌ی کوچک می‌سازد و یاسی مدام می‌خندد."
     },
     {
-      "en": "The farmer explains how to plant in lines.",
-      "fa": "کشاورز توضیح می‌دهد چطور در ردیف بکارند."
+      "en": "\"The rain is good for my plants,\" the farmer tells Dad. \"Rice needs a lot of water.\"",
+      "fa": "کشاورز به بابا می‌گوید: «باران برای گیاه‌هایم خوب است. برنج آب زیادی لازم دارد.»"
     },
     {
-      "en": "Mina sees one red flower next to the road.",
-      "fa": "مینا یک گل قرمز کنار جاده می‌بیند."
+      "en": "\"What do you grow here?\" Dad asks.",
+      "fa": "بابا می‌پرسد: «اینجا چه می‌کارید؟»"
     },
     {
-      "en": "Another flower grows near a tall tree.",
-      "fa": "گل دیگری نزدیک یک درخت بلند رشد می‌کند."
+      "en": "\"Rice, tomatoes and some fruit,\" the farmer says. \"And we have chickens.\"",
+      "fa": "کشاورز می‌گوید: «برنج، گوجه‌فرنگی و کمی میوه. مرغ و جوجه هم داریم.»"
     },
     {
-      "en": "The tree is full of birds and moving leaves.",
-      "fa": "درخت پر از پرنده و برگ‌های در حال حرکت است."
+      "en": "Chickens! Mina shows the girl Nino's photo.",
+      "fa": "جوجه! مینا عکس نینو را به دختر نشان می‌دهد."
     },
     {
-      "en": "The air feels good after the long train ride.",
-      "fa": "هوا بعد از سفر طولانی با قطار حس خوبی دارد."
+      "en": "\"He is beautiful,\" the girl says. \"Where is he?\"",
+      "fa": "دختر می‌گوید: «چه خوشگل است. کجاست؟»"
     },
     {
-      "en": "The farmer says clean air helps the plants grow well.",
-      "fa": "کشاورز می‌گوید هوای پاک به رشد خوب گیاه‌ها کمک می‌کند."
+      "en": "\"I do not know,\" Mina says, and she tells her the story.",
+      "fa": "مینا می‌گوید: «نمی‌دانم» و ماجرا را برایش تعریف می‌کند."
     },
     {
-      "en": "Dark weather arrives, and light rain begins to fall.",
-      "fa": "هوای تیره می‌رسد و باران آرام شروع به باریدن می‌کند."
+      "en": "The girl listens to every word.",
+      "fa": "دختر به تک‌تک کلمه‌ها گوش می‌دهد."
     },
     {
-      "en": "The rain makes the land darker around the flowers.",
-      "fa": "باران زمین اطراف گل‌ها را تیره‌تر می‌کند."
+      "en": "Then the two girls create a picture of Nino together, with a red bird next to him.",
+      "fa": "بعد دو دختر با هم نقاشی‌ای از نینو می‌کشند، با یک پرنده‌ی قرمز کنارش."
     },
     {
-      "en": "Mina asks if the weather changes quickly here.",
-      "fa": "مینا می‌پرسد آیا هوا اینجا سریع تغییر می‌کند."
+      "en": "After an hour, the rain stops. Everything outside is clean and green.",
+      "fa": "بعد از یک ساعت، باران بند می‌آید. همه‌چیزِ بیرون تمیز و سبز است."
     },
     {
-      "en": "The farmer says mountain weather can change in minutes.",
-      "fa": "کشاورز می‌گوید هوای کوهستان می‌تواند در چند دقیقه عوض شود."
+      "en": "The yard is full of water, so the farmer's daughter gives Mina a pair of old boots.",
+      "fa": "حیاط پر از آب است، پس دختر کشاورز یک جفت چکمه‌ی کهنه به مینا می‌دهد."
     },
     {
-      "en": "In winter, snow is sometimes over all the farm.",
-      "fa": "زمستان گاهی برف روی تمام مزرعه است."
+      "en": "With the parents, the girls go out to see the chickens.",
+      "fa": "دخترها همراه پدر و مادرها بیرون می‌روند تا مرغ و جوجه‌ها را ببینند."
     },
     {
-      "en": "Today there is no snow, only cold rain.",
-      "fa": "امروز برفی نیست و فقط باران سرد می‌بارد."
+      "en": "There are big chickens and small chickens, white, brown and yellow.",
+      "fa": "مرغ‌های بزرگ و جوجه‌های کوچک هستند، سفید، قهوه‌ای و زرد."
     },
     {
-      "en": "The farmer asks everyone to come in and share warm bread.",
-      "fa": "کشاورز از همه می‌خواهد داخل بیایند و نان گرم را با هم تقسیم کنند."
+      "en": "A small yellow chicken runs to Mina's feet.",
+      "fa": "یک جوجه‌ی زرد کوچک به طرف پاهای مینا می‌دود."
     },
     {
-      "en": "He likes to share food with people who travel and stop near the farm.",
-      "fa": "او دوست دارد غذا را با افرادی که سفر می‌کنند و نزدیک مزرعه توقف می‌کنند تقسیم کند."
+      "en": "Mina looks at its left. There is no white. It is not Nino, and this time she knows it at once.",
+      "fa": "مینا به سمت چپش نگاه می‌کند. سفیدی ندارد. نینو نیست و این بار فوراً این را می‌فهمد."
     },
     {
-      "en": "In the house, Mina sees a drawing the farmer helped create.",
-      "fa": "داخل خانه، مینا نقاشی‌ای می‌بیند که کشاورز در ساختنش کمک کرده است."
+      "en": "But she sits down and gives the little chicken some bread.",
+      "fa": "اما می‌نشیند و به جوجه‌ی کوچک کمی نان می‌دهد."
     },
     {
-      "en": "It shows a new room he wants to build.",
-      "fa": "نقاشی اتاق جدیدی را نشان می‌دهد که می‌خواهد بسازد."
+      "en": "\"You are a kind girl,\" the farmer's wife says.",
+      "fa": "همسر کشاورز می‌گوید: «تو دختر مهربانی هستی.»"
     },
     {
-      "en": "His family will build the room together before winter.",
-      "fa": "خانواده‌اش پیش از زمستان اتاق را با هم خواهند ساخت."
+      "en": "Mina gives the girl one of her notes. \"Keep it,\" she says. \"People talk to people.\"",
+      "fa": "مینا یکی از یادداشت‌هایش را به دختر می‌دهد. می‌گوید: «نگهش دار. آدم‌ها با هم حرف می‌زنند.»"
     },
     {
-      "en": "A bird begins to fly across the yard in the rain.",
-      "fa": "پرنده‌ای شروع می‌کند از روی حیاط در باران پرواز کند."
+      "en": "When it is time to go, the farmer gives Mina some warm bread and a flower from his garden.",
+      "fa": "وقت رفتن، کشاورز کمی نان گرم و گلی از باغچه‌اش به مینا می‌دهد."
     },
     {
-      "en": "Mina watches it fly to the house.",
-      "fa": "مینا نگاه می‌کند که پرنده به سمت خانه پرواز می‌کند."
+      "en": "\"Bread for the trip,\" he says, \"and a flower for hope.\"",
+      "fa": "می‌گوید: «نان برای سفر و گل برای امید.»"
     },
     {
-      "en": "A small fire is in the house.",
-      "fa": "آتش کوچکی داخل خانه است."
+      "en": "Mom and Dad thank the family again and again.",
+      "fa": "مامان و بابا بارها و بارها از آن خانواده تشکر می‌کنند."
     },
     {
-      "en": "The fire keeps everyone warm as the rain keeps falling.",
-      "fa": "آتش همه را گرم نگه می‌دارد و باران همچنان می‌بارد."
-    },
-    {
-      "en": "When the weather improves, Mina checks the house and garden.",
-      "fa": "وقتی هوا بهتر می‌شود، مینا خانه و باغچه را بررسی می‌کند."
-    },
-    {
-      "en": "The farmer helps her look behind boxes and farm things.",
-      "fa": "کشاورز کمک می‌کند پشت جعبه‌ها و چیزهای مزرعه را بگردد."
-    },
-    {
-      "en": "They see where another chicken walked.",
-      "fa": "آن‌ها جایی را می‌بینند که جوجه‌ی دیگری راه رفته است."
-    },
-    {
-      "en": "Mina looks under the big tree and next to the plants.",
-      "fa": "مینا زیر درخت بزرگ و کنار گیاه‌ها را می‌گردد."
-    },
-    {
-      "en": "There is no little yellow chicken on the farm.",
-      "fa": "هیچ جوجه‌ی زرد کوچکی در مزرعه نیست."
-    },
-    {
-      "en": "The farmer gives Mina bread and one small flower.",
-      "fa": "کشاورز به مینا نان و یک گل کوچک می‌دهد."
-    },
-    {
-      "en": "He says the plan may change, but hope should stay.",
-      "fa": "می‌گوید برنامه شاید عوض شود، اما امید باید بماند."
-    },
-    {
-      "en": "Mina thanks him, and the family goes back to the station.",
-      "fa": "مینا از او تشکر می‌کند و خانواده به ایستگاه برمی‌گردد."
+      "en": "In the taxi, Mina puts the flower in her red book, on the page with the blue door.",
+      "fa": "در تاکسی، مینا گل را لای کتاب قرمزش می‌گذارد، در صفحه‌ی درِ آبی."
     }
   ],
   "check": [
     {
+      "q": "کشاورز در خانه چه چیزی روشن می‌کند؟",
+      "options": [
+        "fire",
+        "light",
+        "computer",
+        "television"
+      ],
+      "a": "fire"
+    },
+    {
       "q": "کشاورز به مینا نان و چه چیزی می‌دهد؟",
       "options": [
         "flower",
-        "fire",
-        "rain",
-        "snow"
+        "fruit",
+        "rice",
+        "tea"
       ],
       "a": "flower"
-    },
-    {
-      "q": "کشاورز می‌گوید چه نوع هوایی به رشد گیاه‌ها کمک می‌کند؟",
-      "options": [
-        "clean",
-        "dirty",
-        "dark",
-        "hot"
-      ],
-      "a": "clean"
     }
   ]
 }

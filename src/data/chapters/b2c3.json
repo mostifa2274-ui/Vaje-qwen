@@ -5,218 +5,187 @@
   "titleFa": "بازی در پارک",
   "titleEn": "Games in the Park",
   "new": [
-    "football",
+    "work",
     "game",
+    "football",
+    "carry",
     "player",
-    "across",
-    "basketball",
-    "team",
+    "any",
     "practice",
+    "basketball",
     "teacher",
+    "team",
     "match",
     "tennis",
     "baseball",
     "father",
     "kind",
     "sport",
-    "pool",
-    "win",
-    "swim",
-    "adult",
     "swimming",
     "lesson",
+    "adult",
+    "swim",
     "note",
     "gym",
-    "people",
     "exercise",
     "teenager",
-    "carry",
     "same",
-    "bus",
     "other",
-    "description",
+    "win",
     "its"
   ],
   "sentences": [
     {
-      "en": "Mina and Mom come to the park, and children play near the street.",
-      "fa": "مینا و مامان به پارک می‌رسند و بچه‌ها نزدیک خیابان بازی می‌کنند."
+      "en": "The next morning, Dad goes to work, and Aria goes to school.",
+      "fa": "صبح روز بعد، بابا سر کار می‌رود و آریا به مدرسه."
     },
     {
-      "en": "Two boys play football in the park.",
-      "fa": "دو پسر در پارک فوتبال بازی می‌کنند."
+      "en": "Mina has no more school now, so she and Mom walk back to the park.",
+      "fa": "مدرسه‌ی مینا دیگر تمام شده، پس او و مامان دوباره به پارک می‌روند."
     },
     {
-      "en": "Their game stops when the ball moves to Mina.",
-      "fa": "بازی آن‌ها وقتی توپ به سمت مینا می‌آید متوقف می‌شود."
+      "en": "Today the park is full of games.",
+      "fa": "امروز پارک پر از بازی است."
     },
     {
-      "en": "Mina takes the red ball and gives it back.",
-      "fa": "مینا توپ قرمز را برمی‌دارد و پس می‌دهد."
+      "en": "Two boys play football near the trees.",
+      "fa": "دو پسر نزدیک درخت‌ها فوتبال بازی می‌کنند."
     },
     {
-      "en": "\"Have you seen a little yellow chicken?\" Mom asks the football players.",
-      "fa": "مامان از بازیکن‌های فوتبال می‌پرسد: «جوجه‌ی زرد کوچکی دیده‌اید؟»"
+      "en": "Their ball comes across to Mina, and she stops it with her foot.",
+      "fa": "توپشان به طرف مینا می‌آید و او با پایش نگهش می‌دارد."
     },
     {
-      "en": "One player points across the park.",
-      "fa": "یکی از بازیکن‌ها آن سوی پارک را نشان می‌دهد."
+      "en": "She carries the ball back to the players.",
+      "fa": "توپ را برای بازیکن‌ها می‌برد."
     },
     {
-      "en": "A basketball team is practicing near the trees.",
-      "fa": "یک تیم بسکتبال نزدیک درخت‌ها تمرین می‌کند."
+      "en": "\"Thanks!\" one of the boys says.",
+      "fa": "یکی از پسرها می‌گوید: «ممنون!»"
     },
     {
-      "en": "The girls play basketball together.",
-      "fa": "دخترها با هم بسکتبال بازی می‌کنند."
+      "en": "Mom shows them Nino's picture. \"Have you seen any chickens here?\" she asks.",
+      "fa": "مامان عکس نینو را نشانشان می‌دهد. می‌پرسد: «این‌جا جوجه‌ای دیده‌اید؟»"
     },
     {
-      "en": "Their teacher says the next match is tomorrow.",
-      "fa": "معلمشان می‌گوید مسابقه‌ی بعدی فرداست."
+      "en": "The boys look at it, but they say no.",
+      "fa": "پسرها نگاهش می‌کنند، اما می‌گویند نه."
     },
     {
-      "en": "In another place, two friends play tennis.",
-      "fa": "جای دیگری، دو دوست تنیس بازی می‌کنند."
+      "en": "In another part of the park, some girls practice basketball with their teacher.",
+      "fa": "در بخش دیگری از پارک، چند دختر با معلمشان بسکتبال تمرین می‌کنند."
     },
     {
-      "en": "A tennis ball is next to a chair.",
-      "fa": "یک توپ تنیس کنار یک صندلی است."
+      "en": "Their team has a big match tomorrow.",
+      "fa": "تیمشان فردا مسابقه‌ی مهمی دارد."
     },
     {
-      "en": "Far away, a boy plays baseball with his father.",
-      "fa": "دورتر، پسری با پدرش بیس‌بال بازی می‌کند."
+      "en": "Near them, two women play tennis, and a boy plays baseball with his father.",
+      "fa": "نزدیکشان، دو زن تنیس بازی می‌کنند و پسری با پدرش بیسبال بازی می‌کند."
     },
     {
-      "en": "Mom asks every group about Nino.",
-      "fa": "مامان از هر گروه درباره‌ی نینو می‌پرسد."
+      "en": "\"Every kind of sport is here today,\" Mom says.",
+      "fa": "مامان می‌گوید: «امروز هر نوع ورزشی اینجا هست.»"
     },
     {
-      "en": "Everyone enjoys some kind of sport today.",
-      "fa": "امروز همه از نوعی ورزش لذت می‌برند."
+      "en": "But nobody has seen a little yellow chicken.",
+      "fa": "اما هیچ‌کس یک جوجه‌ی زرد کوچک ندیده است."
     },
     {
-      "en": "A young player says he saw a small chicken near the pool.",
-      "fa": "یک بازیکن جوان می‌گوید نزدیک استخر یک جوجه‌ی کوچک دیده است."
+      "en": "Then they come to the pool.",
+      "fa": "بعد به استخر می‌رسند."
     },
     {
-      "en": "Mina and Mom follow him because the information is important.",
-      "fa": "مینا و مامان دنبالش می‌روند چون این اطلاعات مهم است."
+      "en": "The pool is only for women and girls, so Mina and Mom can go in.",
+      "fa": "استخر فقط مخصوص زنان و دختران است، پس مینا و مامان می‌توانند وارد شوند."
     },
     {
-      "en": "His team stays behind to finish the match.",
-      "fa": "تیم او می‌ماند تا مسابقه را تمام کند."
+      "en": "In the pool, a teacher is giving a swimming lesson to some children.",
+      "fa": "در استخر، یک مربی به چند بچه درس شنا می‌دهد."
     },
     {
-      "en": "They are happy when their team begins to win.",
-      "fa": "وقتی تیمشان شروع به بردن می‌کند، خوشحال‌اند."
+      "en": "An adult stays with the children all the time.",
+      "fa": "یک بزرگسال تمام وقت پیش بچه‌ها می‌ماند."
     },
     {
-      "en": "The winning player says goodbye before Mina walks on.",
-      "fa": "بازیکن برنده پیش از اینکه مینا به راهش ادامه دهد خداحافظی می‌کند."
+      "en": "One girl can swim all the way across the pool.",
+      "fa": "یک دختر می‌تواند تمام عرض استخر را شنا کند."
     },
     {
-      "en": "The pool is only for women and girls, so Mina and Mom go in.",
-      "fa": "استخر فقط مخصوص زنان و دختران است، پس مینا و مامان وارد می‌شوند."
+      "en": "Her mother waits next to the water and calls, \"Very good!\"",
+      "fa": "مادرش کنار آب منتظر است و صدا می‌زند: «آفرین!»"
     },
     {
-      "en": "Swimming lessons are happening in the small pool.",
-      "fa": "کلاس‌های شنا در استخر کوچک در حال برگزاری است."
+      "en": "Mina looks around the pool, and then she looks again.",
+      "fa": "مینا اطراف استخر را نگاه می‌کند و بعد دوباره نگاه می‌کند."
     },
     {
-      "en": "One girl can swim all the way across.",
-      "fa": "یک دختر می‌تواند تمام مسیر را شنا کند."
+      "en": "There are birds near the water, but there is no chicken.",
+      "fa": "نزدیک آب پرنده هست، اما جوجه‌ای نیست."
     },
     {
-      "en": "Her mother waits next to the pool.",
-      "fa": "مادرش کنار استخر منتظر است."
+      "en": "\"The woman on our street saw him here,\" Mina says. \"Why is he not here now?\"",
+      "fa": "مینا می‌گوید: «زنِ خیابانمان او را اینجا دیده. چرا حالا اینجا نیست؟»"
     },
     {
-      "en": "Mina looks around the pool.",
-      "fa": "مینا اطراف استخر را نگاه می‌کند."
+      "en": "\"Chickens do not stay in one place,\" Mom says. \"He is looking for food.\"",
+      "fa": "مامان می‌گوید: «جوجه‌ها یک جا نمی‌مانند. دنبال غذاست.»"
     },
     {
-      "en": "There is no little yellow chicken by the water.",
-      "fa": "کنار آب هیچ جوجه‌ی زرد کوچکی نیست."
+      "en": "Outside the pool, a note on the wall shows the way to the gym.",
+      "fa": "بیرون استخر، یادداشتی روی دیوار راه باشگاه را نشان می‌دهد."
     },
     {
-      "en": "A note says there is a gym next to the park.",
-      "fa": "یک یادداشت می‌گوید کنار پارک یک باشگاه ورزشی هست."
+      "en": "People come out of the gym after their exercise.",
+      "fa": "آدم‌ها بعد از ورزششان از باشگاه بیرون می‌آیند."
     },
     {
-      "en": "In the gym, people exercise together.",
-      "fa": "داخل باشگاه، مردم با هم ورزش می‌کنند."
+      "en": "One of them is a teenager with a sports bag.",
+      "fa": "یکی از آن‌ها نوجوانی با یک کیف ورزشی است."
     },
     {
-      "en": "A teenager comes out carrying a sports bag.",
-      "fa": "نوجوانی با یک کیف ورزشی از باشگاه بیرون می‌آید."
+      "en": "Mom shows her the picture, and the teenager looks at it for a long time.",
+      "fa": "مامان عکس را نشانش می‌دهد و نوجوان مدتی طولانی به آن نگاه می‌کند."
     },
     {
-      "en": "The teenager remembers seeing a small chicken before.",
-      "fa": "نوجوان یادش می‌آید کمی قبل جوجه‌ی کوچکی دیده است."
+      "en": "\"I think I saw the same chicken,\" she says.",
+      "fa": "می‌گوید: «فکر کنم همین جوجه را دیدم.»"
     },
     {
-      "en": "\"Was it yellow?\" Mina asks.",
-      "fa": "مینا می‌پرسد: «زرد بود؟»"
+      "en": "\"When?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «کی؟»"
     },
     {
-      "en": "A group of young people comes together to help.",
-      "fa": "گروهی از جوان‌ها جمع می‌شوند تا کمک کنند."
+      "en": "\"This morning, near the bus stop. Yellow, with orange feet.\"",
+      "fa": "«امروز صبح، نزدیک ایستگاه اتوبوس. زرد، با پاهای نارنجی.»"
     },
     {
-      "en": "They look at Nino's picture together.",
-      "fa": "آن‌ها با هم به عکس نینو نگاه می‌کنند."
+      "en": "\"That is the description of Nino!\" Mina says.",
+      "fa": "مینا می‌گوید: «این توصیفِ نیناست!»"
     },
     {
-      "en": "One young woman thinks the chicken went to the street.",
-      "fa": "یک زن جوان فکر می‌کند جوجه به سمت خیابان رفته است."
+      "en": "Other people come to listen, and a small group looks under the trees with them.",
+      "fa": "آدم‌های دیگری می‌آیند تا گوش بدهند و گروه کوچکی همراهشان زیر درخت‌ها را می‌گردند."
     },
     {
-      "en": "An adult man says he saw the same chicken near a bus stop.",
-      "fa": "یک مرد بزرگسال می‌گوید همان جوجه را نزدیک ایستگاه اتوبوس دیده است."
+      "en": "A child finds only a ball, and everyone laughs.",
+      "fa": "بچه‌ای فقط یک توپ پیدا می‌کند و همه می‌خندند."
     },
     {
-      "en": "Other people near them listen to the description.",
-      "fa": "افراد دیگری که نزدیکشان هستند به توضیحات گوش می‌دهند."
+      "en": "Near the trees, the football game ends, and the boys' team wins its match.",
+      "fa": "نزدیک درخت‌ها، بازی فوتبال تمام می‌شود و تیم پسرها مسابقه‌اش را می‌برد."
     },
     {
-      "en": "For a moment, everyone looks near the trees together.",
-      "fa": "برای لحظه‌ای همه با هم نزدیک درخت‌ها را می‌گردند."
+      "en": "The players are happy, and for a moment, Mina is happy too.",
+      "fa": "بازیکن‌ها خوشحال‌اند و برای لحظه‌ای مینا هم خوشحال است."
     },
     {
-      "en": "A child finds only a ball under one tree.",
-      "fa": "بچه‌ای زیر یکی از درخت‌ها فقط یک توپ پیدا می‌کند."
+      "en": "\"The bus stop,\" Mom says. \"Let's go and see.\"",
+      "fa": "مامان می‌گوید: «ایستگاه اتوبوس. برویم ببینیم.»"
     },
     {
-      "en": "The ball starts a little game, and the younger children laugh.",
-      "fa": "توپ یک بازی کوچک راه می‌اندازد و بچه‌های کوچک‌تر می‌خندند."
-    },
-    {
-      "en": "Mina is happy for a moment, but she keeps thinking about Nino.",
-      "fa": "مینا برای لحظه‌ای خوشحال است، اما همچنان به نینو فکر می‌کند."
-    },
-    {
-      "en": "The football team finishes its match before she leaves.",
-      "fa": "پیش از رفتن مینا، تیم فوتبال مسابقه‌اش را تمام می‌کند."
-    },
-    {
-      "en": "The players win and are very happy.",
-      "fa": "بازیکن‌ها می‌برند و خیلی خوشحال‌اند."
-    },
-    {
-      "en": "Mina and Mom thank the people who helped them look.",
-      "fa": "مینا و مامان از کسانی که در گشتن کمکشان کردند تشکر می‌کنند."
-    },
-    {
-      "en": "They leave the park with new information.",
-      "fa": "آن‌ها با اطلاعات تازه پارک را ترک می‌کنند."
-    },
-    {
-      "en": "The information takes them to the bus stop, not back to the pool.",
-      "fa": "این اطلاعات آن‌ها را به ایستگاه اتوبوس می‌برد، نه دوباره به استخر."
-    },
-    {
-      "en": "Nino is not in the park, but they keep looking.",
-      "fa": "نینو در پارک نیست، اما آن‌ها به جست‌وجو ادامه می‌دهند."
+      "en": "Mina takes Mom's hand, and they walk out of the park together.",
+      "fa": "مینا دست مامان را می‌گیرد و با هم از پارک بیرون می‌روند."
     }
   ],
   "check": [
@@ -231,14 +200,14 @@
       "a": "football"
     },
     {
-      "q": "دخترها کجا شنا می‌کنند؟",
+      "q": "نوجوان جوجه را نزدیک کجا دیده است؟",
       "options": [
+        "bus",
         "pool",
         "gym",
-        "street",
-        "yard"
+        "school"
       ],
-      "a": "pool"
+      "a": "bus"
     }
   ]
 }

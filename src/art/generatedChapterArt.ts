@@ -279,7 +279,7 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b8c3: {
     src: publicAsset('art/chapters/b8c3.webp'),
-    altFa: 'مینا در اتاق معاینه به پزشک گوش می‌دهد و پرستار برای عمویش یک لیوان آب می‌آورد.',
+    altFa: 'مینا در اتاق معاینه به پزشک گوش می‌دهد و پرستار برای دایی‌اش یک لیوان آب می‌آورد.',
     altEn: 'Mina listens to the doctor while a nurse brings her uncle a glass of water after his examination.',
     width: 640,
     height: 336,

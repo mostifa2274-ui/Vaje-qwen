@@ -6,221 +6,163 @@
   "titleEn": "The Trip",
   "new": [
     "trip",
-    "grandfather",
     "vacation",
+    "grandfather",
+    "mountain",
+    "sweater",
     "jacket",
+    "t-shirt",
     "jeans",
+    "skirt",
+    "dress",
     "pants",
     "shirt",
-    "dress",
-    "skirt",
-    "sweater",
-    "mountain",
-    "t-shirt",
-    "wear",
     "hat",
+    "wear",
+    "passport",
+    "train",
+    "ticket",
+    "plane",
+    "flight",
+    "airport",
     "travel",
-    "boot",
-    "train"
+    "capital",
+    "mile"
   ],
   "sentences": [
     {
-      "en": "The family is getting ready for a trip.",
-      "fa": "خانواده برای یک سفر آماده می‌شود."
+      "en": "\"A trip to the north? Now?\" Mina says the next morning. \"But what if Nino comes home?\"",
+      "fa": "مینا صبح روز بعد می‌گوید: «سفر به شمال؟ حالا؟ اما اگر نینو برگردد خانه چه؟»"
     },
     {
-      "en": "They will visit Grandmother and Grandfather.",
-      "fa": "آن‌ها قرار است به دیدن مادربزرگ و پدربزرگ بروند."
+      "en": "Mom sits next to her on the bed. \"I understand,\" she says.",
+      "fa": "مامان کنارش روی تخت می‌نشیند. می‌گوید: «می‌فهمم.»"
     },
     {
-      "en": "Grandmother lives far away in the north.",
-      "fa": "مادربزرگ دور، در شمال زندگی می‌کند."
+      "en": "\"But your school vacation is long, and Grandmother and Grandfather want to see you.\"",
+      "fa": "«اما تعطیلات مدرسه‌ات طولانی است و مادربزرگ و پدربزرگ می‌خواهند تو را ببینند.»"
     },
     {
-      "en": "Grandfather lives there with her.",
-      "fa": "پدربزرگ هم آنجا با او زندگی می‌کند."
+      "en": "\"It is only two weeks,\" Dad says. \"And first, we do two things.\"",
+      "fa": "بابا می‌گوید: «فقط دو هفته است. و اول، دو کار می‌کنیم.»"
     },
     {
-      "en": "Mina is happy about the visit, but she still thinks about Nino.",
-      "fa": "مینا از این دیدار خوشحال است، اما هنوز به نینو فکر می‌کند."
+      "en": "That afternoon, Mina and Dad take bus ten to the busy neighborhood.",
+      "fa": "آن بعدازظهر، مینا و بابا سوار اتوبوس ده می‌شوند و به محله‌ی شلوغ می‌روند."
     },
     {
-      "en": "Mom opens Mina's bag and says, \"We need clothes for the vacation.\"",
-      "fa": "مامان کیف مینا را باز می‌کند و می‌گوید: «برای تعطیلات لباس لازم داریم.»"
+      "en": "The blue door is closed. There is no food in the dish, and there are no birds.",
+      "fa": "درِ آبی بسته است. در ظرف غذایی نیست و هیچ پرنده‌ای هم نیست."
     },
     {
-      "en": "Mina puts a warm coat in the bag first.",
-      "fa": "مینا اول یک پالتوی گرم در کیف می‌گذارد."
+      "en": "Dad calls at the door, but nobody answers.",
+      "fa": "بابا دمِ در صدا می‌زند، اما کسی جواب نمی‌دهد."
     },
     {
-      "en": "Next she adds a black jacket.",
-      "fa": "بعد یک ژاکت سیاه اضافه می‌کند."
+      "en": "A woman from the next house comes out. \"She is at her daughter's house in another city,\" she tells Dad. \"She will come back soon.\"",
+      "fa": "زنی از خانه‌ی بغلی بیرون می‌آید. به بابا می‌گوید: «خانه‌ی دخترش در یک شهر دیگر است. به‌زودی برمی‌گردد.»"
     },
     {
-      "en": "She puts her blue jeans next to the jacket.",
-      "fa": "شلوار جین آبی‌اش را کنار ژاکت می‌گذارد."
+      "en": "So Mina puts a new note under the blue door. Its title is: \"Have You Seen Nino?\"",
+      "fa": "پس مینا یک یادداشت تازه زیر درِ آبی می‌گذارد. عنوانش این است: «نینو را دیده‌اید؟»"
     },
     {
-      "en": "A pair of black pants goes in next.",
-      "fa": "بعد یک شلوار سیاه داخل کیف می‌رود."
+      "en": "In the evening, the family goes to Negar's house.",
+      "fa": "عصر، خانواده به خانه‌ی نگار می‌روند."
     },
     {
-      "en": "Mina chooses a white shirt for the visit.",
-      "fa": "مینا برای دیدار یک پیراهن سفید انتخاب می‌کند."
+      "en": "\"Every night, I will put water and bread by your door,\" Negar's mother says. \"And if anything happens, I will call you.\"",
+      "fa": "مادر نگار می‌گوید: «هر شب آب و نان کنار درتان می‌گذارم. و اگر اتفاقی افتاد، به شما زنگ می‌زنم.»"
     },
     {
-      "en": "She also puts a pretty dress in the bag.",
-      "fa": "یک پیراهن دخترانه‌ی قشنگ هم در کیف می‌گذارد."
+      "en": "\"Thank you,\" Mina says, and now she can go.",
+      "fa": "مینا می‌گوید: «ممنونم» و حالا می‌تواند برود."
     },
     {
-      "en": "Her red skirt goes under the dress.",
-      "fa": "دامن قرمزش زیر پیراهن قرار می‌گیرد."
+      "en": "That night, the family gets ready for the trip.",
+      "fa": "آن شب، خانواده برای سفر آماده می‌شوند."
     },
     {
-      "en": "A warm sweater will be useful in the mountains.",
-      "fa": "یک بافتنی گرم در کوهستان به درد می‌خورد."
+      "en": "\"It is cold at night in the mountains,\" Mom says. \"Take a sweater and a jacket.\"",
+      "fa": "مامان می‌گوید: «شب‌ها در کوه سرد است. یک بلوز پشمی و یک کاپشن بردار.»"
     },
     {
-      "en": "Mina adds a white T-shirt too.",
-      "fa": "مینا یک تی‌شرت سفید هم اضافه می‌کند."
+      "en": "Mina puts two T-shirts, a pair of jeans, a skirt and a dress in her bag.",
+      "fa": "مینا دو تی‌شرت، یک شلوار جین، یک دامن و یک پیراهن بلند در کیفش می‌گذارد."
     },
     {
-      "en": "Now the bag is very full of clothes.",
-      "fa": "حالا کیف خیلی پر از لباس است."
+      "en": "Aria puts in two pants, three shirts and, of course, his light.",
+      "fa": "آریا دو شلوار، سه پیراهن و البته چراغش را می‌گذارد."
     },
     {
-      "en": "\"What will you wear on the first day?\" Mom asks.",
-      "fa": "مامان می‌پرسد: «روز اول چه می‌پوشی؟»"
+      "en": "\"And take something for the rain,\" Dad says. \"It rains a lot in the north.\"",
+      "fa": "بابا می‌گوید: «یک چیزی هم برای باران بردارید. در شمال زیاد باران می‌بارد.»"
     },
     {
-      "en": "Mina says she will wear the blue jeans and the white shirt.",
-      "fa": "مینا می‌گوید شلوار جین آبی و پیراهن سفید را می‌پوشد."
+      "en": "\"Take your hat too, and wear it in the sun,\" Mom says.",
+      "fa": "مامان می‌گوید: «کلاهت را هم بردار و زیر آفتاب سرت بگذار.»"
     },
     {
-      "en": "She puts her red hat on her head.",
-      "fa": "او کلاه قرمزش را روی سر می‌گذارد."
+      "en": "\"Is the north another country?\" Aria asks. \"Do we need a passport?\"",
+      "fa": "آریا می‌پرسد: «شمال یک کشور دیگر است؟ پاسپورت لازم داریم؟»"
     },
     {
-      "en": "\"This hat can travel with me,\" she says.",
-      "fa": "می‌گوید: «این کلاه می‌تواند با من سفر کند.»"
+      "en": "Dad laughs. \"No, it is our country. We only need train tickets.\"",
+      "fa": "بابا می‌خندد. «نه، کشور خودمان است. فقط بلیت قطار لازم داریم.»"
     },
     {
-      "en": "Near the door, Mina sees one brown boot.",
-      "fa": "کنار در، مینا یک چکمه‌ی قهوه‌ای می‌بیند."
+      "en": "\"Can we go by plane?\" Aria asks. \"A flight is fast!\"",
+      "fa": "آریا می‌پرسد: «می‌توانیم با هواپیما برویم؟ پرواز سریع است!»"
     },
     {
-      "en": "\"Where is the other boot?\" she asks.",
-      "fa": "می‌پرسد: «چکمه‌ی دیگر کجاست؟»"
+      "en": "\"The airport is far, and on the train you can see everything from the window,\" Dad says.",
+      "fa": "بابا می‌گوید: «فرودگاه دور است و از پنجره‌ی قطار می‌توانی همه‌چیز را ببینی.»"
     },
     {
-      "en": "Dad finds it under a chair.",
-      "fa": "بابا آن را زیر یک صندلی پیدا می‌کند."
+      "en": "He shows them the map. \"We travel from the capital to the north, more than two hundred miles.\"",
+      "fa": "نقشه را نشانشان می‌دهد. «از پایتخت تا شمال سفر می‌کنیم، بیشتر از دویست مایل.»"
     },
     {
-      "en": "Mina also puts a light shoe in the bag for warm weather.",
-      "fa": "مینا یک کفش سبک هم برای هوای گرم در کیف می‌گذارد."
+      "en": "Mina puts her red book, Nino's photo and ten notes in her bag too.",
+      "fa": "مینا کتاب قرمزش، عکس نینو و ده یادداشت را هم در کیفش می‌گذارد."
     },
     {
-      "en": "She leaves another pair of shoes next to the bag.",
-      "fa": "یک جفت کفش دیگر را کنار کیف می‌گذارد."
+      "en": "\"Why notes?\" Aria asks. \"Nino is not in the north.\"",
+      "fa": "آریا می‌پرسد: «یادداشت برای چه؟ نینو که در شمال نیست.»"
     },
     {
-      "en": "Dad comes in with a map.",
-      "fa": "بابا با یک نقشه وارد می‌شود."
+      "en": "\"I know,\" Mina says. \"But people talk to people. Maybe someone knows someone.\"",
+      "fa": "مینا می‌گوید: «می‌دانم. اما آدم‌ها با هم حرف می‌زنند. شاید کسی کسی را بشناسد.»"
     },
     {
-      "en": "He opens the map on the table.",
-      "fa": "او نقشه را روی میز باز می‌کند."
+      "en": "Before bed, she looks out of the window at the yard door.",
+      "fa": "قبل از خواب، از پنجره به درِ حیاط نگاه می‌کند."
     },
     {
-      "en": "\"This is the way to Grandmother's house,\" Dad says.",
-      "fa": "بابا می‌گوید: «این راه خانه‌ی مادربزرگ است.»"
-    },
-    {
-      "en": "The way is long, so they will leave early.",
-      "fa": "راه طولانی است، پس آن‌ها زود حرکت می‌کنند."
-    },
-    {
-      "en": "Mina follows the blue line on the map with her hand.",
-      "fa": "مینا با دستش خط آبی روی نقشه را دنبال می‌کند."
-    },
-    {
-      "en": "\"Our trip goes past the city and into the mountains,\" Dad says.",
-      "fa": "بابا می‌گوید: «سفر ما از کنار شهر می‌گذرد و به کوه‌ها می‌رود.»"
-    },
-    {
-      "en": "Mina thinks Nino could be on that road.",
-      "fa": "مینا فکر می‌کند شاید نینو در همان جاده باشد."
-    },
-    {
-      "en": "\"We can look as we travel,\" Mom says.",
-      "fa": "مامان می‌گوید: «وقتی سفر می‌کنیم می‌توانیم نگاه کنیم.»"
-    },
-    {
-      "en": "The family will travel by train for part of the trip.",
-      "fa": "خانواده بخشی از سفر را با قطار طی می‌کند."
-    },
-    {
-      "en": "Mina likes the idea of a train trip.",
-      "fa": "مینا از فکر سفر با قطار خوشش می‌آید."
-    },
-    {
-      "en": "This vacation is not only for fun now.",
-      "fa": "این تعطیلات دیگر فقط برای سرگرمی نیست."
-    },
-    {
-      "en": "It is also another way to look for Nino.",
-      "fa": "این هم راه دیگری برای پیدا کردن نینو است."
-    },
-    {
-      "en": "Before bed, Mina checks her bag one more time.",
-      "fa": "پیش از خواب، مینا یک بار دیگر کیفش را بررسی می‌کند."
-    },
-    {
-      "en": "The coat, jacket, jeans, pants, shirt, dress, skirt, sweater, and T-shirt are all there.",
-      "fa": "پالتو، ژاکت، شلوار جین، شلوار، پیراهن، پیراهن دخترانه، دامن، بافتنی و تی‌شرت همه آنجا هستند."
-    },
-    {
-      "en": "Her hat, boot, and shoe are ready too.",
-      "fa": "کلاه، چکمه و کفش او هم آماده‌اند."
-    },
-    {
-      "en": "Dad closes the map and puts it near the door.",
-      "fa": "بابا نقشه را می‌بندد و نزدیک در می‌گذارد."
-    },
-    {
-      "en": "\"Tomorrow we begin the trip,\" he says.",
-      "fa": "می‌گوید: «فردا سفر را شروع می‌کنیم.»"
-    },
-    {
-      "en": "Mina is happy because she will visit Grandmother and Grandfather.",
-      "fa": "مینا خوشحال است چون قرار است مادربزرگ و پدربزرگ را ببیند."
-    },
-    {
-      "en": "Then she looks at Nino's picture and says, \"Maybe this trip will help me find you.\"",
-      "fa": "بعد به عکس نینو نگاه می‌کند و می‌گوید: «شاید این سفر کمک کند پیدایت کنم.»"
+      "en": "\"We are going on a trip, Nino,\" she says. \"Please wait for us.\"",
+      "fa": "می‌گوید: «ما داریم به سفر می‌رویم، نینو. لطفاً منتظرمان بمان.»"
     }
   ],
   "check": [
     {
-      "q": "مینا چه چیزی در کیفش می‌گذارد؟",
+      "q": "مینا یادداشت تازه را کجا می‌گذارد؟",
       "options": [
-        "clothes",
-        "food",
-        "water",
-        "money"
+        "door",
+        "window",
+        "table",
+        "bed"
       ],
-      "a": "clothes"
+      "a": "door"
     },
     {
-      "q": "خانواده به دیدن کی می‌روند؟",
+      "q": "خانواده با چه چیزی به شمال می‌روند؟",
       "options": [
-        "grandmother",
-        "teacher",
-        "scientist",
-        "policeman"
+        "train",
+        "plane",
+        "bus",
+        "car"
       ],
-      "a": "grandmother"
+      "a": "train"
     }
   ]
 }

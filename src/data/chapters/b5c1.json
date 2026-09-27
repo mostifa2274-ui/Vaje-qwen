@@ -6,193 +6,145 @@
   "titleEn": "Talking",
   "new": [
     "conversation",
-    "dialogue",
-    "discuss",
-    "advice",
+    "hate",
+    "angry",
     "understand",
-    "bicycle",
+    "advice",
+    "discuss",
     "opinion",
     "meaning",
-    "example"
+    "example",
+    "bicycle",
+    "newspaper",
+    "radio",
+    "dialogue"
   ],
   "sentences": [
     {
-      "en": "After another long day looking for Nino, Mina sits with her parents.",
-      "fa": "بعد از یک روز طولانی دیگر در جست‌وجوی نینو، مینا کنار والدینش می‌نشیند."
+      "en": "That evening, after the farm, the family sits together with tea.",
+      "fa": "آن شب، بعد از مزرعه، خانواده با چای دور هم می‌نشینند."
     },
     {
-      "en": "They need to talk about what to do next.",
-      "fa": "باید درباره‌ی کار بعدی صحبت کنند."
+      "en": "It is time for a real conversation.",
+      "fa": "وقت یک گفت‌وگوی واقعی است."
     },
     {
-      "en": "Dad asks Mina to speak first because she knows Nino best.",
-      "fa": "بابا از مینا می‌خواهد اول صحبت کند چون نینو را از همه بهتر می‌شناسد."
+      "en": "\"Tell us everything,\" Mom says. \"What did you see today?\"",
+      "fa": "مامان می‌گوید: «همه‌چیز را برایمان تعریف کن. امروز چه دیدی؟»"
     },
     {
-      "en": "\"Tell us every place you checked today,\" Mom says.",
-      "fa": "مامان می‌گوید: «همه‌ی جاهایی را که امروز بررسی کردی به ما بگو.»"
+      "en": "Mina tells them about the yellow chicken, the bread man and the farm.",
+      "fa": "مینا درباره‌ی جوجه‌ی زرد، مرد نانوا و مزرعه برایشان تعریف می‌کند."
     },
     {
-      "en": "Mina begins to tell them about the market and park.",
-      "fa": "مینا شروع می‌کند درباره‌ی بازار و پارک برایشان تعریف کند."
+      "en": "Then she stops. \"I hate this,\" she says.",
+      "fa": "بعد ساکت می‌شود. می‌گوید: «از این وضع متنفرم.»"
     },
     {
-      "en": "Dad says, \"Listen, because we may hear something important.\"",
-      "fa": "بابا می‌گوید: «گوش کنید، چون شاید چیز مهمی بشنویم.»"
+      "en": "\"I hate waiting, and I hate the wrong chickens.\"",
+      "fa": "«از منتظر ماندن متنفرم و از جوجه‌های اشتباهی هم.»"
     },
     {
-      "en": "Everyone becomes quiet and begins to listen.",
-      "fa": "همه ساکت می‌شوند و شروع به گوش دادن می‌کنند."
+      "en": "Her face is angry, and then it is sad.",
+      "fa": "صورتش اول عصبانی است و بعد غمگین."
     },
     {
-      "en": "Then Mina can hear a small sound near the window.",
-      "fa": "بعد مینا صدای کوچکی نزدیک پنجره می‌شنود."
+      "en": "Dad does not answer quickly. He listens.",
+      "fa": "بابا زود جواب نمی‌دهد. گوش می‌دهد."
     },
     {
-      "en": "The sound comes again, and everyone turns around.",
-      "fa": "صدا دوباره می‌آید و همه برمی‌گردند."
+      "en": "\"I understand,\" he says. \"It is hard for all of us.\"",
+      "fa": "می‌گوید: «می‌فهمم. برای همه‌ی ما سخت است.»"
     },
     {
-      "en": "It is only the tree near the window.",
-      "fa": "فقط درخت کنار پنجره است."
+      "en": "\"Can I give you some advice?\" Mom asks.",
+      "fa": "مامان می‌پرسد: «می‌توانم یک توصیه به تو بکنم؟»"
     },
     {
-      "en": "Their conversation starts again after the sound.",
-      "fa": "گفت‌وگویشان بعد از صدا دوباره شروع می‌شود."
+      "en": "\"When you are angry, write it in your red book. Then we can discuss it together.\"",
+      "fa": "«وقتی عصبانی هستی، آن را در کتاب قرمزت بنویس. بعد می‌توانیم با هم درباره‌اش حرف بزنیم.»"
     },
     {
-      "en": "The conversation is now about new places to look.",
-      "fa": "حالا گفت‌وگو درباره‌ی جاهای تازه برای جست‌وجو است."
+      "en": "Mina opens her book, but she does not write. She has an idea.",
+      "fa": "مینا کتابش را باز می‌کند، اما نمی‌نویسد. فکری دارد."
     },
     {
-      "en": "Dad calls their talk a useful dialogue.",
-      "fa": "بابا حرف‌هایشان را یک گفت‌وگوی مفید می‌نامد."
+      "en": "\"Many people know Nino's picture now,\" she says. \"But is a picture enough?\"",
+      "fa": "می‌گوید: «حالا خیلی‌ها عکس نینو را می‌شناسند. اما آیا یک عکس کافی است؟»"
     },
     {
-      "en": "The dialogue helps everyone hear different ideas.",
-      "fa": "این دیالوگ کمک می‌کند همه ایده‌های متفاوت را بشنوند."
+      "en": "\"What is your opinion?\" Dad asks.",
+      "fa": "بابا می‌پرسد: «نظر خودت چیست؟»"
     },
     {
-      "en": "They discuss the streets they have not checked.",
-      "fa": "درباره‌ی خیابان‌هایی که هنوز بررسی نکرده‌اند حرف می‌زنند."
+      "en": "\"In my opinion, we need words too: a good note with a good description.\"",
+      "fa": "«به نظر من کلمه هم لازم داریم: یک یادداشت خوب با یک توصیف خوب.»"
     },
     {
-      "en": "Mom wants to discuss the river road again.",
-      "fa": "مامان می‌خواهد دوباره درباره‌ی جاده‌ی کنار رودخانه بحث کند."
+      "en": "Aria asks about the meaning of the word \"description.\"",
+      "fa": "آریا معنی کلمه‌ی «توصیف» را می‌پرسد."
     },
     {
-      "en": "Mina and Dad agree that the information from the river is important.",
-      "fa": "مینا و بابا موافق‌اند که اطلاعات مربوط به رودخانه مهم است."
+      "en": "Mina gives him an example. \"Small, yellow, orange feet. That is a description.\"",
+      "fa": "مینا برایش مثالی می‌زند. «کوچک، زرد، پاهای نارنجی. این یک توصیف است.»"
     },
     {
-      "en": "Her brother also agrees with that plan.",
-      "fa": "برادرش هم با این برنامه موافق است."
+      "en": "\"Now I know,\" Aria says.",
+      "fa": "آریا می‌گوید: «حالا فهمیدم.»"
     },
     {
-      "en": "Mom gives one piece of advice: look in small areas.",
-      "fa": "مامان یک توصیه می‌دهد: در بخش‌های کوچک بگردید."
+      "en": "Then Aria has an idea too. \"People on bicycles go to many places,\" he says. \"They see a lot.\"",
+      "fa": "بعد آریا هم فکری به ذهنش می‌رسد. می‌گوید: «آدم‌هایی که دوچرخه دارند جاهای زیادی می‌روند. خیلی چیزها می‌بینند.»"
     },
     {
-      "en": "Her advice makes the next plan easy to understand.",
-      "fa": "توصیه‌اش برنامه‌ی بعدی را آسان‌تر برای فهمیدن می‌کند."
+      "en": "\"That is a very good idea,\" Dad says, and Aria is happy.",
+      "fa": "بابا می‌گوید: «فکر خیلی خوبی است» و آریا خوشحال می‌شود."
     },
     {
-      "en": "Mina has an idea about asking people on bicycles for help.",
-      "fa": "مینا ایده‌ای دارد که از آدم‌های دوچرخه‌سوار کمک بخواهد."
+      "en": "They discuss the plan: a new note, the newspaper, the radio and people on bicycles.",
+      "fa": "درباره‌ی برنامه حرف می‌زنند: یک یادداشت تازه، روزنامه، رادیو و آدم‌های دوچرخه‌سوار."
     },
     {
-      "en": "Dad likes the idea and writes it down.",
-      "fa": "بابا ایده را دوست دارد و آن را یادداشت می‌کند."
+      "en": "It is a long dialogue, and everyone speaks.",
+      "fa": "گفت‌وگوی طولانی‌ای است و همه حرف می‌زنند."
     },
     {
-      "en": "Then he asks everyone for an opinion.",
-      "fa": "بعد از همه نظرشان را می‌پرسد."
+      "en": "Even Yasi says \"Nino!\" twice.",
+      "fa": "حتی یاسی دو بار می‌گوید: «نینو!»"
     },
     {
-      "en": "Mina shares her opinion that Nino may follow quiet streets.",
-      "fa": "مینا نظرش را می‌گوید که شاید نینو خیابان‌های خلوت را دنبال کند."
+      "en": "At the end, Mina does not feel so angry.",
+      "fa": "در آخر، مینا دیگر آن‌قدر عصبانی نیست."
     },
     {
-      "en": "They stop for a moment to think about that idea.",
-      "fa": "برای لحظه‌ای می‌ایستند تا به آن ایده فکر کنند."
+      "en": "\"Tomorrow I write the new note,\" she says.",
+      "fa": "می‌گوید: «فردا یادداشت تازه را می‌نویسم.»"
     },
     {
-      "en": "Mina says, \"I think he may stay quiet during the day.\"",
-      "fa": "مینا می‌گوید: «فکر می‌کنم شاید روزها آرام بماند.»"
-    },
-    {
-      "en": "Dad says he can understand that idea.",
-      "fa": "بابا می‌گوید آن ایده را می‌فهمد."
-    },
-    {
-      "en": "\"Do you understand why evenings may be better?\" Mom asks.",
-      "fa": "مامان می‌پرسد: «می‌فهمی چرا عصرها شاید بهتر باشند؟»"
-    },
-    {
-      "en": "Mina asks, \"What do you mean by better?\"",
-      "fa": "مینا می‌پرسد: «از بهتر منظورت چیست؟»"
-    },
-    {
-      "en": "Mom says, \"I mean there are fewer people and cars.\"",
-      "fa": "مامان می‌گوید: «منظورم این است که آدم‌ها و ماشین‌ها کمترند.»"
-    },
-    {
-      "en": "Mina asks about the meaning of one word Dad used.",
-      "fa": "مینا درباره‌ی معنی یکی از کلمه‌هایی که بابا گفته بود می‌پرسد."
-    },
-    {
-      "en": "Dad explains the meaning with an easy example.",
-      "fa": "بابا معنی را با یک مثال آسان توضیح می‌دهد."
-    },
-    {
-      "en": "\"Please explain the way one more time,\" Mina says.",
-      "fa": "مینا می‌گوید: «لطفاً راه را یک بار دیگر توضیح بده.»"
-    },
-    {
-      "en": "Dad uses the map to explain where they will start.",
-      "fa": "بابا با نقشه توضیح می‌دهد از کجا شروع خواهند کرد."
-    },
-    {
-      "en": "Mina has one final question about the old river road.",
-      "fa": "مینا یک سؤال آخر درباره‌ی جاده‌ی قدیمی کنار رودخانه دارد."
-    },
-    {
-      "en": "Mom says it is a good question and writes the place on the map.",
-      "fa": "مامان می‌گوید سؤال خوبی است و آن جا را روی نقشه می‌نویسد."
-    },
-    {
-      "en": "Before they finish, Mina tells a short story about Nino.",
-      "fa": "پیش از تمام کردن، مینا قصه‌ی کوتاهی درباره‌ی نینو تعریف می‌کند."
-    },
-    {
-      "en": "The story helps everyone remember why finding Nino is so important.",
-      "fa": "آن قصه به همه کمک می‌کند یادشان بماند چرا پیدا کردن نینو این‌قدر مهم است."
-    },
-    {
-      "en": "Their talk ends with a new plan for tomorrow.",
-      "fa": "حرف‌هایشان با برنامه‌ای تازه برای فردا تمام می‌شود."
+      "en": "\"And we all help,\" Dad says.",
+      "fa": "بابا می‌گوید: «و همه‌مان کمک می‌کنیم.»"
     }
   ],
   "check": [
     {
-      "q": "مینا درباره‌ی چه حیوانی فکر می‌کند؟",
+      "q": "مینا از چه چیزی متنفر است؟",
       "options": [
-        "chicken",
-        "bird",
-        "dog",
+        "wait",
+        "tea",
+        "family",
         "book"
       ],
-      "a": "chicken"
+      "a": "wait"
     },
     {
-      "q": "مینا چه چیزی می‌شنود؟",
+      "q": "آریا چه ایده‌ای دارد؟",
       "options": [
-        "sound",
-        "story",
-        "question",
-        "idea"
+        "bicycle",
+        "bus",
+        "car",
+        "train"
       ],
-      "a": "sound"
+      "a": "bicycle"
     }
   ]
 }

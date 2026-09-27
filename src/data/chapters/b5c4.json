@@ -6,217 +6,155 @@
   "titleEn": "Thank You",
   "new": [
     "welcome",
-    "hate",
-    "angry",
+    "interested",
+    "interest",
     "boring",
-    "change",
     "bored",
+    "change",
     "excited",
     "exciting",
     "fantastic",
-    "interest",
-    "interested",
     "awesome",
+    "yeah",
     "beautiful",
     "pretty",
-    "wonderful",
-    "perfect",
     "imagine",
-    "yeah"
+    "perfect",
+    "wonderful"
   ],
   "sentences": [
     {
-      "en": "Mina returns with Mom to the wall where her note is posted.",
-      "fa": "مینا همراه مامان به دیواری برمی‌گردد که یادداشتش روی آن نصب شده است."
+      "en": "On Saturday, Mina and her family walk to the wall where her first note is.",
+      "fa": "شنبه، مینا و خانواده‌اش به طرف دیواری می‌روند که اولین یادداشتش روی آن است."
     },
     {
-      "en": "Some neighbors are reading it together.",
-      "fa": "چند همسایه با هم آن را می‌خوانند."
+      "en": "A small group of neighbors is reading it.",
+      "fa": "گروه کوچکی از همسایه‌ها دارند آن را می‌خوانند."
     },
     {
-      "en": "\"Thank you for stopping,\" Mina says.",
-      "fa": "مینا می‌گوید: «ممنون که ایستادید.»"
+      "en": "\"Thank you for stopping,\" Mina says to them.",
+      "fa": "مینا به آن‌ها می‌گوید: «ممنون که ایستادید.»"
     },
     {
-      "en": "One woman answers, \"You are welcome.\"",
-      "fa": "زنی جواب می‌دهد: «خواهش می‌کنم.»"
+      "en": "\"You are welcome,\" a woman answers. \"We heard about Nino on the radio.\"",
+      "fa": "زنی جواب می‌دهد: «خواهش می‌کنم. درباره‌ی نینو از رادیو شنیدیم.»"
     },
     {
-      "en": "Another neighbor says, \"Thanks for telling us about Nino.\"",
-      "fa": "همسایه‌ی دیگری می‌گوید: «ممنون که درباره‌ی نینو به ما گفتی.»"
+      "en": "The old neighbor is there too. \"I am very interested in this story,\" he says.",
+      "fa": "همسایه‌ی پیر هم آنجاست. می‌گوید: «این ماجرا خیلی برایم جالب است.»"
     },
     {
-      "en": "Mina thanks each person who says they can help.",
-      "fa": "مینا از هر کسی که می‌گوید می‌تواند کمک کند تشکر می‌کند."
+      "en": "\"Every morning, I read the newspaper with interest, and I look for Nino's name.\"",
+      "fa": "«هر صبح روزنامه را با علاقه می‌خوانم و دنبال اسم نینو می‌گردم.»"
     },
     {
-      "en": "At first, she tries to enjoy having so many people around her.",
-      "fa": "در ابتدا سعی می‌کند از حضور این همه آدم دوروبرش لذت ببرد."
+      "en": "Waiting is boring for Aria, and he walks up and down the street.",
+      "fa": "منتظر ماندن برای آریا کسل‌کننده است و در خیابان بالا و پایین می‌رود."
     },
     {
-      "en": "Then she remembers that Nino is still missing.",
-      "fa": "بعد یادش می‌آید که نینو هنوز گم شده است."
+      "en": "\"I am bored,\" he says. \"Nothing changes.\"",
+      "fa": "می‌گوید: «حوصله‌ام سر رفته. هیچ چیز عوض نمی‌شود.»"
     },
     {
-      "en": "She hates waiting when she does not know where he is.",
-      "fa": "وقتی نمی‌داند او کجاست، از منتظر ماندن متنفر است."
+      "en": "Then a man on a bicycle stops next to them.",
+      "fa": "بعد مردی با دوچرخه کنارشان می‌ایستد."
     },
     {
-      "en": "Her brother says, \"I hate waiting too.\"",
-      "fa": "برادرش می‌گوید: «من هم از منتظر ماندن متنفرم.»"
+      "en": "\"Are you the girl from the radio?\" he asks.",
+      "fa": "می‌پرسد: «تو همان دختری هستی که در رادیو بود؟»"
     },
     {
-      "en": "Mina is afraid that Nino may be hungry or cold.",
-      "fa": "مینا می‌ترسد نینو گرسنه یا سردش باشد."
+      "en": "\"Yes, I am Mina,\" she says.",
+      "fa": "می‌گوید: «بله، من مینا هستم.»"
     },
     {
-      "en": "Being afraid makes her quiet for a moment.",
-      "fa": "ترسیدن برای لحظه‌ای ساکتش می‌کند."
+      "en": "\"I go all over the city on my bicycle every day,\" the man says.",
+      "fa": "مرد می‌گوید: «من هر روز با دوچرخه‌ام همه‌جای شهر را می‌گردم.»"
     },
     {
-      "en": "A bird makes a big sound near the wall.",
-      "fa": "پرنده‌ای نزدیک دیوار صدای بلندی ایجاد می‌کند."
+      "en": "\"Yesterday, I saw a little yellow chicken near the river road. It was with some birds.\"",
+      "fa": "«دیروز یک جوجه‌ی زرد کوچک نزدیک جاده‌ی کنار رودخانه دیدم. با چند پرنده بود.»"
     },
     {
-      "en": "Mina becomes angry because it is only a bird.",
-      "fa": "مینا عصبانی می‌شود چون فقط یک پرنده است."
+      "en": "Mina is excited. This is exciting news!",
+      "fa": "مینا هیجان‌زده است. این خبر هیجان‌انگیزی است!"
     },
     {
-      "en": "Her brother laughs, and Mina stops being angry.",
-      "fa": "برادرش می‌خندد و عصبانیت مینا فروکش می‌کند."
+      "en": "\"Can you describe it?\" Dad asks.",
+      "fa": "بابا می‌پرسد: «می‌توانید توصیفش کنید؟»"
     },
     {
-      "en": "Waiting can be boring when nothing changes.",
-      "fa": "منتظر ماندن می‌تواند کسل‌کننده باشد وقتی هیچ چیز تغییر نمی‌کند."
+      "en": "\"Small and yellow, with orange feet,\" the man says. \"And a little white on the left, I think.\"",
+      "fa": "مرد می‌گوید: «کوچک و زرد، با پاهای نارنجی. و فکر کنم کمی سفید در سمت چپ.»"
     },
     {
-      "en": "A bored little boy walks up and down the street.",
-      "fa": "پسر کوچکی که حوصله‌اش سر رفته در خیابان بالا و پایین می‌رود."
+      "en": "\"Fantastic!\" Aria says, and he is not bored now.",
+      "fa": "آریا می‌گوید: «فوق‌العاده است!» و حالا دیگر حوصله‌اش سر نرفته."
     },
     {
-      "en": "His sister says the waiting is boring too.",
-      "fa": "خواهرش می‌گوید انتظار برای او هم کسل‌کننده است."
+      "en": "Negar comes out of her house, and she hears the news.",
+      "fa": "نگار از خانه‌اش بیرون می‌آید و خبر را می‌شنود."
     },
     {
-      "en": "Then a person on a bicycle stops and says he may have seen Nino.",
-      "fa": "بعد یک نفر با دوچرخه می‌ایستد و می‌گوید شاید نینو را دیده باشد."
+      "en": "\"Awesome!\" she says.",
+      "fa": "می‌گوید: «عالی است!»"
     },
     {
-      "en": "Mina feels excited.",
-      "fa": "مینا هیجان‌زده می‌شود."
+      "en": "\"Yeah, awesome!\" Aria says.",
+      "fa": "آریا می‌گوید: «آره، عالی!»"
     },
     {
-      "en": "The news is exciting because it may be real information.",
-      "fa": "خبر هیجان‌انگیز است چون شاید اطلاعات واقعی باشد."
+      "en": "Mina looks at the man. \"Thank you,\" she says. \"Thank you so much.\"",
+      "fa": "مینا به مرد نگاه می‌کند. می‌گوید: «ممنونم. خیلی خیلی ممنونم.»"
     },
     {
-      "en": "More people come close to listen.",
-      "fa": "افراد بیشتری نزدیک می‌آیند تا گوش بدهند."
+      "en": "Now the street looks beautiful to her.",
+      "fa": "حالا خیابان به نظرش زیبا می‌آید."
     },
     {
-      "en": "The person on the bicycle describes a little yellow chicken near the river road.",
-      "fa": "فردی که روی دوچرخه است یک جوجه‌ی زرد کوچک نزدیک جاده‌ی کنار رودخانه را توصیف می‌کند."
+      "en": "The flowers by the wall look pretty in the sun.",
+      "fa": "گل‌های کنار دیوار زیر آفتاب قشنگ به نظر می‌رسند."
     },
     {
-      "en": "\"That sounds fantastic,\" Mina says.",
-      "fa": "مینا می‌گوید: «فوق‌العاده به نظر می‌رسد.»"
+      "en": "For a moment, Mina can imagine Nino at home again, at the foot of her bed.",
+      "fa": "برای لحظه‌ای، مینا می‌تواند نینو را دوباره در خانه، پایین تختش، تصور کند."
     },
     {
-      "en": "New information feels fantastic after a long wait.",
-      "fa": "بعد از انتظار طولانی، اطلاعات تازه فوق‌العاده به نظر می‌رسد."
+      "en": "\"Imagine a perfect morning,\" she says to Mom. \"Nino wakes me, and we eat breakfast together.\"",
+      "fa": "به مامان می‌گوید: «یک صبح بی‌نقص را تصور کن. نینو بیدارم می‌کند و با هم صبحانه می‌خوریم.»"
     },
     {
-      "en": "A family shows special interest in Nino's picture.",
-      "fa": "یک خانواده علاقه‌ی ویژه‌ای به عکس نینو نشان می‌دهد."
+      "en": "\"That would be wonderful,\" Mom says.",
+      "fa": "مامان می‌گوید: «خیلی فوق‌العاده می‌شود.»"
     },
     {
-      "en": "Their interest is easy to see because they ask many questions.",
-      "fa": "علاقه‌ی آن‌ها مشخص است چون سؤال‌های زیادی می‌پرسند."
+      "en": "The family thanks everyone and walks to the river road.",
+      "fa": "خانواده از همه تشکر می‌کنند و به طرف جاده‌ی کنار رودخانه می‌روند."
     },
     {
-      "en": "The mother is interested in birds and knows the river area well.",
-      "fa": "مادر به پرنده‌ها علاقه‌مند است و منطقه‌ی رودخانه را خوب می‌شناسد."
+      "en": "They look near the water and under the trees until the evening.",
+      "fa": "تا عصر کنار آب و زیر درخت‌ها را می‌گردند."
     },
     {
-      "en": "The father is interested too and says they can help.",
-      "fa": "پدر هم علاقه‌مند است و می‌گوید می‌توانند کمک کنند."
+      "en": "They find birds, many birds, but no Nino.",
+      "fa": "پرنده پیدا می‌کنند، کلی پرنده، اما نینو نه."
     },
     {
-      "en": "Mina thinks it is amazing that so many people want to help.",
-      "fa": "مینا فکر می‌کند شگفت‌انگیز است که این همه آدم می‌خواهند کمک کنند."
+      "en": "Maybe the man saw Nino. Maybe he saw another chicken.",
+      "fa": "شاید آن مرد نینو را دیده. شاید جوجه‌ی دیگری را دیده."
     },
     {
-      "en": "\"It is amazing that everyone cares,\" she says.",
-      "fa": "می‌گوید: «شگفت‌انگیز است که همه اهمیت می‌دهند.»"
+      "en": "But Mina is not angry now.",
+      "fa": "اما حالا مینا عصبانی نیست."
     },
     {
-      "en": "A teenager says, \"This team is awesome.\"",
-      "fa": "نوجوانی می‌گوید: «این گروه عالی است.»"
-    },
-    {
-      "en": "\"Awesome,\" Mina agrees as another family joins.",
-      "fa": "وقتی خانواده‌ی دیگری می‌پیوندد، مینا می‌گوید: «عالیه.»"
-    },
-    {
-      "en": "The afternoon is beautiful.",
-      "fa": "بعدازظهر زیبا است."
-    },
-    {
-      "en": "Flowers by the street look pretty in the sun.",
-      "fa": "گل‌های کنار خیابان زیر نور خورشید قشنگ به نظر می‌رسند."
-    },
-    {
-      "en": "For a moment, Mina sees how beautiful the city can be.",
-      "fa": "برای لحظه‌ای مینا می‌بیند شهر چقدر می‌تواند زیبا باشد."
-    },
-    {
-      "en": "The help from people she does not know feels wonderful.",
-      "fa": "کمک آدم‌هایی که نمی‌شناسد فوق‌العاده است."
-    },
-    {
-      "en": "Still, no day can feel perfect when Nino is gone.",
-      "fa": "با این حال وقتی نینو نیست، هیچ روزی کامل به نظر نمی‌رسد."
-    },
-    {
-      "en": "Mina imagines one perfect morning with him back home.",
-      "fa": "مینا یک صبح کامل را تصور می‌کند که نینو دوباره خانه است."
-    },
-    {
-      "en": "Nino is special because he is part of her family.",
-      "fa": "نینو خاص است چون بخشی از خانواده‌ی اوست."
-    },
-    {
-      "en": "\"He is a very special little chicken,\" Mina tells the family.",
-      "fa": "مینا به خانواده می‌گوید: «او یک جوجه‌ی کوچک خیلی خاص است.»"
-    },
-    {
-      "en": "The mother says, \"Yeah, we should go now.\"",
-      "fa": "مادر می‌گوید: «آره، باید الان برویم.»"
-    },
-    {
-      "en": "\"Yeah,\" Mina answers, looking at the river road.",
-      "fa": "مینا در حالی که به جاده‌ی رودخانه نگاه می‌کند جواب می‌دهد: «آره.»"
-    },
-    {
-      "en": "Everyone gets ready to leave the wall.",
-      "fa": "همه آماده می‌شوند از کنار دیوار بروند."
-    },
-    {
-      "en": "Mina says one more thank you to the neighbors.",
-      "fa": "مینا یک بار دیگر از همسایه‌ها تشکر می‌کند."
-    },
-    {
-      "en": "The neighbors answer with more thanks.",
-      "fa": "همسایه‌ها با تشکر بیشتر جواب می‌دهند."
-    },
-    {
-      "en": "Together they follow the exciting new information to the river.",
-      "fa": "آن‌ها با هم اطلاعات تازه و هیجان‌انگیز را تا رودخانه دنبال می‌کنند."
+      "en": "She writes in her red book: \"Nino was near the river. I believe it.\"",
+      "fa": "در کتاب قرمزش می‌نویسد: «نینو نزدیک رودخانه بود. باور دارم.»"
     }
   ],
   "check": [
     {
-      "q": "مینا به مردم چه می‌گوید؟",
+      "q": "مینا به همسایه‌ها چه می‌گوید؟",
       "options": [
         "thank",
         "sorry",
@@ -226,14 +164,14 @@
       "a": "thank"
     },
     {
-      "q": "مینا برای چه کسی نگران است؟",
+      "q": "مرد دوچرخه‌سوار جوجه را نزدیک کجا دیده است؟",
       "options": [
-        "chicken",
-        "bird",
-        "dog",
-        "baby"
+        "river",
+        "market",
+        "park",
+        "school"
       ],
-      "a": "chicken"
+      "a": "river"
     }
   ]
 }

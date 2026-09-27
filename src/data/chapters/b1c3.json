@@ -2,303 +2,239 @@
   "id": "b1c3",
   "book": 1,
   "n": 3,
-  "titleFa": "صبحِ بی‌نینو",
+  "titleFa": "صبحی بدون نینو",
   "titleEn": "A Morning Without Nino",
   "new": [
-    "light",
-    "bedroom",
-    "space",
-    "foot",
-    "of",
-    "make",
-    "everything",
-    "leave",
-    "walk",
-    "bathroom",
-    "wait",
-    "toilet",
-    "finish",
-    "shower",
-    "when",
-    "your",
-    "quick",
-    "because",
-    "want",
-    "start",
-    "soon",
-    "stop",
-    "usually",
-    "enjoy",
     "warm",
+    "may",
+    "before",
+    "else",
+    "remember",
+    "foot",
+    "usually",
+    "space",
+    "there",
+    "everything",
+    "long",
+    "quickly",
+    "walk",
+    "wait",
+    "outside",
+    "toilet",
+    "shower",
+    "quick",
+    "through",
+    "enjoy",
     "bath",
-    "you",
-    "tonight",
-    "eat",
-    "downstairs",
+    "today",
+    "finish",
+    "clothes",
     "breakfast",
-    "ready",
     "bread",
-    "egg",
-    "table",
-    "glass",
-    "milk",
-    "give",
-    "water",
-    "everyone",
-    "try",
-    "afraid",
-    "with",
     "cheese",
+    "egg",
+    "want",
+    "anything",
+    "need",
+    "strong",
+    "try",
     "watch",
     "drink",
-    "new",
+    "sister",
     "plan",
-    "today",
-    "add",
-    "like-2",
-    "feeling",
-    "strong",
-    "write",
-    "need",
     "paper",
-    "upstairs",
-    "stay",
-    "box",
-    "part",
-    "floor",
-    "put",
-    "there",
-    "desk",
-    "clothes",
-    "even",
-    "another",
-    "meet",
-    "by",
-    "day",
-    "beginning",
-    "nobody",
-    "bottle",
     "bag",
-    "later",
-    "as",
-    "before",
-    "once",
-    "more"
+    "begin",
+    "write",
+    "name",
+    "stay",
+    "old",
+    "by",
+    "add",
+    "part",
+    "nobody",
+    "upstairs",
+    "last",
+    "agree",
+    "start",
+    "meet",
+    "this",
+    "beginning",
+    "bottle",
+    "light",
+    "bedroom",
+    "leave",
+    "one",
+    "more",
+    "thing",
+    "two"
   ],
   "sentences": [
     {
-      "en": "Morning light comes into Mina's bedroom through the window.",
-      "fa": "نور صبح از پنجره وارد اتاق‌خواب مینا می‌شود."
+      "en": "The next morning is a warm morning in May.",
+      "fa": "صبح روز بعد، صبحی گرم در ماه مه است."
     },
     {
-      "en": "Mina wakes in her bed and looks for Nino.",
-      "fa": "مینا در تختش بیدار می‌شود و دنبال نینو می‌گردد."
+      "en": "Mina wakes before everyone else in the house.",
+      "fa": "مینا پیش از همه‌ی اهل خانه بیدار می‌شود."
     },
     {
-      "en": "She says his name quietly, so she does not wake the baby next door.",
-      "fa": "اسم نینو را آرام می‌گوید تا نوزادِ اتاق کناری بیدار نشود."
+      "en": "For a moment, she does not remember.",
+      "fa": "برای لحظه‌ای چیزی یادش نیست."
     },
     {
-      "en": "The space at the foot of the bed makes Mina remember everything.",
-      "fa": "جای خالیِ پایین تخت همه‌چیز را به یاد مینا می‌آورد."
+      "en": "Then she looks at the foot of her bed, where Nino usually sleeps.",
+      "fa": "بعد به پایین تختش نگاه می‌کند، جایی که نینو معمولاً می‌خوابد."
     },
     {
-      "en": "She leaves the bedroom and walks to the bathroom.",
-      "fa": "از اتاق‌خواب بیرون می‌رود و به حمام می‌رود."
+      "en": "His space is there, but Nino is not.",
+      "fa": "جای او هست، اما خودش نیست."
     },
     {
-      "en": "Her brother is waiting outside the toilet.",
-      "fa": "برادرش بیرون دستشویی منتظر است."
+      "en": "Now she remembers everything: the red bird, the open door, the long day.",
+      "fa": "حالا همه‌چیز یادش می‌آید: پرنده‌ی قرمز، درِ باز، روز طولانی."
     },
     {
-      "en": "When Dad finishes his shower, Mina is waiting by the bathroom door.",
-      "fa": "وقتی بابا دوشش را تمام می‌کند، مینا کنار درِ حمام منتظر است."
+      "en": "She gets up quickly and walks to the bathroom.",
+      "fa": "سریع بلند می‌شود و به طرف حمام می‌رود."
     },
     {
-      "en": "\"Your turn next,\" Dad says.",
-      "fa": "بابا می‌گوید: «نوبت بعدی توست.»"
+      "en": "Aria is waiting outside the toilet, and Dad is in the shower.",
+      "fa": "آریا بیرون دستشویی منتظر است و بابا زیر دوش است."
     },
     {
-      "en": "Mina takes a quick shower because she wants to start looking for Nino soon.",
-      "fa": "مینا سریع دوش می‌گیرد چون می‌خواهد زود دنبال نینو بگردد."
+      "en": "\"Please be quick!\" Aria calls through the door.",
+      "fa": "آریا از پشت در صدا می‌زند: «لطفاً زود باش!»"
     },
     {
-      "en": "After the shower, she washes her face and hands.",
-      "fa": "بعد از دوش، صورت و دست‌هایش را می‌شوید."
+      "en": "Mina usually enjoys a warm bath, but not today.",
+      "fa": "مینا معمولاً از حمام گرم لذت می‌برد، اما امروز نه."
     },
     {
-      "en": "Then she walks back to her bedroom.",
-      "fa": "بعد به اتاق‌خوابش برمی‌گردد."
+      "en": "When Dad finishes, she takes a quick shower and washes her face.",
+      "fa": "وقتی کار بابا تمام می‌شود، سریع دوش می‌گیرد و صورتش را می‌شوید."
     },
     {
-      "en": "Mina usually enjoys a warm bath, but not this morning.",
-      "fa": "مینا معمولاً از یک حمام گرم لذت می‌برد، اما نه این صبح."
+      "en": "Then she puts on her clothes and walks downstairs.",
+      "fa": "بعد لباس‌هایش را می‌پوشد و به طبقه‌ی پایین می‌رود."
     },
     {
-      "en": "\"You can have a bath tonight,\" Mom says. \"First, eat.\"",
-      "fa": "مامان می‌گوید: «شب می‌توانی حمام کنی. اول غذا بخور.»"
+      "en": "Breakfast is ready on the kitchen table.",
+      "fa": "صبحانه روی میز آشپزخانه آماده است."
     },
     {
-      "en": "Downstairs, breakfast is ready in the kitchen.",
-      "fa": "پایین، صبحانه در آشپزخانه آماده است."
+      "en": "There is bread, cheese, eggs and a glass of milk for everyone.",
+      "fa": "نان، پنیر، تخم‌مرغ و برای هر نفر یک لیوان شیر هست."
     },
     {
-      "en": "Mom calls, \"Come downstairs, Mina. Breakfast is ready.\"",
-      "fa": "مامان صدا می‌زند: «مینا، بیا پایین. صبحانه آماده است.»"
+      "en": "Mina sits down, but she does not want anything.",
+      "fa": "مینا می‌نشیند، اما هیچ چیز نمی‌خواهد."
     },
     {
-      "en": "Bread and an egg are on the table for Mina.",
-      "fa": "نان و یک تخم‌مرغ برای مینا روی میز است."
+      "en": "\"Eat something,\" Mom says. \"You need to be strong today.\"",
+      "fa": "مامان می‌گوید: «یک چیزی بخور. امروز باید قوی باشی.»"
     },
     {
-      "en": "A glass of milk is next to the bread.",
-      "fa": "یک لیوان شیر کنار نان است."
+      "en": "Mina tries a little bread and an egg.",
+      "fa": "مینا کمی نان و یک تخم‌مرغ می‌خورد."
     },
     {
-      "en": "Dad gives water to everyone at the table.",
-      "fa": "بابا به همه سر میز آب می‌دهد."
+      "en": "Aria watches her and drinks his milk quietly.",
+      "fa": "آریا نگاهش می‌کند و آرام شیرش را می‌نوشد."
     },
     {
-      "en": "\"Eat your breakfast,\" Mom says.",
-      "fa": "مامان می‌گوید: «صبحانه‌ات را بخور.»"
+      "en": "Yasi, her baby sister, drinks her milk too, and a little of it goes on the floor.",
+      "fa": "یاسی، خواهر کوچکش، هم شیرش را می‌نوشد و کمی از آن روی زمین می‌ریزد."
     },
     {
-      "en": "Mina tries to eat the egg, but she is afraid for Nino.",
-      "fa": "مینا سعی می‌کند تخم‌مرغ را بخورد، اما برای نینو نگران است."
+      "en": "\"We need a plan,\" Dad says.",
+      "fa": "بابا می‌گوید: «یک برنامه لازم داریم.»"
     },
     {
-      "en": "Her brother eats bread with cheese and watches her quietly.",
-      "fa": "برادرش نان را با پنیر می‌خورد و آرام او را نگاه می‌کند."
+      "en": "Mina takes paper from her bag and begins to write.",
+      "fa": "مینا از کیفش کاغذ برمی‌دارد و شروع به نوشتن می‌کند."
     },
     {
-      "en": "The baby drinks water from a small cup.",
-      "fa": "نوزاد از یک فنجان کوچک آب می‌نوشد."
+      "en": "First she writes Nino's name.",
+      "fa": "اول اسم نینو را می‌نویسد."
     },
     {
-      "en": "Mom gives the baby a little milk.",
-      "fa": "مامان کمی شیر به نوزاد می‌دهد."
+      "en": "Then she writes every place where a chicken can stay: the yard, the garden, the old boxes by the wall.",
+      "fa": "بعد همه‌ی جاهایی را می‌نویسد که یک جوجه می‌تواند آنجا بماند: حیاط، باغچه، جعبه‌های قدیمی کنار دیوار."
     },
     {
-      "en": "They eat, and the family makes a new plan to look for Nino.",
-      "fa": "آن‌ها غذا می‌خورند و خانواده برنامه‌ی تازه‌ای برای پیدا کردن نینو می‌سازد."
+      "en": "\"Add the part behind the house,\" Aria says. \"Nobody looks there.\"",
+      "fa": "آریا می‌گوید: «پشت خانه را هم اضافه کن. هیچ‌کس آنجا را نگاه نمی‌کند.»"
     },
     {
-      "en": "\"Today we look for Nino in every room again,\" Dad says.",
-      "fa": "بابا می‌گوید: «امروز دوباره در همه‌ی اتاق‌ها دنبال نینو می‌گردیم.»"
+      "en": "Mina adds it to the paper.",
+      "fa": "مینا آن را به کاغذ اضافه می‌کند."
     },
     {
-      "en": "Mom adds, \"And we check the yard and the garden.\"",
-      "fa": "مامان اضافه می‌کند: «و حیاط و باغچه را هم بررسی می‌کنیم.»"
+      "en": "\"And the upstairs rooms?\" Mom asks.",
+      "fa": "مامان می‌پرسد: «اتاق‌های طبقه‌ی بالا چه؟»"
     },
     {
-      "en": "\"Every place Nino likes,\" Mina says, feeling stronger.",
-      "fa": "مینا که کمی قوی‌تر شده می‌گوید: «هر جایی که نینو دوست دارد.»"
+      "en": "\"We checked every room last night,\" Mina says. \"He is not in the house. I know it.\"",
+      "fa": "مینا می‌گوید: «دیشب همه‌ی اتاق‌ها را گشتیم. او در خانه نیست. می‌دانم.»"
     },
     {
-      "en": "\"Now we start,\" Dad says.",
-      "fa": "بابا می‌گوید: «حالا شروع می‌کنیم.»"
+      "en": "Mom agrees. \"Then today we start outside, in the yard,\" she says.",
+      "fa": "مامان موافق است. می‌گوید: «پس امروز از بیرون، از حیاط شروع می‌کنیم.»"
     },
     {
-      "en": "Mina takes paper and writes all the places they need to check.",
-      "fa": "مینا کاغذی برمی‌دارد و همه‌ی جاهایی را که باید بگردند می‌نویسد."
+      "en": "\"We meet by the door after breakfast,\" Dad says. \"This is only the beginning.\"",
+      "fa": "بابا می‌گوید: «بعد از صبحانه کنار در همدیگر را می‌بینیم. این تازه اول کار است.»"
     },
     {
-      "en": "She goes upstairs first and opens her bedroom door.",
-      "fa": "اول به طبقه‌ی بالا می‌رود و درِ اتاق‌خوابش را باز می‌کند."
+      "en": "Mina puts the paper, a bottle of water and a little bread into her bag.",
+      "fa": "مینا کاغذ، یک بطری آب و کمی نان داخل کیفش می‌گذارد."
     },
     {
-      "en": "Dad stays downstairs and checks the kitchen and front room.",
-      "fa": "بابا پایین می‌ماند و آشپزخانه و اتاق جلویی را بررسی می‌کند."
+      "en": "\"Bread?\" Aria asks.",
+      "fa": "آریا می‌پرسد: «نان؟»"
     },
     {
-      "en": "Her brother comes upstairs with Mina and has a light.",
-      "fa": "برادرش همراه مینا به طبقه‌ی بالا می‌آید و یک چراغ دارد."
+      "en": "\"For Nino,\" Mina says. \"He will want something to eat when we find him.\"",
+      "fa": "مینا می‌گوید: «برای نینو. وقتی پیدایش کنیم، چیزی برای خوردن می‌خواهد.»"
     },
     {
-      "en": "Together they look under the bed and behind the boxes.",
-      "fa": "با هم زیر تخت و پشت جعبه‌ها را نگاه می‌کنند."
+      "en": "Aria gets his light from his bedroom.",
+      "fa": "آریا چراغ‌قوه‌اش را از اتاق‌خوابش می‌آورد."
     },
     {
-      "en": "Mina checks every part of the bedroom floor.",
-      "fa": "مینا هر قسمت از کف اتاق‌خواب را بررسی می‌کند."
+      "en": "\"For the dark places,\" he says, and he waits for her by the door.",
+      "fa": "می‌گوید: «برای جاهای تاریک» و کنار در منتظرش می‌ماند."
     },
     {
-      "en": "Her brother turns the light to the wall and behind the chair.",
-      "fa": "برادرش نور را به سمت دیوار و پشت صندلی می‌گیرد."
+      "en": "Before they leave, Mina writes one more thing in her red book.",
+      "fa": "پیش از رفتن، مینا یک چیز دیگر هم در کتاب قرمزش می‌نویسد."
     },
     {
-      "en": "There is no Nino in the bedroom.",
-      "fa": "نینو در اتاق‌خواب نیست."
-    },
-    {
-      "en": "\"You check your desk, and I will check the clothes,\" he says.",
-      "fa": "او می‌گوید: «تو میزت را بررسی کن و من لباس‌ها را نگاه می‌کنم.»"
-    },
-    {
-      "en": "Mina checks all of it, even the small places.",
-      "fa": "مینا همه‌ی آن را بررسی می‌کند، حتی جاهای کوچک را."
-    },
-    {
-      "en": "Downstairs, Dad opens another door and calls Nino's name.",
-      "fa": "پایین، بابا در دیگری را باز می‌کند و اسم نینو را صدا می‌زند."
-    },
-    {
-      "en": "\"Where are you, Nino?\" Mina asks from upstairs.",
-      "fa": "مینا از طبقه‌ی بالا می‌پرسد: «نینو، کجایی؟»"
-    },
-    {
-      "en": "The family meets again by the kitchen door.",
-      "fa": "خانواده دوباره کنار درِ آشپزخانه جمع می‌شود."
-    },
-    {
-      "en": "It is only the beginning of the day, and nobody wants to stop.",
-      "fa": "تازه اول روز است و هیچ‌کس نمی‌خواهد دست بکشد."
-    },
-    {
-      "en": "They will keep looking all day.",
-      "fa": "آن‌ها تمام روز به جست‌وجو ادامه خواهند داد."
-    },
-    {
-      "en": "Mina puts bread and a bottle of water in a bag for later.",
-      "fa": "مینا برای بعد نان و یک بطری آب داخل کیف می‌گذارد."
-    },
-    {
-      "en": "\"Come with me,\" her brother says as he goes to the door.",
-      "fa": "برادرش در حالی که به سمت در می‌رود می‌گوید: «با من بیا.»"
-    },
-    {
-      "en": "Before leaving, Mina looks at the window once more.",
-      "fa": "پیش از رفتن، مینا یک بار دیگر به پنجره نگاه می‌کند."
-    },
-    {
-      "en": "She says, \"Come home today, Nino.\"",
-      "fa": "می‌گوید: «امروز برگرد خانه، نینو.»"
-    },
-    {
-      "en": "Then she adds, \"Come home now.\"",
-      "fa": "بعد اضافه می‌کند: «همین حالا برگرد خانه.»"
+      "en": "\"Day two. Today we find Nino.\"",
+      "fa": "«روز دوم. امروز نینو را پیدا می‌کنیم.»"
     }
   ],
   "check": [
     {
-      "q": "روی میز، برای مینا نان و یک ... هست.",
+      "q": "نینو معمولاً کجا می‌خوابد؟",
       "options": [
-        "egg",
-        "cheese",
-        "chicken",
-        "book"
+        "bed",
+        "kitchen",
+        "bathroom",
+        "garden"
       ],
-      "a": "egg"
+      "a": "bed"
     },
     {
-      "q": "بابا می‌گوید کِی دوباره در همه‌ی اتاق‌ها دنبال نینو می‌گردند؟",
+      "q": "مینا برای نینو چه چیزی در کیفش می‌گذارد؟",
       "options": [
-        "today",
-        "tonight",
-        "later",
-        "before"
+        "bread",
+        "cheese",
+        "egg",
+        "milk"
       ],
-      "a": "today"
+      "a": "bread"
     }
   ]
 }

@@ -10,170 +10,204 @@
     "morning",
     "at",
     "home",
-    "have",
-    "a-an",
-    "little",
-    "yellow",
-    "chicken",
-    "name",
-    "she",
-    "red",
-    "book",
+    "and",
+    "the",
+    "house",
+    "still",
+    "quiet",
+    "sit",
     "on",
     "her",
     "bed",
-    "this",
-    "my",
-    "tell",
-    "the",
+    "with",
+    "red",
+    "book",
+    "in",
+    "hand",
+    "next-to",
     "stand",
-    "and",
+    "little",
+    "yellow",
+    "chicken",
+    "very",
+    "small",
+    "but",
+    "he",
+    "not",
+    "a-an",
+    "like-2",
+    "to",
     "look",
-    "bird",
-    "land",
+    "my",
+    "say",
+    "she",
+    "happy",
+    "then",
+    "sound",
+    "come",
+    "from",
     "open",
     "window",
+    "bird",
+    "land",
     "turn",
-    "very",
-    "close",
-    "say",
-    "can",
-    "see",
+    "for",
+    "moment",
+    "do",
     "move",
-    "outside",
-    "go",
-    "from",
+    "no",
+    "that",
+    "you",
+    "fly",
+    "down",
     "into",
     "yard",
-    "begin",
-    "to",
     "run",
-    "door",
-    "do",
-    "not",
-    "away",
-    "call",
-    "but",
-    "past",
-    "fly",
-    "garden",
-    "follow",
-    "i",
-    "cannot",
+    "out",
+    "of",
+    "room",
+    "after",
     "him",
+    "door",
+    "back",
+    "call",
+    "stop",
+    "follow",
+    "garden",
+    "flower",
     "under",
     "chair",
     "behind",
-    "no",
-    "here",
-    "then",
-    "again",
-    "still",
-    "feel",
-    "different",
-    "in",
     "near",
     "wall",
+    "where",
+    "again",
+    "up",
+    "away",
     "now",
-    "hand",
-    "for"
+    "nothing",
+    "listen",
+    "cannot",
+    "hear",
+    "see",
+    "feel",
+    "afraid",
+    "mom",
+    "dad",
+    "different"
   ],
   "sentences": [
     {
-      "en": "It is morning at Mina's home.",
-      "fa": "صبح در خانه‌ی مینا است."
+      "en": "It is morning at Mina's home, and the house is still quiet.",
+      "fa": "صبح است و خانه‌ی مینا هنوز ساکت است."
     },
     {
-      "en": "Mina has a little yellow chicken named Nino.",
-      "fa": "مینا یک جوجه‌ی زرد کوچک به نام نینو دارد."
+      "en": "Mina sits on her bed with her red book in her hand.",
+      "fa": "مینا با کتاب قرمزش در دست روی تختش نشسته است."
     },
     {
-      "en": "She has a red book on her bed.",
-      "fa": "او یک کتاب قرمز روی تختش دارد."
+      "en": "Next to her stands Nino, her little yellow chicken.",
+      "fa": "کنارش نینو ایستاده است؛ جوجه‌ی زرد کوچکش."
     },
     {
-      "en": "\"This is my book,\" Mina tells the chicken.",
-      "fa": "مینا به جوجه می‌گوید: «این کتاب من است.»"
+      "en": "Nino is very small, but he is not a quiet chicken.",
+      "fa": "نینو خیلی کوچک است، اما جوجه‌ی ساکتی نیست."
     },
     {
-      "en": "Nino stands on the book and looks at Mina.",
-      "fa": "نینو روی کتاب می‌ایستد و به مینا نگاه می‌کند."
+      "en": "He likes to stand on the red book and look at Mina's hand.",
+      "fa": "دوست دارد روی کتاب قرمز بایستد و به دست مینا نگاه کند."
     },
     {
-      "en": "A red bird lands at the open window.",
-      "fa": "یک پرنده‌ی قرمز روی پنجره‌ی باز می‌نشیند."
+      "en": "\"Not on my book, Nino!\" Mina says, but she is happy.",
+      "fa": "مینا می‌گوید: «روی کتابم نه، نینو!» اما خوشحال است."
     },
     {
-      "en": "The chicken turns and looks at the bird.",
-      "fa": "جوجه برمی‌گردد و به پرنده نگاه می‌کند."
+      "en": "Then a sound comes from the open window.",
+      "fa": "بعد صدایی از پنجره‌ی باز می‌آید."
     },
     {
-      "en": "\"Look, Nino, the bird is very close,\" Mina says.",
-      "fa": "مینا می‌گوید: «نگاه کن نینو، پرنده خیلی نزدیک است.»"
+      "en": "A red bird lands on the window and looks in.",
+      "fa": "یک پرنده‌ی قرمز روی پنجره می‌نشیند و به داخل نگاه می‌کند."
     },
     {
-      "en": "Nino can see the bird moving outside.",
-      "fa": "نینو می‌تواند حرکت پرنده را بیرون ببیند."
+      "en": "Nino turns and looks at the bird.",
+      "fa": "نینو برمی‌گردد و به پرنده نگاه می‌کند."
     },
     {
-      "en": "The bird goes from the window into the yard.",
-      "fa": "پرنده از پنجره به داخل حیاط می‌رود."
+      "en": "For a moment, he does not move.",
+      "fa": "یک لحظه تکان نمی‌خورد."
     },
     {
-      "en": "Nino begins to run to the open door.",
-      "fa": "نینو شروع می‌کند به دویدن به سمت درِ باز."
+      "en": "\"No, Nino,\" Mina says. \"That bird is not for you.\"",
+      "fa": "مینا می‌گوید: «نه، نینو. آن پرنده مال تو نیست.»"
     },
     {
-      "en": "\"Do not run away, Nino!\" Mina calls.",
-      "fa": "مینا صدا می‌زند: «نینو، فرار نکن!»"
+      "en": "The bird flies from the window down into the yard.",
+      "fa": "پرنده از پنجره پایین می‌رود و وارد حیاط می‌شود."
     },
     {
-      "en": "But Nino runs past the red book and outside.",
-      "fa": "اما نینو از کنار کتاب قرمز می‌دود و بیرون می‌رود."
+      "en": "Nino runs out of the room.",
+      "fa": "نینو از اتاق بیرون می‌دود."
     },
     {
-      "en": "The bird flies into the garden, and Nino follows.",
-      "fa": "پرنده به داخل باغچه پرواز می‌کند و نینو دنبالش می‌رود."
+      "en": "Mina runs after him with the red book still in her hand.",
+      "fa": "مینا در حالی که کتاب قرمز هنوز در دستش است، دنبالش می‌دود."
     },
     {
-      "en": "Mina goes to the door and says, \"I cannot see him.\"",
-      "fa": "مینا به در می‌رود و می‌گوید: «نمی‌توانم او را ببینم.»"
+      "en": "The door to the yard is open.",
+      "fa": "درِ حیاط باز است."
     },
     {
-      "en": "She looks under the chair and behind the door.",
-      "fa": "او زیر صندلی و پشت در را نگاه می‌کند."
+      "en": "\"Nino, come back!\" she calls.",
+      "fa": "صدا می‌زند: «نینو، برگرد!»"
     },
     {
-      "en": "\"No chicken here,\" Mina says.",
-      "fa": "مینا می‌گوید: «اینجا جوجه‌ای نیست.»"
+      "en": "But Nino does not stop. He follows the bird into the garden.",
+      "fa": "اما نینو نمی‌ایستد. دنبال پرنده به باغچه می‌رود."
     },
     {
-      "en": "Then she goes outside and calls Nino again.",
-      "fa": "بعد بیرون می‌رود و دوباره نینو را صدا می‌کند."
+      "en": "The bird flies from flower to flower, and Nino runs after it.",
+      "fa": "پرنده از گلی به گل دیگر پرواز می‌کند و نینو دنبالش می‌دود."
     },
     {
-      "en": "It is still morning, but the yard feels different.",
-      "fa": "هنوز صبح است، اما حیاط متفاوت به نظر می‌رسد."
+      "en": "Mina looks under the chairs, behind the flowers and near the wall.",
+      "fa": "مینا زیر صندلی‌ها، پشت گل‌ها و نزدیک دیوار را نگاه می‌کند."
     },
     {
-      "en": "Mina looks in the garden and near the wall.",
-      "fa": "مینا داخل باغچه و نزدیک دیوار را می‌گردد."
+      "en": "\"Nino! Where are you?\" she calls again.",
+      "fa": "دوباره صدا می‌زند: «نینو! کجایی؟»"
     },
     {
-      "en": "She sees the red bird, but not her chicken.",
-      "fa": "پرنده‌ی قرمز را می‌بیند، اما جوجه‌اش را نه."
+      "en": "The red bird sits on the wall and looks down at Mina.",
+      "fa": "پرنده‌ی قرمز روی دیوار می‌نشیند و پایین را، به مینا، نگاه می‌کند."
     },
     {
-      "en": "Nino is not at home now.",
-      "fa": "نینو حالا در خانه نیست."
+      "en": "Then it flies up and away.",
+      "fa": "بعد بالا می‌رود و دور می‌شود."
     },
     {
-      "en": "Mina has the red book in her hands.",
-      "fa": "کتاب قرمز در دست‌های مینا است."
+      "en": "The garden is quiet now. Nothing moves.",
+      "fa": "حالا باغچه ساکت است. هیچ چیز تکان نمی‌خورد."
     },
     {
-      "en": "Then Mina runs from the garden to the door, still looking for her little chicken.",
-      "fa": "بعد مینا از باغچه به سمت در می‌دود و هنوز دنبال جوجه‌ی کوچکش می‌گردد."
+      "en": "Mina stands in the yard and listens.",
+      "fa": "مینا در حیاط می‌ایستد و گوش می‌دهد."
+    },
+    {
+      "en": "She cannot hear Nino, and she cannot see him.",
+      "fa": "نه صدای نینو را می‌شنود و نه او را می‌بیند."
+    },
+    {
+      "en": "She feels afraid.",
+      "fa": "می‌ترسد."
+    },
+    {
+      "en": "\"Mom! Dad!\" Mina calls, and she runs back to the house.",
+      "fa": "مینا صدا می‌زند: «مامان! بابا!» و به سمت خانه برمی‌گردد."
+    },
+    {
+      "en": "It is still morning, but now it is a very different morning.",
+      "fa": "هنوز صبح است، اما حالا صبح خیلی متفاوتی است."
     }
   ],
   "check": [
@@ -188,10 +222,10 @@
       "a": "chicken"
     },
     {
-      "q": "کتاب مینا چه رنگی است؟",
+      "q": "پرنده‌ای که روی پنجره می‌نشیند چه رنگی است؟",
       "options": [
-        "yellow",
         "red",
+        "yellow",
         "little",
         "home"
       ],

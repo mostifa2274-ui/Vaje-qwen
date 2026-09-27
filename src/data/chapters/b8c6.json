@@ -5,236 +5,198 @@
   "titleFa": "بازگشت",
   "titleEn": "The Return",
   "new": [
+    "yourself",
+    "terrible",
     "somebody"
   ],
   "sentences": [
     {
-      "en": "On Friday evening, the family begins the return home.",
-      "fa": "عصر جمعه، خانواده راه برگشت به خانه را آغاز می‌کند."
+      "en": "On Friday morning, it is time to go home.",
+      "fa": "جمعه صبح، وقت برگشتن به خانه است."
     },
     {
-      "en": "The return trip feels quieter than the trip away.",
-      "fa": "سفر برگشت از سفر رفت آرام‌تر به نظر می‌رسد."
+      "en": "Grandmother takes Mina in her arms. \"Look after yourself,\" she says. \"And call me when Nino comes home.\"",
+      "fa": "مادربزرگ مینا را در آغوش می‌گیرد. می‌گوید: «مراقب خودت باش. و وقتی نینو برگشت خانه، به من زنگ بزن.»"
     },
     {
-      "en": "Mina watches the same streets outside the window.",
-      "fa": "مینا همان خیابان‌ها را از پشت پنجره نگاه می‌کند."
+      "en": "Not \"if.\" \"When.\" Mina hears the difference.",
+      "fa": "نه «اگر». «وقتی». مینا فرقش را می‌شنود."
     },
     {
-      "en": "When they return, she carries her red book upstairs.",
-      "fa": "وقتی برمی‌گردند، کتاب قرمز را با خود به طبقه‌ی بالا می‌برد."
+      "en": "Her cousin gives her a present: a purple pencil for her red book.",
+      "fa": "دختردایی‌اش یک هدیه به او می‌دهد: یک مداد بنفش برای کتاب قرمزش."
     },
     {
-      "en": "Her room looks the same as she left it.",
-      "fa": "اتاقش همان‌طور است که رهایش کرده بود."
+      "en": "Grandfather drives them to the station, and the long trip home begins.",
+      "fa": "پدربزرگ آن‌ها را تا ایستگاه می‌رساند و سفر طولانی به خانه شروع می‌شود."
     },
     {
-      "en": "The bed and little table are still by the window.",
-      "fa": "تخت و میز کوچک هنوز کنار پنجره هستند."
+      "en": "In Tehran, the traffic is terrible, and they get home in the evening.",
+      "fa": "در تهران ترافیک وحشتناک است و عصر به خانه می‌رسند."
     },
     {
-      "en": "However, Mina feels different after the long time looking for Nino.",
-      "fa": "اما مینا بعد از مدت طولانی جست‌وجوی نینو حس متفاوتی دارد."
+      "en": "By their door, there is a glass of water and some bread.",
+      "fa": "کنار درشان یک لیوان آب و کمی نان هست."
     },
     {
-      "en": "Her red book is now full of names and information.",
-      "fa": "کتاب قرمزش حالا پر از نام‌ها و اطلاعات است."
+      "en": "Negar and her mother come out to say hello. \"Welcome home!\" Negar says.",
+      "fa": "نگار و مادرش برای سلام بیرون می‌آیند. نگار می‌گوید: «به خانه خوش آمدید!»"
     },
     {
-      "en": "Only the final page still has no words.",
-      "fa": "فقط صفحه‌ی آخر هنوز هیچ کلمه‌ای ندارد."
+      "en": "\"Thank you for the water and the bread,\" Mina says to Negar's mother.",
+      "fa": "مینا به مادر نگار می‌گوید: «ممنون برای آب و نان.»"
     },
     {
-      "en": "She hopes that page can have a happy ending.",
-      "fa": "امیدوار است آن صفحه بتواند پایانی خوش داشته باشد."
+      "en": "\"Every night,\" Negar's mother says. \"And, Mina, somebody came here yesterday and asked about you.\"",
+      "fa": "مادر نگار می‌گوید: «هر شب. راستی مینا، دیروز یک نفر اینجا آمد و سراغت را گرفت.»"
     },
     {
-      "en": "Mina sits by the window and opens the book.",
-      "fa": "مینا کنار پنجره می‌نشیند و کتاب را باز می‌کند."
+      "en": "\"An old woman. She asked when you come home, and I said Friday evening.\"",
+      "fa": "«یک پیرزن. پرسید کی برمی‌گردید و من گفتم جمعه عصر.»"
     },
     {
-      "en": "Outside, the night is dark and very quiet.",
-      "fa": "بیرون، شب تاریک و بسیار آرام است."
+      "en": "Mina looks at Mom. An old woman?",
+      "fa": "مینا به مامان نگاه می‌کند. یک پیرزن؟"
     },
     {
-      "en": "However, a few stars are above the houses.",
-      "fa": "اما چند ستاره بالای خانه‌ها هستند."
+      "en": "The family goes in and eats a quick dinner. Nobody talks much.",
+      "fa": "خانواده داخل می‌روند و شام مختصری می‌خورند. کسی زیاد حرف نمی‌زند."
     },
     {
-      "en": "She writes a title on the first line of the page.",
-      "fa": "در خط اول صفحه یک عنوان می‌نویسد."
+      "en": "At eight o'clock, there is a sound at the door.",
+      "fa": "ساعت هشت، صدایی از دمِ در می‌آید."
     },
     {
-      "en": "The title says, \"Nino, Come Home.\"",
-      "fa": "عنوان می‌گوید: «نینو، برگرد خانه.»"
+      "en": "\"Somebody is at the door,\" Dad says, and everyone stops.",
+      "fa": "بابا می‌گوید: «یک نفر دمِ در است» و همه دست نگه می‌دارند."
     },
     {
-      "en": "Mina looks at the space with no words below it.",
-      "fa": "مینا به فضای بدون کلمه زیر آن نگاه می‌کند."
+      "en": "Dad opens the door, and Mina is right behind him.",
+      "fa": "بابا در را باز می‌کند و مینا درست پشت سرش است."
     },
     {
-      "en": "Then a small sound comes from downstairs.",
-      "fa": "بعد صدای کوچکی از طبقه‌ی پایین می‌آید."
+      "en": "An old woman and a boy are there. Mina knows them at once.",
+      "fa": "یک پیرزن و یک پسر آنجا هستند. مینا فوراً آن‌ها را می‌شناسد."
     },
     {
-      "en": "The sound comes again, small but easy to hear.",
-      "fa": "صدا دوباره می‌آید، کوچک اما شنیدنش آسان است."
+      "en": "It is the old woman with the blue door, and her grandson.",
+      "fa": "پیرزنِ درِ آبی است، با نوه‌اش."
     },
     {
-      "en": "\"Somebody is at the door,\" Mom calls from the kitchen.",
-      "fa": "مامان از آشپزخانه صدا می‌زند: «یک نفر پشت در است.»"
+      "en": "The boy has a box in his arms, and the box moves.",
+      "fa": "پسر جعبه‌ای در بغل دارد و جعبه تکان می‌خورد."
     },
     {
-      "en": "Mina hears somebody make a sound at the door from outside.",
-      "fa": "مینا می‌شنود کسی از بیرون کنار در صدایی ایجاد می‌کند."
+      "en": "\"Good evening,\" the old woman says. \"I think this is yours.\"",
+      "fa": "پیرزن می‌گوید: «عصر بخیر. فکر کنم این مال شماست.»"
     },
     {
-      "en": "For one second, she cannot move at all.",
-      "fa": "برای یک ثانیه، اصلاً نمی‌تواند تکان بخورد."
+      "en": "The boy opens the box. In it, there is a yellow chicken.",
+      "fa": "پسر جعبه را باز می‌کند. داخلش یک جوجه‌ی زرد هست."
     },
     {
-      "en": "She cannot decide if she should hope or be afraid.",
-      "fa": "نمی‌تواند تصمیم بگیرد امیدوار باشد یا بترسد."
+      "en": "He is not so small now. He has orange feet, and there is a little white on his left.",
+      "fa": "حالا دیگر آن‌قدر کوچک نیست. پاهای نارنجی دارد و کمی سفید در سمت چپش هست."
     },
     {
-      "en": "\"If it is not Nino, I will be sad,\" she thinks.",
-      "fa": "فکر می‌کند: «اگر نینو نباشد، ناراحت می‌شوم.»"
+      "en": "\"Nino!\" Mina says.",
+      "fa": "مینا می‌گوید: «نینو!»"
     },
     {
-      "en": "\"But if it is a little chicken, I have to look.\"",
-      "fa": "«اما اگر یک جوجه‌ی کوچک باشد، باید نگاه کنم.»"
+      "en": "The chicken looks up at her. Then he comes out of the box and runs to her feet, the way he did every morning.",
+      "fa": "جوجه سرش را بالا می‌کند و به او نگاه می‌کند. بعد از جعبه بیرون می‌آید و به طرف پاهایش می‌دود، همان‌طور که هر صبح می‌دوید."
     },
     {
-      "en": "Mina runs downstairs before anyone else gets to the door.",
-      "fa": "مینا پیش از همه به طبقه‌ی پایین می‌دود."
+      "en": "Mina sits down on the floor, and Nino walks into her hands.",
+      "fa": "مینا روی زمین می‌نشیند و نینو به دست‌هایش می‌آید."
     },
     {
-      "en": "She opens the door slowly and looks outside.",
-      "fa": "آرام در را باز می‌کند و بیرون را نگاه می‌کند."
+      "en": "She cannot say a word. Mom and Dad laugh, and Aria runs for his light to see better.",
+      "fa": "نمی‌تواند یک کلمه هم حرف بزند. مامان و بابا می‌خندند و آریا می‌دود چراغش را بیاورد تا بهتر ببیند."
     },
     {
-      "en": "A small yellow chicken stands under the light outside the door.",
-      "fa": "یک جوجه‌ی زرد کوچک زیر چراغ بیرون در ایستاده است."
+      "en": "Yasi says \"Nino!\" three times with her new tooth.",
+      "fa": "یاسی با دندان تازه‌اش سه بار می‌گوید: «نینو!»"
     },
     {
-      "en": "He is dirty from many days outside.",
-      "fa": "از روزهای زیادی که بیرون بوده کثیف شده است."
+      "en": "\"Please, come in,\" Mom says to the old woman and her grandson, and she brings tea and cake.",
+      "fa": "مامان به پیرزن و نوه‌اش می‌گوید: «بفرمایید تو» و چای و کیک می‌آورد."
     },
     {
-      "en": "He looks small and hungry, but his eyes are open.",
-      "fa": "کوچک و گرسنه به نظر می‌رسد، اما چشم‌هایش باز هستند."
+      "en": "Then the old woman tells her story.",
+      "fa": "بعد پیرزن ماجرایش را تعریف می‌کند."
     },
     {
-      "en": "His dark eyes look at Mina.",
-      "fa": "چشم‌های تیره‌اش به مینا نگاه می‌کنند."
+      "en": "\"Two weeks ago, I came home from my daughter's house, and I found your note under my door.\"",
+      "fa": "«دو هفته پیش، از خانه‌ی دخترم برگشتم و یادداشتت را زیر درم پیدا کردم.»"
     },
     {
-      "en": "\"If you are Nino, come to me,\" Mina says.",
-      "fa": "مینا می‌گوید: «اگر نینو هستی، بیا پیش من.»"
+      "en": "\"Then, five days ago, a yellow chicken came into my garden with the birds. He was following a red bird.\"",
+      "fa": "«بعد، پنج روز پیش، یک جوجه‌ی زرد همراه پرنده‌ها به باغچه‌ام آمد. دنبال یک پرنده‌ی قرمز بود.»"
     },
     {
-      "en": "The chicken makes a small sound and comes into the house.",
-      "fa": "جوجه صدای کوچکی می‌کند و وارد خانه می‌شود."
+      "en": "Mina and Aria look at each other. The red bird!",
+      "fa": "مینا و آریا به هم نگاه می‌کنند. پرنده‌ی قرمز!"
     },
     {
-      "en": "He looks up at Mina for a moment.",
-      "fa": "برای لحظه‌ای سرش را بالا می‌گیرد و به مینا نگاه می‌کند."
+      "en": "\"He ate with my birds every day, and at night he slept by my blue door.\"",
+      "fa": "«هر روز با پرنده‌هایم غذا می‌خورد و شب‌ها کنار درِ آبی‌ام می‌خوابید.»"
     },
     {
-      "en": "Then he walks to her.",
-      "fa": "بعد به سمت او می‌رود."
+      "en": "\"My garden is behind the river road, and many birds come there for water.\"",
+      "fa": "«باغچه‌ی من پشت جاده‌ی کنار رودخانه است و پرنده‌های زیادی برای آب به آنجا می‌آیند.»"
     },
     {
-      "en": "He walks around Mina's feet and sits next to them.",
-      "fa": "دور پاهای مینا راه می‌رود و کنار آن‌ها می‌نشیند."
+      "en": "\"I saw the white on his left,\" the grandson says. \"And I remembered the picture in the newspaper.\"",
+      "fa": "نوه‌اش می‌گوید: «سفیدیِ سمت چپش را دیدم. و عکس روزنامه یادم آمد.»"
     },
     {
-      "en": "Mom says, \"I cannot believe he found us.\"",
-      "fa": "مامان می‌گوید: «نمی‌توانم باور کنم ما را پیدا کرده.»"
+      "en": "Mina opens her red book to the page with the blue door and the farm flower.",
+      "fa": "مینا کتاب قرمزش را در صفحه‌ی درِ آبی و گلِ مزرعه باز می‌کند."
     },
     {
-      "en": "Dad says, \"I cannot believe my eyes.\"",
-      "fa": "بابا می‌گوید: «نمی‌توانم چشم‌هایم را باور کنم.»"
+      "en": "\"I wrote it here,\" she says. \"Food every day. Other birds. The blue door.\"",
+      "fa": "می‌گوید: «اینجا نوشته بودم. غذا هر روز. پرنده‌های دیگر. درِ آبی.»"
     },
     {
-      "en": "Mina knows it is Nino because she remembers his orange feet and the little white on his left.",
-      "fa": "مینا می‌داند نینو است چون پاهای نارنجی و کمی سفید سمت چپش را به یاد دارد."
+      "en": "\"You are a smart girl,\" the old woman says. \"Without your note, I could not find your house.\"",
+      "fa": "پیرزن می‌گوید: «تو دختر باهوشی هستی. بدون یادداشتت نمی‌توانستم خانه‌تان را پیدا کنم.»"
     },
     {
-      "en": "She would know Nino even with a thousand little chickens around him.",
-      "fa": "او حتی با هزار جوجه‌ی کوچک دور نینو هم او را می‌شناخت."
+      "en": "\"Thank you,\" Mina says. \"Thank you so, so much.\"",
+      "fa": "مینا می‌گوید: «ممنونم. خیلی خیلی ممنونم.»"
     },
     {
-      "en": "\"Nino,\" she says, and she is very happy.",
-      "fa": "می‌گوید: «نینو» و خیلی خوشحال است."
+      "en": "Later, Mina calls Grandmother. \"You were right,\" she says. \"Nino is home!\"",
+      "fa": "بعد، مینا به مادربزرگ زنگ می‌زند. می‌گوید: «حق با تو بود. نینو برگشته خانه!»"
     },
     {
-      "en": "\"You really came home,\" she tells him.",
-      "fa": "به او می‌گوید: «واقعاً به خانه برگشتی.»"
+      "en": "Then the family sits together with the map, the photos and Nino's box, and they tell the story from the beginning.",
+      "fa": "بعد خانواده با نقشه، عکس‌ها و جعبه‌ی نینو دور هم می‌نشینند و ماجرا را از اول تعریف می‌کنند."
     },
     {
-      "en": "Mom brings water, and Dad brings some food.",
-      "fa": "مامان آب می‌آورد و بابا کمی غذا می‌آورد."
+      "en": "That night, Nino sleeps at the foot of Mina's bed again.",
+      "fa": "آن شب، نینو دوباره پایین تخت مینا می‌خوابد."
     },
     {
-      "en": "Nino eats a little food slowly at first, then looks for more.",
-      "fa": "نینو اول کمی غذا را آرام می‌خورد و بعد دنبال غذای بیشتری می‌گردد."
+      "en": "Before she sleeps, Mina writes one last sentence in her red book.",
+      "fa": "قبل از خواب، مینا یک جمله‌ی آخر در کتاب قرمزش می‌نویسد."
     },
     {
-      "en": "After eating, he stays in Mina's arms.",
-      "fa": "بعد از خوردن، در آغوش مینا می‌ماند."
-    },
-    {
-      "en": "His warm body finally makes the house feel like home again.",
-      "fa": "بدن گرمش بالاخره باعث می‌شود خانه دوباره حس خانه داشته باشد."
-    },
-    {
-      "en": "Mina carries him upstairs to her room.",
-      "fa": "مینا او را به اتاقش در طبقه‌ی بالا می‌برد."
-    },
-    {
-      "en": "Nino stays near her chair as she opens the red book.",
-      "fa": "نینو نزدیک صندلی او می‌ماند و مینا کتاب قرمز را باز می‌کند."
-    },
-    {
-      "en": "Now she knows what the final page should say.",
-      "fa": "حالا می‌داند صفحه‌ی آخر باید چه بگوید."
-    },
-    {
-      "en": "She writes about the return, the door, and the dark eyes.",
-      "fa": "درباره‌ی برگشت، در و چشم‌های تیره می‌نویسد."
-    },
-    {
-      "en": "Then she adds one short sentence near the end of the page.",
-      "fa": "بعد یک جمله‌ی کوتاه نزدیک پایان صفحه اضافه می‌کند."
-    },
-    {
-      "en": "The sentence says, \"Nino is home at last.\"",
-      "fa": "جمله می‌گوید: «نینو بالاخره خانه است.»"
-    },
-    {
-      "en": "Mina reads it once and looks at Nino near her chair.",
-      "fa": "مینا یک بار آن را می‌خواند و به نینو کنار صندلی‌اش نگاه می‌کند."
-    },
-    {
-      "en": "The page has words now.",
-      "fa": "حالا صفحه کلمه دارد."
-    },
-    {
-      "en": "The story ends where Mina wanted it to end: at home.",
-      "fa": "قصه همان جایی تمام می‌شود که مینا می‌خواست: در خانه."
+      "en": "\"Nino is home at last.\"",
+      "fa": "«نینو بالاخره به خانه برگشت.»"
     }
   ],
   "check": [
     {
       "q": "چه کسی پشت در بود؟",
       "options": [
-        "chicken",
-        "dog",
+        "woman",
         "doctor",
-        "teacher"
+        "teacher",
+        "farmer"
       ],
-      "a": "chicken"
+      "a": "woman"
     },
     {
       "q": "آخرین جمله می‌گوید نینو کجاست؟",

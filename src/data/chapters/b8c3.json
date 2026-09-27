@@ -5,275 +5,156 @@
   "titleFa": "دکتر",
   "titleEn": "The Doctor",
   "new": [
-    "sick",
-    "really",
-    "oh",
-    "have-to",
-    "doctor",
-    "ok",
     "hospital",
     "nurse",
+    "doctor",
     "dangerous",
-    "quite",
     "probably",
+    "ok",
+    "quite",
     "health",
     "healthy",
-    "diet"
+    "diet",
+    "guess"
   ],
   "sentences": [
     {
-      "en": "The next morning, Uncle wakes feeling sick.",
-      "fa": "صبح روز بعد، دایی با حال مریض بیدار می‌شود."
+      "en": "On the third day, Mina's uncle climbs a tree in the garden for some fruit.",
+      "fa": "روز سوم، دایی مینا برای چیدن میوه از درختی در باغ بالا می‌رود."
     },
     {
-      "en": "He says he feels really sick and cannot finish breakfast.",
-      "fa": "می‌گوید واقعاً مریض است و نمی‌تواند صبحانه را تمام کند."
+      "en": "\"Please come down!\" her aunt says. \"That tree is old.\"",
+      "fa": "زن‌دایی‌اش می‌گوید: «لطفاً بیا پایین! آن درخت پیر است.»"
     },
     {
-      "en": "Aunt puts her hand on his head and says he is very warm.",
-      "fa": "خاله دستش را روی سر او می‌گذارد و می‌گوید خیلی گرم است."
+      "en": "Then there is a sound, and he falls from the tree.",
+      "fa": "بعد صدایی می‌آید و او از درخت می‌افتد."
     },
     {
-      "en": "\"Oh no,\" she says. \"You are very warm.\"",
-      "fa": "می‌گوید: «اوه نه. خیلی گرمی.»"
+      "en": "\"Oh! My arm!\" he says.",
+      "fa": "می‌گوید: «آخ! دستم!»"
     },
     {
-      "en": "Uncle tries to stand, then sits down again.",
-      "fa": "دایی سعی می‌کند بلند شود، اما دوباره می‌نشیند."
+      "en": "Everyone runs to him. He cannot move his arm well.",
+      "fa": "همه به طرفش می‌دوند. نمی‌تواند دستش را خوب تکان بدهد."
     },
     {
-      "en": "\"We have to take you to a doctor,\" Aunt says.",
-      "fa": "خاله می‌گوید: «باید تو را پیش دکتر ببریم.»"
+      "en": "\"We have to go to the hospital,\" her aunt says.",
+      "fa": "زن‌دایی‌اش می‌گوید: «باید برویم بیمارستان.»"
     },
     {
-      "en": "\"You have to go today, not tomorrow,\" Dad agrees.",
-      "fa": "بابا موافقت می‌کند: «باید امروز بروی، نه فردا.»"
+      "en": "Grandfather drives the truck down the mountain road with Uncle, Aunt, Mom and Mina.",
+      "fa": "پدربزرگ کامیون را با دایی، زن‌دایی، مامان و مینا از جاده‌ی کوهستانی پایین می‌برد."
     },
     {
-      "en": "\"OK,\" Uncle says. \"Give me one minute.\"",
-      "fa": "دایی می‌گوید: «باشه. یک دقیقه به من وقت بده.»"
+      "en": "Dad stays at the house with Aria, Yasi and her cousin.",
+      "fa": "بابا با آریا، یاسی و دختردایی در خانه می‌ماند."
     },
     {
-      "en": "He gets ready slowly, and Mina brings his coat.",
-      "fa": "او آرام آماده می‌شود و مینا پالتویش را می‌آورد."
+      "en": "The hospital is in the town by the sea. It is small and clean.",
+      "fa": "بیمارستان در شهر کنار دریاست. کوچک و تمیز است."
     },
     {
-      "en": "The nearest hospital is down in the town.",
-      "fa": "نزدیک‌ترین بیمارستان پایین در شهر قرار دارد."
+      "en": "A nurse takes them to a room, and then a doctor comes in. She is a young woman with a friendly face.",
+      "fa": "پرستاری آن‌ها را به اتاقی می‌برد و بعد یک دکتر می‌آید. زن جوانی است با چهره‌ای مهربان."
     },
     {
-      "en": "A nurse there told Dad they can come.",
-      "fa": "پرستاری آنجا به بابا گفته که می‌توانند بیایند."
+      "en": "\"Is it dangerous?\" Aunt asks.",
+      "fa": "زن‌دایی می‌پرسد: «خطرناک است؟»"
     },
     {
-      "en": "The family starts down the mountain before the road gets busy.",
-      "fa": "خانواده پیش از شلوغ شدن جاده از کوه پایین می‌رود."
+      "en": "\"I do not think so,\" the doctor says. \"It is probably not broken, but let's see.\"",
+      "fa": "دکتر می‌گوید: «فکر نمی‌کنم. احتمالاً نشکسته، اما بیایید ببینیم.»"
     },
     {
-      "en": "Dad wants to arrive quickly, but he drives slowly on dangerous parts of the road.",
-      "fa": "بابا می‌خواهد سریع برسد، اما در بخش‌های خطرناک جاده آرام رانندگی می‌کند."
+      "en": "She takes a picture of his arm with a big machine and looks at it for a long time.",
+      "fa": "با یک دستگاه بزرگ از دستش عکس می‌گیرد و مدت زیادی به آن نگاه می‌کند."
     },
     {
-      "en": "He drives quickly on easy parts and slows near every turn.",
-      "fa": "در بخش‌های آسان سریع رانندگی می‌کند و نزدیک هر پیچ سرعت را کم می‌کند."
+      "en": "\"Good news,\" she says. \"It is not broken. Your arm is OK.\"",
+      "fa": "می‌گوید: «خبر خوب. نشکسته. دستت سالم است.»"
     },
     {
-      "en": "\"A quick trip is good, but a slow trip can be better on this road,\" Mom says.",
-      "fa": "مامان می‌گوید: «سفر سریع خوب است، اما در این جاده سفر آرام می‌تواند بهتر باشد.»"
+      "en": "\"But you have to stay quiet for a week. No more trees!\"",
+      "fa": "«اما باید یک هفته آرام بمانی. دیگر درخت نه!»"
     },
     {
-      "en": "The mountain road can be dangerous after rain.",
-      "fa": "جاده‌ی کوهستان بعد از باران می‌تواند خطرناک باشد."
+      "en": "Everyone laughs, and Uncle laughs too.",
+      "fa": "همه می‌خندند و دایی هم می‌خندد."
     },
     {
-      "en": "Dad keeps the car slow on small parts of the road.",
-      "fa": "بابا در بخش‌های کوچک جاده ماشین را آرام نگه می‌دارد."
+      "en": "The nurse brings Uncle a glass of water.",
+      "fa": "پرستار یک لیوان آب برای دایی می‌آورد."
     },
     {
-      "en": "They finally arrive at the hospital with no problem.",
-      "fa": "بالاخره بدون مشکل به بیمارستان می‌رسند."
+      "en": "\"You are quite strong,\" she tells him. \"Your health is good.\"",
+      "fa": "به او می‌گوید: «شما خیلی قوی هستید. سلامتی‌تان خوب است.»"
     },
     {
-      "en": "At the door, a nurse comes to meet Uncle.",
-      "fa": "کنار در، پرستاری برای دیدن دایی می‌آید."
+      "en": "\"Eat healthy food,\" the doctor says. \"Fruit, vegetables and fish. A good diet is important for your health.\"",
+      "fa": "دکتر می‌گوید: «غذای سالم بخورید. میوه، سبزی و ماهی. رژیم غذایی خوب برای سلامتی‌تان مهم است.»"
     },
     {
-      "en": "The nurse asks a few questions and checks how warm he is.",
-      "fa": "پرستار چند سؤال می‌پرسد و بررسی می‌کند چقدر گرم است."
+      "en": "\"Grandmother's cooking is my diet,\" Uncle says, and the doctor laughs.",
+      "fa": "دایی می‌گوید: «رژیم غذایی من دستپخت مادربزرگ است» و دکتر می‌خندد."
     },
     {
-      "en": "Then she takes the family to a quiet room.",
-      "fa": "بعد خانواده را به اتاقی آرام می‌برد."
+      "en": "Then the nurse sees Nino's photo in Mina's red book.",
+      "fa": "بعد پرستار عکس نینو را در کتاب قرمز مینا می‌بیند."
     },
     {
-      "en": "A young doctor comes in and asks Uncle how he feels.",
-      "fa": "دکتر جوانی وارد می‌شود و از دایی می‌پرسد چه حالی دارد."
+      "en": "\"Is this the chicken from the newspaper?\" she asks.",
+      "fa": "می‌پرسد: «این همان جوجه‌ی روزنامه است؟»"
     },
     {
-      "en": "Mina watches the doctor because she is afraid.",
-      "fa": "مینا چون می‌ترسد دکتر را نگاه می‌کند."
+      "en": "Mina cannot believe it. \"Here? In the north? How do you know him?\"",
+      "fa": "مینا باورش نمی‌شود. «اینجا؟ در شمال؟ از کجا او را می‌شناسید؟»"
     },
     {
-      "en": "The doctor is quite quiet, and that helps Mina relax.",
-      "fa": "دکتر کاملاً آرام است و این به مینا کمک می‌کند آرام شود."
+      "en": "\"My sister lives in Tehran, and she sends me the newspaper,\" the nurse says.",
+      "fa": "پرستار می‌گوید: «خواهرم در تهران زندگی می‌کند و روزنامه را برایم می‌فرستد.»"
     },
     {
-      "en": "\"It is probably a cold,\" the doctor says after the exam.",
-      "fa": "دکتر بعد از معاینه می‌گوید: «احتمالاً سرماخوردگی است.»"
+      "en": "\"I guess everyone knows Nino now!\" Mom says.",
+      "fa": "مامان می‌گوید: «فکر کنم حالا همه نینو را می‌شناسند!»"
     },
     {
-      "en": "\"You probably got it a few days ago.\"",
-      "fa": "«احتمالاً چند روز پیش گرفته‌ای.»"
+      "en": "\"Is he home?\" the nurse asks.",
+      "fa": "پرستار می‌پرسد: «برگشته خانه؟»"
     },
     {
-      "en": "He explains that being sick feels bad but is not dangerous.",
-      "fa": "توضیح می‌دهد مریض بودن حس بدی دارد، اما خطرناک نیست."
+      "en": "\"No,\" Mina says. \"Not now.\"",
+      "fa": "مینا می‌گوید: «نه. هنوز نه.»"
     },
     {
-      "en": "\"You must stay in bed for two days,\" the doctor says.",
-      "fa": "دکتر می‌گوید: «باید دو روز در تخت بمانی.»"
+      "en": "The nurse puts one of Mina's notes on the hospital wall. \"People come here from all over the north,\" she says.",
+      "fa": "پرستار یکی از یادداشت‌های مینا را روی دیوار بیمارستان می‌زند. می‌گوید: «از همه‌جای شمال به اینجا می‌آیند.»"
     },
     {
-      "en": "\"You must drink a lot of water too.\"",
-      "fa": "«باید آب زیادی هم بنوشی.»"
-    },
-    {
-      "en": "Uncle says yes and asks what else he should do.",
-      "fa": "دایی بله می‌گوید و می‌پرسد دیگر چه کاری باید انجام دهد."
-    },
-    {
-      "en": "\"You should eat well and sleep enough,\" the doctor answers.",
-      "fa": "دکتر جواب می‌دهد: «باید خوب غذا بخوری و به اندازه‌ی کافی بخوابی.»"
-    },
-    {
-      "en": "He says good health comes from many small things.",
-      "fa": "می‌گوید سلامتی خوب از چیزهای کوچک زیادی می‌آید."
-    },
-    {
-      "en": "A healthy diet is one important thing.",
-      "fa": "رژیم غذایی سالم یک چیز مهم است."
-    },
-    {
-      "en": "Fruit, vegetables, and water are part of a healthy diet.",
-      "fa": "میوه، سبزیجات و آب بخشی از رژیم غذایی سالم هستند."
-    },
-    {
-      "en": "\"And when you feel better, you should exercise again,\" he adds.",
-      "fa": "اضافه می‌کند: «و وقتی بهتر شدی باید دوباره ورزش کنی.»"
-    },
-    {
-      "en": "Exercise can help the body stay healthy.",
-      "fa": "ورزش می‌تواند به سالم ماندن بدن کمک کند."
-    },
-    {
-      "en": "A walk is easy exercise for many people.",
-      "fa": "پیاده‌روی برای خیلی‌ها ورزش آسانی است."
-    },
-    {
-      "en": "Exercise can also help a person become strong.",
-      "fa": "ورزش همچنین می‌تواند به قوی شدن آدم کمک کند."
-    },
-    {
-      "en": "\"You are strong,\" the doctor tells Uncle, \"but strong people still need time to get better.\"",
-      "fa": "دکتر به دایی می‌گوید: «تو قوی هستی، اما آدم‌های قوی هم برای بهتر شدن زمان لازم دارند.»"
-    },
-    {
-      "en": "Uncle says he will follow the advice.",
-      "fa": "دایی می‌گوید توصیه‌ها را انجام خواهد داد."
-    },
-    {
-      "en": "The nurse brings a glass of water before they leave.",
-      "fa": "پرستار پیش از رفتن یک لیوان آب می‌آورد."
-    },
-    {
-      "en": "\"OK,\" Uncle says. \"I will start with this.\"",
-      "fa": "دایی می‌گوید: «باشه. از همین شروع می‌کنم.»"
-    },
-    {
-      "en": "Dad asks, \"Are you ready to go home?\"",
-      "fa": "بابا می‌پرسد: «آماده‌ای برویم خانه؟»"
-    },
-    {
-      "en": "\"Ready,\" Uncle says, standing slowly.",
-      "fa": "دایی در حالی که آرام بلند می‌شود می‌گوید: «آماده‌ام.»"
-    },
-    {
-      "en": "Aunt helps him put on his coat slowly.",
-      "fa": "خاله آرام کمکش می‌کند پالتو بپوشد."
-    },
-    {
-      "en": "Soon everyone is ready to leave the room.",
-      "fa": "خیلی زود همه آماده‌ی ترک اتاق هستند."
-    },
-    {
-      "en": "\"Thank you, Doctor,\" Uncle says at the door.",
-      "fa": "دایی کنار در می‌گوید: «متشکرم، دکتر.»"
-    },
-    {
-      "en": "\"Thank you, Nurse,\" Mina adds.",
-      "fa": "مینا اضافه می‌کند: «متشکرم، پرستار.»"
-    },
-    {
-      "en": "Outside, Mina says the visit went quite well.",
-      "fa": "بیرون، مینا می‌گوید مراجعه خیلی خوب پیش رفت."
-    },
-    {
-      "en": "She is not afraid now that Uncle knows what to do.",
-      "fa": "حالا که دایی می‌داند چه کار کند، مینا دیگر نمی‌ترسد."
-    },
-    {
-      "en": "\"I really like that doctor,\" Mina says in the car.",
-      "fa": "مینا در ماشین می‌گوید: «من واقعاً آن دکتر را دوست دارم.»"
-    },
-    {
-      "en": "Mom says, \"He gave good advice.\"",
-      "fa": "مامان می‌گوید: «توصیه‌های خوبی داد.»"
-    },
-    {
-      "en": "Mina looks out at the road and thinks about Nino.",
-      "fa": "مینا به جاده نگاه می‌کند و به نینو فکر می‌کند."
-    },
-    {
-      "en": "\"Sick people need doctors,\" Mom says when Mina grows quiet.",
-      "fa": "مامان وقتی مینا ساکت می‌شود می‌گوید: «آدم‌های مریض به دکتر نیاز دارند.»"
-    },
-    {
-      "en": "\"And sick birds need help too,\" Mina answers.",
-      "fa": "مینا جواب می‌دهد: «و پرنده‌های مریض هم به کمک نیاز دارند.»"
-    },
-    {
-      "en": "For a moment, nobody speaks as the car climbs slowly.",
-      "fa": "برای لحظه‌ای، وقتی ماشین آرام بالا می‌رود، کسی حرف نمی‌زند."
-    },
-    {
-      "en": "Then Dad says, \"We will keep looking for him when we get back.\"",
-      "fa": "بعد بابا می‌گوید: «وقتی برگشتیم، دوباره دنبالش می‌گردیم.»"
-    },
-    {
-      "en": "Mina says yes and feels ready to keep looking for Nino.",
-      "fa": "مینا بله می‌گوید و احساس می‌کند آماده است همچنان دنبال نینو بگردد."
+      "en": "In the truck, Mom takes Mina's hand. \"Nino has friends in the north now,\" she says.",
+      "fa": "در کامیون، مامان دست مینا را می‌گیرد. می‌گوید: «حالا نینو در شمال هم دوست دارد.»"
     }
   ],
   "check": [
     {
-      "q": "دایی کجا رفت؟",
+      "q": "دایی را کجا می‌برند؟",
       "options": [
         "hospital",
         "school",
         "market",
-        "office"
+        "hotel"
       ],
       "a": "hospital"
     },
     {
-      "q": "دکتر برای حفظ سلامتی چه کاری را پیشنهاد می‌کند؟",
+      "q": "دکتر می‌گوید دست دایی چطور است؟",
       "options": [
-        "exercise",
-        "party",
-        "trip",
-        "game"
+        "ok",
+        "dangerous",
+        "sick",
+        "dirty"
       ],
-      "a": "exercise"
+      "a": "ok"
     }
   ]
 }

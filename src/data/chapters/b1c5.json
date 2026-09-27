@@ -2,239 +2,242 @@
   "id": "b1c5",
   "book": 1,
   "n": 5,
-  "titleFa": "شبِ بی‌نینو",
+  "titleFa": "شبی بدون نینو",
   "titleEn": "A Night Without Nino",
   "new": [
     "evening",
     "cook",
     "dinner",
-    "help",
-    "listen",
+    "television",
+    "tv",
+    "young",
     "food",
     "good",
     "much",
-    "sit",
-    "think",
+    "because",
+    "should",
+    "son",
+    "daughter",
+    "live",
+    "their",
     "without",
-    "quickly",
-    "long",
+    "if",
+    "than",
+    "animal",
+    "clean",
+    "tonight",
+    "become",
+    "even",
+    "tired",
     "decide",
+    "another",
+    "or",
+    "sorry",
+    "let",
+    "me",
+    "miss",
+    "bad",
+    "feeling",
     "love",
     "how",
-    "happy",
-    "bad",
-    "agree",
     "lose",
-    "animal",
-    "just",
-    "than",
-    "anything",
-    "tired",
-    "final",
-    "lie",
     "hope",
-    "tomorrow",
-    "if",
-    "well",
-    "enough",
+    "new",
     "yes",
+    "once",
+    "enough",
+    "later",
+    "as",
+    "well",
     "end",
-    "miss"
+    "final"
   ],
   "sentences": [
     {
-      "en": "Evening comes, and Nino is still not home.",
-      "fa": "عصر می‌رسد و نینو هنوز خانه نیست."
+      "en": "In the evening, Mom cooks dinner, and Mina helps her.",
+      "fa": "عصر مامان شام می‌پزد و مینا کمکش می‌کند."
     },
     {
-      "en": "The family stays in the house together.",
-      "fa": "خانواده با هم در خانه می‌مانند."
+      "en": "But Mina keeps thinking about the space under the door.",
+      "fa": "اما مینا مدام به آن فاصله‌ی زیر در فکر می‌کند."
     },
     {
-      "en": "Mom begins to cook dinner in the kitchen.",
-      "fa": "مامان در آشپزخانه شروع به پختن شام می‌کند."
+      "en": "Dad turns on the television for Yasi.",
+      "fa": "بابا تلویزیون را برای یاسی روشن می‌کند."
     },
     {
-      "en": "Mina tries to help cook, but she keeps listening for Nino.",
-      "fa": "مینا سعی می‌کند در پختن کمک کند، اما مدام گوش می‌دهد تا شاید صدای نینو را بشنود."
+      "en": "Yasi watches the TV and is very happy.",
+      "fa": "یاسی تلویزیون تماشا می‌کند و خیلی خوشحال است."
     },
     {
-      "en": "When dinner is ready, everyone comes to the table.",
-      "fa": "وقتی شام آماده می‌شود، همه سر میز می‌آیند."
+      "en": "She is too young to know that Nino is not home.",
+      "fa": "آن‌قدر کوچک است که نمی‌داند نینو خانه نیست."
     },
     {
-      "en": "The food is good, but Mina does not want much.",
-      "fa": "غذا خوب است، اما مینا میل زیادی ندارد."
+      "en": "When dinner is ready, everyone sits at the table.",
+      "fa": "وقتی شام آماده است، همه سر میز می‌نشینند."
     },
     {
-      "en": "Dad asks her to sit next to him.",
-      "fa": "بابا از او می‌خواهد کنارش بنشیند."
+      "en": "The food is good, but Mina does not eat much because she is thinking about Nino.",
+      "fa": "غذا خوب است، اما مینا زیاد نمی‌خورد چون به نینو فکر می‌کند."
     },
     {
-      "en": "Mina takes a chair and sits down slowly.",
-      "fa": "مینا یک صندلی برمی‌دارد و آرام می‌نشیند."
+      "en": "\"You should eat,\" Dad says. \"Tomorrow will be a long day.\"",
+      "fa": "بابا می‌گوید: «باید بخوری. فردا روز طولانی‌ای است.»"
     },
     {
-      "en": "The chair near the window makes her think of Nino.",
-      "fa": "صندلی کنار پنجره مینا را یاد نینو می‌اندازد."
+      "en": "Dad looks at his son and his two daughters.",
+      "fa": "بابا به پسرش و دو دخترش نگاه می‌کند."
     },
     {
-      "en": "She tries to sit through dinner without getting up.",
-      "fa": "سعی می‌کند تمام شام را بدون بلند شدن بنشیند."
+      "en": "\"We all live here with Nino,\" he says. \"He is part of this family.\"",
+      "fa": "می‌گوید: «همه‌مان اینجا با نینو زندگی می‌کنیم. او بخشی از این خانواده است.»"
     },
     {
-      "en": "Then a small sound makes her stand quickly.",
-      "fa": "بعد صدای کوچکی باعث می‌شود سریع بایستد."
+      "en": "Their house feels different without him.",
+      "fa": "خانه‌شان بدون او حال دیگری دارد."
     },
     {
-      "en": "She stands by the window and looks outside.",
-      "fa": "کنار پنجره می‌ایستد و بیرون را نگاه می‌کند."
+      "en": "Aria puts down his cup. \"What if he is afraid out there?\" he asks.",
+      "fa": "آریا فنجانش را زمین می‌گذارد. می‌پرسد: «اگر آن بیرون بترسد چه؟»"
     },
     {
-      "en": "Mina opens the door and calls Nino.",
-      "fa": "مینا در را باز می‌کند و نینو را صدا می‌زند."
+      "en": "Nobody answers for a moment.",
+      "fa": "برای لحظه‌ای هیچ‌کس جواب نمی‌دهد."
     },
     {
-      "en": "She calls one more time into the dark yard.",
-      "fa": "یک بار دیگر رو به حیاط تاریک صدایش می‌زند."
+      "en": "Then Dad says, \"Nino is small, but he is strong.\"",
+      "fa": "بعد بابا می‌گوید: «نینو کوچک است، اما قوی است.»"
     },
     {
-      "en": "Dad says, \"We can wait here a little longer.\"",
-      "fa": "بابا می‌گوید: «می‌توانیم کمی بیشتر اینجا منتظر بمانیم.»"
+      "en": "\"And he knows his name,\" Mina says. \"If he hears it, he will come.\"",
+      "fa": "مینا می‌گوید: «و اسمش را بلد است. اگر آن را بشنود، می‌آید.»"
     },
     {
-      "en": "Mina decides to wait next to the open window.",
-      "fa": "مینا تصمیم می‌گیرد کنار پنجره‌ی باز منتظر بماند."
+      "en": "\"He is smaller than my shoe,\" Aria says, \"but he is a good animal.\"",
+      "fa": "آریا می‌گوید: «از کفش من کوچک‌تر است، اما حیوان خوبی است.»"
     },
     {
-      "en": "\"I love Nino,\" she tells Mom quietly.",
-      "fa": "آرام به مامان می‌گوید: «من نینو را دوست دارم.»"
+      "en": "After dinner, Mom cleans the table, and Mina thinks of something.",
+      "fa": "بعد از شام، مامان میز را تمیز می‌کند و چیزی به فکر مینا می‌رسد."
     },
     {
-      "en": "Mom answers, \"We love him very much too.\"",
-      "fa": "مامان جواب می‌دهد: «ما هم خیلی دوستش داریم.»"
+      "en": "She takes a cup of water and a little bread.",
+      "fa": "یک فنجان آب و کمی نان برمی‌دارد."
     },
     {
-      "en": "Mina remembers how Nino likes water and a little bread at night.",
-      "fa": "مینا یادش می‌آید نینو شب‌ها آب و کمی نان دوست دارد."
+      "en": "She puts the water and the bread outside the front door.",
+      "fa": "آب و نان را بیرون درِ جلویی می‌گذارد."
     },
     {
-      "en": "\"I like hearing Nino in the morning,\" she says.",
-      "fa": "می‌گوید: «دوست دارم صبح صدای نینو را بشنوم.»"
+      "en": "\"If Nino comes home tonight, he can eat and drink,\" she says.",
+      "fa": "می‌گوید: «اگر نینو امشب به خانه بیاید، می‌تواند بخورد و بنوشد.»"
     },
     {
-      "en": "Dad says Nino is a good little chicken.",
-      "fa": "بابا می‌گوید نینو جوجه‌ی کوچک خوبی است."
+      "en": "Dad agrees and leaves a small light on by the door.",
+      "fa": "بابا موافقت می‌کند و یک چراغ کوچک را کنار در روشن می‌گذارد."
     },
     {
-      "en": "Mina wants to feel happy, but she is sad.",
-      "fa": "مینا می‌خواهد خوشحال باشد، اما غمگین است."
+      "en": "It is dark now, and the house becomes quiet.",
+      "fa": "حالا هوا تاریک است و خانه ساکت می‌شود."
     },
     {
-      "en": "The baby is happy because everyone is together.",
-      "fa": "نوزاد خوشحال است چون همه کنار هم هستند."
+      "en": "Even Yasi looks at the door before she goes to sleep.",
+      "fa": "حتی یاسی هم پیش از خواب به در نگاه می‌کند."
     },
     {
-      "en": "Mina feels sad when she looks at Nino's water.",
-      "fa": "مینا وقتی به آب نینو نگاه می‌کند غمگین می‌شود."
+      "en": "Aria is very tired, and he goes to bed before everyone.",
+      "fa": "آریا خیلی خسته است و پیش از همه می‌خوابد."
     },
     {
-      "en": "Dad is sad too, but he tries to be happy.",
-      "fa": "بابا هم غمگین است، اما سعی می‌کند خوشحال باشد."
+      "en": "Mina decides to wait, so she sits by the open door in her coat.",
+      "fa": "مینا تصمیم می‌گیرد منتظر بماند، پس با کتش کنار درِ باز می‌نشیند."
     },
     {
-      "en": "\"This has been a bad day,\" Mina says.",
-      "fa": "مینا می‌گوید: «امروز روز بدی بوده است.»"
+      "en": "She listens to every sound in the night.",
+      "fa": "به هر صدایی در شب گوش می‌دهد."
     },
     {
-      "en": "Mom agrees that losing an animal feels very bad.",
-      "fa": "مامان موافق است که گم شدن یک حیوان حس خیلی بدی دارد."
+      "en": "Another sound comes from the yard. Is it Nino, or is it nothing?",
+      "fa": "صدای دیگری از حیاط می‌آید. نینوست، یا هیچ چیز نیست؟"
     },
     {
-      "en": "\"I just want Nino to come home,\" Mina says.",
-      "fa": "مینا می‌گوید: «فقط می‌خواهم نینو به خانه برگردد.»"
+      "en": "It is nothing.",
+      "fa": "هیچ چیز نیست."
     },
     {
-      "en": "More than anything, she wants her chicken next to her.",
-      "fa": "بیشتر از هر چیز، جوجه‌اش را کنار خود می‌خواهد."
+      "en": "\"Mina, it is late,\" Mom says. \"Come to bed.\"",
+      "fa": "مامان می‌گوید: «مینا، دیر است. بیا بخواب.»"
     },
     {
-      "en": "\"Can he find the house again tonight?\" she asks.",
-      "fa": "می‌پرسد: «آیا می‌تواند امشب دوباره خانه را پیدا کند؟»"
+      "en": "\"I am sorry, Mom. Let me stay one more moment,\" Mina says.",
+      "fa": "مینا می‌گوید: «ببخشید، مامان. بگذار یک لحظه‌ی دیگر بمانم.»"
     },
     {
-      "en": "Later, Mina says she cannot sleep without checking once more.",
-      "fa": "بعدتر مینا می‌گوید بدون یک بررسی دیگر نمی‌تواند بخوابد."
+      "en": "Mom sits down next to her. \"Do you miss him?\" she asks.",
+      "fa": "مامان کنارش می‌نشیند. می‌پرسد: «دلت برایش تنگ شده؟»"
     },
     {
-      "en": "She is tired, but she walks to the door again.",
-      "fa": "خسته است، اما دوباره به سمت در می‌رود."
+      "en": "\"Very much,\" Mina answers. \"It is a bad feeling. I love him, Mom.\"",
+      "fa": "مینا جواب می‌دهد: «خیلی زیاد. حس بدی است. دوستش دارم، مامان.»"
     },
     {
-      "en": "The yard is dark at night.",
-      "fa": "حیاط در شب تاریک است."
+      "en": "\"I know,\" Mom says. \"We love him too.\"",
+      "fa": "مامان می‌گوید: «می‌دانم. ما هم دوستش داریم.»"
     },
     {
-      "en": "Before sleep, Mina leaves a little food outside.",
-      "fa": "پیش از خواب، مینا کمی غذا بیرون می‌گذارد."
+      "en": "\"How can he find his way home in the dark?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «چطور می‌تواند توی تاریکی راه خانه را پیدا کند؟»"
     },
     {
-      "en": "The baby sleeps, but Mina does not sleep.",
-      "fa": "نوزاد می‌خوابد، اما مینا نمی‌خوابد."
+      "en": "Mom takes her hand. \"Do not lose hope,\" she says. \"Tomorrow is a new day.\"",
+      "fa": "مامان دستش را می‌گیرد. می‌گوید: «امیدت را از دست نده. فردا روز تازه‌ای است.»"
     },
     {
-      "en": "Mina finally lies down but keeps listening.",
-      "fa": "مینا بالاخره دراز می‌کشد، اما به گوش دادن ادامه می‌دهد."
+      "en": "\"Yes,\" Mina says, and she looks at the bread and water once more.",
+      "fa": "مینا می‌گوید: «بله» و یک بار دیگر به نان و آب نگاه می‌کند."
     },
     {
-      "en": "\"I hope Nino comes home tonight,\" she says.",
-      "fa": "مینا می‌گوید: «امیدوارم نینو امشب به خانه برگردد.»"
+      "en": "She hopes it is enough for one night.",
+      "fa": "امیدوار است برای یک شب کافی باشد."
     },
     {
-      "en": "Dad says, \"We hope so too, and we will look tomorrow.\"",
-      "fa": "بابا می‌گوید: «ما هم امیدواریم و فردا دوباره می‌گردیم.»"
+      "en": "Later, as the house sleeps, she goes up to her room and lies down.",
+      "fa": "بعدتر، وقتی اهل خانه خوابیده‌اند، به اتاقش در طبقه‌ی بالا می‌رود و دراز می‌کشد."
     },
     {
-      "en": "Mom asks if Mina feels well enough to sleep.",
-      "fa": "مامان می‌پرسد آیا حال مینا آن‌قدر خوب هست که بخوابد."
+      "en": "She is tired, but she cannot sleep well.",
+      "fa": "خسته است، اما نمی‌تواند خوب بخوابد."
     },
     {
-      "en": "\"Are you well?\" she asks Mina.",
-      "fa": "از مینا می‌پرسد: «حالت خوب است؟»"
+      "en": "\"Good night, Nino,\" she says to the window. \"Come home.\"",
+      "fa": "رو به پنجره می‌گوید: «شب بخیر، نینو. برگرد خانه.»"
     },
     {
-      "en": "\"Yes,\" Mina answers, but she is still sad.",
-      "fa": "مینا جواب می‌دهد: «بله»، اما هنوز غمگین است."
-    },
-    {
-      "en": "She says yes because she does not want Mom to be sad.",
-      "fa": "بله می‌گوید چون نمی‌خواهد مامان غمگین شود."
-    },
-    {
-      "en": "But as the night ends, Mina still misses Nino.",
-      "fa": "اما وقتی شب به پایان می‌رسد، مینا هنوز دلش برای نینو تنگ است."
+      "en": "At the end of the long day, she finally sleeps.",
+      "fa": "در پایان آن روز طولانی، بالاخره خوابش می‌برد."
     }
   ],
   "check": [
     {
-      "q": "مینا پشت پنجره چه کار می‌کند؟",
+      "q": "مینا شب چه چیزی بیرون در می‌گذارد؟",
       "options": [
-        "wait",
-        "sleep",
-        "cook",
-        "sit"
+        "bread",
+        "egg",
+        "cheese",
+        "shoe"
       ],
-      "a": "wait"
+      "a": "bread"
     },
     {
-      "q": "مینا شب چه حسی دارد؟",
+      "q": "خانواده کِی بیرون دنبال نینو می‌گردند؟",
       "options": [
-        "happy",
-        "sad",
-        "good",
-        "well"
+        "tomorrow",
+        "tonight",
+        "afternoon",
+        "evening"
       ],
-      "a": "sad"
+      "a": "tomorrow"
     }
   ]
 }

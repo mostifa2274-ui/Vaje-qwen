@@ -5,170 +5,132 @@
   "titleFa": "شمال",
   "titleEn": "The North",
   "new": [
-    "capital",
+    "high",
+    "snow",
+    "sea",
     "south",
     "east",
     "west",
+    "plant",
+    "hotel",
     "gray",
-    "high"
+    "drive"
   ],
   "sentences": [
     {
-      "en": "Dad opens the map as the next train leaves the station.",
-      "fa": "وقتی قطار بعدی ایستگاه را ترک می‌کند، بابا نقشه را باز می‌کند."
+      "en": "In the afternoon, everything outside the window changes.",
+      "fa": "بعدازظهر، همه‌چیزِ بیرون پنجره عوض می‌شود."
     },
     {
-      "en": "\"Grandmother lives in the north,\" he tells Mina.",
-      "fa": "به مینا می‌گوید: «مادربزرگ در شمال زندگی می‌کند.»"
+      "en": "The land is green now, with rice farms, trees and small houses.",
+      "fa": "حالا زمین سبز است، با شالیزار، درخت و خانه‌های کوچک."
     },
     {
-      "en": "The north is colder, so Mina keeps her coat close.",
-      "fa": "شمال سردتر است، پس مینا پالتویش را نزدیک خود نگه می‌دارد."
+      "en": "Far away, there are high mountains, and there is still snow on the highest one.",
+      "fa": "آن دورها کوه‌های بلند هست و هنوز روی بلندترینشان برف هست."
     },
     {
-      "en": "Their capital is now far behind them as the train moves on.",
-      "fa": "پایتخت حالا خیلی پشت سرشان است و قطار به راهش ادامه می‌دهد."
+      "en": "\"Snow in summer?\" Aria asks.",
+      "fa": "آریا می‌پرسد: «برف در تابستان؟»"
     },
     {
-      "en": "Dad points to the capital and then follows the way north on the map.",
-      "fa": "بابا پایتخت را نشان می‌دهد و بعد راه شمال را روی نقشه دنبال می‌کند."
+      "en": "\"That mountain is very high,\" Dad says. \"It is cold up there all year.\"",
+      "fa": "بابا می‌گوید: «آن کوه خیلی بلند است. آن بالا همه‌ی سال سرد است.»"
     },
     {
-      "en": "\"The south is warmer,\" he says, pointing down on the map.",
-      "fa": "می‌گوید: «جنوب گرم‌تر است» و پایین نقشه را نشان می‌دهد."
+      "en": "Mina opens her red book to the map from her geography class.",
+      "fa": "مینا کتاب قرمزش را در صفحه‌ی نقشه‌ی کلاس جغرافیا باز می‌کند."
     },
     {
-      "en": "They are traveling away from the south today.",
-      "fa": "امروز آن‌ها از جنوب دور می‌شوند."
+      "en": "\"Where is Grandmother's house?\" she asks.",
+      "fa": "می‌پرسد: «خانه‌ی مادربزرگ کجاست؟»"
     },
     {
-      "en": "The morning sun is over the east of the country.",
-      "fa": "خورشید صبح بالای شرق کشور است."
+      "en": "\"Here,\" Mom says, \"on a green mountain between the high mountains and the sea.\"",
+      "fa": "مامان می‌گوید: «اینجا، روی یک کوه سبز، بین کوه‌های بلند و دریا.»"
     },
     {
-      "en": "The sun is in the east in the morning and follows the train windows.",
-      "fa": "خورشید صبح در شرق است و کنار پنجره‌های قطار دیده می‌شود."
+      "en": "\"The sea is north of us, and the capital is south,\" Dad says.",
+      "fa": "بابا می‌گوید: «دریا شمال ماست و پایتخت جنوب.»"
     },
     {
-      "en": "Far to the west, the land looks gray.",
-      "fa": "دور در غرب، زمین خاکستری به نظر می‌رسد."
+      "en": "\"The sun comes up in the east, and it goes down over there, in the west.\"",
+      "fa": "«خورشید از شرق بالا می‌آید و آنجا، در غرب، پایین می‌رود.»"
     },
     {
-      "en": "The train does not go west, but Mina studies that part of the map too.",
-      "fa": "قطار به غرب نمی‌رود، اما مینا آن بخش نقشه را هم نگاه می‌کند."
+      "en": "At five o'clock, the train stops at a small station.",
+      "fa": "ساعت پنج، قطار در ایستگاه کوچکی می‌ایستد."
     },
     {
-      "en": "Open land begins after the last city buildings.",
-      "fa": "زمین باز بعد از آخرین ساختمان‌های شهر شروع می‌شود."
+      "en": "The air is warm and full of water, and every garden is full of plants.",
+      "fa": "هوا گرم و پر از رطوبت است و هر باغچه‌ای پر از گیاه."
     },
     {
-      "en": "The land is green, and Mina watches every farm for a little yellow chicken.",
-      "fa": "زمین سبز است و مینا هر مزرعه را برای دیدن یک جوجه‌ی زرد کوچک نگاه می‌کند."
+      "en": "\"Grandfather comes for us tomorrow morning,\" Mom says. \"Tonight we sleep at a small hotel by the sea.\"",
+      "fa": "مامان می‌گوید: «پدربزرگ فردا صبح دنبالمان می‌آید. امشب در هتل کوچکی کنار دریا می‌خوابیم.»"
     },
     {
-      "en": "The train goes through a small town with one small station.",
-      "fa": "قطار از میان شهرک کوچکی با یک ایستگاه کوچک می‌گذرد."
+      "en": "They take a taxi. The driver is a friendly old man in a gray shirt.",
+      "fa": "تاکسی می‌گیرند. راننده پیرمرد خوش‌برخوردی با پیراهن خاکستری است."
     },
     {
-      "en": "Then it moves through farms where cows stand near walls.",
-      "fa": "بعد از میان مزرعه‌هایی می‌گذرد که گاوها نزدیک دیوارها ایستاده‌اند."
+      "en": "\"Tourists?\" he asks.",
+      "fa": "می‌پرسد: «گردشگرید؟»"
     },
     {
-      "en": "A long road runs across the land next to the train.",
-      "fa": "جاده‌ای طولانی در سراسر زمین کنار قطار کشیده شده است."
+      "en": "\"No,\" Mom says. \"My mother and father live here.\"",
+      "fa": "مامان می‌گوید: «نه. پدر و مادرم اینجا زندگی می‌کنند.»"
     },
     {
-      "en": "From the window, Mina can see cars moving across a road over the river.",
-      "fa": "از پنجره، مینا ماشین‌هایی را می‌بیند که از جاده‌ای روی رودخانه می‌گذرند."
+      "en": "The hotel is ten miles from the station.",
+      "fa": "هتل ده مایل با ایستگاه فاصله دارد."
     },
     {
-      "en": "The train goes around a small mountain and leaves the town behind.",
-      "fa": "قطار دور یک کوه کوچک می‌رود و شهرک را پشت سر می‌گذارد."
+      "en": "\"I drive this road every day,\" the driver says. \"It is a beautiful road.\"",
+      "fa": "راننده می‌گوید: «من هر روز در این جاده رانندگی می‌کنم. جاده‌ی قشنگی است.»"
     },
     {
-      "en": "Mina turns around to see the last houses go away.",
-      "fa": "مینا برمی‌گردد تا دور شدن آخرین خانه‌ها را ببیند."
+      "en": "After two miles, everything turns dark, and the rain comes.",
+      "fa": "بعد از دو مایل، همه‌جا تاریک می‌شود و باران می‌آید."
     },
     {
-      "en": "A bird flies above the train and stays with them for a minute.",
-      "fa": "پرنده‌ای بالای قطار پرواز می‌کند و یک دقیقه همراهشان می‌ماند."
+      "en": "It is not a little summer rain. It is a lot of rain, very fast.",
+      "fa": "باران کم تابستانی نیست. باران زیادی است، خیلی تند."
     },
     {
-      "en": "Mina watches it above the train until it turns to the trees.",
-      "fa": "مینا آن را بالای قطار نگاه می‌کند تا به سمت درخت‌ها می‌پیچد."
+      "en": "The driver can see only one or two meters in front of the car.",
+      "fa": "راننده فقط یکی دو متر جلوی ماشین را می‌بیند."
     },
     {
-      "en": "The sun is now high over the open land.",
-      "fa": "حالا خورشید بالای زمین باز قرار دارد."
+      "en": "\"We must stop,\" he says. \"In rain like this, the road is not good.\"",
+      "fa": "می‌گوید: «باید بایستیم. در این باران، جاده خوب نیست.»"
     },
     {
-      "en": "The train goes high above the river.",
-      "fa": "قطار از ارتفاعی بلند بالای رودخانه می‌گذرد."
+      "en": "He stops the taxi next to a farm.",
+      "fa": "تاکسی را کنار یک مزرعه نگه می‌دارد."
     },
     {
-      "en": "Far below, a truck looks very small next to the river.",
-      "fa": "خیلی پایین، کامیونی کنار رودخانه خیلی کوچک به نظر می‌رسد."
+      "en": "A farmer runs out of the house with a big umbrella.",
+      "fa": "کشاورزی با یک چتر بزرگ از خانه بیرون می‌دود."
     },
     {
-      "en": "The next station sits between two quiet towns.",
-      "fa": "ایستگاه بعدی بین دو شهرک آرام قرار دارد."
-    },
-    {
-      "en": "Mina sits between Mom and Dad as the train slows.",
-      "fa": "مینا وقتی قطار آهسته می‌شود بین مامان و بابا نشسته است."
-    },
-    {
-      "en": "She walks with Dad to the front of the train to see better.",
-      "fa": "همراه بابا به جلوی قطار می‌رود تا بهتر ببیند."
-    },
-    {
-      "en": "At the front, the driver watches the road in front.",
-      "fa": "در جلو، راننده راه روبه‌رو را نگاه می‌کند."
-    },
-    {
-      "en": "Their bags are at the back next to Mom's coat.",
-      "fa": "کیف‌هایشان در عقب کنار پالتوی مامان هستند."
-    },
-    {
-      "en": "Mina returns to the back and checks that her own bag is still there.",
-      "fa": "مینا به عقب برمی‌گردد و بررسی می‌کند کیف خودش هنوز آنجاست."
-    },
-    {
-      "en": "Every mile takes them away from the capital.",
-      "fa": "هر مایل آن‌ها را از پایتخت دورتر می‌کند."
-    },
-    {
-      "en": "Soon even the last tall buildings are far away behind them.",
-      "fa": "خیلی زود حتی آخرین ساختمان‌های بلند هم دور پشت سرشان هستند."
-    },
-    {
-      "en": "After a short stop, the doors close and the train is off again.",
-      "fa": "بعد از توقف کوتاه، درها بسته می‌شوند و قطار دوباره راه می‌افتد."
-    },
-    {
-      "en": "It moves off to the north as Mina says goodbye to the station.",
-      "fa": "قطار به سمت شمال حرکت می‌کند و مینا با ایستگاه خداحافظی می‌کند."
-    },
-    {
-      "en": "The bird flies over the train once more before going away.",
-      "fa": "پرنده یک بار دیگر بالای قطار پرواز می‌کند و بعد دور می‌شود."
-    },
-    {
-      "en": "By evening, the sun is over the farms.",
-      "fa": "تا عصر، خورشید بالای مزرعه‌هاست."
-    },
-    {
-      "en": "Mina watches the sun go down behind the mountains.",
-      "fa": "مینا پایین رفتن خورشید پشت کوه‌ها را تماشا می‌کند."
-    },
-    {
-      "en": "She looks down at the map and sees they are near Grandmother now.",
-      "fa": "به نقشه پایین نگاه می‌کند و می‌بیند حالا نزدیک مادربزرگ هستند."
+      "en": "\"Come in, come in!\" he says. \"Have some tea until the rain stops.\"",
+      "fa": "می‌گوید: «بفرمایید تو، بفرمایید! تا باران بند بیاید چای بخورید.»"
     }
   ],
   "check": [
     {
-      "q": "مادربزرگ در کدام جهت است؟",
+      "q": "روی بلندترین کوه چه چیزی هست؟",
+      "options": [
+        "snow",
+        "rain",
+        "fire",
+        "water"
+      ],
+      "a": "snow"
+    },
+    {
+      "q": "دریا در کدام جهت است؟",
       "options": [
         "north",
         "south",
@@ -176,16 +138,6 @@
         "west"
       ],
       "a": "north"
-    },
-    {
-      "q": "مینا بین مامان و چه کسی می‌نشیند؟",
-      "options": [
-        "dad",
-        "brother",
-        "baby",
-        "driver"
-      ],
-      "a": "dad"
     }
   ]
 }

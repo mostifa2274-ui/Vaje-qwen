@@ -5,203 +5,187 @@
   "titleFa": "کار",
   "titleEn": "Work",
   "new": [
+    "company",
     "office",
-    "worker",
+    "modern",
     "job",
     "business",
-    "company",
-    "career",
-    "interview",
+    "worker",
     "meeting",
-    "could",
     "machine",
+    "could",
     "program",
     "blog",
-    "modern",
-    "club"
+    "interview",
+    "career",
+    "scientist",
+    "college",
+    "university",
+    "future",
+    "action"
   ],
   "sentences": [
     {
-      "en": "After school, Mom brings Mina to Dad's work.",
-      "fa": "بعد از مدرسه، مامان مینا را به محل کار بابا می‌برد."
+      "en": "On Thursday, there is no class, so Mina goes to work with Dad.",
+      "fa": "پنجشنبه کلاس نیست، پس مینا با بابا سر کار می‌رود."
     },
     {
-      "en": "He works in an office near the city center.",
-      "fa": "او در دفتری نزدیک مرکز شهر کار می‌کند."
+      "en": "Dad works for a big company in the city center.",
+      "fa": "بابا در یک شرکت بزرگ در مرکز شهر کار می‌کند."
     },
     {
-      "en": "The office is close to the market where Mina looked before.",
-      "fa": "دفتر نزدیک بازاری است که مینا قبلاً آنجا گشته بود."
+      "en": "His office is modern, with large windows and many computers.",
+      "fa": "دفترش امروزی است، با پنجره‌های بزرگ و کلی رایانه."
     },
     {
-      "en": "At the front desk, a worker asks who she wants to see.",
-      "fa": "پشت میز ورودی، یک کارمند می‌پرسد مینا با چه کسی کار دارد."
+      "en": "\"What is your job, Dad?\" Mina asks. She knows, but she likes his answer.",
+      "fa": "مینا می‌پرسد: «کارت چیست، بابا؟» می‌داند، اما جوابش را دوست دارد."
     },
     {
-      "en": "Many workers are busy with phones and computers.",
-      "fa": "کارمندان زیادی با تلفن‌ها و رایانه‌ها مشغول‌اند."
+      "en": "\"I help the company with its business,\" Dad says. \"And I drink a lot of tea.\"",
+      "fa": "بابا می‌گوید: «در کار و کاسبی به شرکت کمک می‌کنم. و کلی چای می‌خورم.»"
     },
     {
-      "en": "Dad is busy too, but he comes out to meet her.",
-      "fa": "بابا هم مشغول است، اما برای دیدن مینا بیرون می‌آید."
+      "en": "The workers in the office are friendly, and they say hello to Mina.",
+      "fa": "کارمندهای دفتر خوش‌برخوردند و به مینا سلام می‌کنند."
     },
     {
-      "en": "\"How is your job today?\" Mina asks.",
-      "fa": "«کارت امروز چطور است؟» مینا می‌پرسد."
+      "en": "Dad has a meeting at ten o'clock, so Mina sits at his desk with her red book.",
+      "fa": "بابا ساعت ده جلسه دارد، پس مینا با کتاب قرمزش پشت میز او می‌نشیند."
     },
     {
-      "en": "Dad says, \"Busy, but good.\"",
-      "fa": "بابا می‌گوید: «شلوغ است، اما خوب.»"
+      "en": "Next to the desk, there is a big machine.",
+      "fa": "کنار میز، یک دستگاه بزرگ هست."
     },
     {
-      "en": "The business has offices in many parts of the city.",
-      "fa": "این تجارت در بخش‌های زیادی از شهر دفتر دارد."
+      "en": "\"That machine puts pictures and words on paper,\" Dad says before the meeting.",
+      "fa": "بابا قبل از جلسه می‌گوید: «آن دستگاه عکس و کلمه را روی کاغذ می‌آورد.»"
     },
     {
-      "en": "Dad explains that the company helps local shops.",
-      "fa": "بابا توضیح می‌دهد که شرکت به مغازه‌های محلی کمک می‌کند."
+      "en": "\"Could it make notes about Nino?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «می‌تواند یادداشت‌هایی درباره‌ی نینو درست کند؟»"
     },
     {
-      "en": "Because the company is near the center, many people walk by its door.",
-      "fa": "چون شرکت نزدیک مرکز شهر است، افراد زیادی از کنار در آن رد می‌شوند."
+      "en": "After the meeting, Dad opens a program on his computer and puts the new note in it.",
+      "fa": "بعد از جلسه، بابا برنامه‌ای را روی رایانه‌اش باز می‌کند و یادداشت تازه را در آن می‌گذارد."
     },
     {
-      "en": "Dad has worked for the company for years.",
-      "fa": "بابا سال‌هاست برای این شرکت کار می‌کند."
+      "en": "The machine starts, and one hundred notes come out, one after another.",
+      "fa": "دستگاه راه می‌افتد و صد یادداشت، یکی پس از دیگری، بیرون می‌آید."
     },
     {
-      "en": "It has become an important part of his career.",
-      "fa": "این شرکت بخش مهمی از مسیر حرفه‌ای او شده است."
+      "en": "Mina puts one on the wall, next to the city map.",
+      "fa": "مینا یکی را روی دیوار، کنار نقشه‌ی شهر، می‌زند."
     },
     {
-      "en": "Mom has her own career at a different place, so she goes back to work.",
-      "fa": "مامان هم در جای دیگری کار خودش را دارد، پس به سر کارش برمی‌گردد."
+      "en": "A young man from the next desk looks at it. \"Is this the chicken from the newspaper?\" he asks Dad.",
+      "fa": "مرد جوانی از میز کناری به آن نگاه می‌کند. از بابا می‌پرسد: «این همان جوجه‌ی روزنامه است؟»"
     },
     {
-      "en": "In the waiting room, a young man practices for an interview.",
-      "fa": "در اتاق انتظار، مرد جوانی برای یک مصاحبه تمرین می‌کند."
+      "en": "\"Yes,\" Dad says. \"This is my daughter, Mina. Nino is her chicken.\"",
+      "fa": "بابا می‌گوید: «بله. این دخترم میناست. نینو جوجه‌ی اوست.»"
     },
     {
-      "en": "His interview is for a new job.",
-      "fa": "مصاحبه‌اش برای یک کار جدید است."
+      "en": "\"I have a blog about animals in the city,\" the man says. \"Many people read it.\"",
+      "fa": "مرد می‌گوید: «من یک وبلاگ درباره‌ی حیوان‌های شهر دارم. خیلی‌ها آن را می‌خوانند.»"
     },
     {
-      "en": "Dad has a meeting at three, but he has a few minutes first.",
-      "fa": "بابا ساعت سه جلسه دارد، اما اول چند دقیقه وقت دارد."
+      "en": "\"Could I write about Nino on my blog?\"",
+      "fa": "«می‌توانم درباره‌ی نینو در وبلاگم بنویسم؟»"
     },
     {
-      "en": "He takes Mina into the meeting room.",
-      "fa": "او مینا را به اتاق جلسه می‌برد."
+      "en": "\"Yes, please!\" Mina says, and Dad says, \"Thank you very much.\"",
+      "fa": "مینا می‌گوید: «بله، لطفاً!» و بابا می‌گوید: «خیلی ممنون.»"
     },
     {
-      "en": "On the wall is the main project for this month.",
-      "fa": "پروژه‌ی اصلی این ماه روی دیوار است."
+      "en": "Then the man asks Mina some questions. It is a short interview.",
+      "fa": "بعد مرد چند سؤال از مینا می‌پرسد. یک مصاحبه‌ی کوتاه است."
     },
     {
-      "en": "The project is a map of local businesses.",
-      "fa": "پروژه یک نقشه از کسب‌وکارهای محلی است."
+      "en": "\"What does Nino love?\" he asks.",
+      "fa": "می‌پرسد: «نینو چه چیزی را دوست دارد؟»"
     },
     {
-      "en": "\"Could this map help us find Nino?\" Mina asks.",
-      "fa": "«این نقشه می‌تواند به پیدا کردن نینو کمک کند؟» مینا می‌پرسد."
+      "en": "\"Bread and water,\" Mina says. \"And he follows red birds.\"",
+      "fa": "مینا می‌گوید: «نان و آب. و دنبال پرنده‌های قرمز می‌رود.»"
     },
     {
-      "en": "Dad opens a report about shops and streets.",
-      "fa": "بابا گزارشی درباره‌ی مغازه‌ها و خیابان‌ها باز می‌کند."
+      "en": "At lunch, Dad and Mina eat at a small restaurant near the office.",
+      "fa": "ظهر، بابا و مینا در رستوران کوچکی نزدیک دفتر ناهار می‌خورند."
     },
     {
-      "en": "In another room, a machine is making pages.",
-      "fa": "در اتاقی دیگر، دستگاهی صفحه‌ها را آماده می‌کند."
+      "en": "\"Do you like your job?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «کارت را دوست داری؟»"
     },
     {
-      "en": "The machine makes a new note about Nino for Mina.",
-      "fa": "دستگاه یک یادداشت تازه درباره‌ی نینو برای مینا آماده می‌کند."
+      "en": "\"Yes,\" Dad says. \"But when I was young, I wanted a different career.\"",
+      "fa": "بابا می‌گوید: «بله. اما وقتی جوان بودم، شغل دیگری می‌خواستم.»"
     },
     {
-      "en": "A computer program puts Nino's photo above the phone line.",
-      "fa": "یک برنامه‌ی رایانه‌ای عکس نینو را بالای خط تلفن قرار می‌دهد."
+      "en": "\"I wanted to be a scientist. I studied science at a college, and then at the university.\"",
+      "fa": "«می‌خواستم دانشمند شوم. علوم را اول در یک دانشکده خواندم و بعد در دانشگاه.»"
     },
     {
-      "en": "Dad shows Mina how to use the program.",
-      "fa": "بابا به مینا نشان می‌دهد چطور از برنامه استفاده کند."
+      "en": "\"And you? What do you want in the future?\"",
+      "fa": "«تو چی؟ در آینده چه می‌خواهی؟»"
     },
     {
-      "en": "Mina also opens the family blog about Nino.",
-      "fa": "مینا وبلاگ خانواده درباره‌ی نینو را هم باز می‌کند."
+      "en": "Mina thinks. \"Maybe a writer. Or maybe a person who helps animals.\"",
+      "fa": "مینا فکر می‌کند. «شاید نویسنده. یا شاید کسی که به حیوان‌ها کمک می‌کند.»"
     },
     {
-      "en": "She adds the new note to the blog.",
-      "fa": "یادداشت تازه را به وبلاگ اضافه می‌کند."
+      "en": "\"Both are good,\" Dad says.",
+      "fa": "بابا می‌گوید: «هر دو خوب‌اند.»"
     },
     {
-      "en": "\"This is difficult work,\" Mina says.",
-      "fa": "«این کار سختی است»، مینا می‌گوید."
+      "en": "In the afternoon, the young man shows them his blog on the computer.",
+      "fa": "بعدازظهر، مرد جوان وبلاگش را روی رایانه به آن‌ها نشان می‌دهد."
     },
     {
-      "en": "\"Difficult work gets easy when we do it slowly,\" Dad answers.",
-      "fa": "بابا جواب می‌دهد: «کار سخت وقتی آرام انجامش بدهیم آسان می‌شود.»"
+      "en": "Nino's picture is the first thing on the page, and under it are the words: \"Help this family. It is time for action!\"",
+      "fa": "عکس نینو اولین چیز صفحه است و زیرش این کلمه‌ها: «به این خانواده کمک کنید. وقت اقدام است!»"
     },
     {
-      "en": "Before his meeting, Dad says finding Nino is important too.",
-      "fa": "پیش از جلسه، بابا می‌گوید پیدا کردن نینو هم مهم است."
+      "en": "By evening, many people have read it and shared it.",
+      "fa": "تا عصر، خیلی‌ها آن را خوانده‌اند و به اشتراک گذاشته‌اند."
     },
     {
-      "en": "He puts one note next to the main office door.",
-      "fa": "یک یادداشت را کنار درِ دفتر اصلی می‌گذارد."
+      "en": "On the way home, there is a message on Dad's phone from the young man.",
+      "fa": "در راه خانه، پیامی از مرد جوان روی تلفن بابا هست."
     },
     {
-      "en": "Dad's office is modern, with glass walls and big rooms.",
-      "fa": "دفتر بابا مدرن است و دیوارهای شیشه‌ای و اتاق‌های بزرگ دارد."
+      "en": "\"A scientist at the university read my blog,\" it says. \"She has a small yellow chicken. Please call her.\"",
+      "fa": "نوشته: «دانشمندی در دانشگاه وبلاگم را خوانده. یک جوجه‌ی زرد کوچک دارد. لطفاً با او تماس بگیرید.»"
     },
     {
-      "en": "The modern computers show maps of the city.",
-      "fa": "رایانه‌های مدرن نقشه‌های شهر را نشان می‌دهند."
+      "en": "Mina looks at Dad. Her hands are cold.",
+      "fa": "مینا به بابا نگاه می‌کند. دست‌هایش سرد شده‌اند."
     },
     {
-      "en": "\"This computer is useful,\" Mina says.",
-      "fa": "«این رایانه مفید است»، مینا می‌گوید."
-    },
-    {
-      "en": "\"Very useful,\" Dad answers as the machine makes one last page.",
-      "fa": "بابا جواب می‌دهد: «خیلی مفید» و دستگاه آخرین صفحه را آماده می‌کند."
-    },
-    {
-      "en": "The main street outside is full of people.",
-      "fa": "خیابان اصلی بیرون پر از آدم است."
-    },
-    {
-      "en": "After the meeting, Mina and Dad carry more notes down that street.",
-      "fa": "بعد از جلسه، مینا و بابا یادداشت‌های بیشتری را به آن خیابان می‌برند."
-    },
-    {
-      "en": "On the way home, they stop at a club for workers.",
-      "fa": "در راه خانه، جلوی باشگاهی برای کارگران می‌ایستند."
-    },
-    {
-      "en": "Dad gives the club a note, and another group joins them to look for Nino.",
-      "fa": "بابا یک یادداشت به باشگاه می‌دهد و گروه دیگری برای پیدا کردن نینو به آن‌ها می‌پیوندد."
+      "en": "\"Tomorrow,\" Dad says. \"We go tomorrow.\"",
+      "fa": "بابا می‌گوید: «فردا. فردا می‌رویم.»"
     }
   ],
   "check": [
     {
       "q": "بابا کجا کار می‌کند؟",
       "options": [
-        "office",
+        "company",
         "school",
-        "market",
-        "farm"
+        "farm",
+        "market"
       ],
-      "a": "office"
+      "a": "company"
     },
     {
-      "q": "وبلاگ خانواده درباره‌ی چیست؟",
+      "q": "مرد جوان درباره‌ی نینو کجا می‌نویسد؟",
       "options": [
-        "chicken",
-        "dog",
-        "food",
-        "school"
+        "blog",
+        "newspaper",
+        "radio",
+        "magazine"
       ],
-      "a": "chicken"
+      "a": "blog"
     }
   ]
 }

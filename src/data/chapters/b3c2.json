@@ -2,231 +2,188 @@
   "id": "b3c2",
   "book": 3,
   "n": 2,
-  "titleFa": "مینا می‌شمارد",
-  "titleEn": "Mina Counts",
+  "titleFa": "فهرست مینا",
+  "titleEn": "Mina Makes a List",
   "new": [
-    "use",
-    "three",
-    "pencil",
     "second",
+    "use",
+    "list",
+    "pencil",
+    "page",
+    "below",
+    "station",
+    "three",
     "four",
+    "mean",
     "five",
     "six",
-    "seven",
-    "page",
-    "eight",
-    "nine",
-    "below",
-    "list",
-    "clock",
-    "o-clock",
-    "hour",
-    "during",
-    "mean",
+    "speak",
     "third",
     "fourth",
-    "station",
+    "eight",
     "fifth",
-    "news"
+    "nine",
+    "o-clock",
+    "news",
+    "which",
+    "quarter",
+    "during",
+    "half",
+    "clock",
+    "second-2",
+    "forty",
+    "above"
   ],
   "sentences": [
     {
-      "en": "Mina decides to use one, two, three to plan where to look.",
-      "fa": "مینا تصمیم می‌گیرد از یک، دو، سه برای برنامه‌ریزی جاهایی که باید بگردد استفاده کند."
+      "en": "On the first day of the second week, Mina has a new idea.",
+      "fa": "روز اول هفته‌ی دوم، مینا فکر تازه‌ای دارد."
     },
     {
-      "en": "She carries one red book and one pencil.",
-      "fa": "یک کتاب قرمز و یک مداد با خود می‌برد."
+      "en": "\"We can use a list,\" she says, and she takes a pencil and opens her red book to a new page.",
+      "fa": "می‌گوید: «می‌توانیم از یک فهرست استفاده کنیم» و مدادی برمی‌دارد و کتاب قرمزش را به صفحه‌ای تازه باز می‌کند."
     },
     {
-      "en": "First, she and Mom check two quiet streets near home.",
-      "fa": "اول، او و مامان دو خیابان آرام نزدیک خانه را بررسی می‌کنند."
+      "en": "She writes the places one below the other.",
+      "fa": "جاها را یکی زیر دیگری می‌نویسد."
     },
     {
-      "en": "On the first street, they go to three houses.",
-      "fa": "در خیابان اول، به سه خانه می‌روند."
+      "en": "One: the quiet street near the station. Two: the gardens behind it. Three: the old bus stop.",
+      "fa": "یک: خیابان آرام نزدیک ایستگاه. دو: باغچه‌های پشتش. سه: ایستگاه اتوبوس قدیمی."
     },
     {
-      "en": "At the second street, four gardens need a good look.",
-      "fa": "در خیابان دوم، چهار باغچه باید خوب بررسی شوند."
+      "en": "\"What does four mean?\" Aria asks, and he looks at the page.",
+      "fa": "آریا به صفحه نگاه می‌کند و می‌پرسد: «چهار یعنی چه؟»"
     },
     {
-      "en": "There are five people in Mina's family.",
-      "fa": "خانواده‌ی مینا پنج نفر است."
+      "en": "\"Four means every house with a garden,\" Mina answers.",
+      "fa": "مینا جواب می‌دهد: «چهار یعنی هر خانه‌ای که باغچه دارد.»"
     },
     {
-      "en": "Dad and her brother take one part of the area, and Mina and Mom take another.",
-      "fa": "بابا و برادرش یک بخش از منطقه را برمی‌دارند و مینا و مامان بخش دیگری را."
+      "en": "Mom walks with them, and Aria carries his light.",
+      "fa": "مامان همراهشان می‌آید و آریا چراغ‌قوه‌اش را می‌آورد."
     },
     {
-      "en": "Near the park, six boys stop their football game to help.",
-      "fa": "نزدیک پارک، شش پسر بازی فوتبالشان را متوقف می‌کنند تا کمک کنند."
+      "en": "On the quiet street, there are five houses on the left and six on the right.",
+      "fa": "در خیابان آرام، پنج خانه در سمت چپ و شش خانه در سمت راست هست."
     },
     {
-      "en": "Mom thanks all six and shows them Nino's picture.",
-      "fa": "مامان از هر شش نفر تشکر می‌کند و عکس نینو را نشانشان می‌دهد."
+      "en": "Each house has a small garden.",
+      "fa": "هر خانه یک باغچه‌ی کوچک دارد."
     },
     {
-      "en": "The family has looked for Nino for seven days.",
-      "fa": "خانواده هفت روز است که دنبال نینو می‌گردد."
+      "en": "Mina and Aria check the gardens, and Mom speaks to the people at each door.",
+      "fa": "مینا و آریا باغچه‌ها را می‌گردند و مامان با آدم‌های پشت هر در حرف می‌زند."
     },
     {
-      "en": "Mina writes the seven days across one page.",
-      "fa": "مینا آن هفت روز را روی یک صفحه می‌نویسد."
+      "en": "In the third garden, seven little birds sit in a tree.",
+      "fa": "در باغچه‌ی سوم، هفت پرنده‌ی کوچک روی یک درخت نشسته‌اند."
     },
     {
-      "en": "A house near the park has eight windows facing the road.",
-      "fa": "خانه‌ای نزدیک پارک هشت پنجره رو به جاده دارد."
+      "en": "In the fourth garden, a woman has eight red flowers.",
+      "fa": "در باغچه‌ی چهارم، زنی هشت گل قرمز دارد."
     },
     {
-      "en": "Mina looks under all eight windows for Nino.",
-      "fa": "مینا زیر هر هشت پنجره را برای پیدا کردن نینو نگاه می‌کند."
+      "en": "In the fifth garden, Aria looks behind a large box with his light.",
+      "fa": "در باغچه‌ی پنجم، آریا با چراغ‌قوه‌اش پشت یک جعبه‌ی بزرگ را نگاه می‌کند."
     },
     {
-      "en": "Then she sees nine small birds near the market wall.",
-      "fa": "بعد نه پرنده‌ی کوچک نزدیک دیوار بازار می‌بیند."
+      "en": "Then he looks up at a tall building. \"Nine, ten... so many windows!\" he says.",
+      "fa": "بعد به یک ساختمان بلند نگاه می‌کند. می‌گوید: «نه، ده... این‌همه پنجره!»"
     },
     {
-      "en": "She looks at the nine birds slowly, but Nino is not there.",
-      "fa": "او آرام به نه پرنده نگاه می‌کند، اما نینو آنجا نیست."
+      "en": "At nine o'clock, Dad calls Mom with news.",
+      "fa": "ساعت نه، بابا با خبری تازه به مامان زنگ می‌زند."
     },
     {
-      "en": "Then ten birds fly up in the park.",
-      "fa": "بعد ده پرنده در پارک به هوا بلند می‌شوند."
+      "en": "\"A man at the bus station saw something small and yellow at eight o'clock,\" he says.",
+      "fa": "می‌گوید: «مردی در ایستگاه اتوبوس ساعت هشت چیز کوچک و زردی دیده است.»"
     },
     {
-      "en": "Mina watches all ten because Nino once followed a bird.",
-      "fa": "مینا هر ده پرنده را نگاه می‌کند چون نینو یک بار دنبال پرنده رفته بود."
+      "en": "\"Which was it, a bird or a chicken?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «کدام بود، پرنده یا جوجه؟»"
     },
     {
-      "en": "She writes one, two, three next to the first pieces of information.",
-      "fa": "او کنار اولین اطلاعات می‌نویسد: یک، دو، سه."
+      "en": "\"He does not know,\" Mom says.",
+      "fa": "مامان می‌گوید: «نمی‌داند.»"
     },
     {
-      "en": "Then she adds four, five, and six below them.",
-      "fa": "بعد زیر آن‌ها چهار، پنج و شش را اضافه می‌کند."
+      "en": "The walk to the station takes a quarter of an hour.",
+      "fa": "پیاده‌روی تا ایستگاه یک ربع طول می‌کشد."
     },
     {
-      "en": "Seven, eight, nine, and ten finish the list.",
-      "fa": "هفت، هشت، نه و ده فهرست را کامل می‌کنند."
+      "en": "During the walk, Aria asks the time again and again.",
+      "fa": "در طول راه، آریا بارها و بارها ساعت را می‌پرسد."
     },
     {
-      "en": "The wall clock shows eight o’clock when Mina starts.",
-      "fa": "ساعت دیواری وقتی مینا شروع می‌کند هشت را نشان می‌دهد."
+      "en": "\"It is half past nine,\" Mom says for the third time.",
+      "fa": "مامان برای بار سوم می‌گوید: «ساعت نه و نیم است.»"
     },
     {
-      "en": "At nine o’clock, Dad calls with more information.",
-      "fa": "ساعت نه، بابا با اطلاعات بیشتری تماس می‌گیرد."
+      "en": "At the station, many people are waiting for their buses.",
+      "fa": "در ایستگاه، آدم‌های زیادی منتظر اتوبوسشان هستند."
     },
     {
-      "en": "Mina checks the clock again before leaving the market.",
-      "fa": "مینا پیش از ترک بازار دوباره ساعت را بررسی می‌کند."
+      "en": "The man shows them the place, below the big station clock.",
+      "fa": "مرد جایش را نشانشان می‌دهد، زیر ساعت بزرگ ایستگاه."
     },
     {
-      "en": "The first hour of looking for Nino ends very quickly.",
-      "fa": "ساعت اول جست‌وجوی نینو خیلی سریع تمام می‌شود."
+      "en": "There is nothing there now, only a little bread.",
+      "fa": "حالا آنجا چیزی نیست، فقط کمی نان."
     },
     {
-      "en": "During the second hour, Mina and Mom walk to the river road.",
-      "fa": "در ساعت دوم، مینا و مامان به جاده‌ی کنار رودخانه می‌روند."
+      "en": "\"Someone gives bread to the birds here,\" Mom says.",
+      "fa": "مامان می‌گوید: «یک نفر اینجا به پرنده‌ها نان می‌دهد.»"
     },
     {
-      "en": "\"What do you mean by the third part?\" Mom asks.",
-      "fa": "مامان می‌پرسد: «منظورت از بخش سوم چیست؟»"
+      "en": "Mina writes it in her list: \"Station. Eight o'clock. Bird or chicken?\"",
+      "fa": "مینا آن را در فهرستش می‌نویسد: «ایستگاه. ساعت هشت. پرنده یا جوجه؟»"
     },
     {
-      "en": "The third place on her list is a small bus stop.",
-      "fa": "سومین جا در فهرستش یک ایستگاه اتوبوس کوچک است."
+      "en": "Then she has a second idea.",
+      "fa": "بعد فکر دومی به ذهنش می‌رسد."
     },
     {
-      "en": "The fourth place is an old garden behind the station.",
-      "fa": "چهارمین جا باغی قدیمی پشت ایستگاه است."
+      "en": "\"We can come back at eight o'clock tomorrow,\" she says. \"Maybe he comes at the same hour every day.\"",
+      "fa": "می‌گوید: «می‌توانیم فردا ساعت هشت برگردیم. شاید هر روز سر همان ساعت بیاید.»"
     },
     {
-      "en": "The fifth place is the cafe near the center.",
-      "fa": "پنجمین جا کافه‌ی نزدیک مرکز است."
+      "en": "On the way home, Aria is very tired. \"How many houses today?\" he asks.",
+      "fa": "در راه خانه، آریا خیلی خسته است. می‌پرسد: «امروز چند تا خانه؟»"
     },
     {
-      "en": "By five o’clock, Mina has visited all five places.",
-      "fa": "تا ساعت پنج، مینا هر پنج جا را بررسی کرده است."
+      "en": "Mina looks at her list. \"Six streets and forty houses,\" she says.",
+      "fa": "مینا به فهرستش نگاه می‌کند. می‌گوید: «شش خیابان و چهل خانه.»"
     },
     {
-      "en": "She waits one full hour for a phone call.",
-      "fa": "یک ساعت کامل منتظر تماس تلفنی می‌ماند."
+      "en": "\"And one very tired brother,\" Aria says, and Mom laughs.",
+      "fa": "آریا می‌گوید: «و یک برادر خیلی خسته» و مامان می‌خندد."
     },
     {
-      "en": "Dad stays with her during that hour.",
-      "fa": "بابا در طول آن ساعت کنارش می‌ماند."
-    },
-    {
-      "en": "Every minute feels longer when Mina is waiting for news.",
-      "fa": "وقتی مینا منتظر خبر است، هر دقیقه طولانی‌تر به نظر می‌رسد."
-    },
-    {
-      "en": "After one minute, she checks the phone again.",
-      "fa": "بعد از یک دقیقه، دوباره تلفن را بررسی می‌کند."
-    },
-    {
-      "en": "Mom says, \"Check the house before we look outside again.\"",
-      "fa": "مامان می‌گوید: «پیش از اینکه دوباره بیرون را بگردیم، خانه را بررسی کن.»"
-    },
-    {
-      "en": "Mina gives every room a good check.",
-      "fa": "مینا همه‌ی اتاق‌ها را خوب بررسی می‌کند."
-    },
-    {
-      "en": "Then Dad asks her to check the yard and the cars.",
-      "fa": "بعد بابا از او می‌خواهد حیاط و ماشین‌ها را بررسی کند."
-    },
-    {
-      "en": "The first check finds nothing under the table.",
-      "fa": "بررسی اول زیر میز چیزی پیدا نمی‌کند."
-    },
-    {
-      "en": "The second check finds only an old picture of Nino.",
-      "fa": "بررسی دوم فقط یک عکس قدیمی از نینو پیدا می‌کند."
-    },
-    {
-      "en": "The third check is in the quiet back garden.",
-      "fa": "بررسی سوم در باغچه‌ی آرام پشت خانه است."
-    },
-    {
-      "en": "A fourth check takes Mina around the outside wall.",
-      "fa": "بررسی چهارم مینا را دور دیوار بیرونی می‌برد."
-    },
-    {
-      "en": "The fifth check ends at the same open door.",
-      "fa": "بررسی پنجم کنار همان درِ باز تمام می‌شود."
-    },
-    {
-      "en": "Mina closes the book after five checks.",
-      "fa": "مینا بعد از پنج بررسی کتاب را می‌بندد."
-    },
-    {
-      "en": "Using one, two, three has not found Nino, but it helps Mina plan.",
-      "fa": "استفاده از یک، دو، سه نینو را پیدا نکرده، اما به مینا در برنامه‌ریزی کمک می‌کند."
+      "en": "At home, Mina puts her list on the wall above her bed.",
+      "fa": "در خانه، مینا فهرستش را روی دیوار بالای تختش می‌زند."
     }
   ],
   "check": [
     {
-      "q": "خانواده‌ی مینا چند نفر است؟",
+      "q": "مینا با چه چیزی فهرستش را می‌نویسد؟",
       "options": [
-        "five",
-        "four",
-        "six",
-        "three"
+        "pencil",
+        "pen",
+        "clock",
+        "page"
       ],
-      "a": "five"
+      "a": "pencil"
     },
     {
-      "q": "مینا نزدیک دیوار بازار چند پرنده می‌بیند؟",
+      "q": "مرد در ایستگاه ساعت چند چیزی زرد دیده است؟",
       "options": [
+        "eight",
         "nine",
-        "ten",
-        "two",
-        "eight"
+        "six",
+        "ten"
       ],
-      "a": "nine"
+      "a": "eight"
     }
   ]
 }
