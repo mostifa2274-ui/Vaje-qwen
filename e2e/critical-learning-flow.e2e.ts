@@ -821,6 +821,46 @@ test('the end-of-book test checks words, a reading text and a listening text hid
   await expect(lockedFirstChapters).toHaveCount(lockedBefore - 1)
 })
 
+test('explore mode opens every chapter as an unrecorded preview and closes again', async ({ page }) => {
+  const last = JSON.parse(
+    readFileSync(new URL('../src/data/chapters/b8c6.json', import.meta.url), 'utf8'),
+  ) as { n: number; titleFa: string }
+  const lastNodeName = (status: string) => `فصل ${faNum(last.n)}: ${last.titleFa} — ${status}`
+
+  await page.goto('/#/settings')
+  const toggle = page.getByRole('switch', { name: 'حالت کاوش: باز کردن همهٔ فصل‌ها' })
+  await expect(toggle).toHaveAttribute('aria-checked', 'false')
+  await toggle.click()
+  await expect(toggle).toHaveAttribute('aria-checked', 'true')
+
+  await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
+  await expect(page.getByText('حالت کاوش روشن است.')).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  // Every book test is open too, as a preview.
+  expect(await page.getByRole('button', { name: 'پیش‌نمایش', exact: true }).count()).toBeGreaterThanOrEqual(8)
+
+  const saved = await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))
+  await page.getByRole('button', { name: lastNodeName('پیش‌نمایش در حالت کاوش') }).click()
+  await expect(page).toHaveURL(/#\/read\/b8c6$/)
+  await expect(page.getByText('پیش‌نمایش در حالت کاوش.')).toBeVisible()
+
+  // Answering in a preview records nothing.
+  await page.getByTestId('comprehension-options').getByRole('button').first().click()
+  await expect(page.locator('.feedback-panel')).toBeVisible()
+  expect(await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))).toBe(saved)
+
+  await page.getByRole('button', { name: 'واژه‌های این فصل' }).click()
+  await expect(page).toHaveURL(/#\/prep\/b8c6$/)
+  await expect(page.getByTestId('teach-headword')).toBeVisible()
+  await expect(page.getByText('پیش‌نمایش در حالت کاوش.')).toBeVisible()
+
+  await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
+  await page.getByRole('button', { name: 'خاموش کردن' }).click()
+  await expect(page.getByText('حالت کاوش روشن است.')).toHaveCount(0)
+  await expect(page.getByRole('button', { name: lastNodeName('قفل') })).toBeDisabled()
+  expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters)).toEqual({})
+})
+
 test('importing a backup asks before replacing progress', async ({ page }) => {
   await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
   await page.evaluate(() => window.sessionStorage.setItem('ghesse:prep:v1:b1c1', '{"stale":true}'))

@@ -202,6 +202,12 @@ body {
   background: var(--ink);
   color: var(--cream);
 }
+.node-circle.is-preview {
+  border-style: dashed;
+  border-color: var(--ink-soft);
+  background: rgba(255,255,255,.5);
+  color: var(--ink);
+}
 .node-circle.is-locked {
   background: rgba(255,255,255,.18);
   color: var(--ink-soft);
@@ -434,6 +440,19 @@ button:disabled {
   border-radius: 12px;
   padding: 6px 12px;
   color: var(--ink);
+}
+
+.explore-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  border: 1px dashed var(--ink-soft);
+  border-radius: 12px;
+  background: var(--cream-soft);
+  padding: 10px 12px;
+  font-size: .85rem;
+  line-height: 1.8;
 }
 
 .paper-note {

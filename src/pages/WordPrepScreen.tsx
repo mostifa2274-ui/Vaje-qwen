@@ -3,7 +3,7 @@ import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
 import { listeningChoiceOptions } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
-import { chapterPrepared } from '../engine/gates'
+import { canPrepareChapter, chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
@@ -25,6 +25,9 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
   const alreadyPrepared = chapterPrepared(state, chapterId)
+  // Opened through explore mode before the learner reached it: the lessons
+  // and tests work as practice, but passing them records nothing.
+  const [preview] = useState(() => !canPrepareChapter(state, chapterId))
   const { writtenOrder, listeningOrder } = useMemo(
     () => buildPrepTestOrders(chapterId, chapter.new),
     [chapter.new, chapterId],
@@ -345,6 +348,11 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     setSelected('')
     setListeningReady(false)
 
+    if (nextQueue.length === 0 && preview) {
+      clearPrepDraft(chapterId)
+      onReady()
+      return
+    }
     if (nextQueue.length === 0) {
       const nextState = recordPreparedChapter(
         state,
@@ -422,6 +430,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       </header>
 
       <div className="mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {preview && (
+          <div className="explore-note mb-4" role="status">
+            <span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این فصل نرسیده‌ای؛ آموزش و آزمون‌های اینجا تمرین‌اند و ثبت نمی‌شوند.</span>
+          </div>
+        )}
+
         {alreadyPrepared && phase === 'teach' && (
           <div className="paper-note mb-4">
             این فصل قبلاً آزمون نوشتاری و شنیداری را با پوشش ۱۰۰٪ گذرانده است.

@@ -7,6 +7,8 @@ import {
   MIDPOINT_EXAM_ID,
   FINAL_EXAM_ID,
   bookExamId,
+  canOpenChapter,
+  canOpenExam,
   canPrepareChapter,
   canTakeExam,
   chapterPrepared,
@@ -20,6 +22,7 @@ import { faNum, percent } from '../engine/format'
 interface Props {
   state: GhesseState
   now: number
+  onChange: (next: GhesseState) => void
   onOpenChapter: (id: string) => void
   onOpenExam: (id: string) => void
   onOpenReview: () => void
@@ -51,7 +54,9 @@ function ExamGate({
   lockedHint?: string
 }) {
   const passed = examPassed(state, id)
-  const available = canTakeExam(state, id)
+  const onPath = canTakeExam(state, id)
+  const available = canOpenExam(state, id)
+  const preview = available && !onPath
   const progress = state.exams[id]
   const remediation = examRemediationPending(state, id)
   return (
@@ -66,17 +71,17 @@ function ExamGate({
             ? `${passed ? 'حد نصاب پاس شده، اما ' : ''}${faNum(progress?.missedWordIds.length ?? 0)} واژهٔ از‌دست‌رفته باید در مرور هوشمند مستقل بازیابی شود.`
             : passed
               ? `قبول و جبران کامل${progress?.bestScore ? ` · بهترین امتیاز ${percent(progress.bestScore)}` : ''}`
-              : available ? 'این آزمون دروازهٔ ادامهٔ مسیر است.' : lockedHint ?? 'پس از کامل‌شدن پیش‌نیازها باز می‌شود.'}
+              : preview ? 'پیش‌نمایش در حالت کاوش؛ نتیجه ثبت نمی‌شود.' : available ? 'این آزمون دروازهٔ ادامهٔ مسیر است.' : lockedHint ?? 'پس از کامل‌شدن پیش‌نیازها باز می‌شود.'}
         </div>
       </div>
       <button type="button" className={passed && !remediation ? 'btn-paper px-3 py-2 text-sm' : 'btn-crimson px-3 py-2 text-sm'} disabled={!available} onClick={() => onOpen(id)}>
-        {remediation ? 'اول جبران' : passed ? 'بازآزمایی' : 'شروع'}
+        {remediation && !preview ? 'اول جبران' : preview ? 'پیش‌نمایش' : passed ? 'بازآزمایی' : 'شروع'}
       </button>
     </div>
   )
 }
 
-export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenSettings }: Props) {
+export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenSettings }: Props) {
   const doneCount = CHAPTERS.filter(c => state.chapters[c.id]?.completed).length
   const health = learningHealth(state, now)
   const action = nextBestAction(state, now)
@@ -115,6 +120,13 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
           </button>
         </div>
       </header>
+
+      {state.exploreAll && (
+        <div className="explore-note mt-4" role="status">
+          <span><b>حالت کاوش روشن است.</b> همهٔ فصل‌ها و آزمون‌ها باز هستند؛ بخش‌هایی که هنوز به آن‌ها نرسیده‌ای فقط پیش‌نمایش‌اند و ثبت نمی‌شوند.</span>
+          <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={() => onChange({ ...state, exploreAll: false })}>خاموش کردن</button>
+        </div>
+      )}
 
       <section className="next-action-card mt-4">
         <div className="min-w-0 flex-1">
@@ -192,7 +204,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
       <div className="mt-6 space-y-6">
         {BOOKS.map(meta => {
           const chapters = chaptersOfBook(meta.book)
-          const bookAvailable = chapters.some(ch => canPrepareChapter(state, ch.id) || state.chapters[ch.id]?.completed)
+          const bookAvailable = chapters.some(ch => canOpenChapter(state, ch.id) || state.chapters[ch.id]?.completed)
           const mastery = chapters.reduce((sum, ch) => sum + chapterMastery(ch, state), 0) / chapters.length
           const bHealth = bookHealth(state, meta.book, now)
           const bookExam = bookExamId(meta.book)
@@ -229,9 +241,10 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                     const prog = state.chapters[ch.id]
                     const isDone = prog?.completed === true
                     const prepared = chapterPrepared(state, ch.id)
-                    const accessible = canPrepareChapter(state, ch.id)
-                    const nodeState = isDone ? 'is-done' : prepared && accessible ? 'is-ready' : accessible ? 'is-current' : 'is-locked'
-                    const status = isDone ? 'تمام شده' : prepared && accessible ? 'آمادهٔ خواندن' : accessible ? 'آموزش + آزمون واژه‌ها' : 'قفل'
+                    const onPath = canPrepareChapter(state, ch.id)
+                    const accessible = canOpenChapter(state, ch.id)
+                    const nodeState = isDone ? 'is-done' : prepared && onPath ? 'is-ready' : onPath ? 'is-current' : accessible ? 'is-preview' : 'is-locked'
+                    const status = isDone ? 'تمام شده' : prepared && onPath ? 'آمادهٔ خواندن' : onPath ? 'آموزش + آزمون واژه‌ها' : accessible ? 'پیش‌نمایش در حالت کاوش' : 'قفل'
 
                     return (
                       <div key={ch.id} className="flex items-center gap-2">
@@ -246,7 +259,7 @@ export default function MapScreen({ state, now, onOpenChapter, onOpenExam, onOpe
                         >
                           {isDone
                             ? <CheckIcon className="h-5 w-5" />
-                            : prepared && accessible
+                            : prepared && onPath
                               ? <PlayIcon className="h-5 w-5" />
                               : accessible
                                 ? faNum(ch.n)

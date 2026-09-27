@@ -19,6 +19,8 @@ The learner should understand, recall, hear, and use the vocabulary well enough 
 7. After each book, pass the end-of-book test. It gates the next book (after book 8, the final exam) and has four parts, each needing 80%: typed Persian translation of 12 words and listening recognition of 12 other words, drawn from every book so far; a new reading text with 5 questions; and a new listening text with 5 questions. The listening text is audio only until the test ends, when both texts, their translations and every answer are shown for review. Both texts use only words taught up to that book, and retakes alternate to a second pair of texts.
 8. Continue into spaced review and gated midpoint/final exams.
 
+Explore mode (Settings, off by default) opens every chapter, word lesson and test for looking around. It changes only what can be opened: anything the learner has not reached on the path above runs as a preview that records nothing, so switching it off restores the path exactly.
+
 ## Product principles
 - The task leads; decoration never competes with learning.
 - Do not ask learners to guess a word before teaching it.

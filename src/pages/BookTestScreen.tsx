@@ -197,6 +197,10 @@ function QuestionReview({ text, chosen }: { text: TestText; chosen: Array<number
 export default function BookTestScreen({ book, state, onChange, onBack, onReview }: Props) {
   const examId = bookExamId(book)
   const def = examDefinition(examId)!
+  // Opened through explore mode before the learner reached it: a preview
+  // whose attempts are never recorded.
+  const [preview] = useState(() => !canTakeExam(state, examId))
+  const [previewRuns, setPreviewRuns] = useState(0)
   const [test, setTest] = useState<BookTest>(() => buildBookTest(book, state, (state.exams[examId]?.attempts ?? 0) + 1)!)
   const [initialDraft] = useState(() => loadBookTestDraft(test))
   const [resumed, setResumed] = useState(Boolean(initialDraft))
@@ -320,7 +324,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     passage.stop()
     const scored = scoreBookTest(test, answers)
     clearBookTestDraft(book)
-    onChange(recordBookTest(state, test, answers, scored, wallClockNow(), timings))
+    if (!preview) onChange(recordBookTest(state, test, answers, scored, wallClockNow(), timings))
     setResult(scored)
     setPhase('result')
   }
@@ -347,13 +351,17 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   }
 
   function retake() {
-    reset(buildBookTest(book, state, (state.exams[examId]?.attempts ?? 0) + 1)!)
+    // A preview records no attempt, so it counts its own to vary the texts.
+    const extra = preview ? previewRuns + 1 : 0
+    if (preview) setPreviewRuns(extra)
+    reset(buildBookTest(book, state, (state.exams[examId]?.attempts ?? 0) + 1 + extra)!)
     setPhase('intro')
   }
 
   const sectionNumber = isSection(phase) ? BOOK_TEST_SECTIONS.indexOf(phase) : -1
 
   const header = (
+    <>
     <header className="flex items-center gap-3">
       <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="ترک آزمون"><BackIcon className="h-5 w-5" /></button>
       <div className="min-w-0 flex-1">
@@ -361,6 +369,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
         <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{def.subtitleFa}</p>
       </div>
     </header>
+    {preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>}
+    </>
   )
 
   if (phase === 'result' && result) {
@@ -378,7 +388,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             given: item.options.find(option => option.id === answers.listeningWords[index])?.label ?? 'نمی‌دانم',
           }]),
     ]
-    const canRetake = !result.passed && result.missedWordIds.length === 0 && canTakeExam(state, examId)
+    const canRetake = preview || (!result.passed && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     const next = book === 8 ? 'آزمون نهایی' : `کتاب ${faNum(book + 1)}`
     return (
       <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-6" style={{ background: 'var(--cream)' }}>
@@ -406,7 +416,9 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             برای قبولی، هر چهار بخش دست‌کم {percent(BOOK_TEST_PASS_RATE)} لازم دارد.
-            {result.passed
+            {preview
+              ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
+              : result.passed
               ? result.missedWordIds.length
                 ? ` راه ${next} پس از آن باز می‌شود که ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته را در مرور هوشمند بدون کمک به یاد بیاوری.`
                 : ` راه ${next} باز شد.`
@@ -417,7 +429,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
           <div className="mt-5 grid grid-cols-2 gap-2">
             <button type="button" className="btn-paper py-3" onClick={onBack}>مسیر یادگیری</button>
-            {result.missedWordIds.length > 0 ? (
+            {result.missedWordIds.length > 0 && !preview ? (
               <button type="button" className="btn-crimson py-3" onClick={onReview}>مرور جبرانی</button>
             ) : canRetake ? (
               <button type="button" className="btn-crimson py-3" onClick={retake}>دوباره امتحان کن</button>

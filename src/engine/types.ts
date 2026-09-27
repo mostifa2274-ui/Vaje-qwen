@@ -93,6 +93,9 @@ export interface GhesseState {
   narratorVoiceURI: string
   narratorRate: number
   dailyReviewGoal: number
+  // Explore mode opens every chapter and test to look around. Only access
+  // changes: the strict gates still decide what is recorded as progress.
+  exploreAll: boolean
   created: number
 }
 
