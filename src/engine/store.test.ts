@@ -49,6 +49,24 @@ describe('progress replacement', () => {
     expect(sessionStorage.length).toBe(0)
   })
 
+  it('repairs a corrupted primary without overwriting the last-known good backup', () => {
+    const first = emptyState(1, 'b1c1')
+    first.currentChapter = 'b1c1'
+    expect(saveState(first)).toBe(true)
+
+    const second = { ...first, currentChapter: 'b1c2' }
+    expect(saveState(second)).toBe(true)
+    const goodBackup = localStorage.getItem('ghesse:state:v6:backup')
+    expect(goodBackup).toContain('"currentChapter":"b1c1"')
+
+    localStorage.setItem('ghesse:state:v6', '{broken')
+    const recovered = { ...second, currentChapter: 'b1c3' }
+    expect(saveState(recovered)).toBe(true)
+
+    expect(localStorage.getItem('ghesse:state:v6:backup')).toBe(goodBackup)
+    expect(localStorage.getItem('ghesse:state:v6')).toContain('"currentChapter":"b1c3"')
+  })
+
   it('summarizes progress for an import confirmation', () => {
     const state = emptyState(1, 'b1c1')
     state.chapters.b1c1 = { preparedAt: 2, prepAttempts: 1, completed: true, checksCorrect: 10, checksTotal: 10, reads: 1 }
