@@ -15,7 +15,7 @@ import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { recordCompletedRead, recordPreparedChapter } from './progress'
 import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
-import { acceptedAnswers, blankWordProgress, buildReviewQuestion, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
+import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus } from './analytics'
 import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
@@ -119,6 +119,26 @@ describe('spaced mastery', () => {
     p = recordRetrieval(p, true, 'reverse', start + 60_000)
     expect(p.reviewStage).toBe(1)
     expect(p.successDays).toHaveLength(1)
+  })
+
+  it('a lapse relearned on a day that already had a success returns tomorrow', () => {
+    const start = Date.UTC(2026, 0, 1, 8)
+    let p = blankWordProgress(start)
+    p = recordRetrieval(p, true, 'recognition', start)
+    p = recordRetrieval(p, false, 'reverse', start + 3_600_000)
+    expect(p.dueAt).toBe(start + 3_600_000 + 10 * 60_000)
+
+    const later = start + 2 * 3_600_000
+    p = recordRetrieval(p, true, 'reverse', later)
+    // Still no same-day spacing credit, but no longer due all day either.
+    expect(p.reviewStage).toBe(0)
+    expect(p.successDays).toHaveLength(1)
+    expect(p.dueAt).toBe(later + 86_400_000)
+    expect(dueWordIds({ word: p }, later + 60_000)).toEqual([])
+
+    // A same-day success on a word that is not due leaves its schedule alone.
+    const scheduled = { ...p, dueAt: later + 5 * 86_400_000 }
+    expect(recordRetrieval(scheduled, true, 'reverse', later + 60_000).dueAt).toBe(later + 5 * 86_400_000)
   })
 
   it('requires multi-day productive recall for mastered', () => {

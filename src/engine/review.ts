@@ -263,6 +263,11 @@ export function recordRetrieval(
       next.stabilityDays = modelStability
       next.dueAt = now + interval * DAY
       next.difficulty = modelDifficulty
+    } else if (progress.dueAt !== undefined && progress.dueAt <= now) {
+      // It does close today's relearning, though. A word that lapsed after an
+      // earlier success today comes back tomorrow, when a correct answer is
+      // new spaced evidence, instead of staying due for the rest of the day.
+      next.dueAt = now + DAY
     }
   } else {
     const grade = inferFsrsGrade(false, mode, elapsedMs)
