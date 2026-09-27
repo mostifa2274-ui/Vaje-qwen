@@ -834,6 +834,24 @@ test('importing a backup asks before replacing progress', async ({ page }) => {
   expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).toBeNull()
 })
 
+test('backup import rejects unrelated JSON before replacement confirmation', async ({ page }) => {
+  await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
+
+  const unrelated = {
+    name: 'other-app-settings.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify({ version: 6, theme: 'dark', preferences: { compact: true } })),
+  }
+  await page.getByLabel('فایل پشتیبان پیشرفت').setInputFiles(unrelated)
+
+  await expect(page.getByText('این فایل پشتیبان معتبر قصه نیست.', { exact: true })).toBeVisible()
+  await expect(page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })).toHaveCount(0)
+
+  const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
+  expect(stored.words?.[chapterWords[0].id]).toBeDefined()
+})
+
+
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
   // This is the full 72-word chapter flow. Written and listening gates intentionally
   // exercise the product's 650 ms feedback/auto-advance timing for every word, so the
