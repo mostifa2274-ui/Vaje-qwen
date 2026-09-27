@@ -1,10 +1,9 @@
 name: Production smoke
 
+# Manual only (Actions > Production smoke > Run workflow): polling for the
+# deploy after every merge spent more free Actions minutes than anything but
+# CI. Cloudflare's own build check already reports each deploy.
 on:
-  workflow_run:
-    workflows: ["CI"]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,16 +15,11 @@ concurrency:
 
 jobs:
   live:
-    if: >-
-      ${{ github.event_name == 'workflow_dispatch' ||
-          (github.event.workflow_run.conclusion == 'success' &&
-           github.event.workflow_run.head_branch == 'main' &&
-           github.event.workflow_run.event == 'push') }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
       PRODUCTION_URL: https://vaje-qwen1.mostifa2273.workers.dev
-      SOURCE_SHA: ${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.workflow_run.head_sha }}
+      SOURCE_SHA: ${{ github.sha }}
 
     steps:
       - name: Wait for exact Cloudflare production revision
