@@ -56,12 +56,13 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - Comprehension remains a focused one-question-at-a-time sequence
 
 ## Illustration
-- Every chapter has its own scene in `src/art/scenes/`, drawn from that chapter's actual events; every book has a wide banner (`src/art/banners.tsx`, rendered to `public/art/bookN.svg` by `npm run art:banners`).
-- Scenes share one kit: palette and hooks in `src/art/tokens.ts`, light/sky/nature in `kit.tsx`, rooms and props in `interior.tsx`, places and vehicles in `outdoor.tsx`, the cast in `characters.tsx` + `cast.ts`.
+- The production visual system is the 40 reviewed raster scenes registered in `src/art/generatedChapterArt.ts` and materialized into `public/art/chapters/` during the build. The chapter-art validator must remain 40 approved / 0 pending.
+- Chapter and preparation screens use those reviewed scenes directly. Book overview cards reuse one reviewed scene per book; legacy inline/vector banners are not a production fallback.
 - Nino is always a small yellow chicken with an orange beak and feet and one small white feather on the left wing. Never depict him as the former cat concept, a duck, an adult hen, or an unmarked generic chick.
 - Mina keeps the same face and age impression while her contemporary Iranian modest clothing may vary by chapter. Girls and women are never shown without hijab; public/outdoor scenes keep hair exposure minimal. Mina's red book and the crimson bird remain recurring visual anchors.
-- No text inside illustrations. Each scene has a Persian description used as its accessible name.
-- Keep key action between x≈80 and x≈720 of the 800-wide canvas; phones crop the sides.
+- No readable text or logos inside illustrations. Each chapter image has a Persian accessible description.
+- Production artwork is 640×336 (40:21). Keep the primary action safely inside the center crop so phone and tablet banners do not lose faces or story-critical objects.
+- The reviewed chapter-art set is precached by the production service worker so visual continuity survives offline use.
 
 ## Responsive behavior
 - Phone: single-column, thumb-friendly controls
