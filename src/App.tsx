@@ -128,7 +128,7 @@ export default function App() {
       stateRef.current = remote
       setState(remote)
       setView(current => resolveView(current, remote))
-      setPersistOk(true)
+      setPersistOk(saveState(remote))
       setSyncConflict(true)
       return
     }
