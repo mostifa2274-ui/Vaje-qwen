@@ -908,17 +908,22 @@ button:disabled {
   width: calc(100% + 2rem);
   max-width: none;
   height: auto;
-  aspect-ratio: 8 / 3;
+  aspect-ratio: 40 / 21;
   margin: -1rem -1rem 1rem;
   overflow: hidden;
   border-radius: 17px 17px 0 0;
   border-bottom: 1px solid var(--line-medium);
   background: rgba(255,255,255,.3);
 }
+.book-banner > img,
 .book-banner > svg {
   display: block;
   width: 100%;
   height: 100%;
+}
+.book-banner > img {
+  object-fit: cover;
+  object-position: center;
 }
 @media (min-width: 640px) {
   .book-banner {
