@@ -186,7 +186,19 @@ export default function App() {
     document.documentElement.setAttribute('dir', 'rtl')
     document.documentElement.setAttribute('lang', 'fa')
     warmEnglishVoices()
-    void loadClipIndex()
+
+    const refreshClipIndex = () => { void loadClipIndex() }
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') refreshClipIndex()
+    }
+
+    refreshClipIndex()
+    window.addEventListener('online', refreshClipIndex)
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => {
+      window.removeEventListener('online', refreshClipIndex)
+      document.removeEventListener('visibilitychange', onVisibility)
+    }
   }, [])
   useEffect(() => {
     setPersistOk(saveState(state))
