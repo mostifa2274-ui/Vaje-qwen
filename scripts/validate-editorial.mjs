@@ -62,6 +62,15 @@ const forbiddenEnglish = [
   'A thousand cats, and not one is Nino.',
   'Cats know their homes.',
   'A smart chicken can sometimes find his way home from far away.',
+  // Mina searches with her family, not alone or with unrelated boys.
+  'Mina goes to the street with Nino\'s picture in her hand.',
+  'Some boys help her look behind the chairs.',
+  'The boy says he can walk part of the road with Mina.',
+  'The boy is Mina\'s friend from school.',
+  'He takes Mina there because looking for Nino is very important.',
+  'Her brother studies at college and sees the new note.',
+  'Saturday begins the busy part of their weekend work to find Nino.',
+  'The city has about a million people, which once made Mina feel small.',
 ]
 
 const allEnglish = chapters.flatMap(c => c.sentences.map(s => s.en))
@@ -104,6 +113,44 @@ for (const chapter of chapters) {
       `${chapter.id}:${index} unquoted direct speech: ${sentence.en}`)
   }
 }
+
+// Direct speech needs quotation marks when the reporting clause follows it
+// ("Let's go," Mom says.) or introduces it (Dad says, "Let's go.").
+const speaker = String.raw`(?:Mina|Mom|Dad|Grandmother|Grandfather|Uncle|Aunt|the (?:man|woman|boy|girl|teacher|doctor|nurse|farmer|cousin|policeman|scientist|waiter|neighbor)|her (?:brother|aunt|cousin)|she|he)`
+const trailingClause = new RegExp(String.raw`,\s+${speaker}\s+(?:says|asks|answers|adds|calls|explains|tells \w+)\.$`)
+const leadingClause = /\b(?:says|asks|answers|adds|calls),\s+[A-Z]/
+for (const chapter of chapters) {
+  for (const [index, sentence] of chapter.sentences.entries()) {
+    if (sentence.en.includes('"')) continue
+    assert(!trailingClause.test(sentence.en) && !leadingClause.test(sentence.en),
+      `${chapter.id}:${index} unquoted direct speech: ${sentence.en}`)
+  }
+}
+
+// Family-friendly content for Iranian learners: no alcohol, dancing, dating or
+// pork anywhere in the course, and Nino (a yellow chicken) is never "black".
+const bookTestDir = join(root, 'src/data/bookTests')
+const bookTexts = readdirSync(bookTestDir)
+  .filter(name => name.endsWith('.json'))
+  .flatMap(name => {
+    const content = JSON.parse(readFileSync(join(bookTestDir, name), 'utf8'))
+    return [...content.reading, ...content.listening]
+  })
+const vocabulary = JSON.parse(readFileSync(join(root, 'src/data/vocabulary.json'), 'utf8'))
+const courseEnglish = [
+  ...allEnglish,
+  ...bookTexts.flatMap(text => [text.titleEn, ...text.sentences.map(sentence => sentence.en)]),
+  ...vocabulary.flatMap(word => [word.word, word.ex]),
+]
+const unsuitable = /\b(?:wine|beer|alcohol|drunk|dances?|danced|dancing|dancers?|boyfriends?|girlfriends?|pigs?|pork|bacon)\b/i
+for (const text of courseEnglish) {
+  assert(!unsuitable.test(text), `unsuitable course content: ${text}`)
+}
+for (const text of allEnglish) {
+  assert(!/\b(?:something|anything) black\b|\bwas it black\b|^"Black,"/i.test(text), `Nino is yellow, not black: ${text}`)
+}
+const persian = [...allPersian, ...bookTexts.flatMap(text => text.sentences.map(sentence => sentence.fa))]
+assert(!persian.some(text => text.includes('ـ')), 'Persian text contains a tatweel (ـ)')
 
 const byId = new Map(chapters.map(c => [c.id, c]))
 const expectedChecks = {

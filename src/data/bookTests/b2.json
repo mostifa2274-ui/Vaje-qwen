@@ -7,7 +7,7 @@
       "titleFa": "همسایهٔ تازه",
       "names": [
         "Ali",
-        "Dina"
+        "Dara"
       ],
       "sentences": [
         {
@@ -19,44 +19,44 @@
           "fa": "امروز خانواده‌ای تازه به آپارتمانِ کنار آپارتمان او می‌آیند."
         },
         {
-          "en": "Ali sees a man, a woman and a young girl at the door.",
-          "fa": "علی یک مرد، یک زن و یک دختر جوان را دمِ در می‌بیند."
+          "en": "Ali sees a man, a woman and a young boy at the door.",
+          "fa": "علی یک مرد، یک زن و یک پسر جوان را دمِ در می‌بیند."
         },
         {
-          "en": "The girl has a guitar.",
-          "fa": "دختر یک گیتار دارد."
+          "en": "The boy has a guitar.",
+          "fa": "پسر یک گیتار دارد."
         },
         {
           "en": "Ali says, \"Hello! I am Ali. What is your name?\"",
           "fa": "علی می‌گوید: «سلام! من علی هستم. اسم تو چیست؟»"
         },
         {
-          "en": "\"My name is Dina,\" the girl answers.",
-          "fa": "دختر جواب می‌دهد: «اسم من دیناست.»"
+          "en": "\"My name is Dara,\" the boy answers.",
+          "fa": "پسر جواب می‌دهد: «اسم من داراست.»"
         },
         {
           "en": "\"Do you play the guitar?\" Ali asks.",
           "fa": "علی می‌پرسد: «گیتار می‌زنی؟»"
         },
         {
-          "en": "\"Yes, and I sing too,\" says Dina.",
-          "fa": "دینا می‌گوید: «بله، آواز هم می‌خوانم.»"
+          "en": "\"Yes, and I sing too,\" says Dara.",
+          "fa": "دارا می‌گوید: «بله، آواز هم می‌خوانم.»"
         },
         {
           "en": "Ali likes music, and he plays the piano.",
           "fa": "علی موسیقی دوست دارد و پیانو می‌زند."
         },
         {
-          "en": "In the evening, Ali and Dina play music together in the park.",
-          "fa": "عصر، علی و دینا با هم در پارک موسیقی می‌نوازند."
+          "en": "In the evening, Ali and Dara play music together at home.",
+          "fa": "عصر، علی و دارا با هم در خانه موسیقی می‌نوازند."
         },
         {
-          "en": "People in the park come and dance to the music.",
-          "fa": "آدم‌های توی پارک می‌آیند و با موسیقی می‌رقصند."
+          "en": "Their families sit together and listen to the music.",
+          "fa": "خانواده‌هایشان کنار هم می‌نشینند و به موسیقی گوش می‌دهند."
         },
         {
-          "en": "Dina is happy because she has a new friend.",
-          "fa": "دینا خوشحال است، چون یک دوست تازه دارد."
+          "en": "Dara is happy because he has a new friend.",
+          "fa": "دارا خوشحال است، چون یک دوست تازه دارد."
         }
       ],
       "questions": [
@@ -71,7 +71,7 @@
           "answer": 2
         },
         {
-          "q": "دختر همسایه چه چیزی دارد؟",
+          "q": "پسر همسایه چه چیزی دارد؟",
           "options": [
             "یک پیانو",
             "یک گیتار",
@@ -81,12 +81,12 @@
           "answer": 1
         },
         {
-          "q": "اسم دختر همسایه چیست؟",
+          "q": "اسم پسر همسایه چیست؟",
           "options": [
-            "لیلا",
-            "دینا",
-            "سارا",
-            "نیکا"
+            "کاوه",
+            "دارا",
+            "امید",
+            "رضا"
           ],
           "answer": 1
         },
@@ -101,7 +101,7 @@
           "answer": 0
         },
         {
-          "q": "چرا دینا خوشحال است؟",
+          "q": "چرا دارا خوشحال است؟",
           "options": [
             "چون خانه‌شان بزرگ است",
             "چون در یک مسابقه برنده شده است",
@@ -255,8 +255,8 @@
           "fa": "مریم کمی نان و تخم‌مرغ می‌خواهد و سیما شیر می‌خواهد."
         },
         {
-          "en": "Sima has a new boyfriend, and Maryam asks about him.",
-          "fa": "سیما دوست‌پسر تازه‌ای دارد و مریم دربارهٔ او می‌پرسد."
+          "en": "Sima has an older brother, and Maryam asks about him.",
+          "fa": "سیما برادر بزرگ‌تری دارد و مریم دربارهٔ او می‌پرسد."
         },
         {
           "en": "\"What is his name?\" Maryam asks.",
@@ -283,8 +283,8 @@
           "fa": "مریم و سیما می‌خواهند با هم بروند."
         },
         {
-          "en": "In the evening, they go to the concert and dance.",
-          "fa": "عصر به کنسرت می‌روند و می‌رقصند."
+          "en": "In the evening, the two friends go to the concert with their moms and listen to the band.",
+          "fa": "عصر، دو دوست همراه مادرهایشان به کنسرت می‌روند و به گروه گوش می‌دهند."
         }
       ],
       "questions": [
@@ -319,7 +319,7 @@
           "answer": 2
         },
         {
-          "q": "دوست‌پسر سیما چه کاره است؟",
+          "q": "برادر سیما چه کاره است؟",
           "options": [
             "پیشخدمت کافه",
             "خوانندهٔ یک گروه موسیقی",
@@ -331,7 +331,7 @@
         {
           "q": "مریم و سیما عصر چه کار می‌کنند؟",
           "options": [
-            "به کنسرت می‌روند و می‌رقصند",
+            "همراه مادرهایشان به کنسرت می‌روند",
             "به خانه می‌روند",
             "در کافه می‌مانند",
             "به باشگاه ورزشی می‌روند"

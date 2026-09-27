@@ -132,7 +132,7 @@
     },
     {
       "en": "The train travels into the country.",
-      "fa": "قطار به داخل کشور می‌رود."
+      "fa": "قطار به حومه‌ی شهر و روستاها می‌رود."
     },
     {
       "en": "Their country looks big and green from the window.",
@@ -147,32 +147,32 @@
       "fa": "بالاخره به یک ایستگاه آرام روستایی می‌رسند."
     },
     {
-      "en": "The driver slows the train near the short station.",
-      "fa": "راننده قطار را نزدیک ایستگاه کوتاه آهسته می‌کند."
+      "en": "The driver slows the train near the small station.",
+      "fa": "راننده قطار را نزدیک ایستگاه کوچک آهسته می‌کند."
     },
     {
-      "en": "\"This is our stop,\" Dad says, taking the bags.",
-      "fa": "بابا در حالی که کیف‌ها را برمی‌دارد می‌گوید: «این ایستگاه ماست.»"
+      "en": "\"Here we change trains,\" Dad says, taking the bags.",
+      "fa": "بابا در حالی که کیف‌ها را برمی‌دارد می‌گوید: «اینجا قطار عوض می‌کنیم.»"
     },
     {
       "en": "The train comes to a complete stop near the farm road.",
       "fa": "قطار نزدیک جاده‌ی مزرعه کاملاً می‌ایستد."
     },
     {
-      "en": "A local bus waits outside, but the family chooses to walk.",
-      "fa": "اتوبوسی محلی بیرون منتظر است، اما خانواده تصمیم می‌گیرد پیاده برود."
+      "en": "A local bus waits outside, but the family waits for the next train.",
+      "fa": "اتوبوسی محلی بیرون منتظر است، اما خانواده منتظر قطار بعدی می‌ماند."
     },
     {
       "en": "A taxi driver asks if they want a ride, and Dad says no.",
-      "fa": "راننده‌ی تاکسی می‌پرسد آیا سفر می‌خواهند و بابا نه می‌گوید."
+      "fa": "راننده‌ی تاکسی می‌پرسد آیا می‌خواهند سوار شوند و بابا نه می‌گوید."
     },
     {
       "en": "Mina sees the red bicycle and small bike leave with other people.",
       "fa": "مینا می‌بیند دوچرخه‌ی قرمز و دوچرخه‌ی کوچک همراه افراد دیگر دور می‌شوند."
     },
     {
-      "en": "Then the family follows the country road to the next information.",
-      "fa": "بعد خانواده جاده‌ی روستایی را تا اطلاعات بعدی دنبال می‌کند."
+      "en": "Then the family gets on the next train to the north.",
+      "fa": "بعد خانواده سوار قطار بعدی به سمت شمال می‌شود."
     }
   ],
   "check": [

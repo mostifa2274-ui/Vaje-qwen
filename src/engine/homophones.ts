@@ -5,7 +5,7 @@ import type { WordEntry } from './types'
 export const HOMOPHONE_GROUPS: readonly (readonly string[])[] = [
   ['to', 'too', 'two'], ['right', 'write'], ['hear', 'here'], ['son', 'sun'], ['I', 'eye'],
   ['know', 'no'], ['meet', 'meat'], ['by', 'buy', 'bye'], ['there', 'their'], ['our', 'hour'],
-  ['wear', 'where'], ['for', 'four'], ['hi', 'high'],
+  ['wear', 'where'], ['for', 'four'], ['hi', 'high'], ['see', 'sea'],
 ]
 
 const soundGroup = new Map<string, number>()

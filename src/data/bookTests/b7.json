@@ -42,24 +42,24 @@
           "fa": "روز چهارم، هوا دوباره گرم است."
         },
         {
-          "en": "Golnaz and her brother take a boat to a small island.",
-          "fa": "گلناز و برادرش با قایق به جزیره‌ای کوچک می‌روند."
+          "en": "Golnaz and her brother take a boat with Dad to a small island.",
+          "fa": "گلناز و برادرش همراه بابا با قایق به جزیره‌ای کوچک می‌روند."
         },
         {
           "en": "There are many birds and beautiful flowers on the island.",
           "fa": "روی جزیره پرنده‌های زیاد و گل‌های زیبایی هست."
         },
         {
-          "en": "In the evening, they ride bikes by the ocean.",
-          "fa": "عصر، کنار اقیانوس دوچرخه‌سواری می‌کنند."
+          "en": "In the evening, they walk by the sea with Mom and Dad.",
+          "fa": "عصر، همراه مامان و بابا کنار دریا قدم می‌زنند."
         },
         {
           "en": "On the last day, Golnaz does not want to go home.",
           "fa": "روز آخر، گلناز نمی‌خواهد به خانه برگردد."
         },
         {
-          "en": "She takes a photo of the ocean for her bedroom wall.",
-          "fa": "برای دیوار اتاق خوابش از اقیانوس عکس می‌گیرد."
+          "en": "She takes a photo of the sea for her bedroom wall.",
+          "fa": "برای دیوار اتاق خوابش از دریا عکس می‌گیرد."
         }
       ],
       "questions": [
@@ -108,7 +108,7 @@
           "options": [
             "یک کلاه تازه می‌خرد",
             "تمام روز در هتل می‌خوابد",
-            "از اقیانوس برای دیوار اتاقش عکس می‌گیرد",
+            "از دریا برای دیوار اتاقش عکس می‌گیرد",
             "با قایق به جزیره می‌رود"
           ],
           "answer": 2

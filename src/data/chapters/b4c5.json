@@ -20,7 +20,7 @@
     "farmer",
     "cow",
     "horse",
-    "pig",
+    "goat",
     "sheep",
     "elephant",
     "lion",
@@ -33,8 +33,8 @@
   ],
   "sentences": [
     {
-      "en": "Mina comes to the market early and checks every place she knows.",
-      "fa": "مینا صبح زود به بازار می‌آید و هر جایی را که می‌شناسد بررسی می‌کند."
+      "en": "Mina comes to the market early with Mom and checks every place she knows.",
+      "fa": "مینا صبح زود همراه مامان به بازار می‌آید و هر جایی را که می‌شناسد بررسی می‌کند."
     },
     {
       "en": "Near the bread shop, she sees a yellow chicken.",
@@ -109,8 +109,8 @@
       "fa": "مینا می‌گوید: «حالم خوب نیست.»"
     },
     {
-      "en": "The bread man tries to give her something funny.",
-      "fa": "نانوا سعی می‌کند چیزی خنده‌دار به او بدهد."
+      "en": "The bread man gives her some bread and says something funny.",
+      "fa": "نانوا کمی نان به او می‌دهد و چیز خنده‌داری می‌گوید."
     },
     {
       "en": "Mina says, \"I like this bread, but I still miss Nino.\"",
@@ -121,24 +121,24 @@
       "fa": "مینا می‌گوید: «این نان عالی است» و سعی می‌کند بخندد."
     },
     {
-      "en": "A funny dog runs between two market shops.",
-      "fa": "یک سگ خنده‌دار میان دو مغازه‌ی بازار می‌دود."
+      "en": "A funny cat runs between two market shops.",
+      "fa": "گربه‌ای بامزه میان دو مغازه‌ی بازار می‌دود."
     },
     {
-      "en": "Watching the dog is fun for the children in the market.",
-      "fa": "تماشای سگ برای بچه‌های داخل بازار سرگرم‌کننده است."
+      "en": "Watching the cat is fun for the children in the market.",
+      "fa": "تماشای گربه برای بچه‌های داخل بازار سرگرم‌کننده است."
     },
     {
-      "en": "People laugh when the dog takes a paper bag.",
-      "fa": "وقتی سگ یک پاکت کاغذی را برمی‌دارد، مردم می‌خندند."
+      "en": "People laugh when the cat takes a paper bag.",
+      "fa": "وقتی گربه یک پاکت کاغذی برمی‌دارد، مردم می‌خندند."
     },
     {
       "en": "Mina laughs once before looking for Nino again.",
       "fa": "مینا یک بار می‌خندد و بعد دوباره دنبال نینو می‌گردد."
     },
     {
-      "en": "The dog is only one animal in the busy market.",
-      "fa": "سگ فقط یکی از حیوان‌های بازار شلوغ است."
+      "en": "The cat is only one animal in the busy market.",
+      "fa": "گربه فقط یکی از حیوان‌های بازار شلوغ است."
     },
     {
       "en": "The yellow chicken is another animal looking for food.",
@@ -169,16 +169,16 @@
       "fa": "یک اسب آرام از مزرعه عبور می‌کند."
     },
     {
-      "en": "A pig sleeps next to a warm wall.",
-      "fa": "یک خوک کنار یک دیوار گرم خوابیده است."
+      "en": "A goat sleeps next to a warm wall.",
+      "fa": "یک بز کنار دیواری گرم خوابیده است."
     },
     {
       "en": "Some sheep stand together near a tree.",
       "fa": "چند گوسفند کنار هم نزدیک یک درخت ایستاده‌اند."
     },
     {
-      "en": "The farmer says the animals did not see Nino.",
-      "fa": "کشاورز می‌گوید حیوان‌ها نینو را ندیده‌اند."
+      "en": "The farmer says he did not see Nino.",
+      "fa": "کشاورز می‌گوید نینو را ندیده است."
     },
     {
       "en": "In the farm house, Mina sees an old animal book.",
@@ -198,7 +198,7 @@
     },
     {
       "en": "Mina is happy because Nino would like the pictures.",
-      "fa": "مینا خوشحال است چون نینو این تصویرها را دوست داشت."
+      "fa": "مینا خوشحال است چون نینو این تصویرها را دوست می‌داشت."
     },
     {
       "en": "The family returns to the market before evening.",
@@ -241,8 +241,8 @@
       "fa": "مینا می‌گوید روز سخت بود، اما دیدن مزرعه عالی بود."
     },
     {
-      "en": "She remembers the funny dog and is happy again.",
-      "fa": "سگ خنده‌دار را به یاد می‌آورد و دوباره خوشحال می‌شود."
+      "en": "She remembers the funny cat and is happy again.",
+      "fa": "گربه‌ی بامزه را به یاد می‌آورد و دوباره خوشحال می‌شود."
     },
     {
       "en": "Even one small moment of fun made the long day better.",
@@ -273,8 +273,8 @@
       "fa": "در آخر، مینا یک جوجه‌ی زرد کوچک در مرکز می‌کشد."
     },
     {
-      "en": "This drawing looks like Nino, with the same orange and white colors.",
-      "fa": "این نقاشی شبیه نینو است و همان رنگ‌های نارنجی و سفید را دارد."
+      "en": "This drawing looks like Nino, with the same yellow, orange, and white colors.",
+      "fa": "این نقاشی شبیه نینو است و همان رنگ‌های زرد، نارنجی و سفید را دارد."
     },
     {
       "en": "It is completely different from the market chicken.",
