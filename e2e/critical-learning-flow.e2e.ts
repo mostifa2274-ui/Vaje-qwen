@@ -885,19 +885,31 @@ test('explore mode opens every step of the lessons, tests and review without pre
   // Reading: any comprehension question opens directly.
   await page.getByRole('navigation', { name: 'پرش به سؤال‌ها' }).getByRole('button', { name: 'سؤال ۵' }).click()
   await expect(page.getByText('سؤال ۵ از ۱۰')).toBeVisible()
+  await page.getByTestId('comprehension-options').getByRole('button').first().click()
+  await expect(page.locator('.feedback-panel')).toBeVisible()
   await expectRenderedAccessibilityContract(page)
+  // The out-of-order answer survives a reload instead of being asked again.
+  await page.reload()
+  await expect(page.getByText('سؤال ۵ از ۱۰')).toBeVisible()
+  await expect(page.locator('.feedback-panel')).toBeVisible()
 
   // Book test: any section opens directly; skipping makes the run practice.
   await open('/exam/book-1')
   await page.getByRole('button', { name: 'شروع آزمون' }).click()
   await page.getByRole('list', { name: 'بخش‌های آزمون' }).getByRole('button', { name: /درک مطلب خواندنی/ }).click()
   await expect(page.getByRole('heading', { level: 2, name: 'درک مطلب خواندنی' })).toBeVisible()
+  await page.getByRole('group').first().getByRole('button').first().click()
   await expectRenderedAccessibilityContract(page)
+  await page.reload()
+  await expect(page.getByRole('heading', { level: 2, name: 'درک مطلب خواندنی' })).toBeVisible()
+  await expect(page.getByText('پیشرفت این آزمون بازیابی شد؛ از همان‌جا ادامه می‌دهی.')).toBeVisible()
 
   // Midpoint exam: questions can be skipped and revisited.
   await open('/exam/midpoint-4')
   await expect(page.getByText(/^سؤال ۱ از /)).toBeVisible()
   await page.getByRole('button', { name: 'رد کردن ←' }).click()
+  await expect(page.getByText(/^سؤال ۲ از /)).toBeVisible()
+  await page.reload()
   await expect(page.getByText(/^سؤال ۲ از /)).toBeVisible()
   await page.getByRole('button', { name: 'سؤال قبلی' }).click()
   await expect(page.getByText(/^سؤال ۱ از /)).toBeVisible()

@@ -97,6 +97,17 @@ describe('reading comprehension drafts', () => {
     }), 'b1c1', qs, NOW)).toBeUndefined()
   })
 
+  it('keeps gaps only in a draft marked by explore-mode jumps', () => {
+    const qs = questions()
+    const jumped = draft(qs, { checkIndex: 0, answers: { 2: 'q-2-o-1' }, unordered: true })
+    expect(sanitizeReadingDraft(jumped, 'b1c1', qs, NOW)).toEqual(jumped)
+    const { unordered: _marker, ...unmarked } = jumped
+    void _marker
+    expect(sanitizeReadingDraft(unmarked, 'b1c1', qs, NOW)).toBeUndefined()
+    // A marked correction round still keeps only corrected answers.
+    expect(sanitizeReadingDraft({ ...jumped, firstPassCorrect: 0 }, 'b1c1', qs, NOW)).toBeUndefined()
+  })
+
   it('restores a correction round with later already-correct questions intact', () => {
     const qs = questions()
     const normalized = sanitizeReadingDraft(draft(qs, {

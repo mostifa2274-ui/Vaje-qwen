@@ -48,6 +48,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const unrecorded = preview || practice
   const [initialDraft] = useState(() => exam ? loadExamDraft(examId, attempt, exam) : undefined)
   const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
+  // Set once a question is skipped: the saved draft may then have gaps.
+  const [skipped, setSkipped] = useState(() => initialDraft?.skipped === true)
   const [index, setIndex] = useState(() => initialDraft?.index ?? 0)
   const [answers, setAnswers] = useState<Record<number, boolean>>(() => initialDraft?.answers ?? {})
   const [timings, setTimings] = useState<Record<number, number>>(() => initialDraft?.timings ?? {})
@@ -76,7 +78,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   useEffect(() => {
     if (!exam || result) return
-    const hasMeaningfulProgress = index > 0 || typed.length > 0 || onBreak
+    const hasMeaningfulProgress = index > 0 || typed.length > 0 || onBreak || Object.keys(answers).length > 0
     if (!hasMeaningfulProgress) {
       clearExamDraft(examId)
       return
@@ -91,9 +93,10 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       timings,
       typed,
       onBreak,
+      ...(skipped ? { skipped: true as const } : {}),
       updatedAt: Date.now(),
     }, exam)
-  }, [answers, attempt, exam, examId, index, onBreak, result, timings, typed])
+  }, [answers, attempt, exam, examId, index, onBreak, result, skipped, timings, typed])
 
   const question = exam?.questions[index]
   const word = question ? WORD_BY_ID.get(question.wordId) : undefined
@@ -203,6 +206,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   function moveTo(nextIndex: number) {
     if (!explore || result) return
     if (resumedDraft) setResumedDraft(false)
+    setSkipped(true)
     setTyped('')
     setAudioBlocked(false)
     setAudioNotice('')

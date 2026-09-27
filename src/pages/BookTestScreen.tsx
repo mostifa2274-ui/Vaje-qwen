@@ -219,6 +219,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   const [answers, setAnswers] = useState<BookTestAnswers>(() => initialDraft?.answers ?? emptyBookTestAnswers(test))
   const [timings, setTimings] = useState<Record<string, number>>(() => initialDraft?.timings ?? {})
   const [listeningHeard, setListeningHeard] = useState(() => initialDraft?.listeningHeard ?? false)
+  // Set once explore mode opens a section out of order, so the draft keeps it.
+  const [jumped, setJumped] = useState(() => initialDraft?.jumped === true)
   const [typed, setTyped] = useState('')
   const [wordReady, setWordReady] = useState(false)
   const [wordNotice, setWordNotice] = useState('')
@@ -262,8 +264,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   useEffect(() => {
     if (!isSection(phase)) return
     if (phase === 'translation' && answers.translation.length === 0) return
-    saveBookTestDraft(test, { section: phase, answers, timings, listeningHeard })
-  }, [answers, listeningHeard, phase, test, timings])
+    saveBookTestDraft(test, { section: phase, answers, timings, listeningHeard, ...(jumped ? { jumped: true as const } : {}) })
+  }, [answers, jumped, listeningHeard, phase, test, timings])
 
   const speakWord = useCallback(() => {
     if (!listenWord || !state.soundOn) return
@@ -333,6 +335,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   function jumpToSection(section: BookTestSection) {
     if (!explore || section === phase) return
     setResumed(false)
+    setJumped(true)
     passage.stop()
     wordToken.current++
     setTyped('')
@@ -378,6 +381,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setResumed(false)
     setResult(null)
     setPractice(false)
+    setJumped(false)
   }
 
   function restart() {
