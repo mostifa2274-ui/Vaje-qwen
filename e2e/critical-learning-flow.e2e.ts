@@ -320,6 +320,13 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
 
   await context.setOffline(true)
   try {
+    const uncachedRouteArt = await page.evaluate(async () => {
+      const response = await fetch('./art/chapters/b8c5.webp')
+      return { ok: response.ok, type: response.headers.get('content-type') }
+    })
+    expect(uncachedRouteArt.ok).toBe(true)
+    expect(uncachedRouteArt.type).toMatch(/^image\//)
+
     await page.getByRole('button', { name: 'واژه‌نامه' }).click()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
     await expectNoHorizontalOverflow(page)
@@ -552,10 +559,12 @@ test('glossary search tolerates Arabic-layout Persian letters', async ({ page })
 
 test('map book cards use reviewed generated artwork and announce chapter status', async ({ page }) => {
   await page.goto('/#/map')
-  const firstBookArt = page.getByRole('img', { name: 'تصویر کتاب ۱: خانه' })
-  await expect(firstBookArt).toBeVisible()
-  await expect(firstBookArt).toHaveAttribute('src', /art\/chapters\/b1c1\.avif$/)
-  await expect(page.locator('.book-banner img')).toHaveCount(8)
+  const bookArt = page.locator('.book-banner img')
+  await expect(bookArt).toHaveCount(8)
+  await expect(bookArt.first()).toBeVisible()
+  await expect(bookArt.first()).toHaveAttribute('src', /art\/chapters\/b1c1\.avif$/)
+  await expect(bookArt.first()).toHaveAttribute('loading', 'eager')
+  await expect(bookArt.nth(1)).toHaveAttribute('loading', 'lazy')
   await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
   await expect(page.getByRole('button', { name: /^فصل ۲: .+ — قفل$/ }).first()).toBeDisabled()
 })
