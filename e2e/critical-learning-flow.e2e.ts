@@ -338,12 +338,12 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
 
   await context.setOffline(true)
   try {
-    const uncachedRouteArt = await page.evaluate(async () => {
-      const response = await fetch('./art/chapters/b8c5.webp')
-      return { ok: response.ok, type: response.headers.get('content-type') }
+    const precachedRouteArt = await page.evaluate(async () => {
+      const response = await caches.match('./art/chapters/b8c5.webp')
+      return response ? { ok: response.ok, type: response.headers.get('content-type') } : null
     })
-    expect(uncachedRouteArt.ok).toBe(true)
-    expect(uncachedRouteArt.type).toMatch(/^image\//)
+    expect(precachedRouteArt?.ok).toBe(true)
+    expect(precachedRouteArt?.type).toMatch(/^image\//)
 
     await page.getByRole('button', { name: 'واژه‌نامه' }).click()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
@@ -528,7 +528,7 @@ async function openWithProgress(page: Page, route: string, progress: {
   exploreAll?: boolean
 }): Promise<void> {
   await page.goto('/#/map')
-  await page.evaluate(({ route, progress }) => {
+  await page.evaluate((progress) => {
     const now = Date.now()
     window.localStorage.setItem('ghesse:state:v6', JSON.stringify({
       version: 6,
@@ -544,9 +544,8 @@ async function openWithProgress(page: Page, route: string, progress: {
       exploreAll: progress.exploreAll === true,
       created: now - 2 * 86_400_000,
     }))
-    window.location.hash = route
-  }, { route, progress })
-  await page.reload()
+  }, progress)
+  await page.goto(`/#${route}`)
 }
 
 function dueWord(overrides: Record<string, unknown> = {}): Record<string, unknown> {
@@ -1088,6 +1087,7 @@ test('importing a backup asks before replacing progress', async ({ page }) => {
   }
   const file = { name: 'ghesse-progress.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(backup)) }
   const fileInput = page.getByLabel('فایل پشتیبان پیشرفت')
+  expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').words)).toHaveProperty('${chapterWords[0].id}')
 
   await fileInput.setInputFiles(file)
   const confirm = page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })
