@@ -455,6 +455,15 @@ button:disabled {
   line-height: 1.9;
 }
 
+.paper-note[role="alert"],
+.paper-note[role="group"] {
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--gold) 9%, var(--cream-soft));
+  padding: .75rem;
+  color: var(--ink);
+}
+
 .storage-warning {
   position: fixed;
   inset-inline: 10px;
