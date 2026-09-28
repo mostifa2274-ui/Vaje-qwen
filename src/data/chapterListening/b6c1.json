@@ -1,0 +1,110 @@
+{
+  "id": "b6c1-listening",
+  "titleEn": "The Teacher's First Day",
+  "titleFa": "روز اول معلم",
+  "names": [
+    "Mina"
+  ],
+  "sentences": [
+    {
+      "en": "It is the first day of the summer class, and the teacher comes to the classroom early.",
+      "fa": "روز اول کلاس تابستانی است و معلم زود به کلاس می‌آید."
+    },
+    {
+      "en": "She teaches four subjects: science, language, geography and history.",
+      "fa": "او چهار درس درس می‌دهد: علوم، زبان، جغرافیا و تاریخ."
+    },
+    {
+      "en": "Eighteen students come in, and they sit at their desks.",
+      "fa": "هجده دانش‌آموز وارد می‌شوند و پشت میزهایشان می‌نشینند."
+    },
+    {
+      "en": "Today, she gives them a short test, not a difficult exam.",
+      "fa": "امروز یک آزمون کوتاه از آن‌ها می‌گیرد، نه یک امتحان سخت."
+    },
+    {
+      "en": "She wants to know the skills of each student.",
+      "fa": "می‌خواهد مهارت‌های هر دانش‌آموز را بشناسد."
+    },
+    {
+      "en": "One student writes very well. Her name is Mina.",
+      "fa": "یکی از دانش‌آموزها خیلی خوب می‌نویسد. اسمش میناست."
+    },
+    {
+      "en": "After the test, Mina shows her a note about a little yellow chicken.",
+      "fa": "بعد از آزمون، مینا یادداشتی درباره‌ی یک جوجه‌ی زرد کوچک به او نشان می‌دهد."
+    },
+    {
+      "en": "The teacher reads it, and she thinks for a long time.",
+      "fa": "معلم آن را می‌خواند و مدت زیادی فکر می‌کند."
+    },
+    {
+      "en": "People saw the chicken in many places in the city, but nobody has found him.",
+      "fa": "مردم جوجه را در جاهای زیادی از شهر دیده‌اند، اما کسی پیدایش نکرده."
+    },
+    {
+      "en": "\"A good map can help,\" she thinks.",
+      "fa": "با خودش فکر می‌کند: «یک نقشه‌ی خوب می‌تواند کمک کند.»"
+    },
+    {
+      "en": "That evening, she makes a plan for her class.",
+      "fa": "آن شب، برای کلاسش برنامه‌ای می‌ریزد."
+    },
+    {
+      "en": "Tomorrow, the students will have a special homework: to help Mina.",
+      "fa": "فردا دانش‌آموزها یک تکلیف ویژه دارند: کمک به مینا."
+    }
+  ],
+  "questions": [
+    {
+      "q": "معلم چند درس درس می‌دهد؟",
+      "options": [
+        "دو",
+        "سه",
+        "چهار",
+        "پنج"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چند دانش‌آموز به کلاس می‌آیند؟",
+      "options": [
+        "هجده",
+        "بیست",
+        "ده",
+        "دوازده"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "معلم امروز از دانش‌آموزها چه می‌گیرد؟",
+      "options": [
+        "یک امتحان سخت",
+        "یک آزمون کوتاه",
+        "تکلیف",
+        "یک نقشه"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "کدام دانش‌آموز خیلی خوب می‌نویسد؟",
+      "options": [
+        "نگار",
+        "یاسی",
+        "دختر کشاورز",
+        "مینا"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "تکلیف ویژه‌ی فردا چیست؟",
+      "options": [
+        "کمک به مینا",
+        "خواندن یک کتاب",
+        "کشیدن نقشه",
+        "نوشتن یک شعر"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "id": "b7c5-listening",
+  "titleEn": "The Old Man by the Sea",
+  "titleFa": "پیرمرد کنار دریا",
+  "names": [
+    "Tehran"
+  ],
+  "sentences": [
+    {
+      "en": "Every evening, an old man comes back to the beach in his small boat.",
+      "fa": "هر عصر، پیرمردی با قایق کوچکش به ساحل برمی‌گردد."
+    },
+    {
+      "en": "His boat is full of fish, and he is tired but happy.",
+      "fa": "قایقش پر از ماهی است و خسته اما خوشحال است."
+    },
+    {
+      "en": "Tonight, a woman and a girl are walking on the beach at the end of the day.",
+      "fa": "امشب، یک زن و یک دختر آخر روز در ساحل قدم می‌زنند."
+    },
+    {
+      "en": "They show him a photo of a little yellow chicken.",
+      "fa": "عکس یک جوجه‌ی زرد کوچک را به او نشان می‌دهند."
+    },
+    {
+      "en": "The chicken ran away in Tehran, far from the sea.",
+      "fa": "جوجه در تهران فرار کرده، دور از دریا."
+    },
+    {
+      "en": "The old man remembers his cat from many years ago.",
+      "fa": "پیرمرد گربه‌اش را از سال‌ها پیش به یاد می‌آورد."
+    },
+    {
+      "en": "That cat went away, and after two months she came back to his door.",
+      "fa": "آن گربه رفت و بعد از دو ماه دمِ درش برگشت."
+    },
+    {
+      "en": "\"Animals know where their home is,\" he tells the girl.",
+      "fa": "به دختر می‌گوید: «حیوان‌ها می‌دانند خانه‌شان کجاست.»"
+    },
+    {
+      "en": "He shows her the birds that go back to the island every evening.",
+      "fa": "پرنده‌هایی را که هر عصر به جزیره برمی‌گردند نشانش می‌دهد."
+    },
+    {
+      "en": "The girl watches them, and then she writes something in her red book.",
+      "fa": "دختر آن‌ها را تماشا می‌کند و بعد چیزی در کتاب قرمزش می‌نویسد."
+    },
+    {
+      "en": "Later, the old man walks home past the library, the museum and the old theater.",
+      "fa": "بعد، پیرمرد از کنار کتابخانه، موزه و تئاتر قدیمی به خانه می‌رود."
+    },
+    {
+      "en": "On the library wall, there is a new note about a yellow chicken.",
+      "fa": "روی دیوار کتابخانه یک یادداشت تازه درباره‌ی یک جوجه‌ی زرد هست."
+    }
+  ],
+  "questions": [
+    {
+      "q": "پیرمرد هر عصر با چه چیزی به ساحل برمی‌گردد؟",
+      "options": [
+        "با قطار",
+        "با قایق کوچکش",
+        "با کامیون",
+        "پیاده"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "قایق پیرمرد پر از چیست؟",
+      "options": [
+        "ماهی",
+        "گل",
+        "نان",
+        "میوه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "جوجه کجا فرار کرده است؟",
+      "options": [
+        "در شمال",
+        "کنار دریا",
+        "در تهران",
+        "در مزرعه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "گربه‌ی پیرمرد بعد از چند ماه برگشت؟",
+      "options": [
+        "یک ماه",
+        "سه ماه",
+        "یک سال",
+        "دو ماه"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "روی دیوار کتابخانه چه هست؟",
+      "options": [
+        "یک نقشه",
+        "یک یادداشت تازه درباره‌ی یک جوجه‌ی زرد",
+        "عکس پیرمرد",
+        "یک پوستر فیلم"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "id": "b1c1-listening",
+  "titleEn": "Mom at the Window",
+  "titleFa": "مامان کنار پنجره",
+  "names": [
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "It is morning, and Mom is at the window of her room.",
+      "fa": "صبح است و مامان کنار پنجره‌ی اتاقش است."
+    },
+    {
+      "en": "She looks down at the yard and the flowers.",
+      "fa": "پایین را نگاه می‌کند، به حیاط و گل‌ها."
+    },
+    {
+      "en": "Dad is still in bed.",
+      "fa": "بابا هنوز در رختخواب است."
+    },
+    {
+      "en": "Then Mom sees a red bird on the garden wall.",
+      "fa": "بعد مامان یک پرنده‌ی قرمز روی دیوار باغچه می‌بیند."
+    },
+    {
+      "en": "\"Look, a red bird!\" she says to Dad, but Dad does not move.",
+      "fa": "به بابا می‌گوید: «نگاه کن، یک پرنده‌ی قرمز!» اما بابا تکان نمی‌خورد."
+    },
+    {
+      "en": "The bird looks at the garden for a moment, and then it flies away.",
+      "fa": "پرنده لحظه‌ای به باغچه نگاه می‌کند و بعد پرواز می‌کند و می‌رود."
+    },
+    {
+      "en": "Then Mom hears Mina: \"Mom! Dad!\"",
+      "fa": "بعد مامان صدای مینا را می‌شنود: «مامان! بابا!»"
+    },
+    {
+      "en": "Mina runs into the house with her red book in her hand, and she looks afraid.",
+      "fa": "مینا با کتاب قرمزش در دست به خانه می‌دود و ترسیده به نظر می‌رسد."
+    },
+    {
+      "en": "\"Nino is not in the garden!\" she says. \"He ran after a red bird!\"",
+      "fa": "می‌گوید: «نینو در باغچه نیست! دنبال یک پرنده‌ی قرمز دوید!»"
+    },
+    {
+      "en": "Mom and Dad come down to the yard with Mina.",
+      "fa": "مامان و بابا همراه مینا پایین به حیاط می‌آیند."
+    },
+    {
+      "en": "Dad looks under the chairs, and Mom looks behind the flowers.",
+      "fa": "بابا زیر صندلی‌ها را نگاه می‌کند و مامان پشت گل‌ها را."
+    },
+    {
+      "en": "\"Nino, come back!\" Mom calls, but no little yellow chicken comes.",
+      "fa": "مامان صدا می‌زند: «نینو، برگرد!» اما هیچ جوجه‌ی زرد کوچکی نمی‌آید."
+    }
+  ],
+  "questions": [
+    {
+      "q": "مامان صبح کجاست؟",
+      "options": [
+        "کنار پنجره‌ی اتاقش",
+        "در باغچه",
+        "در حیاط",
+        "کنار در"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "بابا کجاست؟",
+      "options": [
+        "در باغچه",
+        "کنار دیوار",
+        "در رختخواب",
+        "پشت در"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مامان پرنده‌ی قرمز را کجا می‌بیند؟",
+      "options": [
+        "روی پنجره",
+        "روی دیوار باغچه",
+        "زیر صندلی",
+        "روی تخت"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "بابا کجا را نگاه می‌کند؟",
+      "options": [
+        "پشت گل‌ها",
+        "کنار پنجره",
+        "زیر تخت",
+        "زیر صندلی‌ها"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "وقتی مامان نینو را صدا می‌زند، چه می‌شود؟",
+      "options": [
+        "هیچ جوجه‌ای نمی‌آید",
+        "نینو برمی‌گردد",
+        "پرنده‌ی قرمز برمی‌گردد",
+        "بابا می‌خندد"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "id": "b7c2-listening",
+  "titleEn": "The Taxi Driver",
+  "titleFa": "راننده‌ی تاکسی",
+  "names": [],
+  "sentences": [
+    {
+      "en": "The taxi driver starts work at six o'clock every morning.",
+      "fa": "راننده‌ی تاکسی هر صبح ساعت شش کارش را شروع می‌کند."
+    },
+    {
+      "en": "Today his first ride is a family of five with many bags.",
+      "fa": "امروز اولین مسافرهایش یک خانواده‌ی پنج نفره با کیف‌های زیاد هستند."
+    },
+    {
+      "en": "He puts the bags in his taxi, and they go to the train station.",
+      "fa": "کیف‌ها را در تاکسی‌اش می‌گذارد و به ایستگاه قطار می‌روند."
+    },
+    {
+      "en": "There is a lot of traffic in the capital, even early in the morning.",
+      "fa": "در پایتخت ترافیک زیاد است، حتی صبح زود."
+    },
+    {
+      "en": "A big truck stops in front of them, and a bus stops next to them.",
+      "fa": "یک کامیون بزرگ جلویشان می‌ایستد و یک اتوبوس کنارشان."
+    },
+    {
+      "en": "The girl in the back looks out of the window with a red book in her arms.",
+      "fa": "دختری که عقب نشسته با یک کتاب قرمز در بغلش از پنجره بیرون را نگاه می‌کند."
+    },
+    {
+      "en": "\"Where are you going?\" the driver asks.",
+      "fa": "راننده می‌پرسد: «کجا می‌روید؟»"
+    },
+    {
+      "en": "\"To my grandmother and grandfather in the north,\" she says.",
+      "fa": "دختر می‌گوید: «پیش مادربزرگ و پدربزرگم در شمال.»"
+    },
+    {
+      "en": "At the station, many tourists wait with big bags and tickets.",
+      "fa": "در ایستگاه، گردشگرهای زیادی با کیف‌های بزرگ و بلیت منتظرند."
+    },
+    {
+      "en": "The driver helps the family with their bags.",
+      "fa": "راننده در بردن کیف‌ها به خانواده کمک می‌کند."
+    },
+    {
+      "en": "\"Have a good trip,\" he says, and the girl says thank you.",
+      "fa": "می‌گوید: «سفر خوبی داشته باشید» و دختر تشکر می‌کند."
+    },
+    {
+      "en": "Then the driver goes back into the traffic for his next ride.",
+      "fa": "بعد راننده برای مسافر بعدی‌اش به ترافیک برمی‌گردد."
+    }
+  ],
+  "questions": [
+    {
+      "q": "راننده هر صبح ساعت چند کارش را شروع می‌کند؟",
+      "options": [
+        "ساعت پنج",
+        "ساعت هفت",
+        "ساعت شش",
+        "ساعت هشت"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "اولین مسافرهای امروز چند نفرند؟",
+      "options": [
+        "پنج نفر",
+        "سه نفر",
+        "دو نفر",
+        "چهار نفر"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "چه چیزی جلوی تاکسی می‌ایستد؟",
+      "options": [
+        "یک اتوبوس",
+        "یک کامیون بزرگ",
+        "یک ماشین پلیس",
+        "یک دوچرخه"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "دختر چه چیزی در بغل دارد؟",
+      "options": [
+        "یک عروسک",
+        "یک کیف",
+        "یک بلیت",
+        "یک کتاب قرمز"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "در ایستگاه چه کسانی منتظرند؟",
+      "options": [
+        "گردشگرهایی با کیف و بلیت",
+        "پلیس‌ها",
+        "بچه‌های مدرسه",
+        "کشاورزها"
+      ],
+      "answer": 0
+    }
+  ]
+}

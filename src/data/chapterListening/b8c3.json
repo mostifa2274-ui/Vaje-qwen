@@ -1,0 +1,114 @@
+{
+  "id": "b8c3-listening",
+  "titleEn": "The Nurse",
+  "titleFa": "پرستار",
+  "names": [
+    "Tehran"
+  ],
+  "sentences": [
+    {
+      "en": "The nurse works at the small hospital in the town by the sea.",
+      "fa": "پرستار در بیمارستان کوچک شهرِ کنار دریا کار می‌کند."
+    },
+    {
+      "en": "Today, a man comes in with his family. He had a fall from a tree.",
+      "fa": "امروز مردی با خانواده‌اش می‌آید. از درختی افتاده است."
+    },
+    {
+      "en": "He cannot move his arm well, and his wife is afraid.",
+      "fa": "نمی‌تواند دستش را خوب تکان بدهد و همسرش ترسیده است."
+    },
+    {
+      "en": "The doctor looks at his arm with a big machine.",
+      "fa": "دکتر با یک دستگاه بزرگ دستش را بررسی می‌کند."
+    },
+    {
+      "en": "It is not dangerous. The arm is OK, but he has to stay quiet for a week.",
+      "fa": "خطرناک نیست. دستش سالم است، اما باید یک هفته آرام بماند."
+    },
+    {
+      "en": "The nurse brings him a glass of water.",
+      "fa": "پرستار یک لیوان آب برایش می‌آورد."
+    },
+    {
+      "en": "\"Your health is quite good,\" she tells him. \"But you must eat healthy food.\"",
+      "fa": "به او می‌گوید: «سلامتی‌تان خیلی خوب است. اما باید غذای سالم بخورید.»"
+    },
+    {
+      "en": "\"My diet is my mother's cooking,\" he says, and everyone laughs.",
+      "fa": "می‌گوید: «رژیم غذایی من دستپخت مادرم است» و همه می‌خندند."
+    },
+    {
+      "en": "Then the nurse sees a photo in a girl's red book.",
+      "fa": "بعد پرستار عکسی را در کتاب قرمز یک دختر می‌بیند."
+    },
+    {
+      "en": "She can guess at once: it is the chicken from the newspaper!",
+      "fa": "فوراً حدس می‌زند: همان جوجه‌ی روزنامه است!"
+    },
+    {
+      "en": "Her sister in Tehran sends her the newspaper every week.",
+      "fa": "خواهرش در تهران هر هفته روزنامه را برایش می‌فرستد."
+    },
+    {
+      "en": "\"Probably everyone in the country knows your chicken now,\" she tells the girl.",
+      "fa": "به دختر می‌گوید: «احتمالاً حالا همه‌ی مردم کشور جوجه‌ات را می‌شناسند.»"
+    },
+    {
+      "en": "Then she puts the girl's note on the hospital wall, where many people can see it.",
+      "fa": "بعد یادداشت دختر را روی دیوار بیمارستان می‌زند، جایی که خیلی‌ها می‌بینندش."
+    }
+  ],
+  "questions": [
+    {
+      "q": "پرستار کجا کار می‌کند؟",
+      "options": [
+        "در تهران",
+        "در یک مدرسه",
+        "در بیمارستان کوچک شهرِ کنار دریا",
+        "در یک هتل"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چه اتفاقی برای مرد افتاده است؟",
+      "options": [
+        "از درختی افتاده",
+        "در دریا شنا کرده",
+        "از کوه پایین آمده",
+        "مریض شده"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "مرد چه مدت باید آرام بماند؟",
+      "options": [
+        "یک روز",
+        "یک ماه",
+        "سه روز",
+        "یک هفته"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "پرستار از کجا جوجه را می‌شناسد؟",
+      "options": [
+        "از رادیو",
+        "از روزنامه‌ای که خواهرش می‌فرستد",
+        "از اینترنت",
+        "از یک مجله"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "پرستار یادداشت دختر را کجا می‌زند؟",
+      "options": [
+        "روی در خانه",
+        "روی دیوار کتابخانه",
+        "روی دیوار بیمارستان",
+        "روی درخت"
+      ],
+      "answer": 2
+    }
+  ]
+}

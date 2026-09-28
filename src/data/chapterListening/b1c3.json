@@ -1,0 +1,113 @@
+{
+  "id": "b1c3-listening",
+  "titleEn": "The Plan",
+  "titleFa": "برنامه",
+  "names": [
+    "Mina",
+    "Aria",
+    "Nino",
+    "Yasi"
+  ],
+  "sentences": [
+    {
+      "en": "After breakfast, Mina stands by the kitchen table with her paper.",
+      "fa": "بعد از صبحانه، مینا با کاغذش کنار میز آشپزخانه می‌ایستد."
+    },
+    {
+      "en": "\"This is our plan,\" she says. \"Please listen.\"",
+      "fa": "می‌گوید: «این برنامه‌ی ماست. لطفاً گوش کنید.»"
+    },
+    {
+      "en": "\"First, we all meet by the front door.\"",
+      "fa": "«اول، همه کنار در جلویی جمع می‌شویم.»"
+    },
+    {
+      "en": "\"Next, we look in the yard and then in the garden.\"",
+      "fa": "«بعد، حیاط را می‌گردیم و بعد باغچه را.»"
+    },
+    {
+      "en": "\"Then we check the old boxes and the part behind the house.\"",
+      "fa": "«بعد جعبه‌های قدیمی و قسمت پشت خانه را بررسی می‌کنیم.»"
+    },
+    {
+      "en": "\"Aria takes his light for the dark places.\"",
+      "fa": "«آریا چراغش را برای جاهای تاریک می‌آورد.»"
+    },
+    {
+      "en": "\"Last, I take water and bread for Nino.\"",
+      "fa": "«در آخر، من آب و نان برای نینو برمی‌دارم.»"
+    },
+    {
+      "en": "Dad listens to all of it. \"That is a strong plan,\" he says.",
+      "fa": "بابا به همه‌اش گوش می‌دهد. می‌گوید: «برنامه‌ی محکمی است.»"
+    },
+    {
+      "en": "\"And Yasi?\" Aria asks.",
+      "fa": "آریا می‌پرسد: «و یاسی؟»"
+    },
+    {
+      "en": "\"Yasi stays in the kitchen with Mom,\" Mina answers.",
+      "fa": "مینا جواب می‌دهد: «یاسی با مامان در آشپزخانه می‌ماند.»"
+    },
+    {
+      "en": "Mina puts the paper in her bag.",
+      "fa": "مینا کاغذ را در کیفش می‌گذارد."
+    },
+    {
+      "en": "Then she writes the plan in her red book too.",
+      "fa": "بعد برنامه را در کتاب قرمزش هم می‌نویسد."
+    }
+  ],
+  "questions": [
+    {
+      "q": "همه اول کجا جمع می‌شوند؟",
+      "options": [
+        "در آشپزخانه",
+        "کنار در جلویی",
+        "در باغچه",
+        "در اتاق مینا"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "بعد از حیاط کجا را می‌گردند؟",
+      "options": [
+        "خانه‌ی همسایه",
+        "حمام",
+        "آشپزخانه",
+        "باغچه"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "آریا چه چیزی برای جاهای تاریک می‌آورد؟",
+      "options": [
+        "چراغش",
+        "کیفش",
+        "کتابش",
+        "کفشش"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "مینا برای نینو چه برمی‌دارد؟",
+      "options": [
+        "شیر و پنیر",
+        "تخم‌مرغ",
+        "آب و نان",
+        "یک جعبه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "یاسی کجا می‌ماند؟",
+      "options": [
+        "با بابا در حیاط",
+        "در اتاق آریا",
+        "با مینا در باغچه",
+        "با مامان در آشپزخانه"
+      ],
+      "answer": 3
+    }
+  ]
+}

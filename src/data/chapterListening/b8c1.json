@@ -1,0 +1,107 @@
+{
+  "id": "b8c1-listening",
+  "titleEn": "The Cousin's Room",
+  "titleFa": "اتاق دختردایی",
+  "names": [
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "Mina's cousin waits at the door of the gray house on the mountain.",
+      "fa": "دختردایی مینا دمِ درِ خانه‌ی خاکستری روی کوه منتظر است."
+    },
+    {
+      "en": "She is twelve, with blond hair and a big laugh.",
+      "fa": "دوازده سال دارد، با موهای بور و خنده‌ای بلند."
+    },
+    {
+      "en": "\"Oh, here they are!\" she says when she sees the family on the mountain road.",
+      "fa": "وقتی خانواده را روی جاده‌ی کوه می‌بیند، می‌گوید: «وای، آمدند!»"
+    },
+    {
+      "en": "Her parents and her grandparents stand next to her.",
+      "fa": "پدر و مادرش و پدربزرگ و مادربزرگش کنارش ایستاده‌اند."
+    },
+    {
+      "en": "She takes Mina's hand and shows her room.",
+      "fa": "دست مینا را می‌گیرد و اتاقش را نشانش می‌دهد."
+    },
+    {
+      "en": "Her room is small and cool, with pink and purple flowers at the window.",
+      "fa": "اتاقش کوچک و خنک است، با گل‌های صورتی و بنفش کنار پنجره."
+    },
+    {
+      "en": "There is a fat old cat on her bed. \"He sleeps here all day,\" she says.",
+      "fa": "یک گربه‌ی پیر و چاق روی تختش است. می‌گوید: «همه‌ی روز اینجا می‌خوابد.»"
+    },
+    {
+      "en": "The two cousins spend all the afternoon in the room together.",
+      "fa": "مینا و دختردایی‌اش همه‌ی بعدازظهر را با هم در اتاق می‌گذرانند."
+    },
+    {
+      "en": "Mina tells her about Nino, and her cousin does not say a word until the end.",
+      "fa": "مینا درباره‌ی نینو برایش تعریف می‌کند و دختردایی‌اش تا آخر یک کلمه هم نمی‌گوید."
+    },
+    {
+      "en": "\"You have to find him,\" she says. \"We can give your notes to people in the town.\"",
+      "fa": "می‌گوید: «باید پیدایش کنی. می‌توانیم یادداشت‌هایت را به مردم شهر بدهیم.»"
+    },
+    {
+      "en": "In the evening, their grandmother tells them to relax. \"The mountain air is good for you.\"",
+      "fa": "عصر، مادربزرگشان به آن‌ها می‌گوید استراحت کنند. «هوای کوه برایتان خوب است.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "دختردایی مینا چند سال دارد؟",
+      "options": [
+        "ده",
+        "یازده",
+        "دوازده",
+        "سیزده"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "کنار پنجره‌ی اتاقش چه هست؟",
+      "options": [
+        "گل‌های صورتی و بنفش",
+        "یک گربه",
+        "کتاب‌ها",
+        "یک عکس"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "روی تختش چه هست؟",
+      "options": [
+        "یک عروسک",
+        "یک گربه‌ی پیر و چاق",
+        "یک جوجه",
+        "یک کتاب"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "مینا درباره‌ی چه چیزی برای دختردایی‌اش تعریف می‌کند؟",
+      "options": [
+        "درباره‌ی کلاس تابستانی",
+        "درباره‌ی قطار",
+        "درباره‌ی دریا",
+        "درباره‌ی نینو"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مادربزرگ عصر چه می‌گوید؟",
+      "options": [
+        "که استراحت کنند",
+        "که به شهر بروند",
+        "که بخوابند",
+        "که شام بپزند"
+      ],
+      "answer": 0
+    }
+  ]
+}

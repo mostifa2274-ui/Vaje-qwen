@@ -1,0 +1,112 @@
+{
+  "id": "b3c6-listening",
+  "titleEn": "A Note from Mom",
+  "titleFa": "یادداشتی از مامان",
+  "names": [
+    "Yasi",
+    "Nino",
+    "Mina"
+  ],
+  "sentences": [
+    {
+      "en": "On Friday night, Mom takes a pen and writes a note to her friend.",
+      "fa": "جمعه شب، مامان خودکاری برمی‌دارد و یادداشتی برای دوستش می‌نویسد."
+    },
+    {
+      "en": "\"Today was a special day,\" she writes. \"Yasi said her first word.\"",
+      "fa": "می‌نویسد: «امروز روز خاصی بود. یاسی اولین کلمه‌اش را گفت.»"
+    },
+    {
+      "en": "\"Her first word was not Mom or Dad. It was Nino!\"",
+      "fa": "«اولین کلمه‌اش مامان یا بابا نبود. نینو بود!»"
+    },
+    {
+      "en": "\"She looked at his picture on the wall and said his name.\"",
+      "fa": "«به عکسش روی دیوار نگاه کرد و اسمش را گفت.»"
+    },
+    {
+      "en": "\"We all laughed, and Mina laughed the most.\"",
+      "fa": "«همه‌مان خندیدیم و مینا از همه بیشتر خندید.»"
+    },
+    {
+      "en": "\"It is three weeks now, and Nino is still not home.\"",
+      "fa": "«حالا سه هفته گذشته و نینو هنوز خانه نیست.»"
+    },
+    {
+      "en": "\"Every night, Mina fills a cup with water and puts bread by the door.\"",
+      "fa": "«هر شب مینا یک فنجان را آب می‌کند و کنار در نان می‌گذارد.»"
+    },
+    {
+      "en": "\"Tomorrow we take bus fifteen to the big market.\"",
+      "fa": "«فردا با اتوبوس پانزده به بازار بزرگ می‌رویم.»"
+    },
+    {
+      "en": "\"The bus stops on the main street near the market.\"",
+      "fa": "«اتوبوس در خیابان اصلی نزدیک بازار می‌ایستد.»"
+    },
+    {
+      "en": "\"Someone saw a small yellow chicken near the bread shop there.\"",
+      "fa": "«کسی آنجا نزدیک نانوایی یک جوجه‌ی زرد کوچک دیده.»"
+    },
+    {
+      "en": "\"Please do not forget us tomorrow.\"",
+      "fa": "«لطفاً فردا ما را فراموش نکن.»"
+    },
+    {
+      "en": "Then Mom puts down her pen and turns off the light.",
+      "fa": "بعد مامان خودکارش را کنار می‌گذارد و چراغ را خاموش می‌کند."
+    }
+  ],
+  "questions": [
+    {
+      "q": "مامان برای چه کسی یادداشت می‌نویسد؟",
+      "options": [
+        "برای بابا",
+        "برای دوستش",
+        "برای مینا",
+        "برای همسایه"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "اولین کلمه‌ی یاسی چه بود؟",
+      "options": [
+        "مامان",
+        "بابا",
+        "نان",
+        "نینو"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "یاسی به چه چیزی نگاه می‌کرد؟",
+      "options": [
+        "به عکس نینو روی دیوار",
+        "به پنجره",
+        "به تلویزیون",
+        "به مینا"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "مینا هر شب کنار در چه می‌گذارد؟",
+      "options": [
+        "کفش‌هایش",
+        "یک چراغ",
+        "آب و نان",
+        "یک نامه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "فردا کجا می‌روند؟",
+      "options": [
+        "به رودخانه",
+        "به ایستگاه",
+        "به پارک",
+        "با اتوبوس پانزده به بازار بزرگ"
+      ],
+      "answer": 3
+    }
+  ]
+}

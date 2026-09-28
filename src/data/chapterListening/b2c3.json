@@ -1,0 +1,111 @@
+{
+  "id": "b2c3-listening",
+  "titleEn": "At the Bus Stop",
+  "titleFa": "در ایستگاه اتوبوس",
+  "names": [
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "Every morning, a teenager goes to the gym for her exercise.",
+      "fa": "هر صبح، یک دختر نوجوان برای ورزش به باشگاه می‌رود."
+    },
+    {
+      "en": "She takes the bus, and it stops near the park.",
+      "fa": "سوار اتوبوس می‌شود و اتوبوس نزدیک پارک می‌ایستد."
+    },
+    {
+      "en": "This morning, at the bus stop, she sees something small and yellow.",
+      "fa": "امروز صبح، در ایستگاه اتوبوس، چیزی کوچک و زرد می‌بیند."
+    },
+    {
+      "en": "It is a little chicken with orange feet!",
+      "fa": "یک جوجه‌ی کوچک با پاهای نارنجی است!"
+    },
+    {
+      "en": "The chicken walks under the chairs at the stop, and then it goes behind a tree.",
+      "fa": "جوجه زیر صندلی‌های ایستگاه راه می‌رود و بعد پشت یک درخت می‌رود."
+    },
+    {
+      "en": "The teenager wants to help it, but then her bus comes.",
+      "fa": "نوجوان می‌خواهد کمکش کند، اما همان موقع اتوبوسش می‌آید."
+    },
+    {
+      "en": "\"I will look for it after my exercise,\" she thinks.",
+      "fa": "با خودش فکر می‌کند: «بعد از ورزش دنبالش می‌گردم.»"
+    },
+    {
+      "en": "At the gym, she practices with her team.",
+      "fa": "در باشگاه، با تیمش تمرین می‌کند."
+    },
+    {
+      "en": "When she comes out, a woman and a girl are there with a picture.",
+      "fa": "وقتی بیرون می‌آید، یک زن و یک دختر با یک عکس آنجا هستند."
+    },
+    {
+      "en": "It is the chicken from the bus stop! The girl's name is Mina, and the chicken is Nino.",
+      "fa": "همان جوجه‌ی ایستگاه اتوبوس است! اسم دختر میناست و جوجه نینو."
+    },
+    {
+      "en": "\"I saw him near the bus stop this morning,\" the teenager tells them.",
+      "fa": "نوجوان به آن‌ها می‌گوید: «امروز صبح نزدیک ایستگاه اتوبوس دیدمش.»"
+    },
+    {
+      "en": "Mina looks very happy, and she says thank you again and again.",
+      "fa": "مینا خیلی خوشحال به نظر می‌رسد و بارها و بارها تشکر می‌کند."
+    }
+  ],
+  "questions": [
+    {
+      "q": "نوجوان هر صبح کجا می‌رود؟",
+      "options": [
+        "به باشگاه",
+        "به مدرسه",
+        "به استخر",
+        "به کافه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "او جوجه را کجا می‌بیند؟",
+      "options": [
+        "در استخر",
+        "در باشگاه",
+        "در ایستگاه اتوبوس",
+        "زیر یک ماشین"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چرا همان موقع به جوجه کمک نمی‌کند؟",
+      "options": [
+        "می‌ترسد",
+        "اتوبوسش می‌آید",
+        "جوجه فرار می‌کند",
+        "مادرش صدایش می‌زند"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "وقتی از باشگاه بیرون می‌آید، چه کسانی آنجا هستند؟",
+      "options": [
+        "دو پسر با توپ",
+        "یک مرد و پسرش",
+        "تیم بسکتبال",
+        "یک زن و یک دختر با یک عکس"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مینا چه واکنشی نشان می‌دهد؟",
+      "options": [
+        "غمگین می‌شود",
+        "خیلی خوشحال می‌شود و تشکر می‌کند",
+        "به خانه می‌رود",
+        "گریه می‌کند"
+      ],
+      "answer": 1
+    }
+  ]
+}

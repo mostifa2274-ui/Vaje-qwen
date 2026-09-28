@@ -1,0 +1,108 @@
+{
+  "id": "b7c4-listening",
+  "titleEn": "The Farmer's Wife",
+  "titleFa": "همسر کشاورز",
+  "names": [],
+  "sentences": [
+    {
+      "en": "It is raining hard when a taxi stops next to the farm.",
+      "fa": "باران تندی می‌بارد که یک تاکسی کنار مزرعه می‌ایستد."
+    },
+    {
+      "en": "The farmer runs out with an umbrella, and a family comes into the house.",
+      "fa": "کشاورز با یک چتر بیرون می‌دود و خانواده‌ای وارد خانه می‌شوند."
+    },
+    {
+      "en": "The farmer's wife makes hot tea for everyone.",
+      "fa": "همسر کشاورز برای همه چای داغ درست می‌کند."
+    },
+    {
+      "en": "Her husband makes a fire, and soon the house is warm.",
+      "fa": "شوهرش آتش روشن می‌کند و زود خانه گرم می‌شود."
+    },
+    {
+      "en": "Her daughter builds a little house for the baby with some cups.",
+      "fa": "دخترش با چند فنجان یک خانه‌ی کوچک برای نوزاد می‌سازد."
+    },
+    {
+      "en": "The baby laughs every time the cups fall.",
+      "fa": "نوزاد هر بار که فنجان‌ها می‌افتند می‌خندد."
+    },
+    {
+      "en": "The girl from the city shows her daughter a picture of a yellow chicken.",
+      "fa": "دختر شهری عکس یک جوجه‌ی زرد را به دخترش نشان می‌دهد."
+    },
+    {
+      "en": "The two girls create a new picture together, with a red bird in it.",
+      "fa": "دو دختر با هم نقاشی تازه‌ای می‌کشند، با یک پرنده‌ی قرمز در آن."
+    },
+    {
+      "en": "When the rain stops, the girls go out in old boots to see the chickens.",
+      "fa": "وقتی باران بند می‌آید، دخترها با چکمه‌های کهنه بیرون می‌روند تا مرغ و جوجه‌ها را ببینند."
+    },
+    {
+      "en": "The girl from the city gives some bread to a small yellow chicken.",
+      "fa": "دختر شهری به یک جوجه‌ی زرد کوچک کمی نان می‌دهد."
+    },
+    {
+      "en": "\"That girl loves animals,\" the wife tells her husband.",
+      "fa": "همسر کشاورز به شوهرش می‌گوید: «آن دختر حیوان‌ها را دوست دارد.»"
+    },
+    {
+      "en": "Before the family leaves, the farmer gives the girl some bread and a flower.",
+      "fa": "قبل از رفتن خانواده، کشاورز به دختر کمی نان و یک گل می‌دهد."
+    }
+  ],
+  "questions": [
+    {
+      "q": "وقتی تاکسی کنار مزرعه می‌ایستد، هوا چطور است؟",
+      "options": [
+        "آفتابی",
+        "باران تندی می‌بارد",
+        "برف می‌آید",
+        "باد می‌آید"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "چه کسی آتش روشن می‌کند؟",
+      "options": [
+        "کشاورز",
+        "همسر کشاورز",
+        "راننده",
+        "دختر کشاورز"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "دختر کشاورز با فنجان‌ها چه می‌سازد؟",
+      "options": [
+        "یک قایق",
+        "یک ماشین",
+        "یک خانه‌ی کوچک برای نوزاد",
+        "یک برج"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "دخترها بعد از باران با چه چیزی بیرون می‌روند؟",
+      "options": [
+        "با چتر",
+        "با کلاه",
+        "با کتاب",
+        "با چکمه‌های کهنه"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "کشاورز قبل از رفتن خانواده به دختر چه می‌دهد؟",
+      "options": [
+        "یک جوجه",
+        "کمی نان و یک گل",
+        "یک عکس",
+        "یک چتر"
+      ],
+      "answer": 1
+    }
+  ]
+}

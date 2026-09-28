@@ -1,0 +1,112 @@
+{
+  "id": "b4c1-listening",
+  "titleEn": "Dad and Aria at the Market",
+  "titleFa": "بابا و آریا در بازار",
+  "names": [
+    "Aria",
+    "Yasi",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "At the big market, Dad walks with Aria and Yasi.",
+      "fa": "در بازار بزرگ، بابا با آریا و یاسی راه می‌رود."
+    },
+    {
+      "en": "Aria wants to buy everything: apples, bananas and a big green ball.",
+      "fa": "آریا می‌خواهد همه‌چیز بخرد: سیب، موز و یک توپ سبز بزرگ."
+    },
+    {
+      "en": "\"We have a list,\" Dad says. \"We buy only the things on the list.\"",
+      "fa": "بابا می‌گوید: «ما فهرست داریم. فقط چیزهای روی فهرست را می‌خریم.»"
+    },
+    {
+      "en": "At a small store, Dad buys bread, cheese and milk.",
+      "fa": "در یک مغازه‌ی کوچک، بابا نان، پنیر و شیر می‌خرد."
+    },
+    {
+      "en": "The cheese is expensive, but Aria likes it, so Dad pays for it.",
+      "fa": "پنیر گران است، اما آریا دوستش دارد، پس بابا پولش را می‌دهد."
+    },
+    {
+      "en": "Then they walk to the main street, where there is a bread shop with an open door.",
+      "fa": "بعد به خیابان اصلی می‌روند، جایی که یک نانوایی با در باز هست."
+    },
+    {
+      "en": "Many birds eat little pieces of bread in front of the shop.",
+      "fa": "پرنده‌های زیادی جلوی مغازه تکه‌های کوچک نان می‌خورند."
+    },
+    {
+      "en": "A brown cat watches the birds from under a car.",
+      "fa": "یک گربه‌ی قهوه‌ای از زیر یک ماشین پرنده‌ها را تماشا می‌کند."
+    },
+    {
+      "en": "Dad shows Nino's picture to the man in the bread shop.",
+      "fa": "بابا عکس نینو را به مرد نانوایی نشان می‌دهد."
+    },
+    {
+      "en": "The man looks at it, and then he says something important.",
+      "fa": "مرد به آن نگاه می‌کند و بعد چیز مهمی می‌گوید."
+    },
+    {
+      "en": "Dad takes his phone and calls Mom. \"Come to the bread shop quickly!\"",
+      "fa": "بابا تلفنش را برمی‌دارد و به مامان زنگ می‌زند. «زود بیا نانوایی!»"
+    },
+    {
+      "en": "\"What did the man say?\" Aria asks. \"You will hear it soon,\" Dad says.",
+      "fa": "آریا می‌پرسد: «مرد چه گفت؟» بابا می‌گوید: «به‌زودی می‌شنوی.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "بابا با چه کسانی در بازار راه می‌رود؟",
+      "options": [
+        "با مینا و مامان",
+        "با آریا و یاسی",
+        "فقط با آریا",
+        "با مرد نانوا"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "آریا می‌خواهد چه چیزهایی بخرد؟",
+      "options": [
+        "سیب، موز و یک توپ سبز بزرگ",
+        "نان و پنیر",
+        "ماهی و برنج",
+        "بستنی"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "جلوی نانوایی چه چیزی هست؟",
+      "options": [
+        "یک جوجه‌ی زرد",
+        "یک صف طولانی",
+        "پرنده‌هایی که نان می‌خورند",
+        "یک ماشین پلیس"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چه چیزی پرنده‌ها را تماشا می‌کند؟",
+      "options": [
+        "یک سگ",
+        "آریا",
+        "مرد نانوا",
+        "یک گربه‌ی قهوه‌ای"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "بابا به چه کسی زنگ می‌زند؟",
+      "options": [
+        "به مامان",
+        "به مینا",
+        "به مرد نانوا",
+        "به همسایه"
+      ],
+      "answer": 0
+    }
+  ]
+}

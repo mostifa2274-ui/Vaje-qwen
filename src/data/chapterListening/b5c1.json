@@ -1,0 +1,112 @@
+{
+  "id": "b5c1-listening",
+  "titleEn": "In the Red Book",
+  "titleFa": "در کتاب قرمز",
+  "names": [
+    "Mina",
+    "Nino",
+    "Aria"
+  ],
+  "sentences": [
+    {
+      "en": "That night, Mina opens her red book and writes.",
+      "fa": "آن شب، مینا کتاب قرمزش را باز می‌کند و می‌نویسد."
+    },
+    {
+      "en": "\"Today I am angry. I hate this waiting.\"",
+      "fa": "«امروز عصبانی‌ام. از این انتظار متنفرم.»"
+    },
+    {
+      "en": "\"Every day, people tell us about a yellow chicken, and every day it is the wrong one.\"",
+      "fa": "«هر روز مردم درباره‌ی یک جوجه‌ی زرد به ما می‌گویند و هر روز جوجه‌ی اشتباهی است.»"
+    },
+    {
+      "en": "\"Mom gave me some advice: when I am angry, I write.\"",
+      "fa": "«مامان به من توصیه‌ای کرد: وقتی عصبانی‌ام، بنویسم.»"
+    },
+    {
+      "en": "\"Dad says he understands. He is sad too, but he does not show it.\"",
+      "fa": "«بابا می‌گوید می‌فهمد. او هم غمگین است، اما نشانش نمی‌دهد.»"
+    },
+    {
+      "en": "\"At dinner, Aria had an idea: people on bicycles see a lot of the city.\"",
+      "fa": "«سر شام، آریا فکری داشت: آدم‌های دوچرخه‌سوار خیلی از شهر را می‌بینند.»"
+    },
+    {
+      "en": "\"In my opinion, it is a very good idea.\"",
+      "fa": "«به نظر من، فکر خیلی خوبی است.»"
+    },
+    {
+      "en": "\"We will also try the newspaper and the radio.\"",
+      "fa": "«روزنامه و رادیو را هم امتحان می‌کنیم.»"
+    },
+    {
+      "en": "\"Aria asked me the meaning of a word, and I gave him an example.\"",
+      "fa": "«آریا معنی یک کلمه را از من پرسید و برایش مثالی زدم.»"
+    },
+    {
+      "en": "\"We discussed everything, and it was a good conversation.\"",
+      "fa": "«درباره‌ی همه‌چیز حرف زدیم و گفت‌وگوی خوبی بود.»"
+    },
+    {
+      "en": "\"Now I am not so angry.\"",
+      "fa": "«حالا دیگر آن‌قدر عصبانی نیستم.»"
+    },
+    {
+      "en": "\"Good night, Nino. Many people are looking for you.\"",
+      "fa": "«شب بخیر، نینو. آدم‌های زیادی دنبالت می‌گردند.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "چرا مینا عصبانی است؟",
+      "options": [
+        "چون هر روز جوجه‌ی اشتباهی پیدا می‌شود",
+        "چون آریا کتابش را برداشته",
+        "چون مدرسه دارد",
+        "چون بابا دیر آمده"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "توصیه‌ی مامان چیست؟",
+      "options": [
+        "که بخوابد",
+        "که با نگار حرف بزند",
+        "که وقتی عصبانی است بنویسد",
+        "که به پارک برود"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "فکر آریا درباره‌ی چه کسانی است؟",
+      "options": [
+        "راننده‌های اتوبوس",
+        "آدم‌های دوچرخه‌سوار",
+        "معلم‌ها",
+        "پلیس‌ها"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "نظر مینا درباره‌ی فکر آریا چیست؟",
+      "options": [
+        "فکر بدی است",
+        "نمی‌داند",
+        "خنده‌دار است",
+        "فکر خیلی خوبی است"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مینا در آخر چه حسی دارد؟",
+      "options": [
+        "خیلی عصبانی است",
+        "دیگر آن‌قدر عصبانی نیست",
+        "خسته است",
+        "می‌ترسد"
+      ],
+      "answer": 1
+    }
+  ]
+}

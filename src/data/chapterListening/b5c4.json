@@ -1,0 +1,108 @@
+{
+  "id": "b5c4-listening",
+  "titleEn": "The Man on the Bicycle",
+  "titleFa": "مرد دوچرخه‌سوار",
+  "names": [],
+  "sentences": [
+    {
+      "en": "A man goes all over the city on his bicycle every day.",
+      "fa": "مردی هر روز با دوچرخه‌اش همه‌جای شهر را می‌گردد."
+    },
+    {
+      "en": "His days are never boring, because every street is different.",
+      "fa": "روزهایش هیچ‌وقت کسل‌کننده نیست، چون هر خیابانی فرق دارد."
+    },
+    {
+      "en": "On Friday afternoon, he is near the river road when he sees some birds under a tree.",
+      "fa": "جمعه بعدازظهر، نزدیک جاده‌ی کنار رودخانه است که چند پرنده زیر یک درخت می‌بیند."
+    },
+    {
+      "en": "There is something yellow with them. It is a little chicken!",
+      "fa": "چیزی زرد همراهشان است. یک جوجه‌ی کوچک!"
+    },
+    {
+      "en": "It has orange feet, and he thinks there is a little white on its left.",
+      "fa": "پاهای نارنجی دارد و فکر می‌کند کمی سفیدی در سمت چپش هست."
+    },
+    {
+      "en": "He wants to take a photograph, but the chicken goes into the trees with the birds.",
+      "fa": "می‌خواهد عکس بگیرد، اما جوجه همراه پرنده‌ها میان درخت‌ها می‌رود."
+    },
+    {
+      "en": "That evening, he hears a message on the radio about a little yellow chicken.",
+      "fa": "آن شب، از رادیو پیامی درباره‌ی یک جوجه‌ی زرد کوچک می‌شنود."
+    },
+    {
+      "en": "\"Imagine that,\" he thinks. \"I saw that chicken today!\"",
+      "fa": "با خودش فکر می‌کند: «فکرش را بکن. من امروز همان جوجه را دیدم!»"
+    },
+    {
+      "en": "The next day, he goes to the family's street and finds them next to a note on a wall.",
+      "fa": "روز بعد، به خیابان آن خانواده می‌رود و آن‌ها را کنار یادداشتی روی یک دیوار پیدا می‌کند."
+    },
+    {
+      "en": "He tells them about the birds and the river road.",
+      "fa": "درباره‌ی پرنده‌ها و جاده‌ی کنار رودخانه برایشان می‌گوید."
+    },
+    {
+      "en": "The girl is so excited that she cannot stand still.",
+      "fa": "دختر آن‌قدر هیجان‌زده است که نمی‌تواند آرام بایستد."
+    },
+    {
+      "en": "\"This is wonderful news,\" her father says. \"Thank you.\"",
+      "fa": "پدرش می‌گوید: «این خبر فوق‌العاده‌ای است. ممنونیم.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "مرد چطور در شهر می‌گردد؟",
+      "options": [
+        "با اتوبوس",
+        "پیاده",
+        "با ماشین",
+        "با دوچرخه"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مرد جوجه را کجا دید؟",
+      "options": [
+        "نزدیک جاده‌ی کنار رودخانه",
+        "در بازار",
+        "در پارک",
+        "کنار نانوایی"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "جوجه با چه چیزهایی بود؟",
+      "options": [
+        "با یک گربه",
+        "با چند پرنده",
+        "با یک بچه",
+        "با مرغ‌های دیگر"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "چرا مرد نتوانست عکس بگیرد؟",
+      "options": [
+        "دوربین نداشت",
+        "هوا تاریک بود",
+        "جوجه میان درخت‌ها رفت",
+        "باران می‌آمد"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مرد درباره‌ی جوجه از کجا خبردار شد؟",
+      "options": [
+        "از روزنامه",
+        "از رادیو",
+        "از همسایه",
+        "از اینترنت"
+      ],
+      "answer": 1
+    }
+  ]
+}

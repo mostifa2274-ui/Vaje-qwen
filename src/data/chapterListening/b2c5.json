@@ -1,0 +1,110 @@
+{
+  "id": "b2c5-listening",
+  "titleEn": "The Boy at the Blue Door",
+  "titleFa": "پسرِ درِ آبی",
+  "names": [
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "Every morning, a boy helps the old woman with the blue door. He is her grandson.",
+      "fa": "هر صبح، پسری به پیرزنِ درِ آبی کمک می‌کند. او نوه‌ی آن پیرزن است."
+    },
+    {
+      "en": "They put bread and water in a dish next to the door.",
+      "fa": "نان و آب را در ظرفی کنار در می‌گذارند."
+    },
+    {
+      "en": "Many birds come to their little garden: black birds, white birds and red birds.",
+      "fa": "پرنده‌های زیادی به باغچه‌ی کوچکشان می‌آیند: پرنده‌های سیاه، سفید و قرمز."
+    },
+    {
+      "en": "Today a man and a girl come to the blue door.",
+      "fa": "امروز یک مرد و یک دختر به درِ آبی می‌آیند."
+    },
+    {
+      "en": "The girl has a picture of a little yellow chicken.",
+      "fa": "دختر عکس یک جوجه‌ی زرد کوچک را دارد."
+    },
+    {
+      "en": "\"His name is Nino,\" she says. \"He is a member of our family.\"",
+      "fa": "می‌گوید: «اسمش نینوست. او عضوی از خانواده‌ی ماست.»"
+    },
+    {
+      "en": "The boy looks at the picture for a long time.",
+      "fa": "پسر مدت زیادی به عکس نگاه می‌کند."
+    },
+    {
+      "en": "He sees the orange feet and a little white on the left.",
+      "fa": "پاهای نارنجی و کمی سفیدی در سمت چپ را می‌بیند."
+    },
+    {
+      "en": "\"I will remember him,\" he tells the girl.",
+      "fa": "به دختر می‌گوید: «او را به یاد می‌سپارم.»"
+    },
+    {
+      "en": "The girl writes her address on a note, and the old woman puts it in her bag.",
+      "fa": "دختر آدرسش را روی یادداشتی می‌نویسد و پیرزن آن را در کیفش می‌گذارد."
+    },
+    {
+      "en": "After they leave, the boy looks at every bird in the garden.",
+      "fa": "بعد از رفتن آن‌ها، پسر به تک‌تک پرنده‌های باغچه نگاه می‌کند."
+    },
+    {
+      "en": "There is no yellow chicken today, but the boy remembers the picture well.",
+      "fa": "امروز هیچ جوجه‌ی زردی نیست، اما پسر عکس را خوب به یاد دارد."
+    }
+  ],
+  "questions": [
+    {
+      "q": "پسر هر صبح چه کار می‌کند؟",
+      "options": [
+        "به مدرسه می‌رود",
+        "به پیرزن در غذا دادن به پرنده‌ها کمک می‌کند",
+        "فوتبال بازی می‌کند",
+        "با اتوبوس به مرکز شهر می‌رود"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "در ظرف کنار در چه می‌گذارند؟",
+      "options": [
+        "نان و آب",
+        "شیر",
+        "پنیر",
+        "تخم‌مرغ"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "دختر چه چیزی نشان می‌دهد؟",
+      "options": [
+        "یک یادداشت",
+        "یک کتاب",
+        "یک نقشه",
+        "عکس یک جوجه‌ی زرد"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "پسر در عکس چه چیزی می‌بیند؟",
+      "options": [
+        "یک پرنده‌ی قرمز",
+        "پاهای نارنجی و کمی سفیدی در سمت چپ",
+        "یک درِ آبی",
+        "یک دختر"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "پیرزن با یادداشت چه می‌کند؟",
+      "options": [
+        "آن را دور می‌اندازد",
+        "آن را به دیوار می‌زند",
+        "آن را در کیفش می‌گذارد",
+        "آن را به نوه‌اش می‌دهد"
+      ],
+      "answer": 2
+    }
+  ]
+}

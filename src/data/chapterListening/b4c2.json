@@ -1,0 +1,108 @@
+{
+  "id": "b4c2-listening",
+  "titleEn": "The Bread Man's Day",
+  "titleFa": "روزِ مرد نانوا",
+  "names": [],
+  "sentences": [
+    {
+      "en": "Every day, the bread man wakes at four o'clock.",
+      "fa": "مرد نانوا هر روز ساعت چهار بیدار می‌شود."
+    },
+    {
+      "en": "At five o'clock, he is in his shop, and the air is hot.",
+      "fa": "ساعت پنج در مغازه‌اش است و هوا گرم است."
+    },
+    {
+      "en": "He prepares the bread for the day, long bread and small bread.",
+      "fa": "نان روز را آماده می‌کند، نان بلند و نان کوچک."
+    },
+    {
+      "en": "Before six o'clock, he puts little pieces of bread by the door.",
+      "fa": "قبل از ساعت شش، تکه‌های کوچک نان را کنار در می‌گذارد."
+    },
+    {
+      "en": "Then a little yellow chicken comes down the quiet street.",
+      "fa": "بعد یک جوجه‌ی زرد کوچک از خیابان آرام پایین می‌آید."
+    },
+    {
+      "en": "It eats the bread, and it goes away before the shop gets busy.",
+      "fa": "نان را می‌خورد و قبل از شلوغ شدن مغازه می‌رود."
+    },
+    {
+      "en": "At seven o'clock, the first people come for their bread.",
+      "fa": "ساعت هفت، اولین آدم‌ها برای نانشان می‌آیند."
+    },
+    {
+      "en": "At lunch, he prepares hot soup and sandwiches.",
+      "fa": "ظهر، سوپ داغ و ساندویچ آماده می‌کند."
+    },
+    {
+      "en": "Adults like his soup with salt and pepper.",
+      "fa": "بزرگ‌ترها سوپش را با نمک و فلفل دوست دارند."
+    },
+    {
+      "en": "Children prefer his bread with butter and sugar.",
+      "fa": "بچه‌ها نانش را با کره و شکر ترجیح می‌دهند."
+    },
+    {
+      "en": "In the evening, he is tired, but he is happy.",
+      "fa": "عصر خسته است، اما خوشحال است."
+    },
+    {
+      "en": "\"Cooking is hard work,\" he says, \"but a good meal makes people happy.\"",
+      "fa": "می‌گوید: «آشپزی کار سختی است، اما یک غذای خوب آدم‌ها را خوشحال می‌کند.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "مرد نانوا ساعت چند بیدار می‌شود؟",
+      "options": [
+        "ساعت شش",
+        "ساعت پنج",
+        "ساعت هفت",
+        "ساعت چهار"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "قبل از ساعت شش کنار در چه می‌گذارد؟",
+      "options": [
+        "کمی آب",
+        "تکه‌های کوچک نان",
+        "یک کاسه سوپ",
+        "شیر"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "چه چیزی از خیابان آرام پایین می‌آید؟",
+      "options": [
+        "یک جوجه‌ی زرد کوچک",
+        "یک گربه",
+        "اولین مشتری",
+        "یک ماشین"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "ظهر چه آماده می‌کند؟",
+      "options": [
+        "کیک",
+        "بستنی",
+        "سوپ داغ و ساندویچ",
+        "سالاد"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "بچه‌ها نانش را با چه ترجیح می‌دهند؟",
+      "options": [
+        "با نمک و فلفل",
+        "با پنیر",
+        "با کره و شکر",
+        "با سوپ"
+      ],
+      "answer": 2
+    }
+  ]
+}

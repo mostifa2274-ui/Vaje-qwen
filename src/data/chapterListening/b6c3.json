@@ -1,0 +1,111 @@
+{
+  "id": "b6c3-listening",
+  "titleEn": "The Blog",
+  "titleFa": "وبلاگ",
+  "names": [
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "Hello, friends. Today I have a special story for my blog.",
+      "fa": "سلام دوستان. امروز یک داستان ویژه برای وبلاگم دارم."
+    },
+    {
+      "en": "A worker from our company brought his daughter to the office.",
+      "fa": "یکی از کارمندان شرکت ما دخترش را به دفتر آورد."
+    },
+    {
+      "en": "Her name is Mina, and she is eleven.",
+      "fa": "اسمش میناست و یازده سال دارد."
+    },
+    {
+      "en": "She is looking for her little yellow chicken, Nino.",
+      "fa": "دنبال جوجه‌ی زرد کوچکش، نینو، می‌گردد."
+    },
+    {
+      "en": "People saw Nino at a bus stop, at the big market and near the river road.",
+      "fa": "مردم نینو را در یک ایستگاه اتوبوس، در بازار بزرگ و نزدیک جاده‌ی کنار رودخانه دیده‌اند."
+    },
+    {
+      "en": "Mina and her father made a hundred notes with the machine in our office.",
+      "fa": "مینا و پدرش با دستگاه دفتر ما صد یادداشت درست کردند."
+    },
+    {
+      "en": "I asked her some questions in a short interview.",
+      "fa": "در یک مصاحبه‌ی کوتاه چند سؤال از او پرسیدم."
+    },
+    {
+      "en": "Nino loves bread and water, and he often follows red birds.",
+      "fa": "نینو نان و آب دوست دارد و اغلب دنبال پرنده‌های قرمز می‌رود."
+    },
+    {
+      "en": "In the future, Mina wants to be a writer or a person who helps animals.",
+      "fa": "مینا در آینده می‌خواهد نویسنده یا کسی شود که به حیوان‌ها کمک می‌کند."
+    },
+    {
+      "en": "Please share this story with your friends.",
+      "fa": "لطفاً این داستان را با دوستانتان به اشتراک بگذارید."
+    },
+    {
+      "en": "If you see a small yellow chicken with orange feet, you could help a family today.",
+      "fa": "اگر یک جوجه‌ی زرد کوچک با پاهای نارنجی دیدید، می‌توانید امروز به یک خانواده کمک کنید."
+    },
+    {
+      "en": "Thank you for reading my blog.",
+      "fa": "ممنون که وبلاگم را می‌خوانید."
+    }
+  ],
+  "questions": [
+    {
+      "q": "نویسنده‌ی وبلاگ مینا را کجا دید؟",
+      "options": [
+        "در دفتر شرکت",
+        "در بازار",
+        "در مدرسه",
+        "در پارک"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "مینا چند سال دارد؟",
+      "options": [
+        "ده",
+        "دوازده",
+        "یازده",
+        "نه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مینا و پدرش چند یادداشت درست کردند؟",
+      "options": [
+        "ده",
+        "صد",
+        "هزار",
+        "بیست"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "نینو دنبال چه می‌رود؟",
+      "options": [
+        "گربه‌ها",
+        "بچه‌ها",
+        "ماشین‌ها",
+        "پرنده‌های قرمز"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مینا در آینده می‌خواهد چه کاره شود؟",
+      "options": [
+        "دانشمند",
+        "نویسنده یا کسی که به حیوان‌ها کمک می‌کند",
+        "معلم",
+        "کشاورز"
+      ],
+      "answer": 1
+    }
+  ]
+}

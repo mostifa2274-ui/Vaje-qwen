@@ -1,0 +1,112 @@
+{
+  "id": "b2c4-listening",
+  "titleEn": "The Poet's Poem",
+  "titleFa": "شعر شاعر",
+  "names": [],
+  "sentences": [
+    {
+      "en": "This is the poem that the old poet reads near the bus stop.",
+      "fa": "این شعری است که شاعر پیر نزدیک ایستگاه اتوبوس می‌خواند."
+    },
+    {
+      "en": "A little bird is far from home, and the city is very big.",
+      "fa": "پرنده‌ی کوچکی از خانه دور است و شهر خیلی بزرگ است."
+    },
+    {
+      "en": "The streets are long, and the bird is tired and afraid.",
+      "fa": "خیابان‌ها طولانی‌اند و پرنده خسته و ترسیده است."
+    },
+    {
+      "en": "It sits on a wall and looks at the busy cars.",
+      "fa": "روی دیواری می‌نشیند و به ماشین‌های شلوغ نگاه می‌کند."
+    },
+    {
+      "en": "No one in the crowd knows its name.",
+      "fa": "هیچ‌کس در میان جمعیت اسمش را نمی‌داند."
+    },
+    {
+      "en": "At night, it sleeps in a tall tree.",
+      "fa": "شب، روی یک درخت بلند می‌خوابد."
+    },
+    {
+      "en": "In the morning, it hears music from an open window.",
+      "fa": "صبح، از یک پنجره‌ی باز صدای موسیقی می‌شنود."
+    },
+    {
+      "en": "A woman is singing a song about home.",
+      "fa": "زنی دارد آوازی درباره‌ی خانه می‌خواند."
+    },
+    {
+      "en": "The bird listens, and then it flies again.",
+      "fa": "پرنده گوش می‌دهد و بعد دوباره پرواز می‌کند."
+    },
+    {
+      "en": "It flies past the shops, the cafes and the tall buildings.",
+      "fa": "از کنار مغازه‌ها، کافه‌ها و ساختمان‌های بلند پرواز می‌کند."
+    },
+    {
+      "en": "It does not stop until it sees a small garden with flowers.",
+      "fa": "تا باغچه‌ی کوچکی با گل‌ها نبیند، نمی‌ایستد."
+    },
+    {
+      "en": "There is its home, and there is its family.",
+      "fa": "آنجا خانه‌اش است و آنجا خانواده‌اش."
+    },
+    {
+      "en": "Now the little bird is not afraid.",
+      "fa": "حالا پرنده‌ی کوچک دیگر نمی‌ترسد."
+    }
+  ],
+  "questions": [
+    {
+      "q": "در ابتدای شعر، حال پرنده چطور است؟",
+      "options": [
+        "خسته و ترسیده",
+        "خوشحال",
+        "گرسنه",
+        "بیمار"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "پرنده شب کجا می‌خوابد؟",
+      "options": [
+        "روی دیوار",
+        "زیر ماشین",
+        "در کافه",
+        "روی یک درخت بلند"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "پرنده صبح چه می‌شنود؟",
+      "options": [
+        "صدای ماشین‌ها",
+        "موسیقی از یک پنجره‌ی باز",
+        "صدای باران",
+        "صدای بچه‌ها"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "آواز زن درباره‌ی چیست؟",
+      "options": [
+        "پرنده‌ها",
+        "شهر",
+        "خانه",
+        "گل‌ها"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "پرنده کی می‌ایستد؟",
+      "options": [
+        "کنار ایستگاه اتوبوس",
+        "وقتی خسته می‌شود",
+        "وقتی باران می‌آید",
+        "وقتی باغچه‌ی کوچکی با گل‌ها می‌بیند"
+      ],
+      "answer": 3
+    }
+  ]
+}
