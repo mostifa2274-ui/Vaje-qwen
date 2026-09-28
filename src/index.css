@@ -88,11 +88,6 @@ body {
   border-radius: 14px;
 }
 
-.paper-card-flat {
-  background: transparent;
-  border: 1px solid var(--line-soft);
-  border-radius: 14px;
-}
 
 /* dashed sketchbook path line */
 .dash-line {
@@ -329,17 +324,10 @@ body {
   border-radius: 16px;
   background: var(--cream-soft);
 }
-.lesson-cover-image,
 .lesson-chapter-art {
   display: block;
   width: 100%;
   height: 14rem;
-}
-.lesson-cover-image {
-  object-fit: contain;
-  padding: .75rem;
-}
-.lesson-chapter-art {
   background: rgba(255,255,255,.16);
 }
 .lesson-cover-fallback {
@@ -383,7 +371,6 @@ body {
 }
 
 @media (max-width: 380px) {
-  .lesson-cover-image,
   .lesson-chapter-art,
   .lesson-cover-fallback {
     height: 11.5rem;
@@ -518,26 +505,6 @@ button:disabled {
   transition: width 280ms ease;
 }
 
-.mastery-stepper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.4rem;
-  font-size: 0.72rem;
-  font-weight: 800;
-}
-.mastery-stepper span {
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  background: var(--cream-soft);
-  padding: 0.45rem 0.4rem;
-  text-align: center;
-  opacity: 0.58;
-}
-.mastery-stepper span.active {
-  background: var(--ink);
-  color: var(--cream);
-  opacity: 1;
-}
 
 .metric-card {
   display: flex;
@@ -846,7 +813,6 @@ button:disabled {
     align-items: stretch;
   }
 
-  .lesson-cover-image,
   .lesson-chapter-art,
   .lesson-cover-fallback {
     height: 16rem;
