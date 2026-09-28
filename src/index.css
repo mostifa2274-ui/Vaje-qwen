@@ -236,14 +236,6 @@ body {
   animation: pop 300ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
 }
 
-/* dashed path draw-in for the journey map */
-@keyframes dash-march {
-  to { stroke-dashoffset: -28; }
-}
-.dash-march {
-  animation: dash-march 2.2s linear infinite;
-}
-
 /* reader text */
 .story-reading {
   direction: rtl;
@@ -382,21 +374,6 @@ body {
     padding-block: .15rem;
   }
 }
-
-/* thin scrollbars for strips */
-.strip-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(43, 42, 38, 0.4) transparent;
-}
-.strip-scroll::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
-}
-.strip-scroll::-webkit-scrollbar-thumb {
-  background: rgba(43, 42, 38, 0.35);
-  border-radius: 3px;
-}
-
 
 /* ---------- Accessibility and resilient status UI ---------- */
 button:focus-visible,
