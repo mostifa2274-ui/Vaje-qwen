@@ -9,7 +9,7 @@ import { blankWordProgress } from '../engine/review'
 import { bookExamId, canReadChapter } from '../engine/gates'
 import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
-import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
+import { BackIcon, BadgeCheckIcon, PauseIcon, PlayIcon } from '../components/Icons'
 import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
 import ChapterIllustration from '../components/ChapterIllustration'
 import { faNum } from '../engine/format'
@@ -659,7 +659,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               <div>
                 <h2 id="listening-title" className="text-xl font-extrabold">درک مطلب شنیداری</h2>
                 <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-                  متن تازه‌ای دربارهٔ همین فصل که فقط شنیده می‌شود. پس از یک‌بار شنیدن کامل، به {faNum(listeningText.questions.length)} سؤال پاسخ بده؛ هر چند بار خواستی دوباره گوش کن. همهٔ پاسخ‌ها باید درست شوند.
+                  یک متن تازه را فقط می‌شنوی. بعد به {faNum(listeningText.questions.length)} سؤال پاسخ بده؛ پاسخ‌های اشتباه را اصلاح می‌کنی.
                 </p>
               </div>
               <span className="mastery-chip">{faNum(listeningConfirmed)} / {faNum(listeningText.questions.length)} درست</span>
@@ -729,7 +729,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
           {finished && (
             <div className="paper-card p-5 text-center" role="status">
-              <div className="text-4xl" aria-hidden="true">🐥</div>
+              <BadgeCheckIcon className="mx-auto h-9 w-9" aria-hidden="true" />
               <div className="mt-2 font-extrabold">{wasAlreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
                 {isLastOfBook
