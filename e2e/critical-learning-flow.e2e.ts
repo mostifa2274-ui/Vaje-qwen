@@ -383,6 +383,8 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.home-summary > div')).toHaveCount(3)
   await expect(page.locator('.journey-overview')).toHaveCount(0)
   await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
+  await expect(page.locator('.book-banner')).toHaveCount(1)
+  await expect(page.locator('.future-book-row')).toHaveCount(7)
 
   const firstBannerHeight = await page.locator('.book-banner').first().evaluate(element => element.getBoundingClientRect().height)
   expect(firstBannerHeight).toBeLessThanOrEqual(170)
@@ -768,9 +770,10 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   const lockedBefore = await lockedFirstChapters.count()
 
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
-  // Later books show their test on the map too, locked, with what it covers.
-  await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toBeVisible()
-  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن ۲۸ واژهٔ نمونه از کتاب‌های ۱ تا ۲ با سهم بیشتر برای کتاب تازه/)).toBeVisible()
+  // Locked future books stay compact until they become reachable; their
+  // artwork, chapter nodes and exam details no longer compete with the current task.
+  await expect(page.getByLabel(/کتاب ۲: .+ — قفل/)).toBeVisible()
+  await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toHaveCount(0)
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
