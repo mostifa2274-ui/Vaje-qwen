@@ -30,14 +30,6 @@ const LEVEL_FA: Record<MasteryLevel, string> = {
   mastered: 'مسلط',
 }
 
-const LEVEL_STYLE: Record<MasteryLevel, React.CSSProperties> = {
-  new: { background: 'var(--cream-soft)', color: 'var(--ink-soft)' },
-  seen: { background: 'var(--paper)', color: 'var(--ink)' },
-  learning: { background: '#f2d79f', color: 'var(--ink)' },
-  strong: { background: 'var(--gold)', color: 'var(--ink)' },
-  mastered: { background: 'var(--ink)', color: 'var(--cream)' },
-}
-
 export default function GlossaryScreen({ state, onChange, onBack }: Props) {
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<GlossaryFilter>('all')
@@ -126,14 +118,14 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
             <button
               type="button"
               key={word.id}
-              className="glossary-row flex w-full items-center gap-3 px-3 py-3 text-right"
+              className="glossary-row"
               onClick={() => tapWord(word)}
             >
-              <span className="shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold" style={needsWork ? { background: '#f7d7d7', color: 'var(--ink)' } : LEVEL_STYLE[level]}>
+              <span className="glossary-word font-en" dir="ltr">{word.word}</span>
+              <span className="glossary-meaning" dir="rtl">{word.fa}</span>
+              <span className={`glossary-status ${needsWork ? 'needs-work' : level}`} dir="rtl">
                 {needsWork ? 'تمرین' : LEVEL_FA[level]}
               </span>
-              <span className="font-en min-w-0 flex-1 truncate text-left font-semibold" dir="ltr">{word.word}</span>
-              <span className="min-w-0 max-w-[48%] text-sm leading-6" style={{ color: 'var(--ink-soft)' }}>{word.fa}</span>
             </button>
           )
         })}

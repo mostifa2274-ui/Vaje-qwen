@@ -517,15 +517,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
         {phase === 'teach' && currentTeachWord && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
-            <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
-              <span>آموزش</span>
-              <span>{faNum(teachIndex + 1)} / {faNum(chapter.new.length)}</span>
-            </div>
-            <div className="mastery-progress mt-3">
-              <span style={{ width: `${((teachIndex + 1) / chapter.new.length) * 100}%` }} />
-            </div>
-
-            <div className="mt-3 flex justify-end">
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>واژهٔ {faNum(teachIndex + 1)} از {faNum(chapter.new.length)}</span>
               <button
                 type="button"
                 className={teachAutoPlay ? 'btn-ink px-3 py-2.5 text-sm' : 'btn-quiet px-3 py-2.5 text-sm'}
@@ -540,6 +533,9 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </span>
               </button>
             </div>
+            <div className="mastery-progress mt-2">
+              <span style={{ width: `${((teachIndex + 1) / chapter.new.length) * 100}%` }} />
+            </div>
             {!state.soundOn && (
               <div className="paper-note mt-4">
                 {explore
@@ -549,7 +545,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               </div>
             )}
 
-            <div className="mt-7 text-center">
+            <div className="mt-5 text-center">
               <div data-testid="teach-headword" className="font-en text-4xl font-bold" dir="ltr">{currentTeachWord.word}</div>
               {currentTeachWord.ipa && <div className="mt-2 font-en text-sm" dir="ltr">/ {currentTeachWord.ipa} /</div>}
               <div className="mt-3 flex justify-center">
@@ -558,7 +554,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <div className="mt-4 text-3xl font-extrabold">{currentTeachWord.fa}</div>
               <button
                 type="button"
-                className="btn-paper mt-4 px-4 py-2.5 text-sm"
+                className="btn-quiet mt-3 px-4 py-2.5 text-sm"
                 onClick={() => {
                   setTeachAutoPlay(false)
                   setTeachAudioReady(false)
@@ -572,7 +568,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               </button>
             </div>
 
-            <div className="learning-example mt-6 p-4">
+            <div className="learning-example mt-5 pt-4">
               <div className="font-en text-lg leading-8" dir="ltr">{currentTeachWord.ex}</div>
               <div className="mt-2 text-sm leading-7" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{currentTeachWord.tr}</div>
               <button
@@ -606,7 +602,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>ترجمهٔ نوشتاری · ۱۰۰٪</span>
-              <span>{faNum(writtenPassed.size)} / {faNum(chapter.new.length)}</span>
+              <span>{faNum(writtenPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
               <span style={{ width: `${(writtenPassed.size / chapter.new.length) * 100}%` }} />
@@ -664,7 +660,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>شنیداری · ۱۰۰٪</span>
-              <span>{faNum(listeningPassed.size)} / {faNum(chapter.new.length)}</span>
+              <span>{faNum(listeningPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
               <span style={{ width: `${(listeningPassed.size / chapter.new.length) * 100}%` }} />

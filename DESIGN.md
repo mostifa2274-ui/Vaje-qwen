@@ -12,6 +12,7 @@ The app is not neobrutalist. Avoid hard zero-blur offset shadows, repeated heavy
 ## Color
 - Cream reading surface: `--cream`
 - Sage shell/background: `--paper`
+- One cream canvas lives on `.app-main` across every route, capped at 60rem; page content keeps its existing reading measure.
 - Soft ink: `--ink`
 - Crimson: primary accent for current state and primary emphasis only
 - Gold: limited supporting state color
@@ -71,14 +72,16 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - Nino is always a small yellow chicken with an orange beak and feet and one small white feather on the left wing. Never depict him as the former cat concept, a duck, an adult hen, or an unmarked generic chick.
 - Mina keeps the same face and age impression while her contemporary Iranian modest clothing may vary by chapter. Girls and women are never shown without hijab; public/outdoor scenes keep hair exposure minimal. Mina's red book and the crimson bird remain recurring visual anchors.
 - No readable text or logos inside illustrations. Each chapter image has a Persian accessible description.
-- Production artwork is 640×336 (40:21). Keep the primary action safely inside the center crop so phone and tablet banners do not lose faces or story-critical objects.
+- Production artwork is 640×336 (40:21). Preserve that full aspect ratio in book overviews and story covers; never crop faces or story-critical objects to fit a shallow banner.
 - The reviewed chapter-art set is precached by the production service worker so visual continuity survives offline use.
 
 ## Distilled interface rules
 - One dominant task per screen. Status, policy, and diagnostics stay secondary and use progressive disclosure.
 - The journey home uses one next-action surface, one three-item progress summary, one review row, then the book path. Do not rebuild a dashboard above the books.
 - Book cards and task chrome use one neutral surface. Per-book color does not tint headers or task containers; reviewed artwork carries visual variation.
-- Future/locked books remain visible for orientation as compact milestone rows; their artwork, chapter nodes and exam details appear only when the book becomes reachable.
+- Future/locked books remain visible for orientation as compact milestone rows; their artwork, chapter rows and exam details appear only when the book becomes reachable.
+- Reachable books show named chapter rows with a number and explicit status, including readable locked chapters.
+- Dictionary entries use stable English, Persian and status columns; meaning length must not shift the English word.
 - Secondary buttons are flat; reserve strong contrast for the primary action. Avoid adding control shadows back to ordinary buttons.
 - Long explanations belong in `<details>` or result/review screens, not above an active learning task.
 - Settings shows common switches immediately; narration tuning and privacy explanation stay collapsed until requested.

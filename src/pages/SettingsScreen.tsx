@@ -101,12 +101,13 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
       <div className="settings-list mt-5">
         <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
-            <div className="font-bold">صدا</div>
+            <div id="sound-title" className="font-bold">صدا</div>
             <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ، خواندن قصه و آزمون‌های شنیداری.</div>
           </div>
           <button
             type="button"
             role="switch"
+            aria-labelledby="sound-title"
             aria-checked={state.soundOn}
             className={state.soundOn ? 'btn-ink px-4 py-2' : 'btn-paper px-4 py-2'}
             onClick={() => {
@@ -198,12 +199,13 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
 
         <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
-            <div className="font-bold">ترجمه‌ی فارسی همیشه باز</div>
+            <div id="translation-title" className="font-bold">ترجمه‌ی فارسی همیشه باز</div>
             <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>در حالت خاموش، دکمهٔ FA ترجمهٔ هر جمله را باز می‌کند.</div>
           </div>
           <button
             type="button"
             role="switch"
+            aria-labelledby="translation-title"
             aria-checked={state.showFaDefault}
             className={state.showFaDefault ? 'btn-ink px-4 py-2' : 'btn-paper px-4 py-2'}
             onClick={() => onChange({ ...state, showFaDefault: !state.showFaDefault })}

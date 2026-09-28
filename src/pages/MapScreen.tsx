@@ -77,6 +77,9 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
   const doneCount = CHAPTERS.filter(c => state.chapters[c.id]?.completed).length
   const health = learningHealth(state, now)
   const action = nextBestAction(state, now)
+  const actionTitle = action.kind === 'chapter'
+    ? CHAPTERS.find(chapter => chapter.id === action.chapterId)?.titleFa ?? action.title
+    : action.title
   const certification = certificationStatus(state, now)
 
   function runNextAction() {
@@ -122,7 +125,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
 
       <section className="next-action-card mt-4">
         <div className="min-w-0 flex-1">
-          <h2 className="text-xl font-extrabold">قدم بعدی: {action.title}</h2>
+          <h2 className="text-xl font-extrabold">قدم بعدی: {actionTitle}</h2>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{action.detail}</p>
         </div>
         {action.kind !== 'complete' && <button type="button" className="btn-crimson shrink-0 px-4 py-3" onClick={runNextAction}>{actionLabel}</button>}
@@ -179,29 +182,31 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
           return (
             <div key={meta.book}>
               <section className="book-section p-4 sm:p-5">
-                <div className="book-banner">
-                  <img
-                    src={meta.cover}
-                    alt=""
-                    width={640}
-                    height={336}
-                    decoding="async"
-                    loading={meta.book === 1 ? 'eager' : 'lazy'}
-                    fetchPriority={meta.book === 1 ? 'high' : 'auto'}
-                  />
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="min-w-0 flex-1">
-                    <h2 className="text-xl font-extrabold">کتاب {faNum(meta.book)}: {meta.titleFa}</h2>
-                    <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>
-                      {meta.taglineFa} · {faNum(bHealth.words)} واژه
-                    </p>
+                <div className="book-overview">
+                  <div className="book-banner">
+                    <img
+                      src={meta.cover}
+                      alt=""
+                      width={640}
+                      height={336}
+                      decoding="async"
+                      loading={meta.book === 1 ? 'eager' : 'lazy'}
+                      fetchPriority={meta.book === 1 ? 'high' : 'auto'}
+                    />
                   </div>
-                  {examCleared(state, bookExam) && <span className="book-status-icon" role="img" title="آزمون پایان کتاب پاس و جبران کامل شده" aria-label="آزمون پایان کتاب پاس و جبران کامل شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
+                  <div className="flex items-center gap-3">
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-xl font-extrabold">کتاب {faNum(meta.book)}: {meta.titleFa}</h2>
+                      <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>
+                        {meta.taglineFa} · {faNum(bHealth.words)} واژه
+                      </p>
+                    </div>
+                    {examCleared(state, bookExam) && <span className="book-status-icon" role="img" title="آزمون پایان کتاب پاس و جبران کامل شده" aria-label="آزمون پایان کتاب پاس و جبران کامل شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
+                  </div>
                 </div>
 
-                <div className="mt-4 flex flex-wrap items-center gap-2" dir="rtl">
-                  {chapters.map((ch, i) => {
+                <ol className="chapter-list mt-4" aria-label={`فصل‌های کتاب ${faNum(meta.book)}`}>
+                  {chapters.map(ch => {
                     const prog = state.chapters[ch.id]
                     const isDone = prog?.completed === true
                     const prepared = chapterPrepared(state, ch.id)
@@ -211,29 +216,28 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                     const status = isDone ? 'تمام شده' : prepared && onPath ? 'آمادهٔ خواندن' : onPath ? 'آموزش + آزمون واژه‌ها' : accessible ? 'پیش‌نمایش در حالت کاوش' : 'قفل'
 
                     return (
-                      <div key={ch.id} className="flex items-center gap-2">
+                      <li key={ch.id}>
                         <button
                           type="button"
-                          className={`node-circle h-11 w-11 text-sm ${nodeState}`}
+                          className={`chapter-row ${nodeState}`}
                           disabled={!accessible}
                           onClick={() => onOpenChapter(ch.id)}
-                          title={`${ch.titleFa} — ${status}`}
                           aria-label={`فصل ${faNum(ch.n)}: ${ch.titleFa} — ${status}`}
                           aria-current={nodeState === 'is-current' ? 'step' : undefined}
                         >
-                          {isDone
-                            ? <CheckIcon className="h-5 w-5" />
-                            : prepared && onPath
-                              ? <PlayIcon className="h-5 w-5" />
-                              : accessible
-                                ? faNum(ch.n)
-                                : <LockIcon className="h-4 w-4" />}
+                          <span className="chapter-number" aria-hidden="true">{faNum(ch.n)}</span>
+                          <span className="chapter-label">
+                            <span className="font-bold">{ch.titleFa}</span>
+                            <span className="chapter-status">{status}</span>
+                          </span>
+                          <span className="chapter-state-icon" aria-hidden="true">
+                            {isDone ? <CheckIcon className="h-5 w-5" /> : accessible ? <PlayIcon className="h-4 w-4" /> : <LockIcon className="h-4 w-4" />}
+                          </span>
                         </button>
-                        {i < chapters.length - 1 && <span className="chapter-connector" />}
-                      </div>
+                      </li>
                     )
                   })}
-                </div>
+                </ol>
 
                 {bookAvailable && (
                   <div className="book-progress mt-3">

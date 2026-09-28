@@ -382,7 +382,7 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.home-summary > div')).toHaveCount(3)
   await expect(page.locator('.journey-overview')).toHaveCount(0)
   await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
-  const homeSurface = await page.locator('.app-page').evaluate(element => {
+  const homeSurface = await page.locator('.app-main').evaluate(element => {
     const probe = document.createElement('div')
     probe.style.background = 'var(--cream)'
     document.body.append(probe)
@@ -396,12 +396,36 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.future-book-row')).toHaveCount(7)
   const firstBannerHeight = await page.locator('.book-banner').first().evaluate(element => element.getBoundingClientRect().height)
   expect(firstBannerHeight).toBeLessThanOrEqual(170)
+  const art = page.locator('.book-banner img').first()
+  await expect(art).toHaveJSProperty('complete', true)
+  const composition = await art.evaluate(element => {
+    const image = element as HTMLImageElement
+    const box = image.getBoundingClientRect()
+    return { rendered: box.width / box.height, original: image.naturalWidth / image.naturalHeight }
+  })
+  expect(composition.rendered).toBeCloseTo(composition.original, 2)
+
+  for (let number = 1; number <= 5; number++) {
+    const chapterInfo = JSON.parse(readFileSync(new URL(`../src/data/chapters/b1c${number}.json`, import.meta.url), 'utf8')) as { titleFa: string }
+    const entry = page.getByRole('button', { name: new RegExp(`^فصل ${faNum(number)}:`) })
+    await expect(entry.getByText(chapterInfo.titleFa, { exact: true })).toBeVisible()
+    if (number === 1) await expect(entry).toBeEnabled()
+    else await expect(entry).toBeDisabled()
+  }
   await expectNoHorizontalOverflow(page)
 })
 
 test('settings keeps advanced controls collapsed until requested', async ({ page }) => {
   await page.goto('/#/settings')
   await expect(page.locator('.app-page')).toHaveCount(1)
+  const sound = page.getByRole('switch', { name: 'صدا', exact: true })
+  const translation = page.getByRole('switch', { name: 'ترجمه‌ی فارسی همیشه باز', exact: true })
+  await expect(sound).toHaveAttribute('aria-checked', 'true')
+  await expect(translation).toHaveAttribute('aria-checked', 'false')
+  await sound.click()
+  await expect(sound).toHaveAttribute('aria-checked', 'false')
+  await sound.click()
+  await expect(sound).toHaveAttribute('aria-checked', 'true')
 
   const voice = page.getByText('تنظیمات پیشرفتهٔ صدا', { exact: true })
   const privacy = page.getByText('حریم خصوصی', { exact: true })
@@ -1474,12 +1498,12 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(section.getByText(/۱ سؤال هنوز درست نشده است/)).toBeFocused()
   await expect(option(0, wrongChoice)).toBeDisabled()
   await expect(option(1, listening.questions[1].answer)).toBeDisabled()
-  await expect(section.getByText('۴ / ۵ درست')).toBeVisible()
+  await expect(section.getByText('۴ از ۵ درست')).toBeVisible()
   await expect(finishChapter).toHaveCount(0)
 
   // The listening progress survives a reload.
   await page.reload()
-  await expect(section.getByText('۴ / ۵ درست')).toBeVisible()
+  await expect(section.getByText('۴ از ۵ درست')).toBeVisible()
   await expect(option(0, wrongChoice)).toBeDisabled()
   await option(0, listening.questions[0].answer).click()
   await section.getByRole('button', { name: 'بررسی پاسخ‌ها' }).click()
@@ -1491,4 +1515,55 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters?.b1c1)
   expect(stored).toMatchObject({ completed: true, checksTotal: 10, listeningCorrect: 4, listeningTotal: 5 })
   expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:chapter-listening:v1:b1c1'))).toBeNull()
+})
+
+test('dictionary columns stay aligned across different word and meaning lengths', async ({ page }) => {
+  await page.goto('/#/glossary')
+  const rows = page.locator('.glossary-row')
+  await expect(rows.first()).toBeVisible()
+  const positions = await rows.evaluateAll(elements => elements.slice(0, 30).map(element => {
+    const word = element.querySelector('[dir="ltr"]')!
+    const meaning = element.querySelector('.glossary-meaning')!
+    const status = element.querySelector('.glossary-status')!
+    return {
+      wordLeft: word.getBoundingClientRect().left,
+      wordRight: word.getBoundingClientRect().right,
+      meaningLeft: meaning.getBoundingClientRect().left,
+      meaningRight: meaning.getBoundingClientRect().right,
+      statusLeft: status.getBoundingClientRect().left,
+    }
+  }))
+  expect(positions).toHaveLength(30)
+  for (const position of positions) {
+    expect(position.wordLeft).toBeCloseTo(positions[0].wordLeft, 1)
+    expect(position.meaningLeft).toBeCloseTo(positions[0].meaningLeft, 1)
+    expect(position.wordRight).toBeLessThan(position.meaningLeft)
+    expect(position.meaningRight).toBeLessThan(position.statusLeft)
+  }
+  await rows.first().click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await expectNoHorizontalOverflow(page)
+})
+
+test('narrow phones and wide screens retain the same page canvas across routes', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  for (const width of [320, 1440]) {
+    await page.setViewportSize({ width, height: 960 })
+    for (const route of ['map', 'glossary', 'settings', 'prep/b1c1']) {
+      await page.goto(`/#/${route}`)
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+      const main = await page.getByRole('main').boundingBox()
+      expect(main).not.toBeNull()
+      expect(main!.width).toBe(Math.min(width, 960))
+      expect(main!.x).toBe((width - Math.min(width, 960)) / 2)
+      await expectNoHorizontalOverflow(page)
+      if (route === 'settings') {
+        const label = await page.getByText('صدا', { exact: true }).boundingBox()
+        const control = await page.getByRole('switch', { name: 'صدا', exact: true }).boundingBox()
+        expect(control!.width).toBeGreaterThanOrEqual(44)
+        expect(control!.width).toBeLessThan(120)
+        expect(control!.x + control!.width).toBeLessThan(label!.x)
+      }
+    }
+  }
 })
