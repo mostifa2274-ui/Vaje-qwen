@@ -732,7 +732,7 @@ async function pageText(page: Page): Promise<string> {
   return page.evaluate(() => document.body.innerText)
 }
 
-test('the end-of-book test checks half the words, a reading text and a listening text hidden until the review', async ({ page }) => {
+test('the end-of-book test uses a bounded cumulative vocabulary sample plus reading and listening', async ({ page }) => {
   test.setTimeout(240_000)
   const book1 = ['b1c1', 'b1c2', 'b1c3', 'b1c4', 'b1c5']
   const bookWords = new Map<string, VocabularyEntry>()
@@ -753,7 +753,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
   // Later books show their test on the map too, locked, with what it covers.
   await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toBeVisible()
-  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن .+ واژه، یعنی نیمی از واژه‌های کتاب‌های ۱ تا ۲/)).toBeVisible()
+  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن ۲۸ واژهٔ نمونه از کتاب‌های ۱ تا ۲ با سهم بیشتر برای کتاب تازه/)).toBeVisible()
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
@@ -761,7 +761,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
   await expectNoHorizontalOverflow(page)
   await page.getByRole('button', { name: 'شروع آزمون' }).click()
 
-  // 1. Typed translations: half of book 1's words are split between the two
+  // 1. Typed translations: the bounded book-1 sample is split between the two
   // word sections; progress survives a reload.
   const fromFaDigits = (value: string) => Number(value.replace(/[۰-۹]/g, digit => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(digit))))
   const counter = page.getByText(/^واژهٔ .+ از .+$/)
@@ -792,7 +792,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
   // 2. Listening words: options wait for the word to be heard.
   await expect(page.getByRole('heading', { level: 2, name: 'شنیدن واژه‌ها' })).toBeVisible()
   const listeningCount = await sectionSize()
-  expect(translationCount + listeningCount).toBe(145)
+  expect(translationCount + listeningCount).toBe(24)
   const listeningOptions = page.getByTestId('book-test-listening-options').getByRole('button')
   for (let item = 1; item <= listeningCount; item++) {
     await expect(page.getByText(`واژهٔ ${faNum(item)} از ${faNum(listeningCount)}`)).toBeVisible()
@@ -833,7 +833,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
 
   // Review: scores per part, and the listening text is revealed on request.
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب را گذراندی' })).toBeVisible()
-  await expect(page.getByText('هر ۱۴۵ واژه درست بود.')).toBeVisible()
+  await expect(page.getByText('هر ۲۴ واژه درست بود.')).toBeVisible()
   await expectRenderedAccessibilityContract(page)
   await expectNoHorizontalOverflow(page)
   await expect(page.getByText(listening.sentences[0].en, { exact: true })).toBeHidden()
@@ -843,7 +843,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
 
   const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').exams?.['book-1'])
   expect(stored).toMatchObject({ attempts: 1, passed: true, lastScore: 1, missedWordIds: [] })
-  expect(stored.testedWordIds).toHaveLength(145)
+  expect(stored.testedWordIds).toHaveLength(24)
   expect(await page.evaluate(() => window.localStorage.getItem('ghesse:book-test:v3:1'))).toBeNull()
 
   await page.getByRole('button', { name: 'ادامهٔ مسیر ←' }).click()
@@ -923,12 +923,12 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
   await expect(card.getByRole('heading', { level: 3, name: content.reading[2].titleEn })).toBeVisible()
 })
 
-test('later end-of-book tests grow: book 3 asks half its words and two texts of each kind', async ({ page }) => {
+test('later end-of-book tests grow gradually: book 3 asks 32 vocabulary items and two texts of each kind', async ({ page }) => {
   const content = JSON.parse(readFileSync(new URL('../src/data/bookTests/b3.json', import.meta.url), 'utf8')) as BookTestFixture
   await openWithProgress(page, '/map', { exploreAll: true })
   await page.goto('/#/exam/book-3')
   await page.reload()
-  await expect(page.getByText(/^۲۹۱ واژه از کتاب‌های ۱ تا ۳/)).toBeVisible()
+  await expect(page.getByText(/^۳۲ واژهٔ نمونه از کتاب‌های ۱ تا ۳/)).toBeVisible()
   await expect(page.getByText('درک مطلب خواندنی — ۲ متن تازه، هر کدام با ۵ سؤال.')).toBeVisible()
   await page.getByRole('button', { name: 'شروع آزمون' }).click()
   await page.getByRole('list', { name: 'بخش‌های آزمون' }).getByRole('button', { name: /درک مطلب خواندنی/ }).click()
