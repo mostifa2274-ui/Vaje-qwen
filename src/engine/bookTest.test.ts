@@ -43,24 +43,18 @@ function perfectAnswers(test: BookTest): BookTestAnswers {
 }
 
 describe('end-of-book test', () => {
-  it('is the book-N gate, growing with the books and needing 100% in each part', () => {
+  it('is a bounded cumulative book-N gate with an 80% floor in each part', () => {
     const def = examDefinition(bookExamId(3))!
     expect(def.kind).toBe('book')
     expect(def.titleFa).toBe('آزمون پایان کتاب ۳')
     expect(def.questionCount).toBe(bookTestQuestionCount(3))
-    expect(def.passRate).toBe(1)
-    // Half of the words studied so far, and 1, 2, 3, 4 texts per skill.
-    const studied = (book: number) => CHAPTERS.filter(ch => ch.book <= book).reduce((sum, ch) => sum + ch.new.length, 0)
-    for (let book = 1; book <= 8; book++) {
-      expect(Math.abs(bookTestWordCount(book) - studied(book) / 2)).toBeLessThanOrEqual(book)
-      expect(bookTestTextsPerSkill(book)).toBe(Math.ceil(book / 2))
-    }
-    expect(bookTestWordCount(1)).toBe(145)
-    expect(bookTestWordCount(8)).toBeGreaterThanOrEqual(445)
+    expect(def.passRate).toBe(0.8)
+    expect(Array.from({ length: 8 }, (_, index) => bookTestWordCount(index + 1))).toEqual([24, 28, 32, 36, 40, 44, 48, 52])
+    for (let book = 1; book <= 8; book++) expect(bookTestTextsPerSkill(book)).toBe(Math.ceil(book / 2))
   })
 
   for (let book = 1; book <= 8; book++) {
-    it(`book ${book}: half of every studied book's words, without repeats`, () => {
+    it(`book ${book}: bounded cumulative sample from every studied book, without repeats`, () => {
       const test = buildBookTest(book, stateThroughBook(book), 1)!
       const all = [...test.translation, ...test.listeningWords]
       expect(all).toHaveLength(bookTestWordCount(book))
@@ -71,8 +65,8 @@ describe('end-of-book test', () => {
         expect(item.book).toBeLessThanOrEqual(book)
       }
       for (let source = 1; source <= book; source++) {
-        expect(all.filter(item => item.book === source), `book ${source}`).toHaveLength(bookTestWordsFrom(source))
-        expect(bookTestWordsFrom(source)).toBe(Math.round(bookWordIds(source).length / 2))
+        expect(all.filter(item => item.book === source), `book ${source}`).toHaveLength(bookTestWordsFrom(source, book))
+        expect(bookTestWordsFrom(source, book)).toBeGreaterThan(0)
         for (const section of [test.translation, test.listeningWords]) {
           expect(section.some(item => item.book === source), `book ${source} in each section`).toBe(true)
         }
@@ -89,12 +83,12 @@ describe('end-of-book test', () => {
         const allocation = bookTestAllocation(book, rotation)
         expect([...allocation.keys()]).toEqual(Array.from({ length: book }, (_, index) => index + 1))
         for (const [source, counts] of allocation) {
-          expect(counts.translation + counts.listeningWords).toBe(bookTestWordsFrom(source))
+          expect(counts.translation + counts.listeningWords).toBe(bookTestWordsFrom(source, book))
           expect(Math.abs(counts.translation - counts.listeningWords)).toBeLessThanOrEqual(1)
         }
       }
       for (const [source, counts] of bookTestAllocation(book, 0)) {
-        if (bookTestWordsFrom(source) % 2) expect(bookTestAllocation(book, 1).get(source)!.translation).not.toBe(counts.translation)
+        if (bookTestWordsFrom(source, book) % 2) expect(bookTestAllocation(book, 1).get(source)!.translation).not.toBe(counts.translation)
       }
     }
   })
@@ -142,13 +136,13 @@ describe('end-of-book test', () => {
     answers.reading = answers.reading.map(text => text.map(() => null))
     state = recordBookTest(state, first, answers, scoreBookTest(first, answers), 100)
     const tested = new Set(state.exams[bookExamId(1)].testedWordIds)
-    expect(tested.size).toBe(145)
+    expect(tested.size).toBe(24)
     const second = buildBookTest(1, state, 2)!
     const fresh = [...second.translation, ...second.listeningWords].filter(item => !tested.has(item.wordId))
-    expect(fresh.length).toBeGreaterThanOrEqual(50)
+    expect(fresh.length).toBeGreaterThanOrEqual(20)
   })
 
-  it('passes only when every answer in every part is right', () => {
+  it('uses an 80% floor per section while retaining missed-word remediation', () => {
     const test = buildBookTest(3, stateThroughBook(3), 1)!
     const perfect = perfectAnswers(test)
     const all = scoreBookTest(test, perfect)
@@ -158,25 +152,22 @@ describe('end-of-book test', () => {
     const texts = bookTestTextsPerSkill(3)
     expect(all.sections.reading.total).toBe(texts * 5)
 
-    // One wrong answer anywhere fails the whole test.
     const wrongFirst = (chosen: Array<Array<number | null>>, count: number) =>
       chosen.map((text, slot) => slot === chosen.length - 1 ? text.map((answer, index) => index < count ? (answer! + 1) % 4 : answer) : text)
     const oneReading = { ...perfect, reading: wrongFirst(perfect.reading, 1) }
-    expect(scoreBookTest(test, oneReading).sections.reading).toMatchObject({ correct: texts * 5 - 1, passed: false })
-    expect(scoreBookTest(test, oneReading).passed).toBe(false)
-    const twoListening = { ...perfect, listening: wrongFirst(perfect.listening, 2) }
-    const failed = scoreBookTest(test, twoListening)
-    expect(failed.sections.listening).toMatchObject({ correct: texts * 5 - 2, total: texts * 5, passed: false })
+    expect(scoreBookTest(test, oneReading).sections.reading).toMatchObject({ correct: texts * 5 - 1, passed: true })
+    expect(scoreBookTest(test, oneReading).passed).toBe(true)
+    const threeListening = { ...perfect, listening: wrongFirst(perfect.listening, 3) }
+    const failed = scoreBookTest(test, threeListening)
+    expect(failed.sections.listening).toMatchObject({ correct: texts * 5 - 3, total: texts * 5, passed: false })
     expect(failed.passed).toBe(false)
-    expect(failed.score).toBeGreaterThan(0.95)
 
     const translation = [...perfect.translation]
-    translation[0] = ''
-    translation[1] = 'اشتباه'
-    translation[2] = 'نمی‌دانم'
+    const typedMisses = Math.floor(test.translation.length * 0.2) + 1
+    for (let index = 0; index < typedMisses; index++) translation[index] = ''
     const typedGaps = scoreBookTest(test, { ...perfect, translation })
-    expect(typedGaps.sections.translation).toMatchObject({ correct: test.translation.length - 3, passed: false })
-    expect(typedGaps.missedWordIds).toEqual(test.translation.slice(0, 3).map(item => item.wordId))
+    expect(typedGaps.sections.translation.passed).toBe(false)
+    expect(typedGaps.missedWordIds).toEqual(test.translation.slice(0, typedMisses).map(item => item.wordId))
 
     const listeningWords = [...perfect.listeningWords]
     listeningWords[4] = test.listeningWords[4].options.find(option => option.id !== test.listeningWords[4].wordId)!.id
@@ -199,35 +190,26 @@ describe('end-of-book test', () => {
     expect(canTakeExam(state, bookExamId(1))).toBe(true)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
 
-    // One missed word fails the test at the 100% pass mark.
+    // One missed word can still meet the 80% criterion, but remediation keeps
+    // the next book closed until that word is independently recalled.
     const test = buildBookTest(1, state, 1)!
     const answers = perfectAnswers(test)
     answers.translation[0] = ''
     const result = scoreBookTest(test, answers)
-    expect(result.passed).toBe(false)
+    expect(result.passed).toBe(true)
     state = recordBookTest(state, test, answers, result, 1_000)
     const progress = state.exams[bookExamId(1)]
-    expect(progress).toMatchObject({ attempts: 1, passed: false, lastAttemptAt: 1_000, missedWordIds: [test.translation[0].wordId] })
+    expect(progress).toMatchObject({ attempts: 1, passed: true, lastAttemptAt: 1_000, missedWordIds: [test.translation[0].wordId] })
     expect(progress.lastProductiveScore).toBeCloseTo((test.translation.length - 1) / test.translation.length)
     const missed = test.translation[0].wordId
     expect(state.words[missed].reviewWrong).toBe(1)
     expect(state.words[test.translation[1].wordId].reviewCorrect).toBe(1)
 
-    // The missed word must be recalled again before the retake opens.
     expect(examRemediationPending(state, bookExamId(1))).toBe(true)
     expect(canTakeExam(state, bookExamId(1))).toBe(false)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
     state = { ...state, words: { ...state.words, [missed]: recordRetrieval(state.words[missed], true, 'reverse', 2_000, 'review') } }
-    expect(canTakeExam(state, bookExamId(1))).toBe(true)
-    expect(canPrepareChapter(state, 'b2c1')).toBe(false)
-
-    // A perfect retake passes and opens book 2.
-    const second = buildBookTest(1, state, 2)!
-    const perfect = perfectAnswers(second)
-    const passed = scoreBookTest(second, perfect)
-    expect(passed.passed).toBe(true)
-    state = recordBookTest(state, second, perfect, passed, 3_000)
-    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 2, passed: true, passedAt: 3_000, missedWordIds: [] })
+    expect(examRemediationPending(state, bookExamId(1))).toBe(false)
     expect(canPrepareChapter(state, 'b2c1')).toBe(true)
 
     // A later failed retake never revokes the pass.
