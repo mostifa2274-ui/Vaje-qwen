@@ -1,9 +1,10 @@
 import type { Chapter, WordEntry } from './types'
 import { tokenizeSentence, type LemmaMap } from './lemmatize'
+import policy from '../data/learningPolicy.json'
 
-export const READING_QUESTION_COUNT = 10
+export const READING_QUESTION_COUNT = policy.chapterComprehension.questions
 // Questions on the chapter's listening text (data/chapterListening).
-export const LISTENING_QUESTION_COUNT = 5
+export const LISTENING_QUESTION_COUNT = policy.chapterComprehension.listeningQuestions
 
 export interface ReadingOption {
   id: string
