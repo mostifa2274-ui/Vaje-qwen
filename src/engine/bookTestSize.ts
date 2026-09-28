@@ -1,4 +1,5 @@
 import { CHAPTERS } from '../data/chapters'
+import policy from '../data/learningPolicy.json'
 
 // End-of-book tests are cumulative but deliberately bounded. The gate samples
 // enough vocabulary to expose weak areas without turning one checkpoint into a
@@ -8,10 +9,10 @@ import { CHAPTERS } from '../data/chapters'
 // Vocabulary questions per attempt: 24, 28, 32, 36, 40, 44, 48, 52.
 // Reading/listening passages still grow from one per skill to four per skill.
 
-export const BOOK_TEST_MIN_WORDS = 24
-export const BOOK_TEST_WORD_STEP = 4
-export const BOOK_TEST_MAX_WORDS = 52
-export const BOOK_TEST_QUESTIONS_PER_TEXT = 5
+export const BOOK_TEST_MIN_WORDS = policy.bookTest.minVocabularyQuestions
+export const BOOK_TEST_WORD_STEP = policy.bookTest.vocabularyQuestionStep
+export const BOOK_TEST_MAX_WORDS = policy.bookTest.maxVocabularyQuestions
+export const BOOK_TEST_QUESTIONS_PER_TEXT = policy.bookTest.questionsPerText
 
 const wordsByBook = new Map<number, string[]>()
 for (const chapter of CHAPTERS) {
@@ -41,10 +42,12 @@ export function bookTestWordsBySource(book: number): Map<number, number> {
   const total = bookTestWordCount(book)
   if (!total) return result
 
-  const weightUnits = book + 1
+  const newestWeight = policy.bookTest.newestBookWeight
+  const olderWeight = policy.bookTest.olderBookWeight
+  const weightUnits = (book - 1) * olderWeight + newestWeight
   const unit = Math.floor(total / weightUnits)
   for (let source = 1; source <= book; source++) {
-    result.set(source, source === book ? unit * 2 : unit)
+    result.set(source, source === book ? unit * newestWeight : unit * olderWeight)
   }
 
   let remaining = total - unit * weightUnits
