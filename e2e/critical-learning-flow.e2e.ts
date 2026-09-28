@@ -281,6 +281,7 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
   const routes: Array<{ route: string; heading: string | RegExp }> = [
     { route: '/#/map', heading: 'قصه' },
     { route: '/#/glossary', heading: 'واژه‌نامه' },
+    { route: '/#/flashcards', heading: 'جعبهٔ لایتنر' },
     { route: '/#/settings', heading: 'تنظیمات' },
     { route: '/#/review', heading: 'مرور هوشمند' },
     { route: '/#/prep/b1c1', heading: /واژه‌های تازه:/ },
@@ -590,6 +591,7 @@ async function openWithProgress(page: Page, route: string, progress: {
   chapters?: Record<string, Record<string, unknown>>
   exams?: Record<string, Record<string, unknown>>
   exploreAll?: boolean
+  leitner?: Record<string, unknown>
 }): Promise<void> {
   await page.addInitScript(({ progress }) => {
     // Seed before React mounts. Writing after page.goto races the initial
@@ -608,6 +610,7 @@ async function openWithProgress(page: Page, route: string, progress: {
       narratorRate: 0.92,
       dailyReviewGoal: 15,
       exploreAll: progress.exploreAll === true,
+      ...(progress.leitner ? { leitner: progress.leitner } : {}),
       created: now - 2 * 86_400_000,
     }))
     window.sessionStorage.setItem('ghesse:e2e:progress-seeded', 'true')
@@ -670,6 +673,118 @@ test('smart review speaks a spelling card on arrival and supports a keyboard-onl
   await page.keyboard.press('Enter')
   await expect(page.locator('.feedback-panel')).toContainText('درست')
   await expect(page.getByRole('button', { name: 'کارت بعدی ←' })).toBeFocused()
+})
+
+test('the Leitner box opens beside the glossary, moves cards between boxes and keeps them after a reload', async ({ page }) => {
+  await page.goto('/#/map')
+  const glossaryButton = page.getByRole('button', { name: 'واژه‌نامه', exact: true })
+  const leitnerButton = page.getByRole('button', { name: 'جعبهٔ لایتنر', exact: true })
+  await expect(leitnerButton).toBeVisible()
+  // The two sit side by side in the home toolbar.
+  const glossaryBox = (await glossaryButton.boundingBox())!
+  const leitnerBox = (await leitnerButton.boundingBox())!
+  expect(Math.abs(glossaryBox.y - leitnerBox.y)).toBeLessThan(2)
+  expect(leitnerBox.x + leitnerBox.width).toBeLessThanOrEqual(glossaryBox.x + 1)
+  await leitnerButton.click()
+  await expect(page).toHaveURL(/#\/flashcards$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'جعبهٔ لایتنر' })).toBeVisible()
+
+  // Every course word is a card, and none has started yet.
+  const total = faNum(vocabulary.length)
+  await expect(page.getByText(`${total} کارت هنوز شروع نشده`)).toBeVisible()
+  await expect(page.getByText(`۰ از ${total} کارت شروع شده`)).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  await expectNoHorizontalOverflow(page)
+
+  await page.getByRole('button', { name: /شروع مرور \(۱۰ کارت\)/ }).click()
+  const card = page.getByTestId('flashcard')
+  const cardWord = card.locator('.flashcard-word')
+  // New cards come in course order; the English side is heard at once.
+  await expect(cardWord).toHaveText(chapterWords[0].word)
+  await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
+  await expect(page.getByText('کارت ۱ از ۱۰')).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  await expectNoHorizontalOverflow(page)
+
+  // Space turns the card; the main grade then takes focus.
+  const flipButton = page.getByRole('button', { name: 'نمایش پاسخ' })
+  await expect(flipButton).toBeFocused()
+  await page.keyboard.press('Space')
+  await expect(card).toContainText(chapterWords[0].fa)
+  const good = page.getByRole('button', { name: /^بلد بودم/ })
+  await expect(good).toBeFocused()
+  await expect(good).toContainText('۲ روز بعد')
+  await page.keyboard.press('3')
+
+  // A forgotten card comes back later in the same session.
+  await expect(cardWord).toHaveText(chapterWords[1].word)
+  await flipButton.click()
+  await page.getByRole('button', { name: /^بلد نبودم/ }).click()
+
+  const summary = page.getByTestId('flashcards-summary')
+  let sawMissedAgain = false
+  for (let steps = 0; ; steps++) {
+    expect(steps).toBeLessThan(20)
+    await expect(summary.or(flipButton)).toBeVisible()
+    if (await summary.isVisible()) break
+    if (await cardWord.textContent() === chapterWords[1].word) sawMissedAgain = true
+    await page.keyboard.press('Space')
+    await expect(good).toBeFocused()
+    await page.keyboard.press('Space')
+  }
+  expect(sawMissedAgain).toBe(true)
+  await expect(summary).toContainText('۱۰کارت مرورشده')
+  await expect(summary).toContainText('۹۰٪به یاد آمده')
+  await expect(summary).toContainText('۱به جعبهٔ ۱ برگشت')
+
+  await page.getByTestId('flashcards-summary').getByRole('button', { name: 'بازگشت به جعبه‌ها' }).click()
+  await expect(page.getByRole('button', { name: /^جعبهٔ ۲، هر ۲ روز: ۹ کارت$/ })).toBeVisible()
+  await expect(page.getByRole('button', { name: /^جعبهٔ ۱، هر روز: ۱ کارت$/ })).toBeVisible()
+
+  await page.reload()
+  await expect(page.getByRole('button', { name: /^جعبهٔ ۲، هر ۲ روز: ۹ کارت$/ })).toBeVisible()
+  await page.getByRole('button', { name: /^جعبهٔ ۱، / }).click()
+  const list = page.getByTestId('leitner-box-list')
+  await expect(list.locator('.glossary-row')).toHaveCount(1)
+  await expect(list.locator('.glossary-row')).toContainText(chapterWords[1].word)
+  await expect(list.locator('.glossary-row')).toContainText('فردا')
+  await expectNoHorizontalOverflow(page)
+})
+
+test('a due Leitner card shows on the map and can be answered by typing', async ({ page }) => {
+  const target = chapterWords[3]
+  const now = Date.now()
+  await openWithProgress(page, '/map', {
+    leitner: {
+      cards: { [target.id]: { box: 3, dueAt: now - 86_400_000, addedAt: now - 5 * 86_400_000, reviews: 2, correct: 2, lapses: 0 } },
+      settings: { direction: 'faEn', scope: 'all', newPerDay: 0, typed: true },
+      days: {},
+    },
+  })
+  const leitnerButton = page.getByRole('button', { name: 'جعبهٔ لایتنر، ۱ کارت برای مرور' })
+  await expect(leitnerButton.locator('.home-toolbar-badge')).toHaveText('۱')
+  await leitnerButton.click()
+
+  await page.getByRole('button', { name: /شروع مرور \(۱ کارت\)/ }).click()
+  const card = page.getByTestId('flashcard')
+  await expect(card.locator('.flashcard-meaning')).toHaveText(target.fa)
+  await expect(card.locator('.flashcard-word')).toHaveCount(0)
+  const answer = page.getByLabel('واژهٔ انگلیسی')
+  await expect(answer).toBeFocused()
+  await page.keyboard.type(` ${target.word.toUpperCase()} `)
+  await page.keyboard.press('Enter')
+  await expect(card).toContainText('درست است.')
+  await expect(card.locator('.flashcard-word')).toHaveText(target.word)
+  await expect.poll(() => spokenWord(page)).toBe(target.word)
+  await expect(page.getByRole('button', { name: /^بلد نبودم/ })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: /^بلد بودم/ })).toContainText('۸ روز بعد')
+  await page.keyboard.press('2')
+  await expect(page.getByTestId('flashcards-summary')).toContainText('۱یک جعبه بالاتر رفت')
+
+  await page.getByTestId('flashcards-summary').getByRole('button', { name: 'بازگشت به جعبه‌ها' }).click()
+  await expect(page.getByRole('button', { name: /^جعبهٔ ۴، هر ۸ روز: ۱ کارت$/ })).toBeVisible()
+  await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
+  await expect(page.getByRole('button', { name: 'جعبهٔ لایتنر', exact: true }).locator('.home-toolbar-badge')).toHaveCount(0)
 })
 
 test('glossary search tolerates Arabic-layout Persian letters and keeps filtering compact', async ({ page }) => {
@@ -1549,7 +1664,7 @@ test('narrow phones and wide screens retain the same page canvas across routes',
   await page.emulateMedia({ reducedMotion: 'reduce' })
   for (const width of [320, 1440]) {
     await page.setViewportSize({ width, height: 960 })
-    for (const route of ['map', 'glossary', 'settings', 'prep/b1c1']) {
+    for (const route of ['map', 'glossary', 'flashcards', 'settings', 'prep/b1c1']) {
       await page.goto(`/#/${route}`)
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
       const main = await page.getByRole('main').boundingBox()

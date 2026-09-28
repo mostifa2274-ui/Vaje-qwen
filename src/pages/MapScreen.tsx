@@ -1,7 +1,7 @@
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { learningHealth, bookHealth, certificationStatus, nextBestAction } from '../engine/analytics'
-import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
+import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, FlashcardsIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
 import {
   MIDPOINT_EXAM_ID,
   FINAL_EXAM_ID,
@@ -17,6 +17,7 @@ import {
   examRemediationPending,
 } from '../engine/gates'
 import { faNum, percent } from '../engine/format'
+import { leitnerSummary } from '../engine/leitner'
 
 interface Props {
   state: GhesseState
@@ -26,6 +27,7 @@ interface Props {
   onOpenExam: (id: string) => void
   onOpenReview: () => void
   onOpenGlossary: () => void
+  onOpenFlashcards: () => void
   onOpenSettings: () => void
 }
 
@@ -73,7 +75,7 @@ function ExamGate({
   )
 }
 
-export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenSettings }: Props) {
+export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenFlashcards, onOpenSettings }: Props) {
   const doneCount = CHAPTERS.filter(c => state.chapters[c.id]?.completed).length
   const health = learningHealth(state, now)
   const action = nextBestAction(state, now)
@@ -81,6 +83,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
     ? CHAPTERS.find(chapter => chapter.id === action.chapterId)?.titleFa ?? action.title
     : action.title
   const certification = certificationStatus(state, now)
+  const flashcardsDue = leitnerSummary(state, now).due
 
   function runNextAction() {
     if (action.kind === 'review' || action.kind === 'certification') return onOpenReview()
@@ -109,6 +112,17 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
           <button type="button" className="btn-paper home-toolbar-button px-3 text-sm" onClick={onOpenGlossary} aria-label="واژه‌نامه">
             <BookOpenTextIcon className="h-5 w-5" />
             <span>واژه‌نامه</span>
+          </button>
+          <button
+            type="button"
+            className="btn-paper home-toolbar-button px-3 text-sm"
+            onClick={onOpenFlashcards}
+            aria-label={flashcardsDue ? `جعبهٔ لایتنر، ${faNum(flashcardsDue)} کارت برای مرور` : 'جعبهٔ لایتنر'}
+            data-testid="open-flashcards"
+          >
+            <FlashcardsIcon className="h-5 w-5" />
+            <span>لایتنر</span>
+            {flashcardsDue > 0 && <span className="home-toolbar-badge" aria-hidden="true">{flashcardsDue > 99 ? '۹۹+' : faNum(flashcardsDue)}</span>}
           </button>
           <button type="button" className="btn-paper home-toolbar-icon" onClick={onOpenSettings} aria-label="تنظیمات">
             <SettingsIcon className="h-5 w-5" />
