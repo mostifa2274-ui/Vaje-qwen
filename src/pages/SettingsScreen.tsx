@@ -164,10 +164,10 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
               onChange={event => onChange({ ...state, narratorRate: clampNarrationRate(Number(event.target.value)) })}
             />
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator()}>
+              <button type="button" className="btn-paper w-full py-2.5" aria-label="شنیدن نمونهٔ صدای دوره" disabled={!state.soundOn} onClick={() => previewNarrator()}>
                 <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />شنیدن نمونه</span>
               </button>
-              <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator(true)}>
+              <button type="button" className="btn-paper w-full py-2.5" aria-label="شنیدن صدای جایگزین دستگاه" disabled={!state.soundOn} onClick={() => previewNarrator(true)}>
                 <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />صدای دستگاه</span>
               </button>
             </div>
