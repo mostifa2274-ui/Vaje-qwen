@@ -640,15 +640,21 @@ test('smart review speaks a spelling card on arrival and supports a keyboard-onl
   await expect(page.getByRole('button', { name: 'کارت بعدی ←' })).toBeFocused()
 })
 
-test('glossary search tolerates Arabic-layout Persian letters', async ({ page }) => {
+test('glossary search tolerates Arabic-layout Persian letters and keeps filtering compact', async ({ page }) => {
   await page.goto('/#/glossary')
   const search = page.getByLabel('جست‌وجو در واژه‌نامه')
+  const filter = page.getByLabel('فیلتر سطح تسلط')
+  await expect(filter).toBeVisible()
+  await expect(page.locator('.strip-scroll')).toHaveCount(0)
+
   // Arabic kaf and yeh, as typed on an Arabic keyboard layout.
   await search.fill('كيك')
   await expect(page.locator('.glossary-row')).toHaveCount(1)
   await expect(page.locator('.glossary-row')).toContainText('cake')
   await search.fill('BOOK')
   await expect(page.locator('.glossary-row').first()).toContainText('book')
+  await filter.selectOption('mastered')
+  await expectNoHorizontalOverflow(page)
 })
 
 test('map book cards use reviewed generated artwork and announce chapter status', async ({ page }) => {
