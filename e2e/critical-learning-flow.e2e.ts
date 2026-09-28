@@ -778,7 +778,16 @@ test('the end-of-book test checks half the words, a reading text and a listening
   await expect(page.getByText('پیشرفت این آزمون بازیابی شد؛ از همان‌جا ادامه می‌دهی.')).toBeVisible()
   await expect(counter).toHaveText(`واژهٔ ۴ از ${faNum(translationCount)}`)
   await expectRenderedAccessibilityContract(page)
-  for (let item = 4; item <= translationCount; item++) await answerTranslation()
+  // A short break every 40 words.
+  const passBreak = async (answered: number, total: number) => {
+    if (answered % 40 !== 0 || answered >= total) return
+    await expect(page.getByTestId('book-test-break')).toContainText(`${faNum(answered)} واژه از ${faNum(total)}`)
+    await page.getByRole('button', { name: 'ادامه ←' }).click()
+  }
+  for (let item = 4; item <= translationCount; item++) {
+    await answerTranslation()
+    await passBreak(item, translationCount)
+  }
 
   // 2. Listening words: options wait for the word to be heard.
   await expect(page.getByRole('heading', { level: 2, name: 'شنیدن واژه‌ها' })).toBeVisible()
@@ -790,6 +799,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
     await expect(listeningOptions.first()).toBeEnabled()
     const heard = bookWords.get(await spokenWord(page))!
     await page.getByTestId('book-test-listening-options').getByRole('button', { name: heard.fa, exact: true }).click()
+    await passBreak(item, listeningCount)
   }
 
   // 3. Reading: the text is on screen with its five questions.
@@ -834,7 +844,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
   const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').exams?.['book-1'])
   expect(stored).toMatchObject({ attempts: 1, passed: true, lastScore: 1, missedWordIds: [] })
   expect(stored.testedWordIds).toHaveLength(145)
-  expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:book-test:v2:1'))).toBeNull()
+  expect(await page.evaluate(() => window.localStorage.getItem('ghesse:book-test:v3:1'))).toBeNull()
 
   await page.getByRole('button', { name: 'ادامهٔ مسیر ←' }).click()
   await expect(lockedFirstChapters).toHaveCount(lockedBefore - 1)

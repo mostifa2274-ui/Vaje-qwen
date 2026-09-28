@@ -168,17 +168,51 @@ function selectSection(
   return order.map(wordId => picked.find(item => item.wordId === wordId)!)
 }
 
+const introducedBook = new Map<string, number>()
+for (let source = 1; source <= 8; source++) for (const id of bookWordIds(source)) if (!introducedBook.has(id)) introducedBook.set(id, source)
+
+function listeningItem(book: number, attempt: number, wordId: string, source: number): BookTestListeningWord {
+  return {
+    wordId,
+    book: source,
+    // The ':0' suffix keeps option sets identical to earlier releases, so a
+    // test in progress when the app updates still matches its saved draft.
+    options: listeningChoiceOptions(WORD_BY_ID.get(wordId)!, VOCAB, `book-test:${book}:${attempt}:listen:${wordId}:0`),
+  }
+}
+
+/**
+ * Rebuild a test from its two word lists (a saved draft), so an unfinished
+ * test resumes with the same words even after reviews change which words
+ * would be picked now. Returns undefined for any list the test could not hold.
+ */
+export function bookTestFromWords(book: number, attempt: number, translationIds: unknown, listeningIds: unknown): BookTest | undefined {
+  if (!BOOK_TEST_CONTENT.has(book) || !Array.isArray(translationIds) || !Array.isArray(listeningIds)) return undefined
+  const all = [...translationIds, ...listeningIds]
+  if (all.some(id => typeof id !== 'string') || new Set(all).size !== all.length) return undefined
+  const valid = (id: string, eligible: (word: WordEntry) => boolean) => {
+    const source = introducedBook.get(id)
+    const word = WORD_BY_ID.get(id)
+    return source !== undefined && source <= book && word !== undefined && eligible(word)
+  }
+  if (!(translationIds as string[]).every(id => valid(id, eligibleForTranslation))) return undefined
+  if (!(listeningIds as string[]).every(id => valid(id, eligibleForListening))) return undefined
+  return {
+    book,
+    attempt,
+    translation: (translationIds as string[]).map(wordId => ({ wordId, book: introducedBook.get(wordId)! })),
+    listeningWords: (listeningIds as string[]).map(wordId => listeningItem(book, attempt, wordId, introducedBook.get(wordId)!)),
+    ...bookTestTextsForAttempt(book, attempt),
+  }
+}
+
 export function buildBookTest(book: number, state: GhesseState, attempt: number): BookTest | undefined {
   const content = BOOK_TEST_CONTENT.get(book)
   if (!content) return undefined
   const taken = new Set<string>()
   const translation = selectSection(book, state, attempt, 'translation', eligibleForTranslation, taken)
-  const listeningWords = selectSection(book, state, attempt, 'listeningWords', eligibleForListening, taken).map(item => ({
-    ...item,
-    // The ':0' suffix keeps option sets identical to earlier releases, so a
-    // test in progress when the app updates still matches its saved draft.
-    options: listeningChoiceOptions(WORD_BY_ID.get(item.wordId)!, VOCAB, `book-test:${book}:${attempt}:listen:${item.wordId}:0`),
-  }))
+  const listeningWords = selectSection(book, state, attempt, 'listeningWords', eligibleForListening, taken)
+    .map(item => listeningItem(book, attempt, item.wordId, item.book))
   return { book, attempt, translation, listeningWords, ...bookTestTextsForAttempt(book, attempt) }
 }
 

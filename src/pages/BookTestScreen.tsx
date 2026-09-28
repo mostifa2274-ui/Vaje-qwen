@@ -16,7 +16,7 @@ import {
   type BookTestResult,
   type BookTestSection,
 } from '../engine/bookTest'
-import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft } from '../engine/bookTestDraft'
+import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft, savedBookTest } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
@@ -47,6 +47,9 @@ const SECTION_HINTS: Record<BookTestSection, string> = {
   listening: 'این متن‌ها فقط پخش می‌شوند و تا پایان آزمون نمایش داده نمی‌شوند. سؤال‌های هر متن پس از یک‌بار شنیدن کامل فعال می‌شوند و هر چند بار خواستی می‌توانی دوباره گوش کنی.',
 }
 
+// The word sections are long, so a short pause is offered every so many words.
+const BREAK_EVERY = 40
+
 function wallClockNow(): number {
   return Date.now()
 }
@@ -73,7 +76,12 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   const explore = state.exploreAll
   const [practice, setPractice] = useState(false)
   const unrecorded = preview || practice
-  const [test, setTest] = useState<BookTest>(() => buildBookTest(book, state, (state.exams[examId]?.attempts ?? 0) + 1)!)
+  // An unfinished attempt resumes with its own words, even after reviews
+  // would make a fresh build pick others.
+  const [test, setTest] = useState<BookTest>(() => {
+    const attempt = (state.exams[examId]?.attempts ?? 0) + 1
+    return savedBookTest(book, attempt) ?? buildBookTest(book, state, attempt)!
+  })
   const [initialDraft] = useState(() => loadBookTestDraft(test))
   const [resumed, setResumed] = useState(Boolean(initialDraft))
   const [phase, setPhase] = useState<Phase>(() => initialDraft?.section ?? 'intro')
@@ -85,6 +93,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   // Set once explore mode opens a section out of order, so the draft keeps it.
   const [jumped, setJumped] = useState(() => initialDraft?.jumped === true)
   const [typed, setTyped] = useState('')
+  const [onBreak, setOnBreak] = useState(false)
   const [wordReady, setWordReady] = useState(false)
   const [wordNotice, setWordNotice] = useState('')
   const [result, setResult] = useState<BookTestResult | null>(null)
@@ -96,8 +105,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   const translationIndex = answers.translation.length
   const listenIndex = answers.listeningWords.length
-  const translationWord = phase === 'translation' ? WORD_BY_ID.get(test.translation[translationIndex]?.wordId ?? '') : undefined
-  const listenItem = phase === 'listeningWords' ? test.listeningWords[listenIndex] : undefined
+  const translationWord = phase === 'translation' && !onBreak ? WORD_BY_ID.get(test.translation[translationIndex]?.wordId ?? '') : undefined
+  const listenItem = phase === 'listeningWords' && !onBreak ? test.listeningWords[listenIndex] : undefined
   const listenWord = listenItem ? WORD_BY_ID.get(listenItem.wordId) : undefined
 
   const heardListening = useCallback((slot: number) => {
@@ -116,13 +125,13 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   useEffect(() => {
     itemStartedAt.current = wallClockNow()
-  }, [phase, translationIndex, listenIndex])
+  }, [phase, translationIndex, listenIndex, onBreak])
 
   useEffect(() => {
-    if (phase !== 'translation') return
+    if (phase !== 'translation' || onBreak) return
     const frame = window.requestAnimationFrame(() => inputRef.current?.focus({ preventScroll: true }))
     return () => window.cancelAnimationFrame(frame)
-  }, [phase, translationIndex])
+  }, [onBreak, phase, translationIndex])
 
   useEffect(() => {
     if (!isSection(phase)) return
@@ -173,6 +182,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setTimings({ ...timings, [`translation:${translationIndex}`]: elapsed })
     setTyped('')
     if (translation.length >= test.translation.length) openSection(nextOpenSection({ ...answers, translation }, 'translation'))
+    else if (translation.length % BREAK_EVERY === 0) setOnBreak(true)
   }
 
   function answerListeningWord(chosen: string) {
@@ -186,6 +196,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setWordReady(false)
     setWordNotice('')
     if (listeningWords.length >= test.listeningWords.length) openSection(nextOpenSection({ ...answers, listeningWords }, 'listeningWords'))
+    else if (listeningWords.length % BREAK_EVERY === 0) setOnBreak(true)
   }
 
   // The next section still to do; in the normal order that is simply the next one.
@@ -196,6 +207,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   }
 
   function openSection(section: BookTestSection) {
+    setOnBreak(false)
     setTextIndex(0)
     setPhase(section)
   }
@@ -258,6 +270,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     clearBookTestDraft(book)
     wordToken.current++
     setTest(next)
+    setOnBreak(false)
     setAnswers(emptyBookTestAnswers(next))
     setTimings({})
     setListeningHeard(next.listening.map(() => false))
@@ -430,7 +443,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             واژه‌ها نیمی از همهٔ واژه‌های {book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} هستند ({faNum(test.translation.length + test.listeningWords.length)} واژه) و متن‌ها فقط با واژه‌هایی نوشته شده‌اند که تا اینجا یاد گرفته‌ای.
             برای قبولی، هر بخش باید {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ یعنی حتی یک پاسخ نادرست هم پذیرفته نمی‌شود. تا پایان آزمون بازخوردی نمایش داده نمی‌شود؛ بعد از آن همهٔ پاسخ‌ها، ترجمهٔ متن‌ها و متن شنیداری را می‌بینی.
           </p>
-          <div className="paper-note mt-4">دو بخش شنیداری به صدای انگلیسی دستگاه نیاز دارند؛ اگر می‌توانی از هدفون استفاده کن. آزمون طولانی است؛ پیشرفتت در همین زبانه ذخیره می‌شود و با تازه‌کردن صفحه از دست نمی‌رود.</div>
+          <div className="paper-note mt-4">دو بخش شنیداری به صدای انگلیسی دستگاه نیاز دارند؛ اگر می‌توانی از هدفون استفاده کن. آزمون طولانی است؛ هر ۴۰ واژه یک وقفهٔ کوتاه داری و پیشرفتت ذخیره می‌شود، حتی اگر برنامه را ببندی.</div>
           <button type="button" className="btn-crimson mt-5 w-full py-3" onClick={() => setPhase('translation')}>شروع آزمون</button>
         </section>
       </div>
@@ -478,6 +491,17 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
         <div className="text-xs font-bold" style={{ color: 'var(--crimson-deep)' }}>بخش {faNum(sectionNumber + 1)} از {faNum(BOOK_TEST_SECTIONS.length)}</div>
         <h2 id="section-heading" ref={headingRef} tabIndex={-1} className="mt-1 text-lg font-extrabold">{SECTION_LABELS[phase]}</h2>
         <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{SECTION_HINTS[phase]}</p>
+
+        {onBreak && (phase === 'translation' || phase === 'listeningWords') && (
+          <div className="mt-5 text-center" data-testid="book-test-break">
+            <div className="text-lg font-extrabold">وقفهٔ کوتاه</div>
+            <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+              {faNum(phase === 'translation' ? translationIndex : listenIndex)} واژه از {faNum(phase === 'translation' ? test.translation.length : test.listeningWords.length)} را جواب داده‌ای.
+              چند لحظه استراحت کن؛ پیشرفتت ذخیره شده است و حتی با بستن برنامه از دست نمی‌رود.
+            </p>
+            <button type="button" className="btn-ink mt-4 w-full py-3" onClick={() => setOnBreak(false)}>ادامه ←</button>
+          </div>
+        )}
 
         {phase === 'translation' && translationWord && (
           <>

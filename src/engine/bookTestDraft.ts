@@ -1,8 +1,13 @@
-import { BOOK_TEST_SECTIONS, bookTestSignature, type BookTest, type BookTestAnswers, type BookTestSection } from './bookTest'
+import { BOOK_TEST_DRAFT_PREFIX } from './store'
+import { BOOK_TEST_SECTIONS, bookTestFromWords, bookTestSignature, type BookTest, type BookTestAnswers, type BookTestSection } from './bookTest'
 
-// Session-only resume for an unfinished end-of-book test, like the other drafts.
+// Resume for an unfinished end-of-book test. The tests are long (half of
+// every studied book's words), so unlike the other drafts this one is kept
+// in localStorage and survives closing the tab. It also holds the test's
+// own word lists, so the same test comes back even after reviews change
+// which words a fresh build would pick.
 export interface BookTestDraft {
-  version: 2
+  version: 3
   book: number
   attempt: number
   signature: string
@@ -15,11 +20,13 @@ export interface BookTestDraft {
   listeningHeard: boolean[]
   /** Explore mode opened sections out of order. */
   jumped?: true
+  /** The test's words, in order. */
+  words: { translation: string[]; listeningWords: string[] }
   updatedAt: number
 }
 
-const PREFIX = 'ghesse:book-test:v2:'
-const MAX_AGE_MS = 24 * 60 * 60 * 1000
+const PREFIX = `${BOOK_TEST_DRAFT_PREFIX}v3:`
+const MAX_AGE_MS = 14 * 24 * 60 * 60 * 1000
 const MAX_TYPED_LENGTH = 200
 
 function storageKey(book: number): string {
@@ -58,7 +65,7 @@ const touched = (chosen: Array<Array<number | null>>) => chosen.some(text => tex
 export function sanitizeBookTestDraft(raw: unknown, test: BookTest, now = Date.now()): BookTestDraft | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const value = raw as Partial<BookTestDraft>
-  if (value.version !== 2 || value.book !== test.book || value.attempt !== test.attempt) return undefined
+  if (value.version !== 3 || value.book !== test.book || value.attempt !== test.attempt) return undefined
   if (value.signature !== bookTestSignature(test)) return undefined
   if (typeof value.updatedAt !== 'number' || now - value.updatedAt > MAX_AGE_MS || value.updatedAt - now > 5 * 60 * 1000) return undefined
   if (!value.section || !BOOK_TEST_SECTIONS.includes(value.section)) return undefined
@@ -115,10 +122,11 @@ export function sanitizeBookTestDraft(raw: unknown, test: BookTest, now = Date.n
   }
 
   return {
-    version: 2,
+    version: 3,
     book: test.book,
     attempt: test.attempt,
     signature: value.signature,
+    words: wordsOf(test),
     section: value.section,
     textIndex,
     answers: { translation: [...translation], listeningWords: [...listeningWords], reading, listening },
@@ -129,13 +137,32 @@ export function sanitizeBookTestDraft(raw: unknown, test: BookTest, now = Date.n
   }
 }
 
-export function loadBookTestDraft(test: BookTest, now = Date.now()): BookTestDraft | undefined {
-  if (typeof sessionStorage === 'undefined') return undefined
+function wordsOf(test: BookTest): BookTestDraft['words'] {
+  return { translation: test.translation.map(item => item.wordId), listeningWords: test.listeningWords.map(item => item.wordId) }
+}
+
+/** The test of an unfinished attempt, rebuilt from its saved words. */
+export function savedBookTest(book: number, attempt: number, now = Date.now()): BookTest | undefined {
+  if (typeof localStorage === 'undefined') return undefined
   try {
-    const raw = sessionStorage.getItem(storageKey(test.book))
+    const raw = localStorage.getItem(storageKey(book))
+    if (!raw) return undefined
+    const value = JSON.parse(raw) as Partial<BookTestDraft>
+    if (value.version !== 3 || value.book !== book || value.attempt !== attempt || !value.words) return undefined
+    const test = bookTestFromWords(book, attempt, value.words.translation, value.words.listeningWords)
+    return test && sanitizeBookTestDraft(value, test, now) ? test : undefined
+  } catch {
+    return undefined
+  }
+}
+
+export function loadBookTestDraft(test: BookTest, now = Date.now()): BookTestDraft | undefined {
+  if (typeof localStorage === 'undefined') return undefined
+  try {
+    const raw = localStorage.getItem(storageKey(test.book))
     if (!raw) return undefined
     const draft = sanitizeBookTestDraft(JSON.parse(raw), test, now)
-    if (!draft) sessionStorage.removeItem(storageKey(test.book))
+    if (!draft) localStorage.removeItem(storageKey(test.book))
     return draft
   } catch {
     return undefined
@@ -147,9 +174,9 @@ export function saveBookTestDraft(
   progress: Pick<BookTestDraft, 'section' | 'textIndex' | 'answers' | 'timings' | 'listeningHeard' | 'jumped'>,
   now = Date.now(),
 ): void {
-  if (typeof sessionStorage === 'undefined') return
+  if (typeof localStorage === 'undefined') return
   const draft = sanitizeBookTestDraft({
-    version: 2,
+    version: 3,
     book: test.book,
     attempt: test.attempt,
     signature: bookTestSignature(test),
@@ -157,17 +184,17 @@ export function saveBookTestDraft(
     updatedAt: now,
   }, test, now)
   try {
-    if (draft) sessionStorage.setItem(storageKey(test.book), JSON.stringify(draft))
-    else sessionStorage.removeItem(storageKey(test.book))
+    if (draft) localStorage.setItem(storageKey(test.book), JSON.stringify(draft))
+    else localStorage.removeItem(storageKey(test.book))
   } catch {
     // Resume is optional resilience only.
   }
 }
 
 export function clearBookTestDraft(book: number): void {
-  if (typeof sessionStorage === 'undefined') return
+  if (typeof localStorage === 'undefined') return
   try {
-    sessionStorage.removeItem(storageKey(book))
+    localStorage.removeItem(storageKey(book))
   } catch {
     // Resume is optional resilience only.
   }

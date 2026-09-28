@@ -1,24 +1,33 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { CHAPTERS } from '../data/chapters'
-import { emptyState } from './store'
-import { blankWordProgress } from './review'
+import { clearSessionDrafts, emptyState } from './store'
+import { blankWordProgress, recordRetrieval } from './review'
 import { bookTestSignature, buildBookTest, emptyBookTestAnswers, type BookTest } from './bookTest'
-import { clearBookTestDraft, loadBookTestDraft, sanitizeBookTestDraft, saveBookTestDraft, type BookTestDraft } from './bookTestDraft'
+import { clearBookTestDraft, loadBookTestDraft, sanitizeBookTestDraft, saveBookTestDraft, savedBookTest, type BookTestDraft } from './bookTestDraft'
 
+function memoryStorage(mem: Map<string, string>): Storage {
+  return {
+    getItem: (key: string) => mem.get(key) ?? null,
+    setItem: (key: string, value: string) => void mem.set(key, value),
+    removeItem: (key: string) => void mem.delete(key),
+    clear: () => mem.clear(),
+    key: (index: number) => [...mem.keys()][index] ?? null,
+    get length() { return mem.size },
+  } as Storage
+}
 const sessionMem = new Map<string, string>()
-globalThis.sessionStorage = {
-  getItem: (key: string) => sessionMem.get(key) ?? null,
-  setItem: (key: string, value: string) => void sessionMem.set(key, value),
-  removeItem: (key: string) => void sessionMem.delete(key),
-  clear: () => sessionMem.clear(),
-  key: (index: number) => [...sessionMem.keys()][index] ?? null,
-  get length() { return sessionMem.size },
-} as Storage
+const localMem = new Map<string, string>()
+globalThis.sessionStorage = memoryStorage(sessionMem)
+globalThis.localStorage = memoryStorage(localMem)
 
-function bookOneTest(attempt = 1): BookTest {
+function bookOneState() {
   const state = emptyState(1, 'b1c1')
   for (const chapter of CHAPTERS.filter(ch => ch.book === 1)) for (const id of chapter.new) state.words[id] = blankWordProgress(1)
-  return buildBookTest(1, state, attempt)!
+  return state
+}
+
+function bookOneTest(attempt = 1): BookTest {
+  return buildBookTest(1, bookOneState(), attempt)!
 }
 
 function draft(test: BookTest, overrides: Partial<BookTestDraft> = {}): BookTestDraft {
@@ -26,10 +35,11 @@ function draft(test: BookTest, overrides: Partial<BookTestDraft> = {}): BookTest
   answers.translation = test.translation.map(() => 'پاسخ')
   answers.listeningWords = test.listeningWords.slice(0, 3).map(item => item.wordId)
   return {
-    version: 2,
+    version: 3,
     book: 1,
     attempt: test.attempt,
     signature: bookTestSignature(test),
+    words: { translation: test.translation.map(item => item.wordId), listeningWords: test.listeningWords.map(item => item.wordId) },
     section: 'listeningWords',
     textIndex: 0,
     answers,
@@ -41,7 +51,10 @@ function draft(test: BookTest, overrides: Partial<BookTestDraft> = {}): BookTest
 }
 
 describe('end-of-book test drafts', () => {
-  beforeEach(() => sessionMem.clear())
+  beforeEach(() => {
+    sessionMem.clear()
+    localMem.clear()
+  })
 
   it('round-trips unfinished progress for the same test', () => {
     const test = bookOneTest()
@@ -56,7 +69,7 @@ describe('end-of-book test drafts', () => {
     const test = bookOneTest()
     expect(sanitizeBookTestDraft(draft(test), bookOneTest(2), 1_000)).toBeUndefined()
     expect(sanitizeBookTestDraft(draft(test, { signature: 'tampered' }), test, 1_000)).toBeUndefined()
-    expect(sanitizeBookTestDraft(draft(test), test, 1_000 + 25 * 60 * 60 * 1000)).toBeUndefined()
+    expect(sanitizeBookTestDraft(draft(test), test, 1_000 + 15 * 24 * 60 * 60 * 1000)).toBeUndefined()
   })
 
   it('rejects answers that skip or run ahead of the section order', () => {
@@ -111,8 +124,9 @@ describe('end-of-book test drafts', () => {
     answers.listeningWords = test.listeningWords.map(() => '')
     answers.reading[0] = test.reading[0].questions.map(() => 1)
     const value: BookTestDraft = {
-      version: 2, book: 3, attempt: 1, signature: bookTestSignature(test), section: 'reading', textIndex: 1,
+      version: 3, book: 3, attempt: 1, signature: bookTestSignature(test), section: 'reading', textIndex: 1,
       answers, timings: {}, listeningHeard: [false, false], updatedAt: 1_000,
+      words: { translation: test.translation.map(item => item.wordId), listeningWords: test.listeningWords.map(item => item.wordId) },
     }
     expect(sanitizeBookTestDraft(value, test, 1_000)).toMatchObject({ textIndex: 1 })
     expect(sanitizeBookTestDraft({ ...value, textIndex: 2 }, test, 1_000)).toBeUndefined()
@@ -124,5 +138,38 @@ describe('end-of-book test drafts', () => {
     const test = bookOneTest()
     const loaded = sanitizeBookTestDraft(draft(test, { timings: { 'translation:0': 900, 'reading:0': 5, 'listeningWords:1': -3 } }), test, 1_000)
     expect(loaded?.timings).toEqual({ 'translation:0': 900 })
+  })
+
+  it('keeps an unfinished test across tabs, with its own words even after reviews', () => {
+    const state = bookOneState()
+    const test = buildBookTest(1, state, 1)!
+    saveBookTestDraft(test, draft(test), 1_000)
+    expect(sessionMem.size).toBe(0)
+    expect(localMem.size).toBe(1)
+
+    // Reviews change which words are the weakest, so a fresh build differs.
+    const reviewed = structuredClone(state)
+    for (const item of test.translation.slice(0, 40)) {
+      reviewed.words[item.wordId] = recordRetrieval(reviewed.words[item.wordId], true, 'reverse', 5_000, 'review')
+    }
+    expect(bookTestSignature(buildBookTest(1, reviewed, 1)!)).not.toBe(bookTestSignature(test))
+    const resumed = savedBookTest(1, 1, 2_000)!
+    expect(resumed).toEqual(test)
+    expect(loadBookTestDraft(resumed, 2_000)?.answers.translation).toHaveLength(test.translation.length)
+    expect(savedBookTest(1, 2, 2_000)).toBeUndefined()
+
+    // A tampered word list is refused.
+    const stored = JSON.parse(localMem.values().next().value!)
+    stored.words.translation[0] = 'not-a-word'
+    localMem.set([...localMem.keys()][0], JSON.stringify(stored))
+    expect(savedBookTest(1, 1, 2_000)).toBeUndefined()
+  })
+
+  it('is dropped with the other drafts on a reset or an import', () => {
+    const test = bookOneTest()
+    saveBookTestDraft(test, draft(test), Date.now())
+    localMem.set('ghesse:state:v6', '{}')
+    clearSessionDrafts()
+    expect([...localMem.keys()]).toEqual(['ghesse:state:v6'])
   })
 })
