@@ -132,8 +132,8 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
 
       <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
         <div><b>{faNum(doneCount)}</b><span>فصل تمام‌شده</span></div>
-        <div><b>{faNum(health.dueNow)}</b><span>مرور سررسید</span></div>
         <div><b>{faNum(health.mastered)}</b><span>واژهٔ مسلط</span></div>
+        <div><b>{percent(health.durableCoverage)}</b><span>قوی یا مسلط</span></div>
       </section>
 
       <button type="button" className={`review-hero mt-4 w-full ${health.dueNow ? 'due' : ''}`} onClick={onOpenReview}>
