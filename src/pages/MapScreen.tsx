@@ -156,7 +156,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
         </p>
       </details>
 
-      <div className="mt-6 space-y-6">
+      <div className="mt-6 space-y-4">
         {BOOKS.map(meta => {
           const chapters = chaptersOfBook(meta.book)
           const bookAvailable = chapters.some(ch => canOpenChapter(state, ch.id) || state.chapters[ch.id]?.completed)
