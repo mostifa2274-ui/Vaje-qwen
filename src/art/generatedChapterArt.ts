@@ -55,8 +55,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b2c3: {
     src: publicAsset('art/chapters/b2c3.webp'),
-    altFa: 'مینا در پارک از دو پسری که فوتبال بازی می‌کنند دربارهٔ نینو می‌پرسد.',
-    altEn: 'Mina asks two boys playing football in the park whether they have seen Nino.',
+    altFa: 'مینا توپ را به دو پسری که در پارک فوتبال بازی می‌کنند برمی‌گرداند.',
+    altEn: 'Mina returns the ball to two boys playing football in the park.',
     width: 640,
     height: 336,
   },
