@@ -98,7 +98,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <h1 className="text-2xl font-extrabold">تنظیمات</h1>
       </header>
 
-      <div className="mt-6 space-y-4">
+      <div className="settings-list mt-5">
         <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
             <div className="font-bold">صدا</div>
