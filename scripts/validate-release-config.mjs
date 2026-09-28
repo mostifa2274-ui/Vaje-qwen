@@ -24,6 +24,15 @@ assert(manifest.schemaVersion === 1, 'provenance record schemaVersion must be 1'
 assert(['blocked', 'cleared'].includes(manifest.status), 'provenance status must remain explicit')
 assert(manifest.activeVocabulary === 'src/data/vocabulary.json', 'record must identify the active deck')
 
+const vocabularyBytes = readFileSync(join(root, manifest.activeVocabulary))
+const actualSha256 = createHash('sha256').update(vocabularyBytes).digest('hex')
+assert(
+  typeof manifest.activeVocabularySha256 === 'string'
+    && /^[a-f0-9]{64}$/.test(manifest.activeVocabularySha256)
+    && manifest.activeVocabularySha256 === actualSha256,
+  'provenance record must match the exact active vocabulary bytes',
+)
+
 if (manifest.status === 'cleared') {
   assert(
     ['documented-redistribution-rights', 'independent-reconstruction'].includes(manifest.basis),
@@ -40,14 +49,6 @@ if (manifest.status === 'cleared') {
   assert(
     typeof manifest.clearedAt === 'string' && !Number.isNaN(Date.parse(manifest.clearedAt)),
     'cleared provenance must record a valid clearance date',
-  )
-  const vocabularyBytes = readFileSync(join(root, manifest.activeVocabulary))
-  const actualSha256 = createHash('sha256').update(vocabularyBytes).digest('hex')
-  assert(
-    typeof manifest.activeVocabularySha256 === 'string'
-      && /^[a-f0-9]{64}$/.test(manifest.activeVocabularySha256)
-      && manifest.activeVocabularySha256 === actualSha256,
-    'cleared provenance must match the exact active vocabulary bytes',
   )
 }
 
