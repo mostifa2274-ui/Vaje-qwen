@@ -20,13 +20,22 @@ export default defineConfig({
     {
       name: 'phone',
       use: {
+        browserName: 'chromium',
         viewport: { width: 412, height: 915 },
       },
     },
     {
       name: 'tablet',
       use: {
+        browserName: 'chromium',
         viewport: { width: 834, height: 1112 },
+      },
+    },
+    {
+      name: 'webkit-phone',
+      use: {
+        browserName: 'webkit',
+        viewport: { width: 390, height: 844 },
       },
     },
   ],
