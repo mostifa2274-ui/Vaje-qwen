@@ -1,4 +1,4 @@
-import type { BuiltExam } from './exams'
+import type { BuiltExam, ExamComprehensionAnswers } from './exams'
 
 export const EXAM_BREAK_EVERY = 16
 
@@ -14,6 +14,13 @@ export interface ExamDraft {
   onBreak: boolean
   /** Explore mode skipped questions, so answers may have gaps. */
   skipped?: true
+  /** Set once the word questions are done and the texts are open. */
+  stage?: 'texts'
+  /** Current text: the reading texts first, then the listening ones. */
+  textIndex?: number
+  comprehension?: ExamComprehensionAnswers
+  /** Listening texts heard in full at least once. */
+  heard?: boolean[]
   updatedAt: number
 }
 
@@ -26,12 +33,40 @@ function storageKey(examId: string): string {
 }
 
 export function examSignature(exam: BuiltExam): string {
-  return JSON.stringify(exam.questions.map(question => [
-    question.wordId,
-    question.mode,
-    question.answerId,
-    question.options?.map(option => option.id) ?? [],
-  ]))
+  return JSON.stringify([
+    exam.questions.map(question => [
+      question.wordId,
+      question.mode,
+      question.answerId,
+      question.options?.map(option => option.id) ?? [],
+    ]),
+    exam.reading.map(text => text.id),
+    exam.listening.map(text => text.id),
+  ])
+}
+
+function safeComprehension(raw: unknown, exam: BuiltExam): ExamComprehensionAnswers | undefined {
+  if (!raw || typeof raw !== 'object') return undefined
+  const value = raw as Partial<ExamComprehensionAnswers>
+  const part = (answers: unknown, texts: BuiltExam['reading']): Array<Array<number | null>> | undefined => {
+    if (!Array.isArray(answers) || answers.length !== texts.length) return undefined
+    const result: Array<Array<number | null>> = []
+    for (const [index, text] of texts.entries()) {
+      const chosen: unknown = answers[index]
+      if (!Array.isArray(chosen) || chosen.length !== text.questions.length) return undefined
+      const clean: Array<number | null> = []
+      for (const [question, choice] of chosen.entries()) {
+        if (choice === null) clean.push(null)
+        else if (typeof choice === 'number' && Number.isInteger(choice) && choice >= 0 && choice < text.questions[question].options.length) clean.push(choice)
+        else return undefined
+      }
+      result.push(clean)
+    }
+    return result
+  }
+  const reading = part(value.reading, exam.reading)
+  const listening = part(value.listening, exam.listening)
+  return reading && listening ? { reading, listening } : undefined
 }
 
 // Normally every question before the current one is answered. A draft from
@@ -99,12 +134,33 @@ export function sanitizeExamDraft(
 
   const skipped = value.skipped === true
   const total = exam.questions.length
-  const answers = safeSequentialAnswers(value.answers, index, total, skipped)
-  const timings = safeSequentialTimings(value.timings, index, total, skipped)
+  const textCount = exam.reading.length + exam.listening.length
+  const texts = value.stage === 'texts' && textCount > 0
+  // In the texts stage every word question lies behind the learner.
+  const answeredUpTo = texts ? total : index
+  const answers = safeSequentialAnswers(value.answers, answeredUpTo, total, skipped)
+  const timings = safeSequentialTimings(value.timings, answeredUpTo, total, skipped)
   if (!answers || !timings) return undefined
 
-  const onBreak = value.onBreak === true && index > 0 && index % EXAM_BREAK_EVERY === 0
-  const typed = typeof value.typed === 'string' ? value.typed.slice(0, MAX_TYPED_LENGTH) : ''
+  let textFields: Pick<ExamDraft, 'stage' | 'textIndex' | 'comprehension' | 'heard'> = {}
+  if (texts) {
+    const textIndex = value.textIndex
+    if (typeof textIndex !== 'number' || !Number.isInteger(textIndex) || textIndex < 0 || textIndex >= textCount) return undefined
+    const comprehension = safeComprehension(value.comprehension, exam)
+    if (!comprehension) return undefined
+    const heard = value.heard
+    if (!Array.isArray(heard) || heard.length !== exam.listening.length || heard.some(item => typeof item !== 'boolean')) return undefined
+    // Listening answers need a full hearing first.
+    if (comprehension.listening.some((chosen, text) => !heard[text] && chosen.some(choice => choice !== null))) return undefined
+    if (!skipped) {
+      const done = [...comprehension.reading, ...comprehension.listening]
+      if (done.slice(0, textIndex).some(chosen => chosen.some(choice => choice === null))) return undefined
+    }
+    textFields = { stage: 'texts', textIndex, comprehension, heard: [...heard] }
+  }
+
+  const onBreak = !texts && value.onBreak === true && index > 0 && index % EXAM_BREAK_EVERY === 0
+  const typed = texts ? '' : typeof value.typed === 'string' ? value.typed.slice(0, MAX_TYPED_LENGTH) : ''
 
   return {
     version: 1,
@@ -117,6 +173,7 @@ export function sanitizeExamDraft(
     typed,
     onBreak,
     ...(skipped ? { skipped: true as const } : {}),
+    ...textFields,
     updatedAt: typeof value.updatedAt === 'number' && Number.isFinite(value.updatedAt) && value.updatedAt > 0
       ? value.updatedAt
       : Date.now(),

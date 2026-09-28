@@ -1,0 +1,112 @@
+{
+  "id": "b2c2-listening",
+  "titleEn": "Negar Helps",
+  "titleFa": "نگار کمک می‌کند",
+  "names": [
+    "Negar",
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "Negar is at home when her mother calls her. \"Mina is at our door,\" she says.",
+      "fa": "نگار خانه است که مادرش صدایش می‌زند. می‌گوید: «مینا دمِ در ماست.»"
+    },
+    {
+      "en": "Mina is Negar's best friend from school, but today she looks very sad.",
+      "fa": "مینا بهترین دوست نگار در مدرسه است، اما امروز خیلی غمگین به نظر می‌رسد."
+    },
+    {
+      "en": "Mina tells her about Nino and the red bird.",
+      "fa": "مینا درباره‌ی نینو و پرنده‌ی قرمز برایش تعریف می‌کند."
+    },
+    {
+      "en": "\"Let's help!\" Negar says, and her mother agrees.",
+      "fa": "نگار می‌گوید: «بیایید کمک کنیم!» و مادرش موافقت می‌کند."
+    },
+    {
+      "en": "They join Mina's family and walk from house to house.",
+      "fa": "به خانواده‌ی مینا می‌پیوندند و خانه به خانه می‌روند."
+    },
+    {
+      "en": "Negar sees something yellow under a car, but it is only a shopping bag.",
+      "fa": "نگار چیزی زرد زیر یک ماشین می‌بیند، اما فقط یک کیسه‌ی خرید است."
+    },
+    {
+      "en": "Everybody laughs, and Mina laughs a little too.",
+      "fa": "همه می‌خندند و مینا هم کمی می‌خندد."
+    },
+    {
+      "en": "At the new apartment, a nice woman gives them water and juice.",
+      "fa": "در آپارتمان تازه، زن مهربانی به آن‌ها آب و آب‌میوه می‌دهد."
+    },
+    {
+      "en": "Negar chooses orange juice because she is very thirsty.",
+      "fa": "نگار آب پرتقال را انتخاب می‌کند، چون خیلی تشنه است."
+    },
+    {
+      "en": "Then a young woman tells them about a small yellow chicken near the pool in the park.",
+      "fa": "بعد زن جوانی درباره‌ی یک جوجه‌ی زرد کوچک نزدیک استخر پارک برایشان می‌گوید."
+    },
+    {
+      "en": "That night, Negar says to her mother, \"I want Nino to come home. Mina is my best friend.\"",
+      "fa": "آن شب، نگار به مادرش می‌گوید: «می‌خواهم نینو برگردد خانه. مینا بهترین دوست من است.»"
+    },
+    {
+      "en": "\"Me too,\" her mother says. \"Tomorrow we will watch the street.\"",
+      "fa": "مادرش می‌گوید: «من هم. فردا خیابان را زیر نظر می‌گیریم.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "چه کسی به نگار می‌گوید مینا دمِ در است؟",
+      "options": [
+        "پدرش",
+        "مادرش",
+        "مینا",
+        "همسایه‌ی پیر"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "زیر ماشین چه بود؟",
+      "options": [
+        "نینو",
+        "یک کفش زرد",
+        "یک توپ",
+        "یک کیسه‌ی خرید"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "نگار چه چیزی انتخاب می‌کند؟",
+      "options": [
+        "آب پرتقال",
+        "آب",
+        "شیر",
+        "چای"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "زن جوان جوجه را کجا دیده است؟",
+      "options": [
+        "زیر یک ماشین",
+        "در باغچه‌اش",
+        "نزدیک استخر پارک",
+        "در مدرسه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مادر نگار می‌گوید فردا چه می‌کنند؟",
+      "options": [
+        "به پارک می‌روند",
+        "خیابان را زیر نظر می‌گیرند",
+        "به مدرسه می‌روند",
+        "آپارتمان تازه را می‌بینند"
+      ],
+      "answer": 1
+    }
+  ]
+}

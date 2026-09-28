@@ -1,0 +1,110 @@
+{
+  "id": "b4c4-listening",
+  "titleEn": "The Visitors",
+  "titleFa": "بازدیدکننده‌ها",
+  "names": [
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "Two visitors sit at a cafe in the big market. They come from a city far away.",
+      "fa": "دو بازدیدکننده در کافه‌ای در بازار بزرگ نشسته‌اند. از شهری دور آمده‌اند."
+    },
+    {
+      "en": "They have dollars and euros, but not much local money.",
+      "fa": "دلار و یورو دارند، اما پول محلی زیادی ندارند."
+    },
+    {
+      "en": "The menu shows the prices in dollars and euros too.",
+      "fa": "منو قیمت‌ها را به دلار و یورو هم نشان می‌دهد."
+    },
+    {
+      "en": "\"Good,\" one visitor says. \"We can pay in dollars.\"",
+      "fa": "یکی از بازدیدکننده‌ها می‌گوید: «خوب است. می‌توانیم دلار بدهیم.»"
+    },
+    {
+      "en": "They order tea and two pieces of chocolate cake.",
+      "fa": "چای و دو تکه کیک شکلاتی سفارش می‌دهند."
+    },
+    {
+      "en": "When he takes out his money, a pound goes under his chair.",
+      "fa": "وقتی پولش را بیرون می‌آورد، یک پوند زیر صندلی‌اش می‌رود."
+    },
+    {
+      "en": "He does not see it, but a girl at the next table sees it.",
+      "fa": "او آن را نمی‌بیند، اما دختری پشت میز کناری می‌بیندش."
+    },
+    {
+      "en": "She gets it from the floor and gives it back to him.",
+      "fa": "آن را از روی زمین برمی‌دارد و به او پس می‌دهد."
+    },
+    {
+      "en": "\"Thank you!\" he says. \"That is very nice of you.\"",
+      "fa": "می‌گوید: «ممنونم! خیلی لطف کردی.»"
+    },
+    {
+      "en": "Then he sees a picture of a yellow chicken on her table.",
+      "fa": "بعد عکس یک جوجه‌ی زرد را روی میز او می‌بیند."
+    },
+    {
+      "en": "\"Is that your chicken?\" he asks. \"Yes, his name is Nino,\" she answers.",
+      "fa": "می‌پرسد: «این جوجه‌ی توست؟» جواب می‌دهد: «بله، اسمش نینوست.»"
+    },
+    {
+      "en": "\"I will look for him at the market tomorrow,\" the visitor says. \"It costs nothing to look.\"",
+      "fa": "بازدیدکننده می‌گوید: «فردا در بازار دنبالش می‌گردم. گشتن که هزینه‌ای ندارد.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "بازدیدکننده‌ها از کجا آمده‌اند؟",
+      "options": [
+        "از همین محله",
+        "از یک مزرعه",
+        "از شهری دور",
+        "از مرکز شهر"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "با چه پولی می‌توانند حساب کنند؟",
+      "options": [
+        "با دلار",
+        "با پوند",
+        "با پول محلی",
+        "نمی‌توانند حساب کنند"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "چه سفارش می‌دهند؟",
+      "options": [
+        "قهوه و کلوچه",
+        "آب پرتقال",
+        "بستنی شکلاتی",
+        "چای و دو تکه کیک شکلاتی"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "دختر چه چیزی را به بازدیدکننده پس می‌دهد؟",
+      "options": [
+        "یک دلار",
+        "یک پوند",
+        "یک یورو",
+        "منو را"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "بازدیدکننده در آخر چه می‌گوید؟",
+      "options": [
+        "فردا در بازار دنبال نینو می‌گردد",
+        "به شهرش برمی‌گردد",
+        "یک جوجه دارد",
+        "کافه گران است"
+      ],
+      "answer": 0
+    }
+  ]
+}

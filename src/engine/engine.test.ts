@@ -19,7 +19,9 @@ import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, is
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus } from './analytics'
 import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
-import { READING_QUESTION_COUNT } from './comprehension'
+import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehension'
+
+const FULL_LISTENING = { firstPassCorrect: LISTENING_QUESTION_COUNT, total: LISTENING_QUESTION_COUNT, verifiedCorrect: LISTENING_QUESTION_COUNT }
 import { CHAPTERS, VOCAB } from '../data/chapters'
 import type { WordEntry } from './types'
 
@@ -365,8 +367,20 @@ describe('review and exam generation', () => {
       expect(exam.questions.length).toBe(exam.definition.questionCount)
       expect(new Set(exam.questions.map(q => q.wordId)).size).toBe(exam.questions.length)
       expect(exam.questions.some(q => q.mode === 'productive')).toBe(true)
+      const texts = id === 'midpoint-4' ? 2 : 4
+      expect(exam.reading).toHaveLength(texts)
+      expect(exam.listening).toHaveLength(texts)
       const allCorrect = Object.fromEntries(exam.questions.map(q => [q.index, true]))
-      expect(scoreExam(exam, allCorrect).passed).toBe(true)
+      const rightTexts = {
+        reading: exam.reading.map(text => text.questions.map(question => question.answer)),
+        listening: exam.listening.map(text => text.questions.map(question => question.answer)),
+      }
+      expect(scoreExam(exam, allCorrect, rightTexts).passed).toBe(true)
+      // 100% everywhere: one wrong word or one wrong text answer fails.
+      expect(scoreExam(exam, { ...allCorrect, 0: false }, rightTexts).passed).toBe(false)
+      const oneWrong = { ...rightTexts, listening: rightTexts.listening.map((answers, index) => index === 0 ? [(answers[0]! + 1) % 4, ...answers.slice(1)] : answers) }
+      expect(scoreExam(exam, allCorrect, oneWrong).passed).toBe(false)
+      expect(scoreExam(exam, allCorrect).passed).toBe(false)
     }
   })
 
@@ -414,6 +428,7 @@ describe('chapter completion scheduling', () => {
       READING_QUESTION_COUNT,
       READING_QUESTION_COUNT,
       READING_QUESTION_COUNT,
+      FULL_LISTENING,
       20,
       ['c1', 'c2'],
       'c2',
@@ -426,7 +441,7 @@ describe('chapter completion scheduling', () => {
   it('rejects a smaller perfect comprehension set such as 2/2', () => {
     let state = emptyState(1, 'c1')
     state = recordPreparedChapter(state, 'c1', ['cat'], ['cat'], ['cat'], [], [], 10)
-    const next = recordCompletedRead(state, 'c1', ['cat'], 2, 2, 2, 20, ['c1', 'c2'], 'c2')
+    const next = recordCompletedRead(state, 'c1', ['cat'], 2, 2, 2, FULL_LISTENING, 20, ['c1', 'c2'], 'c2')
     expect(next).toBe(state)
     expect(next.chapters.c1.completed).toBe(false)
   })
@@ -441,6 +456,7 @@ describe('chapter completion scheduling', () => {
       7,
       READING_QUESTION_COUNT,
       READING_QUESTION_COUNT - 1,
+      FULL_LISTENING,
       20,
       ['c1', 'c2'],
       'c2',
@@ -460,6 +476,7 @@ describe('chapter completion scheduling', () => {
       7,
       READING_QUESTION_COUNT,
       READING_QUESTION_COUNT,
+      FULL_LISTENING,
       20,
       ['c1', 'c2'],
       'c2',
@@ -469,6 +486,18 @@ describe('chapter completion scheduling', () => {
     expect(next.chapters.c1.checksTotal).toBe(READING_QUESTION_COUNT)
     expect(next.currentChapter).toBe('c2')
     expect(next.words.cat.dueAt).toBe(20 + 86_400_000)
+  })
+
+  it('rejects completion until every listening answer has been corrected too', () => {
+    let state = emptyState(1, 'c1')
+    state = recordPreparedChapter(state, 'c1', ['cat'], ['cat'], ['cat'], [], [], 10)
+    const partial = { firstPassCorrect: 3, total: LISTENING_QUESTION_COUNT, verifiedCorrect: LISTENING_QUESTION_COUNT - 1 }
+    expect(recordCompletedRead(state, 'c1', ['cat'], 10, READING_QUESTION_COUNT, READING_QUESTION_COUNT, partial, 20, ['c1', 'c2'], 'c2')).toBe(state)
+    const corrected = { ...partial, verifiedCorrect: LISTENING_QUESTION_COUNT }
+    const next = recordCompletedRead(state, 'c1', ['cat'], 10, READING_QUESTION_COUNT, READING_QUESTION_COUNT, corrected, 20, ['c1', 'c2'], 'c2')
+    expect(next.chapters.c1.completed).toBe(true)
+    expect(next.chapters.c1.listeningCorrect).toBe(3)
+    expect(next.chapters.c1.listeningTotal).toBe(LISTENING_QUESTION_COUNT)
   })
 
   it('allows legacy completed chapters to be reread without regressing the frontier', () => {
@@ -492,6 +521,7 @@ describe('chapter completion scheduling', () => {
       8,
       READING_QUESTION_COUNT,
       READING_QUESTION_COUNT,
+      FULL_LISTENING,
       20,
       order,
       'c2',

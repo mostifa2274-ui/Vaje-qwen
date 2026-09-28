@@ -1,0 +1,106 @@
+{
+  "id": "b5c3-listening",
+  "titleEn": "On the Radio",
+  "titleFa": "در رادیو",
+  "names": [
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "This is the city radio, with a short message for everyone who is listening.",
+      "fa": "اینجا رادیوی شهر است، با پیامی کوتاه برای همه‌ی کسانی که گوش می‌دهند."
+    },
+    {
+      "en": "A girl in our city is looking for her little yellow chicken, Nino.",
+      "fa": "دختری در شهر ما دنبال جوجه‌ی زرد کوچکش، نینو، می‌گردد."
+    },
+    {
+      "en": "He ran away from home in May, and his family misses him very much.",
+      "fa": "او در ماه مه از خانه فرار کرد و خانواده‌اش خیلی دلتنگش هستند."
+    },
+    {
+      "en": "Nino is small and yellow, with orange feet and a little white on his left.",
+      "fa": "نینو کوچک و زرد است، با پاهای نارنجی و کمی سفیدی در سمت چپش."
+    },
+    {
+      "en": "People saw him near some bus stops and at the big market.",
+      "fa": "مردم او را نزدیک چند ایستگاه اتوبوس و در بازار بزرگ دیده‌اند."
+    },
+    {
+      "en": "You can see his photograph and a short video on the internet.",
+      "fa": "عکس و یک ویدیوی کوتاه از او را می‌توانید در اینترنت ببینید."
+    },
+    {
+      "en": "If you see him, please call his family or send an email.",
+      "fa": "اگر او را دیدید، لطفاً به خانواده‌اش زنگ بزنید یا ایمیل بفرستید."
+    },
+    {
+      "en": "In your message, please describe the place and the time.",
+      "fa": "در پیامتان لطفاً مکان و زمان را توصیف کنید."
+    },
+    {
+      "en": "Please repeat his name to your friends: Nino.",
+      "fa": "لطفاً اسمش را برای دوستانتان تکرار کنید: نینو."
+    },
+    {
+      "en": "With your help, it is possible for a little chicken to find his way home.",
+      "fa": "با کمک شما، ممکن است یک جوجه‌ی کوچک راه خانه‌اش را پیدا کند."
+    },
+    {
+      "en": "Thank you for listening, and have a good Friday.",
+      "fa": "ممنون که گوش دادید، جمعه‌ی خوبی داشته باشید."
+    }
+  ],
+  "questions": [
+    {
+      "q": "اسم جوجه چیست؟",
+      "options": [
+        "نگار",
+        "نینو",
+        "آریا",
+        "یاسی"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "جوجه کی فرار کرد؟",
+      "options": [
+        "در ماه مه",
+        "در ماه ژوئن",
+        "در زمستان",
+        "دیروز"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "عکس و ویدیوی جوجه را کجا می‌شود دید؟",
+      "options": [
+        "در روزنامه",
+        "در مجله",
+        "در اینترنت",
+        "در تلویزیون"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "اگر جوجه را دیدید، چه کنید؟",
+      "options": [
+        "او را به پارک ببرید",
+        "به رادیو بیایید",
+        "چیزی نگویید",
+        "به خانواده‌اش زنگ بزنید یا ایمیل بفرستید"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "این پیام در چه روزی پخش می‌شود؟",
+      "options": [
+        "شنبه",
+        "جمعه",
+        "دوشنبه",
+        "یکشنبه"
+      ],
+      "answer": 1
+    }
+  ]
+}

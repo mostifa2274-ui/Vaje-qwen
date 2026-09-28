@@ -1,0 +1,111 @@
+{
+  "id": "b3c2-listening",
+  "titleEn": "Dad Calls",
+  "titleFa": "بابا زنگ می‌زند",
+  "names": [
+    "Mina",
+    "Aria"
+  ],
+  "sentences": [
+    {
+      "en": "At nine o'clock, Mom's phone makes a sound. It is Dad.",
+      "fa": "ساعت نه، تلفن مامان زنگ می‌زند. باباست."
+    },
+    {
+      "en": "\"Hello,\" Dad says. \"I am at the bus station.\"",
+      "fa": "بابا می‌گوید: «سلام. من در ایستگاه اتوبوس هستم.»"
+    },
+    {
+      "en": "\"A man here saw something small and yellow at eight o'clock.\"",
+      "fa": "«مردی اینجا ساعت هشت چیزی کوچک و زرد دیده.»"
+    },
+    {
+      "en": "\"Was it a chicken?\" Mom asks.",
+      "fa": "مامان می‌پرسد: «جوجه بود؟»"
+    },
+    {
+      "en": "\"The man does not know which it was, a bird or a chicken,\" Dad says.",
+      "fa": "بابا می‌گوید: «مرد نمی‌داند کدام بود، پرنده یا جوجه.»"
+    },
+    {
+      "en": "\"Where are you now?\" he asks.",
+      "fa": "می‌پرسد: «حالا کجایید؟»"
+    },
+    {
+      "en": "\"On a quiet street with Mina and Aria,\" Mom answers. \"We checked five gardens.\"",
+      "fa": "مامان جواب می‌دهد: «در یک خیابان آرام با مینا و آریا. پنج باغچه را گشتیم.»"
+    },
+    {
+      "en": "\"Can you come to the station?\" Dad asks. \"It is a quarter of an hour on foot.\"",
+      "fa": "بابا می‌پرسد: «می‌توانید به ایستگاه بیایید؟ پیاده یک ربع راه است.»"
+    },
+    {
+      "en": "\"Yes,\" Mom says. \"We will come now.\"",
+      "fa": "مامان می‌گوید: «بله. همین حالا می‌آییم.»"
+    },
+    {
+      "en": "\"I will wait for you below the big station clock,\" Dad says.",
+      "fa": "بابا می‌گوید: «زیر ساعت بزرگ ایستگاه منتظرتان می‌مانم.»"
+    },
+    {
+      "en": "\"And bring some bread. Many birds come here.\"",
+      "fa": "«و کمی نان بیاورید. پرنده‌های زیادی اینجا می‌آیند.»"
+    },
+    {
+      "en": "Mom tells Mina and Aria the news, and they walk to the station.",
+      "fa": "مامان خبر را به مینا و آریا می‌گوید و به طرف ایستگاه راه می‌افتند."
+    }
+  ],
+  "questions": [
+    {
+      "q": "بابا از کجا زنگ می‌زند؟",
+      "options": [
+        "از خانه",
+        "از بازار",
+        "از ایستگاه اتوبوس",
+        "از پارک"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مرد ساعت چند چیزی زرد دیده؟",
+      "options": [
+        "ساعت هشت",
+        "ساعت نه",
+        "ساعت پنج",
+        "ساعت ده"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "پیاده تا ایستگاه چقدر راه است؟",
+      "options": [
+        "نیم ساعت",
+        "یک ساعت",
+        "پنج دقیقه",
+        "یک ربع"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "بابا کجا منتظر می‌ماند؟",
+      "options": [
+        "کنار در ایستگاه",
+        "زیر ساعت بزرگ ایستگاه",
+        "در اتوبوس",
+        "کنار باغچه‌ها"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "بابا می‌گوید چه چیزی بیاورند؟",
+      "options": [
+        "آب",
+        "نقشه",
+        "کمی نان",
+        "چراغ آریا"
+      ],
+      "answer": 2
+    }
+  ]
+}

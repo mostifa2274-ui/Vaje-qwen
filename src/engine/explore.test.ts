@@ -51,7 +51,7 @@ describe('explore mode', () => {
     for (const id of EXAMS) expect(canTakeExam(on, id), id).toBe(canTakeExam(off, id))
     // Even a direct call cannot complete a chapter whose word tests were never passed.
     const state = { ...on }
-    const read = recordCompletedRead(state, LAST.id, LAST.new, 10, READING_QUESTION_COUNT, READING_QUESTION_COUNT, 5, CHAPTERS.map(ch => ch.id))
+    const read = recordCompletedRead(state, LAST.id, LAST.new, 10, READING_QUESTION_COUNT, READING_QUESTION_COUNT, { firstPassCorrect: 5, total: 5, verifiedCorrect: 5 }, 5, CHAPTERS.map(ch => ch.id))
     expect(read).toBe(state)
   })
 

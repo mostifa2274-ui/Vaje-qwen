@@ -1,0 +1,114 @@
+{
+  "id": "b4c5-listening",
+  "titleEn": "The Farmer's Daughter",
+  "titleFa": "دختر کشاورز",
+  "names": [
+    "Mina"
+  ],
+  "sentences": [
+    {
+      "en": "On Sunday afternoon, the farmer comes home with a man and a girl.",
+      "fa": "یکشنبه بعدازظهر، کشاورز با یک مرد و یک دختر به خانه می‌آید."
+    },
+    {
+      "en": "The farmer's daughter is ten years old, and she loves animals.",
+      "fa": "دختر کشاورز ده سال دارد و حیوان‌ها را دوست دارد."
+    },
+    {
+      "en": "The girl's name is Mina, and she is looking for her little yellow chicken.",
+      "fa": "اسم دختر میناست و دنبال جوجه‌ی زرد کوچکش می‌گردد."
+    },
+    {
+      "en": "The farmer's daughter shows Mina every part of the farm.",
+      "fa": "دختر کشاورز همه‌جای مزرعه را به مینا نشان می‌دهد."
+    },
+    {
+      "en": "Here is the brown cow, and there is the old horse.",
+      "fa": "این گاو قهوه‌ای است و آن اسب پیر."
+    },
+    {
+      "en": "The goats and the sheep stand near a green tree.",
+      "fa": "بزها و گوسفندها کنار یک درخت سبز ایستاده‌اند."
+    },
+    {
+      "en": "\"Where do your chickens sleep?\" Mina asks.",
+      "fa": "مینا می‌پرسد: «مرغ و جوجه‌هایتان کجا می‌خوابند؟»"
+    },
+    {
+      "en": "\"In a small house next to the wall,\" the daughter says, and they look there together.",
+      "fa": "دختر می‌گوید: «در یک خانه‌ی کوچک کنار دیوار» و با هم آنجا را نگاه می‌کنند."
+    },
+    {
+      "en": "There are many chickens, but there is no yellow chicken with orange feet.",
+      "fa": "مرغ و جوجه‌ی زیادی هست، اما هیچ جوجه‌ی زردی با پاهای نارنجی نیست."
+    },
+    {
+      "en": "In the house, the daughter shows Mina her favorite animal: the elephant.",
+      "fa": "در خانه، دختر حیوان محبوبش را به مینا نشان می‌دهد: فیل."
+    },
+    {
+      "en": "\"It is big, and it never forgets,\" she says.",
+      "fa": "می‌گوید: «بزرگ است و هیچ‌وقت فراموش نمی‌کند.»"
+    },
+    {
+      "en": "Mina's favorite animal is a small yellow chicken.",
+      "fa": "حیوان محبوب مینا یک جوجه‌ی زرد کوچک است."
+    },
+    {
+      "en": "\"I hope you find him,\" the daughter says. \"Come back to the farm with him one day.\"",
+      "fa": "دختر می‌گوید: «امیدوارم پیدایش کنی. یک روز با او به مزرعه برگرد.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "دختر کشاورز چند سال دارد؟",
+      "options": [
+        "یازده",
+        "ده",
+        "دوازده",
+        "هشت"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "بزها و گوسفندها کجا ایستاده‌اند؟",
+      "options": [
+        "کنار یک درخت سبز",
+        "کنار دیوار",
+        "در خانه",
+        "کنار اسب"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "مرغ و جوجه‌ها کجا می‌خوابند؟",
+      "options": [
+        "زیر درخت",
+        "در خانه‌ی کشاورز",
+        "کنار گاو",
+        "در یک خانه‌ی کوچک کنار دیوار"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "حیوان محبوب دختر کشاورز چیست؟",
+      "options": [
+        "اسب",
+        "شیر",
+        "فیل",
+        "مار"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "دختر در آخر چه می‌گوید؟",
+      "options": [
+        "که نینو را دیده",
+        "که مینا یک روز با نینو به مزرعه برگردد",
+        "که کتابش را می‌خواهد",
+        "که مزرعه بزرگ است"
+      ],
+      "answer": 1
+    }
+  ]
+}

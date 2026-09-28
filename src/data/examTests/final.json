@@ -1,0 +1,1767 @@
+{
+  "exam": "final",
+  "reading": [
+    {
+      "id": "final-reading-1",
+      "titleEn": "The Class Newspaper",
+      "titleFa": "روزنامه‌ی کلاس",
+      "names": [
+        "Elham"
+      ],
+      "sentences": [
+        {
+          "en": "Elham's class has a new project: a small newspaper for all the school.",
+          "fa": "کلاس الهام یک پروژه‌ی تازه دارد: یک روزنامه‌ی کوچک برای همه‌ی مدرسه."
+        },
+        {
+          "en": "Every student must write one article, and the teacher will check the spelling.",
+          "fa": "هر دانش‌آموز باید یک مقاله بنویسد و معلم املای آن را بررسی می‌کند."
+        },
+        {
+          "en": "Elham chooses an interesting topic: the old woman who sells flowers near the school.",
+          "fa": "الهام موضوع جالبی انتخاب می‌کند: پیرزنی که نزدیک مدرسه گل می‌فروشد."
+        },
+        {
+          "en": "On Monday afternoon, she has a short interview with the woman.",
+          "fa": "دوشنبه بعدازظهر، مصاحبه‌ی کوتاهی با آن زن دارد."
+        },
+        {
+          "en": "The woman tells her about her life, her garden and her favorite flowers.",
+          "fa": "زن درباره‌ی زندگی‌اش، باغچه‌اش و گل‌های محبوبش برایش می‌گوید."
+        },
+        {
+          "en": "Elham takes a photograph of her with the pink and purple flowers.",
+          "fa": "الهام با گل‌های صورتی و بنفش از او عکس می‌گیرد."
+        },
+        {
+          "en": "At home, she writes three paragraphs on her computer and gives her article a title.",
+          "fa": "در خانه، روی رایانه‌اش سه بند می‌نویسد و برای مقاله‌اش عنوانی انتخاب می‌کند."
+        },
+        {
+          "en": "Her title is \"Flowers Every Morning.\"",
+          "fa": "عنوانش این است: «گل، هر صبح.»"
+        },
+        {
+          "en": "She sends the article to her teacher by email.",
+          "fa": "مقاله را با ایمیل برای معلمش می‌فرستد."
+        },
+        {
+          "en": "The teacher likes it, but she asks Elham to improve the last sentence.",
+          "fa": "معلم آن را می‌پسندد، اما از الهام می‌خواهد جمله‌ی آخر را بهتر کند."
+        },
+        {
+          "en": "On Thursday, the newspaper is ready, and Elham's article is on the first page.",
+          "fa": "پنجشنبه روزنامه آماده است و مقاله‌ی الهام در صفحه‌ی اول است."
+        },
+        {
+          "en": "The next morning, the old woman gives Elham a flower. \"Thank you for my story,\" she says.",
+          "fa": "صبح روز بعد، پیرزن گلی به الهام می‌دهد. می‌گوید: «ممنون برای داستانم.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "موضوع مقاله‌ی الهام چیست؟",
+          "options": [
+            "معلم مدرسه",
+            "پیرزنی که نزدیک مدرسه گل می‌فروشد",
+            "باغ مدرسه",
+            "یک مسابقه‌ی فوتبال"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "الهام کی با آن زن مصاحبه می‌کند؟",
+          "options": [
+            "دوشنبه بعدازظهر",
+            "پنجشنبه صبح",
+            "جمعه",
+            "شنبه شب"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "الهام مقاله را چطور برای معلمش می‌فرستد؟",
+          "options": [
+            "با پست",
+            "با پیامک",
+            "با ایمیل",
+            "خودش می‌برد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "معلم از الهام چه می‌خواهد؟",
+          "options": [
+            "که عکس دیگری بگیرد",
+            "که عنوان را عوض کند",
+            "که مقاله را کوتاه کند",
+            "که جمله‌ی آخر را بهتر کند"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "مقاله‌ی الهام در کدام صفحه است؟",
+          "options": [
+            "صفحه‌ی آخر",
+            "صفحه‌ی اول",
+            "صفحه‌ی دوم",
+            "در روزنامه نیست"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "final-reading-2",
+      "titleEn": "Snow on the Mountain",
+      "titleFa": "برف روی کوه",
+      "names": [
+        "Pouya"
+      ],
+      "sentences": [
+        {
+          "en": "In January, Pouya and his parents travel to the mountains for a short vacation.",
+          "fa": "در ژانویه، پویا و پدر و مادرش برای یک تعطیلات کوتاه به کوه سفر می‌کنند."
+        },
+        {
+          "en": "They go by train, and the trip takes five hours.",
+          "fa": "با قطار می‌روند و سفر پنج ساعت طول می‌کشد."
+        },
+        {
+          "en": "From the window, Pouya sees small towns, gray rivers and white mountains.",
+          "fa": "از پنجره، پویا شهرهای کوچک، رودخانه‌های خاکستری و کوه‌های سفید می‌بیند."
+        },
+        {
+          "en": "Their hotel is high on a mountain, and there is snow all around it.",
+          "fa": "هتلشان بالای یک کوه است و همه‌جای اطرافش برف است."
+        },
+        {
+          "en": "Pouya wears his warm jacket, his hat and his new boots.",
+          "fa": "پویا کاپشن گرم، کلاه و چکمه‌های تازه‌اش را می‌پوشد."
+        },
+        {
+          "en": "He and his father build a big snow animal in front of the hotel.",
+          "fa": "او و پدرش جلوی هتل یک حیوان برفی بزرگ می‌سازند."
+        },
+        {
+          "en": "Other children come and help, and soon it has a long nose and two big ears.",
+          "fa": "بچه‌های دیگر می‌آیند و کمک می‌کنند و زود یک دماغ دراز و دو گوش بزرگ دارد."
+        },
+        {
+          "en": "In the evening, the family sits by the fire and drinks hot chocolate.",
+          "fa": "عصر، خانواده کنار آتش می‌نشینند و شیرکاکائوی داغ می‌نوشند."
+        },
+        {
+          "en": "An old man at the hotel tells them about the mountain in the summer.",
+          "fa": "پیرمردی در هتل درباره‌ی کوه در تابستان برایشان می‌گوید."
+        },
+        {
+          "en": "\"In July, the snow is gone, and the mountain is full of green plants,\" he says.",
+          "fa": "می‌گوید: «در ژوئیه برف رفته و کوه پر از گیاه سبز است.»"
+        },
+        {
+          "en": "Pouya decides that he wants to come back in the summer too.",
+          "fa": "پویا تصمیم می‌گیرد که تابستان هم برگردد."
+        },
+        {
+          "en": "On the train home, he paints the snow animal in his red book.",
+          "fa": "در قطار برگشت، حیوان برفی را در کتاب قرمزش نقاشی می‌کند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "پویا و خانواده‌اش با چه چیزی سفر می‌کنند؟",
+          "options": [
+            "با هواپیما",
+            "با قطار",
+            "با اتوبوس",
+            "با ماشین"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "سفر چند ساعت طول می‌کشد؟",
+          "options": [
+            "پنج ساعت",
+            "دو ساعت",
+            "ده ساعت",
+            "یک ساعت"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "پویا و پدرش جلوی هتل چه می‌سازند؟",
+          "options": [
+            "یک خانه‌ی برفی",
+            "یک آتش",
+            "یک حیوان برفی بزرگ",
+            "یک قایق"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "خانواده عصر کنار آتش چه می‌نوشند؟",
+          "options": [
+            "چای",
+            "قهوه",
+            "آب پرتقال",
+            "شیرکاکائوی داغ"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "پیرمرد درباره‌ی کوه در تابستان چه می‌گوید؟",
+          "options": [
+            "که پر از گیاه سبز است",
+            "که هنوز برف دارد",
+            "که خیلی سرد است",
+            "که هتل بسته است"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-reading-3",
+      "titleEn": "The Doctor's Advice",
+      "titleFa": "توصیه‌ی دکتر",
+      "names": [
+        "Mitra"
+      ],
+      "sentences": [
+        {
+          "en": "Mitra's father works in an office all day, and he is often tired.",
+          "fa": "پدر میترا تمام روز در یک دفتر کار می‌کند و اغلب خسته است."
+        },
+        {
+          "en": "One morning, he feels sick, and his head is hot.",
+          "fa": "یک روز صبح، حالش بد است و سرش داغ است."
+        },
+        {
+          "en": "Mitra's mother takes him to the doctor.",
+          "fa": "مادر میترا او را پیش دکتر می‌برد."
+        },
+        {
+          "en": "The doctor checks his body, his ears and his mouth.",
+          "fa": "دکتر بدن، گوش‌ها و دهانش را معاینه می‌کند."
+        },
+        {
+          "en": "\"It is not dangerous,\" she says. \"But you have to change some things.\"",
+          "fa": "می‌گوید: «خطرناک نیست. اما باید چند چیز را تغییر بدهید.»"
+        },
+        {
+          "en": "\"Your diet is not healthy. You eat too much sugar and too many cookies.\"",
+          "fa": "«رژیم غذایی‌تان سالم نیست. خیلی شکر و کلوچه می‌خورید.»"
+        },
+        {
+          "en": "\"Eat more fruit and vegetables, and drink a lot of water.\"",
+          "fa": "«بیشتر میوه و سبزی بخورید و زیاد آب بنوشید.»"
+        },
+        {
+          "en": "\"And walk or ride a bike for half an hour every day.\"",
+          "fa": "«و هر روز نیم ساعت پیاده‌روی یا دوچرخه‌سواری کنید.»"
+        },
+        {
+          "en": "At home, Mitra makes a chart of the new rules and puts it on the kitchen wall.",
+          "fa": "در خانه، میترا نموداری از قانون‌های تازه درست می‌کند و روی دیوار آشپزخانه می‌زند."
+        },
+        {
+          "en": "Every evening, she and her father walk around the park together.",
+          "fa": "هر عصر، او و پدرش با هم دور پارک قدم می‌زنند."
+        },
+        {
+          "en": "After a month, her father feels much better, and he is not so tired.",
+          "fa": "بعد از یک ماه، حال پدرش خیلی بهتر است و دیگر آن‌قدر خسته نیست."
+        },
+        {
+          "en": "\"Your chart was a great idea,\" he tells Mitra. \"My health is your success.\"",
+          "fa": "به میترا می‌گوید: «نمودارت فکر عالی‌ای بود. سلامتی من موفقیت توست.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "پدر میترا کجا کار می‌کند؟",
+          "options": [
+            "در بیمارستان",
+            "در یک مزرعه",
+            "در یک دفتر",
+            "در یک مدرسه"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "دکتر می‌گوید پدر چه چیزی زیاد می‌خورد؟",
+          "options": [
+            "برنج و گوشت",
+            "شکر و کلوچه",
+            "ماهی",
+            "میوه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "دکتر می‌گوید هر روز چقدر پیاده‌روی یا دوچرخه‌سواری کند؟",
+          "options": [
+            "نیم ساعت",
+            "دو ساعت",
+            "یک ربع",
+            "یک ساعت"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "میترا نمودار را کجا می‌زند؟",
+          "options": [
+            "روی در اتاقش",
+            "در دفتر پدرش",
+            "روی یخچال",
+            "روی دیوار آشپزخانه"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "بعد از یک ماه حال پدر چطور است؟",
+          "options": [
+            "خیلی بهتر است",
+            "بدتر شده",
+            "هیچ فرقی نکرده",
+            "در بیمارستان است"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-reading-4",
+      "titleEn": "A Day at the Museum",
+      "titleFa": "یک روز در موزه",
+      "names": [
+        "Saba",
+        "Iran"
+      ],
+      "sentences": [
+        {
+          "en": "On Tuesday, Saba's history class visits the city museum.",
+          "fa": "سه‌شنبه، کلاس تاریخ صبا به موزه‌ی شهر می‌رود."
+        },
+        {
+          "en": "The museum is in an old building with high windows and a beautiful garden.",
+          "fa": "موزه در ساختمانی قدیمی با پنجره‌های بلند و یک باغ زیباست."
+        },
+        {
+          "en": "In the first room, there are objects from three thousand years ago.",
+          "fa": "در اتاق اول، اشیایی از سه هزار سال پیش هست."
+        },
+        {
+          "en": "Saba sees old cups, small models of houses and a very old map of the country.",
+          "fa": "صبا فنجان‌های قدیمی، ماکت‌های کوچک خانه‌ها و یک نقشه‌ی خیلی قدیمی از کشور را می‌بیند."
+        },
+        {
+          "en": "In the second room, there are paintings from different times.",
+          "fa": "در اتاق دوم، نقاشی‌هایی از دوره‌های مختلف هست."
+        },
+        {
+          "en": "Saba likes one painting best: a woman in a blue dress next to the sea.",
+          "fa": "صبا یک نقاشی را از همه بیشتر دوست دارد: زنی با پیراهن آبی کنار دریا."
+        },
+        {
+          "en": "\"The style of this painting was very modern for its time,\" the teacher explains.",
+          "fa": "معلم توضیح می‌دهد: «سبک این نقاشی برای زمان خودش خیلی امروزی بود.»"
+        },
+        {
+          "en": "Many tourists are in the museum too, and some of them take photographs.",
+          "fa": "گردشگرهای زیادی هم در موزه هستند و بعضی‌شان عکس می‌گیرند."
+        },
+        {
+          "en": "A woman who works at the museum tells the students about the culture of old Iran.",
+          "fa": "زنی که در موزه کار می‌کند درباره‌ی فرهنگ ایران قدیم برای دانش‌آموزها می‌گوید."
+        },
+        {
+          "en": "After that, the students eat lunch in the museum garden.",
+          "fa": "بعد از آن، دانش‌آموزها در باغ موزه ناهار می‌خورند."
+        },
+        {
+          "en": "For homework, each student must write a paragraph about one object.",
+          "fa": "برای تکلیف، هر دانش‌آموز باید یک بند درباره‌ی یک شیء بنویسد."
+        },
+        {
+          "en": "Saba writes about the old map, because geography is her favorite subject.",
+          "fa": "صبا درباره‌ی نقشه‌ی قدیمی می‌نویسد، چون جغرافیا درس محبوب اوست."
+        }
+      ],
+      "questions": [
+        {
+          "q": "کدام کلاس به موزه می‌رود؟",
+          "options": [
+            "کلاس علوم",
+            "کلاس تاریخ",
+            "کلاس زبان",
+            "کلاس نقاشی"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "در اتاق اول اشیایی از چه زمانی هست؟",
+          "options": [
+            "سه هزار سال پیش",
+            "صد سال پیش",
+            "سال پیش",
+            "ده سال پیش"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "صبا کدام نقاشی را از همه بیشتر دوست دارد؟",
+          "options": [
+            "نقاشی یک کوه",
+            "نقاشی یک خانه",
+            "زنی با پیراهن آبی کنار دریا",
+            "نقاشی یک پرنده"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چه کسی درباره‌ی فرهنگ ایران قدیم می‌گوید؟",
+          "options": [
+            "معلم",
+            "یک گردشگر",
+            "صبا",
+            "زنی که در موزه کار می‌کند"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "چرا صبا درباره‌ی نقشه‌ی قدیمی می‌نویسد؟",
+          "options": [
+            "چون جغرافیا درس محبوب اوست",
+            "چون معلم گفت",
+            "چون ساده است",
+            "چون عکسش را دارد"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-reading-5",
+      "titleEn": "The Job Interview",
+      "titleFa": "مصاحبه‌ی کاری",
+      "names": [
+        "Hamed"
+      ],
+      "sentences": [
+        {
+          "en": "Hamed finished his course at the university in June, and now he wants a job.",
+          "fa": "حامد در ژوئن دوره‌اش را در دانشگاه تمام کرد و حالا یک شغل می‌خواهد."
+        },
+        {
+          "en": "He fills in forms for many companies, and one company asks him to come for an interview.",
+          "fa": "برای شرکت‌های زیادی فرم پر می‌کند و یکی از شرکت‌ها از او می‌خواهد برای مصاحبه بیاید."
+        },
+        {
+          "en": "It is a modern company that makes computer programs for schools.",
+          "fa": "شرکتی امروزی است که برای مدرسه‌ها برنامه‌ی رایانه‌ای می‌سازد."
+        },
+        {
+          "en": "Before the interview, Hamed reads everything about the company on its website.",
+          "fa": "قبل از مصاحبه، حامد همه‌چیز را درباره‌ی شرکت در وب‌سایتش می‌خواند."
+        },
+        {
+          "en": "He also practices with his sister: she asks questions, and he answers them.",
+          "fa": "با خواهرش هم تمرین می‌کند: او سؤال می‌پرسد و حامد جواب می‌دهد."
+        },
+        {
+          "en": "On the day of the interview, he wears a white shirt and his best pants.",
+          "fa": "روز مصاحبه، یک پیراهن سفید و بهترین شلوارش را می‌پوشد."
+        },
+        {
+          "en": "The traffic is bad, so he takes the train and arrives early.",
+          "fa": "ترافیک بد است، پس با قطار می‌رود و زود می‌رسد."
+        },
+        {
+          "en": "In the meeting, three people ask him about his skills and his future.",
+          "fa": "در جلسه، سه نفر درباره‌ی مهارت‌ها و آینده‌اش از او سؤال می‌کنند."
+        },
+        {
+          "en": "\"Why do you want this job?\" a woman asks.",
+          "fa": "زنی می‌پرسد: «چرا این شغل را می‌خواهید؟»"
+        },
+        {
+          "en": "\"Because I love computers, and I want to help students learn,\" he answers.",
+          "fa": "جواب می‌دهد: «چون رایانه را دوست دارم و می‌خواهم به یادگیری دانش‌آموزها کمک کنم.»"
+        },
+        {
+          "en": "A week later, the company calls him with the result.",
+          "fa": "یک هفته بعد، شرکت با نتیجه به او زنگ می‌زند."
+        },
+        {
+          "en": "They want him to start in September, and Hamed is very happy.",
+          "fa": "از او می‌خواهند در سپتامبر شروع کند و حامد خیلی خوشحال است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "حامد کی دوره‌اش را در دانشگاه تمام کرد؟",
+          "options": [
+            "در سپتامبر",
+            "در ژوئن",
+            "سال پیش",
+            "در مارس"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "شرکت چه چیزی می‌سازد؟",
+          "options": [
+            "برنامه‌ی رایانه‌ای برای مدرسه‌ها",
+            "ماشین",
+            "کتاب درسی",
+            "بازی"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "حامد روز مصاحبه چه می‌پوشد؟",
+          "options": [
+            "کاپشن و جین",
+            "تی‌شرت و کلاه",
+            "پیراهن سفید و بهترین شلوارش",
+            "لباس ورزشی"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "حامد چطور به مصاحبه می‌رود؟",
+          "options": [
+            "با تاکسی",
+            "با ماشین خودش",
+            "پیاده",
+            "با قطار"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "حامد کی کارش را شروع می‌کند؟",
+          "options": [
+            "در سپتامبر",
+            "فردا",
+            "در ژوئن",
+            "هفته‌ی بعد"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-reading-6",
+      "titleEn": "A Week on an Island",
+      "titleFa": "یک هفته در جزیره",
+      "names": [
+        "Yalda"
+      ],
+      "sentences": [
+        {
+          "en": "In August, Yalda's family spends a week on a small island in the south of the country.",
+          "fa": "در اوت، خانواده‌ی یلدا یک هفته را در جزیره‌ای کوچک در جنوب کشور می‌گذرانند."
+        },
+        {
+          "en": "They go by plane to a town by the sea, and then they take a boat to the island.",
+          "fa": "با هواپیما به شهری کنار دریا می‌روند و بعد با قایق به جزیره."
+        },
+        {
+          "en": "The boat trip takes forty minutes, and Yalda sees fish in the blue water.",
+          "fa": "سفر با قایق چهل دقیقه طول می‌کشد و یلدا در آب آبی ماهی می‌بیند."
+        },
+        {
+          "en": "Their hotel is next to the beach, and from their room they can see the sea.",
+          "fa": "هتلشان کنار ساحل است و از اتاقشان دریا پیداست."
+        },
+        {
+          "en": "Every morning, Yalda and her brother walk on the beach before breakfast.",
+          "fa": "هر صبح، یلدا و برادرش قبل از صبحانه در ساحل قدم می‌زنند."
+        },
+        {
+          "en": "In the afternoon, it is too hot to go out, so they relax at the hotel and read.",
+          "fa": "بعدازظهر هوا برای بیرون رفتن خیلی گرم است، پس در هتل استراحت می‌کنند و کتاب می‌خوانند."
+        },
+        {
+          "en": "One evening, an old man takes them around the island in his boat.",
+          "fa": "یک شب، پیرمردی با قایقش آن‌ها را دور جزیره می‌برد."
+        },
+        {
+          "en": "He tells them that the island has more birds than people.",
+          "fa": "به آن‌ها می‌گوید که جزیره بیشتر از آدم، پرنده دارد."
+        },
+        {
+          "en": "On the last day, Yalda buys a small painting of the island at a local shop.",
+          "fa": "روز آخر، یلدا از یک مغازه‌ی محلی نقاشی کوچکی از جزیره می‌خرد."
+        },
+        {
+          "en": "It shows the beach, a boat and the white hotel.",
+          "fa": "ساحل، یک قایق و هتل سفید را نشان می‌دهد."
+        },
+        {
+          "en": "\"It is a perfect present for my grandmother,\" she says.",
+          "fa": "می‌گوید: «هدیه‌ی بی‌نقصی برای مادربزرگم است.»"
+        },
+        {
+          "en": "On the plane home, she is sad, but she has many photographs.",
+          "fa": "در هواپیمای برگشت غمگین است، اما کلی عکس دارد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "جزیره در کدام قسمت کشور است؟",
+          "options": [
+            "شمال",
+            "شرق",
+            "جنوب",
+            "غرب"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "سفر با قایق چقدر طول می‌کشد؟",
+          "options": [
+            "چهل دقیقه",
+            "چهار ساعت",
+            "ده دقیقه",
+            "یک روز"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چرا بعدازظهرها در هتل می‌مانند؟",
+          "options": [
+            "باران می‌آید",
+            "خسته‌اند",
+            "هوا برای بیرون رفتن خیلی گرم است",
+            "هتل برنامه دارد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "پیرمرد درباره‌ی جزیره چه می‌گوید؟",
+          "options": [
+            "که خیلی قدیمی است",
+            "که بیشتر از آدم پرنده دارد",
+            "که هتل تازه‌ای دارد",
+            "که در زمستان برف می‌آید"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "یلدا نقاشی را برای چه کسی می‌خرد؟",
+          "options": [
+            "برای برادرش",
+            "برای معلمش",
+            "برای خودش",
+            "برای مادربزرگش"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "final-reading-7",
+      "titleEn": "The Painting Club",
+      "titleFa": "باشگاه نقاشی",
+      "names": [
+        "Ladan"
+      ],
+      "sentences": [
+        {
+          "en": "Ladan is fourteen, and her favorite activity is painting.",
+          "fa": "لادن چهارده ساله است و فعالیت محبوبش نقاشی است."
+        },
+        {
+          "en": "Every Tuesday, she goes to a painting club at the culture center near her school.",
+          "fa": "هر سه‌شنبه، به باشگاه نقاشی در فرهنگسرای نزدیک مدرسه‌اش می‌رود."
+        },
+        {
+          "en": "There are twelve students in the club, and their teacher is a famous artist.",
+          "fa": "دوازده دانش‌آموز در باشگاه هستند و معلمشان یک هنرمند معروف است."
+        },
+        {
+          "en": "This month, the club has a special project for the city festival.",
+          "fa": "این ماه، باشگاه یک پروژه‌ی ویژه برای جشنواره‌ی شهر دارد."
+        },
+        {
+          "en": "Each student must paint a big picture about the city.",
+          "fa": "هر دانش‌آموز باید یک تصویر بزرگ درباره‌ی شهر نقاشی کند."
+        },
+        {
+          "en": "Ladan paints the river at night, with the lights of the tall buildings on the water.",
+          "fa": "لادن رودخانه را در شب می‌کشد، با چراغ‌های ساختمان‌های بلند روی آب."
+        },
+        {
+          "en": "Her style is different: she uses only blue and purple colors.",
+          "fa": "سبکش فرق دارد: فقط از رنگ‌های آبی و بنفش استفاده می‌کند."
+        },
+        {
+          "en": "At first, some students do not like it, but the teacher says it is very interesting.",
+          "fa": "اولش بعضی از دانش‌آموزها آن را دوست ندارند، اما معلم می‌گوید خیلی جالب است."
+        },
+        {
+          "en": "The festival opens on Friday, and many people come to see the paintings.",
+          "fa": "جشنواره جمعه باز می‌شود و خیلی‌ها برای دیدن نقاشی‌ها می‌آیند."
+        },
+        {
+          "en": "A woman from a local magazine takes a photograph of Ladan's painting.",
+          "fa": "زنی از یک مجله‌ی محلی از نقاشی لادن عکس می‌گیرد."
+        },
+        {
+          "en": "The next week, the painting is in the magazine, and it becomes very popular.",
+          "fa": "هفته‌ی بعد، نقاشی در مجله چاپ می‌شود و خیلی پرطرفدار می‌شود."
+        },
+        {
+          "en": "Now Ladan wants to be an artist in the future.",
+          "fa": "حالا لادن می‌خواهد در آینده هنرمند شود."
+        }
+      ],
+      "questions": [
+        {
+          "q": "باشگاه نقاشی کدام روز است؟",
+          "options": [
+            "سه‌شنبه",
+            "جمعه",
+            "شنبه",
+            "پنجشنبه"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "معلم باشگاه کیست؟",
+          "options": [
+            "مادر لادن",
+            "یک هنرمند معروف",
+            "معلم مدرسه",
+            "یک عکاس"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "لادن چه چیزی را نقاشی می‌کند؟",
+          "options": [
+            "مدرسه‌اش",
+            "یک باغ",
+            "کوه‌ها",
+            "رودخانه در شب"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "لادن از چه رنگ‌هایی استفاده می‌کند؟",
+          "options": [
+            "قرمز و زرد",
+            "سبز و قهوه‌ای",
+            "فقط آبی و بنفش",
+            "سیاه و سفید"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "نقاشی لادن کجا چاپ می‌شود؟",
+          "options": [
+            "در روزنامه‌ی مدرسه",
+            "در یک مجله‌ی محلی",
+            "روی یک کارت",
+            "در یک کتاب"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "final-reading-8",
+      "titleEn": "An Email to a Cousin",
+      "titleFa": "ایمیلی به پسرعمو",
+      "names": [
+        "Dara",
+        "Farzad"
+      ],
+      "sentences": [
+        {
+          "en": "Dara writes an email to his cousin Farzad, who lives in another city.",
+          "fa": "دارا ایمیلی برای پسرعمویش فرزاد می‌نویسد که در شهر دیگری زندگی می‌کند."
+        },
+        {
+          "en": "\"Dear Farzad, how are you? I have some exciting news.\"",
+          "fa": "«فرزاد عزیز، حالت چطور است؟ خبر هیجان‌انگیزی دارم.»"
+        },
+        {
+          "en": "\"Next month, our family is moving to your city, because my father has a new job there.\"",
+          "fa": "«ماه بعد خانواده‌ی ما به شهر شما می‌آید، چون پدرم آنجا کار تازه‌ای دارد.»"
+        },
+        {
+          "en": "\"We found an apartment near the big park, and I will go to your school.\"",
+          "fa": "«یک آپارتمان نزدیک پارک بزرگ پیدا کردیم و من به مدرسه‌ی تو می‌آیم.»"
+        },
+        {
+          "en": "\"I am a little afraid, because the only person I know there is you.\"",
+          "fa": "«کمی می‌ترسم، چون تنها کسی که آنجا می‌شناسم تویی.»"
+        },
+        {
+          "en": "\"Can you tell me about the school? Are the teachers nice? Is the homework difficult?\"",
+          "fa": "«می‌توانی درباره‌ی مدرسه برایم بگویی؟ معلم‌ها مهربان‌اند؟ تکلیف‌ها سخت‌اند؟»"
+        },
+        {
+          "en": "\"My mother says the school has a good football team.\"",
+          "fa": "«مادرم می‌گوید مدرسه تیم فوتبال خوبی دارد.»"
+        },
+        {
+          "en": "\"Please send me some photographs of the city.\"",
+          "fa": "«لطفاً چند عکس از شهر برایم بفرست.»"
+        },
+        {
+          "en": "\"I want to see the river and the famous museum that you often describe.\"",
+          "fa": "«می‌خواهم رودخانه و موزه‌ی معروفی را که اغلب توصیف می‌کنی ببینم.»"
+        },
+        {
+          "en": "\"Say hello to my aunt and uncle for me. Write back soon. Your cousin, Dara.\"",
+          "fa": "«از طرف من به زن‌عمو و عمو سلام برسان. زود جواب بده. پسرعمویت، دارا.»"
+        },
+        {
+          "en": "Two hours later, Farzad answers his email.",
+          "fa": "دو ساعت بعد، فرزاد ایمیلش را جواب می‌دهد."
+        },
+        {
+          "en": "\"Awesome!\" he writes. \"I will show you everything, and you can join our team.\"",
+          "fa": "می‌نویسد: «عالی است! همه‌چیز را نشانت می‌دهم و می‌توانی به تیم ما بپیوندی.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "چرا خانواده‌ی دارا به شهر فرزاد می‌روند؟",
+          "options": [
+            "پدرش آنجا کار تازه‌ای دارد",
+            "خانه‌شان کوچک است",
+            "دارا مدرسه‌ی تازه می‌خواهد",
+            "مادربزرگش آنجاست"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "آپارتمان تازه کجاست؟",
+          "options": [
+            "کنار رودخانه",
+            "نزدیک موزه",
+            "نزدیک مدرسه",
+            "نزدیک پارک بزرگ"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "دارا از فرزاد می‌خواهد چه چیزی بفرستد؟",
+          "options": [
+            "کتاب",
+            "چند عکس از شهر",
+            "آدرس مدرسه",
+            "یک نقشه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "دارا می‌خواهد چه چیزهایی را ببیند؟",
+          "options": [
+            "استخر و پارک",
+            "بازار بزرگ",
+            "رودخانه و موزه‌ی معروف",
+            "تیم فوتبال"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "فرزاد در جوابش چه می‌گوید؟",
+          "options": [
+            "که مدرسه سخت است",
+            "که آن‌ها را نمی‌بیند",
+            "که شهر شلوغ است",
+            "که همه‌چیز را نشانش می‌دهد"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "final-listening-1",
+      "titleEn": "The Morning News",
+      "titleFa": "اخبار صبح",
+      "names": [],
+      "sentences": [
+        {
+          "en": "Good morning. This is the city radio, and here is the news for Saturday.",
+          "fa": "صبح بخیر. اینجا رادیوی شهر است و این هم اخبار روز شنبه."
+        },
+        {
+          "en": "First, the weather: there will be a lot of sun today, but it will be cold in the evening.",
+          "fa": "اول، آب‌وهوا: امروز آفتاب زیادی خواهد بود، اما عصر سرد می‌شود."
+        },
+        {
+          "en": "In the north of the country, there will be snow on the high mountains.",
+          "fa": "در شمال کشور، روی کوه‌های بلند برف خواهد بود."
+        },
+        {
+          "en": "The traffic is terrible this morning on the main road to the airport.",
+          "fa": "امروز صبح ترافیک در جاده‌ی اصلی فرودگاه وحشتناک است."
+        },
+        {
+          "en": "If you have a flight today, please leave your home early.",
+          "fa": "اگر امروز پرواز دارید، لطفاً زود از خانه راه بیفتید."
+        },
+        {
+          "en": "The new museum in the city center opens on Monday.",
+          "fa": "موزه‌ی تازه‌ی مرکز شهر دوشنبه باز می‌شود."
+        },
+        {
+          "en": "On the first day, it is free for students and their families.",
+          "fa": "روز اول، برای دانش‌آموزها و خانواده‌هایشان رایگان است."
+        },
+        {
+          "en": "There is also good news for people who love music.",
+          "fa": "برای کسانی که موسیقی دوست دارند هم خبر خوبی داریم."
+        },
+        {
+          "en": "This weekend, a popular band will play at the summer festival in the park.",
+          "fa": "این آخر هفته، یک گروه موسیقی پرطرفدار در جشنواره‌ی تابستانی پارک اجرا می‌کند."
+        },
+        {
+          "en": "The festival begins at six o'clock, and it ends at ten.",
+          "fa": "جشنواره ساعت شش شروع می‌شود و ساعت ده تمام می‌شود."
+        },
+        {
+          "en": "Last of all, the library wants your old books for its new reading club.",
+          "fa": "و در آخر، کتابخانه کتاب‌های قدیمی شما را برای باشگاه کتاب‌خوانی تازه‌اش می‌خواهد."
+        },
+        {
+          "en": "Thank you for listening. Have a wonderful weekend.",
+          "fa": "ممنون که گوش دادید. آخر هفته‌ی فوق‌العاده‌ای داشته باشید."
+        }
+      ],
+      "questions": [
+        {
+          "q": "هوای عصر امروز چطور است؟",
+          "options": [
+            "گرم",
+            "سرد",
+            "بارانی",
+            "برفی"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "ترافیک کجا وحشتناک است؟",
+          "options": [
+            "در جاده‌ی اصلی فرودگاه",
+            "کنار موزه",
+            "در مرکز شهر",
+            "کنار پارک"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "موزه‌ی تازه کی باز می‌شود؟",
+          "options": [
+            "شنبه",
+            "جمعه",
+            "دوشنبه",
+            "چهارشنبه"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "جشنواره ساعت چند شروع می‌شود؟",
+          "options": [
+            "ساعت ده",
+            "ساعت چهار",
+            "ساعت هشت",
+            "ساعت شش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "کتابخانه چه چیزی می‌خواهد؟",
+          "options": [
+            "کتاب‌های قدیمی مردم",
+            "نویسنده‌ی تازه",
+            "پول",
+            "دانش‌آموز داوطلب"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-listening-2",
+      "titleEn": "At the Airport",
+      "titleFa": "در فرودگاه",
+      "names": [
+        "Behnaz"
+      ],
+      "sentences": [
+        {
+          "en": "Behnaz and her mother are at the airport. They have a flight to another country to visit her aunt.",
+          "fa": "بهناز و مادرش در فرودگاه‌اند. پروازی به کشوری دیگر دارند تا به دیدن خاله‌اش بروند."
+        },
+        {
+          "en": "Behnaz is very excited, because it is her first time on a plane.",
+          "fa": "بهناز خیلی هیجان‌زده است، چون اولین بار است که سوار هواپیما می‌شود."
+        },
+        {
+          "en": "They have two big bags and one small bag with books and a sweater.",
+          "fa": "دو کیف بزرگ و یک کیف کوچک با کتاب و یک بلوز پشمی دارند."
+        },
+        {
+          "en": "At the desk, a woman asks for their tickets and their passports.",
+          "fa": "پشت میز، زنی بلیت‌ها و پاسپورت‌هایشان را می‌خواهد."
+        },
+        {
+          "en": "Then her mother looks in her bag, and her face changes.",
+          "fa": "بعد مادرش در کیفش را نگاه می‌کند و رنگ صورتش عوض می‌شود."
+        },
+        {
+          "en": "\"My passport! It is not here!\" she says.",
+          "fa": "می‌گوید: «پاسپورتم! اینجا نیست!»"
+        },
+        {
+          "en": "They look in every bag and in her jacket, but it is not there.",
+          "fa": "همه‌ی کیف‌ها و کاپشنش را می‌گردند، اما آنجا نیست."
+        },
+        {
+          "en": "Then Behnaz remembers: the passport is in the taxi!",
+          "fa": "بعد بهناز یادش می‌آید: پاسپورت در تاکسی است!"
+        },
+        {
+          "en": "Her mother calls the taxi company, and the driver comes back to the airport.",
+          "fa": "مادرش به شرکت تاکسی زنگ می‌زند و راننده به فرودگاه برمی‌گردد."
+        },
+        {
+          "en": "He gives them the passport with a big laugh. \"Have a good trip,\" he says.",
+          "fa": "با خنده‌ای بلند پاسپورت را به آن‌ها می‌دهد. می‌گوید: «سفر خوبی داشته باشید.»"
+        },
+        {
+          "en": "They are the last people on the plane, but they are on it.",
+          "fa": "آخرین مسافرهای هواپیما هستند، اما سوارش شده‌اند."
+        },
+        {
+          "en": "From the window, Behnaz watches the city below them, small and gray.",
+          "fa": "بهناز از پنجره شهر را زیر پایشان تماشا می‌کند، کوچک و خاکستری."
+        }
+      ],
+      "questions": [
+        {
+          "q": "بهناز و مادرش برای دیدن چه کسی سفر می‌کنند؟",
+          "options": [
+            "مادربزرگش",
+            "پدرش",
+            "خاله‌اش",
+            "دوستش"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چرا بهناز هیجان‌زده است؟",
+          "options": [
+            "اولین بار است که سوار هواپیما می‌شود",
+            "هدیه گرفته",
+            "به دریا می‌رود",
+            "تولدش است"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "چه چیزی گم شده بود؟",
+          "options": [
+            "بلیت بهناز",
+            "کیف کوچک",
+            "کاپشن مادر",
+            "پاسپورت مادر"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "پاسپورت کجا بود؟",
+          "options": [
+            "در کیف بزرگ",
+            "در تاکسی",
+            "در خانه",
+            "پشت میز"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "چه کسی پاسپورت را می‌آورد؟",
+          "options": [
+            "راننده‌ی تاکسی",
+            "خاله",
+            "یک پلیس",
+            "زنی که پشت میز است"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-listening-3",
+      "titleEn": "The Library Club",
+      "titleFa": "باشگاه کتابخانه",
+      "names": [
+        "Parsa"
+      ],
+      "sentences": [
+        {
+          "en": "Every Wednesday afternoon, the city library has a special event for young readers.",
+          "fa": "هر چهارشنبه بعدازظهر، کتابخانه‌ی شهر برنامه‌ی ویژه‌ای برای خواننده‌های کم‌سن دارد."
+        },
+        {
+          "en": "This week, the topic is books about animals.",
+          "fa": "این هفته موضوع، کتاب‌هایی درباره‌ی حیوان‌هاست."
+        },
+        {
+          "en": "Twenty children sit on the floor, and a writer reads a story about a smart elephant.",
+          "fa": "بیست بچه روی زمین می‌نشینند و یک نویسنده داستانی درباره‌ی یک فیل باهوش می‌خواند."
+        },
+        {
+          "en": "After the story, there is a language activity.",
+          "fa": "بعد از داستان، یک فعالیت زبان هست."
+        },
+        {
+          "en": "The children use a dictionary to find the meaning of five difficult words.",
+          "fa": "بچه‌ها با فرهنگ لغت معنی پنج کلمه‌ی سخت را پیدا می‌کنند."
+        },
+        {
+          "en": "Then each child writes a short sentence with one of the words.",
+          "fa": "بعد هر بچه با یکی از کلمه‌ها یک جمله‌ی کوتاه می‌نویسد."
+        },
+        {
+          "en": "Parsa writes the best sentence, and everyone laughs because it is so funny.",
+          "fa": "پارسا بهترین جمله را می‌نویسد و همه می‌خندند، چون خیلی خنده‌دار است."
+        },
+        {
+          "en": "The writer gives him a present: her new book with her name in it.",
+          "fa": "نویسنده هدیه‌ای به او می‌دهد: کتاب تازه‌اش با امضای خودش."
+        },
+        {
+          "en": "The library also has a club for older students.",
+          "fa": "کتابخانه یک باشگاه هم برای دانش‌آموزهای بزرگ‌تر دارد."
+        },
+        {
+          "en": "They meet on Saturdays to discuss a book and give their opinions.",
+          "fa": "شنبه‌ها دور هم جمع می‌شوند تا درباره‌ی یک کتاب بحث کنند و نظرشان را بگویند."
+        },
+        {
+          "en": "To join the club, you only have to fill in a short form.",
+          "fa": "برای عضویت در باشگاه، فقط باید یک فرم کوتاه را پر کنید."
+        },
+        {
+          "en": "It is free, and there is always tea and cookies.",
+          "fa": "رایگان است و همیشه چای و کلوچه هست."
+        }
+      ],
+      "questions": [
+        {
+          "q": "برنامه‌ی ویژه‌ی کتابخانه کدام روز است؟",
+          "options": [
+            "چهارشنبه بعدازظهر",
+            "شنبه صبح",
+            "جمعه",
+            "دوشنبه"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "موضوع این هفته چیست؟",
+          "options": [
+            "کتاب‌های تاریخ",
+            "کتاب‌هایی درباره‌ی حیوان‌ها",
+            "شعر",
+            "علوم"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "بچه‌ها برای پیدا کردن معنی کلمه‌ها از چه استفاده می‌کنند؟",
+          "options": [
+            "اینترنت",
+            "معلم",
+            "فرهنگ لغت",
+            "رایانه"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "نویسنده به پارسا چه می‌دهد؟",
+          "options": [
+            "یک فرهنگ لغت",
+            "چای و کلوچه",
+            "یک کارت",
+            "کتاب تازه‌اش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "برای عضویت در باشگاه چه باید کرد؟",
+          "options": [
+            "یک فرم کوتاه پر کرد",
+            "پول داد",
+            "امتحان داد",
+            "یک کتاب نوشت"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-listening-4",
+      "titleEn": "Grandmother's Garden",
+      "titleFa": "باغ مادربزرگ",
+      "names": [
+        "Sepehr"
+      ],
+      "sentences": [
+        {
+          "en": "Sepehr spends every summer at his grandmother's house.",
+          "fa": "سپهر هر تابستان را در خانه‌ی مادربزرگش می‌گذراند."
+        },
+        {
+          "en": "Her hobby is her garden, and she works in it every morning.",
+          "fa": "سرگرمی‌اش باغش است و هر صبح در آن کار می‌کند."
+        },
+        {
+          "en": "There are pink and purple flowers, green plants and two small trees.",
+          "fa": "گل‌های صورتی و بنفش، گیاه‌های سبز و دو درخت کوچک آنجاست."
+        },
+        {
+          "en": "This summer, Sepehr helps her, and he learns a lot.",
+          "fa": "امسال تابستان، سپهر کمکش می‌کند و کلی چیز یاد می‌گیرد."
+        },
+        {
+          "en": "\"Plants need water, sun and time,\" his grandmother says.",
+          "fa": "مادربزرگش می‌گوید: «گیاه‌ها آب، آفتاب و زمان لازم دارند.»"
+        },
+        {
+          "en": "\"If you give them all three, they grow well.\"",
+          "fa": "«اگر هر سه را به آن‌ها بدهی، خوب رشد می‌کنند.»"
+        },
+        {
+          "en": "One day, a small cat comes into the garden and sleeps under a tree.",
+          "fa": "یک روز، گربه‌ی کوچکی به باغ می‌آید و زیر درختی می‌خوابد."
+        },
+        {
+          "en": "After that, it comes every day, and Sepehr gives it milk.",
+          "fa": "از آن به بعد هر روز می‌آید و سپهر به آن شیر می‌دهد."
+        },
+        {
+          "en": "In the afternoon, when it is hot, they relax in the house and drink cool lemon juice.",
+          "fa": "بعدازظهر، وقتی هوا گرم است، در خانه استراحت می‌کنند و آب لیموی خنک می‌نوشند."
+        },
+        {
+          "en": "His grandmother tells him stories about her life when she was young.",
+          "fa": "مادربزرگش داستان‌هایی از زندگی‌اش در جوانی برایش تعریف می‌کند."
+        },
+        {
+          "en": "At the end of the summer, Sepehr is sad to go home.",
+          "fa": "آخر تابستان، سپهر از برگشتن به خانه غمگین است."
+        },
+        {
+          "en": "\"Come back next year,\" his grandmother says. \"The garden will wait for you.\"",
+          "fa": "مادربزرگش می‌گوید: «سال بعد برگرد. باغ منتظرت می‌ماند.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "سپهر تابستان‌ها کجاست؟",
+          "options": [
+            "در خانه‌ی مادربزرگش",
+            "در کلاس تابستانی",
+            "کنار دریا",
+            "در مزرعه"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "سرگرمی مادربزرگ چیست؟",
+          "options": [
+            "آشپزی",
+            "کتاب خواندن",
+            "نقاشی",
+            "باغش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "به گفته‌ی مادربزرگ گیاه‌ها چه لازم دارند؟",
+          "options": [
+            "خاک و کود",
+            "آب، آفتاب و زمان",
+            "فقط آب",
+            "موسیقی"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "سپهر به گربه چه می‌دهد؟",
+          "options": [
+            "نان",
+            "ماهی",
+            "شیر",
+            "آب"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "بعدازظهرها چه می‌نوشند؟",
+          "options": [
+            "چای داغ",
+            "آب لیموی خنک",
+            "شیر",
+            "قهوه"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "final-listening-5",
+      "titleEn": "The Science Club",
+      "titleFa": "باشگاه علمی",
+      "names": [
+        "Soraya"
+      ],
+      "sentences": [
+        {
+          "en": "Soraya is a member of the science club at her school.",
+          "fa": "ثریا عضو باشگاه علمی مدرسه‌اش است."
+        },
+        {
+          "en": "This year, the club has an interesting project: they want to grow plants with very little water.",
+          "fa": "امسال باشگاه یک پروژه‌ی جالب دارد: می‌خواهند با آب خیلی کم گیاه پرورش بدهند."
+        },
+        {
+          "en": "Each student chooses a type of plant and puts it in a small box by the window.",
+          "fa": "هر دانش‌آموز یک نوع گیاه انتخاب می‌کند و آن را در جعبه‌ی کوچکی کنار پنجره می‌گذارد."
+        },
+        {
+          "en": "Soraya gives her plants a little water every second day.",
+          "fa": "ثریا یک روز در میان کمی آب به گیاه‌هایش می‌دهد."
+        },
+        {
+          "en": "Every week, the students write their results in a chart.",
+          "fa": "هر هفته دانش‌آموزها نتیجه‌هایشان را در یک نمودار می‌نویسند."
+        },
+        {
+          "en": "At first, there is a problem: some plants die because the sun is too hot.",
+          "fa": "اولش مشکلی پیش می‌آید: بعضی گیاه‌ها می‌میرند، چون آفتاب خیلی داغ است."
+        },
+        {
+          "en": "The students move them to a place where the sun is not so hot, and the situation gets better.",
+          "fa": "دانش‌آموزها آن‌ها را به جایی می‌برند که آفتاب آن‌قدر داغ نیست و وضع بهتر می‌شود."
+        },
+        {
+          "en": "After two months, Soraya's plants are the tallest in the club.",
+          "fa": "بعد از دو ماه، گیاه‌های ثریا بلندترین گیاه‌های باشگاه‌اند."
+        },
+        {
+          "en": "A scientist from the university visits the club and looks at their work.",
+          "fa": "دانشمندی از دانشگاه به باشگاه می‌آید و کارشان را نگاه می‌کند."
+        },
+        {
+          "en": "\"This is real science,\" she says. \"You learned from your mistakes.\"",
+          "fa": "می‌گوید: «این علم واقعی است. از اشتباه‌هایتان یاد گرفتید.»"
+        },
+        {
+          "en": "She asks the students to show their project at a university event in the spring.",
+          "fa": "از دانش‌آموزها می‌خواهد پروژه‌شان را بهار در یکی از برنامه‌های دانشگاه نشان بدهند."
+        },
+        {
+          "en": "Soraya is excited. It is her first big success.",
+          "fa": "ثریا هیجان‌زده است. این اولین موفقیت بزرگ اوست."
+        }
+      ],
+      "questions": [
+        {
+          "q": "پروژه‌ی باشگاه علمی چیست؟",
+          "options": [
+            "پرورش گیاه با آب خیلی کم",
+            "ساختن ماکت یک پرنده",
+            "نوشتن یک مقاله",
+            "بررسی آب‌وهوا"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "ثریا هر چند وقت به گیاه‌هایش آب می‌دهد؟",
+          "options": [
+            "هر روز",
+            "یک روز در میان",
+            "هفته‌ای یک بار",
+            "هیچ‌وقت"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "مشکل اول چه بود؟",
+          "options": [
+            "آب تمام شد",
+            "جعبه‌ها شکستند",
+            "بعضی گیاه‌ها به خاطر آفتاب داغ مردند",
+            "دانش‌آموزها فراموش کردند"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "گیاه‌های چه کسی بلندترین‌اند؟",
+          "options": [
+            "معلم",
+            "دانشمند",
+            "همه یک‌اندازه‌اند",
+            "ثریا"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "دانشمند از دانش‌آموزها چه می‌خواهد؟",
+          "options": [
+            "که پروژه را بهار در دانشگاه نشان بدهند",
+            "که گیاه‌ها را به او بدهند",
+            "که پروژه را تمام کنند",
+            "که به باشگاه دیگری بروند"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-listening-6",
+      "titleEn": "A Morning in the Rain",
+      "titleFa": "صبحی زیر باران",
+      "names": [
+        "Kamyar"
+      ],
+      "sentences": [
+        {
+          "en": "It is raining this morning, and Kamyar has to go to his language class.",
+          "fa": "امروز صبح باران می‌آید و کامیار باید به کلاس زبانش برود."
+        },
+        {
+          "en": "He cannot find his umbrella, so he wears his father's big hat.",
+          "fa": "چترش را پیدا نمی‌کند، پس کلاه بزرگ پدرش را سر می‌گذارد."
+        },
+        {
+          "en": "The bus is late, and the traffic is terrible because of the rain.",
+          "fa": "اتوبوس دیر کرده و ترافیک به خاطر باران وحشتناک است."
+        },
+        {
+          "en": "So Kamyar takes a taxi with two other people.",
+          "fa": "پس کامیار با دو نفر دیگر سوار تاکسی می‌شود."
+        },
+        {
+          "en": "The driver is a funny man who talks all the time.",
+          "fa": "راننده مرد بامزه‌ای است که مدام حرف می‌زند."
+        },
+        {
+          "en": "\"In my opinion, rain is good,\" he says. \"When it rains, people are nice to each other.\"",
+          "fa": "می‌گوید: «به نظر من باران خوب است. وقتی باران می‌آید، آدم‌ها با هم مهربان‌اند.»"
+        },
+        {
+          "en": "Kamyar thinks about it. It is a positive way to see the rain.",
+          "fa": "کامیار به آن فکر می‌کند. نگاه مثبتی به باران است."
+        },
+        {
+          "en": "When he arrives, his class has started, but the teacher is not angry.",
+          "fa": "وقتی می‌رسد، کلاسش شروع شده، اما معلم عصبانی نیست."
+        },
+        {
+          "en": "\"Many students are late today,\" she says. \"It is the weather.\"",
+          "fa": "می‌گوید: «امروز خیلی از دانش‌آموزها دیر آمده‌اند. تقصیر هواست.»"
+        },
+        {
+          "en": "After class, the rain stops, and the sun comes out.",
+          "fa": "بعد از کلاس، باران بند می‌آید و آفتاب بیرون می‌آید."
+        },
+        {
+          "en": "Kamyar walks home, and the streets are clean and quiet.",
+          "fa": "کامیار پیاده به خانه می‌رود و خیابان‌ها تمیز و آرام‌اند."
+        },
+        {
+          "en": "He thinks about the taxi driver. Maybe the driver was right.",
+          "fa": "به راننده‌ی تاکسی فکر می‌کند. شاید راننده راست می‌گفت."
+        }
+      ],
+      "questions": [
+        {
+          "q": "چرا کامیار کلاه پدرش را سر می‌گذارد؟",
+          "options": [
+            "هوا سرد است",
+            "چترش را پیدا نمی‌کند",
+            "کلاه خودش کوچک است",
+            "پدرش گفته"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "چرا ترافیک وحشتناک است؟",
+          "options": [
+            "به خاطر باران",
+            "جشنواره است",
+            "جاده بسته است",
+            "تصادف شده"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "کامیار چطور به کلاس می‌رود؟",
+          "options": [
+            "با اتوبوس",
+            "پیاده",
+            "با تاکسی",
+            "با دوچرخه"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "نظر راننده درباره‌ی باران چیست؟",
+          "options": [
+            "که باران بد است",
+            "که باران ترافیک می‌آورد",
+            "که باید در خانه ماند",
+            "که وقتی باران می‌آید آدم‌ها با هم مهربان‌اند"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "معلم وقتی کامیار دیر می‌رسد چه می‌کند؟",
+          "options": [
+            "عصبانی نمی‌شود",
+            "او را به خانه می‌فرستد",
+            "به پدرش زنگ می‌زند",
+            "به او تکلیف اضافه می‌دهد"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-listening-7",
+      "titleEn": "Exam Week",
+      "titleFa": "هفته‌ی امتحان",
+      "names": [
+        "Mahan"
+      ],
+      "sentences": [
+        {
+          "en": "Next week, Mahan has exams in four subjects: science, history, geography and language.",
+          "fa": "هفته‌ی بعد، ماهان در چهار درس امتحان دارد: علوم، تاریخ، جغرافیا و زبان."
+        },
+        {
+          "en": "He makes a plan with his sister, who is a student at college.",
+          "fa": "با خواهرش که دانشجوی دانشکده است برنامه‌ای می‌ریزد."
+        },
+        {
+          "en": "Every day after school, he studies for two hours, and then he takes a break.",
+          "fa": "هر روز بعد از مدرسه دو ساعت درس می‌خواند و بعد استراحت می‌کند."
+        },
+        {
+          "en": "His sister helps him with the difficult parts of science.",
+          "fa": "خواهرش در بخش‌های سخت علوم کمکش می‌کند."
+        },
+        {
+          "en": "For history, he makes a list of important dates and learns them.",
+          "fa": "برای تاریخ، فهرستی از تاریخ‌های مهم درست می‌کند و آن‌ها را یاد می‌گیرد."
+        },
+        {
+          "en": "For geography, he draws maps of the country and writes the names of the cities.",
+          "fa": "برای جغرافیا، نقشه‌های کشور را می‌کشد و اسم شهرها را می‌نویسد."
+        },
+        {
+          "en": "The night before the first exam, he is afraid, and he cannot sleep.",
+          "fa": "شب قبل از اولین امتحان می‌ترسد و خوابش نمی‌برد."
+        },
+        {
+          "en": "His mother brings him a cup of warm milk. \"You are ready,\" she says. \"Believe in yourself.\"",
+          "fa": "مادرش یک فنجان شیر گرم برایش می‌آورد. می‌گوید: «تو آماده‌ای. به خودت باور داشته باش.»"
+        },
+        {
+          "en": "The first exam is science, and it is not as difficult as he thought.",
+          "fa": "اولین امتحان علوم است و آن‌قدر که فکر می‌کرد سخت نیست."
+        },
+        {
+          "en": "At the end of the week, the teacher gives the results.",
+          "fa": "آخر هفته، معلم نتیجه‌ها را می‌دهد."
+        },
+        {
+          "en": "Mahan's results are good, and his language result is the best in the class.",
+          "fa": "نتیجه‌های ماهان خوب است و نتیجه‌ی زبانش بهترین نتیجه‌ی کلاس است."
+        },
+        {
+          "en": "\"Your plan was a success,\" his sister says, and they go out for ice cream.",
+          "fa": "خواهرش می‌گوید: «برنامه‌ات موفق بود» و برای بستنی بیرون می‌روند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "ماهان در چند درس امتحان دارد؟",
+          "options": [
+            "سه",
+            "پنج",
+            "چهار",
+            "دو"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چه کسی در علوم به ماهان کمک می‌کند؟",
+          "options": [
+            "خواهرش",
+            "مادرش",
+            "معلمش",
+            "دوستش"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "ماهان برای تاریخ چه می‌کند؟",
+          "options": [
+            "نقشه می‌کشد",
+            "فهرستی از تاریخ‌های مهم درست می‌کند",
+            "فیلم تماشا می‌کند",
+            "به موزه می‌رود"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "مادر شب قبل از امتحان چه برایش می‌آورد؟",
+          "options": [
+            "چای",
+            "بستنی",
+            "آب",
+            "شیر گرم"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "بهترین نتیجه‌ی ماهان در کدام درس است؟",
+          "options": [
+            "زبان",
+            "علوم",
+            "تاریخ",
+            "جغرافیا"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "final-listening-8",
+      "titleEn": "Movie Night",
+      "titleFa": "شب فیلم",
+      "names": [
+        "Nasrin"
+      ],
+      "sentences": [
+        {
+          "en": "Every Friday evening, Nasrin's family has a movie night at home.",
+          "fa": "هر جمعه عصر، خانواده‌ی نسرین در خانه شب فیلم دارند."
+        },
+        {
+          "en": "Each week, a different person chooses the movie.",
+          "fa": "هر هفته یک نفر فیلم را انتخاب می‌کند."
+        },
+        {
+          "en": "This week, her little brother chooses.",
+          "fa": "این هفته برادر کوچکش انتخاب می‌کند."
+        },
+        {
+          "en": "He chooses a popular movie about a lion who wants to be a singer.",
+          "fa": "یک فیلم پرطرفدار درباره‌ی شیری انتخاب می‌کند که می‌خواهد خواننده شود."
+        },
+        {
+          "en": "Nasrin thinks the movie will be terrible, but she does not say it.",
+          "fa": "نسرین فکر می‌کند فیلم وحشتناک است، اما چیزی نمی‌گوید."
+        },
+        {
+          "en": "Her mother prepares sandwiches and ice cream for everyone.",
+          "fa": "مادرش برای همه ساندویچ و بستنی آماده می‌کند."
+        },
+        {
+          "en": "The movie begins, and after ten minutes, everyone is laughing.",
+          "fa": "فیلم شروع می‌شود و بعد از ده دقیقه همه می‌خندند."
+        },
+        {
+          "en": "The lion is very funny, and his songs are really good.",
+          "fa": "شیر خیلی بامزه است و آوازهایش واقعاً خوب‌اند."
+        },
+        {
+          "en": "The star of the movie is a famous actor, and he sings very well.",
+          "fa": "ستاره‌ی فیلم یک بازیگر معروف است و خیلی خوب آواز می‌خواند."
+        },
+        {
+          "en": "After the movie, the family discusses it together.",
+          "fa": "بعد از فیلم، خانواده با هم درباره‌اش حرف می‌زنند."
+        },
+        {
+          "en": "\"It was more interesting than I thought,\" Nasrin says. \"I was wrong.\"",
+          "fa": "نسرین می‌گوید: «از آنچه فکر می‌کردم جالب‌تر بود. اشتباه می‌کردم.»"
+        },
+        {
+          "en": "Her brother is very happy. \"Next week, I want to choose again!\" he says.",
+          "fa": "برادرش خیلی خوشحال است. می‌گوید: «هفته‌ی بعد هم می‌خواهم من انتخاب کنم!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "شب فیلم خانواده کی است؟",
+          "options": [
+            "هر شنبه",
+            "هر پنجشنبه",
+            "هر شب",
+            "هر جمعه عصر"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "این هفته چه کسی فیلم را انتخاب می‌کند؟",
+          "options": [
+            "مادر",
+            "برادر کوچک نسرین",
+            "نسرین",
+            "پدر"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "فیلم درباره‌ی چیست؟",
+          "options": [
+            "شیری که می‌خواهد خواننده شود",
+            "سگی که راه خانه را پیدا می‌کند",
+            "یک فیل باهوش",
+            "یک جوجه‌ی زرد"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "مادر چه چیزی آماده می‌کند؟",
+          "options": [
+            "کیک و چای",
+            "سوپ",
+            "ساندویچ و بستنی",
+            "میوه"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "نسرین بعد از فیلم چه می‌گوید؟",
+          "options": [
+            "که فیلم وحشتناک بود",
+            "که خسته است",
+            "که فیلم را قبلاً دیده بود",
+            "که از آنچه فکر می‌کرد جالب‌تر بود"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

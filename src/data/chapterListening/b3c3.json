@@ -1,0 +1,111 @@
+{
+  "id": "b3c3-listening",
+  "titleEn": "Mom's Little Bird",
+  "titleFa": "پرنده‌ی کوچک مامان",
+  "names": [
+    "Nino",
+    "Mina"
+  ],
+  "sentences": [
+    {
+      "en": "Long ago, when Mom was young, she had a small bird.",
+      "fa": "مدت‌ها پیش، وقتی مامان جوان بود، یک پرنده‌ی کوچک داشت."
+    },
+    {
+      "en": "The bird was white, with a little black on its head.",
+      "fa": "پرنده سفید بود، با کمی سیاهی روی سرش."
+    },
+    {
+      "en": "Every morning, it sang at the window of her room.",
+      "fa": "هر صبح، کنار پنجره‌ی اتاقش آواز می‌خواند."
+    },
+    {
+      "en": "Mom gave it bread and water, and it ate from her hand.",
+      "fa": "مامان به آن نان و آب می‌داد و از دستش غذا می‌خورد."
+    },
+    {
+      "en": "One day, her mother opened the window to clean it.",
+      "fa": "یک روز، مادرش پنجره را باز کرد تا تمیزش کند."
+    },
+    {
+      "en": "The bird looked at the open window for a second.",
+      "fa": "پرنده یک لحظه به پنجره‌ی باز نگاه کرد."
+    },
+    {
+      "en": "Then it went out through the window and up into the trees.",
+      "fa": "بعد از پنجره بیرون رفت و بالای درخت‌ها رفت."
+    },
+    {
+      "en": "Mom ran outside, and she called it again and again.",
+      "fa": "مامان بیرون دوید و بارها و بارها صدایش زد."
+    },
+    {
+      "en": "She looked for it every day for a week, and at midnight she still sat by the open window.",
+      "fa": "یک هفته هر روز دنبالش گشت و نیمه‌شب هنوز کنار پنجره‌ی باز می‌نشست."
+    },
+    {
+      "en": "But the bird never came back.",
+      "fa": "اما پرنده هیچ‌وقت برنگشت."
+    },
+    {
+      "en": "\"I was very sad,\" Mom says. \"But I still remember its song.\"",
+      "fa": "مامان می‌گوید: «خیلی غمگین بودم. اما هنوز آوازش یادم است.»"
+    },
+    {
+      "en": "\"Nino is different,\" she tells Mina. \"He knows his home, and I believe he will find it.\"",
+      "fa": "به مینا می‌گوید: «نینو فرق دارد. خانه‌اش را می‌شناسد و باور دارم آن را پیدا می‌کند.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "پرنده‌ی مامان چه رنگی بود؟",
+      "options": [
+        "زرد",
+        "قرمز",
+        "سیاه",
+        "سفید با کمی سیاهی روی سرش"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "پرنده کجا آواز می‌خواند؟",
+      "options": [
+        "کنار پنجره‌ی اتاق مامان",
+        "در باغچه",
+        "روی درخت",
+        "در آشپزخانه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "چه کسی پنجره را باز کرد؟",
+      "options": [
+        "مامان",
+        "مادرِ مامان",
+        "پدرِ مامان",
+        "یک همسایه"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "مامان چقدر دنبال پرنده گشت؟",
+      "options": [
+        "یک روز",
+        "یک ماه",
+        "یک هفته",
+        "یک سال"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مامان هنوز چه چیزی از پرنده‌اش یادش است؟",
+      "options": [
+        "آوازش",
+        "اسمش",
+        "پاهایش",
+        "خانه‌اش"
+      ],
+      "answer": 0
+    }
+  ]
+}

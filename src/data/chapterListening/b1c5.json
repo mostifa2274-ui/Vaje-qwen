@@ -1,0 +1,116 @@
+{
+  "id": "b1c5-listening",
+  "titleEn": "Mom Cannot Sleep",
+  "titleFa": "مامان خوابش نمی‌برد",
+  "names": [
+    "Mina",
+    "Nino",
+    "Aria"
+  ],
+  "sentences": [
+    {
+      "en": "It is late in the evening, and Mom cannot sleep.",
+      "fa": "دیروقت است و مامان خوابش نمی‌برد."
+    },
+    {
+      "en": "She walks downstairs and drinks a glass of water in the kitchen.",
+      "fa": "به طبقه‌ی پایین می‌رود و در آشپزخانه یک لیوان آب می‌نوشد."
+    },
+    {
+      "en": "The house is quiet, but she can hear many small sounds.",
+      "fa": "خانه ساکت است، اما صداهای کوچک زیادی می‌شنود."
+    },
+    {
+      "en": "Dad is in the front room, but he is not watching the TV. He is tired.",
+      "fa": "بابا در اتاق جلویی است، اما تلویزیون تماشا نمی‌کند. خسته است."
+    },
+    {
+      "en": "By the front door, the little light is still on.",
+      "fa": "کنار در جلویی، چراغ کوچک هنوز روشن است."
+    },
+    {
+      "en": "The cup of water and the bread are still there too.",
+      "fa": "فنجان آب و نان هم هنوز آنجاست."
+    },
+    {
+      "en": "Nino did not come for his dinner.",
+      "fa": "نینو برای شامش نیامد."
+    },
+    {
+      "en": "Mom misses him too, because he is part of the family.",
+      "fa": "مامان هم دلش برای او تنگ شده، چون او عضوی از خانواده است."
+    },
+    {
+      "en": "She hopes he is not afraid out there tonight.",
+      "fa": "امیدوار است امشب آن بیرون نترسیده باشد."
+    },
+    {
+      "en": "Upstairs, Aria is sleeping, and Mina is in her bed.",
+      "fa": "در طبقه‌ی بالا، آریا خواب است و مینا در تختش است."
+    },
+    {
+      "en": "Mom opens Mina's door and looks in for a moment.",
+      "fa": "مامان در اتاق مینا را باز می‌کند و لحظه‌ای داخل را نگاه می‌کند."
+    },
+    {
+      "en": "Then she sits by the window of her room.",
+      "fa": "بعد کنار پنجره‌ی اتاقش می‌نشیند."
+    },
+    {
+      "en": "\"Do not be afraid, Nino,\" she says quietly. \"We will find you tomorrow.\"",
+      "fa": "آرام می‌گوید: «نترس، نینو. فردا پیدایت می‌کنیم.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "مامان در آشپزخانه چه می‌نوشد؟",
+      "options": [
+        "شیر",
+        "یک لیوان آب",
+        "چای",
+        "هیچ چیز"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "کنار در جلویی چه چیزی هنوز روشن است؟",
+      "options": [
+        "تلویزیون",
+        "چراغ آشپزخانه",
+        "چراغ کوچک",
+        "چراغ اتاق مینا"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "نان و آب هنوز آنجاست؛ این یعنی چه؟",
+      "options": [
+        "نینو برای شامش نیامد",
+        "نینو آن را خورد",
+        "بابا آن را برداشت",
+        "آریا آن را خورد"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "بابا کجاست؟",
+      "options": [
+        "در آشپزخانه",
+        "در حیاط",
+        "در اتاق مینا",
+        "در اتاق جلویی"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مامان کنار پنجره چه می‌گوید؟",
+      "options": [
+        "«شب بخیر، مینا.»",
+        "«نترس، نینو. فردا پیدایت می‌کنیم.»",
+        "«فردا به باغچه می‌رویم.»",
+        "«باران خوب است.»"
+      ],
+      "answer": 1
+    }
+  ]
+}

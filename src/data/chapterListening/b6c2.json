@@ -1,0 +1,112 @@
+{
+  "id": "b6c2-listening",
+  "titleEn": "Negar's Project",
+  "titleFa": "پروژه‌ی نگار",
+  "names": [
+    "Negar",
+    "Nino",
+    "Mina"
+  ],
+  "sentences": [
+    {
+      "en": "After class, Negar comes home with a note in her hand.",
+      "fa": "بعد از کلاس، نگار با یک یادداشت در دست به خانه می‌آید."
+    },
+    {
+      "en": "\"This is our class project,\" she tells her mother.",
+      "fa": "به مادرش می‌گوید: «این پروژه‌ی کلاس ماست.»"
+    },
+    {
+      "en": "\"Every student must put Nino's note near her house and ask the neighbors.\"",
+      "fa": "«هر دانش‌آموز باید یادداشت نینو را نزدیک خانه‌اش بزند و از همسایه‌ها بپرسد.»"
+    },
+    {
+      "en": "The note has a title in big letters and one short paragraph.",
+      "fa": "یادداشت یک عنوان با حروف درشت و یک بند کوتاه دارد."
+    },
+    {
+      "en": "\"Mina improved it with our teacher,\" Negar says.",
+      "fa": "نگار می‌گوید: «مینا با معلممان آن را بهتر کرد.»"
+    },
+    {
+      "en": "\"The teacher also made a chart of all the places where people saw Nino.\"",
+      "fa": "«معلم نموداری هم از همه‌ی جاهایی که مردم نینو را دیده‌اند درست کرد.»"
+    },
+    {
+      "en": "\"All the places are on one line that goes to the river.\"",
+      "fa": "«همه‌ی جاها روی یک خط‌اند که به رودخانه می‌رسد.»"
+    },
+    {
+      "en": "\"What is the reason for that?\" her mother asks. \"Nobody knows,\" Negar says.",
+      "fa": "مادرش می‌پرسد: «دلیلش چیست؟» نگار می‌گوید: «هیچ‌کس نمی‌داند.»"
+    },
+    {
+      "en": "Negar and her mother put the note on the wall next to their door.",
+      "fa": "نگار و مادرش یادداشت را روی دیوار کنار درشان می‌زنند."
+    },
+    {
+      "en": "Then Negar fills in a form for the project with her name and her street.",
+      "fa": "بعد نگار فرم پروژه را با اسم و خیابانش پر می‌کند."
+    },
+    {
+      "en": "\"Chickens grow fast,\" Negar says. \"Maybe Nino is not so small now.\"",
+      "fa": "نگار می‌گوید: «جوجه‌ها زود بزرگ می‌شوند. شاید نینو حالا دیگر آن‌قدر کوچک نباشد.»"
+    },
+    {
+      "en": "\"Then we must look for a chicken that is not so small,\" her mother says.",
+      "fa": "مادرش می‌گوید: «پس باید دنبال جوجه‌ای بگردیم که آن‌قدر کوچک نیست.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "نگار چه چیزی به خانه می‌آورد؟",
+      "options": [
+        "یک کتاب",
+        "یک یادداشت",
+        "یک نقشه",
+        "یک جوجه"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "هر دانش‌آموز باید چه کند؟",
+      "options": [
+        "یک شعر بنویسد",
+        "به رودخانه برود",
+        "یادداشت را نزدیک خانه‌اش بزند و از همسایه‌ها بپرسد",
+        "یک فرم را به معلم بدهد"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "یادداشت چه چیزهایی دارد؟",
+      "options": [
+        "یک عنوان و یک بند کوتاه",
+        "فقط یک عکس",
+        "یک نقشه‌ی بزرگ",
+        "یک نامه‌ی طولانی"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "خط روی نمودار به کجا می‌رسد؟",
+      "options": [
+        "به مدرسه",
+        "به بازار",
+        "به خانه‌ی نگار",
+        "به رودخانه"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "نگار درباره‌ی نینو چه می‌گوید؟",
+      "options": [
+        "که او حالا شاید آن‌قدر کوچک نباشد",
+        "که او در رودخانه است",
+        "که او را دیده",
+        "که او سفید شده"
+      ],
+      "answer": 0
+    }
+  ]
+}

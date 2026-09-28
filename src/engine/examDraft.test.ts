@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import type { BuiltExam } from './exams'
+import { EXAM_TEST_CONTENT } from '../data/examTests'
 import {
   clearExamDraft,
   EXAM_BREAK_EVERY,
@@ -32,6 +33,8 @@ function builtExam(count = 4): BuiltExam {
       passRate: 0.85,
       productivePassRate: 0.8,
     },
+    reading: [],
+    listening: [],
     questions: Array.from({ length: count }, (_, index) => ({
       index,
       wordId: `word-${index}`,
@@ -130,5 +133,36 @@ describe('exam session drafts', () => {
     expect(saveExamDraft(draft(exam), exam)).toBe(true)
     clearExamDraft('book-1')
     expect(loadExamDraft('book-1', 1, exam)).toBeUndefined()
+  })
+  it('keeps the texts stage: every word answered, text answers checked against the texts', () => {
+    const content = EXAM_TEST_CONTENT.get('midpoint')!
+    const exam = { ...builtExam(), reading: content.reading.slice(0, 2), listening: content.listening.slice(0, 2) }
+    const allAnswered = { 0: true, 1: false, 2: true, 3: true }
+    const allTimings = { 0: 1200, 1: 2400, 2: 900, 3: 800 }
+    const comprehension = {
+      reading: [[0, 1, 2, 3, 0], [null, null, null, null, null]],
+      listening: [[null, null, null, null, null], [null, null, null, null, null]],
+    }
+    const texts = draft(exam, { index: 3, answers: allAnswered, timings: allTimings, stage: 'texts', textIndex: 1, comprehension, heard: [false, false] })
+    const clean = sanitizeExamDraft(texts, 'book-1', 1, exam)
+    expect(clean).toMatchObject({ stage: 'texts', textIndex: 1, comprehension, heard: [false, false], typed: '', onBreak: false })
+
+    // Text ids are part of the signature.
+    const other = { ...exam, reading: content.reading.slice(2, 4) }
+    expect(examSignature(other)).not.toBe(examSignature(exam))
+
+    // A word question left open, a skipped earlier text, an answer to an
+    // unheard listening text or an out-of-range choice are all rejected.
+    expect(sanitizeExamDraft({ ...texts, answers: { 0: true, 1: false, 2: true } }, 'book-1', 1, exam)).toBeUndefined()
+    expect(sanitizeExamDraft({ ...texts, textIndex: 2 }, 'book-1', 1, exam)).toBeUndefined()
+    const unheard = { ...comprehension, listening: [[1, null, null, null, null], [null, null, null, null, null]] }
+    expect(sanitizeExamDraft({ ...texts, comprehension: unheard }, 'book-1', 1, exam)).toBeUndefined()
+    expect(sanitizeExamDraft({ ...texts, comprehension: unheard, heard: [true, false] }, 'book-1', 1, exam)).toMatchObject({ heard: [true, false] })
+    const outOfRange = { ...comprehension, reading: [[0, 1, 2, 3, 4], [null, null, null, null, null]] }
+    expect(sanitizeExamDraft({ ...texts, comprehension: outOfRange }, 'book-1', 1, exam)).toBeUndefined()
+    expect(sanitizeExamDraft({ ...texts, textIndex: 4 }, 'book-1', 1, exam)).toBeUndefined()
+
+    // Explore mode may leave gaps anywhere.
+    expect(sanitizeExamDraft({ ...texts, textIndex: 3, answers: { 1: true }, timings: { 1: 500 }, skipped: true }, 'book-1', 1, exam)).toMatchObject({ textIndex: 3, skipped: true })
   })
 })

@@ -1,0 +1,111 @@
+{
+  "id": "b5c2-listening",
+  "titleEn": "Dad's Letter",
+  "titleFa": "نامه‌ی بابا",
+  "names": [
+    "Nino",
+    "Mina"
+  ],
+  "sentences": [
+    {
+      "en": "Dad writes a letter to the city newspaper, and this is his letter.",
+      "fa": "بابا نامه‌ای به روزنامه‌ی شهر می‌نویسد و این نامه‌ی اوست."
+    },
+    {
+      "en": "\"Dear friends at the newspaper, I am the father of a girl of eleven.\"",
+      "fa": "«دوستان عزیز روزنامه، من پدر یک دختر یازده ساله هستم.»"
+    },
+    {
+      "en": "\"Last month, her little yellow chicken, Nino, ran away from our house.\"",
+      "fa": "«ماه پیش، جوجه‌ی زرد کوچک او، نینو، از خانه‌ی ما فرار کرد.»"
+    },
+    {
+      "en": "\"Here are the facts: he is small and yellow, with orange feet and some white on his left.\"",
+      "fa": "«واقعیت‌ها این‌هاست: او کوچک و زرد است، با پاهای نارنجی و کمی سفیدی در سمت چپش.»"
+    },
+    {
+      "en": "\"People saw him near the bus stop, in the city center and at the big market.\"",
+      "fa": "«مردم او را نزدیک ایستگاه اتوبوس، در مرکز شهر و در بازار بزرگ دیده‌اند.»"
+    },
+    {
+      "en": "\"My daughter writes notes about him, and she puts them on the walls of our neighborhood.\"",
+      "fa": "«دخترم درباره‌اش یادداشت می‌نویسد و آن‌ها را روی دیوارهای محله‌مان می‌زند.»"
+    },
+    {
+      "en": "\"Please help us. Can you put his picture in your newspaper?\"",
+      "fa": "«لطفاً کمکمان کنید. می‌توانید عکسش را در روزنامه‌تان بگذارید؟»"
+    },
+    {
+      "en": "\"Many people read your newspaper. Maybe one of them has seen him.\"",
+      "fa": "«خیلی‌ها روزنامه‌تان را می‌خوانند. شاید یکی‌شان او را دیده باشد.»"
+    },
+    {
+      "en": "\"Our address and phone are below. Thank you very much.\"",
+      "fa": "«آدرس و تلفن ما پایین آمده است. خیلی ممنونم.»"
+    },
+    {
+      "en": "Dad reads the letter to Mina, and she checks the spelling of every word.",
+      "fa": "بابا نامه را برای مینا می‌خواند و او املای تک‌تک کلمه‌ها را بررسی می‌کند."
+    },
+    {
+      "en": "She finds one mistake in the last sentence, and Dad writes it again.",
+      "fa": "یک اشتباه در جمله‌ی آخر پیدا می‌کند و بابا آن را دوباره می‌نویسد."
+    },
+    {
+      "en": "\"Now it is a good letter,\" Mina says. \"Send it, Dad.\"",
+      "fa": "مینا می‌گوید: «حالا نامه‌ی خوبی است. بفرستش، بابا.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "بابا نامه را برای چه کسی می‌نویسد؟",
+      "options": [
+        "برای روزنامه‌ی شهر",
+        "برای رادیو",
+        "برای همسایه‌ها",
+        "برای مدرسه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "نینو کی فرار کرد؟",
+      "options": [
+        "هفته‌ی پیش",
+        "دیروز",
+        "ماه پیش",
+        "سال پیش"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "کدام توصیف در نامه آمده است؟",
+      "options": [
+        "بزرگ و سفید",
+        "کوچک و زرد با پاهای نارنجی",
+        "قهوه‌ای با پاهای زرد",
+        "سیاه با کمی سفیدی"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "بابا از روزنامه چه می‌خواهد؟",
+      "options": [
+        "پول",
+        "که یک مقاله درباره‌ی شهر بنویسد",
+        "که به خانه‌شان بیایند",
+        "که عکس نینو را چاپ کند"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مینا در نامه چه چیزی را بررسی می‌کند؟",
+      "options": [
+        "املای کلمه‌ها",
+        "آدرس روزنامه",
+        "عکس نینو",
+        "تاریخ"
+      ],
+      "answer": 0
+    }
+  ]
+}

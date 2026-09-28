@@ -133,11 +133,15 @@ def collect() -> dict[str, tuple[str, str]]:
     for path in sorted((ROOT / "src/data/chapters").glob("*.json")):
         for sentence in json.loads(path.read_text("utf-8"))["sentences"]:
             add("s", sentence["en"])
-    for path in sorted((ROOT / "src/data/bookTests").glob("*.json")):
-        content = json.loads(path.read_text("utf-8"))
-        for text in [*content["reading"], *content["listening"]]:
-            for sentence in text["sentences"]:
-                add("s", sentence["en"])
+    for folder in ("bookTests", "examTests"):
+        for path in sorted((ROOT / "src/data" / folder).glob("*.json")):
+            content = json.loads(path.read_text("utf-8"))
+            for text in [*content["reading"], *content["listening"]]:
+                for sentence in text["sentences"]:
+                    add("s", sentence["en"])
+    for path in sorted((ROOT / "src/data/chapterListening").glob("*.json")):
+        for sentence in json.loads(path.read_text("utf-8"))["sentences"]:
+            add("s", sentence["en"])
     # Sentences the app speaks outside the course content, such as the voice sample in Settings.
     for text in json.loads((ROOT / "scripts/audio/extra-prompts.json").read_text("utf-8")):
         add("s", text)

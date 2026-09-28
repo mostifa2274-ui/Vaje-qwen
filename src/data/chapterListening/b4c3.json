@@ -1,0 +1,108 @@
+{
+  "id": "b4c3-listening",
+  "titleEn": "The Old Customer",
+  "titleFa": "مشتری پیر",
+  "names": [],
+  "sentences": [
+    {
+      "en": "Every morning, an old man sits at a cafe near the bread shop.",
+      "fa": "هر صبح، پیرمردی در کافه‌ای نزدیک نانوایی می‌نشیند."
+    },
+    {
+      "en": "He always orders a cup of coffee and one cookie.",
+      "fa": "همیشه یک فنجان قهوه و یک کلوچه سفارش می‌دهد."
+    },
+    {
+      "en": "From his table, he can see all the street.",
+      "fa": "از پشت میزش می‌تواند همه‌ی خیابان را ببیند."
+    },
+    {
+      "en": "He knows the shops, the customers and the animals of the market.",
+      "fa": "مغازه‌ها، مشتری‌ها و حیوان‌های بازار را می‌شناسد."
+    },
+    {
+      "en": "There are a lot of cats here, and there are a lot of chickens too.",
+      "fa": "اینجا کلی گربه هست و کلی مرغ و جوجه هم."
+    },
+    {
+      "en": "The chickens like the bread shop best, because it is warm there.",
+      "fa": "مرغ و جوجه‌ها نانوایی را از همه‌جا بیشتر دوست دارند، چون آنجا گرم است."
+    },
+    {
+      "en": "Today a family sits at the next table: a mother, a father and three children.",
+      "fa": "امروز خانواده‌ای پشت میز کناری می‌نشینند: یک مادر، یک پدر و سه بچه."
+    },
+    {
+      "en": "The oldest girl has a picture of a little yellow chicken, and she looks sad.",
+      "fa": "دختر بزرگ‌تر عکس یک جوجه‌ی زرد کوچک را دارد و غمگین به نظر می‌رسد."
+    },
+    {
+      "en": "The waiter tells her to ask the customers, so the old man speaks to her father.",
+      "fa": "پیشخدمت به او می‌گوید از مشتری‌ها بپرسد، پس پیرمرد با پدرش حرف می‌زند."
+    },
+    {
+      "en": "He tells them about the chickens and the warm bread shop.",
+      "fa": "درباره‌ی مرغ و جوجه‌ها و نانوایی گرم برایشان می‌گوید."
+    },
+    {
+      "en": "\"Come early, before the shops open,\" he says. \"That is when the chickens come.\"",
+      "fa": "می‌گوید: «زود بیایید، قبل از باز شدن مغازه‌ها. همان موقع است که مرغ و جوجه‌ها می‌آیند.»"
+    },
+    {
+      "en": "The girl says thank you, and she writes something in a red book.",
+      "fa": "دختر تشکر می‌کند و چیزی در یک کتاب قرمز می‌نویسد."
+    }
+  ],
+  "questions": [
+    {
+      "q": "پیرمرد هر صبح چه سفارش می‌دهد؟",
+      "options": [
+        "چای با لیمو",
+        "یک فنجان قهوه و یک کلوچه",
+        "آب پرتقال",
+        "بستنی"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "در بازار کلی چه حیوان‌هایی هست؟",
+      "options": [
+        "سگ و اسب",
+        "پرنده و ماهی",
+        "گربه و مرغ و جوجه",
+        "گاو و بز"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چرا مرغ و جوجه‌ها نانوایی را دوست دارند؟",
+      "options": [
+        "چون آنجا گرم است",
+        "چون آنجا آرام است",
+        "چون آب دارد",
+        "چون درخت دارد"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "دختر بزرگ‌تر چه در دست دارد؟",
+      "options": [
+        "یک فنجان",
+        "یک نقشه",
+        "یک کلوچه",
+        "عکس یک جوجه‌ی زرد"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "پیرمرد می‌گوید کی بیایند؟",
+      "options": [
+        "ظهر",
+        "زود، قبل از باز شدن مغازه‌ها",
+        "عصر",
+        "جمعه"
+      ],
+      "answer": 1
+    }
+  ]
+}

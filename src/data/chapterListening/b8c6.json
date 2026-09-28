@@ -1,0 +1,115 @@
+{
+  "id": "b8c6-listening",
+  "titleEn": "The Grandson Remembers",
+  "titleFa": "نوه به یاد می‌آورد",
+  "names": [
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "One morning, the old woman's grandson sees something yellow in her garden.",
+      "fa": "یک روز صبح، نوه‌ی پیرزن چیزی زرد در باغچه‌اش می‌بیند."
+    },
+    {
+      "en": "It is a young chicken, and it is following a red bird.",
+      "fa": "یک جوجه‌ی جوان است که دنبال یک پرنده‌ی قرمز می‌رود."
+    },
+    {
+      "en": "The chicken eats bread with the other birds and drinks from the dish.",
+      "fa": "جوجه با پرنده‌های دیگر نان می‌خورد و از ظرف آب می‌نوشد."
+    },
+    {
+      "en": "The boy looks at it for a long time. It has orange feet and a little white on its left.",
+      "fa": "پسر مدت زیادی به آن نگاه می‌کند. پاهای نارنجی و کمی سفیدی در سمت چپش دارد."
+    },
+    {
+      "en": "\"Remember the girl with the picture?\" he calls. \"Somebody's chicken is here!\"",
+      "fa": "صدا می‌زند: «دختری را که عکس داشت یادت هست؟ جوجه‌ی یک نفر اینجاست!»"
+    },
+    {
+      "en": "The old woman finds the note from under the blue door, with the address on it.",
+      "fa": "پیرزن یادداشتی را که زیر درِ آبی بود پیدا می‌کند، با آدرس رویش."
+    },
+    {
+      "en": "On Thursday, they go to the address, but nobody is at home.",
+      "fa": "پنجشنبه به آن آدرس می‌روند، اما کسی خانه نیست."
+    },
+    {
+      "en": "A woman two doors away tells them that the family comes back on Friday evening.",
+      "fa": "زنی که دو خانه آن‌طرف‌تر است به آن‌ها می‌گوید خانواده جمعه عصر برمی‌گردند."
+    },
+    {
+      "en": "On Friday, the boy carries the chicken in a box, and they take the bus.",
+      "fa": "جمعه، پسر جوجه را در یک جعبه می‌برد و سوار اتوبوس می‌شوند."
+    },
+    {
+      "en": "The traffic is terrible, and the bus is very slow.",
+      "fa": "ترافیک وحشتناک است و اتوبوس خیلی کند می‌رود."
+    },
+    {
+      "en": "At the door, the girl looks at the box and says, \"Nino!\"",
+      "fa": "دمِ در، دختر به جعبه نگاه می‌کند و می‌گوید: «نینو!»"
+    },
+    {
+      "en": "The chicken runs to her feet, and the boy feels wonderful.",
+      "fa": "جوجه به طرف پاهای او می‌دود و پسر حس فوق‌العاده‌ای دارد."
+    },
+    {
+      "en": "\"You found him yourself,\" Mina tells the boy. \"Thank you.\"",
+      "fa": "مینا به پسر می‌گوید: «خودت پیدایش کردی. ممنونم.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "جوجه دنبال چه چیزی بود؟",
+      "options": [
+        "یک گربه",
+        "یک پرنده‌ی قرمز",
+        "پیرزن",
+        "یک اتوبوس"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "پسر در جوجه چه چیزی می‌بیند؟",
+      "options": [
+        "پاهای نارنجی و کمی سفیدی در سمت چپ",
+        "یک حلقه‌ی آبی روی پایش",
+        "پرهای سیاه",
+        "یک یادداشت"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "پیرزن چه چیزی پیدا می‌کند؟",
+      "options": [
+        "یک عکس",
+        "یک کارت",
+        "یادداشتی با آدرس",
+        "روزنامه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "پنجشنبه که به آن آدرس می‌روند چه می‌شود؟",
+      "options": [
+        "مینا در را باز می‌کند",
+        "خانواده آن‌ها را به خانه دعوت می‌کنند",
+        "جوجه فرار می‌کند",
+        "کسی خانه نیست"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "وقتی دختر جعبه را می‌بیند چه می‌گوید؟",
+      "options": [
+        "«ممنونم!»",
+        "«سلام!»",
+        "«نینو!»",
+        "«کجا بود؟»"
+      ],
+      "answer": 2
+    }
+  ]
+}

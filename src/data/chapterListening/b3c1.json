@@ -1,0 +1,112 @@
+{
+  "id": "b3c1-listening",
+  "titleEn": "Aria's Week",
+  "titleFa": "هفته‌ی آریا",
+  "names": [
+    "Aria",
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "From Saturday to Wednesday, Aria goes to school.",
+      "fa": "از شنبه تا چهارشنبه، آریا به مدرسه می‌رود."
+    },
+    {
+      "en": "Every afternoon, he comes home fast and looks at the map on Mina's wall.",
+      "fa": "هر بعدازظهر، زود به خانه می‌آید و به نقشه‌ی روی دیوار مینا نگاه می‌کند."
+    },
+    {
+      "en": "He looks at the new red lines, and he always asks, \"Where did you go today?\"",
+      "fa": "به خط‌های قرمز تازه نگاه می‌کند و همیشه می‌پرسد: «امروز کجا رفتید؟»"
+    },
+    {
+      "en": "On Sunday, Mina answers, \"To a small market near the river.\"",
+      "fa": "یکشنبه، مینا جواب می‌دهد: «به بازار کوچکی نزدیک رودخانه.»"
+    },
+    {
+      "en": "On Monday, it rains, and Aria comes home from school with dirty shoes too.",
+      "fa": "دوشنبه باران می‌آید و آریا هم با کفش‌های کثیف از مدرسه به خانه می‌آید."
+    },
+    {
+      "en": "On Thursday, Aria has no school in the afternoon, so he goes with Mina and Mom.",
+      "fa": "پنجشنبه، آریا بعدازظهر مدرسه ندارد، پس با مینا و مامان می‌رود."
+    },
+    {
+      "en": "He takes his light, and he checks every dark place first.",
+      "fa": "چراغش را برمی‌دارد و اول همه‌ی جاهای تاریک را نگاه می‌کند."
+    },
+    {
+      "en": "On Friday, the weekend, all the family visits the river road together.",
+      "fa": "جمعه، روز تعطیل، همه‌ی خانواده با هم به جاده‌ی کنار رودخانه می‌روند."
+    },
+    {
+      "en": "Under a tree, Aria finds a piece of yellow paper.",
+      "fa": "زیر یک درخت، آریا یک تکه کاغذ زرد پیدا می‌کند."
+    },
+    {
+      "en": "For a moment, he thinks it is Nino, but it is only paper.",
+      "fa": "لحظه‌ای فکر می‌کند نینوست، اما فقط کاغذ است."
+    },
+    {
+      "en": "That evening, Aria says, \"Next week, I want to look every day.\"",
+      "fa": "آن شب، آریا می‌گوید: «هفته‌ی بعد می‌خواهم هر روز بگردم.»"
+    },
+    {
+      "en": "\"You have school,\" Mom says, \"but you can help on Thursday and Friday.\"",
+      "fa": "مامان می‌گوید: «تو مدرسه داری، اما پنجشنبه و جمعه می‌توانی کمک کنی.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "آریا کدام روزها به مدرسه می‌رود؟",
+      "options": [
+        "از شنبه تا چهارشنبه",
+        "فقط پنجشنبه",
+        "جمعه‌ها",
+        "هر روز هفته"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "آریا هر بعدازظهر به چه نگاه می‌کند؟",
+      "options": [
+        "به تلویزیون",
+        "به نقشه‌ی روی دیوار مینا",
+        "به عکس نینو",
+        "به پنجره"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "دوشنبه چه اتفاقی می‌افتد؟",
+      "options": [
+        "آریا مدرسه ندارد",
+        "به بازار می‌روند",
+        "باران می‌آید",
+        "نینو را می‌بینند"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "آریا زیر درخت چه پیدا می‌کند؟",
+      "options": [
+        "نینو را",
+        "یک کفش زرد",
+        "یک پرنده‌ی زرد",
+        "یک تکه کاغذ زرد"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "مامان می‌گوید آریا کی می‌تواند کمک کند؟",
+      "options": [
+        "هر روز",
+        "پنجشنبه و جمعه",
+        "فقط شنبه",
+        "هیچ روز"
+      ],
+      "answer": 1
+    }
+  ]
+}

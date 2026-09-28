@@ -1,0 +1,112 @@
+{
+  "id": "b3c4-listening",
+  "titleEn": "Negar's Picture",
+  "titleFa": "نقاشی نگار",
+  "names": [
+    "Negar",
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "On the second of June, Negar remembers something: tomorrow is Mina's birthday.",
+      "fa": "دوم ژوئن، نگار چیزی یادش می‌آید: فردا تولد میناست."
+    },
+    {
+      "en": "She wants to give her friend something special.",
+      "fa": "می‌خواهد چیز خاصی به دوستش بدهد."
+    },
+    {
+      "en": "But what? This year, Mina does not want a party without Nino.",
+      "fa": "اما چه؟ امسال مینا بدون نینو جشن نمی‌خواهد."
+    },
+    {
+      "en": "Then Negar has an idea: a picture of Nino.",
+      "fa": "بعد نگار فکری به ذهنش می‌رسد: یک نقاشی از نینو."
+    },
+    {
+      "en": "She takes some paper and draws a little yellow chicken with orange feet.",
+      "fa": "کمی کاغذ برمی‌دارد و یک جوجه‌ی زرد کوچک با پاهای نارنجی می‌کشد."
+    },
+    {
+      "en": "She adds a little white on his left, the same as in Mina's photo.",
+      "fa": "کمی سفیدی در سمت چپش اضافه می‌کند، درست مثل عکس مینا."
+    },
+    {
+      "en": "Under the chicken, she writes some words of hope.",
+      "fa": "زیر جوجه، چند کلمه‌ی امیدوارکننده می‌نویسد."
+    },
+    {
+      "en": "The next evening, Negar and her mother walk to Mina's house.",
+      "fa": "عصر روز بعد، نگار و مادرش به خانه‌ی مینا می‌روند."
+    },
+    {
+      "en": "There are twelve small lights in the kitchen, and there is a cake on the table.",
+      "fa": "در آشپزخانه دوازده چراغ کوچک هست و روی میز یک کیک."
+    },
+    {
+      "en": "Mina looks at the picture, and her sad face becomes happy.",
+      "fa": "مینا به نقاشی نگاه می‌کند و چهره‌ی غمگینش خوشحال می‌شود."
+    },
+    {
+      "en": "\"This is the best thing today,\" she tells Negar.",
+      "fa": "به نگار می‌گوید: «این بهترین چیز امروز است.»"
+    },
+    {
+      "en": "Negar is very happy too. It was a good idea.",
+      "fa": "نگار هم خیلی خوشحال است. فکر خوبی بود."
+    }
+  ],
+  "questions": [
+    {
+      "q": "نگار چه چیزی یادش می‌آید؟",
+      "options": [
+        "که فردا تولد میناست",
+        "که مدرسه تمام شده",
+        "که نینو برگشته",
+        "که فردا جمعه است"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "نگار تصمیم می‌گیرد چه چیزی درست کند؟",
+      "options": [
+        "یک کیک",
+        "نقاشی نینو",
+        "یک نامه",
+        "یک چراغ"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "نگار چه چیزی به نقاشی اضافه می‌کند؟",
+      "options": [
+        "یک پرنده‌ی قرمز",
+        "یک درِ آبی",
+        "کمی سفیدی در سمت چپ نینو",
+        "اسم مینا"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "در آشپزخانه چند چراغ کوچک هست؟",
+      "options": [
+        "یازده",
+        "ده",
+        "هشت",
+        "دوازده"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "وقتی مینا نقاشی را می‌بیند، چه می‌شود؟",
+      "options": [
+        "غمگین می‌شود",
+        "خوشحال می‌شود",
+        "به اتاقش می‌رود",
+        "چیزی نمی‌گوید"
+      ],
+      "answer": 1
+    }
+  ]
+}

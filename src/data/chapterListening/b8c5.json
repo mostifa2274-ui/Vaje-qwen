@@ -1,0 +1,108 @@
+{
+  "id": "b8c5-listening",
+  "titleEn": "The Summer Festival",
+  "titleFa": "جشنواره‌ی تابستانی",
+  "names": [],
+  "sentences": [
+    {
+      "en": "Welcome to the summer festival in our town by the sea!",
+      "fa": "به جشنواره‌ی تابستانی شهر کنار دریای ما خوش آمدید!"
+    },
+    {
+      "en": "This festival shows the culture of the north: our music, our food and our old clothes.",
+      "fa": "این جشنواره فرهنگ شمال را نشان می‌دهد: موسیقی، غذا و لباس‌های قدیمی ما."
+    },
+    {
+      "en": "Fish with rice is a common meal here, so come and try it.",
+      "fa": "ماهی با برنج اینجا غذای رایجی است، پس بیایید و امتحانش کنید."
+    },
+    {
+      "en": "Children can paint in the garden next to the library.",
+      "fa": "بچه‌ها می‌توانند در باغ کنار کتابخانه نقاشی کنند."
+    },
+    {
+      "en": "A painting teacher will help them find their own style.",
+      "fa": "یک معلم نقاشی کمکشان می‌کند سبک خودشان را پیدا کنند."
+    },
+    {
+      "en": "At six o'clock, you can design a card for someone you love.",
+      "fa": "ساعت شش می‌توانید برای کسی که دوستش دارید کارتی طراحی کنید."
+    },
+    {
+      "en": "In the evening, we show a popular movie for families next to the sea.",
+      "fa": "عصر، یک فیلم پرطرفدار برای خانواده‌ها کنار دریا نشان می‌دهیم."
+    },
+    {
+      "en": "It is a movie about a dog who travels far to find his family.",
+      "fa": "فیلمی است درباره‌ی سگی که راه دوری سفر می‌کند تا خانواده‌اش را پیدا کند."
+    },
+    {
+      "en": "After the movie, look up at the stars.",
+      "fa": "بعد از فیلم، به ستاره‌ها نگاه کنید."
+    },
+    {
+      "en": "In the north, you can see hundreds of stars at night.",
+      "fa": "در شمال، شب‌ها صدها ستاره می‌شود دید."
+    },
+    {
+      "en": "The festival is free for everyone, from young children to grandparents.",
+      "fa": "جشنواره برای همه رایگان است، از بچه‌های کوچک تا پدربزرگ‌ها و مادربزرگ‌ها."
+    },
+    {
+      "en": "We hope to see you there!",
+      "fa": "امیدواریم آنجا ببینیمتان!"
+    }
+  ],
+  "questions": [
+    {
+      "q": "جشنواره چه چیزی را نشان می‌دهد؟",
+      "options": [
+        "فرهنگ شمال",
+        "حیوان‌های مزرعه",
+        "شهر تهران",
+        "کتاب‌های قدیمی"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "کدام غذا اینجا رایج است؟",
+      "options": [
+        "سوپ",
+        "ساندویچ",
+        "کیک",
+        "ماهی با برنج"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "بچه‌ها کجا می‌توانند نقاشی کنند؟",
+      "options": [
+        "کنار دریا",
+        "در باغ کنار کتابخانه",
+        "در موزه",
+        "در هتل"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "فیلم درباره‌ی چیست؟",
+      "options": [
+        "یک جوجه‌ی زرد",
+        "یک ماهیگیر",
+        "سگی که برای پیدا کردن خانواده‌اش سفر می‌کند",
+        "یک جشنواره"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "جشنواره برای چه کسانی رایگان است؟",
+      "options": [
+        "فقط بچه‌ها",
+        "فقط گردشگرها",
+        "برای همه",
+        "هیچ‌کس"
+      ],
+      "answer": 2
+    }
+  ]
+}

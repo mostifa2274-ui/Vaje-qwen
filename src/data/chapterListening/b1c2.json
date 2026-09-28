@@ -1,0 +1,113 @@
+{
+  "id": "b1c2-listening",
+  "titleEn": "Aria Helps",
+  "titleFa": "آریا کمک می‌کند",
+  "names": [
+    "Aria",
+    "Mina",
+    "Nino",
+    "Yasi"
+  ],
+  "sentences": [
+    {
+      "en": "Aria wakes, and he hears a sound downstairs.",
+      "fa": "آریا بیدار می‌شود و صدایی از طبقه‌ی پایین می‌شنود."
+    },
+    {
+      "en": "It is Mina, and she is very sad.",
+      "fa": "میناست و خیلی غمگین است."
+    },
+    {
+      "en": "\"Nino is not here,\" she tells him. \"Please help us look.\"",
+      "fa": "به او می‌گوید: «نینو اینجا نیست. لطفاً کمکمان کن بگردیم.»"
+    },
+    {
+      "en": "Aria is only a little brother, but he can help.",
+      "fa": "آریا فقط یک برادر کوچک است، اما می‌تواند کمک کند."
+    },
+    {
+      "en": "First he looks in the bathroom and behind the kitchen door.",
+      "fa": "اول حمام و پشت در آشپزخانه را نگاه می‌کند."
+    },
+    {
+      "en": "Then he looks under every bed with Dad.",
+      "fa": "بعد با بابا زیر همه‌ی تخت‌ها را نگاه می‌کند."
+    },
+    {
+      "en": "Now Yasi wakes too, and she looks at everyone.",
+      "fa": "حالا یاسی هم بیدار می‌شود و به همه نگاه می‌کند."
+    },
+    {
+      "en": "Aria gives her a cup of milk.",
+      "fa": "آریا یک فنجان شیر به او می‌دهد."
+    },
+    {
+      "en": "\"Where is Nino?\" he asks her, but Yasi does not answer. She is only a baby.",
+      "fa": "از او می‌پرسد: «نینو کجاست؟» اما یاسی جواب نمی‌دهد. او فقط یک نوزاد است."
+    },
+    {
+      "en": "That night, Aria cannot sleep. He listens at the window.",
+      "fa": "آن شب، آریا خوابش نمی‌برد. کنار پنجره گوش می‌دهد."
+    },
+    {
+      "en": "He hears the rain, but he does not hear Nino.",
+      "fa": "صدای باران را می‌شنود، اما صدای نینو را نه."
+    },
+    {
+      "en": "\"We will find him,\" he says. \"We will look again, all of us together.\"",
+      "fa": "می‌گوید: «پیدایش می‌کنیم. دوباره می‌گردیم، همه با هم.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "چه کسی آریا را از ماجرا باخبر می‌کند؟",
+      "options": [
+        "بابا",
+        "مامان",
+        "مینا",
+        "یاسی"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "آریا اول کجا را نگاه می‌کند؟",
+      "options": [
+        "حمام و پشت در آشپزخانه",
+        "زیر تخت‌ها",
+        "حیاط",
+        "باغچه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "آریا به یاسی چه می‌دهد؟",
+      "options": [
+        "آب",
+        "یک کفش",
+        "یک فنجان شیر",
+        "عکس نینو"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چرا یاسی جواب نمی‌دهد؟",
+      "options": [
+        "خواب است",
+        "نوزاد است",
+        "غمگین است",
+        "بیرون است"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "آریا شب چه صدایی می‌شنود؟",
+      "options": [
+        "صدای نینو",
+        "صدای پرنده",
+        "صدای در",
+        "صدای باران"
+      ],
+      "answer": 3
+    }
+  ]
+}

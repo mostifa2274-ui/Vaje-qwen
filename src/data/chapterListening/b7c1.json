@@ -1,0 +1,107 @@
+{
+  "id": "b7c1-listening",
+  "titleEn": "Two Doors Away",
+  "titleFa": "دو خانه آن‌طرف‌تر",
+  "names": [
+    "Mina",
+    "Negar"
+  ],
+  "sentences": [
+    {
+      "en": "On Wednesday evening, Mina's family comes to Negar's house.",
+      "fa": "چهارشنبه عصر، خانواده‌ی مینا به خانه‌ی نگار می‌آیند."
+    },
+    {
+      "en": "\"We are going on a trip to the north,\" Mina's mother says. \"It is our summer vacation.\"",
+      "fa": "مادر مینا می‌گوید: «داریم به سفری به شمال می‌رویم. تعطیلات تابستانی ماست.»"
+    },
+    {
+      "en": "\"My mother and father are waiting for us in the mountains.\"",
+      "fa": "«پدر و مادرم در کوه منتظر ما هستند.»"
+    },
+    {
+      "en": "Mina does not look happy. \"Who will put water and bread by our door?\" she asks.",
+      "fa": "مینا خوشحال به نظر نمی‌رسد. می‌پرسد: «چه کسی آب و نان کنار درمان می‌گذارد؟»"
+    },
+    {
+      "en": "\"I will,\" Negar's mother says. \"Every night, until you come back.\"",
+      "fa": "مادر نگار می‌گوید: «من. هر شب، تا وقتی برگردید.»"
+    },
+    {
+      "en": "\"If there is any news, I will call you at once.\"",
+      "fa": "«اگر خبری شد، فوراً به شما زنگ می‌زنم.»"
+    },
+    {
+      "en": "Negar gives Mina a present for the trip: a T-shirt with a yellow chicken on it.",
+      "fa": "نگار برای سفر هدیه‌ای به مینا می‌دهد: یک تی‌شرت با عکس یک جوجه‌ی زرد."
+    },
+    {
+      "en": "\"Wear it on the train,\" she says.",
+      "fa": "می‌گوید: «در قطار بپوشش.»"
+    },
+    {
+      "en": "Mina laughs. \"I will wear it every day,\" she says.",
+      "fa": "مینا می‌خندد. می‌گوید: «هر روز می‌پوشمش.»"
+    },
+    {
+      "en": "At home, Mina puts the T-shirt in her bag, next to her sweater and her jeans.",
+      "fa": "در خانه، مینا تی‌شرت را کنار بلوز پشمی و شلوار جینش در کیفش می‌گذارد."
+    },
+    {
+      "en": "Tomorrow, the family will travel by train, more than two hundred miles from the capital.",
+      "fa": "فردا خانواده با قطار سفر می‌کنند، بیشتر از دویست مایل دورتر از پایتخت."
+    }
+  ],
+  "questions": [
+    {
+      "q": "خانواده‌ی مینا به کجا سفر می‌کنند؟",
+      "options": [
+        "به شمال",
+        "به جنوب",
+        "به یک مزرعه",
+        "به شهری دیگر در خارج"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "چه کسی هر شب آب و نان کنار درشان می‌گذارد؟",
+      "options": [
+        "نگار",
+        "همسایه‌ی پیر",
+        "مادر نگار",
+        "پیرزنِ درِ آبی"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "هدیه‌ی نگار چیست؟",
+      "options": [
+        "یک کتاب",
+        "یک تی‌شرت با عکس یک جوجه‌ی زرد",
+        "یک کلاه",
+        "یک چتر"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "مینا تی‌شرت را کنار چه چیزهایی می‌گذارد؟",
+      "options": [
+        "کنار کتاب قرمزش",
+        "کنار کفش‌هایش",
+        "کنار بلیت قطار",
+        "کنار بلوز پشمی و شلوار جینش"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "خانواده با چه چیزی سفر می‌کنند؟",
+      "options": [
+        "با هواپیما",
+        "با قطار",
+        "با اتوبوس",
+        "با ماشین"
+      ],
+      "answer": 1
+    }
+  ]
+}

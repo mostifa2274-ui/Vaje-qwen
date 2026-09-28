@@ -1,0 +1,108 @@
+{
+  "id": "b6c4-listening",
+  "titleEn": "The Scientist's Chicken",
+  "titleFa": "جوجه‌ی دانشمند",
+  "names": [],
+  "sentences": [
+    {
+      "en": "At the university, a scientist has a science project with young chickens.",
+      "fa": "در دانشگاه، دانشمندی یک پروژه‌ی علمی با جوجه‌های کوچک دارد."
+    },
+    {
+      "en": "Each chicken has a small blue band on its leg.",
+      "fa": "هر جوجه یک حلقه‌ی کوچک آبی روی پایش دارد."
+    },
+    {
+      "en": "Last week, one chicken ran out of the building, and she looked for it all day.",
+      "fa": "هفته‌ی پیش، یکی از جوجه‌ها از ساختمان بیرون دوید و او همه‌ی روز دنبالش گشت."
+    },
+    {
+      "en": "Two days later, a worker found it in the garden, under a tree.",
+      "fa": "دو روز بعد، یک کارگر آن را در باغ، زیر یک درخت، پیدا کرد."
+    },
+    {
+      "en": "Then she read a blog about a girl and a little yellow chicken.",
+      "fa": "بعد وبلاگی درباره‌ی یک دختر و یک جوجه‌ی زرد کوچک خواند."
+    },
+    {
+      "en": "\"Is it the same chicken?\" she thought, so she called the girl's father.",
+      "fa": "با خودش فکر کرد: «همان جوجه است؟» پس به پدر دختر زنگ زد."
+    },
+    {
+      "en": "The next day, it was raining, and the girl came with her father and an umbrella.",
+      "fa": "روز بعد باران می‌آمد و دختر با پدرش و یک چتر آمد."
+    },
+    {
+      "en": "However, the girl knew at once: it was not her chicken.",
+      "fa": "اما دختر فوراً فهمید: آن جوجه‌ی او نبود."
+    },
+    {
+      "en": "It was a difficult situation, and the scientist felt bad.",
+      "fa": "موقعیت سختی بود و دانشمند حس بدی داشت."
+    },
+    {
+      "en": "So she gave the girl a present: a card with a yellow bird on it.",
+      "fa": "پس یک هدیه به دختر داد: کارتی با یک پرنده‌ی زرد رویش."
+    },
+    {
+      "en": "She also told her about the science club and its summer activities.",
+      "fa": "درباره‌ی باشگاه علمی و فعالیت‌های تابستانی‌اش هم برایش گفت."
+    },
+    {
+      "en": "\"Chickens stay where there is food every day,\" she said. \"Look for a place with food.\"",
+      "fa": "گفت: «جوجه‌ها جایی می‌مانند که هر روز غذا داشته باشد. دنبال جایی بگردید که غذا دارد.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "هر جوجه‌ی پروژه روی پایش چه دارد؟",
+      "options": [
+        "یک حلقه‌ی کوچک آبی",
+        "یک کارت",
+        "یک نوار قرمز",
+        "هیچ چیز"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "کارگر جوجه‌ی فراری را کجا پیدا کرد؟",
+      "options": [
+        "در خیابان",
+        "در دفتر",
+        "در باغ، زیر یک درخت",
+        "کنار رودخانه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "دانشمند چطور از ماجرای مینا باخبر شد؟",
+      "options": [
+        "از رادیو",
+        "از یک وبلاگ",
+        "از روزنامه",
+        "از معلم"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "دانشمند به دختر چه هدیه‌ای داد؟",
+      "options": [
+        "یک چتر",
+        "یک ماکت پرنده",
+        "یک جوجه",
+        "کارتی با یک پرنده‌ی زرد"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "توصیه‌ی دانشمند چیست؟",
+      "options": [
+        "جایی را بگردید که هر روز غذا دارد",
+        "به دانشگاه برگردید",
+        "به روزنامه بنویسید",
+        "زیر باران نگردید"
+      ],
+      "answer": 0
+    }
+  ]
+}

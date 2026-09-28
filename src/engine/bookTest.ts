@@ -20,7 +20,8 @@ import { sameHeadwordEntries } from './homophones'
 // each skill alternate between attempts, so a retake after the review (which
 // reveals the listening text) is a different listening test.
 
-export const BOOK_TEST_PASS_RATE = 0.8
+// Every section needs every answer right.
+export const BOOK_TEST_PASS_RATE = 1
 export const BOOK_TEST_WORDS_PER_SECTION = 12
 const CURRENT_BOOK_WORDS_PER_SECTION = 4
 

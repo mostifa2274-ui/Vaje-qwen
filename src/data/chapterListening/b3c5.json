@@ -1,0 +1,111 @@
+{
+  "id": "b3c5-listening",
+  "titleEn": "The Messages",
+  "titleFa": "پیام‌ها",
+  "names": [
+    "Nino",
+    "Aria"
+  ],
+  "sentences": [
+    {
+      "en": "After dinner, Dad sits with the family and reads the new messages.",
+      "fa": "بعد از شام، بابا با خانواده می‌نشیند و پیام‌های تازه را می‌خواند."
+    },
+    {
+      "en": "\"Forty people have shared Nino's picture,\" he says.",
+      "fa": "می‌گوید: «چهل نفر عکس نینو را به اشتراک گذاشته‌اند.»"
+    },
+    {
+      "en": "The first message is from a boy of fifteen. He will look near his school.",
+      "fa": "پیام اول از یک پسر پانزده ساله است. او نزدیک مدرسه‌اش را می‌گردد."
+    },
+    {
+      "en": "The second message is from an old man with a garden. He has thirty birds, but no chickens.",
+      "fa": "پیام دوم از پیرمردی با یک باغچه است. سی پرنده دارد، اما جوجه ندارد."
+    },
+    {
+      "en": "The third message has a picture of a yellow bag, and everyone laughs.",
+      "fa": "پیام سوم عکس یک کیسه‌ی زرد دارد و همه می‌خندند."
+    },
+    {
+      "en": "The fourth message is from a teacher. She will show the picture to the children at her school.",
+      "fa": "پیام چهارم از یک معلم است. او عکس را به بچه‌های مدرسه‌اش نشان می‌دهد."
+    },
+    {
+      "en": "By nine o'clock, sixty people have shared the picture.",
+      "fa": "تا ساعت نه، شصت نفر عکس را به اشتراک گذاشته‌اند."
+    },
+    {
+      "en": "By eleven o'clock, there are a hundred.",
+      "fa": "تا ساعت یازده، صد نفر."
+    },
+    {
+      "en": "\"A hundred people, and each of them has friends,\" Mom says. \"That is many more eyes.\"",
+      "fa": "مامان می‌گوید: «صد نفر، و هر کدامشان دوستانی دارند. یعنی چشم‌های خیلی بیشتر.»"
+    },
+    {
+      "en": "Aria is very tired, but he does not want to go to bed.",
+      "fa": "آریا خیلی خسته است، اما نمی‌خواهد بخوابد."
+    },
+    {
+      "en": "\"Read one more message, please,\" he says.",
+      "fa": "می‌گوید: «لطفاً یک پیام دیگر بخوان.»"
+    },
+    {
+      "en": "Dad reads it: \"We hope you find Nino soon.\"",
+      "fa": "بابا آن را می‌خواند: «امیدواریم نینو را زود پیدا کنید.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "اول چند نفر عکس را به اشتراک گذاشته‌اند؟",
+      "options": [
+        "بیست",
+        "چهل",
+        "شصت",
+        "صد"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "پیرمرد در باغچه‌اش چه دارد؟",
+      "options": [
+        "سی پرنده",
+        "یک جوجه‌ی زرد",
+        "یک سگ",
+        "چند گربه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "پیام سوم عکس چه چیزی دارد؟",
+      "options": [
+        "یک جفت کفش",
+        "یک پرنده",
+        "یک کیسه‌ی زرد",
+        "یک مدرسه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "پیام چهارم از چه کسی است؟",
+      "options": [
+        "یک پلیس",
+        "یک پسر",
+        "یک پیرزن",
+        "یک معلم"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "تا ساعت یازده چند نفر عکس را به اشتراک گذاشته‌اند؟",
+      "options": [
+        "هزار",
+        "نود",
+        "صد",
+        "پنجاه"
+      ],
+      "answer": 2
+    }
+  ]
+}

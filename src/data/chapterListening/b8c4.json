@@ -1,0 +1,111 @@
+{
+  "id": "b8c4-listening",
+  "titleEn": "A Page of Hope",
+  "titleFa": "صفحه‌ای از امید",
+  "names": [
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "After the talk by the fire, Mina opens her red book to a new page.",
+      "fa": "بعد از گفت‌وگوی کنار آتش، مینا کتاب قرمزش را در صفحه‌ی تازه‌ای باز می‌کند."
+    },
+    {
+      "en": "At the start of the page, she writes one word: \"Hope.\"",
+      "fa": "اول صفحه یک کلمه می‌نویسد: «امید.»"
+    },
+    {
+      "en": "Then she writes some positive statements, one below the other.",
+      "fa": "بعد چند جمله‌ی مثبت می‌نویسد، یکی زیر دیگری."
+    },
+    {
+      "en": "\"Nino is a smart chicken. He can find food and water.\"",
+      "fa": "«نینو جوجه‌ی باهوشی است. می‌تواند غذا و آب پیدا کند.»"
+    },
+    {
+      "en": "\"He likes other birds, and birds are good friends.\"",
+      "fa": "«پرنده‌های دیگر را دوست دارد و پرنده‌ها دوستان خوبی‌اند.»"
+    },
+    {
+      "en": "\"Many people in our city know his face now.\"",
+      "fa": "«حالا خیلی‌ها در شهر ما چهره‌اش را می‌شناسند.»"
+    },
+    {
+      "en": "She does not write any negative words tonight.",
+      "fa": "امشب هیچ کلمه‌ی منفی‌ای نمی‌نویسد."
+    },
+    {
+      "en": "It is natural to be sad sometimes, but sad words do not help.",
+      "fa": "طبیعی است که آدم گاهی غمگین باشد، اما کلمه‌های غمگین کمکی نمی‌کنند."
+    },
+    {
+      "en": "She thinks about the difference between a sad day and a hard day.",
+      "fa": "به فرق بین یک روز غمگین و یک روز سخت فکر می‌کند."
+    },
+    {
+      "en": "\"A hard day can still have hope in it,\" she writes.",
+      "fa": "می‌نویسد: «یک روز سخت هم می‌تواند امید داشته باشد.»"
+    },
+    {
+      "en": "This is her personal topic now, and it is a very interesting one.",
+      "fa": "حالا این موضوع شخصی اوست و موضوع خیلی جالبی است."
+    },
+    {
+      "en": "Then she closes her book. Outside, the rain has stopped.",
+      "fa": "بعد کتابش را می‌بندد. بیرون، باران بند آمده."
+    }
+  ],
+  "questions": [
+    {
+      "q": "مینا اول صفحه چه کلمه‌ای می‌نویسد؟",
+      "options": [
+        "نینو",
+        "باران",
+        "امید",
+        "آتش"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مینا چه نوع جمله‌هایی می‌نویسد؟",
+      "options": [
+        "جمله‌های مثبت",
+        "جمله‌های منفی",
+        "سؤال",
+        "شعر"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "کدام جمله در صفحه‌ی مینا هست؟",
+      "options": [
+        "نینو هیچ‌وقت برنمی‌گردد",
+        "نینو جوجه‌ی باهوشی است",
+        "پرنده‌ها بد هستند",
+        "کسی نینو را نمی‌شناسد"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "به نظر مینا یک روز سخت چه چیزی می‌تواند داشته باشد؟",
+      "options": [
+        "باران",
+        "آتش",
+        "مهمان",
+        "امید"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "وقتی مینا کتاب را می‌بندد، بیرون چه خبر است؟",
+      "options": [
+        "باران بند آمده",
+        "برف می‌آید",
+        "آفتاب است",
+        "باد می‌آید"
+      ],
+      "answer": 0
+    }
+  ]
+}

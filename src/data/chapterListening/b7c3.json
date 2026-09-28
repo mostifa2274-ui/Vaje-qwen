@@ -1,0 +1,106 @@
+{
+  "id": "b7c3-listening",
+  "titleEn": "Grandfather Calls",
+  "titleFa": "پدربزرگ زنگ می‌زند",
+  "names": [
+    "Aria"
+  ],
+  "sentences": [
+    {
+      "en": "On the train, Mom's phone makes a sound. It is Grandfather.",
+      "fa": "در قطار، تلفن مامان زنگ می‌زند. پدربزرگ است."
+    },
+    {
+      "en": "\"Hello, my dear,\" he says. \"Where are you now?\"",
+      "fa": "می‌گوید: «سلام، عزیزم. حالا کجایید؟»"
+    },
+    {
+      "en": "\"We are in the north,\" Mom says. \"Outside the window, everything is green.\"",
+      "fa": "مامان می‌گوید: «در شمالیم. بیرون پنجره همه‌جا سبز است.»"
+    },
+    {
+      "en": "\"Can you see the high mountains?\" he asks. \"There is still snow on them.\"",
+      "fa": "می‌پرسد: «کوه‌های بلند را می‌بینی؟ هنوز رویشان برف هست.»"
+    },
+    {
+      "en": "\"Yes, and they are beautiful,\" Mom says.",
+      "fa": "مامان می‌گوید: «بله، و خیلی زیبا هستند.»"
+    },
+    {
+      "en": "\"I cannot come to the station today,\" Grandfather says. \"My old gray truck needs some work.\"",
+      "fa": "پدربزرگ می‌گوید: «امروز نمی‌توانم به ایستگاه بیایم. کامیون خاکستری قدیمی‌ام کمی تعمیر لازم دارد.»"
+    },
+    {
+      "en": "\"Take a taxi to the small hotel by the sea.\"",
+      "fa": "«با تاکسی به هتل کوچک کنار دریا بروید.»"
+    },
+    {
+      "en": "\"I will drive there tomorrow morning and take you to the mountain.\"",
+      "fa": "«فردا صبح با ماشین آنجا می‌آیم و شما را به کوه می‌برم.»"
+    },
+    {
+      "en": "\"Is it hot there?\" Mom asks. \"Warm, with a lot of rain,\" he says. \"Bring your umbrellas.\"",
+      "fa": "مامان می‌پرسد: «آنجا گرم است؟» می‌گوید: «گرم، با کلی باران. چترهایتان را بیاورید.»"
+    },
+    {
+      "en": "\"Your mother is cooking your favorite rice. We are waiting for you.\"",
+      "fa": "«مادرت برنج مورد علاقه‌ات را می‌پزد. منتظرتان هستیم.»"
+    },
+    {
+      "en": "Mom tells the children, and Aria is very excited.",
+      "fa": "مامان به بچه‌ها می‌گوید و آریا خیلی هیجان‌زده می‌شود."
+    }
+  ],
+  "questions": [
+    {
+      "q": "چه کسی به مامان زنگ می‌زند؟",
+      "options": [
+        "مادربزرگ",
+        "بابا",
+        "راننده‌ی تاکسی",
+        "پدربزرگ"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "روی کوه‌های بلند چه هست؟",
+      "options": [
+        "برف",
+        "باران",
+        "گل",
+        "آتش"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "چرا پدربزرگ امروز نمی‌تواند به ایستگاه بیاید؟",
+      "options": [
+        "بیمار است",
+        "کامیونش تعمیر لازم دارد",
+        "باران می‌آید",
+        "مهمان دارد"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "خانواده امشب کجا می‌مانند؟",
+      "options": [
+        "در خانه‌ی پدربزرگ",
+        "در قطار",
+        "در هتل کوچک کنار دریا",
+        "در یک مزرعه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "مادربزرگ چه می‌پزد؟",
+      "options": [
+        "ماهی",
+        "نان",
+        "سوپ",
+        "برنج مورد علاقه‌ی مامان"
+      ],
+      "answer": 3
+    }
+  ]
+}

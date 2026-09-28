@@ -1,6 +1,6 @@
 import type { GhesseState, WordProgress } from './types'
 import { blankWordProgress, scheduleAfterChapter } from './review'
-import { READING_QUESTION_COUNT } from './comprehension'
+import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehension'
 
 export function recordPreparedChapter(
   state: GhesseState,
@@ -67,6 +67,13 @@ export function recordPreparedChapter(
   }
 }
 
+/** The chapter's listening questions: first-pass score and the corrected total. */
+export interface ListeningCheck {
+  firstPassCorrect: number
+  total: number
+  verifiedCorrect: number
+}
+
 export function recordCompletedRead(
   state: GhesseState,
   chapterId: string,
@@ -74,6 +81,7 @@ export function recordCompletedRead(
   firstPassChecksCorrect: number,
   checksTotal: number,
   verifiedChecksCorrect: number,
+  listening: ListeningCheck,
   now: number,
   chapterOrder: readonly string[],
   successorId?: string,
@@ -90,11 +98,13 @@ export function recordCompletedRead(
   )
   const canRereadLegacyCompletion = previous?.completed === true
   const comprehensionVerified = checksTotal === READING_QUESTION_COUNT && verifiedChecksCorrect === READING_QUESTION_COUNT
+  const listeningVerified = listening.total === LISTENING_QUESTION_COUNT && listening.verifiedCorrect === LISTENING_QUESTION_COUNT
 
   // Engine-level fail-closed completion gate. UI bugs or direct callers cannot
-  // complete an unfinished chapter without the 100% prep gate and corrected
-  // comprehension. Legacy chapters already marked complete remain rereadable.
-  if ((!hasCurrentPrepGate && !canRereadLegacyCompletion) || !comprehensionVerified) return state
+  // complete an unfinished chapter without the 100% prep gate and 100%
+  // (corrected) reading and listening comprehension. Legacy chapters already
+  // marked complete remain rereadable.
+  if ((!hasCurrentPrepGate && !canRereadLegacyCompletion) || !comprehensionVerified || !listeningVerified) return state
 
   const words = { ...state.words }
   for (const id of wordIds) {
@@ -115,6 +125,8 @@ export function recordCompletedRead(
         lastReadAt: now,
         checksCorrect: firstPassChecksCorrect,
         checksTotal,
+        listeningCorrect: listening.firstPassCorrect,
+        listeningTotal: listening.total,
         reads: Math.max(previous?.reads ?? 0, previous?.completed ? 1 : 0) + 1,
       },
     },

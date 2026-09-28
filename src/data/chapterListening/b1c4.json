@@ -1,0 +1,112 @@
+{
+  "id": "b1c4-listening",
+  "titleEn": "Aria Runs In",
+  "titleFa": "آریا می‌دود تو",
+  "names": [
+    "Aria",
+    "Mina",
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "In the afternoon, Aria runs into the house.",
+      "fa": "بعدازظهر، آریا به خانه می‌دود."
+    },
+    {
+      "en": "\"Dad! Mom! Come quickly!\" he calls.",
+      "fa": "صدا می‌زند: «بابا! مامان! زود بیایید!»"
+    },
+    {
+      "en": "Dad comes out of the kitchen. \"What happened?\" he asks.",
+      "fa": "بابا از آشپزخانه بیرون می‌آید. می‌پرسد: «چه شده؟»"
+    },
+    {
+      "en": "\"We saw a red bird in the garden,\" Aria says. \"It came out of the flowers.\"",
+      "fa": "آریا می‌گوید: «یک پرنده‌ی قرمز در باغچه دیدیم. از میان گل‌ها بیرون آمد.»"
+    },
+    {
+      "en": "\"Then it went out under the old yard door.\"",
+      "fa": "«بعد از زیر درِ قدیمی حیاط بیرون رفت.»"
+    },
+    {
+      "en": "\"There is a space under that door. It is small, but Nino is small too.\"",
+      "fa": "«زیر آن در یک فضای خالی هست. کوچک است، اما نینو هم کوچک است.»"
+    },
+    {
+      "en": "\"Mina thinks Nino went out that way,\" Aria says.",
+      "fa": "آریا می‌گوید: «مینا فکر می‌کند نینو از همان راه بیرون رفته.»"
+    },
+    {
+      "en": "Dad puts on his coat, and they go out to the yard together.",
+      "fa": "بابا کتش را می‌پوشد و با هم به حیاط می‌روند."
+    },
+    {
+      "en": "Mina is down on the floor by the old door, and her hands are dirty.",
+      "fa": "مینا کنار درِ قدیمی روی زمین نشسته و دست‌هایش کثیف است."
+    },
+    {
+      "en": "\"Look, Dad,\" she says. \"Nino is not in our garden. He is outside.\"",
+      "fa": "می‌گوید: «نگاه کن، بابا. نینو در باغچه‌ی ما نیست. بیرون است.»"
+    },
+    {
+      "en": "Dad looks at the space, and then he looks at Mina.",
+      "fa": "بابا به فضای خالی نگاه می‌کند و بعد به مینا."
+    },
+    {
+      "en": "Then he says, \"I think Nino is outside too.\"",
+      "fa": "بعد می‌گوید: «من هم فکر می‌کنم نینو بیرون است.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "آریا کی به خانه می‌دود؟",
+      "options": [
+        "صبح",
+        "شب",
+        "بعدازظهر",
+        "موقع صبحانه"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چه چیزی از میان گل‌ها بیرون آمد؟",
+      "options": [
+        "یک پرنده‌ی قرمز",
+        "نینو",
+        "یک کفش سیاه",
+        "یک گربه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "پرنده از کجا بیرون رفت؟",
+      "options": [
+        "از پنجره",
+        "از زیر درِ قدیمی حیاط",
+        "از روی دیوار",
+        "از در جلویی"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "بابا قبل از رفتن به حیاط چه می‌کند؟",
+      "options": [
+        "چراغ را برمی‌دارد",
+        "به مینا زنگ می‌زند",
+        "در را می‌بندد",
+        "کتش را می‌پوشد"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "دست‌های چه کسی کثیف است؟",
+      "options": [
+        "آریا",
+        "بابا",
+        "مینا",
+        "مامان"
+      ],
+      "answer": 2
+    }
+  ]
+}

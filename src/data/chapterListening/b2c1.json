@@ -1,0 +1,114 @@
+{
+  "id": "b2c1-listening",
+  "titleEn": "The Man with the Book",
+  "titleFa": "مردی با کتاب",
+  "names": [
+    "Nino"
+  ],
+  "sentences": [
+    {
+      "en": "Every morning, an old man comes to the park with a book.",
+      "fa": "هر صبح، پیرمردی با یک کتاب به پارک می‌آید."
+    },
+    {
+      "en": "He sits on his chair under a tall tree.",
+      "fa": "روی صندلی‌اش زیر یک درخت بلند می‌نشیند."
+    },
+    {
+      "en": "He likes the park because it is quiet, and it has many birds.",
+      "fa": "پارک را دوست دارد، چون آرام است و پرنده‌های زیادی دارد."
+    },
+    {
+      "en": "Today a family comes to him: a man, a woman and a girl.",
+      "fa": "امروز یک خانواده پیش او می‌آیند: یک مرد، یک زن و یک دختر."
+    },
+    {
+      "en": "The girl has a picture of a little yellow chicken in her hand.",
+      "fa": "دختر عکس یک جوجه‌ی زرد کوچک را در دست دارد."
+    },
+    {
+      "en": "\"Our chicken ran away,\" the woman says. \"His name is Nino.\"",
+      "fa": "زن می‌گوید: «جوجه‌مان فرار کرده. اسمش نینوست.»"
+    },
+    {
+      "en": "The old man looks at the picture, but he has not seen the chicken.",
+      "fa": "پیرمرد به عکس نگاه می‌کند، اما آن جوجه را ندیده است."
+    },
+    {
+      "en": "Later, a big dog runs across the park, and the girl takes her mother's hand.",
+      "fa": "بعد، سگ بزرگی از آن طرف پارک می‌دود و دختر دست مادرش را می‌گیرد."
+    },
+    {
+      "en": "The old man thinks about the little chicken for a long time.",
+      "fa": "پیرمرد مدت زیادی به جوجه‌ی کوچک فکر می‌کند."
+    },
+    {
+      "en": "Small animals like gardens, he thinks, and the people near gardens are neighbors.",
+      "fa": "با خودش فکر می‌کند که حیوان‌های کوچک باغچه را دوست دارند و آدم‌های نزدیک باغچه‌ها همسایه‌اند."
+    },
+    {
+      "en": "So before the family leaves, he calls to the man. \"Ask your neighbors!\"",
+      "fa": "پس قبل از رفتن خانواده، مرد را صدا می‌زند. «از همسایه‌هایتان بپرسید!»"
+    },
+    {
+      "en": "The man says thanks, and the family walks out of the park.",
+      "fa": "مرد تشکر می‌کند و خانواده از پارک بیرون می‌روند."
+    },
+    {
+      "en": "The old man opens his book again, but he is still thinking about a little yellow chicken.",
+      "fa": "پیرمرد دوباره کتابش را باز می‌کند، اما هنوز به یک جوجه‌ی زرد کوچک فکر می‌کند."
+    }
+  ],
+  "questions": [
+    {
+      "q": "پیرمرد کجا می‌نشیند؟",
+      "options": [
+        "کنار کافه",
+        "روی صندلی‌اش زیر یک درخت بلند",
+        "کنار استخر",
+        "در ایستگاه اتوبوس"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "دختر چه چیزی در دست دارد؟",
+      "options": [
+        "یک کتاب",
+        "یک توپ",
+        "عکس یک جوجه‌ی زرد",
+        "مقداری نان"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "چه چیزی از آن طرف پارک می‌دود؟",
+      "options": [
+        "یک سگ بزرگ",
+        "یک پسر با توپ",
+        "یک پرنده‌ی قرمز",
+        "یک بچه"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "پیشنهاد پیرمرد چیست؟",
+      "options": [
+        "به پلیس بگویید",
+        "فردا برگردید",
+        "زیر درخت‌ها را بگردید",
+        "از همسایه‌هایتان بپرسید"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "بعد از رفتن خانواده، پیرمرد به چه فکر می‌کند؟",
+      "options": [
+        "به سگ بزرگ",
+        "به کتابش",
+        "به یک جوجه‌ی زرد کوچک",
+        "به ناهارش"
+      ],
+      "answer": 2
+    }
+  ]
+}

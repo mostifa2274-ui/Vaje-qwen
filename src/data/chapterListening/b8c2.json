@@ -1,0 +1,112 @@
+{
+  "id": "b8c2-listening",
+  "titleEn": "Grandfather's Ear",
+  "titleFa": "گوش پدربزرگ",
+  "names": [
+    "Aria",
+    "Yasi",
+    "Mina"
+  ],
+  "sentences": [
+    {
+      "en": "Grandfather is a tall man with a big laugh, but his left ear does not hear well.",
+      "fa": "پدربزرگ مرد بلندقدی با خنده‌ای بلند است، اما گوش چپش خوب نمی‌شنود."
+    },
+    {
+      "en": "Everyone has to speak into his right ear.",
+      "fa": "همه باید در گوش راستش حرف بزنند."
+    },
+    {
+      "en": "His hobby is his garden, and he spends hours there every day.",
+      "fa": "سرگرمی‌اش باغش است و هر روز ساعت‌ها آنجا وقت می‌گذراند."
+    },
+    {
+      "en": "Today, Aria runs into the garden. \"Grandfather! Yasi has a new tooth!\"",
+      "fa": "امروز آریا به باغ می‌دود. «پدربزرگ! یاسی یک دندان تازه درآورده!»"
+    },
+    {
+      "en": "\"What? She has a new shoe?\" Grandfather asks, and Aria laughs.",
+      "fa": "پدربزرگ می‌پرسد: «چی؟ یک کفش تازه دارد؟» و آریا می‌خندد."
+    },
+    {
+      "en": "\"No, a tooth! In her mouth!\" Aria says into his right ear.",
+      "fa": "آریا در گوش راستش می‌گوید: «نه، دندان! در دهانش!»"
+    },
+    {
+      "en": "\"Really? Let me see,\" Grandfather says, and he comes into the house.",
+      "fa": "پدربزرگ می‌گوید: «واقعاً؟ بگذار ببینم» و به خانه می‌آید."
+    },
+    {
+      "en": "Yasi opens her mouth, and he sees a little white tooth.",
+      "fa": "یاسی دهانش را باز می‌کند و او یک دندان کوچک سفید می‌بیند."
+    },
+    {
+      "en": "\"That is a very important tooth,\" he says. \"Now she can eat my apples.\"",
+      "fa": "می‌گوید: «دندان خیلی مهمی است. حالا می‌تواند سیب‌های من را بخورد.»"
+    },
+    {
+      "en": "Then he looks at Mina. \"Are you sick? Your face looks tired.\"",
+      "fa": "بعد به مینا نگاه می‌کند. «مریضی؟ صورتت خسته به نظر می‌رسد.»"
+    },
+    {
+      "en": "\"No, only tired,\" she says. \"My legs and my body are tired from the climb.\"",
+      "fa": "می‌گوید: «نه، فقط خسته‌ام. پاها و بدنم از کوه‌پیمایی خسته‌اند.»"
+    },
+    {
+      "en": "\"Then relax here,\" he says. \"In this house, the days are long and quiet.\"",
+      "fa": "می‌گوید: «پس اینجا استراحت کن. در این خانه روزها طولانی و آرام‌اند.»"
+    }
+  ],
+  "questions": [
+    {
+      "q": "کدام گوش پدربزرگ خوب نمی‌شنود؟",
+      "options": [
+        "گوش راستش",
+        "گوش چپش",
+        "هر دو",
+        "هیچ‌کدام"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "سرگرمی پدربزرگ چیست؟",
+      "options": [
+        "باغش",
+        "ماهیگیری",
+        "کتاب خواندن",
+        "نقاشی"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "پدربزرگ اول فکر می‌کند آریا چه گفت؟",
+      "options": [
+        "که یاسی مریض است",
+        "که یاسی خوابیده",
+        "که یاسی یک کفش تازه دارد",
+        "که یاسی سیب می‌خواهد"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "یاسی چه چیز تازه‌ای دارد؟",
+      "options": [
+        "یک کفش",
+        "یک کلاه",
+        "یک اسباب‌بازی",
+        "یک دندان"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "چرا مینا خسته است؟",
+      "options": [
+        "مریض است",
+        "از کوه‌پیمایی",
+        "دیر خوابیده",
+        "از سفر با قطار"
+      ],
+      "answer": 1
+    }
+  ]
+}

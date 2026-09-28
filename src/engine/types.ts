@@ -32,6 +32,10 @@ export interface ChapterProgress {
   lastReadAt?: number
   checksCorrect: number
   checksTotal: number
+  // First-pass score on the chapter's listening text; the chapter completes
+  // only once every listening answer has been corrected to right.
+  listeningCorrect?: number
+  listeningTotal?: number
   reads: number
 }
 

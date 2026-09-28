@@ -71,6 +71,8 @@ function normalizeChapter(raw: unknown): ChapterProgress | undefined {
     lastReadAt,
     checksCorrect: Math.max(0, Math.floor(num(r.checksCorrect))),
     checksTotal: Math.max(0, Math.floor(num(r.checksTotal))),
+    listeningCorrect: r.listeningCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.listeningCorrect))),
+    listeningTotal: r.listeningTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.listeningTotal))),
     reads: completed ? Math.max(1, Math.floor(num(r.reads, 1))) : Math.max(0, Math.floor(num(r.reads))),
   }
 }

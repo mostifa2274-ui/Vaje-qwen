@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
+import { CHAPTER_LISTENING } from '../data/chapterListening'
 import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglishWithFallback, type SpeechFailure } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
@@ -12,6 +13,20 @@ import { BackIcon, PauseIcon, PlayIcon } from '../components/Icons'
 import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
 import ChapterIllustration from '../components/ChapterIllustration'
 import { faNum } from '../engine/format'
+import { ListeningPlayer, Passage, Questions, SoundOffNote } from '../components/TestPassage'
+import { usePassagePlayer } from '../components/usePassagePlayer'
+import {
+  checkListeningRound,
+  chooseListeningAnswer,
+  clearListeningDraft,
+  emptyListeningRound,
+  listeningCheckResult,
+  listeningRoundDone,
+  listeningRoundReady,
+  loadListeningDraft,
+  saveListeningDraft,
+  type ListeningRound,
+} from '../engine/listeningRound'
 
 interface Props {
   chapterId: string
@@ -44,7 +59,9 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     return Math.max(1, Math.ceil(words / 90))
   }, [chapter])
 
+  const listeningText = CHAPTER_LISTENING.get(chapterId)!
   const [initialReadingDraft] = useState(() => loadReadingDraft(chapterId, questions))
+  const [listening, setListening] = useState<ListeningRound>(() => loadListeningDraft(chapterId, listeningText) ?? emptyListeningRound(listeningText))
   const [resumedReading, setResumedReading] = useState(Boolean(initialReadingDraft))
   const [openFa, setOpenFa] = useState<Set<number>>(new Set())
   const [gloss, setGloss] = useState<WordEntry | null>(null)
@@ -69,6 +86,8 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const questionHeadingRef = useRef<HTMLHeadingElement>(null)
   const followUpRef = useRef<HTMLButtonElement>(null)
   const pendingFocusRef = useRef<'question' | 'followUp' | null>(null)
+  const listeningNoteRef = useRef<HTMLDivElement>(null)
+  const pendingListeningFocus = useRef<'note' | 'finish' | null>(null)
 
   const stopReaderAudio = useCallback(() => {
     playbackToken.current++
@@ -86,6 +105,24 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const next = nextChapter(chapterId)
   const canOpenNext = !!next && next.book === chapter.book
   const isLastOfBook = !next || next.book !== chapter.book
+  const readingDone = checksCorrect === questions.length
+  // Explore mode opens the listening part before the reading one is done.
+  const showListening = readingDone || explore
+  const listeningDone = listeningRoundDone(listeningText, listening)
+  const listeningReady = listeningRoundReady(listeningText, listening)
+  const listeningConfirmed = listening.locked.filter(Boolean).length
+  const chapterDone = readingDone && listeningDone
+
+  const heardListening = useCallback(() => setListening(round => round.heard ? round : { ...round, heard: true }), [])
+  const listeningPlayer = usePassagePlayer(listeningText.sentences, state.narratorVoiceURI, state.narratorRate, heardListening)
+  const stopListening = listeningPlayer.stop
+  const listeningControls = {
+    ...listeningPlayer,
+    play: () => {
+      stopReaderAudio()
+      listeningPlayer.play()
+    },
+  }
 
   useEffect(() => () => {
     playbackToken.current++
@@ -111,6 +148,26 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     })
     return () => window.cancelAnimationFrame(frame)
   }, [checkIndex, currentAnswer])
+
+  useEffect(() => {
+    const target = pendingListeningFocus.current
+    if (!target) return
+    pendingListeningFocus.current = null
+    const frame = window.requestAnimationFrame(() => {
+      if (target === 'finish') followUpRef.current?.focus()
+      else listeningNoteRef.current?.focus()
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [listening])
+
+  useEffect(() => {
+    if (finished) return
+    if (!listening.heard && listening.answers.every(answer => answer === null)) {
+      clearListeningDraft(chapterId)
+      return
+    }
+    saveListeningDraft(chapterId, listeningText, listening)
+  }, [chapterId, finished, listening, listeningText])
 
   useEffect(() => {
     if (finished) return
@@ -159,6 +216,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       return
     }
 
+    stopListening()
     const token = ++playbackToken.current
     cancelEnglishSpeech()
     setPlayIdx(index)
@@ -325,8 +383,21 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
     }, questions)
   }
 
+  function chooseListening(question: number, option: number) {
+    setListening(round => chooseListeningAnswer(listeningText, round, question, option))
+  }
+
+  function checkListening() {
+    if (!listeningReady) return
+    const checked = checkListeningRound(listeningText, listening)
+    pendingListeningFocus.current = listeningRoundDone(listeningText, checked) ? 'finish' : 'note'
+    setListening(checked)
+  }
+
   function finishChapter() {
-    if (checksCorrect !== questions.length || preview) return
+    const listeningCheck = listeningCheckResult(listeningText, listening)
+    if (checksCorrect !== questions.length || !listeningCheck || preview) return
+    stopListening()
     const successor = nextChapter(chapterId)
     const nextState = recordCompletedRead(
       state,
@@ -335,11 +406,13 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       firstPassCorrect ?? checksCorrect,
       questions.length,
       checksCorrect,
+      listeningCheck,
       clockRef.current(),
       CHAPTERS.map(item => item.id),
       successor?.book === chapter.book ? successor.id : undefined,
     )
     clearReadingDraft(chapterId)
+    clearListeningDraft(chapterId)
     setFinished(true)
     onChange(nextState)
   }
@@ -586,17 +659,80 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               اصلاح {faNum(questions.length - checksCorrect)} پاسخ اشتباه
             </button>
           )}
+        </div>
 
-          {checksCorrect === questions.length && !finished && preview && (
+        {showListening && (
+          <section className="mt-8" aria-labelledby="listening-title" data-testid="chapter-listening">
+            <hr className="dash-line" />
+            <div className="mt-4 flex items-start justify-between gap-3">
+              <div>
+                <h2 id="listening-title" className="text-xl font-extrabold">درک مطلب شنیداری</h2>
+                <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+                  متن تازه‌ای دربارهٔ همین فصل که فقط شنیده می‌شود. پس از یک‌بار شنیدن کامل، به {faNum(listeningText.questions.length)} سؤال پاسخ بده؛ هر چند بار خواستی دوباره گوش کن. همهٔ پاسخ‌ها باید درست شوند.
+                </p>
+              </div>
+              <span className="mastery-chip">{faNum(listeningConfirmed)} / {faNum(listeningText.questions.length)} درست</span>
+            </div>
+
+            {explore && !readingDone && (
+              <div className="explore-note mt-3" role="status">
+                <span>در حالت کاوش این بخش پیش از پایان درک مطلب خواندنی هم باز است.</span>
+              </div>
+            )}
+
+            {!state.soundOn ? <SoundOffNote onEnable={() => onChange({ ...state, soundOn: true })} /> : (
+              <ListeningPlayer
+                player={listeningControls}
+                text={listeningText}
+                heard={listening.heard}
+                buttonRef={readingDone && !listeningDone ? followUpRef : undefined}
+                testId="chapter-listening-player"
+              />
+            )}
+
+            <Questions
+              text={listeningText}
+              prefix="chapter-listening"
+              chosen={listening.answers}
+              disabled={!listening.heard || finished}
+              locked={listening.locked}
+              rejected={listening.rejected}
+              onChoose={chooseListening}
+            />
+
+            {listening.firstPassCorrect !== undefined && !listeningDone && (
+              <div ref={listeningNoteRef} tabIndex={-1} className="paper-note mt-4" role="status">
+                پاسخ‌های درستت حفظ شده‌اند. {faNum(listeningText.questions.length - listeningConfirmed)} سؤال هنوز درست نشده است؛ متن را دوباره گوش کن و پاسخ دیگری انتخاب کن.
+              </div>
+            )}
+
+            {!listeningDone && (
+              <button type="button" className="btn-ink mt-5 w-full py-3" disabled={!listeningReady} onClick={checkListening}>
+                بررسی پاسخ‌ها
+              </button>
+            )}
+
+            {listeningDone && (
+              <details className="test-review-details mt-5">
+                <summary>متن شنیداری و ترجمه‌اش</summary>
+                <h3 className="mt-3 font-en text-base font-bold" dir="ltr">{listeningText.titleEn}</h3>
+                <Passage text={listeningText} showTranslation />
+              </details>
+            )}
+          </section>
+        )}
+
+        <div className="mt-6">
+          {chapterDone && !finished && preview && (
             <div className="explore-note" role="status">
               <span>همهٔ پاسخ‌ها درست است. این پیش‌نمایش ثبت نمی‌شود؛ برای ثبت فصل، از آموزش واژه‌ها شروع کن.</span>
               <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={() => onOpenPrep(chapterId)}>آموزش واژه‌ها</button>
             </div>
           )}
 
-          {checksCorrect === questions.length && !finished && !preview && (
+          {chapterDone && !finished && !preview && (
             <button ref={followUpRef} type="button" className="btn-crimson pop w-full py-3.5 text-lg" onClick={finishChapter}>
-              {wasAlreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — {faNum(questions.length)} از {faNum(questions.length)} تأیید شد
+              {wasAlreadyDone ? 'ثبت بازخوانی' : 'پایان فصل'} — درک مطلب خواندنی و شنیداری کامل شد
             </button>
           )}
 
