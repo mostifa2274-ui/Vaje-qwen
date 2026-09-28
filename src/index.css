@@ -371,12 +371,6 @@ body {
   .lesson-cover-fallback {
     height: 11.5rem;
   }
-  .story-en {
-    font-size: 1.08rem;
-  }
-  .story-paragraph {
-    padding-block: .15rem;
-  }
 }
 
 /* ---------- Accessibility and resilient status UI ---------- */
@@ -516,9 +510,6 @@ button:disabled {
   padding: .85rem 0;
   text-align: right;
 }
-.review-hero.due {
-  background: transparent;
-}
 .review-hero-icon {
   display: inline-flex;
   width: 2.5rem;
@@ -552,10 +543,6 @@ button:disabled {
   border-top: 1px solid var(--line-soft);
   background: transparent;
   padding: .8rem 0 0;
-}
-.exam-gate.special,
-.exam-gate.passed {
-  background: transparent;
 }
 .exam-gate-icon {
   display: inline-flex;
@@ -1134,9 +1121,6 @@ input::placeholder {
   background: transparent;
 }
 
-.remediation-panel {
-  background: transparent;
-}
 
 .search-shell {
   display: flex;
