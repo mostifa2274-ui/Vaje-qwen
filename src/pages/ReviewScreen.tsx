@@ -302,11 +302,10 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
         <span className="mastery-chip">هدف {faNum(state.dailyReviewGoal)}</span>
       </header>
 
-      <div className="mt-5 grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
-        <div className="metric-card"><b>{faNum(remediation.length)}</b><span>ترمیم</span></div>
-        <div className="metric-card"><b>{faNum(trouble.length)}</b><span>سخت</span></div>
-        <div className="metric-card"><b>{faNum(counts.strong)}</b><span>قوی</span></div>
-        <div className="metric-card"><b>{faNum(counts.mastered)}</b><span>مسلط</span></div>
+      <div className="compact-summary mt-5" aria-label="خلاصهٔ مرور">
+        <div><b>{faNum(due.length)}</b><span>سررسید</span></div>
+        <div><b>{faNum(remediation.length)}</b><span>ترمیم آزمون</span></div>
+        <div><b>{faNum(counts.mastered)}</b><span>مسلط</span></div>
       </div>
 
       {resumedDraft && sessionTotal > 0 && (

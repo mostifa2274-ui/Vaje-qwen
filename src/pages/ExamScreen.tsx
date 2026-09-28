@@ -495,7 +495,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
         {textIndex === 0 && (
           <div className="paper-note mt-4">
-            بخش دوم: {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری، هر کدام با {faNum(currentText.text.questions.length)} سؤال. متن‌های شنیداری فقط پخش می‌شوند. تا پایان آزمون بازخوردی نمایش داده نمی‌شود.
+            {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری داری. بازخورد در پایان آزمون نمایش داده می‌شود.
           </div>
         )}
 
@@ -587,7 +587,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       {previewNote}
 
       <div className="paper-note mt-4">
-        هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. بخش اول معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد؛ بخش دوم {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری است. حد عبور {percent(def.passRate)} کل آزمون، {percent(def.productivePassRate)} در یادآوری نوشتاری و {percent(def.passRate)} در درک مطلب است؛ واژه‌های اشتباه بعد از آزمون جبران می‌شوند.
+        بازخورد در پایان آزمون می‌آید. حد عبور {percent(def.passRate)} کل آزمون، {percent(def.productivePassRate)} یادآوری نوشتاری و {percent(def.passRate)} درک مطلب است.
       </div>
 
       {resumedDraft && (

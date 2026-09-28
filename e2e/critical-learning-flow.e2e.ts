@@ -303,7 +303,7 @@ test('locked books and preparation steps keep readable text opacity', async ({ p
   await expect(locked).toBeVisible()
   expect(await locked.evaluate(element => getComputedStyle(element).opacity)).toBe('1')
   expect(await locked.locator('h2').evaluate(element => getComputedStyle(element).opacity)).toBe('1')
-  expect(await locked.locator('.book-banner').evaluate(element => getComputedStyle(element).opacity)).toBe('0.72')
+  expect(await locked.locator('.book-banner').evaluate(element => getComputedStyle(element).opacity)).toBe('0.66')
 
   await page.goto('/#/prep/b1c1')
   const steps = page.locator('.prep-stepper li')
@@ -385,7 +385,24 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
 
   const firstBannerHeight = await page.locator('.book-banner').first().evaluate(element => element.getBoundingClientRect().height)
+  const lockedBannerHeight = await page.locator('.book-section.is-locked .book-banner').first().evaluate(element => element.getBoundingClientRect().height)
   expect(firstBannerHeight).toBeLessThanOrEqual(170)
+  expect(lockedBannerHeight).toBeLessThanOrEqual(100)
+  await expectNoHorizontalOverflow(page)
+})
+
+test('settings keeps advanced controls collapsed until requested', async ({ page }) => {
+  await page.goto('/#/settings')
+
+  const voice = page.getByText('تنظیمات پیشرفتهٔ صدا', { exact: true })
+  const privacy = page.getByText('حریم خصوصی', { exact: true })
+  await expect(voice).toBeVisible()
+  await expect(privacy).toBeVisible()
+  const deviceVoice = page.getByRole('combobox', { name: 'صدای جایگزین دستگاه', exact: true })
+  await expect(deviceVoice).toBeHidden()
+
+  await voice.click()
+  await expect(deviceVoice).toBeVisible()
   await expectNoHorizontalOverflow(page)
 })
 
@@ -770,7 +787,7 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
   // Later books show their test on the map too, locked, with what it covers.
   await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toBeVisible()
-  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن ۲۸ واژهٔ نمونه از کتاب‌های ۱ تا ۲ با سهم بیشتر برای کتاب تازه/)).toBeVisible()
+  await expect(page.getByText('پس از تمام‌شدن ۵ فصل این کتاب باز می‌شود.', { exact: true }).first()).toBeVisible()
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
@@ -875,7 +892,7 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
   await page.goto('/#/exam/midpoint-4')
   await page.reload()
   const saved = await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))
-  await expect(page.getByText(/بخش دوم ۲ متن خواندنی و ۲ متن شنیداری است/)).toBeVisible()
+  await expect(page.getByText('بازخورد در پایان آزمون می‌آید. حد عبور ۸۸٪ کل آزمون، ۸۵٪ یادآوری نوشتاری و ۸۸٪ درک مطلب است.', { exact: true })).toBeVisible()
 
   // Explore mode jumps past the word questions to the texts.
   await page.getByRole('button', { name: 'پرش به درک مطلب ←' }).click()
@@ -945,7 +962,7 @@ test('later end-of-book tests grow gradually: book 3 asks 32 vocabulary items an
   await openWithProgress(page, '/map', { exploreAll: true })
   await page.goto('/#/exam/book-3')
   await page.reload()
-  await expect(page.getByText(/^۳۲ واژهٔ نمونه از کتاب‌های ۱ تا ۳/)).toBeVisible()
+  await expect(page.getByText(/^۳۲ واژهٔ نمونه از کتاب‌های ۱ تا ۳/).first()).toBeVisible()
   await expect(page.getByText('درک مطلب خواندنی — ۲ متن تازه، هر کدام با ۵ سؤال.')).toBeVisible()
   await page.getByRole('button', { name: 'شروع آزمون' }).click()
   await page.getByRole('list', { name: 'بخش‌های آزمون' }).getByRole('button', { name: /درک مطلب خواندنی/ }).click()

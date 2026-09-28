@@ -74,6 +74,16 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - Production artwork is 640×336 (40:21). Keep the primary action safely inside the center crop so phone and tablet banners do not lose faces or story-critical objects.
 - The reviewed chapter-art set is precached by the production service worker so visual continuity survives offline use.
 
+## Distilled interface rules
+- One dominant task per screen. Status, policy, and diagnostics stay secondary and use progressive disclosure.
+- The journey home uses one next-action surface, one three-item progress summary, one review row, then the book path. Do not rebuild a dashboard above the books.
+- Book cards use one neutral surface. Per-book color belongs to contextual reader chrome and artwork, not the whole card.
+- Future/locked books remain visible for orientation but their artwork is shorter and their gate copy stays brief.
+- Secondary buttons are flat; reserve strong contrast for the primary action. Avoid adding control shadows back to ordinary buttons.
+- Long explanations belong in `<details>` or result/review screens, not above an active learning task.
+- Settings shows common switches immediately; narration tuning and privacy explanation stay collapsed until requested.
+- Reuse `.compact-summary` for at most three high-signal metrics. Do not add grids of decorative metrics to task screens.
+
 ## Responsive behavior
 - Phone: single-column, thumb-friendly controls
 - Tablet portrait/landscape: wider shell and richer use of horizontal space, while story prose keeps a readable measure
