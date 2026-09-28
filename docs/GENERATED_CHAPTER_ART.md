@@ -23,6 +23,7 @@ The release gate requires:
 - valid WebP/AVIF containers and exact reviewed hashes;
 - unique image hashes;
 - chapter-specific Persian and English accessible descriptions;
+- a reviewed-story Git blob binding for every approved chapter, so a story rewrite forces explicit semantic re-review before the art gate can pass;
 - the mobile file-size budget;
 - successful materialization before build.
 
