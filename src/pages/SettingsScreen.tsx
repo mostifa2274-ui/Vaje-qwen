@@ -92,7 +92,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
   }
 
   return (
-    <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       <header className="flex items-center gap-3">
         <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
         <h1 className="text-2xl font-extrabold">تنظیمات</h1>

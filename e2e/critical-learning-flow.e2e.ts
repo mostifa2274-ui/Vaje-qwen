@@ -382,7 +382,7 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.home-summary > div')).toHaveCount(3)
   await expect(page.locator('.journey-overview')).toHaveCount(0)
   await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
-  const homeSurface = await page.locator('.page-in').evaluate(element => {
+  const homeSurface = await page.locator('.app-page').evaluate(element => {
     const probe = document.createElement('div')
     probe.style.background = 'var(--cream)'
     document.body.append(probe)
@@ -401,6 +401,7 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
 
 test('settings keeps advanced controls collapsed until requested', async ({ page }) => {
   await page.goto('/#/settings')
+  await expect(page.locator('.app-page')).toHaveCount(1)
 
   const voice = page.getByText('تنظیمات پیشرفتهٔ صدا', { exact: true })
   const privacy = page.getByText('حریم خصوصی', { exact: true })
