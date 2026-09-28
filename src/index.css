@@ -97,7 +97,7 @@ body {
 /* dashed sketchbook path line */
 .dash-line {
   border: none;
-  border-top: 3px dashed rgba(43, 42, 38, 0.55);
+  border-top: 1px solid var(--line-soft);
 }
 
 /* ---------- Tappable words in the reader ---------- */
@@ -137,7 +137,7 @@ body {
   background: var(--ink);
   color: var(--cream);
   border: 1px solid var(--ink);
-  box-shadow: var(--shadow-control);
+  box-shadow: none;
 }
 .btn-ink:active {
   transform: scale(.985);
@@ -151,8 +151,8 @@ body {
 .btn-paper {
   background: color-mix(in srgb, var(--cream) 96%, white);
   color: var(--ink);
-  border: 1px solid var(--line-medium);
-  box-shadow: var(--shadow-control);
+  border: 1px solid var(--line-soft);
+  box-shadow: none;
 }
 .btn-paper:active {
   transform: scale(.985);
@@ -163,7 +163,7 @@ body {
   background: var(--crimson);
   color: #fff;
   border: 1px solid var(--crimson-deep);
-  box-shadow: var(--shadow-control);
+  box-shadow: none;
 }
 .btn-crimson:active {
   transform: scale(.985);
@@ -357,12 +357,12 @@ body {
 }
 .lesson-cover-copy {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border-top: 1px solid var(--line-medium);
-  background: rgba(251,245,236,.86);
-  padding: .8rem .9rem;
+  border-top: 1px solid var(--line-soft);
+  background: rgba(251,245,236,.82);
+  padding: .7rem .9rem;
 }
 .reading-guidance {
   padding-block: .3rem;
@@ -439,11 +439,10 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
   gap: .75rem;
-  border: 1px dashed var(--ink-soft);
-  border-radius: 12px;
-  background: var(--cream-soft);
-  padding: 10px 12px;
-  font-size: .85rem;
+  border-block: 1px solid var(--line-soft);
+  background: transparent;
+  padding: .7rem 0;
+  font-size: .84rem;
   line-height: 1.8;
 }
 
@@ -945,10 +944,11 @@ button:disabled {
   }
 }
 .book-section.is-locked .book-banner {
-  /* Keep the locked visual treatment on imagery only. Dimming the whole
-     section also dimmed small instructional text below WCAG AA contrast. */
-  filter: saturate(.55);
-  opacity: .72;
+  /* Future books stay visible as orientation, but no longer dominate the
+     current learning task. */
+  height: 6rem;
+  filter: saturate(.5);
+  opacity: .66;
 }
 .book-status-icon {
   display: inline-flex;
@@ -1234,6 +1234,26 @@ input::placeholder {
   gap: .5rem;
   font-weight: 700;
 }
+.settings-details > summary {
+  display: flex;
+  min-height: 3.25rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  padding: .85rem 1rem;
+  font-weight: 700;
+  list-style-position: inside;
+}
+.settings-details > summary::marker {
+  color: var(--ink-soft);
+}
+.settings-details[open] > summary {
+  border-bottom: 1px solid var(--line-soft);
+}
+.settings-details-body {
+  padding: .85rem 1rem 1rem;
+}
+
 .settings-danger {
   border-color: color-mix(in srgb, var(--crimson) 26%, var(--line-soft));
 }
