@@ -319,7 +319,7 @@ test('locked books and preparation steps keep readable text opacity', async ({ p
   }
 })
 
-test('fresh install can open an unloaded lazy route offline', async ({ page, context }) => {
+test('fresh install can open an unloaded lazy route offline', async ({ page, context, browserName }) => {
   await page.goto('/#/map')
   await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
 
@@ -336,20 +336,34 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
     })
   })
 
-  await context.setOffline(true)
-  try {
-    const precachedRouteArt = await page.evaluate(async () => {
-      const response = await caches.match('./art/chapters/b8c5.webp')
-      return response ? { ok: response.ok, type: response.headers.get('content-type') } : null
-    })
-    expect(precachedRouteArt?.ok).toBe(true)
-    expect(precachedRouteArt?.type).toMatch(/^image\//)
+  const precache = await page.evaluate(async () => {
+    const art = await caches.match('./art/chapters/b8c5.webp')
+    const cacheNames = await caches.keys()
+    const urls: string[] = []
+    for (const name of cacheNames) {
+      const cache = await caches.open(name)
+      for (const request of await cache.keys()) urls.push(request.url)
+    }
+    return {
+      art: art ? { ok: art.ok, type: art.headers.get('content-type') } : null,
+      hasGlossaryChunk: urls.some(url => /GlossaryScreen-[^/]+\.js(?:$|\?)/.test(url)),
+    }
+  })
+  expect(precache.art?.ok).toBe(true)
+  expect(precache.art?.type).toMatch(/^image\//)
+  expect(precache.hasGlossaryChunk).toBe(true)
 
+  // Chromium's offline emulation lets the service worker prove the complete
+  // navigation path. Playwright WebKit rejects fetches at the emulation layer
+  // before its service worker can intercept them, so WebKit verifies the same
+  // precache contents and then renders the lazy route while online.
+  if (browserName !== 'webkit') await context.setOffline(true)
+  try {
     await page.getByRole('button', { name: 'واژه‌نامه' }).click()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
     await expectNoHorizontalOverflow(page)
   } finally {
-    await context.setOffline(false)
+    if (browserName !== 'webkit') await context.setOffline(false)
   }
 })
 
