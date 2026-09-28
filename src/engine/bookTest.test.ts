@@ -4,7 +4,7 @@ import { BOOK_TEST_CONTENT } from '../data/bookTests'
 import { emptyState } from './store'
 import { blankWordProgress, recordRetrieval } from './review'
 import { bookExamId, canPrepareChapter, canTakeExam, examDefinition, examRemediationPending } from './gates'
-import { bookTestQuestionCount, bookTestTextsPerSkill, bookTestWordCount, bookTestWordsFrom, bookWordIds } from './bookTestSize'
+import { bookTestQuestionCount, bookTestTextsPerSkill, bookTestWordCount, bookTestWordsFrom } from './bookTestSize'
 import {
   bookTestAllocation,
   buildBookTest,
