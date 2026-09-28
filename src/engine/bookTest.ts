@@ -116,9 +116,8 @@ export function bookTestPool(book: number): string[] {
 }
 
 /**
- * How many words of each studied book the two vocabulary sections ask:
- * half of that book's words, split evenly between typing and listening.
- * When a book's share is odd, the spare word alternates between the
+ * Split each studied book's bounded cumulative share between typing and
+ * listening. When a source share is odd, the spare word alternates between
  * sections from book to book and from attempt to attempt.
  */
 export function bookTestAllocation(book: number, rotation: number): Map<number, Record<'translation' | 'listeningWords', number>> {
