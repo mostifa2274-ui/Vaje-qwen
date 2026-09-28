@@ -1206,11 +1206,19 @@ input::placeholder {
   }
 }
 
+.settings-list {
+  border-top: 1px solid var(--line-soft);
+}
+
 .settings-section {
   border: 0;
   border-bottom: 1px solid var(--line-soft);
   border-radius: 0;
   background: transparent;
+}
+
+.settings-list .settings-section {
+  padding-inline: 0;
 }
 .settings-section-title {
   display: flex;
