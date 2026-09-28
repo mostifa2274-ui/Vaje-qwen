@@ -417,7 +417,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   }
 
   return (
-    <div className="page-in" style={{ background: 'var(--cream)', minHeight: '100vh' }}>
+    <div className="app-page page-in">
       <div className="sticky top-0 z-40 app-task-header">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه">
