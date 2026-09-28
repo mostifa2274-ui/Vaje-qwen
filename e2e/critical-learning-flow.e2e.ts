@@ -398,10 +398,11 @@ test('settings keeps advanced controls collapsed until requested', async ({ page
   const privacy = page.getByText('حریم خصوصی', { exact: true })
   await expect(voice).toBeVisible()
   await expect(privacy).toBeVisible()
-  await expect(page.getByLabel('صدای جایگزین دستگاه')).toBeHidden()
+  const deviceVoice = page.getByRole('combobox', { name: 'صدای جایگزین دستگاه', exact: true })
+  await expect(deviceVoice).toBeHidden()
 
   await voice.click()
-  await expect(page.getByLabel('صدای جایگزین دستگاه')).toBeVisible()
+  await expect(deviceVoice).toBeVisible()
   await expectNoHorizontalOverflow(page)
 })
 
