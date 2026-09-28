@@ -545,7 +545,17 @@ async function openWithProgress(page: Page, route: string, progress: {
       created: now - 2 * 86_400_000,
     }))
   }, progress)
-  await page.goto(`/#${route}`)
+
+  // Reload the existing document so React rehydrates from the injected state,
+  // then change only the hash. Navigating directly from /#/map to another hash
+  // is a same-document navigation in Chromium and would leave the old in-memory
+  // state alive; changing the hash before reload can race that old state in
+  // WebKit. This two-step sequence is deterministic in both engines.
+  await page.reload()
+  await page.evaluate((nextRoute) => {
+    window.location.hash = nextRoute
+  }, route)
+  await page.waitForURL((url) => url.hash === `#${route}`)
 }
 
 function dueWord(overrides: Record<string, unknown> = {}): Record<string, unknown> {
