@@ -29,7 +29,9 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 ## Distilled hierarchy
 - Home has one dominant next action, one compact three-value progress summary and one direct review row. Detailed skill analytics belong in review/results, not on the journey map.
 - Long explanations and assessment policy are progressive disclosure, not permanently visible callouts.
+- Only reachable books expand into illustrated journey panels. Locked future books stay compact milestones until they become relevant.
 - Book artwork on the journey map supports navigation and stays compact; the chapter reader is where artwork may take visual priority.
+- App chrome is neutral and consistent across books. Per-book color does not tint headers or task surfaces; chapter artwork carries the visual variation.
 - Settings is one continuous separated list, not a stack of independent cards.
 - Success, warning and error containers are reserved for real state/feedback. Ordinary guidance remains plain text.
 
