@@ -440,8 +440,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <li><b>{SECTION_LABELS.listening}</b> — {test.listening.length === 1 ? 'متن تازهٔ دیگری' : `${faNum(test.listening.length)} متن تازهٔ دیگر`} که فقط پخش {test.listening.length === 1 ? 'می‌شود' : 'می‌شوند'}، هر کدام با ۵ سؤال.</li>
           </ol>
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            واژه‌ها نیمی از همهٔ واژه‌های {book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} هستند ({faNum(test.translation.length + test.listeningWords.length)} واژه) و متن‌ها فقط با واژه‌هایی نوشته شده‌اند که تا اینجا یاد گرفته‌ای.
-            برای قبولی، هر بخش باید {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ یعنی حتی یک پاسخ نادرست هم پذیرفته نمی‌شود. تا پایان آزمون بازخوردی نمایش داده نمی‌شود؛ بعد از آن همهٔ پاسخ‌ها، ترجمهٔ متن‌ها و متن شنیداری را می‌بینی.
+            واژه‌ها یک نمونهٔ تجمعیِ محدود از {book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} هستند ({faNum(test.translation.length + test.listeningWords.length)} واژه)؛ کتاب تازه سهم بیشتری دارد و کتاب‌های قبلی هم نماینده دارند. متن‌ها فقط با واژه‌هایی نوشته شده‌اند که تا اینجا یاد گرفته‌ای.
+            برای قبولی، هر بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد. واژه‌های اشتباه حتی پس از قبولی وارد مرور جبرانی می‌شوند و تا بازیابی مستقل آن‌ها، مسیر بعدی باز نمی‌شود. تا پایان آزمون بازخوردی نمایش داده نمی‌شود؛ بعد از آن همهٔ پاسخ‌ها، ترجمهٔ متن‌ها و متن شنیداری را می‌بینی.
           </p>
           <div className="paper-note mt-4">دو بخش شنیداری به صدای انگلیسی دستگاه نیاز دارند؛ اگر می‌توانی از هدفون استفاده کن. آزمون طولانی است؛ هر ۴۰ واژه یک وقفهٔ کوتاه داری و پیشرفتت ذخیره می‌شود، حتی اگر برنامه را ببندی.</div>
           <button type="button" className="btn-crimson mt-5 w-full py-3" onClick={() => setPhase('translation')}>شروع آزمون</button>
