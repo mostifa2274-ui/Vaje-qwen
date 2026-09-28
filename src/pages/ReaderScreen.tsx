@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
-import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, lemmaMap, nextChapter } from '../data/chapters'
+import { CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, lemmaMap, nextChapter } from '../data/chapters'
 import { CHAPTER_LISTENING } from '../data/chapterListening'
 import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglishWithFallback, type SpeechFailure } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
@@ -44,7 +44,6 @@ function wallClockNow(): number {
 
 export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenPrep, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
-  const meta = BOOKS.find(book => book.book === chapter.book)!
   const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS, lemmaMap), [chapter])
   const paragraphs = useMemo(() => {
     const paragraphSize = chapter.sentences.length >= 36 ? 5 : 4
