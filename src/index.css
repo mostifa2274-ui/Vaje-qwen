@@ -16,7 +16,6 @@
     --crimson-deep: #b82347;
     --gold: #d9a441;
     --sage-line: #87a08b;
-    --book-tint: #e8d9c4;    /* per-book override via inline style */
     --line-soft: color-mix(in srgb, var(--ink) 22%, transparent);
     --line-medium: color-mix(in srgb, var(--ink) 38%, transparent);
     --shadow-soft: 0 10px 28px rgba(43, 42, 38, 0.10);
@@ -217,6 +216,11 @@ body {
      every position: fixed descendant (sheets, dialogs) position itself
      against the whole page instead of the viewport. */
   animation: page-in 260ms ease backwards;
+}
+
+.app-task-header {
+  background: var(--cream-soft);
+  border-bottom: 1px solid var(--line-soft);
 }
 
 @keyframes sheet-up {
@@ -858,6 +862,25 @@ button:disabled {
   border-radius: 16px;
   background: var(--cream-soft);
 }
+.future-book-row {
+  display: flex;
+  min-height: 4.5rem;
+  align-items: center;
+  gap: .75rem;
+  border-bottom: 1px solid var(--line-soft);
+  padding: .85rem .15rem;
+}
+.future-book-lock {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.26);
+  color: var(--ink-soft);
+}
 /* Illustrated banner heading each book; bleeds to the section edges. */
 .book-banner {
   display: block;
@@ -886,13 +909,6 @@ button:disabled {
     height: 10rem;
     margin: -1.25rem -1.25rem 1.1rem;
   }
-}
-.book-section.is-locked .book-banner {
-  /* Future books stay visible as orientation, but no longer dominate the
-     current learning task. */
-  height: 6rem;
-  filter: saturate(.5);
-  opacity: .66;
 }
 .book-status-icon {
   display: inline-flex;
