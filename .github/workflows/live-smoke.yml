@@ -1,41 +1,67 @@
 name: Production smoke
 
-# Manual only (Actions > Production smoke > Run workflow): polling for the
-# deploy after every merge spent more free Actions minutes than anything but
-# CI. Cloudflare's own build check already reports each deploy.
+# Start after production CI or Cloudflare reports success. The CI trigger also
+# covers GitHub suppressing check_run events associated with Actions.
+# Manual verification remains available.
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  check_run:
+    types: [completed]
 
 permissions:
   contents: read
 
 concurrency:
-  group: ghesse-production-smoke
+  group: ghesse-production-smoke-${{ github.event.check_run.head_sha || github.event.workflow_run.head_sha || github.sha }}
   cancel-in-progress: true
 
 jobs:
   live:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main') ||
+      (github.event.check_run.app.slug == 'cloudflare-workers-and-pages' &&
+       github.event.check_run.name == 'Workers Builds: vaje-qwen1' &&
+       github.event.check_run.conclusion == 'success')
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 4
     env:
       PRODUCTION_URL: https://vaje-qwen1.mostifa2273.workers.dev
-      SOURCE_SHA: ${{ github.sha }}
+      SOURCE_SHA: ${{ github.event.check_run.head_sha || github.event.workflow_run.head_sha || github.sha }}
 
     steps:
+      - name: Ignore superseded or non-production commits
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          main_sha="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')"
+          if [ "$SOURCE_SHA" = "$main_sha" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping $SOURCE_SHA: current main is $main_sha."
+          fi
       - name: Wait for exact Cloudflare production revision
+        if: steps.source.outputs.current == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          expected_release='"release":"ghesse-5.0.0"'
-          expected_worker='"worker":"vaje-qwen1"'
-          expected_commit="\"commit\":\"$SOURCE_SHA\""
           last_compact=''
 
           echo "Verifying source revision: $SOURCE_SHA"
           echo "Production worker: $PRODUCTION_URL"
 
-          for attempt in $(seq 1 44); do
-            echo "Smoke attempt $attempt/44 for $SOURCE_SHA"
+          for attempt in $(seq 1 6); do
+            echo "Smoke attempt $attempt/6 for $SOURCE_SHA"
             body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
             compact="$(printf '%s' "$body" | tr -d '[:space:]')"
             last_compact="$compact"
@@ -44,11 +70,12 @@ jobs:
               echo "Observed live marker: ${compact:-<empty>}"
             fi
 
-            if printf '%s' "$compact" | grep -Fq "$expected_release" \
-              && printf '%s' "$compact" | grep -Fq "$expected_worker" \
-              && printf '%s' "$compact" | grep -Fq "$expected_commit"; then
+            if printf '%s' "$body" | jq -e --arg commit "$SOURCE_SHA" \
+              '.release == "ghesse-5.0.0" and .worker == "vaje-qwen1" and .commit == $commit and .branch == "main"' >/dev/null; then
               echo "Verified exact Ghesse 5.0 revision $SOURCE_SHA at $PRODUCTION_URL/release.json"
               curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null
+              worker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/sw.js?fresh=$(date +%s)")"
+              printf '%s' "$worker" | grep -F "ghesse-shell-${SOURCE_SHA:0:16}" >/dev/null
               echo "Production root is reachable."
               {
                 echo "## Production verification"
@@ -56,11 +83,12 @@ jobs:
                 echo "- Exact revision verified: $SOURCE_SHA"
                 echo "- Worker: vaje-qwen1"
                 echo "- Root reachable: yes"
+                echo "- Service-worker cache matches revision: yes"
               } >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
 
-            sleep 15
+            if [ "$attempt" -lt 6 ]; then sleep 5; fi
           done
 
           {

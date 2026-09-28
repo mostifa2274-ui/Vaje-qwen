@@ -46,7 +46,7 @@ const assets = {
   },
   'b8c3.webp': {
     type: 'webp',
-    sha256: '9e3a6f07f96f404e44df22d08d4e3583b9b83b85aed1652ff13adf2641ff0cc1',
+    sha256: '7b3ef5f49fdacd7efd99ff3f13ff586346b1e4c6f304ba2f060d9494195b6918',
   },
   'b8c4.webp': {
     type: 'webp',
@@ -78,7 +78,7 @@ const assets = {
   },
   'b2c3.webp': {
     type: 'webp',
-    sha256: 'c18a2083293473edf0bcb7c2239b593f3dd7815b191e7e06efb7fbcd93be2c96',
+    sha256: 'b5eebd27ee05a282595854408515677a6005e2940801107c4023954073443e42',
   },
   'b3c4.webp': {
     type: 'webp',
@@ -90,7 +90,7 @@ const assets = {
   },
   'b3c2.webp': {
     type: 'webp',
-    sha256: 'e0ea1c615c44c0f41d1b13a8998e98bd9375baa0a1f6d25472572411b898e895',
+    sha256: '1362392e8e4416859dd0babb73f53373491a5230374b21662535ea526d13aa87',
   },
   'b2c1.webp': {
     type: 'webp',
@@ -134,7 +134,7 @@ const assets = {
   },
   'b4c5.webp': {
     type: 'webp',
-    sha256: 'c0ff7b377cec762a87c024441ef47ecf5e9ebceacd27e2724fb68678ded7cc6b',
+    sha256: '0dc1da76ce593f7eafeb13e4f27340e9294717ac7d4f3fb2b19bd3f59362c327',
   },
   'b5c1.webp': {
     type: 'webp',

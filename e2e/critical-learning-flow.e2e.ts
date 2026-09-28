@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import { persianPartOfSpeech } from '../src/engine/partOfSpeech'
 import { faNum } from '../src/engine/format'
 import { clipId } from '../src/engine/audioClips'
+import { startOfflineOrigin } from './offlineOrigin'
 
 interface VocabularyEntry {
   id: string
@@ -200,15 +201,8 @@ async function answerCurrentListeningWord(page: Page, expected: VocabularyEntry)
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
-    try {
-      if (window.name !== '__ghesse_e2e_initialized__') {
-        window.localStorage.clear()
-        window.sessionStorage.clear()
-        window.name = '__ghesse_e2e_initialized__'
-      }
-    } catch {
-      // The real app handles unavailable storage; this test starts from a clean origin.
-    }
+    // Playwright supplies a fresh context per test. Do not clear storage on
+    // navigation: reloads and extra tabs must preserve the learner's progress.
 
     // These flows assert on the fake speech engine below, so the recorded
     // narration is hidden unless a test opts in with __ghesseRecordedAudio.
@@ -319,51 +313,46 @@ test('locked books and preparation steps keep readable text opacity', async ({ p
   }
 })
 
-test('fresh install can open an unloaded lazy route offline', async ({ page, context, browserName }) => {
-  await page.goto('/#/map')
-  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
-
-  await page.evaluate(async () => {
-    if (!('serviceWorker' in navigator)) throw new Error('service worker unavailable in browser QA')
-    await navigator.serviceWorker.ready
-    if (navigator.serviceWorker.controller) return
-    await new Promise<void>((resolve, reject) => {
-      const timeout = window.setTimeout(() => reject(new Error('service worker did not claim page')), 7_000)
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        window.clearTimeout(timeout)
-        resolve()
-      }, { once: true })
-    })
-  })
-
-  const precache = await page.evaluate(async () => {
-    const art = await caches.match('./art/chapters/b8c5.webp')
-    const cacheNames = await caches.keys()
-    const urls: string[] = []
-    for (const name of cacheNames) {
-      const cache = await caches.open(name)
-      for (const request of await cache.keys()) urls.push(request.url)
-    }
-    return {
-      art: art ? { ok: art.ok, type: art.headers.get('content-type') } : null,
-      hasGlossaryChunk: urls.some(url => /GlossaryScreen-[^/]+\.js(?:$|\?)/.test(url)),
-    }
-  })
-  expect(precache.art?.ok).toBe(true)
-  expect(precache.art?.type).toMatch(/^image\//)
-  expect(precache.hasGlossaryChunk).toBe(true)
-
-  // Chromium's offline emulation lets the service worker prove the complete
-  // navigation path. Playwright WebKit rejects fetches at the emulation layer
-  // before its service worker can intercept them, so WebKit verifies the same
-  // precache contents and then renders the lazy route while online.
-  if (browserName !== 'webkit') await context.setOffline(true)
+test('fresh install can open an unloaded lazy route offline', async ({ page, context }) => {
+  // WebKit's setOffline emulation rejects even literal service-worker
+  // responses (microsoft/playwright#42775). Stop a real isolated origin so
+  // every engine exercises actual network failure and the same cache path.
+  const origin = await startOfflineOrigin()
   try {
+    await page.goto(`${origin.url}/#/map`)
+    await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+    await page.evaluate(async () => {
+      if (!('serviceWorker' in navigator)) throw new Error('service worker unavailable in browser QA')
+      await navigator.serviceWorker.ready
+      if (navigator.serviceWorker.controller) return
+      await new Promise<void>((resolve, reject) => {
+        const timeout = window.setTimeout(() => reject(new Error('service worker did not claim page')), 7_000)
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          window.clearTimeout(timeout)
+          resolve()
+        }, { once: true })
+      })
+    })
+
+    await origin.stop()
+    // Negative control: an HTTP client without a worker cannot reach the app.
+    await expect(context.request.get(`${origin.url}/index.html`, { timeout: 3_000 })).rejects.toThrow()
+    const uncachedRouteArt = await page.evaluate(async () => {
+      const response = await fetch('./art/chapters/b8c5.webp')
+      return { ok: response.ok, type: response.headers.get('content-type') }
+    })
+    expect(uncachedRouteArt.ok).toBe(true)
+    expect(uncachedRouteArt.type).toMatch(/^image\//)
+
     await page.getByRole('button', { name: 'واژه‌نامه' }).click()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
     await expectNoHorizontalOverflow(page)
+    // A cold navigation must also recover the shell after losing the origin.
+    await page.reload()
+    await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
   } finally {
-    if (browserName !== 'webkit') await context.setOffline(false)
+    await origin.stop()
   }
 })
 
@@ -541,8 +530,10 @@ async function openWithProgress(page: Page, route: string, progress: {
   exams?: Record<string, Record<string, unknown>>
   exploreAll?: boolean
 }): Promise<void> {
-  await page.goto('/#/map')
-  await page.evaluate((progress) => {
+  await page.addInitScript(({ progress }) => {
+    // Seed before React mounts. Writing after page.goto races the initial
+    // persistence effect on WebKit; reloads must retain subsequent changes.
+    if (window.sessionStorage.getItem('ghesse:e2e:progress-seeded')) return
     const now = Date.now()
     window.localStorage.setItem('ghesse:state:v6', JSON.stringify({
       version: 6,
@@ -558,18 +549,9 @@ async function openWithProgress(page: Page, route: string, progress: {
       exploreAll: progress.exploreAll === true,
       created: now - 2 * 86_400_000,
     }))
-  }, progress)
-
-  // Reload the existing document so React rehydrates from the injected state,
-  // then change only the hash. Navigating directly from /#/map to another hash
-  // is a same-document navigation in Chromium and would leave the old in-memory
-  // state alive; changing the hash before reload can race that old state in
-  // WebKit. This two-step sequence is deterministic in both engines.
-  await page.reload()
-  await page.evaluate((nextRoute) => {
-    window.location.hash = nextRoute
-  }, route)
-  await page.waitForURL((url) => url.hash === `#${route}`)
+    window.sessionStorage.setItem('ghesse:e2e:progress-seeded', 'true')
+  }, { progress })
+  await page.goto(`/#${route}`)
 }
 
 function dueWord(overrides: Record<string, unknown> = {}): Record<string, unknown> {
