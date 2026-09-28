@@ -1037,7 +1037,8 @@ test('explore mode opens every chapter as an unrecorded preview and closes again
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
   await page.getByRole('button', { name: 'خاموش کردن' }).click()
   await expect(page.getByText('حالت کاوش روشن است.')).toHaveCount(0)
-  await expect(page.getByRole('button', { name: lastNodeName('قفل') })).toBeDisabled()
+  await expect(page.locator('.future-book-row')).toHaveCount(7)
+  await expect(page.getByRole('button', { name: lastNodeName('قفل') })).toHaveCount(0)
   expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters)).toEqual({})
 })
 
