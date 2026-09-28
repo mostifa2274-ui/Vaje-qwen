@@ -1111,8 +1111,9 @@ button:disabled {
 .review-mark-right { color: #3e7a4a; font-weight: 800; }
 .review-mark-wrong { color: var(--crimson-deep); font-weight: 800; }
 .metric-card.metric-fail {
-  border-color: color-mix(in srgb, var(--crimson) 45%, var(--line-soft));
-  background: #f7e3e1;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--crimson) 9%, transparent);
+  color: var(--crimson-deep);
 }
 
 /* ---------- Resumable chapter preparation ---------- */
