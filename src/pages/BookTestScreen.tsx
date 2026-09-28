@@ -432,7 +432,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
       <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
         {header}
         <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="intro-heading">
-          <h2 id="intro-heading" className="text-lg font-extrabold">چهار بخش، هر کدام جدا</h2>
+          <h2 id="intro-heading" className="text-lg font-extrabold">چهار بخش</h2>
           <ol className="test-intro-list mt-4">
             <li><b>{SECTION_LABELS.translation}</b> — {faNum(test.translation.length)} واژه؛ معنی فارسی را بنویس.</li>
             <li><b>{SECTION_LABELS.listeningWords}</b> — {faNum(test.listeningWords.length)} واژهٔ دیگر را فقط می‌شنوی و معنی‌اش را انتخاب می‌کنی.</li>
@@ -440,10 +440,9 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <li><b>{SECTION_LABELS.listening}</b> — {test.listening.length === 1 ? 'متن تازهٔ دیگری' : `${faNum(test.listening.length)} متن تازهٔ دیگر`} که فقط پخش {test.listening.length === 1 ? 'می‌شود' : 'می‌شوند'}، هر کدام با ۵ سؤال.</li>
           </ol>
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            واژه‌ها یک نمونهٔ تجمعیِ محدود از {book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} هستند ({faNum(test.translation.length + test.listeningWords.length)} واژه)؛ کتاب تازه سهم بیشتری دارد و کتاب‌های قبلی هم نماینده دارند. متن‌ها فقط با واژه‌هایی نوشته شده‌اند که تا اینجا یاد گرفته‌ای.
-            برای قبولی، هر بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد. واژه‌های اشتباه حتی پس از قبولی وارد مرور جبرانی می‌شوند و تا بازیابی مستقل آن‌ها، مسیر بعدی باز نمی‌شود. تا پایان آزمون بازخوردی نمایش داده نمی‌شود؛ بعد از آن همهٔ پاسخ‌ها، ترجمهٔ متن‌ها و متن شنیداری را می‌بینی.
+            {faNum(test.translation.length + test.listeningWords.length)} واژهٔ نمونه از {book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(book)}`} می‌آید و کتاب تازه سهم بیشتری دارد. هر بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ واژه‌های اشتباه وارد مرور جبرانی می‌شوند.
           </p>
-          <div className="paper-note mt-4">دو بخش شنیداری به صدای انگلیسی دستگاه نیاز دارند؛ اگر می‌توانی از هدفون استفاده کن. آزمون طولانی است؛ هر ۴۰ واژه یک وقفهٔ کوتاه داری و پیشرفتت ذخیره می‌شود، حتی اگر برنامه را ببندی.</div>
+          <div className="paper-note mt-4">بازخورد در پایان آزمون نمایش داده می‌شود. پیشرفت خودکار ذخیره می‌شود و در بخش واژگان هر ۴۰ پاسخ یک وقفه داری.</div>
           <button type="button" className="btn-crimson mt-5 w-full py-3" onClick={() => setPhase('translation')}>شروع آزمون</button>
         </section>
       </div>
