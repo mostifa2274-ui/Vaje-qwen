@@ -14,6 +14,12 @@ const chapterFiles = fs.readdirSync(chapterDir)
 const chapters = chapterFiles.map((name) => JSON.parse(fs.readFileSync(path.join(chapterDir, name), 'utf8')))
 const ids = chapters.map((chapter) => chapter.id)
 const idSet = new Set(ids)
+const chapterFileById = new Map(chapterFiles.map((name, index) => [chapters[index].id, name]))
+
+function gitBlobSha1(bytes) {
+  const header = Buffer.from(`blob ${bytes.length}\0`)
+  return crypto.createHash('sha1').update(header).update(bytes).digest('hex')
+}
 
 let failed = false
 const fail = (message) => {
@@ -37,6 +43,28 @@ for (const id of approved) {
 
 for (const id of Object.keys(manifest.ninoPolicyOverrides ?? {})) {
   if (!idSet.has(id)) fail(`Nino policy override references unknown chapter: ${id}`)
+}
+
+// An artwork approval is semantic, not only a file-hash approval. Bind every
+// reviewed image to the exact chapter JSON revision it was checked against so
+// later story rewrites cannot silently keep stale art marked as approved.
+const reviewedStoryBlobs = manifest.reviewedStoryBlobs ?? {}
+for (const id of approved) {
+  const expected = reviewedStoryBlobs[id]
+  if (typeof expected !== 'string' || !/^[a-f0-9]{40}$/.test(expected)) {
+    fail(`Approved chapter art has no reviewed story revision: ${id}`)
+    continue
+  }
+  const chapterFile = chapterFileById.get(id)
+  if (!chapterFile) continue
+  const actual = gitBlobSha1(fs.readFileSync(path.join(chapterDir, chapterFile)))
+  if (actual !== expected) {
+    fail(`${id}: story changed after artwork review (expected blob ${expected}, current ${actual}); re-review the illustration against the new story before updating reviewedStoryBlobs.`)
+  }
+}
+for (const id of Object.keys(reviewedStoryBlobs)) {
+  if (!idSet.has(id)) fail(`Reviewed story revision references unknown chapter: ${id}`)
+  else if (!approved.includes(id)) fail(`Story revision is marked reviewed for unapproved artwork: ${id}`)
 }
 
 const rasterFiles = fs.existsSync(artDir)
