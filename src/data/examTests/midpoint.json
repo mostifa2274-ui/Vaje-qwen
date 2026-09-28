@@ -1,0 +1,897 @@
+{
+  "exam": "midpoint",
+  "reading": [
+    {
+      "id": "midpoint-reading-1",
+      "titleEn": "The Shopping List",
+      "titleFa": "فهرست خرید",
+      "names": [
+        "Leila"
+      ],
+      "sentences": [
+        {
+          "en": "On Thursday morning, Leila and her father take the bus to the market.",
+          "fa": "پنجشنبه صبح، لیلا و پدرش با اتوبوس به بازار می‌روند."
+        },
+        {
+          "en": "Her mother is at work, so she gives them a shopping list.",
+          "fa": "مادرش سر کار است، پس یک فهرست خرید به آن‌ها می‌دهد."
+        },
+        {
+          "en": "First, they buy fruit and vegetables: apples, carrots, potatoes and six tomatoes.",
+          "fa": "اول میوه و سبزی می‌خرند: سیب، هویج، سیب‌زمینی و شش گوجه‌فرنگی."
+        },
+        {
+          "en": "The tomatoes are cheap today, but the apples are expensive.",
+          "fa": "امروز گوجه‌فرنگی ارزان است، اما سیب گران است."
+        },
+        {
+          "en": "Then they go to the fish shop, where the fish is on ice.",
+          "fa": "بعد به ماهی‌فروشی می‌روند، جایی که ماهی روی یخ است."
+        },
+        {
+          "en": "At twelve o'clock, they are hungry, so they eat lunch at a small restaurant.",
+          "fa": "ساعت دوازده گرسنه‌اند، پس در یک رستوران کوچک ناهار می‌خورند."
+        },
+        {
+          "en": "Leila prefers tomato soup, and her father orders a chicken sandwich.",
+          "fa": "لیلا سوپ گوجه‌فرنگی را ترجیح می‌دهد و پدرش یک ساندویچ مرغ سفارش می‌دهد."
+        },
+        {
+          "en": "After lunch, Leila reads the list again. It is not complete.",
+          "fa": "بعد از ناهار، لیلا دوباره فهرست را می‌خواند. کامل نیست."
+        },
+        {
+          "en": "\"We forgot the bread!\" she says.",
+          "fa": "می‌گوید: «نان را فراموش کردیم!»"
+        },
+        {
+          "en": "They walk back to the bread shop, but it is closed in the afternoon.",
+          "fa": "به نانوایی برمی‌گردند، اما بعدازظهرها بسته است."
+        },
+        {
+          "en": "\"We can buy bread at the supermarket near our home,\" her father says.",
+          "fa": "پدرش می‌گوید: «می‌توانیم از سوپرمارکت نزدیک خانه‌مان نان بخریم.»"
+        },
+        {
+          "en": "At home, her mother laughs. \"You bought everything but the bread!\"",
+          "fa": "در خانه، مادرش می‌خندد. «همه‌چیز خریدید جز نان!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "چرا مادر لیلا به بازار نمی‌رود؟",
+          "options": [
+            "مریض است",
+            "سر کار است",
+            "در سوپرمارکت است",
+            "خواب است"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "امروز چه چیزی ارزان است؟",
+          "options": [
+            "گوجه‌فرنگی",
+            "سیب",
+            "ماهی",
+            "نان"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "لیلا چه غذایی را ترجیح می‌دهد؟",
+          "options": [
+            "ساندویچ مرغ",
+            "ماهی",
+            "سوپ گوجه‌فرنگی",
+            "سالاد"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چه چیزی را فراموش کرده بودند؟",
+          "options": [
+            "سیب",
+            "هویج",
+            "ماهی",
+            "نان"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "چرا از نانوایی نان نمی‌خرند؟",
+          "options": [
+            "نان تمام شده",
+            "بعدازظهرها بسته است",
+            "گران است",
+            "دور است"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "midpoint-reading-2",
+      "titleEn": "The Cat in the Tree",
+      "titleFa": "گربه روی درخت",
+      "names": [
+        "Kian"
+      ],
+      "sentences": [
+        {
+          "en": "Kian lives in an apartment building near a busy street.",
+          "fa": "کیان در یک ساختمان آپارتمانی نزدیک یک خیابان شلوغ زندگی می‌کند."
+        },
+        {
+          "en": "In September, a new family arrives on the fifth floor with a brown and white cat.",
+          "fa": "در سپتامبر، خانواده‌ای تازه با یک گربه‌ی قهوه‌ای و سفید به طبقه‌ی پنجم می‌آیند."
+        },
+        {
+          "en": "One evening, the cat is not at home, and the family's young daughter is very sad.",
+          "fa": "یک شب، گربه خانه نیست و دختر کوچک خانواده خیلی غمگین است."
+        },
+        {
+          "en": "Kian and his friend look for it in the park across the street.",
+          "fa": "کیان و دوستش در پارک آن طرف خیابان دنبالش می‌گردند."
+        },
+        {
+          "en": "They check under the cars and behind the trees, but they find only birds.",
+          "fa": "زیر ماشین‌ها و پشت درخت‌ها را می‌گردند، اما فقط پرنده پیدا می‌کنند."
+        },
+        {
+          "en": "Then Kian hears a small sound from a tall tree.",
+          "fa": "بعد کیان صدای کوچکی از یک درخت بلند می‌شنود."
+        },
+        {
+          "en": "The cat is in the tree, and it is afraid to come down.",
+          "fa": "گربه روی درخت است و می‌ترسد پایین بیاید."
+        },
+        {
+          "en": "Kian runs to get the girl's father, and he brings the cat down in his hands.",
+          "fa": "کیان می‌دود تا پدر دختر را بیاورد و او گربه را با دست‌هایش پایین می‌آورد."
+        },
+        {
+          "en": "The girl is so happy that she gives Kian a big piece of chocolate cake.",
+          "fa": "دختر آن‌قدر خوشحال است که یک تکه‌ی بزرگ کیک شکلاتی به کیان می‌دهد."
+        },
+        {
+          "en": "\"It is the best cake in the world,\" Kian says.",
+          "fa": "کیان می‌گوید: «بهترین کیک دنیاست.»"
+        },
+        {
+          "en": "Now the cat often sleeps on Kian's desk in the afternoon.",
+          "fa": "حالا گربه بعدازظهرها اغلب روی میز کیان می‌خوابد."
+        },
+        {
+          "en": "The two families are good friends, and they eat dinner together on Fridays.",
+          "fa": "دو خانواده دوستان خوبی‌اند و جمعه‌ها با هم شام می‌خورند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "کیان کجا زندگی می‌کند؟",
+          "options": [
+            "در یک مزرعه",
+            "در یک ساختمان آپارتمانی نزدیک خیابانی شلوغ",
+            "کنار رودخانه",
+            "در یک خانه‌ی باغ‌دار"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "خانواده‌ی تازه در کدام ماه می‌آیند؟",
+          "options": [
+            "سپتامبر",
+            "مارس",
+            "ژوئن",
+            "دسامبر"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "گربه کجا بود؟",
+          "options": [
+            "زیر ماشین",
+            "در پارکینگ",
+            "روی یک درخت بلند",
+            "روی میز کیان"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "دختر به کیان چه می‌دهد؟",
+          "options": [
+            "یک گربه",
+            "آب پرتقال",
+            "یک کتاب",
+            "یک تکه کیک شکلاتی"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "دو خانواده جمعه‌ها چه می‌کنند؟",
+          "options": [
+            "با هم شام می‌خورند",
+            "به پارک می‌روند",
+            "فوتبال بازی می‌کنند",
+            "به بازار می‌روند"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "midpoint-reading-3",
+      "titleEn": "A Weekend on the Farm",
+      "titleFa": "آخر هفته در مزرعه",
+      "names": [
+        "Roya"
+      ],
+      "sentences": [
+        {
+          "en": "Every summer, Roya and her parents visit a farm outside the city.",
+          "fa": "هر تابستان، رویا و پدر و مادرش به مزرعه‌ای بیرون شهر می‌روند."
+        },
+        {
+          "en": "The farmer and his wife are old friends of her father.",
+          "fa": "کشاورز و همسرش دوستان قدیمی پدرش هستند."
+        },
+        {
+          "en": "On Friday, Roya wakes at six o'clock because a cow is making a sound under her window.",
+          "fa": "جمعه، رویا ساعت شش بیدار می‌شود، چون گاوی زیر پنجره‌اش سروصدا می‌کند."
+        },
+        {
+          "en": "She helps the farmer's wife with the goats and the sheep.",
+          "fa": "به همسر کشاورز در کار با بزها و گوسفندها کمک می‌کند."
+        },
+        {
+          "en": "Then they get eggs from the chickens for breakfast.",
+          "fa": "بعد برای صبحانه از مرغ‌ها تخم‌مرغ برمی‌دارند."
+        },
+        {
+          "en": "Breakfast is warm bread with butter, eggs and a cup of tea.",
+          "fa": "صبحانه نان گرم با کره، تخم‌مرغ و یک فنجان چای است."
+        },
+        {
+          "en": "In the afternoon, the weather is hot, so everyone sits under a big tree.",
+          "fa": "بعدازظهر هوا گرم است، پس همه زیر یک درخت بزرگ می‌نشینند."
+        },
+        {
+          "en": "The farmer tells a funny story about a horse that eats apples from his bag.",
+          "fa": "کشاورز داستان خنده‌داری درباره‌ی اسبی تعریف می‌کند که از کیفش سیب می‌خورد."
+        },
+        {
+          "en": "Roya laughs so much that she cannot drink her juice.",
+          "fa": "رویا آن‌قدر می‌خندد که نمی‌تواند آب‌میوه‌اش را بخورد."
+        },
+        {
+          "en": "In the evening, they eat a big meal of rice and vegetables from the farm.",
+          "fa": "عصر، یک غذای مفصل از برنج و سبزی‌های مزرعه می‌خورند."
+        },
+        {
+          "en": "On Saturday, it is time to go home, and Roya is sad.",
+          "fa": "شنبه وقت برگشتن به خانه است و رویا غمگین است."
+        },
+        {
+          "en": "\"Come back in the spring,\" the farmer's wife says. \"The baby goats will be born in March.\"",
+          "fa": "همسر کشاورز می‌گوید: «بهار برگرد. بزغاله‌ها در ماه مارس به دنیا می‌آیند.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "کشاورز و همسرش چه نسبتی با خانواده‌ی رویا دارند؟",
+          "options": [
+            "همسایه‌اند",
+            "دوستان قدیمی پدرش هستند",
+            "فامیل‌اند",
+            "معلم رویا هستند"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "چرا رویا ساعت شش بیدار می‌شود؟",
+          "options": [
+            "گاوی زیر پنجره‌اش سروصدا می‌کند",
+            "مادرش صدایش می‌زند",
+            "باران می‌آید",
+            "گرسنه است"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "صبحانه چیست؟",
+          "options": [
+            "سوپ و ساندویچ",
+            "برنج و سبزی",
+            "نان گرم با کره، تخم‌مرغ و چای",
+            "سیب و آب‌میوه"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "داستان خنده‌دار کشاورز درباره‌ی چیست؟",
+          "options": [
+            "گاوی که آواز می‌خواند",
+            "بزی که فرار می‌کند",
+            "گوسفندی که می‌ترسد",
+            "اسبی که از کیفش سیب می‌خورد"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "بزغاله‌ها کی به دنیا می‌آیند؟",
+          "options": [
+            "در ماه مارس",
+            "در تابستان",
+            "در دسامبر",
+            "هفته‌ی بعد"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "midpoint-reading-4",
+      "titleEn": "The School Concert",
+      "titleFa": "کنسرت مدرسه",
+      "names": [
+        "Navid"
+      ],
+      "sentences": [
+        {
+          "en": "Every year in December, Navid's school has a concert for the families.",
+          "fa": "هر سال در دسامبر، مدرسه‌ی نوید برای خانواده‌ها کنسرت دارد."
+        },
+        {
+          "en": "This year, Navid plays the piano in the school band.",
+          "fa": "امسال، نوید در گروه موسیقی مدرسه پیانو می‌زند."
+        },
+        {
+          "en": "He practices for an hour every day after school.",
+          "fa": "هر روز بعد از مدرسه یک ساعت تمرین می‌کند."
+        },
+        {
+          "en": "His friend is the singer of the band, and she sings a famous old song.",
+          "fa": "دوستش خواننده‌ی گروه است و یک آواز قدیمی و معروف می‌خواند."
+        },
+        {
+          "en": "On the night of the concert, the school is full of people.",
+          "fa": "شب کنسرت، مدرسه پر از آدم است."
+        },
+        {
+          "en": "Navid's parents sit near the front with his little brother.",
+          "fa": "پدر و مادر نوید با برادر کوچکش نزدیک جلو می‌نشینند."
+        },
+        {
+          "en": "Before the concert, Navid feels afraid, and his hands are cold.",
+          "fa": "قبل از کنسرت، نوید می‌ترسد و دست‌هایش سرد است."
+        },
+        {
+          "en": "His teacher says, \"Do not think about the crowd. Think about the music.\"",
+          "fa": "معلمش می‌گوید: «به جمعیت فکر نکن. به موسیقی فکر کن.»"
+        },
+        {
+          "en": "When the band begins, Navid forgets the crowd and plays well.",
+          "fa": "وقتی گروه شروع می‌کند، نوید جمعیت را فراموش می‌کند و خوب می‌نوازد."
+        },
+        {
+          "en": "At the end, all the people stand up and thank the band.",
+          "fa": "در آخر، همه‌ی آدم‌ها بلند می‌شوند و از گروه تشکر می‌کنند."
+        },
+        {
+          "en": "Then the families drink tea and coffee and eat cookies together.",
+          "fa": "بعد خانواده‌ها با هم چای و قهوه می‌نوشند و کلوچه می‌خورند."
+        },
+        {
+          "en": "A man from a local TV station talks to the band after the concert.",
+          "fa": "مردی از یک ایستگاه تلویزیون محلی بعد از کنسرت با گروه حرف می‌زند."
+        },
+        {
+          "en": "\"It was a great night,\" Navid's father says. \"We are very happy for you.\"",
+          "fa": "پدر نوید می‌گوید: «شب فوق‌العاده‌ای بود. خیلی برایت خوشحالیم.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "کنسرت مدرسه در کدام ماه است؟",
+          "options": [
+            "ژوئن",
+            "مارس",
+            "سپتامبر",
+            "دسامبر"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "نوید چه سازی می‌زند؟",
+          "options": [
+            "گیتار",
+            "پیانو",
+            "هیچ سازی؛ آواز می‌خواند",
+            "ویولن"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "نوید هر روز چقدر تمرین می‌کند؟",
+          "options": [
+            "یک ساعت",
+            "نیم ساعت",
+            "دو ساعت",
+            "یک ربع"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "معلم به نوید چه می‌گوید؟",
+          "options": [
+            "که زودتر برود",
+            "که بلندتر بنوازد",
+            "که به موسیقی فکر کند، نه به جمعیت",
+            "که آواز بخواند"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "بعد از کنسرت چه کسی با گروه حرف می‌زند؟",
+          "options": [
+            "مدیر مدرسه",
+            "مردی از تلویزیون محلی",
+            "یک شاعر",
+            "یک پلیس"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "midpoint-listening-1",
+      "titleEn": "The Dog by the Pool",
+      "titleFa": "سگ کنار استخر",
+      "names": [
+        "Bahar"
+      ],
+      "sentences": [
+        {
+          "en": "On Sunday afternoon, Bahar walks in the park with her little brother.",
+          "fa": "یکشنبه بعدازظهر، بهار با برادر کوچکش در پارک قدم می‌زند."
+        },
+        {
+          "en": "Near the pool, they see a big white dog, and there is nobody with it.",
+          "fa": "نزدیک استخر، یک سگ سفید بزرگ می‌بینند و کسی همراهش نیست."
+        },
+        {
+          "en": "The dog looks tired and thirsty.",
+          "fa": "سگ خسته و تشنه به نظر می‌رسد."
+        },
+        {
+          "en": "Bahar gives it some water from her bottle.",
+          "fa": "بهار کمی آب از بطری‌اش به او می‌دهد."
+        },
+        {
+          "en": "\"Where is this dog's family?\" her brother asks.",
+          "fa": "برادرش می‌پرسد: «خانواده‌ی این سگ کجاست؟»"
+        },
+        {
+          "en": "A man who is playing tennis in the park knows the dog.",
+          "fa": "مردی که در پارک تنیس بازی می‌کند سگ را می‌شناسد."
+        },
+        {
+          "en": "\"That dog lives in the white house opposite the park,\" he says.",
+          "fa": "می‌گوید: «آن سگ در خانه‌ی سفید روبه‌روی پارک زندگی می‌کند.»"
+        },
+        {
+          "en": "Bahar and her brother walk across the street with the dog.",
+          "fa": "بهار و برادرش با سگ از خیابان رد می‌شوند."
+        },
+        {
+          "en": "An old woman opens the door, and she is very happy.",
+          "fa": "پیرزنی در را باز می‌کند و خیلی خوشحال می‌شود."
+        },
+        {
+          "en": "\"He ran out this morning, and I looked for him for three hours,\" she says.",
+          "fa": "می‌گوید: «امروز صبح بیرون دوید و سه ساعت دنبالش گشتم.»"
+        },
+        {
+          "en": "She gives the children two cookies and some ice cream.",
+          "fa": "به بچه‌ها دو کلوچه و کمی بستنی می‌دهد."
+        },
+        {
+          "en": "The dog is not young, but now it is fine.",
+          "fa": "سگ جوان نیست، اما حالا حالش خوب است."
+        },
+        {
+          "en": "Now, every Friday, Bahar and her brother take the dog for a walk in the park.",
+          "fa": "حالا هر جمعه، بهار و برادرش سگ را برای پیاده‌روی به پارک می‌برند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "بهار و برادرش سگ را کجا می‌بینند؟",
+          "options": [
+            "کنار استخر",
+            "زیر یک درخت",
+            "در خیابان",
+            "کنار کافه"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "بهار به سگ چه می‌دهد؟",
+          "options": [
+            "یک کلوچه",
+            "کمی نان",
+            "کمی آب",
+            "یک توپ"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چه کسی سگ را می‌شناسد؟",
+          "options": [
+            "یک پلیس",
+            "مردی که تنیس بازی می‌کند",
+            "یک بچه",
+            "پیشخدمت کافه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "پیرزن چقدر دنبال سگ گشته بود؟",
+          "options": [
+            "یک ساعت",
+            "همه‌ی روز",
+            "دو روز",
+            "سه ساعت"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "بهار و برادرش هر جمعه چه می‌کنند؟",
+          "options": [
+            "به استخر می‌روند",
+            "تنیس بازی می‌کنند",
+            "سگ را برای پیاده‌روی به پارک می‌برند",
+            "به خانه‌ی پیرزن کیک می‌برند"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "midpoint-listening-2",
+      "titleEn": "A Week of Weather",
+      "titleFa": "یک هفته آب‌وهوا",
+      "names": [],
+      "sentences": [
+        {
+          "en": "This week, the weather in our city is different every day.",
+          "fa": "این هفته، هوای شهر ما هر روز فرق می‌کند."
+        },
+        {
+          "en": "On Saturday, there is a lot of sun, and the parks are full of people.",
+          "fa": "شنبه آفتاب زیادی هست و پارک‌ها پر از آدم است."
+        },
+        {
+          "en": "On Sunday, it is cold in the morning but warm in the afternoon.",
+          "fa": "یکشنبه صبح سرد است، اما بعدازظهر گرم."
+        },
+        {
+          "en": "On Monday, it rains all day, so the children play at home.",
+          "fa": "دوشنبه تمام روز باران می‌آید، پس بچه‌ها در خانه بازی می‌کنند."
+        },
+        {
+          "en": "On Tuesday, the air is clean after the rain, and many people walk to work.",
+          "fa": "سه‌شنبه هوا بعد از باران تمیز است و خیلی‌ها پیاده سر کار می‌روند."
+        },
+        {
+          "en": "On Wednesday, it is very hot, and the ice cream shops are busy.",
+          "fa": "چهارشنبه هوا خیلی گرم است و بستنی‌فروشی‌ها شلوغ‌اند."
+        },
+        {
+          "en": "On Thursday, it is dark and cold, and we need our coats again.",
+          "fa": "پنجشنبه تاریک و سرد است و دوباره به کتمان احتیاج داریم."
+        },
+        {
+          "en": "On Friday, the first day of the weekend, the sun comes back.",
+          "fa": "جمعه، اولین روز تعطیلی، آفتاب برمی‌گردد."
+        },
+        {
+          "en": "Many families go to the river and eat lunch under the trees.",
+          "fa": "خیلی از خانواده‌ها کنار رودخانه می‌روند و زیر درخت‌ها ناهار می‌خورند."
+        },
+        {
+          "en": "\"This is my favorite day of the week,\" a father says.",
+          "fa": "پدری می‌گوید: «این روز محبوب من در هفته است.»"
+        },
+        {
+          "en": "His children play football, and his wife reads a book.",
+          "fa": "بچه‌هایش فوتبال بازی می‌کنند و همسرش کتاب می‌خواند."
+        },
+        {
+          "en": "Next week, the weather will be warm, and there will be no rain.",
+          "fa": "هفته‌ی بعد هوا گرم خواهد بود و باران نمی‌آید."
+        }
+      ],
+      "questions": [
+        {
+          "q": "کدام روز تمام روز باران می‌آید؟",
+          "options": [
+            "شنبه",
+            "دوشنبه",
+            "چهارشنبه",
+            "جمعه"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "بستنی‌فروشی‌ها کدام روز شلوغ‌اند؟",
+          "options": [
+            "چهارشنبه",
+            "سه‌شنبه",
+            "پنجشنبه",
+            "یکشنبه"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "کدام روز دوباره به کت احتیاج داریم؟",
+          "options": [
+            "جمعه",
+            "شنبه",
+            "دوشنبه",
+            "پنجشنبه"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "خانواده‌ها جمعه کجا ناهار می‌خورند؟",
+          "options": [
+            "در رستوران",
+            "در خانه",
+            "کنار رودخانه زیر درخت‌ها",
+            "در پارک کنار استخر"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "هوای هفته‌ی بعد چطور خواهد بود؟",
+          "options": [
+            "سرد و بارانی",
+            "گرم و بدون باران",
+            "برفی",
+            "تاریک"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "midpoint-listening-3",
+      "titleEn": "A Birthday Dinner",
+      "titleFa": "شام تولد",
+      "names": [
+        "Shadi"
+      ],
+      "sentences": [
+        {
+          "en": "Shadi and her husband go to a new restaurant in the city center.",
+          "fa": "شادی و همسرش به رستوران تازه‌ای در مرکز شهر می‌روند."
+        },
+        {
+          "en": "It is Shadi's birthday, so it is a special evening.",
+          "fa": "تولد شادی است، پس شب خاصی است."
+        },
+        {
+          "en": "A friendly waiter brings them the menu.",
+          "fa": "پیشخدمت خوش‌برخوردی منو را برایشان می‌آورد."
+        },
+        {
+          "en": "Shadi orders fish with rice and a green salad.",
+          "fa": "شادی ماهی با برنج و یک سالاد سبز سفارش می‌دهد."
+        },
+        {
+          "en": "Her husband prefers meat, so he orders meat with potatoes.",
+          "fa": "همسرش گوشت را ترجیح می‌دهد، پس گوشت با سیب‌زمینی سفارش می‌دهد."
+        },
+        {
+          "en": "The food is delicious, but the soup is too hot at first.",
+          "fa": "غذا خوشمزه است، اما سوپ اولش خیلی داغ است."
+        },
+        {
+          "en": "After the meal, the waiter brings a small cake with a little light on it.",
+          "fa": "بعد از غذا، پیشخدمت یک کیک کوچک با یک چراغ کوچک رویش می‌آورد."
+        },
+        {
+          "en": "\"Happy birthday!\" he says. \"The cake is free.\"",
+          "fa": "می‌گوید: «تولدت مبارک! کیک مجانی است.»"
+        },
+        {
+          "en": "When the bill comes, Shadi checks it.",
+          "fa": "وقتی صورتحساب می‌آید، شادی آن را بررسی می‌کند."
+        },
+        {
+          "en": "There is a mistake: the bill has two coffees, but they had only one.",
+          "fa": "یک اشتباه هست: صورتحساب دو قهوه دارد، اما آن‌ها فقط یکی خورده‌اند."
+        },
+        {
+          "en": "The waiter says sorry, and he makes the bill correct.",
+          "fa": "پیشخدمت عذرخواهی می‌کند و صورتحساب را درست می‌کند."
+        },
+        {
+          "en": "\"We will come back,\" Shadi says. \"The food is great, and the people are nice.\"",
+          "fa": "شادی می‌گوید: «دوباره می‌آییم. غذا عالی است و آدم‌ها مهربان‌اند.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "چرا امشب شب خاصی است؟",
+          "options": [
+            "سالگرد ازدواجشان است",
+            "تولد شادی است",
+            "رستوران تازه باز شده",
+            "مهمان دارند"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "شادی چه سفارش می‌دهد؟",
+          "options": [
+            "گوشت با سیب‌زمینی",
+            "سوپ و ساندویچ",
+            "ماهی با برنج و سالاد سبز",
+            "فقط کیک"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "چه چیزی مجانی است؟",
+          "options": [
+            "کیک",
+            "قهوه",
+            "سالاد",
+            "آب"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "اشتباه صورتحساب چیست؟",
+          "options": [
+            "قیمت ماهی",
+            "دو سالاد به جای یکی",
+            "بدون کیک",
+            "دو قهوه به جای یکی"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "شادی در آخر چه می‌گوید؟",
+          "options": [
+            "که غذا گران بود",
+            "که دیگر نمی‌آیند",
+            "که دوباره می‌آیند",
+            "که سوپ سرد بود"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "midpoint-listening-4",
+      "titleEn": "The Football Shoes",
+      "titleFa": "کفش‌های فوتبال",
+      "names": [
+        "Sina"
+      ],
+      "sentences": [
+        {
+          "en": "Sina is eleven, and he plays football for his school team.",
+          "fa": "سینا یازده ساله است و در تیم فوتبال مدرسه‌اش بازی می‌کند."
+        },
+        {
+          "en": "Football is his favorite sport, and he prefers it to basketball.",
+          "fa": "فوتبال ورزش محبوب اوست و آن را به بسکتبال ترجیح می‌دهد."
+        },
+        {
+          "en": "His team practices on Monday and Wednesday afternoons.",
+          "fa": "تیمش دوشنبه‌ها و چهارشنبه‌ها بعدازظهر تمرین می‌کند."
+        },
+        {
+          "en": "Their teacher was a famous player many years ago, and he tells funny stories.",
+          "fa": "معلمشان سال‌ها پیش بازیکن معروفی بود و داستان‌های خنده‌دار تعریف می‌کند."
+        },
+        {
+          "en": "This month, the team has a big match with another school.",
+          "fa": "این ماه، تیم یک مسابقه‌ی بزرگ با یک مدرسه‌ی دیگر دارد."
+        },
+        {
+          "en": "On the morning of the match, Sina cannot find his football shoes.",
+          "fa": "صبح روز مسابقه، سینا کفش‌های فوتبالش را پیدا نمی‌کند."
+        },
+        {
+          "en": "He looks under his bed and behind the door, but they are not there.",
+          "fa": "زیر تختش و پشت در را نگاه می‌کند، اما آنجا نیستند."
+        },
+        {
+          "en": "Then his little sister laughs. His shoes are in her school bag!",
+          "fa": "بعد خواهر کوچکش می‌خندد. کفش‌هایش در کیف مدرسه‌ی اوست!"
+        },
+        {
+          "en": "Sina runs to the match, and he arrives just in time.",
+          "fa": "سینا به طرف مسابقه می‌دود و درست سر وقت می‌رسد."
+        },
+        {
+          "en": "The match is hard, and in the second half, the other team is winning.",
+          "fa": "مسابقه سخت است و در نیمه‌ی دوم تیم دیگر جلوست."
+        },
+        {
+          "en": "Then Sina gets the ball, and in the end his team wins two to one.",
+          "fa": "بعد سینا توپ را می‌گیرد و در آخر تیمش دو بر یک می‌برد."
+        },
+        {
+          "en": "After the match, the players eat sandwiches and drink orange juice.",
+          "fa": "بعد از مسابقه، بازیکن‌ها ساندویچ می‌خورند و آب پرتقال می‌نوشند."
+        },
+        {
+          "en": "\"My bag helped your team win!\" his sister says, and everybody laughs.",
+          "fa": "خواهرش می‌گوید: «کیف من به تیمتان کمک کرد ببرد!» و همه می‌خندند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "تیم سینا کدام روزها تمرین می‌کند؟",
+          "options": [
+            "دوشنبه‌ها و چهارشنبه‌ها",
+            "شنبه‌ها و یکشنبه‌ها",
+            "فقط جمعه‌ها",
+            "هر روز"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "معلم تیم کیست؟",
+          "options": [
+            "پدر سینا",
+            "یک معلم تازه",
+            "بازیکن معروفی از سال‌ها پیش",
+            "یک نوجوان"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "کفش‌های سینا کجا بود؟",
+          "options": [
+            "زیر تختش",
+            "پشت در",
+            "در باشگاه",
+            "در کیف مدرسه‌ی خواهرش"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "نتیجه‌ی مسابقه چه شد؟",
+          "options": [
+            "تیم سینا دو بر یک برد",
+            "مساوی شد",
+            "تیم سینا باخت",
+            "مسابقه برگزار نشد"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "بعد از مسابقه بازیکن‌ها چه می‌خورند؟",
+          "options": [
+            "کیک و چای",
+            "ساندویچ و آب پرتقال",
+            "سوپ",
+            "بستنی"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
