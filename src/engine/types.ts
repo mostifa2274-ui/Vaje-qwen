@@ -86,6 +86,43 @@ export interface ExamProgress {
   testedWordIds: string[]
 }
 
+// Leitner flashcards (pages/FlashcardsScreen, engine/leitner): a separate
+// self-study deck over all words. Cards climb six boxes reviewed every 1, 2,
+// 4, 8, 16 and 32 days; a miss sends a card back to box 1. It is practice
+// only and never counts as mastery evidence for the course gates.
+export type LeitnerDirection = 'enFa' | 'faEn' | 'listen' | 'mixed'
+export type LeitnerScope = 'all' | 'learned' | 'book-1' | 'book-2' | 'book-3' | 'book-4' | 'book-5' | 'book-6' | 'book-7' | 'book-8'
+
+export interface LeitnerCard {
+  box: number // 1..6
+  dueAt: number
+  addedAt: number
+  lastReviewedAt?: number
+  reviews: number
+  correct: number
+  lapses: number
+}
+
+export interface LeitnerSettings {
+  direction: LeitnerDirection
+  scope: LeitnerScope
+  newPerDay: number
+  typed: boolean
+}
+
+/** One local calendar day of flashcard work. */
+export interface LeitnerDay {
+  reviewed: number
+  correct: number
+  added: number
+}
+
+export interface LeitnerState {
+  cards: Record<string, LeitnerCard>
+  settings: LeitnerSettings
+  days: Record<string, LeitnerDay>
+}
+
 export interface GhesseState {
   version: 6
   currentChapter: string // retained for migration/history; gate engine is authoritative
@@ -100,6 +137,7 @@ export interface GhesseState {
   // Explore mode opens every chapter and test to look around. Only access
   // changes: the strict gates still decide what is recorded as progress.
   exploreAll: boolean
+  leitner: LeitnerState
   created: number
 }
 

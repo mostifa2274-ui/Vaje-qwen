@@ -1562,3 +1562,339 @@ input[type="range"]:focus-visible {
   object-position: center;
   background: var(--cream-soft);
 }
+
+
+/* ---------- Leitner flashcards ---------- */
+.home-toolbar-button {
+  position: relative;
+}
+.home-toolbar-badge {
+  position: absolute;
+  inset-block-start: -.4rem;
+  inset-inline-end: -.4rem;
+  display: inline-flex;
+  min-width: 1.3rem;
+  height: 1.3rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--cream);
+  border-radius: 999px;
+  background: var(--crimson-deep);
+  padding: 0 .3rem;
+  color: #fff;
+  font-size: .64rem;
+  font-weight: 800;
+  line-height: 1;
+}
+@media (max-width: 420px) {
+  .home-toolbar-button .home-toolbar-badge {
+    display: inline-flex;
+  }
+}
+
+.flashcard {
+  perspective: 900px;
+  border: 1px solid var(--line-soft);
+  border-radius: 20px;
+  background: var(--cream-soft);
+  box-shadow: var(--shadow-soft);
+}
+@keyframes card-turn {
+  from { opacity: 0; transform: rotateY(-60deg); }
+  to { opacity: 1; transform: rotateY(0); }
+}
+.flashcard-face {
+  display: flex;
+  min-height: 17rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.1rem;
+  text-align: center;
+  /* backwards: no transform may outlive the turn (see .page-in). */
+  animation: card-turn 300ms cubic-bezier(0.2, 0.8, 0.3, 1) backwards;
+}
+.flashcard-prompt {
+  margin-bottom: 1rem;
+  color: var(--ink-soft);
+  font-size: .8rem;
+  line-height: 1.8;
+}
+.flashcard-word {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.flashcard-ipa {
+  margin-top: .35rem;
+  color: var(--ink-soft);
+  font-size: .95rem;
+}
+.flashcard-meaning {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.8;
+}
+.flashcard-pos {
+  margin-top: .15rem;
+  color: var(--ink-soft);
+  font-size: .75rem;
+}
+.flashcard-example {
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+  padding-top: .85rem;
+  text-align: start;
+  line-height: 1.8;
+}
+.flashcard-example-play {
+  display: inline-flex;
+  width: 2.75rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.flashcard-origin {
+  margin-top: .9rem;
+  color: var(--ink-soft);
+  font-size: .72rem;
+  line-height: 1.8;
+}
+.flashcard-speaker {
+  display: inline-flex;
+  width: 2.75rem;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0;
+}
+.flashcard-listen {
+  display: inline-flex;
+  width: 8rem;
+  height: 8rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.flashcard-grades {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .5rem;
+}
+.flashcard-grades.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.flashcard-grade {
+  display: flex;
+  min-height: 4rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .15rem;
+  padding: .55rem .35rem;
+  line-height: 1.5;
+}
+.flashcard-grade small {
+  font-size: .7rem;
+  opacity: .85;
+}
+
+.leitner-kpis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .5rem;
+}
+.leitner-kpis .metric-card {
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: rgba(255,255,255,.36);
+  padding: .7rem .35rem;
+  text-align: center;
+}
+.leitner-kpis .metric-card b {
+  font-size: 1.35rem;
+}
+.leitner-kpis .metric-card span {
+  font-size: .72rem;
+}
+
+/* Box counts: one hue, bars anchored to a shared baseline. */
+.leitner-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .5rem;
+}
+.leitner-box {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: .1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: rgba(255,255,255,.3);
+  padding: .65rem .3rem .55rem;
+  color: var(--ink);
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+.leitner-box.open {
+  border-color: var(--ink);
+  background: rgba(255,255,255,.6);
+}
+.leitner-box:focus-visible,
+.leitner-unstarted:focus-visible {
+  outline: 3px solid var(--crimson-deep);
+  outline-offset: 2px;
+}
+@media (hover: hover) {
+  .leitner-box:hover,
+  .leitner-unstarted:hover {
+    background: rgba(255,255,255,.5);
+  }
+}
+.leitner-box-track,
+.leitner-forecast-track {
+  display: flex;
+  width: 100%;
+  max-width: 1.75rem;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line-medium);
+}
+.leitner-box-track {
+  height: 3.25rem;
+  margin-bottom: .35rem;
+}
+.leitner-box-fill,
+.leitner-forecast-fill {
+  display: block;
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background: #5f7d64;
+  transition: height 280ms ease;
+}
+.leitner-box b {
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+.leitner-box span:not([class]) {
+  font-size: .75rem;
+  font-weight: 700;
+}
+.leitner-box small {
+  color: var(--ink-soft);
+  font-size: .64rem;
+}
+.leitner-unstarted {
+  width: 100%;
+  min-height: 2.75rem;
+  border: 1px dashed var(--line-medium);
+  border-radius: 12px;
+  background: transparent;
+  padding: .55rem .75rem;
+  color: var(--ink-soft);
+  font-size: .82rem;
+  font-weight: 700;
+}
+.leitner-unstarted.open {
+  border-style: solid;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.leitner-list {
+  border-top: 1px solid var(--line-soft);
+  padding-top: .85rem;
+}
+.leitner-list li + li {
+  border-top: 1px solid var(--line-soft);
+}
+
+/* Due forecast: today in crimson, the rest in the box hue. */
+.leitner-forecast {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: .35rem;
+}
+.leitner-forecast li {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+}
+.leitner-forecast-track {
+  height: 4.5rem;
+}
+.leitner-forecast li.today .leitner-forecast-fill {
+  background: var(--crimson);
+}
+.leitner-forecast-value {
+  min-height: 1.2rem;
+  font-size: .72rem;
+  font-weight: 700;
+}
+.leitner-forecast-day {
+  max-width: 100%;
+  margin-top: .3rem;
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: .62rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.leitner-forecast li.today .leitner-forecast-day {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.leitner-settings {
+  display: grid;
+  gap: .75rem;
+}
+.leitner-setting {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.leitner-setting .settings-select {
+  width: 100%;
+  padding-inline: .75rem;
+  font-weight: 500;
+}
+.leitner-directions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .5rem;
+}
+.leitner-directions button {
+  min-height: 2.75rem;
+  padding: .45rem .5rem;
+  font-size: .82rem;
+}
+.leitner-directions button:disabled {
+  opacity: .5;
+}
+
+@media (min-width: 560px) {
+  .leitner-kpis,
+  .leitner-directions {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .leitner-boxes {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .leitner-settings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
