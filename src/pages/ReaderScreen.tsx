@@ -419,7 +419,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
   return (
     <div className="page-in" style={{ background: 'var(--cream)', minHeight: '100vh' }}>
-      <div className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '1px solid var(--line-soft)' }}>
+      <div className="sticky top-0 z-40" style={{ background: 'var(--cream-soft)', borderBottom: '1px solid var(--line-soft)' }}>
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه">
             <BackIcon className="h-5 w-5" />
@@ -449,7 +449,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       <div className="mx-auto max-w-3xl px-4 pb-32">
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
-        <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
+        <section className="lesson-cover-card mt-4 overflow-hidden">
           <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
           <div className="lesson-cover-copy">
             <div className="min-w-0">
