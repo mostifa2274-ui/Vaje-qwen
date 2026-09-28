@@ -1295,7 +1295,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
 
   // Direct reading is impossible before both preparation gates pass.
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
-  await expect(page.locator('.learning-focus-card').getByText('آموزش', { exact: true })).toBeVisible()
+  await expect(page.locator('.learning-focus-card').getByText(`واژهٔ ${faNum(1)} از ${faNum(chapterWords.length)}`, { exact: true })).toBeVisible()
   await expect(page.locator('.lesson-chapter-art')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expectNoHorizontalOverflow(page)
