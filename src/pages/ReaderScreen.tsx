@@ -431,8 +431,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
           </div>
           <button
             type="button"
-            className={`btn-paper px-3 py-2 text-sm ${playAll ? 'ring-2' : ''}`}
-            style={playAll ? { background: 'var(--gold)' } : undefined}
+            className={`${playAll ? 'btn-ink' : 'btn-paper'} px-3 py-2 text-sm`}
             disabled={!state.soundOn}
             aria-pressed={playAll}
             onClick={() => playAll ? stopReaderAudio() : playAt(0, true)}
@@ -529,7 +528,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               </p>
             </div>
             <span className="mastery-chip">
-              {correctionMode ? 'اصلاح · ' : ''}{faNum(checksCorrect)} / {faNum(questions.length)} درست
+              {correctionMode ? 'اصلاح · ' : ''}{faNum(checksCorrect)} از {faNum(questions.length)} درست
             </span>
           </div>
 
@@ -661,7 +660,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                   یک متن تازه را فقط می‌شنوی. بعد به {faNum(listeningText.questions.length)} سؤال پاسخ بده؛ پاسخ‌های اشتباه را اصلاح می‌کنی.
                 </p>
               </div>
-              <span className="mastery-chip">{faNum(listeningConfirmed)} / {faNum(listeningText.questions.length)} درست</span>
+              <span className="mastery-chip">{faNum(listeningConfirmed)} از {faNum(listeningText.questions.length)} درست</span>
             </div>
 
             {explore && !readingDone && (

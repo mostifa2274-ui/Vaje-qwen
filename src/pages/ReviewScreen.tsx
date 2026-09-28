@@ -335,7 +335,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
         <div ref={cardRef} className="learning-focus-card review-focus-card mt-6 p-5 sm:p-6">
           <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
             <span>{sessionLabel}</span>
-            <span>{faNum(completed)} / {faNum(sessionTotal)}</span>
+            <span>{faNum(completed)} از {faNum(sessionTotal)}</span>
           </div>
           <div className="mastery-progress mt-3"><span style={{ width: `${Math.min(100, (completed / sessionTotal) * 100)}%` }} /></div>
 
