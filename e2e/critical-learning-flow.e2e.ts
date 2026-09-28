@@ -382,6 +382,15 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.home-summary > div')).toHaveCount(3)
   await expect(page.locator('.journey-overview')).toHaveCount(0)
   await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
+  const homeSurface = await page.locator('.page-in').evaluate(element => {
+    const probe = document.createElement('div')
+    probe.style.background = 'var(--cream)'
+    document.body.append(probe)
+    const expected = getComputedStyle(probe).backgroundColor
+    probe.remove()
+    return { actual: getComputedStyle(element).backgroundColor, expected }
+  })
+  expect(homeSurface.actual).toBe(homeSurface.expected)
 
   await expect(page.locator('.book-banner')).toHaveCount(1)
   await expect(page.locator('.future-book-row')).toHaveCount(7)
