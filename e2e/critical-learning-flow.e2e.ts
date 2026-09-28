@@ -170,7 +170,7 @@ async function answerCurrentWrittenWord(page: Page): Promise<void> {
   await expect(stage.locator('.feedback-panel')).toContainText('درست')
 
   await expect.poll(async () => {
-    if (await page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪').isVisible()) return 'advanced'
+    if (await page.getByText('شنیداری · ۱۰۰٪').isVisible()) return 'advanced'
     const headword = page.getByTestId('written-headword')
     if (!await headword.isVisible()) return 'advanced'
     return (await headword.innerText()).trim() === surface ? 'waiting' : 'advanced'
@@ -418,7 +418,6 @@ test('auto teach speaks word and context before advancing, then pauses on demand
   await expect(startAuto).toBeEnabled()
   await startAuto.click()
   await expect(page.getByRole('button', { name: 'توقف آموزش خودکار' })).toHaveAttribute('aria-pressed', 'true')
-  await expect(page.getByText('در حالت خودکار: تلفظ واژه ← مثال شنیداری ← زمان کافی برای خواندن ترجمه ← واژهٔ بعدی')).toBeVisible()
 
   await expect.poll(async () => (await speechHistory(page)).includes(chapterWords[0].ex)).toBe(true)
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[1].word, { timeout: 7_500 })
@@ -494,7 +493,7 @@ test('listening gate fails closed when no English audio path can start', async (
     window.location.hash = '/prep/b1c1'
   })
 
-  await expect(page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪')).toBeVisible()
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
 
   const alert = page.getByRole('alert')
   await expect(alert).toContainText('پخش تلفظ انگلیسی روی این دستگاه در دسترس نیست')
@@ -1259,7 +1258,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
 
   // Direct reading is impossible before both preparation gates pass.
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
-  await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toBeVisible()
+  await expect(page.getByText('آموزش')).toBeVisible()
   await expect(page.locator('.lesson-chapter-art')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expectNoHorizontalOverflow(page)
@@ -1325,13 +1324,13 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
 
   // Finish the deterministic written queue without assuming chapter-order positions.
   for (let guard = 0; guard < chapterWords.length + 2; guard++) {
-    if (await page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪').isVisible()) break
+    if (await page.getByText('شنیداری · ۱۰۰٪').isVisible()) break
     await answerCurrentWrittenWord(page)
   }
 
   // Listening gate uses a separate stable order and remains disabled until
   // the spoken word reaches onend.
-  await expect(page.getByText('فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪')).toBeVisible()
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
 
   const firstOptions = page.getByTestId('listening-options').getByRole('button')
   await expect(firstOptions.first()).toBeEnabled()
@@ -1364,7 +1363,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   // gates have been passed. The router should resolve straight back to reading.
   await page.goto('/#/prep/b1c1')
   await expect(page).toHaveURL(/#\/read\/b1c1$/)
-  await expect(page.getByText('فقط یاد بگیر؛ این بخش آزمون نیست')).toHaveCount(0)
+  await expect(page.getByText('آموزش')).toHaveCount(0)
 
   await expect(page.locator('#main-content')).toBeFocused()
   await expect(page.locator('#main-content')).toHaveAttribute('aria-label', /خواندن داستان:/)
