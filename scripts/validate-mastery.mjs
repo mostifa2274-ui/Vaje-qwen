@@ -77,10 +77,16 @@ for (let book = 1; book <= 8; book++) {
   const pool = [...new Set(bookChapters.flatMap(ch => ch.new))].map(id => byId.get(id))
   const typed = pool.filter(word => !CONTEXT_ONLY_TOPICS.has(word.topic))
   const heard = typed.filter(word => !word.word.includes(',') && surfaceCounts.get(word.word.toLowerCase()) === 1)
-  assert(typed.length >= 24, `Book ${book}: fewer than 24 content words for its end-of-book test`)
-  assert(heard.length >= 12, `Book ${book}: fewer than 12 unambiguous words for listening`)
+  // End-of-book tests ask half of every studied book's words (engine/bookTestSize.ts),
+  // split between typed translation and listening.
+  const asked = Math.round(pool.length / 2)
+  assert(typed.length >= asked, `Book ${book}: fewer than ${asked} content words for its end-of-book test`)
+  assert(heard.length >= Math.ceil(asked / 2), `Book ${book}: fewer than ${Math.ceil(asked / 2)} unambiguous words for listening`)
+  // One text of each kind per attempt for books 1-2, two for 3-4, three for
+  // 5-6 and four for 7-8, in two sets that alternate between attempts.
+  const perSkill = 2 * Math.ceil(book / 2)
   const texts = JSON.parse(fs.readFileSync(path.join(root, `src/data/bookTests/b${book}.json`), 'utf8'))
-  assert(texts.book === book && texts.reading?.length === 2 && texts.listening?.length === 2, `Book ${book}: needs two reading and two listening texts`)
+  assert(texts.book === book && texts.reading?.length === perSkill && texts.listening?.length === perSkill, `Book ${book}: needs ${perSkill} reading and ${perSkill} listening texts`)
   bookSizes.push(pool.length)
 }
 const midpointPool = [...new Set(chapters.filter(ch => ch.book <= 4).flatMap(ch => ch.new))]
@@ -103,4 +109,4 @@ for (const target of vocab) {
   }
 }
 
-console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, end-of-book pools ${bookSizes.join('/')} with four texts each, 56-question midpoint pool, 88-question final pool.`)
+console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, end-of-book pools ${bookSizes.join('/')} (half asked) with 4 to 16 texts each, 56-question midpoint pool, 88-question final pool.`)
