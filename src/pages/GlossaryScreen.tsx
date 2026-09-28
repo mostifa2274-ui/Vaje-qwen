@@ -15,6 +15,7 @@ interface Props {
 }
 
 const PAGE_SIZE = 200
+type GlossaryFilter = 'all' | 'trouble' | MasteryLevel
 
 // Arabic-layout letters (ي/ك), a half-space typed as a space or left out,
 // diacritics and punctuation must not hide a word from a learner typing on a
@@ -39,7 +40,7 @@ const LEVEL_STYLE: Record<MasteryLevel, React.CSSProperties> = {
 
 export default function GlossaryScreen({ state, onChange, onBack }: Props) {
   const [query, setQuery] = useState('')
-  const [filter, setFilter] = useState<'all' | 'trouble' | MasteryLevel>('all')
+  const [filter, setFilter] = useState<GlossaryFilter>('all')
   const [gloss, setGloss] = useState<WordEntry | null>(null)
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
@@ -78,9 +79,6 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
         <div className="flex-1">
           <h1 className="text-2xl font-extrabold">واژه‌نامه</h1>
-          <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>
-            {faNum(counts.mastered)} مسلط · {faNum(counts.strong)} قوی · {faNum(trouble.size)} نیازمند تمرین
-          </p>
         </div>
       </header>
 
@@ -95,18 +93,29 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         />
       </label>
 
-      <div className="strip-scroll mt-3 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="فیلتر سطح تسلط">
-        {(['all', 'trouble', 'mastered', 'strong', 'learning', 'seen', 'new'] as const).map(value => (
-          <button
-            type="button"
-            key={value}
-            className={filter === value ? 'btn-ink shrink-0 px-3 py-1.5 text-sm' : 'btn-paper shrink-0 px-3 py-1.5 text-sm'}
-            aria-pressed={filter === value}
-            onClick={() => { setFilter(value); setVisibleCount(PAGE_SIZE) }}
+      <div className="glossary-toolbar mt-3">
+        <label className="glossary-filter-label" htmlFor="glossary-filter">
+          <span>نمایش</span>
+          <select
+            id="glossary-filter"
+            className="settings-select"
+            aria-label="فیلتر سطح تسلط"
+            value={filter}
+            onChange={event => {
+              setFilter(event.target.value as GlossaryFilter)
+              setVisibleCount(PAGE_SIZE)
+            }}
           >
-            {value === 'all' ? 'همه' : value === 'trouble' ? 'نیاز به تمرین' : LEVEL_FA[value]}
-          </button>
-        ))}
+            <option value="all">همه · {faNum(VOCAB.length)}</option>
+            <option value="trouble">نیاز به تمرین · {faNum(trouble.size)}</option>
+            <option value="mastered">مسلط · {faNum(counts.mastered)}</option>
+            <option value="strong">قوی · {faNum(counts.strong)}</option>
+            <option value="learning">در حال یادگیری · {faNum(counts.learning)}</option>
+            <option value="seen">دیده‌شده · {faNum(counts.seen)}</option>
+            <option value="new">تازه · {faNum(counts.new)}</option>
+          </select>
+        </label>
+        <span className="glossary-result-count" aria-live="polite">{faNum(list.length)} واژه</span>
       </div>
 
       <div className="glossary-list mt-4">

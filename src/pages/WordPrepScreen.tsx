@@ -466,7 +466,6 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>آمادگی فصل {faNum(chapter.n)} · کتاب {faNum(chapter.book)}</div>
             <h1 className="truncate text-lg font-extrabold">واژه‌های تازه: {chapter.titleFa}</h1>
           </div>
-          <span className="mastery-chip">{faNum(chapter.new.length)} واژه</span>
         </div>
       </header>
 
@@ -479,7 +478,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
         {alreadyPrepared && phase === 'teach' && (
           <div className="paper-note mb-4">
-            این فصل قبلاً آزمون نوشتاری و شنیداری را با پوشش ۱۰۰٪ گذرانده است.
+            آمادگی این فصل کامل است.
             <button type="button" className="btn-ink mt-3 w-full py-2.5" onClick={onReady}>ورود مستقیم به قصه ←</button>
           </div>
         )}
@@ -499,7 +498,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         </ol>
         {explore && (
           <p className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-            در حالت کاوش هر مرحله را می‌توانی مستقیم باز کنی؛ آمادگی فصل فقط وقتی ثبت می‌شود که هر دو آزمون کامل پاس شوند.
+            برای دیدن هر مرحله، نام آن را انتخاب کن.
           </p>
         )}
 
@@ -520,7 +519,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         {phase === 'teach' && currentTeachWord && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
-              <span>فقط یاد بگیر؛ این بخش آزمون نیست</span>
+              <span>آموزش</span>
               <span>{faNum(teachIndex + 1)} / {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
@@ -542,12 +541,6 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </span>
               </button>
             </div>
-            {teachAutoPlay && (
-              <p className="mt-2 text-left text-xs leading-6" dir="rtl" style={{ color: 'var(--ink-soft)' }}>
-                در حالت خودکار: تلفظ واژه ← مثال شنیداری ← زمان کافی برای خواندن ترجمه ← واژهٔ بعدی
-              </p>
-            )}
-
             {!state.soundOn && (
               <div className="paper-note mt-4">
                 {explore
@@ -613,7 +606,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         {phase === 'written' && currentWrittenWord && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
-              <span>همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
+              <span>ترجمهٔ نوشتاری · ۱۰۰٪</span>
               <span>{faNum(writtenPassed.size)} / {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
@@ -671,7 +664,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         {phase === 'listening' && currentListeningWord && listeningOptions && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
-              <span>فقط گوش کن؛ همهٔ واژه‌ها باید درست شوند — ۱۰۰٪</span>
+              <span>شنیداری · ۱۰۰٪</span>
               <span>{faNum(listeningPassed.size)} / {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
