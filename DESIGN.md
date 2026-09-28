@@ -29,7 +29,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 ## Distilled hierarchy
 - Home has one dominant next action, one compact three-value progress summary and one direct review row. Detailed skill analytics belong in review/results, not on the journey map.
 - Long explanations and assessment policy are progressive disclosure, not permanently visible callouts.
-- Book artwork on the journey map supports navigation and stays compact; the chapter reader is where artwork may take visual priority.
+- Book artwork appears on the journey map only once that book is reachable; locked future books remain compact milestones so the current path stays visually dominant.
 - Settings is one continuous separated list, not a stack of independent cards.
 - Success, warning and error containers are reserved for real state/feedback. Ordinary guidance remains plain text.
 
@@ -77,8 +77,8 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 ## Distilled interface rules
 - One dominant task per screen. Status, policy, and diagnostics stay secondary and use progressive disclosure.
 - The journey home uses one next-action surface, one three-item progress summary, one review row, then the book path. Do not rebuild a dashboard above the books.
-- Book cards use one neutral surface. Per-book color belongs to contextual reader chrome and artwork, not the whole card.
-- Future/locked books remain visible for orientation but their artwork is shorter and their gate copy stays brief.
+- Book cards and task chrome use one neutral surface. Per-book color does not tint headers or task containers; reviewed artwork carries visual variation.
+- Future/locked books remain visible for orientation as compact milestone rows; their artwork, chapter nodes and exam details appear only when the book becomes reachable.
 - Secondary buttons are flat; reserve strong contrast for the primary action. Avoid adding control shadows back to ordinary buttons.
 - Long explanations belong in `<details>` or result/review screens, not above an active learning task.
 - Settings shows common switches immediately; narration tuning and privacy explanation stay collapsed until requested.
