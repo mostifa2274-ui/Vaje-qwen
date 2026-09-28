@@ -346,7 +346,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const textsMissed = result.comprehensionTotal - result.comprehensionCorrect
     const canRetake = unrecorded || (!passedNow && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     return (
-      <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-6" style={{ background: 'var(--cream)' }}>
+      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
         <div className={`exam-result-card p-6 text-center ${passedNow ? 'exam-pass' : 'exam-fail'}`}>
           {passedNow
             ? <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
@@ -446,7 +446,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   if (onBreak) {
     return (
-      <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-8" style={{ background: 'var(--cream)' }}>
+      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-8">
         <div className="learning-focus-card p-6 text-center">
           <CirclePauseIcon className="mx-auto h-10 w-10" aria-hidden="true" />
           <h1 className="mt-3 text-2xl font-extrabold">وقفهٔ کوتاه</h1>
@@ -482,7 +482,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const ready = textAnswered(chosen) && (!isListening || heard[currentText.slot])
     const last = textIndex + 1 >= texts.length
     return (
-      <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
         {header}
 
         <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
@@ -575,7 +575,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const typedMode = question ? isTypedMode(question.mode) : false
 
   return (
-    <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       {header}
 
       <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
