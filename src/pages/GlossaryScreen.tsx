@@ -99,6 +99,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
           <select
             id="glossary-filter"
             className="settings-select"
+            aria-label="فیلتر سطح تسلط"
             value={filter}
             onChange={event => {
               setFilter(event.target.value as GlossaryFilter)
