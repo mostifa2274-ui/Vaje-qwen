@@ -155,7 +155,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
         </p>
       </details>
 
-      <div className="mt-6 space-y-6">
+      <div className="mt-6 space-y-4">
         {BOOKS.map(meta => {
           const chapters = chaptersOfBook(meta.book)
           const bookAvailable = chapters.some(ch => canOpenChapter(state, ch.id) || state.chapters[ch.id]?.completed)
@@ -164,7 +164,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
 
           return (
             <div key={meta.book}>
-              <section className={`book-section p-4 sm:p-5 ${!bookAvailable ? 'is-locked' : ''}`} style={{ background: meta.tint }}>
+              <section className={`book-section p-4 sm:p-5 ${!bookAvailable ? 'is-locked' : ''}`}>
                 <div className="book-banner">
                   <img
                     src={meta.cover}
