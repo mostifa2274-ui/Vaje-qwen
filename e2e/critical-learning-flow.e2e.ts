@@ -319,7 +319,7 @@ test('locked books and preparation steps keep readable text opacity', async ({ p
   }
 })
 
-test('fresh install can open an unloaded lazy route offline', async ({ page, context }) => {
+test('fresh install can open an unloaded lazy route offline', async ({ page, context, browserName }) => {
   await page.goto('/#/map')
   await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
 
@@ -336,20 +336,34 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
     })
   })
 
-  await context.setOffline(true)
-  try {
-    const uncachedRouteArt = await page.evaluate(async () => {
-      const response = await fetch('./art/chapters/b8c5.webp')
-      return { ok: response.ok, type: response.headers.get('content-type') }
-    })
-    expect(uncachedRouteArt.ok).toBe(true)
-    expect(uncachedRouteArt.type).toMatch(/^image\//)
+  const precache = await page.evaluate(async () => {
+    const art = await caches.match('./art/chapters/b8c5.webp')
+    const cacheNames = await caches.keys()
+    const urls: string[] = []
+    for (const name of cacheNames) {
+      const cache = await caches.open(name)
+      for (const request of await cache.keys()) urls.push(request.url)
+    }
+    return {
+      art: art ? { ok: art.ok, type: art.headers.get('content-type') } : null,
+      hasGlossaryChunk: urls.some(url => /GlossaryScreen-[^/]+\.js(?:$|\?)/.test(url)),
+    }
+  })
+  expect(precache.art?.ok).toBe(true)
+  expect(precache.art?.type).toMatch(/^image\//)
+  expect(precache.hasGlossaryChunk).toBe(true)
 
+  // Chromium's offline emulation lets the service worker prove the complete
+  // navigation path. Playwright WebKit rejects fetches at the emulation layer
+  // before its service worker can intercept them, so WebKit verifies the same
+  // precache contents and then renders the lazy route while online.
+  if (browserName !== 'webkit') await context.setOffline(true)
+  try {
     await page.getByRole('button', { name: 'واژه‌نامه' }).click()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
     await expectNoHorizontalOverflow(page)
   } finally {
-    await context.setOffline(false)
+    if (browserName !== 'webkit') await context.setOffline(false)
   }
 })
 
@@ -528,7 +542,7 @@ async function openWithProgress(page: Page, route: string, progress: {
   exploreAll?: boolean
 }): Promise<void> {
   await page.goto('/#/map')
-  await page.evaluate(({ route, progress }) => {
+  await page.evaluate((progress) => {
     const now = Date.now()
     window.localStorage.setItem('ghesse:state:v6', JSON.stringify({
       version: 6,
@@ -544,9 +558,18 @@ async function openWithProgress(page: Page, route: string, progress: {
       exploreAll: progress.exploreAll === true,
       created: now - 2 * 86_400_000,
     }))
-    window.location.hash = route
-  }, { route, progress })
+  }, progress)
+
+  // Reload the existing document so React rehydrates from the injected state,
+  // then change only the hash. Navigating directly from /#/map to another hash
+  // is a same-document navigation in Chromium and would leave the old in-memory
+  // state alive; changing the hash before reload can race that old state in
+  // WebKit. This two-step sequence is deterministic in both engines.
   await page.reload()
+  await page.evaluate((nextRoute) => {
+    window.location.hash = nextRoute
+  }, route)
+  await page.waitForURL((url) => url.hash === `#${route}`)
 }
 
 function dueWord(overrides: Record<string, unknown> = {}): Record<string, unknown> {
@@ -732,7 +755,7 @@ async function pageText(page: Page): Promise<string> {
   return page.evaluate(() => document.body.innerText)
 }
 
-test('the end-of-book test checks half the words, a reading text and a listening text hidden until the review', async ({ page }) => {
+test('the end-of-book test uses a bounded cumulative vocabulary sample plus reading and listening', async ({ page }) => {
   test.setTimeout(240_000)
   const book1 = ['b1c1', 'b1c2', 'b1c3', 'b1c4', 'b1c5']
   const bookWords = new Map<string, VocabularyEntry>()
@@ -753,7 +776,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
   // Later books show their test on the map too, locked, with what it covers.
   await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toBeVisible()
-  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن .+ واژه، یعنی نیمی از واژه‌های کتاب‌های ۱ تا ۲/)).toBeVisible()
+  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن ۲۸ واژهٔ نمونه از کتاب‌های ۱ تا ۲ با سهم بیشتر برای کتاب تازه/)).toBeVisible()
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
@@ -761,7 +784,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
   await expectNoHorizontalOverflow(page)
   await page.getByRole('button', { name: 'شروع آزمون' }).click()
 
-  // 1. Typed translations: half of book 1's words are split between the two
+  // 1. Typed translations: the bounded book-1 sample is split between the two
   // word sections; progress survives a reload.
   const fromFaDigits = (value: string) => Number(value.replace(/[۰-۹]/g, digit => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(digit))))
   const counter = page.getByText(/^واژهٔ .+ از .+$/)
@@ -792,7 +815,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
   // 2. Listening words: options wait for the word to be heard.
   await expect(page.getByRole('heading', { level: 2, name: 'شنیدن واژه‌ها' })).toBeVisible()
   const listeningCount = await sectionSize()
-  expect(translationCount + listeningCount).toBe(145)
+  expect(translationCount + listeningCount).toBe(24)
   const listeningOptions = page.getByTestId('book-test-listening-options').getByRole('button')
   for (let item = 1; item <= listeningCount; item++) {
     await expect(page.getByText(`واژهٔ ${faNum(item)} از ${faNum(listeningCount)}`)).toBeVisible()
@@ -833,7 +856,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
 
   // Review: scores per part, and the listening text is revealed on request.
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب را گذراندی' })).toBeVisible()
-  await expect(page.getByText('هر ۱۴۵ واژه درست بود.')).toBeVisible()
+  await expect(page.getByText('هر ۲۴ واژه درست بود.')).toBeVisible()
   await expectRenderedAccessibilityContract(page)
   await expectNoHorizontalOverflow(page)
   await expect(page.getByText(listening.sentences[0].en, { exact: true })).toBeHidden()
@@ -843,7 +866,7 @@ test('the end-of-book test checks half the words, a reading text and a listening
 
   const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').exams?.['book-1'])
   expect(stored).toMatchObject({ attempts: 1, passed: true, lastScore: 1, missedWordIds: [] })
-  expect(stored.testedWordIds).toHaveLength(145)
+  expect(stored.testedWordIds).toHaveLength(24)
   expect(await page.evaluate(() => window.localStorage.getItem('ghesse:book-test:v3:1'))).toBeNull()
 
   await page.getByRole('button', { name: 'ادامهٔ مسیر ←' }).click()
@@ -904,10 +927,10 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
     await next.click()
   }
 
-  // Word questions were skipped, so this is unrecorded practice; one wrong text answer fails it.
+  // Word questions were skipped, so this is unrecorded practice even though 19/20 comprehension clears the midpoint comprehension threshold.
   await expect(page.getByRole('heading', { level: 1, name: 'هنوز آمادهٔ عبور نیستی' })).toBeVisible()
   await expect(page.getByTestId('exam-comprehension-score')).toContainText('۱۹/۲۰')
-  await expect(page.getByText(/حتی یک پاسخ نادرست هم پذیرفته نمی‌شود/)).toBeVisible()
+  await expect(page.getByText(/حد عبور: ۸۸٪ کل آزمون، ۸۵٪ یادآوری نوشتاری، و ۸۸٪ درک مطلب/)).toBeVisible()
   await expectRenderedAccessibilityContract(page)
   await expectNoHorizontalOverflow(page)
   const lastText = texts[3]
@@ -923,12 +946,12 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
   await expect(card.getByRole('heading', { level: 3, name: content.reading[2].titleEn })).toBeVisible()
 })
 
-test('later end-of-book tests grow: book 3 asks half its words and two texts of each kind', async ({ page }) => {
+test('later end-of-book tests grow gradually: book 3 asks 32 vocabulary items and two texts of each kind', async ({ page }) => {
   const content = JSON.parse(readFileSync(new URL('../src/data/bookTests/b3.json', import.meta.url), 'utf8')) as BookTestFixture
   await openWithProgress(page, '/map', { exploreAll: true })
   await page.goto('/#/exam/book-3')
   await page.reload()
-  await expect(page.getByText(/^۲۹۱ واژه از کتاب‌های ۱ تا ۳/)).toBeVisible()
+  await expect(page.getByText(/^۳۲ واژهٔ نمونه از کتاب‌های ۱ تا ۳/)).toBeVisible()
   await expect(page.getByText('درک مطلب خواندنی — ۲ متن تازه، هر کدام با ۵ سؤال.')).toBeVisible()
   await page.getByRole('button', { name: 'شروع آزمون' }).click()
   await page.getByRole('list', { name: 'بخش‌های آزمون' }).getByRole('button', { name: /درک مطلب خواندنی/ }).click()
@@ -1088,6 +1111,7 @@ test('importing a backup asks before replacing progress', async ({ page }) => {
   }
   const file = { name: 'ghesse-progress.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(backup)) }
   const fileInput = page.getByLabel('فایل پشتیبان پیشرفت')
+  expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').words)).toHaveProperty(chapterWords[0].id)
 
   await fileInput.setInputFiles(file)
   const confirm = page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })

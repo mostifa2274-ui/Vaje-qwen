@@ -2,7 +2,7 @@
 
 The current deck contains 899 A1 English→Persian entries imported from the user-provided `vazhebaaz-vocabulary-complete` package. The source package reports that its English selection was derived from an American Oxford 3000 A1 development selection.
 
-The repository does not contain documented public or commercial redistribution rights for that selection. Removing a deployment check does not establish those rights. The current record in `provenance/release-rights.json` remains `blocked` for this reason.
+The repository does not contain documented public or commercial redistribution rights for that selection. Removing a deployment check does not establish those rights. The current record in `provenance/release-rights.json` remains `blocked` for this reason. The record is nevertheless bound to the exact active `src/data/vocabulary.json` bytes by SHA-256 so future deck changes cannot silently inherit the same provenance statement.
 
 At the owner's request, the content-rights check has been removed from the build and deployment commands. The record remains available for a later rights review or independent replacement of the vocabulary. Do not change its status to `cleared` without evidence tied to the exact active content.
 

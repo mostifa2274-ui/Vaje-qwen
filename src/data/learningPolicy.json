@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "chapterPreparation": {
+    "passRate": 1
+  },
+  "chapterComprehension": {
+    "questions": 10,
+    "listeningQuestions": 5,
+    "correctionRequired": true
+  },
+  "bookTest": {
+    "minVocabularyQuestions": 24,
+    "vocabularyQuestionStep": 4,
+    "maxVocabularyQuestions": 52,
+    "newestBookWeight": 2,
+    "olderBookWeight": 1,
+    "sectionPassRate": 0.8,
+    "questionsPerText": 5
+  },
+  "midpointExam": {
+    "wordQuestions": 56,
+    "passRate": 0.88,
+    "productivePassRate": 0.85,
+    "readingTexts": 2,
+    "listeningTexts": 2
+  },
+  "finalExam": {
+    "wordQuestions": 88,
+    "passRate": 0.92,
+    "productivePassRate": 0.9,
+    "readingTexts": 4,
+    "listeningTexts": 4
+  }
+}

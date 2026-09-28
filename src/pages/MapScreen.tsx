@@ -199,7 +199,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
       </button>
 
       <div className="paper-note mt-4">
-        هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. آزمون‌های پایان کتاب، نیمهٔ مسیر و نهایی هم ۱۰۰٪ لازم دارند؛ تسلط پایدار بعداً با مرور فاصله‌دار ساخته می‌شود.
+        هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. آزمون پایان کتاب در هر بخش حداقل {percent(examDefinition(bookExamId(1))!.passRate)} می‌خواهد؛ آزمون نیمهٔ مسیر {percent(examDefinition(MIDPOINT_EXAM_ID)!.passRate)} کل و {percent(examDefinition(MIDPOINT_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری، و آزمون نهایی {percent(examDefinition(FINAL_EXAM_ID)!.passRate)} کل و {percent(examDefinition(FINAL_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری می‌خواهد. واژه‌های از‌دست‌رفته همیشه پیش از ادامه جبران می‌شوند.
       </div>
 
       <div className="mt-6 space-y-6">
@@ -288,7 +288,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                     title={examDefinition(bookExam)!.titleFa}
                     state={state}
                     onOpen={onOpenExam}
-                    lockedHint={`پس از پایان هر ${faNum(chapters.length)} فصل این کتاب باز می‌شود: ترجمه و شنیدن ${faNum(bookTestWordCount(meta.book))} واژه، یعنی نیمی از واژه‌های ${meta.book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(meta.book)}`}، و ${faNum(bookTestTextsPerSkill(meta.book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(meta.book))} متن شنیداری.`}
+                    lockedHint={`پس از پایان هر ${faNum(chapters.length)} فصل این کتاب باز می‌شود: ترجمه و شنیدن ${faNum(bookTestWordCount(meta.book))} واژهٔ نمونه از ${meta.book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(meta.book)}`} با سهم بیشتر برای کتاب تازه، و ${faNum(bookTestTextsPerSkill(meta.book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(meta.book))} متن شنیداری.`}
                   />
                 </div>
               </section>

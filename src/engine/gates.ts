@@ -2,6 +2,7 @@ import { CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { bookTestQuestionCount, bookTestTextsPerSkill, bookTestWordCount } from './bookTestSize'
 import type { GhesseState } from './types'
 import { faNum } from './format'
+import policy from '../data/learningPolicy.json'
 
 export type ExamKind = 'book' | 'midpoint' | 'final'
 
@@ -33,12 +34,12 @@ export function examDefinition(id: string): ExamDefinition | undefined {
         kind: 'book',
         book,
         titleFa: `آزمون پایان کتاب ${faNum(book)}`,
-        subtitleFa: `${faNum(bookTestWordCount(book))} واژه از ${book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} (نیمی از واژه‌های خوانده‌شده؛ ترجمه و شنیداری)، به‌علاوهٔ ${faNum(bookTestTextsPerSkill(book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(book))} متن شنیداری تازه.`,
-        // Half of the words studied so far, plus the texts' questions
-        // (engine/bookTestSize.ts); each part needs 100%.
+        subtitleFa: `${faNum(bookTestWordCount(book))} واژهٔ نمونه از ${book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} (با وزن بیشتر برای کتاب تازه؛ ترجمه و شنیداری)، به‌علاوهٔ ${faNum(bookTestTextsPerSkill(book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(book))} متن شنیداری تازه.`,
+        // Bounded cumulative vocabulary sample plus comprehension texts
+        // (engine/bookTestSize.ts); every section must reach the section floor.
         questionCount: bookTestQuestionCount(book),
-        passRate: 1,
-        productivePassRate: 1,
+        passRate: policy.bookTest.sectionPassRate,
+        productivePassRate: policy.bookTest.sectionPassRate,
       }
     }
   }
@@ -49,9 +50,9 @@ export function examDefinition(id: string): ExamDefinition | undefined {
       titleFa: 'آزمون ویژهٔ نیمهٔ مسیر',
       subtitleFa: 'آزمون تجمعی کتاب‌های ۱ تا ۴: یادآوری نوشتاری، جای‌خالی و واژه‌های ضعیف، به‌علاوهٔ دو متن خواندنی و دو متن شنیداری، پیش از ورود به کتاب ۵.',
       // 56 word questions plus two reading and two listening texts.
-      questionCount: 56,
-      passRate: 1,
-      productivePassRate: 1,
+      questionCount: policy.midpointExam.wordQuestions,
+      passRate: policy.midpointExam.passRate,
+      productivePassRate: policy.midpointExam.productivePassRate,
     }
   }
   if (id === FINAL_EXAM_ID) {
@@ -61,9 +62,9 @@ export function examDefinition(id: string): ExamDefinition | undefined {
       titleFa: 'آزمون نهایی ۸۹۹ واژه',
       subtitleFa: 'آزمون تجمعی کل مسیر: یادآوری نوشتاری همهٔ کتاب‌ها، به‌علاوهٔ چهار متن خواندنی و چهار متن شنیداری؛ گواهی تسلط علاوه بر این آزمون به شواهد فاصله‌دار همهٔ واژه‌ها نیاز دارد.',
       // 88 word questions plus four reading and four listening texts.
-      questionCount: 88,
-      passRate: 1,
-      productivePassRate: 1,
+      questionCount: policy.finalExam.wordQuestions,
+      passRate: policy.finalExam.passRate,
+      productivePassRate: policy.finalExam.productivePassRate,
     }
   }
   return undefined

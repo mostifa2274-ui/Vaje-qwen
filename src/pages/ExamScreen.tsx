@@ -209,8 +209,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
         passed,
         passedAt: previous?.passedAt ?? (scored.passed ? now : undefined),
         lastAttemptAt: now,
-        lastScore: scored.score,
-        bestScore: Math.max(previous?.bestScore ?? 0, scored.score),
+        lastScore: scored.overallScore,
+        bestScore: Math.max(previous?.bestScore ?? 0, scored.overallScore),
         lastProductiveScore: scored.productiveScore,
         bestProductiveScore: Math.max(previous?.bestProductiveScore ?? 0, scored.productiveScore),
         missedWordIds: scored.missedWordIds,
@@ -355,7 +355,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             {passedNow ? 'قبول شدی' : gateAlreadyPassed ? 'این بازآزمایی نیاز به مرور دارد' : 'هنوز آمادهٔ عبور نیستی'}
           </h1>
           <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            <div className="metric-card"><b>{faNum(result.correct)}/{faNum(result.total)}</b><span>سؤال‌های واژه</span></div>
+            <div className="metric-card"><b>{percent(result.overallScore)}</b><span>کل آزمون</span></div>
             <div className="metric-card"><b>{percent(result.productiveScore)}</b><span>پاسخ بدون گزینه</span></div>
             <div className={`metric-card ${textsMissed ? 'metric-fail' : ''}`} data-testid="exam-comprehension-score">
               <b>{faNum(result.comprehensionCorrect)}/{faNum(result.comprehensionTotal)}</b><span>درک مطلب</span>
@@ -380,7 +380,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           </div>
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            حد عبور: {percent(def.passRate)} سؤال‌های واژه و {percent(1)} سؤال‌های درک مطلب؛ حتی یک پاسخ نادرست هم پذیرفته نمی‌شود.
+            حد عبور: {percent(def.passRate)} کل آزمون، {percent(def.productivePassRate)} یادآوری نوشتاری، و {percent(def.passRate)} درک مطلب.
             {preview
               ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
               : practice
@@ -587,7 +587,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       {previewNote}
 
       <div className="paper-note mt-4">
-        هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. بخش اول معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد؛ بخش دوم {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری است. برای قبولی همهٔ پاسخ‌ها باید درست باشند.
+        هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. بخش اول معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد؛ بخش دوم {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری است. حد عبور {percent(def.passRate)} کل آزمون، {percent(def.productivePassRate)} در یادآوری نوشتاری و {percent(def.passRate)} در درک مطلب است؛ واژه‌های اشتباه بعد از آزمون جبران می‌شوند.
       </div>
 
       {resumedDraft && (
