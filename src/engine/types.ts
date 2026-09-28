@@ -141,7 +141,6 @@ export interface BookMeta {
   book: number
   titleFa: string
   titleEn: string
-  tint: string
   cover: string
   taglineFa: string
 }
