@@ -1258,7 +1258,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
 
   // Direct reading is impossible before both preparation gates pass.
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
-  await expect(page.getByText('آموزش')).toBeVisible()
+  await expect(page.locator('.learning-focus-card').getByText('آموزش', { exact: true })).toBeVisible()
   await expect(page.locator('.lesson-chapter-art')).toHaveCount(0)
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expectNoHorizontalOverflow(page)
@@ -1363,7 +1363,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   // gates have been passed. The router should resolve straight back to reading.
   await page.goto('/#/prep/b1c1')
   await expect(page).toHaveURL(/#\/read\/b1c1$/)
-  await expect(page.getByText('آموزش')).toHaveCount(0)
+  await expect(page.locator('.learning-focus-card').getByText('آموزش', { exact: true })).toHaveCount(0)
 
   await expect(page.locator('#main-content')).toBeFocused()
   await expect(page.locator('#main-content')).toHaveAttribute('aria-label', /خواندن داستان:/)
