@@ -5,7 +5,7 @@ import { bookExamId } from './gates'
 import { listeningChoiceOptions, recordRetrieval, seededSample, selectWeakestWordIds } from './review'
 import { isHeadwordTranslationCorrect } from './persianTranslation'
 import { sameHeadwordEntries } from './homophones'
-import { bookTestTextsPerSkill, bookTestWordsFrom, bookWordIds } from './bookTestSize'
+import { bookTestTextsPerSkill, bookTestWordCount, bookTestWordsFrom, bookWordIds } from './bookTestSize'
 
 // The end-of-book test. After book N the learner proves four things, each
 // scored on its own so a strength in one cannot hide a gap in another:
@@ -16,16 +16,18 @@ import { bookTestTextsPerSkill, bookTestWordsFrom, bookWordIds } from './bookTes
 //   4. listening       — hear other new texts (never shown during the
 //                        test) and answer 5 questions on each
 //
-// The test grows with the course (engine/bookTestSize.ts): half of every
-// studied book's words are asked, split between the two vocabulary sections,
-// and books 1–2 have one text per skill, 3–4 two, 5–6 three and 7–8 four.
+// The test grows with the course without becoming exhaustive (engine/bookTestSize.ts):
+// 24 vocabulary items after book 1, then four more per book to a 52-item cap.
+// Every studied book remains represented and the newest book receives double
+// weight. Books 1–2 have one text per skill, 3–4 two, 5–6 three and 7–8 four.
 // The texts are new stories written only with words taught up to book N.
 // Each book has two sets of texts that alternate between attempts, so a
 // retake after the review (which reveals the listening texts) is a
 // different listening test.
 
-// Every section needs every answer right.
-export const BOOK_TEST_PASS_RATE = 1
+// Each section must independently demonstrate solid recall. Missed vocabulary
+// still enters remediation and blocks the next gate until independently recalled.
+export const BOOK_TEST_PASS_RATE = 0.8
 
 export type BookTestSection = 'translation' | 'listeningWords' | 'reading' | 'listening'
 export const BOOK_TEST_SECTIONS: readonly BookTestSection[] = ['translation', 'listeningWords', 'reading', 'listening']
@@ -121,7 +123,7 @@ export function bookTestPool(book: number): string[] {
 export function bookTestAllocation(book: number, rotation: number): Map<number, Record<'translation' | 'listeningWords', number>> {
   const allocation = new Map<number, Record<'translation' | 'listeningWords', number>>()
   for (let source = 1; source <= book; source++) {
-    const total = bookTestWordsFrom(source)
+    const total = bookTestWordsFrom(source, book)
     const translation = (source + rotation) % 2 === 0 ? Math.ceil(total / 2) : Math.floor(total / 2)
     allocation.set(source, { translation, listeningWords: total - translation })
   }
@@ -188,15 +190,31 @@ function listeningItem(book: number, attempt: number, wordId: string, source: nu
  */
 export function bookTestFromWords(book: number, attempt: number, translationIds: unknown, listeningIds: unknown): BookTest | undefined {
   if (!BOOK_TEST_CONTENT.has(book) || !Array.isArray(translationIds) || !Array.isArray(listeningIds)) return undefined
-  const all = [...translationIds, ...listeningIds]
+  const translation = translationIds as unknown[]
+  const listening = listeningIds as unknown[]
+  const all = [...translation, ...listening]
   if (all.some(id => typeof id !== 'string') || new Set(all).size !== all.length) return undefined
+
+  // A policy change must not resurrect an old oversized draft. Require the
+  // saved word lists to match the current allocation exactly.
+  const expected = bookTestAllocation(book, Math.max(1, attempt) - 1)
+  const expectedTranslation = [...expected.values()].reduce((sum, counts) => sum + counts.translation, 0)
+  const expectedListening = [...expected.values()].reduce((sum, counts) => sum + counts.listeningWords, 0)
+  if (translation.length !== expectedTranslation || listening.length !== expectedListening || all.length !== bookTestWordCount(book)) return undefined
+
   const valid = (id: string, eligible: (word: WordEntry) => boolean) => {
     const source = introducedBook.get(id)
     const word = WORD_BY_ID.get(id)
     return source !== undefined && source <= book && word !== undefined && eligible(word)
   }
-  if (!(translationIds as string[]).every(id => valid(id, eligibleForTranslation))) return undefined
-  if (!(listeningIds as string[]).every(id => valid(id, eligibleForListening))) return undefined
+  if (!(translation as string[]).every(id => valid(id, eligibleForTranslation))) return undefined
+  if (!(listening as string[]).every(id => valid(id, eligibleForListening))) return undefined
+
+  for (const [source, counts] of expected) {
+    const fromSource = (ids: unknown[]) => ids.filter(id => introducedBook.get(id as string) === source).length
+    if (fromSource(translation) !== counts.translation || fromSource(listening) !== counts.listeningWords) return undefined
+  }
+
   return {
     book,
     attempt,
