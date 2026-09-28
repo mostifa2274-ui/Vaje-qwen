@@ -452,13 +452,9 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
           <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
           <div className="lesson-cover-copy">
-            <div className="min-w-0">
-              <h2 className="text-xl font-extrabold">{chapter.titleFa}</h2>
-              <div className="mt-1 font-en text-sm" dir="ltr">{chapter.titleEn}</div>
-            </div>
-            <div className="shrink-0 text-left text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-              <div>{faNum(chapter.sentences.length)} جمله</div>
-              <div>حدود {faNum(readingMinutes)} دقیقه</div>
+            <div className="min-w-0 font-en text-sm font-bold" dir="ltr">{chapter.titleEn}</div>
+            <div className="shrink-0 text-left text-xs" style={{ color: 'var(--ink-soft)' }}>
+              {faNum(chapter.sentences.length)} جمله · حدود {faNum(readingMinutes)} دقیقه
             </div>
           </div>
         </section>
@@ -475,7 +471,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         )}
 
         <div className="reading-guidance mt-4">
-          واژه‌های تازه را قبل از ورود به قصه یاد گرفته و آزمون داده‌ای. اینجا روی <b>فهم داستان</b> تمرکز کن؛ هر واژه را هم می‌توانی برای دیدن معنی لمس کنی.
+          واژه‌ها را قبلاً یاد گرفته‌ای. اینجا داستان را بخوان؛ برای دیدن معنی هر واژه آن را لمس کن.
         </div>
 
         {resumedReading && (
@@ -530,7 +526,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             <div>
               <h2 id="comprehension-title" className="text-xl font-extrabold">درک مطلب</h2>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-                ۱۰ سؤال انگلیسی از خود همین قصه: جزئیات، معنی جمله و ترتیب اتفاق‌ها. اگر چیزی اشتباه شود، فقط همان سؤال‌ها برای اصلاح برمی‌گردند.
+                ۱۰ سؤال از همین قصه. پاسخ‌های اشتباه برای اصلاح برمی‌گردند.
               </p>
             </div>
             <span className="mastery-chip">
