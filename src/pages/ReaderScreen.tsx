@@ -453,8 +453,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
           <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
           <div className="lesson-cover-copy">
             <div className="min-w-0">
-              <div className="font-en text-xs font-bold uppercase tracking-[0.16em]" dir="ltr">{meta.titleEn}</div>
-              <h2 className="mt-1 text-xl font-extrabold">{chapter.titleFa}</h2>
+              <h2 className="text-xl font-extrabold">{chapter.titleFa}</h2>
               <div className="mt-1 font-en text-sm" dir="ltr">{chapter.titleEn}</div>
             </div>
             <div className="shrink-0 text-left text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
@@ -492,15 +491,8 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         )}
 
         <article className="story-reading mt-5" aria-labelledby="story-title">
-          <div className="story-reading-header">
-            <div>
-              <h2 id="story-title" className="font-en text-2xl font-bold" dir="ltr">{chapter.titleEn}</h2>
-              <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{chapter.titleFa}</div>
-            </div>
-            <span className="mastery-chip">{faNum(paragraphs.length)} بخش</span>
-          </div>
-
-          <div className="mt-4 space-y-4">
+          <h2 id="story-title" className="sr-only">{chapter.titleEn}</h2>
+          <div className="space-y-4">
             {paragraphs.map((indices, paragraphIndex) => (
               <section key={paragraphIndex} className="story-paragraph" aria-label={`بخش ${faNum(paragraphIndex + 1)}`}>
                 {indices.map(index => {
