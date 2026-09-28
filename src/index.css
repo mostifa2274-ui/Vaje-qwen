@@ -72,7 +72,7 @@ body {
   background-color: var(--paper);
   color: var(--ink);
   /* hand-drawn paper noise */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -252,12 +252,6 @@ body {
 /* reader text */
 .story-reading {
   direction: rtl;
-}
-.story-reading-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
 }
 .story-paragraph {
   padding-block: .15rem;
@@ -488,7 +482,7 @@ button:disabled {
   }
 }
 
-/* ---------- Mastery journey 2.0 ---------- */
+/* ---------- Learning status ---------- */
 .mastery-chip {
   display: inline-flex;
   align-items: center;
@@ -676,7 +670,7 @@ button:disabled {
   outline-offset: 2px;
 }
 
-/* ---------- Mastery journey 3.0 ---------- */
+/* ---------- Learning flow ---------- */
 .next-action-card {
   display: flex;
   align-items: center;
@@ -768,7 +762,7 @@ button:disabled {
   color: var(--ink);
 }
 
-/* ---------- Diagnostic mastery 4.0 ---------- */
+/* ---------- Learning diagnostics ---------- */
 .skill-result {
   padding: .4rem 0;
 }
@@ -786,7 +780,7 @@ button:disabled {
   transition: width 240ms ease;
 }
 
-/* ---------- Learning flow premium refinement ---------- */
+/* ---------- Focused learning surfaces ---------- */
 .reader-header-button {
   width: 2.75rem;
   min-width: 2.75rem;
@@ -889,7 +883,7 @@ button:disabled {
 }
 
 
-/* ---------- Journey home premium refinement ---------- */
+/* ---------- Journey home ---------- */
 .home-toolbar {
   display: flex;
   align-items: center;
@@ -908,37 +902,6 @@ button:disabled {
   padding: 0;
 }
 
-.journey-overview {
-  padding-block: .5rem;
-}
-.journey-overview-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.journey-chapter-count {
-  display: flex;
-  min-width: 4.5rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-inline-start: 1px solid var(--line-soft);
-  padding-inline-start: 1rem;
-}
-.journey-chapter-count b {
-  font-size: 1.35rem;
-  line-height: 1.2;
-}
-.journey-chapter-count span {
-  margin-top: .2rem;
-  color: var(--ink-soft);
-  font-size: .7rem;
-}
-.journey-skills {
-  border-top: 1px solid var(--line-soft);
-  padding-top: 1rem;
-}
 
 .book-section {
   overflow: hidden;
@@ -1004,9 +967,6 @@ button:disabled {
     width: 2.75rem;
     min-width: 2.75rem;
     padding: 0;
-  }
-  .journey-overview-head {
-    gap: .7rem;
   }
 }
 
@@ -1176,7 +1136,7 @@ button:disabled {
 }
 
 
-/* ---------- Review, exam, glossary and settings refinement ---------- */
+/* ---------- Review, exam, glossary and settings ---------- */
 ::selection {
   background: color-mix(in srgb, var(--crimson) 24%, transparent);
   color: var(--ink);
