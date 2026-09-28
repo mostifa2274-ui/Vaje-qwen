@@ -303,7 +303,7 @@ test('locked books and preparation steps keep readable text opacity', async ({ p
   await expect(locked).toBeVisible()
   expect(await locked.evaluate(element => getComputedStyle(element).opacity)).toBe('1')
   expect(await locked.locator('h2').evaluate(element => getComputedStyle(element).opacity)).toBe('1')
-  expect(await locked.locator('.book-banner').evaluate(element => getComputedStyle(element).opacity)).toBe('0.72')
+  expect(await locked.locator('.book-banner').evaluate(element => getComputedStyle(element).opacity)).toBe('0.66')
 
   await page.goto('/#/prep/b1c1')
   const steps = page.locator('.prep-stepper li')
@@ -385,7 +385,23 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
 
   const firstBannerHeight = await page.locator('.book-banner').first().evaluate(element => element.getBoundingClientRect().height)
+  const lockedBannerHeight = await page.locator('.book-section.is-locked .book-banner').first().evaluate(element => element.getBoundingClientRect().height)
   expect(firstBannerHeight).toBeLessThanOrEqual(170)
+  expect(lockedBannerHeight).toBeLessThanOrEqual(100)
+  await expectNoHorizontalOverflow(page)
+})
+
+test('settings keeps advanced controls collapsed until requested', async ({ page }) => {
+  await page.goto('/#/settings')
+
+  const voice = page.getByText('تنظیمات پیشرفتهٔ صدا', { exact: true })
+  const privacy = page.getByText('حریم خصوصی', { exact: true })
+  await expect(voice).toBeVisible()
+  await expect(privacy).toBeVisible()
+  await expect(page.getByLabel('صدای جایگزین دستگاه')).toBeHidden()
+
+  await voice.click()
+  await expect(page.getByLabel('صدای جایگزین دستگاه')).toBeVisible()
   await expectNoHorizontalOverflow(page)
 })
 
@@ -770,7 +786,7 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
   // Later books show their test on the map too, locked, with what it covers.
   await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toBeVisible()
-  await expect(page.getByText(/^پس از پایان هر ۵ فصل این کتاب باز می‌شود: ترجمه و شنیدن ۲۸ واژهٔ نمونه از کتاب‌های ۱ تا ۲ با سهم بیشتر برای کتاب تازه/)).toBeVisible()
+  await expect(page.getByText('پس از تمام‌شدن ۵ فصل این کتاب باز می‌شود.', { exact: true })).toBeVisible()
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
