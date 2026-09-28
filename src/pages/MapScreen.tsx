@@ -1,4 +1,3 @@
-import { bookTestTextsPerSkill, bookTestWordCount } from '../engine/bookTestSize'
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { learningHealth, bookHealth, certificationStatus, nextBestAction } from '../engine/analytics'
@@ -67,7 +66,7 @@ function ExamGate({
               : preview ? 'پیش‌نمایش در حالت کاوش؛ نتیجه ثبت نمی‌شود.' : available ? 'این آزمون دروازهٔ ادامهٔ مسیر است.' : lockedHint ?? 'پس از کامل‌شدن پیش‌نیازها باز می‌شود.'}
         </div>
       </div>
-      <button type="button" className={passed && !remediation ? 'btn-paper px-3 py-2 text-sm' : 'btn-crimson px-3 py-2 text-sm'} disabled={!available} onClick={() => onOpen(id)}>
+      <button type="button" className={!available || (passed && !remediation) ? 'btn-paper px-3 py-2 text-sm' : 'btn-crimson px-3 py-2 text-sm'} disabled={!available} onClick={() => onOpen(id)}>
         {remediation && !preview ? 'اول جبران' : preview ? 'پیش‌نمایش' : passed ? 'بازآزمایی' : 'شروع'}
       </button>
     </div>
@@ -238,7 +237,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                     title={examDefinition(bookExam)!.titleFa}
                     state={state}
                     onOpen={onOpenExam}
-                    lockedHint={`پس از پایان هر ${faNum(chapters.length)} فصل این کتاب باز می‌شود: ترجمه و شنیدن ${faNum(bookTestWordCount(meta.book))} واژهٔ نمونه از ${meta.book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(meta.book)}`} با سهم بیشتر برای کتاب تازه، و ${faNum(bookTestTextsPerSkill(meta.book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(meta.book))} متن شنیداری.`}
+                    lockedHint={`پس از تمام‌شدن ${faNum(chapters.length)} فصل این کتاب باز می‌شود.`}
                   />
                 </div>
               </section>
@@ -275,9 +274,6 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
         </section>
       )}
 
-      <div className="mt-8 text-center text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-        «مسلط» فقط با بازیابی موفق در چند روز، پاسخ نوشتاری و فاصلهٔ زمانی واقعی به دست می‌آید؛ قبولی در یک آزمون به‌تنهایی کافی نیست.
-      </div>
     </div>
   )
 }
