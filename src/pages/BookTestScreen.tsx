@@ -330,7 +330,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     const canRetake = unrecorded || (!result.passed && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     const next = book === 8 ? 'آزمون نهایی' : `کتاب ${faNum(book + 1)}`
     return (
-      <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-6" style={{ background: 'var(--cream)' }}>
+      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
         <div className={`exam-result-card p-6 text-center ${result.passed ? 'exam-pass' : 'exam-fail'}`}>
           {result.passed && result.missedWordIds.length === 0
             ? <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
@@ -429,7 +429,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   if (phase === 'intro') {
     return (
-      <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
         {header}
         <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="intro-heading">
           <h2 id="intro-heading" className="text-lg font-extrabold">چهار بخش</h2>
@@ -452,7 +452,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   if (!isSection(phase)) return null
 
   return (
-    <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       {header}
 
       <ol className="test-steps mt-6" aria-label="بخش‌های آزمون">
