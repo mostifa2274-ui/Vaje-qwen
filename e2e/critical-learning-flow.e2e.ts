@@ -904,10 +904,10 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
     await next.click()
   }
 
-  // Word questions were skipped, so this is unrecorded practice; one wrong text answer fails it.
+  // Word questions were skipped, so this is unrecorded practice even though 19/20 comprehension clears the midpoint comprehension threshold.
   await expect(page.getByRole('heading', { level: 1, name: 'هنوز آمادهٔ عبور نیستی' })).toBeVisible()
   await expect(page.getByTestId('exam-comprehension-score')).toContainText('۱۹/۲۰')
-  await expect(page.getByText(/حتی یک پاسخ نادرست هم پذیرفته نمی‌شود/)).toBeVisible()
+  await expect(page.getByText(/حد عبور: ۸۸٪ کل آزمون، ۸۵٪ یادآوری نوشتاری، و ۸۸٪ درک مطلب/)).toBeVisible()
   await expectRenderedAccessibilityContract(page)
   await expectNoHorizontalOverflow(page)
   const lastText = texts[3]
