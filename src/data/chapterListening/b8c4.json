@@ -58,54 +58,54 @@
   ],
   "questions": [
     {
-      "q": "مینا اول صفحه چه کلمه‌ای می‌نویسد؟",
+      "q": "What word does Mina write at the start of the page?",
       "options": [
-        "نینو",
-        "باران",
-        "امید",
-        "آتش"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "مینا چه نوع جمله‌هایی می‌نویسد؟",
-      "options": [
-        "جمله‌های مثبت",
-        "جمله‌های منفی",
-        "سؤال",
-        "شعر"
+        "Hope",
+        "Rain",
+        "Fire",
+        "Nino"
       ],
       "answer": 0
     },
     {
-      "q": "کدام جمله در صفحه‌ی مینا هست؟",
+      "q": "What kind of statements does Mina write?",
       "options": [
-        "نینو هیچ‌وقت برنمی‌گردد",
-        "نینو جوجه‌ی باهوشی است",
-        "پرنده‌ها بد هستند",
-        "کسی نینو را نمی‌شناسد"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "به نظر مینا یک روز سخت چه چیزی می‌تواند داشته باشد؟",
-      "options": [
-        "باران",
-        "آتش",
-        "مهمان",
-        "امید"
+        "Negative statements",
+        "Questions",
+        "Poems",
+        "Positive statements"
       ],
       "answer": 3
     },
     {
-      "q": "وقتی مینا کتاب را می‌بندد، بیرون چه خبر است؟",
+      "q": "Which sentence is on Mina's page?",
       "options": [
-        "باران بند آمده",
-        "برف می‌آید",
-        "آفتاب است",
-        "باد می‌آید"
+        "Nino is a smart chicken",
+        "Nino will never come back",
+        "Birds are bad",
+        "Nobody knows Nino"
       ],
       "answer": 0
+    },
+    {
+      "q": "Mina writes that a hard day can still have ___ in it.",
+      "options": [
+        "fire",
+        "hope",
+        "rain",
+        "visitors"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "When Mina closes her book, what is it like outside?",
+      "options": [
+        "The sun is coming up",
+        "It is very hot",
+        "The rain has stopped",
+        "It is snowing"
+      ],
+      "answer": 2
     }
   ]
 }

@@ -2,7 +2,9 @@
   "id": "b6c4-listening",
   "titleEn": "The Scientist's Chicken",
   "titleFa": "جوجه‌ی دانشمند",
-  "names": [],
+  "names": [
+    "Mina"
+  ],
   "sentences": [
     {
       "en": "At the university, a scientist has a science project with young chickens.",
@@ -55,54 +57,54 @@
   ],
   "questions": [
     {
-      "q": "هر جوجه‌ی پروژه روی پایش چه دارد؟",
+      "q": "What does each chicken in the project have on its leg?",
       "options": [
-        "یک حلقه‌ی کوچک آبی",
-        "یک کارت",
-        "یک نوار قرمز",
-        "هیچ چیز"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "کارگر جوجه‌ی فراری را کجا پیدا کرد؟",
-      "options": [
-        "در خیابان",
-        "در دفتر",
-        "در باغ، زیر یک درخت",
-        "کنار رودخانه"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "دانشمند چطور از ماجرای مینا باخبر شد؟",
-      "options": [
-        "از رادیو",
-        "از یک وبلاگ",
-        "از روزنامه",
-        "از معلم"
+        "A card",
+        "A small blue band",
+        "A red line",
+        "Nothing"
       ],
       "answer": 1
     },
     {
-      "q": "دانشمند به دختر چه هدیه‌ای داد؟",
+      "q": "Where did the worker find the chicken?",
       "options": [
-        "یک چتر",
-        "یک ماکت پرنده",
-        "یک جوجه",
-        "کارتی با یک پرنده‌ی زرد"
+        "In the street",
+        "In the garden, under a tree",
+        "Near the river",
+        "In the office"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
-      "q": "توصیه‌ی دانشمند چیست؟",
+      "q": "How did the scientist hear about Mina?",
       "options": [
-        "جایی را بگردید که هر روز غذا دارد",
-        "به دانشگاه برگردید",
-        "به روزنامه بنویسید",
-        "زیر باران نگردید"
+        "From the radio",
+        "From a blog",
+        "From a teacher",
+        "From the newspaper"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What present did the scientist give the girl?",
+      "options": [
+        "A card with a yellow bird on it",
+        "A chicken",
+        "A model of a bird",
+        "An umbrella"
       ],
       "answer": 0
+    },
+    {
+      "q": "What is the scientist's advice?",
+      "options": [
+        "Come back to the university",
+        "Do not look in the rain",
+        "Write to the newspaper",
+        "Look for a place with food"
+      ],
+      "answer": 3
     }
   ]
 }

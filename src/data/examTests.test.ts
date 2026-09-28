@@ -4,6 +4,7 @@ import { BOOK_TEST_CONTENT } from './bookTests'
 import { CHAPTER_LISTENING } from './chapterListening'
 import { EXAM_TEST_CONTENT, EXAM_TEXTS_PER_ATTEMPT, examTextsForAttempt, type CumulativeExam } from './examTests'
 import { tokenizeSentence } from '../engine/lemmatize'
+import { lastChapterOfBook, questionProblems } from './questionVocabulary'
 
 const bookOf = new Map<string, number>()
 for (const chapter of CHAPTERS) for (const id of chapter.new) if (!bookOf.has(id)) bookOf.set(id, chapter.book)
@@ -27,6 +28,14 @@ function checkable(line: string): string {
 }
 
 describe('midpoint and final comprehension texts', () => {
+  it('ask in English, with words taught by the exam', () => {
+    const problems = (['midpoint', 'final'] as const).flatMap(exam => {
+      const content = EXAM_TEST_CONTENT.get(exam)!
+      return [...content.reading, ...content.listening].flatMap(text => questionProblems(text, lastChapterOfBook(LAST_BOOK[exam])))
+    })
+    expect(problems).toEqual([])
+  })
+
   it('give each attempt its texts, with two sets alternating', () => {
     for (const exam of ['midpoint', 'final'] as const) {
       const content = EXAM_TEST_CONTENT.get(exam)!
@@ -94,7 +103,6 @@ describe('midpoint and final comprehension texts', () => {
         expect(text.questions, text.id).toHaveLength(5)
         const answers = new Set<number>()
         for (const question of text.questions) {
-          expect(question.q, text.id).toMatch(/[؀-ۿ]/)
           expect(question.options, `${text.id}: ${question.q}`).toHaveLength(4)
           expect(new Set(question.options.map(option => option.trim())).size, `${text.id}: ${question.q}`).toBe(4)
           expect(Number.isInteger(question.answer) && question.answer >= 0 && question.answer < 4, `${text.id}: ${question.q}`).toBe(true)

@@ -170,7 +170,7 @@
   ],
   "check": [
     {
-      "q": "روی پای جوجه‌ی دانشگاه چه رنگی است؟",
+      "q": "The band on the leg of the university chicken is ___.",
       "options": [
         "blue",
         "red",
@@ -180,7 +180,7 @@
       "a": "blue"
     },
     {
-      "q": "دانشمند به مینا چه می‌دهد؟",
+      "q": "The scientist gives Mina a ___.",
       "options": [
         "card",
         "cake",

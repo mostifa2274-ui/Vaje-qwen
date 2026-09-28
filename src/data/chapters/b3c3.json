@@ -153,7 +153,7 @@
   ],
   "check": [
     {
-      "q": "مینا و بابا ساعت هشت کنار ساعت ایستگاه منتظر چه هستند؟",
+      "q": "At eight, Mina and Dad wait by the station clock for a ___.",
       "options": [
         "chicken",
         "bus",
@@ -163,7 +163,7 @@
       "a": "chicken"
     },
     {
-      "q": "مینا کِی صدایی در حیاط می‌شنود؟",
+      "q": "Mina hears a sound in the yard at ___.",
       "options": [
         "midnight",
         "morning",

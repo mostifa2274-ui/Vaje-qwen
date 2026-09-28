@@ -122,7 +122,7 @@
   ],
   "check": [
     {
-      "q": "مادربزرگ درباره‌ی چند جور فکر کردن حرف می‌زند؟",
+      "q": "Grandmother talks about ___ ways to think.",
       "options": [
         "two",
         "three",
@@ -132,7 +132,7 @@
       "a": "two"
     },
     {
-      "q": "از حالا موضوع کتاب مینا چیست؟",
+      "q": "From now on, the topic of Mina's book is ___.",
       "options": [
         "hope",
         "food",

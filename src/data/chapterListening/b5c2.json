@@ -58,54 +58,54 @@
   ],
   "questions": [
     {
-      "q": "بابا نامه را برای چه کسی می‌نویسد؟",
+      "q": "Who does Dad write the letter to?",
       "options": [
-        "برای روزنامه‌ی شهر",
-        "برای رادیو",
-        "برای همسایه‌ها",
-        "برای مدرسه"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "نینو کی فرار کرد؟",
-      "options": [
-        "هفته‌ی پیش",
-        "دیروز",
-        "ماه پیش",
-        "سال پیش"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "کدام توصیف در نامه آمده است؟",
-      "options": [
-        "بزرگ و سفید",
-        "کوچک و زرد با پاهای نارنجی",
-        "قهوه‌ای با پاهای زرد",
-        "سیاه با کمی سفیدی"
+        "The neighbors",
+        "The city newspaper",
+        "The school",
+        "The radio"
       ],
       "answer": 1
     },
     {
-      "q": "بابا از روزنامه چه می‌خواهد؟",
+      "q": "When did Nino run away?",
       "options": [
-        "پول",
-        "که یک مقاله درباره‌ی شهر بنویسد",
-        "که به خانه‌شان بیایند",
-        "که عکس نینو را چاپ کند"
+        "Last year",
+        "Last month",
+        "Yesterday",
+        "Last week"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What does the letter say about Nino?",
+      "options": [
+        "Small and yellow, with orange feet",
+        "Big and white",
+        "Black, with a little white",
+        "Brown, with yellow feet"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What does Dad ask the newspaper to do?",
+      "options": [
+        "Write about the city",
+        "Come to their house",
+        "Give him money",
+        "Put Nino's picture in the newspaper"
       ],
       "answer": 3
     },
     {
-      "q": "مینا در نامه چه چیزی را بررسی می‌کند؟",
+      "q": "What does Mina check in the letter?",
       "options": [
-        "املای کلمه‌ها",
-        "آدرس روزنامه",
-        "عکس نینو",
-        "تاریخ"
+        "The newspaper's address",
+        "Nino's picture",
+        "The date",
+        "The spelling of every word"
       ],
-      "answer": 0
+      "answer": 3
     }
   ]
 }

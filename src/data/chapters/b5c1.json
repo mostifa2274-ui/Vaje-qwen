@@ -127,7 +127,7 @@
   ],
   "check": [
     {
-      "q": "مینا از چه چیزی متنفر است؟",
+      "q": "Mina writes that she hates to ___.",
       "options": [
         "wait",
         "tea",
@@ -137,7 +137,7 @@
       "a": "wait"
     },
     {
-      "q": "آریا چه ایده‌ای دارد؟",
+      "q": "Aria's idea is about people on a ___.",
       "options": [
         "bicycle",
         "bus",

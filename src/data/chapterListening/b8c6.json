@@ -62,52 +62,52 @@
   ],
   "questions": [
     {
-      "q": "جوجه دنبال چه چیزی بود؟",
+      "q": "What was the chicken following?",
       "options": [
-        "یک گربه",
-        "یک پرنده‌ی قرمز",
-        "پیرزن",
-        "یک اتوبوس"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "پسر در جوجه چه چیزی می‌بیند؟",
-      "options": [
-        "پاهای نارنجی و کمی سفیدی در سمت چپ",
-        "یک حلقه‌ی آبی روی پایش",
-        "پرهای سیاه",
-        "یک یادداشت"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "پیرزن چه چیزی پیدا می‌کند؟",
-      "options": [
-        "یک عکس",
-        "یک کارت",
-        "یادداشتی با آدرس",
-        "روزنامه"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "پنجشنبه که به آن آدرس می‌روند چه می‌شود؟",
-      "options": [
-        "مینا در را باز می‌کند",
-        "خانواده آن‌ها را به خانه دعوت می‌کنند",
-        "جوجه فرار می‌کند",
-        "کسی خانه نیست"
+        "A cat",
+        "A bus",
+        "The old woman",
+        "A red bird"
       ],
       "answer": 3
     },
     {
-      "q": "وقتی دختر جعبه را می‌بیند چه می‌گوید؟",
+      "q": "What does the boy see on the chicken?",
       "options": [
-        "«ممنونم!»",
-        "«سلام!»",
-        "«نینو!»",
-        "«کجا بود؟»"
+        "A blue band on its leg",
+        "A note",
+        "Orange feet and a little white on its left",
+        "A red head"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "What does the old woman find?",
+      "options": [
+        "A photo",
+        "The note with the address on it",
+        "A newspaper",
+        "A card"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What happens on Thursday at the address?",
+      "options": [
+        "The chicken runs away",
+        "Nobody is at home",
+        "The family asks them in",
+        "Mina opens the door"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What does the girl say when she sees the box?",
+      "options": [
+        "Hello!",
+        "Thank you!",
+        "Nino!",
+        "Where was he?"
       ],
       "answer": 2
     }

@@ -220,7 +220,7 @@
   ],
   "check": [
     {
-      "q": "مینا شب چه چیزی بیرون در می‌گذارد؟",
+      "q": "What does Mina put outside the door at night?",
       "options": [
         "bread",
         "egg",
@@ -230,7 +230,7 @@
       "a": "bread"
     },
     {
-      "q": "خانواده کِی بیرون دنبال نینو می‌گردند؟",
+      "q": "When will the family look for Nino outside?",
       "options": [
         "tomorrow",
         "tonight",

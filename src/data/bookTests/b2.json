@@ -61,54 +61,54 @@
       ],
       "questions": [
         {
-          "q": "علی کجا زندگی می‌کند؟",
+          "q": "Where does Ali live?",
           "options": [
-            "در خانه‌ای بزرگ کنار یک رستوران",
-            "در آپارتمانی روبه‌روی یک کافه",
-            "در آپارتمانی در خیابانی کوچک نزدیک پارک",
-            "در خانه‌ای دور از شهر"
+            "In an apartment opposite a cafe",
+            "In an apartment on a little street near the park",
+            "In a big house next to a restaurant",
+            "In a house far from the city"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the boy from the new family have?",
+          "options": [
+            "A chicken",
+            "A piano",
+            "A ball",
+            "A guitar"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Who comes to live in the apartment next to Ali's?",
+          "options": [
+            "A policeman",
+            "A new family",
+            "A teacher",
+            "An old woman"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Ali play?",
+          "options": [
+            "The guitar",
+            "Football",
+            "The piano",
+            "Basketball"
           ],
           "answer": 2
         },
         {
-          "q": "پسر همسایه چه چیزی دارد؟",
+          "q": "Why is Dara happy?",
           "options": [
-            "یک پیانو",
-            "یک گیتار",
-            "یک توپ",
-            "یک جوجه"
+            "He has a new guitar",
+            "He has a new friend",
+            "Their house is big",
+            "He wins a match"
           ],
           "answer": 1
-        },
-        {
-          "q": "اسم پسر همسایه چیست؟",
-          "options": [
-            "کاوه",
-            "دارا",
-            "امید",
-            "رضا"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "علی چه سازی می‌زند؟",
-          "options": [
-            "پیانو",
-            "گیتار",
-            "ویولن",
-            "طبل"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "چرا دارا خوشحال است؟",
-          "options": [
-            "چون خانه‌شان بزرگ است",
-            "چون در یک مسابقه برنده شده است",
-            "چون یک گیتار تازه دارد",
-            "چون یک دوست تازه دارد"
-          ],
-          "answer": 3
         }
       ]
     },
@@ -171,54 +171,54 @@
       ],
       "questions": [
         {
-          "q": "حمید چه کاره است؟",
+          "q": "Hamid is a ___.",
           "options": [
-            "خوانندهٔ یک گروه موسیقی",
-            "بازیکن تنیس",
-            "پیشخدمت رستوران",
-            "بازیکن جوان فوتبال"
+            "waiter",
+            "singer in a band",
+            "tennis player",
+            "young football player"
           ],
           "answer": 3
         },
         {
-          "q": "مسابقه کجا برگزار می‌شود؟",
+          "q": "Where is the match?",
           "options": [
-            "در پارک",
-            "در خیابان",
-            "در مجموعهٔ ورزشی",
-            "در حیاط خانه"
+            "In the yard of his house",
+            "In the street",
+            "At the sports center",
+            "In the park"
           ],
           "answer": 2
         },
         {
-          "q": "چه کسانی از خانوادهٔ حمید برای دیدن بازی می‌آیند؟",
+          "q": "Who from Hamid's family comes to see the game?",
           "options": [
-            "فقط پدرش",
-            "برادر و مادرش",
-            "مادر، پدر و خواهر کوچکش",
-            "هیچ‌کس"
+            "No one",
+            "His brother and his mom",
+            "Only his dad",
+            "His mom, his dad and his little sister"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Who wins the match?",
+          "options": [
+            "Both teams",
+            "The team from the city",
+            "Hamid's team",
+            "No one wins"
           ],
           "answer": 2
         },
         {
-          "q": "نتیجهٔ مسابقه چیست؟",
+          "q": "Where does the family eat dinner in the evening?",
           "options": [
-            "تیمِ شهر می‌برد",
-            "تیم حمید می‌برد",
-            "بازی مساوی می‌شود",
-            "بازی نیمه‌کاره می‌ماند"
+            "At a neighbor's house",
+            "At home",
+            "At a nice restaurant",
+            "In the park"
           ],
-          "answer": 1
-        },
-        {
-          "q": "خانواده عصر کجا شام می‌خورند؟",
-          "options": [
-            "در یک رستوران خوب",
-            "در خانه",
-            "در پارک",
-            "در خانهٔ همسایه"
-          ],
-          "answer": 0
+          "answer": 2
         }
       ]
     }
@@ -289,54 +289,54 @@
       ],
       "questions": [
         {
-          "q": "مریم و سیما کجا همدیگر را می‌بینند؟",
+          "q": "Where do Maryam and Sima meet?",
           "options": [
-            "در پارک",
-            "در یک رستوران بزرگ",
-            "در خانهٔ سیما",
-            "در کافه‌ای کوچک در مرکز شهر"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "کافه کجاست؟",
-          "options": [
-            "سمت راست، کنار پارک",
-            "روبه‌روی باشگاه ورزشی",
-            "سمت چپ، روبه‌روی یک رستوران بزرگ",
-            "دور از مرکز شهر"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "مریم چه می‌خواهد؟",
-          "options": [
-            "شیر",
-            "آب",
-            "نان و تخم‌مرغ",
-            "هیچ‌چیز"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "برادر سیما چه کاره است؟",
-          "options": [
-            "پیشخدمت کافه",
-            "خوانندهٔ یک گروه موسیقی",
-            "بازیکن فوتبال",
-            "بازیگر معروف"
+            "In the park",
+            "At a little cafe in the city center",
+            "At Sima's house",
+            "In a big restaurant"
           ],
           "answer": 1
         },
         {
-          "q": "مریم و سیما عصر چه کار می‌کنند؟",
+          "q": "Where is the cafe?",
           "options": [
-            "همراه مادرهایشان به کنسرت می‌روند",
-            "به خانه می‌روند",
-            "در کافه می‌مانند",
-            "به باشگاه ورزشی می‌روند"
+            "Far from the city center",
+            "On the right, next to the park",
+            "Opposite the gym",
+            "On the left, opposite a big restaurant"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Maryam want?",
+          "options": [
+            "Nothing",
+            "Milk",
+            "Water",
+            "Bread and eggs"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Sima's brother is ___.",
+          "options": [
+            "a singer in a band",
+            "a waiter in the cafe",
+            "a football player",
+            "a famous actor"
           ],
           "answer": 0
+        },
+        {
+          "q": "What do Maryam and Sima do in the evening?",
+          "options": [
+            "They stay at the cafe",
+            "They go to the concert with their moms",
+            "They go home",
+            "They go to the gym"
+          ],
+          "answer": 1
         }
       ]
     },
@@ -400,54 +400,54 @@
       ],
       "questions": [
         {
-          "q": "نیما هر روز صبح چه کار می‌کند؟",
+          "q": "What does Nima do every morning?",
           "options": [
-            "در استخر شنا می‌کند",
-            "در پارک فوتبال بازی می‌کند",
-            "در باشگاه بسکتبال بازی می‌کند",
-            "گیتار می‌زند"
+            "He plays the guitar",
+            "He plays football in the park",
+            "He swims in the pool",
+            "He plays basketball at the gym"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Today, ___.",
+          "options": [
+            "his friend does not come",
+            "Nima cannot find his ball",
+            "the gym door is closed",
+            "the pool is full of people"
           ],
           "answer": 2
         },
         {
-          "q": "امروز چه مشکلی پیش می‌آید؟",
+          "q": "Who does Nima ask about the gym?",
           "options": [
-            "نیما توپش را پیدا نمی‌کند",
-            "در باشگاه بسته است",
-            "دوستش نمی‌آید",
-            "استخر پر از آدم است"
+            "A waiter",
+            "His friend Arash",
+            "A policeman on the street",
+            "His mother"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Where is the pool?",
+          "options": [
+            "Far from the city",
+            "Next to the park",
+            "Behind the restaurant",
+            "Opposite the gym"
           ],
           "answer": 1
         },
         {
-          "q": "نیما دربارهٔ باشگاه از چه کسی می‌پرسد؟",
+          "q": "At the end, how does Nima feel about swimming?",
           "options": [
-            "از دوستش آرش",
-            "از یک پلیس در خیابان",
-            "از مادرش",
-            "از یک پیشخدمت"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "استخر کجاست؟",
-          "options": [
-            "کنار پارک",
-            "روبه‌روی باشگاه",
-            "دور از شهر",
-            "پشت رستوران"
+            "He likes swimming too now",
+            "He only likes basketball",
+            "He still does not like it",
+            "He is afraid of the water"
           ],
           "answer": 0
-        },
-        {
-          "q": "در پایان، نیما دربارهٔ شنا چه احساسی دارد؟",
-          "options": [
-            "هنوز شنا را دوست ندارد",
-            "از آب می‌ترسد",
-            "فقط بسکتبال را دوست دارد",
-            "حالا شنا را هم دوست دارد"
-          ],
-          "answer": 3
         }
       ]
     }

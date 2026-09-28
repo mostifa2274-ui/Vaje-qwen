@@ -60,54 +60,54 @@
   ],
   "questions": [
     {
-      "q": "همه اول کجا جمع می‌شوند؟",
+      "q": "Where does everyone meet first?",
       "options": [
-        "در آشپزخانه",
-        "کنار در جلویی",
-        "در باغچه",
-        "در اتاق مینا"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "بعد از حیاط کجا را می‌گردند؟",
-      "options": [
-        "خانه‌ی همسایه",
-        "حمام",
-        "آشپزخانه",
-        "باغچه"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "آریا چه چیزی برای جاهای تاریک می‌آورد؟",
-      "options": [
-        "چراغش",
-        "کیفش",
-        "کتابش",
-        "کفشش"
+        "By the front door",
+        "In Mina's room",
+        "In the garden",
+        "In the kitchen"
       ],
       "answer": 0
     },
     {
-      "q": "مینا برای نینو چه برمی‌دارد؟",
+      "q": "Where do they look after the yard?",
       "options": [
-        "شیر و پنیر",
-        "تخم‌مرغ",
-        "آب و نان",
-        "یک جعبه"
+        "Under the beds",
+        "In the garden",
+        "In the bathroom",
+        "In the kitchen"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What does Aria take for the dark places?",
+      "options": [
+        "His book",
+        "His shoes",
+        "His bag",
+        "His light"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "What does Mina take for Nino?",
+      "options": [
+        "Eggs",
+        "Milk and cheese",
+        "Water and bread",
+        "A box"
       ],
       "answer": 2
     },
     {
-      "q": "یاسی کجا می‌ماند؟",
+      "q": "Where does Yasi stay?",
       "options": [
-        "با بابا در حیاط",
-        "در اتاق آریا",
-        "با مینا در باغچه",
-        "با مامان در آشپزخانه"
+        "With Dad in the yard",
+        "In Aria's room",
+        "With Mom in the kitchen",
+        "With Mina in the garden"
       ],
-      "answer": 3
+      "answer": 2
     }
   ]
 }

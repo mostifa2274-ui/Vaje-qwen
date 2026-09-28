@@ -61,52 +61,52 @@
       ],
       "questions": [
         {
-          "q": "پریسا جمعه‌ها معمولاً چه ساعتی بیدار می‌شود؟",
+          "q": "On Fridays, when does Parisa usually wake?",
           "options": [
-            "ساعت شش و نیم",
-            "ساعت ده",
-            "ساعت دو",
-            "ساعت پنج"
+            "At ten o'clock",
+            "At five o'clock",
+            "At two o'clock",
+            "At half past six"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Why does the family have a party today?",
+          "options": [
+            "It is the weekend",
+            "It is Kaveh's birthday",
+            "Kaveh wins a match",
+            "A visitor comes from another city"
           ],
           "answer": 1
         },
         {
-          "q": "چرا خانواده امروز جشن می‌گیرد؟",
+          "q": "How old is Kaveh today?",
           "options": [
-            "چون تولد کاوه است",
-            "چون کاوه در مسابقه برنده شده است",
-            "چون مهمان از شهر دیگری می‌آید",
-            "چون آخر هفته است"
+            "Seventeen",
+            "Eighty",
+            "Eighteen",
+            "Eight"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "کاوه امروز چند ساله می‌شود؟",
+          "q": "Parisa tells Kaveh to stay in his room until ___.",
           "options": [
-            "هجده",
-            "هشت",
-            "هفده",
-            "هشتاد"
+            "two o'clock",
+            "ten o'clock",
+            "five o'clock",
+            "midnight"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "پریسا از کاوه می‌خواهد تا چه ساعتی در اتاقش بماند؟",
+          "q": "They eat cake and talk until ___.",
           "options": [
-            "تا ساعت دو",
-            "تا نیمه‌شب",
-            "تا ساعت ده",
-            "تا ساعت پنج"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "جشن تا کی ادامه دارد؟",
-          "options": [
-            "تا ساعت پنج",
-            "تا صبح روز بعد",
-            "تا نیمه‌شب",
-            "فقط یک ساعت"
+            "the next morning",
+            "six o'clock",
+            "midnight",
+            "five o'clock"
           ],
           "answer": 2
         }
@@ -172,54 +172,279 @@
       ],
       "questions": [
         {
-          "q": "این هفته در چه ماهی است؟",
+          "q": "This week is in ___.",
           "options": [
-            "ژانویه",
-            "ژوئیه",
-            "مارس",
-            "دسامبر"
+            "December",
+            "January",
+            "July",
+            "March"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Shirin do on Sunday?",
+          "options": [
+            "She goes to the gym with her friend and swims",
+            "She watches TV at home",
+            "She stays in bed until the afternoon",
+            "She helps her dad in the kitchen"
           ],
           "answer": 0
         },
         {
-          "q": "شیرین یکشنبه چه کار می‌کند؟",
+          "q": "Why does Shirin wait outside on Monday?",
           "options": [
-            "در خانه تلویزیون تماشا می‌کند",
-            "در آشپزخانه به پدرش کمک می‌کند",
-            "تا بعدازظهر در رختخواب می‌ماند",
-            "با دوستش به باشگاه می‌رود و شنا می‌کند"
+            "She forgets her key",
+            "She waits for her friend",
+            "The house clock is not right",
+            "They have visitors at home"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "How long does Shirin wait outside?",
+          "options": [
+            "Twenty minutes",
+            "An hour",
+            "Half an hour",
+            "Ten minutes"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does Shirin give Mahsa?",
+          "options": [
+            "A clock",
+            "A guitar",
+            "A little red book",
+            "A ball"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b3-reading-c",
+      "titleEn": "Monday Is a Long Day",
+      "titleFa": "دوشنبه روز درازی است",
+      "names": [
+        "Sohrab"
+      ],
+      "sentences": [
+        {
+          "en": "On Mondays, Sohrab always wakes early, at half past six.",
+          "fa": "دوشنبه‌ها سهراب همیشه زود، ساعت شش و نیم، بیدار می‌شود."
+        },
+        {
+          "en": "He has a quick breakfast of bread, cheese and a cup of milk.",
+          "fa": "صبحانهٔ سریعی از نان، پنیر و یک فنجان شیر می‌خورد."
+        },
+        {
+          "en": "At a quarter past seven, he takes the bus to school.",
+          "fa": "ساعت هفت و ربع با اتوبوس به مدرسه می‌رود."
+        },
+        {
+          "en": "His first lesson is at eight o'clock, and he likes it very much.",
+          "fa": "اولین درسش ساعت هشت است و آن را خیلی دوست دارد."
+        },
+        {
+          "en": "After school, he goes to the gym for an hour.",
+          "fa": "بعد از مدرسه، یک ساعت به باشگاه ورزشی می‌رود."
+        },
+        {
+          "en": "Then he visits an old neighbor, who lives near the river.",
+          "fa": "بعد به دیدن همسایهٔ پیری می‌رود که نزدیک رودخانه زندگی می‌کند."
+        },
+        {
+          "en": "She gives him a glass of juice and a piece of cake.",
+          "fa": "همسایه یک لیوان آب‌میوه و یک تکه کیک به او می‌دهد."
+        },
+        {
+          "en": "At six o'clock, he comes home and reads his books for school.",
+          "fa": "ساعت شش به خانه می‌آید و کتاب‌های مدرسه‌اش را می‌خواند."
+        },
+        {
+          "en": "His little sister often asks him to play with her.",
+          "fa": "خواهر کوچکش اغلب از او می‌خواهد که با او بازی کند."
+        },
+        {
+          "en": "At nine o'clock, the family eats dinner and watches the news on TV.",
+          "fa": "ساعت نه، خانواده شام می‌خورند و اخبار را در تلویزیون تماشا می‌کنند."
+        },
+        {
+          "en": "Sohrab is very tired, so he goes to bed at ten.",
+          "fa": "سهراب خیلی خسته است، پس ساعت ده به رختخواب می‌رود."
+        },
+        {
+          "en": "\"Mondays are never easy,\" he says, \"but I like them.\"",
+          "fa": "می‌گوید: «دوشنبه‌ها هیچ‌وقت آسان نیستند، اما دوستشان دارم.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "When does Sohrab wake on Mondays?",
+          "options": [
+            "At a quarter past seven",
+            "At six o'clock",
+            "At seven o'clock",
+            "At half past six"
           ],
           "answer": 3
         },
         {
-          "q": "چرا شیرین دوشنبه بیرون منتظر می‌ماند؟",
+          "q": "How does Sohrab go to school?",
           "options": [
-            "چون منتظر دوستش است",
-            "چون در خانه مهمان دارند",
-            "چون ساعت خانه خراب است",
-            "چون کلیدش را فراموش کرده است"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "شیرین چه مدت بیرون منتظر می‌ماند؟",
-          "options": [
-            "یک ساعت",
-            "ده دقیقه",
-            "بیست دقیقه",
-            "نیم ساعت"
+            "With his dad",
+            "On foot",
+            "By bus",
+            "By car"
           ],
           "answer": 2
         },
         {
-          "q": "شیرین به مهسا چه هدیه‌ای می‌دهد؟",
+          "q": "Where does Sohrab go after school?",
           "options": [
-            "یک گیتار",
-            "یک کتاب قرمز کوچک",
-            "یک ساعت",
-            "یک توپ"
+            "To the market",
+            "To the gym",
+            "To the park",
+            "To the river"
           ],
           "answer": 1
+        },
+        {
+          "q": "What does the old neighbor give him?",
+          "options": [
+            "Water and cheese",
+            "Juice and a piece of cake",
+            "Eggs and milk",
+            "Milk and bread"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the family do at nine o'clock?",
+          "options": [
+            "They go to bed",
+            "They visit the neighbor",
+            "They eat dinner and watch the news",
+            "They play a game"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b3-reading-d",
+      "titleEn": "Waiting at the Bus Station",
+      "titleFa": "انتظار در ایستگاه اتوبوس",
+      "names": [
+        "Arezoo",
+        "Hooman"
+      ],
+      "sentences": [
+        {
+          "en": "On Thursday, Arezoo and her father go to the bus station to meet her big brother, Hooman.",
+          "fa": "پنجشنبه، آرزو و پدرش برای دیدن برادر بزرگش، هومن، به ایستگاه اتوبوس می‌روند."
+        },
+        {
+          "en": "Hooman studies in another city, and he comes home by bus twice a year.",
+          "fa": "هومن در شهر دیگری درس می‌خواند و سالی دو بار با اتوبوس به خانه می‌آید."
+        },
+        {
+          "en": "His bus arrives at a quarter to four.",
+          "fa": "اتوبوسش ساعت یک ربع به چهار می‌رسد."
+        },
+        {
+          "en": "Arezoo and her father get to the station early, at half past three.",
+          "fa": "آرزو و پدرش زود، ساعت سه و نیم، به ایستگاه می‌رسند."
+        },
+        {
+          "en": "The station is busy, and there are many people with bags.",
+          "fa": "ایستگاه شلوغ است و آدم‌های زیادی با کیف آنجا هستند."
+        },
+        {
+          "en": "Arezoo looks at the big clock above the doors.",
+          "fa": "آرزو به ساعت بزرگ بالای درها نگاه می‌کند."
+        },
+        {
+          "en": "At four o'clock, there is still no bus.",
+          "fa": "ساعت چهار، هنوز اتوبوسی نیامده است."
+        },
+        {
+          "en": "Then her father gets a message on his phone.",
+          "fa": "بعد یک پیام روی تلفن پدرش می‌آید."
+        },
+        {
+          "en": "\"The bus is late,\" he reads. \"It will be here in twenty minutes.\"",
+          "fa": "می‌خواند: «اتوبوس تأخیر دارد. بیست دقیقهٔ دیگر اینجاست.»"
+        },
+        {
+          "en": "They sit and wait, and they eat some fruit.",
+          "fa": "می‌نشینند و منتظر می‌مانند و کمی میوه می‌خورند."
+        },
+        {
+          "en": "At twenty past four, the bus comes in, and Hooman gets off with a big bag.",
+          "fa": "ساعت چهار و بیست دقیقه اتوبوس می‌رسد و هومن با یک کیف بزرگ پیاده می‌شود."
+        },
+        {
+          "en": "Arezoo runs to him, and Hooman says, \"I missed you so much!\"",
+          "fa": "آرزو به طرفش می‌دود و هومن می‌گوید: «خیلی دلم برایت تنگ شده بود!»"
+        },
+        {
+          "en": "They walk home together, and Hooman tells them all his news.",
+          "fa": "با هم پیاده به خانه می‌روند و هومن همهٔ خبرهایش را برایشان تعریف می‌کند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Why do Arezoo and her father go to the bus station?",
+          "options": [
+            "To meet her brother",
+            "To take a bus",
+            "To look at the big clock",
+            "To get some fruit"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "How often does Hooman come home?",
+          "options": [
+            "Once a month",
+            "Twice a year",
+            "Every day",
+            "Every week"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Where is the big clock?",
+          "options": [
+            "Above the doors",
+            "On the bus",
+            "Below the doors",
+            "Next to the bags"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the message on the phone say?",
+          "options": [
+            "Hooman is at home",
+            "The bus is not coming",
+            "The bus is late",
+            "The station is closed"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "When does the bus come in?",
+          "options": [
+            "At four o'clock",
+            "At half past three",
+            "At twenty past four",
+            "At a quarter to four"
+          ],
+          "answer": 2
         }
       ]
     }
@@ -284,54 +509,54 @@
       ],
       "questions": [
         {
-          "q": "ساعت آرمان کجاست؟",
+          "q": "Where is Arman's clock?",
           "options": [
-            "کنار تختش",
-            "روی دیوار آشپزخانه",
-            "روی میز تحریرش",
-            "در حمام"
+            "In the bathroom",
+            "On the kitchen wall",
+            "On his desk",
+            "Next to his bed"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "When is Arman's football match?",
+          "options": [
+            "At nine o'clock",
+            "At six o'clock",
+            "At ten o'clock",
+            "At half past eight"
           ],
           "answer": 0
         },
         {
-          "q": "مسابقهٔ فوتبال آرمان ساعت چند است؟",
+          "q": "When his mom calls, what does Arman's clock say?",
           "options": [
-            "ساعت شش",
-            "ساعت هشت و نیم",
-            "ساعت ده",
-            "ساعت نه"
+            "Seven o'clock",
+            "Half past eight",
+            "Nine o'clock",
+            "Still six o'clock"
           ],
           "answer": 3
         },
         {
-          "q": "وقتی مادر صدایش می‌زند، ساعت آرمان چه ساعتی را نشان می‌دهد؟",
+          "q": "When does Arman get to the park?",
           "options": [
-            "ساعت هشت و نیم",
-            "ساعت نه",
-            "ساعت هفت",
-            "هنوز ساعت شش"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "آرمان چه ساعتی به پارک می‌رسد؟",
-          "options": [
-            "نه و ربع",
-            "هشت و نیم",
-            "ده دقیقه به نه",
-            "ساعت شش"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "نتیجهٔ مسابقه چه می‌شود؟",
-          "options": [
-            "تیم آرمان سه بر یک می‌بازد",
-            "تیم آرمان سه بر یک می‌برد",
-            "بازی مساوی می‌شود",
-            "مسابقه برگزار نمی‌شود"
+            "At half past eight",
+            "At ten to nine",
+            "At six o'clock",
+            "At a quarter past nine"
           ],
           "answer": 1
+        },
+        {
+          "q": "What happens in the match?",
+          "options": [
+            "Arman's team wins three to one",
+            "There is no match",
+            "No one wins",
+            "Arman's team loses three to one"
+          ],
+          "answer": 0
         }
       ]
     },
@@ -399,52 +624,272 @@
       ],
       "questions": [
         {
-          "q": "این داستان در چه ماهی اتفاق می‌افتد؟",
+          "q": "This story happens in ___.",
           "options": [
-            "ژانویه",
-            "ژوئیه",
-            "آوریل",
-            "اکتبر"
+            "April",
+            "July",
+            "October",
+            "January"
           ],
           "answer": 1
         },
         {
-          "q": "خانوادهٔ سپیده چه روزی راه می‌افتند؟",
+          "q": "When does Sepideh's family leave?",
           "options": [
-            "پنجشنبه بعدازظهر",
-            "شنبه صبح",
-            "یکشنبه عصر",
-            "جمعه شب"
+            "On Friday night",
+            "On Saturday morning",
+            "On Thursday afternoon",
+            "On Sunday evening"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "رسیدن به آن شهر کوچک چقدر طول می‌کشد؟",
+          "q": "How long does it take to get to the little town?",
           "options": [
-            "سه ساعت",
-            "هفت ساعت",
-            "نیم ساعت",
-            "یک روز"
+            "A day",
+            "Three hours",
+            "Seven hours",
+            "Half an hour"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
-          "q": "دو دختر جمعه صبح چه کار می‌کنند؟",
+          "q": "What do the two girls do on Friday morning?",
           "options": [
-            "به کنسرت می‌روند",
-            "فوتبال بازی می‌کنند",
-            "به پارک می‌روند",
-            "در استخر شهر شنا می‌کنند"
+            "They go to the park",
+            "They play football",
+            "They go to a concert",
+            "They swim in the town pool"
           ],
           "answer": 3
         },
         {
-          "q": "رویا هنگام خداحافظی چه می‌گوید؟",
+          "q": "What does Roya say when they leave?",
           "options": [
-            "فردا به شهر شما می‌آیم",
-            "زود به خانه برو",
-            "تابستان بعد دوباره بیا",
-            "برایم نامه بنویس"
+            "I will come to your city tomorrow",
+            "Go home early",
+            "Write to me",
+            "Come again next summer"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b3-listening-c",
+      "titleEn": "Dad's Birthday",
+      "titleFa": "تولد بابا",
+      "names": [
+        "Soroush"
+      ],
+      "sentences": [
+        {
+          "en": "Next Friday is Dad's birthday, and he will be fifty.",
+          "fa": "جمعهٔ بعد تولد باباست و پنجاه ساله می‌شود."
+        },
+        {
+          "en": "Soroush and his sister want to make it a special day.",
+          "fa": "سروش و خواهرش می‌خواهند آن را روز ویژه‌ای کنند."
+        },
+        {
+          "en": "They make a list of things to do.",
+          "fa": "فهرستی از کارهایی که باید بکنند درست می‌کنند."
+        },
+        {
+          "en": "First, Soroush writes a message to all the family.",
+          "fa": "اول، سروش برای همهٔ فامیل پیامی می‌نویسد."
+        },
+        {
+          "en": "He asks them to come to the house at five o'clock on Friday.",
+          "fa": "از آن‌ها می‌خواهد جمعه ساعت پنج به خانه بیایند."
+        },
+        {
+          "en": "His sister draws a picture of the family for Dad.",
+          "fa": "خواهرش برای بابا نقاشی‌ای از خانواده می‌کشد."
+        },
+        {
+          "en": "On Friday morning, Mom makes a big cake.",
+          "fa": "جمعه صبح، مامان یک کیک بزرگ درست می‌کند."
+        },
+        {
+          "en": "At five o'clock, twenty people are in the house, and they are very quiet.",
+          "fa": "ساعت پنج، بیست نفر در خانه هستند و خیلی ساکت‌اند."
+        },
+        {
+          "en": "Dad comes in, and everyone says, \"Happy birthday!\"",
+          "fa": "بابا وارد می‌شود و همه می‌گویند: «تولدت مبارک!»"
+        },
+        {
+          "en": "He cannot believe it, and he laughs.",
+          "fa": "باورش نمی‌شود و می‌خندد."
+        },
+        {
+          "en": "He looks at the picture of the family for a long time.",
+          "fa": "مدت زیادی به نقاشی خانواده نگاه می‌کند."
+        },
+        {
+          "en": "\"This is the best birthday of my life,\" he says.",
+          "fa": "می‌گوید: «این بهترین تولد عمرم است.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "How old will Dad be?",
+          "options": [
+            "Five",
+            "Fifteen",
+            "Fifty",
+            "Sixty"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Soroush write first?",
+          "options": [
+            "A list for the market",
+            "A picture for Dad",
+            "A note to his sister",
+            "A message to all the family"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does his sister make for Dad?",
+          "options": [
+            "A cake",
+            "A picture of the family",
+            "A list",
+            "A message"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How many people are in the house at five o'clock?",
+          "options": [
+            "Twelve",
+            "Twenty",
+            "Seventy",
+            "Seven"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Dad say?",
+          "options": [
+            "I am very tired.",
+            "Please be quiet.",
+            "This is the best birthday of my life.",
+            "Where is the cake?"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b3-listening-d",
+      "titleEn": "The Market by the River",
+      "titleFa": "بازار کنار رودخانه",
+      "names": [
+        "Shabnam"
+      ],
+      "sentences": [
+        {
+          "en": "Every Saturday, there is a market next to the river in Shabnam's town.",
+          "fa": "هر شنبه، کنار رودخانهٔ شهر شبنم بازاری برپا می‌شود."
+        },
+        {
+          "en": "Shabnam goes there with her mother at nine o'clock.",
+          "fa": "شبنم ساعت نه با مادرش به آنجا می‌رود."
+        },
+        {
+          "en": "This Saturday, the weather is cold, but the sun is out.",
+          "fa": "این شنبه هوا سرد است، اما آفتاب درآمده است."
+        },
+        {
+          "en": "The market is full of people, fruit and flowers.",
+          "fa": "بازار پر از آدم، میوه و گل است."
+        },
+        {
+          "en": "Her mother gets fruit, eggs and a piece of cheese.",
+          "fa": "مادرش میوه، تخم‌مرغ و یک تکه پنیر می‌گیرد."
+        },
+        {
+          "en": "Shabnam wants a new pen for school, so she looks for one.",
+          "fa": "شبنم برای مدرسه یک خودکار تازه می‌خواهد، پس دنبالش می‌گردد."
+        },
+        {
+          "en": "A man has pens and pencils on a small table.",
+          "fa": "مردی روی یک میز کوچک خودکار و مداد دارد."
+        },
+        {
+          "en": "The pens are red, blue and black.",
+          "fa": "خودکارها قرمز، آبی و سیاه‌اند."
+        },
+        {
+          "en": "Shabnam chooses a blue pen, and her mother gets it for her.",
+          "fa": "شبنم یک خودکار آبی انتخاب می‌کند و مادرش آن را برایش می‌گیرد."
+        },
+        {
+          "en": "Then they sit by the river and watch the birds for a few minutes.",
+          "fa": "بعد کنار رودخانه می‌نشینند و چند دقیقه پرنده‌ها را تماشا می‌کنند."
+        },
+        {
+          "en": "At eleven o'clock, they walk home with their bags.",
+          "fa": "ساعت یازده با کیسه‌هایشان پیاده به خانه برمی‌گردند."
+        },
+        {
+          "en": "\"Can we come again next week?\" Shabnam asks, and her mother says yes.",
+          "fa": "شبنم می‌پرسد: «هفتهٔ بعد هم می‌توانیم بیاییم؟» و مادرش می‌گوید بله."
+        }
+      ],
+      "questions": [
+        {
+          "q": "When is the market?",
+          "options": [
+            "Every Sunday",
+            "Every Saturday",
+            "Every Friday",
+            "Every day"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the weather like this Saturday?",
+          "options": [
+            "Cold, but the sun is out",
+            "Very warm",
+            "It is raining",
+            "Warm and quiet"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does Shabnam want?",
+          "options": [
+            "A new pen for school",
+            "A piece of cheese",
+            "Some flowers",
+            "A new book"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Shabnam chooses a ___ pen.",
+          "options": [
+            "blue",
+            "yellow",
+            "black",
+            "red"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "When do they walk home?",
+          "options": [
+            "At ten o'clock",
+            "At twelve o'clock",
+            "At eleven o'clock",
+            "At nine o'clock"
           ],
           "answer": 2
         }

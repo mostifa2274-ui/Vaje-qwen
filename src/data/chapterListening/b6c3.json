@@ -58,52 +58,52 @@
   ],
   "questions": [
     {
-      "q": "نویسنده‌ی وبلاگ مینا را کجا دید؟",
+      "q": "Where did the blog writer meet Mina?",
       "options": [
-        "در دفتر شرکت",
-        "در بازار",
-        "در مدرسه",
-        "در پارک"
+        "At the company office",
+        "At the market",
+        "At school",
+        "In the park"
       ],
       "answer": 0
     },
     {
-      "q": "مینا چند سال دارد؟",
+      "q": "How old is Mina?",
       "options": [
-        "ده",
-        "دوازده",
-        "یازده",
-        "نه"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "مینا و پدرش چند یادداشت درست کردند؟",
-      "options": [
-        "ده",
-        "صد",
-        "هزار",
-        "بیست"
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Nine"
       ],
       "answer": 1
     },
     {
-      "q": "نینو دنبال چه می‌رود؟",
+      "q": "How many notes did Mina and her father make?",
       "options": [
-        "گربه‌ها",
-        "بچه‌ها",
-        "ماشین‌ها",
-        "پرنده‌های قرمز"
+        "A thousand",
+        "Twenty",
+        "A hundred",
+        "Ten"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
-      "q": "مینا در آینده می‌خواهد چه کاره شود؟",
+      "q": "What does Nino often follow?",
       "options": [
-        "دانشمند",
-        "نویسنده یا کسی که به حیوان‌ها کمک می‌کند",
-        "معلم",
-        "کشاورز"
+        "Red birds",
+        "Cats",
+        "Cars",
+        "Children"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What does Mina want to be in the future?",
+      "options": [
+        "A scientist",
+        "A writer or a person who helps animals",
+        "A farmer",
+        "A teacher"
       ],
       "answer": 1
     }

@@ -57,52 +57,52 @@
   ],
   "questions": [
     {
-      "q": "معلم چند درس درس می‌دهد؟",
+      "q": "How many subjects does the teacher teach?",
       "options": [
-        "دو",
-        "سه",
-        "چهار",
-        "پنج"
+        "Five",
+        "Two",
+        "Four",
+        "Three"
       ],
       "answer": 2
     },
     {
-      "q": "چند دانش‌آموز به کلاس می‌آیند؟",
+      "q": "How many students come in?",
       "options": [
-        "هجده",
-        "بیست",
-        "ده",
-        "دوازده"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "معلم امروز از دانش‌آموزها چه می‌گیرد؟",
-      "options": [
-        "یک امتحان سخت",
-        "یک آزمون کوتاه",
-        "تکلیف",
-        "یک نقشه"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "کدام دانش‌آموز خیلی خوب می‌نویسد؟",
-      "options": [
-        "نگار",
-        "یاسی",
-        "دختر کشاورز",
-        "مینا"
+        "Twenty",
+        "Ten",
+        "Twelve",
+        "Eighteen"
       ],
       "answer": 3
     },
     {
-      "q": "تکلیف ویژه‌ی فردا چیست؟",
+      "q": "What does the teacher give the students today?",
       "options": [
-        "کمک به مینا",
-        "خواندن یک کتاب",
-        "کشیدن نقشه",
-        "نوشتن یک شعر"
+        "A difficult exam",
+        "A short test",
+        "A map",
+        "Homework"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Which student writes very well?",
+      "options": [
+        "The oldest student",
+        "A boy from the city",
+        "Mina",
+        "The teacher's daughter"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "What is the special homework for tomorrow?",
+      "options": [
+        "To help Mina",
+        "To draw a map",
+        "To read a book",
+        "To write a poem"
       ],
       "answer": 0
     }

@@ -190,7 +190,7 @@
   ],
   "check": [
     {
-      "q": "دو پسر در پارک چه بازی می‌کنند؟",
+      "q": "What are the two boys in the park playing?",
       "options": [
         "football",
         "swimming",
@@ -200,7 +200,7 @@
       "a": "football"
     },
     {
-      "q": "نوجوان جوجه را نزدیک کجا دیده است؟",
+      "q": "The teenager saw the chicken near the ___ stop.",
       "options": [
         "bus",
         "pool",

@@ -55,54 +55,54 @@
   ],
   "questions": [
     {
-      "q": "مرد نانوا ساعت چند بیدار می‌شود؟",
+      "q": "When does the bread man wake?",
       "options": [
-        "ساعت شش",
-        "ساعت پنج",
-        "ساعت هفت",
-        "ساعت چهار"
+        "At six o'clock",
+        "At seven o'clock",
+        "At four o'clock",
+        "At five o'clock"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
-      "q": "قبل از ساعت شش کنار در چه می‌گذارد؟",
+      "q": "What does he put by the door before six o'clock?",
       "options": [
-        "کمی آب",
-        "تکه‌های کوچک نان",
-        "یک کاسه سوپ",
-        "شیر"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "چه چیزی از خیابان آرام پایین می‌آید؟",
-      "options": [
-        "یک جوجه‌ی زرد کوچک",
-        "یک گربه",
-        "اولین مشتری",
-        "یک ماشین"
+        "Little pieces of bread",
+        "A cup of soup",
+        "Milk",
+        "Some water"
       ],
       "answer": 0
     },
     {
-      "q": "ظهر چه آماده می‌کند؟",
+      "q": "What comes down the quiet street?",
       "options": [
-        "کیک",
-        "بستنی",
-        "سوپ داغ و ساندویچ",
-        "سالاد"
+        "A car",
+        "A man with a dog",
+        "A little yellow chicken",
+        "A cat"
       ],
       "answer": 2
     },
     {
-      "q": "بچه‌ها نانش را با چه ترجیح می‌دهند؟",
+      "q": "What does he prepare at lunch?",
       "options": [
-        "با نمک و فلفل",
-        "با پنیر",
-        "با کره و شکر",
-        "با سوپ"
+        "Salad",
+        "Eggs",
+        "Cake",
+        "Hot soup and sandwiches"
       ],
-      "answer": 2
+      "answer": 3
+    },
+    {
+      "q": "Children prefer his bread with ___.",
+      "options": [
+        "butter and sugar",
+        "salt and pepper",
+        "soup",
+        "cheese"
+      ],
+      "answer": 0
     }
   ]
 }

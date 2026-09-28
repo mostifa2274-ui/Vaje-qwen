@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { CHAPTERS, lemmaMap } from './chapters'
 import { BOOK_TEST_CONTENT, type TestText } from './bookTests'
 import { tokenizeSentence } from '../engine/lemmatize'
+import { lastChapterOfBook, questionProblems } from './questionVocabulary'
+import { bookTestTextsPerSkill } from '../engine/bookTestSize'
 
 const introducedIn = new Map<string, number>()
 for (const chapter of CHAPTERS) for (const id of chapter.new) introducedIn.set(id, chapter.book)
@@ -12,12 +14,18 @@ function textsOf(book: number): TestText[] {
   return [...content.reading, ...content.listening]
 }
 
+// Texts are read or heard, never tapped for glosses, so a possessive or
+// "let's" is checked as its base words.
+function checkable(line: string): string {
+  return line.replace(/\b(l)et['’]s\b/gi, '$1et us').replace(/(\w)['’]s\b/g, '$1')
+}
+
 /** Every English word must be taught in this book or earlier, or be a declared name. */
 function vocabularyProblems(text: TestText, book: number): string[] {
   const problems: string[] = []
   const lines = [text.titleEn, ...text.sentences.map(sentence => sentence.en)]
   for (const line of lines) {
-    for (const token of tokenizeSentence(line, lemmaMap)) {
+    for (const token of tokenizeSentence(checkable(line), lemmaMap)) {
       if (!token.isWord) continue
       if (text.names.includes(token.raw)) continue
       if (!token.id) {
@@ -32,20 +40,23 @@ function vocabularyProblems(text: TestText, book: number): string[] {
 }
 
 describe('end-of-book comprehension texts', () => {
-  it('exist for all eight books with two reading and two listening variants', () => {
+  it('exist for all eight books: two sets of texts, growing with the books', () => {
     for (let book = 1; book <= 8; book++) {
       const content = BOOK_TEST_CONTENT.get(book)
       expect(content, `book ${book}`).toBeDefined()
-      expect(content!.reading).toHaveLength(2)
-      expect(content!.listening).toHaveLength(2)
+      // 1 reading and 1 listening text per attempt for books 1–2, 2 for 3–4,
+      // 3 for 5–6, 4 for 7–8; two sets alternate between attempts.
+      expect(content!.reading, `book ${book} reading`).toHaveLength(2 * bookTestTextsPerSkill(book))
+      expect(content!.listening, `book ${book} listening`).toHaveLength(2 * bookTestTextsPerSkill(book))
     }
   })
 
   for (let book = 1; book <= 8; book++) {
-    it(`book ${book} texts use only vocabulary taught by book ${book}`, () => {
+    it(`book ${book} texts and questions use only vocabulary taught by book ${book}`, () => {
       if (!BOOK_TEST_CONTENT.has(book)) return
       const problems = textsOf(book).flatMap(text => vocabularyProblems(text, book).map(problem => `${text.id}: ${problem}`))
       expect(problems).toEqual([])
+      expect(textsOf(book).flatMap(text => questionProblems(text, lastChapterOfBook(book)))).toEqual([])
     })
   }
 
@@ -74,7 +85,6 @@ describe('end-of-book comprehension texts', () => {
         expect(text.questions, text.id).toHaveLength(5)
         const answers = new Set<number>()
         for (const question of text.questions) {
-          expect(question.q, text.id).toMatch(/[؀-ۿ]/)
           expect(question.options, `${text.id}: ${question.q}`).toHaveLength(4)
           expect(new Set(question.options.map(option => option.trim())).size, `${text.id}: ${question.q}`).toBe(4)
           expect(Number.isInteger(question.answer) && question.answer >= 0 && question.answer < 4, `${text.id}: ${question.q}`).toBe(true)

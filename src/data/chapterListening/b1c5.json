@@ -63,54 +63,54 @@
   ],
   "questions": [
     {
-      "q": "مامان در آشپزخانه چه می‌نوشد؟",
+      "q": "What does Mom drink in the kitchen?",
       "options": [
-        "شیر",
-        "یک لیوان آب",
-        "چای",
-        "هیچ چیز"
+        "Water from the garden",
+        "A glass of water",
+        "Nothing",
+        "Milk"
       ],
       "answer": 1
     },
     {
-      "q": "کنار در جلویی چه چیزی هنوز روشن است؟",
+      "q": "What is still on by the front door?",
       "options": [
-        "تلویزیون",
-        "چراغ آشپزخانه",
-        "چراغ کوچک",
-        "چراغ اتاق مینا"
+        "The light in Mina's room",
+        "The little light",
+        "The TV",
+        "The kitchen light"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "The water and the bread are still there. What does this tell us?",
+      "options": [
+        "Aria is tired",
+        "Nino is in the house now",
+        "Nino did not come for his dinner",
+        "Dad did not want his dinner"
       ],
       "answer": 2
     },
     {
-      "q": "نان و آب هنوز آنجاست؛ این یعنی چه؟",
+      "q": "Where is Dad?",
       "options": [
-        "نینو برای شامش نیامد",
-        "نینو آن را خورد",
-        "بابا آن را برداشت",
-        "آریا آن را خورد"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "بابا کجاست؟",
-      "options": [
-        "در آشپزخانه",
-        "در حیاط",
-        "در اتاق مینا",
-        "در اتاق جلویی"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "مامان کنار پنجره چه می‌گوید؟",
-      "options": [
-        "«شب بخیر، مینا.»",
-        "«نترس، نینو. فردا پیدایت می‌کنیم.»",
-        "«فردا به باغچه می‌رویم.»",
-        "«باران خوب است.»"
+        "In the kitchen",
+        "In the front room",
+        "In Mina's room",
+        "In the yard"
       ],
       "answer": 1
+    },
+    {
+      "q": "What does Mom say by the window?",
+      "options": [
+        "We will go to the garden tomorrow.",
+        "Good night, Mina.",
+        "The rain is good.",
+        "Do not be afraid, Nino. We will find you tomorrow."
+      ],
+      "answer": 3
     }
   ]
 }

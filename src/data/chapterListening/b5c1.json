@@ -5,7 +5,8 @@
   "names": [
     "Mina",
     "Nino",
-    "Aria"
+    "Aria",
+    "Negar"
   ],
   "sentences": [
     {
@@ -59,54 +60,54 @@
   ],
   "questions": [
     {
-      "q": "چرا مینا عصبانی است؟",
+      "q": "Why is Mina angry?",
       "options": [
-        "چون هر روز جوجه‌ی اشتباهی پیدا می‌شود",
-        "چون آریا کتابش را برداشته",
-        "چون مدرسه دارد",
-        "چون بابا دیر آمده"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "توصیه‌ی مامان چیست؟",
-      "options": [
-        "که بخوابد",
-        "که با نگار حرف بزند",
-        "که وقتی عصبانی است بنویسد",
-        "که به پارک برود"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "فکر آریا درباره‌ی چه کسانی است؟",
-      "options": [
-        "راننده‌های اتوبوس",
-        "آدم‌های دوچرخه‌سوار",
-        "معلم‌ها",
-        "پلیس‌ها"
+        "She has school",
+        "Every day, it is the wrong chicken",
+        "Aria took her book",
+        "Dad came home late"
       ],
       "answer": 1
     },
     {
-      "q": "نظر مینا درباره‌ی فکر آریا چیست؟",
+      "q": "What is Mom's advice?",
       "options": [
-        "فکر بدی است",
-        "نمی‌داند",
-        "خنده‌دار است",
-        "فکر خیلی خوبی است"
+        "Talk to Negar",
+        "Write when you are angry",
+        "Go to the park",
+        "Go to sleep"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Aria's idea is about ___.",
+      "options": [
+        "neighbors",
+        "teachers",
+        "the police",
+        "people on bicycles"
       ],
       "answer": 3
     },
     {
-      "q": "مینا در آخر چه حسی دارد؟",
+      "q": "What is Mina's opinion of Aria's idea?",
       "options": [
-        "خیلی عصبانی است",
-        "دیگر آن‌قدر عصبانی نیست",
-        "خسته است",
-        "می‌ترسد"
+        "It is funny",
+        "It is a bad idea",
+        "It is a very good idea",
+        "She does not know"
       ],
-      "answer": 1
+      "answer": 2
+    },
+    {
+      "q": "How does Mina feel at the end?",
+      "options": [
+        "Afraid",
+        "Very angry",
+        "Tired",
+        "Not so angry now"
+      ],
+      "answer": 3
     }
   ]
 }

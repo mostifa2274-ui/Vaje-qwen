@@ -16,11 +16,11 @@ import {
   type BookTestResult,
   type BookTestSection,
 } from '../engine/bookTest'
-import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft } from '../engine/bookTestDraft'
+import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft, savedBookTest } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
-import { ListeningPlayer, ListeningReview, Passage, QuestionReview, Questions, SoundOffNote } from '../components/TestPassage'
-import { SPEECH_UNAVAILABLE, usePassagePlayer } from '../components/usePassagePlayer'
+import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
+import { SPEECH_UNAVAILABLE } from '../components/usePassagePlayer'
 import { faNum, percent } from '../engine/format'
 
 interface Props {
@@ -43,9 +43,12 @@ const SECTION_LABELS: Record<BookTestSection, string> = {
 const SECTION_HINTS: Record<BookTestSection, string> = {
   translation: 'معنی فارسی هر واژه را بنویس؛ یک معنی درست کافی است.',
   listeningWords: 'هر واژه فقط پخش می‌شود و نوشته نمی‌شود. گوش کن و معنی درستش را انتخاب کن.',
-  reading: 'متن را بخوان و به پنج سؤال پاسخ بده. تا پیش از ثبت می‌توانی پاسخ‌ها را عوض کنی.',
-  listening: 'این متن فقط پخش می‌شود و تا پایان آزمون نمایش داده نمی‌شود. پس از یک‌بار شنیدن کامل، سؤال‌ها فعال می‌شوند و هر چند بار خواستی می‌توانی دوباره گوش کنی.',
+  reading: 'هر متن را بخوان و به پنج سؤالش پاسخ بده. تا پیش از رفتن به متن بعدی می‌توانی پاسخ‌ها را عوض کنی.',
+  listening: 'این متن‌ها فقط پخش می‌شوند و تا پایان آزمون نمایش داده نمی‌شوند. سؤال‌های هر متن پس از یک‌بار شنیدن کامل فعال می‌شوند و هر چند بار خواستی می‌توانی دوباره گوش کنی.',
 }
+
+// The word sections are long, so a short pause is offered every so many words.
+const BREAK_EVERY = 40
 
 function wallClockNow(): number {
   return Date.now()
@@ -54,7 +57,7 @@ function wallClockNow(): number {
 function sectionDone(test: BookTest, answers: BookTestAnswers, section: BookTestSection): boolean {
   if (section === 'translation') return answers.translation.length >= test.translation.length
   if (section === 'listeningWords') return answers.listeningWords.length >= test.listeningWords.length
-  return answers[section].every(choice => choice !== null)
+  return answers[section].every(chosen => chosen.every(choice => choice !== null))
 }
 
 function isSection(phase: Phase): phase is BookTestSection {
@@ -73,16 +76,24 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   const explore = state.exploreAll
   const [practice, setPractice] = useState(false)
   const unrecorded = preview || practice
-  const [test, setTest] = useState<BookTest>(() => buildBookTest(book, state, (state.exams[examId]?.attempts ?? 0) + 1)!)
+  // An unfinished attempt resumes with its own words, even after reviews
+  // would make a fresh build pick others.
+  const [test, setTest] = useState<BookTest>(() => {
+    const attempt = (state.exams[examId]?.attempts ?? 0) + 1
+    return savedBookTest(book, attempt) ?? buildBookTest(book, state, attempt)!
+  })
   const [initialDraft] = useState(() => loadBookTestDraft(test))
   const [resumed, setResumed] = useState(Boolean(initialDraft))
   const [phase, setPhase] = useState<Phase>(() => initialDraft?.section ?? 'intro')
   const [answers, setAnswers] = useState<BookTestAnswers>(() => initialDraft?.answers ?? emptyBookTestAnswers(test))
   const [timings, setTimings] = useState<Record<string, number>>(() => initialDraft?.timings ?? {})
-  const [listeningHeard, setListeningHeard] = useState(() => initialDraft?.listeningHeard ?? false)
+  const [listeningHeard, setListeningHeard] = useState<boolean[]>(() => initialDraft?.listeningHeard ?? test.listening.map(() => false))
+  // The text on screen within the reading or listening section.
+  const [textIndex, setTextIndex] = useState(() => initialDraft?.textIndex ?? 0)
   // Set once explore mode opens a section out of order, so the draft keeps it.
   const [jumped, setJumped] = useState(() => initialDraft?.jumped === true)
   const [typed, setTyped] = useState('')
+  const [onBreak, setOnBreak] = useState(false)
   const [wordReady, setWordReady] = useState(false)
   const [wordNotice, setWordNotice] = useState('')
   const [result, setResult] = useState<BookTestResult | null>(null)
@@ -94,13 +105,13 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   const translationIndex = answers.translation.length
   const listenIndex = answers.listeningWords.length
-  const translationWord = phase === 'translation' ? WORD_BY_ID.get(test.translation[translationIndex]?.wordId ?? '') : undefined
-  const listenItem = phase === 'listeningWords' ? test.listeningWords[listenIndex] : undefined
+  const translationWord = phase === 'translation' && !onBreak ? WORD_BY_ID.get(test.translation[translationIndex]?.wordId ?? '') : undefined
+  const listenItem = phase === 'listeningWords' && !onBreak ? test.listeningWords[listenIndex] : undefined
   const listenWord = listenItem ? WORD_BY_ID.get(listenItem.wordId) : undefined
 
-  const heardListening = useCallback(() => setListeningHeard(true), [])
-  const passage = usePassagePlayer(test.listening.sentences, state.narratorVoiceURI, state.narratorRate, heardListening)
-  const reviewPassage = usePassagePlayer(test.listening.sentences, state.narratorVoiceURI, state.narratorRate, () => {})
+  const heardListening = useCallback((slot: number) => {
+    setListeningHeard(previous => previous[slot] ? previous : previous.map((value, index) => index === slot ? true : value))
+  }, [])
 
   // New section: start at the top with focus on its heading.
   useEffect(() => {
@@ -110,23 +121,23 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     }
     window.scrollTo({ top: 0, behavior: 'auto' })
     headingRef.current?.focus({ preventScroll: true })
-  }, [phase])
+  }, [phase, textIndex])
 
   useEffect(() => {
     itemStartedAt.current = wallClockNow()
-  }, [phase, translationIndex, listenIndex])
+  }, [phase, translationIndex, listenIndex, onBreak])
 
   useEffect(() => {
-    if (phase !== 'translation') return
+    if (phase !== 'translation' || onBreak) return
     const frame = window.requestAnimationFrame(() => inputRef.current?.focus({ preventScroll: true }))
     return () => window.cancelAnimationFrame(frame)
-  }, [phase, translationIndex])
+  }, [onBreak, phase, translationIndex])
 
   useEffect(() => {
     if (!isSection(phase)) return
     if (phase === 'translation' && answers.translation.length === 0) return
-    saveBookTestDraft(test, { section: phase, answers, timings, listeningHeard, ...(jumped ? { jumped: true as const } : {}) })
-  }, [answers, jumped, listeningHeard, phase, test, timings])
+    saveBookTestDraft(test, { section: phase, textIndex, answers, timings, listeningHeard, ...(jumped ? { jumped: true as const } : {}) })
+  }, [answers, jumped, listeningHeard, phase, test, textIndex, timings])
 
   const speakWord = useCallback(() => {
     if (!listenWord || !state.soundOn) return
@@ -170,7 +181,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setAnswers({ ...answers, translation })
     setTimings({ ...timings, [`translation:${translationIndex}`]: elapsed })
     setTyped('')
-    if (translation.length >= test.translation.length) setPhase(nextOpenSection({ ...answers, translation }, 'translation'))
+    if (translation.length >= test.translation.length) openSection(nextOpenSection({ ...answers, translation }, 'translation'))
+    else if (translation.length % BREAK_EVERY === 0) setOnBreak(true)
   }
 
   function answerListeningWord(chosen: string) {
@@ -183,7 +195,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     setTimings({ ...timings, [`listeningWords:${listenIndex}`]: elapsed })
     setWordReady(false)
     setWordNotice('')
-    if (listeningWords.length >= test.listeningWords.length) setPhase(nextOpenSection({ ...answers, listeningWords }, 'listeningWords'))
+    if (listeningWords.length >= test.listeningWords.length) openSection(nextOpenSection({ ...answers, listeningWords }, 'listeningWords'))
+    else if (listeningWords.length % BREAK_EVERY === 0) setOnBreak(true)
   }
 
   // The next section still to do; in the normal order that is simply the next one.
@@ -193,11 +206,16 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
       .find(section => !sectionDone(test, next, section)) ?? 'listening'
   }
 
+  function openSection(section: BookTestSection) {
+    setOnBreak(false)
+    setTextIndex(0)
+    setPhase(section)
+  }
+
   function jumpToSection(section: BookTestSection) {
     if (!explore || section === phase) return
     setResumed(false)
     setJumped(true)
-    passage.stop()
     wordToken.current++
     setTyped('')
     setWordReady(false)
@@ -205,19 +223,40 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     // A finished word section starts over when reopened; any other keeps its answers.
     if (section === 'translation' && sectionDone(test, answers, section)) setAnswers({ ...answers, translation: [] })
     if (section === 'listeningWords' && sectionDone(test, answers, section)) setAnswers({ ...answers, listeningWords: [] })
-    setPhase(section)
+    openSection(section)
   }
 
-  function choose(section: 'reading' | 'listening', question: number, option: number) {
+  // Explore mode only: move between texts without answering.
+  function jumpToText(to: number) {
+    if (!explore) return
     setResumed(false)
-    const next = [...answers[section]]
-    next[question] = option
-    setAnswers({ ...answers, [section]: next })
+    setJumped(true)
+    setTextIndex(to)
+  }
+
+  function choose(section: 'reading' | 'listening', slot: number, question: number, option: number) {
+    setResumed(false)
+    setAnswers(previous => ({
+      ...previous,
+      [section]: previous[section].map((chosen, index) => index === slot
+        ? chosen.map((value, at) => at === question ? option : value)
+        : chosen),
+    }))
+  }
+
+  /** The current text is answered (and, when heard only, was heard): go on. */
+  function nextText(section: 'reading' | 'listening') {
+    setResumed(false)
+    const texts = test[section]
+    if (textIndex + 1 < texts.length) {
+      setTextIndex(textIndex + 1)
+      return
+    }
+    if (section === 'reading') openSection('listening')
+    else finish()
   }
 
   function finish() {
-    if (!answers.listening.every(choice => choice !== null) || !listeningHeard) return
-    passage.stop()
     const scored = scoreBookTest(test, answers)
     clearBookTestDraft(book)
     const fullAttempt = BOOK_TEST_SECTIONS.every(section => sectionDone(test, answers, section))
@@ -229,13 +268,13 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   function reset(next: BookTest) {
     clearBookTestDraft(book)
-    passage.stop()
-    reviewPassage.stop()
     wordToken.current++
     setTest(next)
+    setOnBreak(false)
     setAnswers(emptyBookTestAnswers(next))
     setTimings({})
-    setListeningHeard(false)
+    setListeningHeard(next.listening.map(() => false))
+    setTextIndex(0)
     setTyped('')
     setWordReady(false)
     setWordNotice('')
@@ -247,7 +286,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   function restart() {
     reset(test)
-    setPhase('translation')
+    openSection('translation')
   }
 
   function retake() {
@@ -363,20 +402,26 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             </ul>
           )}
 
-          <details className="test-review-details mt-5">
-            <summary>متن خواندنی: {test.reading.titleFa} — متن، ترجمه و پاسخ‌ها</summary>
-            <h4 className="mt-3 font-en text-base font-bold" dir="ltr">{test.reading.titleEn}</h4>
-            <Passage text={test.reading} showTranslation />
-            <QuestionReview text={test.reading} chosen={answers.reading} />
-          </details>
-
-          <ListeningReview
-            text={test.listening}
-            chosen={answers.listening}
-            player={reviewPassage}
-            soundOn={state.soundOn}
-            summary={`متن شنیداری: ${test.listening.titleFa} — نمایش متن، ترجمه و پاسخ‌ها`}
-          />
+          <h3 className="mt-5 text-sm font-extrabold">متن‌ها</h3>
+          {test.reading.map((text, slot) => (
+            <ReadingTextReview
+              key={text.id}
+              text={text}
+              chosen={answers.reading[slot]}
+              summary={`متن خواندنی${test.reading.length > 1 ? ` ${faNum(slot + 1)}` : ''}: ${text.titleFa} — متن، ترجمه و پاسخ‌ها`}
+            />
+          ))}
+          {test.listening.map((text, slot) => (
+            <ListeningTextReview
+              key={text.id}
+              text={text}
+              chosen={answers.listening[slot]}
+              soundOn={state.soundOn}
+              voiceURI={state.narratorVoiceURI}
+              rate={state.narratorRate}
+              summary={`متن شنیداری${test.listening.length > 1 ? ` ${faNum(slot + 1)}` : ''}: ${text.titleFa} — نمایش متن، ترجمه و پاسخ‌ها`}
+            />
+          ))}
         </section>
       </div>
     )
@@ -391,14 +436,14 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
           <ol className="test-intro-list mt-4">
             <li><b>{SECTION_LABELS.translation}</b> — {faNum(test.translation.length)} واژه؛ معنی فارسی را بنویس.</li>
             <li><b>{SECTION_LABELS.listeningWords}</b> — {faNum(test.listeningWords.length)} واژهٔ دیگر را فقط می‌شنوی و معنی‌اش را انتخاب می‌کنی.</li>
-            <li><b>{SECTION_LABELS.reading}</b> — یک متن تازه و {faNum(test.reading.questions.length)} سؤال.</li>
-            <li><b>{SECTION_LABELS.listening}</b> — متن تازهٔ دیگری که فقط پخش می‌شود و {faNum(test.listening.questions.length)} سؤال.</li>
+            <li><b>{SECTION_LABELS.reading}</b> — {test.reading.length === 1 ? 'یک متن تازه' : `${faNum(test.reading.length)} متن تازه`}، هر کدام با ۵ سؤال.</li>
+            <li><b>{SECTION_LABELS.listening}</b> — {test.listening.length === 1 ? 'متن تازهٔ دیگری' : `${faNum(test.listening.length)} متن تازهٔ دیگر`} که فقط پخش {test.listening.length === 1 ? 'می‌شود' : 'می‌شوند'}، هر کدام با ۵ سؤال.</li>
           </ol>
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            واژه‌ها از {book === 1 ? 'کتاب ۱' : `همهٔ کتاب‌های ۱ تا ${faNum(book)}`} می‌آیند و دو متن فقط با واژه‌هایی نوشته شده‌اند که تا اینجا یاد گرفته‌ای.
+            واژه‌ها نیمی از همهٔ واژه‌های {book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} هستند ({faNum(test.translation.length + test.listeningWords.length)} واژه) و متن‌ها فقط با واژه‌هایی نوشته شده‌اند که تا اینجا یاد گرفته‌ای.
             برای قبولی، هر بخش باید {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ یعنی حتی یک پاسخ نادرست هم پذیرفته نمی‌شود. تا پایان آزمون بازخوردی نمایش داده نمی‌شود؛ بعد از آن همهٔ پاسخ‌ها، ترجمهٔ متن‌ها و متن شنیداری را می‌بینی.
           </p>
-          <div className="paper-note mt-4">دو بخش شنیداری به صدای انگلیسی دستگاه نیاز دارند؛ اگر می‌توانی از هدفون استفاده کن.</div>
+          <div className="paper-note mt-4">دو بخش شنیداری به صدای انگلیسی دستگاه نیاز دارند؛ اگر می‌توانی از هدفون استفاده کن. آزمون طولانی است؛ هر ۴۰ واژه یک وقفهٔ کوتاه داری و پیشرفتت ذخیره می‌شود، حتی اگر برنامه را ببندی.</div>
           <button type="button" className="btn-crimson mt-5 w-full py-3" onClick={() => setPhase('translation')}>شروع آزمون</button>
         </section>
       </div>
@@ -446,6 +491,17 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
         <div className="text-xs font-bold" style={{ color: 'var(--crimson-deep)' }}>بخش {faNum(sectionNumber + 1)} از {faNum(BOOK_TEST_SECTIONS.length)}</div>
         <h2 id="section-heading" ref={headingRef} tabIndex={-1} className="mt-1 text-lg font-extrabold">{SECTION_LABELS[phase]}</h2>
         <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{SECTION_HINTS[phase]}</p>
+
+        {onBreak && (phase === 'translation' || phase === 'listeningWords') && (
+          <div className="mt-5 text-center" data-testid="book-test-break">
+            <div className="text-lg font-extrabold">وقفهٔ کوتاه</div>
+            <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+              {faNum(phase === 'translation' ? translationIndex : listenIndex)} واژه از {faNum(phase === 'translation' ? test.translation.length : test.listeningWords.length)} را جواب داده‌ای.
+              چند لحظه استراحت کن؛ پیشرفتت ذخیره شده است و حتی با بستن برنامه از دست نمی‌رود.
+            </p>
+            <button type="button" className="btn-ink mt-4 w-full py-3" onClick={() => setOnBreak(false)}>ادامه ←</button>
+          </div>
+        )}
 
         {phase === 'translation' && translationWord && (
           <>
@@ -506,40 +562,64 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
           </>
         )}
 
-        {phase === 'reading' && (
-          <>
-            <article className="question-context mt-4" dir="ltr" aria-labelledby="reading-title">
-              <h3 id="reading-title" className="font-en text-base font-bold">{test.reading.titleEn}</h3>
-              <Passage text={test.reading} />
-            </article>
-            <Questions text={test.reading} prefix="reading" chosen={answers.reading} disabled={false} onChoose={(question, option) => choose('reading', question, option)} />
-            <button
-              type="button"
-              className="btn-ink mt-5 w-full py-3"
-              disabled={!answers.reading.every(choice => choice !== null)}
-              onClick={() => setPhase('listening')}
-            >
-              ثبت و رفتن به بخش شنیداری ←
-            </button>
-          </>
-        )}
-
-        {phase === 'listening' && (
-          <>
-            {!state.soundOn ? <SoundOffNote onEnable={enableSound} /> : (
-              <ListeningPlayer player={passage} text={test.listening} heard={listeningHeard} />
-            )}
-            <Questions text={test.listening} prefix="listening" chosen={answers.listening} disabled={!listeningHeard} onChoose={(question, option) => choose('listening', question, option)} />
-            <button
-              type="button"
-              className="btn-crimson mt-5 w-full py-3"
-              disabled={!listeningHeard || !answers.listening.every(choice => choice !== null)}
-              onClick={finish}
-            >
-              ثبت و پایان آزمون
-            </button>
-          </>
-        )}
+        {(phase === 'reading' || phase === 'listening') && (() => {
+          const texts = test[phase]
+          const slot = Math.min(textIndex, texts.length - 1)
+          const text = texts[slot]
+          const chosen = answers[phase][slot]
+          const heard = phase === 'reading' || listeningHeard[slot]
+          const ready = heard && chosen.every(choice => choice !== null)
+          const last = slot + 1 >= texts.length
+          return (
+            <>
+              {texts.length > 1 && (
+                <>
+                  <div className="mt-4 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
+                    <span>متن {faNum(slot + 1)} از {faNum(texts.length)}</span>
+                  </div>
+                  <div className="mastery-progress mt-2"><span style={{ width: `${(slot / texts.length) * 100}%` }} /></div>
+                </>
+              )}
+              {phase === 'reading' ? (
+                <>
+                  <article className="question-context mt-4" dir="ltr" aria-labelledby="reading-title">
+                    <h3 id="reading-title" className="font-en text-base font-bold">{text.titleEn}</h3>
+                    <Passage text={text} />
+                  </article>
+                  <Questions text={text} prefix={`reading-${slot}`} chosen={chosen} disabled={false} onChoose={(question, option) => choose('reading', slot, question, option)} />
+                </>
+              ) : (
+                <ListeningText
+                  key={text.id}
+                  text={text}
+                  prefix={`listening-${slot}`}
+                  heard={listeningHeard[slot]}
+                  chosen={chosen}
+                  soundOn={state.soundOn}
+                  voiceURI={state.narratorVoiceURI}
+                  rate={state.narratorRate}
+                  onHeard={() => heardListening(slot)}
+                  onEnableSound={enableSound}
+                  onChoose={(question, option) => choose('listening', slot, question, option)}
+                />
+              )}
+              <button
+                type="button"
+                className={`${phase === 'listening' && last ? 'btn-crimson' : 'btn-ink'} mt-5 w-full py-3`}
+                disabled={!ready}
+                onClick={() => nextText(phase)}
+              >
+                {!last ? 'ثبت و متن بعدی ←' : phase === 'reading' ? 'ثبت و رفتن به بخش شنیداری ←' : 'ثبت و پایان آزمون'}
+              </button>
+              {explore && texts.length > 1 && (
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <button type="button" className="btn-quiet py-2.5 text-sm" disabled={slot === 0} onClick={() => jumpToText(slot - 1)}>متن قبلی</button>
+                  <button type="button" className="btn-quiet py-2.5 text-sm" disabled={last} onClick={() => jumpToText(slot + 1)}>متن بعدی ←</button>
+                </div>
+              )}
+            </>
+          )
+        })()}
       </section>
     </div>
   )

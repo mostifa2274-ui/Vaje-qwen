@@ -59,54 +59,54 @@
   ],
   "questions": [
     {
-      "q": "نگار چه چیزی به خانه می‌آورد؟",
+      "q": "What does Negar bring home?",
       "options": [
-        "یک کتاب",
-        "یک یادداشت",
-        "یک نقشه",
-        "یک جوجه"
+        "A map",
+        "A note",
+        "A chicken",
+        "A book"
       ],
       "answer": 1
     },
     {
-      "q": "هر دانش‌آموز باید چه کند؟",
+      "q": "What must every student do?",
       "options": [
-        "یک شعر بنویسد",
-        "به رودخانه برود",
-        "یادداشت را نزدیک خانه‌اش بزند و از همسایه‌ها بپرسد",
-        "یک فرم را به معلم بدهد"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "یادداشت چه چیزهایی دارد؟",
-      "options": [
-        "یک عنوان و یک بند کوتاه",
-        "فقط یک عکس",
-        "یک نقشه‌ی بزرگ",
-        "یک نامه‌ی طولانی"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "خط روی نمودار به کجا می‌رسد؟",
-      "options": [
-        "به مدرسه",
-        "به بازار",
-        "به خانه‌ی نگار",
-        "به رودخانه"
+        "Go to the river",
+        "Write a poem",
+        "Give a form to the teacher",
+        "Put the note near her house and ask the neighbors"
       ],
       "answer": 3
     },
     {
-      "q": "نگار درباره‌ی نینو چه می‌گوید؟",
+      "q": "What is on the note?",
       "options": [
-        "که او حالا شاید آن‌قدر کوچک نباشد",
-        "که او در رودخانه است",
-        "که او را دیده",
-        "که او سفید شده"
+        "A long letter",
+        "A big map",
+        "A title and one short paragraph",
+        "Only a picture"
       ],
-      "answer": 0
+      "answer": 2
+    },
+    {
+      "q": "Where does the line on the chart go?",
+      "options": [
+        "To the school",
+        "To Negar's house",
+        "To the market",
+        "To the river"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "What does Negar say about Nino?",
+      "options": [
+        "He is in the river",
+        "She saw him",
+        "Maybe he is not so small now",
+        "He is white now"
+      ],
+      "answer": 2
     }
   ]
 }

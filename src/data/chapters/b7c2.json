@@ -136,7 +136,7 @@
   ],
   "check": [
     {
-      "q": "بابا به همه چه می‌دهد؟",
+      "q": "At the station, Dad gives everyone a ___.",
       "options": [
         "ticket",
         "passport",
@@ -146,7 +146,7 @@
       "a": "ticket"
     },
     {
-      "q": "خانواده ظهر چه کاری می‌کنند؟",
+      "q": "At twelve o'clock, they ___ trains.",
       "options": [
         "change",
         "sleep",

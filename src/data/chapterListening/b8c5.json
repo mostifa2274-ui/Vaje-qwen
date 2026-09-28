@@ -55,54 +55,54 @@
   ],
   "questions": [
     {
-      "q": "جشنواره چه چیزی را نشان می‌دهد؟",
+      "q": "What does the festival show?",
       "options": [
-        "فرهنگ شمال",
-        "حیوان‌های مزرعه",
-        "شهر تهران",
-        "کتاب‌های قدیمی"
+        "A big city",
+        "Farm animals",
+        "The culture of the north",
+        "Old books"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
-      "q": "کدام غذا اینجا رایج است؟",
+      "q": "Which meal is common here?",
       "options": [
-        "سوپ",
-        "ساندویچ",
-        "کیک",
-        "ماهی با برنج"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "بچه‌ها کجا می‌توانند نقاشی کنند؟",
-      "options": [
-        "کنار دریا",
-        "در باغ کنار کتابخانه",
-        "در موزه",
-        "در هتل"
+        "Soup",
+        "Fish with rice",
+        "Sandwiches",
+        "Cake"
       ],
       "answer": 1
     },
     {
-      "q": "فیلم درباره‌ی چیست؟",
+      "q": "Where can children paint?",
       "options": [
-        "یک جوجه‌ی زرد",
-        "یک ماهیگیر",
-        "سگی که برای پیدا کردن خانواده‌اش سفر می‌کند",
-        "یک جشنواره"
+        "At the hotel",
+        "At the museum",
+        "Next to the sea",
+        "In the garden next to the library"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
-      "q": "جشنواره برای چه کسانی رایگان است؟",
+      "q": "What is the movie about?",
       "options": [
-        "فقط بچه‌ها",
-        "فقط گردشگرها",
-        "برای همه",
-        "هیچ‌کس"
+        "A man with a boat",
+        "A dog who travels far to find his family",
+        "A little yellow chicken",
+        "A festival"
       ],
-      "answer": 2
+      "answer": 1
+    },
+    {
+      "q": "Who is the festival free for?",
+      "options": [
+        "Only children",
+        "Everyone",
+        "Only grandparents",
+        "Only tourists"
+      ],
+      "answer": 1
     }
   ]
 }

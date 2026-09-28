@@ -120,7 +120,7 @@
   ],
   "check": [
     {
-      "q": "روی بلندترین کوه چه چیزی هست؟",
+      "q": "What is on the high mountains?",
       "options": [
         "snow",
         "rain",
@@ -130,7 +130,7 @@
       "a": "snow"
     },
     {
-      "q": "دریا در کدام جهت است؟",
+      "q": "Where is the sea? To the ___.",
       "options": [
         "north",
         "south",

@@ -154,7 +154,7 @@
   ],
   "check": [
     {
-      "q": "مینا به همسایه‌ها چه می‌گوید؟",
+      "q": "Mina says, \"___ you for stopping.\"",
       "options": [
         "thank",
         "sorry",
@@ -164,7 +164,7 @@
       "a": "thank"
     },
     {
-      "q": "مرد دوچرخه‌سوار جوجه را نزدیک کجا دیده است؟",
+      "q": "The man on the bicycle saw the chicken near the ___.",
       "options": [
         "river",
         "market",

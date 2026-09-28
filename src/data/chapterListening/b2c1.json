@@ -61,54 +61,54 @@
   ],
   "questions": [
     {
-      "q": "پیرمرد کجا می‌نشیند؟",
+      "q": "Where does the old man sit?",
       "options": [
-        "کنار کافه",
-        "روی صندلی‌اش زیر یک درخت بلند",
-        "کنار استخر",
-        "در ایستگاه اتوبوس"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "دختر چه چیزی در دست دارد؟",
-      "options": [
-        "یک کتاب",
-        "یک توپ",
-        "عکس یک جوجه‌ی زرد",
-        "مقداری نان"
+        "Near the road",
+        "At the bus stop",
+        "On his chair under a tall tree",
+        "Near the cafe"
       ],
       "answer": 2
     },
     {
-      "q": "چه چیزی از آن طرف پارک می‌دود؟",
+      "q": "What does the girl have in her hand?",
       "options": [
-        "یک سگ بزرگ",
-        "یک پسر با توپ",
-        "یک پرنده‌ی قرمز",
-        "یک بچه"
+        "A picture of a little yellow chicken",
+        "A ball",
+        "A book",
+        "Some bread"
       ],
       "answer": 0
     },
     {
-      "q": "پیشنهاد پیرمرد چیست؟",
+      "q": "What runs across the park?",
       "options": [
-        "به پلیس بگویید",
-        "فردا برگردید",
-        "زیر درخت‌ها را بگردید",
-        "از همسایه‌هایتان بپرسید"
+        "A red bird",
+        "A child",
+        "A boy with a ball",
+        "A big dog"
       ],
       "answer": 3
     },
     {
-      "q": "بعد از رفتن خانواده، پیرمرد به چه فکر می‌کند؟",
+      "q": "What does the old man tell the man?",
       "options": [
-        "به سگ بزرگ",
-        "به کتابش",
-        "به یک جوجه‌ی زرد کوچک",
-        "به ناهارش"
+        "Go to the city",
+        "Look under the trees",
+        "Ask your neighbors",
+        "Come back tomorrow"
       ],
       "answer": 2
+    },
+    {
+      "q": "After the family leaves, the old man thinks about ___.",
+      "options": [
+        "his book",
+        "the big dog",
+        "his lunch",
+        "a little yellow chicken"
+      ],
+      "answer": 3
     }
   ]
 }

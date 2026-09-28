@@ -196,7 +196,7 @@
   ],
   "check": [
     {
-      "q": "نگار در مدرسه برای مینا کیست؟",
+      "q": "At school, Negar is Mina's ___.",
       "options": [
         "friend",
         "sister",
@@ -206,7 +206,7 @@
       "a": "friend"
     },
     {
-      "q": "زن جوان جوجه را کجا دیده است؟",
+      "q": "The young woman saw the chicken near the ___.",
       "options": [
         "park",
         "car",

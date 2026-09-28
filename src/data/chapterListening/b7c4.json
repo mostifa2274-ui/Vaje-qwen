@@ -55,54 +55,54 @@
   ],
   "questions": [
     {
-      "q": "وقتی تاکسی کنار مزرعه می‌ایستد، هوا چطور است؟",
+      "q": "What is the weather like when the taxi stops at the farm?",
       "options": [
-        "آفتابی",
-        "باران تندی می‌بارد",
-        "برف می‌آید",
-        "باد می‌آید"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "چه کسی آتش روشن می‌کند؟",
-      "options": [
-        "کشاورز",
-        "همسر کشاورز",
-        "راننده",
-        "دختر کشاورز"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "دختر کشاورز با فنجان‌ها چه می‌سازد؟",
-      "options": [
-        "یک قایق",
-        "یک ماشین",
-        "یک خانه‌ی کوچک برای نوزاد",
-        "یک برج"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "دخترها بعد از باران با چه چیزی بیرون می‌روند؟",
-      "options": [
-        "با چتر",
-        "با کلاه",
-        "با کتاب",
-        "با چکمه‌های کهنه"
+        "Cold and dark",
+        "It is snowing",
+        "Warm and quiet",
+        "It is raining hard"
       ],
       "answer": 3
     },
     {
-      "q": "کشاورز قبل از رفتن خانواده به دختر چه می‌دهد؟",
+      "q": "Who makes a fire?",
       "options": [
-        "یک جوجه",
-        "کمی نان و یک گل",
-        "یک عکس",
-        "یک چتر"
+        "The farmer's daughter",
+        "The farmer",
+        "The driver",
+        "The farmer's wife"
       ],
       "answer": 1
+    },
+    {
+      "q": "What does the daughter build with some cups?",
+      "options": [
+        "A bus",
+        "A tall building",
+        "A little house for the baby",
+        "A car"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "What do the girls wear when they go out after the rain?",
+      "options": [
+        "Hats",
+        "Old boots",
+        "New shoes",
+        "Their coats"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What does the farmer give the girl before the family leaves?",
+      "options": [
+        "A chicken",
+        "An umbrella",
+        "Some bread and a flower",
+        "A photo"
+      ],
+      "answer": 2
     }
   ]
 }

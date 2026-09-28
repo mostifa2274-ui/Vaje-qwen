@@ -59,54 +59,54 @@
   ],
   "questions": [
     {
-      "q": "مامان برای چه کسی یادداشت می‌نویسد؟",
+      "q": "Who does Mom write a note to?",
       "options": [
-        "برای بابا",
-        "برای دوستش",
-        "برای مینا",
-        "برای همسایه"
+        "A neighbor",
+        "Mina",
+        "Dad",
+        "Her friend"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "What was Yasi's first word?",
+      "options": [
+        "Mom",
+        "Bread",
+        "Dad",
+        "Nino"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "What was Yasi looking at?",
+      "options": [
+        "Mina",
+        "The window",
+        "The TV",
+        "Nino's picture on the wall"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "What does Mina put by the door every night?",
+      "options": [
+        "A note",
+        "Water and bread",
+        "Her shoes",
+        "A light"
       ],
       "answer": 1
     },
     {
-      "q": "اولین کلمه‌ی یاسی چه بود؟",
+      "q": "Where will they go tomorrow?",
       "options": [
-        "مامان",
-        "بابا",
-        "نان",
-        "نینو"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "یاسی به چه چیزی نگاه می‌کرد؟",
-      "options": [
-        "به عکس نینو روی دیوار",
-        "به پنجره",
-        "به تلویزیون",
-        "به مینا"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "مینا هر شب کنار در چه می‌گذارد؟",
-      "options": [
-        "کفش‌هایش",
-        "یک چراغ",
-        "آب و نان",
-        "یک نامه"
+        "To the river",
+        "To the park",
+        "To the big market on bus fifteen",
+        "To the station"
       ],
       "answer": 2
-    },
-    {
-      "q": "فردا کجا می‌روند؟",
-      "options": [
-        "به رودخانه",
-        "به ایستگاه",
-        "به پارک",
-        "با اتوبوس پانزده به بازار بزرگ"
-      ],
-      "answer": 3
     }
   ]
 }

@@ -5,7 +5,8 @@
   "names": [
     "Aria",
     "Yasi",
-    "Nino"
+    "Nino",
+    "Mina"
   ],
   "sentences": [
     {
@@ -59,54 +60,54 @@
   ],
   "questions": [
     {
-      "q": "بابا با چه کسانی در بازار راه می‌رود؟",
+      "q": "Who does Dad walk with at the market?",
       "options": [
-        "با مینا و مامان",
-        "با آریا و یاسی",
-        "فقط با آریا",
-        "با مرد نانوا"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "آریا می‌خواهد چه چیزهایی بخرد؟",
-      "options": [
-        "سیب، موز و یک توپ سبز بزرگ",
-        "نان و پنیر",
-        "ماهی و برنج",
-        "بستنی"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "جلوی نانوایی چه چیزی هست؟",
-      "options": [
-        "یک جوجه‌ی زرد",
-        "یک صف طولانی",
-        "پرنده‌هایی که نان می‌خورند",
-        "یک ماشین پلیس"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "چه چیزی پرنده‌ها را تماشا می‌کند؟",
-      "options": [
-        "یک سگ",
-        "آریا",
-        "مرد نانوا",
-        "یک گربه‌ی قهوه‌ای"
+        "With Mina and Mom",
+        "Only with Aria",
+        "With the bread man",
+        "With Aria and Yasi"
       ],
       "answer": 3
     },
     {
-      "q": "بابا به چه کسی زنگ می‌زند؟",
+      "q": "What does Aria want to buy?",
       "options": [
-        "به مامان",
-        "به مینا",
-        "به مرد نانوا",
-        "به همسایه"
+        "Apples, bananas and a big green ball",
+        "A new book",
+        "A red chair",
+        "Bread and cheese"
       ],
       "answer": 0
+    },
+    {
+      "q": "What is in front of the bread shop?",
+      "options": [
+        "Birds that eat bread",
+        "A little yellow chicken",
+        "A long line of people",
+        "A police car"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What watches the birds?",
+      "options": [
+        "A dog",
+        "A brown cat",
+        "The bread man",
+        "Aria"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Who does Dad call?",
+      "options": [
+        "The bread man",
+        "Mom",
+        "Mina",
+        "A neighbor"
+      ],
+      "answer": 1
     }
   ]
 }

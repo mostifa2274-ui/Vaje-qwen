@@ -168,7 +168,7 @@
   ],
   "check": [
     {
-      "q": "بابا کجا کار می‌کند؟",
+      "q": "Dad works at a ___.",
       "options": [
         "company",
         "school",
@@ -178,7 +178,7 @@
       "a": "company"
     },
     {
-      "q": "مرد جوان درباره‌ی نینو کجا می‌نویسد؟",
+      "q": "The young man writes about Nino on his ___.",
       "options": [
         "blog",
         "newspaper",

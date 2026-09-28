@@ -120,7 +120,7 @@
   ],
   "check": [
     {
-      "q": "مینا در جشنواره چه چیزی را نقاشی می‌کند؟",
+      "q": "At the festival, Mina paints a ___.",
       "options": [
         "chicken",
         "sea",
@@ -130,7 +130,7 @@
       "a": "chicken"
     },
     {
-      "q": "عنوان یادداشت تازه: «نینو، برگرد ...»",
+      "q": "The title of the new note is: \"Nino, Come ___.\"",
       "options": [
         "home",
         "school",

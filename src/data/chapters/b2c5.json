@@ -232,7 +232,7 @@
   ],
   "check": [
     {
-      "q": "درِ خانه‌ی پیرزن چه رنگی است؟",
+      "q": "The door of the old woman's house is ___.",
       "options": [
         "blue",
         "white",
@@ -242,7 +242,7 @@
       "a": "blue"
     },
     {
-      "q": "مینا روی یادداشت چه می‌نویسد؟",
+      "q": "What does Mina write on the note?",
       "options": [
         "address",
         "picture",

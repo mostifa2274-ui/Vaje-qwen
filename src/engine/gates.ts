@@ -1,4 +1,5 @@
 import { CHAPTERS, chaptersOfBook } from '../data/chapters'
+import { bookTestQuestionCount, bookTestTextsPerSkill, bookTestWordCount } from './bookTestSize'
 import type { GhesseState } from './types'
 import { faNum } from './format'
 
@@ -32,12 +33,10 @@ export function examDefinition(id: string): ExamDefinition | undefined {
         kind: 'book',
         book,
         titleFa: `آزمون پایان کتاب ${faNum(book)}`,
-        subtitleFa: book === 1
-          ? 'واژه‌های کتاب ۱ (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.'
-          : `واژه‌های کتاب‌های ۱ تا ${faNum(book)} (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.`,
-        // 12 typed translations, 12 listening words, 5 reading and 5
-        // listening questions (engine/bookTest.ts); each part needs 100%.
-        questionCount: 34,
+        subtitleFa: `${faNum(bookTestWordCount(book))} واژه از ${book === 1 ? 'کتاب ۱' : `کتاب‌های ۱ تا ${faNum(book)}`} (نیمی از واژه‌های خوانده‌شده؛ ترجمه و شنیداری)، به‌علاوهٔ ${faNum(bookTestTextsPerSkill(book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(book))} متن شنیداری تازه.`,
+        // Half of the words studied so far, plus the texts' questions
+        // (engine/bookTestSize.ts); each part needs 100%.
+        questionCount: bookTestQuestionCount(book),
         passRate: 1,
         productivePassRate: 1,
       }

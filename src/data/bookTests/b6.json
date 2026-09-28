@@ -64,54 +64,54 @@
       ],
       "questions": [
         {
-          "q": "معلم علوم به کلاس چه کاری می‌دهد؟",
+          "q": "What does the science teacher give the class?",
           "options": [
-            "یک امتحان سخت",
-            "یک گزارش دربارهٔ تاریخ",
-            "یک پروژهٔ مهم برای ساختن ماکت",
-            "یک تکلیف خواندن"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "هدی ماکت چه چیزی را می‌سازد؟",
-          "options": [
-            "یک ساعت قدیمی",
-            "خانه‌ای با یک چراغ کوچک در هر اتاق",
-            "یک پرندهٔ کوچک",
-            "مدرسه‌اش"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "چه کسی در کار چراغ‌ها به هدی کمک می‌کند؟",
-          "options": [
-            "معلمش",
-            "برادرش",
-            "پدرش",
-            "دوستش"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "دوشنبه در کلاس چه مشکلی پیش می‌آید؟",
-          "options": [
-            "چراغ‌های ماکت روشن نمی‌شوند",
-            "ماکت می‌شکند",
-            "هدی ماکت را در خانه جا می‌گذارد",
-            "معلم در کلاس نیست"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "مشکل ماکت چه بود؟",
-          "options": [
-            "چراغ‌ها خیلی کوچک بودند",
-            "ماکت خیس شده بود",
-            "میز کلاس کوچک بود",
-            "یک قطعهٔ کوچک سر جایش نبود"
+            "Some reading homework",
+            "A difficult exam",
+            "A report about history",
+            "An important project: to make a model"
           ],
           "answer": 3
+        },
+        {
+          "q": "What model does Hoda make?",
+          "options": [
+            "An old clock",
+            "A house with a small light in every room",
+            "A small bird",
+            "Her school"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Who helps Hoda with the lights?",
+          "options": [
+            "Her father",
+            "Her friend",
+            "Her teacher",
+            "Her brother"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What goes wrong in the classroom on Monday?",
+          "options": [
+            "The teacher is not in the class",
+            "The model breaks",
+            "Hoda leaves the model at home",
+            "The lights of the model do not work"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What was the problem with the model?",
+          "options": [
+            "The model was dirty",
+            "The table was small",
+            "One small part was not in the right place",
+            "The lights were too small"
+          ],
+          "answer": 2
         }
       ]
     },
@@ -179,52 +179,492 @@
       ],
       "questions": [
         {
-          "q": "کوروش در دانشگاه چه رشته‌ای می‌خواند؟",
+          "q": "What does Kourosh study at university?",
           "options": [
-            "علوم",
-            "جغرافیا",
-            "زبان انگلیسی",
-            "تاریخ"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "کوروش می‌خواهد کجا کار کند؟",
-          "options": [
-            "در یک مدرسه",
-            "در یک دانشگاه",
-            "در یک شرکت بزرگ کامپیوتری",
-            "در یک رستوران"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "کوروش پیش از مصاحبه چه کار می‌کند؟",
-          "options": [
-            "به سفر می‌رود",
-            "فقط استراحت می‌کند",
-            "با یک دوست انگلیسی تمرین می‌کند و دربارهٔ شرکت مطالعه می‌کند",
-            "برای شرکت نامه می‌نویسد"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "وقتی کوروش اشتباه می‌کند، چه کار می‌کند؟",
-          "options": [
-            "از اتاق بیرون می‌رود",
-            "اشتباهش را می‌پذیرد و جواب درست را می‌دهد",
-            "ساکت می‌ماند",
-            "سؤال دیگری می‌پرسد"
+            "Science",
+            "History",
+            "Geography",
+            "English"
           ],
           "answer": 1
         },
         {
-          "q": "یک هفته بعد چه اتفاقی می‌افتد؟",
+          "q": "Where does Kourosh want to work?",
           "options": [
-            "شرکت تلفن می‌زند و کوروش کار را به دست می‌آورد",
-            "شرکت می‌گوید او قبول نشده است",
-            "کوروش به دانشگاه برمی‌گردد",
-            "کوروش مصاحبهٔ دوم دارد"
+            "At a university",
+            "At a school",
+            "At a restaurant",
+            "At a big computer company"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Kourosh do before the interview?",
+          "options": [
+            "He practices his English with a friend and reads about the company",
+            "He sleeps all day",
+            "He writes a letter to the company",
+            "He goes to the park"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does Kourosh do when he makes a mistake?",
+          "options": [
+            "He asks another question",
+            "He leaves the room",
+            "He says nothing",
+            "He says it is not correct and gives the right answer"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What happens a week later?",
+          "options": [
+            "He has a second interview",
+            "He goes back to university",
+            "The company calls, and he has the job",
+            "The company says no"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b6-reading-c",
+      "titleEn": "The River Project",
+      "titleFa": "پروژهٔ رودخانه",
+      "names": [
+        "Setareh"
+      ],
+      "sentences": [
+        {
+          "en": "Setareh's geography teacher gives the class a project about the rivers of their country.",
+          "fa": "معلم جغرافیای ستاره به کلاس پروژه‌ای دربارهٔ رودخانه‌های کشورشان می‌دهد."
+        },
+        {
+          "en": "Each student must choose one river and make a chart about it.",
+          "fa": "هر دانش‌آموز باید یک رودخانه انتخاب کند و نموداری دربارهٔ آن درست کند."
+        },
+        {
+          "en": "Setareh chooses a long river in the north of the country.",
+          "fa": "ستاره رودخانهٔ درازی در شمال کشور را انتخاب می‌کند."
+        },
+        {
+          "en": "She reads about it in books and on the internet.",
+          "fa": "در کتاب‌ها و اینترنت دربارهٔ آن می‌خواند."
+        },
+        {
+          "en": "The river is very long, and many towns are next to it.",
+          "fa": "رودخانه خیلی دراز است و شهرهای زیادی کنارش هستند."
+        },
+        {
+          "en": "On her chart, she draws the river and writes the names of the towns.",
+          "fa": "روی نمودارش رودخانه را می‌کشد و اسم شهرها را می‌نویسد."
+        },
+        {
+          "en": "She also writes a short paragraph about the animals and the farms near the river.",
+          "fa": "یک بند کوتاه هم دربارهٔ حیوان‌ها و مزرعه‌های نزدیک رودخانه می‌نویسد."
+        },
+        {
+          "en": "The project is difficult, but Setareh enjoys it.",
+          "fa": "پروژه سخت است، اما ستاره از آن لذت می‌برد."
+        },
+        {
+          "en": "On Monday, each student shows their chart to the class.",
+          "fa": "دوشنبه، هر دانش‌آموز نمودارش را به کلاس نشان می‌دهد."
+        },
+        {
+          "en": "Setareh's chart is very good, and everyone likes it.",
+          "fa": "نمودار ستاره خیلی خوب است و همه دوستش دارند."
+        },
+        {
+          "en": "Her teacher gives her a good result and says, \"Your skills are improving.\"",
+          "fa": "معلمش نمرهٔ خوبی به او می‌دهد و می‌گوید: «مهارت‌هایت دارد بهتر می‌شود.»"
+        },
+        {
+          "en": "Now Setareh wants to study geography at university in the future.",
+          "fa": "حالا ستاره می‌خواهد در آینده در دانشگاه جغرافیا بخواند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the project about?",
+          "options": [
+            "The history of the town",
+            "The animals of the north",
+            "The cities of the country",
+            "The rivers of the country"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Which river does Setareh choose?",
+          "options": [
+            "A long river in the north of the country",
+            "A small river near her school",
+            "The river in her town",
+            "A river in another country"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does she write on her chart?",
+          "options": [
+            "The rules of the class",
+            "The names of her friends",
+            "The dates of her exams",
+            "The names of the towns"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What is the project like for Setareh?",
+          "options": [
+            "Very easy",
+            "Easy and boring",
+            "Difficult, but she enjoys it",
+            "Too long for her"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Setareh want to do in the future?",
+          "options": [
+            "Teach history",
+            "Write a blog",
+            "Work in an office",
+            "Study geography at university"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b6-reading-d",
+      "titleEn": "The Town Blog",
+      "titleFa": "وبلاگ شهر",
+      "names": [
+        "Donya"
+      ],
+      "sentences": [
+        {
+          "en": "Donya is a college student, and she loves the history of her town.",
+          "fa": "دنیا دانشجوی کالج است و عاشق تاریخ شهرش است."
+        },
+        {
+          "en": "Her town has many old buildings, but not many people know their stories.",
+          "fa": "شهرش ساختمان‌های قدیمی زیادی دارد، اما آدم‌های زیادی داستانشان را نمی‌دانند."
+        },
+        {
+          "en": "So Donya decides to start a blog about them.",
+          "fa": "پس دنیا تصمیم می‌گیرد وبلاگی دربارهٔ آن‌ها راه بیندازد."
+        },
+        {
+          "en": "Every week, she visits one old building and takes photographs.",
+          "fa": "هر هفته به یک ساختمان قدیمی سر می‌زند و عکس می‌گیرد."
+        },
+        {
+          "en": "Then she talks to the people who live or work there.",
+          "fa": "بعد با کسانی که آنجا زندگی یا کار می‌کنند حرف می‌زند."
+        },
+        {
+          "en": "She writes a short article with a title and three paragraphs.",
+          "fa": "یک مقالهٔ کوتاه با یک عنوان و سه بند می‌نویسد."
+        },
+        {
+          "en": "At first, only her family and friends read the blog.",
+          "fa": "اول فقط خانواده و دوستانش وبلاگ را می‌خوانند."
+        },
+        {
+          "en": "However, after two months, hundreds of people read it every week.",
+          "fa": "اما بعد از دو ماه، هر هفته صدها نفر آن را می‌خوانند."
+        },
+        {
+          "en": "One day, a man from a company calls her.",
+          "fa": "یک روز مردی از یک شرکت به او زنگ می‌زند."
+        },
+        {
+          "en": "\"We want to make a small book from your blog,\" he says.",
+          "fa": "می‌گوید: «می‌خواهیم از وبلاگ شما یک کتاب کوچک درست کنیم.»"
+        },
+        {
+          "en": "Donya cannot believe it. It is a big success for her.",
+          "fa": "دنیا باورش نمی‌شود. این برایش موفقیت بزرگی است."
+        },
+        {
+          "en": "Now she wants a career in history.",
+          "fa": "حالا می‌خواهد در زمینهٔ تاریخ کار کند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What does Donya love?",
+          "options": [
+            "Science",
+            "The history of her town",
+            "Writing letters",
+            "Modern buildings"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Donya do every week?",
+          "options": [
+            "She writes a letter",
+            "She teaches a history class",
+            "She has a meeting at a company",
+            "She visits one old building and takes photographs"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Who reads the blog at first?",
+          "options": [
+            "Hundreds of people",
+            "Nobody",
+            "Only her family and friends",
+            "Her teachers"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does the man from the company want?",
+          "options": [
+            "To visit the old buildings",
+            "To make a small book from her blog",
+            "To give her a job",
+            "To buy her camera"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Donya want now?",
+          "options": [
+            "A job in an office",
+            "A career in history",
+            "A new blog",
+            "A new camera"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b6-reading-e",
+      "titleEn": "The Umbrella Business",
+      "titleFa": "کسب‌وکار چتر",
+      "names": [
+        "Behrang"
+      ],
+      "sentences": [
+        {
+          "en": "It often rains at Behrang's university, and many students forget their umbrellas.",
+          "fa": "در دانشگاه بهرنگ اغلب باران می‌آید و خیلی از دانشجوها چترشان را فراموش می‌کنند."
+        },
+        {
+          "en": "Behrang has an idea for a small business.",
+          "fa": "بهرنگ فکری برای یک کسب‌وکار کوچک دارد."
+        },
+        {
+          "en": "He buys fifty cheap umbrellas and puts them in a big box near the main door.",
+          "fa": "پنجاه چتر ارزان می‌خرد و آن‌ها را در جعبهٔ بزرگی کنار در اصلی می‌گذارد."
+        },
+        {
+          "en": "Students can take an umbrella for a day, and they pay a little money.",
+          "fa": "دانشجوها می‌توانند یک روز چتر بردارند و کمی پول بدهند."
+        },
+        {
+          "en": "When they bring it back, they get most of the money back.",
+          "fa": "وقتی آن را برمی‌گردانند، بیشتر پولشان را پس می‌گیرند."
+        },
+        {
+          "en": "The first week is not a success, because there is no rain.",
+          "fa": "هفتهٔ اول موفق نیست، چون باران نمی‌آید."
+        },
+        {
+          "en": "However, in the second week, it rains every day.",
+          "fa": "اما در هفتهٔ دوم هر روز باران می‌آید."
+        },
+        {
+          "en": "All fifty umbrellas are out, and students ask for more.",
+          "fa": "هر پنجاه چتر بیرون است و دانشجوها چتر بیشتری می‌خواهند."
+        },
+        {
+          "en": "Behrang's business teacher hears about his idea.",
+          "fa": "استاد کسب‌وکار بهرنگ از فکر او باخبر می‌شود."
+        },
+        {
+          "en": "\"This is a great example of a modern business,\" she tells the class.",
+          "fa": "به کلاس می‌گوید: «این نمونهٔ خیلی خوبی از یک کسب‌وکار مدرن است.»"
+        },
+        {
+          "en": "After a year, there are umbrella boxes in three colleges in the city.",
+          "fa": "بعد از یک سال، در سه کالج شهر جعبهٔ چتر هست."
+        },
+        {
+          "en": "Behrang says, \"A good business begins with a real problem.\"",
+          "fa": "بهرنگ می‌گوید: «یک کسب‌وکار خوب با یک مشکل واقعی شروع می‌شود.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Why does Behrang start his business?",
+          "options": [
+            "His father has an umbrella shop",
+            "His teacher asks him to",
+            "He loves umbrellas",
+            "Many students forget their umbrellas"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Where does he put the box of umbrellas?",
+          "options": [
+            "At the bus stop",
+            "Near the main door",
+            "In his classroom",
+            "In the office"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why is the first week not a success?",
+          "options": [
+            "The box is too small",
+            "The umbrellas are expensive",
+            "Nobody knows about it",
+            "There is no rain"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What happens in the second week?",
+          "options": [
+            "Nobody takes an umbrella",
+            "It rains every day, and all the umbrellas are out",
+            "Behrang is tired",
+            "The box falls"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Behrang say about a good business?",
+          "options": [
+            "It is always easy",
+            "It begins with a real problem",
+            "It must be modern",
+            "It needs a lot of money"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b6-reading-f",
+      "titleEn": "A Day at the University",
+      "titleFa": "یک روز در دانشگاه",
+      "names": [
+        "Elnaz"
+      ],
+      "sentences": [
+        {
+          "en": "On Tuesday, Elnaz's science class visits the city university.",
+          "fa": "سه‌شنبه، کلاس علوم الناز از دانشگاه شهر بازدید می‌کند."
+        },
+        {
+          "en": "A young scientist meets them at the door and takes them to her office.",
+          "fa": "دانشمند جوانی دم در به آن‌ها خوشامد می‌گوید و آن‌ها را به دفترش می‌برد."
+        },
+        {
+          "en": "She works on a project about water in the future.",
+          "fa": "روی پروژه‌ای دربارهٔ آب در آینده کار می‌کند."
+        },
+        {
+          "en": "\"Clean water is a big problem in many countries,\" she explains.",
+          "fa": "توضیح می‌دهد: «آب تمیز در بسیاری از کشورها مشکل بزرگی است.»"
+        },
+        {
+          "en": "She shows them a model of a small machine that makes dirty water clean.",
+          "fa": "ماکت دستگاه کوچکی را نشانشان می‌دهد که آب کثیف را تمیز می‌کند."
+        },
+        {
+          "en": "The students look at the machine, and they ask many questions.",
+          "fa": "دانش‌آموزها به دستگاه نگاه می‌کنند و سؤال‌های زیادی می‌پرسند."
+        },
+        {
+          "en": "Then they visit a big classroom where two hundred students are listening to a teacher.",
+          "fa": "بعد به کلاس بزرگی سر می‌زنند که در آن دویست دانشجو به یک استاد گوش می‌دهند."
+        },
+        {
+          "en": "Elnaz thinks the university is very different from her school.",
+          "fa": "الناز فکر می‌کند دانشگاه خیلی با مدرسه‌اش فرق دارد."
+        },
+        {
+          "en": "At lunch, the scientist talks about her career.",
+          "fa": "موقع ناهار، دانشمند دربارهٔ کار و حرفه‌اش حرف می‌زند."
+        },
+        {
+          "en": "\"When I was your age, I was not good at science,\" she says. \"But I worked hard and improved.\"",
+          "fa": "می‌گوید: «وقتی هم‌سن شما بودم، در علوم خوب نبودم. اما سخت کار کردم و بهتر شدم.»"
+        },
+        {
+          "en": "On the bus home, Elnaz writes in her small book: \"I want to be a scientist too.\"",
+          "fa": "در اتوبوس برگشت، الناز در دفتر کوچکش می‌نویسد: «من هم می‌خواهم دانشمند شوم.»"
+        },
+        {
+          "en": "It is the best day of her school year.",
+          "fa": "این بهترین روز سال تحصیلی‌اش است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Who meets the students at the door?",
+          "options": [
+            "A young scientist",
+            "The head of the university",
+            "A teacher from their school",
+            "A worker"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What is the scientist's project about?",
+          "options": [
+            "Modern machines for cars",
+            "Water in the future",
+            "Animals in the north",
+            "The history of the university"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the model machine do?",
+          "options": [
+            "It helps students study",
+            "It makes bread",
+            "It makes hot water",
+            "It makes dirty water clean"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "How many students are in the big classroom?",
+          "options": [
+            "Two hundred",
+            "A hundred",
+            "Fifty",
+            "Twenty"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the scientist say about her past?",
+          "options": [
+            "She was not good at science, but she worked hard",
+            "She was always good at science",
+            "She does not like her job",
+            "She studied history"
           ],
           "answer": 0
         }
@@ -301,54 +741,54 @@
       ],
       "questions": [
         {
-          "q": "آوا چه روزی امتحان انگلیسی دارد؟",
+          "q": "When is Ava's English exam?",
           "options": [
-            "چهارشنبه عصر",
-            "دوشنبه",
-            "شنبه",
-            "پنجشنبه صبح"
+            "On Monday",
+            "On Wednesday evening",
+            "On Saturday",
+            "On Thursday morning"
           ],
           "answer": 3
         },
         {
-          "q": "آوا کجاها دنبال فرهنگ لغت می‌گردد؟",
+          "q": "Where does Ava look for her dictionary?",
           "options": [
-            "روی میز معلم و در کلاس",
-            "در خانهٔ تینا",
-            "توی کیفش، زیر تختش و در آشپزخانه",
-            "در اتاق برادرش"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "تینا چه چیزی را به یاد آوا می‌آورد؟",
-          "options": [
-            "آوا فرهنگ لغت را به تینا داده است",
-            "فرهنگ لغت در کیف تیناست",
-            "آوا دوشنبه فرهنگ لغت را در باشگاه انگلیسی داشت",
-            "فرهنگ لغت در کتابخانه است"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "فرهنگ لغت در نهایت کجاست؟",
-          "options": [
-            "در کیف تینا",
-            "در یک جعبهٔ بزرگ پیش معلم باشگاه",
-            "زیر تخت آوا",
-            "روی میز آشپزخانه"
+            "In her brother's room",
+            "In her bag, under her bed and in the kitchen",
+            "At Tina's house",
+            "On the teacher's desk"
           ],
           "answer": 1
         },
         {
-          "q": "آوا پیش از امتحان چقدر یادداشت‌هایش را می‌خواند؟",
+          "q": "What does Tina remember?",
           "options": [
-            "ده دقیقه",
-            "یک ساعت",
-            "نیم ساعت",
-            "تمام شب"
+            "Ava gave the dictionary to Tina",
+            "Ava had the dictionary at the English club on Monday",
+            "The dictionary is in Tina's bag",
+            "The dictionary is at the bank"
           ],
-          "answer": 0
+          "answer": 1
+        },
+        {
+          "q": "Where is the dictionary in the end?",
+          "options": [
+            "Under Ava's bed",
+            "In a big box, with the club teacher",
+            "On the kitchen table",
+            "In Tina's bag"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How long does Ava read her notes before the exam?",
+          "options": [
+            "All night",
+            "An hour",
+            "Half an hour",
+            "Ten minutes"
+          ],
+          "answer": 3
         }
       ]
     },
@@ -411,54 +851,499 @@
       ],
       "questions": [
         {
-          "q": "چرا امروز برای شهرام روز شلوغی است؟",
+          "q": "Why is today a busy day for Shahram?",
           "options": [
-            "همکارش بیمار است",
-            "امتحان دارد",
-            "شرکت ساعت ده یک جلسهٔ بزرگ دارد",
-            "به سفر می‌رود"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "ساعت نه چه مشکلی پیش می‌آید؟",
-          "options": [
-            "چای روی گزارشش می‌ریزد",
-            "کامپیوترش کار نمی‌کند",
-            "گزارشش را پیدا نمی‌کند",
-            "دیر به دفتر می‌رسد"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "چه کسی به شهرام کمک می‌کند؟",
-          "options": [
-            "مدیر شرکت",
-            "یک کارمند جوان از اتاق کامپیوتر",
-            "همسرش",
-            "دوستش از دانشگاه"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "کامپیوتر چه ساعتی دوباره کار می‌کند؟",
-          "options": [
-            "یک ربع به ده",
-            "ساعت نه",
-            "ده و ربع",
-            "نه و نیم"
+            "The company has a big meeting at ten",
+            "He has an exam",
+            "He has a new job",
+            "He is going to another city"
           ],
           "answer": 0
         },
         {
-          "q": "شهرام بعد از جلسه چه می‌کند؟",
+          "q": "What goes wrong at nine o'clock?",
           "options": [
-            "به خانه می‌رود",
-            "کامپیوتر تازه‌ای می‌خرد",
-            "گزارش دیگری می‌نویسد",
-            "برای آن کارمند جوان یک کیک بزرگ می‌خرد"
+            "He cannot find his report",
+            "He is late for work",
+            "Tea goes on his report",
+            "His computer does not work"
           ],
           "answer": 3
+        },
+        {
+          "q": "Who helps Shahram?",
+          "options": [
+            "His wife",
+            "His friend from university",
+            "The head of the company",
+            "A young worker from the computer room"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "When does the computer work again?",
+          "options": [
+            "At a quarter past ten",
+            "At half past nine",
+            "At a quarter to ten",
+            "At nine o'clock"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Shahram do after the meeting?",
+          "options": [
+            "He writes another report",
+            "He buys a big cake for the young worker",
+            "He goes home",
+            "He buys a new computer"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b6-listening-c",
+      "titleEn": "The Computer Club",
+      "titleFa": "باشگاه رایانه",
+      "names": [
+        "Ario",
+        "Nika",
+        "English"
+      ],
+      "sentences": [
+        {
+          "en": "Every Wednesday after school, Ario goes to the computer club.",
+          "fa": "آریو هر چهارشنبه بعد از مدرسه به باشگاه رایانه می‌رود."
+        },
+        {
+          "en": "There are twelve members, and their teacher is very young.",
+          "fa": "دوازده عضو دارد و معلمشان خیلی جوان است."
+        },
+        {
+          "en": "The club has three rules: be on time, help each other and do not eat near the computers.",
+          "fa": "باشگاه سه قانون دارد: سر وقت بیایید، به هم کمک کنید و نزدیک رایانه‌ها چیزی نخورید."
+        },
+        {
+          "en": "This month, the club has a special activity.",
+          "fa": "این ماه، باشگاه فعالیت ویژه‌ای دارد."
+        },
+        {
+          "en": "Each member must make a small computer program for children.",
+          "fa": "هر عضو باید یک برنامهٔ رایانه‌ای کوچک برای بچه‌ها بسازد."
+        },
+        {
+          "en": "Ario's program teaches the names of animals in English.",
+          "fa": "برنامهٔ آریو اسم حیوان‌ها را به انگلیسی یاد می‌دهد."
+        },
+        {
+          "en": "However, his program has a problem: the pictures do not show.",
+          "fa": "اما برنامه‌اش مشکلی دارد: تصویرها نمایش داده نمی‌شوند."
+        },
+        {
+          "en": "His friend Nika helps him find the mistake.",
+          "fa": "دوستش نیکا کمکش می‌کند اشتباه را پیدا کند."
+        },
+        {
+          "en": "At the end of the month, there is an event for the families.",
+          "fa": "آخر ماه، برنامه‌ای برای خانواده‌ها برگزار می‌شود."
+        },
+        {
+          "en": "Ario shows his program, and a little girl plays with it for twenty minutes.",
+          "fa": "آریو برنامه‌اش را نشان می‌دهد و دختر کوچکی بیست دقیقه با آن بازی می‌کند."
+        },
+        {
+          "en": "\"This is fun!\" she says. \"Can I have it at home?\"",
+          "fa": "می‌گوید: «چه سرگرم‌کننده است! می‌توانم آن را در خانه داشته باشم؟»"
+        },
+        {
+          "en": "Ario is very happy. For him, the program is a real success.",
+          "fa": "آریو خیلی خوشحال است. برای او، برنامه‌اش یک موفقیت واقعی است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "When does Ario go to the computer club?",
+          "options": [
+            "Every morning",
+            "Every Monday",
+            "Every Wednesday after school",
+            "Every Friday"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which is one of the club's rules?",
+          "options": [
+            "Bring a computer",
+            "Come in the morning",
+            "Do not talk",
+            "Do not eat near the computers"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Ario's program teach?",
+          "options": [
+            "Songs",
+            "The names of animals in English",
+            "History",
+            "The names of colors"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Who helps Ario find the mistake?",
+          "options": [
+            "A little girl",
+            "His friend Nika",
+            "His teacher",
+            "His father"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the little girl ask?",
+          "options": [
+            "Where is my mother?",
+            "Can I join the club?",
+            "Is it difficult?",
+            "Can I have it at home?"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b6-listening-d",
+      "titleEn": "The Coffee Machine",
+      "titleFa": "دستگاه قهوه",
+      "names": [
+        "Farnaz"
+      ],
+      "sentences": [
+        {
+          "en": "On Monday morning, the coffee machine in the office does not work.",
+          "fa": "دوشنبه صبح، دستگاه قهوهٔ دفتر کار نمی‌کند."
+        },
+        {
+          "en": "The workers are not happy, because they need their coffee.",
+          "fa": "کارمندها خوشحال نیستند، چون به قهوه‌شان احتیاج دارند."
+        },
+        {
+          "en": "Farnaz, a young worker, looks at the machine.",
+          "fa": "فرناز، کارمند جوانی، به دستگاه نگاه می‌کند."
+        },
+        {
+          "en": "\"There is a small problem with the water,\" she says.",
+          "fa": "می‌گوید: «آبش مشکل کوچکی دارد.»"
+        },
+        {
+          "en": "However, she cannot make it work.",
+          "fa": "اما نمی‌تواند آن را راه بیندازد."
+        },
+        {
+          "en": "So the workers drink tea for three days.",
+          "fa": "پس کارمندها سه روز چای می‌نوشند."
+        },
+        {
+          "en": "On Wednesday, there is an important meeting at ten o'clock.",
+          "fa": "چهارشنبه، ساعت ده جلسهٔ مهمی هست."
+        },
+        {
+          "en": "Before the meeting, a man from the machine company comes to the office.",
+          "fa": "پیش از جلسه، مردی از شرکت سازندهٔ دستگاه به دفتر می‌آید."
+        },
+        {
+          "en": "He looks at the machine for five minutes and changes one small part.",
+          "fa": "پنج دقیقه به دستگاه نگاه می‌کند و یک قطعهٔ کوچک را عوض می‌کند."
+        },
+        {
+          "en": "The machine works again, and everyone is happy.",
+          "fa": "دستگاه دوباره کار می‌کند و همه خوشحال‌اند."
+        },
+        {
+          "en": "At the meeting, the head of the company says, \"Good news: the coffee machine works!\"",
+          "fa": "در جلسه، رئیس شرکت می‌گوید: «خبر خوب: دستگاه قهوه کار می‌کند!»"
+        },
+        {
+          "en": "Everyone laughs, and it is a very good meeting.",
+          "fa": "همه می‌خندند و جلسهٔ خیلی خوبی می‌شود."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the problem on Monday morning?",
+          "options": [
+            "The coffee machine does not work",
+            "Farnaz is late",
+            "The computer does not work",
+            "The office is closed"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does Farnaz say is wrong?",
+          "options": [
+            "The machine is too old",
+            "It needs a new program",
+            "There is no coffee",
+            "There is a small problem with the water"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What do the workers drink for three days?",
+          "options": [
+            "Water",
+            "Milk",
+            "Tea",
+            "Juice"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Who makes the machine work again?",
+          "options": [
+            "A man from the machine company",
+            "Farnaz",
+            "The head of the company",
+            "A student"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the head of the company say at the meeting?",
+          "options": [
+            "Good news: the coffee machine works!",
+            "We need a new office.",
+            "Please drink tea.",
+            "The meeting is very short."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b6-listening-e",
+      "titleEn": "A New Language",
+      "titleFa": "زبانی تازه",
+      "names": [
+        "Omar",
+        "Kaveh",
+        "Persian",
+        "Iran"
+      ],
+      "sentences": [
+        {
+          "en": "Omar is thirteen, and last year his family moved to Iran from another country.",
+          "fa": "عمر سیزده ساله است و پارسال خانواده‌اش از کشور دیگری به ایران آمدند."
+        },
+        {
+          "en": "At first, he did not understand the language at school.",
+          "fa": "اول، زبان مدرسه را نمی‌فهمید."
+        },
+        {
+          "en": "Every subject was difficult for him, and he was often sad.",
+          "fa": "همهٔ درس‌ها برایش سخت بود و اغلب غمگین بود."
+        },
+        {
+          "en": "His teacher gave him a small dictionary and some advice.",
+          "fa": "معلمش یک فرهنگ لغت کوچک و چند راهنمایی به او داد."
+        },
+        {
+          "en": "\"Learn five new words every day, and use them in sentences,\" she said.",
+          "fa": "گفت: «هر روز پنج واژهٔ تازه یاد بگیر و آن‌ها را در جمله به کار ببر.»"
+        },
+        {
+          "en": "His friend from class, Kaveh, helped him with his homework after school.",
+          "fa": "دوست هم‌کلاسی‌اش، کاوه، بعد از مدرسه در تکالیف کمکش می‌کرد."
+        },
+        {
+          "en": "Omar also watched programs for children on TV in Persian.",
+          "fa": "عمر برنامه‌های کودک را هم به فارسی در تلویزیون تماشا می‌کرد."
+        },
+        {
+          "en": "After six months, he could understand most of his lessons.",
+          "fa": "بعد از شش ماه، بیشتر درس‌هایش را می‌فهمید."
+        },
+        {
+          "en": "Now Omar speaks Persian well, and he has many friends.",
+          "fa": "حالا عمر خوب فارسی حرف می‌زند و دوستان زیادی دارد."
+        },
+        {
+          "en": "He helps other new students at the school.",
+          "fa": "به دانش‌آموزان تازهٔ دیگر مدرسه کمک می‌کند."
+        },
+        {
+          "en": "\"The first months were very difficult,\" he says. \"But every day, I improved a little.\"",
+          "fa": "می‌گوید: «ماه‌های اول خیلی سخت بود. اما هر روز کمی بهتر شدم.»"
+        },
+        {
+          "en": "His teacher is very happy with his results.",
+          "fa": "معلمش از نتیجه‌هایش خیلی راضی است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Where did Omar's family move from?",
+          "options": [
+            "From the north of Iran",
+            "From another country",
+            "From a small town",
+            "From a farm"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What did his teacher give him?",
+          "options": [
+            "A test",
+            "A book of stories",
+            "A small dictionary and some advice",
+            "A computer"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Who helped Omar with his homework?",
+          "options": [
+            "His teacher",
+            "A worker",
+            "His friend Kaveh",
+            "His mother"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "After six months, what could Omar do?",
+          "options": [
+            "Teach a class",
+            "Write a blog",
+            "Understand most of his lessons",
+            "Speak three languages"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Omar do now?",
+          "options": [
+            "He goes back to his country",
+            "He teaches science",
+            "He works in an office",
+            "He helps other new students"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b6-listening-f",
+      "titleEn": "The Exam Results",
+      "titleFa": "نتیجهٔ امتحان‌ها",
+      "names": [
+        "Hanieh"
+      ],
+      "sentences": [
+        {
+          "en": "Today is the day of the exam results, and Hanieh is afraid.",
+          "fa": "امروز روز اعلام نتیجهٔ امتحان‌هاست و هانیه می‌ترسد."
+        },
+        {
+          "en": "Last month, she had exams in five subjects.",
+          "fa": "ماه پیش، در پنج درس امتحان داشت."
+        },
+        {
+          "en": "The history exam was very difficult for her.",
+          "fa": "امتحان تاریخ برایش خیلی سخت بود."
+        },
+        {
+          "en": "At ten o'clock, the teacher comes into the classroom with the results.",
+          "fa": "ساعت ده، معلم با نتیجه‌ها وارد کلاس می‌شود."
+        },
+        {
+          "en": "Hanieh's result in science is very good.",
+          "fa": "نتیجهٔ هانیه در علوم خیلی خوب است."
+        },
+        {
+          "en": "Her results in language and geography are good too.",
+          "fa": "نتیجه‌هایش در زبان و جغرافیا هم خوب است."
+        },
+        {
+          "en": "However, her history result is not good.",
+          "fa": "اما نتیجهٔ تاریخش خوب نیست."
+        },
+        {
+          "en": "After class, she talks to her history teacher.",
+          "fa": "بعد از کلاس، با معلم تاریخش حرف می‌زند."
+        },
+        {
+          "en": "\"What can I do to improve?\" she asks.",
+          "fa": "می‌پرسد: «چه کار کنم تا بهتر شوم؟»"
+        },
+        {
+          "en": "The teacher gives her some advice: \"Read a little every day, and write a short paragraph about it.\"",
+          "fa": "معلم راهنمایی‌اش می‌کند: «هر روز کمی بخوان و یک بند کوتاه درباره‌اش بنویس.»"
+        },
+        {
+          "en": "Hanieh makes a plan, and she follows it for three months.",
+          "fa": "هانیه برنامه‌ای می‌ریزد و سه ماه آن را دنبال می‌کند."
+        },
+        {
+          "en": "In the next exam, her history result is one of the best in the class.",
+          "fa": "در امتحان بعدی، نتیجهٔ تاریخش یکی از بهترین‌های کلاس است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "How does Hanieh feel today?",
+          "options": [
+            "Happy",
+            "Bored",
+            "Afraid",
+            "Angry"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which exam was very difficult for her?",
+          "options": [
+            "Language",
+            "Science",
+            "Geography",
+            "History"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What is her result in science?",
+          "options": [
+            "Very good",
+            "Difficult",
+            "Bad",
+            "Not good"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does Hanieh ask her history teacher?",
+          "options": [
+            "Can I have a new test?",
+            "Why is my result bad?",
+            "What can I do to improve?",
+            "Is the exam difficult?"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What happens in the next exam?",
+          "options": [
+            "Her history result is one of the best in the class",
+            "She forgets her pen",
+            "She is late for the exam",
+            "Her science result is bad"
+          ],
+          "answer": 0
         }
       ]
     }

@@ -205,7 +205,7 @@
   ],
   "check": [
     {
-      "q": "آهنگ خواننده درباره‌ی چیست؟",
+      "q": "The singer's song is about ___.",
       "options": [
         "home",
         "bird",
@@ -215,7 +215,7 @@
       "a": "home"
     },
     {
-      "q": "مردی که کنار خواننده است چه می‌نوازد؟",
+      "q": "What does the man next to the singer play?",
       "options": [
         "piano",
         "guitar",

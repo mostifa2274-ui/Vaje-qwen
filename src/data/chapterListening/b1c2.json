@@ -60,54 +60,54 @@
   ],
   "questions": [
     {
-      "q": "چه کسی آریا را از ماجرا باخبر می‌کند؟",
+      "q": "Aria hears ___ downstairs.",
       "options": [
-        "بابا",
-        "مامان",
-        "مینا",
-        "یاسی"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "آریا اول کجا را نگاه می‌کند؟",
-      "options": [
-        "حمام و پشت در آشپزخانه",
-        "زیر تخت‌ها",
-        "حیاط",
-        "باغچه"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "آریا به یاسی چه می‌دهد؟",
-      "options": [
-        "آب",
-        "یک کفش",
-        "یک فنجان شیر",
-        "عکس نینو"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "چرا یاسی جواب نمی‌دهد؟",
-      "options": [
-        "خواب است",
-        "نوزاد است",
-        "غمگین است",
-        "بیرون است"
+        "Dad",
+        "Mina",
+        "Yasi",
+        "Mom"
       ],
       "answer": 1
     },
     {
-      "q": "آریا شب چه صدایی می‌شنود؟",
+      "q": "Where does Aria look first?",
       "options": [
-        "صدای نینو",
-        "صدای پرنده",
-        "صدای در",
-        "صدای باران"
+        "In the garden",
+        "In the yard",
+        "In the bathroom and behind the kitchen door",
+        "Under every bed"
       ],
-      "answer": 3
+      "answer": 2
+    },
+    {
+      "q": "What does Aria give Yasi?",
+      "options": [
+        "Water",
+        "A shoe",
+        "A cup of milk",
+        "A photo of Nino"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Yasi does not answer. She is ___.",
+      "options": [
+        "only a baby",
+        "in the yard",
+        "sleeping",
+        "very sad"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What does Aria hear that night?",
+      "options": [
+        "The rain",
+        "A bird",
+        "The door",
+        "Nino"
+      ],
+      "answer": 0
     }
   ]
 }

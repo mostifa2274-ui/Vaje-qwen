@@ -1,29 +1,31 @@
-import { CHAPTERS, VOCAB, WORD_BY_ID } from '../data/chapters'
+import { VOCAB, WORD_BY_ID } from '../data/chapters'
 import { BOOK_TEST_CONTENT, type TestText } from '../data/bookTests'
 import type { ExamProgress, GhesseState, WordEntry } from './types'
 import { bookExamId } from './gates'
 import { listeningChoiceOptions, recordRetrieval, seededSample, selectWeakestWordIds } from './review'
 import { isHeadwordTranslationCorrect } from './persianTranslation'
 import { sameHeadwordEntries } from './homophones'
+import { bookTestTextsPerSkill, bookTestWordsFrom, bookWordIds } from './bookTestSize'
 
 // The end-of-book test. After book N the learner proves four things, each
 // scored on its own so a strength in one cannot hide a gap in another:
 //
-//   1. translation     — type the Persian meaning of 12 English words
-//   2. listeningWords  — hear 12 other words and choose their meaning
-//   3. reading         — read a new text and answer 5 questions
-//   4. listening       — hear another new text (never shown during the
-//                        test) and answer 5 questions
+//   1. translation     — type the Persian meaning of English words
+//   2. listeningWords  — hear other words and choose their meaning
+//   3. reading         — read new texts and answer 5 questions on each
+//   4. listening       — hear other new texts (never shown during the
+//                        test) and answer 5 questions on each
 //
-// Both vocabulary sections draw on every book so far, and both texts are
-// new stories written only with words taught up to book N. The two texts of
-// each skill alternate between attempts, so a retake after the review (which
-// reveals the listening text) is a different listening test.
+// The test grows with the course (engine/bookTestSize.ts): half of every
+// studied book's words are asked, split between the two vocabulary sections,
+// and books 1–2 have one text per skill, 3–4 two, 5–6 three and 7–8 four.
+// The texts are new stories written only with words taught up to book N.
+// Each book has two sets of texts that alternate between attempts, so a
+// retake after the review (which reveals the listening texts) is a
+// different listening test.
 
 // Every section needs every answer right.
 export const BOOK_TEST_PASS_RATE = 1
-export const BOOK_TEST_WORDS_PER_SECTION = 12
-const CURRENT_BOOK_WORDS_PER_SECTION = 4
 
 export type BookTestSection = 'translation' | 'listeningWords' | 'reading' | 'listening'
 export const BOOK_TEST_SECTIONS: readonly BookTestSection[] = ['translation', 'listeningWords', 'reading', 'listening']
@@ -42,8 +44,8 @@ export interface BookTest {
   attempt: number
   translation: BookTestWord[]
   listeningWords: BookTestListeningWord[]
-  reading: TestText
-  listening: TestText
+  reading: TestText[]
+  listening: TestText[]
 }
 
 /**
@@ -54,8 +56,9 @@ export interface BookTest {
 export interface BookTestAnswers {
   translation: string[]
   listeningWords: string[]
-  reading: Array<number | null>
-  listening: Array<number | null>
+  /** Chosen option per question, per text. */
+  reading: Array<Array<number | null>>
+  listening: Array<Array<number | null>>
 }
 
 export interface BookTestSectionResult {
@@ -79,8 +82,8 @@ export function emptyBookTestAnswers(test: BookTest): BookTestAnswers {
   return {
     translation: [],
     listeningWords: [],
-    reading: test.reading.questions.map(() => null),
-    listening: test.listening.questions.map(() => null),
+    reading: test.reading.map(text => text.questions.map(() => null)),
+    listening: test.listening.map(text => text.questions.map(() => null)),
   }
 }
 
@@ -102,42 +105,25 @@ function eligibleForListening(word: WordEntry): boolean {
   return eligibleForTranslation(word) && !word.word.includes(',') && sameHeadwordEntries(word, VOCAB).length === 1
 }
 
-const wordsByBook = new Map<number, string[]>()
-for (const chapter of CHAPTERS) {
-  const ids = wordsByBook.get(chapter.book) ?? []
-  for (const id of chapter.new) if (!ids.includes(id)) ids.push(id)
-  wordsByBook.set(chapter.book, ids)
-}
-
 /** Every word taught in books 1..book, in teaching order. */
 export function bookTestPool(book: number): string[] {
   const ids: string[] = []
-  for (let current = 1; current <= book; current++) ids.push(...(wordsByBook.get(current) ?? []))
+  for (let current = 1; current <= book; current++) ids.push(...bookWordIds(current))
   return ids
 }
 
 /**
- * How many words of each book one vocabulary section asks. Book 1 is all
- * book 1. Later books keep a third for the newest book and spread the rest
- * evenly over every earlier book; which earlier books get the spare places
- * rotates with the attempt so repeated tests reach all of them.
+ * How many words of each studied book the two vocabulary sections ask:
+ * half of that book's words, split evenly between typing and listening.
+ * When a book's share is odd, the spare word alternates between the
+ * sections from book to book and from attempt to attempt.
  */
-export function bookTestAllocation(book: number, rotation: number): Map<number, number> {
-  const allocation = new Map<number, number>()
-  if (book <= 1) {
-    allocation.set(1, BOOK_TEST_WORDS_PER_SECTION)
-    return allocation
-  }
-  allocation.set(book, CURRENT_BOOK_WORDS_PER_SECTION)
-  const earlier = book - 1
-  const earlierTotal = BOOK_TEST_WORDS_PER_SECTION - CURRENT_BOOK_WORDS_PER_SECTION
-  const base = Math.floor(earlierTotal / earlier)
-  const extra = earlierTotal % earlier
-  const offset = ((rotation % earlier) + earlier) % earlier
-  for (let index = 0; index < earlier; index++) {
-    const previous = index + 1
-    const rank = (index - offset + earlier) % earlier
-    allocation.set(previous, base + (rank < extra ? 1 : 0))
+export function bookTestAllocation(book: number, rotation: number): Map<number, Record<'translation' | 'listeningWords', number>> {
+  const allocation = new Map<number, Record<'translation' | 'listeningWords', number>>()
+  for (let source = 1; source <= book; source++) {
+    const total = bookTestWordsFrom(source)
+    const translation = (source + rotation) % 2 === 0 ? Math.ceil(total / 2) : Math.floor(total / 2)
+    allocation.set(source, { translation, listeningWords: total - translation })
   }
   return allocation
 }
@@ -169,10 +155,10 @@ function selectSection(
   taken: Set<string>,
 ): BookTestWord[] {
   const previouslyTested = new Set(state.exams[bookExamId(book)]?.testedWordIds ?? [])
-  const rotation = attempt - 1 + (section === 'listeningWords' ? 1 : 0)
   const picked: BookTestWord[] = []
-  for (const [source, count] of bookTestAllocation(book, rotation)) {
-    const pool = (wordsByBook.get(source) ?? []).filter(id => !taken.has(id) && eligible(WORD_BY_ID.get(id)!))
+  for (const [source, counts] of bookTestAllocation(book, attempt - 1)) {
+    const count = counts[section]
+    const pool = bookWordIds(source).filter(id => !taken.has(id) && eligible(WORD_BY_ID.get(id)!))
     for (const wordId of pickFromBook(pool, count, state, previouslyTested, `book-test:${book}:${attempt}:${section}:${source}`)) {
       taken.add(wordId)
       picked.push({ wordId, book: source })
@@ -182,25 +168,62 @@ function selectSection(
   return order.map(wordId => picked.find(item => item.wordId === wordId)!)
 }
 
+const introducedBook = new Map<string, number>()
+for (let source = 1; source <= 8; source++) for (const id of bookWordIds(source)) if (!introducedBook.has(id)) introducedBook.set(id, source)
+
+function listeningItem(book: number, attempt: number, wordId: string, source: number): BookTestListeningWord {
+  return {
+    wordId,
+    book: source,
+    // The ':0' suffix keeps option sets identical to earlier releases, so a
+    // test in progress when the app updates still matches its saved draft.
+    options: listeningChoiceOptions(WORD_BY_ID.get(wordId)!, VOCAB, `book-test:${book}:${attempt}:listen:${wordId}:0`),
+  }
+}
+
+/**
+ * Rebuild a test from its two word lists (a saved draft), so an unfinished
+ * test resumes with the same words even after reviews change which words
+ * would be picked now. Returns undefined for any list the test could not hold.
+ */
+export function bookTestFromWords(book: number, attempt: number, translationIds: unknown, listeningIds: unknown): BookTest | undefined {
+  if (!BOOK_TEST_CONTENT.has(book) || !Array.isArray(translationIds) || !Array.isArray(listeningIds)) return undefined
+  const all = [...translationIds, ...listeningIds]
+  if (all.some(id => typeof id !== 'string') || new Set(all).size !== all.length) return undefined
+  const valid = (id: string, eligible: (word: WordEntry) => boolean) => {
+    const source = introducedBook.get(id)
+    const word = WORD_BY_ID.get(id)
+    return source !== undefined && source <= book && word !== undefined && eligible(word)
+  }
+  if (!(translationIds as string[]).every(id => valid(id, eligibleForTranslation))) return undefined
+  if (!(listeningIds as string[]).every(id => valid(id, eligibleForListening))) return undefined
+  return {
+    book,
+    attempt,
+    translation: (translationIds as string[]).map(wordId => ({ wordId, book: introducedBook.get(wordId)! })),
+    listeningWords: (listeningIds as string[]).map(wordId => listeningItem(book, attempt, wordId, introducedBook.get(wordId)!)),
+    ...bookTestTextsForAttempt(book, attempt),
+  }
+}
+
 export function buildBookTest(book: number, state: GhesseState, attempt: number): BookTest | undefined {
   const content = BOOK_TEST_CONTENT.get(book)
   if (!content) return undefined
   const taken = new Set<string>()
   const translation = selectSection(book, state, attempt, 'translation', eligibleForTranslation, taken)
-  const listeningWords = selectSection(book, state, attempt, 'listeningWords', eligibleForListening, taken).map(item => ({
-    ...item,
-    // The ':0' suffix keeps option sets identical to earlier releases, so a
-    // test in progress when the app updates still matches its saved draft.
-    options: listeningChoiceOptions(WORD_BY_ID.get(item.wordId)!, VOCAB, `book-test:${book}:${attempt}:listen:${item.wordId}:0`),
-  }))
-  const variant = (Math.max(1, attempt) - 1) % 2
+  const listeningWords = selectSection(book, state, attempt, 'listeningWords', eligibleForListening, taken)
+    .map(item => listeningItem(book, attempt, item.wordId, item.book))
+  return { book, attempt, translation, listeningWords, ...bookTestTextsForAttempt(book, attempt) }
+}
+
+/** The texts of one attempt: the first set on odd attempts, the second on even ones. */
+export function bookTestTextsForAttempt(book: number, attempt: number): Pick<BookTest, 'reading' | 'listening'> {
+  const content = BOOK_TEST_CONTENT.get(book)!
+  const count = bookTestTextsPerSkill(book)
+  const start = ((Math.max(1, attempt) - 1) % 2) * count
   return {
-    book,
-    attempt,
-    translation,
-    listeningWords,
-    reading: content.reading[variant],
-    listening: content.listening[variant],
+    reading: content.reading.slice(start, start + count),
+    listening: content.listening.slice(start, start + count),
   }
 }
 
@@ -211,8 +234,8 @@ export function bookTestSignature(test: BookTest): string {
     test.attempt,
     test.translation.map(item => item.wordId).join(','),
     test.listeningWords.map(item => `${item.wordId}:${item.options.map(option => option.id).join('/')}`).join(','),
-    test.reading.id,
-    test.listening.id,
+    test.reading.map(text => text.id).join(','),
+    test.listening.map(text => text.id).join(','),
   ].join('|')
 }
 
@@ -243,14 +266,15 @@ export function scoreBookTest(test: BookTest, answers: BookTestAnswers): BookTes
     if (listeningWordCorrect(test, index, answers.listeningWords[index])) listeningRight++
     else missedWordIds.push(item.wordId)
   })
-  const comprehension = (text: TestText, chosen: Array<number | null>) =>
-    text.questions.filter((question, index) => chosen[index] === question.answer).length
+  const comprehension = (texts: TestText[], chosen: Array<Array<number | null>>) =>
+    texts.reduce((sum, text, slot) => sum + text.questions.filter((question, index) => chosen[slot]?.[index] === question.answer).length, 0)
+  const questionTotal = (texts: TestText[]) => texts.reduce((sum, text) => sum + text.questions.length, 0)
 
   const sections: Record<BookTestSection, BookTestSectionResult> = {
     translation: sectionResult(translationRight, test.translation.length),
     listeningWords: sectionResult(listeningRight, test.listeningWords.length),
-    reading: sectionResult(comprehension(test.reading, answers.reading), test.reading.questions.length),
-    listening: sectionResult(comprehension(test.listening, answers.listening), test.listening.questions.length),
+    reading: sectionResult(comprehension(test.reading, answers.reading), questionTotal(test.reading)),
+    listening: sectionResult(comprehension(test.listening, answers.listening), questionTotal(test.listening)),
   }
   const correct = BOOK_TEST_SECTIONS.reduce((sum, section) => sum + sections[section].correct, 0)
   const total = BOOK_TEST_SECTIONS.reduce((sum, section) => sum + sections[section].total, 0)

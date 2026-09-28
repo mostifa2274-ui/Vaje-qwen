@@ -57,52 +57,52 @@
   ],
   "questions": [
     {
-      "q": "پیرمرد هر عصر با چه چیزی به ساحل برمی‌گردد؟",
+      "q": "How does the old man come back to the beach every evening?",
       "options": [
-        "با قطار",
-        "با قایق کوچکش",
-        "با کامیون",
-        "پیاده"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "قایق پیرمرد پر از چیست؟",
-      "options": [
-        "ماهی",
-        "گل",
-        "نان",
-        "میوه"
+        "In his small boat",
+        "On foot",
+        "In a truck",
+        "By train"
       ],
       "answer": 0
     },
     {
-      "q": "جوجه کجا فرار کرده است؟",
+      "q": "What is his boat full of?",
       "options": [
-        "در شمال",
-        "کنار دریا",
-        "در تهران",
-        "در مزرعه"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "گربه‌ی پیرمرد بعد از چند ماه برگشت؟",
-      "options": [
-        "یک ماه",
-        "سه ماه",
-        "یک سال",
-        "دو ماه"
+        "Bread",
+        "Flowers",
+        "Fruit",
+        "Fish"
       ],
       "answer": 3
     },
     {
-      "q": "روی دیوار کتابخانه چه هست؟",
+      "q": "Where did the chicken run away?",
       "options": [
-        "یک نقشه",
-        "یک یادداشت تازه درباره‌ی یک جوجه‌ی زرد",
-        "عکس پیرمرد",
-        "یک پوستر فیلم"
+        "Near the sea",
+        "In the north",
+        "In Tehran",
+        "On a farm"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "The old man's cat came back after ___.",
+      "options": [
+        "one month",
+        "a year",
+        "three months",
+        "two months"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "What is on the library wall?",
+      "options": [
+        "A photo of the old man",
+        "A new note about a yellow chicken",
+        "A map",
+        "A picture of a boat"
       ],
       "answer": 1
     }

@@ -59,54 +59,54 @@
   ],
   "questions": [
     {
-      "q": "نگار چه چیزی یادش می‌آید؟",
+      "q": "What does Negar remember?",
       "options": [
-        "که فردا تولد میناست",
-        "که مدرسه تمام شده",
-        "که نینو برگشته",
-        "که فردا جمعه است"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "نگار تصمیم می‌گیرد چه چیزی درست کند؟",
-      "options": [
-        "یک کیک",
-        "نقاشی نینو",
-        "یک نامه",
-        "یک چراغ"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "نگار چه چیزی به نقاشی اضافه می‌کند؟",
-      "options": [
-        "یک پرنده‌ی قرمز",
-        "یک درِ آبی",
-        "کمی سفیدی در سمت چپ نینو",
-        "اسم مینا"
+        "School is finished",
+        "Tomorrow is Friday",
+        "Tomorrow is Mina's birthday",
+        "Nino is back"
       ],
       "answer": 2
     },
     {
-      "q": "در آشپزخانه چند چراغ کوچک هست؟",
+      "q": "What does Negar decide to make?",
       "options": [
-        "یازده",
-        "ده",
-        "هشت",
-        "دوازده"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "وقتی مینا نقاشی را می‌بیند، چه می‌شود؟",
-      "options": [
-        "غمگین می‌شود",
-        "خوشحال می‌شود",
-        "به اتاقش می‌رود",
-        "چیزی نمی‌گوید"
+        "A cake",
+        "A picture of Nino",
+        "A light",
+        "A note"
       ],
       "answer": 1
+    },
+    {
+      "q": "What does Negar add to the picture?",
+      "options": [
+        "A blue door",
+        "A red bird",
+        "A little white on Nino's left",
+        "Mina's name"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "How many small lights are in the kitchen?",
+      "options": [
+        "Eleven",
+        "Eight",
+        "Twelve",
+        "Ten"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "What happens when Mina sees the picture?",
+      "options": [
+        "She says nothing",
+        "She goes to her room",
+        "She becomes sad",
+        "She becomes happy"
+      ],
+      "answer": 3
     }
   ]
 }

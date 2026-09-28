@@ -1,4 +1,5 @@
 import type { Chapter, WordEntry } from './types'
+import { tokenizeSentence, type LemmaMap } from './lemmatize'
 
 export const READING_QUESTION_COUNT = 10
 // Questions on the chapter's listening text (data/chapterListening).
@@ -11,7 +12,10 @@ export interface ReadingOption {
 
 export interface ReadingQuestion {
   id: string
+  /** English, like the story. */
   prompt: string
+  /** A Persian gloss of a fixed question while it still uses untaught words. */
+  promptHintFa?: string
   context?: string
   contextDir?: 'rtl' | 'ltr'
   optionDir: 'rtl' | 'ltr'
@@ -200,6 +204,32 @@ function sequenceAnchorIndices(chapter: Chapter): number[] {
   return [0.08, 0.35, 0.63, 0.9].map(fraction => targetIndex(indices, fraction, used)).sort((a, b) => a - b)
 }
 
+// The fixed question stems, in English, with a Persian gloss for the
+// chapters where a stem still has words the learner has not been taught.
+const STEMS = {
+  meaningEn: ['Which one means this?', 'کدام جملهٔ انگلیسی دقیقاً این معنی را می‌رساند؟'],
+  early: ['Which one happens near the beginning of this part of the story?', 'کدام اتفاق در اوایل همین فصل رخ می‌دهد؟'],
+  inChapter: ['Which one happens in this part of the story?', 'کدام اتفاق واقعاً در همین فصل رخ می‌دهد؟'],
+  nearEnd: ['Which one happens near the end of this part of the story?', 'کدام اتفاق نزدیک پایان همین فصل رخ می‌دهد؟'],
+  first: ['Which happens first in the story?', 'کدام اتفاق زودتر از بقیه در قصه رخ می‌دهد؟'],
+  last: ['Which happens last in the story?', 'کدام اتفاق دیرتر از بقیه در قصه رخ می‌دهد؟'],
+  next: ['What happens after this?', 'بعد از این جمله، چه اتفاقی می‌افتد؟'],
+  previous: ['What happens before this?', 'پیش از این جمله، چه اتفاقی می‌افتد؟'],
+} as const
+
+type Stem = keyof typeof STEMS
+
+function stemmed(
+  stem: Stem,
+  known: ReadonlySet<string>,
+  lemmaMap: LemmaMap | undefined,
+): Pick<ReadingQuestion, 'prompt' | 'promptHintFa'> {
+  const [prompt, hint] = STEMS[stem]
+  if (!lemmaMap) return { prompt, promptHintFa: hint }
+  const taught = tokenizeSentence(prompt, lemmaMap).every(token => !token.isWord || (token.id !== undefined && known.has(token.id)))
+  return taught ? { prompt } : { prompt, promptHintFa: hint }
+}
+
 function authoredQuestions(
   chapter: Chapter,
   wordById: ReadonlyMap<string, WordEntry>,
@@ -221,17 +251,20 @@ export function buildReadingQuestions(
   chapter: Chapter,
   wordById: ReadonlyMap<string, WordEntry>,
   chapterPool: readonly Chapter[],
+  lemmaMap?: LemmaMap,
 ): ReadingQuestion[] {
+  // Words taught by the end of this chapter, for the stems' Persian gloss.
+  const position = chapterPool.findIndex(item => item.id === chapter.id)
+  const known = new Set((position < 0 ? [chapter] : chapterPool.slice(0, position + 1)).flatMap(item => item.new))
+  const stem = (name: Stem) => stemmed(name, known, lemmaMap)
   const questions: ReadingQuestion[] = [...authoredQuestions(chapter, wordById)]
   const enIndices = storySentenceIndices(chapter)
-  const faIndices = uniqueSentenceIndices(chapter, 'fa')
   const usedEn = new Set<number>()
-  const usedFa = new Set<number>()
 
   const meaningEnTarget = targetIndex(enIndices, 0.3, usedEn)
   questions.push({
     id: `${chapter.id}:meaning-en`,
-    prompt: 'کدام جملهٔ انگلیسی دقیقاً این معنی را می‌رساند؟',
+    ...stem('meaningEn'),
     context: chapter.sentences[meaningEnTarget].fa,
     contextDir: 'rtl',
     optionDir: 'ltr',
@@ -239,25 +272,14 @@ export function buildReadingQuestions(
     answerId: `sentence-${meaningEnTarget}`,
   })
 
-  const meaningFaTarget = targetIndex(faIndices, 0.68, usedFa)
-  questions.push({
-    id: `${chapter.id}:meaning-fa`,
-    prompt: 'این جمله در قصه چه معنایی دارد؟',
-    context: chapter.sentences[meaningFaTarget].en,
-    contextDir: 'ltr',
-    optionDir: 'rtl',
-    options: sentenceOptions(chapter, 'fa', meaningFaTarget, `${chapter.id}:meaning-fa`),
-    answerId: `sentence-${meaningFaTarget}`,
-  })
-
-  for (const [slot, fraction] of [0.42, 0.84].entries()) {
+  // Which event belongs to this chapter: early, in the middle and near the
+  // end, against events from other chapters at the same point.
+  for (const [slot, fraction, name] of [[2, 0.15, 'early'], [0, 0.42, 'inChapter'], [1, 0.84, 'nearEnd']] as const) {
     const target = targetIndex(enIndices, fraction, usedEn)
     const answerId = `story-${chapter.id}-${target}`
     questions.push({
       id: `${chapter.id}:story-event:${slot}`,
-      prompt: slot === 0
-        ? 'کدام اتفاق واقعاً در همین فصل رخ می‌دهد؟'
-        : 'کدام اتفاق نزدیک پایان همین فصل رخ می‌دهد؟',
+      ...stem(name),
       optionDir: 'ltr',
       options: storyPresenceOptions(chapter, chapterPool, target, fraction, `${chapter.id}:story-event:${slot}`),
       answerId,
@@ -273,7 +295,7 @@ export function buildReadingQuestions(
 
   questions.push({
     id: `${chapter.id}:sequence:first`,
-    prompt: 'کدام اتفاق زودتر از بقیه در قصه رخ می‌دهد؟',
+    ...stem('first'),
     optionDir: 'ltr',
     options: sequenceOptions,
     answerId: `sentence-${earliest}`,
@@ -281,7 +303,7 @@ export function buildReadingQuestions(
 
   questions.push({
     id: `${chapter.id}:sequence:last`,
-    prompt: 'کدام اتفاق دیرتر از بقیه در قصه رخ می‌دهد؟',
+    ...stem('last'),
     optionDir: 'ltr',
     options: [...sequenceOptions].sort((a, b) => seededRank(`${chapter.id}:sequence:last`, a.id) - seededRank(`${chapter.id}:sequence:last`, b.id)),
     answerId: `sentence-${latest}`,
@@ -291,7 +313,7 @@ export function buildReadingQuestions(
   const nextTarget = nextAnchor + 1
   questions.push({
     id: `${chapter.id}:sequence:next`,
-    prompt: 'بعد از این جمله، چه اتفاقی می‌افتد؟',
+    ...stem('next'),
     context: chapter.sentences[nextAnchor].en,
     contextDir: 'ltr',
     optionDir: 'ltr',
@@ -303,7 +325,7 @@ export function buildReadingQuestions(
   const previousTarget = previousAnchor - 1
   questions.push({
     id: `${chapter.id}:sequence:previous`,
-    prompt: 'پیش از این جمله، چه اتفاقی می‌افتد؟',
+    ...stem('previous'),
     context: chapter.sentences[previousAnchor].en,
     contextDir: 'ltr',
     optionDir: 'ltr',

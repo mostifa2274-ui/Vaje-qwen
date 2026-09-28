@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
+import { CHAPTERS, WORD_BY_ID, lemmaMap } from '../data/chapters'
 import { buildReadingQuestions, READING_QUESTION_COUNT } from './comprehension'
 
 describe('chapter reading comprehension', () => {
@@ -34,8 +34,8 @@ describe('chapter reading comprehension', () => {
       const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
       const ids = questions.map(question => question.id)
       expect(ids.filter(id => id.includes(':authored:')).length, chapter.id).toBe(2)
-      expect(ids.filter(id => id.includes(':meaning-')).length, chapter.id).toBe(2)
-      expect(ids.filter(id => id.includes(':story-event:')).length, chapter.id).toBe(2)
+      expect(ids.filter(id => id.includes(':meaning-')).length, chapter.id).toBe(1)
+      expect(ids.filter(id => id.includes(':story-event:')).length, chapter.id).toBe(3)
       expect(ids.filter(id => id.includes(':sequence:')).length, chapter.id).toBe(4)
     }
   })
@@ -49,5 +49,23 @@ describe('chapter reading comprehension', () => {
         expect(question.options.filter(option => option.id.startsWith('story-') && !option.id.startsWith(`story-${chapter.id}-`)).length, question.id).toBe(3)
       }
     }
+  })
+
+  it('asks in English, with a Persian gloss only while a fixed question has untaught words', () => {
+    const hinted = new Map<string, number>()
+    for (const chapter of CHAPTERS) {
+      const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS, lemmaMap)
+      for (const question of questions) {
+        expect(question.prompt, `${chapter.id}:${question.id}`).not.toMatch(/[؀-ۿ]/)
+        for (const option of question.options) expect(option.label, `${chapter.id}:${question.id}`).not.toMatch(/[؀-ۿ]/)
+        if (question.id.includes(':authored:')) expect(question.promptHintFa).toBeUndefined()
+        if (question.promptHintFa) hinted.set(chapter.id, (hinted.get(chapter.id) ?? 0) + 1)
+      }
+    }
+    // Beginners get the gloss; once "which" is taught (book 3, chapter 2), every stem is.
+    expect(hinted.get('b1c1')).toBe(8)
+    expect(hinted.get('b3c1')).toBe(6)
+    const from = CHAPTERS.findIndex(chapter => chapter.id === 'b3c2')
+    for (const chapter of CHAPTERS.slice(from)) expect(hinted.get(chapter.id), chapter.id).toBeUndefined()
   })
 })

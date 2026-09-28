@@ -55,52 +55,52 @@
   ],
   "questions": [
     {
-      "q": "پیرمرد هر صبح چه سفارش می‌دهد؟",
+      "q": "What does the old man order every morning?",
       "options": [
-        "چای با لیمو",
-        "یک فنجان قهوه و یک کلوچه",
-        "آب پرتقال",
-        "بستنی"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "در بازار کلی چه حیوان‌هایی هست؟",
-      "options": [
-        "سگ و اسب",
-        "پرنده و ماهی",
-        "گربه و مرغ و جوجه",
-        "گاو و بز"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "چرا مرغ و جوجه‌ها نانوایی را دوست دارند؟",
-      "options": [
-        "چون آنجا گرم است",
-        "چون آنجا آرام است",
-        "چون آب دارد",
-        "چون درخت دارد"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "دختر بزرگ‌تر چه در دست دارد؟",
-      "options": [
-        "یک فنجان",
-        "یک نقشه",
-        "یک کلوچه",
-        "عکس یک جوجه‌ی زرد"
+        "Ice cream",
+        "Orange juice",
+        "Tea with lemon",
+        "A cup of coffee and one cookie"
       ],
       "answer": 3
     },
     {
-      "q": "پیرمرد می‌گوید کی بیایند؟",
+      "q": "Which animals are there at the market?",
       "options": [
-        "ظهر",
-        "زود، قبل از باز شدن مغازه‌ها",
-        "عصر",
-        "جمعه"
+        "Cats and chickens",
+        "Only dogs",
+        "Birds and fish",
+        "Dogs and birds"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "Why do the chickens like the bread shop?",
+      "options": [
+        "It is quiet there",
+        "There is water",
+        "There are trees",
+        "It is warm there"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "What does the oldest girl have?",
+      "options": [
+        "A cookie",
+        "A map",
+        "A cup",
+        "A picture of a yellow chicken"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "When does the old man tell them to come?",
+      "options": [
+        "In the evening",
+        "Early, before the shops open",
+        "At lunch",
+        "On Friday"
       ],
       "answer": 1
     }

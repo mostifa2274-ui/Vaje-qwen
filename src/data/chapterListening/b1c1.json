@@ -58,54 +58,54 @@
   ],
   "questions": [
     {
-      "q": "مامان صبح کجاست؟",
+      "q": "Where is Mom in the morning?",
       "options": [
-        "کنار پنجره‌ی اتاقش",
-        "در باغچه",
-        "در حیاط",
-        "کنار در"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "بابا کجاست؟",
-      "options": [
-        "در باغچه",
-        "کنار دیوار",
-        "در رختخواب",
-        "پشت در"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "مامان پرنده‌ی قرمز را کجا می‌بیند؟",
-      "options": [
-        "روی پنجره",
-        "روی دیوار باغچه",
-        "زیر صندلی",
-        "روی تخت"
+        "Near the door",
+        "At the window of her room",
+        "In the garden",
+        "In the yard"
       ],
       "answer": 1
     },
     {
-      "q": "بابا کجا را نگاه می‌کند؟",
+      "q": "Where is Dad?",
       "options": [
-        "پشت گل‌ها",
-        "کنار پنجره",
-        "زیر تخت",
-        "زیر صندلی‌ها"
+        "In the garden",
+        "In bed",
+        "Behind the door",
+        "Near the wall"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
-      "q": "وقتی مامان نینو را صدا می‌زند، چه می‌شود؟",
+      "q": "Where does Mom see the red bird?",
       "options": [
-        "هیچ جوجه‌ای نمی‌آید",
-        "نینو برمی‌گردد",
-        "پرنده‌ی قرمز برمی‌گردد",
-        "بابا می‌خندد"
+        "On the garden wall",
+        "Under a chair",
+        "On the window",
+        "On the bed"
       ],
       "answer": 0
+    },
+    {
+      "q": "Where does Dad look?",
+      "options": [
+        "Under the chairs",
+        "Near the window",
+        "Behind the flowers",
+        "Under the bed"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "Mom calls Nino, and then ___",
+      "options": [
+        "Dad sits on a chair",
+        "no little chicken comes",
+        "the red bird comes back",
+        "Nino runs to Mom"
+      ],
+      "answer": 1
     }
   ]
 }

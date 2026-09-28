@@ -174,7 +174,7 @@
   ],
   "check": [
     {
-      "q": "مادربزرگ مینا کجا زندگی می‌کند؟",
+      "q": "Mina's grandmother lives in the ___.",
       "options": [
         "north",
         "city",
@@ -184,7 +184,7 @@
       "a": "north"
     },
     {
-      "q": "کلاس چند قانون دارد؟",
+      "q": "How many rules does the class have?",
       "options": [
         "three",
         "two",

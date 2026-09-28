@@ -184,7 +184,7 @@
   ],
   "check": [
     {
-      "q": "اتوبوس شماره‌ی پانزده به کجا می‌رود؟",
+      "q": "Where does bus fifteen go? To the ___.",
       "options": [
         "market",
         "river",
@@ -194,7 +194,7 @@
       "a": "market"
     },
     {
-      "q": "صبح روز بعد، بیش از چند نفر عکس نینو را به اشتراک گذاشته‌اند؟",
+      "q": "The next morning, more than a ___ people have shared Nino's picture.",
       "options": [
         "hundred",
         "thousand",

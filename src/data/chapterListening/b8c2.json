@@ -59,54 +59,54 @@
   ],
   "questions": [
     {
-      "q": "کدام گوش پدربزرگ خوب نمی‌شنود؟",
+      "q": "Which of Grandfather's ears does not hear well?",
       "options": [
-        "گوش راستش",
-        "گوش چپش",
-        "هر دو",
-        "هیچ‌کدام"
+        "His right ear",
+        "His left ear",
+        "Both of his ears",
+        "He hears well with both"
       ],
       "answer": 1
     },
     {
-      "q": "سرگرمی پدربزرگ چیست؟",
+      "q": "What is Grandfather's hobby?",
       "options": [
-        "باغش",
-        "ماهیگیری",
-        "کتاب خواندن",
-        "نقاشی"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "پدربزرگ اول فکر می‌کند آریا چه گفت؟",
-      "options": [
-        "که یاسی مریض است",
-        "که یاسی خوابیده",
-        "که یاسی یک کفش تازه دارد",
-        "که یاسی سیب می‌خواهد"
+        "Music",
+        "Reading books",
+        "His garden",
+        "Fish"
       ],
       "answer": 2
     },
     {
-      "q": "یاسی چه چیز تازه‌ای دارد؟",
+      "q": "At first, what does Grandfather think Aria said?",
       "options": [
-        "یک کفش",
-        "یک کلاه",
-        "یک اسباب‌بازی",
-        "یک دندان"
+        "Yasi is sick",
+        "Yasi wants an apple",
+        "Yasi is sleeping",
+        "Yasi has a new shoe"
       ],
       "answer": 3
     },
     {
-      "q": "چرا مینا خسته است؟",
+      "q": "What new thing does Yasi have?",
       "options": [
-        "مریض است",
-        "از کوه‌پیمایی",
-        "دیر خوابیده",
-        "از سفر با قطار"
+        "A hat",
+        "A shoe",
+        "A tooth",
+        "A ball"
       ],
-      "answer": 1
+      "answer": 2
+    },
+    {
+      "q": "Why is Mina tired?",
+      "options": [
+        "She is sick",
+        "She went to bed late",
+        "From the train trip",
+        "From the climb"
+      ],
+      "answer": 3
     }
   ]
 }

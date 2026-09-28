@@ -120,7 +120,7 @@
   ],
   "check": [
     {
-      "q": "اولین جمله‌ی یادداشت مینا چیست؟",
+      "q": "Mina's note starts with the word ___.",
       "options": [
         "dear",
         "please",
@@ -130,7 +130,7 @@
       "a": "dear"
     },
     {
-      "q": "بابا نامه‌اش را برای چه کسی می‌نویسد؟",
+      "q": "Dad writes his letter to the ___.",
       "options": [
         "newspaper",
         "radio",

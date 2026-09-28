@@ -58,54 +58,54 @@
   ],
   "questions": [
     {
-      "q": "بابا از کجا زنگ می‌زند؟",
+      "q": "Where is Dad when he calls?",
       "options": [
-        "از خانه",
-        "از بازار",
-        "از ایستگاه اتوبوس",
-        "از پارک"
+        "At the market",
+        "At home",
+        "At the bus station",
+        "In the park"
       ],
       "answer": 2
     },
     {
-      "q": "مرد ساعت چند چیزی زرد دیده؟",
+      "q": "When did the man see something yellow?",
       "options": [
-        "ساعت هشت",
-        "ساعت نه",
-        "ساعت پنج",
-        "ساعت ده"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "پیاده تا ایستگاه چقدر راه است؟",
-      "options": [
-        "نیم ساعت",
-        "یک ساعت",
-        "پنج دقیقه",
-        "یک ربع"
+        "At five o'clock",
+        "At nine o'clock",
+        "At ten o'clock",
+        "At eight o'clock"
       ],
       "answer": 3
     },
     {
-      "q": "بابا کجا منتظر می‌ماند؟",
+      "q": "How long is the walk to the station?",
       "options": [
-        "کنار در ایستگاه",
-        "زیر ساعت بزرگ ایستگاه",
-        "در اتوبوس",
-        "کنار باغچه‌ها"
+        "A quarter of an hour",
+        "Half an hour",
+        "An hour",
+        "Five minutes"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
-      "q": "بابا می‌گوید چه چیزی بیاورند؟",
+      "q": "Where will Dad wait?",
       "options": [
-        "آب",
-        "نقشه",
-        "کمی نان",
-        "چراغ آریا"
+        "Near the gardens",
+        "On the bus",
+        "By the station door",
+        "Below the big station clock"
       ],
-      "answer": 2
+      "answer": 3
+    },
+    {
+      "q": "What does Dad want them to bring?",
+      "options": [
+        "A map",
+        "Some bread",
+        "Aria's light",
+        "Water"
+      ],
+      "answer": 1
     }
   ]
 }

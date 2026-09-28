@@ -140,7 +140,7 @@
   ],
   "check": [
     {
-      "q": "یادداشت خوب باید چه چیزی داشته باشد؟",
+      "q": "A good note needs a ___.",
       "options": [
         "title",
         "cake",
@@ -150,7 +150,7 @@
       "a": "title"
     },
     {
-      "q": "خط روی نمودار از خانه‌ی مینا تا کجا می‌رود؟",
+      "q": "The line on the chart goes from Mina's house to the ___.",
       "options": [
         "river",
         "school",

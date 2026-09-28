@@ -212,7 +212,7 @@
   ],
   "check": [
     {
-      "q": "نینو چه حیوانی است؟",
+      "q": "Nino is a little ___.",
       "options": [
         "chicken",
         "bird",
@@ -222,7 +222,7 @@
       "a": "chicken"
     },
     {
-      "q": "پرنده‌ای که روی پنجره می‌نشیند چه رنگی است؟",
+      "q": "The bird on the window is ___.",
       "options": [
         "red",
         "yellow",

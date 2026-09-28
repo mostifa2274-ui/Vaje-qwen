@@ -6,6 +6,8 @@ const BACKUP_KEY = 'ghesse:state:v6:backup'
 const LEGACY_KEYS = ['ghesse:state:v5', 'ghesse:state:v4', 'ghesse:state:v3', 'ghesse:state:v2', 'ghesse:state:v1'] as const
 // Prep, reading, review and exam drafts all live under this sessionStorage prefix.
 const SESSION_DRAFT_PREFIX = 'ghesse:'
+// The long end-of-book tests keep their draft in localStorage instead.
+export const BOOK_TEST_DRAFT_PREFIX = 'ghesse:book-test:'
 export const MAX_IMPORT_BYTES = 2 * 1024 * 1024
 
 export function emptyState(now: number, firstChapterId: string): GhesseState {
@@ -466,21 +468,31 @@ export function summarizeProgress(state: GhesseState): ProgressSummary {
   }
 }
 
+function removeKeys(storage: Storage, prefix: string): void {
+  const keys: string[] = []
+  for (let index = 0; index < storage.length; index++) {
+    const key = storage.key(index)
+    if (key?.startsWith(prefix)) keys.push(key)
+  }
+  for (const key of keys) storage.removeItem(key)
+}
+
 /**
- * In-progress session drafts belong to the progress they were started from.
- * After a reset or an imported replacement they would resume stale work, so
- * every Ghesse draft in this tab is dropped.
+ * In-progress drafts belong to the progress they were started from. After a
+ * reset or an imported replacement they would resume stale work, so every
+ * Ghesse draft in this tab is dropped, and the end-of-book test drafts that
+ * are kept across tabs too.
  */
 export function clearSessionDrafts(): void {
   try {
-    const keys: string[] = []
-    for (let index = 0; index < sessionStorage.length; index++) {
-      const key = sessionStorage.key(index)
-      if (key?.startsWith(SESSION_DRAFT_PREFIX)) keys.push(key)
-    }
-    for (const key of keys) sessionStorage.removeItem(key)
+    removeKeys(sessionStorage, SESSION_DRAFT_PREFIX)
   } catch {
     // Drafts are optional resilience; an unavailable store has none to clear.
+  }
+  try {
+    removeKeys(localStorage, BOOK_TEST_DRAFT_PREFIX)
+  } catch {
+    // As above.
   }
 }
 

@@ -57,54 +57,54 @@
   ],
   "questions": [
     {
-      "q": "پسر هر صبح چه کار می‌کند؟",
+      "q": "What does the boy do every morning?",
       "options": [
-        "به مدرسه می‌رود",
-        "به پیرزن در غذا دادن به پرنده‌ها کمک می‌کند",
-        "فوتبال بازی می‌کند",
-        "با اتوبوس به مرکز شهر می‌رود"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "در ظرف کنار در چه می‌گذارند؟",
-      "options": [
-        "نان و آب",
-        "شیر",
-        "پنیر",
-        "تخم‌مرغ"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "دختر چه چیزی نشان می‌دهد؟",
-      "options": [
-        "یک یادداشت",
-        "یک کتاب",
-        "یک نقشه",
-        "عکس یک جوجه‌ی زرد"
+        "He plays football",
+        "He takes the bus to the city center",
+        "He goes to school",
+        "He helps the old woman with the birds"
       ],
       "answer": 3
     },
     {
-      "q": "پسر در عکس چه چیزی می‌بیند؟",
+      "q": "What do they put in the dish next to the door?",
       "options": [
-        "یک پرنده‌ی قرمز",
-        "پاهای نارنجی و کمی سفیدی در سمت چپ",
-        "یک درِ آبی",
-        "یک دختر"
+        "Bread and water",
+        "Cheese",
+        "Eggs",
+        "Milk"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What does the girl show them?",
+      "options": [
+        "A picture of a little yellow chicken",
+        "A book",
+        "A note",
+        "A flower"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What does the boy see in the picture?",
+      "options": [
+        "A blue door",
+        "Orange feet and a little white on the left",
+        "A girl",
+        "A red bird"
       ],
       "answer": 1
     },
     {
-      "q": "پیرزن با یادداشت چه می‌کند؟",
+      "q": "What does the old woman do with the note?",
       "options": [
-        "آن را دور می‌اندازد",
-        "آن را به دیوار می‌زند",
-        "آن را در کیفش می‌گذارد",
-        "آن را به نوه‌اش می‌دهد"
+        "She puts it on the wall",
+        "She puts it in her bag",
+        "She gives it to her grandson",
+        "She gives it back"
       ],
-      "answer": 2
+      "answer": 1
     }
   ]
 }

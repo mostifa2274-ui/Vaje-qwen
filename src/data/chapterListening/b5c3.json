@@ -53,54 +53,54 @@
   ],
   "questions": [
     {
-      "q": "اسم جوجه چیست؟",
+      "q": "Who is looking for the chicken?",
       "options": [
-        "نگار",
-        "نینو",
-        "آریا",
-        "یاسی"
+        "A farmer",
+        "A girl in the city",
+        "A teacher",
+        "A policeman"
       ],
       "answer": 1
     },
     {
-      "q": "جوجه کی فرار کرد؟",
+      "q": "When did the chicken run away?",
       "options": [
-        "در ماه مه",
-        "در ماه ژوئن",
-        "در زمستان",
-        "دیروز"
+        "In May",
+        "In winter",
+        "Yesterday",
+        "In June"
       ],
       "answer": 0
     },
     {
-      "q": "عکس و ویدیوی جوجه را کجا می‌شود دید؟",
+      "q": "Where can you see his photograph and a short video?",
       "options": [
-        "در روزنامه",
-        "در مجله",
-        "در اینترنت",
-        "در تلویزیون"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "اگر جوجه را دیدید، چه کنید؟",
-      "options": [
-        "او را به پارک ببرید",
-        "به رادیو بیایید",
-        "چیزی نگویید",
-        "به خانواده‌اش زنگ بزنید یا ایمیل بفرستید"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "این پیام در چه روزی پخش می‌شود؟",
-      "options": [
-        "شنبه",
-        "جمعه",
-        "دوشنبه",
-        "یکشنبه"
+        "In the newspaper",
+        "On the internet",
+        "On TV",
+        "In a magazine"
       ],
       "answer": 1
+    },
+    {
+      "q": "If you see him, what should you do?",
+      "options": [
+        "Call his family or send an email",
+        "Take him to the park",
+        "Say nothing",
+        "Come to the radio"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "This message is on a ___.",
+      "options": [
+        "Monday",
+        "Sunday",
+        "Friday",
+        "Saturday"
+      ],
+      "answer": 2
     }
   ]
 }
