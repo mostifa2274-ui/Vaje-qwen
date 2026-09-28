@@ -188,6 +188,7 @@ export function scoreExam(
   })
   scoreTexts(exam.reading, comprehension.reading)
   scoreTexts(exam.listening, comprehension.listening)
+  const comprehensionScore = comprehensionTotal ? comprehensionCorrect / comprehensionTotal : 1
   return {
     correct,
     total,
@@ -197,10 +198,11 @@ export function scoreExam(
     productiveScore,
     comprehensionCorrect,
     comprehensionTotal,
-    // Words and texts both need every answer right (the pass rates are 100%).
+    // Cumulative gates use criterion thresholds rather than perfection. Missed
+    // vocabulary still becomes remediation and must be independently recalled.
     passed: score >= exam.definition.passRate
       && productiveScore >= exam.definition.productivePassRate
-      && comprehensionCorrect === comprehensionTotal,
+      && comprehensionScore >= exam.definition.passRate,
     missedWordIds,
     skillScores,
   }
