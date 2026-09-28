@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const vocab = JSON.parse(fs.readFileSync(path.join(root, 'src/data/vocabulary.json'), 'utf8'))
+const learningPolicy = JSON.parse(fs.readFileSync(path.join(root, 'src/data/learningPolicy.json'), 'utf8'))
 const chapterDir = path.join(root, 'src/data/chapters')
 const chapters = fs.readdirSync(chapterDir)
   .filter(name => name.endsWith('.json'))
@@ -78,14 +79,17 @@ for (let book = 1; book <= 8; book++) {
   bookPools.set(book, [...new Set(bookChapters.flatMap(ch => ch.new))].map(id => byId.get(id)))
 }
 function bookTestWordCount(book) {
-  return Math.min(52, 24 + (book - 1) * 4)
+  const { minVocabularyQuestions, vocabularyQuestionStep, maxVocabularyQuestions } = learningPolicy.bookTest
+  return Math.min(maxVocabularyQuestions, minVocabularyQuestions + (book - 1) * vocabularyQuestionStep)
 }
 function bookTestWordsBySource(book) {
   const target = bookTestWordCount(book)
-  const unit = Math.floor(target / (book + 1))
+  const { newestBookWeight, olderBookWeight } = learningPolicy.bookTest
+  const weightUnits = (book - 1) * olderBookWeight + newestBookWeight
+  const unit = Math.floor(target / weightUnits)
   const counts = new Map()
-  for (let source = 1; source <= book; source++) counts.set(source, source === book ? unit * 2 : unit)
-  let remaining = target - unit * (book + 1)
+  for (let source = 1; source <= book; source++) counts.set(source, source === book ? unit * newestBookWeight : unit * olderBookWeight)
+  let remaining = target - unit * weightUnits
   let source = book
   while (remaining > 0) {
     counts.set(source, counts.get(source) + 1)
@@ -113,8 +117,8 @@ for (let book = 1; book <= 8; book++) {
   assessmentSizes.push(bookTestWordCount(book))
 }
 const midpointPool = [...new Set(chapters.filter(ch => ch.book <= 4).flatMap(ch => ch.new))]
-assert(midpointPool.length >= 56, 'Midpoint pool is too small')
-assert(vocab.length >= 88, 'Final pool is too small')
+assert(midpointPool.length >= learningPolicy.midpointExam.wordQuestions, 'Midpoint pool is too small')
+assert(vocab.length >= learningPolicy.finalExam.wordQuestions, 'Final pool is too small')
 
 // Validate that every target can support four distinct choices for both English
 // and Persian labels. The runtime generator also prefers same-topic distractors.
@@ -132,4 +136,4 @@ for (const target of vocab) {
   }
 }
 
-console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, bounded end-of-book vocabulary samples ${assessmentSizes.join('/')} with 4 to 16 texts each, 56-question midpoint pool, 88-question final pool.`)
+console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, bounded end-of-book vocabulary samples ${assessmentSizes.join('/')} with 4 to 16 texts each, ${learningPolicy.midpointExam.wordQuestions}-question midpoint pool, ${learningPolicy.finalExam.wordQuestions}-question final pool.`)
