@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "status": "blocked",
   "activeVocabulary": "src/data/vocabulary.json",
-  "activeVocabularySha256": null,
+  "activeVocabularySha256": "993172b126651f53441959216a5333599d5280455717451589f6abae975e9227",
   "basis": "legacy-oxford-derived-development-deck",
   "sources": [],
   "clearedAt": null,
