@@ -137,7 +137,7 @@
   ],
   "check": [
     {
-      "q": "دایی را کجا می‌برند؟",
+      "q": "They take Mina's uncle to the ___.",
       "options": [
         "hospital",
         "school",
@@ -147,7 +147,7 @@
       "a": "hospital"
     },
     {
-      "q": "دکتر می‌گوید دست دایی چطور است؟",
+      "q": "The doctor says Uncle's arm is ___.",
       "options": [
         "ok",
         "dangerous",

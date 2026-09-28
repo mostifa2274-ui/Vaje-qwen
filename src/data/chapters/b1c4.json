@@ -178,7 +178,7 @@
   ],
   "check": [
     {
-      "q": "چه چیزی از میان گل‌ها بیرون می‌آید؟",
+      "q": "What comes out of the flowers?",
       "options": [
         "bird",
         "chicken",
@@ -188,7 +188,7 @@
       "a": "bird"
     },
     {
-      "q": "زیر درِ قدیمی حیاط چه هست؟",
+      "q": "Under the old yard door, there is a ___.",
       "options": [
         "space",
         "shoe",

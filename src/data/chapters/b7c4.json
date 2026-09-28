@@ -122,7 +122,7 @@
   ],
   "check": [
     {
-      "q": "کشاورز در خانه چه چیزی روشن می‌کند؟",
+      "q": "The farmer makes a ___ in the house.",
       "options": [
         "fire",
         "light",
@@ -132,7 +132,7 @@
       "a": "fire"
     },
     {
-      "q": "کشاورز به مینا نان و چه چیزی می‌دهد؟",
+      "q": "The farmer gives Mina bread and a ___.",
       "options": [
         "flower",
         "fruit",

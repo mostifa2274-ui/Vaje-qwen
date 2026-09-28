@@ -221,7 +221,7 @@
   ],
   "check": [
     {
-      "q": "مامان وقتی مینا می‌آید کجاست؟",
+      "q": "When Mina comes in, Mom is in the ___.",
       "options": [
         "kitchen",
         "bathroom",
@@ -231,7 +231,7 @@
       "a": "kitchen"
     },
     {
-      "q": "آریا زیر تختش چه چیزی پیدا می‌کند؟",
+      "q": "What does Aria find under his bed?",
       "options": [
         "shoe",
         "chicken",

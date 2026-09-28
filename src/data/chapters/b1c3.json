@@ -217,7 +217,7 @@
   ],
   "check": [
     {
-      "q": "نینو معمولاً کجا می‌خوابد؟",
+      "q": "Where does Nino usually sleep? At the foot of Mina's ___.",
       "options": [
         "bed",
         "kitchen",
@@ -227,7 +227,7 @@
       "a": "bed"
     },
     {
-      "q": "مینا برای نینو چه چیزی در کیفش می‌گذارد؟",
+      "q": "What does Mina put in her bag for Nino?",
       "options": [
         "bread",
         "cheese",

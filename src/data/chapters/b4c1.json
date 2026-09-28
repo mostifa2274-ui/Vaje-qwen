@@ -145,7 +145,7 @@
   ],
   "check": [
     {
-      "q": "موزها چه رنگی‌اند؟",
+      "q": "The bananas are ___.",
       "options": [
         "yellow",
         "red",
@@ -155,7 +155,7 @@
       "a": "yellow"
     },
     {
-      "q": "مامان برای شام چه می‌خرد؟",
+      "q": "What does Mom buy for dinner?",
       "options": [
         "fish",
         "chicken",

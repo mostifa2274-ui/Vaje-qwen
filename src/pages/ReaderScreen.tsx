@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
-import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, nextChapter } from '../data/chapters'
+import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, lemmaMap, nextChapter } from '../data/chapters'
 import { CHAPTER_LISTENING } from '../data/chapterListening'
 import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglishWithFallback, type SpeechFailure } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
@@ -45,7 +45,7 @@ function wallClockNow(): number {
 export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenPrep, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
   const meta = BOOKS.find(book => book.book === chapter.book)!
-  const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS), [chapter])
+  const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS, lemmaMap), [chapter])
   const paragraphs = useMemo(() => {
     const paragraphSize = chapter.sentences.length >= 36 ? 5 : 4
     const groups: number[][] = []
@@ -538,7 +538,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             <div>
               <h2 id="comprehension-title" className="text-xl font-extrabold">درک مطلب</h2>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-                ۱۰ سؤال از خود همین قصه: جزئیات، معنی جمله و ترتیب اتفاق‌ها. اگر چیزی اشتباه شود، فقط همان سؤال‌ها برای اصلاح برمی‌گردند.
+                ۱۰ سؤال انگلیسی از خود همین قصه: جزئیات، معنی جمله و ترتیب اتفاق‌ها. اگر چیزی اشتباه شود، فقط همان سؤال‌ها برای اصلاح برمی‌گردند.
               </p>
             </div>
             <span className="mastery-chip">
@@ -590,7 +590,10 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>
                 سؤال {faNum(checkIndex + 1)} از {faNum(questions.length)}
               </div>
-              <h3 ref={questionHeadingRef} tabIndex={-1} className="mt-2 text-base font-extrabold leading-8">{currentQuestion.prompt}</h3>
+              <h3 ref={questionHeadingRef} tabIndex={-1} className="mt-2 font-en text-lg font-bold leading-8" dir="ltr">{currentQuestion.prompt}</h3>
+              {currentQuestion.promptHintFa && (
+                <div className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{currentQuestion.promptHintFa}</div>
+              )}
               {currentQuestion.context && (
                 <div
                   className="question-context mt-3"

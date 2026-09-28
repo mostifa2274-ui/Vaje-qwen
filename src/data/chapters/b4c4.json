@@ -113,7 +113,7 @@
   ],
   "check": [
     {
-      "q": "بازدیدکننده‌ها با چه پولی حساب را می‌پردازند؟",
+      "q": "The visitors pay the bill in ___s.",
       "options": [
         "dollar",
         "pound",
@@ -123,7 +123,7 @@
       "a": "dollar"
     },
     {
-      "q": "پیشخدمت می‌گوید چه چیزی رایگان است؟",
+      "q": "The waiter says the ___ is free.",
       "options": [
         "water",
         "coffee",

@@ -166,7 +166,7 @@
   ],
   "check": [
     {
-      "q": "مینا با چه چیزی فهرستش را می‌نویسد؟",
+      "q": "Mina writes her list with a ___.",
       "options": [
         "pencil",
         "pen",
@@ -176,7 +176,7 @@
       "a": "pencil"
     },
     {
-      "q": "مرد در ایستگاه ساعت چند چیزی زرد دیده است؟",
+      "q": "The man at the station saw something yellow at ___ o'clock.",
       "options": [
         "eight",
         "nine",

@@ -97,13 +97,13 @@ export function Questions({
         const tried = rejected?.[index] ?? []
         return (
           <li key={index} data-testid={`${prefix}-question`}>
-            <div id={`${prefix}-q${index}`} className="text-sm font-extrabold leading-7">
-              {faNum(index + 1)}. {question.q}
+            <div id={`${prefix}-q${index}`} className="font-en text-base font-bold leading-7" dir="ltr">
+              {index + 1}. {question.q}
             </div>
-            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2" role="group" aria-labelledby={`${prefix}-q${index}`}>
+            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2" dir="ltr" role="group" aria-labelledby={`${prefix}-q${index}`}>
               {question.options.map((option, optionIndex) => {
                 const wrong = tried.includes(optionIndex)
-                let className = 'btn-paper test-option min-h-12 px-3 py-2.5 text-sm leading-6'
+                let className = 'btn-paper test-option font-en min-h-12 px-3 py-2.5 text-sm leading-6'
                 if (done && chosen[index] === optionIndex) className += ' answer-correct'
                 else if (wrong) className += ' answer-wrong'
                 return (
@@ -141,12 +141,12 @@ export function QuestionReview({ text, chosen }: { text: TestText; chosen: Array
         const right = answer === question.answer
         return (
           <li key={index} className="test-review-item">
-            <div className="text-sm font-bold leading-7">{faNum(index + 1)}. {question.q}</div>
+            <div className="font-en text-sm font-bold leading-7" dir="ltr">{index + 1}. {question.q}</div>
             <div className="mt-1 text-sm leading-7">
               <span className={right ? 'review-mark-right' : 'review-mark-wrong'}>{right ? '✓' : '✗'}</span>{' '}
-              پاسخ تو: {answer === null || answer === undefined ? '—' : question.options[answer]}
+              پاسخ تو: <span className="font-en" dir="ltr">{answer === null || answer === undefined ? '—' : question.options[answer]}</span>
             </div>
-            {!right && <div className="text-sm font-bold leading-7">پاسخ درست: {question.options[question.answer]}</div>}
+            {!right && <div className="text-sm font-bold leading-7">پاسخ درست: <span className="font-en" dir="ltr">{question.options[question.answer]}</span></div>}
           </li>
         )
       })}

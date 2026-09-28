@@ -180,7 +180,7 @@
   ],
   "check": [
     {
-      "q": "تولد مینا در کدام ماه است؟",
+      "q": "Mina's birthday is in ___.",
       "options": [
         "june",
         "january",
@@ -190,7 +190,7 @@
       "a": "june"
     },
     {
-      "q": "نینو در کدام ماه از تخمش بیرون آمد؟",
+      "q": "Nino came out of his egg in ___.",
       "options": [
         "february",
         "october",

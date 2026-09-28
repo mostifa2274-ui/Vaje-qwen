@@ -189,7 +189,7 @@
   ],
   "check": [
     {
-      "q": "چه کسی پشت در بود؟",
+      "q": "Who is at the door? An old ___ and a boy.",
       "options": [
         "woman",
         "doctor",
@@ -199,7 +199,7 @@
       "a": "woman"
     },
     {
-      "q": "آخرین جمله می‌گوید نینو کجاست؟",
+      "q": "The last sentence says Nino is at ___.",
       "options": [
         "home",
         "school",

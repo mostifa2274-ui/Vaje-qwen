@@ -213,7 +213,7 @@
   ],
   "check": [
     {
-      "q": "جوجه‌ی نانوایی نینوست؟",
+      "q": "Is the chicken at the bread shop Nino?",
       "options": [
         "no",
         "yes",
@@ -223,7 +223,7 @@
       "a": "no"
     },
     {
-      "q": "پاهای جوجه‌ی طلایی چه رنگی است؟",
+      "q": "The feet of the yellow chicken at the bread shop are ___.",
       "options": [
         "yellow",
         "orange",

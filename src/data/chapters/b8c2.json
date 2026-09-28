@@ -125,7 +125,7 @@
   ],
   "check": [
     {
-      "q": "یاسی چه چیز تازه‌ای دارد؟",
+      "q": "Yasi has a new ___.",
       "options": [
         "tooth",
         "hat",
@@ -135,7 +135,7 @@
       "a": "tooth"
     },
     {
-      "q": "بزغاله‌ی مادربزرگ کی برگشت؟",
+      "q": "Grandmother's goat came back in the ___.",
       "options": [
         "spring",
         "winter",

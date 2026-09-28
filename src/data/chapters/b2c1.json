@@ -207,7 +207,7 @@
   ],
   "check": [
     {
-      "q": "خانواده اول کجا دنبال نینو می‌گردند؟",
+      "q": "Where does the family look for Nino first?",
       "options": [
         "park",
         "school",
@@ -217,7 +217,7 @@
       "a": "park"
     },
     {
-      "q": "چیز زردی که در درخت است چیست؟",
+      "q": "The yellow thing in the tree is a ___.",
       "options": [
         "bird",
         "chicken",

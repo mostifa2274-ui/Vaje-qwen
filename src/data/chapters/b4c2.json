@@ -133,7 +133,7 @@
   ],
   "check": [
     {
-      "q": "جوجه‌ی زرد کی به نانوایی می‌آید؟",
+      "q": "When does the yellow chicken come to the bread shop? In the ___.",
       "options": [
         "morning",
         "evening",
@@ -143,7 +143,7 @@
       "a": "morning"
     },
     {
-      "q": "مینا برای ناهار چه چیزی را ترجیح می‌دهد؟",
+      "q": "For lunch, Mina prefers ___.",
       "options": [
         "soup",
         "sandwich",

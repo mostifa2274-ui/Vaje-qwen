@@ -118,7 +118,7 @@
   ],
   "check": [
     {
-      "q": "مینا فنجان کوچک را با چه چیزی پر می‌کند؟",
+      "q": "What does Mina fill the small cup with?",
       "options": [
         "water",
         "milk",
@@ -128,7 +128,7 @@
       "a": "water"
     },
     {
-      "q": "یاسی به عکسِ کدام حیوان نگاه می‌کند و اولین کلمه‌اش را می‌گوید؟",
+      "q": "Yasi looks at a picture of a ___ and says her first word.",
       "options": [
         "chicken",
         "bird",

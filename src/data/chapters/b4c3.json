@@ -116,7 +116,7 @@
   ],
   "check": [
     {
-      "q": "مامان در کافه چه سفارش می‌دهد؟",
+      "q": "What does Mom order at the cafe?",
       "options": [
         "tea",
         "coffee",
@@ -126,7 +126,7 @@
       "a": "tea"
     },
     {
-      "q": "جوجه‌ای که از جلوی کافه رد می‌شود چه رنگی است؟",
+      "q": "The chicken that walks past the cafe is ___.",
       "options": [
         "brown",
         "yellow",

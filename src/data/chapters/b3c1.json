@@ -190,7 +190,7 @@
   ],
   "check": [
     {
-      "q": "مینا هر روز چه کار می‌کند؟",
+      "q": "Every day, Mina goes out to ___ for Nino.",
       "options": [
         "look",
         "sleep",
@@ -200,7 +200,7 @@
       "a": "look"
     },
     {
-      "q": "در ایران، آخر هفته کدام روز است؟",
+      "q": "In Iran, the weekend is on ___.",
       "options": [
         "friday",
         "monday",

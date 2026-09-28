@@ -791,7 +791,7 @@ test('the end-of-book test checks words, a reading text and a listening text hid
   await expectNoHorizontalOverflow(page)
   const answerQuestions = async (questions: BookTestFixture['reading'][number]['questions']) => {
     for (const [index, question] of questions.entries()) {
-      await page.getByRole('group', { name: `${faNum(index + 1)}. ${question.q}` })
+      await page.getByRole('group', { name: `${index + 1}. ${question.q}` })
         .getByRole('button', { name: question.options[question.answer], exact: true })
         .click()
     }
@@ -803,7 +803,7 @@ test('the end-of-book test checks words, a reading text and a listening text hid
   await expect(page.getByRole('heading', { level: 2, name: 'درک مطلب شنیداری' })).toBeVisible()
   for (const sentence of listening.sentences) expect(await pageText(page)).not.toContain(sentence.en)
   expect(await page.content()).not.toContain(listening.titleEn)
-  const firstAnswer = page.getByRole('group', { name: `۱. ${listening.questions[0].q}` }).getByRole('button').first()
+  const firstAnswer = page.getByRole('group', { name: `1. ${listening.questions[0].q}` }).getByRole('button').first()
   await expect(firstAnswer).toBeDisabled()
   await page.getByRole('button', { name: 'پخش متن' }).click()
   await expect(page.getByText('متن را کامل شنیدی؛ حالا به سؤال‌ها پاسخ بده.')).toBeVisible()
@@ -848,7 +848,7 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
   const card = page.getByTestId('exam-text')
   const answer = async (text: TextFixture, choose: (question: TextFixture['questions'][number]) => number) => {
     for (const [index, question] of text.questions.entries()) {
-      await card.getByRole('group', { name: `${faNum(index + 1)}. ${question.q}` })
+      await card.getByRole('group', { name: `${index + 1}. ${question.q}` })
         .getByRole('button', { name: question.options[choose(question)], exact: true })
         .click()
     }
@@ -1351,7 +1351,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(section.getByRole('button', { name: 'پخش متن' })).toBeFocused()
   await expect(finishChapter).toHaveCount(0)
   for (const sentence of listening.sentences) expect(await pageText(page)).not.toContain(sentence.en)
-  const group = (index: number) => section.getByRole('group', { name: `${faNum(index + 1)}. ${listening.questions[index].q}` })
+  const group = (index: number) => section.getByRole('group', { name: `${index + 1}. ${listening.questions[index].q}` })
   const option = (index: number, choice: number) => group(index).getByRole('button', { name: listening.questions[index].options[choice], exact: true })
   await expect(group(0).getByRole('button').first()).toBeDisabled()
   await section.getByRole('button', { name: 'پخش متن' }).click()

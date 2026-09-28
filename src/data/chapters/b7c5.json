@@ -133,7 +133,7 @@
   ],
   "check": [
     {
-      "q": "پیرمرد کنار چه چیزی ایستاده است؟",
+      "q": "The old man is standing next to his ___.",
       "options": [
         "boat",
         "train",
@@ -143,7 +143,7 @@
       "a": "boat"
     },
     {
-      "q": "پرنده‌ها هر عصر به کجا برمی‌گردند؟",
+      "q": "Every evening, the birds go back to the ___.",
       "options": [
         "island",
         "beach",

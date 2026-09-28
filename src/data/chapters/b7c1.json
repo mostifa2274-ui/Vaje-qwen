@@ -145,7 +145,7 @@
   ],
   "check": [
     {
-      "q": "مینا یادداشت تازه را کجا می‌گذارد؟",
+      "q": "Mina puts the new note under the blue ___.",
       "options": [
         "door",
         "window",
@@ -155,7 +155,7 @@
       "a": "door"
     },
     {
-      "q": "خانواده با چه چیزی به شمال می‌روند؟",
+      "q": "How does the family go to the north? By ___.",
       "options": [
         "train",
         "plane",

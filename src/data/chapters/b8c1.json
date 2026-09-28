@@ -138,7 +138,7 @@
   ],
   "check": [
     {
-      "q": "خانواده برای رسیدن به خانه چه کار می‌کنند؟",
+      "q": "To get to the house, the family has to ___.",
       "options": [
         "climb",
         "swim",
@@ -148,7 +148,7 @@
       "a": "climb"
     },
     {
-      "q": "خانه‌ی پدربزرگ و مادربزرگ چه رنگی است؟",
+      "q": "The grandparents' house is ___.",
       "options": [
         "gray",
         "blue",
