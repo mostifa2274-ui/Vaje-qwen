@@ -380,7 +380,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           </div>
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            حد عبور: {percent(def.passRate)} سؤال‌های واژه و {percent(1)} سؤال‌های درک مطلب؛ حتی یک پاسخ نادرست هم پذیرفته نمی‌شود.
+            حد عبور: {percent(def.passRate)} کل سؤال‌های واژه، {percent(def.productivePassRate)} یادآوری نوشتاری، و {percent(def.passRate)} درک مطلب.
             {preview
               ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
               : practice
@@ -587,7 +587,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       {previewNote}
 
       <div className="paper-note mt-4">
-        هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. بخش اول معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد؛ بخش دوم {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری است. برای قبولی همهٔ پاسخ‌ها باید درست باشند.
+        هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. بخش اول معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد؛ بخش دوم {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری است. حد عبور {percent(def.passRate)} کل سؤال‌های واژه و درک مطلب و {percent(def.productivePassRate)} در یادآوری نوشتاری است؛ واژه‌های اشتباه بعد از آزمون جبران می‌شوند.
       </div>
 
       {resumedDraft && (
