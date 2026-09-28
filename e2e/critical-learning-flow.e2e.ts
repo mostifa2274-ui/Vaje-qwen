@@ -296,14 +296,13 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
 })
 
 
-test('locked books and preparation steps keep readable text opacity', async ({ page }) => {
+test('locked future books and preparation steps keep readable text opacity', async ({ page }) => {
   await page.goto('/#/map')
 
-  const locked = page.locator('.book-section.is-locked').first()
+  const locked = page.locator('.future-book-row').first()
   await expect(locked).toBeVisible()
   expect(await locked.evaluate(element => getComputedStyle(element).opacity)).toBe('1')
   expect(await locked.locator('h2').evaluate(element => getComputedStyle(element).opacity)).toBe('1')
-  expect(await locked.locator('.book-banner').evaluate(element => getComputedStyle(element).opacity)).toBe('0.66')
 
   await page.goto('/#/prep/b1c1')
   const steps = page.locator('.prep-stepper li')
@@ -384,10 +383,10 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
   await expect(page.locator('.journey-overview')).toHaveCount(0)
   await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
 
+  await expect(page.locator('.book-banner')).toHaveCount(1)
+  await expect(page.locator('.future-book-row')).toHaveCount(7)
   const firstBannerHeight = await page.locator('.book-banner').first().evaluate(element => element.getBoundingClientRect().height)
-  const lockedBannerHeight = await page.locator('.book-section.is-locked .book-banner').first().evaluate(element => element.getBoundingClientRect().height)
   expect(firstBannerHeight).toBeLessThanOrEqual(170)
-  expect(lockedBannerHeight).toBeLessThanOrEqual(100)
   await expectNoHorizontalOverflow(page)
 })
 
@@ -656,14 +655,15 @@ test('glossary search tolerates Arabic-layout Persian letters and keeps filterin
   await expectNoHorizontalOverflow(page)
 })
 
-test('map book cards use reviewed generated artwork and announce chapter status', async ({ page }) => {
+test('map shows reviewed artwork only for reachable books and announces chapter status', async ({ page }) => {
   await page.goto('/#/map')
   const bookArt = page.locator('.book-banner img')
-  await expect(bookArt).toHaveCount(8)
+  await expect(bookArt).toHaveCount(1)
   await expect(bookArt.first()).toBeVisible()
   await expect(bookArt.first()).toHaveAttribute('src', /art\/chapters\/b1c1\.avif$/)
   await expect(bookArt.first()).toHaveAttribute('loading', 'eager')
-  await expect(bookArt.nth(1)).toHaveAttribute('loading', 'lazy')
+  await expect(page.locator('.future-book-row')).toHaveCount(7)
+  await expect(page.getByLabel(/کتاب ۲: .+ — قفل/)).toBeVisible()
   await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
   await expect(page.getByRole('button', { name: /^فصل ۲: .+ — قفل$/ }).first()).toBeDisabled()
 })
@@ -786,13 +786,12 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   await openWithProgress(page, '/map', {
     chapters: Object.fromEntries(book1.map(id => [id, { preparedAt: 1, prepAttempts: 1, completed: true, completedAt: 2, checksCorrect: 10, checksTotal: 10, reads: 1 }])),
   })
-  const lockedFirstChapters = page.getByRole('button', { name: /^فصل ۱: .+ — قفل$/ })
-  const lockedBefore = await lockedFirstChapters.count()
+  const futureBook2 = page.getByLabel(/کتاب ۲: .+ — قفل/)
 
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
-  // Later books show their test on the map too, locked, with what it covers.
-  await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toBeVisible()
-  await expect(page.getByText('پس از تمام‌شدن ۵ فصل این کتاب باز می‌شود.', { exact: true }).first()).toBeVisible()
+  // Future books stay compact until the previous book gate is cleared.
+  await expect(futureBook2).toBeVisible()
+  await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toHaveCount(0)
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
@@ -886,7 +885,8 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   expect(await page.evaluate(() => window.localStorage.getItem('ghesse:book-test:v3:1'))).toBeNull()
 
   await page.getByRole('button', { name: 'ادامهٔ مسیر ←' }).click()
-  await expect(lockedFirstChapters).toHaveCount(lockedBefore - 1)
+  await expect(futureBook2).toHaveCount(0)
+  await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
 })
 
 test('the midpoint exam ends with two reading and two listening texts, all required', async ({ page }) => {
@@ -1014,6 +1014,8 @@ test('explore mode opens every chapter as an unrecorded preview and closes again
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
   await expect(page.getByText('حالت کاوش روشن است.')).toBeVisible()
   await expectRenderedAccessibilityContract(page)
+  await expect(page.locator('.future-book-row')).toHaveCount(0)
+  await expect(page.locator('.book-banner')).toHaveCount(8)
   // Every book test is open too, as a preview.
   expect(await page.getByRole('button', { name: 'پیش‌نمایش', exact: true }).count()).toBeGreaterThanOrEqual(8)
 
@@ -1035,7 +1037,8 @@ test('explore mode opens every chapter as an unrecorded preview and closes again
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
   await page.getByRole('button', { name: 'خاموش کردن' }).click()
   await expect(page.getByText('حالت کاوش روشن است.')).toHaveCount(0)
-  await expect(page.getByRole('button', { name: lastNodeName('قفل') })).toBeDisabled()
+  await expect(page.locator('.future-book-row')).toHaveCount(7)
+  await expect(page.getByRole('button', { name: lastNodeName('قفل') })).toHaveCount(0)
   expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters)).toEqual({})
 })
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
-import { BOOKS, CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, lemmaMap, nextChapter } from '../data/chapters'
+import { CHAPTERS, CHAPTER_BY_ID, WORD_BY_ID, lemmaMap, nextChapter } from '../data/chapters'
 import { CHAPTER_LISTENING } from '../data/chapterListening'
 import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglishWithFallback, type SpeechFailure } from '../engine/narration'
 import { buildReadingQuestions } from '../engine/comprehension'
@@ -44,7 +44,6 @@ function wallClockNow(): number {
 
 export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpenChapter, onOpenPrep, onOpenExam }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
-  const meta = BOOKS.find(book => book.book === chapter.book)!
   const questions = useMemo(() => buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS, lemmaMap), [chapter])
   const paragraphs = useMemo(() => {
     const paragraphSize = chapter.sentences.length >= 36 ? 5 : 4
@@ -419,7 +418,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
   return (
     <div className="page-in" style={{ background: 'var(--cream)', minHeight: '100vh' }}>
-      <div className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '1px solid var(--line-soft)' }}>
+      <div className="sticky top-0 z-40 app-task-header">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه">
             <BackIcon className="h-5 w-5" />
@@ -449,7 +448,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
       <div className="mx-auto max-w-3xl px-4 pb-32">
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
-        <section className="lesson-cover-card mt-4 overflow-hidden" style={{ background: meta.tint }}>
+        <section className="lesson-cover-card mt-4 overflow-hidden">
           <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
           <div className="lesson-cover-copy">
             <div className="min-w-0 font-en text-sm font-bold" dir="ltr">{chapter.titleEn}</div>

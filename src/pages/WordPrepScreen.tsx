@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
+import { CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
 import { listeningChoiceOptions } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
@@ -30,7 +30,6 @@ const PREP_STEPS: { label: string; target: PrepPhase | 'story' }[] = [
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
-  const meta = BOOKS.find(book => book.book === chapter.book)!
   const alreadyPrepared = chapterPrepared(state, chapterId)
   // Opened through explore mode before the learner reached it: the lessons
   // and tests work as practice, but passing them records nothing.
@@ -459,7 +458,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   return (
     <div className="page-in min-h-screen" style={{ background: 'var(--cream)' }}>
-      <header className="sticky top-0 z-40" style={{ background: meta.tint, borderBottom: '1px solid var(--line-soft)' }}>
+      <header className="sticky top-0 z-40 app-task-header">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
           <div className="min-w-0 flex-1">
