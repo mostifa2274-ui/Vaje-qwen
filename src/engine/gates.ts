@@ -36,10 +36,10 @@ export function examDefinition(id: string): ExamDefinition | undefined {
           ? 'واژه‌های کتاب ۱ (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.'
           : `واژه‌های کتاب‌های ۱ تا ${faNum(book)} (ترجمه و شنیداری)، به‌علاوهٔ درک مطلب خواندنی و شنیداری با دو متن تازه.`,
         // 12 typed translations, 12 listening words, 5 reading and 5
-        // listening questions (engine/bookTest.ts); each part needs 80%.
+        // listening questions (engine/bookTest.ts); each part needs 100%.
         questionCount: 34,
-        passRate: 0.8,
-        productivePassRate: 0.8,
+        passRate: 1,
+        productivePassRate: 1,
       }
     }
   }
@@ -48,10 +48,11 @@ export function examDefinition(id: string): ExamDefinition | undefined {
       id,
       kind: 'midpoint',
       titleFa: 'آزمون ویژهٔ نیمهٔ مسیر',
-      subtitleFa: 'آزمون تجمعی کتاب‌های ۱ تا ۴ با یادآوری نوشتاری، جای‌خالی و واژه‌های ضعیف پیش از ورود به کتاب ۵.',
+      subtitleFa: 'آزمون تجمعی کتاب‌های ۱ تا ۴: یادآوری نوشتاری، جای‌خالی و واژه‌های ضعیف، به‌علاوهٔ دو متن خواندنی و دو متن شنیداری، پیش از ورود به کتاب ۵.',
+      // 56 word questions plus two reading and two listening texts.
       questionCount: 56,
-      passRate: 0.88,
-      productivePassRate: 0.85,
+      passRate: 1,
+      productivePassRate: 1,
     }
   }
   if (id === FINAL_EXAM_ID) {
@@ -59,10 +60,11 @@ export function examDefinition(id: string): ExamDefinition | undefined {
       id,
       kind: 'final',
       titleFa: 'آزمون نهایی ۸۹۹ واژه',
-      subtitleFa: 'آزمون تجمعی کل مسیر با استاندارد سخت‌گیرانهٔ یادآوری نوشتاری؛ گواهی تسلط علاوه بر این آزمون به شواهد فاصله‌دار همهٔ واژه‌ها نیاز دارد.',
+      subtitleFa: 'آزمون تجمعی کل مسیر: یادآوری نوشتاری همهٔ کتاب‌ها، به‌علاوهٔ چهار متن خواندنی و چهار متن شنیداری؛ گواهی تسلط علاوه بر این آزمون به شواهد فاصله‌دار همهٔ واژه‌ها نیاز دارد.',
+      // 88 word questions plus four reading and four listening texts.
       questionCount: 88,
-      passRate: 0.92,
-      productivePassRate: 0.9,
+      passRate: 1,
+      productivePassRate: 1,
     }
   }
   return undefined

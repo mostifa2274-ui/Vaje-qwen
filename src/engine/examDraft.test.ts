@@ -32,6 +32,8 @@ function builtExam(count = 4): BuiltExam {
       passRate: 0.85,
       productivePassRate: 0.8,
     },
+    reading: [],
+    listening: [],
     questions: Array.from({ length: count }, (_, index) => ({
       index,
       wordId: `word-${index}`,

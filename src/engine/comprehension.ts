@@ -1,6 +1,8 @@
 import type { Chapter, WordEntry } from './types'
 
 export const READING_QUESTION_COUNT = 10
+// Questions on the chapter's listening text (data/chapterListening).
+export const LISTENING_QUESTION_COUNT = 5
 
 export interface ReadingOption {
   id: string

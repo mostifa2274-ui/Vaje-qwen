@@ -1,4 +1,6 @@
 import { CHAPTERS, VOCAB } from '../data/chapters'
+import type { TestText } from '../data/bookTests'
+import { examTextsForAttempt } from '../data/examTests'
 import type { GhesseState, SkillDimension, WordEntry } from './types'
 import { examDefinition, type ExamDefinition } from './gates'
 import { buildReviewQuestion, dimensionForMode, isTypedMode, seededSample, selectWeakestWordIds, type ReviewMode, type ReviewQuestion } from './review'
@@ -10,6 +12,23 @@ export interface ExamQuestion extends ReviewQuestion {
 export interface BuiltExam {
   definition: ExamDefinition
   questions: ExamQuestion[]
+  /** New texts read on screen, then answered (5 questions each). */
+  reading: TestText[]
+  /** New texts only heard, never shown, then answered (5 questions each). */
+  listening: TestText[]
+}
+
+/** Chosen option per question, per text; null while unanswered. */
+export interface ExamComprehensionAnswers {
+  reading: Array<Array<number | null>>
+  listening: Array<Array<number | null>>
+}
+
+export function emptyComprehensionAnswers(exam: BuiltExam): ExamComprehensionAnswers {
+  return {
+    reading: exam.reading.map(text => text.questions.map(() => null)),
+    listening: exam.listening.map(text => text.questions.map(() => null)),
+  }
 }
 
 export interface ExamResult {
@@ -19,6 +38,8 @@ export interface ExamResult {
   productiveCorrect: number
   productiveTotal: number
   productiveScore: number
+  comprehensionCorrect: number
+  comprehensionTotal: number
   passed: boolean
   missedWordIds: string[]
   skillScores: Record<SkillDimension, { correct: number; total: number }>
@@ -124,10 +145,14 @@ export function buildExam(id: string, state: GhesseState, attempt: number): Buil
       index,
     }
   })
-  return { definition, questions }
+  return { definition, questions, ...examTextsForAttempt(kind, attempt) }
 }
 
-export function scoreExam(exam: BuiltExam, answers: Record<number, boolean>): ExamResult {
+export function scoreExam(
+  exam: BuiltExam,
+  answers: Record<number, boolean>,
+  comprehension: ExamComprehensionAnswers = emptyComprehensionAnswers(exam),
+): ExamResult {
   let correct = 0
   let productiveCorrect = 0
   let productiveTotal = 0
@@ -153,6 +178,16 @@ export function scoreExam(exam: BuiltExam, answers: Record<number, boolean>): Ex
   const total = exam.questions.length
   const score = total ? correct / total : 0
   const productiveScore = productiveTotal ? productiveCorrect / productiveTotal : 1
+  let comprehensionCorrect = 0
+  let comprehensionTotal = 0
+  const scoreTexts = (texts: TestText[], chosen: Array<Array<number | null>>) => texts.forEach((text, textIndex) => {
+    text.questions.forEach((question, index) => {
+      comprehensionTotal++
+      if (chosen[textIndex]?.[index] === question.answer) comprehensionCorrect++
+    })
+  })
+  scoreTexts(exam.reading, comprehension.reading)
+  scoreTexts(exam.listening, comprehension.listening)
   return {
     correct,
     total,
@@ -160,7 +195,12 @@ export function scoreExam(exam: BuiltExam, answers: Record<number, boolean>): Ex
     productiveCorrect,
     productiveTotal,
     productiveScore,
-    passed: score >= exam.definition.passRate && productiveScore >= exam.definition.productivePassRate,
+    comprehensionCorrect,
+    comprehensionTotal,
+    // Words and texts both need every answer right (the pass rates are 100%).
+    passed: score >= exam.definition.passRate
+      && productiveScore >= exam.definition.productivePassRate
+      && comprehensionCorrect === comprehensionTotal,
     missedWordIds,
     skillScores,
   }

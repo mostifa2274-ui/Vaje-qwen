@@ -43,12 +43,12 @@ function perfectAnswers(test: BookTest): BookTestAnswers {
 }
 
 describe('end-of-book test', () => {
-  it('is the book-N gate: 34 items, each part needing 80%', () => {
+  it('is the book-N gate: 34 items, each part needing 100%', () => {
     const def = examDefinition(bookExamId(3))!
     expect(def.kind).toBe('book')
     expect(def.titleFa).toBe('آزمون پایان کتاب ۳')
     expect(def.questionCount).toBe(34)
-    expect(def.passRate).toBe(0.8)
+    expect(def.passRate).toBe(1)
   })
 
   for (let book = 1; book <= 8; book++) {
@@ -133,7 +133,7 @@ describe('end-of-book test', () => {
     expect(fresh.length).toBeGreaterThanOrEqual(10)
   })
 
-  it('passes only when every part reaches 80%', () => {
+  it('passes only when every answer in every part is right', () => {
     const test = buildBookTest(3, stateThroughBook(3), 1)!
     const perfect = perfectAnswers(test)
     const all = scoreBookTest(test, perfect)
@@ -141,9 +141,10 @@ describe('end-of-book test', () => {
     expect(all.correct).toBe(34)
     expect(all.missedWordIds).toEqual([])
 
-    // 4 of 5 is exactly 80%; 3 of 5 in either text fails the whole test.
+    // One wrong answer anywhere fails the whole test.
     const fourReading = { ...perfect, reading: perfect.reading.map((answer, index) => index === 0 ? (answer! + 1) % 4 : answer) }
-    expect(scoreBookTest(test, fourReading).passed).toBe(true)
+    expect(scoreBookTest(test, fourReading).sections.reading).toMatchObject({ correct: 4, passed: false })
+    expect(scoreBookTest(test, fourReading).passed).toBe(false)
     const threeListening = { ...perfect, listening: perfect.listening.map((answer, index) => index < 2 ? (answer! + 1) % 4 : answer) }
     const failed = scoreBookTest(test, threeListening)
     expect(failed.sections.listening).toMatchObject({ correct: 3, total: 5, passed: false })
@@ -161,7 +162,7 @@ describe('end-of-book test', () => {
     const listeningWords = [...perfect.listeningWords]
     listeningWords[4] = test.listeningWords[4].options.find(option => option.id !== test.listeningWords[4].wordId)!.id
     listeningWords[5] = ''
-    expect(scoreBookTest(test, { ...perfect, listeningWords }).sections.listeningWords).toMatchObject({ correct: 10, passed: true })
+    expect(scoreBookTest(test, { ...perfect, listeningWords }).sections.listeningWords).toMatchObject({ correct: 10, passed: false })
   })
 
   it('accepts any listed Persian meaning, typed loosely', () => {
@@ -179,29 +180,41 @@ describe('end-of-book test', () => {
     expect(canTakeExam(state, bookExamId(1))).toBe(true)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
 
+    // One missed word fails the test at the 100% pass mark.
     const test = buildBookTest(1, state, 1)!
     const answers = perfectAnswers(test)
     answers.translation[0] = ''
     const result = scoreBookTest(test, answers)
-    expect(result.passed).toBe(true)
+    expect(result.passed).toBe(false)
     state = recordBookTest(state, test, answers, result, 1_000)
     const progress = state.exams[bookExamId(1)]
-    expect(progress).toMatchObject({ attempts: 1, passed: true, passedAt: 1_000, lastAttemptAt: 1_000, missedWordIds: [test.translation[0].wordId] })
+    expect(progress).toMatchObject({ attempts: 1, passed: false, lastAttemptAt: 1_000, missedWordIds: [test.translation[0].wordId] })
     expect(progress.lastProductiveScore).toBeCloseTo(11 / 12)
     const missed = test.translation[0].wordId
     expect(state.words[missed].reviewWrong).toBe(1)
     expect(state.words[test.translation[1].wordId].reviewCorrect).toBe(1)
 
-    // The missed word must be recalled again before book 2 opens.
+    // The missed word must be recalled again before the retake opens.
     expect(examRemediationPending(state, bookExamId(1))).toBe(true)
+    expect(canTakeExam(state, bookExamId(1))).toBe(false)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
     state = { ...state, words: { ...state.words, [missed]: recordRetrieval(state.words[missed], true, 'reverse', 2_000, 'review') } }
+    expect(canTakeExam(state, bookExamId(1))).toBe(true)
+    expect(canPrepareChapter(state, 'b2c1')).toBe(false)
+
+    // A perfect retake passes and opens book 2.
+    const second = buildBookTest(1, state, 2)!
+    const perfect = perfectAnswers(second)
+    const passed = scoreBookTest(second, perfect)
+    expect(passed.passed).toBe(true)
+    state = recordBookTest(state, second, perfect, passed, 3_000)
+    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 2, passed: true, passedAt: 3_000, missedWordIds: [] })
     expect(canPrepareChapter(state, 'b2c1')).toBe(true)
 
     // A later failed retake never revokes the pass.
-    const retake = buildBookTest(1, state, 2)!
+    const retake = buildBookTest(1, state, 3)!
     const blank: BookTestAnswers = { translation: [], listeningWords: [], reading: [null, null, null, null, null], listening: [null, null, null, null, null] }
-    state = recordBookTest(state, retake, blank, scoreBookTest(retake, blank), 3_000)
-    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 2, passed: true, passedAt: 1_000, bestScore: result.score })
+    state = recordBookTest(state, retake, blank, scoreBookTest(retake, blank), 4_000)
+    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 3, passed: true, passedAt: 3_000, bestScore: 1 })
   })
 })
