@@ -55,8 +55,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b2c3: {
     src: publicAsset('art/chapters/b2c3.webp'),
-    altFa: 'مینا توپ را به دو پسری که در پارک فوتبال بازی می‌کنند برمی‌گرداند.',
-    altEn: 'Mina returns the ball to two boys playing football in the park.',
+    altFa: 'مینا کنار مادرش در پارک ایستاده است؛ مادر عکس نینو را به دو پسر فوتبالیست نشان می‌دهد و دربارهٔ او می‌پرسد.',
+    altEn: 'Mina stays beside her mother in the park as Mom shows Nino’s photograph to two boys with a football.',
     width: 640,
     height: 336,
   },
@@ -90,8 +90,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b3c2: {
     src: publicAsset('art/chapters/b3c2.webp'),
-    altFa: 'مینا و برادرش با دفتر و مداد خانه‌ها و باغچه‌های خیابان‌های آرام را یکی‌یکی بررسی می‌کنند.',
-    altEn: 'Mina and her brother use a notebook while checking houses and gardens on quiet streets.',
+    altFa: 'مینا فهرست خانه‌ها را در دفتر قرمزش بررسی می‌کند؛ مادر همراه اوست و آریا، برادر کوچکش، چراغ‌قوه در دست دارد.',
+    altEn: 'Mina checks her house-search list beside her mother while her little brother Aria holds his flashlight.',
     width: 640,
     height: 336,
   },
@@ -139,8 +139,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b5c3: {
     src: publicAsset('art/chapters/b5c3.webp'),
-    altFa: 'مینا تلفن را پاسخ می‌دهد و اطلاعات تازه‌ای دربارهٔ نینو دریافت می‌کند.',
-    altEn: 'Mina answers the telephone and receives new information about Nino.',
+    altFa: 'مینا کنار پدر و مادرش با خبرنگار روزنامه تلفنی دربارهٔ نینو صحبت می‌کند؛ پدر گوشی را به او داده است.',
+    altEn: 'With her parents beside her, Mina talks to the newspaper reporter after Dad hands her the telephone.',
     width: 640,
     height: 336,
   },
@@ -153,8 +153,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b4c5: {
     src: publicAsset('art/chapters/b4c5.webp'),
-    altFa: 'مینا در بازار جوجهٔ زردی را که شبیه نینو است با دقت نگاه می‌کند و می‌فهمد نینو نیست.',
-    altEn: 'At the market, Mina studies a real yellow lookalike chicken and realizes it is not Nino.',
+    altFa: 'مینا و پدرش هنگام سپیده‌دم کنار در نانوایی جوجه‌ای زرد با پاهای زرد را می‌بینند؛ مینا می‌فهمد این جوجه نینو نیست.',
+    altEn: 'At dawn outside the bakery, Mina and Dad see a yellow chicken with yellow feet; Mina realizes it is not Nino.',
     width: 640,
     height: 336,
   },
@@ -279,8 +279,8 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
   b8c3: {
     src: publicAsset('art/chapters/b8c3.webp'),
-    altFa: 'مینا در اتاق معاینه به پزشک گوش می‌دهد و پرستار برای دایی‌اش یک لیوان آب می‌آورد.',
-    altEn: 'Mina listens to the doctor while a nurse brings her uncle a glass of water after his examination.',
+    altFa: 'مینا در اتاق معاینه به پزشک زن گوش می‌دهد و پرستار برای دایی‌اش یک لیوان آب می‌آورد.',
+    altEn: 'Mina listens to the woman doctor while a nurse brings her uncle a glass of water after his arm examination.',
     width: 640,
     height: 336,
   },
@@ -300,4 +300,3 @@ export const GENERATED_CHAPTER_ART: Record<string, GeneratedChapterArt> = {
   },
 
 }
-

@@ -1,0 +1,328 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-09-28",
+  "reviewer": "assistant-visual-review",
+  "scope": "Focal-scene alignment with the current story, family roles, setting, hijab and missing/returned Nino. Close-ups do not depict every companion or every sentence. This is not human sign-off.",
+  "chapters": {
+    "b1c1": {
+      "asset": "art/chapters/b1c1.avif",
+      "chapterSha256": "7d1d2ca3c7ed57c756a29c42b5e9cca3add13bb1227017ece3a1200c118cf1ee",
+      "artSha256": "9b889befef58d5d632f23cb10af3d9a8ad1a24a29f522bf07ae32daac38fc2b2",
+      "metadataSha256": "b8f4bb05bafe556c212da86df3d784ff170ad966fe5d7e6ae1f22bb711653503",
+      "focalScene": "Nino runs out after the red bird while Mina reacts and follows with her red book.",
+      "action": "retained"
+    },
+    "b1c2": {
+      "asset": "art/chapters/b1c2.webp",
+      "chapterSha256": "d0458eafecda92225f056d9bb9efa503fb4353bec8753064dad099749577efb4",
+      "artSha256": "5706db2ac61a0eff478a3bdba3fd32dc5cde2cd87741fe418c372e50049f4a34",
+      "metadataSha256": "19991c6bd36dd81a5bba0406af356f02fd08fb9badeb69556c3dcac20961e523",
+      "focalScene": "Mina holds Nino’s photo while her family searches their home for him.",
+      "action": "retained"
+    },
+    "b1c3": {
+      "asset": "art/chapters/b1c3.webp",
+      "chapterSha256": "ea9d54083c0cadb9260c422ed5aa0e758eec675683d8582f6bf8407d2e79e102",
+      "artSha256": "c0968ab348e4b16f2d3046bc77ecdae0be2765678530197be32e812d3f7d5bb9",
+      "metadataSha256": "d7ea5463edc24a0b00c8ac04214918d58b3ef9e52d37cc88701b14bda38dea4b",
+      "focalScene": "Mina prepares her search list and a bag with water and bread while her brother waits to leave.",
+      "action": "retained"
+    },
+    "b1c4": {
+      "asset": "art/chapters/b1c4.webp",
+      "chapterSha256": "1ada43c7473dc0c7ee553879fed3f96680a5ef06f92e9b8ed891e3c7c601f4b1",
+      "artSha256": "e75b3c184c349962e591ff10b4ad6ab90e4557cc1980010f89d85c0ceb4c601e",
+      "metadataSha256": "d2a1075c1b233cbcfb2d8916199206954e6502c83b1be56ea5fe66ead85481ab",
+      "focalScene": "Mina searches the wet garden after the rain as a red bird flies out from the flowers.",
+      "action": "retained"
+    },
+    "b1c5": {
+      "asset": "art/chapters/b1c5.webp",
+      "chapterSha256": "086eb666e5097a7f98a552944a46b56600dd8d5353b888b5c771fb1865a02f44",
+      "artSha256": "c0a97d69fbce6f4dfcdc9d7fa83474d08bee25b1f8f6acf320dd27a8497ea0c0",
+      "metadataSha256": "b5ee095d77bbce6325beaba904aed40c181d8d1e05a8ccd3485f949e0737d219",
+      "focalScene": "Mina listens at the open door at night while water and bread wait outside for Nino.",
+      "action": "retained"
+    },
+    "b2c1": {
+      "asset": "art/chapters/b2c1.webp",
+      "chapterSha256": "db285f085ef1dd759965cbc1e7006c8d10165851b75aad87fc537c5f2249f44d",
+      "artSha256": "12e4cd0a3816bae06565fdfc0919cd01f6dce83df424ac878d70cb51fdea6b1a",
+      "metadataSha256": "909924cecb2f15235793f93d31c539e626aebbdea596b78490f700264f9b2d9c",
+      "focalScene": "Mina, her mother and father search a Tehran park for Nino.",
+      "action": "retained"
+    },
+    "b2c2": {
+      "asset": "art/chapters/b2c2.avif",
+      "chapterSha256": "1f784c31daf488e38569711923d0adaad7277efebddb819b12cda9bddeadf82e",
+      "artSha256": "3bc4682c77077fe5acf5f7694c05d9728a64ca50bcae3f9f832393ceaae5a5b7",
+      "metadataSha256": "1d02ccad8772209ffb08e6bb6875b55345c7857abf695d2f07c0639d8d7ee4e5",
+      "focalScene": "Mina, her mother and father show Nino’s photo to a neighbor on a residential Tehran street.",
+      "action": "retained"
+    },
+    "b2c3": {
+      "asset": "art/chapters/b2c3.webp",
+      "chapterSha256": "e80feb4573543a8790a6d9c6460bfc009dd96078d69a8a80d04b2179db26e3bd",
+      "artSha256": "b5eebd27ee05a282595854408515677a6005e2940801107c4023954073443e42",
+      "metadataSha256": "b08e2d247786cb63f1307c32924d0552fcd0855970d00b1e94f73901775ce8a5",
+      "focalScene": "Mina stays beside her mother in the park as Mom shows Nino’s photograph to two boys with a football.",
+      "action": "corrected-scene"
+    },
+    "b2c4": {
+      "asset": "art/chapters/b2c4.webp",
+      "chapterSha256": "816248ec2fbfa2d3bdb5eb66d12e654916c9309c9341a21ac0949d3b14f2293a",
+      "artSha256": "f5b497e0f34b75c41ac99bdcae77d0ee69e133e3b223fac0d3a38fdd6349cc56",
+      "metadataSha256": "3d000ceb057f80e10a0bb24560fe8701e7c4c6c7712f71d03d63c097b323acbb",
+      "focalScene": "Mina and her mother listen to a male street musician from a family cafe table.",
+      "action": "retained"
+    },
+    "b2c5": {
+      "asset": "art/chapters/b2c5.webp",
+      "chapterSha256": "0d08544cde538b7701ac2e976be035da3e913f5cd62c8b047616844d40cae16b",
+      "artSha256": "dba58216f8fbdf38e3426636f1cbf209ce74fbda99f7a7dc5d0e4eeaec9d8d25",
+      "metadataSha256": "5cc80d6e30b9221946a940b55554032cf0aa799da0396fa26574b68e5e77e1e3",
+      "focalScene": "Mina and her father show Nino’s photograph to a neighbor who points toward the city center.",
+      "action": "retained"
+    },
+    "b3c1": {
+      "asset": "art/chapters/b3c1.webp",
+      "chapterSha256": "7b278087a7ff2faaaa90352202c443793d9718857c7af4c1c9d5759895543fee",
+      "artSha256": "189592526fe66c96c667bdda0e2ed7ae8d7bfa35922025e03b4294fa30074359",
+      "metadataSha256": "8ff55edc1c2f868d58985226e418eb41801a79318238c77df09a93767089f391",
+      "focalScene": "Mina and her mother continue their week of searching along the river road with a map and red notebook.",
+      "action": "retained"
+    },
+    "b3c2": {
+      "asset": "art/chapters/b3c2.webp",
+      "chapterSha256": "88ec5224c6d5d914df2c0b4563bf014ca3d4430c8aacace10b5b67ea44bd0250",
+      "artSha256": "1362392e8e4416859dd0babb73f53373491a5230374b21662535ea526d13aa87",
+      "metadataSha256": "faf435bb071546e7b69a0dec61b1a7acfdd2524ba4dfe5ada73de28d7b2a2789",
+      "focalScene": "Mina checks her house-search list beside her mother while her little brother Aria holds his flashlight.",
+      "action": "corrected-scene"
+    },
+    "b3c3": {
+      "asset": "art/chapters/b3c3.webp",
+      "chapterSha256": "54f44ca11de28135fc70deca760da50993cae8cb8f252c0ffc3b87553a327b9a",
+      "artSha256": "07d46568fd42a5fd90077b242014b44e3645de709fcb375b681ddbd4d2016a71",
+      "metadataSha256": "0895f093379dddd6818f2dfc2cac8db9c3801b62d4f08a891c5e78daa54935c4",
+      "focalScene": "After a long day searching, Mina writes tomorrow’s plan in her red notebook beside a photo of Nino.",
+      "action": "retained"
+    },
+    "b3c4": {
+      "asset": "art/chapters/b3c4.webp",
+      "chapterSha256": "5d7b22d2656af57e8cc6de711df242e0f9ff6a4db5082ac1e6fa806b56794e74",
+      "artSha256": "46cf5b5ba9345a59f5fbb32b871580614da59d062cb92f5d3dd1f58017c424ae",
+      "metadataSha256": "f994521f8461a1e18452c983244359a92adbb8d866ff07f27c6d8a6fc79a37c2",
+      "focalScene": "At the small family birthday gathering, Mina turns hopefully toward the door after hearing a sound.",
+      "action": "retained"
+    },
+    "b3c5": {
+      "asset": "art/chapters/b3c5.webp",
+      "chapterSha256": "d463d10016d3957c7860d19eb3d279c6d87081adfdb48922d29b394cedd72726",
+      "artSha256": "582bf5656a97949605518981242868effb7c5b5cfb1c4d2a1c6ad7bd6d2fd7bf",
+      "metadataSha256": "832093c865b9a81007ebabf9c4d21d80b106b2651560636097cbfff42bade0e2",
+      "focalScene": "Mina and her father review a city map and search reports at the information desk.",
+      "action": "retained"
+    },
+    "b3c6": {
+      "asset": "art/chapters/b3c6.webp",
+      "chapterSha256": "c978243bd0705e5f63853e9496c7d4df5bec865e13952f5d8b1de207435a00ed",
+      "artSha256": "77b3db74f071b3946da19529a2e93a29e3cdbb6c78630314dd2b8001e80c9cfd",
+      "metadataSha256": "1fe0991c5ef91fc3438fea1814f66243a4cba7429aafc460d90bef25adc52ea4",
+      "focalScene": "Mina stands at the open door at night while water and bread wait outside in case Nino returns.",
+      "action": "retained"
+    },
+    "b4c1": {
+      "asset": "art/chapters/b4c1.webp",
+      "chapterSha256": "3c2ca2946ef7a23439c46f1506f13b455b44ae42ad6d7a09f8f0f5254c4e658e",
+      "artSha256": "a69eaf407e30008997b5636fb1acb0041e9cd61b3fd7c7f6157b5c19c44f1e00",
+      "metadataSha256": "826fdf8345a5f0517bbeff6fc8ee19c8e95d655df482a57e9cd7107cc3d37102",
+      "focalScene": "A close-up of Mina among produce during the family market visit.",
+      "action": "retained"
+    },
+    "b4c2": {
+      "asset": "art/chapters/b4c2.webp",
+      "chapterSha256": "615e4bf5de3138c3824717f38d7a4fcdd716d24d746e0749d297e8d1dba12dda",
+      "artSha256": "89490969e8a1949eb1a0985421157d546bd5b7ff455b1c7479d557f70a1e8a41",
+      "metadataSha256": "08d7d39f105599c25afc3acebc0c8c1b3a40af26af63e18ad7933f2f4261febf",
+      "focalScene": "Mina speaks with the baker in the bread shop about the little yellow chicken seen there in the mornings.",
+      "action": "retained"
+    },
+    "b4c3": {
+      "asset": "art/chapters/b4c3.webp",
+      "chapterSha256": "f5f84a9ab8d2b41582ec67381ffe740fcb18da92623b0135bbc9acc6d7de6653",
+      "artSha256": "ae09a984f5dd9380d399bcda8cd330064c2fafce8f6251a1f138a504cfeab146",
+      "metadataSha256": "cc0de26809c60e1101c90405360ba147c386bba177fa262692d4457da79aeb99",
+      "focalScene": "A close-up of Mina holding a drink during the family cafe rest.",
+      "action": "retained"
+    },
+    "b4c4": {
+      "asset": "art/chapters/b4c4.webp",
+      "chapterSha256": "d7f7c3f44570d3666710d8de21fe7b87c29d9339d7c9aa494e0953cc3862e899",
+      "artSha256": "b0f1c0f29ecd08dd774df0aa556732985af7fa0fe01ca68fc001c0305a6dbfcc",
+      "metadataSha256": "4fe3f2542587dea22b4aa6ec073c7e48a5da7d9557d4dc69917a164b73c6b905",
+      "focalScene": "At the cafe, Mina watches as the waiter returns a coin to her mother while she pays the bill.",
+      "action": "retained"
+    },
+    "b4c5": {
+      "asset": "art/chapters/b4c5.webp",
+      "chapterSha256": "0aa97865c1f1567b77634a7adb3ca2b004f508bf9a739cab60a0a11a7708678b",
+      "artSha256": "0dc1da76ce593f7eafeb13e4f27340e9294717ac7d4f3fb2b19bd3f59362c327",
+      "metadataSha256": "122434551f5e624ba4f952f12abfd39c2841618c7217a1ec263e59335246d372",
+      "focalScene": "At dawn outside the bakery, Mina and Dad see a yellow chicken with yellow feet; Mina realizes it is not Nino.",
+      "action": "corrected-scene"
+    },
+    "b5c1": {
+      "asset": "art/chapters/b5c1.webp",
+      "chapterSha256": "5e1b9fee82323b843f1ff6dfd70859d0b256455a7c669c5638c94074b0772185",
+      "artSha256": "560a9873984fe584d764639ee0f8f7bbaeb4dcf9f3da9f4a59e9da9beabb1ecc",
+      "metadataSha256": "8ea8e403e6683e0267ba2030c4c18fff0acba5d25a9a72d2e3a0fcc1541f91b0",
+      "focalScene": "After a long search day, Mina talks with her mother and father about where they looked and tomorrow’s plan.",
+      "action": "retained"
+    },
+    "b5c2": {
+      "asset": "art/chapters/b5c2.webp",
+      "chapterSha256": "b052ca065912db6497a325deb51aa26d155f63f5be6f8835ec5156ec7a1c9d6b",
+      "artSha256": "29839ea91cc7b36db8f736bb42582b1e834d10be8280b8750ec596d84df1d1aa",
+      "metadataSha256": "85f93a71643085994cc1b630eeda5b55d4dafa040ab2b5382c8ffab336776c2a",
+      "focalScene": "Mina sits at the table and writes a new note about Nino with a pencil.",
+      "action": "retained"
+    },
+    "b5c3": {
+      "asset": "art/chapters/b5c3.webp",
+      "chapterSha256": "cc2cf0f4ef5f4ea8e38b3394ca81fec36c6b06b6b9dd9f8b3fbc163cf76fe7a1",
+      "artSha256": "33435725e15c20973d881e6c30109d9af8b5858f79849be43d5a4901519e7c81",
+      "metadataSha256": "a0ae79e770c24808b692517380d3f32b5853c29f8e5b9ce6829f9cc4cb40b9d7",
+      "focalScene": "With her parents beside her, Mina talks to the newspaper reporter after Dad hands her the telephone.",
+      "action": "retained"
+    },
+    "b5c4": {
+      "asset": "art/chapters/b5c4.webp",
+      "chapterSha256": "2fd8ccbd425cc36258fbac65eb1723ee59f5d075c107d19964dc9472e2be64f3",
+      "artSha256": "c6f7ff3adc2acf706515bf19d7679d68b27874aef80ef3446b190b9ff891da37",
+      "metadataSha256": "4da78b78c1058dd9092ad05765f9d411160a4e01814fbeb0c711f79f52438483",
+      "focalScene": "Mina thanks a neighbor beside her search notice as an accompanying adult with a bicycle points along the street.",
+      "action": "retained"
+    },
+    "b6c1": {
+      "asset": "art/chapters/b6c1.webp",
+      "chapterSha256": "adb818e09311438b881925599ebf826274d2b71a7200ca28b5262067ccf1ca5b",
+      "artSha256": "161d7c9eb497018609fa5d8a73c832fcc89d7b8bb1dc7a3465ca1b7874139642",
+      "metadataSha256": "9d7be39fc0d3e17cfc212b02d338e2b90db878b919a6a3467b0f3a9d59068f98",
+      "focalScene": "Mina writes and learns in her classroom with other students.",
+      "action": "retained"
+    },
+    "b6c2": {
+      "asset": "art/chapters/b6c2.webp",
+      "chapterSha256": "99477e5bd899ca1b9e306f12a8e9519d8949ea638ac2402c130d1cec7703d8d0",
+      "artSha256": "330d5637416fceb61dc63ae10fe1f91d86b7a44cb95e645932c84ebc82d1c53d",
+      "metadataSha256": "cba5d8be24b02afff3030767b73acca524aa19b4e8af18df582409784a8320fd",
+      "focalScene": "Mina improves her search note while her teacher points to a street chart; a flat photo of Nino lies on the desk.",
+      "action": "retained"
+    },
+    "b6c3": {
+      "asset": "art/chapters/b6c3.webp",
+      "chapterSha256": "92199a0e484609fa03cbb1609a56514c40f583842ecbf3557f0f868736e60083",
+      "artSha256": "3bf781a0e7816fa081c92541824dd96931ed9c253e25915f9e796296d4decf03",
+      "metadataSha256": "b47b7267b0479d61694903f0e697bccdaa174f1903d87eec82bd4b79f607afbe",
+      "focalScene": "At her father’s office, Mina watches a notice with Nino’s photograph emerge from the printer beside a city map.",
+      "action": "retained"
+    },
+    "b6c4": {
+      "asset": "art/chapters/b6c4.webp",
+      "chapterSha256": "e2966c3bd24406fffd1a3cf3db7493cd84bd95044ced640a6c795a4aed9efc78",
+      "artSha256": "1d6e3bd7f27f8e84633eefc3eb1906d231101025d5ec73743f9f86255a17d5d1",
+      "metadataSha256": "dadfa92f5102e5746514ede316a419e940a6c0d9984bf032717c703dce2c6245",
+      "focalScene": "At the university, Mina and her father recognize that the yellow chick with a blue leg band is a lookalike, not Nino.",
+      "action": "retained"
+    },
+    "b7c1": {
+      "asset": "art/chapters/b7c1.webp",
+      "chapterSha256": "d3da76a55adb545dabfb2c9ad5001dbffa3443eb506684177bb98cdcc7c5f3f1",
+      "artSha256": "a11f2560a05a96bd786e3f1766a32f559dbd04ab88f7e40f040d63af1677dd03",
+      "metadataSha256": "ffb6ef3d0d9fe8c4bdb06ca89e667576f247f63d88b35f10408982ce896c132b",
+      "focalScene": "Mina packs clothes and luggage with her mother and father before the family trip.",
+      "action": "retained"
+    },
+    "b7c2": {
+      "asset": "art/chapters/b7c2.webp",
+      "chapterSha256": "bf53cd51885b5217120037f41b2011972a6e66a2150f4c0e818d62e1c7633238",
+      "artSha256": "6eaed484bb740740031d0a9f1dbbed420f70a542ba0ff65b669b657bf786ce56",
+      "metadataSha256": "56b9694178de7d333524455f7e2708f4e2ccef1a794c872b47b3110b656b1ba3",
+      "focalScene": "A close-up of Mina ready to board on the train platform.",
+      "action": "retained"
+    },
+    "b7c3": {
+      "asset": "art/chapters/b7c3.webp",
+      "chapterSha256": "51d66e05d7d273930080e2bb07c4db543761bd0576f55a308cd56213f1a80cf8",
+      "artSha256": "f13bd6ef7e3a76390463f023447080b4a6826d229e8329c4d7b0a316afbb67e0",
+      "metadataSha256": "db818453f966c8ab48bcd17559e72a88614e2140c8af85d60b7696e949fa7009",
+      "focalScene": "Mina looks from the train window across green fields toward the northern mountains.",
+      "action": "retained"
+    },
+    "b7c4": {
+      "asset": "art/chapters/b7c4.webp",
+      "chapterSha256": "a5112df36a75388d83c824015d21e3a92a2018894d5f41b2157896ef63df136e",
+      "artSha256": "c672fae5344f6bd4224f9789ec7cf97433c334056b4ca19c043fd609b130b092",
+      "metadataSha256": "5e20ac1a221989806184725b0383cf4ad56f3d43d2d3f77ad5d5e34f9d12f461",
+      "focalScene": "After the rain, a farmer gives Mina bread and a flower at the farmhouse porch while her parents stand beside her.",
+      "action": "retained"
+    },
+    "b7c5": {
+      "asset": "art/chapters/b7c5.webp",
+      "chapterSha256": "018da9ff462cc701ed8d22cd9b17b17b9349a426131d9a57153fe0471e432940",
+      "artSha256": "fdc0c82b03a27d76c6ef3075cdbf1cb20f68339ddb7989d4faacf720e9462d02",
+      "metadataSha256": "96f24b9d2b66abe01d048f432a448ef6eaccd07cbd71d0d4cd8d27b1813af97d",
+      "focalScene": "At dusk on the beach, Mina and her mother show Nino’s photograph to a fisherman beside his boat.",
+      "action": "retained"
+    },
+    "b8c1": {
+      "asset": "art/chapters/b8c1.webp",
+      "chapterSha256": "9a5e832ef8cb58eec26ff2ce0bca6a9e10147602afee63212e060376bf5f079f",
+      "artSha256": "585663ee57eced82608838794e06701365bef2470f0891b0b3625f9240e812f8",
+      "metadataSha256": "d157a63b5e2fe638ec9412edfe86b8d766355671045e533d71e3eb7f1e4bd2f7",
+      "focalScene": "Mina and her parents climb the mountain path toward the gray family house and its flower-filled garden.",
+      "action": "retained"
+    },
+    "b8c2": {
+      "asset": "art/chapters/b8c2.webp",
+      "chapterSha256": "20c5f77855d1592712437607d3f248698499f8b5fb932773a3c00252a59d2d62",
+      "artSha256": "940108358664b5d85d061a19ba1e0ca4eff80c4d1edaa47d1024f642d355def4",
+      "metadataSha256": "4f96a872109ad755508f37ee0c203ba94989e319ac06b57b3f787158c3ea826b",
+      "focalScene": "Resting under a quilt after the climb, Mina holds Nino’s photograph and listens to her grandmother’s story.",
+      "action": "retained"
+    },
+    "b8c3": {
+      "asset": "art/chapters/b8c3.webp",
+      "chapterSha256": "c40bbbbae4a711b5767b76de58c38db6abbe6b80d99d6951962a78001f1e6e2a",
+      "artSha256": "7b3ef5f49fdacd7efd99ff3f13ff586346b1e4c6f304ba2f060d9494195b6918",
+      "metadataSha256": "f16063c4c176a4440eb174de0c3b00e56d6e3d3c3987f709506eb495b05312ab",
+      "focalScene": "Mina listens to the woman doctor while a nurse brings her uncle a glass of water after his arm examination.",
+      "action": "corrected-scene"
+    },
+    "b8c4": {
+      "asset": "art/chapters/b8c4.webp",
+      "chapterSha256": "2eaafe3a4b2f41d73f40b10f3403e7f219ec2054297b1f6c9b35fb8cc712921c",
+      "artSha256": "78c5c93d388827a408e1f6cde358a02c2c755125bda10138ea451957dd150633",
+      "metadataSha256": "c92b385991211ce638fd9fe540c9ab6742f898299cd44c40cadbe14dfb2bcfbc",
+      "focalScene": "On a rainy night, Mina and her grandmother talk beside the fire with Mina’s red notebook on her lap.",
+      "action": "retained"
+    },
+    "b8c5": {
+      "asset": "art/chapters/b8c5.webp",
+      "chapterSha256": "40d7e5d8b633b1ebeb990081bb81b6fb3edcaf94e95aa204e3f7539af79454e9",
+      "artSha256": "444e514b60208c481e81b175601159c90d618ed9b549bda207e9a18bc1065228",
+      "metadataSha256": "adb7007b96639febed897d74535b718c67091c7fe6d8279366681bf03c35b667",
+      "focalScene": "Under the stars, Mina paints Nino in her red notebook while her grandmother points to a bright star.",
+      "action": "retained"
+    },
+    "b8c6": {
+      "asset": "art/chapters/b8c6.avif",
+      "chapterSha256": "8a73964a9a512a3c025160e921c9cfe64183575e545a9cdddecd36b052c8d744",
+      "artSha256": "3b5ea98b040be12851cbfd3bb9f92ee2e7daf2da77408c3dc568aa0909e72854",
+      "metadataSha256": "9e5e073daac2e3cb002aff2c0e3301eb20f0bdd287a4e7d00706879d86c4afe8",
+      "focalScene": "After Nino returns, Mina, her mother and father review the search map and photos at home beside Nino’s basket.",
+      "action": "retained"
+    }
+  }
+}

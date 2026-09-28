@@ -47,8 +47,8 @@ function writeVerified(name, bytes, expectedSha256) {
 {
   const payloadBase64 = fs.readFileSync(path.join(root, 'src/art/encoded/batch6/payload.b64'), 'utf8').trim()
   const payload = Buffer.from(payloadBase64, 'base64')
-  const expectedBytes = 127_956
-  const expectedSha256 = '07015a6deaa0e626217bcf8eeec294c47961a216bf05a565ba506cc9981b1291'
+  const expectedBytes = 239212
+  const expectedSha256 = 'f93c8c6c0bfd339ebbf97f0f99a0ba10ac463f9cba747bf0848080cc15a0367c'
 
   if (payload.length !== expectedBytes) {
     throw new Error(`batch6 artwork payload byte length mismatch: expected ${expectedBytes}, got ${payload.length}`)
@@ -59,12 +59,12 @@ function writeVerified(name, bytes, expectedSha256) {
   }
 
   const assets = [
-    { name: 'b1c2.webp', offset: 0, size: 20_170, sha256: '5706db2ac61a0eff478a3bdba3fd32dc5cde2cd87741fe418c372e50049f4a34' },
-    { name: 'b1c3.webp', offset: 20_170, size: 17_088, sha256: 'c0968ab348e4b16f2d3046bc77ecdae0be2765678530197be32e812d3f7d5bb9' },
-    { name: 'b1c4.webp', offset: 37_258, size: 24_362, sha256: 'e75b3c184c349962e591ff10b4ad6ab90e4557cc1980010f89d85c0ceb4c601e' },
-    { name: 'b1c5.webp', offset: 61_620, size: 18_566, sha256: 'c0a97d69fbce6f4dfcdc9d7fa83474d08bee25b1f8f6acf320dd27a8497ea0c0' },
-    { name: 'b2c3.webp', offset: 80_186, size: 24_992, sha256: 'c18a2083293473edf0bcb7c2239b593f3dd7815b191e7e06efb7fbcd93be2c96' },
-    { name: 'b3c2.webp', offset: 105_178, size: 22_778, sha256: 'e0ea1c615c44c0f41d1b13a8998e98bd9375baa0a1f6d25472572411b898e895' },
+    { name: 'b1c2.webp', offset: 0, size: 20170, sha256: '5706db2ac61a0eff478a3bdba3fd32dc5cde2cd87741fe418c372e50049f4a34' },
+    { name: 'b1c3.webp', offset: 20170, size: 17088, sha256: 'c0968ab348e4b16f2d3046bc77ecdae0be2765678530197be32e812d3f7d5bb9' },
+    { name: 'b1c4.webp', offset: 37258, size: 24362, sha256: 'e75b3c184c349962e591ff10b4ad6ab90e4557cc1980010f89d85c0ceb4c601e' },
+    { name: 'b1c5.webp', offset: 61620, size: 18566, sha256: 'c0a97d69fbce6f4dfcdc9d7fa83474d08bee25b1f8f6acf320dd27a8497ea0c0' },
+    { name: 'b2c3.webp', offset: 80186, size: 79560, sha256: 'b5eebd27ee05a282595854408515677a6005e2940801107c4023954073443e42' },
+    { name: 'b3c2.webp', offset: 159746, size: 79466, sha256: '1362392e8e4416859dd0babb73f53373491a5230374b21662535ea526d13aa87' },
   ]
 
   for (const asset of assets) {
@@ -92,8 +92,8 @@ function writeVerified(name, bytes, expectedSha256) {
     .map((file) => fs.readFileSync(path.join(root, file), 'utf8').trim())
     .join('')
   const bytes = Buffer.from(base64, 'base64')
-  const expectedBytes = 56_660
-  const expectedSha256 = 'c0ff7b377cec762a87c024441ef47ecf5e9ebceacd27e2724fb68678ded7cc6b'
+  const expectedBytes = 74088
+  const expectedSha256 = '0dc1da76ce593f7eafeb13e4f27340e9294717ac7d4f3fb2b19bd3f59362c327'
 
   if (bytes.length !== expectedBytes) {
     throw new Error(`b4c5 artwork byte length mismatch: expected ${expectedBytes}, got ${bytes.length}`)
@@ -346,7 +346,7 @@ function writeVerified(name, bytes, expectedSha256) {
     { name: 'b7c5.webp', size: 65626, sha256: 'fdc0c82b03a27d76c6ef3075cdbf1cb20f68339ddb7989d4faacf720e9462d02' },
     { name: 'b8c1.webp', size: 76292, sha256: '585663ee57eced82608838794e06701365bef2470f0891b0b3625f9240e812f8' },
     { name: 'b8c2.webp', size: 73842, sha256: '940108358664b5d85d061a19ba1e0ca4eff80c4d1edaa47d1024f642d355def4' },
-    { name: 'b8c3.webp', size: 59242, sha256: '9e3a6f07f96f404e44df22d08d4e3583b9b83b85aed1652ff13adf2641ff0cc1' },
+    { name: 'b8c3.webp', size: 63220, sha256: '7b3ef5f49fdacd7efd99ff3f13ff586346b1e4c6f304ba2f060d9494195b6918' },
     { name: 'b8c4.webp', size: 72930, sha256: '78c5c93d388827a408e1f6cde358a02c2c755125bda10138ea451957dd150633' },
     { name: 'b8c5.webp', size: 74252, sha256: '444e514b60208c481e81b175601159c90d618ed9b549bda207e9a18bc1065228' },
   ]
