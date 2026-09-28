@@ -55,52 +55,52 @@
   ],
   "questions": [
     {
-      "q": "مرد چطور در شهر می‌گردد؟",
+      "q": "How does the man go around the city?",
       "options": [
-        "با اتوبوس",
-        "پیاده",
-        "با ماشین",
-        "با دوچرخه"
+        "By bus",
+        "On foot",
+        "By car",
+        "On his bicycle"
       ],
       "answer": 3
     },
     {
-      "q": "مرد جوجه را کجا دید؟",
+      "q": "Where did the man see the chicken?",
       "options": [
-        "نزدیک جاده‌ی کنار رودخانه",
-        "در بازار",
-        "در پارک",
-        "کنار نانوایی"
+        "Near the river road",
+        "At the market",
+        "In the park",
+        "Near the bread shop"
       ],
       "answer": 0
     },
     {
-      "q": "جوجه با چه چیزهایی بود؟",
+      "q": "What was the chicken with?",
       "options": [
-        "با یک گربه",
-        "با چند پرنده",
-        "با یک بچه",
-        "با مرغ‌های دیگر"
+        "A cat",
+        "Some birds",
+        "A child",
+        "Other chickens"
       ],
       "answer": 1
     },
     {
-      "q": "چرا مرد نتوانست عکس بگیرد؟",
+      "q": "Why did he not take a photograph?",
       "options": [
-        "دوربین نداشت",
-        "هوا تاریک بود",
-        "جوجه میان درخت‌ها رفت",
-        "باران می‌آمد"
+        "He had no camera",
+        "It was dark",
+        "The chicken went into the trees",
+        "It was raining"
       ],
       "answer": 2
     },
     {
-      "q": "مرد درباره‌ی جوجه از کجا خبردار شد؟",
+      "q": "How did the man hear about the chicken?",
       "options": [
-        "از روزنامه",
-        "از رادیو",
-        "از همسایه",
-        "از اینترنت"
+        "From the newspaper",
+        "From the radio",
+        "From a neighbor",
+        "From the internet"
       ],
       "answer": 1
     }

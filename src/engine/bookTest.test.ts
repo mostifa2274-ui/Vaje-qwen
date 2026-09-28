@@ -4,8 +4,8 @@ import { BOOK_TEST_CONTENT } from '../data/bookTests'
 import { emptyState } from './store'
 import { blankWordProgress, recordRetrieval } from './review'
 import { bookExamId, canPrepareChapter, canTakeExam, examDefinition, examRemediationPending } from './gates'
+import { bookTestQuestionCount, bookTestTextsPerSkill, bookTestWordCount, bookTestWordsFrom, bookWordIds } from './bookTestSize'
 import {
-  BOOK_TEST_WORDS_PER_SECTION,
   bookTestAllocation,
   buildBookTest,
   recordBookTest,
@@ -37,54 +37,66 @@ function perfectAnswers(test: BookTest): BookTestAnswers {
   return {
     translation: test.translation.map(item => WORD_BY_ID.get(item.wordId)!.fa),
     listeningWords: test.listeningWords.map(item => item.wordId),
-    reading: test.reading.questions.map(question => question.answer),
-    listening: test.listening.questions.map(question => question.answer),
+    reading: test.reading.map(text => text.questions.map(question => question.answer)),
+    listening: test.listening.map(text => text.questions.map(question => question.answer)),
   }
 }
 
 describe('end-of-book test', () => {
-  it('is the book-N gate: 34 items, each part needing 100%', () => {
+  it('is the book-N gate, growing with the books and needing 100% in each part', () => {
     const def = examDefinition(bookExamId(3))!
     expect(def.kind).toBe('book')
     expect(def.titleFa).toBe('آزمون پایان کتاب ۳')
-    expect(def.questionCount).toBe(34)
+    expect(def.questionCount).toBe(bookTestQuestionCount(3))
     expect(def.passRate).toBe(1)
+    // Half of the words studied so far, and 1, 2, 3, 4 texts per skill.
+    const studied = (book: number) => CHAPTERS.filter(ch => ch.book <= book).reduce((sum, ch) => sum + ch.new.length, 0)
+    for (let book = 1; book <= 8; book++) {
+      expect(Math.abs(bookTestWordCount(book) - studied(book) / 2)).toBeLessThanOrEqual(book)
+      expect(bookTestTextsPerSkill(book)).toBe(Math.ceil(book / 2))
+    }
+    expect(bookTestWordCount(1)).toBe(145)
+    expect(bookTestWordCount(8)).toBeGreaterThanOrEqual(445)
   })
 
   for (let book = 1; book <= 8; book++) {
-    it(`book ${book}: vocabulary spans every book so far without repeats`, () => {
+    it(`book ${book}: half of every studied book's words, without repeats`, () => {
       const test = buildBookTest(book, stateThroughBook(book), 1)!
-      expect(test.translation).toHaveLength(BOOK_TEST_WORDS_PER_SECTION)
-      expect(test.listeningWords).toHaveLength(BOOK_TEST_WORDS_PER_SECTION)
       const all = [...test.translation, ...test.listeningWords]
+      expect(all).toHaveLength(bookTestWordCount(book))
+      expect(Math.abs(test.translation.length - test.listeningWords.length)).toBeLessThanOrEqual(book)
       expect(new Set(all.map(item => item.wordId)).size).toBe(all.length)
       for (const item of all) {
         expect(introducedIn.get(item.wordId)).toBe(item.book)
         expect(item.book).toBeLessThanOrEqual(book)
       }
-      for (const section of [test.translation, test.listeningWords]) {
-        const books = new Set(section.map(item => item.book))
-        for (let earlier = 1; earlier <= book; earlier++) expect(books.has(earlier), `book ${earlier} in section`).toBe(true)
-        if (book > 1) expect(section.filter(item => item.book === book)).toHaveLength(4)
+      for (let source = 1; source <= book; source++) {
+        expect(all.filter(item => item.book === source), `book ${source}`).toHaveLength(bookTestWordsFrom(source))
+        expect(bookTestWordsFrom(source)).toBe(Math.round(bookWordIds(source).length / 2))
+        for (const section of [test.translation, test.listeningWords]) {
+          expect(section.some(item => item.book === source), `book ${source} in each section`).toBe(true)
+        }
       }
-      expect([test.reading, test.listening].map(text => text.id)).toEqual([
-        BOOK_TEST_CONTENT.get(book)!.reading[0].id,
-        BOOK_TEST_CONTENT.get(book)!.listening[0].id,
-      ])
+      const count = bookTestTextsPerSkill(book)
+      expect(test.reading.map(text => text.id)).toEqual(BOOK_TEST_CONTENT.get(book)!.reading.slice(0, count).map(text => text.id))
+      expect(test.listening.map(text => text.id)).toEqual(BOOK_TEST_CONTENT.get(book)!.listening.slice(0, count).map(text => text.id))
     })
   }
 
-  it('spreads the earlier-book places evenly and rotates the spare ones', () => {
-    for (let book = 2; book <= 8; book++) {
-      for (let rotation = 0; rotation < 8; rotation++) {
+  it('splits each book\'s share between typing and listening and rotates the spare word', () => {
+    for (let book = 1; book <= 8; book++) {
+      for (const rotation of [0, 1]) {
         const allocation = bookTestAllocation(book, rotation)
-        expect([...allocation.values()].reduce((sum, count) => sum + count, 0)).toBe(BOOK_TEST_WORDS_PER_SECTION)
-        const earlier = [...allocation].filter(([source]) => source < book).map(([, count]) => count)
-        expect(Math.max(...earlier) - Math.min(...earlier)).toBeLessThanOrEqual(1)
+        expect([...allocation.keys()]).toEqual(Array.from({ length: book }, (_, index) => index + 1))
+        for (const [source, counts] of allocation) {
+          expect(counts.translation + counts.listeningWords).toBe(bookTestWordsFrom(source))
+          expect(Math.abs(counts.translation - counts.listeningWords)).toBeLessThanOrEqual(1)
+        }
+      }
+      for (const [source, counts] of bookTestAllocation(book, 0)) {
+        if (bookTestWordsFrom(source) % 2) expect(bookTestAllocation(book, 1).get(source)!.translation).not.toBe(counts.translation)
       }
     }
-    const extras = new Set([0, 1, 2, 3, 4, 5, 6].map(rotation => [...bookTestAllocation(8, rotation)].find(([, count]) => count === 2)![0]))
-    expect(extras.size).toBe(7)
   })
 
   it('asks function words only inside the texts, and never ambiguous sounds', () => {
@@ -99,14 +111,16 @@ describe('end-of-book test', () => {
           expect(['like', 'second', 'a, an']).not.toContain(word.word)
           expect(item.options).toHaveLength(4)
           expect(item.options.filter(option => option.id === item.wordId)).toHaveLength(1)
+          // A sound-alike of the heard word is never offered beside it.
           const surfaces = item.options.map(option => WORD_BY_ID.get(option.id)!.word.toLowerCase())
           for (const group of [['to', 'too', 'two'], ['right', 'write'], ['hear', 'here'], ['son', 'sun'], ['know', 'no'], ['by', 'buy', 'bye'], ['there', 'their'], ['our', 'hour'], ['for', 'four']]) {
-            expect(surfaces.filter(value => group.includes(value)).length, `${word.word}: ${surfaces.join(', ')}`).toBeLessThanOrEqual(1)
+            if (!group.includes(word.word.toLowerCase())) continue
+            expect(surfaces.filter(value => group.includes(value)).length, `${word.word}: ${surfaces.join(', ')}`).toBe(1)
           }
         }
       }
     }
-  })
+  }, 30_000)
 
   it('is stable for one attempt and alternates texts between attempts', () => {
     const state = stateThroughBook(2)
@@ -114,23 +128,24 @@ describe('end-of-book test', () => {
     expect(buildBookTest(2, state, 1)).toEqual(first)
     const second = buildBookTest(2, state, 2)!
     const third = buildBookTest(2, state, 3)!
-    expect(second.reading.id).not.toBe(first.reading.id)
-    expect(second.listening.id).not.toBe(first.listening.id)
-    expect(third.reading.id).toBe(first.reading.id)
-    expect(third.listening.id).toBe(first.listening.id)
+    const ids = (texts: { id: string }[]) => texts.map(text => text.id)
+    for (const skill of ['reading', 'listening'] as const) {
+      expect(ids(second[skill]).some(id => ids(first[skill]).includes(id))).toBe(false)
+      expect(ids(third[skill])).toEqual(ids(first[skill]))
+    }
   })
 
   it('widens vocabulary coverage on a retake', () => {
     let state = stateThroughBook(1)
     const first = buildBookTest(1, state, 1)!
     const answers = perfectAnswers(first)
-    answers.reading = answers.reading.map(() => null)
+    answers.reading = answers.reading.map(text => text.map(() => null))
     state = recordBookTest(state, first, answers, scoreBookTest(first, answers), 100)
     const tested = new Set(state.exams[bookExamId(1)].testedWordIds)
-    expect(tested.size).toBe(24)
+    expect(tested.size).toBe(145)
     const second = buildBookTest(1, state, 2)!
     const fresh = [...second.translation, ...second.listeningWords].filter(item => !tested.has(item.wordId))
-    expect(fresh.length).toBeGreaterThanOrEqual(10)
+    expect(fresh.length).toBeGreaterThanOrEqual(50)
   })
 
   it('passes only when every answer in every part is right', () => {
@@ -138,31 +153,35 @@ describe('end-of-book test', () => {
     const perfect = perfectAnswers(test)
     const all = scoreBookTest(test, perfect)
     expect(all.passed).toBe(true)
-    expect(all.correct).toBe(34)
+    expect(all.correct).toBe(bookTestQuestionCount(3))
     expect(all.missedWordIds).toEqual([])
+    const texts = bookTestTextsPerSkill(3)
+    expect(all.sections.reading.total).toBe(texts * 5)
 
     // One wrong answer anywhere fails the whole test.
-    const fourReading = { ...perfect, reading: perfect.reading.map((answer, index) => index === 0 ? (answer! + 1) % 4 : answer) }
-    expect(scoreBookTest(test, fourReading).sections.reading).toMatchObject({ correct: 4, passed: false })
-    expect(scoreBookTest(test, fourReading).passed).toBe(false)
-    const threeListening = { ...perfect, listening: perfect.listening.map((answer, index) => index < 2 ? (answer! + 1) % 4 : answer) }
-    const failed = scoreBookTest(test, threeListening)
-    expect(failed.sections.listening).toMatchObject({ correct: 3, total: 5, passed: false })
+    const wrongFirst = (chosen: Array<Array<number | null>>, count: number) =>
+      chosen.map((text, slot) => slot === chosen.length - 1 ? text.map((answer, index) => index < count ? (answer! + 1) % 4 : answer) : text)
+    const oneReading = { ...perfect, reading: wrongFirst(perfect.reading, 1) }
+    expect(scoreBookTest(test, oneReading).sections.reading).toMatchObject({ correct: texts * 5 - 1, passed: false })
+    expect(scoreBookTest(test, oneReading).passed).toBe(false)
+    const twoListening = { ...perfect, listening: wrongFirst(perfect.listening, 2) }
+    const failed = scoreBookTest(test, twoListening)
+    expect(failed.sections.listening).toMatchObject({ correct: texts * 5 - 2, total: texts * 5, passed: false })
     expect(failed.passed).toBe(false)
-    expect(failed.score).toBeGreaterThan(0.9)
+    expect(failed.score).toBeGreaterThan(0.95)
 
     const translation = [...perfect.translation]
     translation[0] = ''
     translation[1] = 'اشتباه'
     translation[2] = 'نمی‌دانم'
     const typedGaps = scoreBookTest(test, { ...perfect, translation })
-    expect(typedGaps.sections.translation).toMatchObject({ correct: 9, passed: false })
+    expect(typedGaps.sections.translation).toMatchObject({ correct: test.translation.length - 3, passed: false })
     expect(typedGaps.missedWordIds).toEqual(test.translation.slice(0, 3).map(item => item.wordId))
 
     const listeningWords = [...perfect.listeningWords]
     listeningWords[4] = test.listeningWords[4].options.find(option => option.id !== test.listeningWords[4].wordId)!.id
     listeningWords[5] = ''
-    expect(scoreBookTest(test, { ...perfect, listeningWords }).sections.listeningWords).toMatchObject({ correct: 10, passed: false })
+    expect(scoreBookTest(test, { ...perfect, listeningWords }).sections.listeningWords).toMatchObject({ correct: test.listeningWords.length - 2, passed: false })
   })
 
   it('accepts any listed Persian meaning, typed loosely', () => {
@@ -172,7 +191,7 @@ describe('end-of-book test', () => {
       const fa = WORD_BY_ID.get(item.wordId)!.fa
       return ` ${fa.split(/[؛;،,/]/).at(-1)!.trim().replace(/ی/g, 'ي')} `
     })
-    expect(scoreBookTest(test, answers).sections.translation.correct).toBe(12)
+    expect(scoreBookTest(test, answers).sections.translation.correct).toBe(test.translation.length)
   })
 
   it('records the attempt, keeps a pass and gates the next book on remediation', () => {
@@ -189,7 +208,7 @@ describe('end-of-book test', () => {
     state = recordBookTest(state, test, answers, result, 1_000)
     const progress = state.exams[bookExamId(1)]
     expect(progress).toMatchObject({ attempts: 1, passed: false, lastAttemptAt: 1_000, missedWordIds: [test.translation[0].wordId] })
-    expect(progress.lastProductiveScore).toBeCloseTo(11 / 12)
+    expect(progress.lastProductiveScore).toBeCloseTo((test.translation.length - 1) / test.translation.length)
     const missed = test.translation[0].wordId
     expect(state.words[missed].reviewWrong).toBe(1)
     expect(state.words[test.translation[1].wordId].reviewCorrect).toBe(1)
@@ -213,7 +232,7 @@ describe('end-of-book test', () => {
 
     // A later failed retake never revokes the pass.
     const retake = buildBookTest(1, state, 3)!
-    const blank: BookTestAnswers = { translation: [], listeningWords: [], reading: [null, null, null, null, null], listening: [null, null, null, null, null] }
+    const blank: BookTestAnswers = { translation: [], listeningWords: [], reading: [[null, null, null, null, null]], listening: [[null, null, null, null, null]] }
     state = recordBookTest(state, retake, blank, scoreBookTest(retake, blank), 4_000)
     expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 3, passed: true, passedAt: 3_000, bestScore: 1 })
   })

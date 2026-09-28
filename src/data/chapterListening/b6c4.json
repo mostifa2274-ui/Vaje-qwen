@@ -2,7 +2,9 @@
   "id": "b6c4-listening",
   "titleEn": "The Scientist's Chicken",
   "titleFa": "جوجه‌ی دانشمند",
-  "names": [],
+  "names": [
+    "Mina"
+  ],
   "sentences": [
     {
       "en": "At the university, a scientist has a science project with young chickens.",
@@ -55,52 +57,52 @@
   ],
   "questions": [
     {
-      "q": "هر جوجه‌ی پروژه روی پایش چه دارد؟",
+      "q": "What does each chicken in the project have on its leg?",
       "options": [
-        "یک حلقه‌ی کوچک آبی",
-        "یک کارت",
-        "یک نوار قرمز",
-        "هیچ چیز"
+        "A small blue band",
+        "A card",
+        "A red line",
+        "Nothing"
       ],
       "answer": 0
     },
     {
-      "q": "کارگر جوجه‌ی فراری را کجا پیدا کرد؟",
+      "q": "Where did the worker find the chicken?",
       "options": [
-        "در خیابان",
-        "در دفتر",
-        "در باغ، زیر یک درخت",
-        "کنار رودخانه"
+        "In the street",
+        "In the office",
+        "In the garden, under a tree",
+        "Near the river"
       ],
       "answer": 2
     },
     {
-      "q": "دانشمند چطور از ماجرای مینا باخبر شد؟",
+      "q": "How did the scientist hear about Mina?",
       "options": [
-        "از رادیو",
-        "از یک وبلاگ",
-        "از روزنامه",
-        "از معلم"
+        "From the radio",
+        "From a blog",
+        "From the newspaper",
+        "From a teacher"
       ],
       "answer": 1
     },
     {
-      "q": "دانشمند به دختر چه هدیه‌ای داد؟",
+      "q": "What present did the scientist give the girl?",
       "options": [
-        "یک چتر",
-        "یک ماکت پرنده",
-        "یک جوجه",
-        "کارتی با یک پرنده‌ی زرد"
+        "An umbrella",
+        "A model of a bird",
+        "A chicken",
+        "A card with a yellow bird on it"
       ],
       "answer": 3
     },
     {
-      "q": "توصیه‌ی دانشمند چیست؟",
+      "q": "What is the scientist's advice?",
       "options": [
-        "جایی را بگردید که هر روز غذا دارد",
-        "به دانشگاه برگردید",
-        "به روزنامه بنویسید",
-        "زیر باران نگردید"
+        "Look for a place with food",
+        "Come back to the university",
+        "Write to the newspaper",
+        "Do not look in the rain"
       ],
       "answer": 0
     }

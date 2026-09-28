@@ -54,52 +54,52 @@
   ],
   "questions": [
     {
-      "q": "خانواده‌ی مینا به کجا سفر می‌کنند؟",
+      "q": "Where is Mina's family going?",
       "options": [
-        "به شمال",
-        "به جنوب",
-        "به یک مزرعه",
-        "به شهری دیگر در خارج"
+        "To the north",
+        "To the city center",
+        "To a farm",
+        "To another country"
       ],
       "answer": 0
     },
     {
-      "q": "چه کسی هر شب آب و نان کنار درشان می‌گذارد؟",
+      "q": "Who will put water and bread by their door every night?",
       "options": [
-        "نگار",
-        "همسایه‌ی پیر",
-        "مادر نگار",
-        "پیرزنِ درِ آبی"
+        "Negar",
+        "An old neighbor",
+        "Negar's mother",
+        "The old woman with the blue door"
       ],
       "answer": 2
     },
     {
-      "q": "هدیه‌ی نگار چیست؟",
+      "q": "What is Negar's present?",
       "options": [
-        "یک کتاب",
-        "یک تی‌شرت با عکس یک جوجه‌ی زرد",
-        "یک کلاه",
-        "یک چتر"
+        "A book",
+        "A T-shirt with a yellow chicken on it",
+        "A hat",
+        "An umbrella"
       ],
       "answer": 1
     },
     {
-      "q": "مینا تی‌شرت را کنار چه چیزهایی می‌گذارد؟",
+      "q": "Mina puts the T-shirt in her bag, next to ___.",
       "options": [
-        "کنار کتاب قرمزش",
-        "کنار کفش‌هایش",
-        "کنار بلیت قطار",
-        "کنار بلوز پشمی و شلوار جینش"
+        "her red book",
+        "her shoes",
+        "the train tickets",
+        "her sweater and her jeans"
       ],
       "answer": 3
     },
     {
-      "q": "خانواده با چه چیزی سفر می‌کنند؟",
+      "q": "How will the family travel?",
       "options": [
-        "با هواپیما",
-        "با قطار",
-        "با اتوبوس",
-        "با ماشین"
+        "By plane",
+        "By train",
+        "By bus",
+        "By car"
       ],
       "answer": 1
     }

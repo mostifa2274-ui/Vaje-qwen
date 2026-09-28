@@ -57,52 +57,52 @@
   ],
   "questions": [
     {
-      "q": "پسر هر صبح چه کار می‌کند؟",
+      "q": "What does the boy do every morning?",
       "options": [
-        "به مدرسه می‌رود",
-        "به پیرزن در غذا دادن به پرنده‌ها کمک می‌کند",
-        "فوتبال بازی می‌کند",
-        "با اتوبوس به مرکز شهر می‌رود"
+        "He goes to school",
+        "He helps the old woman with the birds",
+        "He plays football",
+        "He takes the bus to the city center"
       ],
       "answer": 1
     },
     {
-      "q": "در ظرف کنار در چه می‌گذارند؟",
+      "q": "What do they put in the dish next to the door?",
       "options": [
-        "نان و آب",
-        "شیر",
-        "پنیر",
-        "تخم‌مرغ"
+        "Bread and water",
+        "Milk",
+        "Cheese",
+        "Eggs"
       ],
       "answer": 0
     },
     {
-      "q": "دختر چه چیزی نشان می‌دهد؟",
+      "q": "What does the girl show them?",
       "options": [
-        "یک یادداشت",
-        "یک کتاب",
-        "یک نقشه",
-        "عکس یک جوجه‌ی زرد"
+        "A note",
+        "A book",
+        "A flower",
+        "A picture of a little yellow chicken"
       ],
       "answer": 3
     },
     {
-      "q": "پسر در عکس چه چیزی می‌بیند؟",
+      "q": "What does the boy see in the picture?",
       "options": [
-        "یک پرنده‌ی قرمز",
-        "پاهای نارنجی و کمی سفیدی در سمت چپ",
-        "یک درِ آبی",
-        "یک دختر"
+        "A red bird",
+        "Orange feet and a little white on the left",
+        "A blue door",
+        "A girl"
       ],
       "answer": 1
     },
     {
-      "q": "پیرزن با یادداشت چه می‌کند؟",
+      "q": "What does the old woman do with the note?",
       "options": [
-        "آن را دور می‌اندازد",
-        "آن را به دیوار می‌زند",
-        "آن را در کیفش می‌گذارد",
-        "آن را به نوه‌اش می‌دهد"
+        "She gives it back",
+        "She puts it on the wall",
+        "She puts it in her bag",
+        "She gives it to her grandson"
       ],
       "answer": 2
     }

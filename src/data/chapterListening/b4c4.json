@@ -57,52 +57,52 @@
   ],
   "questions": [
     {
-      "q": "بازدیدکننده‌ها از کجا آمده‌اند؟",
+      "q": "Where do the visitors come from?",
       "options": [
-        "از همین محله",
-        "از یک مزرعه",
-        "از شهری دور",
-        "از مرکز شهر"
+        "This neighborhood",
+        "The bread shop",
+        "A city far away",
+        "The city center"
       ],
       "answer": 2
     },
     {
-      "q": "با چه پولی می‌توانند حساب کنند؟",
+      "q": "How can they pay?",
       "options": [
-        "با دلار",
-        "با پوند",
-        "با پول محلی",
-        "نمی‌توانند حساب کنند"
+        "In dollars",
+        "In pounds",
+        "In local money",
+        "They cannot pay"
       ],
       "answer": 0
     },
     {
-      "q": "چه سفارش می‌دهند؟",
+      "q": "What do they order?",
       "options": [
-        "قهوه و کلوچه",
-        "آب پرتقال",
-        "بستنی شکلاتی",
-        "چای و دو تکه کیک شکلاتی"
+        "Coffee and cookies",
+        "Orange juice",
+        "Chocolate ice cream",
+        "Tea and two pieces of chocolate cake"
       ],
       "answer": 3
     },
     {
-      "q": "دختر چه چیزی را به بازدیدکننده پس می‌دهد؟",
+      "q": "What does the girl give back to the visitor?",
       "options": [
-        "یک دلار",
-        "یک پوند",
-        "یک یورو",
-        "منو را"
+        "A dollar",
+        "A pound",
+        "A euro",
+        "The menu"
       ],
       "answer": 1
     },
     {
-      "q": "بازدیدکننده در آخر چه می‌گوید؟",
+      "q": "What does the visitor say at the end?",
       "options": [
-        "فردا در بازار دنبال نینو می‌گردد",
-        "به شهرش برمی‌گردد",
-        "یک جوجه دارد",
-        "کافه گران است"
+        "He will look for Nino at the market tomorrow",
+        "He will go back to his city",
+        "He has a chicken",
+        "The cafe is expensive"
       ],
       "answer": 0
     }

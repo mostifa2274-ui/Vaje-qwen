@@ -59,52 +59,52 @@
   ],
   "questions": [
     {
-      "q": "نگار چه چیزی یادش می‌آید؟",
+      "q": "What does Negar remember?",
       "options": [
-        "که فردا تولد میناست",
-        "که مدرسه تمام شده",
-        "که نینو برگشته",
-        "که فردا جمعه است"
+        "Tomorrow is Mina's birthday",
+        "School is finished",
+        "Nino is back",
+        "Tomorrow is Friday"
       ],
       "answer": 0
     },
     {
-      "q": "نگار تصمیم می‌گیرد چه چیزی درست کند؟",
+      "q": "What does Negar decide to make?",
       "options": [
-        "یک کیک",
-        "نقاشی نینو",
-        "یک نامه",
-        "یک چراغ"
+        "A cake",
+        "A picture of Nino",
+        "A note",
+        "A light"
       ],
       "answer": 1
     },
     {
-      "q": "نگار چه چیزی به نقاشی اضافه می‌کند؟",
+      "q": "What does Negar add to the picture?",
       "options": [
-        "یک پرنده‌ی قرمز",
-        "یک درِ آبی",
-        "کمی سفیدی در سمت چپ نینو",
-        "اسم مینا"
+        "A red bird",
+        "A blue door",
+        "A little white on Nino's left",
+        "Mina's name"
       ],
       "answer": 2
     },
     {
-      "q": "در آشپزخانه چند چراغ کوچک هست؟",
+      "q": "How many small lights are in the kitchen?",
       "options": [
-        "یازده",
-        "ده",
-        "هشت",
-        "دوازده"
+        "Eleven",
+        "Ten",
+        "Eight",
+        "Twelve"
       ],
       "answer": 3
     },
     {
-      "q": "وقتی مینا نقاشی را می‌بیند، چه می‌شود؟",
+      "q": "What happens when Mina sees the picture?",
       "options": [
-        "غمگین می‌شود",
-        "خوشحال می‌شود",
-        "به اتاقش می‌رود",
-        "چیزی نمی‌گوید"
+        "She becomes sad",
+        "She becomes happy",
+        "She goes to her room",
+        "She says nothing"
       ],
       "answer": 1
     }

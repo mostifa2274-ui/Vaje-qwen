@@ -61,52 +61,52 @@
       ],
       "questions": [
         {
-          "q": "زهرا هر جمعه کجا می‌رود؟",
+          "q": "Where does Zahra go every Friday?",
           "options": [
-            "به بازار",
-            "به بانک",
-            "به رستوران",
-            "به مزرعه"
+            "To the market",
+            "To the bank",
+            "To a restaurant",
+            "To a farm"
           ],
           "answer": 0
         },
         {
-          "q": "سیب‌ها چگونه‌اند؟",
+          "q": "What are the apples like?",
           "options": [
-            "ارزان و زرد",
-            "کوچک و ترش",
-            "سبز و ارزان",
-            "قرمز و خوب، اما گران"
+            "Cheap and yellow",
+            "Small and green",
+            "Small and brown",
+            "Red and very nice, but expensive"
           ],
           "answer": 3
         },
         {
-          "q": "زهرا چند کیسه پرتقال می‌خرد؟",
+          "q": "How many bags of oranges does Zahra buy?",
           "options": [
-            "یک کیسهٔ کوچک",
-            "سه کیسه",
-            "هیچ",
-            "دو کیسهٔ بزرگ"
+            "One small bag",
+            "Two big bags",
+            "Three bags",
+            "Five bags"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
-          "q": "زهرا سیب‌زمینی، پیاز و گوجه‌فرنگی را برای چه می‌خرد؟",
+          "q": "Zahra buys potatoes, onions and tomatoes for ___.",
           "options": [
-            "برای سالاد",
-            "برای ساندویچ",
-            "برای سوپ",
-            "برای کیک"
+            "a salad",
+            "sandwiches",
+            "soup",
+            "a cake"
           ],
           "answer": 2
         },
         {
-          "q": "بابک کی شکلاتش را می‌خورد؟",
+          "q": "When does Babak eat his chocolate?",
           "options": [
-            "در بازار",
-            "بعد از سوپش",
-            "پیش از ناهار",
-            "شب پیش از خواب"
+            "At the market",
+            "After his soup",
+            "Before lunch",
+            "At night before bed"
           ],
           "answer": 1
         }
@@ -175,52 +175,52 @@
       ],
       "questions": [
         {
-          "q": "رامین کجا زندگی می‌کند؟",
+          "q": "Where does Ramin live?",
           "options": [
-            "در آپارتمانی در شهر",
-            "در یک مزرعه",
-            "کنار بازار",
-            "در یک هتل"
+            "In an apartment in the city",
+            "On a farm",
+            "Near the market",
+            "Next to a bank"
           ],
           "answer": 1
         },
         {
-          "q": "گاوها و مرغ‌ها چه می‌دهند؟",
+          "q": "What do the cows and the chickens give?",
           "options": [
-            "گاوها شیر و مرغ‌ها تخم‌مرغ",
-            "گاوها گوشت و مرغ‌ها شیر",
-            "گاوها پنیر و مرغ‌ها گوشت",
-            "هیچ‌چیز"
+            "The cows give milk, and the chickens give eggs",
+            "The cows give meat, and the chickens give milk",
+            "The cows give cheese, and the chickens give meat",
+            "Nothing"
           ],
           "answer": 0
         },
         {
-          "q": "مادر رامین شیر و تخم‌مرغ را کجا می‌فروشد؟",
+          "q": "Where does Ramin's mom sell the milk and eggs?",
           "options": [
-            "در بازار شهر",
-            "در مزرعه",
-            "در سوپرمارکت",
-            "در رستوران"
+            "On the farm",
+            "At a supermarket",
+            "At the market in town",
+            "At a restaurant"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "چه چیزی رامین را به طرف اسب می‌برد؟",
+          "q": "What takes Ramin to the horse?",
           "options": [
-            "همسایه",
-            "مادرش",
-            "صدای اسب",
-            "سگش"
+            "The neighbor",
+            "His mom",
+            "The sound of the horse",
+            "His dog"
           ],
           "answer": 3
         },
         {
-          "q": "اسب در باغچهٔ همسایه چه می‌کند؟",
+          "q": "What is the horse doing in the neighbor's garden?",
           "options": [
-            "زیر درخت می‌خوابد",
-            "با سگ بازی می‌کند",
-            "هویج‌های همسایه را می‌خورد",
-            "آب می‌نوشد"
+            "It sleeps under a tree",
+            "It plays with the dog",
+            "It eats the neighbor's carrots",
+            "It drinks water"
           ],
           "answer": 2
         }
@@ -288,52 +288,52 @@
       ],
       "questions": [
         {
-          "q": "فرید امروز چند ساله می‌شود؟",
+          "q": "How old is Farid today?",
           "options": [
-            "دوازده",
-            "بیست",
-            "دو",
-            "بیست و دو"
+            "Twelve",
+            "Twenty",
+            "Two",
+            "Thirty"
           ],
           "answer": 1
         },
         {
-          "q": "فرید چه سفارش می‌دهد؟",
+          "q": "What does Farid order?",
           "options": [
-            "مرغ با برنج و سالاد",
-            "ماهی با سیب‌زمینی",
-            "یک ساندویچ بزرگ",
-            "سوپ و نان"
+            "Chicken with rice and a salad",
+            "Fish with potatoes",
+            "A big sandwich",
+            "Soup and bread"
           ],
           "answer": 0
         },
         {
-          "q": "چرا نازنین ماهی انتخاب می‌کند؟",
+          "q": "Why does Nazanin choose fish?",
           "options": [
-            "چون گوشت دوست ندارد",
-            "چون ماهی ارزان است",
-            "چون مرغ تمام شده است",
-            "چون پیشخدمت پیشنهاد می‌دهد"
+            "Fish is cheap",
+            "There is no chicken",
+            "She does not like meat",
+            "The waiter says it is good"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "چه مشکلی در غذا پیش می‌آید؟",
+          "q": "What is wrong with the food?",
           "options": [
-            "ماهی شور است",
-            "سالاد نمی‌آید",
-            "غذا خیلی گران است",
-            "مرغ سرد است"
+            "The fish has too much salt",
+            "The salad does not come",
+            "The food is very expensive",
+            "The chicken is cold"
           ],
           "answer": 3
         },
         {
-          "q": "بعد از ناهار پیشخدمت چه می‌آورد؟",
+          "q": "What does the waiter bring after lunch?",
           "options": [
-            "بستنی",
-            "چای",
-            "یک کیک شکلاتی بزرگ",
-            "میوه"
+            "Ice cream",
+            "Tea",
+            "A big chocolate cake",
+            "Fruit"
           ],
           "answer": 2
         }
@@ -403,52 +403,52 @@
       ],
       "questions": [
         {
-          "q": "تارا چند سال دارد؟",
+          "q": "How old is Tara?",
           "options": [
-            "ده",
-            "دوازده",
-            "هفت",
-            "بیست"
+            "Ten",
+            "Twelve",
+            "Seven",
+            "Twenty"
           ],
           "answer": 0
         },
         {
-          "q": "چرا مادر تارا اول گربه نمی‌خواهد؟",
+          "q": "Why does Tara's mom not want a cat at first?",
           "options": [
-            "از گربه می‌ترسد",
-            "گربه‌ها گران‌اند",
-            "تارا خیلی کوچک است",
-            "نمی‌خواهد حیوانی در آپارتمان باشد"
+            "She is afraid of cats",
+            "Cats are expensive",
+            "Tara is too young",
+            "She does not want an animal in the apartment"
           ],
           "answer": 3
         },
         {
-          "q": "خانواده یکشنبه کجا می‌روند؟",
+          "q": "Where does the family go on Sunday?",
           "options": [
-            "به بازار",
-            "به پارک",
-            "به خانهٔ همسایه",
-            "به مزرعه‌ای نزدیک شهر"
+            "To the market",
+            "To a farm near the town",
+            "To the park",
+            "To a neighbor's house"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
-          "q": "گربهٔ کوچک چه رنگی است؟",
+          "q": "What color is the small cat?",
           "options": [
-            "سیاه",
-            "سفید",
-            "قهوه‌ای",
-            "زرد"
+            "Black",
+            "White",
+            "Brown",
+            "Yellow"
           ],
           "answer": 2
         },
         {
-          "q": "مادر با چه شرطی قبول می‌کند؟",
+          "q": "Mom says yes, but Tara has to ___.",
           "options": [
-            "تارا اتاقش را تمیز کند",
-            "تارا هر روز به گربه غذا و آب بدهد",
-            "گربه در حیاط بخوابد",
-            "تارا پول گربه را بدهد"
+            "clean her room",
+            "give the cat food and water every day",
+            "let the cat sleep in the yard",
+            "pay for the cat"
           ],
           "answer": 1
         }

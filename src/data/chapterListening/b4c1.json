@@ -5,7 +5,8 @@
   "names": [
     "Aria",
     "Yasi",
-    "Nino"
+    "Nino",
+    "Mina"
   ],
   "sentences": [
     {
@@ -59,52 +60,52 @@
   ],
   "questions": [
     {
-      "q": "بابا با چه کسانی در بازار راه می‌رود؟",
+      "q": "Who does Dad walk with at the market?",
       "options": [
-        "با مینا و مامان",
-        "با آریا و یاسی",
-        "فقط با آریا",
-        "با مرد نانوا"
+        "With Mina and Mom",
+        "With Aria and Yasi",
+        "Only with Aria",
+        "With the bread man"
       ],
       "answer": 1
     },
     {
-      "q": "آریا می‌خواهد چه چیزهایی بخرد؟",
+      "q": "What does Aria want to buy?",
       "options": [
-        "سیب، موز و یک توپ سبز بزرگ",
-        "نان و پنیر",
-        "ماهی و برنج",
-        "بستنی"
+        "Apples, bananas and a big green ball",
+        "Bread and cheese",
+        "A new book",
+        "A red chair"
       ],
       "answer": 0
     },
     {
-      "q": "جلوی نانوایی چه چیزی هست؟",
+      "q": "What is in front of the bread shop?",
       "options": [
-        "یک جوجه‌ی زرد",
-        "یک صف طولانی",
-        "پرنده‌هایی که نان می‌خورند",
-        "یک ماشین پلیس"
+        "A little yellow chicken",
+        "A long line of people",
+        "Birds that eat bread",
+        "A police car"
       ],
       "answer": 2
     },
     {
-      "q": "چه چیزی پرنده‌ها را تماشا می‌کند؟",
+      "q": "What watches the birds?",
       "options": [
-        "یک سگ",
-        "آریا",
-        "مرد نانوا",
-        "یک گربه‌ی قهوه‌ای"
+        "A dog",
+        "Aria",
+        "The bread man",
+        "A brown cat"
       ],
       "answer": 3
     },
     {
-      "q": "بابا به چه کسی زنگ می‌زند؟",
+      "q": "Who does Dad call?",
       "options": [
-        "به مامان",
-        "به مینا",
-        "به مرد نانوا",
-        "به همسایه"
+        "Mom",
+        "Mina",
+        "The bread man",
+        "A neighbor"
       ],
       "answer": 0
     }

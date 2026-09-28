@@ -2,7 +2,9 @@ import type { Ref } from 'react'
 import type { TestText } from '../data/bookTests'
 import { faNum } from '../engine/format'
 import { PauseIcon, PlayIcon } from './Icons'
-import type { PassagePlayer } from './usePassagePlayer'
+import { usePassagePlayer, type PassagePlayer } from './usePassagePlayer'
+
+const NO_OP = () => {}
 
 export function SoundOffNote({ onEnable }: { onEnable: () => void }) {
   return (
@@ -187,6 +189,73 @@ export function ListeningReview({
         )}
       </div>
       {player.notice && <div className="paper-note mt-3" role="status">{player.notice}</div>}
+      <Passage text={text} showTranslation />
+      <QuestionReview text={text} chosen={chosen} />
+    </details>
+  )
+}
+
+/** One heard text with its questions and a player of its own, so texts never share playback. */
+export function ListeningText({
+  text,
+  prefix,
+  heard,
+  chosen,
+  soundOn,
+  voiceURI,
+  rate,
+  testId,
+  onHeard,
+  onEnableSound,
+  onChoose,
+}: {
+  text: TestText
+  prefix: string
+  heard: boolean
+  chosen: Array<number | null>
+  soundOn: boolean
+  voiceURI: string
+  rate: number
+  testId?: string
+  onHeard: () => void
+  onEnableSound: () => void
+  onChoose: (question: number, option: number) => void
+}) {
+  const player = usePassagePlayer(text.sentences, voiceURI, rate, onHeard)
+  return (
+    <>
+      {!soundOn ? <SoundOffNote onEnable={onEnableSound} /> : <ListeningPlayer player={player} text={text} heard={heard} testId={testId} />}
+      <Questions text={text} prefix={prefix} chosen={chosen} disabled={!heard} onChoose={onChoose} />
+    </>
+  )
+}
+
+/** A heard text's review with a player of its own. */
+export function ListeningTextReview({
+  text,
+  chosen,
+  soundOn,
+  voiceURI,
+  rate,
+  summary,
+}: {
+  text: TestText
+  chosen: Array<number | null>
+  soundOn: boolean
+  voiceURI: string
+  rate: number
+  summary: string
+}) {
+  const player = usePassagePlayer(text.sentences, voiceURI, rate, NO_OP)
+  return <ListeningReview text={text} chosen={chosen} player={player} soundOn={soundOn} summary={summary} />
+}
+
+/** A read text's review: the text with its translation and the answers. */
+export function ReadingTextReview({ text, chosen, summary }: { text: TestText; chosen: Array<number | null>; summary: string }) {
+  return (
+    <details className="test-review-details mt-3">
+      <summary>{summary}</summary>
+      <h4 className="mt-3 font-en text-base font-bold" dir="ltr">{text.titleEn}</h4>
       <Passage text={text} showTranslation />
       <QuestionReview text={text} chosen={chosen} />
     </details>

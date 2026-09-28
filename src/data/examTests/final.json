@@ -60,52 +60,52 @@
       ],
       "questions": [
         {
-          "q": "موضوع مقاله‌ی الهام چیست؟",
+          "q": "What is Elham's article about?",
           "options": [
-            "معلم مدرسه",
-            "پیرزنی که نزدیک مدرسه گل می‌فروشد",
-            "باغ مدرسه",
-            "یک مسابقه‌ی فوتبال"
+            "The school teacher",
+            "The old woman who sells flowers near the school",
+            "The school garden",
+            "A football match"
           ],
           "answer": 1
         },
         {
-          "q": "الهام کی با آن زن مصاحبه می‌کند؟",
+          "q": "When does Elham interview the woman?",
           "options": [
-            "دوشنبه بعدازظهر",
-            "پنجشنبه صبح",
-            "جمعه",
-            "شنبه شب"
+            "On Monday afternoon",
+            "On Thursday morning",
+            "On Friday",
+            "On Saturday night"
           ],
           "answer": 0
         },
         {
-          "q": "الهام مقاله را چطور برای معلمش می‌فرستد؟",
+          "q": "How does Elham send the article to her teacher?",
           "options": [
-            "با پست",
-            "با پیامک",
-            "با ایمیل",
-            "خودش می‌برد"
+            "In a letter",
+            "By text message",
+            "By email",
+            "She takes it to school"
           ],
           "answer": 2
         },
         {
-          "q": "معلم از الهام چه می‌خواهد؟",
+          "q": "What does the teacher ask Elham to do?",
           "options": [
-            "که عکس دیگری بگیرد",
-            "که عنوان را عوض کند",
-            "که مقاله را کوتاه کند",
-            "که جمله‌ی آخر را بهتر کند"
+            "Take another photo",
+            "Change the title",
+            "Make the article short",
+            "Improve the last sentence"
           ],
           "answer": 3
         },
         {
-          "q": "مقاله‌ی الهام در کدام صفحه است؟",
+          "q": "On which page is Elham's article?",
           "options": [
-            "صفحه‌ی آخر",
-            "صفحه‌ی اول",
-            "صفحه‌ی دوم",
-            "در روزنامه نیست"
+            "The last page",
+            "The first page",
+            "The second page",
+            "It is not in the newspaper"
           ],
           "answer": 1
         }
@@ -170,54 +170,54 @@
       ],
       "questions": [
         {
-          "q": "پویا و خانواده‌اش با چه چیزی سفر می‌کنند؟",
+          "q": "How do Pouya and his parents travel?",
           "options": [
-            "با هواپیما",
-            "با قطار",
-            "با اتوبوس",
-            "با ماشین"
+            "By plane",
+            "By train",
+            "By bus",
+            "By car"
           ],
           "answer": 1
         },
         {
-          "q": "سفر چند ساعت طول می‌کشد؟",
+          "q": "How long is the trip?",
           "options": [
-            "پنج ساعت",
-            "دو ساعت",
-            "ده ساعت",
-            "یک ساعت"
+            "Five hours",
+            "Two hours",
+            "Ten hours",
+            "One hour"
           ],
           "answer": 0
         },
         {
-          "q": "پویا و پدرش جلوی هتل چه می‌سازند؟",
+          "q": "What do Pouya and his father build in front of the hotel?",
           "options": [
-            "یک خانه‌ی برفی",
-            "یک آتش",
-            "یک حیوان برفی بزرگ",
-            "یک قایق"
+            "A snow house",
+            "A fire",
+            "A big snow animal",
+            "A boat"
           ],
           "answer": 2
         },
         {
-          "q": "خانواده عصر کنار آتش چه می‌نوشند؟",
+          "q": "What does the family drink by the fire?",
           "options": [
-            "چای",
-            "قهوه",
-            "آب پرتقال",
-            "شیرکاکائوی داغ"
+            "Tea",
+            "Coffee",
+            "Orange juice",
+            "Hot chocolate"
           ],
           "answer": 3
         },
         {
-          "q": "پیرمرد درباره‌ی کوه در تابستان چه می‌گوید؟",
+          "q": "What does the old man say about the mountain in the summer?",
           "options": [
-            "که پر از گیاه سبز است",
-            "که هنوز برف دارد",
-            "که خیلی سرد است",
-            "که هتل بسته است"
+            "It still has snow",
+            "It is very cold",
+            "The hotel is closed",
+            "It is full of green plants"
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     },
@@ -280,54 +280,54 @@
       ],
       "questions": [
         {
-          "q": "پدر میترا کجا کار می‌کند؟",
+          "q": "Where does Mitra's father work?",
           "options": [
-            "در بیمارستان",
-            "در یک مزرعه",
-            "در یک دفتر",
-            "در یک مدرسه"
+            "At a hospital",
+            "On a farm",
+            "In an office",
+            "At a school"
           ],
           "answer": 2
         },
         {
-          "q": "دکتر می‌گوید پدر چه چیزی زیاد می‌خورد؟",
+          "q": "What does the doctor say he eats too much of?",
           "options": [
-            "برنج و گوشت",
-            "شکر و کلوچه",
-            "ماهی",
-            "میوه"
+            "Rice and meat",
+            "Sugar and cookies",
+            "Fish",
+            "Fruit"
           ],
           "answer": 1
         },
         {
-          "q": "دکتر می‌گوید هر روز چقدر پیاده‌روی یا دوچرخه‌سواری کند؟",
+          "q": "How long should he walk or ride a bike every day?",
           "options": [
-            "نیم ساعت",
-            "دو ساعت",
-            "یک ربع",
-            "یک ساعت"
+            "Half an hour",
+            "Two hours",
+            "A quarter of an hour",
+            "An hour"
           ],
           "answer": 0
         },
         {
-          "q": "میترا نمودار را کجا می‌زند؟",
+          "q": "Where does Mitra put the chart?",
           "options": [
-            "روی در اتاقش",
-            "در دفتر پدرش",
-            "روی یخچال",
-            "روی دیوار آشپزخانه"
+            "On the door of her room",
+            "In her father's office",
+            "On the TV",
+            "On the kitchen wall"
           ],
           "answer": 3
         },
         {
-          "q": "بعد از یک ماه حال پدر چطور است؟",
+          "q": "How does her father feel after a month?",
           "options": [
-            "خیلی بهتر است",
-            "بدتر شده",
-            "هیچ فرقی نکرده",
-            "در بیمارستان است"
+            "The same",
+            "Much better",
+            "He is sick again",
+            "He is in the hospital"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -391,52 +391,52 @@
       ],
       "questions": [
         {
-          "q": "کدام کلاس به موزه می‌رود؟",
+          "q": "Which class visits the museum?",
           "options": [
-            "کلاس علوم",
-            "کلاس تاریخ",
-            "کلاس زبان",
-            "کلاس نقاشی"
+            "The science class",
+            "The history class",
+            "The language class",
+            "The painting class"
           ],
           "answer": 1
         },
         {
-          "q": "در اتاق اول اشیایی از چه زمانی هست؟",
+          "q": "How old are the objects in the first room?",
           "options": [
-            "سه هزار سال پیش",
-            "صد سال پیش",
-            "سال پیش",
-            "ده سال پیش"
+            "Three thousand years old",
+            "A hundred years old",
+            "One year old",
+            "Ten years old"
           ],
           "answer": 0
         },
         {
-          "q": "صبا کدام نقاشی را از همه بیشتر دوست دارد؟",
+          "q": "Which painting does Saba like best?",
           "options": [
-            "نقاشی یک کوه",
-            "نقاشی یک خانه",
-            "زنی با پیراهن آبی کنار دریا",
-            "نقاشی یک پرنده"
+            "A painting of a mountain",
+            "A painting of a house",
+            "A woman in a blue dress next to the sea",
+            "A painting of a bird"
           ],
           "answer": 2
         },
         {
-          "q": "چه کسی درباره‌ی فرهنگ ایران قدیم می‌گوید؟",
+          "q": "Who tells the students about the culture of old Iran?",
           "options": [
-            "معلم",
-            "یک گردشگر",
-            "صبا",
-            "زنی که در موزه کار می‌کند"
+            "The teacher",
+            "A tourist",
+            "Saba",
+            "A woman who works at the museum"
           ],
           "answer": 3
         },
         {
-          "q": "چرا صبا درباره‌ی نقشه‌ی قدیمی می‌نویسد؟",
+          "q": "Why does Saba write about the old map?",
           "options": [
-            "چون جغرافیا درس محبوب اوست",
-            "چون معلم گفت",
-            "چون ساده است",
-            "چون عکسش را دارد"
+            "Geography is her favorite subject",
+            "The teacher tells her to",
+            "It is easy",
+            "She has a photo of it"
           ],
           "answer": 0
         }
@@ -501,54 +501,54 @@
       ],
       "questions": [
         {
-          "q": "حامد کی دوره‌اش را در دانشگاه تمام کرد؟",
+          "q": "When did Hamed finish his course at the university?",
           "options": [
-            "در سپتامبر",
-            "در ژوئن",
-            "سال پیش",
-            "در مارس"
+            "In September",
+            "In June",
+            "Last year",
+            "In March"
           ],
           "answer": 1
         },
         {
-          "q": "شرکت چه چیزی می‌سازد؟",
+          "q": "What does the company make?",
           "options": [
-            "برنامه‌ی رایانه‌ای برای مدرسه‌ها",
-            "ماشین",
-            "کتاب درسی",
-            "بازی"
+            "Computer programs for schools",
+            "Cars",
+            "School books",
+            "Games"
           ],
           "answer": 0
         },
         {
-          "q": "حامد روز مصاحبه چه می‌پوشد؟",
+          "q": "What does Hamed wear on the day of the interview?",
           "options": [
-            "کاپشن و جین",
-            "تی‌شرت و کلاه",
-            "پیراهن سفید و بهترین شلوارش",
-            "لباس ورزشی"
+            "A jacket and jeans",
+            "A T-shirt and a hat",
+            "A white shirt and his best pants",
+            "Sports clothes"
           ],
           "answer": 2
         },
         {
-          "q": "حامد چطور به مصاحبه می‌رود؟",
+          "q": "How does Hamed go to the interview?",
           "options": [
-            "با تاکسی",
-            "با ماشین خودش",
-            "پیاده",
-            "با قطار"
+            "By taxi",
+            "In his own car",
+            "On foot",
+            "By train"
           ],
           "answer": 3
         },
         {
-          "q": "حامد کی کارش را شروع می‌کند؟",
+          "q": "When will Hamed start work?",
           "options": [
-            "در سپتامبر",
-            "فردا",
-            "در ژوئن",
-            "هفته‌ی بعد"
+            "Tomorrow",
+            "In June",
+            "In September",
+            "Next week"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     },
@@ -611,52 +611,52 @@
       ],
       "questions": [
         {
-          "q": "جزیره در کدام قسمت کشور است؟",
+          "q": "In which part of the country is the island?",
           "options": [
-            "شمال",
-            "شرق",
-            "جنوب",
-            "غرب"
+            "In the north",
+            "In the center",
+            "In the south",
+            "Near the capital"
           ],
           "answer": 2
         },
         {
-          "q": "سفر با قایق چقدر طول می‌کشد؟",
+          "q": "How long is the boat trip?",
           "options": [
-            "چهل دقیقه",
-            "چهار ساعت",
-            "ده دقیقه",
-            "یک روز"
+            "Forty minutes",
+            "Four hours",
+            "Ten minutes",
+            "A day"
           ],
           "answer": 0
         },
         {
-          "q": "چرا بعدازظهرها در هتل می‌مانند؟",
+          "q": "Why do they stay at the hotel in the afternoon?",
           "options": [
-            "باران می‌آید",
-            "خسته‌اند",
-            "هوا برای بیرون رفتن خیلی گرم است",
-            "هتل برنامه دارد"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "پیرمرد درباره‌ی جزیره چه می‌گوید؟",
-          "options": [
-            "که خیلی قدیمی است",
-            "که بیشتر از آدم پرنده دارد",
-            "که هتل تازه‌ای دارد",
-            "که در زمستان برف می‌آید"
+            "It is raining",
+            "It is too hot to go out",
+            "They are tired",
+            "The hotel has a special activity"
           ],
           "answer": 1
         },
         {
-          "q": "یلدا نقاشی را برای چه کسی می‌خرد؟",
+          "q": "What does the old man say about the island?",
           "options": [
-            "برای برادرش",
-            "برای معلمش",
-            "برای خودش",
-            "برای مادربزرگش"
+            "It is very old",
+            "It has a new hotel",
+            "It snows there in winter",
+            "It has more birds than people"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Who does Yalda buy the painting for?",
+          "options": [
+            "Her brother",
+            "Her teacher",
+            "Her mother",
+            "Her grandmother"
           ],
           "answer": 3
         }
@@ -721,52 +721,52 @@
       ],
       "questions": [
         {
-          "q": "باشگاه نقاشی کدام روز است؟",
+          "q": "On which day is the painting club?",
           "options": [
-            "سه‌شنبه",
-            "جمعه",
-            "شنبه",
-            "پنجشنبه"
+            "Tuesday",
+            "Friday",
+            "Saturday",
+            "Thursday"
           ],
           "answer": 0
         },
         {
-          "q": "معلم باشگاه کیست؟",
+          "q": "Who is the club's teacher?",
           "options": [
-            "مادر لادن",
-            "یک هنرمند معروف",
-            "معلم مدرسه",
-            "یک عکاس"
+            "Ladan's mother",
+            "A famous artist",
+            "A school teacher",
+            "A writer"
           ],
           "answer": 1
         },
         {
-          "q": "لادن چه چیزی را نقاشی می‌کند؟",
+          "q": "What does Ladan paint?",
           "options": [
-            "مدرسه‌اش",
-            "یک باغ",
-            "کوه‌ها",
-            "رودخانه در شب"
+            "Her school",
+            "A garden",
+            "The mountains",
+            "The river at night"
           ],
           "answer": 3
         },
         {
-          "q": "لادن از چه رنگ‌هایی استفاده می‌کند؟",
+          "q": "Which colors does Ladan use?",
           "options": [
-            "قرمز و زرد",
-            "سبز و قهوه‌ای",
-            "فقط آبی و بنفش",
-            "سیاه و سفید"
+            "Red and yellow",
+            "Green and brown",
+            "Only blue and purple",
+            "Black and white"
           ],
           "answer": 2
         },
         {
-          "q": "نقاشی لادن کجا چاپ می‌شود؟",
+          "q": "Where is Ladan's painting the next week?",
           "options": [
-            "در روزنامه‌ی مدرسه",
-            "در یک مجله‌ی محلی",
-            "روی یک کارت",
-            "در یک کتاب"
+            "In the school newspaper",
+            "In a local magazine",
+            "On a card",
+            "In a book"
           ],
           "answer": 1
         }
@@ -832,52 +832,52 @@
       ],
       "questions": [
         {
-          "q": "چرا خانواده‌ی دارا به شهر فرزاد می‌روند؟",
+          "q": "Why is Dara's family moving to Farzad's city?",
           "options": [
-            "پدرش آنجا کار تازه‌ای دارد",
-            "خانه‌شان کوچک است",
-            "دارا مدرسه‌ی تازه می‌خواهد",
-            "مادربزرگش آنجاست"
+            "His father has a new job there",
+            "Their house is small",
+            "Dara wants a new school",
+            "His grandmother lives there"
           ],
           "answer": 0
         },
         {
-          "q": "آپارتمان تازه کجاست؟",
+          "q": "Where is the new apartment?",
           "options": [
-            "کنار رودخانه",
-            "نزدیک موزه",
-            "نزدیک مدرسه",
-            "نزدیک پارک بزرگ"
+            "Next to the river",
+            "Near the museum",
+            "Near the school",
+            "Near the big park"
           ],
           "answer": 3
         },
         {
-          "q": "دارا از فرزاد می‌خواهد چه چیزی بفرستد؟",
+          "q": "What does Dara ask Farzad to send?",
           "options": [
-            "کتاب",
-            "چند عکس از شهر",
-            "آدرس مدرسه",
-            "یک نقشه"
+            "Some books",
+            "Some photographs of the city",
+            "The school's address",
+            "A map"
           ],
           "answer": 1
         },
         {
-          "q": "دارا می‌خواهد چه چیزهایی را ببیند؟",
+          "q": "What does Dara want to see?",
           "options": [
-            "استخر و پارک",
-            "بازار بزرگ",
-            "رودخانه و موزه‌ی معروف",
-            "تیم فوتبال"
+            "The pool and the park",
+            "The big market",
+            "The river and the famous museum",
+            "The football team"
           ],
           "answer": 2
         },
         {
-          "q": "فرزاد در جوابش چه می‌گوید؟",
+          "q": "What does Farzad say in his answer?",
           "options": [
-            "که مدرسه سخت است",
-            "که آن‌ها را نمی‌بیند",
-            "که شهر شلوغ است",
-            "که همه‌چیز را نشانش می‌دهد"
+            "The school is difficult",
+            "He cannot see them",
+            "The city is busy",
+            "He will show Dara everything"
           ],
           "answer": 3
         }
@@ -942,52 +942,52 @@
       ],
       "questions": [
         {
-          "q": "هوای عصر امروز چطور است؟",
+          "q": "What will the weather be like this evening?",
           "options": [
-            "گرم",
-            "سرد",
-            "بارانی",
-            "برفی"
+            "Warm",
+            "Cold",
+            "It will rain",
+            "It will snow"
           ],
           "answer": 1
         },
         {
-          "q": "ترافیک کجا وحشتناک است؟",
+          "q": "Where is the traffic terrible?",
           "options": [
-            "در جاده‌ی اصلی فرودگاه",
-            "کنار موزه",
-            "در مرکز شهر",
-            "کنار پارک"
+            "On the main road to the airport",
+            "Near the museum",
+            "In the city center",
+            "Near the park"
           ],
           "answer": 0
         },
         {
-          "q": "موزه‌ی تازه کی باز می‌شود؟",
+          "q": "When does the new museum open?",
           "options": [
-            "شنبه",
-            "جمعه",
-            "دوشنبه",
-            "چهارشنبه"
+            "On Saturday",
+            "On Friday",
+            "On Monday",
+            "On Wednesday"
           ],
           "answer": 2
         },
         {
-          "q": "جشنواره ساعت چند شروع می‌شود؟",
+          "q": "When does the festival begin?",
           "options": [
-            "ساعت ده",
-            "ساعت چهار",
-            "ساعت هشت",
-            "ساعت شش"
+            "At ten o'clock",
+            "At four o'clock",
+            "At eight o'clock",
+            "At six o'clock"
           ],
           "answer": 3
         },
         {
-          "q": "کتابخانه چه چیزی می‌خواهد؟",
+          "q": "What does the library want?",
           "options": [
-            "کتاب‌های قدیمی مردم",
-            "نویسنده‌ی تازه",
-            "پول",
-            "دانش‌آموز داوطلب"
+            "People's old books",
+            "A new writer",
+            "Money",
+            "New students for the club"
           ],
           "answer": 0
         }
@@ -1052,54 +1052,54 @@
       ],
       "questions": [
         {
-          "q": "بهناز و مادرش برای دیدن چه کسی سفر می‌کنند؟",
+          "q": "Who are Behnaz and her mother going to visit?",
           "options": [
-            "مادربزرگش",
-            "پدرش",
-            "خاله‌اش",
-            "دوستش"
+            "Her grandmother",
+            "Her father",
+            "Her aunt",
+            "Her friend"
           ],
           "answer": 2
         },
         {
-          "q": "چرا بهناز هیجان‌زده است؟",
+          "q": "Why is Behnaz excited?",
           "options": [
-            "اولین بار است که سوار هواپیما می‌شود",
-            "هدیه گرفته",
-            "به دریا می‌رود",
-            "تولدش است"
+            "It is her first time on a plane",
+            "She has a present",
+            "She is going to the sea",
+            "It is her birthday"
           ],
           "answer": 0
         },
         {
-          "q": "چه چیزی گم شده بود؟",
+          "q": "What can her mother not find?",
           "options": [
-            "بلیت بهناز",
-            "کیف کوچک",
-            "کاپشن مادر",
-            "پاسپورت مادر"
+            "Behnaz's ticket",
+            "The small bag",
+            "Her jacket",
+            "Her passport"
           ],
           "answer": 3
         },
         {
-          "q": "پاسپورت کجا بود؟",
+          "q": "Where was the passport?",
           "options": [
-            "در کیف بزرگ",
-            "در تاکسی",
-            "در خانه",
-            "پشت میز"
+            "In the big bag",
+            "In the taxi",
+            "At home",
+            "On the desk"
           ],
           "answer": 1
         },
         {
-          "q": "چه کسی پاسپورت را می‌آورد؟",
+          "q": "Who brings the passport?",
           "options": [
-            "راننده‌ی تاکسی",
-            "خاله",
-            "یک پلیس",
-            "زنی که پشت میز است"
+            "Her aunt",
+            "A policeman",
+            "The taxi driver",
+            "The woman at the desk"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     },
@@ -1162,54 +1162,54 @@
       ],
       "questions": [
         {
-          "q": "برنامه‌ی ویژه‌ی کتابخانه کدام روز است؟",
+          "q": "When is the library's special event?",
           "options": [
-            "چهارشنبه بعدازظهر",
-            "شنبه صبح",
-            "جمعه",
-            "دوشنبه"
+            "On Wednesday afternoons",
+            "On Saturday mornings",
+            "On Fridays",
+            "On Mondays"
           ],
           "answer": 0
         },
         {
-          "q": "موضوع این هفته چیست؟",
+          "q": "What is this week's topic?",
           "options": [
-            "کتاب‌های تاریخ",
-            "کتاب‌هایی درباره‌ی حیوان‌ها",
-            "شعر",
-            "علوم"
+            "History books",
+            "Books about animals",
+            "Poems",
+            "Science"
           ],
           "answer": 1
         },
         {
-          "q": "بچه‌ها برای پیدا کردن معنی کلمه‌ها از چه استفاده می‌کنند؟",
+          "q": "What do the children use to find the meaning of the words?",
           "options": [
-            "اینترنت",
-            "معلم",
-            "فرهنگ لغت",
-            "رایانه"
+            "The internet",
+            "The teacher",
+            "A dictionary",
+            "A computer"
           ],
           "answer": 2
         },
         {
-          "q": "نویسنده به پارسا چه می‌دهد؟",
+          "q": "What does the writer give Parsa?",
           "options": [
-            "یک فرهنگ لغت",
-            "چای و کلوچه",
-            "یک کارت",
-            "کتاب تازه‌اش"
+            "A dictionary",
+            "Tea and cookies",
+            "A card",
+            "Her new book"
           ],
           "answer": 3
         },
         {
-          "q": "برای عضویت در باشگاه چه باید کرد؟",
+          "q": "What do you have to do to join the club?",
           "options": [
-            "یک فرم کوتاه پر کرد",
-            "پول داد",
-            "امتحان داد",
-            "یک کتاب نوشت"
+            "Pay money",
+            "Take an exam",
+            "Write a book",
+            "Fill in a short form"
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     },
@@ -1272,52 +1272,52 @@
       ],
       "questions": [
         {
-          "q": "سپهر تابستان‌ها کجاست؟",
+          "q": "Where is Sepehr every summer?",
           "options": [
-            "در خانه‌ی مادربزرگش",
-            "در کلاس تابستانی",
-            "کنار دریا",
-            "در مزرعه"
+            "At his grandmother's house",
+            "At a summer class",
+            "By the sea",
+            "On a farm"
           ],
           "answer": 0
         },
         {
-          "q": "سرگرمی مادربزرگ چیست؟",
+          "q": "What is his grandmother's hobby?",
           "options": [
-            "آشپزی",
-            "کتاب خواندن",
-            "نقاشی",
-            "باغش"
+            "Cooking",
+            "Reading",
+            "Painting",
+            "Her garden"
           ],
           "answer": 3
         },
         {
-          "q": "به گفته‌ی مادربزرگ گیاه‌ها چه لازم دارند؟",
+          "q": "What do plants need, his grandmother says?",
           "options": [
-            "خاک و کود",
-            "آب، آفتاب و زمان",
-            "فقط آب",
-            "موسیقی"
+            "Only water",
+            "Water, sun and time",
+            "Music",
+            "A big garden"
           ],
           "answer": 1
         },
         {
-          "q": "سپهر به گربه چه می‌دهد؟",
+          "q": "What does Sepehr give the cat?",
           "options": [
-            "نان",
-            "ماهی",
-            "شیر",
-            "آب"
+            "Bread",
+            "Fish",
+            "Milk",
+            "Water"
           ],
           "answer": 2
         },
         {
-          "q": "بعدازظهرها چه می‌نوشند؟",
+          "q": "What do they drink in the afternoon?",
           "options": [
-            "چای داغ",
-            "آب لیموی خنک",
-            "شیر",
-            "قهوه"
+            "Hot tea",
+            "Cool lemon juice",
+            "Milk",
+            "Coffee"
           ],
           "answer": 1
         }
@@ -1382,54 +1382,54 @@
       ],
       "questions": [
         {
-          "q": "پروژه‌ی باشگاه علمی چیست؟",
+          "q": "What is the science club's project?",
           "options": [
-            "پرورش گیاه با آب خیلی کم",
-            "ساختن ماکت یک پرنده",
-            "نوشتن یک مقاله",
-            "بررسی آب‌وهوا"
+            "To grow plants with very little water",
+            "To make a model of a bird",
+            "To write an article",
+            "To study the weather"
           ],
           "answer": 0
         },
         {
-          "q": "ثریا هر چند وقت به گیاه‌هایش آب می‌دهد؟",
+          "q": "How often does Soraya give her plants water?",
           "options": [
-            "هر روز",
-            "یک روز در میان",
-            "هفته‌ای یک بار",
-            "هیچ‌وقت"
+            "Every day",
+            "Every second day",
+            "Once a week",
+            "Never"
           ],
           "answer": 1
         },
         {
-          "q": "مشکل اول چه بود؟",
+          "q": "What goes wrong at first?",
           "options": [
-            "آب تمام شد",
-            "جعبه‌ها شکستند",
-            "بعضی گیاه‌ها به خاطر آفتاب داغ مردند",
-            "دانش‌آموزها فراموش کردند"
+            "The water is finished",
+            "The boxes break",
+            "Some plants die because the sun is too hot",
+            "The students forget"
           ],
           "answer": 2
         },
         {
-          "q": "گیاه‌های چه کسی بلندترین‌اند؟",
+          "q": "After two months, the tallest plants are ___.",
           "options": [
-            "معلم",
-            "دانشمند",
-            "همه یک‌اندازه‌اند",
-            "ثریا"
+            "the teacher's",
+            "the scientist's",
+            "all the same",
+            "Soraya's"
           ],
           "answer": 3
         },
         {
-          "q": "دانشمند از دانش‌آموزها چه می‌خواهد؟",
+          "q": "What does the scientist ask the students to do?",
           "options": [
-            "که پروژه را بهار در دانشگاه نشان بدهند",
-            "که گیاه‌ها را به او بدهند",
-            "که پروژه را تمام کنند",
-            "که به باشگاه دیگری بروند"
+            "Give her the plants",
+            "Show their project at a university event in the spring",
+            "Stop the project",
+            "Go to another club"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -1492,52 +1492,52 @@
       ],
       "questions": [
         {
-          "q": "چرا کامیار کلاه پدرش را سر می‌گذارد؟",
+          "q": "Why does Kamyar wear his father's hat?",
           "options": [
-            "هوا سرد است",
-            "چترش را پیدا نمی‌کند",
-            "کلاه خودش کوچک است",
-            "پدرش گفته"
+            "It is cold",
+            "He cannot find his umbrella",
+            "His own hat is small",
+            "His father tells him to"
           ],
           "answer": 1
         },
         {
-          "q": "چرا ترافیک وحشتناک است؟",
+          "q": "Why is the traffic terrible?",
           "options": [
-            "به خاطر باران",
-            "جشنواره است",
-            "جاده بسته است",
-            "تصادف شده"
+            "Because of the rain",
+            "There is a festival",
+            "The road is closed",
+            "A truck stops on the road"
           ],
           "answer": 0
         },
         {
-          "q": "کامیار چطور به کلاس می‌رود؟",
+          "q": "How does Kamyar go to his class?",
           "options": [
-            "با اتوبوس",
-            "پیاده",
-            "با تاکسی",
-            "با دوچرخه"
+            "By bus",
+            "On foot",
+            "By taxi",
+            "By bike"
           ],
           "answer": 2
         },
         {
-          "q": "نظر راننده درباره‌ی باران چیست؟",
+          "q": "What is the driver's opinion of the rain?",
           "options": [
-            "که باران بد است",
-            "که باران ترافیک می‌آورد",
-            "که باید در خانه ماند",
-            "که وقتی باران می‌آید آدم‌ها با هم مهربان‌اند"
+            "Rain is bad",
+            "Rain makes traffic",
+            "People should stay at home",
+            "When it rains, people are nice to each other"
           ],
           "answer": 3
         },
         {
-          "q": "معلم وقتی کامیار دیر می‌رسد چه می‌کند؟",
+          "q": "What does the teacher do when Kamyar is late?",
           "options": [
-            "عصبانی نمی‌شود",
-            "او را به خانه می‌فرستد",
-            "به پدرش زنگ می‌زند",
-            "به او تکلیف اضافه می‌دهد"
+            "She is not angry",
+            "She sends him home",
+            "She calls his father",
+            "She gives him more homework"
           ],
           "answer": 0
         }
@@ -1602,54 +1602,54 @@
       ],
       "questions": [
         {
-          "q": "ماهان در چند درس امتحان دارد؟",
+          "q": "In how many subjects does Mahan have exams?",
           "options": [
-            "سه",
-            "پنج",
-            "چهار",
-            "دو"
+            "Three",
+            "Five",
+            "Four",
+            "Two"
           ],
           "answer": 2
         },
         {
-          "q": "چه کسی در علوم به ماهان کمک می‌کند؟",
+          "q": "Who helps Mahan with science?",
           "options": [
-            "خواهرش",
-            "مادرش",
-            "معلمش",
-            "دوستش"
+            "His sister",
+            "His mother",
+            "His teacher",
+            "His friend"
           ],
           "answer": 0
         },
         {
-          "q": "ماهان برای تاریخ چه می‌کند؟",
+          "q": "What does Mahan do for history?",
           "options": [
-            "نقشه می‌کشد",
-            "فهرستی از تاریخ‌های مهم درست می‌کند",
-            "فیلم تماشا می‌کند",
-            "به موزه می‌رود"
+            "He draws maps",
+            "He makes a list of important dates",
+            "He watches movies",
+            "He goes to a museum"
           ],
           "answer": 1
         },
         {
-          "q": "مادر شب قبل از امتحان چه برایش می‌آورد؟",
+          "q": "What does his mother bring him the night before the exam?",
           "options": [
-            "چای",
-            "بستنی",
-            "آب",
-            "شیر گرم"
+            "Tea",
+            "Ice cream",
+            "Water",
+            "Warm milk"
           ],
           "answer": 3
         },
         {
-          "q": "بهترین نتیجه‌ی ماهان در کدام درس است؟",
+          "q": "In which subject is Mahan's result the best in the class?",
           "options": [
-            "زبان",
-            "علوم",
-            "تاریخ",
-            "جغرافیا"
+            "Science",
+            "History",
+            "Language",
+            "Geography"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     },
@@ -1712,52 +1712,52 @@
       ],
       "questions": [
         {
-          "q": "شب فیلم خانواده کی است؟",
+          "q": "When is the family's movie night?",
           "options": [
-            "هر شنبه",
-            "هر پنجشنبه",
-            "هر شب",
-            "هر جمعه عصر"
+            "Every Saturday",
+            "Every Thursday",
+            "Every night",
+            "Every Friday evening"
           ],
           "answer": 3
         },
         {
-          "q": "این هفته چه کسی فیلم را انتخاب می‌کند؟",
+          "q": "Who chooses the movie this week?",
           "options": [
-            "مادر",
-            "برادر کوچک نسرین",
-            "نسرین",
-            "پدر"
+            "Her mother",
+            "Nasrin's little brother",
+            "Nasrin",
+            "Her father"
           ],
           "answer": 1
         },
         {
-          "q": "فیلم درباره‌ی چیست؟",
+          "q": "What is the movie about?",
           "options": [
-            "شیری که می‌خواهد خواننده شود",
-            "سگی که راه خانه را پیدا می‌کند",
-            "یک فیل باهوش",
-            "یک جوجه‌ی زرد"
+            "A lion who wants to be a singer",
+            "A dog who finds the way home",
+            "A smart elephant",
+            "A little yellow chicken"
           ],
           "answer": 0
         },
         {
-          "q": "مادر چه چیزی آماده می‌کند؟",
+          "q": "What does her mother prepare?",
           "options": [
-            "کیک و چای",
-            "سوپ",
-            "ساندویچ و بستنی",
-            "میوه"
+            "Cake and tea",
+            "Soup",
+            "Sandwiches and ice cream",
+            "Fruit"
           ],
           "answer": 2
         },
         {
-          "q": "نسرین بعد از فیلم چه می‌گوید؟",
+          "q": "What does Nasrin say after the movie?",
           "options": [
-            "که فیلم وحشتناک بود",
-            "که خسته است",
-            "که فیلم را قبلاً دیده بود",
-            "که از آنچه فکر می‌کرد جالب‌تر بود"
+            "It was terrible",
+            "She is tired",
+            "She saw it before",
+            "It was more interesting than she thought"
           ],
           "answer": 3
         }

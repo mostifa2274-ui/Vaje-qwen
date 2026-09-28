@@ -59,52 +59,52 @@
   ],
   "questions": [
     {
-      "q": "در ابتدای شعر، حال پرنده چطور است؟",
+      "q": "How does the bird feel at the start of the poem?",
       "options": [
-        "خسته و ترسیده",
-        "خوشحال",
-        "گرسنه",
-        "بیمار"
+        "Tired and afraid",
+        "Happy",
+        "Hungry",
+        "Busy"
       ],
       "answer": 0
     },
     {
-      "q": "پرنده شب کجا می‌خوابد؟",
+      "q": "Where does the bird sleep at night?",
       "options": [
-        "روی دیوار",
-        "زیر ماشین",
-        "در کافه",
-        "روی یک درخت بلند"
+        "On a wall",
+        "Under a car",
+        "In a cafe",
+        "In a tall tree"
       ],
       "answer": 3
     },
     {
-      "q": "پرنده صبح چه می‌شنود؟",
+      "q": "What does the bird hear in the morning?",
       "options": [
-        "صدای ماشین‌ها",
-        "موسیقی از یک پنجره‌ی باز",
-        "صدای باران",
-        "صدای بچه‌ها"
+        "Cars",
+        "Music from an open window",
+        "The rain",
+        "Children"
       ],
       "answer": 1
     },
     {
-      "q": "آواز زن درباره‌ی چیست؟",
+      "q": "The woman's song is about ___.",
       "options": [
-        "پرنده‌ها",
-        "شهر",
-        "خانه",
-        "گل‌ها"
+        "birds",
+        "the city",
+        "home",
+        "flowers"
       ],
       "answer": 2
     },
     {
-      "q": "پرنده کی می‌ایستد؟",
+      "q": "When does the bird stop?",
       "options": [
-        "کنار ایستگاه اتوبوس",
-        "وقتی خسته می‌شود",
-        "وقتی باران می‌آید",
-        "وقتی باغچه‌ی کوچکی با گل‌ها می‌بیند"
+        "At the bus stop",
+        "When it is tired",
+        "When it rains",
+        "When it sees a small garden with flowers"
       ],
       "answer": 3
     }

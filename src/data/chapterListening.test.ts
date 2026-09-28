@@ -3,6 +3,7 @@ import { CHAPTERS, lemmaMap } from './chapters'
 import { BOOK_TEST_CONTENT } from './bookTests'
 import { CHAPTER_LISTENING } from './chapterListening'
 import { tokenizeSentence } from '../engine/lemmatize'
+import { questionProblems } from './questionVocabulary'
 
 // Chapter index at which each word is first taught.
 const taughtAt = new Map<string, number>()
@@ -42,6 +43,14 @@ describe('chapter listening texts', () => {
     expect(problems).toEqual([])
   })
 
+  it('ask in English, with words taught by the end of their chapter', () => {
+    const problems = CHAPTERS.flatMap((chapter, index) => {
+      const text = CHAPTER_LISTENING.get(chapter.id)
+      return text ? questionProblems(text, index) : []
+    })
+    expect(problems).toEqual([])
+  })
+
   it('practise the chapter\'s own new words', () => {
     for (const chapter of CHAPTERS) {
       const text = CHAPTER_LISTENING.get(chapter.id)
@@ -75,7 +84,6 @@ describe('chapter listening texts', () => {
       expect(text.questions, chapterId).toHaveLength(5)
       const answers = new Set<number>()
       for (const question of text.questions) {
-        expect(question.q, chapterId).toMatch(/[؀-ۿ]/)
         expect(question.options, `${chapterId}: ${question.q}`).toHaveLength(4)
         expect(new Set(question.options.map(option => option.trim())).size, `${chapterId}: ${question.q}`).toBe(4)
         expect(Number.isInteger(question.answer) && question.answer >= 0 && question.answer < 4, `${chapterId}: ${question.q}`).toBe(true)

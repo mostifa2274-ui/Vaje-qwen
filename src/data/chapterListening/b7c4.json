@@ -55,52 +55,52 @@
   ],
   "questions": [
     {
-      "q": "وقتی تاکسی کنار مزرعه می‌ایستد، هوا چطور است؟",
+      "q": "What is the weather like when the taxi stops at the farm?",
       "options": [
-        "آفتابی",
-        "باران تندی می‌بارد",
-        "برف می‌آید",
-        "باد می‌آید"
+        "Warm and quiet",
+        "It is raining hard",
+        "It is snowing",
+        "Cold and dark"
       ],
       "answer": 1
     },
     {
-      "q": "چه کسی آتش روشن می‌کند؟",
+      "q": "Who makes a fire?",
       "options": [
-        "کشاورز",
-        "همسر کشاورز",
-        "راننده",
-        "دختر کشاورز"
+        "The farmer",
+        "The farmer's wife",
+        "The driver",
+        "The farmer's daughter"
       ],
       "answer": 0
     },
     {
-      "q": "دختر کشاورز با فنجان‌ها چه می‌سازد؟",
+      "q": "What does the daughter build with some cups?",
       "options": [
-        "یک قایق",
-        "یک ماشین",
-        "یک خانه‌ی کوچک برای نوزاد",
-        "یک برج"
+        "A bus",
+        "A car",
+        "A little house for the baby",
+        "A tall building"
       ],
       "answer": 2
     },
     {
-      "q": "دخترها بعد از باران با چه چیزی بیرون می‌روند؟",
+      "q": "What do the girls wear when they go out after the rain?",
       "options": [
-        "با چتر",
-        "با کلاه",
-        "با کتاب",
-        "با چکمه‌های کهنه"
+        "Hats",
+        "New shoes",
+        "Their coats",
+        "Old boots"
       ],
       "answer": 3
     },
     {
-      "q": "کشاورز قبل از رفتن خانواده به دختر چه می‌دهد؟",
+      "q": "What does the farmer give the girl before the family leaves?",
       "options": [
-        "یک جوجه",
-        "کمی نان و یک گل",
-        "یک عکس",
-        "یک چتر"
+        "A chicken",
+        "Some bread and a flower",
+        "A photo",
+        "An umbrella"
       ],
       "answer": 1
     }

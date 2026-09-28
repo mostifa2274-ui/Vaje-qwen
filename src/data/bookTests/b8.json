@@ -64,52 +64,52 @@
       ],
       "questions": [
         {
-          "q": "پدرام کجا فوتبال بازی می‌کند؟",
+          "q": "Where does Pedram play football?",
           "options": [
-            "در پارک",
-            "در مدرسه",
-            "در باشگاه ورزشی",
-            "در خیابان"
+            "In the park",
+            "At school",
+            "At the gym",
+            "In the street"
           ],
           "answer": 0
         },
         {
-          "q": "چه کسی پدرام را به بیمارستان می‌برد؟",
+          "q": "Who drives Pedram to the hospital?",
           "options": [
-            "پدرش",
-            "پسرعمویش",
-            "مادرش",
-            "عمویش"
+            "His father",
+            "His cousin",
+            "His mother",
+            "His uncle"
           ],
           "answer": 3
         },
         {
-          "q": "دکتر دربارهٔ پای پدرام چه می‌گوید؟",
+          "q": "What does the doctor say about his foot?",
           "options": [
-            "شکسته و باید یک ماه در بیمارستان بماند",
-            "سالم است و می‌تواند فردا بازی کند",
-            "باید هر روز ورزش کند",
-            "نشکسته، اما تا سه هفته نباید فوتبال بازی کند"
+            "It is broken, and he must stay in the hospital for a month",
+            "It is not broken, but he must not play football for three weeks",
+            "It is fine, and he can play tomorrow",
+            "He must exercise every day"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
-          "q": "چرا پدرام ناراحت است؟",
+          "q": "Why is Pedram sad?",
           "options": [
-            "چون دکتر با او تند حرف می‌زند",
-            "چون پسرعمویش به دیدنش نمی‌آید",
-            "چون جمعهٔ بعد یک مسابقهٔ بزرگ هست",
-            "چون فیلم دوست ندارد"
+            "The doctor is not nice to him",
+            "His cousin does not visit him",
+            "There is a big match next Friday",
+            "He does not like movies"
           ],
           "answer": 2
         },
         {
-          "q": "پرستار چه کار می‌کند؟",
+          "q": "What does the nurse do?",
           "options": [
-            "به او دارو می‌دهد",
-            "روی پایش یخ می‌گذارد",
-            "برایش آب می‌آورد",
-            "او را به خانه می‌برد"
+            "She gives him a book",
+            "She puts ice on his foot",
+            "She brings him water",
+            "She takes him home"
           ],
           "answer": 1
         }
@@ -178,52 +178,52 @@
       ],
       "questions": [
         {
-          "q": "ترانه هر تابستان چه مدت پیش پدربزرگ و مادربزرگش می‌ماند؟",
+          "q": "How long does Taraneh stay with her grandparents every summer?",
           "options": [
-            "یک ماه",
-            "دو هفته",
-            "سه روز",
-            "تمام تابستان"
+            "A month",
+            "Two weeks",
+            "Three days",
+            "All summer"
           ],
           "answer": 1
         },
         {
-          "q": "مادربزرگ ترانه چه ویژگی‌ای دارد؟",
+          "q": "What is Taraneh's grandmother like?",
           "options": [
-            "موهای بلند خاکستری دارد و قصه‌های شگفت‌انگیزی تعریف می‌کند",
-            "قدبلند و قوی است",
-            "کم‌حرف است و زیاد می‌خوابد",
-            "هر روز از کوه بالا می‌رود"
+            "She has long gray hair and tells wonderful stories",
+            "She is tall and strong",
+            "She does not talk much and sleeps a lot",
+            "She climbs the mountain every day"
           ],
           "answer": 0
         },
         {
-          "q": "پدربزرگ چه پیشنهادی می‌دهد؟",
+          "q": "What does Grandfather want to do?",
           "options": [
-            "از کوه پشت خانه بالا بروند",
-            "به شهر بروند",
-            "در رودخانه شنا کنند",
-            "در خانه بمانند"
+            "Go to the town",
+            "Swim in the river",
+            "Climb the mountain behind the house",
+            "Stay at home"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "وقتی پدربزرگ می‌پرسد برگردند یا نه، ترانه چه می‌گوید؟",
+          "q": "Grandfather asks, \"Should we go back?\" What does Taraneh say?",
           "options": [
-            "بله، خسته‌ام",
-            "کمی استراحت کنیم",
-            "نمی‌دانم",
-            "نه، من می‌توانم"
+            "Yes, I am tired.",
+            "Let's stop for a moment.",
+            "I do not know.",
+            "No, I can do it!"
           ],
           "answer": 3
         },
         {
-          "q": "ترانه از بالای کوه چه چیزهایی می‌بیند؟",
+          "q": "What can they see from high on the mountain?",
           "options": [
-            "دریا و قایق‌ها",
-            "یک فرودگاه",
-            "خانه‌ها، درخت‌ها و یک رودخانه",
-            "فقط ابرها"
+            "The sea and boats",
+            "An airport",
+            "Houses, trees and a river",
+            "Only snow"
           ],
           "answer": 2
         }
@@ -294,52 +294,52 @@
       ],
       "questions": [
         {
-          "q": "جشنوارهٔ تابستانی شهر چه چیزهایی دارد؟",
+          "q": "What does the town's summer festival have?",
           "options": [
-            "فقط موسیقی",
-            "موسیقی، غذا و هنر",
-            "مسابقهٔ فوتبال",
-            "فیلم و تئاتر"
+            "Only music",
+            "Music, food and art",
+            "A football match",
+            "Movies and theater"
           ],
           "answer": 1
         },
         {
-          "q": "شیوا تصویر چه کسی را می‌کشد؟",
+          "q": "Who does Shiva paint?",
           "options": [
-            "خاله‌اش",
-            "مادرش",
-            "برادرش",
-            "معلمش"
+            "Her aunt",
+            "Her mother",
+            "Her brother",
+            "Her teacher"
           ],
           "answer": 0
         },
         {
-          "q": "شیوا از کدام قسمت نقاشی خوشش نمی‌آید؟",
+          "q": "Which part of the painting does Shiva not like?",
           "options": [
-            "چشم‌ها",
-            "دهان",
-            "موها",
-            "رنگ‌ها"
+            "The mouth",
+            "The hair",
+            "The eyes",
+            "The colors"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "برادر شیوا دربارهٔ نقاشی چه می‌گوید؟",
+          "q": "What does Shiva's brother say about the painting?",
           "options": [
-            "خیلی بد است",
-            "رنگ‌هایش زیادی تند است",
-            "باید دوباره بکشد",
-            "واقعاً خوب است"
+            "It is terrible",
+            "The colors are too strong",
+            "She must paint it again",
+            "It is really good"
           ],
           "answer": 3
         },
         {
-          "q": "حالا نقاشی کجاست؟",
+          "q": "Where is the painting now?",
           "options": [
-            "در اتاق شیوا",
-            "در موزهٔ شهر",
-            "روی دیواری در بیمارستانی که خاله‌اش آنجا کار می‌کند",
-            "در خانهٔ برادرش"
+            "In Shiva's room",
+            "In the town museum",
+            "On a wall in the hospital where her aunt works",
+            "At her brother's house"
           ],
           "answer": 2
         }
@@ -404,52 +404,52 @@
       ],
       "questions": [
         {
-          "q": "مجید چند سال دارد؟",
+          "q": "How old is Majid?",
           "options": [
-            "چهل",
-            "چهارده",
-            "پنجاه",
-            "سی"
+            "Forty",
+            "Fourteen",
+            "Fifty",
+            "Thirty"
           ],
           "answer": 0
         },
         {
-          "q": "دکتر به مجید چه توصیه‌ای می‌کند؟",
+          "q": "What does the doctor tell Majid?",
           "options": [
-            "یک هفته در خانه استراحت کند",
-            "کارش را عوض کند",
-            "کمتر بخوابد",
-            "رژیم غذایی‌اش را عوض کند و هر روز ورزش کند"
+            "To stay at home for a week",
+            "To change his job",
+            "To go to bed early",
+            "To change his diet and exercise every day"
           ],
           "answer": 3
         },
         {
-          "q": "هفتهٔ اول برنامه چگونه است؟",
+          "q": "What is the first week like?",
           "options": [
-            "آسان و سرگرم‌کننده است",
-            "مجید بیمار می‌شود",
-            "مجید برنامه را کنار می‌گذارد",
-            "سخت است و دلش برای کیک شکلاتی تنگ می‌شود"
+            "Easy and fun",
+            "It is hard, and he misses his chocolate cake",
+            "Majid is sick",
+            "Majid stops the plan"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
-          "q": "چه کسانی عصرها با مجید پیاده‌روی می‌کنند؟",
+          "q": "Who walks with Majid in the evening?",
           "options": [
-            "پسر و برادرش",
-            "همکارانش",
-            "همسر و دخترش",
-            "دکترش"
+            "His son and his brother",
+            "People from his office",
+            "His wife and his daughter",
+            "His doctor"
           ],
           "answer": 2
         },
         {
-          "q": "حالا خانواده هر جمعه چه کار می‌کنند؟",
+          "q": "What does the family do every Friday now?",
           "options": [
-            "به رستوران می‌روند",
-            "برای پیاده‌روی به کوه می‌روند",
-            "فوتبال بازی می‌کنند",
-            "به سینما می‌روند"
+            "They go to a restaurant",
+            "They go to the mountains for a walk",
+            "They play football",
+            "They go to the movies"
           ],
           "answer": 1
         }

@@ -55,52 +55,52 @@
   ],
   "questions": [
     {
-      "q": "راننده هر صبح ساعت چند کارش را شروع می‌کند؟",
+      "q": "When does the taxi driver start work every morning?",
       "options": [
-        "ساعت پنج",
-        "ساعت هفت",
-        "ساعت شش",
-        "ساعت هشت"
+        "At five o'clock",
+        "At seven o'clock",
+        "At six o'clock",
+        "At eight o'clock"
       ],
       "answer": 2
     },
     {
-      "q": "اولین مسافرهای امروز چند نفرند؟",
+      "q": "His first ride today is a family of ___.",
       "options": [
-        "پنج نفر",
-        "سه نفر",
-        "دو نفر",
-        "چهار نفر"
+        "five",
+        "three",
+        "two",
+        "four"
       ],
       "answer": 0
     },
     {
-      "q": "چه چیزی جلوی تاکسی می‌ایستد؟",
+      "q": "What stops in front of the taxi?",
       "options": [
-        "یک اتوبوس",
-        "یک کامیون بزرگ",
-        "یک ماشین پلیس",
-        "یک دوچرخه"
+        "A bus",
+        "A big truck",
+        "A police car",
+        "A bicycle"
       ],
       "answer": 1
     },
     {
-      "q": "دختر چه چیزی در بغل دارد؟",
+      "q": "What does the girl have in her arms?",
       "options": [
-        "یک عروسک",
-        "یک کیف",
-        "یک بلیت",
-        "یک کتاب قرمز"
+        "A bag",
+        "A ticket",
+        "A cup",
+        "A red book"
       ],
       "answer": 3
     },
     {
-      "q": "در ایستگاه چه کسانی منتظرند؟",
+      "q": "Who is waiting at the station?",
       "options": [
-        "گردشگرهایی با کیف و بلیت",
-        "پلیس‌ها",
-        "بچه‌های مدرسه",
-        "کشاورزها"
+        "Tourists with bags and tickets",
+        "The police",
+        "School children",
+        "Farmers"
       ],
       "answer": 0
     }

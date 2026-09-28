@@ -7,8 +7,7 @@ import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import SpellingHint from '../components/SpellingHint'
-import { ListeningPlayer, ListeningReview, Passage, QuestionReview, Questions, SoundOffNote } from '../components/TestPassage'
-import { usePassagePlayer } from '../components/usePassagePlayer'
+import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview } from '../components/TestPassage'
 import type { TestText } from '../data/bookTests'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 import { faNum, percent } from '../engine/format'
@@ -50,50 +49,8 @@ function textAnswered(chosen: Array<number | null>): boolean {
   return chosen.every(choice => choice !== null)
 }
 
-const NO_OP = () => {}
-
 function wallClockNow(): number {
   return Date.now()
-}
-
-/** One heard text, with a player of its own so texts never share playback. */
-function ExamListeningText({
-  text,
-  heard,
-  chosen,
-  state,
-  onHeard,
-  onEnableSound,
-  onChoose,
-}: {
-  text: TestText
-  heard: boolean
-  chosen: Array<number | null>
-  state: GhesseState
-  onHeard: () => void
-  onEnableSound: () => void
-  onChoose: (question: number, option: number) => void
-}) {
-  const player = usePassagePlayer(text.sentences, state.narratorVoiceURI, state.narratorRate, onHeard)
-  return (
-    <>
-      {!state.soundOn ? <SoundOffNote onEnable={onEnableSound} /> : <ListeningPlayer player={player} text={text} heard={heard} testId="exam-listening-player" />}
-      <Questions text={text} prefix={`exam-${text.id}`} chosen={chosen} disabled={!heard} onChoose={onChoose} />
-    </>
-  )
-}
-
-function ExamListeningReview({ text, chosen, state, number }: { text: TestText; chosen: Array<number | null>; state: GhesseState; number: number }) {
-  const player = usePassagePlayer(text.sentences, state.narratorVoiceURI, state.narratorRate, NO_OP)
-  return (
-    <ListeningReview
-      text={text}
-      chosen={chosen}
-      player={player}
-      soundOn={state.soundOn}
-      summary={`متن شنیداری ${faNum(number)}: ${text.titleFa} — نمایش متن، ترجمه و پاسخ‌ها`}
-    />
-  )
 }
 
 export default function ExamScreen({ examId, state, onChange, onBack, onReview }: Props) {
@@ -468,15 +425,18 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           <section className="learning-focus-card mt-5 p-5 text-right sm:p-6" aria-labelledby="texts-review-heading">
             <h2 id="texts-review-heading" className="text-lg font-extrabold">مرور درک مطلب</h2>
             {builtExam.reading.map((text, slot) => (
-              <details key={text.id} className="test-review-details mt-3">
-                <summary>متن خواندنی {faNum(slot + 1)}: {text.titleFa} — متن، ترجمه و پاسخ‌ها</summary>
-                <h4 className="mt-3 font-en text-base font-bold" dir="ltr">{text.titleEn}</h4>
-                <Passage text={text} showTranslation />
-                <QuestionReview text={text} chosen={comprehension.reading[slot]} />
-              </details>
+              <ReadingTextReview key={text.id} text={text} chosen={comprehension.reading[slot]} summary={`متن خواندنی ${faNum(slot + 1)}: ${text.titleFa} — متن، ترجمه و پاسخ‌ها`} />
             ))}
             {builtExam.listening.map((text, slot) => (
-              <ExamListeningReview key={text.id} text={text} chosen={comprehension.listening[slot]} state={state} number={slot + 1} />
+              <ListeningTextReview
+                key={text.id}
+                text={text}
+                chosen={comprehension.listening[slot]}
+                soundOn={state.soundOn}
+                voiceURI={state.narratorVoiceURI}
+                rate={state.narratorRate}
+                summary={`متن شنیداری ${faNum(slot + 1)}: ${text.titleFa} — نمایش متن، ترجمه و پاسخ‌ها`}
+              />
             ))}
           </section>
         )}
@@ -560,12 +520,16 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           </p>
 
           {isListening ? (
-            <ExamListeningText
+            <ListeningText
               key={currentText.text.id}
               text={currentText.text}
+              prefix={`exam-${currentText.text.id}`}
               heard={heard[currentText.slot]}
               chosen={chosen}
-              state={state}
+              soundOn={state.soundOn}
+              voiceURI={state.narratorVoiceURI}
+              rate={state.narratorRate}
+              testId="exam-listening-player"
               onHeard={() => heardText(currentText.slot)}
               onEnableSound={() => onChange({ ...state, soundOn: true })}
               onChoose={(questionIndex, option) => chooseText(currentText, questionIndex, option)}

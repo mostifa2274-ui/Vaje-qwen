@@ -59,52 +59,52 @@
   ],
   "questions": [
     {
-      "q": "آریا کدام روزها به مدرسه می‌رود؟",
+      "q": "Aria goes to school ___.",
       "options": [
-        "از شنبه تا چهارشنبه",
-        "فقط پنجشنبه",
-        "جمعه‌ها",
-        "هر روز هفته"
+        "from Saturday to Wednesday",
+        "only on Thursday",
+        "on Fridays",
+        "every day of the week"
       ],
       "answer": 0
     },
     {
-      "q": "آریا هر بعدازظهر به چه نگاه می‌کند؟",
+      "q": "What does Aria look at every afternoon?",
       "options": [
-        "به تلویزیون",
-        "به نقشه‌ی روی دیوار مینا",
-        "به عکس نینو",
-        "به پنجره"
+        "The TV",
+        "The map on Mina's wall",
+        "Nino's picture",
+        "The window"
       ],
       "answer": 1
     },
     {
-      "q": "دوشنبه چه اتفاقی می‌افتد؟",
+      "q": "What happens on Monday?",
       "options": [
-        "آریا مدرسه ندارد",
-        "به بازار می‌روند",
-        "باران می‌آید",
-        "نینو را می‌بینند"
+        "Aria has no school",
+        "They go to the market",
+        "It rains",
+        "They see Nino"
       ],
       "answer": 2
     },
     {
-      "q": "آریا زیر درخت چه پیدا می‌کند؟",
+      "q": "What does Aria find under a tree?",
       "options": [
-        "نینو را",
-        "یک کفش زرد",
-        "یک پرنده‌ی زرد",
-        "یک تکه کاغذ زرد"
+        "Nino",
+        "A yellow shoe",
+        "A yellow bird",
+        "A piece of yellow paper"
       ],
       "answer": 3
     },
     {
-      "q": "مامان می‌گوید آریا کی می‌تواند کمک کند؟",
+      "q": "Mom says Aria can help ___.",
       "options": [
-        "هر روز",
-        "پنجشنبه و جمعه",
-        "فقط شنبه",
-        "هیچ روز"
+        "every day",
+        "on Thursday and Friday",
+        "only on Saturday",
+        "at night"
       ],
       "answer": 1
     }

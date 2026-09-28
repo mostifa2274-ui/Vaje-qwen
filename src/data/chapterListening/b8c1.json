@@ -54,52 +54,52 @@
   ],
   "questions": [
     {
-      "q": "دختردایی مینا چند سال دارد؟",
+      "q": "How old is Mina's cousin?",
       "options": [
-        "ده",
-        "یازده",
-        "دوازده",
-        "سیزده"
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Thirteen"
       ],
       "answer": 2
     },
     {
-      "q": "کنار پنجره‌ی اتاقش چه هست؟",
+      "q": "What is at the window of her room?",
       "options": [
-        "گل‌های صورتی و بنفش",
-        "یک گربه",
-        "کتاب‌ها",
-        "یک عکس"
+        "Pink and purple flowers",
+        "A cat",
+        "Books",
+        "A photo"
       ],
       "answer": 0
     },
     {
-      "q": "روی تختش چه هست؟",
+      "q": "What is on her bed?",
       "options": [
-        "یک عروسک",
-        "یک گربه‌ی پیر و چاق",
-        "یک جوجه",
-        "یک کتاب"
+        "A bag",
+        "A fat old cat",
+        "A chicken",
+        "A book"
       ],
       "answer": 1
     },
     {
-      "q": "مینا درباره‌ی چه چیزی برای دختردایی‌اش تعریف می‌کند؟",
+      "q": "What does Mina tell her cousin about?",
       "options": [
-        "درباره‌ی کلاس تابستانی",
-        "درباره‌ی قطار",
-        "درباره‌ی دریا",
-        "درباره‌ی نینو"
+        "Her summer class",
+        "The train",
+        "The sea",
+        "Nino"
       ],
       "answer": 3
     },
     {
-      "q": "مادربزرگ عصر چه می‌گوید؟",
+      "q": "What does their grandmother tell them in the evening?",
       "options": [
-        "که استراحت کنند",
-        "که به شهر بروند",
-        "که بخوابند",
-        "که شام بپزند"
+        "To relax",
+        "To go to the town",
+        "To go to sleep",
+        "To cook dinner"
       ],
       "answer": 0
     }

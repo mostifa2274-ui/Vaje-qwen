@@ -60,52 +60,52 @@
       ],
       "questions": [
         {
-          "q": "چرا مادر لیلا به بازار نمی‌رود؟",
+          "q": "Why does Leila's mother not go to the market?",
           "options": [
-            "مریض است",
-            "سر کار است",
-            "در سوپرمارکت است",
-            "خواب است"
+            "She is tired",
+            "She is at work",
+            "She is at the supermarket",
+            "She is sleeping"
           ],
           "answer": 1
         },
         {
-          "q": "امروز چه چیزی ارزان است؟",
+          "q": "What is cheap today?",
           "options": [
-            "گوجه‌فرنگی",
-            "سیب",
-            "ماهی",
-            "نان"
+            "Tomatoes",
+            "Apples",
+            "Fish",
+            "Bread"
           ],
           "answer": 0
         },
         {
-          "q": "لیلا چه غذایی را ترجیح می‌دهد؟",
+          "q": "What does Leila prefer?",
           "options": [
-            "ساندویچ مرغ",
-            "ماهی",
-            "سوپ گوجه‌فرنگی",
-            "سالاد"
+            "A chicken sandwich",
+            "Fish",
+            "Tomato soup",
+            "Salad"
           ],
           "answer": 2
         },
         {
-          "q": "چه چیزی را فراموش کرده بودند؟",
+          "q": "What did they forget?",
           "options": [
-            "سیب",
-            "هویج",
-            "ماهی",
-            "نان"
+            "Apples",
+            "Carrots",
+            "Fish",
+            "Bread"
           ],
           "answer": 3
         },
         {
-          "q": "چرا از نانوایی نان نمی‌خرند؟",
+          "q": "Why do they not buy bread at the bread shop?",
           "options": [
-            "نان تمام شده",
-            "بعدازظهرها بسته است",
-            "گران است",
-            "دور است"
+            "There is no bread",
+            "It is closed in the afternoon",
+            "It is expensive",
+            "It is far"
           ],
           "answer": 1
         }
@@ -170,52 +170,52 @@
       ],
       "questions": [
         {
-          "q": "کیان کجا زندگی می‌کند؟",
+          "q": "Where does Kian live?",
           "options": [
-            "در یک مزرعه",
-            "در یک ساختمان آپارتمانی نزدیک خیابانی شلوغ",
-            "کنار رودخانه",
-            "در یک خانه‌ی باغ‌دار"
+            "On a farm",
+            "In an apartment building near a busy street",
+            "Near the river",
+            "In a house with a garden"
           ],
           "answer": 1
         },
         {
-          "q": "خانواده‌ی تازه در کدام ماه می‌آیند؟",
+          "q": "In which month does the new family arrive?",
           "options": [
-            "سپتامبر",
-            "مارس",
-            "ژوئن",
-            "دسامبر"
+            "September",
+            "March",
+            "June",
+            "December"
           ],
           "answer": 0
         },
         {
-          "q": "گربه کجا بود؟",
+          "q": "Where was the cat?",
           "options": [
-            "زیر ماشین",
-            "در پارکینگ",
-            "روی یک درخت بلند",
-            "روی میز کیان"
+            "Under a car",
+            "On the fifth floor",
+            "In a tall tree",
+            "On Kian's desk"
           ],
           "answer": 2
         },
         {
-          "q": "دختر به کیان چه می‌دهد؟",
+          "q": "What does the girl give Kian?",
           "options": [
-            "یک گربه",
-            "آب پرتقال",
-            "یک کتاب",
-            "یک تکه کیک شکلاتی"
+            "A cat",
+            "Orange juice",
+            "A book",
+            "A big piece of chocolate cake"
           ],
           "answer": 3
         },
         {
-          "q": "دو خانواده جمعه‌ها چه می‌کنند؟",
+          "q": "What do the two families do on Fridays?",
           "options": [
-            "با هم شام می‌خورند",
-            "به پارک می‌روند",
-            "فوتبال بازی می‌کنند",
-            "به بازار می‌روند"
+            "They eat dinner together",
+            "They go to the park",
+            "They play football",
+            "They go to the market"
           ],
           "answer": 0
         }
@@ -280,54 +280,54 @@
       ],
       "questions": [
         {
-          "q": "کشاورز و همسرش چه نسبتی با خانواده‌ی رویا دارند؟",
+          "q": "The farmer and his wife are ___.",
           "options": [
-            "همسایه‌اند",
-            "دوستان قدیمی پدرش هستند",
-            "فامیل‌اند",
-            "معلم رویا هستند"
+            "neighbors",
+            "old friends of Roya's father",
+            "family",
+            "Roya's teachers"
           ],
           "answer": 1
         },
         {
-          "q": "چرا رویا ساعت شش بیدار می‌شود؟",
+          "q": "Why does Roya wake at six o'clock?",
           "options": [
-            "گاوی زیر پنجره‌اش سروصدا می‌کند",
-            "مادرش صدایش می‌زند",
-            "باران می‌آید",
-            "گرسنه است"
+            "A cow is making a sound under her window",
+            "Her mother calls her",
+            "It is raining",
+            "She is hungry"
           ],
           "answer": 0
         },
         {
-          "q": "صبحانه چیست؟",
+          "q": "What is breakfast?",
           "options": [
-            "سوپ و ساندویچ",
-            "برنج و سبزی",
-            "نان گرم با کره، تخم‌مرغ و چای",
-            "سیب و آب‌میوه"
+            "Soup and sandwiches",
+            "Rice and vegetables",
+            "Warm bread with butter, eggs and a cup of tea",
+            "Apples and juice"
           ],
           "answer": 2
         },
         {
-          "q": "داستان خنده‌دار کشاورز درباره‌ی چیست؟",
+          "q": "What is the farmer's funny story about?",
           "options": [
-            "گاوی که آواز می‌خواند",
-            "بزی که فرار می‌کند",
-            "گوسفندی که می‌ترسد",
-            "اسبی که از کیفش سیب می‌خورد"
+            "A cow that sings",
+            "A goat that runs away",
+            "A sheep that is afraid",
+            "A horse that eats apples from his bag"
           ],
           "answer": 3
         },
         {
-          "q": "بزغاله‌ها کی به دنیا می‌آیند؟",
+          "q": "When will the baby goats be born?",
           "options": [
-            "در ماه مارس",
-            "در تابستان",
-            "در دسامبر",
-            "هفته‌ی بعد"
+            "In summer",
+            "In March",
+            "In December",
+            "Next week"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -394,52 +394,52 @@
       ],
       "questions": [
         {
-          "q": "کنسرت مدرسه در کدام ماه است؟",
+          "q": "In which month is the school concert?",
           "options": [
-            "ژوئن",
-            "مارس",
-            "سپتامبر",
-            "دسامبر"
+            "June",
+            "March",
+            "September",
+            "December"
           ],
           "answer": 3
         },
         {
-          "q": "نوید چه سازی می‌زند؟",
+          "q": "What does Navid play?",
           "options": [
-            "گیتار",
-            "پیانو",
-            "هیچ سازی؛ آواز می‌خواند",
-            "ویولن"
+            "The guitar",
+            "The piano",
+            "Nothing; he sings",
+            "Basketball"
           ],
           "answer": 1
         },
         {
-          "q": "نوید هر روز چقدر تمرین می‌کند؟",
+          "q": "How long does Navid practice every day?",
           "options": [
-            "یک ساعت",
-            "نیم ساعت",
-            "دو ساعت",
-            "یک ربع"
+            "An hour",
+            "Half an hour",
+            "Two hours",
+            "A quarter of an hour"
           ],
           "answer": 0
         },
         {
-          "q": "معلم به نوید چه می‌گوید؟",
+          "q": "What does the teacher tell Navid?",
           "options": [
-            "که زودتر برود",
-            "که بلندتر بنوازد",
-            "که به موسیقی فکر کند، نه به جمعیت",
-            "که آواز بخواند"
+            "To go home early",
+            "To play fast",
+            "To think about the music, not the crowd",
+            "To sing"
           ],
           "answer": 2
         },
         {
-          "q": "بعد از کنسرت چه کسی با گروه حرف می‌زند؟",
+          "q": "Who talks to the band after the concert?",
           "options": [
-            "مدیر مدرسه",
-            "مردی از تلویزیون محلی",
-            "یک شاعر",
-            "یک پلیس"
+            "The head of the school",
+            "A man from a local TV station",
+            "A poet",
+            "A policeman"
           ],
           "answer": 1
         }
@@ -510,52 +510,52 @@
       ],
       "questions": [
         {
-          "q": "بهار و برادرش سگ را کجا می‌بینند؟",
+          "q": "Where do Bahar and her brother see the dog?",
           "options": [
-            "کنار استخر",
-            "زیر یک درخت",
-            "در خیابان",
-            "کنار کافه"
+            "Near the pool",
+            "Under a tree",
+            "In the street",
+            "Near the cafe"
           ],
           "answer": 0
         },
         {
-          "q": "بهار به سگ چه می‌دهد؟",
+          "q": "What does Bahar give the dog?",
           "options": [
-            "یک کلوچه",
-            "کمی نان",
-            "کمی آب",
-            "یک توپ"
+            "A cookie",
+            "Some bread",
+            "Some water",
+            "A ball"
           ],
           "answer": 2
         },
         {
-          "q": "چه کسی سگ را می‌شناسد؟",
+          "q": "Who knows the dog?",
           "options": [
-            "یک پلیس",
-            "مردی که تنیس بازی می‌کند",
-            "یک بچه",
-            "پیشخدمت کافه"
+            "A policeman",
+            "A man who is playing tennis",
+            "A child",
+            "The waiter from the cafe"
           ],
           "answer": 1
         },
         {
-          "q": "پیرزن چقدر دنبال سگ گشته بود؟",
+          "q": "How long did the old woman look for the dog?",
           "options": [
-            "یک ساعت",
-            "همه‌ی روز",
-            "دو روز",
-            "سه ساعت"
+            "For an hour",
+            "All day",
+            "For two days",
+            "For three hours"
           ],
           "answer": 3
         },
         {
-          "q": "بهار و برادرش هر جمعه چه می‌کنند؟",
+          "q": "What do Bahar and her brother do every Friday?",
           "options": [
-            "به استخر می‌روند",
-            "تنیس بازی می‌کنند",
-            "سگ را برای پیاده‌روی به پارک می‌برند",
-            "به خانه‌ی پیرزن کیک می‌برند"
+            "They go to the pool",
+            "They play tennis",
+            "They take the dog for a walk in the park",
+            "They take a cake to the old woman"
           ],
           "answer": 2
         }
@@ -618,52 +618,52 @@
       ],
       "questions": [
         {
-          "q": "کدام روز تمام روز باران می‌آید؟",
+          "q": "On which day does it rain all day?",
           "options": [
-            "شنبه",
-            "دوشنبه",
-            "چهارشنبه",
-            "جمعه"
+            "Saturday",
+            "Monday",
+            "Wednesday",
+            "Friday"
           ],
           "answer": 1
         },
         {
-          "q": "بستنی‌فروشی‌ها کدام روز شلوغ‌اند؟",
+          "q": "On which day are the ice cream shops busy?",
           "options": [
-            "چهارشنبه",
-            "سه‌شنبه",
-            "پنجشنبه",
-            "یکشنبه"
+            "Wednesday",
+            "Tuesday",
+            "Thursday",
+            "Sunday"
           ],
           "answer": 0
         },
         {
-          "q": "کدام روز دوباره به کت احتیاج داریم؟",
+          "q": "On which day do people need their coats again?",
           "options": [
-            "جمعه",
-            "شنبه",
-            "دوشنبه",
-            "پنجشنبه"
+            "Friday",
+            "Saturday",
+            "Monday",
+            "Thursday"
           ],
           "answer": 3
         },
         {
-          "q": "خانواده‌ها جمعه کجا ناهار می‌خورند؟",
+          "q": "Where do many families eat lunch on Friday?",
           "options": [
-            "در رستوران",
-            "در خانه",
-            "کنار رودخانه زیر درخت‌ها",
-            "در پارک کنار استخر"
+            "At a restaurant",
+            "At home",
+            "By the river, under the trees",
+            "In the park, next to the pool"
           ],
           "answer": 2
         },
         {
-          "q": "هوای هفته‌ی بعد چطور خواهد بود؟",
+          "q": "What will the weather be like next week?",
           "options": [
-            "سرد و بارانی",
-            "گرم و بدون باران",
-            "برفی",
-            "تاریک"
+            "Cold, with a lot of rain",
+            "Warm, with no rain",
+            "Very cold",
+            "Dark"
           ],
           "answer": 1
         }
@@ -728,52 +728,52 @@
       ],
       "questions": [
         {
-          "q": "چرا امشب شب خاصی است؟",
+          "q": "Why is this evening special?",
           "options": [
-            "سالگرد ازدواجشان است",
-            "تولد شادی است",
-            "رستوران تازه باز شده",
-            "مهمان دارند"
+            "They have a new apartment",
+            "It is Shadi's birthday",
+            "The restaurant opens today",
+            "They have visitors"
           ],
           "answer": 1
         },
         {
-          "q": "شادی چه سفارش می‌دهد؟",
+          "q": "What does Shadi order?",
           "options": [
-            "گوشت با سیب‌زمینی",
-            "سوپ و ساندویچ",
-            "ماهی با برنج و سالاد سبز",
-            "فقط کیک"
+            "Meat with potatoes",
+            "Soup and a sandwich",
+            "Fish with rice and a green salad",
+            "Only cake"
           ],
           "answer": 2
         },
         {
-          "q": "چه چیزی مجانی است؟",
+          "q": "What is free?",
           "options": [
-            "کیک",
-            "قهوه",
-            "سالاد",
-            "آب"
+            "The cake",
+            "The coffee",
+            "The salad",
+            "The water"
           ],
           "answer": 0
         },
         {
-          "q": "اشتباه صورتحساب چیست؟",
+          "q": "What is the mistake on the bill?",
           "options": [
-            "قیمت ماهی",
-            "دو سالاد به جای یکی",
-            "بدون کیک",
-            "دو قهوه به جای یکی"
+            "The price of the fish",
+            "Two salads, not one",
+            "There is no cake",
+            "Two coffees, not one"
           ],
           "answer": 3
         },
         {
-          "q": "شادی در آخر چه می‌گوید؟",
+          "q": "What does Shadi say at the end?",
           "options": [
-            "که غذا گران بود",
-            "که دیگر نمی‌آیند",
-            "که دوباره می‌آیند",
-            "که سوپ سرد بود"
+            "The food was expensive",
+            "They will not come again",
+            "They will come back",
+            "The soup was cold"
           ],
           "answer": 2
         }
@@ -842,52 +842,52 @@
       ],
       "questions": [
         {
-          "q": "تیم سینا کدام روزها تمرین می‌کند؟",
+          "q": "When does Sina's team practice?",
           "options": [
-            "دوشنبه‌ها و چهارشنبه‌ها",
-            "شنبه‌ها و یکشنبه‌ها",
-            "فقط جمعه‌ها",
-            "هر روز"
+            "On Monday and Wednesday afternoons",
+            "On Saturdays and Sundays",
+            "Only on Fridays",
+            "Every day"
           ],
           "answer": 0
         },
         {
-          "q": "معلم تیم کیست؟",
+          "q": "What was the team's teacher many years ago?",
           "options": [
-            "پدر سینا",
-            "یک معلم تازه",
-            "بازیکن معروفی از سال‌ها پیش",
-            "یک نوجوان"
+            "A singer",
+            "A waiter",
+            "A famous player",
+            "A policeman"
           ],
           "answer": 2
         },
         {
-          "q": "کفش‌های سینا کجا بود؟",
+          "q": "Where were Sina's shoes?",
           "options": [
-            "زیر تختش",
-            "پشت در",
-            "در باشگاه",
-            "در کیف مدرسه‌ی خواهرش"
+            "Under his bed",
+            "Behind the door",
+            "At the gym",
+            "In his sister's school bag"
           ],
           "answer": 3
         },
         {
-          "q": "نتیجه‌ی مسابقه چه شد؟",
+          "q": "How does the match end?",
           "options": [
-            "تیم سینا دو بر یک برد",
-            "مساوی شد",
-            "تیم سینا باخت",
-            "مسابقه برگزار نشد"
+            "No one wins",
+            "Sina's team wins two to one",
+            "Sina's team loses",
+            "There is no match"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
-          "q": "بعد از مسابقه بازیکن‌ها چه می‌خورند؟",
+          "q": "What do the players eat after the match?",
           "options": [
-            "کیک و چای",
-            "ساندویچ و آب پرتقال",
-            "سوپ",
-            "بستنی"
+            "Cake and tea",
+            "Sandwiches and orange juice",
+            "Soup",
+            "Ice cream"
           ],
           "answer": 1
         }

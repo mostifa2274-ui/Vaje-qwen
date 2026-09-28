@@ -58,52 +58,52 @@
   ],
   "questions": [
     {
-      "q": "پرنده‌ی مامان چه رنگی بود؟",
+      "q": "Mom's bird was ___.",
       "options": [
-        "زرد",
-        "قرمز",
-        "سیاه",
-        "سفید با کمی سیاهی روی سرش"
+        "yellow",
+        "red",
+        "black",
+        "white, with a little black on its head"
       ],
       "answer": 3
     },
     {
-      "q": "پرنده کجا آواز می‌خواند؟",
+      "q": "Where did the bird sing?",
       "options": [
-        "کنار پنجره‌ی اتاق مامان",
-        "در باغچه",
-        "روی درخت",
-        "در آشپزخانه"
+        "At the window of Mom's room",
+        "In the garden",
+        "In a tree",
+        "In the kitchen"
       ],
       "answer": 0
     },
     {
-      "q": "چه کسی پنجره را باز کرد؟",
+      "q": "Who opened the window?",
       "options": [
-        "مامان",
-        "مادرِ مامان",
-        "پدرِ مامان",
-        "یک همسایه"
+        "Mom",
+        "Mom's mother",
+        "Mom's father",
+        "A neighbor"
       ],
       "answer": 1
     },
     {
-      "q": "مامان چقدر دنبال پرنده گشت؟",
+      "q": "How long did Mom look for the bird?",
       "options": [
-        "یک روز",
-        "یک ماه",
-        "یک هفته",
-        "یک سال"
+        "For an hour",
+        "For a day",
+        "For a week",
+        "For two days"
       ],
       "answer": 2
     },
     {
-      "q": "مامان هنوز چه چیزی از پرنده‌اش یادش است؟",
+      "q": "What does Mom still remember about her bird?",
       "options": [
-        "آوازش",
-        "اسمش",
-        "پاهایش",
-        "خانه‌اش"
+        "Its song",
+        "Its name",
+        "Its feet",
+        "Its home"
       ],
       "answer": 0
     }

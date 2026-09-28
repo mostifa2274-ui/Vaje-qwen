@@ -65,52 +65,52 @@
       ],
       "questions": [
         {
-          "q": "سارا کجا بیدار می‌شود؟",
+          "q": "Where does Sara wake?",
           "options": [
-            "در آشپزخانه",
-            "در حیاط",
-            "در حمام",
-            "در اتاق خوابش"
+            "In the kitchen",
+            "In the yard",
+            "In the bathroom",
+            "In her bedroom"
           ],
           "answer": 3
         },
         {
-          "q": "مامان برای صبحانه چه می‌پزد؟",
+          "q": "What does Mom cook for breakfast?",
           "options": [
-            "نان",
-            "برنج",
-            "تخم‌مرغ",
-            "سوپ"
+            "Bread",
+            "Cheese",
+            "Eggs",
+            "Milk"
           ],
           "answer": 2
         },
         {
-          "q": "بابا سر میز چه می‌نوشد؟",
+          "q": "What does Dad drink at the table?",
           "options": [
-            "شیر",
-            "چای",
-            "آب",
-            "آب‌پرتقال"
+            "Milk",
+            "Nothing",
+            "Water",
+            "A bottle of milk"
           ],
           "answer": 2
         },
         {
-          "q": "چرا مامان از امید می‌خواهد زمین را تمیز کند؟",
+          "q": "Mom asks Omid to clean the floor. What is on the floor?",
           "options": [
-            "چون امید زمین را با کفش کثیف کرده است",
-            "چون شیر روی زمین ریخته است",
-            "چون پرنده‌ای وارد خانه شده است",
-            "چون سارا آب ریخته است"
+            "Milk",
+            "Water",
+            "Eggs",
+            "Bread"
           ],
-          "answer": 1
+          "answer": 0
         },
         {
-          "q": "در پایان، سارا می‌خواهد کجا برود؟",
+          "q": "At the end, where does Sara want to go?",
           "options": [
-            "به باغچه",
-            "به حمام",
-            "به اتاقش",
-            "به آشپزخانه"
+            "To the garden",
+            "To the bathroom",
+            "To her room",
+            "To the kitchen"
           ],
           "answer": 0
         }
@@ -179,52 +179,52 @@
       ],
       "questions": [
         {
-          "q": "جوجهٔ خانواده چه رنگی است؟",
+          "q": "The family has a ___ chicken.",
           "options": [
-            "قرمز",
-            "سفید",
-            "زرد",
-            "قهوه‌ای"
+            "red",
+            "black",
+            "yellow",
+            "old"
           ],
           "answer": 2
         },
         {
-          "q": "جوجه هر عصر کجا می‌خوابد؟",
+          "q": "Where does the chicken sleep every evening?",
           "options": [
-            "زیر تخت لیلا",
-            "روی صندلی آشپزخانه",
-            "در حیاط",
-            "روی میز"
+            "Under Leila's bed",
+            "On the chair in the kitchen",
+            "In the yard",
+            "On the table"
           ],
           "answer": 1
         },
         {
-          "q": "لیلا اول کجاها را نگاه می‌کند؟",
+          "q": "Where does Leila look first?",
           "options": [
-            "اتاق خواب و حمام",
-            "آشپزخانه، حیاط و باغچه",
-            "زیر میز و پشت در",
-            "اتاق مامان و بابا"
+            "In her bedroom and the bathroom",
+            "In the kitchen, the yard and the garden",
+            "Under the table and behind the door",
+            "In Mom and Dad's room"
           ],
           "answer": 1
         },
         {
-          "q": "لیلا جوجه را کجا پیدا می‌کند؟",
+          "q": "Where does Leila find the chicken?",
           "options": [
-            "زیر تختش",
-            "در باغچه",
-            "پشت در",
-            "روی صندلی"
+            "Under her bed",
+            "In the garden",
+            "Behind the door",
+            "On the chair"
           ],
           "answer": 0
         },
         {
-          "q": "جوجه روی چه چیزی خوابیده است؟",
+          "q": "What does the chicken sleep on?",
           "options": [
-            "یک صندلی",
-            "یک میز",
-            "تخت مامان",
-            "یک کتاب قرمز کوچک"
+            "A chair",
+            "A table",
+            "Mom's bed",
+            "A little red book"
           ],
           "answer": 3
         }
@@ -295,52 +295,52 @@
       ],
       "questions": [
         {
-          "q": "رضا چه وقتی به خانه می‌آید؟",
+          "q": "When does Reza come home?",
           "options": [
-            "صبح",
-            "ظهر",
-            "عصر",
-            "نیمه‌شب"
+            "In the morning",
+            "In the afternoon",
+            "In the evening",
+            "At night"
           ],
           "answer": 2
         },
         {
-          "q": "چرا رضا نمی‌تواند در را باز کند؟",
+          "q": "Reza cannot open the door, because ___.",
           "options": [
-            "چون در خراب است",
-            "چون کلیدش را ندارد",
-            "چون خواهرش در را قفل کرده است",
-            "چون هوا تاریک است"
+            "the door is old",
+            "he does not have his key",
+            "his sister is not at home",
+            "it is dark"
           ],
           "answer": 1
         },
         {
-          "q": "خواهر رضا اول چه می‌پرسد؟",
+          "q": "What does his sister ask first?",
           "options": [
-            "آیا کلید زیر صندلی است؟",
-            "آیا کلید روی میز باغچه است؟",
-            "آیا کلید در حمام است؟",
-            "آیا رضا شام خورده است؟"
+            "Is the key under the chair?",
+            "Is it on the table in the garden?",
+            "Is the key in the bathroom?",
+            "Do you want dinner?"
           ],
           "answer": 1
         },
         {
-          "q": "روی میز باغچه چه چیزهایی هست؟",
+          "q": "What is on the table in the garden?",
           "options": [
-            "یک لیوان و یک کتاب",
-            "کلید و یک لیوان",
-            "نان و آب",
-            "یک بشقاب و یک کتاب"
+            "A glass and a book",
+            "The key and a glass",
+            "Bread and water",
+            "A cup and a book"
           ],
           "answer": 0
         },
         {
-          "q": "کلید کجا بود؟",
+          "q": "Where is the key?",
           "options": [
-            "روی میز باغچه",
-            "روی زمین حیاط",
-            "زیر یک کتاب",
-            "روی میز آشپزخانه"
+            "On the table in the garden",
+            "On the floor in the yard",
+            "Under a book",
+            "On the kitchen table"
           ],
           "answer": 3
         }
@@ -405,52 +405,52 @@
       ],
       "questions": [
         {
-          "q": "نیکا و پدرش کجا هستند؟",
+          "q": "Where are Nika and her dad?",
           "options": [
-            "در باغچه",
-            "در حیاط",
-            "در پارک",
-            "در خانه"
+            "In the garden",
+            "In the yard",
+            "In the kitchen",
+            "At home"
           ],
           "answer": 3
         },
         {
-          "q": "پرنده از کجا وارد اتاق می‌شود؟",
+          "q": "How does the bird come into the room?",
           "options": [
-            "از در باغچه",
-            "از آشپزخانه",
-            "از پنجرهٔ باز",
-            "از حمام"
+            "Through the garden door",
+            "Through the kitchen",
+            "Through the open window",
+            "Through the bathroom"
           ],
           "answer": 2
         },
         {
-          "q": "پرنده کجا می‌نشیند؟",
+          "q": "Where does the bird sit?",
           "options": [
-            "روی میز بابا",
-            "روی تخت",
-            "روی تلویزیون",
-            "روی صندلی"
+            "On Dad's desk",
+            "On the bed",
+            "On the TV",
+            "On a chair"
           ],
           "answer": 2
         },
         {
-          "q": "وقتی بابا به پرنده می‌گوید بیرون برود، چه اتفاقی می‌افتد؟",
+          "q": "Dad says, \"Please, little bird, go out.\" What happens then?",
           "options": [
-            "پرنده فوراً بیرون می‌رود",
-            "پرنده بیرون نمی‌رود",
-            "پرنده به آشپزخانه می‌رود",
-            "پرنده روی زمین می‌خوابد"
+            "The bird goes out quickly",
+            "The bird does not go out",
+            "The bird goes to the kitchen",
+            "The bird sleeps on the floor"
           ],
           "answer": 1
         },
         {
-          "q": "نیکا چطور به پرنده کمک می‌کند بیرون برود؟",
+          "q": "How does Nika help the bird go out?",
           "options": [
-            "در باغچه را باز می‌کند",
-            "پنجره را می‌بندد",
-            "به پرنده نان می‌دهد",
-            "تلویزیون را خاموش می‌کند"
+            "She opens the door to the garden",
+            "She closes the window",
+            "She gives the bird bread",
+            "She calls Mom"
           ],
           "answer": 0
         }

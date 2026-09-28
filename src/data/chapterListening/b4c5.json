@@ -3,7 +3,8 @@
   "titleEn": "The Farmer's Daughter",
   "titleFa": "دختر کشاورز",
   "names": [
-    "Mina"
+    "Mina",
+    "Nino"
   ],
   "sentences": [
     {
@@ -61,52 +62,52 @@
   ],
   "questions": [
     {
-      "q": "دختر کشاورز چند سال دارد؟",
+      "q": "How old is the farmer's daughter?",
       "options": [
-        "یازده",
-        "ده",
-        "دوازده",
-        "هشت"
+        "Eleven",
+        "Ten",
+        "Twelve",
+        "Eight"
       ],
       "answer": 1
     },
     {
-      "q": "بزها و گوسفندها کجا ایستاده‌اند؟",
+      "q": "Where do the goats and the sheep stand?",
       "options": [
-        "کنار یک درخت سبز",
-        "کنار دیوار",
-        "در خانه",
-        "کنار اسب"
+        "Near a green tree",
+        "Near the wall",
+        "In the house",
+        "Near the horse"
       ],
       "answer": 0
     },
     {
-      "q": "مرغ و جوجه‌ها کجا می‌خوابند؟",
+      "q": "Where do the chickens sleep?",
       "options": [
-        "زیر درخت",
-        "در خانه‌ی کشاورز",
-        "کنار گاو",
-        "در یک خانه‌ی کوچک کنار دیوار"
+        "Under a tree",
+        "In the farmer's house",
+        "Near the cow",
+        "In a small house next to the wall"
       ],
       "answer": 3
     },
     {
-      "q": "حیوان محبوب دختر کشاورز چیست؟",
+      "q": "What is the daughter's favorite animal?",
       "options": [
-        "اسب",
-        "شیر",
-        "فیل",
-        "مار"
+        "The horse",
+        "The lion",
+        "The elephant",
+        "The snake"
       ],
       "answer": 2
     },
     {
-      "q": "دختر در آخر چه می‌گوید؟",
+      "q": "What does the daughter say at the end?",
       "options": [
-        "که نینو را دیده",
-        "که مینا یک روز با نینو به مزرعه برگردد",
-        "که کتابش را می‌خواهد",
-        "که مزرعه بزرگ است"
+        "She saw Nino",
+        "Mina can come back to the farm with Nino one day",
+        "She wants her book",
+        "The farm is big"
       ],
       "answer": 1
     }

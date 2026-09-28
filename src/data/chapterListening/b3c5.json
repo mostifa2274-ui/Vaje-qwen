@@ -58,52 +58,52 @@
   ],
   "questions": [
     {
-      "q": "اول چند نفر عکس را به اشتراک گذاشته‌اند؟",
+      "q": "At first, how many people have shared Nino's picture?",
       "options": [
-        "بیست",
-        "چهل",
-        "شصت",
-        "صد"
+        "Twenty",
+        "Forty",
+        "Sixty",
+        "A hundred"
       ],
       "answer": 1
     },
     {
-      "q": "پیرمرد در باغچه‌اش چه دارد؟",
+      "q": "What does the old man have in his garden?",
       "options": [
-        "سی پرنده",
-        "یک جوجه‌ی زرد",
-        "یک سگ",
-        "چند گربه"
+        "Thirty birds",
+        "A yellow chicken",
+        "A dog",
+        "Some flowers"
       ],
       "answer": 0
     },
     {
-      "q": "پیام سوم عکس چه چیزی دارد؟",
+      "q": "What is in the picture in the third message?",
       "options": [
-        "یک جفت کفش",
-        "یک پرنده",
-        "یک کیسه‌ی زرد",
-        "یک مدرسه"
+        "A pair of shoes",
+        "A bird",
+        "A yellow bag",
+        "A school"
       ],
       "answer": 2
     },
     {
-      "q": "پیام چهارم از چه کسی است؟",
+      "q": "Who is the fourth message from?",
       "options": [
-        "یک پلیس",
-        "یک پسر",
-        "یک پیرزن",
-        "یک معلم"
+        "A policeman",
+        "A boy",
+        "An old woman",
+        "A teacher"
       ],
       "answer": 3
     },
     {
-      "q": "تا ساعت یازده چند نفر عکس را به اشتراک گذاشته‌اند؟",
+      "q": "By eleven o'clock, how many people have shared the picture?",
       "options": [
-        "هزار",
-        "نود",
-        "صد",
-        "پنجاه"
+        "A thousand",
+        "Ninety",
+        "A hundred",
+        "Fifty"
       ],
       "answer": 2
     }

@@ -53,52 +53,52 @@
   ],
   "questions": [
     {
-      "q": "چه کسی به مامان زنگ می‌زند؟",
+      "q": "Who calls Mom?",
       "options": [
-        "مادربزرگ",
-        "بابا",
-        "راننده‌ی تاکسی",
-        "پدربزرگ"
+        "Grandmother",
+        "Dad",
+        "The taxi driver",
+        "Grandfather"
       ],
       "answer": 3
     },
     {
-      "q": "روی کوه‌های بلند چه هست؟",
+      "q": "What is on the high mountains?",
       "options": [
-        "برف",
-        "باران",
-        "گل",
-        "آتش"
+        "Snow",
+        "Rain",
+        "Flowers",
+        "Birds"
       ],
       "answer": 0
     },
     {
-      "q": "چرا پدربزرگ امروز نمی‌تواند به ایستگاه بیاید؟",
+      "q": "Why can Grandfather not come to the station today?",
       "options": [
-        "بیمار است",
-        "کامیونش تعمیر لازم دارد",
-        "باران می‌آید",
-        "مهمان دارد"
+        "He is tired",
+        "His truck needs some work",
+        "It is raining",
+        "He has visitors"
       ],
       "answer": 1
     },
     {
-      "q": "خانواده امشب کجا می‌مانند؟",
+      "q": "Where will the family stay tonight?",
       "options": [
-        "در خانه‌ی پدربزرگ",
-        "در قطار",
-        "در هتل کوچک کنار دریا",
-        "در یک مزرعه"
+        "At Grandfather's house",
+        "On the train",
+        "At the small hotel by the sea",
+        "On a farm"
       ],
       "answer": 2
     },
     {
-      "q": "مادربزرگ چه می‌پزد؟",
+      "q": "What is Grandmother cooking?",
       "options": [
-        "ماهی",
-        "نان",
-        "سوپ",
-        "برنج مورد علاقه‌ی مامان"
+        "Fish",
+        "Bread",
+        "Soup",
+        "Mom's favorite rice"
       ],
       "answer": 3
     }

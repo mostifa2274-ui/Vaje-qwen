@@ -58,52 +58,52 @@
   ],
   "questions": [
     {
-      "q": "نوجوان هر صبح کجا می‌رود؟",
+      "q": "Where does the teenager go every morning?",
       "options": [
-        "به باشگاه",
-        "به مدرسه",
-        "به استخر",
-        "به کافه"
+        "To the gym",
+        "To school",
+        "To the pool",
+        "To a cafe"
       ],
       "answer": 0
     },
     {
-      "q": "او جوجه را کجا می‌بیند؟",
+      "q": "Where does she see the chicken?",
       "options": [
-        "در استخر",
-        "در باشگاه",
-        "در ایستگاه اتوبوس",
-        "زیر یک ماشین"
+        "At the pool",
+        "At the gym",
+        "At the bus stop",
+        "Under a car"
       ],
       "answer": 2
     },
     {
-      "q": "چرا همان موقع به جوجه کمک نمی‌کند؟",
+      "q": "Why does she not help the chicken then?",
       "options": [
-        "می‌ترسد",
-        "اتوبوسش می‌آید",
-        "جوجه فرار می‌کند",
-        "مادرش صدایش می‌زند"
+        "She is afraid",
+        "Her bus comes",
+        "The chicken runs away",
+        "Her mother calls her"
       ],
       "answer": 1
     },
     {
-      "q": "وقتی از باشگاه بیرون می‌آید، چه کسانی آنجا هستند؟",
+      "q": "Who is there when she comes out of the gym?",
       "options": [
-        "دو پسر با توپ",
-        "یک مرد و پسرش",
-        "تیم بسکتبال",
-        "یک زن و یک دختر با یک عکس"
+        "Two boys with a ball",
+        "A man and his son",
+        "The basketball team",
+        "A woman and a girl with a picture"
       ],
       "answer": 3
     },
     {
-      "q": "مینا چه واکنشی نشان می‌دهد؟",
+      "q": "How does Mina feel?",
       "options": [
-        "غمگین می‌شود",
-        "خیلی خوشحال می‌شود و تشکر می‌کند",
-        "به خانه می‌رود",
-        "گریه می‌کند"
+        "Sad",
+        "Very happy",
+        "Afraid",
+        "Tired"
       ],
       "answer": 1
     }

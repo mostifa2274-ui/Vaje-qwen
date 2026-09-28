@@ -59,52 +59,52 @@
   ],
   "questions": [
     {
-      "q": "چه کسی به نگار می‌گوید مینا دمِ در است؟",
+      "q": "Who tells Negar that Mina is at the door?",
       "options": [
-        "پدرش",
-        "مادرش",
-        "مینا",
-        "همسایه‌ی پیر"
+        "Her dad",
+        "Her mother",
+        "Mina",
+        "An old neighbor"
       ],
       "answer": 1
     },
     {
-      "q": "زیر ماشین چه بود؟",
+      "q": "What was under the car?",
       "options": [
-        "نینو",
-        "یک کفش زرد",
-        "یک توپ",
-        "یک کیسه‌ی خرید"
+        "Nino",
+        "A yellow shoe",
+        "A ball",
+        "A shopping bag"
       ],
       "answer": 3
     },
     {
-      "q": "نگار چه چیزی انتخاب می‌کند؟",
+      "q": "What does Negar choose?",
       "options": [
-        "آب پرتقال",
-        "آب",
-        "شیر",
-        "چای"
+        "Orange juice",
+        "Water",
+        "Milk",
+        "Bread"
       ],
       "answer": 0
     },
     {
-      "q": "زن جوان جوجه را کجا دیده است؟",
+      "q": "Where did the young woman see a chicken?",
       "options": [
-        "زیر یک ماشین",
-        "در باغچه‌اش",
-        "نزدیک استخر پارک",
-        "در مدرسه"
+        "Under a car",
+        "In her garden",
+        "Near the pool in the park",
+        "At school"
       ],
       "answer": 2
     },
     {
-      "q": "مادر نگار می‌گوید فردا چه می‌کنند؟",
+      "q": "Negar's mother says, \"Tomorrow we will ___.\"",
       "options": [
-        "به پارک می‌روند",
-        "خیابان را زیر نظر می‌گیرند",
-        "به مدرسه می‌روند",
-        "آپارتمان تازه را می‌بینند"
+        "go to the park",
+        "watch the street",
+        "go to school",
+        "see the new apartment"
       ],
       "answer": 1
     }

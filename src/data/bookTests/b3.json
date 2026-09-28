@@ -61,52 +61,52 @@
       ],
       "questions": [
         {
-          "q": "پریسا جمعه‌ها معمولاً چه ساعتی بیدار می‌شود؟",
+          "q": "On Fridays, when does Parisa usually wake?",
           "options": [
-            "ساعت شش و نیم",
-            "ساعت ده",
-            "ساعت دو",
-            "ساعت پنج"
+            "At half past six",
+            "At ten o'clock",
+            "At two o'clock",
+            "At five o'clock"
           ],
           "answer": 1
         },
         {
-          "q": "چرا خانواده امروز جشن می‌گیرد؟",
+          "q": "Why does the family have a party today?",
           "options": [
-            "چون تولد کاوه است",
-            "چون کاوه در مسابقه برنده شده است",
-            "چون مهمان از شهر دیگری می‌آید",
-            "چون آخر هفته است"
+            "It is Kaveh's birthday",
+            "Kaveh wins a match",
+            "A visitor comes from another city",
+            "It is the weekend"
           ],
           "answer": 0
         },
         {
-          "q": "کاوه امروز چند ساله می‌شود؟",
+          "q": "How old is Kaveh today?",
           "options": [
-            "هجده",
-            "هشت",
-            "هفده",
-            "هشتاد"
+            "Eight",
+            "Eighteen",
+            "Seventeen",
+            "Eighty"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
-          "q": "پریسا از کاوه می‌خواهد تا چه ساعتی در اتاقش بماند؟",
+          "q": "Parisa tells Kaveh to stay in his room until ___.",
           "options": [
-            "تا ساعت دو",
-            "تا نیمه‌شب",
-            "تا ساعت ده",
-            "تا ساعت پنج"
+            "two o'clock",
+            "midnight",
+            "ten o'clock",
+            "five o'clock"
           ],
           "answer": 3
         },
         {
-          "q": "جشن تا کی ادامه دارد؟",
+          "q": "They eat cake and talk until ___.",
           "options": [
-            "تا ساعت پنج",
-            "تا صبح روز بعد",
-            "تا نیمه‌شب",
-            "فقط یک ساعت"
+            "five o'clock",
+            "the next morning",
+            "midnight",
+            "six o'clock"
           ],
           "answer": 2
         }
@@ -172,52 +172,52 @@
       ],
       "questions": [
         {
-          "q": "این هفته در چه ماهی است؟",
+          "q": "This week is in ___.",
           "options": [
-            "ژانویه",
-            "ژوئیه",
-            "مارس",
-            "دسامبر"
+            "January",
+            "July",
+            "March",
+            "December"
           ],
           "answer": 0
         },
         {
-          "q": "شیرین یکشنبه چه کار می‌کند؟",
+          "q": "What does Shirin do on Sunday?",
           "options": [
-            "در خانه تلویزیون تماشا می‌کند",
-            "در آشپزخانه به پدرش کمک می‌کند",
-            "تا بعدازظهر در رختخواب می‌ماند",
-            "با دوستش به باشگاه می‌رود و شنا می‌کند"
+            "She watches TV at home",
+            "She helps her dad in the kitchen",
+            "She stays in bed until the afternoon",
+            "She goes to the gym with her friend and swims"
           ],
           "answer": 3
         },
         {
-          "q": "چرا شیرین دوشنبه بیرون منتظر می‌ماند؟",
+          "q": "Why does Shirin wait outside on Monday?",
           "options": [
-            "چون منتظر دوستش است",
-            "چون در خانه مهمان دارند",
-            "چون ساعت خانه خراب است",
-            "چون کلیدش را فراموش کرده است"
+            "She waits for her friend",
+            "She forgets her key",
+            "They have visitors at home",
+            "The house clock is not right"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
-          "q": "شیرین چه مدت بیرون منتظر می‌ماند؟",
+          "q": "How long does Shirin wait outside?",
           "options": [
-            "یک ساعت",
-            "ده دقیقه",
-            "بیست دقیقه",
-            "نیم ساعت"
+            "An hour",
+            "Ten minutes",
+            "Twenty minutes",
+            "Half an hour"
           ],
           "answer": 2
         },
         {
-          "q": "شیرین به مهسا چه هدیه‌ای می‌دهد؟",
+          "q": "What does Shirin give Mahsa?",
           "options": [
-            "یک گیتار",
-            "یک کتاب قرمز کوچک",
-            "یک ساعت",
-            "یک توپ"
+            "A guitar",
+            "A little red book",
+            "A clock",
+            "A ball"
           ],
           "answer": 1
         }
@@ -284,52 +284,52 @@
       ],
       "questions": [
         {
-          "q": "ساعت آرمان کجاست؟",
+          "q": "Where is Arman's clock?",
           "options": [
-            "کنار تختش",
-            "روی دیوار آشپزخانه",
-            "روی میز تحریرش",
-            "در حمام"
+            "Next to his bed",
+            "On the kitchen wall",
+            "On his desk",
+            "In the bathroom"
           ],
           "answer": 0
         },
         {
-          "q": "مسابقهٔ فوتبال آرمان ساعت چند است؟",
+          "q": "When is Arman's football match?",
           "options": [
-            "ساعت شش",
-            "ساعت هشت و نیم",
-            "ساعت ده",
-            "ساعت نه"
+            "At six o'clock",
+            "At half past eight",
+            "At ten o'clock",
+            "At nine o'clock"
           ],
           "answer": 3
         },
         {
-          "q": "وقتی مادر صدایش می‌زند، ساعت آرمان چه ساعتی را نشان می‌دهد؟",
+          "q": "When his mom calls, what does Arman's clock say?",
           "options": [
-            "ساعت هشت و نیم",
-            "ساعت نه",
-            "ساعت هفت",
-            "هنوز ساعت شش"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "آرمان چه ساعتی به پارک می‌رسد؟",
-          "options": [
-            "نه و ربع",
-            "هشت و نیم",
-            "ده دقیقه به نه",
-            "ساعت شش"
+            "Half past eight",
+            "Nine o'clock",
+            "Still six o'clock",
+            "Seven o'clock"
           ],
           "answer": 2
         },
         {
-          "q": "نتیجهٔ مسابقه چه می‌شود؟",
+          "q": "When does Arman get to the park?",
           "options": [
-            "تیم آرمان سه بر یک می‌بازد",
-            "تیم آرمان سه بر یک می‌برد",
-            "بازی مساوی می‌شود",
-            "مسابقه برگزار نمی‌شود"
+            "At a quarter past nine",
+            "At half past eight",
+            "At ten to nine",
+            "At six o'clock"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What happens in the match?",
+          "options": [
+            "Arman's team loses three to one",
+            "Arman's team wins three to one",
+            "No one wins",
+            "There is no match"
           ],
           "answer": 1
         }
@@ -399,52 +399,52 @@
       ],
       "questions": [
         {
-          "q": "این داستان در چه ماهی اتفاق می‌افتد؟",
+          "q": "This story happens in ___.",
           "options": [
-            "ژانویه",
-            "ژوئیه",
-            "آوریل",
-            "اکتبر"
+            "January",
+            "July",
+            "April",
+            "October"
           ],
           "answer": 1
         },
         {
-          "q": "خانوادهٔ سپیده چه روزی راه می‌افتند؟",
+          "q": "When does Sepideh's family leave?",
           "options": [
-            "پنجشنبه بعدازظهر",
-            "شنبه صبح",
-            "یکشنبه عصر",
-            "جمعه شب"
+            "On Thursday afternoon",
+            "On Saturday morning",
+            "On Sunday evening",
+            "On Friday night"
           ],
           "answer": 0
         },
         {
-          "q": "رسیدن به آن شهر کوچک چقدر طول می‌کشد؟",
+          "q": "How long does it take to get to the little town?",
           "options": [
-            "سه ساعت",
-            "هفت ساعت",
-            "نیم ساعت",
-            "یک روز"
+            "Seven hours",
+            "Half an hour",
+            "Three hours",
+            "A day"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "دو دختر جمعه صبح چه کار می‌کنند؟",
+          "q": "What do the two girls do on Friday morning?",
           "options": [
-            "به کنسرت می‌روند",
-            "فوتبال بازی می‌کنند",
-            "به پارک می‌روند",
-            "در استخر شهر شنا می‌کنند"
+            "They go to a concert",
+            "They play football",
+            "They go to the park",
+            "They swim in the town pool"
           ],
           "answer": 3
         },
         {
-          "q": "رویا هنگام خداحافظی چه می‌گوید؟",
+          "q": "What does Roya say when they leave?",
           "options": [
-            "فردا به شهر شما می‌آیم",
-            "زود به خانه برو",
-            "تابستان بعد دوباره بیا",
-            "برایم نامه بنویس"
+            "I will come to your city tomorrow",
+            "Go home early",
+            "Come again next summer",
+            "Write to me"
           ],
           "answer": 2
         }

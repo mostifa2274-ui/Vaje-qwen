@@ -64,52 +64,52 @@
       ],
       "questions": [
         {
-          "q": "معلم علوم به کلاس چه کاری می‌دهد؟",
+          "q": "What does the science teacher give the class?",
           "options": [
-            "یک امتحان سخت",
-            "یک گزارش دربارهٔ تاریخ",
-            "یک پروژهٔ مهم برای ساختن ماکت",
-            "یک تکلیف خواندن"
+            "A difficult exam",
+            "A report about history",
+            "An important project: to make a model",
+            "Some reading homework"
           ],
           "answer": 2
         },
         {
-          "q": "هدی ماکت چه چیزی را می‌سازد؟",
+          "q": "What model does Hoda make?",
           "options": [
-            "یک ساعت قدیمی",
-            "خانه‌ای با یک چراغ کوچک در هر اتاق",
-            "یک پرندهٔ کوچک",
-            "مدرسه‌اش"
+            "An old clock",
+            "A house with a small light in every room",
+            "A small bird",
+            "Her school"
           ],
           "answer": 1
         },
         {
-          "q": "چه کسی در کار چراغ‌ها به هدی کمک می‌کند؟",
+          "q": "Who helps Hoda with the lights?",
           "options": [
-            "معلمش",
-            "برادرش",
-            "پدرش",
-            "دوستش"
+            "Her teacher",
+            "Her father",
+            "Her friend",
+            "Her brother"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
-          "q": "دوشنبه در کلاس چه مشکلی پیش می‌آید؟",
+          "q": "What goes wrong in the classroom on Monday?",
           "options": [
-            "چراغ‌های ماکت روشن نمی‌شوند",
-            "ماکت می‌شکند",
-            "هدی ماکت را در خانه جا می‌گذارد",
-            "معلم در کلاس نیست"
+            "The lights of the model do not work",
+            "The model breaks",
+            "Hoda leaves the model at home",
+            "The teacher is not in the class"
           ],
           "answer": 0
         },
         {
-          "q": "مشکل ماکت چه بود؟",
+          "q": "What was the problem with the model?",
           "options": [
-            "چراغ‌ها خیلی کوچک بودند",
-            "ماکت خیس شده بود",
-            "میز کلاس کوچک بود",
-            "یک قطعهٔ کوچک سر جایش نبود"
+            "The lights were too small",
+            "The model was dirty",
+            "The table was small",
+            "One small part was not in the right place"
           ],
           "answer": 3
         }
@@ -179,54 +179,54 @@
       ],
       "questions": [
         {
-          "q": "کوروش در دانشگاه چه رشته‌ای می‌خواند؟",
+          "q": "What does Kourosh study at university?",
           "options": [
-            "علوم",
-            "جغرافیا",
-            "زبان انگلیسی",
-            "تاریخ"
+            "Science",
+            "Geography",
+            "English",
+            "History"
           ],
           "answer": 3
         },
         {
-          "q": "کوروش می‌خواهد کجا کار کند؟",
+          "q": "Where does Kourosh want to work?",
           "options": [
-            "در یک مدرسه",
-            "در یک دانشگاه",
-            "در یک شرکت بزرگ کامپیوتری",
-            "در یک رستوران"
+            "At a school",
+            "At a university",
+            "At a big computer company",
+            "At a restaurant"
           ],
           "answer": 2
         },
         {
-          "q": "کوروش پیش از مصاحبه چه کار می‌کند؟",
+          "q": "What does Kourosh do before the interview?",
           "options": [
-            "به سفر می‌رود",
-            "فقط استراحت می‌کند",
-            "با یک دوست انگلیسی تمرین می‌کند و دربارهٔ شرکت مطالعه می‌کند",
-            "برای شرکت نامه می‌نویسد"
+            "He practices his English with a friend and reads about the company",
+            "He goes to the park",
+            "He sleeps all day",
+            "He writes a letter to the company"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
-          "q": "وقتی کوروش اشتباه می‌کند، چه کار می‌کند؟",
+          "q": "What does Kourosh do when he makes a mistake?",
           "options": [
-            "از اتاق بیرون می‌رود",
-            "اشتباهش را می‌پذیرد و جواب درست را می‌دهد",
-            "ساکت می‌ماند",
-            "سؤال دیگری می‌پرسد"
+            "He leaves the room",
+            "He says it is not correct and gives the right answer",
+            "He says nothing",
+            "He asks another question"
           ],
           "answer": 1
         },
         {
-          "q": "یک هفته بعد چه اتفاقی می‌افتد؟",
+          "q": "What happens a week later?",
           "options": [
-            "شرکت تلفن می‌زند و کوروش کار را به دست می‌آورد",
-            "شرکت می‌گوید او قبول نشده است",
-            "کوروش به دانشگاه برمی‌گردد",
-            "کوروش مصاحبهٔ دوم دارد"
+            "The company says no",
+            "He goes back to university",
+            "The company calls, and he has the job",
+            "He has a second interview"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     }
@@ -301,54 +301,54 @@
       ],
       "questions": [
         {
-          "q": "آوا چه روزی امتحان انگلیسی دارد؟",
+          "q": "When is Ava's English exam?",
           "options": [
-            "چهارشنبه عصر",
-            "دوشنبه",
-            "شنبه",
-            "پنجشنبه صبح"
+            "On Wednesday evening",
+            "On Monday",
+            "On Saturday",
+            "On Thursday morning"
           ],
           "answer": 3
         },
         {
-          "q": "آوا کجاها دنبال فرهنگ لغت می‌گردد؟",
+          "q": "Where does Ava look for her dictionary?",
           "options": [
-            "روی میز معلم و در کلاس",
-            "در خانهٔ تینا",
-            "توی کیفش، زیر تختش و در آشپزخانه",
-            "در اتاق برادرش"
+            "On the teacher's desk",
+            "At Tina's house",
+            "In her bag, under her bed and in the kitchen",
+            "In her brother's room"
           ],
           "answer": 2
         },
         {
-          "q": "تینا چه چیزی را به یاد آوا می‌آورد؟",
+          "q": "What does Tina remember?",
           "options": [
-            "آوا فرهنگ لغت را به تینا داده است",
-            "فرهنگ لغت در کیف تیناست",
-            "آوا دوشنبه فرهنگ لغت را در باشگاه انگلیسی داشت",
-            "فرهنگ لغت در کتابخانه است"
+            "Ava had the dictionary at the English club on Monday",
+            "Ava gave the dictionary to Tina",
+            "The dictionary is in Tina's bag",
+            "The dictionary is at the bank"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
-          "q": "فرهنگ لغت در نهایت کجاست؟",
+          "q": "Where is the dictionary in the end?",
           "options": [
-            "در کیف تینا",
-            "در یک جعبهٔ بزرگ پیش معلم باشگاه",
-            "زیر تخت آوا",
-            "روی میز آشپزخانه"
+            "In Tina's bag",
+            "In a big box, with the club teacher",
+            "Under Ava's bed",
+            "On the kitchen table"
           ],
           "answer": 1
         },
         {
-          "q": "آوا پیش از امتحان چقدر یادداشت‌هایش را می‌خواند؟",
+          "q": "How long does Ava read her notes before the exam?",
           "options": [
-            "ده دقیقه",
-            "یک ساعت",
-            "نیم ساعت",
-            "تمام شب"
+            "An hour",
+            "Half an hour",
+            "All night",
+            "Ten minutes"
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     },
@@ -411,52 +411,52 @@
       ],
       "questions": [
         {
-          "q": "چرا امروز برای شهرام روز شلوغی است؟",
+          "q": "Why is today a busy day for Shahram?",
           "options": [
-            "همکارش بیمار است",
-            "امتحان دارد",
-            "شرکت ساعت ده یک جلسهٔ بزرگ دارد",
-            "به سفر می‌رود"
+            "He has an exam",
+            "He has a new job",
+            "The company has a big meeting at ten",
+            "He is going to another city"
           ],
           "answer": 2
         },
         {
-          "q": "ساعت نه چه مشکلی پیش می‌آید؟",
+          "q": "What goes wrong at nine o'clock?",
           "options": [
-            "چای روی گزارشش می‌ریزد",
-            "کامپیوترش کار نمی‌کند",
-            "گزارشش را پیدا نمی‌کند",
-            "دیر به دفتر می‌رسد"
+            "Tea goes on his report",
+            "His computer does not work",
+            "He cannot find his report",
+            "He is late for work"
           ],
           "answer": 1
         },
         {
-          "q": "چه کسی به شهرام کمک می‌کند؟",
+          "q": "Who helps Shahram?",
           "options": [
-            "مدیر شرکت",
-            "یک کارمند جوان از اتاق کامپیوتر",
-            "همسرش",
-            "دوستش از دانشگاه"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "کامپیوتر چه ساعتی دوباره کار می‌کند؟",
-          "options": [
-            "یک ربع به ده",
-            "ساعت نه",
-            "ده و ربع",
-            "نه و نیم"
+            "A young worker from the computer room",
+            "The head of the company",
+            "His wife",
+            "His friend from university"
           ],
           "answer": 0
         },
         {
-          "q": "شهرام بعد از جلسه چه می‌کند؟",
+          "q": "When does the computer work again?",
           "options": [
-            "به خانه می‌رود",
-            "کامپیوتر تازه‌ای می‌خرد",
-            "گزارش دیگری می‌نویسد",
-            "برای آن کارمند جوان یک کیک بزرگ می‌خرد"
+            "At nine o'clock",
+            "At a quarter past ten",
+            "At half past nine",
+            "At a quarter to ten"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Shahram do after the meeting?",
+          "options": [
+            "He goes home",
+            "He buys a new computer",
+            "He writes another report",
+            "He buys a big cake for the young worker"
           ],
           "answer": 3
         }

@@ -59,52 +59,52 @@
   ],
   "questions": [
     {
-      "q": "آریا کی به خانه می‌دود؟",
+      "q": "When does Aria run into the house?",
       "options": [
-        "صبح",
-        "شب",
-        "بعدازظهر",
-        "موقع صبحانه"
+        "In the morning",
+        "At night",
+        "In the afternoon",
+        "At breakfast"
       ],
       "answer": 2
     },
     {
-      "q": "چه چیزی از میان گل‌ها بیرون آمد؟",
+      "q": "What came out of the flowers?",
       "options": [
-        "یک پرنده‌ی قرمز",
-        "نینو",
-        "یک کفش سیاه",
-        "یک گربه"
+        "A red bird",
+        "Nino",
+        "A black shoe",
+        "A yellow bird"
       ],
       "answer": 0
     },
     {
-      "q": "پرنده از کجا بیرون رفت؟",
+      "q": "Where did the bird go out?",
       "options": [
-        "از پنجره",
-        "از زیر درِ قدیمی حیاط",
-        "از روی دیوار",
-        "از در جلویی"
+        "Through the window",
+        "Under the old yard door",
+        "Through the front door",
+        "Behind the house"
       ],
       "answer": 1
     },
     {
-      "q": "بابا قبل از رفتن به حیاط چه می‌کند؟",
+      "q": "What does Dad do before he goes out to the yard?",
       "options": [
-        "چراغ را برمی‌دارد",
-        "به مینا زنگ می‌زند",
-        "در را می‌بندد",
-        "کتش را می‌پوشد"
+        "He takes a light",
+        "He calls Mina",
+        "He closes the door",
+        "He puts on his coat"
       ],
       "answer": 3
     },
     {
-      "q": "دست‌های چه کسی کثیف است؟",
+      "q": "___ has dirty hands.",
       "options": [
-        "آریا",
-        "بابا",
-        "مینا",
-        "مامان"
+        "Aria",
+        "Dad",
+        "Mina",
+        "Mom"
       ],
       "answer": 2
     }

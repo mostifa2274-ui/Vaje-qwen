@@ -26,14 +26,15 @@ function draft(test: BookTest, overrides: Partial<BookTestDraft> = {}): BookTest
   answers.translation = test.translation.map(() => 'پاسخ')
   answers.listeningWords = test.listeningWords.slice(0, 3).map(item => item.wordId)
   return {
-    version: 1,
+    version: 2,
     book: 1,
     attempt: test.attempt,
     signature: bookTestSignature(test),
     section: 'listeningWords',
+    textIndex: 0,
     answers,
     timings: { 'translation:0': 1200, 'listeningWords:1': 800 },
-    listeningHeard: false,
+    listeningHeard: test.listening.map(() => false),
     updatedAt: 1_000,
     ...overrides,
   }
@@ -65,7 +66,7 @@ describe('end-of-book test drafts', () => {
     expect(sanitizeBookTestDraft(incomplete, test, 1_000)).toBeUndefined()
 
     const ahead = draft(test)
-    ahead.answers.reading[0] = 1
+    ahead.answers.reading[0][0] = 1
     expect(sanitizeBookTestDraft(ahead, test, 1_000)).toBeUndefined()
 
     const unknownOption = draft(test)
@@ -78,13 +79,13 @@ describe('end-of-book test drafts', () => {
     const jumped = draft(test, { section: 'reading', jumped: true })
     jumped.answers.translation = []
     jumped.answers.listeningWords = []
-    jumped.answers.reading[0] = 1
+    jumped.answers.reading[0][0] = 1
     saveBookTestDraft(test, jumped, 1_000)
     expect(loadBookTestDraft(test, 2_000)).toEqual(jumped)
     expect(sanitizeBookTestDraft({ ...jumped, jumped: undefined }, test, 1_000)).toBeUndefined()
     // Listening answers still need the text to have been heard.
     const unheard = draft(test, { section: 'reading', jumped: true })
-    unheard.answers.listening[0] = 2
+    unheard.answers.listening[0][0] = 2
     expect(sanitizeBookTestDraft(unheard, test, 1_000)).toBeUndefined()
   })
 
@@ -92,10 +93,31 @@ describe('end-of-book test drafts', () => {
     const test = bookOneTest()
     const listening = draft(test, { section: 'listening' })
     listening.answers.listeningWords = test.listeningWords.map(() => '')
-    listening.answers.reading = test.reading.questions.map(() => 0)
-    listening.answers.listening[0] = 2
+    listening.answers.reading = test.reading.map(text => text.questions.map(() => 0))
+    listening.answers.listening[0][0] = 2
     expect(sanitizeBookTestDraft(listening, test, 1_000)).toBeUndefined()
-    expect(sanitizeBookTestDraft({ ...listening, listeningHeard: true }, test, 1_000)?.answers.listening[0]).toBe(2)
+    expect(sanitizeBookTestDraft({ ...listening, listeningHeard: [true] }, test, 1_000)?.answers.listening[0][0]).toBe(2)
+    // One flag per listening text.
+    expect(sanitizeBookTestDraft({ ...listening, listeningHeard: [true, true] }, test, 1_000)).toBeUndefined()
+  })
+
+  it('keeps the text position within a section and the texts before it answered', () => {
+    const state = emptyState(1, 'b1c1')
+    for (const chapter of CHAPTERS.filter(ch => ch.book <= 3)) for (const id of chapter.new) state.words[id] = blankWordProgress(1)
+    const test = buildBookTest(3, state, 1)!
+    expect(test.reading).toHaveLength(2)
+    const answers = emptyBookTestAnswers(test)
+    answers.translation = test.translation.map(() => 'پاسخ')
+    answers.listeningWords = test.listeningWords.map(() => '')
+    answers.reading[0] = test.reading[0].questions.map(() => 1)
+    const value: BookTestDraft = {
+      version: 2, book: 3, attempt: 1, signature: bookTestSignature(test), section: 'reading', textIndex: 1,
+      answers, timings: {}, listeningHeard: [false, false], updatedAt: 1_000,
+    }
+    expect(sanitizeBookTestDraft(value, test, 1_000)).toMatchObject({ textIndex: 1 })
+    expect(sanitizeBookTestDraft({ ...value, textIndex: 2 }, test, 1_000)).toBeUndefined()
+    const gap = { ...value, answers: { ...answers, reading: [test.reading[0].questions.map(() => null), answers.reading[1]] } }
+    expect(sanitizeBookTestDraft(gap, test, 1_000)).toBeUndefined()
   })
 
   it('drops malformed timings but keeps the rest', () => {

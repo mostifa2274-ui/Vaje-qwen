@@ -61,52 +61,52 @@
   ],
   "questions": [
     {
-      "q": "پرستار کجا کار می‌کند؟",
+      "q": "Where does the nurse work?",
       "options": [
-        "در تهران",
-        "در یک مدرسه",
-        "در بیمارستان کوچک شهرِ کنار دریا",
-        "در یک هتل"
+        "In the capital",
+        "At a school",
+        "At the small hospital in the town by the sea",
+        "At a hotel"
       ],
       "answer": 2
     },
     {
-      "q": "چه اتفاقی برای مرد افتاده است؟",
+      "q": "What happened to the man?",
       "options": [
-        "از درختی افتاده",
-        "در دریا شنا کرده",
-        "از کوه پایین آمده",
-        "مریض شده"
+        "He had a fall from a tree",
+        "He swam in the sea",
+        "He came down the mountain",
+        "He is sick"
       ],
       "answer": 0
     },
     {
-      "q": "مرد چه مدت باید آرام بماند؟",
+      "q": "How long must the man stay quiet?",
       "options": [
-        "یک روز",
-        "یک ماه",
-        "سه روز",
-        "یک هفته"
+        "A day",
+        "A month",
+        "Three days",
+        "A week"
       ],
       "answer": 3
     },
     {
-      "q": "پرستار از کجا جوجه را می‌شناسد؟",
+      "q": "How does the nurse know the chicken?",
       "options": [
-        "از رادیو",
-        "از روزنامه‌ای که خواهرش می‌فرستد",
-        "از اینترنت",
-        "از یک مجله"
+        "From the radio",
+        "From the newspaper her sister sends her",
+        "From the internet",
+        "From a magazine"
       ],
       "answer": 1
     },
     {
-      "q": "پرستار یادداشت دختر را کجا می‌زند؟",
+      "q": "Where does the nurse put the girl's note?",
       "options": [
-        "روی در خانه",
-        "روی دیوار کتابخانه",
-        "روی دیوار بیمارستان",
-        "روی درخت"
+        "On the door of her house",
+        "On the library wall",
+        "On the hospital wall",
+        "On a tree"
       ],
       "answer": 2
     }

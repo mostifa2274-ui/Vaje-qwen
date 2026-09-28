@@ -62,54 +62,54 @@
       ],
       "questions": [
         {
-          "q": "مهتاب از کدام عکس ندا خوشش می‌آید؟",
+          "q": "Mahtab loves Neda's picture of ___.",
           "options": [
-            "عکس خانوادهٔ ندا",
-            "عکس گربهٔ ندا",
-            "عکس باغچهٔ ندا",
-            "عکس آپارتمان تازهٔ ندا"
+            "her family",
+            "her cat",
+            "her garden",
+            "her new apartment"
           ],
           "answer": 3
         },
         {
-          "q": "چه تغییری در زندگی مهتاب پیش آمده است؟",
+          "q": "What is new in Mahtab's life?",
           "options": [
-            "کار تازه‌ای پیدا کرده است",
-            "یک گربه گرفته است",
-            "خانواده‌اش به شهر تازه‌ای رفته‌اند",
-            "به مدرسهٔ تازه‌ای رفته است"
+            "She has a new piano",
+            "She has a cat",
+            "Her family lives in a new city",
+            "She goes to a new school"
           ],
           "answer": 2
         },
         {
-          "q": "خانهٔ تازهٔ مهتاب چگونه است؟",
+          "q": "What is Mahtab's new house like?",
           "options": [
-            "بزرگ است و استخر دارد",
-            "در یک ساختمان بلند است",
-            "کوچک است، اما باغچهٔ زیبایی دارد",
-            "قدیمی و تاریک است"
+            "Small, but with a beautiful garden",
+            "Big, with a pool",
+            "In a tall building",
+            "Old and dark"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
-          "q": "الهام چه کاری می‌کند؟",
+          "q": "What does Elham do?",
           "options": [
-            "در یک کافه کار می‌کند",
-            "برای یک مجله داستان می‌نویسد",
-            "پیانو درس می‌دهد",
-            "برای روزنامه عکس می‌گیرد"
+            "She works in a cafe",
+            "She writes stories for a magazine",
+            "She plays the piano in a band",
+            "She takes photos for a newspaper"
           ],
           "answer": 1
         },
         {
-          "q": "مهتاب در پایان نامه از ندا چه می‌خواهد؟",
+          "q": "What does Mahtab ask Neda at the end of the letter?",
           "options": [
-            "زود برایش بنویسد و همهٔ خبرهایش را بگوید",
-            "به دیدنش بیاید",
-            "برایش عکس بفرستد",
-            "به او تلفن بزند"
+            "To visit her",
+            "To send her some photos",
+            "To call her",
+            "To write soon and tell her all her news"
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     },
@@ -180,52 +180,52 @@
       ],
       "questions": [
         {
-          "q": "کامران یکشنبه‌ها عصر چه می‌کند؟",
+          "q": "What does Kamran do on Sunday evenings?",
           "options": [
-            "تلویزیون تماشا می‌کند",
-            "به کافه می‌رود",
-            "با پدرش به رادیو گوش می‌دهد",
-            "برای مجله داستان می‌نویسد"
+            "He watches TV",
+            "He goes to a cafe",
+            "He listens to the radio with his dad",
+            "He writes stories for a magazine"
           ],
           "answer": 2
         },
         {
-          "q": "داستان این یکشنبه دربارهٔ چیست؟",
+          "q": "What is this Sunday's story about?",
           "options": [
-            "گربه‌ای در یک کافه",
-            "موش کوچکی در یک شهر بزرگ",
-            "دختری که نامه می‌نویسد",
-            "سگی در یک مزرعه"
+            "A cat in a cafe",
+            "A little mouse in a big city",
+            "A girl who writes letters",
+            "A dog on a farm"
           ],
           "answer": 1
         },
         {
-          "q": "صدایی که موش را می‌ترساند چه بود؟",
+          "q": "What sound makes the mouse afraid?",
           "options": [
-            "صدای یک گربه",
-            "صدای یک تلفن",
-            "صدای رادیو",
-            "صدای یک در"
+            "A cat",
+            "The radio",
+            "A door",
+            "A phone"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
-          "q": "چرا کامران خوشحال نیست؟",
+          "q": "Why is Kamran not happy?",
           "options": [
-            "چون می‌خواهد بیشتر از داستان بشنود",
-            "چون از موش می‌ترسد",
-            "چون رادیو خراب است",
-            "چون پدرش خوابیده است"
+            "He wants to hear more of the story",
+            "He is afraid of mice",
+            "The radio does not work",
+            "His dad is sleeping"
           ],
           "answer": 0
         },
         {
-          "q": "موشِ داستان کامران چه فرقی دارد؟",
+          "q": "How is the mouse in Kamran's story different?",
           "options": [
-            "در یک کتابخانه زندگی می‌کند",
-            "نامه می‌نویسد",
-            "به شهر دیگری می‌رود",
-            "نمی‌ترسد و با یک گربه دوست است"
+            "It lives in a big house",
+            "It writes letters",
+            "It goes to another city",
+            "It is not afraid, and it is friends with a cat"
           ],
           "answer": 3
         }
@@ -300,52 +300,52 @@
       ],
       "questions": [
         {
-          "q": "پیام از طرف چه کسی است؟",
+          "q": "Who is the message from?",
           "options": [
-            "مادر ساناز",
-            "دوست ساناز",
-            "پدر ساناز",
-            "خواهر ساناز"
+            "Sanaz's mom",
+            "Sanaz's friend",
+            "Sanaz's dad",
+            "Sanaz's sister"
           ],
           "answer": 2
         },
         {
-          "q": "پدر ساناز کجاست؟",
+          "q": "Where is Sanaz's dad?",
           "options": [
-            "سر کار",
-            "در بازار",
-            "در کافه",
-            "در خانه"
+            "At work",
+            "At the market",
+            "At a cafe",
+            "At home"
           ],
           "answer": 1
         },
         {
-          "q": "ساناز چه چیزهایی لازم دارد؟",
+          "q": "What does Sanaz need?",
           "options": [
-            "یک دفتر و یک مداد",
-            "یک خودکار و کمی کاغذ",
-            "یک کیک و شمع",
-            "یک دوربین"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "ساناز کاغذ را برای چه می‌خواهد؟",
-          "options": [
-            "برای کشیدن نقاشی برای مادرش",
-            "برای نوشتن نامه به دوستش",
-            "برای نوشتن پیام به پدرش",
-            "برای تکلیف مدرسه"
+            "A pen and some paper",
+            "A book and a pencil",
+            "A cake",
+            "A camera"
           ],
           "answer": 0
         },
         {
-          "q": "پدر عصر به جز خودکار و کاغذ چه می‌آورد؟",
+          "q": "Why does Sanaz want the paper?",
           "options": [
-            "یک دسته گل",
-            "یک عکس",
-            "یک کتاب",
-            "یک کیک زیبا"
+            "To write a letter to her friend",
+            "To write a message to her dad",
+            "For school",
+            "To draw a picture for her mom"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Dad bring home with the pen and paper?",
+          "options": [
+            "Some flowers",
+            "A photo",
+            "A book",
+            "A beautiful cake"
           ],
           "answer": 3
         }
@@ -410,54 +410,54 @@
       ],
       "questions": [
         {
-          "q": "احسان آخر هفته‌ها چه کار می‌کند؟",
+          "q": "What does Ehsan do every weekend?",
           "options": [
-            "برای روزنامه مقاله می‌نویسد",
-            "در پارک فوتبال بازی می‌کند",
-            "به رادیو گوش می‌دهد",
-            "با دوربین قدیمی‌اش عکس می‌گیرد"
+            "He writes for the newspaper",
+            "He plays football in the park",
+            "He listens to the radio",
+            "He takes photos with his old camera"
           ],
           "answer": 3
         },
         {
-          "q": "احسان در پارک از چه چیزی عکس می‌گیرد؟",
+          "q": "What does Ehsan take a picture of in the park?",
           "options": [
-            "یک گربهٔ سیاه زیر میز",
-            "خواهرش در پارک",
-            "یک پرندهٔ بزرگ سفید روی یک صندلی",
-            "یک سگ قهوه‌ای"
+            "A black cat under a table",
+            "His sister",
+            "A big white bird on a chair",
+            "A brown dog"
           ],
           "answer": 2
         },
         {
-          "q": "خواهر احسان چه پیشنهادی می‌دهد؟",
+          "q": "What is his sister's idea?",
           "options": [
-            "عکس را به دیوار بزند",
-            "دوربین تازه‌ای بخرد",
-            "عکس را برای روزنامه بفرستد",
-            "عکس را به مادرش بدهد"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "سه روز بعد چه کسی به احسان تلفن می‌زند؟",
-          "options": [
-            "خواهرش",
-            "زنی از روزنامه",
-            "دوستش",
-            "پدرش"
+            "Put the photo on the wall",
+            "Send the photo to the newspaper",
+            "Buy a new camera",
+            "Give the photo to Mom"
           ],
           "answer": 1
         },
         {
-          "q": "عکس احسان در کدام صفحهٔ روزنامه است؟",
+          "q": "Who calls Ehsan three days later?",
           "options": [
-            "صفحهٔ شش",
-            "صفحهٔ یک",
-            "صفحهٔ سه",
-            "صفحهٔ آخر"
+            "A woman from the newspaper",
+            "His sister",
+            "His friend",
+            "His dad"
           ],
           "answer": 0
+        },
+        {
+          "q": "On which page of the newspaper is his photo?",
+          "options": [
+            "Page one",
+            "Page three",
+            "Page six",
+            "The last page"
+          ],
+          "answer": 2
         }
       ]
     }

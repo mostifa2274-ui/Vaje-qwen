@@ -58,52 +58,52 @@
   ],
   "questions": [
     {
-      "q": "بابا نامه را برای چه کسی می‌نویسد؟",
+      "q": "Who does Dad write the letter to?",
       "options": [
-        "برای روزنامه‌ی شهر",
-        "برای رادیو",
-        "برای همسایه‌ها",
-        "برای مدرسه"
+        "The city newspaper",
+        "The radio",
+        "The neighbors",
+        "The school"
       ],
       "answer": 0
     },
     {
-      "q": "نینو کی فرار کرد؟",
+      "q": "When did Nino run away?",
       "options": [
-        "هفته‌ی پیش",
-        "دیروز",
-        "ماه پیش",
-        "سال پیش"
+        "Last week",
+        "Yesterday",
+        "Last month",
+        "Last year"
       ],
       "answer": 2
     },
     {
-      "q": "کدام توصیف در نامه آمده است؟",
+      "q": "What does the letter say about Nino?",
       "options": [
-        "بزرگ و سفید",
-        "کوچک و زرد با پاهای نارنجی",
-        "قهوه‌ای با پاهای زرد",
-        "سیاه با کمی سفیدی"
+        "Big and white",
+        "Small and yellow, with orange feet",
+        "Brown, with yellow feet",
+        "Black, with a little white"
       ],
       "answer": 1
     },
     {
-      "q": "بابا از روزنامه چه می‌خواهد؟",
+      "q": "What does Dad ask the newspaper to do?",
       "options": [
-        "پول",
-        "که یک مقاله درباره‌ی شهر بنویسد",
-        "که به خانه‌شان بیایند",
-        "که عکس نینو را چاپ کند"
+        "Give him money",
+        "Write about the city",
+        "Come to their house",
+        "Put Nino's picture in the newspaper"
       ],
       "answer": 3
     },
     {
-      "q": "مینا در نامه چه چیزی را بررسی می‌کند؟",
+      "q": "What does Mina check in the letter?",
       "options": [
-        "املای کلمه‌ها",
-        "آدرس روزنامه",
-        "عکس نینو",
-        "تاریخ"
+        "The spelling of every word",
+        "The newspaper's address",
+        "Nino's picture",
+        "The date"
       ],
       "answer": 0
     }

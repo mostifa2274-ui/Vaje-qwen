@@ -62,52 +62,52 @@
   ],
   "questions": [
     {
-      "q": "جوجه دنبال چه چیزی بود؟",
+      "q": "What was the chicken following?",
       "options": [
-        "یک گربه",
-        "یک پرنده‌ی قرمز",
-        "پیرزن",
-        "یک اتوبوس"
+        "A cat",
+        "A red bird",
+        "The old woman",
+        "A bus"
       ],
       "answer": 1
     },
     {
-      "q": "پسر در جوجه چه چیزی می‌بیند؟",
+      "q": "What does the boy see on the chicken?",
       "options": [
-        "پاهای نارنجی و کمی سفیدی در سمت چپ",
-        "یک حلقه‌ی آبی روی پایش",
-        "پرهای سیاه",
-        "یک یادداشت"
+        "Orange feet and a little white on its left",
+        "A blue band on its leg",
+        "A red head",
+        "A note"
       ],
       "answer": 0
     },
     {
-      "q": "پیرزن چه چیزی پیدا می‌کند؟",
+      "q": "What does the old woman find?",
       "options": [
-        "یک عکس",
-        "یک کارت",
-        "یادداشتی با آدرس",
-        "روزنامه"
+        "A photo",
+        "A card",
+        "The note with the address on it",
+        "A newspaper"
       ],
       "answer": 2
     },
     {
-      "q": "پنجشنبه که به آن آدرس می‌روند چه می‌شود؟",
+      "q": "What happens on Thursday at the address?",
       "options": [
-        "مینا در را باز می‌کند",
-        "خانواده آن‌ها را به خانه دعوت می‌کنند",
-        "جوجه فرار می‌کند",
-        "کسی خانه نیست"
+        "Mina opens the door",
+        "The family asks them in",
+        "The chicken runs away",
+        "Nobody is at home"
       ],
       "answer": 3
     },
     {
-      "q": "وقتی دختر جعبه را می‌بیند چه می‌گوید؟",
+      "q": "What does the girl say when she sees the box?",
       "options": [
-        "«ممنونم!»",
-        "«سلام!»",
-        "«نینو!»",
-        "«کجا بود؟»"
+        "Thank you!",
+        "Hello!",
+        "Nino!",
+        "Where was he?"
       ],
       "answer": 2
     }

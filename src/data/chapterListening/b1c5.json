@@ -63,52 +63,52 @@
   ],
   "questions": [
     {
-      "q": "مامان در آشپزخانه چه می‌نوشد؟",
+      "q": "What does Mom drink in the kitchen?",
       "options": [
-        "شیر",
-        "یک لیوان آب",
-        "چای",
-        "هیچ چیز"
+        "Milk",
+        "A glass of water",
+        "Nothing",
+        "Water from the garden"
       ],
       "answer": 1
     },
     {
-      "q": "کنار در جلویی چه چیزی هنوز روشن است؟",
+      "q": "What is still on by the front door?",
       "options": [
-        "تلویزیون",
-        "چراغ آشپزخانه",
-        "چراغ کوچک",
-        "چراغ اتاق مینا"
+        "The TV",
+        "The kitchen light",
+        "The little light",
+        "The light in Mina's room"
       ],
       "answer": 2
     },
     {
-      "q": "نان و آب هنوز آنجاست؛ این یعنی چه؟",
+      "q": "The water and the bread are still there. What does this tell us?",
       "options": [
-        "نینو برای شامش نیامد",
-        "نینو آن را خورد",
-        "بابا آن را برداشت",
-        "آریا آن را خورد"
+        "Nino did not come for his dinner",
+        "Nino is in the house now",
+        "Dad did not want his dinner",
+        "Aria is tired"
       ],
       "answer": 0
     },
     {
-      "q": "بابا کجاست؟",
+      "q": "Where is Dad?",
       "options": [
-        "در آشپزخانه",
-        "در حیاط",
-        "در اتاق مینا",
-        "در اتاق جلویی"
+        "In the kitchen",
+        "In the yard",
+        "In Mina's room",
+        "In the front room"
       ],
       "answer": 3
     },
     {
-      "q": "مامان کنار پنجره چه می‌گوید؟",
+      "q": "What does Mom say by the window?",
       "options": [
-        "«شب بخیر، مینا.»",
-        "«نترس، نینو. فردا پیدایت می‌کنیم.»",
-        "«فردا به باغچه می‌رویم.»",
-        "«باران خوب است.»"
+        "Good night, Mina.",
+        "Do not be afraid, Nino. We will find you tomorrow.",
+        "We will go to the garden tomorrow.",
+        "The rain is good."
       ],
       "answer": 1
     }

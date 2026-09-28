@@ -55,52 +55,52 @@
   ],
   "questions": [
     {
-      "q": "پیرمرد هر صبح چه سفارش می‌دهد؟",
+      "q": "What does the old man order every morning?",
       "options": [
-        "چای با لیمو",
-        "یک فنجان قهوه و یک کلوچه",
-        "آب پرتقال",
-        "بستنی"
+        "Tea with lemon",
+        "A cup of coffee and one cookie",
+        "Orange juice",
+        "Ice cream"
       ],
       "answer": 1
     },
     {
-      "q": "در بازار کلی چه حیوان‌هایی هست؟",
+      "q": "Which animals are there at the market?",
       "options": [
-        "سگ و اسب",
-        "پرنده و ماهی",
-        "گربه و مرغ و جوجه",
-        "گاو و بز"
+        "Dogs and birds",
+        "Birds and fish",
+        "Cats and chickens",
+        "Only dogs"
       ],
       "answer": 2
     },
     {
-      "q": "چرا مرغ و جوجه‌ها نانوایی را دوست دارند؟",
+      "q": "Why do the chickens like the bread shop?",
       "options": [
-        "چون آنجا گرم است",
-        "چون آنجا آرام است",
-        "چون آب دارد",
-        "چون درخت دارد"
+        "It is warm there",
+        "It is quiet there",
+        "There is water",
+        "There are trees"
       ],
       "answer": 0
     },
     {
-      "q": "دختر بزرگ‌تر چه در دست دارد؟",
+      "q": "What does the oldest girl have?",
       "options": [
-        "یک فنجان",
-        "یک نقشه",
-        "یک کلوچه",
-        "عکس یک جوجه‌ی زرد"
+        "A cup",
+        "A map",
+        "A cookie",
+        "A picture of a yellow chicken"
       ],
       "answer": 3
     },
     {
-      "q": "پیرمرد می‌گوید کی بیایند؟",
+      "q": "When does the old man tell them to come?",
       "options": [
-        "ظهر",
-        "زود، قبل از باز شدن مغازه‌ها",
-        "عصر",
-        "جمعه"
+        "At lunch",
+        "Early, before the shops open",
+        "In the evening",
+        "On Friday"
       ],
       "answer": 1
     }

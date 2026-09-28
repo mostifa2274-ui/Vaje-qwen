@@ -60,52 +60,52 @@
   ],
   "questions": [
     {
-      "q": "چه کسی آریا را از ماجرا باخبر می‌کند؟",
+      "q": "Aria hears ___ downstairs.",
       "options": [
-        "بابا",
-        "مامان",
-        "مینا",
-        "یاسی"
+        "Dad",
+        "Mom",
+        "Mina",
+        "Yasi"
       ],
       "answer": 2
     },
     {
-      "q": "آریا اول کجا را نگاه می‌کند؟",
+      "q": "Where does Aria look first?",
       "options": [
-        "حمام و پشت در آشپزخانه",
-        "زیر تخت‌ها",
-        "حیاط",
-        "باغچه"
+        "In the bathroom and behind the kitchen door",
+        "Under every bed",
+        "In the yard",
+        "In the garden"
       ],
       "answer": 0
     },
     {
-      "q": "آریا به یاسی چه می‌دهد؟",
+      "q": "What does Aria give Yasi?",
       "options": [
-        "آب",
-        "یک کفش",
-        "یک فنجان شیر",
-        "عکس نینو"
+        "Water",
+        "A shoe",
+        "A cup of milk",
+        "A photo of Nino"
       ],
       "answer": 2
     },
     {
-      "q": "چرا یاسی جواب نمی‌دهد؟",
+      "q": "Yasi does not answer. She is ___.",
       "options": [
-        "خواب است",
-        "نوزاد است",
-        "غمگین است",
-        "بیرون است"
+        "sleeping",
+        "only a baby",
+        "very sad",
+        "in the yard"
       ],
       "answer": 1
     },
     {
-      "q": "آریا شب چه صدایی می‌شنود؟",
+      "q": "What does Aria hear that night?",
       "options": [
-        "صدای نینو",
-        "صدای پرنده",
-        "صدای در",
-        "صدای باران"
+        "Nino",
+        "A bird",
+        "The door",
+        "The rain"
       ],
       "answer": 3
     }

@@ -59,54 +59,54 @@
   ],
   "questions": [
     {
-      "q": "نگار چه چیزی به خانه می‌آورد؟",
+      "q": "What does Negar bring home?",
       "options": [
-        "یک کتاب",
-        "یک یادداشت",
-        "یک نقشه",
-        "یک جوجه"
+        "A book",
+        "A note",
+        "A map",
+        "A chicken"
       ],
       "answer": 1
     },
     {
-      "q": "هر دانش‌آموز باید چه کند؟",
+      "q": "What must every student do?",
       "options": [
-        "یک شعر بنویسد",
-        "به رودخانه برود",
-        "یادداشت را نزدیک خانه‌اش بزند و از همسایه‌ها بپرسد",
-        "یک فرم را به معلم بدهد"
+        "Write a poem",
+        "Go to the river",
+        "Put the note near her house and ask the neighbors",
+        "Give a form to the teacher"
       ],
       "answer": 2
     },
     {
-      "q": "یادداشت چه چیزهایی دارد؟",
+      "q": "What is on the note?",
       "options": [
-        "یک عنوان و یک بند کوتاه",
-        "فقط یک عکس",
-        "یک نقشه‌ی بزرگ",
-        "یک نامه‌ی طولانی"
+        "A title and one short paragraph",
+        "Only a picture",
+        "A big map",
+        "A long letter"
       ],
       "answer": 0
     },
     {
-      "q": "خط روی نمودار به کجا می‌رسد؟",
+      "q": "Where does the line on the chart go?",
       "options": [
-        "به مدرسه",
-        "به بازار",
-        "به خانه‌ی نگار",
-        "به رودخانه"
+        "To the school",
+        "To the market",
+        "To Negar's house",
+        "To the river"
       ],
       "answer": 3
     },
     {
-      "q": "نگار درباره‌ی نینو چه می‌گوید؟",
+      "q": "What does Negar say about Nino?",
       "options": [
-        "که او حالا شاید آن‌قدر کوچک نباشد",
-        "که او در رودخانه است",
-        "که او را دیده",
-        "که او سفید شده"
+        "He is in the river",
+        "Maybe he is not so small now",
+        "She saw him",
+        "He is white now"
       ],
-      "answer": 0
+      "answer": 1
     }
   ]
 }

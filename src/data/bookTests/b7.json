@@ -64,52 +64,52 @@
       ],
       "questions": [
         {
-          "q": "خانوادهٔ گلناز در چه ماهی به سفر می‌روند؟",
+          "q": "In which month does Golnaz's family go on vacation?",
           "options": [
-            "ژوئن",
-            "اوت",
-            "آوریل",
-            "دسامبر"
+            "In June",
+            "In August",
+            "In April",
+            "In December"
           ],
           "answer": 1
         },
         {
-          "q": "سفر با قطار چقدر طول می‌کشد؟",
+          "q": "How long is the train trip?",
           "options": [
-            "هشت ساعت",
-            "سه ساعت",
-            "یک روز",
-            "دو ساعت"
+            "Eight hours",
+            "Three hours",
+            "A day",
+            "Two hours"
           ],
           "answer": 0
         },
         {
-          "q": "روز سوم هوا چگونه است؟",
+          "q": "What is the weather like on the third day?",
           "options": [
-            "تمام روز باران می‌بارد",
-            "آفتابی و گرم است",
-            "برف می‌بارد",
-            "باد شدیدی می‌وزد"
+            "It is warm",
+            "It snows",
+            "It rains all day",
+            "It is very cold"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
-          "q": "گلناز و برادرش با قایق به کجا می‌روند؟",
+          "q": "Where do Golnaz and her brother go by boat?",
           "options": [
-            "به شهری دیگر",
-            "به موزه",
-            "به کنار رودخانه",
-            "به جزیره‌ای کوچک"
+            "To another town",
+            "To the museum",
+            "To the river",
+            "To a small island"
           ],
           "answer": 3
         },
         {
-          "q": "گلناز روز آخر چه کار می‌کند؟",
+          "q": "What does Golnaz do on the last day?",
           "options": [
-            "یک کلاه تازه می‌خرد",
-            "تمام روز در هتل می‌خوابد",
-            "از دریا برای دیوار اتاقش عکس می‌گیرد",
-            "با قایق به جزیره می‌رود"
+            "She buys a new hat",
+            "She sleeps all day at the hotel",
+            "She takes a photo of the sea for her bedroom wall",
+            "She goes to the island by boat"
           ],
           "answer": 2
         }
@@ -174,52 +174,52 @@
       ],
       "questions": [
         {
-          "q": "ماجرا در چه ماهی اتفاق می‌افتد؟",
+          "q": "In which month does this happen?",
           "options": [
-            "دسامبر",
-            "ژوئیه",
-            "مه",
-            "سپتامبر"
+            "December",
+            "July",
+            "May",
+            "September"
           ],
           "answer": 0
         },
         {
-          "q": "چرا امروز مدرسه تعطیل است؟",
+          "q": "Why is there no school today?",
           "options": [
-            "چون جمعه است",
-            "چون معلم بیمار است",
-            "چون تابستان است",
-            "به خاطر برف"
+            "It is Friday",
+            "The teacher is not well",
+            "It is summer",
+            "Because of the snow"
           ],
           "answer": 3
         },
         {
-          "q": "آرش چه چیزهایی می‌پوشد؟",
+          "q": "What does Arash wear?",
           "options": [
-            "پیراهن و شلوار جین",
-            "ژاکت و کلاه قرمز",
-            "تی‌شرت و کفش ورزشی",
-            "کت گرم، چکمه و یک کلاه آبی"
+            "A shirt and jeans",
+            "His warm coat, his boots and a blue hat",
+            "A sweater and a red hat",
+            "A T-shirt and sports shoes"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
-          "q": "چرا بابا با ماشین سر کار نمی‌رود؟",
+          "q": "Why does Dad not drive to work?",
           "options": [
-            "چون ماشینش خراب است",
-            "چون پیاده‌روی را دوست دارد",
-            "چون برف زیادی روی جاده است",
-            "چون امروز کار ندارد"
+            "His car does not work",
+            "He likes walking",
+            "There is too much snow on the road",
+            "He has no work today"
           ],
           "answer": 2
         },
         {
-          "q": "بعدازظهر چه بر سر خانهٔ برفی می‌آید؟",
+          "q": "What happens to the snow house in the afternoon?",
           "options": [
-            "باد آن را خراب می‌کند",
-            "خورشید بیرون می‌آید و خانه فرو می‌ریزد",
-            "سگ همسایه خرابش می‌کند",
-            "بزرگ‌تر می‌شود"
+            "Arash breaks it",
+            "The sun comes out, and it falls down",
+            "The neighbor's dog runs into it",
+            "It gets very big"
           ],
           "answer": 1
         }
@@ -290,52 +290,52 @@
       ],
       "questions": [
         {
-          "q": "پرواز مهدی ساعت چند است؟",
+          "q": "When is Mehdi's flight?",
           "options": [
-            "شش صبح",
-            "چهار صبح",
-            "ده صبح",
-            "شش عصر"
+            "At six in the morning",
+            "At four in the morning",
+            "At ten in the morning",
+            "At six in the evening"
           ],
           "answer": 0
         },
         {
-          "q": "مهدی با چه وسیله‌ای به فرودگاه می‌رود؟",
+          "q": "How does Mehdi go to the airport?",
           "options": [
-            "اتوبوس",
-            "قطار",
-            "ماشین خودش",
-            "تاکسی"
+            "By bus",
+            "By train",
+            "In his own car",
+            "By taxi"
           ],
           "answer": 3
         },
         {
-          "q": "مهدی در فرودگاه چه چیزی را پیدا نمی‌کند؟",
+          "q": "What can Mehdi not find at the airport?",
           "options": [
-            "بلیتش",
-            "کیفش",
-            "تلفنش",
-            "گذرنامه‌اش"
+            "His ticket",
+            "His passport",
+            "His bag",
+            "His phone"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
-          "q": "گذرنامه کجا بود؟",
+          "q": "Where was the passport?",
           "options": [
-            "در خانه",
-            "در جیب کاپشنش",
-            "در تاکسی",
-            "در کیفش"
+            "At home",
+            "In his jacket",
+            "In the taxi",
+            "In his bag"
           ],
           "answer": 2
         },
         {
-          "q": "در پایان چه اتفاقی می‌افتد؟",
+          "q": "What happens at the end?",
           "options": [
-            "پروازش را از دست می‌دهد",
-            "درست به‌موقع سوار هواپیما می‌شود",
-            "با قطار سفر می‌کند",
-            "به خانه برمی‌گردد"
+            "He misses his flight",
+            "He gets on his plane just in time",
+            "He travels by train",
+            "He goes back home"
           ],
           "answer": 1
         }
@@ -404,52 +404,52 @@
       ],
       "questions": [
         {
-          "q": "لاله کجا کار می‌کند؟",
+          "q": "Where does Laleh work?",
           "options": [
-            "در یک موزه",
-            "در یک کتابخانهٔ کوچک",
-            "در یک هتل",
-            "در یک بانک"
+            "At a museum",
+            "At a small library",
+            "At a hotel",
+            "At a bank"
           ],
           "answer": 1
         },
         {
-          "q": "جهانگرد دنبال چه جایی است؟",
+          "q": "What place is the tourist looking for?",
           "options": [
-            "موزهٔ قدیمی",
-            "کتابخانه",
-            "ایستگاه قطار",
-            "یک هتل ارزان"
+            "The old museum",
+            "The library",
+            "The train station",
+            "A cheap hotel"
           ],
           "answer": 0
         },
         {
-          "q": "به گفتهٔ لاله، موزه کجاست؟",
+          "q": "Laleh says the museum is ___.",
           "options": [
-            "پشت هتل بزرگ",
-            "کنار رودخانه",
-            "روبه‌روی کتابخانه",
-            "کنار بانک"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "چرا جهانگرد به کتابخانه برمی‌گردد؟",
-          "options": [
-            "چون راه را پیدا نمی‌کند",
-            "چون نقشه‌اش را جا گذاشته است",
-            "چون می‌خواهد کتاب بخرد",
-            "چون موزه دوشنبه‌ها تعطیل است"
+            "next to the river",
+            "opposite the library",
+            "next to the bank",
+            "behind the big hotel"
           ],
           "answer": 3
         },
         {
-          "q": "جهانگرد در کتابخانه چه می‌کند؟",
+          "q": "Why does the tourist come back to the library?",
           "options": [
-            "کتاب می‌خواند",
-            "با لاله چای می‌نوشد",
-            "تا عصر عکس‌های قدیمی شهر را نگاه می‌کند",
-            "نقشهٔ تازه‌ای می‌کشد"
+            "He cannot find the way",
+            "He forgets his map",
+            "The museum is closed on Mondays",
+            "He wants to buy a book"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does the tourist do in the library?",
+          "options": [
+            "He reads a book",
+            "He drinks tea with Laleh",
+            "He looks at old photos of the town until evening",
+            "He draws a new map"
           ],
           "answer": 2
         }

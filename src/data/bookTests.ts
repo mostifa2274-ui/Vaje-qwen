@@ -1,7 +1,9 @@
-// Comprehension texts for the end-of-book tests. Each book has two reading
-// and two listening texts (variants A and B, used on alternate attempts).
-// They are new stories, not chapter text, written only with vocabulary
-// taught up to that book; bookTests.test.ts enforces this word by word.
+// Comprehension texts for the end-of-book tests. A test after book N uses
+// ceil(N/2) reading and as many listening texts (engine/bookTestSize.ts);
+// each book stores two such sets, used on alternate attempts, so book N has
+// 2 × ceil(N/2) texts of each skill. They are new stories, not chapter text,
+// written only with vocabulary taught up to that book; bookTests.test.ts
+// enforces this word by word, questions and options included.
 
 export interface TestSentence {
   en: string
@@ -26,8 +28,8 @@ export interface TestText {
 
 export interface BookTestContent {
   book: number
-  reading: [TestText, TestText]
-  listening: [TestText, TestText]
+  reading: TestText[]
+  listening: TestText[]
 }
 
 const modules = import.meta.glob('./bookTests/*.json', { eager: true })
