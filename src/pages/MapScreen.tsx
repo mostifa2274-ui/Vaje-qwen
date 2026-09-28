@@ -96,7 +96,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
           : 'مسیر کامل شده'
 
   return (
-    <div className="page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+    <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
       <header className="flex items-center justify-between gap-3">
         <div>
           <h1 className="text-3xl font-extrabold">قصه</h1>
