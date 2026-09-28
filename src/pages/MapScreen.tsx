@@ -163,9 +163,22 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
           const bHealth = bookHealth(state, meta.book, now)
           const bookExam = bookExamId(meta.book)
 
+          if (!bookAvailable) {
+            return (
+              <section key={meta.book} className="future-book-row" aria-label={`کتاب ${faNum(meta.book)}: ${meta.titleFa} — قفل`}>
+                <span className="future-book-lock" aria-hidden="true"><LockIcon className="h-4 w-4" /></span>
+                <div className="min-w-0 flex-1">
+                  <h2 className="font-extrabold">کتاب {faNum(meta.book)}: {meta.titleFa}</h2>
+                  <p className="mt-0.5 text-xs" style={{ color: 'var(--ink-soft)' }}>{meta.taglineFa}</p>
+                </div>
+                <span className="text-xs" style={{ color: 'var(--ink-soft)' }}>بعداً</span>
+              </section>
+            )
+          }
+
           return (
             <div key={meta.book}>
-              <section className={`book-section p-4 sm:p-5 ${!bookAvailable ? 'is-locked' : ''}`} style={{ background: meta.tint }}>
+              <section className="book-section p-4 sm:p-5">
                 <div className="book-banner">
                   <img
                     src={meta.cover}
