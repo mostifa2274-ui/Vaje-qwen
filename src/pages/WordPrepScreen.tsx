@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { BOOKS, CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
+import { CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
 import { listeningChoiceOptions } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
@@ -30,7 +30,6 @@ const PREP_STEPS: { label: string; target: PrepPhase | 'story' }[] = [
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
-  const meta = BOOKS.find(book => book.book === chapter.book)!
   const alreadyPrepared = chapterPrepared(state, chapterId)
   // Opened through explore mode before the learner reached it: the lessons
   // and tests work as practice, but passing them records nothing.
