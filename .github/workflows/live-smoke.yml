@@ -56,6 +56,7 @@ jobs:
         run: |
           set -euo pipefail
           last_compact=''
+          last_worker_cache='not fetched'
 
           echo "Verifying source revision: $SOURCE_SHA"
           echo "Production worker: $PRODUCTION_URL"
@@ -72,20 +73,28 @@ jobs:
 
             if printf '%s' "$body" | jq -e --arg commit "$SOURCE_SHA" \
               '.release == "ghesse-5.0.0" and .worker == "vaje-qwen1" and .commit == $commit and .branch == "main"' >/dev/null; then
-              echo "Verified exact Ghesse 5.0 revision $SOURCE_SHA at $PRODUCTION_URL/release.json"
-              curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null
-              worker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/sw.js?fresh=$(date +%s)")"
-              printf '%s' "$worker" | grep -F "ghesse-shell-${SOURCE_SHA:0:16}" >/dev/null
-              echo "Production root is reachable."
-              {
-                echo "## Production verification"
-                echo ""
-                echo "- Exact revision verified: $SOURCE_SHA"
-                echo "- Worker: vaje-qwen1"
-                echo "- Root reachable: yes"
-                echo "- Service-worker cache matches revision: yes"
-              } >> "$GITHUB_STEP_SUMMARY"
-              exit 0
+              # Cloudflare can expose release.json before the root or worker
+              # has propagated. Retry the whole probe within the same window.
+              if curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null \
+                && worker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/sw.js?fresh=$(date +%s)")"; then
+                last_worker_cache="$(printf '%s' "$worker" | grep -Eo 'ghesse-shell-[a-zA-Z0-9_-]+' | head -n 1 || true)"
+                if [[ "$worker" == *"ghesse-shell-${SOURCE_SHA:0:16}"* ]]; then
+                  echo "Verified exact release and service-worker revision $SOURCE_SHA; production root is reachable."
+                  {
+                    echo "## Production verification"
+                    echo ""
+                    echo "- Exact revision verified: $SOURCE_SHA"
+                    echo "- Worker: vaje-qwen1"
+                    echo "- Root reachable: yes"
+                    echo "- Service-worker cache matches revision: yes"
+                  } >> "$GITHUB_STEP_SUMMARY"
+                  exit 0
+                fi
+                echo "Waiting for service-worker revision; observed cache: ${last_worker_cache:-<missing>}"
+              else
+                last_worker_cache='root or service-worker request failed'
+                echo "Waiting for production root and service worker to become reachable."
+              fi
             fi
 
             if [ "$attempt" -lt 6 ]; then sleep 5; fi
@@ -97,6 +106,7 @@ jobs:
             echo "- Expected revision: $SOURCE_SHA"
             echo "- Worker: vaje-qwen1"
             echo "- Last marker: ${last_compact:-<empty>}"
+            echo "- Last service-worker cache: ${last_worker_cache:-<missing>}"
           } >> "$GITHUB_STEP_SUMMARY"
-          echo "::error::Cloudflare production did not expose commit $SOURCE_SHA on worker vaje-qwen1 within the smoke window. Last observed marker: ${last_compact:-<empty>}"
+          echo "::error::Production release, root and service worker did not converge on commit $SOURCE_SHA within the smoke window. Last marker: ${last_compact:-<empty>}. Last service-worker cache: ${last_worker_cache:-<missing>}"
           exit 1
