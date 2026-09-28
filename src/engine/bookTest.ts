@@ -6,6 +6,7 @@ import { listeningChoiceOptions, recordRetrieval, seededSample, selectWeakestWor
 import { isHeadwordTranslationCorrect } from './persianTranslation'
 import { sameHeadwordEntries } from './homophones'
 import { bookTestTextsPerSkill, bookTestWordCount, bookTestWordsFrom, bookWordIds } from './bookTestSize'
+import policy from '../data/learningPolicy.json'
 
 // The end-of-book test. After book N the learner proves four things, each
 // scored on its own so a strength in one cannot hide a gap in another:
@@ -27,7 +28,7 @@ import { bookTestTextsPerSkill, bookTestWordCount, bookTestWordsFrom, bookWordId
 
 // Each section must independently demonstrate solid recall. Missed vocabulary
 // still enters remediation and blocks the next gate until independently recalled.
-export const BOOK_TEST_PASS_RATE = 0.8
+export const BOOK_TEST_PASS_RATE = policy.bookTest.sectionPassRate
 
 export type BookTestSection = 'translation' | 'listeningWords' | 'reading' | 'listening'
 export const BOOK_TEST_SECTIONS: readonly BookTestSection[] = ['translation', 'listeningWords', 'reading', 'listening']
