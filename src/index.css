@@ -913,6 +913,7 @@ button:disabled {
   overflow: hidden;
   border: 1px solid var(--line-soft);
   border-radius: 16px;
+  background: var(--cream-soft);
 }
 /* Illustrated banner heading each book; bleeds to the section edges. */
 .book-banner {
