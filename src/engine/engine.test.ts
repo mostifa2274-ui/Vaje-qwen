@@ -384,8 +384,9 @@ describe('review and exam generation', () => {
       const nonTyped = exam.questions.find(question => !['productive', 'contextProductive', 'spelling', 'cloze'].includes(question.mode))!
       expect(scoreExam(exam, { ...allCorrect, [nonTyped.index]: false }, rightTexts).passed).toBe(true)
 
+      const comprehensionTotal = [...exam.reading, ...exam.listening].reduce((sum, text) => sum + text.questions.length, 0)
       const tooManyWrong = { ...allCorrect }
-      const failCount = Math.floor(exam.questions.length * (1 - exam.definition.passRate)) + 1
+      const failCount = Math.floor((exam.questions.length + comprehensionTotal) * (1 - exam.definition.passRate)) + 1
       for (const question of exam.questions.slice(0, failCount)) tooManyWrong[question.index] = false
       expect(scoreExam(exam, tooManyWrong, rightTexts).passed).toBe(false)
 
@@ -395,7 +396,6 @@ describe('review and exam generation', () => {
       }
       expect(scoreExam(exam, allCorrect, oneWrongText).passed).toBe(true)
 
-      const comprehensionTotal = [...exam.reading, ...exam.listening].reduce((sum, text) => sum + text.questions.length, 0)
       const comprehensionFails = Math.floor(comprehensionTotal * (1 - exam.definition.passRate)) + 1
       let remaining = comprehensionFails
       const wrongTexts = {
