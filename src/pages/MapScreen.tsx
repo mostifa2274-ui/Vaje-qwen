@@ -1,7 +1,6 @@
 import { bookTestTextsPerSkill, bookTestWordCount } from '../engine/bookTestSize'
-import type { GhesseState, SkillDimension } from '../engine/types'
+import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
-import { chapterMastery } from '../engine/mastery'
 import { learningHealth, bookHealth, certificationStatus, nextBestAction } from '../engine/analytics'
 import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
 import {
@@ -29,13 +28,6 @@ interface Props {
   onOpenReview: () => void
   onOpenGlossary: () => void
   onOpenSettings: () => void
-}
-
-const SKILL_LABELS: Record<SkillDimension, string> = {
-  meaning: 'معنی',
-  context: 'بافت',
-  production: 'تولید',
-  form: 'املاء',
 }
 
 function ExamGate({
@@ -138,51 +130,10 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
         {action.kind === 'complete' && <BadgeCheckIcon className="h-8 w-8 shrink-0" role="img" aria-hidden={false} aria-label="مسیر کامل شده" />}
       </section>
 
-      <section className="journey-overview mt-4">
-        <div className="journey-overview-head">
-          <div>
-            <h2 className="text-xl font-extrabold">مسیر یادگیری</h2>
-            <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-              از آموزش و بازیابی فعال تا مرور فاصله‌دار و تسلط پایدار
-            </p>
-          </div>
-          <div className="journey-chapter-count">
-            <b>{faNum(doneCount)}</b>
-            <span>از ۴۰ فصل</span>
-          </div>
-        </div>
-
-        <div className="journey-metrics mt-4 grid grid-cols-3 gap-2 text-center">
-          <div className="metric-card"><b>{faNum(health.dueNow)}</b><span>سررسید مرور</span></div>
-          <div className="metric-card"><b>{faNum(health.trouble)}</b><span>نیازمند تمرین</span></div>
-          <div className="metric-card"><b>{faNum(health.mastered)}</b><span>مسلط</span></div>
-        </div>
-
-        <div className="mt-4">
-          <div className="flex items-center justify-between text-xs font-bold">
-            <span>پوشش قوی یا مسلط</span><span>{percent(health.durableCoverage)}</span>
-          </div>
-          <div className="mastery-progress mt-2"><span style={{ width: `${health.durableCoverage * 100}%` }} /></div>
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs" style={{ color: 'var(--ink-soft)' }}>
-            <span>یادآوری نوشتاری: {percent(health.productiveCoverage)}</span>
-            <span>تسلط پایدار: {percent(health.masteredCoverage)}</span>
-          </div>
-        </div>
-
-        <div className="journey-skills mt-4">
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold">
-            <span>مهارت‌های واژگان دیده‌شده</span>
-            <span>{percent(health.fullSkillCoverage)} پوشش چهارمهارتی</span>
-          </div>
-          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {(Object.keys(SKILL_LABELS) as SkillDimension[]).map(dimension => (
-              <div key={dimension} className="skill-result">
-                <div className="flex items-center justify-between gap-2 text-xs"><span>{SKILL_LABELS[dimension]}</span><b>{percent(health.skillAccuracy[dimension])}</b></div>
-                <div className="skill-bar mt-1.5"><span style={{ width: `${health.skillAccuracy[dimension] * 100}%` }} /></div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
+        <div><b>{faNum(doneCount)}</b><span>فصل تمام‌شده</span></div>
+        <div><b>{faNum(health.dueNow)}</b><span>مرور سررسید</span></div>
+        <div><b>{faNum(health.mastered)}</b><span>واژهٔ مسلط</span></div>
       </section>
 
       <button type="button" className={`review-hero mt-4 w-full ${health.dueNow ? 'due' : ''}`} onClick={onOpenReview}>
@@ -198,15 +149,17 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
         <span className="review-badge">{health.dueNow ? faNum(health.dueNow) : health.trouble ? faNum(health.trouble) : 'تمرین'}</span>
       </button>
 
-      <div className="paper-note mt-4">
-        هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. آزمون پایان کتاب در هر بخش حداقل {percent(examDefinition(bookExamId(1))!.passRate)} می‌خواهد؛ آزمون نیمهٔ مسیر {percent(examDefinition(MIDPOINT_EXAM_ID)!.passRate)} کل و {percent(examDefinition(MIDPOINT_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری، و آزمون نهایی {percent(examDefinition(FINAL_EXAM_ID)!.passRate)} کل و {percent(examDefinition(FINAL_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری می‌خواهد. واژه‌های از‌دست‌رفته همیشه پیش از ادامه جبران می‌شوند.
-      </div>
+      <details className="method-details mt-4">
+        <summary>روش یادگیری و معیارهای عبور</summary>
+        <p>
+          هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. آزمون پایان کتاب در هر بخش حداقل {percent(examDefinition(bookExamId(1))!.passRate)} می‌خواهد؛ آزمون نیمهٔ مسیر {percent(examDefinition(MIDPOINT_EXAM_ID)!.passRate)} کل و {percent(examDefinition(MIDPOINT_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری، و آزمون نهایی {percent(examDefinition(FINAL_EXAM_ID)!.passRate)} کل و {percent(examDefinition(FINAL_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری می‌خواهد. واژه‌های از‌دست‌رفته همیشه پیش از ادامه جبران می‌شوند.
+        </p>
+      </details>
 
       <div className="mt-6 space-y-6">
         {BOOKS.map(meta => {
           const chapters = chaptersOfBook(meta.book)
           const bookAvailable = chapters.some(ch => canOpenChapter(state, ch.id) || state.chapters[ch.id]?.completed)
-          const mastery = chapters.reduce((sum, ch) => sum + chapterMastery(ch, state), 0) / chapters.length
           const bHealth = bookHealth(state, meta.book, now)
           const bookExam = bookExamId(meta.book)
 
@@ -227,12 +180,9 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                 <div className="flex items-center gap-3">
                   <div className="min-w-0 flex-1">
                     <h2 className="text-xl font-extrabold">کتاب {faNum(meta.book)}: {meta.titleFa}</h2>
-                    <p className="text-xs" style={{ color: 'var(--ink-soft)' }}>{meta.taglineFa}</p>
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      <span className="mastery-chip">{faNum(bHealth.words)} واژه</span>
-                      {bHealth.due > 0 && <span className="mastery-chip">{faNum(bHealth.due)} سررسید</span>}
-                      {bHealth.trouble > 0 && <span className="mastery-chip">{faNum(bHealth.trouble)} سخت</span>}
-                    </div>
+                    <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>
+                      {meta.taglineFa} · {faNum(bHealth.words)} واژه
+                    </p>
                   </div>
                   {examCleared(state, bookExam) && <span className="book-status-icon" role="img" title="آزمون پایان کتاب پاس و جبران کامل شده" aria-label="آزمون پایان کتاب پاس و جبران کامل شده"><BadgeCheckIcon className="h-6 w-6" /></span>}
                 </div>
@@ -273,10 +223,10 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                 </div>
 
                 {bookAvailable && (
-                  <div className="mt-3">
+                  <div className="book-progress mt-3">
                     <div className="flex items-center justify-between text-[11px]" style={{ color: 'var(--ink-soft)' }}>
-                      <span>توان واژگانی این کتاب</span>
-                      <span>{percent(bHealth.durableCoverage)} قوی/مسلط · {percent(mastery)} امتیاز وزنی</span>
+                      <span>پیشرفت واژگان</span>
+                      <span>{percent(bHealth.durableCoverage)}</span>
                     </div>
                     <div className="mastery-progress mt-1.5"><span style={{ width: `${bHealth.durableCoverage * 100}%`, background: 'var(--gold)' }} /></div>
                   </div>
