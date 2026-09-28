@@ -914,6 +914,27 @@ button:disabled {
   overflow: hidden;
   border: 1px solid var(--line-soft);
   border-radius: 16px;
+  background: var(--cream-soft);
+}
+
+.future-book-row {
+  display: flex;
+  min-height: 4.5rem;
+  align-items: center;
+  gap: .75rem;
+  border-bottom: 1px solid var(--line-soft);
+  padding: .85rem .15rem;
+}
+.future-book-lock {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.26);
+  color: var(--ink-soft);
 }
 /* Illustrated banner heading each book; bleeds to the section edges. */
 .book-banner {
@@ -943,12 +964,6 @@ button:disabled {
     height: 10rem;
     margin: -1.25rem -1.25rem 1.1rem;
   }
-}
-.book-section.is-locked .book-banner {
-  /* Keep the locked visual treatment on imagery only. Dimming the whole
-     section also dimmed small instructional text below WCAG AA contrast. */
-  filter: saturate(.55);
-  opacity: .72;
 }
 .book-status-icon {
   display: inline-flex;
