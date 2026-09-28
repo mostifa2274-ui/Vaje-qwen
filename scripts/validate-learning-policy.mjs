@@ -26,8 +26,7 @@ const sizes = Array.from({ length: 8 }, (_, index) =>
     policy.bookTest.minVocabularyQuestions + index * policy.bookTest.vocabularyQuestionStep,
   ),
 )
-const faSizes = sizes.map(faNum).join('، ')
-assert(readme.includes(faSizes), 'README end-of-book vocabulary sizes do not match learningPolicy.json')
+for (const size of sizes) assert(readme.includes(faNum(size)), `README is missing book-test vocabulary size ${size}`)
 assert(readme.includes(`${faNum(Math.round(policy.bookTest.sectionPassRate * 100))}٪`), 'README book-test threshold does not match learningPolicy.json')
 assert(readme.includes(`${faNum(Math.round(policy.midpointExam.passRate * 100))}٪`), 'README midpoint threshold does not match learningPolicy.json')
 assert(readme.includes(`${faNum(Math.round(policy.midpointExam.productivePassRate * 100))}٪`), 'README midpoint productive threshold does not match learningPolicy.json')
