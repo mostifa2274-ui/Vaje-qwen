@@ -288,7 +288,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                     title={examDefinition(bookExam)!.titleFa}
                     state={state}
                     onOpen={onOpenExam}
-                    lockedHint={`پس از پایان هر ${faNum(chapters.length)} فصل این کتاب باز می‌شود: ترجمه و شنیدن ${faNum(bookTestWordCount(meta.book))} واژه، یعنی نیمی از واژه‌های ${meta.book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(meta.book)}`}، و ${faNum(bookTestTextsPerSkill(meta.book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(meta.book))} متن شنیداری.`}
+                    lockedHint={`پس از پایان هر ${faNum(chapters.length)} فصل این کتاب باز می‌شود: ترجمه و شنیدن ${faNum(bookTestWordCount(meta.book))} واژهٔ نمونه از ${meta.book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(meta.book)}`} با سهم بیشتر برای کتاب تازه، و ${faNum(bookTestTextsPerSkill(meta.book))} متن خواندنی و ${faNum(bookTestTextsPerSkill(meta.book))} متن شنیداری.`}
                   />
                 </div>
               </section>
