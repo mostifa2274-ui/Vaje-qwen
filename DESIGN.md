@@ -23,6 +23,15 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - Depth uses `--shadow-soft` / `--shadow-control`
 - Never add hard offset shadows unless the entire visual world is intentionally redesigned around them
 - Use proximity and spacing before adding another container
+- One task may have one primary bounded surface; secondary information should normally use spacing or separators, not another card
+- Never nest a decorative card inside another card
+
+## Distilled hierarchy
+- Home has one dominant next action, one compact three-value progress summary and one direct review row. Detailed skill analytics belong in review/results, not on the journey map.
+- Long explanations and assessment policy are progressive disclosure, not permanently visible callouts.
+- Book artwork on the journey map supports navigation and stays compact; the chapter reader is where artwork may take visual priority.
+- Settings is one continuous separated list, not a stack of independent cards.
+- Success, warning and error containers are reserved for real state/feedback. Ordinary guidance remains plain text.
 
 ## Typography
 - Persian UI: resilient Persian-capable system sans stack

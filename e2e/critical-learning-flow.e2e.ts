@@ -377,6 +377,18 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
   await expect(page).toHaveURL(/#\/map$/)
 })
 
+test('journey home keeps a compact hierarchy without the old dashboard layer', async ({ page }) => {
+  await page.goto('/#/map')
+
+  await expect(page.locator('.home-summary > div')).toHaveCount(3)
+  await expect(page.locator('.journey-overview')).toHaveCount(0)
+  await expect(page.locator('.method-details')).not.toHaveAttribute('open', '')
+
+  const firstBannerHeight = await page.locator('.book-banner').first().evaluate(element => element.getBoundingClientRect().height)
+  expect(firstBannerHeight).toBeLessThanOrEqual(170)
+  await expectNoHorizontalOverflow(page)
+})
+
 test('auto teach speaks word and context before advancing, then pauses on demand', async ({ page }) => {
   await page.goto('/#/prep/b1c1')
 

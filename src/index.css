@@ -72,7 +72,7 @@ body {
   background-color: var(--paper);
   color: var(--ink);
   /* hand-drawn paper noise */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -82,17 +82,16 @@ body {
 
 /* ---------- Paper card ---------- */
 .paper-card {
-  background: color-mix(in srgb, var(--cream) 94%, white);
-  border: 1px solid var(--line-medium);
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
   position: relative;
+  background: var(--cream-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
 }
 
 .paper-card-flat {
-  background: var(--cream-soft);
-  border: 1px solid var(--line-medium);
-  border-radius: 16px;
+  background: transparent;
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
 }
 
 /* dashed sketchbook path line */
@@ -254,12 +253,6 @@ body {
 .story-reading {
   direction: rtl;
 }
-.story-reading-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-}
 .story-paragraph {
   padding-block: .15rem;
 }
@@ -285,7 +278,7 @@ body {
   display: flex;
   flex: 0 0 auto;
   flex-direction: column;
-  gap: .28rem;
+  gap: .4rem;
   padding-top: .15rem;
 }
 .story-action {
@@ -310,7 +303,8 @@ body {
 }
 .story-action-fa {
   font-family: Arial, sans-serif;
-  font-size: .63rem;
+  font-size: .7rem;
+  letter-spacing: .02em;
 }
 .story-en {
   margin: 0;
@@ -330,9 +324,10 @@ body {
 
 .lesson-cover-card {
   position: relative;
-  border: 1px solid var(--line-medium);
-  border-radius: 18px;
-  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: var(--cream-soft);
 }
 .lesson-cover-image,
 .lesson-chapter-art {
@@ -370,18 +365,15 @@ body {
   padding: .8rem .9rem;
 }
 .reading-guidance {
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  background: rgba(255,255,255,.34);
-  padding: .8rem .9rem;
+  padding-block: .3rem;
+  color: var(--ink-soft);
   font-size: .84rem;
   line-height: 1.9;
 }
 .question-context {
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  background: rgba(255,255,255,.42);
-  padding: .85rem;
+  border-block: 1px solid var(--line-soft);
+  background: transparent;
+  padding: .75rem 0;
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -456,13 +448,20 @@ button:disabled {
 }
 
 .paper-note {
-  background: #fff8dc;
-  border: 1px solid color-mix(in srgb, var(--gold) 45%, var(--ink));
-  border-radius: 12px;
-  padding: 12px 14px;
-  color: var(--ink);
-  font-size: 0.875rem;
+  border-top: 1px solid var(--line-soft);
+  padding: .75rem 0 0;
+  color: var(--ink-soft);
+  font-size: .84rem;
   line-height: 1.9;
+}
+
+.paper-note[role="alert"],
+.paper-note[role="group"] {
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--gold) 9%, var(--cream-soft));
+  padding: .75rem;
+  color: var(--ink);
 }
 
 .storage-warning {
@@ -491,17 +490,17 @@ button:disabled {
   }
 }
 
-/* ---------- Mastery journey 2.0 ---------- */
+/* ---------- Learning status ---------- */
 .mastery-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--line-medium);
+  border: 0;
   border-radius: 999px;
-  background: rgba(255,255,255,.38);
-  padding: 0.3rem 0.62rem;
-  font-size: 0.72rem;
-  font-weight: 800;
+  background: rgba(255,255,255,.3);
+  padding: .22rem .5rem;
+  font-size: .7rem;
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -547,10 +546,7 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  background: rgba(255,255,255,.34);
-  padding: 0.65rem 0.4rem;
+  padding: .45rem .3rem;
 }
 .metric-card b {
   font-size: 1.12rem;
@@ -568,15 +564,13 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
   gap: .75rem;
-  border: 1px solid var(--line-medium);
-  border-radius: 15px;
-  background: color-mix(in srgb, var(--cream) 95%, white);
-  box-shadow: var(--shadow-control);
-  padding: 0.9rem 1rem;
+  border-block: 1px solid var(--line-soft);
+  background: transparent;
+  padding: .85rem 0;
   text-align: right;
 }
 .review-hero.due {
-  background: #fff7dc;
+  background: transparent;
 }
 .review-hero-icon {
   display: inline-flex;
@@ -595,29 +589,26 @@ button:disabled {
   min-height: 2.5rem;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--crimson-deep);
+  border: 0;
   border-radius: 999px;
-  background: var(--crimson);
-  color: white;
-  padding-inline: 0.55rem;
-  font-size: 0.76rem;
+  background: color-mix(in srgb, var(--crimson) 12%, transparent);
+  color: var(--crimson-deep);
+  padding-inline: .55rem;
+  font-size: .76rem;
   font-weight: 800;
 }
 
 .exam-gate {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  border: 1px solid var(--line-medium);
-  border-radius: 13px;
-  background: rgba(255,255,255,.32);
-  padding: 0.75rem;
+  gap: .75rem;
+  border-top: 1px solid var(--line-soft);
+  background: transparent;
+  padding: .8rem 0 0;
 }
-.exam-gate.special {
-  background: #fff7dc;
-}
+.exam-gate.special,
 .exam-gate.passed {
-  background: #e9f0e4;
+  background: transparent;
 }
 .exam-gate-icon {
   display: inline-flex;
@@ -687,15 +678,14 @@ button:disabled {
   outline-offset: 2px;
 }
 
-/* ---------- Mastery journey 3.0 ---------- */
+/* ---------- Learning flow ---------- */
 .next-action-card {
   display: flex;
   align-items: center;
   gap: 1rem;
-  border: 1px solid color-mix(in srgb, var(--gold) 38%, var(--ink));
-  border-radius: 18px;
-  background: #fff7dc;
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--gold) 10%, var(--cream-soft));
   padding: 1rem;
 }
 
@@ -742,14 +732,13 @@ button:disabled {
 }
 
 .certification-card {
-  border: 1px solid var(--line-medium);
-  border-radius: 18px;
-  background: #fff7dc;
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--gold) 8%, var(--cream-soft));
   padding: 1rem;
 }
 .certification-card.ready {
-  background: #e9f0e4;
+  background: color-mix(in srgb, #e9f0e4 62%, var(--cream-soft));
 }
 
 @media (max-width: 380px) {
@@ -781,12 +770,9 @@ button:disabled {
   color: var(--ink);
 }
 
-/* ---------- Diagnostic mastery 4.0 ---------- */
+/* ---------- Learning diagnostics ---------- */
 .skill-result {
-  border: 1px solid var(--line-soft);
-  border-radius: 11px;
-  background: rgba(255,255,255,.3);
-  padding: .6rem .65rem;
+  padding: .4rem 0;
 }
 .skill-bar {
   height: .38rem;
@@ -802,7 +788,7 @@ button:disabled {
   transition: width 240ms ease;
 }
 
-/* ---------- Learning flow premium refinement ---------- */
+/* ---------- Focused learning surfaces ---------- */
 .reader-header-button {
   width: 2.75rem;
   min-width: 2.75rem;
@@ -817,16 +803,14 @@ button:disabled {
   max-width: 44rem;
   margin-inline: auto;
   scroll-margin-top: 7rem;
-  border: 1px solid var(--line-medium);
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--cream) 95%, white);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: var(--cream-soft);
 }
 
 .learning-example {
-  border: 1px solid var(--line-soft);
-  border-radius: 14px;
-  background: rgba(255,255,255,.34);
+  border-top: 1px solid var(--line-soft);
+  background: transparent;
 }
 
 .story-reading {
@@ -839,17 +823,7 @@ button:disabled {
 }
 
 .feedback-panel {
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-}
-
-.story-sentence-actions {
-  gap: .4rem;
-}
-
-.story-action-fa {
-  font-size: .7rem;
-  letter-spacing: .02em;
+  border-top: 1px solid var(--line-soft);
 }
 
 .page-in > header.sticky,
@@ -916,7 +890,7 @@ button:disabled {
 }
 
 
-/* ---------- Journey home premium refinement ---------- */
+/* ---------- Journey home ---------- */
 .home-toolbar {
   display: flex;
   align-items: center;
@@ -935,58 +909,23 @@ button:disabled {
   padding: 0;
 }
 
-.journey-overview {
-  border: 1px solid var(--line-medium);
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--cream) 94%, white);
-  padding: 1rem;
-}
-.journey-overview-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.journey-chapter-count {
-  display: flex;
-  min-width: 4.5rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-inline-start: 1px solid var(--line-soft);
-  padding-inline-start: 1rem;
-}
-.journey-chapter-count b {
-  font-size: 1.35rem;
-  line-height: 1.2;
-}
-.journey-chapter-count span {
-  margin-top: .2rem;
-  color: var(--ink-soft);
-  font-size: .7rem;
-}
-.journey-skills {
-  border-top: 1px solid var(--line-soft);
-  padding-top: 1rem;
-}
 
 .book-section {
-  border: 1px solid var(--line-medium);
-  border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(43,42,38,.07);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
 }
 /* Illustrated banner heading each book; bleeds to the section edges. */
 .book-banner {
   display: block;
   width: calc(100% + 2rem);
   max-width: none;
-  height: auto;
-  aspect-ratio: 40 / 21;
+  height: 8.5rem;
   margin: -1rem -1rem 1rem;
   overflow: hidden;
-  border-radius: 17px 17px 0 0;
-  border-bottom: 1px solid var(--line-medium);
-  background: rgba(255,255,255,.3);
+  border-radius: 15px 15px 0 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(255,255,255,.24);
 }
 .book-banner > img,
 .book-banner > svg {
@@ -1001,11 +940,9 @@ button:disabled {
 @media (min-width: 640px) {
   .book-banner {
     width: calc(100% + 2.5rem);
+    height: 10rem;
     margin: -1.25rem -1.25rem 1.1rem;
   }
-}
-.book-section {
-  overflow: hidden;
 }
 .book-section.is-locked .book-banner {
   /* Keep the locked visual treatment on imagery only. Dimming the whole
@@ -1038,9 +975,6 @@ button:disabled {
     min-width: 2.75rem;
     padding: 0;
   }
-  .journey-overview-head {
-    gap: .7rem;
-  }
 }
 
 
@@ -1059,10 +993,8 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   gap: .25rem;
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  background: rgba(255,255,255,.3);
-  padding: .45rem .25rem;
+  border-bottom: 2px solid transparent;
+  padding: .45rem .25rem .55rem;
   color: var(--ink-soft);
   font-size: .66rem;
   font-weight: 700;
@@ -1075,12 +1007,12 @@ button:disabled {
   height: 1.4rem;
   place-items: center;
   border-radius: 999px;
-  background: rgba(255,255,255,.6);
+  background: transparent;
   font-size: .72rem;
 }
 .test-steps li.current {
-  border-color: var(--ink);
-  background: color-mix(in srgb, var(--gold) 26%, var(--cream-soft));
+  border-bottom-color: var(--crimson);
+  background: transparent;
   color: var(--ink);
 }
 .test-steps li.done {
@@ -1154,10 +1086,10 @@ button:disabled {
   line-height: 1.7;
 }
 .test-player {
-  border: 1px dashed var(--line-medium);
-  border-radius: 14px;
-  background: rgba(255,255,255,.28);
-  padding: .9rem;
+  border: 1px dashed var(--line-soft);
+  border-radius: 12px;
+  background: transparent;
+  padding: .85rem;
 }
 .test-intro-list {
   display: grid;
@@ -1168,10 +1100,8 @@ button:disabled {
   line-height: 1.8;
 }
 .test-review-details {
-  border: 1px solid var(--line-soft);
-  border-radius: 13px;
-  background: rgba(255,255,255,.28);
-  padding: .2rem .9rem .9rem;
+  border-top: 1px solid var(--line-soft);
+  padding: .2rem 0 .9rem;
 }
 .test-review-details summary {
   min-height: 2.75rem;
@@ -1188,8 +1118,9 @@ button:disabled {
 .review-mark-right { color: #3e7a4a; font-weight: 800; }
 .review-mark-wrong { color: var(--crimson-deep); font-weight: 800; }
 .metric-card.metric-fail {
-  border-color: color-mix(in srgb, var(--crimson) 45%, var(--line-soft));
-  background: #f7e3e1;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--crimson) 9%, transparent);
+  color: var(--crimson-deep);
 }
 
 /* ---------- Resumable chapter preparation ---------- */
@@ -1198,10 +1129,8 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
   gap: .75rem;
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  background: rgba(255,255,255,.28);
-  padding: .65rem .75rem;
+  border-block: 1px solid var(--line-soft);
+  padding: .65rem 0;
   color: var(--ink-soft);
   font-size: .78rem;
   line-height: 1.7;
@@ -1215,7 +1144,7 @@ button:disabled {
 }
 
 
-/* ---------- Review, exam, glossary and settings refinement ---------- */
+/* ---------- Review, exam, glossary and settings ---------- */
 ::selection {
   background: color-mix(in srgb, var(--crimson) 24%, transparent);
   color: var(--ink);
@@ -1234,21 +1163,19 @@ input::placeholder {
 .exam-result-card {
   max-width: 44rem;
   margin-inline: auto;
-  border: 1px solid var(--line-medium);
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--cream) 95%, white);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: var(--cream-soft);
 }
 
 .exam-summary-panel,
 .remediation-panel {
-  border: 1px solid var(--line-soft);
-  border-radius: 13px;
-  background: rgba(255,255,255,.32);
+  border-top: 1px solid var(--line-soft);
+  background: transparent;
 }
 
 .remediation-panel {
-  background: rgba(255,255,255,.22);
+  background: transparent;
 }
 
 .search-shell {
@@ -1256,11 +1183,10 @@ input::placeholder {
   min-height: 3rem;
   align-items: center;
   gap: .65rem;
-  border: 1px solid var(--line-medium);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--cream) 95%, white);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: var(--cream-soft);
   padding-inline: .9rem;
-  box-shadow: 0 3px 12px rgba(43,42,38,.06);
   color: var(--ink-soft);
 }
 .search-shell:focus-within {
@@ -1271,9 +1197,8 @@ input::placeholder {
 
 .glossary-list {
   overflow: hidden;
-  border: 1px solid var(--line-soft);
-  border-radius: 16px;
-  background: rgba(255,255,255,.22);
+  border-block: 1px solid var(--line-soft);
+  background: transparent;
 }
 .glossary-row {
   min-height: 3.25rem;
@@ -1289,10 +1214,19 @@ input::placeholder {
   }
 }
 
+.settings-list {
+  border-top: 1px solid var(--line-soft);
+}
+
 .settings-section {
-  border: 1px solid var(--line-soft);
-  border-radius: 16px;
-  background: rgba(255,255,255,.25);
+  border: 0;
+  border-bottom: 1px solid var(--line-soft);
+  border-radius: 0;
+  background: transparent;
+}
+
+.settings-list .settings-section {
+  padding-inline: 0;
 }
 .settings-section-title {
   display: flex;
@@ -1301,7 +1235,7 @@ input::placeholder {
   font-weight: 700;
 }
 .settings-danger {
-  border-color: color-mix(in srgb, var(--crimson) 34%, var(--line-soft));
+  border-color: color-mix(in srgb, var(--crimson) 26%, var(--line-soft));
 }
 .settings-select {
   min-height: 2.9rem;
@@ -1333,6 +1267,55 @@ input[type="range"]:focus-visible {
   }
 }
 
+
+/* ---------- Distilled hierarchy ---------- */
+.home-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--line-soft);
+  padding-block: .65rem;
+}
+.home-summary > div {
+  min-width: 0;
+  padding-inline: .55rem;
+  text-align: center;
+}
+.home-summary > div + div {
+  border-inline-start: 1px solid var(--line-soft);
+}
+.home-summary b {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+.home-summary span {
+  display: block;
+  margin-top: .15rem;
+  color: var(--ink-soft);
+  font-size: .68rem;
+  line-height: 1.5;
+}
+
+.method-details {
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--ink-soft);
+  font-size: .82rem;
+  line-height: 1.9;
+}
+.method-details summary {
+  min-height: 2.75rem;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 2.75rem;
+}
+.method-details p {
+  margin: 0 0 .85rem;
+}
+
+.book-progress {
+  max-width: 24rem;
+}
 
 /* ---------- PWA release freshness ---------- */
 .app-update-banner {
