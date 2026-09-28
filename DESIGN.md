@@ -83,6 +83,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - Long explanations belong in `<details>` or result/review screens, not above an active learning task.
 - Settings shows common switches immediately; narration tuning and privacy explanation stay collapsed until requested.
 - Reuse `.compact-summary` for at most three high-signal metrics. Do not add grids of decorative metrics to task screens.
+- Dense filter sets (five or more choices) use one compact select rather than a horizontal strip of competing buttons.
 
 ## Responsive behavior
 - Phone: single-column, thumb-friendly controls
