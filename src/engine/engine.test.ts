@@ -375,7 +375,9 @@ describe('review and exam generation', () => {
         reading: exam.reading.map(text => text.questions.map(question => question.answer)),
         listening: exam.listening.map(text => text.questions.map(question => question.answer)),
       }
-      expect(scoreExam(exam, allCorrect, rightTexts).passed).toBe(true)
+      const perfectResult = scoreExam(exam, allCorrect, rightTexts)
+      expect(perfectResult.passed).toBe(true)
+      expect(perfectResult.overallScore).toBe(1)
 
       // Criterion gates tolerate a small number of errors; missed vocabulary
       // is still remediated before progression.
