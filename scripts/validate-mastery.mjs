@@ -64,30 +64,53 @@ for (const word of vocab) {
   assert(contextSurface(word), `${word.id}: example cannot support contextual production`)
 }
 
-// End-of-book tests (src/engine/bookTest.ts) ask 12 typed and 12 listening
-// words, never function words, and never a surface two deck entries share.
-// Book 1 draws all 24 from itself; each book also has its own four texts.
+// End-of-book tests use a bounded cumulative sample: 24 words after book 1,
+// then four more per book to a 52-word cap. Every studied book contributes,
+// with double weight for the newest book. Function words stay in context and
+// ambiguous sounds are excluded from isolated listening.
 const CONTEXT_ONLY_TOPICS = new Set(['grammar', 'pronouns', 'prepositions', 'linking', 'question_words'])
 const surfaceCounts = new Map()
 for (const word of vocab) surfaceCounts.set(word.word.toLowerCase(), (surfaceCounts.get(word.word.toLowerCase()) ?? 0) + 1)
 const byId = new Map(vocab.map(word => [word.id, word]))
-const bookSizes = []
+const bookPools = new Map()
 for (let book = 1; book <= 8; book++) {
   const bookChapters = chapters.filter(ch => ch.book === book)
-  const pool = [...new Set(bookChapters.flatMap(ch => ch.new))].map(id => byId.get(id))
-  const typed = pool.filter(word => !CONTEXT_ONLY_TOPICS.has(word.topic))
-  const heard = typed.filter(word => !word.word.includes(',') && surfaceCounts.get(word.word.toLowerCase()) === 1)
-  // End-of-book tests ask half of every studied book's words (engine/bookTestSize.ts),
-  // split between typed translation and listening.
-  const asked = Math.round(pool.length / 2)
-  assert(typed.length >= asked, `Book ${book}: fewer than ${asked} content words for its end-of-book test`)
-  assert(heard.length >= Math.ceil(asked / 2), `Book ${book}: fewer than ${Math.ceil(asked / 2)} unambiguous words for listening`)
-  // One text of each kind per attempt for books 1-2, two for 3-4, three for
-  // 5-6 and four for 7-8, in two sets that alternate between attempts.
+  bookPools.set(book, [...new Set(bookChapters.flatMap(ch => ch.new))].map(id => byId.get(id)))
+}
+function bookTestWordCount(book) {
+  return Math.min(52, 24 + (book - 1) * 4)
+}
+function bookTestWordsBySource(book) {
+  const target = bookTestWordCount(book)
+  const unit = Math.floor(target / (book + 1))
+  const counts = new Map()
+  for (let source = 1; source <= book; source++) counts.set(source, source === book ? unit * 2 : unit)
+  let remaining = target - unit * (book + 1)
+  let source = book
+  while (remaining > 0) {
+    counts.set(source, counts.get(source) + 1)
+    remaining--
+    source--
+    if (source < 1) source = book
+  }
+  return counts
+}
+const assessmentSizes = []
+for (let book = 1; book <= 8; book++) {
+  const allocation = bookTestWordsBySource(book)
+  assert([...allocation.values()].reduce((sum, count) => sum + count, 0) === bookTestWordCount(book), `Book ${book}: invalid bounded assessment allocation`)
+  for (const [source, asked] of allocation) {
+    const pool = bookPools.get(source)
+    const typed = pool.filter(word => !CONTEXT_ONLY_TOPICS.has(word.topic))
+    const heard = typed.filter(word => !word.word.includes(',') && surfaceCounts.get(word.word.toLowerCase()) === 1)
+    const perSection = Math.ceil(asked / 2)
+    assert(typed.length >= perSection, `Book ${source}: fewer than ${perSection} content words for book-${book} translation`)
+    assert(heard.length >= perSection, `Book ${source}: fewer than ${perSection} unambiguous words for book-${book} listening`)
+  }
   const perSkill = 2 * Math.ceil(book / 2)
   const texts = JSON.parse(fs.readFileSync(path.join(root, `src/data/bookTests/b${book}.json`), 'utf8'))
   assert(texts.book === book && texts.reading?.length === perSkill && texts.listening?.length === perSkill, `Book ${book}: needs ${perSkill} reading and ${perSkill} listening texts`)
-  bookSizes.push(pool.length)
+  assessmentSizes.push(bookTestWordCount(book))
 }
 const midpointPool = [...new Set(chapters.filter(ch => ch.book <= 4).flatMap(ch => ch.new))]
 assert(midpointPool.length >= 56, 'Midpoint pool is too small')
@@ -109,4 +132,4 @@ for (const target of vocab) {
   }
 }
 
-console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, end-of-book pools ${bookSizes.join('/')} (half asked) with 4 to 16 texts each, 56-question midpoint pool, 88-question final pool.`)
+console.log(`Mastery validation passed: 899 words with contextual-production examples, 40 chapter prep gates, bounded end-of-book vocabulary samples ${assessmentSizes.join('/')} with 4 to 16 texts each, 56-question midpoint pool, 88-question final pool.`)
