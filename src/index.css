@@ -218,6 +218,12 @@ body {
   animation: page-in 260ms ease backwards;
 }
 
+.app-page {
+  min-height: 100dvh;
+  background: var(--cream);
+}
+
+
 .app-task-header {
   background: var(--cream-soft);
   border-bottom: 1px solid var(--line-soft);
