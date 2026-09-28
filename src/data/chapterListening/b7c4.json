@@ -57,30 +57,30 @@
     {
       "q": "What is the weather like when the taxi stops at the farm?",
       "options": [
-        "Warm and quiet",
-        "It is raining hard",
+        "Cold and dark",
         "It is snowing",
-        "Cold and dark"
+        "Warm and quiet",
+        "It is raining hard"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "Who makes a fire?",
       "options": [
+        "The farmer's daughter",
         "The farmer",
-        "The farmer's wife",
         "The driver",
-        "The farmer's daughter"
+        "The farmer's wife"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "q": "What does the daughter build with some cups?",
       "options": [
         "A bus",
-        "A car",
+        "A tall building",
         "A little house for the baby",
-        "A tall building"
+        "A car"
       ],
       "answer": 2
     },
@@ -88,21 +88,21 @@
       "q": "What do the girls wear when they go out after the rain?",
       "options": [
         "Hats",
+        "Old boots",
         "New shoes",
-        "Their coats",
-        "Old boots"
+        "Their coats"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "q": "What does the farmer give the girl before the family leaves?",
       "options": [
         "A chicken",
+        "An umbrella",
         "Some bread and a flower",
-        "A photo",
-        "An umbrella"
+        "A photo"
       ],
-      "answer": 1
+      "answer": 2
     }
   ]
 }

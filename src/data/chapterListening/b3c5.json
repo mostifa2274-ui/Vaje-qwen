@@ -62,8 +62,8 @@
       "options": [
         "Twenty",
         "Forty",
-        "Sixty",
-        "A hundred"
+        "A hundred",
+        "Sixty"
       ],
       "answer": 1
     },
@@ -72,38 +72,38 @@
       "options": [
         "Thirty birds",
         "A yellow chicken",
-        "A dog",
-        "Some flowers"
+        "Some flowers",
+        "A dog"
       ],
       "answer": 0
     },
     {
       "q": "What is in the picture in the third message?",
       "options": [
-        "A pair of shoes",
         "A bird",
         "A yellow bag",
-        "A school"
+        "A school",
+        "A pair of shoes"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "Who is the fourth message from?",
       "options": [
         "A policeman",
         "A boy",
-        "An old woman",
-        "A teacher"
+        "A teacher",
+        "An old woman"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
       "q": "By eleven o'clock, how many people have shared the picture?",
       "options": [
         "A thousand",
-        "Ninety",
+        "Fifty",
         "A hundred",
-        "Fifty"
+        "Ninety"
       ],
       "answer": 2
     }

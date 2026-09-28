@@ -57,8 +57,8 @@
       "q": "Where is Mina's family going?",
       "options": [
         "To the north",
-        "To the city center",
         "To a farm",
+        "To the city center",
         "To another country"
       ],
       "answer": 0
@@ -68,40 +68,40 @@
       "options": [
         "Negar",
         "An old neighbor",
-        "Negar's mother",
-        "The old woman with the blue door"
+        "The old woman with the blue door",
+        "Negar's mother"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "q": "What is Negar's present?",
       "options": [
-        "A book",
         "A T-shirt with a yellow chicken on it",
+        "A book",
         "A hat",
         "An umbrella"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "q": "Mina puts the T-shirt in her bag, next to ___.",
       "options": [
-        "her red book",
+        "her sweater and her jeans",
         "her shoes",
         "the train tickets",
-        "her sweater and her jeans"
+        "her red book"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "q": "How will the family travel?",
       "options": [
         "By plane",
-        "By train",
         "By bus",
-        "By car"
+        "By car",
+        "By train"
       ],
-      "answer": 1
+      "answer": 3
     }
   ]
 }

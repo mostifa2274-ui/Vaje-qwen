@@ -62,52 +62,52 @@
     {
       "q": "Why is Mina angry?",
       "options": [
+        "She has school",
         "Every day, it is the wrong chicken",
         "Aria took her book",
-        "She has school",
         "Dad came home late"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "q": "What is Mom's advice?",
       "options": [
-        "Go to sleep",
         "Talk to Negar",
         "Write when you are angry",
-        "Go to the park"
+        "Go to the park",
+        "Go to sleep"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "Aria's idea is about ___.",
       "options": [
+        "neighbors",
         "teachers",
-        "people on bicycles",
         "the police",
-        "neighbors"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "What is Mina's opinion of Aria's idea?",
-      "options": [
-        "It is a bad idea",
-        "She does not know",
-        "It is funny",
-        "It is a very good idea"
+        "people on bicycles"
       ],
       "answer": 3
     },
     {
+      "q": "What is Mina's opinion of Aria's idea?",
+      "options": [
+        "It is funny",
+        "It is a bad idea",
+        "It is a very good idea",
+        "She does not know"
+      ],
+      "answer": 2
+    },
+    {
       "q": "How does Mina feel at the end?",
       "options": [
+        "Afraid",
         "Very angry",
-        "Not so angry now",
         "Tired",
-        "Afraid"
+        "Not so angry now"
       ],
-      "answer": 1
+      "answer": 3
     }
   ]
 }

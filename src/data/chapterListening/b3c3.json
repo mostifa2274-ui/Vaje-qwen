@@ -62,10 +62,10 @@
       "options": [
         "yellow",
         "red",
-        "black",
-        "white, with a little black on its head"
+        "white, with a little black on its head",
+        "black"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
       "q": "Where did the bird sing?",
@@ -80,32 +80,32 @@
     {
       "q": "Who opened the window?",
       "options": [
-        "Mom",
+        "A neighbor",
         "Mom's mother",
-        "Mom's father",
-        "A neighbor"
+        "Mom",
+        "Mom's father"
       ],
       "answer": 1
     },
     {
       "q": "How long did Mom look for the bird?",
       "options": [
+        "For two days",
         "For an hour",
         "For a day",
-        "For a week",
-        "For two days"
+        "For a week"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "q": "What does Mom still remember about her bird?",
       "options": [
-        "Its song",
+        "Its home",
         "Its name",
-        "Its feet",
-        "Its home"
+        "Its song",
+        "Its feet"
       ],
-      "answer": 0
+      "answer": 2
     }
   ]
 }

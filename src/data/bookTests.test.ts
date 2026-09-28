@@ -14,12 +14,18 @@ function textsOf(book: number): TestText[] {
   return [...content.reading, ...content.listening]
 }
 
+// Texts are read or heard, never tapped for glosses, so a possessive or
+// "let's" is checked as its base words.
+function checkable(line: string): string {
+  return line.replace(/\b(l)et['’]s\b/gi, '$1et us').replace(/(\w)['’]s\b/g, '$1')
+}
+
 /** Every English word must be taught in this book or earlier, or be a declared name. */
 function vocabularyProblems(text: TestText, book: number): string[] {
   const problems: string[] = []
   const lines = [text.titleEn, ...text.sentences.map(sentence => sentence.en)]
   for (const line of lines) {
-    for (const token of tokenizeSentence(line, lemmaMap)) {
+    for (const token of tokenizeSentence(checkable(line), lemmaMap)) {
       if (!token.isWord) continue
       if (text.names.includes(token.raw)) continue
       if (!token.id) {

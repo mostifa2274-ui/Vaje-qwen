@@ -61,28 +61,28 @@
     {
       "q": "What does Negar remember?",
       "options": [
-        "Tomorrow is Mina's birthday",
         "School is finished",
-        "Nino is back",
-        "Tomorrow is Friday"
+        "Tomorrow is Friday",
+        "Tomorrow is Mina's birthday",
+        "Nino is back"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "What does Negar decide to make?",
       "options": [
         "A cake",
         "A picture of Nino",
-        "A note",
-        "A light"
+        "A light",
+        "A note"
       ],
       "answer": 1
     },
     {
       "q": "What does Negar add to the picture?",
       "options": [
-        "A red bird",
         "A blue door",
+        "A red bird",
         "A little white on Nino's left",
         "Mina's name"
       ],
@@ -92,21 +92,21 @@
       "q": "How many small lights are in the kitchen?",
       "options": [
         "Eleven",
-        "Ten",
         "Eight",
-        "Twelve"
+        "Twelve",
+        "Ten"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
       "q": "What happens when Mina sees the picture?",
       "options": [
-        "She becomes sad",
-        "She becomes happy",
+        "She says nothing",
         "She goes to her room",
-        "She says nothing"
+        "She becomes sad",
+        "She becomes happy"
       ],
-      "answer": 1
+      "answer": 3
     }
   ]
 }

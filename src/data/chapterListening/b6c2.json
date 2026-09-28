@@ -61,39 +61,39 @@
     {
       "q": "What does Negar bring home?",
       "options": [
-        "A book",
-        "A note",
         "A map",
-        "A chicken"
+        "A note",
+        "A chicken",
+        "A book"
       ],
       "answer": 1
     },
     {
       "q": "What must every student do?",
       "options": [
-        "Write a poem",
         "Go to the river",
-        "Put the note near her house and ask the neighbors",
-        "Give a form to the teacher"
+        "Write a poem",
+        "Give a form to the teacher",
+        "Put the note near her house and ask the neighbors"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "q": "What is on the note?",
       "options": [
-        "A title and one short paragraph",
-        "Only a picture",
+        "A long letter",
         "A big map",
-        "A long letter"
+        "A title and one short paragraph",
+        "Only a picture"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "Where does the line on the chart go?",
       "options": [
         "To the school",
-        "To the market",
         "To Negar's house",
+        "To the market",
         "To the river"
       ],
       "answer": 3
@@ -102,11 +102,11 @@
       "q": "What does Negar say about Nino?",
       "options": [
         "He is in the river",
-        "Maybe he is not so small now",
         "She saw him",
+        "Maybe he is not so small now",
         "He is white now"
       ],
-      "answer": 1
+      "answer": 2
     }
   ]
 }

@@ -56,39 +56,39 @@
     {
       "q": "How old is Mina's cousin?",
       "options": [
-        "Ten",
-        "Eleven",
         "Twelve",
-        "Thirteen"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "What is at the window of her room?",
-      "options": [
-        "Pink and purple flowers",
-        "A cat",
-        "Books",
-        "A photo"
+        "Ten",
+        "Thirteen",
+        "Eleven"
       ],
       "answer": 0
     },
     {
-      "q": "What is on her bed?",
+      "q": "What is at the window of her room?",
       "options": [
-        "A bag",
-        "A fat old cat",
-        "A chicken",
-        "A book"
+        "A photo",
+        "Pink and purple flowers",
+        "Books",
+        "A cat"
       ],
       "answer": 1
     },
     {
+      "q": "What is on her bed?",
+      "options": [
+        "A fat old cat",
+        "A book",
+        "A chicken",
+        "A bag"
+      ],
+      "answer": 0
+    },
+    {
       "q": "What does Mina tell her cousin about?",
       "options": [
-        "Her summer class",
         "The train",
         "The sea",
+        "Her summer class",
         "Nino"
       ],
       "answer": 3
@@ -97,9 +97,9 @@
       "q": "What does their grandmother tell them in the evening?",
       "options": [
         "To relax",
-        "To go to the town",
+        "To cook dinner",
         "To go to sleep",
-        "To cook dinner"
+        "To go to the town"
       ],
       "answer": 0
     }

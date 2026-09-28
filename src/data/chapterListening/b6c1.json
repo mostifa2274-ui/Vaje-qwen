@@ -59,49 +59,49 @@
     {
       "q": "How many subjects does the teacher teach?",
       "options": [
+        "Five",
         "Two",
-        "Three",
         "Four",
-        "Five"
+        "Three"
       ],
       "answer": 2
     },
     {
       "q": "How many students come in?",
       "options": [
-        "Eighteen",
         "Twenty",
         "Ten",
-        "Twelve"
+        "Twelve",
+        "Eighteen"
       ],
-      "answer": 0
+      "answer": 3
     },
     {
       "q": "What does the teacher give the students today?",
       "options": [
         "A difficult exam",
         "A short test",
-        "Homework",
-        "A map"
+        "A map",
+        "Homework"
       ],
       "answer": 1
     },
     {
       "q": "Which student writes very well?",
       "options": [
-        "A boy from the city",
         "The oldest student",
-        "The teacher's daughter",
-        "Mina"
+        "A boy from the city",
+        "Mina",
+        "The teacher's daughter"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
       "q": "What is the special homework for tomorrow?",
       "options": [
         "To help Mina",
-        "To read a book",
         "To draw a map",
+        "To read a book",
         "To write a poem"
       ],
       "answer": 0

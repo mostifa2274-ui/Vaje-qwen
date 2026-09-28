@@ -64,30 +64,30 @@
           "options": [
             "She is tired",
             "She is at work",
-            "She is at the supermarket",
-            "She is sleeping"
+            "She is sleeping",
+            "She is at the supermarket"
           ],
           "answer": 1
         },
         {
           "q": "What is cheap today?",
           "options": [
-            "Tomatoes",
             "Apples",
+            "Tomatoes",
             "Fish",
             "Bread"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "q": "What does Leila prefer?",
           "options": [
-            "A chicken sandwich",
-            "Fish",
             "Tomato soup",
-            "Salad"
+            "Salad",
+            "Fish",
+            "A chicken sandwich"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "What did they forget?",
@@ -102,12 +102,12 @@
         {
           "q": "Why do they not buy bread at the bread shop?",
           "options": [
-            "There is no bread",
-            "It is closed in the afternoon",
             "It is expensive",
-            "It is far"
+            "There is no bread",
+            "It is far",
+            "It is closed in the afternoon"
           ],
-          "answer": 1
+          "answer": 3
         }
       ]
     },
@@ -172,39 +172,39 @@
         {
           "q": "Where does Kian live?",
           "options": [
-            "On a farm",
             "In an apartment building near a busy street",
             "Near the river",
-            "In a house with a garden"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "In which month does the new family arrive?",
-          "options": [
-            "September",
-            "March",
-            "June",
-            "December"
+            "In a house with a garden",
+            "On a farm"
           ],
           "answer": 0
         },
         {
-          "q": "Where was the cat?",
+          "q": "In which month does the new family arrive?",
           "options": [
-            "Under a car",
-            "On the fifth floor",
-            "In a tall tree",
-            "On Kian's desk"
+            "June",
+            "December",
+            "September",
+            "March"
           ],
           "answer": 2
         },
         {
+          "q": "Where was the cat?",
+          "options": [
+            "On Kian's desk",
+            "Under a car",
+            "On the fifth floor",
+            "In a tall tree"
+          ],
+          "answer": 3
+        },
+        {
           "q": "What does the girl give Kian?",
           "options": [
-            "A cat",
             "Orange juice",
             "A book",
+            "A cat",
             "A big piece of chocolate cake"
           ],
           "answer": 3
@@ -212,12 +212,12 @@
         {
           "q": "What do the two families do on Fridays?",
           "options": [
-            "They eat dinner together",
-            "They go to the park",
             "They play football",
-            "They go to the market"
+            "They go to the park",
+            "They go to the market",
+            "They eat dinner together"
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     },
@@ -282,49 +282,49 @@
         {
           "q": "The farmer and his wife are ___.",
           "options": [
-            "neighbors",
+            "Roya's teachers",
             "old friends of Roya's father",
             "family",
-            "Roya's teachers"
+            "neighbors"
           ],
           "answer": 1
         },
         {
           "q": "Why does Roya wake at six o'clock?",
           "options": [
-            "A cow is making a sound under her window",
-            "Her mother calls her",
             "It is raining",
-            "She is hungry"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "What is breakfast?",
-          "options": [
-            "Soup and sandwiches",
-            "Rice and vegetables",
-            "Warm bread with butter, eggs and a cup of tea",
-            "Apples and juice"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "What is the farmer's funny story about?",
-          "options": [
-            "A cow that sings",
-            "A goat that runs away",
-            "A sheep that is afraid",
-            "A horse that eats apples from his bag"
+            "She is hungry",
+            "Her mother calls her",
+            "A cow is making a sound under her window"
           ],
           "answer": 3
         },
         {
+          "q": "What is breakfast?",
+          "options": [
+            "Warm bread with butter, eggs and a cup of tea",
+            "Soup and sandwiches",
+            "Apples and juice",
+            "Rice and vegetables"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What is the farmer's funny story about?",
+          "options": [
+            "A sheep that is afraid",
+            "A horse that eats apples from his bag",
+            "A cow that sings",
+            "A goat that runs away"
+          ],
+          "answer": 1
+        },
+        {
           "q": "When will the baby goats be born?",
           "options": [
-            "In summer",
-            "In March",
             "In December",
+            "In March",
+            "In summer",
             "Next week"
           ],
           "answer": 1
@@ -398,50 +398,50 @@
           "options": [
             "June",
             "March",
-            "September",
-            "December"
+            "December",
+            "September"
           ],
-          "answer": 3
+          "answer": 2
         },
         {
           "q": "What does Navid play?",
           "options": [
-            "The guitar",
             "The piano",
             "Nothing; he sings",
-            "Basketball"
+            "Basketball",
+            "The guitar"
           ],
-          "answer": 1
+          "answer": 0
         },
         {
           "q": "How long does Navid practice every day?",
           "options": [
             "An hour",
             "Half an hour",
-            "Two hours",
-            "A quarter of an hour"
+            "A quarter of an hour",
+            "Two hours"
           ],
           "answer": 0
         },
         {
           "q": "What does the teacher tell Navid?",
           "options": [
-            "To go home early",
             "To play fast",
-            "To think about the music, not the crowd",
-            "To sing"
+            "To sing",
+            "To go home early",
+            "To think about the music, not the crowd"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "Who talks to the band after the concert?",
           "options": [
-            "The head of the school",
-            "A man from a local TV station",
+            "A policeman",
             "A poet",
-            "A policeman"
+            "The head of the school",
+            "A man from a local TV station"
           ],
-          "answer": 1
+          "answer": 3
         }
       ]
     }
@@ -512,52 +512,52 @@
         {
           "q": "Where do Bahar and her brother see the dog?",
           "options": [
-            "Near the pool",
-            "Under a tree",
+            "Near the cafe",
             "In the street",
-            "Near the cafe"
+            "Near the pool",
+            "Under a tree"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "q": "What does Bahar give the dog?",
           "options": [
             "A cookie",
             "Some bread",
-            "Some water",
-            "A ball"
+            "A ball",
+            "Some water"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "Who knows the dog?",
           "options": [
-            "A policeman",
-            "A man who is playing tennis",
             "A child",
-            "The waiter from the cafe"
+            "A policeman",
+            "The waiter from the cafe",
+            "A man who is playing tennis"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "How long did the old woman look for the dog?",
           "options": [
             "For an hour",
             "All day",
-            "For two days",
-            "For three hours"
+            "For three hours",
+            "For two days"
           ],
-          "answer": 3
+          "answer": 2
         },
         {
           "q": "What do Bahar and her brother do every Friday?",
           "options": [
-            "They go to the pool",
-            "They play tennis",
             "They take the dog for a walk in the park",
+            "They play tennis",
+            "They go to the pool",
             "They take a cake to the old woman"
           ],
-          "answer": 2
+          "answer": 0
         }
       ]
     },
@@ -620,52 +620,52 @@
         {
           "q": "On which day does it rain all day?",
           "options": [
-            "Saturday",
             "Monday",
             "Wednesday",
+            "Saturday",
             "Friday"
           ],
-          "answer": 1
+          "answer": 0
         },
         {
           "q": "On which day are the ice cream shops busy?",
           "options": [
             "Wednesday",
-            "Tuesday",
             "Thursday",
-            "Sunday"
+            "Sunday",
+            "Tuesday"
           ],
           "answer": 0
         },
         {
           "q": "On which day do people need their coats again?",
           "options": [
-            "Friday",
-            "Saturday",
             "Monday",
-            "Thursday"
+            "Thursday",
+            "Friday",
+            "Saturday"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "Where do many families eat lunch on Friday?",
           "options": [
+            "In the park, next to the pool",
             "At a restaurant",
-            "At home",
             "By the river, under the trees",
-            "In the park, next to the pool"
+            "At home"
           ],
           "answer": 2
         },
         {
           "q": "What will the weather be like next week?",
           "options": [
-            "Cold, with a lot of rain",
             "Warm, with no rain",
             "Very cold",
-            "Dark"
+            "Dark",
+            "Cold, with a lot of rain"
           ],
-          "answer": 1
+          "answer": 0
         }
       ]
     },
@@ -730,52 +730,52 @@
         {
           "q": "Why is this evening special?",
           "options": [
+            "They have visitors",
             "They have a new apartment",
             "It is Shadi's birthday",
-            "The restaurant opens today",
-            "They have visitors"
+            "The restaurant opens today"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "What does Shadi order?",
           "options": [
             "Meat with potatoes",
             "Soup and a sandwich",
-            "Fish with rice and a green salad",
-            "Only cake"
+            "Only cake",
+            "Fish with rice and a green salad"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "What is free?",
           "options": [
-            "The cake",
-            "The coffee",
             "The salad",
-            "The water"
+            "The cake",
+            "The water",
+            "The coffee"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "q": "What is the mistake on the bill?",
           "options": [
-            "The price of the fish",
-            "Two salads, not one",
             "There is no cake",
-            "Two coffees, not one"
+            "Two salads, not one",
+            "Two coffees, not one",
+            "The price of the fish"
           ],
-          "answer": 3
+          "answer": 2
         },
         {
           "q": "What does Shadi say at the end?",
           "options": [
             "The food was expensive",
-            "They will not come again",
             "They will come back",
+            "They will not come again",
             "The soup was cold"
           ],
-          "answer": 2
+          "answer": 1
         }
       ]
     },
@@ -846,27 +846,27 @@
           "options": [
             "On Monday and Wednesday afternoons",
             "On Saturdays and Sundays",
-            "Only on Fridays",
-            "Every day"
+            "Every day",
+            "Only on Fridays"
           ],
           "answer": 0
         },
         {
           "q": "What was the team's teacher many years ago?",
           "options": [
-            "A singer",
-            "A waiter",
+            "A policeman",
             "A famous player",
-            "A policeman"
+            "A singer",
+            "A waiter"
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "q": "Where were Sina's shoes?",
           "options": [
+            "At the gym",
             "Under his bed",
             "Behind the door",
-            "At the gym",
             "In his sister's school bag"
           ],
           "answer": 3
@@ -874,22 +874,22 @@
         {
           "q": "How does the match end?",
           "options": [
-            "No one wins",
-            "Sina's team wins two to one",
             "Sina's team loses",
-            "There is no match"
+            "There is no match",
+            "No one wins",
+            "Sina's team wins two to one"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "What do the players eat after the match?",
           "options": [
             "Cake and tea",
-            "Sandwiches and orange juice",
+            "Ice cream",
             "Soup",
-            "Ice cream"
+            "Sandwiches and orange juice"
           ],
-          "answer": 1
+          "answer": 3
         }
       ]
     }

@@ -62,12 +62,12 @@
         {
           "q": "What is Elham's article about?",
           "options": [
+            "A football match",
             "The school teacher",
             "The old woman who sells flowers near the school",
-            "The school garden",
-            "A football match"
+            "The school garden"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "When does Elham interview the woman?",
@@ -83,31 +83,31 @@
           "q": "How does Elham send the article to her teacher?",
           "options": [
             "In a letter",
-            "By text message",
             "By email",
-            "She takes it to school"
+            "She takes it to school",
+            "By text message"
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "q": "What does the teacher ask Elham to do?",
           "options": [
-            "Take another photo",
-            "Change the title",
             "Make the article short",
-            "Improve the last sentence"
+            "Improve the last sentence",
+            "Change the title",
+            "Take another photo"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "On which page is Elham's article?",
           "options": [
-            "The last page",
-            "The first page",
             "The second page",
-            "It is not in the newspaper"
+            "It is not in the newspaper",
+            "The first page",
+            "The last page"
           ],
-          "answer": 1
+          "answer": 2
         }
       ]
     },
@@ -183,9 +183,9 @@
           "q": "How long is the trip?",
           "options": [
             "Five hours",
-            "Two hours",
             "Ten hours",
-            "One hour"
+            "One hour",
+            "Two hours"
           ],
           "answer": 0
         },
@@ -193,28 +193,28 @@
           "q": "What do Pouya and his father build in front of the hotel?",
           "options": [
             "A snow house",
-            "A fire",
             "A big snow animal",
-            "A boat"
+            "A boat",
+            "A fire"
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "q": "What does the family drink by the fire?",
           "options": [
             "Tea",
+            "Hot chocolate",
             "Coffee",
-            "Orange juice",
-            "Hot chocolate"
+            "Orange juice"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "What does the old man say about the mountain in the summer?",
           "options": [
-            "It still has snow",
-            "It is very cold",
             "The hotel is closed",
+            "It is very cold",
+            "It still has snow",
             "It is full of green plants"
           ],
           "answer": 3
@@ -282,12 +282,12 @@
         {
           "q": "Where does Mitra's father work?",
           "options": [
+            "At a school",
             "At a hospital",
             "On a farm",
-            "In an office",
-            "At a school"
+            "In an office"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "What does the doctor say he eats too much of?",
@@ -303,31 +303,31 @@
           "q": "How long should he walk or ride a bike every day?",
           "options": [
             "Half an hour",
+            "An hour",
             "Two hours",
-            "A quarter of an hour",
-            "An hour"
+            "A quarter of an hour"
           ],
           "answer": 0
         },
         {
           "q": "Where does Mitra put the chart?",
           "options": [
-            "On the door of her room",
-            "In her father's office",
             "On the TV",
-            "On the kitchen wall"
+            "On the kitchen wall",
+            "In her father's office",
+            "On the door of her room"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "How does her father feel after a month?",
           "options": [
-            "The same",
             "Much better",
-            "He is sick again",
-            "He is in the hospital"
+            "The same",
+            "He is in the hospital",
+            "He is sick again"
           ],
-          "answer": 1
+          "answer": 0
         }
       ]
     },
@@ -393,20 +393,20 @@
         {
           "q": "Which class visits the museum?",
           "options": [
-            "The science class",
-            "The history class",
             "The language class",
-            "The painting class"
+            "The painting class",
+            "The science class",
+            "The history class"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "How old are the objects in the first room?",
           "options": [
             "Three thousand years old",
-            "A hundred years old",
             "One year old",
-            "Ten years old"
+            "Ten years old",
+            "A hundred years old"
           ],
           "answer": 0
         },
@@ -414,31 +414,31 @@
           "q": "Which painting does Saba like best?",
           "options": [
             "A painting of a mountain",
+            "A painting of a bird",
             "A painting of a house",
-            "A woman in a blue dress next to the sea",
-            "A painting of a bird"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "Who tells the students about the culture of old Iran?",
-          "options": [
-            "The teacher",
-            "A tourist",
-            "Saba",
-            "A woman who works at the museum"
+            "A woman in a blue dress next to the sea"
           ],
           "answer": 3
         },
         {
+          "q": "Who tells the students about the culture of old Iran?",
+          "options": [
+            "A tourist",
+            "A woman who works at the museum",
+            "The teacher",
+            "Saba"
+          ],
+          "answer": 1
+        },
+        {
           "q": "Why does Saba write about the old map?",
           "options": [
+            "She has a photo of it",
             "Geography is her favorite subject",
-            "The teacher tells her to",
             "It is easy",
-            "She has a photo of it"
+            "The teacher tells her to"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -503,19 +503,19 @@
         {
           "q": "When did Hamed finish his course at the university?",
           "options": [
+            "In March",
             "In September",
             "In June",
-            "Last year",
-            "In March"
+            "Last year"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "What does the company make?",
           "options": [
             "Computer programs for schools",
-            "Cars",
             "School books",
+            "Cars",
             "Games"
           ],
           "answer": 0
@@ -523,19 +523,19 @@
         {
           "q": "What does Hamed wear on the day of the interview?",
           "options": [
+            "Sports clothes",
             "A jacket and jeans",
-            "A T-shirt and a hat",
             "A white shirt and his best pants",
-            "Sports clothes"
+            "A T-shirt and a hat"
           ],
           "answer": 2
         },
         {
           "q": "How does Hamed go to the interview?",
           "options": [
-            "By taxi",
             "In his own car",
             "On foot",
+            "By taxi",
             "By train"
           ],
           "answer": 3
@@ -544,11 +544,11 @@
           "q": "When will Hamed start work?",
           "options": [
             "Tomorrow",
+            "Next week",
             "In June",
-            "In September",
-            "Next week"
+            "In September"
           ],
-          "answer": 2
+          "answer": 3
         }
       ]
     },
@@ -614,51 +614,51 @@
           "q": "In which part of the country is the island?",
           "options": [
             "In the north",
-            "In the center",
             "In the south",
-            "Near the capital"
+            "Near the capital",
+            "In the center"
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "q": "How long is the boat trip?",
           "options": [
             "Forty minutes",
-            "Four hours",
+            "A day",
             "Ten minutes",
-            "A day"
+            "Four hours"
           ],
           "answer": 0
         },
         {
           "q": "Why do they stay at the hotel in the afternoon?",
           "options": [
+            "They are tired",
             "It is raining",
             "It is too hot to go out",
-            "They are tired",
             "The hotel has a special activity"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "What does the old man say about the island?",
           "options": [
-            "It is very old",
-            "It has a new hotel",
+            "It has more birds than people",
             "It snows there in winter",
-            "It has more birds than people"
+            "It is very old",
+            "It has a new hotel"
           ],
-          "answer": 3
+          "answer": 0
         },
         {
           "q": "Who does Yalda buy the painting for?",
           "options": [
-            "Her brother",
-            "Her teacher",
             "Her mother",
-            "Her grandmother"
+            "Her grandmother",
+            "Her teacher",
+            "Her brother"
           ],
-          "answer": 3
+          "answer": 1
         }
       ]
     },
@@ -723,28 +723,28 @@
         {
           "q": "On which day is the painting club?",
           "options": [
-            "Tuesday",
-            "Friday",
             "Saturday",
+            "Friday",
+            "Tuesday",
             "Thursday"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "q": "Who is the club's teacher?",
           "options": [
-            "Ladan's mother",
             "A famous artist",
+            "Ladan's mother",
             "A school teacher",
             "A writer"
           ],
-          "answer": 1
+          "answer": 0
         },
         {
           "q": "What does Ladan paint?",
           "options": [
-            "Her school",
             "A garden",
+            "Her school",
             "The mountains",
             "The river at night"
           ],
@@ -753,22 +753,22 @@
         {
           "q": "Which colors does Ladan use?",
           "options": [
-            "Red and yellow",
-            "Green and brown",
             "Only blue and purple",
-            "Black and white"
+            "Black and white",
+            "Red and yellow",
+            "Green and brown"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "Where is Ladan's painting the next week?",
           "options": [
+            "In a book",
             "In the school newspaper",
-            "In a local magazine",
             "On a card",
-            "In a book"
+            "In a local magazine"
           ],
-          "answer": 1
+          "answer": 3
         }
       ]
     },
@@ -844,19 +844,19 @@
         {
           "q": "Where is the new apartment?",
           "options": [
-            "Next to the river",
-            "Near the museum",
             "Near the school",
-            "Near the big park"
+            "Near the big park",
+            "Next to the river",
+            "Near the museum"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "What does Dara ask Farzad to send?",
           "options": [
-            "Some books",
-            "Some photographs of the city",
             "The school's address",
+            "Some photographs of the city",
+            "Some books",
             "A map"
           ],
           "answer": 1
@@ -864,22 +864,22 @@
         {
           "q": "What does Dara want to see?",
           "options": [
-            "The pool and the park",
-            "The big market",
             "The river and the famous museum",
-            "The football team"
+            "The football team",
+            "The big market",
+            "The pool and the park"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "What does Farzad say in his answer?",
           "options": [
-            "The school is difficult",
             "He cannot see them",
-            "The city is busy",
-            "He will show Dara everything"
+            "The school is difficult",
+            "He will show Dara everything",
+            "The city is busy"
           ],
-          "answer": 3
+          "answer": 2
         }
       ]
     }
@@ -944,52 +944,52 @@
         {
           "q": "What will the weather be like this evening?",
           "options": [
-            "Warm",
-            "Cold",
             "It will rain",
-            "It will snow"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "Where is the traffic terrible?",
-          "options": [
-            "On the main road to the airport",
-            "Near the museum",
-            "In the city center",
-            "Near the park"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "When does the new museum open?",
-          "options": [
-            "On Saturday",
-            "On Friday",
-            "On Monday",
-            "On Wednesday"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "When does the festival begin?",
-          "options": [
-            "At ten o'clock",
-            "At four o'clock",
-            "At eight o'clock",
-            "At six o'clock"
+            "It will snow",
+            "Warm",
+            "Cold"
           ],
           "answer": 3
         },
         {
+          "q": "Where is the traffic terrible?",
+          "options": [
+            "Near the museum",
+            "In the city center",
+            "On the main road to the airport",
+            "Near the park"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "When does the new museum open?",
+          "options": [
+            "On Wednesday",
+            "On Monday",
+            "On Friday",
+            "On Saturday"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "When does the festival begin?",
+          "options": [
+            "At four o'clock",
+            "At eight o'clock",
+            "At six o'clock",
+            "At ten o'clock"
+          ],
+          "answer": 2
+        },
+        {
           "q": "What does the library want?",
           "options": [
-            "People's old books",
-            "A new writer",
             "Money",
-            "New students for the club"
+            "New students for the club",
+            "People's old books",
+            "A new writer"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     },
@@ -1056,10 +1056,10 @@
           "options": [
             "Her grandmother",
             "Her father",
-            "Her aunt",
-            "Her friend"
+            "Her friend",
+            "Her aunt"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "Why is Behnaz excited?",
@@ -1074,32 +1074,32 @@
         {
           "q": "What can her mother not find?",
           "options": [
-            "Behnaz's ticket",
-            "The small bag",
             "Her jacket",
-            "Her passport"
+            "The small bag",
+            "Her passport",
+            "Behnaz's ticket"
           ],
-          "answer": 3
+          "answer": 2
         },
         {
           "q": "Where was the passport?",
           "options": [
             "In the big bag",
+            "On the desk",
             "In the taxi",
-            "At home",
-            "On the desk"
+            "At home"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "Who brings the passport?",
           "options": [
             "Her aunt",
-            "A policeman",
             "The taxi driver",
-            "The woman at the desk"
+            "The woman at the desk",
+            "A policeman"
           ],
-          "answer": 2
+          "answer": 1
         }
       ]
     },
@@ -1164,52 +1164,52 @@
         {
           "q": "When is the library's special event?",
           "options": [
-            "On Wednesday afternoons",
             "On Saturday mornings",
-            "On Fridays",
-            "On Mondays"
+            "On Wednesday afternoons",
+            "On Mondays",
+            "On Fridays"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "q": "What is this week's topic?",
           "options": [
-            "History books",
-            "Books about animals",
             "Poems",
-            "Science"
+            "Books about animals",
+            "Science",
+            "History books"
           ],
           "answer": 1
         },
         {
           "q": "What do the children use to find the meaning of the words?",
           "options": [
+            "A dictionary",
             "The internet",
             "The teacher",
-            "A dictionary",
             "A computer"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "What does the writer give Parsa?",
           "options": [
-            "A dictionary",
-            "Tea and cookies",
             "A card",
-            "Her new book"
+            "Tea and cookies",
+            "Her new book",
+            "A dictionary"
           ],
-          "answer": 3
+          "answer": 2
         },
         {
           "q": "What do you have to do to join the club?",
           "options": [
-            "Pay money",
             "Take an exam",
-            "Write a book",
-            "Fill in a short form"
+            "Pay money",
+            "Fill in a short form",
+            "Write a book"
           ],
-          "answer": 3
+          "answer": 2
         }
       ]
     },
@@ -1275,18 +1275,18 @@
           "q": "Where is Sepehr every summer?",
           "options": [
             "At his grandmother's house",
-            "At a summer class",
             "By the sea",
-            "On a farm"
+            "On a farm",
+            "At a summer class"
           ],
           "answer": 0
         },
         {
           "q": "What is his grandmother's hobby?",
           "options": [
-            "Cooking",
             "Reading",
             "Painting",
+            "Cooking",
             "Her garden"
           ],
           "answer": 3
@@ -1294,32 +1294,32 @@
         {
           "q": "What do plants need, his grandmother says?",
           "options": [
-            "Only water",
-            "Water, sun and time",
             "Music",
-            "A big garden"
+            "A big garden",
+            "Only water",
+            "Water, sun and time"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "What does Sepehr give the cat?",
           "options": [
-            "Bread",
-            "Fish",
             "Milk",
-            "Water"
+            "Water",
+            "Bread",
+            "Fish"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "What do they drink in the afternoon?",
           "options": [
             "Hot tea",
-            "Cool lemon juice",
+            "Coffee",
             "Milk",
-            "Coffee"
+            "Cool lemon juice"
           ],
-          "answer": 1
+          "answer": 3
         }
       ]
     },
@@ -1384,50 +1384,50 @@
         {
           "q": "What is the science club's project?",
           "options": [
-            "To grow plants with very little water",
             "To make a model of a bird",
             "To write an article",
-            "To study the weather"
+            "To study the weather",
+            "To grow plants with very little water"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "q": "How often does Soraya give her plants water?",
           "options": [
             "Every day",
-            "Every second day",
             "Once a week",
-            "Never"
+            "Never",
+            "Every second day"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "What goes wrong at first?",
           "options": [
-            "The water is finished",
             "The boxes break",
             "Some plants die because the sun is too hot",
+            "The water is finished",
             "The students forget"
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "q": "After two months, the tallest plants are ___.",
           "options": [
             "the teacher's",
-            "the scientist's",
             "all the same",
-            "Soraya's"
+            "Soraya's",
+            "the scientist's"
           ],
-          "answer": 3
+          "answer": 2
         },
         {
           "q": "What does the scientist ask the students to do?",
           "options": [
             "Give her the plants",
             "Show their project at a university event in the spring",
-            "Stop the project",
-            "Go to another club"
+            "Go to another club",
+            "Stop the project"
           ],
           "answer": 1
         }
@@ -1494,52 +1494,52 @@
         {
           "q": "Why does Kamyar wear his father's hat?",
           "options": [
-            "It is cold",
-            "He cannot find his umbrella",
+            "His father tells him to",
             "His own hat is small",
-            "His father tells him to"
+            "It is cold",
+            "He cannot find his umbrella"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "Why is the traffic terrible?",
           "options": [
-            "Because of the rain",
             "There is a festival",
             "The road is closed",
+            "Because of the rain",
             "A truck stops on the road"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "q": "How does Kamyar go to his class?",
           "options": [
             "By bus",
             "On foot",
-            "By taxi",
-            "By bike"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "What is the driver's opinion of the rain?",
-          "options": [
-            "Rain is bad",
-            "Rain makes traffic",
-            "People should stay at home",
-            "When it rains, people are nice to each other"
+            "By bike",
+            "By taxi"
           ],
           "answer": 3
         },
         {
+          "q": "What is the driver's opinion of the rain?",
+          "options": [
+            "People should stay at home",
+            "Rain is bad",
+            "When it rains, people are nice to each other",
+            "Rain makes traffic"
+          ],
+          "answer": 2
+        },
+        {
           "q": "What does the teacher do when Kamyar is late?",
           "options": [
-            "She is not angry",
             "She sends him home",
-            "She calls his father",
-            "She gives him more homework"
+            "She is not angry",
+            "She gives him more homework",
+            "She calls his father"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -1604,50 +1604,50 @@
         {
           "q": "In how many subjects does Mahan have exams?",
           "options": [
-            "Three",
             "Five",
             "Four",
-            "Two"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "Who helps Mahan with science?",
-          "options": [
-            "His sister",
-            "His mother",
-            "His teacher",
-            "His friend"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "What does Mahan do for history?",
-          "options": [
-            "He draws maps",
-            "He makes a list of important dates",
-            "He watches movies",
-            "He goes to a museum"
+            "Two",
+            "Three"
           ],
           "answer": 1
         },
         {
-          "q": "What does his mother bring him the night before the exam?",
+          "q": "Who helps Mahan with science?",
           "options": [
-            "Tea",
-            "Ice cream",
-            "Water",
-            "Warm milk"
+            "His friend",
+            "His teacher",
+            "His sister",
+            "His mother"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Mahan do for history?",
+          "options": [
+            "He goes to a museum",
+            "He watches movies",
+            "He draws maps",
+            "He makes a list of important dates"
           ],
           "answer": 3
+        },
+        {
+          "q": "What does his mother bring him the night before the exam?",
+          "options": [
+            "Warm milk",
+            "Tea",
+            "Water",
+            "Ice cream"
+          ],
+          "answer": 0
         },
         {
           "q": "In which subject is Mahan's result the best in the class?",
           "options": [
             "Science",
-            "History",
+            "Geography",
             "Language",
-            "Geography"
+            "History"
           ],
           "answer": 2
         }
@@ -1714,52 +1714,52 @@
         {
           "q": "When is the family's movie night?",
           "options": [
-            "Every Saturday",
             "Every Thursday",
-            "Every night",
-            "Every Friday evening"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "Who chooses the movie this week?",
-          "options": [
-            "Her mother",
-            "Nasrin's little brother",
-            "Nasrin",
-            "Her father"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "What is the movie about?",
-          "options": [
-            "A lion who wants to be a singer",
-            "A dog who finds the way home",
-            "A smart elephant",
-            "A little yellow chicken"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "What does her mother prepare?",
-          "options": [
-            "Cake and tea",
-            "Soup",
-            "Sandwiches and ice cream",
-            "Fruit"
+            "Every Saturday",
+            "Every Friday evening",
+            "Every night"
           ],
           "answer": 2
         },
         {
-          "q": "What does Nasrin say after the movie?",
+          "q": "Who chooses the movie this week?",
           "options": [
-            "It was terrible",
-            "She is tired",
-            "She saw it before",
-            "It was more interesting than she thought"
+            "Her father",
+            "Her mother",
+            "Nasrin",
+            "Nasrin's little brother"
           ],
           "answer": 3
+        },
+        {
+          "q": "What is the movie about?",
+          "options": [
+            "A little yellow chicken",
+            "A dog who finds the way home",
+            "A lion who wants to be a singer",
+            "A smart elephant"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does her mother prepare?",
+          "options": [
+            "Soup",
+            "Fruit",
+            "Cake and tea",
+            "Sandwiches and ice cream"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Nasrin say after the movie?",
+          "options": [
+            "It was more interesting than she thought",
+            "It was terrible",
+            "She is tired",
+            "She saw it before"
+          ],
+          "answer": 0
         }
       ]
     }

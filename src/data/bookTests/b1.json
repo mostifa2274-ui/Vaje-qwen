@@ -67,12 +67,12 @@
         {
           "q": "Where does Sara wake?",
           "options": [
-            "In the kitchen",
-            "In the yard",
             "In the bathroom",
-            "In her bedroom"
+            "In the yard",
+            "In her bedroom",
+            "In the kitchen"
           ],
-          "answer": 3
+          "answer": 2
         },
         {
           "q": "What does Mom cook for breakfast?",
@@ -87,32 +87,32 @@
         {
           "q": "What does Dad drink at the table?",
           "options": [
+            "Water",
             "Milk",
             "Nothing",
-            "Water",
             "A bottle of milk"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "Mom asks Omid to clean the floor. What is on the floor?",
           "options": [
+            "Bread",
             "Milk",
             "Water",
-            "Eggs",
-            "Bread"
+            "Eggs"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "q": "At the end, where does Sara want to go?",
           "options": [
-            "To the garden",
+            "To the kitchen",
             "To the bathroom",
-            "To her room",
-            "To the kitchen"
+            "To the garden",
+            "To her room"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     },
@@ -181,49 +181,49 @@
         {
           "q": "The family has a ___ chicken.",
           "options": [
-            "red",
-            "black",
             "yellow",
+            "black",
+            "red",
             "old"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "Where does the chicken sleep every evening?",
           "options": [
             "Under Leila's bed",
-            "On the chair in the kitchen",
             "In the yard",
+            "On the chair in the kitchen",
             "On the table"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "Where does Leila look first?",
           "options": [
             "In her bedroom and the bathroom",
-            "In the kitchen, the yard and the garden",
+            "In Mom and Dad's room",
             "Under the table and behind the door",
-            "In Mom and Dad's room"
+            "In the kitchen, the yard and the garden"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "Where does Leila find the chicken?",
           "options": [
-            "Under her bed",
-            "In the garden",
             "Behind the door",
-            "On the chair"
+            "Under her bed",
+            "On the chair",
+            "In the garden"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "q": "What does the chicken sleep on?",
           "options": [
-            "A chair",
             "A table",
             "Mom's bed",
+            "A chair",
             "A little red book"
           ],
           "answer": 3
@@ -298,51 +298,51 @@
           "q": "When does Reza come home?",
           "options": [
             "In the morning",
-            "In the afternoon",
             "In the evening",
+            "In the afternoon",
             "At night"
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "q": "Reza cannot open the door, because ___.",
           "options": [
-            "the door is old",
             "he does not have his key",
+            "the door is old",
             "his sister is not at home",
             "it is dark"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "What does his sister ask first?",
-          "options": [
-            "Is the key under the chair?",
-            "Is it on the table in the garden?",
-            "Is the key in the bathroom?",
-            "Do you want dinner?"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "What is on the table in the garden?",
-          "options": [
-            "A glass and a book",
-            "The key and a glass",
-            "Bread and water",
-            "A cup and a book"
           ],
           "answer": 0
         },
         {
-          "q": "Where is the key?",
+          "q": "What does his sister ask first?",
           "options": [
-            "On the table in the garden",
-            "On the floor in the yard",
-            "Under a book",
-            "On the kitchen table"
+            "Is the key in the bathroom?",
+            "Is the key under the chair?",
+            "Do you want dinner?",
+            "Is it on the table in the garden?"
           ],
           "answer": 3
+        },
+        {
+          "q": "What is on the table in the garden?",
+          "options": [
+            "Bread and water",
+            "A glass and a book",
+            "The key and a glass",
+            "A cup and a book"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Where is the key?",
+          "options": [
+            "Under a book",
+            "On the kitchen table",
+            "On the table in the garden",
+            "On the floor in the yard"
+          ],
+          "answer": 1
         }
       ]
     },
@@ -409,48 +409,48 @@
           "options": [
             "In the garden",
             "In the yard",
-            "In the kitchen",
-            "At home"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "How does the bird come into the room?",
-          "options": [
-            "Through the garden door",
-            "Through the kitchen",
-            "Through the open window",
-            "Through the bathroom"
+            "At home",
+            "In the kitchen"
           ],
           "answer": 2
         },
         {
+          "q": "How does the bird come into the room?",
+          "options": [
+            "Through the bathroom",
+            "Through the garden door",
+            "Through the kitchen",
+            "Through the open window"
+          ],
+          "answer": 3
+        },
+        {
           "q": "Where does the bird sit?",
           "options": [
-            "On Dad's desk",
             "On the bed",
+            "On a chair",
             "On the TV",
-            "On a chair"
+            "On Dad's desk"
           ],
           "answer": 2
         },
         {
           "q": "Dad says, \"Please, little bird, go out.\" What happens then?",
           "options": [
-            "The bird goes out quickly",
             "The bird does not go out",
+            "The bird goes out quickly",
             "The bird goes to the kitchen",
             "The bird sleeps on the floor"
           ],
-          "answer": 1
+          "answer": 0
         },
         {
           "q": "How does Nika help the bird go out?",
           "options": [
             "She opens the door to the garden",
-            "She closes the window",
+            "She calls Mom",
             "She gives the bird bread",
-            "She calls Mom"
+            "She closes the window"
           ],
           "answer": 0
         }

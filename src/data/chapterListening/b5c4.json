@@ -57,12 +57,12 @@
     {
       "q": "How does the man go around the city?",
       "options": [
-        "By bus",
+        "On his bicycle",
         "On foot",
-        "By car",
-        "On his bicycle"
+        "By bus",
+        "By car"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "q": "Where did the man see the chicken?",
@@ -77,32 +77,32 @@
     {
       "q": "What was the chicken with?",
       "options": [
-        "A cat",
-        "Some birds",
         "A child",
-        "Other chickens"
+        "Other chickens",
+        "A cat",
+        "Some birds"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "Why did he not take a photograph?",
       "options": [
-        "He had no camera",
-        "It was dark",
         "The chicken went into the trees",
+        "It was dark",
+        "He had no camera",
         "It was raining"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "q": "How did the man hear about the chicken?",
       "options": [
         "From the newspaper",
-        "From the radio",
         "From a neighbor",
+        "From the radio",
         "From the internet"
       ],
-      "answer": 1
+      "answer": 2
     }
   ]
 }

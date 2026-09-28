@@ -57,50 +57,50 @@
       "options": [
         "Grandmother",
         "Dad",
-        "The taxi driver",
-        "Grandfather"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "What is on the high mountains?",
-      "options": [
-        "Snow",
-        "Rain",
-        "Flowers",
-        "Birds"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "Why can Grandfather not come to the station today?",
-      "options": [
-        "He is tired",
-        "His truck needs some work",
-        "It is raining",
-        "He has visitors"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "Where will the family stay tonight?",
-      "options": [
-        "At Grandfather's house",
-        "On the train",
-        "At the small hotel by the sea",
-        "On a farm"
+        "Grandfather",
+        "The taxi driver"
       ],
       "answer": 2
     },
     {
+      "q": "What is on the high mountains?",
+      "options": [
+        "Birds",
+        "Flowers",
+        "Snow",
+        "Rain"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Why can Grandfather not come to the station today?",
+      "options": [
+        "He has visitors",
+        "It is raining",
+        "His truck needs some work",
+        "He is tired"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Where will the family stay tonight?",
+      "options": [
+        "At the small hotel by the sea",
+        "On a farm",
+        "On the train",
+        "At Grandfather's house"
+      ],
+      "answer": 0
+    },
+    {
       "q": "What is Grandmother cooking?",
       "options": [
-        "Fish",
         "Bread",
-        "Soup",
-        "Mom's favorite rice"
+        "Fish",
+        "Mom's favorite rice",
+        "Soup"
       ],
-      "answer": 3
+      "answer": 2
     }
   ]
 }

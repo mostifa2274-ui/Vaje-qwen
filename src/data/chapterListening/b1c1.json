@@ -60,52 +60,52 @@
     {
       "q": "Where is Mom in the morning?",
       "options": [
+        "Near the door",
         "At the window of her room",
         "In the garden",
-        "In the yard",
-        "Near the door"
+        "In the yard"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "q": "Where is Dad?",
       "options": [
         "In the garden",
-        "Near the wall",
         "In bed",
-        "Behind the door"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "Where does Mom see the red bird?",
-      "options": [
-        "On the window",
-        "On the garden wall",
-        "Under a chair",
-        "On the bed"
+        "Behind the door",
+        "Near the wall"
       ],
       "answer": 1
     },
     {
+      "q": "Where does Mom see the red bird?",
+      "options": [
+        "On the garden wall",
+        "Under a chair",
+        "On the window",
+        "On the bed"
+      ],
+      "answer": 0
+    },
+    {
       "q": "Where does Dad look?",
       "options": [
-        "Behind the flowers",
+        "Under the chairs",
         "Near the window",
-        "Under the bed",
-        "Under the chairs"
+        "Behind the flowers",
+        "Under the bed"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "q": "Mom calls Nino, and then ___",
       "options": [
+        "Dad sits on a chair",
         "no little chicken comes",
-        "Nino runs to Mom",
         "the red bird comes back",
-        "Dad sits on a chair"
+        "Nino runs to Mom"
       ],
-      "answer": 0
+      "answer": 1
     }
   ]
 }

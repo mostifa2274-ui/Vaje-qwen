@@ -59,52 +59,52 @@
     {
       "q": "What does the boy do every morning?",
       "options": [
-        "He goes to school",
-        "He helps the old woman with the birds",
         "He plays football",
-        "He takes the bus to the city center"
+        "He takes the bus to the city center",
+        "He goes to school",
+        "He helps the old woman with the birds"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "What do they put in the dish next to the door?",
       "options": [
         "Bread and water",
-        "Milk",
         "Cheese",
-        "Eggs"
+        "Eggs",
+        "Milk"
       ],
       "answer": 0
     },
     {
       "q": "What does the girl show them?",
       "options": [
-        "A note",
+        "A picture of a little yellow chicken",
         "A book",
-        "A flower",
-        "A picture of a little yellow chicken"
+        "A note",
+        "A flower"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "q": "What does the boy see in the picture?",
       "options": [
-        "A red bird",
-        "Orange feet and a little white on the left",
         "A blue door",
-        "A girl"
+        "Orange feet and a little white on the left",
+        "A girl",
+        "A red bird"
       ],
       "answer": 1
     },
     {
       "q": "What does the old woman do with the note?",
       "options": [
-        "She gives it back",
         "She puts it on the wall",
         "She puts it in her bag",
-        "She gives it to her grandson"
+        "She gives it to her grandson",
+        "She gives it back"
       ],
-      "answer": 2
+      "answer": 1
     }
   ]
 }

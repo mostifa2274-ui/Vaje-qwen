@@ -61,52 +61,52 @@
     {
       "q": "Who tells Negar that Mina is at the door?",
       "options": [
-        "Her dad",
-        "Her mother",
         "Mina",
-        "An old neighbor"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "What was under the car?",
-      "options": [
-        "Nino",
-        "A yellow shoe",
-        "A ball",
-        "A shopping bag"
+        "Her dad",
+        "An old neighbor",
+        "Her mother"
       ],
       "answer": 3
     },
     {
+      "q": "What was under the car?",
+      "options": [
+        "A ball",
+        "A shopping bag",
+        "A yellow shoe",
+        "Nino"
+      ],
+      "answer": 1
+    },
+    {
       "q": "What does Negar choose?",
       "options": [
-        "Orange juice",
-        "Water",
         "Milk",
-        "Bread"
+        "Bread",
+        "Orange juice",
+        "Water"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "Where did the young woman see a chicken?",
       "options": [
-        "Under a car",
         "In her garden",
+        "At school",
         "Near the pool in the park",
-        "At school"
+        "Under a car"
       ],
       "answer": 2
     },
     {
       "q": "Negar's mother says, \"Tomorrow we will ___.\"",
       "options": [
+        "see the new apartment",
         "go to the park",
-        "watch the street",
         "go to school",
-        "see the new apartment"
+        "watch the street"
       ],
-      "answer": 1
+      "answer": 3
     }
   ]
 }

@@ -60,9 +60,9 @@
       "q": "Where do the visitors come from?",
       "options": [
         "This neighborhood",
-        "The bread shop",
+        "The city center",
         "A city far away",
-        "The city center"
+        "The bread shop"
       ],
       "answer": 2
     },
@@ -71,17 +71,17 @@
       "options": [
         "In dollars",
         "In pounds",
-        "In local money",
-        "They cannot pay"
+        "They cannot pay",
+        "In local money"
       ],
       "answer": 0
     },
     {
       "q": "What do they order?",
       "options": [
+        "Chocolate ice cream",
         "Coffee and cookies",
         "Orange juice",
-        "Chocolate ice cream",
         "Tea and two pieces of chocolate cake"
       ],
       "answer": 3
@@ -99,12 +99,12 @@
     {
       "q": "What does the visitor say at the end?",
       "options": [
-        "He will look for Nino at the market tomorrow",
         "He will go back to his city",
         "He has a chicken",
-        "The cafe is expensive"
+        "The cafe is expensive",
+        "He will look for Nino at the market tomorrow"
       ],
-      "answer": 0
+      "answer": 3
     }
   ]
 }

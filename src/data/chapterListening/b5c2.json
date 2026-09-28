@@ -60,39 +60,39 @@
     {
       "q": "Who does Dad write the letter to?",
       "options": [
-        "The city newspaper",
-        "The radio",
         "The neighbors",
-        "The school"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "When did Nino run away?",
-      "options": [
-        "Last week",
-        "Yesterday",
-        "Last month",
-        "Last year"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "What does the letter say about Nino?",
-      "options": [
-        "Big and white",
-        "Small and yellow, with orange feet",
-        "Brown, with yellow feet",
-        "Black, with a little white"
+        "The city newspaper",
+        "The school",
+        "The radio"
       ],
       "answer": 1
     },
     {
+      "q": "When did Nino run away?",
+      "options": [
+        "Last year",
+        "Last month",
+        "Yesterday",
+        "Last week"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What does the letter say about Nino?",
+      "options": [
+        "Small and yellow, with orange feet",
+        "Big and white",
+        "Black, with a little white",
+        "Brown, with yellow feet"
+      ],
+      "answer": 0
+    },
+    {
       "q": "What does Dad ask the newspaper to do?",
       "options": [
-        "Give him money",
         "Write about the city",
         "Come to their house",
+        "Give him money",
         "Put Nino's picture in the newspaper"
       ],
       "answer": 3
@@ -100,12 +100,12 @@
     {
       "q": "What does Mina check in the letter?",
       "options": [
-        "The spelling of every word",
         "The newspaper's address",
         "Nino's picture",
-        "The date"
+        "The date",
+        "The spelling of every word"
       ],
-      "answer": 0
+      "answer": 3
     }
   ]
 }

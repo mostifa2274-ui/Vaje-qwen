@@ -57,52 +57,52 @@
     {
       "q": "What does the festival show?",
       "options": [
-        "The culture of the north",
-        "Farm animals",
         "A big city",
+        "Farm animals",
+        "The culture of the north",
         "Old books"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "Which meal is common here?",
       "options": [
         "Soup",
+        "Fish with rice",
         "Sandwiches",
-        "Cake",
-        "Fish with rice"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "Where can children paint?",
-      "options": [
-        "Next to the sea",
-        "In the garden next to the library",
-        "At the museum",
-        "At the hotel"
+        "Cake"
       ],
       "answer": 1
     },
     {
+      "q": "Where can children paint?",
+      "options": [
+        "At the hotel",
+        "At the museum",
+        "Next to the sea",
+        "In the garden next to the library"
+      ],
+      "answer": 3
+    },
+    {
       "q": "What is the movie about?",
       "options": [
-        "A little yellow chicken",
         "A man with a boat",
         "A dog who travels far to find his family",
+        "A little yellow chicken",
         "A festival"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "Who is the festival free for?",
       "options": [
-        "Everyone",
         "Only children",
-        "Only tourists",
-        "Only grandparents"
+        "Everyone",
+        "Only grandparents",
+        "Only tourists"
       ],
-      "answer": 0
+      "answer": 1
     }
   ]
 }

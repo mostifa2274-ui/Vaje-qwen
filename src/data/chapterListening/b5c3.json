@@ -55,52 +55,52 @@
     {
       "q": "Who is looking for the chicken?",
       "options": [
+        "A farmer",
         "A girl in the city",
-        "A policeman",
         "A teacher",
-        "A farmer"
+        "A policeman"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "q": "When did the chicken run away?",
       "options": [
-        "In June",
         "In May",
         "In winter",
-        "Yesterday"
+        "Yesterday",
+        "In June"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "q": "Where can you see his photograph and a short video?",
       "options": [
         "In the newspaper",
-        "In a magazine",
         "On the internet",
-        "On TV"
+        "On TV",
+        "In a magazine"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "If you see him, what should you do?",
       "options": [
+        "Call his family or send an email",
         "Take him to the park",
-        "Come to the radio",
         "Say nothing",
-        "Call his family or send an email"
+        "Come to the radio"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "q": "This message is on a ___.",
       "options": [
-        "Saturday",
-        "Friday",
         "Monday",
-        "Sunday"
+        "Sunday",
+        "Friday",
+        "Saturday"
       ],
-      "answer": 1
+      "answer": 2
     }
   ]
 }

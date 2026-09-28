@@ -63,52 +63,52 @@
     {
       "q": "Where does the old man sit?",
       "options": [
-        "Near the cafe",
-        "On his chair under a tall tree",
         "Near the road",
-        "At the bus stop"
+        "At the bus stop",
+        "On his chair under a tall tree",
+        "Near the cafe"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "q": "What does the girl have in her hand?",
       "options": [
-        "A book",
-        "A ball",
         "A picture of a little yellow chicken",
+        "A ball",
+        "A book",
         "Some bread"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "What runs across the park?",
-      "options": [
-        "A big dog",
-        "A boy with a ball",
-        "A red bird",
-        "A child"
       ],
       "answer": 0
     },
     {
-      "q": "What does the old man tell the man?",
+      "q": "What runs across the park?",
       "options": [
-        "Come back tomorrow",
-        "Look under the trees",
-        "Go to the city",
-        "Ask your neighbors"
+        "A red bird",
+        "A child",
+        "A boy with a ball",
+        "A big dog"
       ],
       "answer": 3
     },
     {
-      "q": "After the family leaves, the old man thinks about ___.",
+      "q": "What does the old man tell the man?",
       "options": [
-        "the big dog",
-        "his book",
-        "a little yellow chicken",
-        "his lunch"
+        "Go to the city",
+        "Look under the trees",
+        "Ask your neighbors",
+        "Come back tomorrow"
       ],
       "answer": 2
+    },
+    {
+      "q": "After the family leaves, the old man thinks about ___.",
+      "options": [
+        "his book",
+        "the big dog",
+        "his lunch",
+        "a little yellow chicken"
+      ],
+      "answer": 3
     }
   ]
 }

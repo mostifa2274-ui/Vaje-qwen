@@ -65,8 +65,8 @@
           "q": "Mahtab loves Neda's picture of ___.",
           "options": [
             "her family",
-            "her cat",
             "her garden",
+            "her cat",
             "her new apartment"
           ],
           "answer": 3
@@ -74,42 +74,42 @@
         {
           "q": "What is new in Mahtab's life?",
           "options": [
+            "Her family lives in a new city",
             "She has a new piano",
             "She has a cat",
-            "Her family lives in a new city",
             "She goes to a new school"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "What is Mahtab's new house like?",
-          "options": [
-            "Small, but with a beautiful garden",
-            "Big, with a pool",
-            "In a tall building",
-            "Old and dark"
           ],
           "answer": 0
         },
         {
+          "q": "What is Mahtab's new house like?",
+          "options": [
+            "Old and dark",
+            "In a tall building",
+            "Small, but with a beautiful garden",
+            "Big, with a pool"
+          ],
+          "answer": 2
+        },
+        {
           "q": "What does Elham do?",
           "options": [
-            "She works in a cafe",
+            "She takes photos for a newspaper",
             "She writes stories for a magazine",
-            "She plays the piano in a band",
-            "She takes photos for a newspaper"
+            "She works in a cafe",
+            "She plays the piano in a band"
           ],
           "answer": 1
         },
         {
           "q": "What does Mahtab ask Neda at the end of the letter?",
           "options": [
-            "To visit her",
+            "To write soon and tell her all her news",
             "To send her some photos",
             "To call her",
-            "To write soon and tell her all her news"
+            "To visit her"
           ],
-          "answer": 3
+          "answer": 0
         }
       ]
     },
@@ -182,52 +182,498 @@
         {
           "q": "What does Kamran do on Sunday evenings?",
           "options": [
-            "He watches TV",
+            "He writes stories for a magazine",
             "He goes to a cafe",
-            "He listens to the radio with his dad",
-            "He writes stories for a magazine"
+            "He watches TV",
+            "He listens to the radio with his dad"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "What is this Sunday's story about?",
           "options": [
             "A cat in a cafe",
-            "A little mouse in a big city",
             "A girl who writes letters",
+            "A little mouse in a big city",
             "A dog on a farm"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "What sound makes the mouse afraid?",
           "options": [
-            "A cat",
+            "A phone",
             "The radio",
             "A door",
-            "A phone"
+            "A cat"
           ],
-          "answer": 3
+          "answer": 0
         },
         {
           "q": "Why is Kamran not happy?",
           "options": [
-            "He wants to hear more of the story",
             "He is afraid of mice",
-            "The radio does not work",
-            "His dad is sleeping"
+            "His dad is sleeping",
+            "He wants to hear more of the story",
+            "The radio does not work"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "q": "How is the mouse in Kamran's story different?",
           "options": [
             "It lives in a big house",
-            "It writes letters",
             "It goes to another city",
-            "It is not afraid, and it is friends with a cat"
+            "It is not afraid, and it is friends with a cat",
+            "It writes letters"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b5-reading-c",
+      "titleEn": "Kasra's New Bicycle",
+      "titleFa": "دوچرخهٔ تازهٔ کسری",
+      "names": [
+        "Kasra"
+      ],
+      "sentences": [
+        {
+          "en": "Kasra is twelve, and he wants a bicycle more than anything.",
+          "fa": "کسری دوازده ساله است و بیشتر از هر چیزی یک دوچرخه می‌خواهد."
+        },
+        {
+          "en": "His old bicycle is too small for him now.",
+          "fa": "دوچرخهٔ قدیمی‌اش حالا برایش خیلی کوچک است."
+        },
+        {
+          "en": "He asks his father for advice.",
+          "fa": "از پدرش راهنمایی می‌خواهد."
+        },
+        {
+          "en": "\"Keep your money in a box for six months,\" his father says.",
+          "fa": "پدرش می‌گوید: «شش ماه پولت را در یک جعبه نگه دار.»"
+        },
+        {
+          "en": "Every week, Kasra puts some money in a small box under his bed.",
+          "fa": "کسری هر هفته کمی پول در جعبهٔ کوچکی زیر تختش می‌گذارد."
+        },
+        {
+          "en": "He also helps his neighbors with their shopping, and they give him a little money.",
+          "fa": "به همسایه‌هایش هم در خرید کمک می‌کند و آن‌ها کمی پول به او می‌دهند."
+        },
+        {
+          "en": "In the summer, he reads about bicycles on the internet.",
+          "fa": "تابستان، در اینترنت دربارهٔ دوچرخه‌ها مطالعه می‌کند."
+        },
+        {
+          "en": "He finds a perfect one on a website: it is blue and black, and it is not too expensive.",
+          "fa": "در یک وب‌سایت دوچرخهٔ بی‌نقصی پیدا می‌کند: آبی و سیاه است و خیلی گران نیست."
+        },
+        {
+          "en": "After six months, he opens the box and looks at his money.",
+          "fa": "بعد از شش ماه، جعبه را باز می‌کند و به پولش نگاه می‌کند."
+        },
+        {
+          "en": "It is enough! Kasra is very excited.",
+          "fa": "کافی است! کسری خیلی هیجان‌زده است."
+        },
+        {
+          "en": "He and his father go to the shop together, and he buys the bicycle.",
+          "fa": "او و پدرش با هم به مغازه می‌روند و دوچرخه را می‌خرد."
+        },
+        {
+          "en": "Now he goes to school on it every day.",
+          "fa": "حالا هر روز با آن به مدرسه می‌رود."
+        },
+        {
+          "en": "\"It was a long wait,\" he says, \"but it is a wonderful bicycle.\"",
+          "fa": "می‌گوید: «انتظار طولانی‌ای بود، اما دوچرخهٔ فوق‌العاده‌ای است.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Why does Kasra want a new bicycle?",
+          "options": [
+            "He wants to sell his old one",
+            "His friend has one",
+            "His father says so",
+            "His old one is too small for him"
           ],
           "answer": 3
+        },
+        {
+          "q": "What is his father's advice?",
+          "options": [
+            "Keep your money in a box for six months",
+            "Ask your mother for money",
+            "Buy an old bicycle",
+            "Look on the internet"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "How does Kasra get more money?",
+          "options": [
+            "He sells his books",
+            "He helps his neighbors with their shopping",
+            "He works in a shop",
+            "He finds it in the street"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Where does Kasra find the perfect bicycle?",
+          "options": [
+            "At a friend's house",
+            "On a website",
+            "In the newspaper",
+            "In a magazine"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How does Kasra go to school now?",
+          "options": [
+            "With his father",
+            "On foot",
+            "By bus",
+            "On his new bicycle"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b5-reading-d",
+      "titleEn": "A Video Call",
+      "titleFa": "تماس تصویری",
+      "names": [
+        "Samira",
+        "Behzad"
+      ],
+      "sentences": [
+        {
+          "en": "Samira's big brother, Behzad, lives and studies far away, in another city.",
+          "fa": "برادر بزرگ سمیرا، بهزاد، دور از آن‌ها در شهر دیگری زندگی می‌کند و درس می‌خواند."
+        },
+        {
+          "en": "She misses him, so every Friday they have a video call on the computer.",
+          "fa": "دلش برای او تنگ می‌شود، پس هر جمعه با رایانه با هم تماس تصویری دارند."
+        },
+        {
+          "en": "This Friday, the internet is very slow, and the video stops again and again.",
+          "fa": "این جمعه، اینترنت خیلی کند است و تصویر مدام قطع می‌شود."
+        },
+        {
+          "en": "Samira can hear Behzad, but she cannot see him.",
+          "fa": "سمیرا صدای بهزاد را می‌شنود، اما نمی‌تواند او را ببیند."
+        },
+        {
+          "en": "\"Can you repeat that?\" she asks many times.",
+          "fa": "بارها می‌پرسد: «می‌شود تکرارش کنی؟»"
+        },
+        {
+          "en": "Then they change to the telephone, and the conversation is much better.",
+          "fa": "بعد به تلفن تغییر می‌دهند و گفت‌وگو خیلی بهتر می‌شود."
+        },
+        {
+          "en": "Behzad describes his new apartment and his friends.",
+          "fa": "بهزاد آپارتمان تازه و دوستانش را توصیف می‌کند."
+        },
+        {
+          "en": "He also tells her a funny fact: in his city, it rains two hundred days a year.",
+          "fa": "یک واقعیت جالب هم به او می‌گوید: در شهرش سالی دویست روز باران می‌بارد."
+        },
+        {
+          "en": "Samira tells him about her school and her new friend.",
+          "fa": "سمیرا دربارهٔ مدرسه و دوست تازه‌اش برایش تعریف می‌کند."
+        },
+        {
+          "en": "After an hour, Behzad says, \"Send me some photographs of the family.\"",
+          "fa": "بعد از یک ساعت، بهزاد می‌گوید: «چند عکس از خانواده برایم بفرست.»"
+        },
+        {
+          "en": "That evening, Samira takes some pictures with Mom's camera and sends them by email.",
+          "fa": "آن شب، سمیرا با دوربین مامان چند عکس می‌گیرد و آن‌ها را با ایمیل می‌فرستد."
+        },
+        {
+          "en": "The next morning, there is an email from Behzad: \"Fantastic photos! I miss you all.\"",
+          "fa": "صبح روز بعد، ایمیلی از بهزاد رسیده است: «عکس‌های فوق‌العاده‌ای است! دلم برای همه‌تان تنگ شده.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "When do Samira and Behzad have a video call?",
+          "options": [
+            "Every day",
+            "Once a month",
+            "Every Monday",
+            "Every Friday"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What goes wrong this Friday?",
+          "options": [
+            "Samira is tired",
+            "Behzad is not at home",
+            "The camera does not work",
+            "The internet is very slow"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Behzad describe?",
+          "options": [
+            "His new camera",
+            "The food there",
+            "His school",
+            "His new apartment and his friends"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What fact does Behzad tell her?",
+          "options": [
+            "He has a new bicycle",
+            "His apartment is very big",
+            "It rains two hundred days a year in his city",
+            "His city has no trees"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Samira send by email?",
+          "options": [
+            "A video",
+            "Some photographs of the family",
+            "A text",
+            "A letter"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b5-reading-e",
+      "titleEn": "Words and Meanings",
+      "titleFa": "واژه‌ها و معنی‌ها",
+      "names": [
+        "Mona",
+        "English"
+      ],
+      "sentences": [
+        {
+          "en": "Mona loves English, and she wants to speak it well.",
+          "fa": "مونا عاشق انگلیسی است و می‌خواهد خوب انگلیسی حرف بزند."
+        },
+        {
+          "en": "Every day, she learns ten new words.",
+          "fa": "هر روز ده واژهٔ تازه یاد می‌گیرد."
+        },
+        {
+          "en": "She writes each word in a small book with its meaning and an example sentence.",
+          "fa": "هر واژه را با معنی‌اش و یک جملهٔ نمونه در دفتر کوچکی می‌نویسد."
+        },
+        {
+          "en": "Then she repeats each word five times.",
+          "fa": "بعد هر واژه را پنج بار تکرار می‌کند."
+        },
+        {
+          "en": "Her brother thinks this is boring, but Mona does not agree.",
+          "fa": "برادرش فکر می‌کند این کار کسل‌کننده است، اما مونا موافق نیست."
+        },
+        {
+          "en": "\"Words are like friends,\" she says. \"You need to see them again and again.\"",
+          "fa": "می‌گوید: «واژه‌ها مثل دوست‌اند. باید بارها و بارها ببینی‌شان.»"
+        },
+        {
+          "en": "On Saturday, her English teacher asks everyone to spell twenty words.",
+          "fa": "شنبه، معلم انگلیسی از همه می‌خواهد بیست واژه را هجی کنند."
+        },
+        {
+          "en": "Mona spells all twenty words right.",
+          "fa": "مونا هر بیست واژه را درست هجی می‌کند."
+        },
+        {
+          "en": "Then the teacher asks them to write a short dialogue.",
+          "fa": "بعد معلم از آن‌ها می‌خواهد یک گفت‌وگوی کوتاه بنویسند."
+        },
+        {
+          "en": "Mona writes a funny dialogue between a cat and a mouse.",
+          "fa": "مونا یک گفت‌وگوی خنده‌دار بین یک گربه و یک موش می‌نویسد."
+        },
+        {
+          "en": "The teacher reads it to everyone, and they all laugh.",
+          "fa": "معلم آن را برای همه می‌خواند و همه می‌خندند."
+        },
+        {
+          "en": "\"Your writing is wonderful,\" the teacher tells her.",
+          "fa": "معلم به او می‌گوید: «نوشته‌ات فوق‌العاده است.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "How many new words does Mona learn every day?",
+          "options": [
+            "Two",
+            "Twenty",
+            "Ten",
+            "Five"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Mona write next to each word?",
+          "options": [
+            "A picture",
+            "The date",
+            "Its meaning and an example sentence",
+            "Her name"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does her brother think?",
+          "options": [
+            "It is easy",
+            "It is funny",
+            "It is wonderful",
+            "It is boring"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "How many words does Mona spell right?",
+          "options": [
+            "Ten",
+            "All twenty",
+            "Twelve",
+            "Fifteen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is Mona's dialogue about?",
+          "options": [
+            "A cat and a mouse",
+            "A dog and a bird",
+            "A mother and her son",
+            "Two friends at school"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b5-reading-f",
+      "titleEn": "A Boring Saturday",
+      "titleFa": "یک شنبهٔ کسل‌کننده",
+      "names": [
+        "Hesam"
+      ],
+      "sentences": [
+        {
+          "en": "It is Saturday, and Hesam is bored.",
+          "fa": "شنبه است و حسام حوصله‌اش سر رفته است."
+        },
+        {
+          "en": "His friends are away, and there is nothing on TV.",
+          "fa": "دوستانش جای دیگری هستند و تلویزیون هم چیزی ندارد."
+        },
+        {
+          "en": "\"This is the most boring day of my life,\" he tells his mother.",
+          "fa": "به مادرش می‌گوید: «این کسل‌کننده‌ترین روز عمرم است.»"
+        },
+        {
+          "en": "His mother gives him some advice. \"Imagine a different day,\" she says.",
+          "fa": "مادرش راهنمایی‌اش می‌کند و می‌گوید: «یک روز متفاوت را تصور کن.»"
+        },
+        {
+          "en": "\"What is your idea of a perfect day?\"",
+          "fa": "«روز بی‌نقص به نظر تو چه روزی است؟»"
+        },
+        {
+          "en": "Hesam thinks for a moment. \"A day at a big football match,\" he says.",
+          "fa": "حسام لحظه‌ای فکر می‌کند و می‌گوید: «یک روز در یک مسابقهٔ بزرگ فوتبال.»"
+        },
+        {
+          "en": "\"Then write a story about it,\" she says.",
+          "fa": "مادرش می‌گوید: «پس یک داستان درباره‌اش بنویس.»"
+        },
+        {
+          "en": "Hesam takes some paper and starts writing.",
+          "fa": "حسام کمی کاغذ برمی‌دارد و شروع به نوشتن می‌کند."
+        },
+        {
+          "en": "In his story, he goes to a big match, and his team wins.",
+          "fa": "در داستانش به یک مسابقهٔ بزرگ می‌رود و تیمش برنده می‌شود."
+        },
+        {
+          "en": "He writes for two hours, and he forgets that he is bored.",
+          "fa": "دو ساعت می‌نویسد و یادش می‌رود که حوصله‌اش سر رفته بود."
+        },
+        {
+          "en": "In the evening, he reads his story to his family, and they love it.",
+          "fa": "عصر، داستانش را برای خانواده‌اش می‌خواند و آن‌ها خیلی دوستش دارند."
+        },
+        {
+          "en": "\"Maybe Saturdays are not so boring,\" he says, and he laughs.",
+          "fa": "می‌گوید: «شاید شنبه‌ها آن‌قدرها هم کسل‌کننده نباشند.» و می‌خندد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Why is Hesam bored?",
+          "options": [
+            "He is hungry",
+            "His friends are away, and there is nothing on TV",
+            "He has a lot of work",
+            "It is raining"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does his mother tell him to imagine?",
+          "options": [
+            "A new school",
+            "A different day",
+            "A new friend",
+            "A big house"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is Hesam's idea of a perfect day?",
+          "options": [
+            "A day at school",
+            "A day in the park",
+            "A day at a big football match",
+            "A day at home"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "How long does Hesam write?",
+          "options": [
+            "For ten minutes",
+            "All day",
+            "For an hour",
+            "For two hours"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Hesam do in the evening?",
+          "options": [
+            "He watches TV",
+            "He goes out with his friends",
+            "He reads his story to his family",
+            "He goes to a match"
+          ],
+          "answer": 2
         }
       ]
     }
@@ -302,52 +748,52 @@
         {
           "q": "Who is the message from?",
           "options": [
-            "Sanaz's mom",
-            "Sanaz's friend",
             "Sanaz's dad",
-            "Sanaz's sister"
+            "Sanaz's friend",
+            "Sanaz's sister",
+            "Sanaz's mom"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "Where is Sanaz's dad?",
           "options": [
-            "At work",
+            "At home",
             "At the market",
             "At a cafe",
-            "At home"
+            "At work"
           ],
           "answer": 1
         },
         {
           "q": "What does Sanaz need?",
           "options": [
-            "A pen and some paper",
             "A book and a pencil",
+            "A camera",
             "A cake",
-            "A camera"
+            "A pen and some paper"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "q": "Why does Sanaz want the paper?",
           "options": [
-            "To write a letter to her friend",
+            "To draw a picture for her mom",
             "To write a message to her dad",
-            "For school",
-            "To draw a picture for her mom"
+            "To write a letter to her friend",
+            "For school"
           ],
-          "answer": 3
+          "answer": 0
         },
         {
           "q": "What does Dad bring home with the pen and paper?",
           "options": [
-            "Some flowers",
-            "A photo",
+            "A beautiful cake",
             "A book",
-            "A beautiful cake"
+            "A photo",
+            "Some flowers"
           ],
-          "answer": 3
+          "answer": 0
         }
       ]
     },
@@ -412,52 +858,494 @@
         {
           "q": "What does Ehsan do every weekend?",
           "options": [
-            "He writes for the newspaper",
-            "He plays football in the park",
+            "He takes photos with his old camera",
             "He listens to the radio",
-            "He takes photos with his old camera"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "What does Ehsan take a picture of in the park?",
-          "options": [
-            "A black cat under a table",
-            "His sister",
-            "A big white bird on a chair",
-            "A brown dog"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "What is his sister's idea?",
-          "options": [
-            "Put the photo on the wall",
-            "Send the photo to the newspaper",
-            "Buy a new camera",
-            "Give the photo to Mom"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "Who calls Ehsan three days later?",
-          "options": [
-            "A woman from the newspaper",
-            "His sister",
-            "His friend",
-            "His dad"
+            "He writes for the newspaper",
+            "He plays football in the park"
           ],
           "answer": 0
         },
         {
-          "q": "On which page of the newspaper is his photo?",
+          "q": "What does Ehsan take a picture of in the park?",
           "options": [
-            "Page one",
-            "Page three",
-            "Page six",
-            "The last page"
+            "His sister",
+            "A brown dog",
+            "A black cat under a table",
+            "A big white bird on a chair"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What is his sister's idea?",
+          "options": [
+            "Give the photo to Mom",
+            "Buy a new camera",
+            "Send the photo to the newspaper",
+            "Put the photo on the wall"
           ],
           "answer": 2
+        },
+        {
+          "q": "Who calls Ehsan three days later?",
+          "options": [
+            "His friend",
+            "A woman from the newspaper",
+            "His dad",
+            "His sister"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "On which page of the newspaper is his photo?",
+          "options": [
+            "Page six",
+            "The last page",
+            "Page one",
+            "Page three"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b5-listening-c",
+      "titleEn": "The Wrong Email",
+      "titleFa": "ایمیل اشتباهی",
+      "names": [
+        "Farhad",
+        "Ali"
+      ],
+      "sentences": [
+        {
+          "en": "Farhad writes an email to his friend Ali about a party on Friday.",
+          "fa": "فرهاد دربارهٔ یک مهمانی در روز جمعه به دوستش علی ایمیل می‌نویسد."
+        },
+        {
+          "en": "\"Dear Ali,\" he writes, \"come to my house at seven. Bring your guitar!\"",
+          "fa": "می‌نویسد: «علی عزیز، ساعت هفت به خانه‌ام بیا. گیتارت را هم بیاور!»"
+        },
+        {
+          "en": "But Farhad makes a mistake with the email address.",
+          "fa": "اما فرهاد در نشانی ایمیل اشتباه می‌کند."
+        },
+        {
+          "en": "The email goes to a friend of his mother, a woman with a very similar address.",
+          "fa": "ایمیل به یکی از دوستان مادرش می‌رسد، زنی که نشانی‌اش خیلی شبیه است."
+        },
+        {
+          "en": "The woman reads it, but she does not understand the meaning.",
+          "fa": "زن آن را می‌خواند، اما منظورش را نمی‌فهمد."
+        },
+        {
+          "en": "She writes back: \"Dear Farhad, I am sorry, but I do not play the guitar!\"",
+          "fa": "جواب می‌دهد: «فرهاد عزیز، متأسفم، اما من گیتار نمی‌زنم!»"
+        },
+        {
+          "en": "Farhad reads her email and laughs.",
+          "fa": "فرهاد ایمیلش را می‌خواند و می‌خندد."
+        },
+        {
+          "en": "He sends a new email to the correct address.",
+          "fa": "ایمیل تازه‌ای به نشانی درست می‌فرستد."
+        },
+        {
+          "en": "Then he writes to the woman again: \"Sorry! Please come to the party too.\"",
+          "fa": "بعد دوباره به آن زن می‌نویسد: «ببخشید! لطفاً شما هم به مهمانی بیایید.»"
+        },
+        {
+          "en": "On Friday, Ali comes with his guitar, and the woman comes with a cake.",
+          "fa": "جمعه، علی با گیتارش می‌آید و آن زن با یک کیک."
+        },
+        {
+          "en": "Everyone thinks the story is wonderful.",
+          "fa": "همه فکر می‌کنند این ماجرا فوق‌العاده است."
+        },
+        {
+          "en": "Now Farhad checks every email address before he sends a message.",
+          "fa": "حالا فرهاد پیش از فرستادن هر پیام، نشانی ایمیل را بررسی می‌کند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is Farhad's email about?",
+          "options": [
+            "A new guitar",
+            "A day in the park",
+            "A party on Friday",
+            "A football match"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What mistake does Farhad make?",
+          "options": [
+            "He sends it too late",
+            "He writes the wrong day",
+            "He uses the wrong email address",
+            "He forgets the time"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does the woman write back?",
+          "options": [
+            "She does not play the guitar",
+            "She cannot come on Friday",
+            "She is angry",
+            "She wants a cake"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the woman bring to the party?",
+          "options": [
+            "A guitar",
+            "Some flowers",
+            "A cake",
+            "A camera"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Farhad do now before he sends a message?",
+          "options": [
+            "He reads it to Ali",
+            "He calls his friend",
+            "He asks his mother",
+            "He checks the email address"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b5-listening-d",
+      "titleEn": "On the Radio",
+      "titleFa": "روی آنتن رادیو",
+      "names": [
+        "Marjan"
+      ],
+      "sentences": [
+        {
+          "en": "Marjan listens to the radio with her mother every Sunday evening.",
+          "fa": "مرجان هر یکشنبه عصر با مادرش به رادیو گوش می‌دهد."
+        },
+        {
+          "en": "People call the radio and give their opinion about a question.",
+          "fa": "مردم به رادیو زنگ می‌زنند و نظرشان را دربارهٔ یک سؤال می‌گویند."
+        },
+        {
+          "en": "This week, the question is: \"Are bicycles better than cars in the city?\"",
+          "fa": "سؤال این هفته این است: «آیا دوچرخه در شهر از ماشین بهتر است؟»"
+        },
+        {
+          "en": "Marjan is very interested, because she goes to school on her bicycle.",
+          "fa": "مرجان خیلی علاقه‌مند است، چون با دوچرخه به مدرسه می‌رود."
+        },
+        {
+          "en": "With her mother's help, she calls the radio, and a woman answers the telephone.",
+          "fa": "با کمک مادرش به رادیو زنگ می‌زند و زنی تلفن را جواب می‌دهد."
+        },
+        {
+          "en": "\"Welcome! What is your opinion?\" the woman asks.",
+          "fa": "زن می‌پرسد: «خوش آمدی! نظرت چیست؟»"
+        },
+        {
+          "en": "Marjan explains, \"Bicycles are quick, cheap and good for the air.\"",
+          "fa": "مرجان توضیح می‌دهد: «دوچرخه سریع و ارزان است و برای هوا خوب است.»"
+        },
+        {
+          "en": "\"That is a great example,\" the woman says.",
+          "fa": "زن می‌گوید: «نمونهٔ خیلی خوبی است.»"
+        },
+        {
+          "en": "Then a man calls, and he has a different opinion.",
+          "fa": "بعد مردی زنگ می‌زند که نظر دیگری دارد."
+        },
+        {
+          "en": "\"Bicycles are fine,\" he says, \"but they are not good in the rain.\"",
+          "fa": "می‌گوید: «دوچرخه خوب است، اما در باران به درد نمی‌خورد.»"
+        },
+        {
+          "en": "Marjan listens to the conversation, and she thinks about his words.",
+          "fa": "مرجان به گفت‌وگو گوش می‌دهد و به حرف‌های او فکر می‌کند."
+        },
+        {
+          "en": "The next day, she tells her friends, \"I was on the radio!\"",
+          "fa": "روز بعد به دوستانش می‌گوید: «من در رادیو بودم!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "When does Marjan listen to the radio?",
+          "options": [
+            "Every day",
+            "On Saturdays",
+            "Every Sunday evening",
+            "Every Friday morning"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is this week's question about?",
+          "options": [
+            "Trees in the park",
+            "Bicycles and cars in the city",
+            "Music on the radio",
+            "Food in the city"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why is Marjan interested?",
+          "options": [
+            "Her friend is on the radio",
+            "She wants a car",
+            "Her father has a car",
+            "She goes to school on her bicycle"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does the man say?",
+          "options": [
+            "He does not like the radio",
+            "Cars are cheap",
+            "Bicycles are too expensive",
+            "Bicycles are not good in the rain"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Marjan tell her friends?",
+          "options": [
+            "The man was right!",
+            "I do not like cars!",
+            "I have a new bicycle!",
+            "I was on the radio!"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b5-listening-e",
+      "titleEn": "The Old Camera",
+      "titleFa": "دوربین قدیمی",
+      "names": [
+        "Arsalan"
+      ],
+      "sentences": [
+        {
+          "en": "Arsalan finds an old camera in a box in his father's room.",
+          "fa": "ارسلان در جعبه‌ای در اتاق پدرش یک دوربین قدیمی پیدا می‌کند."
+        },
+        {
+          "en": "\"Is it possible to take pictures with it?\" he asks.",
+          "fa": "می‌پرسد: «می‌شود با آن عکس گرفت؟»"
+        },
+        {
+          "en": "\"Yes,\" his father says, \"but it is not like a phone camera.\"",
+          "fa": "پدرش می‌گوید: «بله، اما مثل دوربین تلفن نیست.»"
+        },
+        {
+          "en": "His father shows him how to use it.",
+          "fa": "پدرش طرز استفاده از آن را نشانش می‌دهد."
+        },
+        {
+          "en": "On Saturday, Arsalan takes the camera to the park.",
+          "fa": "شنبه، ارسلان دوربین را به پارک می‌برد."
+        },
+        {
+          "en": "He takes photographs of trees, birds and people with their dogs.",
+          "fa": "از درخت‌ها، پرنده‌ها و آدم‌هایی که با سگشان هستند عکس می‌گیرد."
+        },
+        {
+          "en": "The old camera is slow, and he needs to wait before every picture.",
+          "fa": "دوربین قدیمی کند است و باید پیش از هر عکس صبر کند."
+        },
+        {
+          "en": "A week later, his father brings the photographs home.",
+          "fa": "یک هفته بعد، پدرش عکس‌ها را به خانه می‌آورد."
+        },
+        {
+          "en": "Some of them are dark, but some are beautiful.",
+          "fa": "بعضی‌هایشان تاریک‌اند، اما بعضی زیبا هستند."
+        },
+        {
+          "en": "Arsalan's favorite is a photograph of a little bird on a bicycle.",
+          "fa": "عکس محبوب ارسلان عکس پرندهٔ کوچکی روی یک دوچرخه است."
+        },
+        {
+          "en": "He puts it on the wall of his room.",
+          "fa": "آن را به دیوار اتاقش می‌زند."
+        },
+        {
+          "en": "\"Old things can be wonderful,\" his father says.",
+          "fa": "پدرش می‌گوید: «چیزهای قدیمی هم می‌توانند فوق‌العاده باشند.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Where does Arsalan find the camera?",
+          "options": [
+            "In his father's room",
+            "At school",
+            "In the park",
+            "In a shop"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Who shows him how to use it?",
+          "options": [
+            "His friend",
+            "His teacher",
+            "His father",
+            "His mother"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is the old camera like?",
+          "options": [
+            "It is slow",
+            "It is very small",
+            "It is new",
+            "It is fast"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What are the photographs like?",
+          "options": [
+            "Some are dark, but some are beautiful",
+            "They are all of birds",
+            "All of them are dark",
+            "All of them are beautiful"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What is Arsalan's favorite photograph?",
+          "options": [
+            "His father",
+            "A little bird on a bicycle",
+            "A tree in the park",
+            "A dog in the park"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b5-listening-f",
+      "titleEn": "Awesome News",
+      "titleFa": "خبری عالی",
+      "names": [
+        "Roza",
+        "Mahdis"
+      ],
+      "sentences": [
+        {
+          "en": "Roza gets a text from her friend Mahdis: \"Awesome news! Call me!\"",
+          "fa": "رزا از دوستش مهدیس پیامکی می‌گیرد: «خبر عالی! به من زنگ بزن!»"
+        },
+        {
+          "en": "Roza calls her at once.",
+          "fa": "رزا فوراً به او زنگ می‌زند."
+        },
+        {
+          "en": "\"My family is moving to your street!\" Mahdis says.",
+          "fa": "مهدیس می‌گوید: «خانواده‌ام به خیابان شما نقل مکان می‌کنند!»"
+        },
+        {
+          "en": "Roza cannot believe it, and she is very excited.",
+          "fa": "رزا باورش نمی‌شود و خیلی هیجان‌زده است."
+        },
+        {
+          "en": "\"When?\" she asks. \"Next month,\" Mahdis says.",
+          "fa": "می‌پرسد: «کی؟» مهدیس می‌گوید: «ماه بعد.»"
+        },
+        {
+          "en": "They talk about all the things that they can do together.",
+          "fa": "دربارهٔ همهٔ کارهایی که می‌توانند با هم بکنند حرف می‌زنند."
+        },
+        {
+          "en": "They can walk to school together every morning.",
+          "fa": "می‌توانند هر صبح با هم پیاده به مدرسه بروند."
+        },
+        {
+          "en": "They can read books together in the afternoon.",
+          "fa": "می‌توانند بعدازظهرها با هم کتاب بخوانند."
+        },
+        {
+          "en": "Mahdis also has a new bicycle, and Roza has one too.",
+          "fa": "مهدیس یک دوچرخهٔ تازه هم دارد و رزا هم یکی دارد."
+        },
+        {
+          "en": "\"We can go to the park on our bicycles with my brother on Fridays,\" Roza says.",
+          "fa": "رزا می‌گوید: «جمعه‌ها می‌توانیم با برادرم دوچرخه‌سواری به پارک برویم.»"
+        },
+        {
+          "en": "After the conversation, Roza tells her mother the news.",
+          "fa": "بعد از گفت‌وگو، رزا خبر را به مادرش می‌گوید."
+        },
+        {
+          "en": "\"That is wonderful,\" her mother says. \"Ask her to come for dinner this Friday.\"",
+          "fa": "مادرش می‌گوید: «فوق‌العاده است. از او بخواه این جمعه برای شام بیاید.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "What does Mahdis's text say?",
+          "options": [
+            "See you at school!",
+            "Awesome news! Call me!",
+            "Happy birthday!",
+            "Where are you?"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the news?",
+          "options": [
+            "Mahdis is going to a new school",
+            "Mahdis is having a party",
+            "Mahdis's family is moving to Roza's street",
+            "Mahdis has a new bicycle"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "When will Mahdis's family move?",
+          "options": [
+            "Tomorrow",
+            "Next year",
+            "Next month",
+            "Next week"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What can the girls do on Fridays?",
+          "options": [
+            "Play football",
+            "Cook dinner together",
+            "Go shopping",
+            "Go to the park on their bicycles with Roza's brother"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Roza's mother say?",
+          "options": [
+            "You cannot go out.",
+            "Call her tomorrow.",
+            "That is boring.",
+            "Ask her to come for dinner this Friday."
+          ],
+          "answer": 3
         }
       ]
     }

@@ -67,8 +67,8 @@
           "q": "Where does Pedram play football?",
           "options": [
             "In the park",
-            "At school",
             "At the gym",
+            "At school",
             "In the street"
           ],
           "answer": 0
@@ -76,42 +76,42 @@
         {
           "q": "Who drives Pedram to the hospital?",
           "options": [
-            "His father",
-            "His cousin",
             "His mother",
-            "His uncle"
+            "His uncle",
+            "His father",
+            "His cousin"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "What does the doctor say about his foot?",
           "options": [
+            "It is fine, and he can play tomorrow",
             "It is broken, and he must stay in the hospital for a month",
             "It is not broken, but he must not play football for three weeks",
-            "It is fine, and he can play tomorrow",
             "He must exercise every day"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "Why is Pedram sad?",
           "options": [
             "The doctor is not nice to him",
+            "He does not like movies",
             "His cousin does not visit him",
-            "There is a big match next Friday",
-            "He does not like movies"
+            "There is a big match next Friday"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "What does the nurse do?",
           "options": [
-            "She gives him a book",
             "She puts ice on his foot",
+            "She gives him a book",
             "She brings him water",
             "She takes him home"
           ],
-          "answer": 1
+          "answer": 0
         }
       ]
     },
@@ -180,52 +180,714 @@
         {
           "q": "How long does Taraneh stay with her grandparents every summer?",
           "options": [
-            "A month",
-            "Two weeks",
             "Three days",
-            "All summer"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "What is Taraneh's grandmother like?",
-          "options": [
-            "She has long gray hair and tells wonderful stories",
-            "She is tall and strong",
-            "She does not talk much and sleeps a lot",
-            "She climbs the mountain every day"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "What does Grandfather want to do?",
-          "options": [
-            "Go to the town",
-            "Swim in the river",
-            "Climb the mountain behind the house",
-            "Stay at home"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "Grandfather asks, \"Should we go back?\" What does Taraneh say?",
-          "options": [
-            "Yes, I am tired.",
-            "Let's stop for a moment.",
-            "I do not know.",
-            "No, I can do it!"
+            "All summer",
+            "A month",
+            "Two weeks"
           ],
           "answer": 3
         },
         {
+          "q": "What is Taraneh's grandmother like?",
+          "options": [
+            "She is tall and strong",
+            "She has long gray hair and tells wonderful stories",
+            "She does not talk much and sleeps a lot",
+            "She climbs the mountain every day"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Grandfather want to do?",
+          "options": [
+            "Climb the mountain behind the house",
+            "Swim in the river",
+            "Go to the town",
+            "Stay at home"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Grandfather asks, \"Should we go back?\" What does Taraneh say?",
+          "options": [
+            "No, I can do it!",
+            "Yes, I am tired.",
+            "I do not know.",
+            "Let's stop for a moment."
+          ],
+          "answer": 0
+        },
+        {
           "q": "What can they see from high on the mountain?",
           "options": [
-            "The sea and boats",
-            "An airport",
             "Houses, trees and a river",
-            "Only snow"
+            "An airport",
+            "Only snow",
+            "The sea and boats"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b8-reading-c",
+      "titleEn": "Uncle Reza's Restaurant",
+      "titleFa": "رستوران عمو رضا",
+      "names": [
+        "Mani",
+        "Reza"
+      ],
+      "sentences": [
+        {
+          "en": "Mani's uncle, Reza, has a small restaurant in the old part of the city.",
+          "fa": "عموی مانی، رضا، رستوران کوچکی در بخش قدیمی شهر دارد."
+        },
+        {
+          "en": "It is very popular, and people often have to wait for a table.",
+          "fa": "خیلی پرطرفدار است و مردم اغلب باید برای میز منتظر بمانند."
+        },
+        {
+          "en": "The food is common home cooking: rice, soups and fish.",
+          "fa": "غذایش همان غذای خانگی رایج است: برنج، سوپ و ماهی."
+        },
+        {
+          "en": "However, Uncle Reza cooks everything with natural food from local farms.",
+          "fa": "اما عمو رضا همه‌چیز را با مواد طبیعی مزرعه‌های محلی می‌پزد."
+        },
+        {
+          "en": "Every Friday, Mani and his cousin help in the restaurant.",
+          "fa": "هر جمعه، مانی و پسرعمویش در رستوران کمک می‌کنند."
+        },
+        {
+          "en": "Mani brings the menus, and his cousin brings water to the tables.",
+          "fa": "مانی منوها را می‌آورد و پسرعمویش سر میزها آب می‌برد."
+        },
+        {
+          "en": "One Friday, a famous writer comes in and orders the soup.",
+          "fa": "یک جمعه، نویسنده‌ای معروف وارد می‌شود و سوپ سفارش می‌دهد."
+        },
+        {
+          "en": "After the meal, she asks to meet the cook.",
+          "fa": "بعد از غذا، می‌خواهد آشپز را ببیند."
+        },
+        {
+          "en": "\"This soup is really delicious,\" she tells Uncle Reza. \"What is in it?\"",
+          "fa": "به عمو رضا می‌گوید: «این سوپ واقعاً خوشمزه است. چه چیزی تویش هست؟»"
+        },
+        {
+          "en": "Uncle Reza laughs. \"It is my mother's soup, and I cannot tell you!\"",
+          "fa": "عمو رضا می‌خندد: «سوپِ مادرم است و نمی‌توانم بگویم!»"
+        },
+        {
+          "en": "The next week, the writer puts an article about the restaurant in a magazine.",
+          "fa": "هفتهٔ بعد، نویسنده مقاله‌ای دربارهٔ رستوران در یک مجله چاپ می‌کند."
+        },
+        {
+          "en": "Now the restaurant is even more popular, and Mani's uncle needs more help.",
+          "fa": "حالا رستوران حتی پرطرفدارتر است و عموی مانی به کمک بیشتری احتیاج دارد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Where is Uncle Reza's restaurant?",
+          "options": [
+            "In a big mall",
+            "On a farm",
+            "In the old part of the city",
+            "Near the airport"
           ],
           "answer": 2
+        },
+        {
+          "q": "What kind of food does the restaurant have?",
+          "options": [
+            "Only cake and coffee",
+            "Fast food",
+            "Common home cooking",
+            "Food from other countries"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does Mani do on Fridays?",
+          "options": [
+            "He brings the menus",
+            "He pays the bills",
+            "He washes the dishes",
+            "He cooks the soup"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the famous writer order?",
+          "options": [
+            "Salad",
+            "The soup",
+            "Rice",
+            "Fish"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the writer do the next week?",
+          "options": [
+            "She puts an article about the restaurant in a magazine",
+            "She opens a restaurant",
+            "She comes back with her family",
+            "She writes a book about soup"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b8-reading-d",
+      "titleEn": "The School Nurse",
+      "titleFa": "پرستار مدرسه",
+      "names": [
+        "Parinaz"
+      ],
+      "sentences": [
+        {
+          "en": "On Tuesday morning, Parinaz feels sick at school.",
+          "fa": "سه‌شنبه صبح، پریناز در مدرسه احساس ناخوشی می‌کند."
+        },
+        {
+          "en": "Her head is hot, and her body is tired.",
+          "fa": "سرش داغ است و بدنش خسته."
+        },
+        {
+          "en": "Her teacher takes her to the school nurse.",
+          "fa": "معلمش او را پیش پرستار مدرسه می‌برد."
+        },
+        {
+          "en": "The nurse is a friendly woman with short gray hair.",
+          "fa": "پرستار زن مهربانی با موهای کوتاه خاکستری است."
+        },
+        {
+          "en": "She asks Parinaz some questions about her health.",
+          "fa": "چند سؤال دربارهٔ سلامتی‌اش از پریناز می‌پرسد."
+        },
+        {
+          "en": "\"Did you eat breakfast today?\" she asks. \"No,\" Parinaz says.",
+          "fa": "می‌پرسد: «امروز صبحانه خوردی؟» پریناز می‌گوید: «نه.»"
+        },
+        {
+          "en": "The nurse gives her some water and a little bread with cheese.",
+          "fa": "پرستار کمی آب و کمی نان و پنیر به او می‌دهد."
+        },
+        {
+          "en": "\"Relax here for half an hour,\" she says.",
+          "fa": "می‌گوید: «نیم ساعت اینجا استراحت کن.»"
+        },
+        {
+          "en": "After thirty minutes, Parinaz feels much better.",
+          "fa": "بعد از سی دقیقه، پریناز خیلی بهتر می‌شود."
+        },
+        {
+          "en": "\"You probably need more sleep and a healthy breakfast,\" the nurse says.",
+          "fa": "پرستار می‌گوید: «احتمالاً خواب بیشتر و یک صبحانهٔ سالم لازم داری.»"
+        },
+        {
+          "en": "That evening, Parinaz goes to bed early.",
+          "fa": "آن شب، پریناز زود به رختخواب می‌رود."
+        },
+        {
+          "en": "The next morning, she eats a big breakfast, and she feels OK all day.",
+          "fa": "صبح روز بعد، صبحانهٔ مفصلی می‌خورد و تمام روز حالش خوب است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "How does Parinaz feel on Tuesday morning?",
+          "options": [
+            "Angry",
+            "Bored",
+            "Happy",
+            "Sick"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Who takes her to the nurse?",
+          "options": [
+            "Her mother",
+            "The doctor",
+            "Her friend",
+            "Her teacher"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What did Parinaz not do today?",
+          "options": [
+            "Sleep",
+            "Drink water",
+            "Eat breakfast",
+            "Go to school"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does the nurse give her?",
+          "options": [
+            "Some water and a little bread with cheese",
+            "Some fruit",
+            "A cup of tea",
+            "Hot milk"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the nurse say Parinaz probably needs?",
+          "options": [
+            "A doctor",
+            "More sleep and a healthy breakfast",
+            "A new school",
+            "More exercise"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b8-reading-e",
+      "titleEn": "Looking at the Stars",
+      "titleFa": "تماشای ستاره‌ها",
+      "names": [
+        "Mazyar"
+      ],
+      "sentences": [
+        {
+          "en": "In the summer, Mazyar spends a week with his grandparents in a small town.",
+          "fa": "تابستان، مازیار یک هفته را با پدربزرگ و مادربزرگش در شهر کوچکی می‌گذراند."
+        },
+        {
+          "en": "The town is far from the city, and the nights are very dark.",
+          "fa": "شهر از شهر بزرگ دور است و شب‌ها خیلی تاریک‌اند."
+        },
+        {
+          "en": "One night, his grandfather takes him into the garden.",
+          "fa": "یک شب، پدربزرگش او را به باغ می‌برد."
+        },
+        {
+          "en": "\"Look up,\" he says. \"Can you see the stars?\"",
+          "fa": "می‌گوید: «بالا را نگاه کن. ستاره‌ها را می‌بینی؟»"
+        },
+        {
+          "en": "Mazyar looks up, and he cannot believe his eyes.",
+          "fa": "مازیار بالا را نگاه می‌کند و چیزی را که می‌بیند باور نمی‌کند."
+        },
+        {
+          "en": "There are thousands of stars, and they are really beautiful.",
+          "fa": "هزاران ستاره هست و واقعاً زیبا هستند."
+        },
+        {
+          "en": "In the city, he can only see a few stars, because of the lights.",
+          "fa": "در شهر، به خاطر چراغ‌ها فقط چند ستاره می‌بیند."
+        },
+        {
+          "en": "His grandfather knows the names of many stars, and he tells interesting stories about them.",
+          "fa": "پدربزرگش اسم ستاره‌های زیادی را می‌داند و قصه‌های جالبی دربارهٔ آن‌ها تعریف می‌کند."
+        },
+        {
+          "en": "\"Long ago, people used the stars as a map,\" he says.",
+          "fa": "می‌گوید: «در گذشته‌های دور، مردم از ستاره‌ها به جای نقشه استفاده می‌کردند.»"
+        },
+        {
+          "en": "Mazyar guesses the names of some stars, and he is often right.",
+          "fa": "مازیار اسم بعضی ستاره‌ها را حدس می‌زند و اغلب درست می‌گوید."
+        },
+        {
+          "en": "\"You are a smart boy,\" his grandfather says.",
+          "fa": "پدربزرگش می‌گوید: «تو پسر باهوشی هستی.»"
+        },
+        {
+          "en": "Back in the city, Mazyar reads books about stars, and they become his new hobby.",
+          "fa": "در شهر، مازیار کتاب‌هایی دربارهٔ ستاره‌ها می‌خواند و این سرگرمی تازه‌اش می‌شود."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Where does Mazyar spend a week in the summer?",
+          "options": [
+            "In the capital",
+            "At a hotel",
+            "At the sea",
+            "With his grandparents in a small town"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Why can Mazyar see many stars there?",
+          "options": [
+            "The nights are very dark",
+            "It is winter",
+            "His grandfather has a machine",
+            "He has a big window"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Why can he see only a few stars in the city?",
+          "options": [
+            "It often rains",
+            "There are too many buildings",
+            "He goes to bed early",
+            "Because of the lights"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What did people do with the stars long ago?",
+          "options": [
+            "They wrote songs about them",
+            "They used them as a map",
+            "They painted them",
+            "They gave them the names of animals"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is Mazyar's new hobby?",
+          "options": [
+            "Climbing",
+            "Reading books about stars",
+            "Playing football",
+            "Painting"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "b8-reading-f",
+      "titleEn": "Aunt Parvin's Hobby",
+      "titleFa": "سرگرمی خاله پروین",
+      "names": [
+        "Parvin"
+      ],
+      "sentences": [
+        {
+          "en": "Aunt Parvin is fifty, and she works in a bank.",
+          "fa": "خاله پروین پنجاه ساله است و در یک بانک کار می‌کند."
+        },
+        {
+          "en": "Her job is quite boring, so she wants a new hobby.",
+          "fa": "کارش نسبتاً کسل‌کننده است، پس سرگرمی تازه‌ای می‌خواهد."
+        },
+        {
+          "en": "She tries painting, but she does not like it.",
+          "fa": "نقاشی را امتحان می‌کند، اما از آن خوشش نمی‌آید."
+        },
+        {
+          "en": "Then she tries cooking food from different cultures, but she is too busy.",
+          "fa": "بعد آشپزی غذاهای فرهنگ‌های مختلف را امتحان می‌کند، اما خیلی سرش شلوغ است."
+        },
+        {
+          "en": "One day, her young cousin shows her how to design clothes on a computer.",
+          "fa": "یک روز، دخترخالهٔ جوانش طراحی لباس با رایانه را نشانش می‌دهد."
+        },
+        {
+          "en": "Aunt Parvin loves it at once.",
+          "fa": "خاله پروین فوراً عاشقش می‌شود."
+        },
+        {
+          "en": "Every evening, she designs dresses, skirts and T-shirts.",
+          "fa": "هر عصر پیراهن، دامن و تی‌شرت طراحی می‌کند."
+        },
+        {
+          "en": "Her style is very personal: she uses pink, purple and a lot of flowers.",
+          "fa": "سبکش خیلی شخصی است: از صورتی، بنفش و گل‌های زیادی استفاده می‌کند."
+        },
+        {
+          "en": "At first, she shows her designs only to the family.",
+          "fa": "اول طرح‌هایش را فقط به خانواده نشان می‌دهد."
+        },
+        {
+          "en": "Then she puts them on the internet, and many people like them.",
+          "fa": "بعد آن‌ها را در اینترنت می‌گذارد و خیلی‌ها دوستشان دارند."
+        },
+        {
+          "en": "Now a small company wants to make clothes from her designs.",
+          "fa": "حالا یک شرکت کوچک می‌خواهد از طرح‌هایش لباس بسازد."
+        },
+        {
+          "en": "\"It is never too late to start something new,\" Aunt Parvin says.",
+          "fa": "خاله پروین می‌گوید: «برای شروع کاری تازه هیچ‌وقت دیر نیست.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Where does Aunt Parvin work?",
+          "options": [
+            "In a clothes shop",
+            "In a hospital",
+            "In a bank",
+            "In a school"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why does she want a new hobby?",
+          "options": [
+            "Her doctor says so",
+            "Her job is quite boring",
+            "She has a lot of money",
+            "Her friends have hobbies"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does her young cousin show her?",
+          "options": [
+            "How to design clothes on a computer",
+            "How to use the internet",
+            "How to paint",
+            "How to cook"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which colors does she use?",
+          "options": [
+            "Blue and green",
+            "Pink and purple",
+            "Red and yellow",
+            "Black and white"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does a small company want?",
+          "options": [
+            "To teach her",
+            "To buy her computer",
+            "To give her a job",
+            "To make clothes from her designs"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b8-reading-g",
+      "titleEn": "The Poor Cat",
+      "titleFa": "گربهٔ بیچاره",
+      "names": [
+        "Kiana",
+        "Pishi"
+      ],
+      "sentences": [
+        {
+          "en": "On a cold winter evening, Kiana and her mother hear a sound near their door.",
+          "fa": "در یک عصر سرد زمستانی، کیانا و مادرش صدایی کنار در می‌شنوند."
+        },
+        {
+          "en": "It is a small cat, and it looks sick and hungry.",
+          "fa": "گربهٔ کوچکی است که بیمار و گرسنه به نظر می‌رسد."
+        },
+        {
+          "en": "\"Oh, poor cat!\" Kiana says.",
+          "fa": "کیانا می‌گوید: «آخ، گربهٔ بیچاره!»"
+        },
+        {
+          "en": "Her mother brings some milk and a little fish.",
+          "fa": "مادرش کمی شیر و کمی ماهی می‌آورد."
+        },
+        {
+          "en": "The cat eats everything, but it cannot walk well.",
+          "fa": "گربه همه‌چیز را می‌خورد، اما نمی‌تواند خوب راه برود."
+        },
+        {
+          "en": "The next morning, they take it to an animal doctor.",
+          "fa": "صبح روز بعد، آن را پیش یک دامپزشک می‌برند."
+        },
+        {
+          "en": "The doctor looks at the cat's body and its legs.",
+          "fa": "دکتر بدن و پاهای گربه را معاینه می‌کند."
+        },
+        {
+          "en": "\"It is not dangerous,\" she says. \"It probably had a fall from a wall.\"",
+          "fa": "می‌گوید: «خطرناک نیست. احتمالاً از روی دیواری افتاده است.»"
+        },
+        {
+          "en": "\"Keep it warm, and give it good food for two weeks.\"",
+          "fa": "«گرم نگهش دارید و دو هفته غذای خوب به آن بدهید.»"
+        },
+        {
+          "en": "Kiana gives the cat a name: Pishi.",
+          "fa": "کیانا اسمی برای گربه می‌گذارد: پیشی."
+        },
+        {
+          "en": "After two weeks, Pishi is healthy, and she runs all around the house.",
+          "fa": "بعد از دو هفته، پیشی سالم است و در همهٔ خانه می‌دود."
+        },
+        {
+          "en": "Kiana's father did not want a cat, but now he loves Pishi too.",
+          "fa": "پدر کیانا گربه نمی‌خواست، اما حالا او هم عاشق پیشی است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What do Kiana and her mother find near their door?",
+          "options": [
+            "A small dog",
+            "A letter",
+            "A bird",
+            "A small cat"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does her mother give the cat?",
+          "options": [
+            "Nothing",
+            "Meat",
+            "Some milk and a little fish",
+            "Bread and water"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Where do they take the cat the next morning?",
+          "options": [
+            "To a park",
+            "To a hospital",
+            "To a neighbor",
+            "To an animal doctor"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does the doctor say?",
+          "options": [
+            "The cat needs to stay with her.",
+            "It is not dangerous.",
+            "The cat is very sick.",
+            "The cat is very old."
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What name does Kiana give the cat?",
+          "options": [
+            "Pishi",
+            "Cookie",
+            "Sugar",
+            "Snow"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b8-reading-h",
+      "titleEn": "Positive Words",
+      "titleFa": "واژه‌های مثبت",
+      "names": [
+        "Behnam"
+      ],
+      "sentences": [
+        {
+          "en": "Behnam is fifteen, and he often thinks in a negative way.",
+          "fa": "بهنام پانزده ساله است و اغلب منفی فکر می‌کند."
+        },
+        {
+          "en": "\"I am not smart,\" he says. \"I will never be good at science.\"",
+          "fa": "می‌گوید: «من باهوش نیستم. هیچ‌وقت در علوم خوب نمی‌شوم.»"
+        },
+        {
+          "en": "His school has a new club about thinking and health.",
+          "fa": "مدرسه‌اش باشگاه تازه‌ای دربارهٔ فکر کردن و سلامتی دارد."
+        },
+        {
+          "en": "At the first meeting, the teacher talks about the difference between positive and negative thinking.",
+          "fa": "در جلسهٔ اول، معلم دربارهٔ فرق بین فکر مثبت و منفی حرف می‌زند."
+        },
+        {
+          "en": "\"Your words are important,\" she says. \"They change how you feel.\"",
+          "fa": "می‌گوید: «واژه‌هایتان مهم‌اند. حال شما را تغییر می‌دهند.»"
+        },
+        {
+          "en": "She asks each student to write three positive statements about their life.",
+          "fa": "از هر دانش‌آموز می‌خواهد سه جملهٔ مثبت دربارهٔ زندگی‌اش بنویسد."
+        },
+        {
+          "en": "Behnam thinks for a long time.",
+          "fa": "بهنام مدت زیادی فکر می‌کند."
+        },
+        {
+          "en": "Then he writes: \"I am good at football. I help my friends. I can learn.\"",
+          "fa": "بعد می‌نویسد: «در فوتبال خوبم. به دوستانم کمک می‌کنم. می‌توانم یاد بگیرم.»"
+        },
+        {
+          "en": "Every morning, he reads his statements before school.",
+          "fa": "هر صبح پیش از مدرسه جمله‌هایش را می‌خواند."
+        },
+        {
+          "en": "After a month, he feels better, and his science results improve.",
+          "fa": "بعد از یک ماه، حالش بهتر است و نتیجه‌های علومش هم بهتر می‌شود."
+        },
+        {
+          "en": "\"It is natural to have bad days,\" the teacher says. \"But you can choose your words.\"",
+          "fa": "معلم می‌گوید: «طبیعی است که روزهای بد داشته باشیم. اما می‌توانید واژه‌هایتان را انتخاب کنید.»"
+        },
+        {
+          "en": "Now Behnam wants to talk about this topic at the school festival.",
+          "fa": "حالا بهنام می‌خواهد در جشنوارهٔ مدرسه دربارهٔ این موضوع حرف بزند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "How does Behnam often think?",
+          "options": [
+            "In a positive way",
+            "In a negative way",
+            "Like a scientist",
+            "Very fast"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the new club talk about?",
+          "options": [
+            "Football",
+            "Music",
+            "Science and history",
+            "Thinking and health"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does the teacher ask each student to write?",
+          "options": [
+            "Three positive statements about their life",
+            "A list of problems",
+            "A story",
+            "A letter to a friend"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "When does Behnam read his statements?",
+          "options": [
+            "After school",
+            "Every morning before school",
+            "At night",
+            "At lunch"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Behnam want to do now?",
+          "options": [
+            "Study science at university",
+            "Leave the club",
+            "Play football every day",
+            "Talk about this topic at the school festival"
+          ],
+          "answer": 3
         }
       ]
     }
@@ -296,52 +958,52 @@
         {
           "q": "What does the town's summer festival have?",
           "options": [
-            "Only music",
             "Music, food and art",
-            "A football match",
-            "Movies and theater"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "Who does Shiva paint?",
-          "options": [
-            "Her aunt",
-            "Her mother",
-            "Her brother",
-            "Her teacher"
+            "Movies and theater",
+            "Only music",
+            "A football match"
           ],
           "answer": 0
         },
         {
-          "q": "Which part of the painting does Shiva not like?",
+          "q": "Who does Shiva paint?",
           "options": [
-            "The mouth",
-            "The hair",
-            "The eyes",
-            "The colors"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "What does Shiva's brother say about the painting?",
-          "options": [
-            "It is terrible",
-            "The colors are too strong",
-            "She must paint it again",
-            "It is really good"
+            "Her teacher",
+            "Her brother",
+            "Her mother",
+            "Her aunt"
           ],
           "answer": 3
         },
         {
+          "q": "Which part of the painting does Shiva not like?",
+          "options": [
+            "The eyes",
+            "The mouth",
+            "The colors",
+            "The hair"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does Shiva's brother say about the painting?",
+          "options": [
+            "It is really good",
+            "She must paint it again",
+            "The colors are too strong",
+            "It is terrible"
+          ],
+          "answer": 0
+        },
+        {
           "q": "Where is the painting now?",
           "options": [
-            "In Shiva's room",
             "In the town museum",
-            "On a wall in the hospital where her aunt works",
-            "At her brother's house"
+            "At her brother's house",
+            "In Shiva's room",
+            "On a wall in the hospital where her aunt works"
           ],
-          "answer": 2
+          "answer": 3
         }
       ]
     },
@@ -407,51 +1069,712 @@
           "q": "How old is Majid?",
           "options": [
             "Forty",
-            "Fourteen",
+            "Thirty",
             "Fifty",
-            "Thirty"
+            "Fourteen"
           ],
           "answer": 0
         },
         {
           "q": "What does the doctor tell Majid?",
           "options": [
-            "To stay at home for a week",
             "To change his job",
+            "To change his diet and exercise every day",
             "To go to bed early",
-            "To change his diet and exercise every day"
+            "To stay at home for a week"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "What is the first week like?",
           "options": [
-            "Easy and fun",
+            "Majid stops the plan",
             "It is hard, and he misses his chocolate cake",
-            "Majid is sick",
-            "Majid stops the plan"
+            "Easy and fun",
+            "Majid is sick"
           ],
           "answer": 1
         },
         {
           "q": "Who walks with Majid in the evening?",
           "options": [
-            "His son and his brother",
-            "People from his office",
             "His wife and his daughter",
-            "His doctor"
+            "His doctor",
+            "People from his office",
+            "His son and his brother"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "What does the family do every Friday now?",
           "options": [
+            "They go to the movies",
             "They go to a restaurant",
-            "They go to the mountains for a walk",
             "They play football",
-            "They go to the movies"
+            "They go to the mountains for a walk"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b8-listening-c",
+      "titleEn": "A Movie with My Cousins",
+      "titleFa": "فیلم با دخترعموها",
+      "names": [
+        "Aida"
+      ],
+      "sentences": [
+        {
+          "en": "On Friday, Aida goes to the movies with her three cousins and her uncle.",
+          "fa": "جمعه، آیدا با سه دخترعمو و عمویش به سینما می‌رود."
+        },
+        {
+          "en": "Her cousins want to see a popular movie about a dog who can talk.",
+          "fa": "دخترعموهایش می‌خواهند فیلم پرطرفداری دربارهٔ سگی که حرف می‌زند ببینند."
+        },
+        {
+          "en": "Aida does not really want to see it. \"It sounds terrible,\" she thinks.",
+          "fa": "آیدا واقعاً دلش نمی‌خواهد آن را ببیند. فکر می‌کند: «به نظر افتضاح می‌آید.»"
+        },
+        {
+          "en": "However, she does not want to say no to her cousins.",
+          "fa": "اما نمی‌خواهد به دخترعموهایش نه بگوید."
+        },
+        {
+          "en": "The movie begins, and the dog is very funny.",
+          "fa": "فیلم شروع می‌شود و سگ خیلی بامزه است."
+        },
+        {
+          "en": "He talks like an old man, and he loves chocolate cake.",
+          "fa": "مثل یک پیرمرد حرف می‌زند و عاشق کیک شکلاتی است."
+        },
+        {
+          "en": "Soon, Aida is laughing more than all her cousins.",
+          "fa": "خیلی زود، آیدا از همهٔ دخترعموهایش بیشتر می‌خندد."
+        },
+        {
+          "en": "Later in the movie, the dog is sick, and everyone is sad.",
+          "fa": "کمی بعد در فیلم، سگ بیمار می‌شود و همه غمگین‌اند."
+        },
+        {
+          "en": "But a smart young doctor helps him, and he is OK again.",
+          "fa": "اما دکتر جوان و باهوشی کمکش می‌کند و دوباره خوب می‌شود."
+        },
+        {
+          "en": "After the movie, her uncle takes them for ice cream.",
+          "fa": "بعد از فیلم، عمویش آن‌ها را به بستنی‌فروشی می‌برد."
+        },
+        {
+          "en": "\"So, was the movie terrible?\" her cousin asks, and she laughs.",
+          "fa": "دخترعمویش با خنده می‌پرسد: «خب، فیلم افتضاح بود؟»"
+        },
+        {
+          "en": "\"No,\" Aida says. \"It was really good. I was wrong.\"",
+          "fa": "آیدا می‌گوید: «نه. واقعاً خوب بود. اشتباه می‌کردم.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Who does Aida go to the movies with?",
+          "options": [
+            "Her school friends",
+            "Her three cousins and her uncle",
+            "Her aunt",
+            "Her parents"
           ],
           "answer": 1
+        },
+        {
+          "q": "What is the movie about?",
+          "options": [
+            "A doctor in a hospital",
+            "A dog who can talk",
+            "A family on a trip",
+            "A cat in a big city"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Aida think before the movie?",
+          "options": [
+            "It will be wonderful",
+            "It sounds terrible",
+            "It is for children",
+            "It will be long"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What happens to the dog in the movie?",
+          "options": [
+            "He finds his family",
+            "He is sick, but a doctor helps him",
+            "He eats too much cake",
+            "He runs away"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Aida say at the end?",
+          "options": [
+            "It was really good. I was wrong.",
+            "The movie was terrible.",
+            "I want to see it again.",
+            "The dog was not funny."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b8-listening-d",
+      "titleEn": "A Visit from the Grandparents",
+      "titleFa": "مهمانی پدربزرگ و مادربزرگ",
+      "names": [
+        "Ramtin"
+      ],
+      "sentences": [
+        {
+          "en": "Ramtin's grandparents come to stay with his family for two weeks.",
+          "fa": "پدربزرگ و مادربزرگ رامتین دو هفته پیش خانواده‌اش می‌مانند."
+        },
+        {
+          "en": "They are old, but they are quite healthy.",
+          "fa": "پیر هستند، اما نسبتاً سالم‌اند."
+        },
+        {
+          "en": "Every morning, Grandfather walks for an hour in the park.",
+          "fa": "هر صبح، پدربزرگ یک ساعت در پارک پیاده‌روی می‌کند."
+        },
+        {
+          "en": "Grandmother likes to relax in the garden with a book.",
+          "fa": "مادربزرگ دوست دارد با یک کتاب در باغچه استراحت کند."
+        },
+        {
+          "en": "She also cooks natural food, with a lot of vegetables and very little sugar.",
+          "fa": "غذای طبیعی هم می‌پزد، با سبزی زیاد و شکر خیلی کم."
+        },
+        {
+          "en": "Ramtin usually eats a lot of chocolate, but Grandmother's food is really good.",
+          "fa": "رامتین معمولاً شکلات زیادی می‌خورد، اما غذای مادربزرگ واقعاً خوب است."
+        },
+        {
+          "en": "In the evenings, the family spends time together.",
+          "fa": "عصرها، خانواده با هم وقت می‌گذرانند."
+        },
+        {
+          "en": "Grandfather tells stories about his life when he was young and poor.",
+          "fa": "پدربزرگ از زندگی‌اش در دوران جوانی و فقر قصه می‌گوید."
+        },
+        {
+          "en": "\"We did not have a TV,\" he says. \"We talked and played games.\"",
+          "fa": "می‌گوید: «تلویزیون نداشتیم. حرف می‌زدیم و بازی می‌کردیم.»"
+        },
+        {
+          "en": "One evening, they have no TV and no phones, like in Grandfather's old days.",
+          "fa": "یک شب، مثل روزگار قدیم پدربزرگ، نه تلویزیون روشن می‌کنند و نه تلفن."
+        },
+        {
+          "en": "They play games and talk until midnight.",
+          "fa": "تا نیمه‌شب بازی می‌کنند و حرف می‌زنند."
+        },
+        {
+          "en": "When the grandparents go home, Ramtin misses them very much.",
+          "fa": "وقتی پدربزرگ و مادربزرگ به خانه‌شان برمی‌گردند، رامتین خیلی دلش برایشان تنگ می‌شود."
+        }
+      ],
+      "questions": [
+        {
+          "q": "How long do the grandparents stay?",
+          "options": [
+            "A month",
+            "Two weeks",
+            "One week",
+            "Three days"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Grandfather do every morning?",
+          "options": [
+            "He reads the newspaper",
+            "He sleeps late",
+            "He cooks breakfast",
+            "He walks for an hour in the park"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What is Grandmother's food like?",
+          "options": [
+            "Only meat",
+            "Full of sugar",
+            "Fast food",
+            "Natural, with a lot of vegetables and very little sugar"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Grandfather tell stories about?",
+          "options": [
+            "The movies",
+            "His job",
+            "His life when he was young and poor",
+            "Other countries"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does the family do one evening?",
+          "options": [
+            "They visit the hospital",
+            "They go to the movies",
+            "They eat at a restaurant",
+            "They play games and talk without a TV or phones"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b8-listening-e",
+      "titleEn": "The Food Festival",
+      "titleFa": "جشنوارهٔ غذا",
+      "names": [
+        "Hadis"
+      ],
+      "sentences": [
+        {
+          "en": "Every October, there is a food festival in Hadis's city.",
+          "fa": "هر اکتبر، در شهر حدیث جشنوارهٔ غذا برگزار می‌شود."
+        },
+        {
+          "en": "It shows the food culture of every part of the country.",
+          "fa": "فرهنگ غذایی همهٔ نقاط کشور را نشان می‌دهد."
+        },
+        {
+          "en": "Hadis goes there with her aunt on Saturday.",
+          "fa": "حدیث شنبه با خاله‌اش به آنجا می‌رود."
+        },
+        {
+          "en": "There are more than fifty tables with food from the north, the south, the east and the west.",
+          "fa": "بیش از پنجاه میز با غذاهایی از شمال، جنوب، شرق و غرب هست."
+        },
+        {
+          "en": "In the north, fish with rice is common.",
+          "fa": "در شمال، ماهی با برنج رایج است."
+        },
+        {
+          "en": "In the south, people cook with a lot of pepper, and the food is hot.",
+          "fa": "در جنوب، مردم با فلفل زیاد آشپزی می‌کنند و غذا تند است."
+        },
+        {
+          "en": "Hadis tries a soup from the east, and it is really delicious.",
+          "fa": "حدیث سوپی از شرق را امتحان می‌کند و واقعاً خوشمزه است."
+        },
+        {
+          "en": "Her aunt prefers the bread with butter and sugar from the west.",
+          "fa": "خاله‌اش نانِ کره و شکری غرب را ترجیح می‌دهد."
+        },
+        {
+          "en": "There is also a place where children can design their own cookies.",
+          "fa": "جایی هم هست که بچه‌ها می‌توانند کلوچهٔ خودشان را طراحی کنند."
+        },
+        {
+          "en": "Hadis makes a cookie that looks like a star.",
+          "fa": "حدیث کلوچه‌ای درست می‌کند که شبیه ستاره است."
+        },
+        {
+          "en": "At the end of the day, they are very full.",
+          "fa": "آخر روز، حسابی سیر شده‌اند."
+        },
+        {
+          "en": "\"Next year, let's try everything again!\" Hadis says.",
+          "fa": "حدیث می‌گوید: «سال بعد، بیا دوباره همه‌چیز را امتحان کنیم!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "When is the food festival?",
+          "options": [
+            "Every Friday",
+            "In June",
+            "Every October",
+            "In the winter"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Who does Hadis go with?",
+          "options": [
+            "Her aunt",
+            "Her cousin",
+            "Her mother",
+            "Her school friends"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which food is common in the north?",
+          "options": [
+            "Bread with butter",
+            "Fish with rice",
+            "Soup",
+            "Hot food with pepper"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What can children do at the festival?",
+          "options": [
+            "Sing songs",
+            "Paint pictures",
+            "Cook fish",
+            "Design their own cookies"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Hadis's cookie look like?",
+          "options": [
+            "A flower",
+            "A cat",
+            "A tree",
+            "A star"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "b8-listening-f",
+      "titleEn": "Somebody at the Door",
+      "titleFa": "کسی پشت در است",
+      "names": [
+        "Yeganeh",
+        "Mahin"
+      ],
+      "sentences": [
+        {
+          "en": "On Sunday evening, somebody is at the door of Yeganeh's apartment.",
+          "fa": "یکشنبه عصر، کسی پشت در آپارتمان یگانه است."
+        },
+        {
+          "en": "Yeganeh is at home with her father, and he opens the door.",
+          "fa": "یگانه با پدرش در خانه است و پدرش در را باز می‌کند."
+        },
+        {
+          "en": "It is a young man with a big box.",
+          "fa": "مرد جوانی با یک جعبهٔ بزرگ است."
+        },
+        {
+          "en": "\"Hello! I have a box for Yeganeh,\" he says.",
+          "fa": "می‌گوید: «سلام! یک جعبه برای یگانه دارم.»"
+        },
+        {
+          "en": "Yeganeh cannot believe it. \"For me?\" she asks.",
+          "fa": "یگانه باورش نمی‌شود. می‌پرسد: «برای من؟»"
+        },
+        {
+          "en": "The box has no name on it, only her address.",
+          "fa": "روی جعبه هیچ اسمی نیست، فقط نشانی او."
+        },
+        {
+          "en": "Her father says, \"Let's guess what is in it.\"",
+          "fa": "پدرش می‌گوید: «بیا حدس بزنیم تویش چیست.»"
+        },
+        {
+          "en": "Yeganeh guesses a book, and her father guesses a sweater.",
+          "fa": "یگانه حدس می‌زند کتاب است و پدرش حدس می‌زند بلوز پشمی است."
+        },
+        {
+          "en": "They open the box, and there is a beautiful pink and purple dress in it!",
+          "fa": "جعبه را باز می‌کنند و یک پیراهن زیبای صورتی و بنفش تویش است!"
+        },
+        {
+          "en": "There is also a small card: \"Happy birthday, my smart girl! Love, Aunt Mahin.\"",
+          "fa": "یک کارت کوچک هم هست: «تولدت مبارک، دختر باهوشم! با عشق، خاله مهین.»"
+        },
+        {
+          "en": "Oh! Tomorrow is Yeganeh's birthday, and her aunt lives in another city.",
+          "fa": "آه! فردا تولد یگانه است و خاله‌اش در شهر دیگری زندگی می‌کند."
+        },
+        {
+          "en": "Yeganeh calls her aunt at once to say thank you.",
+          "fa": "یگانه فوراً به خاله‌اش زنگ می‌زند تا تشکر کند."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Who opens the door?",
+          "options": [
+            "Yeganeh",
+            "Yeganeh's mother",
+            "Her aunt",
+            "Yeganeh's father"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does the young man have?",
+          "options": [
+            "Some flowers",
+            "A letter",
+            "A cake",
+            "A big box"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Yeganeh guess is in the box?",
+          "options": [
+            "A dress",
+            "A book",
+            "A cake",
+            "A sweater"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is in the box?",
+          "options": [
+            "A book",
+            "A cake",
+            "A sweater",
+            "A pink and purple dress"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Who is the present from?",
+          "options": [
+            "The young man",
+            "Her friend",
+            "Aunt Mahin",
+            "Her father"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b8-listening-g",
+      "titleEn": "The Climbing Club",
+      "titleFa": "باشگاه کوهنوردی",
+      "names": [
+        "Dariush"
+      ],
+      "sentences": [
+        {
+          "en": "Dariush is a member of a climbing club at his college.",
+          "fa": "داریوش عضو باشگاه کوهنوردی کالجش است."
+        },
+        {
+          "en": "Every weekend, the club climbs a mountain near the city.",
+          "fa": "هر آخر هفته، باشگاه از کوهی نزدیک شهر بالا می‌رود."
+        },
+        {
+          "en": "Climbing is good for your body, but it can be dangerous.",
+          "fa": "کوهنوردی برای بدن خوب است، اما می‌تواند خطرناک باشد."
+        },
+        {
+          "en": "So every member has to follow the rules of the club.",
+          "fa": "برای همین هر عضو باید قانون‌های باشگاه را رعایت کند."
+        },
+        {
+          "en": "They have to wear good boots, and they have to stay together.",
+          "fa": "باید چکمه‌های خوب بپوشند و کنار هم بمانند."
+        },
+        {
+          "en": "This Friday, the weather is cool, and there is no rain.",
+          "fa": "این جمعه هوا خنک است و باران نمی‌آید."
+        },
+        {
+          "en": "Ten members climb for five hours, and they get very high on the mountain.",
+          "fa": "ده عضو پنج ساعت کوهنوردی می‌کنند و به جای خیلی بلندی از کوه می‌رسند."
+        },
+        {
+          "en": "From there, they can see all of the city below them.",
+          "fa": "از آنجا می‌توانند همهٔ شهر را زیر پایشان ببینند."
+        },
+        {
+          "en": "One member is tired, and he cannot climb well.",
+          "fa": "یکی از عضوها خسته است و نمی‌تواند خوب بالا برود."
+        },
+        {
+          "en": "Dariush and another member help him, and they go down together.",
+          "fa": "داریوش و یک عضو دیگر کمکش می‌کنند و با هم پایین می‌آیند."
+        },
+        {
+          "en": "At the end of the day, everyone is tired but happy.",
+          "fa": "آخر روز، همه خسته اما خوشحال‌اند."
+        },
+        {
+          "en": "\"Climbing is not only about the mountain,\" Dariush says. \"It is about friends.\"",
+          "fa": "داریوش می‌گوید: «کوهنوردی فقط به کوه مربوط نیست. به دوستان مربوط است.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Where is Dariush's climbing club?",
+          "options": [
+            "In a hotel",
+            "In the mountains",
+            "At his college",
+            "At his school"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is one of the club's rules?",
+          "options": [
+            "Do not wear boots",
+            "Bring a dog",
+            "Stay together",
+            "Climb at night"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is the weather like this Friday?",
+          "options": [
+            "It is raining hard",
+            "Hot, with a lot of sun",
+            "Cold, with snow",
+            "Cool, with no rain"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "How long do they climb?",
+          "options": [
+            "Two hours",
+            "Five hours",
+            "One hour",
+            "Ten hours"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Dariush say climbing is about?",
+          "options": [
+            "Health",
+            "Winning",
+            "Friends",
+            "Money"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b8-listening-h",
+      "titleEn": "A T-shirt Design",
+      "titleFa": "طرحی برای تی‌شرت",
+      "names": [
+        "Hasti"
+      ],
+      "sentences": [
+        {
+          "en": "Hasti's school has a festival in May, and every student can design a T-shirt for it.",
+          "fa": "مدرسهٔ هستی در ماه مه جشنواره‌ای دارد و هر دانش‌آموز می‌تواند برایش یک تی‌شرت طراحی کند."
+        },
+        {
+          "en": "The best design will be on the festival T-shirts.",
+          "fa": "بهترین طرح روی تی‌شرت‌های جشنواره می‌رود."
+        },
+        {
+          "en": "Hasti loves art, and she has her own style.",
+          "fa": "هستی عاشق هنر است و سبک خودش را دارد."
+        },
+        {
+          "en": "She draws a big yellow star with pink and purple flowers around it.",
+          "fa": "یک ستارهٔ بزرگ زرد با گل‌های صورتی و بنفش دورش می‌کشد."
+        },
+        {
+          "en": "Her brother thinks the design is not interesting.",
+          "fa": "برادرش فکر می‌کند طرح جالب نیست."
+        },
+        {
+          "en": "\"It needs a title,\" he says.",
+          "fa": "می‌گوید: «یک عنوان لازم دارد.»"
+        },
+        {
+          "en": "So Hasti adds four words under the star: \"Be Your Own Star.\"",
+          "fa": "پس هستی چهار کلمه زیر ستاره اضافه می‌کند: «ستارهٔ خودت باش.»"
+        },
+        {
+          "en": "She shows the design to her teacher, and the teacher really likes it.",
+          "fa": "طرح را به معلمش نشان می‌دهد و معلم واقعاً از آن خوشش می‌آید."
+        },
+        {
+          "en": "Two weeks later, the school tells the students the result.",
+          "fa": "دو هفته بعد، مدرسه نتیجه را به دانش‌آموزها اعلام می‌کند."
+        },
+        {
+          "en": "Hasti's design wins!",
+          "fa": "طرح هستی برنده می‌شود!"
+        },
+        {
+          "en": "On the day of the festival, two hundred students wear her T-shirt.",
+          "fa": "روز جشنواره، دویست دانش‌آموز تی‌شرت او را می‌پوشند."
+        },
+        {
+          "en": "Hasti takes a photo and sends it to her grandparents.",
+          "fa": "هستی عکسی می‌گیرد و برای پدربزرگ و مادربزرگش می‌فرستد."
+        }
+      ],
+      "questions": [
+        {
+          "q": "When is the school festival?",
+          "options": [
+            "In May",
+            "In October",
+            "In June",
+            "In March"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does Hasti draw?",
+          "options": [
+            "A tree",
+            "A yellow star with pink and purple flowers",
+            "The school",
+            "A red bird"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does her brother say the design needs?",
+          "options": [
+            "Some birds",
+            "More colors",
+            "A picture",
+            "A title"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What words does Hasti add?",
+          "options": [
+            "Love Your Friends",
+            "Happy Festival",
+            "Our School",
+            "Be Your Own Star"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "How many students wear her T-shirt?",
+          "options": [
+            "A thousand",
+            "Twenty",
+            "Two hundred",
+            "Fifty"
+          ],
+          "answer": 2
         }
       ]
     }

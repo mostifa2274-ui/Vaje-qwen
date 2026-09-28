@@ -60,8 +60,8 @@
     {
       "q": "Where is Dad when he calls?",
       "options": [
-        "At home",
         "At the market",
+        "At home",
         "At the bus station",
         "In the park"
       ],
@@ -70,42 +70,42 @@
     {
       "q": "When did the man see something yellow?",
       "options": [
-        "At eight o'clock",
-        "At nine o'clock",
         "At five o'clock",
-        "At ten o'clock"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "How long is the walk to the station?",
-      "options": [
-        "Half an hour",
-        "An hour",
-        "Five minutes",
-        "A quarter of an hour"
+        "At nine o'clock",
+        "At ten o'clock",
+        "At eight o'clock"
       ],
       "answer": 3
     },
     {
+      "q": "How long is the walk to the station?",
+      "options": [
+        "A quarter of an hour",
+        "Half an hour",
+        "An hour",
+        "Five minutes"
+      ],
+      "answer": 0
+    },
+    {
       "q": "Where will Dad wait?",
       "options": [
-        "By the station door",
-        "Below the big station clock",
+        "Near the gardens",
         "On the bus",
-        "Near the gardens"
+        "By the station door",
+        "Below the big station clock"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "What does Dad want them to bring?",
       "options": [
-        "Water",
         "A map",
         "Some bread",
-        "Aria's light"
+        "Aria's light",
+        "Water"
       ],
-      "answer": 2
+      "answer": 1
     }
   ]
 }

@@ -63,52 +63,52 @@
         {
           "q": "Where does Ali live?",
           "options": [
-            "In a big house next to a restaurant",
             "In an apartment opposite a cafe",
             "In an apartment on a little street near the park",
+            "In a big house next to a restaurant",
             "In a house far from the city"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "What does the boy from the new family have?",
-          "options": [
-            "A piano",
-            "A guitar",
-            "A ball",
-            "A chicken"
           ],
           "answer": 1
         },
         {
+          "q": "What does the boy from the new family have?",
+          "options": [
+            "A chicken",
+            "A piano",
+            "A ball",
+            "A guitar"
+          ],
+          "answer": 3
+        },
+        {
           "q": "Who comes to live in the apartment next to Ali's?",
           "options": [
+            "A policeman",
             "A new family",
-            "An old woman",
             "A teacher",
-            "A policeman"
+            "An old woman"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "q": "What does Ali play?",
           "options": [
-            "The piano",
             "The guitar",
             "Football",
+            "The piano",
             "Basketball"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "q": "Why is Dara happy?",
           "options": [
-            "Their house is big",
-            "He wins a match",
             "He has a new guitar",
-            "He has a new friend"
+            "He has a new friend",
+            "Their house is big",
+            "He wins a match"
           ],
-          "answer": 3
+          "answer": 1
         }
       ]
     },
@@ -173,9 +173,9 @@
         {
           "q": "Hamid is a ___.",
           "options": [
+            "waiter",
             "singer in a band",
             "tennis player",
-            "waiter",
             "young football player"
           ],
           "answer": 3
@@ -183,42 +183,42 @@
         {
           "q": "Where is the match?",
           "options": [
-            "In the park",
+            "In the yard of his house",
             "In the street",
             "At the sports center",
-            "In the yard of his house"
+            "In the park"
           ],
           "answer": 2
         },
         {
           "q": "Who from Hamid's family comes to see the game?",
           "options": [
-            "Only his dad",
+            "No one",
             "His brother and his mom",
-            "His mom, his dad and his little sister",
-            "No one"
+            "Only his dad",
+            "His mom, his dad and his little sister"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "Who wins the match?",
           "options": [
+            "Both teams",
             "The team from the city",
             "Hamid's team",
-            "Both teams",
             "No one wins"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "Where does the family eat dinner in the evening?",
           "options": [
-            "At a nice restaurant",
+            "At a neighbor's house",
             "At home",
-            "In the park",
-            "At a neighbor's house"
+            "At a nice restaurant",
+            "In the park"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     }
@@ -292,51 +292,51 @@
           "q": "Where do Maryam and Sima meet?",
           "options": [
             "In the park",
-            "In a big restaurant",
+            "At a little cafe in the city center",
             "At Sima's house",
-            "At a little cafe in the city center"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "Where is the cafe?",
-          "options": [
-            "On the right, next to the park",
-            "Opposite the gym",
-            "On the left, opposite a big restaurant",
-            "Far from the city center"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "What does Maryam want?",
-          "options": [
-            "Milk",
-            "Water",
-            "Bread and eggs",
-            "Nothing"
-          ],
-          "answer": 2
-        },
-        {
-          "q": "Sima's brother is ___.",
-          "options": [
-            "a waiter in the cafe",
-            "a singer in a band",
-            "a football player",
-            "a famous actor"
+            "In a big restaurant"
           ],
           "answer": 1
         },
         {
-          "q": "What do Maryam and Sima do in the evening?",
+          "q": "Where is the cafe?",
           "options": [
-            "They go to the concert with their moms",
-            "They go home",
-            "They stay at the cafe",
-            "They go to the gym"
+            "Far from the city center",
+            "On the right, next to the park",
+            "Opposite the gym",
+            "On the left, opposite a big restaurant"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does Maryam want?",
+          "options": [
+            "Nothing",
+            "Milk",
+            "Water",
+            "Bread and eggs"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Sima's brother is ___.",
+          "options": [
+            "a singer in a band",
+            "a waiter in the cafe",
+            "a football player",
+            "a famous actor"
           ],
           "answer": 0
+        },
+        {
+          "q": "What do Maryam and Sima do in the evening?",
+          "options": [
+            "They stay at the cafe",
+            "They go to the concert with their moms",
+            "They go home",
+            "They go to the gym"
+          ],
+          "answer": 1
         }
       ]
     },
@@ -402,52 +402,52 @@
         {
           "q": "What does Nima do every morning?",
           "options": [
-            "He swims in the pool",
+            "He plays the guitar",
             "He plays football in the park",
-            "He plays basketball at the gym",
-            "He plays the guitar"
+            "He swims in the pool",
+            "He plays basketball at the gym"
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "q": "Today, ___.",
           "options": [
+            "his friend does not come",
             "Nima cannot find his ball",
             "the gym door is closed",
-            "his friend does not come",
             "the pool is full of people"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "Who does Nima ask about the gym?",
           "options": [
+            "A waiter",
             "His friend Arash",
             "A policeman on the street",
-            "His mother",
-            "A waiter"
+            "His mother"
           ],
-          "answer": 1
+          "answer": 2
         },
         {
           "q": "Where is the pool?",
           "options": [
-            "Next to the park",
-            "Opposite the gym",
             "Far from the city",
-            "Behind the restaurant"
+            "Next to the park",
+            "Behind the restaurant",
+            "Opposite the gym"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "q": "At the end, how does Nima feel about swimming?",
           "options": [
-            "He still does not like it",
-            "He is afraid of the water",
+            "He likes swimming too now",
             "He only likes basketball",
-            "He likes swimming too now"
+            "He still does not like it",
+            "He is afraid of the water"
           ],
-          "answer": 3
+          "answer": 0
         }
       ]
     }

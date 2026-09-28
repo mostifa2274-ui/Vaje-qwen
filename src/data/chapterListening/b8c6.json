@@ -65,47 +65,47 @@
       "q": "What was the chicken following?",
       "options": [
         "A cat",
-        "A red bird",
+        "A bus",
         "The old woman",
-        "A bus"
+        "A red bird"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "What does the boy see on the chicken?",
       "options": [
-        "Orange feet and a little white on its left",
         "A blue band on its leg",
-        "A red head",
-        "A note"
+        "A note",
+        "Orange feet and a little white on its left",
+        "A red head"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "What does the old woman find?",
       "options": [
         "A photo",
-        "A card",
         "The note with the address on it",
-        "A newspaper"
+        "A newspaper",
+        "A card"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "What happens on Thursday at the address?",
       "options": [
-        "Mina opens the door",
-        "The family asks them in",
         "The chicken runs away",
-        "Nobody is at home"
+        "Nobody is at home",
+        "The family asks them in",
+        "Mina opens the door"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "q": "What does the girl say when she sees the box?",
       "options": [
-        "Thank you!",
         "Hello!",
+        "Thank you!",
         "Nino!",
         "Where was he?"
       ],

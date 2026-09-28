@@ -63,21 +63,21 @@
       "q": "Aria hears ___ downstairs.",
       "options": [
         "Dad",
-        "Mom",
         "Mina",
-        "Yasi"
+        "Yasi",
+        "Mom"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "Where does Aria look first?",
       "options": [
-        "In the bathroom and behind the kitchen door",
-        "Under every bed",
+        "In the garden",
         "In the yard",
-        "In the garden"
+        "In the bathroom and behind the kitchen door",
+        "Under every bed"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "What does Aria give Yasi?",
@@ -92,22 +92,22 @@
     {
       "q": "Yasi does not answer. She is ___.",
       "options": [
-        "sleeping",
         "only a baby",
-        "very sad",
-        "in the yard"
+        "in the yard",
+        "sleeping",
+        "very sad"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "q": "What does Aria hear that night?",
       "options": [
-        "Nino",
+        "The rain",
         "A bird",
         "The door",
-        "The rain"
+        "Nino"
       ],
-      "answer": 3
+      "answer": 0
     }
   ]
 }

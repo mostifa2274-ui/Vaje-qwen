@@ -61,52 +61,52 @@
     {
       "q": "Aria goes to school ___.",
       "options": [
-        "from Saturday to Wednesday",
+        "every day of the week",
         "only on Thursday",
-        "on Fridays",
-        "every day of the week"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "What does Aria look at every afternoon?",
-      "options": [
-        "The TV",
-        "The map on Mina's wall",
-        "Nino's picture",
-        "The window"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "What happens on Monday?",
-      "options": [
-        "Aria has no school",
-        "They go to the market",
-        "It rains",
-        "They see Nino"
+        "from Saturday to Wednesday",
+        "on Fridays"
       ],
       "answer": 2
     },
     {
-      "q": "What does Aria find under a tree?",
+      "q": "What does Aria look at every afternoon?",
       "options": [
-        "Nino",
-        "A yellow shoe",
-        "A yellow bird",
-        "A piece of yellow paper"
+        "Nino's picture",
+        "The TV",
+        "The window",
+        "The map on Mina's wall"
       ],
       "answer": 3
     },
     {
-      "q": "Mom says Aria can help ___.",
+      "q": "What happens on Monday?",
       "options": [
-        "every day",
-        "on Thursday and Friday",
-        "only on Saturday",
-        "at night"
+        "They go to the market",
+        "It rains",
+        "Aria has no school",
+        "They see Nino"
       ],
       "answer": 1
+    },
+    {
+      "q": "What does Aria find under a tree?",
+      "options": [
+        "A yellow bird",
+        "A piece of yellow paper",
+        "Nino",
+        "A yellow shoe"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Mom says Aria can help ___.",
+      "options": [
+        "on Thursday and Friday",
+        "at night",
+        "every day",
+        "only on Saturday"
+      ],
+      "answer": 0
     }
   ]
 }

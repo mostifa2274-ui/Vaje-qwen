@@ -65,52 +65,52 @@
     {
       "q": "What does Mom drink in the kitchen?",
       "options": [
-        "Milk",
+        "Water from the garden",
         "A glass of water",
         "Nothing",
-        "Water from the garden"
+        "Milk"
       ],
       "answer": 1
     },
     {
       "q": "What is still on by the front door?",
       "options": [
-        "The TV",
-        "The kitchen light",
+        "The light in Mina's room",
         "The little light",
-        "The light in Mina's room"
+        "The TV",
+        "The kitchen light"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "The water and the bread are still there. What does this tell us?",
       "options": [
-        "Nino did not come for his dinner",
+        "Aria is tired",
         "Nino is in the house now",
-        "Dad did not want his dinner",
-        "Aria is tired"
+        "Nino did not come for his dinner",
+        "Dad did not want his dinner"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "Where is Dad?",
       "options": [
         "In the kitchen",
-        "In the yard",
+        "In the front room",
         "In Mina's room",
-        "In the front room"
+        "In the yard"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "q": "What does Mom say by the window?",
       "options": [
-        "Good night, Mina.",
-        "Do not be afraid, Nino. We will find you tomorrow.",
         "We will go to the garden tomorrow.",
-        "The rain is good."
+        "Good night, Mina.",
+        "The rain is good.",
+        "Do not be afraid, Nino. We will find you tomorrow."
       ],
-      "answer": 1
+      "answer": 3
     }
   ]
 }

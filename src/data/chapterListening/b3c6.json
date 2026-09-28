@@ -61,19 +61,19 @@
     {
       "q": "Who does Mom write a note to?",
       "options": [
-        "Dad",
-        "Her friend",
+        "A neighbor",
         "Mina",
-        "A neighbor"
+        "Dad",
+        "Her friend"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "What was Yasi's first word?",
       "options": [
         "Mom",
-        "Dad",
         "Bread",
+        "Dad",
         "Nino"
       ],
       "answer": 3
@@ -81,32 +81,32 @@
     {
       "q": "What was Yasi looking at?",
       "options": [
-        "Nino's picture on the wall",
+        "Mina",
         "The window",
         "The TV",
-        "Mina"
+        "Nino's picture on the wall"
       ],
-      "answer": 0
+      "answer": 3
     },
     {
       "q": "What does Mina put by the door every night?",
       "options": [
-        "Her shoes",
-        "A light",
+        "A note",
         "Water and bread",
-        "A note"
+        "Her shoes",
+        "A light"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "Where will they go tomorrow?",
       "options": [
         "To the river",
-        "To the station",
         "To the park",
-        "To the big market on bus fifteen"
+        "To the big market on bus fifteen",
+        "To the station"
       ],
-      "answer": 3
+      "answer": 2
     }
   ]
 }

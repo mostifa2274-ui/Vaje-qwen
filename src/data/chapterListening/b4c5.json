@@ -64,32 +64,32 @@
     {
       "q": "How old is the farmer's daughter?",
       "options": [
-        "Eleven",
+        "Eight",
         "Ten",
-        "Twelve",
-        "Eight"
+        "Eleven",
+        "Twelve"
       ],
       "answer": 1
     },
     {
       "q": "Where do the goats and the sheep stand?",
       "options": [
-        "Near a green tree",
-        "Near the wall",
         "In the house",
-        "Near the horse"
+        "Near a green tree",
+        "Near the horse",
+        "Near the wall"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "q": "Where do the chickens sleep?",
       "options": [
         "Under a tree",
+        "In a small house next to the wall",
         "In the farmer's house",
-        "Near the cow",
-        "In a small house next to the wall"
+        "Near the cow"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "q": "What is the daughter's favorite animal?",
@@ -104,12 +104,12 @@
     {
       "q": "What does the daughter say at the end?",
       "options": [
-        "She saw Nino",
         "Mina can come back to the farm with Nino one day",
-        "She wants her book",
-        "The farm is big"
+        "The farm is big",
+        "She saw Nino",
+        "She wants her book"
       ],
-      "answer": 1
+      "answer": 0
     }
   ]
 }

@@ -71,39 +71,39 @@
       "q": "How old is Mina?",
       "options": [
         "Ten",
-        "Twelve",
         "Eleven",
+        "Twelve",
         "Nine"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "How many notes did Mina and her father make?",
-      "options": [
-        "Ten",
-        "A hundred",
-        "A thousand",
-        "Twenty"
       ],
       "answer": 1
     },
     {
+      "q": "How many notes did Mina and her father make?",
+      "options": [
+        "A thousand",
+        "Twenty",
+        "A hundred",
+        "Ten"
+      ],
+      "answer": 2
+    },
+    {
       "q": "What does Nino often follow?",
       "options": [
+        "Red birds",
         "Cats",
-        "Children",
         "Cars",
-        "Red birds"
+        "Children"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "q": "What does Mina want to be in the future?",
       "options": [
         "A scientist",
         "A writer or a person who helps animals",
-        "A teacher",
-        "A farmer"
+        "A farmer",
+        "A teacher"
       ],
       "answer": 1
     }

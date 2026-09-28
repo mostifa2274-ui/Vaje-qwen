@@ -57,39 +57,39 @@
     {
       "q": "What does the old man order every morning?",
       "options": [
-        "Tea with lemon",
-        "A cup of coffee and one cookie",
+        "Ice cream",
         "Orange juice",
-        "Ice cream"
+        "Tea with lemon",
+        "A cup of coffee and one cookie"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "Which animals are there at the market?",
       "options": [
-        "Dogs and birds",
-        "Birds and fish",
         "Cats and chickens",
-        "Only dogs"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "Why do the chickens like the bread shop?",
-      "options": [
-        "It is warm there",
-        "It is quiet there",
-        "There is water",
-        "There are trees"
+        "Only dogs",
+        "Birds and fish",
+        "Dogs and birds"
       ],
       "answer": 0
     },
     {
+      "q": "Why do the chickens like the bread shop?",
+      "options": [
+        "It is quiet there",
+        "There is water",
+        "There are trees",
+        "It is warm there"
+      ],
+      "answer": 3
+    },
+    {
       "q": "What does the oldest girl have?",
       "options": [
-        "A cup",
-        "A map",
         "A cookie",
+        "A map",
+        "A cup",
         "A picture of a yellow chicken"
       ],
       "answer": 3
@@ -97,9 +97,9 @@
     {
       "q": "When does the old man tell them to come?",
       "options": [
-        "At lunch",
-        "Early, before the shops open",
         "In the evening",
+        "Early, before the shops open",
+        "At lunch",
         "On Friday"
       ],
       "answer": 1

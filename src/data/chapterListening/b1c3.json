@@ -62,38 +62,38 @@
     {
       "q": "Where does everyone meet first?",
       "options": [
-        "In the kitchen",
         "By the front door",
+        "In Mina's room",
         "In the garden",
-        "In Mina's room"
+        "In the kitchen"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "q": "Where do they look after the yard?",
       "options": [
         "Under the beds",
+        "In the garden",
         "In the bathroom",
-        "In the kitchen",
-        "In the garden"
+        "In the kitchen"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "q": "What does Aria take for the dark places?",
       "options": [
-        "His light",
-        "His bag",
         "His book",
-        "His shoes"
+        "His shoes",
+        "His bag",
+        "His light"
       ],
-      "answer": 0
+      "answer": 3
     },
     {
       "q": "What does Mina take for Nino?",
       "options": [
-        "Milk and cheese",
         "Eggs",
+        "Milk and cheese",
         "Water and bread",
         "A box"
       ],
@@ -104,10 +104,10 @@
       "options": [
         "With Dad in the yard",
         "In Aria's room",
-        "With Mina in the garden",
-        "With Mom in the kitchen"
+        "With Mom in the kitchen",
+        "With Mina in the garden"
       ],
-      "answer": 3
+      "answer": 2
     }
   ]
 }

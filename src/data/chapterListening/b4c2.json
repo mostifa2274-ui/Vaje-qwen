@@ -58,51 +58,51 @@
       "q": "When does the bread man wake?",
       "options": [
         "At six o'clock",
-        "At five o'clock",
         "At seven o'clock",
-        "At four o'clock"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "What does he put by the door before six o'clock?",
-      "options": [
-        "Some water",
-        "Little pieces of bread",
-        "A cup of soup",
-        "Milk"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "What comes down the quiet street?",
-      "options": [
-        "A little yellow chicken",
-        "A cat",
-        "A man with a dog",
-        "A car"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "What does he prepare at lunch?",
-      "options": [
-        "Cake",
-        "Eggs",
-        "Hot soup and sandwiches",
-        "Salad"
+        "At four o'clock",
+        "At five o'clock"
       ],
       "answer": 2
     },
     {
+      "q": "What does he put by the door before six o'clock?",
+      "options": [
+        "Little pieces of bread",
+        "A cup of soup",
+        "Milk",
+        "Some water"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What comes down the quiet street?",
+      "options": [
+        "A car",
+        "A man with a dog",
+        "A little yellow chicken",
+        "A cat"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "What does he prepare at lunch?",
+      "options": [
+        "Salad",
+        "Eggs",
+        "Cake",
+        "Hot soup and sandwiches"
+      ],
+      "answer": 3
+    },
+    {
       "q": "Children prefer his bread with ___.",
       "options": [
-        "salt and pepper",
         "butter and sugar",
-        "cheese",
-        "soup"
+        "salt and pepper",
+        "soup",
+        "cheese"
       ],
-      "answer": 1
+      "answer": 0
     }
   ]
 }

@@ -71,42 +71,42 @@
     {
       "q": "What is Grandfather's hobby?",
       "options": [
-        "His garden",
-        "Fish",
+        "Music",
         "Reading books",
-        "Music"
+        "His garden",
+        "Fish"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "At first, what does Grandfather think Aria said?",
       "options": [
         "Yasi is sick",
+        "Yasi wants an apple",
         "Yasi is sleeping",
-        "Yasi has a new shoe",
-        "Yasi wants an apple"
+        "Yasi has a new shoe"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "q": "What new thing does Yasi have?",
       "options": [
-        "A shoe",
         "A hat",
-        "A ball",
-        "A tooth"
+        "A shoe",
+        "A tooth",
+        "A ball"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
       "q": "Why is Mina tired?",
       "options": [
         "She is sick",
-        "From the climb",
         "She went to bed late",
-        "From the train trip"
+        "From the train trip",
+        "From the climb"
       ],
-      "answer": 1
+      "answer": 3
     }
   ]
 }

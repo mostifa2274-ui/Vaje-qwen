@@ -59,52 +59,52 @@
     {
       "q": "What does each chicken in the project have on its leg?",
       "options": [
-        "A small blue band",
         "A card",
+        "A small blue band",
         "A red line",
         "Nothing"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "q": "Where did the worker find the chicken?",
       "options": [
         "In the street",
-        "In the office",
         "In the garden, under a tree",
-        "Near the river"
+        "Near the river",
+        "In the office"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "How did the scientist hear about Mina?",
       "options": [
         "From the radio",
         "From a blog",
-        "From the newspaper",
-        "From a teacher"
+        "From a teacher",
+        "From the newspaper"
       ],
       "answer": 1
     },
     {
       "q": "What present did the scientist give the girl?",
       "options": [
-        "An umbrella",
-        "A model of a bird",
+        "A card with a yellow bird on it",
         "A chicken",
-        "A card with a yellow bird on it"
+        "A model of a bird",
+        "An umbrella"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "q": "What is the scientist's advice?",
       "options": [
-        "Look for a place with food",
         "Come back to the university",
+        "Do not look in the rain",
         "Write to the newspaper",
-        "Do not look in the rain"
+        "Look for a place with food"
       ],
-      "answer": 0
+      "answer": 3
     }
   ]
 }

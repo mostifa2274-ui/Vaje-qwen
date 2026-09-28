@@ -63,40 +63,40 @@
         {
           "q": "Where does Zahra go every Friday?",
           "options": [
-            "To the market",
-            "To the bank",
             "To a restaurant",
-            "To a farm"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "What are the apples like?",
-          "options": [
-            "Cheap and yellow",
-            "Small and green",
-            "Small and brown",
-            "Red and very nice, but expensive"
-          ],
-          "answer": 3
-        },
-        {
-          "q": "How many bags of oranges does Zahra buy?",
-          "options": [
-            "One small bag",
-            "Two big bags",
-            "Three bags",
-            "Five bags"
+            "To the market",
+            "To a farm",
+            "To the bank"
           ],
           "answer": 1
         },
         {
+          "q": "What are the apples like?",
+          "options": [
+            "Small and brown",
+            "Small and green",
+            "Red and very nice, but expensive",
+            "Cheap and yellow"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "How many bags of oranges does Zahra buy?",
+          "options": [
+            "Three bags",
+            "Five bags",
+            "One small bag",
+            "Two big bags"
+          ],
+          "answer": 3
+        },
+        {
           "q": "Zahra buys potatoes, onions and tomatoes for ___.",
           "options": [
+            "a cake",
             "a salad",
-            "sandwiches",
             "soup",
-            "a cake"
+            "sandwiches"
           ],
           "answer": 2
         },
@@ -104,11 +104,11 @@
           "q": "When does Babak eat his chocolate?",
           "options": [
             "At the market",
-            "After his soup",
             "Before lunch",
+            "After his soup",
             "At night before bed"
           ],
-          "answer": 1
+          "answer": 2
         }
       ]
     },
@@ -177,32 +177,32 @@
         {
           "q": "Where does Ramin live?",
           "options": [
-            "In an apartment in the city",
-            "On a farm",
+            "Next to a bank",
             "Near the market",
-            "Next to a bank"
+            "In an apartment in the city",
+            "On a farm"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "q": "What do the cows and the chickens give?",
           "options": [
-            "The cows give milk, and the chickens give eggs",
             "The cows give meat, and the chickens give milk",
-            "The cows give cheese, and the chickens give meat",
-            "Nothing"
+            "Nothing",
+            "The cows give milk, and the chickens give eggs",
+            "The cows give cheese, and the chickens give meat"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "q": "Where does Ramin's mom sell the milk and eggs?",
           "options": [
-            "On the farm",
-            "At a supermarket",
             "At the market in town",
-            "At a restaurant"
+            "At a restaurant",
+            "On the farm",
+            "At a supermarket"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "q": "What takes Ramin to the horse?",
@@ -221,6 +221,230 @@
             "It plays with the dog",
             "It eats the neighbor's carrots",
             "It drinks water"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b4-reading-c",
+      "titleEn": "Cooking Dinner Together",
+      "titleFa": "با هم شام می‌پزیم",
+      "names": [
+        "Niloofar"
+      ],
+      "sentences": [
+        {
+          "en": "On Wednesday evening, Niloofar and her dad prepare dinner for the family.",
+          "fa": "چهارشنبه عصر، نیلوفر و پدرش برای خانواده شام درست می‌کنند."
+        },
+        {
+          "en": "Her mom is at work until eight o'clock, so they want to make something delicious.",
+          "fa": "مادرش تا ساعت هشت سر کار است، پس می‌خواهند چیز خوشمزه‌ای درست کنند."
+        },
+        {
+          "en": "First, they look in the kitchen, but there is no meat and no fish.",
+          "fa": "اول آشپزخانه را نگاه می‌کنند، اما نه گوشت هست و نه ماهی."
+        },
+        {
+          "en": "So they walk to the supermarket near their house.",
+          "fa": "پس پیاده به سوپرمارکت نزدیک خانه‌شان می‌روند."
+        },
+        {
+          "en": "They buy rice, tomatoes, onions, carrots and some chicken.",
+          "fa": "برنج، گوجه‌فرنگی، پیاز، هویج و مقداری مرغ می‌خرند."
+        },
+        {
+          "en": "Niloofar compares the prices, and she chooses the cheap tomatoes.",
+          "fa": "نیلوفر قیمت‌ها را مقایسه می‌کند و گوجه‌فرنگی‌های ارزان را انتخاب می‌کند."
+        },
+        {
+          "en": "At home, Dad cuts the vegetables, and Niloofar prepares the rice.",
+          "fa": "در خانه، بابا سبزی‌ها را خرد می‌کند و نیلوفر برنج را آماده می‌کند."
+        },
+        {
+          "en": "They make a hot soup with tomatoes and carrots too.",
+          "fa": "یک سوپ داغ با گوجه‌فرنگی و هویج هم درست می‌کنند."
+        },
+        {
+          "en": "Niloofar puts salt and pepper in the soup, but she puts in too much salt!",
+          "fa": "نیلوفر در سوپ نمک و فلفل می‌ریزد، اما نمک زیادی می‌ریزد!"
+        },
+        {
+          "en": "Dad tries it, and he laughs.",
+          "fa": "بابا آن را امتحان می‌کند و می‌خندد."
+        },
+        {
+          "en": "\"It is fine,\" he says. \"We can add some water.\"",
+          "fa": "می‌گوید: «اشکالی ندارد. می‌توانیم کمی آب اضافه کنیم.»"
+        },
+        {
+          "en": "At eight o'clock, Mom comes home, and the meal is ready on the table.",
+          "fa": "ساعت هشت مامان به خانه می‌آید و غذا روی میز آماده است."
+        },
+        {
+          "en": "\"This is great,\" Mom says. \"You are both very good at cooking!\"",
+          "fa": "مامان می‌گوید: «عالی است. هر دوی شما در آشپزی خیلی خوبید!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Why do Niloofar and her dad prepare dinner?",
+          "options": [
+            "Her mom is at work until eight o'clock",
+            "They have visitors",
+            "The restaurant is closed",
+            "It is Mom's birthday"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Where do they go to buy food?",
+          "options": [
+            "To a restaurant",
+            "To a farm",
+            "To the supermarket near their house",
+            "To the market by the river"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which tomatoes does Niloofar choose?",
+          "options": [
+            "The expensive ones",
+            "The green ones",
+            "The big ones",
+            "The cheap ones"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What mistake does Niloofar make?",
+          "options": [
+            "She forgets the rice",
+            "She puts too much salt in the soup",
+            "She buys the wrong vegetables",
+            "She cuts her hand"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does Mom say?",
+          "options": [
+            "You are both very good at cooking!",
+            "The soup is too hot.",
+            "Where is the meat?",
+            "I am not hungry."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b4-reading-d",
+      "titleEn": "The Ice Cream Shop",
+      "titleFa": "بستنی‌فروشی",
+      "names": [
+        "Farzin"
+      ],
+      "sentences": [
+        {
+          "en": "Farzin works in an ice cream shop in the summer.",
+          "fa": "فرزین تابستان‌ها در یک بستنی‌فروشی کار می‌کند."
+        },
+        {
+          "en": "The shop is small, but it has twenty kinds of ice cream.",
+          "fa": "مغازه کوچک است، اما بیست نوع بستنی دارد."
+        },
+        {
+          "en": "His favorite is chocolate, but many customers prefer lemon when it is hot.",
+          "fa": "بستنی محبوب خودش شکلاتی است، اما وقتی هوا گرم است، خیلی از مشتری‌ها لیمویی را ترجیح می‌دهند."
+        },
+        {
+          "en": "One afternoon, a man and his little son come in.",
+          "fa": "یک روز بعدازظهر، مردی با پسر کوچکش وارد می‌شود."
+        },
+        {
+          "en": "The boy looks at all the colors for a long time.",
+          "fa": "پسر مدت زیادی به همهٔ رنگ‌ها نگاه می‌کند."
+        },
+        {
+          "en": "\"I cannot choose,\" he says. \"They all look delicious!\"",
+          "fa": "می‌گوید: «نمی‌توانم انتخاب کنم. همه خوشمزه به نظر می‌رسند!»"
+        },
+        {
+          "en": "Farzin has an idea, and he gives the boy a little of three different kinds.",
+          "fa": "فرزین فکری به سرش می‌زند و کمی از سه نوع مختلف به پسر می‌دهد."
+        },
+        {
+          "en": "The boy tries each one and chooses the green one.",
+          "fa": "پسر هر کدام را امتحان می‌کند و سبزرنگ را انتخاب می‌کند."
+        },
+        {
+          "en": "His father orders a coffee with ice cream in it.",
+          "fa": "پدرش قهوه با بستنی سفارش می‌دهد."
+        },
+        {
+          "en": "The man pays the bill, and Farzin gives him the correct money back.",
+          "fa": "مرد صورتحساب را می‌پردازد و فرزین بقیهٔ پولش را درست پس می‌دهد."
+        },
+        {
+          "en": "The next day, the boy comes back with five friends.",
+          "fa": "روز بعد، پسر با پنج دوستش برمی‌گردد."
+        },
+        {
+          "en": "\"This shop has the best ice cream in the city,\" he tells them.",
+          "fa": "به آن‌ها می‌گوید: «این مغازه بهترین بستنی شهر را دارد.»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "When does Farzin work in the ice cream shop?",
+          "options": [
+            "On Fridays",
+            "In the summer",
+            "In the winter",
+            "At night"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What do many customers prefer when it is hot?",
+          "options": [
+            "Chocolate",
+            "Coffee",
+            "Lemon",
+            "Banana"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why can the boy not choose?",
+          "options": [
+            "He has no money",
+            "All the ice cream looks delicious",
+            "He does not like ice cream",
+            "The shop is closing"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which ice cream does the boy choose?",
+          "options": [
+            "The green one",
+            "The yellow one",
+            "The brown one",
+            "The white one"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Who comes back the next day?",
+          "options": [
+            "A farmer",
+            "Farzin's sister",
+            "The boy and five friends",
+            "The boy's father"
           ],
           "answer": 2
         }
@@ -300,40 +524,40 @@
         {
           "q": "What does Farid order?",
           "options": [
-            "Chicken with rice and a salad",
             "Fish with potatoes",
+            "Soup and bread",
             "A big sandwich",
-            "Soup and bread"
+            "Chicken with rice and a salad"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "q": "Why does Nazanin choose fish?",
           "options": [
             "Fish is cheap",
-            "There is no chicken",
             "She does not like meat",
+            "There is no chicken",
             "The waiter says it is good"
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "q": "What is wrong with the food?",
           "options": [
-            "The fish has too much salt",
+            "The chicken is cold",
             "The salad does not come",
-            "The food is very expensive",
-            "The chicken is cold"
+            "The fish has too much salt",
+            "The food is very expensive"
           ],
-          "answer": 3
+          "answer": 0
         },
         {
           "q": "What does the waiter bring after lunch?",
           "options": [
+            "Fruit",
             "Ice cream",
-            "Tea",
             "A big chocolate cake",
-            "Fruit"
+            "Tea"
           ],
           "answer": 2
         }
@@ -406,9 +630,9 @@
           "q": "How old is Tara?",
           "options": [
             "Ten",
+            "Twenty",
             "Twelve",
-            "Seven",
-            "Twenty"
+            "Seven"
           ],
           "answer": 0
         },
@@ -416,41 +640,262 @@
           "q": "Why does Tara's mom not want a cat at first?",
           "options": [
             "She is afraid of cats",
-            "Cats are expensive",
+            "She does not want an animal in the apartment",
             "Tara is too young",
-            "She does not want an animal in the apartment"
+            "Cats are expensive"
           ],
-          "answer": 3
+          "answer": 1
         },
         {
           "q": "Where does the family go on Sunday?",
           "options": [
-            "To the market",
-            "To a farm near the town",
             "To the park",
-            "To a neighbor's house"
-          ],
-          "answer": 1
-        },
-        {
-          "q": "What color is the small cat?",
-          "options": [
-            "Black",
-            "White",
-            "Brown",
-            "Yellow"
+            "To a neighbor's house",
+            "To a farm near the town",
+            "To the market"
           ],
           "answer": 2
         },
         {
-          "q": "Mom says yes, but Tara has to ___.",
+          "q": "What color is the small cat?",
           "options": [
-            "clean her room",
-            "give the cat food and water every day",
+            "Brown",
+            "Yellow",
+            "Black",
+            "White"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Mom says yes, but Tara needs to ___.",
+          "options": [
+            "pay for the cat",
             "let the cat sleep in the yard",
-            "pay for the cat"
+            "give the cat food and water every day",
+            "clean her room"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "b4-listening-c",
+      "titleEn": "A Mistake on the Bill",
+      "titleFa": "اشتباه در صورتحساب",
+      "names": [
+        "Golnar"
+      ],
+      "sentences": [
+        {
+          "en": "Golnar goes to a small store to buy things for breakfast.",
+          "fa": "گلنار برای خرید چیزهایی برای صبحانه به یک مغازهٔ کوچک می‌رود."
+        },
+        {
+          "en": "She buys bread, butter, cheese and a bottle of milk.",
+          "fa": "نان، کره، پنیر و یک بطری شیر می‌خرد."
+        },
+        {
+          "en": "At home, she looks at the bill, and something is wrong.",
+          "fa": "در خانه به صورتحساب نگاه می‌کند و چیزی درست نیست."
+        },
+        {
+          "en": "The bill says two bottles of milk, but she has only one.",
+          "fa": "در صورتحساب دو بطری شیر نوشته شده، اما او فقط یکی دارد."
+        },
+        {
+          "en": "The extra milk is not expensive, but the bill is not correct.",
+          "fa": "شیر اضافه گران نیست، اما صورتحساب درست نیست."
+        },
+        {
+          "en": "She walks back to the store with the bill in her hand.",
+          "fa": "با صورتحساب در دست پیاده به مغازه برمی‌گردد."
+        },
+        {
+          "en": "The man in the store looks at it for a moment.",
+          "fa": "مرد مغازه‌دار لحظه‌ای به آن نگاه می‌کند."
+        },
+        {
+          "en": "\"You are right,\" he says. \"It is my mistake. I am very sorry.\"",
+          "fa": "می‌گوید: «حق با شماست. اشتباه از من است. خیلی متأسفم.»"
+        },
+        {
+          "en": "He gives her the money for the extra milk.",
+          "fa": "پول شیر اضافه را به او پس می‌دهد."
+        },
+        {
+          "en": "Then he gives her a free chocolate cookie too.",
+          "fa": "بعد یک کلوچهٔ شکلاتی مجانی هم به او می‌دهد."
+        },
+        {
+          "en": "\"Thank you for telling me,\" he says. \"Many people do not check their bills.\"",
+          "fa": "می‌گوید: «ممنون که گفتید. خیلی‌ها صورتحسابشان را بررسی نمی‌کنند.»"
+        },
+        {
+          "en": "Golnar eats the cookie on her way home, and she is happy.",
+          "fa": "گلنار در راه خانه کلوچه را می‌خورد و خوشحال است."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What does Golnar go to the store for?",
+          "options": [
+            "Things for breakfast",
+            "Things for a party",
+            "Things for dinner",
+            "Food for her cat"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What is wrong with the bill?",
+          "options": [
+            "The bread is too expensive",
+            "It has no cheese on it",
+            "The price of the butter is wrong",
+            "It says two bottles of milk, but she has one"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "What does the man in the store say?",
+          "options": [
+            "It is your mistake.",
+            "The bill is correct.",
+            "It is my mistake. I am very sorry.",
+            "Please come back tomorrow."
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What does he give her for free?",
+          "options": [
+            "A chocolate cookie",
+            "A bottle of milk",
+            "A piece of cheese",
+            "Some bread"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the man say many people do not do?",
+          "options": [
+            "Check their bills",
+            "Come back to the store",
+            "Eat breakfast",
+            "Say thank you"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "b4-listening-d",
+      "titleEn": "A Day at the Animal Park",
+      "titleFa": "یک روز در باغ‌وحش",
+      "names": [
+        "Yasaman",
+        "Nazila"
+      ],
+      "sentences": [
+        {
+          "en": "On Thursday, Yasaman and her school friends visit a big animal park near the city.",
+          "fa": "پنجشنبه، یاسمن و دوستان مدرسه‌اش از یک باغ‌وحش بزرگ نزدیک شهر بازدید می‌کنند."
+        },
+        {
+          "en": "The children go there by bus with their teacher.",
+          "fa": "بچه‌ها با معلمشان با اتوبوس به آنجا می‌روند."
+        },
+        {
+          "en": "First, they see the elephants, and they are very big.",
+          "fa": "اول فیل‌ها را می‌بینند که خیلی بزرگ‌اند."
+        },
+        {
+          "en": "One elephant puts water on its back, and the children laugh.",
+          "fa": "یکی از فیل‌ها روی پشتش آب می‌ریزد و بچه‌ها می‌خندند."
+        },
+        {
+          "en": "Then they see two lions that are sleeping under a tree.",
+          "fa": "بعد دو شیر را می‌بینند که زیر یک درخت خوابیده‌اند."
+        },
+        {
+          "en": "Yasaman thinks the lions are great, but she is a little afraid.",
+          "fa": "یاسمن فکر می‌کند شیرها فوق‌العاده‌اند، اما کمی می‌ترسد."
+        },
+        {
+          "en": "Her friend Nazila does not like snakes, so she does not go into the snake house.",
+          "fa": "دوستش نازیلا مار دوست ندارد، پس به خانهٔ مارها نمی‌رود."
+        },
+        {
+          "en": "At lunch, the children eat sandwiches and apples under the trees.",
+          "fa": "موقع ناهار، بچه‌ها زیر درخت‌ها ساندویچ و سیب می‌خورند."
+        },
+        {
+          "en": "After lunch, they give food to the goats and the sheep.",
+          "fa": "بعد از ناهار، به بزها و گوسفندها غذا می‌دهند."
+        },
+        {
+          "en": "A small brown goat eats the apple in Yasaman's bag!",
+          "fa": "یک بز کوچک قهوه‌ای سیبِ توی کیف یاسمن را می‌خورد!"
+        },
+        {
+          "en": "On the bus, the teacher asks, \"What is your favorite animal?\"",
+          "fa": "در اتوبوس، معلم می‌پرسد: «حیوان محبوبتان چیست؟»"
+        },
+        {
+          "en": "Yasaman says, \"The funny little goat!\"",
+          "fa": "یاسمن می‌گوید: «بز کوچولوی بامزه!»"
+        }
+      ],
+      "questions": [
+        {
+          "q": "How do the children go to the animal park?",
+          "options": [
+            "By car",
+            "By bus",
+            "On foot",
+            "With their parents"
           ],
           "answer": 1
+        },
+        {
+          "q": "What does one elephant do?",
+          "options": [
+            "It eats an apple",
+            "It puts water on its back",
+            "It runs away",
+            "It sleeps under a tree"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Where are the two lions?",
+          "options": [
+            "Under a tree",
+            "In the water",
+            "In the snake house",
+            "Next to the goats"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Why does Nazila not go into the snake house?",
+          "options": [
+            "She is tired",
+            "The teacher says no",
+            "It is closed",
+            "She does not like snakes"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Which animal is Yasaman's favorite?",
+          "options": [
+            "The little brown goat",
+            "The elephant",
+            "The lion",
+            "The sheep"
+          ],
+          "answer": 0
         }
       ]
     }

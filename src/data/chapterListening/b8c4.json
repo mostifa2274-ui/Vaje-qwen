@@ -60,52 +60,52 @@
     {
       "q": "What word does Mina write at the start of the page?",
       "options": [
-        "Nino",
-        "Rain",
         "Hope",
-        "Fire"
+        "Rain",
+        "Fire",
+        "Nino"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "q": "What kind of statements does Mina write?",
       "options": [
-        "Positive statements",
         "Negative statements",
         "Questions",
-        "Poems"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "Which sentence is on Mina's page?",
-      "options": [
-        "Nino will never come back",
-        "Nino is a smart chicken",
-        "Birds are bad",
-        "Nobody knows Nino"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "Mina writes that a hard day can still have ___ in it.",
-      "options": [
-        "rain",
-        "fire",
-        "visitors",
-        "hope"
+        "Poems",
+        "Positive statements"
       ],
       "answer": 3
     },
     {
-      "q": "When Mina closes her book, what is it like outside?",
+      "q": "Which sentence is on Mina's page?",
       "options": [
-        "The rain has stopped",
-        "It is snowing",
-        "It is very hot",
-        "The sun is coming up"
+        "Nino is a smart chicken",
+        "Nino will never come back",
+        "Birds are bad",
+        "Nobody knows Nino"
       ],
       "answer": 0
+    },
+    {
+      "q": "Mina writes that a hard day can still have ___ in it.",
+      "options": [
+        "fire",
+        "hope",
+        "rain",
+        "visitors"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "When Mina closes her book, what is it like outside?",
+      "options": [
+        "The sun is coming up",
+        "It is very hot",
+        "The rain has stopped",
+        "It is snowing"
+      ],
+      "answer": 2
     }
   ]
 }

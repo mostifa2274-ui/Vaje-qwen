@@ -60,38 +60,38 @@
     {
       "q": "Where does the teenager go every morning?",
       "options": [
-        "To the gym",
         "To school",
         "To the pool",
+        "To the gym",
         "To a cafe"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "Where does she see the chicken?",
       "options": [
         "At the pool",
-        "At the gym",
         "At the bus stop",
+        "At the gym",
         "Under a car"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "Why does she not help the chicken then?",
       "options": [
-        "She is afraid",
+        "Her mother calls her",
         "Her bus comes",
         "The chicken runs away",
-        "Her mother calls her"
+        "She is afraid"
       ],
       "answer": 1
     },
     {
       "q": "Who is there when she comes out of the gym?",
       "options": [
-        "Two boys with a ball",
         "A man and his son",
+        "Two boys with a ball",
         "The basketball team",
         "A woman and a girl with a picture"
       ],
@@ -102,8 +102,8 @@
       "options": [
         "Sad",
         "Very happy",
-        "Afraid",
-        "Tired"
+        "Tired",
+        "Afraid"
       ],
       "answer": 1
     }

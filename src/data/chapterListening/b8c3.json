@@ -64,51 +64,51 @@
       "q": "Where does the nurse work?",
       "options": [
         "In the capital",
-        "At a school",
+        "At a hotel",
         "At the small hospital in the town by the sea",
-        "At a hotel"
+        "At a school"
       ],
       "answer": 2
     },
     {
       "q": "What happened to the man?",
       "options": [
+        "He is sick",
         "He had a fall from a tree",
-        "He swam in the sea",
         "He came down the mountain",
-        "He is sick"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "How long must the man stay quiet?",
-      "options": [
-        "A day",
-        "A month",
-        "Three days",
-        "A week"
-      ],
-      "answer": 3
-    },
-    {
-      "q": "How does the nurse know the chicken?",
-      "options": [
-        "From the radio",
-        "From the newspaper her sister sends her",
-        "From the internet",
-        "From a magazine"
+        "He swam in the sea"
       ],
       "answer": 1
     },
     {
+      "q": "How long must the man stay quiet?",
+      "options": [
+        "A week",
+        "A day",
+        "Three days",
+        "A month"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "How does the nurse know the chicken?",
+      "options": [
+        "From a magazine",
+        "From the radio",
+        "From the internet",
+        "From the newspaper her sister sends her"
+      ],
+      "answer": 3
+    },
+    {
       "q": "Where does the nurse put the girl's note?",
       "options": [
-        "On the door of her house",
-        "On the library wall",
         "On the hospital wall",
-        "On a tree"
+        "On a tree",
+        "On the library wall",
+        "On the door of her house"
       ],
-      "answer": 2
+      "answer": 0
     }
   ]
 }

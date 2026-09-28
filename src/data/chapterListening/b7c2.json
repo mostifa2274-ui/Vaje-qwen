@@ -57,52 +57,52 @@
     {
       "q": "When does the taxi driver start work every morning?",
       "options": [
-        "At five o'clock",
-        "At seven o'clock",
+        "At eight o'clock",
         "At six o'clock",
-        "At eight o'clock"
+        "At seven o'clock",
+        "At five o'clock"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "q": "His first ride today is a family of ___.",
       "options": [
-        "five",
-        "three",
+        "four",
         "two",
-        "four"
+        "five",
+        "three"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "q": "What stops in front of the taxi?",
       "options": [
-        "A bus",
         "A big truck",
         "A police car",
-        "A bicycle"
+        "A bicycle",
+        "A bus"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "q": "What does the girl have in her arms?",
       "options": [
         "A bag",
-        "A ticket",
+        "A red book",
         "A cup",
-        "A red book"
+        "A ticket"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "q": "Who is waiting at the station?",
       "options": [
-        "Tourists with bags and tickets",
         "The police",
+        "Farmers",
         "School children",
-        "Farmers"
+        "Tourists with bags and tickets"
       ],
-      "answer": 0
+      "answer": 3
     }
   ]
 }

@@ -63,51 +63,51 @@
       "q": "Who does Dad walk with at the market?",
       "options": [
         "With Mina and Mom",
-        "With Aria and Yasi",
         "Only with Aria",
-        "With the bread man"
+        "With the bread man",
+        "With Aria and Yasi"
       ],
-      "answer": 1
+      "answer": 3
     },
     {
       "q": "What does Aria want to buy?",
       "options": [
         "Apples, bananas and a big green ball",
-        "Bread and cheese",
         "A new book",
-        "A red chair"
+        "A red chair",
+        "Bread and cheese"
       ],
       "answer": 0
     },
     {
       "q": "What is in front of the bread shop?",
       "options": [
+        "Birds that eat bread",
         "A little yellow chicken",
         "A long line of people",
-        "Birds that eat bread",
         "A police car"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "q": "What watches the birds?",
       "options": [
         "A dog",
-        "Aria",
+        "A brown cat",
         "The bread man",
-        "A brown cat"
+        "Aria"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "q": "Who does Dad call?",
       "options": [
+        "The bread man",
         "Mom",
         "Mina",
-        "The bread man",
         "A neighbor"
       ],
-      "answer": 0
+      "answer": 1
     }
   ]
 }

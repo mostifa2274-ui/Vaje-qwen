@@ -61,39 +61,39 @@
     {
       "q": "When does Aria run into the house?",
       "options": [
-        "In the morning",
         "At night",
-        "In the afternoon",
-        "At breakfast"
+        "At breakfast",
+        "In the morning",
+        "In the afternoon"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "q": "What came out of the flowers?",
       "options": [
-        "A red bird",
         "Nino",
+        "A yellow bird",
         "A black shoe",
-        "A yellow bird"
+        "A red bird"
       ],
-      "answer": 0
+      "answer": 3
     },
     {
       "q": "Where did the bird go out?",
       "options": [
         "Through the window",
         "Under the old yard door",
-        "Through the front door",
-        "Behind the house"
+        "Behind the house",
+        "Through the front door"
       ],
       "answer": 1
     },
     {
       "q": "What does Dad do before he goes out to the yard?",
       "options": [
+        "He closes the door",
         "He takes a light",
         "He calls Mina",
-        "He closes the door",
         "He puts on his coat"
       ],
       "answer": 3
@@ -102,11 +102,11 @@
       "q": "___ has dirty hands.",
       "options": [
         "Aria",
+        "Mom",
         "Dad",
-        "Mina",
-        "Mom"
+        "Mina"
       ],
-      "answer": 2
+      "answer": 3
     }
   ]
 }

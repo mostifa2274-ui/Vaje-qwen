@@ -59,28 +59,28 @@
     {
       "q": "How does the old man come back to the beach every evening?",
       "options": [
-        "By train",
         "In his small boat",
+        "On foot",
         "In a truck",
-        "On foot"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "What is his boat full of?",
-      "options": [
-        "Fish",
-        "Flowers",
-        "Bread",
-        "Fruit"
+        "By train"
       ],
       "answer": 0
     },
     {
+      "q": "What is his boat full of?",
+      "options": [
+        "Bread",
+        "Flowers",
+        "Fruit",
+        "Fish"
+      ],
+      "answer": 3
+    },
+    {
       "q": "Where did the chicken run away?",
       "options": [
-        "In the north",
         "Near the sea",
+        "In the north",
         "In Tehran",
         "On a farm"
       ],
@@ -90,8 +90,8 @@
       "q": "The old man's cat came back after ___.",
       "options": [
         "one month",
-        "three months",
         "a year",
+        "three months",
         "two months"
       ],
       "answer": 3
@@ -99,9 +99,9 @@
     {
       "q": "What is on the library wall?",
       "options": [
-        "A map",
-        "A new note about a yellow chicken",
         "A photo of the old man",
+        "A new note about a yellow chicken",
+        "A map",
         "A picture of a boat"
       ],
       "answer": 1
