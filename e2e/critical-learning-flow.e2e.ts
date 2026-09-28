@@ -1087,7 +1087,7 @@ test('importing a backup asks before replacing progress', async ({ page }) => {
   }
   const file = { name: 'ghesse-progress.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(backup)) }
   const fileInput = page.getByLabel('فایل پشتیبان پیشرفت')
-  expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').words)).toHaveProperty('${chapterWords[0].id}')
+  expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').words)).toHaveProperty(chapterWords[0].id)
 
   await fileInput.setInputFiles(file)
   const confirm = page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })
