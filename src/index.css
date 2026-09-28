@@ -371,10 +371,9 @@ body {
   line-height: 1.9;
 }
 .question-context {
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  background: rgba(255,255,255,.42);
-  padding: .85rem;
+  border-block: 1px solid var(--line-soft);
+  background: transparent;
+  padding: .75rem 0;
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -815,8 +814,7 @@ button:disabled {
 }
 
 .feedback-panel {
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
+  border-top: 1px solid var(--line-soft);
 }
 
 .page-in > header.sticky,
