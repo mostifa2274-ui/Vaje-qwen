@@ -376,10 +376,39 @@ describe('review and exam generation', () => {
         listening: exam.listening.map(text => text.questions.map(question => question.answer)),
       }
       expect(scoreExam(exam, allCorrect, rightTexts).passed).toBe(true)
-      // 100% everywhere: one wrong word or one wrong text answer fails.
-      expect(scoreExam(exam, { ...allCorrect, 0: false }, rightTexts).passed).toBe(false)
-      const oneWrong = { ...rightTexts, listening: rightTexts.listening.map((answers, index) => index === 0 ? [(answers[0]! + 1) % 4, ...answers.slice(1)] : answers) }
-      expect(scoreExam(exam, allCorrect, oneWrong).passed).toBe(false)
+
+      // Criterion gates tolerate a small number of errors; missed vocabulary
+      // is still remediated before progression.
+      const nonTyped = exam.questions.find(question => !['productive', 'contextProductive', 'spelling', 'cloze'].includes(question.mode))!
+      expect(scoreExam(exam, { ...allCorrect, [nonTyped.index]: false }, rightTexts).passed).toBe(true)
+
+      const tooManyWrong = { ...allCorrect }
+      const failCount = Math.floor(exam.questions.length * (1 - exam.definition.passRate)) + 1
+      for (const question of exam.questions.slice(0, failCount)) tooManyWrong[question.index] = false
+      expect(scoreExam(exam, tooManyWrong, rightTexts).passed).toBe(false)
+
+      const oneWrongText = {
+        ...rightTexts,
+        listening: rightTexts.listening.map((answers, index) => index === 0 ? [(answers[0]! + 1) % 4, ...answers.slice(1)] : answers),
+      }
+      expect(scoreExam(exam, allCorrect, oneWrongText).passed).toBe(true)
+
+      const comprehensionTotal = [...exam.reading, ...exam.listening].reduce((sum, text) => sum + text.questions.length, 0)
+      const comprehensionFails = Math.floor(comprehensionTotal * (1 - exam.definition.passRate)) + 1
+      let remaining = comprehensionFails
+      const wrongTexts = {
+        reading: rightTexts.reading.map(answers => answers.map(answer => {
+          if (remaining <= 0) return answer
+          remaining--
+          return (answer! + 1) % 4
+        })),
+        listening: rightTexts.listening.map(answers => answers.map(answer => {
+          if (remaining <= 0) return answer
+          remaining--
+          return (answer! + 1) % 4
+        })),
+      }
+      expect(scoreExam(exam, allCorrect, wrongTexts).passed).toBe(false)
       expect(scoreExam(exam, allCorrect).passed).toBe(false)
     }
   })
