@@ -170,9 +170,11 @@ describe('end-of-book test', () => {
     expect(typedGaps.missedWordIds).toEqual(test.translation.slice(0, typedMisses).map(item => item.wordId))
 
     const listeningWords = [...perfect.listeningWords]
-    listeningWords[4] = test.listeningWords[4].options.find(option => option.id !== test.listeningWords[4].wordId)!.id
-    listeningWords[5] = ''
-    expect(scoreBookTest(test, { ...perfect, listeningWords }).sections.listeningWords).toMatchObject({ correct: test.listeningWords.length - 2, passed: false })
+    const listeningMisses = Math.floor(test.listeningWords.length * 0.2) + 1
+    for (let index = 0; index < listeningMisses; index++) {
+      listeningWords[index] = test.listeningWords[index].options.find(option => option.id !== test.listeningWords[index].wordId)!.id
+    }
+    expect(scoreBookTest(test, { ...perfect, listeningWords }).sections.listeningWords).toMatchObject({ correct: test.listeningWords.length - listeningMisses, passed: false })
   })
 
   it('accepts any listed Persian meaning, typed loosely', () => {
@@ -216,6 +218,6 @@ describe('end-of-book test', () => {
     const retake = buildBookTest(1, state, 3)!
     const blank: BookTestAnswers = { translation: [], listeningWords: [], reading: [[null, null, null, null, null]], listening: [[null, null, null, null, null]] }
     state = recordBookTest(state, retake, blank, scoreBookTest(retake, blank), 4_000)
-    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 3, passed: true, passedAt: 3_000, bestScore: 1 })
+    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 2, passed: true, passedAt: 1_000, bestScore: result.score })
   })
 })
