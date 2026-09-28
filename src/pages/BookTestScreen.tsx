@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
-import type { TestSentence, TestText } from '../data/bookTests'
 import { WORD_BY_ID } from '../data/chapters'
 import { bookExamId, canTakeExam, examDefinition } from '../engine/gates'
 import {
@@ -19,7 +18,9 @@ import {
 } from '../engine/bookTest'
 import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, BadgeCheckIcon, CheckIcon, PauseIcon, PlayIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BackIcon, BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { ListeningPlayer, ListeningReview, Passage, QuestionReview, Questions, SoundOffNote } from '../components/TestPassage'
+import { SPEECH_UNAVAILABLE, usePassagePlayer } from '../components/usePassagePlayer'
 import { faNum, percent } from '../engine/format'
 
 interface Props {
@@ -46,8 +47,6 @@ const SECTION_HINTS: Record<BookTestSection, string> = {
   listening: 'این متن فقط پخش می‌شود و تا پایان آزمون نمایش داده نمی‌شود. پس از یک‌بار شنیدن کامل، سؤال‌ها فعال می‌شوند و هر چند بار خواستی می‌توانی دوباره گوش کنی.',
 }
 
-const SPEECH_UNAVAILABLE = 'پخش صدای انگلیسی روی این دستگاه در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره «پخش» را بزن.'
-
 function wallClockNow(): number {
   return Date.now()
 }
@@ -60,144 +59,6 @@ function sectionDone(test: BookTest, answers: BookTestAnswers, section: BookTest
 
 function isSection(phase: Phase): phase is BookTestSection {
   return phase !== 'intro' && phase !== 'result'
-}
-
-/** Plays a text sentence by sentence with the device's English voice. */
-function usePassagePlayer(sentences: readonly TestSentence[], voiceURI: string, rate: number, onComplete: () => void) {
-  const [playing, setPlaying] = useState(-1)
-  const [notice, setNotice] = useState('')
-  const token = useRef(0)
-  const completeRef = useRef(onComplete)
-
-  useEffect(() => {
-    completeRef.current = onComplete
-  }, [onComplete])
-
-  useEffect(() => () => {
-    token.current++
-    cancelEnglishSpeech()
-  }, [])
-
-  const stop = useCallback(() => {
-    token.current++
-    cancelEnglishSpeech()
-    setPlaying(-1)
-  }, [])
-
-  const play = useCallback(() => {
-    cancelEnglishSpeech()
-    const current = ++token.current
-    setNotice('')
-    const fail = (failure: SpeechFailure = 'unavailable') => {
-      if (token.current !== current) return
-      token.current++
-      cancelEnglishSpeech()
-      setPlaying(-1)
-      setNotice(speechFailureNotice(failure, SPEECH_UNAVAILABLE))
-    }
-    const at = (index: number) => {
-      if (token.current !== current) return
-      if (index >= sentences.length) {
-        setPlaying(-1)
-        completeRef.current()
-        return
-      }
-      setPlaying(index)
-      const next = () => {
-        if (token.current === current) window.setTimeout(() => at(index + 1), 220)
-      }
-      if (!speakEnglishWithFallback(sentences[index].en, voiceURI, rate, 's', next, fail)) fail()
-    }
-    at(0)
-  }, [rate, sentences, voiceURI])
-
-  return { playing, notice, play, stop }
-}
-
-function SoundOffNote({ onEnable }: { onEnable: () => void }) {
-  return (
-    <div className="paper-note mt-4">
-      بخش شنیداری بدون صدا انجام نمی‌شود.
-      <button type="button" className="btn-ink mt-3 w-full py-2.5" onClick={onEnable}>روشن کردن صدا</button>
-    </div>
-  )
-}
-
-function Passage({ text, showTranslation = false }: { text: TestText; showTranslation?: boolean }) {
-  if (!showTranslation) {
-    return <p className="test-passage">{text.sentences.map(sentence => sentence.en).join(' ')}</p>
-  }
-  return (
-    <ol className="test-passage-lines">
-      {text.sentences.map((sentence, index) => (
-        <li key={index}>
-          <div className="font-en" dir="ltr">{sentence.en}</div>
-          <div className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{sentence.fa}</div>
-        </li>
-      ))}
-    </ol>
-  )
-}
-
-function Questions({
-  text,
-  prefix,
-  chosen,
-  disabled,
-  onChoose,
-}: {
-  text: TestText
-  prefix: string
-  chosen: Array<number | null>
-  disabled: boolean
-  onChoose: (question: number, option: number) => void
-}) {
-  return (
-    <ol className="mt-5 space-y-5">
-      {text.questions.map((question, index) => (
-        <li key={index}>
-          <div id={`${prefix}-q${index}`} className="text-sm font-extrabold leading-7">
-            {faNum(index + 1)}. {question.q}
-          </div>
-          <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2" role="group" aria-labelledby={`${prefix}-q${index}`}>
-            {question.options.map((option, optionIndex) => (
-              <button
-                key={optionIndex}
-                type="button"
-                className="btn-paper test-option min-h-12 px-3 py-2.5 text-sm leading-6"
-                aria-pressed={chosen[index] === optionIndex}
-                disabled={disabled}
-                onClick={() => onChoose(index, optionIndex)}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
-        </li>
-      ))}
-    </ol>
-  )
-}
-
-function QuestionReview({ text, chosen }: { text: TestText; chosen: Array<number | null> }) {
-  return (
-    <ol className="mt-4 space-y-3">
-      {text.questions.map((question, index) => {
-        const answer = chosen[index]
-        const right = answer === question.answer
-        return (
-          <li key={index} className="test-review-item">
-            <div className="text-sm font-bold leading-7">{faNum(index + 1)}. {question.q}</div>
-            <div className="mt-1 text-sm leading-7">
-              <span className={right ? 'review-mark-right' : 'review-mark-wrong'}>{right ? '✓' : '✗'}</span>{' '}
-              پاسخ تو: {answer === null ? '—' : question.options[answer]}
-            </div>
-            {!right && <div className="text-sm font-bold leading-7">پاسخ درست: {question.options[question.answer]}</div>}
-          </li>
-        )
-      })}
-    </ol>
-  )
 }
 
 export default function BookTestScreen({ book, state, onChange, onBack, onReview }: Props) {
@@ -447,14 +308,14 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
               return (
                 <div key={section} className={`metric-card ${score.passed ? '' : 'metric-fail'}`}>
                   <b>{faNum(score.correct)}/{faNum(score.total)}</b>
-                  <span>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `زیر ${percent(BOOK_TEST_PASS_RATE)}`}</span>
+                  <span>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `نیاز به ${percent(BOOK_TEST_PASS_RATE)}`}</span>
                 </div>
               )
             })}
           </div>
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            برای قبولی، هر چهار بخش دست‌کم {percent(BOOK_TEST_PASS_RATE)} لازم دارد.
+            برای قبولی، هر چهار بخش باید {percent(BOOK_TEST_PASS_RATE)} درست باشد.
             {preview
               ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
               : practice
@@ -509,28 +370,13 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <QuestionReview text={test.reading} chosen={answers.reading} />
           </details>
 
-          <details className="test-review-details mt-3">
-            <summary>متن شنیداری: {test.listening.titleFa} — نمایش متن، ترجمه و پاسخ‌ها</summary>
-            <div className="mt-3 flex items-center justify-between gap-3">
-              <h4 className="font-en text-base font-bold" dir="ltr">{test.listening.titleEn}</h4>
-              {state.soundOn && (
-                <button
-                  type="button"
-                  className="btn-paper shrink-0 px-3 py-2 text-sm"
-                  aria-label={reviewPassage.playing >= 0 ? 'توقف متن شنیداری' : 'پخش دوبارهٔ متن شنیداری'}
-                  onClick={() => reviewPassage.playing >= 0 ? reviewPassage.stop() : reviewPassage.play()}
-                >
-                  <span className="inline-flex items-center gap-2">
-                    {reviewPassage.playing >= 0 ? <PauseIcon className="h-4 w-4" /> : <PlayIcon className="h-4 w-4" />}
-                    {reviewPassage.playing >= 0 ? 'توقف' : 'پخش دوباره'}
-                  </span>
-                </button>
-              )}
-            </div>
-            {reviewPassage.notice && <div className="paper-note mt-3" role="status">{reviewPassage.notice}</div>}
-            <Passage text={test.listening} showTranslation />
-            <QuestionReview text={test.listening} chosen={answers.listening} />
-          </details>
+          <ListeningReview
+            text={test.listening}
+            chosen={answers.listening}
+            player={reviewPassage}
+            soundOn={state.soundOn}
+            summary={`متن شنیداری: ${test.listening.titleFa} — نمایش متن، ترجمه و پاسخ‌ها`}
+          />
         </section>
       </div>
     )
@@ -550,7 +396,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
           </ol>
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             واژه‌ها از {book === 1 ? 'کتاب ۱' : `همهٔ کتاب‌های ۱ تا ${faNum(book)}`} می‌آیند و دو متن فقط با واژه‌هایی نوشته شده‌اند که تا اینجا یاد گرفته‌ای.
-            برای قبولی، هر بخش دست‌کم {percent(BOOK_TEST_PASS_RATE)} لازم دارد. تا پایان آزمون بازخوردی نمایش داده نمی‌شود؛ بعد از آن همهٔ پاسخ‌ها، ترجمهٔ متن‌ها و متن شنیداری را می‌بینی.
+            برای قبولی، هر بخش باید {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ یعنی حتی یک پاسخ نادرست هم پذیرفته نمی‌شود. تا پایان آزمون بازخوردی نمایش داده نمی‌شود؛ بعد از آن همهٔ پاسخ‌ها، ترجمهٔ متن‌ها و متن شنیداری را می‌بینی.
           </p>
           <div className="paper-note mt-4">دو بخش شنیداری به صدای انگلیسی دستگاه نیاز دارند؛ اگر می‌توانی از هدفون استفاده کن.</div>
           <button type="button" className="btn-crimson mt-5 w-full py-3" onClick={() => setPhase('translation')}>شروع آزمون</button>
@@ -681,26 +527,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
         {phase === 'listening' && (
           <>
             {!state.soundOn ? <SoundOffNote onEnable={enableSound} /> : (
-              <div className="test-player mt-4" data-testid="listening-player">
-                <button
-                  type="button"
-                  className={passage.playing >= 0 ? 'btn-paper min-h-14 w-full text-lg' : 'btn-crimson min-h-14 w-full text-lg'}
-                  onClick={() => passage.playing >= 0 ? passage.stop() : passage.play()}
-                >
-                  <span className="inline-flex items-center justify-center gap-2">
-                    {passage.playing >= 0 ? <PauseIcon className="h-5 w-5" /> : <PlayIcon className="h-5 w-5" />}
-                    {passage.playing >= 0 ? 'توقف' : listeningHeard ? 'پخش دوبارهٔ متن' : 'پخش متن'}
-                  </span>
-                </button>
-                <div className="mt-3 text-center text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>
-                  {passage.playing >= 0
-                    ? `در حال پخش: جملهٔ ${faNum(passage.playing + 1)} از ${faNum(test.listening.sentences.length)}`
-                    : listeningHeard
-                      ? 'متن را کامل شنیدی؛ حالا به سؤال‌ها پاسخ بده.'
-                      : `${faNum(test.listening.sentences.length)} جمله؛ سؤال‌ها پس از یک‌بار شنیدن کامل فعال می‌شوند.`}
-                </div>
-                {passage.notice && <div className="paper-note mt-3" role="alert">{passage.notice}</div>}
-              </div>
+              <ListeningPlayer player={passage} text={test.listening} heard={listeningHeard} />
             )}
             <Questions text={test.listening} prefix="listening" chosen={answers.listening} disabled={!listeningHeard} onChoose={(question, option) => choose('listening', question, option)} />
             <button

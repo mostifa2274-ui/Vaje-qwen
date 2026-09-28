@@ -716,9 +716,20 @@ test('story sentences and words play the recorded natural voice', async ({ page 
   expect(await speechHistory(page)).toEqual([])
 })
 
+interface TextFixture {
+  titleEn: string
+  titleFa: string
+  sentences: Array<{ en: string; fa: string }>
+  questions: Array<{ q: string; options: string[]; answer: number }>
+}
+
 interface BookTestFixture {
-  reading: Array<{ titleEn: string; questions: Array<{ q: string; options: string[]; answer: number }> }>
-  listening: Array<{ titleEn: string; sentences: Array<{ en: string; fa: string }>; questions: Array<{ q: string; options: string[]; answer: number }> }>
+  reading: TextFixture[]
+  listening: TextFixture[]
+}
+
+async function pageText(page: Page): Promise<string> {
+  return page.evaluate(() => document.body.innerText)
 }
 
 test('the end-of-book test checks words, a reading text and a listening text hidden until the review', async ({ page }) => {
@@ -790,8 +801,7 @@ test('the end-of-book test checks words, a reading text and a listening text hid
 
   // 4. Listening: only audio. The text is never in the page during the test.
   await expect(page.getByRole('heading', { level: 2, name: 'درک مطلب شنیداری' })).toBeVisible()
-  const pageText = async () => page.evaluate(() => document.body.innerText)
-  for (const sentence of listening.sentences) expect(await pageText()).not.toContain(sentence.en)
+  for (const sentence of listening.sentences) expect(await pageText(page)).not.toContain(sentence.en)
   expect(await page.content()).not.toContain(listening.titleEn)
   const firstAnswer = page.getByRole('group', { name: `۱. ${listening.questions[0].q}` }).getByRole('button').first()
   await expect(firstAnswer).toBeDisabled()
@@ -801,7 +811,7 @@ test('the end-of-book test checks words, a reading text and a listening text hid
   await expect(firstAnswer).toBeEnabled()
   await expectRenderedAccessibilityContract(page)
   await answerQuestions(listening.questions)
-  for (const sentence of listening.sentences) expect(await pageText()).not.toContain(sentence.en)
+  for (const sentence of listening.sentences) expect(await pageText(page)).not.toContain(sentence.en)
   await page.getByRole('button', { name: 'ثبت و پایان آزمون' }).click()
 
   // Review: scores per part, and the listening text is revealed on request.
@@ -821,6 +831,79 @@ test('the end-of-book test checks words, a reading text and a listening text hid
 
   await page.getByRole('button', { name: 'ادامهٔ مسیر ←' }).click()
   await expect(lockedFirstChapters).toHaveCount(lockedBefore - 1)
+})
+
+test('the midpoint exam ends with two reading and two listening texts, all required', async ({ page }) => {
+  const content = JSON.parse(readFileSync(new URL('../src/data/examTests/midpoint.json', import.meta.url), 'utf8')) as BookTestFixture
+  const texts = [...content.reading.slice(0, 2), ...content.listening.slice(0, 2)]
+  await openWithProgress(page, '/map', { exploreAll: true })
+  // Set the route only once explore mode is loaded, or the map redirects it.
+  await page.goto('/#/exam/midpoint-4')
+  await page.reload()
+  const saved = await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))
+  await expect(page.getByText(/بخش دوم ۲ متن خواندنی و ۲ متن شنیداری است/)).toBeVisible()
+
+  // Explore mode jumps past the word questions to the texts.
+  await page.getByRole('button', { name: 'پرش به درک مطلب ←' }).click()
+  const card = page.getByTestId('exam-text')
+  const answer = async (text: TextFixture, choose: (question: TextFixture['questions'][number]) => number) => {
+    for (const [index, question] of text.questions.entries()) {
+      await card.getByRole('group', { name: `${faNum(index + 1)}. ${question.q}` })
+        .getByRole('button', { name: question.options[choose(question)], exact: true })
+        .click()
+    }
+  }
+
+  for (const [index, text] of texts.entries()) {
+    await expect(page.getByText(`درک مطلب · متن ${faNum(index + 1)} از ۴`)).toBeVisible()
+    const next = card.getByRole('button', { name: index === 3 ? 'ثبت و پایان آزمون' : 'ثبت و متن بعدی ←' })
+    await expect(next).toBeDisabled()
+    if (index < 2) {
+      await expect(card.getByRole('heading', { level: 3, name: text.titleEn })).toBeVisible()
+      await answer(text, question => question.answer)
+    } else {
+      // Heard only: the text is never on the page, and questions wait for it.
+      for (const sentence of text.sentences) expect(await pageText(page)).not.toContain(sentence.en)
+      expect(await page.content()).not.toContain(text.titleEn)
+      await expect(card.getByRole('group').first().getByRole('button').first()).toBeDisabled()
+      await card.getByRole('button', { name: 'پخش متن' }).click()
+      await expect(card.getByText('متن را کامل شنیدی؛ حالا به سؤال‌ها پاسخ بده.')).toBeVisible()
+      expect((await speechHistory(page)).slice(-text.sentences.length)).toEqual(text.sentences.map(sentence => sentence.en))
+      // One wrong answer in the last text.
+      await answer(text, question => index === 3 && question === text.questions[0] ? (question.answer + 1) % 4 : question.answer)
+    }
+    if (index === 0) {
+      await expectRenderedAccessibilityContract(page)
+      await expectNoHorizontalOverflow(page)
+    }
+    if (index === 2) {
+      // The texts stage and its answers survive a reload.
+      await page.reload()
+      await expect(page.getByText('درک مطلب · متن ۳ از ۴')).toBeVisible()
+      await expect(page.getByText('پیشرفت این آزمون بازیابی شد؛ از متن ۳ ادامه می‌دهی.')).toBeVisible()
+      await expect(card.getByText('متن را کامل شنیدی؛ حالا به سؤال‌ها پاسخ بده.')).toBeVisible()
+    }
+    await expect(next).toBeEnabled()
+    await next.click()
+  }
+
+  // Word questions were skipped, so this is unrecorded practice; one wrong text answer fails it.
+  await expect(page.getByRole('heading', { level: 1, name: 'هنوز آمادهٔ عبور نیستی' })).toBeVisible()
+  await expect(page.getByTestId('exam-comprehension-score')).toContainText('۱۹/۲۰')
+  await expect(page.getByText(/حتی یک پاسخ نادرست هم پذیرفته نمی‌شود/)).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  await expectNoHorizontalOverflow(page)
+  const lastText = texts[3]
+  await expect(page.getByText(lastText.sentences[0].en, { exact: true })).toBeHidden()
+  await page.getByText(new RegExp(`^متن شنیداری ۲: ${lastText.titleFa}`)).click()
+  await expect(page.getByText(lastText.sentences[0].en, { exact: true })).toBeVisible()
+  await expect(page.getByText(`پاسخ درست: ${lastText.questions[0].options[lastText.questions[0].answer]}`)).toBeVisible()
+  expect(await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))).toBe(saved)
+
+  // A new run brings the other two reading and two listening texts.
+  await page.getByRole('button', { name: 'دوباره امتحان کن' }).click()
+  await page.getByRole('button', { name: 'پرش به درک مطلب ←' }).click()
+  await expect(card.getByRole('heading', { level: 3, name: content.reading[2].titleEn })).toBeVisible()
 })
 
 test('explore mode opens every chapter as an unrecorded preview and closes again', async ({ page }) => {
@@ -892,6 +975,12 @@ test('explore mode opens every step of the lessons, tests and review without pre
   await page.reload()
   await expect(page.getByText('سؤال ۵ از ۱۰')).toBeVisible()
   await expect(page.locator('.feedback-panel')).toBeVisible()
+  // The listening part is open before the reading one is finished.
+  const listeningPart = page.getByTestId('chapter-listening')
+  await expect(listeningPart.getByText('در حالت کاوش این بخش پیش از پایان درک مطلب خواندنی هم باز است.')).toBeVisible()
+  await listeningPart.getByRole('button', { name: 'پخش متن' }).click()
+  await expect(listeningPart.getByText('متن را کامل شنیدی؛ حالا به سؤال‌ها پاسخ بده.')).toBeVisible()
+  await listeningPart.getByRole('group').first().getByRole('button').first().click()
 
   // Book test: any section opens directly; skipping makes the run practice.
   await open('/exam/book-1')
@@ -913,6 +1002,13 @@ test('explore mode opens every step of the lessons, tests and review without pre
   await expect(page.getByText(/^سؤال ۲ از /)).toBeVisible()
   await page.getByRole('button', { name: 'سؤال قبلی' }).click()
   await expect(page.getByText(/^سؤال ۱ از /)).toBeVisible()
+  await page.getByRole('button', { name: 'پرش به درک مطلب ←' }).click()
+  await expect(page.getByText('درک مطلب · متن ۱ از ۴')).toBeVisible()
+  await page.getByRole('button', { name: 'رد کردن ←' }).click()
+  await expect(page.getByText('درک مطلب · متن ۲ از ۴')).toBeVisible()
+  await page.getByRole('button', { name: 'متن قبلی' }).click()
+  await page.getByRole('button', { name: 'بازگشت به واژه‌ها' }).click()
+  await expect(page.getByText(/^سؤال .+ از ۵۶$/)).toBeVisible()
 
   // Review: with nothing learned yet, explore offers a practice session.
   await open('/review')
@@ -1059,7 +1155,7 @@ test('a reset propagates across tabs and later settings saves cannot resurrect o
 })
 
 
-test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions', async ({ page }) => {
+test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions → listening text', async ({ page }) => {
   // This is the full 72-word chapter flow. Written and listening gates intentionally
   // exercise the product's 650 ms feedback/auto-advance timing for every word, so the
   // default 120 s per-test budget is too small even when the app is behaving correctly.
@@ -1223,8 +1319,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
 
   // Correction round: use the UI's own revealed answer, then retry only missed items.
   for (let guard = 0; guard < 10; guard++) {
-    const finish = page.getByRole('button', { name: /پایان فصل/ })
-    if (await finish.isVisible()) break
+    if (await page.getByTestId('chapter-listening').isVisible()) break
 
     const options = page.getByTestId('comprehension-options').getByRole('button')
     await options.first().click()
@@ -1246,8 +1341,47 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
     if (await next.isVisible()) await next.click()
   }
 
-  const finishChapter = page.getByRole('button', { name: /پایان فصل.*۱۰ از ۱۰ تأیید شد/ })
-  await expect(finishChapter).toBeVisible()
+  // Listening comprehension: a new text about the chapter, only heard.
+  const listening = JSON.parse(
+    readFileSync(new URL('../src/data/chapterListening/b1c1.json', import.meta.url), 'utf8'),
+  ) as TextFixture
+  const section = page.getByTestId('chapter-listening')
+  const finishChapter = page.getByRole('button', { name: /پایان فصل — درک مطلب خواندنی و شنیداری کامل شد/ })
+  await expect(section.getByRole('heading', { level: 2, name: 'درک مطلب شنیداری' })).toBeVisible()
+  await expect(section.getByRole('button', { name: 'پخش متن' })).toBeFocused()
+  await expect(finishChapter).toHaveCount(0)
+  for (const sentence of listening.sentences) expect(await pageText(page)).not.toContain(sentence.en)
+  const group = (index: number) => section.getByRole('group', { name: `${faNum(index + 1)}. ${listening.questions[index].q}` })
+  const option = (index: number, choice: number) => group(index).getByRole('button', { name: listening.questions[index].options[choice], exact: true })
+  await expect(group(0).getByRole('button').first()).toBeDisabled()
+  await section.getByRole('button', { name: 'پخش متن' }).click()
+  await expect(section.getByText('متن را کامل شنیدی؛ حالا به سؤال‌ها پاسخ بده.')).toBeVisible()
+  expect((await speechHistory(page)).slice(-listening.sentences.length)).toEqual(listening.sentences.map(sentence => sentence.en))
+  await expectRenderedAccessibilityContract(page)
+
+  // Miss question 1 at the first check: only it opens again, without the answer.
+  const wrongChoice = (listening.questions[0].answer + 1) % 4
+  await option(0, wrongChoice).click()
+  for (let index = 1; index < listening.questions.length; index++) await option(index, listening.questions[index].answer).click()
+  await section.getByRole('button', { name: 'بررسی پاسخ‌ها' }).click()
+  await expect(section.getByText(/۱ سؤال هنوز درست نشده است/)).toBeFocused()
+  await expect(option(0, wrongChoice)).toBeDisabled()
+  await expect(option(1, listening.questions[1].answer)).toBeDisabled()
+  await expect(section.getByText('۴ / ۵ درست')).toBeVisible()
+  await expect(finishChapter).toHaveCount(0)
+
+  // The listening progress survives a reload.
+  await page.reload()
+  await expect(section.getByText('۴ / ۵ درست')).toBeVisible()
+  await expect(option(0, wrongChoice)).toBeDisabled()
+  await option(0, listening.questions[0].answer).click()
+  await section.getByRole('button', { name: 'بررسی پاسخ‌ها' }).click()
+  await expect(finishChapter).toBeFocused()
+  await section.getByText('متن شنیداری و ترجمه‌اش').click()
+  await expect(section.getByText(listening.sentences[0].en, { exact: true })).toBeVisible()
   await finishChapter.click()
   await expect(page.getByText('فصل تمام شد', { exact: true })).toBeVisible()
+  const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters?.b1c1)
+  expect(stored).toMatchObject({ completed: true, checksTotal: 10, listeningCorrect: 4, listeningTotal: 5 })
+  expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:chapter-listening:v1:b1c1'))).toBeNull()
 })

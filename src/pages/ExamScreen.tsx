@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState, RetrievalMode, SkillDimension } from '../engine/types'
-import { buildExam, examPool, scoreExam, type BuiltExam, type ExamResult } from '../engine/exams'
+import { buildExam, emptyComprehensionAnswers, examPool, scoreExam, type BuiltExam, type ExamComprehensionAnswers, type ExamResult } from '../engine/exams'
 import { canTakeExam, examDefinition } from '../engine/gates'
 import { WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
 import SpellingHint from '../components/SpellingHint'
+import { ListeningPlayer, ListeningReview, Passage, QuestionReview, Questions, SoundOffNote } from '../components/TestPassage'
+import { usePassagePlayer } from '../components/usePassagePlayer'
+import type { TestText } from '../data/bookTests'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 import { faNum, percent } from '../engine/format'
 
@@ -34,10 +37,70 @@ const SKILL_LABELS: Record<SkillDimension, string> = {
   form: 'املاء',
 }
 
+type ExamText = { kind: 'reading' | 'listening'; text: TestText; slot: number }
+
+function examTexts(exam: BuiltExam): ExamText[] {
+  return [
+    ...exam.reading.map((text, slot) => ({ kind: 'reading' as const, text, slot })),
+    ...exam.listening.map((text, slot) => ({ kind: 'listening' as const, text, slot })),
+  ]
+}
+
+function textAnswered(chosen: Array<number | null>): boolean {
+  return chosen.every(choice => choice !== null)
+}
+
+const NO_OP = () => {}
+
+function wallClockNow(): number {
+  return Date.now()
+}
+
+/** One heard text, with a player of its own so texts never share playback. */
+function ExamListeningText({
+  text,
+  heard,
+  chosen,
+  state,
+  onHeard,
+  onEnableSound,
+  onChoose,
+}: {
+  text: TestText
+  heard: boolean
+  chosen: Array<number | null>
+  state: GhesseState
+  onHeard: () => void
+  onEnableSound: () => void
+  onChoose: (question: number, option: number) => void
+}) {
+  const player = usePassagePlayer(text.sentences, state.narratorVoiceURI, state.narratorRate, onHeard)
+  return (
+    <>
+      {!state.soundOn ? <SoundOffNote onEnable={onEnableSound} /> : <ListeningPlayer player={player} text={text} heard={heard} testId="exam-listening-player" />}
+      <Questions text={text} prefix={`exam-${text.id}`} chosen={chosen} disabled={!heard} onChoose={onChoose} />
+    </>
+  )
+}
+
+function ExamListeningReview({ text, chosen, state, number }: { text: TestText; chosen: Array<number | null>; state: GhesseState; number: number }) {
+  const player = usePassagePlayer(text.sentences, state.narratorVoiceURI, state.narratorRate, NO_OP)
+  return (
+    <ListeningReview
+      text={text}
+      chosen={chosen}
+      player={player}
+      soundOn={state.soundOn}
+      summary={`متن شنیداری ${faNum(number)}: ${text.titleFa} — نمایش متن، ترجمه و پاسخ‌ها`}
+    />
+  )
+}
+
 export default function ExamScreen({ examId, state, onChange, onBack, onReview }: Props) {
   const previousExam = state.exams[examId]
-  const attempt = (previousExam?.attempts ?? 0) + 1
-  const [exam] = useState(() => buildExam(examId, state, attempt))
+  const [attempt, setAttempt] = useState(() => (state.exams[examId]?.attempts ?? 0) + 1)
+  const [exam, setExam] = useState(() => buildExam(examId, state, (state.exams[examId]?.attempts ?? 0) + 1))
+  const [previewRuns, setPreviewRuns] = useState(0)
   // Opened through explore mode before the learner reached it: a preview
   // whose answers are never recorded.
   const [preview] = useState(() => !canTakeExam(state, examId))
@@ -56,6 +119,12 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const [typed, setTyped] = useState(() => initialDraft?.typed ?? '')
   const [result, setResult] = useState<ExamResult | null>(null)
   const [onBreak, setOnBreak] = useState(() => initialDraft?.onBreak ?? false)
+  // After the word questions: the reading texts, then the listening ones.
+  const [stage, setStage] = useState<'words' | 'texts'>(() => initialDraft?.stage === 'texts' ? 'texts' : 'words')
+  const [textIndex, setTextIndex] = useState(() => initialDraft?.textIndex ?? 0)
+  const [comprehension, setComprehension] = useState<ExamComprehensionAnswers>(() => initialDraft?.comprehension ?? (exam ? emptyComprehensionAnswers(exam) : { reading: [], listening: [] }))
+  const [heard, setHeard] = useState<boolean[]>(() => initialDraft?.heard ?? exam?.listening.map(() => false) ?? [])
+  const textHeadingRef = useRef<HTMLHeadingElement>(null)
   const [audioBlocked, setAudioBlocked] = useState(false)
   const [audioNotice, setAudioNotice] = useState('')
   const [audioReady, setAudioReady] = useState(false)
@@ -65,7 +134,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const mountedRef = useRef(false)
 
   useEffect(() => {
-    questionStartedAt.current = Date.now()
+    questionStartedAt.current = wallClockNow()
   }, [index, onBreak])
 
   useEffect(() => {
@@ -73,12 +142,17 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       mountedRef.current = true
       return
     }
+    if (stage === 'texts') {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+      textHeadingRef.current?.focus({ preventScroll: true })
+      return
+    }
     if (!onBreak) questionRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
-  }, [index, onBreak])
+  }, [index, onBreak, stage, textIndex])
 
   useEffect(() => {
     if (!exam || result) return
-    const hasMeaningfulProgress = index > 0 || typed.length > 0 || onBreak || Object.keys(answers).length > 0
+    const hasMeaningfulProgress = index > 0 || typed.length > 0 || onBreak || stage === 'texts' || Object.keys(answers).length > 0
     if (!hasMeaningfulProgress) {
       clearExamDraft(examId)
       return
@@ -94,11 +168,12 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       typed,
       onBreak,
       ...(skipped ? { skipped: true as const } : {}),
-      updatedAt: Date.now(),
+      ...(stage === 'texts' ? { stage, textIndex, comprehension, heard } : {}),
+      updatedAt: wallClockNow(),
     }, exam)
-  }, [answers, attempt, exam, examId, index, onBreak, result, skipped, timings, typed])
+  }, [answers, attempt, comprehension, exam, examId, heard, index, onBreak, result, skipped, stage, textIndex, timings, typed])
 
-  const question = exam?.questions[index]
+  const question = stage === 'words' ? exam?.questions[index] : undefined
   const word = question ? WORD_BY_ID.get(question.wordId) : undefined
 
   const speakCurrent = useCallback(() => {
@@ -140,20 +215,27 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     return () => window.cancelAnimationFrame(frame)
   }, [answerLocked, index, typedActive])
 
+  const heardText = useCallback((slot: number) => {
+    setHeard(previous => previous[slot] ? previous : previous.map((value, index) => index === slot ? true : value))
+  }, [])
+
   if (!exam) return null
   const builtExam: BuiltExam = exam
   const def = examDefinition(examId)!
+  const texts = examTexts(builtExam)
+  const currentText = stage === 'texts' ? texts[textIndex] : undefined
 
-  function finalize(nextAnswers: Record<number, boolean>, nextTimings: Record<number, number>, built: BuiltExam) {
+  function finalize(nextAnswers: Record<number, boolean>, nextTimings: Record<number, number>, built: BuiltExam, nextComprehension: ExamComprehensionAnswers = comprehension) {
     clearExamDraft(examId)
-    const scored = scoreExam(built, nextAnswers)
+    const scored = scoreExam(built, nextAnswers, nextComprehension)
     const skipped = built.questions.some(item => nextAnswers[item.index] === undefined)
+      || [...nextComprehension.reading, ...nextComprehension.listening].some(chosen => !textAnswered(chosen))
     setPractice(skipped)
     if (preview || skipped) {
       setResult(scored)
       return
     }
-    const now = Date.now()
+    const now = wallClockNow()
     const words = { ...state.words }
     for (const item of built.questions) {
       const progress = words[item.wordId]
@@ -185,7 +267,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   function answer(correct: boolean) {
     if (!question || result || answerLocked) return
     if (resumedDraft) setResumedDraft(false)
-    const elapsed = Math.max(1, Date.now() - questionStartedAt.current)
+    const elapsed = Math.max(1, wallClockNow() - questionStartedAt.current)
     const nextAnswers = { ...answers, [question.index]: correct }
     const nextTimings = { ...timings, [question.index]: elapsed }
     setAnswers(nextAnswers)
@@ -195,7 +277,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     setAudioNotice('')
     setAudioReady(false)
     if (index + 1 >= builtExam.questions.length) {
-      finalize(nextAnswers, nextTimings, builtExam)
+      if (texts.length) openTexts(0)
+      else finalize(nextAnswers, nextTimings, builtExam)
     } else {
       const nextIndex = index + 1
       setIndex(nextIndex)
@@ -212,10 +295,51 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     setAudioNotice('')
     setAudioReady(false)
     if (nextIndex >= builtExam.questions.length) {
-      finalize(answers, timings, builtExam)
+      if (texts.length) openTexts(0)
+      else finalize(answers, timings, builtExam)
       return
     }
     setIndex(Math.max(0, nextIndex))
+  }
+
+  function openTexts(at: number) {
+    setOnBreak(false)
+    setStage('texts')
+    setTextIndex(at)
+  }
+
+  function chooseText(item: ExamText, questionIndex: number, option: number) {
+    if (resumedDraft) setResumedDraft(false)
+    setComprehension(previous => ({
+      ...previous,
+      [item.kind]: previous[item.kind].map((chosen, slot) => slot === item.slot
+        ? chosen.map((value, questionAt) => questionAt === questionIndex ? option : value)
+        : chosen),
+    }))
+  }
+
+  function nextText() {
+    if (!currentText) return
+    if (resumedDraft) setResumedDraft(false)
+    if (textIndex + 1 < texts.length) setTextIndex(textIndex + 1)
+    else finalize(answers, timings, builtExam)
+  }
+
+  // Explore mode only: move between texts without answering.
+  function moveText(to: number) {
+    if (!explore || result) return
+    if (resumedDraft) setResumedDraft(false)
+    setSkipped(true)
+    if (to < 0) {
+      setStage('words')
+      setIndex(builtExam.questions.length - 1)
+      return
+    }
+    if (to >= texts.length) {
+      finalize(answers, timings, builtExam)
+      return
+    }
+    setTextIndex(to)
   }
 
   function submitTyped() {
@@ -223,18 +347,37 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     answer(isQuestionTypedCorrect(typed, question))
   }
 
-  function restartExam() {
+  function restartExam(built: BuiltExam = builtExam) {
     clearExamDraft(examId)
     setResumedDraft(false)
+    setSkipped(false)
     setIndex(0)
     setAnswers({})
     setTimings({})
     setTyped('')
     setOnBreak(false)
+    setStage('words')
+    setTextIndex(0)
+    setComprehension(emptyComprehensionAnswers(built))
+    setHeard(built.listening.map(() => false))
     setAudioBlocked(false)
     setAudioNotice('')
     setAudioReady(false)
-    questionStartedAt.current = Date.now()
+    questionStartedAt.current = wallClockNow()
+  }
+
+  function retake() {
+    // An unrecorded run adds no attempt, so it counts its own to vary the texts.
+    const extra = unrecorded ? previewRuns + 1 : 0
+    if (unrecorded) setPreviewRuns(extra)
+    const nextAttempt = (state.exams[examId]?.attempts ?? 0) + 1 + extra
+    const next = buildExam(examId, state, nextAttempt)
+    if (!next) return
+    setAttempt(nextAttempt)
+    setExam(next)
+    restartExam(next)
+    setPractice(false)
+    setResult(null)
   }
 
   if (result) {
@@ -243,18 +386,23 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const gateRemainsOpen = passedNow || gateAlreadyPassed
     const totalPool = examPool(examId).length
     const testedCoverage = new Set([...(previousExam?.testedWordIds ?? []), ...builtExam.questions.map(item => item.wordId)]).size
+    const textsMissed = result.comprehensionTotal - result.comprehensionCorrect
+    const canRetake = unrecorded || (!passedNow && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     return (
       <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-6" style={{ background: 'var(--cream)' }}>
         <div className={`exam-result-card p-6 text-center ${passedNow ? 'exam-pass' : 'exam-fail'}`}>
-          {passedNow && result.missedWordIds.length === 0
+          {passedNow
             ? <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
             : <RefreshCcwIcon className="mx-auto h-10 w-10" aria-hidden="true" />}
           <h1 className="mt-3 text-2xl font-extrabold">
-            {passedNow ? (result.missedWordIds.length ? 'حد نصاب را گرفتی؛ حالا خطاها را ببند' : 'قبول شدی') : gateAlreadyPassed ? 'این بازآزمایی نیاز به مرور دارد' : 'هنوز آمادهٔ عبور نیستی'}
+            {passedNow ? 'قبول شدی' : gateAlreadyPassed ? 'این بازآزمایی نیاز به مرور دارد' : 'هنوز آمادهٔ عبور نیستی'}
           </h1>
-          <div className="mt-5 grid grid-cols-3 gap-2">
-            <div className="metric-card"><b>{percent(result.score)}</b><span>امتیاز کل</span></div>
+          <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div className="metric-card"><b>{faNum(result.correct)}/{faNum(result.total)}</b><span>سؤال‌های واژه</span></div>
             <div className="metric-card"><b>{percent(result.productiveScore)}</b><span>پاسخ بدون گزینه</span></div>
+            <div className={`metric-card ${textsMissed ? 'metric-fail' : ''}`} data-testid="exam-comprehension-score">
+              <b>{faNum(result.comprehensionCorrect)}/{faNum(result.comprehensionTotal)}</b><span>درک مطلب</span>
+            </div>
             <div className="metric-card"><b>{faNum(testedCoverage)}/{faNum(totalPool)}</b><span>پوشش واژه</span></div>
           </div>
 
@@ -275,18 +423,20 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           </div>
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            حد عبور: {percent(def.passRate)} کل و {percent(def.productivePassRate)} در پاسخ‌های بدون گزینه.
+            حد عبور: {percent(def.passRate)} سؤال‌های واژه و {percent(1)} سؤال‌های درک مطلب؛ حتی یک پاسخ نادرست هم پذیرفته نمی‌شود.
             {preview
               ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
               : practice
               ? ' تمرین در حالت کاوش: چون سؤالی رد شد، این نتیجه ثبت نمی‌شود.'
               : passedNow
-              ? result.missedWordIds.length
-                ? ` حد نصاب آزمون را پاس کردی، اما مسیر بعدی بعد از بازیابی مستقل ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته باز می‌شود.`
-                : ' قبولی پاک مسیر را باز می‌کند، اما «مسلط» فقط با بازیابی موفق در روزهای مختلف و فاصلهٔ واقعی به دست می‌آید.'
-              : gateAlreadyPassed
-                ? ` قبولی قبلی حفظ شده است، اما ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته وارد مرور جبرانی شده‌اند.`
-                : ` ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته وارد مرور جبرانی شده‌اند و تا ترمیم آن‌ها بازآزمایی قفل می‌ماند.`}
+              ? ' قبولی مسیر را باز می‌کند، اما «مسلط» فقط با بازیابی موفق در روزهای مختلف و فاصلهٔ واقعی به دست می‌آید.'
+              : result.missedWordIds.length
+                ? gateAlreadyPassed
+                  ? ` قبولی قبلی حفظ شده است، اما ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته وارد مرور جبرانی شده‌اند.`
+                  : ` ${faNum(result.missedWordIds.length)} واژهٔ از‌دست‌رفته وارد مرور جبرانی شده‌اند و تا ترمیم آن‌ها بازآزمایی قفل می‌ماند.`
+                : gateAlreadyPassed
+                  ? ' قبولی قبلی حفظ شده است.'
+                  : ` همهٔ واژه‌ها درست بود، اما ${faNum(textsMissed)} پاسخ درک مطلب نادرست بود. بازآزمایی همین حالا با متن‌های دیگری باز است.`}
           </p>
 
           {result.missedWordIds.length > 0 && (
@@ -301,8 +451,10 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
           <div className="mt-5 grid grid-cols-2 gap-2">
             <button type="button" className="btn-paper py-3" onClick={onBack}>مسیر یادگیری</button>
-            {!unrecorded && (!passedNow || result.missedWordIds.length > 0) ? (
+            {!unrecorded && result.missedWordIds.length > 0 ? (
               <button type="button" className="btn-crimson py-3" onClick={onReview}>مرور جبرانی</button>
+            ) : canRetake && !gateAlreadyPassed ? (
+              <button type="button" className="btn-crimson py-3" onClick={retake}>دوباره امتحان کن</button>
             ) : (
               <button type="button" className="btn-ink py-3" onClick={onBack}>ادامهٔ مسیر ←</button>
             )}
@@ -311,6 +463,23 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             )}
           </div>
         </div>
+
+        {texts.length > 0 && (
+          <section className="learning-focus-card mt-5 p-5 text-right sm:p-6" aria-labelledby="texts-review-heading">
+            <h2 id="texts-review-heading" className="text-lg font-extrabold">مرور درک مطلب</h2>
+            {builtExam.reading.map((text, slot) => (
+              <details key={text.id} className="test-review-details mt-3">
+                <summary>متن خواندنی {faNum(slot + 1)}: {text.titleFa} — متن، ترجمه و پاسخ‌ها</summary>
+                <h4 className="mt-3 font-en text-base font-bold" dir="ltr">{text.titleEn}</h4>
+                <Passage text={text} showTranslation />
+                <QuestionReview text={text} chosen={comprehension.reading[slot]} />
+              </details>
+            ))}
+            {builtExam.listening.map((text, slot) => (
+              <ExamListeningReview key={text.id} text={text} chosen={comprehension.listening[slot]} state={state} number={slot + 1} />
+            ))}
+          </section>
+        )}
       </div>
     )
   }
@@ -327,7 +496,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           {resumedDraft && (
             <div className="prep-resume-row mt-4" role="status">
               <span>پیشرفت این آزمون از همین دستگاه بازیابی شد.</span>
-              <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={restartExam}>شروع از اول</button>
+              <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={() => restartExam()}>شروع از اول</button>
             </div>
           )}
           <button type="button" className="btn-ink mt-5 w-full py-3" onClick={() => { setResumedDraft(false); setOnBreak(false) }}>ادامهٔ آزمون ←</button>
@@ -336,17 +505,114 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     )
   }
 
+  const header = (
+    <header className="flex items-center gap-3">
+      <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="ترک آزمون"><BackIcon className="h-5 w-5" /></button>
+      <div className="min-w-0 flex-1">
+        <h1 className="truncate text-xl font-extrabold">{def.titleFa}</h1>
+        <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>{def.subtitleFa}</p>
+      </div>
+    </header>
+  )
+  const previewNote = preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>
+
+  if (currentText) {
+    const chosen = comprehension[currentText.kind][currentText.slot]
+    const isListening = currentText.kind === 'listening'
+    const ready = textAnswered(chosen) && (!isListening || heard[currentText.slot])
+    const last = textIndex + 1 >= texts.length
+    return (
+      <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
+        {header}
+
+        <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
+          <span>درک مطلب · متن {faNum(textIndex + 1)} از {faNum(texts.length)}</span>
+          <span>تلاش {faNum(attempt)}</span>
+        </div>
+        <div className="mastery-progress mt-2"><span style={{ width: `${(textIndex / texts.length) * 100}%` }} /></div>
+
+        {previewNote}
+
+        {textIndex === 0 && (
+          <div className="paper-note mt-4">
+            بخش دوم: {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری، هر کدام با {faNum(currentText.text.questions.length)} سؤال. متن‌های شنیداری فقط پخش می‌شوند. تا پایان آزمون بازخوردی نمایش داده نمی‌شود.
+          </div>
+        )}
+
+        {resumedDraft && (
+          <div className="prep-resume-row mt-3" role="status">
+            <span>پیشرفت این آزمون بازیابی شد؛ از متن {faNum(textIndex + 1)} ادامه می‌دهی.</span>
+            <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={() => restartExam()}>شروع از اول</button>
+          </div>
+        )}
+
+        <section className="learning-focus-card mt-4 p-5 sm:p-6" aria-labelledby="exam-text-heading" data-testid="exam-text">
+          <div className="text-xs font-bold" style={{ color: 'var(--crimson-deep)' }}>
+            {isListening ? `درک مطلب شنیداری ${faNum(currentText.slot + 1)} از ${faNum(builtExam.listening.length)}` : `درک مطلب خواندنی ${faNum(currentText.slot + 1)} از ${faNum(builtExam.reading.length)}`}
+          </div>
+          <h2 id="exam-text-heading" ref={textHeadingRef} tabIndex={-1} className="mt-1 text-lg font-extrabold">
+            {isListening ? 'گوش کن و پاسخ بده' : 'بخوان و پاسخ بده'}
+          </h2>
+          <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+            {isListening
+              ? 'این متن فقط پخش می‌شود. پس از یک‌بار شنیدن کامل، سؤال‌ها فعال می‌شوند و هر چند بار خواستی می‌توانی دوباره گوش کنی.'
+              : 'متن را بخوان و به سؤال‌ها پاسخ بده. تا پیش از رفتن به متن بعدی می‌توانی پاسخ‌ها را عوض کنی.'}
+          </p>
+
+          {isListening ? (
+            <ExamListeningText
+              key={currentText.text.id}
+              text={currentText.text}
+              heard={heard[currentText.slot]}
+              chosen={chosen}
+              state={state}
+              onHeard={() => heardText(currentText.slot)}
+              onEnableSound={() => onChange({ ...state, soundOn: true })}
+              onChoose={(questionIndex, option) => chooseText(currentText, questionIndex, option)}
+            />
+          ) : (
+            <>
+              <article className="question-context mt-4" dir="ltr" aria-labelledby="exam-reading-title">
+                <h3 id="exam-reading-title" className="font-en text-base font-bold">{currentText.text.titleEn}</h3>
+                <Passage text={currentText.text} />
+              </article>
+              <Questions
+                text={currentText.text}
+                prefix={`exam-${currentText.text.id}`}
+                chosen={chosen}
+                disabled={false}
+                onChoose={(questionIndex, option) => chooseText(currentText, questionIndex, option)}
+              />
+            </>
+          )}
+
+          <button type="button" className={`${last ? 'btn-crimson' : 'btn-ink'} mt-5 w-full py-3`} disabled={!ready} onClick={nextText}>
+            {last ? 'ثبت و پایان آزمون' : 'ثبت و متن بعدی ←'}
+          </button>
+
+          {explore && (
+            <div className="mt-5 border-t pt-4" style={{ borderColor: 'var(--line-soft)' }}>
+              <div className="grid grid-cols-2 gap-2">
+                <button type="button" className="btn-quiet py-2.5 text-sm" onClick={() => moveText(textIndex - 1)}>{textIndex === 0 ? 'بازگشت به واژه‌ها' : 'متن قبلی'}</button>
+                <button type="button" className="btn-quiet py-2.5 text-sm" onClick={() => moveText(textIndex + 1)}>
+                  {last ? 'پایان و دیدن نتیجه' : 'رد کردن ←'}
+                </button>
+              </div>
+              <p className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+                در حالت کاوش می‌توانی متن‌ها را جابه‌جا کنی؛ اگر سؤالی بی‌پاسخ بماند، نتیجه فقط تمرین است و ثبت نمی‌شود.
+              </p>
+            </div>
+          )}
+        </section>
+      </div>
+    )
+  }
+
   const typedMode = question ? isTypedMode(question.mode) : false
 
   return (
     <div className="page-in mx-auto min-h-screen max-w-3xl px-4 pb-28 pt-5" style={{ background: 'var(--cream)' }}>
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="ترک آزمون"><BackIcon className="h-5 w-5" /></button>
-        <div className="min-w-0 flex-1">
-          <h1 className="truncate text-xl font-extrabold">{def.titleFa}</h1>
-          <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>{def.subtitleFa}</p>
-        </div>
-      </header>
+      {header}
 
       <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
         <span>سؤال {faNum(index + 1)} از {faNum(builtExam.questions.length)}</span>
@@ -354,16 +620,16 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
       </div>
       <div className="mastery-progress mt-2"><span style={{ width: `${(index / builtExam.questions.length) * 100}%` }} /></div>
 
-      {preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>}
+      {previewNote}
 
       <div className="paper-note mt-4">
-        هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. آزمون معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد و نتیجهٔ هر مهارت را در پایان نشان می‌دهد.
+        هیچ بازخوردی تا پایان آزمون نشان داده نمی‌شود. بخش اول معنی، بافت، تولید فعال و املاء را جداگانه می‌سنجد؛ بخش دوم {faNum(builtExam.reading.length)} متن خواندنی و {faNum(builtExam.listening.length)} متن شنیداری است. برای قبولی همهٔ پاسخ‌ها باید درست باشند.
       </div>
 
       {resumedDraft && (
         <div className="prep-resume-row mt-3" role="status">
           <span>پیشرفت این آزمون بازیابی شد؛ از سؤال {faNum(index + 1)} ادامه می‌دهی.</span>
-          <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={restartExam}>شروع از اول</button>
+          <button type="button" className="btn-quiet shrink-0 px-3 text-xs" onClick={() => restartExam()}>شروع از اول</button>
         </div>
       )}
 
@@ -434,8 +700,11 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
               <div className="grid grid-cols-2 gap-2">
                 <button type="button" className="btn-quiet py-2.5 text-sm" disabled={index === 0} onClick={() => moveTo(index - 1)}>سؤال قبلی</button>
                 <button type="button" className="btn-quiet py-2.5 text-sm" onClick={() => moveTo(index + 1)}>
-                  {index + 1 >= builtExam.questions.length ? 'پایان و دیدن نتیجه' : 'رد کردن ←'}
+                  {index + 1 >= builtExam.questions.length ? (texts.length ? 'رفتن به درک مطلب ←' : 'پایان و دیدن نتیجه') : 'رد کردن ←'}
                 </button>
+                {texts.length > 0 && index + 1 < builtExam.questions.length && (
+                  <button type="button" className="btn-quiet col-span-2 py-2.5 text-sm" onClick={() => moveTo(builtExam.questions.length)}>پرش به درک مطلب ←</button>
+                )}
               </div>
               <p className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
                 در حالت کاوش می‌توانی سؤال‌ها را جابه‌جا کنی؛ اگر سؤالی بی‌پاسخ بماند، نتیجه فقط تمرین است و ثبت نمی‌شود.

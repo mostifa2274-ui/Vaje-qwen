@@ -62,12 +62,18 @@ for (const word of vocab) {
   addPrompt('s', word.ex)
 }
 for (const chapter of chapters) for (const sentence of chapter.sentences) addPrompt('s', sentence.en)
-const bookTestDir = join(dataDir, 'bookTests')
-for (const name of readdirSync(bookTestDir).filter(file => file.endsWith('.json')).sort()) {
-  const content = JSON.parse(readFileSync(join(bookTestDir, name), 'utf8'))
-  for (const text of [...content.reading, ...content.listening]) {
-    for (const sentence of text.sentences) addPrompt('s', sentence.en)
+for (const folder of ['bookTests', 'examTests']) {
+  const testDir = join(dataDir, folder)
+  for (const name of readdirSync(testDir).filter(file => file.endsWith('.json')).sort()) {
+    const content = JSON.parse(readFileSync(join(testDir, name), 'utf8'))
+    for (const text of [...content.reading, ...content.listening]) {
+      for (const sentence of text.sentences) addPrompt('s', sentence.en)
+    }
   }
+}
+const chapterListeningDir = join(dataDir, 'chapterListening')
+for (const name of readdirSync(chapterListeningDir).filter(file => file.endsWith('.json')).sort()) {
+  for (const sentence of JSON.parse(readFileSync(join(chapterListeningDir, name), 'utf8')).sentences) addPrompt('s', sentence.en)
 }
 for (const sample of JSON.parse(readFileSync(join(root, 'scripts/audio/extra-prompts.json'), 'utf8'))) addPrompt('s', sample)
 
