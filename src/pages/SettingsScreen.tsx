@@ -102,7 +102,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">
           <div>
             <div className="font-bold">صدا</div>
-            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ واژه‌ها و خواندن جمله‌ها؛ آموزش و آزمون شنیداری هر فصل بدون صدا پیش نمی‌رود.</div>
+            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تلفظ، خواندن قصه و آزمون‌های شنیداری.</div>
           </div>
           <button
             type="button"
@@ -118,66 +118,68 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           </button>
         </div>
 
-        <div className="settings-section p-4 sm:p-5">
-          <div className="font-bold">صدای راوی انگلیسی</div>
-          <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-            همهٔ واژه‌ها، مثال‌ها، جمله‌های قصه و متن‌های آزمون با یک صدای طبیعی انگلیسی (آمریکایی) از پیش ضبط شده‌اند. اگر ضبطی بارگیری نشود، مثلاً بدون اینترنت، صدای انگلیسی دستگاه که این‌جا انتخاب می‌کنی جای آن را می‌گیرد؛ حالت خودکار بهترین صدای طبیعی/Neural موجود را برمی‌دارد.
-          </p>
-          <label className="mt-3 block text-xs font-bold" htmlFor="narrator-voice">صدای جایگزین دستگاه</label>
-          <select
-            id="narrator-voice"
-            className="settings-select mt-1 w-full px-3 py-3 text-sm"
-            dir="ltr"
-            value={state.narratorVoiceURI}
-            onChange={event => onChange({ ...state, narratorVoiceURI: event.target.value })}
-          >
-            <option value="">Automatic — best natural English voice</option>
-            {state.narratorVoiceURI && !voices.some(voice => voice.voiceURI === state.narratorVoiceURI) && (
-              <option value={state.narratorVoiceURI}>Previously selected — unavailable on this device</option>
-            )}
-            {voices.map(voice => (
-              <option key={voice.voiceURI} value={voice.voiceURI}>
-                {voice.name} ({voice.lang}){voice.localService ? ' — offline' : ''}
-              </option>
-            ))}
-          </select>
-          {voices.length === 0 && (
-            <p className="mt-2 text-xs" style={{ color: 'var(--ink-soft)' }}>
-              فهرست صداها پس از آماده‌شدن موتور گفتار دستگاه نمایش داده می‌شود؛ حالت خودکار همچنان کار می‌کند.
+        <details className="settings-details settings-section">
+          <summary>تنظیمات پیشرفتهٔ صدا</summary>
+          <div className="settings-details-body">
+            <p className="text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+              صدای ضبط‌شدهٔ دوره در اولویت است. این تنظیمات فقط صدای جایگزین دستگاه و سرعت پخش را کنترل می‌کنند.
             </p>
-          )}
+            <label className="mt-3 block text-xs font-bold" htmlFor="narrator-voice">صدای جایگزین دستگاه</label>
+            <select
+              id="narrator-voice"
+              className="settings-select mt-1 w-full px-3 py-3 text-sm"
+              dir="ltr"
+              value={state.narratorVoiceURI}
+              onChange={event => onChange({ ...state, narratorVoiceURI: event.target.value })}
+            >
+              <option value="">Automatic — best natural English voice</option>
+              {state.narratorVoiceURI && !voices.some(voice => voice.voiceURI === state.narratorVoiceURI) && (
+                <option value={state.narratorVoiceURI}>Previously selected — unavailable on this device</option>
+              )}
+              {voices.map(voice => (
+                <option key={voice.voiceURI} value={voice.voiceURI}>
+                  {voice.name} ({voice.lang}){voice.localService ? ' — offline' : ''}
+                </option>
+              ))}
+            </select>
+            {voices.length === 0 && (
+              <p className="mt-2 text-xs" style={{ color: 'var(--ink-soft)' }}>
+                فهرست صداها بعد از آماده‌شدن موتور گفتار دستگاه نمایش داده می‌شود.
+              </p>
+            )}
 
-          <div className="mt-4 flex items-center justify-between gap-3">
-            <label className="text-xs font-bold" htmlFor="narrator-rate">سرعت خواندن</label>
-            <span className="font-en text-xs" dir="ltr">{state.narratorRate.toFixed(2)}×</span>
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <label className="text-xs font-bold" htmlFor="narrator-rate">سرعت خواندن</label>
+              <span className="font-en text-xs" dir="ltr">{state.narratorRate.toFixed(2)}×</span>
+            </div>
+            <input
+              id="narrator-rate"
+              className="mt-2 w-full"
+              type="range"
+              min="0.75"
+              max="1.1"
+              step="0.01"
+              value={state.narratorRate}
+              aria-valuetext={`${state.narratorRate.toFixed(2)} برابر سرعت عادی`}
+              onChange={event => onChange({ ...state, narratorRate: clampNarrationRate(Number(event.target.value)) })}
+            />
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator()}>
+                <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />شنیدن نمونه</span>
+              </button>
+              <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator(true)}>
+                <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />صدای دستگاه</span>
+              </button>
+            </div>
+            {voiceMessage && <p className="mt-2 text-xs leading-6" role="status">{voiceMessage}</p>}
           </div>
-          <input
-            id="narrator-rate"
-            className="mt-2 w-full"
-            type="range"
-            min="0.75"
-            max="1.1"
-            step="0.01"
-            value={state.narratorRate}
-            aria-valuetext={`${state.narratorRate.toFixed(2)} برابر سرعت عادی`}
-            onChange={event => onChange({ ...state, narratorRate: clampNarrationRate(Number(event.target.value)) })}
-          />
-          <div className="mt-3 grid grid-cols-2 gap-2">
-            <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator()}>
-              <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />شنیدن نمونه</span>
-            </button>
-            <button type="button" className="btn-paper w-full py-2.5" disabled={!state.soundOn} onClick={() => previewNarrator(true)}>
-              <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-5 w-5" />صدای دستگاه</span>
-            </button>
-          </div>
-          {voiceMessage && <p className="mt-2 text-xs leading-6" role="status">{voiceMessage}</p>}
-        </div>
+        </details>
 
 
         <div className="settings-section p-4 sm:p-5">
           <div className="font-bold">هدف مرور روزانه</div>
           <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-            وقتی کارت‌های سررسید زیاد باشند، مرور هوشمند این تعداد واژه را در هر جلسه انتخاب می‌کند. پاسخ‌های اشتباه تا بازیابی درست در همان جلسه برمی‌گردند.
+            تعداد واژه‌های هر جلسهٔ مرور هوشمند. پاسخ اشتباه تا بازیابی درست دوباره برمی‌گردد.
           </p>
           <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label="هدف مرور روزانه">
             {[10, 15, 20, 25].map(goal => (
@@ -214,7 +216,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           <div>
             <div id="explore-mode-title" className="font-bold">حالت کاوش: باز کردن همهٔ فصل‌ها</div>
             <div className="text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-              همهٔ فصل‌ها، واژه‌ها و آزمون‌ها برای دیدن باز می‌شوند. بخش‌هایی که هنوز به آن‌ها نرسیده‌ای فقط پیش‌نمایش‌اند و در پیشرفت ثبت نمی‌شوند؛ با خاموش کردن، مسیر عادی برمی‌گردد.
+              همهٔ محتوا برای پیش‌نمایش باز می‌شود؛ بخش‌های نرسیده در پیشرفت ثبت نمی‌شوند.
             </div>
           </div>
           <button
@@ -232,7 +234,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         <div className="settings-section p-4 sm:p-5">
           <div className="font-bold">پشتیبان پیشرفت</div>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            برای جلوگیری از از دست رفتن پیشرفت در صورت پاک‌شدن داده‌های مرورگر، یک فایل JSON بگیر و هر زمان لازم شد آن را برگردان.
+            پیشرفتت را در یک فایل نگه دار یا از فایل قبلی بازیابی کن.
           </p>
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button type="button" className="btn-paper py-2.5" onClick={exportProgress}><span className="inline-flex items-center justify-center gap-2"><DownloadIcon className="h-5 w-5" />دریافت پشتیبان</span></button>
@@ -265,12 +267,14 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           {importMessage && <p className="mt-2 text-xs" role="status">{importMessage}</p>}
         </div>
 
-        <div className="settings-section p-4 sm:p-5">
-          <div className="settings-section-title"><ShieldIcon className="h-5 w-5" aria-hidden="true" /><span>حریم خصوصی</span></div>
-          <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            قصه حساب کاربری یا سرور پیشرفت ندارد و دادهٔ یادگیری و تنظیمات در همین مرورگر می‌ماند. صداهای ضبط‌شده از همین سایت بارگیری می‌شوند؛ فقط وقتی ضبطی در دسترس نباشد موتور گفتار مرورگر/سیستم‌عامل جمله را می‌خواند، که بسته به صدای انتخاب‌شده ممکن است آنلاین یا آفلاین کار کند.
-          </p>
-        </div>
+        <details className="settings-details settings-section">
+          <summary><span className="settings-section-title"><ShieldIcon className="h-5 w-5" aria-hidden="true" /><span>حریم خصوصی</span></span></summary>
+          <div className="settings-details-body">
+            <p className="text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+              پیشرفت و تنظیمات در همین مرورگر می‌مانند. صداهای دوره از همین سایت بارگیری می‌شوند؛ فقط در صورت نبودن فایل ضبط‌شده، موتور گفتار دستگاه استفاده می‌شود.
+            </p>
+          </div>
+        </details>
 
         <div className="settings-section settings-danger p-4 sm:p-5">
           <div className="settings-section-title" style={{ color: 'var(--crimson-deep)' }}><TrashIcon className="h-5 w-5" aria-hidden="true" /><span>شروع دوباره</span></div>
@@ -286,10 +290,8 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
         </div>
 
         <div className="pt-4 text-center text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-          قصه ۵٫۰ — ۸۹۹ واژه‌ی A1 در ۴۰ فصل
-          <br />
-          تسلط از بازیابی فاصله‌دار، پاسخ نوشتاری، سختی واژه و شواهد چندروزه محاسبه می‌شود.
-          <br />
+          قصه ۵٫۰ · ۸۹۹ واژه · ۴۰ فصل
+          <span className="mx-2" aria-hidden="true">·</span>
           <span dir="ltr" className="font-en">build {BUILD_COMMIT === 'local' ? 'local' : BUILD_COMMIT.slice(0, 7)}</span>
         </div>
       </div>
