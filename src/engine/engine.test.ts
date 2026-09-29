@@ -347,6 +347,24 @@ describe('chapter prep and gate progression', () => {
   })
 
 
+  it('ignores unrelated miss ids when computing first-pass acquisition evidence', () => {
+    let state = emptyState(1, 'b1c1')
+    const ids = CHAPTERS[0].new.slice(0, 2)
+    state = recordPreparedChapter(
+      state,
+      'b1c1',
+      ids,
+      ids,
+      ids,
+      [ids[0], 'not-in-this-chapter'],
+      [ids[1], 'also-not-in-this-chapter'],
+      10,
+    )
+
+    expect(state.chapters.b1c1.prepWrittenFirstPassCorrect).toBe(1)
+    expect(state.chapters.b1c1.prepListeningFirstPassCorrect).toBe(1)
+  })
+
   it('does not let repeated prep practice manipulate later scheduling difficulty', () => {
     let state = emptyState(1, 'b1c1')
     const ids = CHAPTERS[0].new.slice(0, 1)
