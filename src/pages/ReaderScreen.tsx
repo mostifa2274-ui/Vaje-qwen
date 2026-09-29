@@ -754,6 +754,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
 
       <GlossSheet
         word={gloss}
+        state={state}
         soundOn={state.soundOn}
         narratorVoiceURI={state.narratorVoiceURI}
         narratorRate={state.narratorRate}
