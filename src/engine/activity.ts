@@ -18,7 +18,10 @@ const MAX_DAY_ANSWERS = 100_000
 export function answerCount(state: GhesseState): number {
   let total = 0
   for (const word of Object.values(state.words)) total += word.reviewCorrect + word.reviewWrong + word.checkCorrect + word.checkWrong
-  for (const chapter of Object.values(state.chapters)) total += (chapter.prepWrittenTotal ?? 0) + (chapter.prepListeningTotal ?? 0) + (chapter.listeningTotal ?? 0)
+  for (const chapter of Object.values(state.chapters)) {
+    total += (chapter.prepWrittenTotal ?? 0) + (chapter.prepListeningTotal ?? 0) + (chapter.listeningTotal ?? 0)
+    if (chapter.prepDiagnosticPassed) total += (chapter.prepDiagnosticTotal ?? 0) * 2
+  }
   for (const card of Object.values(state.leitner.cards)) total += card.reviews
   return total
 }
