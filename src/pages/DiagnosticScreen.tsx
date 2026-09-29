@@ -5,7 +5,8 @@ import { faNum } from '../engine/format'
 import { listeningChoiceOptions, isTypedCorrect } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { recordDiagnosticPreparedChapter } from '../engine/progress'
-import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
+import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
+import { stopAudio } from '../engine/audio'
 import { clearDiagnosticDraft, loadDiagnosticDraft, markDiagnosticFailed, saveDiagnosticDraft, type DiagnosticPhase } from '../engine/diagnosticDraft'
 import type { GhesseState } from '../engine/types'
 
@@ -67,6 +68,11 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
     )
     if (!startedSpeech) unavailable()
   }, [listeningWord, state.narratorRate, state.narratorVoiceURI, state.soundOn])
+
+  useEffect(() => () => {
+    cancelEnglishSpeech()
+    stopAudio()
+  }, [])
 
   useEffect(() => {
     if (!started || failure || phase !== 'productive') return
