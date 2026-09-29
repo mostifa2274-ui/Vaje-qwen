@@ -510,6 +510,7 @@ export function mergeConcurrentState(
 
   return {
     version: CURRENT_STATE_VERSION,
+    dayEvidenceVersion: 1,
     currentChapter,
     chapters,
     words,
