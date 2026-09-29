@@ -372,6 +372,7 @@ test('the production build enforces its content security policy without a single
   const policy = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content')
   expect(policy).toContain("script-src 'self'")
   expect(policy).toContain("object-src 'none'")
+  expect(policy).toContain("media-src 'self' blob:")
   expect(policy).not.toContain('unsafe-inline')
   expect(policy).not.toContain('unsafe-eval')
 
@@ -1564,6 +1565,16 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await exampleAudio.click()
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].ex)
 
+  // Pronunciation rehearsal is optional and privacy-first: no score, no
+  // progress gate, and the learner sees the local-only recording contract
+  // before any microphone request is made.
+  const pronunciation = stage.getByRole('button', { name: 'تمرین تلفظ (اختیاری)' })
+  await expect(pronunciation).toBeVisible()
+  await pronunciation.click()
+  await expect(stage.getByText('ضبط فقط در حافظهٔ همین صفحه می‌ماند', { exact: false })).toBeVisible()
+  await expect(stage.getByText('هیچ امتیاز خودکاری به لهجه‌ات داده نمی‌شود', { exact: false })).toBeVisible()
+  await pronunciation.click()
+
   // Teaching stays learner-paced. Prove the new backward control can revisit
   // a word and retrigger its automatic pronunciation without bypassing audio.
   const firstNext = stage.getByRole('button', { name: /واژهٔ بعدی/ })
@@ -1796,7 +1807,12 @@ test('dictionary columns stay aligned across different word and meaning lengths'
     expect(position.meaningRight).toBeLessThan(position.statusLeft)
   }
   await rows.first().click()
-  await expect(page.getByRole('dialog')).toBeVisible()
+  const dialog = page.getByRole('dialog')
+  await expect(dialog).toBeVisible()
+  const pronunciation = dialog.getByRole('button', { name: 'تمرین تلفظ (اختیاری)' })
+  await expect(pronunciation).toBeVisible()
+  await pronunciation.click()
+  await expect(dialog.getByText('ضبط فقط در حافظهٔ همین صفحه می‌ماند', { exact: false })).toBeVisible()
   await expectNoHorizontalOverflow(page)
 })
 
