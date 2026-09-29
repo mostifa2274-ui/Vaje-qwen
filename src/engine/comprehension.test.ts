@@ -40,13 +40,27 @@ describe('chapter reading comprehension', () => {
     }
   })
 
-  it('uses other chapters as plausible distractors for story-event questions', () => {
-    for (const chapter of CHAPTERS) {
+  it('never leaks future-chapter sentences into story-event distractors', () => {
+    for (const [chapterIndex, chapter] of CHAPTERS.entries()) {
       const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
         .filter(question => question.id.includes(':story-event:'))
+
       for (const question of questions) {
         expect(question.options.some(option => option.id.startsWith(`story-${chapter.id}-`)), question.id).toBe(true)
-        expect(question.options.filter(option => option.id.startsWith('story-') && !option.id.startsWith(`story-${chapter.id}-`)).length, question.id).toBe(3)
+
+        const external = question.options
+          .filter(option => option.id.startsWith('story-') && !option.id.startsWith(`story-${chapter.id}-`))
+        const fallback = question.options.filter(option => option.id.startsWith('fallback-'))
+        const expectedPrior = Math.min(3, chapterIndex)
+
+        expect(external.length, question.id).toBe(expectedPrior)
+        expect(fallback.length, question.id).toBe(3 - expectedPrior)
+
+        for (const option of external) {
+          const other = CHAPTERS.findIndex(candidate => option.id.startsWith(`story-${candidate.id}-`))
+          expect(other, `${question.id}:${option.id}`).toBeGreaterThanOrEqual(0)
+          expect(other, `${question.id}:${option.id}`).toBeLessThan(chapterIndex)
+        }
       }
     }
   })
