@@ -7,6 +7,7 @@ import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, typ
 import { SpeakerIcon } from './Icons'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import PronunciationPractice from './PronunciationPractice'
+import ActiveUsePractice from './ActiveUsePractice'
 import { masteryEvidence, masteryNextRequirementFa } from '../engine/mastery'
 import { faNum, percent } from '../engine/format'
 
@@ -65,7 +66,7 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
         return
       }
       if (event.key !== 'Tab' || !sheetRef.current) return
-      const focusable = [...sheetRef.current.querySelectorAll<HTMLElement>('button:not(:disabled), [href], input:not(:disabled), [tabindex]:not([tabindex="-1"])')]
+      const focusable = [...sheetRef.current.querySelectorAll<HTMLElement>('button:not(:disabled), summary, [href], input:not(:disabled), textarea:not(:disabled), select:not(:disabled), [tabindex]:not([tabindex="-1"])')]
       if (focusable.length === 0) return
       const first = focusable[0]
       const last = focusable[focusable.length - 1]
@@ -153,6 +154,14 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
         <PronunciationPractice
           key={word.id}
           word={word.word}
+          soundOn={soundOn}
+          narratorVoiceURI={narratorVoiceURI}
+          narratorRate={narratorRate}
+        />
+
+        <ActiveUsePractice
+          key={`gloss-active-${word.id}`}
+          word={word}
           soundOn={soundOn}
           narratorVoiceURI={narratorVoiceURI}
           narratorRate={narratorRate}
