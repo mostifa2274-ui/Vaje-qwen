@@ -28,7 +28,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - 100% preparation gates mean coverage, not mastery. Durable mastery requires later spaced retrieval.
 - Reading should feel like reading, not like reviewing flashcards.
 - Once preparation is passed, story text should not visually mark new words.
-- Audio is a first-class learning channel and must be consistent across word teaching, examples and story narration.
+- Audio is a first-class learning channel and must be consistent across word teaching, examples and story narration. Pronunciation rehearsal is optional record–listen–compare practice: microphone access is user-initiated, recordings stay ephemeral and local, and the product must not invent an opaque accent score.
 - Persian is the interface language; English content keeps clear LTR typography.
 - Mobile and tablet are primary. Touch targets must remain comfortable and core functionality must work offline where possible.
 - Progress must be explainable. Learners should always know what is required to unlock the next stage.
