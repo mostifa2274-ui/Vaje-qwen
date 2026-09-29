@@ -396,6 +396,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                 dir="ltr"
                 autoFocus
                 autoComplete="off"
+                autoCorrect="off"
                 autoCapitalize="none"
                 spellCheck={false}
                 enterKeyHint="done"
