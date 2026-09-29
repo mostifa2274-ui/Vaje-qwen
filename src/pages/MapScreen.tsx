@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type KeyboardEvent } from 'react'
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { learningHealth, bookHealth, certificationStatus, consolidationFocus, nextBestAction } from '../engine/analytics'
@@ -98,7 +98,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
       ? `${faNum(answersLeft)} پاسخ دیگر تا ${faNum(daily.streak + 1)} روز پیاپی`
       : `${faNum(answersLeft)} پاسخ تا کامل‌شدن هدف امروز`
 
-  function moveHomeTab(event: React.KeyboardEvent<HTMLButtonElement>, current: HomeSection) {
+  function moveHomeTab(event: KeyboardEvent<HTMLButtonElement>, current: HomeSection) {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
     event.preventDefault()
     const order: HomeSection[] = ['today', 'journey', 'library']
