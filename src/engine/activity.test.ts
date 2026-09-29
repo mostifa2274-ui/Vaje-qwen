@@ -3,7 +3,7 @@ import { CHAPTERS } from '../data/chapters'
 import { emptyState, importStateJson, mergeConcurrentState } from './store'
 import { blankWordProgress, recordRetrieval } from './review'
 import { recordLeitnerReview } from './leitner'
-import { answerCount, dailyProgress, mergeActivity, mergeLeitnerDays, normalizeActivity, recordActivity, streakMessage } from './activity'
+import { answerCount, creditGradedEffort, dailyProgress, mergeActivity, mergeLeitnerDays, normalizeActivity, recordActivity, streakMessage } from './activity'
 import { dayKey } from './days'
 import { consolidationFocus, nextBestAction } from './analytics'
 import { bookWordIds } from './bookTestSize'
@@ -29,6 +29,27 @@ describe('daily goal and streak', () => {
     // Settings changes and removals credit nothing.
     expect(recordActivity({ ...credited, soundOn: false }, credited, at(0))).toEqual({ ...credited, soundOn: false })
     expect(recordActivity(base, next, at(0)).activity).toEqual({})
+  })
+
+  it('credits corrective relearning as effort without creating fake mastery evidence', () => {
+    const base = fresh()
+    const id = CHAPTERS[0].new[0]
+    const progress = blankWordProgress(at(0))
+    const wrong = recordRetrieval(progress, false, 'productive', at(0), 'review')
+    const relearned = recordRetrieval(wrong, true, 'productive', at(0) + 30_000, 'relearn')
+
+    expect(relearned.reviewCorrect).toBe(wrong.reviewCorrect)
+    expect(relearned.productiveCorrect).toBe(wrong.productiveCorrect)
+    expect(relearned.successDays).toEqual(wrong.successDays)
+    expect(answerCount({ ...base, words: { [id]: relearned } }) - answerCount({ ...base, words: { [id]: wrong } })).toBe(0)
+
+    const credited = creditGradedEffort({ ...base, words: { [id]: relearned } }, at(0), 1)
+    expect(dailyProgress(credited, at(0)).today).toBe(1)
+
+    // App-level automatic accounting sees no mastery-answer delta here, so it
+    // leaves the explicit effort credit intact instead of double-counting it.
+    const afterAppAccounting = recordActivity(credited, { ...base, words: { [id]: wrong } }, at(0))
+    expect(dailyProgress(afterAppAccounting, at(0)).today).toBe(1)
   })
 
   it('keeps a streak alive until the end of the day and breaks it after a missed day', () => {
