@@ -109,11 +109,23 @@ export function normalizeTypedAnswer(value: string): string {
     .replace(/[.!?]+$/g, '')
 }
 
+const ORTHOGRAPHIC_ALIASES: Readonly<Record<string, readonly string[]>> = {
+  // These are spelling/punctuation variants of the same lexical item, not
+  // semantic synonyms. Accepting them avoids grading a correct recall as
+  // wrong because a learner omitted a hyphen or used a common initialism form.
+  't-shirt': ['T shirt'],
+  'no-one': ['no-one'],
+  ok: ['okay', 'O.K.'],
+  tv: ['T.V.'],
+  cd: ['C.D.'],
+  dvd: ['D.V.D.'],
+}
+
 export function acceptedAnswers(word: WordEntry): string[] {
   const raw = word.word.trim()
   const candidates = raw === 'a, an'
     ? ['a', 'an', 'a, an']
-    : [raw]
+    : [raw, ...(ORTHOGRAPHIC_ALIASES[word.id] ?? [])]
   return [...new Set(candidates.map(normalizeTypedAnswer).filter(Boolean))]
 }
 
