@@ -11,8 +11,10 @@ import { warmEnglishVoices } from './engine/narration'
 import { loadClipIndex } from './engine/audioClips'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
 import { introduceWordsOfCompletedChapters } from './engine/progress'
+import { diagnosticFailed } from './engine/diagnosticDraft'
 
 const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
+const DiagnosticScreen = lazy(() => import('./pages/DiagnosticScreen'))
 const ReaderScreen = lazy(() => import('./pages/ReaderScreen'))
 const ReviewScreen = lazy(() => import('./pages/ReviewScreen'))
 const ExamScreen = lazy(() => import('./pages/ExamScreen'))
@@ -24,6 +26,7 @@ const SettingsScreen = lazy(() => import('./pages/SettingsScreen'))
 type View =
   | { name: 'map' }
   | { name: 'prep'; chapterId: string }
+  | { name: 'diagnostic'; chapterId: string }
   | { name: 'read'; chapterId: string }
   | { name: 'review' }
   | { name: 'exam'; examId: string }
@@ -62,6 +65,10 @@ function rawViewFromHash(): View {
     const chapterId = safeDecodeRouteSegment(hash.slice(5))
     if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'prep', chapterId }
   }
+  if (hash.startsWith('diagnostic/')) {
+    const chapterId = safeDecodeRouteSegment(hash.slice(11))
+    if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'diagnostic', chapterId }
+  }
   if (hash.startsWith('read/')) {
     const chapterId = safeDecodeRouteSegment(hash.slice(5))
     if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'read', chapterId }
@@ -83,12 +90,20 @@ function resolveView(view: View, state: GhesseState): View {
     // A prepared chapter goes straight to its story; explore mode may revisit its words.
     if (!state.exploreAll && canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
   }
+  if (view.name === 'diagnostic') {
+    // Prove-known is only for the learner's actual next chapter, never an
+    // Explore preview. After a first miss, this session must use teaching.
+    if (!canPrepareChapter(state, view.chapterId)) return { name: 'map' }
+    if (canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
+    if (diagnosticFailed(view.chapterId)) return { name: 'prep', chapterId: view.chapterId }
+  }
   if (view.name === 'exam' && !canOpenExam(state, view.examId)) return { name: 'map' }
   return view
 }
 
 function hashFor(view: View): string {
   if (view.name === 'prep') return `#/prep/${encodeURIComponent(view.chapterId)}`
+  if (view.name === 'diagnostic') return `#/diagnostic/${encodeURIComponent(view.chapterId)}`
   if (view.name === 'read') return `#/read/${encodeURIComponent(view.chapterId)}`
   if (view.name === 'review') return '#/review'
   if (view.name === 'exam') return `#/exam/${encodeURIComponent(view.examId)}`
@@ -102,6 +117,10 @@ function viewLabel(view: View): string {
   if (view.name === 'prep') {
     const chapter = CHAPTER_BY_ID.get(view.chapterId)
     return chapter ? `آمادگی فصل: ${chapter.titleFa}` : 'آمادگی فصل'
+  }
+  if (view.name === 'diagnostic') {
+    const chapter = CHAPTER_BY_ID.get(view.chapterId)
+    return chapter ? `تعیین سطح فصل: ${chapter.titleFa}` : 'تعیین سطح فصل'
   }
   if (view.name === 'read') {
     const chapter = CHAPTER_BY_ID.get(view.chapterId)
@@ -209,6 +228,13 @@ export default function App() {
 
   const openPrep = useCallback((chapterId: string) => {
     if (canOpenChapter(state, chapterId)) navigate({ name: 'prep', chapterId })
+  }, [navigate, state])
+
+  const openDiagnostic = useCallback((chapterId: string) => {
+    if (!canPrepareChapter(state, chapterId) || canReadChapter(state, chapterId)) return
+    navigate(diagnosticFailed(chapterId)
+      ? { name: 'prep', chapterId }
+      : { name: 'diagnostic', chapterId })
   }, [navigate, state])
 
   const openExam = useCallback((examId: string) => {
@@ -331,6 +357,20 @@ export default function App() {
         />
       )
       break
+    case 'diagnostic':
+      screen = (
+        <DiagnosticScreen
+          key={view.chapterId}
+          chapterId={view.chapterId}
+          state={state}
+          onChange={update}
+          onBack={backToMap}
+          onTeach={() => navigate({ name: 'prep', chapterId: view.chapterId }, true)}
+          onReady={() => navigate({ name: 'read', chapterId: view.chapterId }, true)}
+          now={now}
+        />
+      )
+      break
     case 'read':
       screen = (
         <ReaderScreen
@@ -398,6 +438,7 @@ export default function App() {
           now={now}
           onChange={update}
           onOpenChapter={openChapter}
+          onOpenDiagnostic={openDiagnostic}
           onOpenExam={openExam}
           onOpenReview={() => navigate({ name: 'review' })}
           onOpenGlossary={() => navigate({ name: 'glossary' })}

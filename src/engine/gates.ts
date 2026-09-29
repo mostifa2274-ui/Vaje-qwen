@@ -82,13 +82,18 @@ export function chapterPrepared(state: GhesseState, chapterId: string): boolean 
   const required = chapter.new.length
   const writtenTotal = progress.prepWrittenTotal ?? 0
   const listeningTotal = progress.prepListeningTotal ?? 0
+  const standardPreparation =
+    writtenTotal === required
+    && listeningTotal === required
+    && progress.prepWrittenCorrect === required
+    && progress.prepListeningCorrect === required
+  const diagnosticPreparation =
+    progress.prepDiagnosticPassed === true
+    && progress.prepDiagnosticTotal === required
   return Boolean(
     progress.preparedAt
     && required > 0
-    && writtenTotal === required
-    && listeningTotal === required
-    && progress.prepWrittenCorrect === required
-    && progress.prepListeningCorrect === required,
+    && (standardPreparation || diagnosticPreparation),
   )
 }
 

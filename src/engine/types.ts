@@ -27,6 +27,11 @@ export interface ChapterProgress {
   prepWrittenTotal?: number
   prepListeningCorrect?: number
   prepListeningTotal?: number
+  // Optional prove-known path. It unlocks only after every chapter word is
+  // produced from Persian and recognized from audio correctly on first try.
+  // This is preparation evidence only; it never grants spaced mastery.
+  prepDiagnosticPassed?: boolean
+  prepDiagnosticTotal?: number
   completed: boolean
   completedAt?: number
   lastReadAt?: number

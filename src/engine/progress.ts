@@ -1,6 +1,7 @@
 import type { GhesseState, WordProgress } from './types'
 import { blankWordProgress, scheduleAfterChapter } from './review'
 import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehension'
+import { canPrepareChapter } from './gates'
 
 export function recordPreparedChapter(
   state: GhesseState,
@@ -67,6 +68,60 @@ export function recordPreparedChapter(
   }
 }
 
+
+export function recordDiagnosticPreparedChapter(
+  state: GhesseState,
+  chapterId: string,
+  wordIds: string[],
+  productivePassedIds: readonly string[],
+  listeningPassedIds: readonly string[],
+  now: number,
+): GhesseState {
+  // Unlike a normal prep screen, this path can skip teaching entirely. Keep
+  // the progression prerequisite inside the engine so a stale screen/direct
+  // caller cannot pre-certify a future chapter.
+  if (!canPrepareChapter(state, chapterId)) return state
+  const productivePassed = new Set(productivePassedIds)
+  const listeningPassed = new Set(listeningPassedIds)
+  const complete =
+    wordIds.length > 0
+    && wordIds.every(id => productivePassed.has(id))
+    && wordIds.every(id => listeningPassed.has(id))
+  if (!complete) return state
+
+  const previous = state.chapters[chapterId]
+  const words = { ...state.words }
+  for (const id of wordIds) {
+    const existing = words[id] ?? blankWordProgress(now)
+    words[id] = {
+      ...existing,
+      introduced: true,
+      firstSeenAt: existing.firstSeenAt ?? now,
+    }
+  }
+
+  return {
+    ...state,
+    words,
+    chapters: {
+      ...state.chapters,
+      [chapterId]: {
+        ...(previous ?? {}),
+        preparedAt: now,
+        prepAttempts: (previous?.prepAttempts ?? 0) + 1,
+        prepDiagnosticPassed: true,
+        prepDiagnosticTotal: wordIds.length,
+        completed: previous?.completed ?? false,
+        completedAt: previous?.completedAt,
+        lastReadAt: previous?.lastReadAt,
+        checksCorrect: previous?.checksCorrect ?? 0,
+        checksTotal: previous?.checksTotal ?? 0,
+        reads: previous?.reads ?? 0,
+      },
+    },
+  }
+}
+
 /** The chapter's listening questions: first-pass score and the corrected total. */
 export interface ListeningCheck {
   firstPassCorrect: number
@@ -91,10 +146,18 @@ export function recordCompletedRead(
   const hasCurrentPrepGate = Boolean(
     previous?.preparedAt
     && wordIds.length > 0
-    && previous.prepWrittenCorrect === wordIds.length
-    && previous.prepWrittenTotal === wordIds.length
-    && previous.prepListeningCorrect === wordIds.length
-    && previous.prepListeningTotal === wordIds.length,
+    && (
+      (
+        previous.prepWrittenCorrect === wordIds.length
+        && previous.prepWrittenTotal === wordIds.length
+        && previous.prepListeningCorrect === wordIds.length
+        && previous.prepListeningTotal === wordIds.length
+      )
+      || (
+        previous.prepDiagnosticPassed === true
+        && previous.prepDiagnosticTotal === wordIds.length
+      )
+    ),
   )
   const canRereadLegacyCompletion = previous?.completed === true
   const comprehensionVerified = checksTotal === READING_QUESTION_COUNT && verifiedChecksCorrect === READING_QUESTION_COUNT

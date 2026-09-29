@@ -286,6 +286,7 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
     { route: '/#/settings', heading: 'تنظیمات' },
     { route: '/#/review', heading: 'مرور هوشمند' },
     { route: '/#/prep/b1c1', heading: /واژه‌های تازه:/ },
+    { route: '/#/diagnostic/b1c1', heading: 'تعیین سطح این فصل' },
   ]
 
   for (const { route, heading } of routes) {
@@ -511,6 +512,43 @@ test('settings keeps advanced controls collapsed until requested', async ({ page
   await voice.click()
   await expect(deviceVoice).toBeVisible()
   await expectNoHorizontalOverflow(page)
+})
+
+test('prove-known is explicit, first-miss fail-closed, and falls back to teaching without progress', async ({ page }) => {
+  await page.goto('/#/map')
+
+  const diagnostic = page.getByRole('button', { name: /تعیین سطح اختیاری/ })
+  await expect(diagnostic).toBeVisible()
+  await diagnostic.click()
+  await expect(page).toHaveURL(/#\/diagnostic\/b1c1$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'تعیین سطح این فصل' })).toBeVisible()
+  await expect(page.getByText(/اولین اشتباه.*تعیین سطح تمام می‌شود/)).toBeVisible()
+
+  await page.getByRole('button', { name: 'شروع تعیین سطح' }).click()
+  const input = page.getByLabel('واژهٔ انگلیسی')
+  await expect(input).toBeFocused()
+  await input.fill('definitely-wrong')
+  await input.press('Enter')
+
+  await expect(page.getByRole('heading', { level: 2, name: 'این فصل بهتر است آموزش داده شود' })).toBeVisible()
+  const storedBeforeTeaching = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
+  expect(storedBeforeTeaching.chapters?.b1c1).toBeUndefined()
+  expect(Object.keys(storedBeforeTeaching.words ?? {})).toHaveLength(0)
+
+  // The revealed miss cannot be harvested by backing out and retrying the same
+  // deterministic diagnostic word by word.
+  await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
+  await expect(page).toHaveURL(/#\/map$/)
+  await expect(page.getByRole('button', { name: /تعیین سطح اختیاری/ })).toHaveCount(0)
+  await page.goto('/#/diagnostic/b1c1')
+  await expect(page).toHaveURL(/#\/prep\/b1c1$/)
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
+})
+
+test('future chapters cannot be opened through a direct prove-known URL', async ({ page }) => {
+  await page.goto('/#/diagnostic/b1c2')
+  await expect(page).toHaveURL(/#\/map$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
 })
 
 test('auto teach speaks word and context before advancing, then pauses on demand', async ({ page }) => {

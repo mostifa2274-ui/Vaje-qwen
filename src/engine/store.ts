@@ -72,6 +72,8 @@ function normalizeChapter(raw: unknown): ChapterProgress | undefined {
     prepWrittenTotal: r.prepWrittenTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepWrittenTotal))),
     prepListeningCorrect: r.prepListeningCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.prepListeningCorrect))),
     prepListeningTotal: r.prepListeningTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepListeningTotal))),
+    prepDiagnosticPassed: r.prepDiagnosticPassed === true,
+    prepDiagnosticTotal: r.prepDiagnosticTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepDiagnosticTotal))),
     completed,
     completedAt,
     lastReadAt,
