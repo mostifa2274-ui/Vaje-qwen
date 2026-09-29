@@ -47,6 +47,12 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Real-world validation status is explicit in `research/status.json`. Until study evidence is attached, product language must say research-informed rather than empirically validated.
 - Learner research export is opt-in, de-identified and local-only until the learner explicitly shares the downloaded file.
 
+## Home information architecture
+- **Today / امروز** is the default surface: the engine-selected next action, today's effort, and Smart Review.
+- **Journey / مسیر** contains books, chapters, exams, progress evidence and certification.
+- **Library / کتابخانه** contains reference and optional tools: glossary, free Leitner practice, settings and backup.
+- A learner should not have to choose between memory systems. Smart Review remains canonical; Library tools never compete with the recommended next action.
+
 ## Release constraints
 - All 899 assigned vocabulary introductions must remain covered.
 - Sentence/audio provenance safeguards must remain intact.
