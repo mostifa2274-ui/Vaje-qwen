@@ -342,6 +342,8 @@ describe('chapter prep and gate progression', () => {
     expect(state.words[ids[0]].difficulty).toBeGreaterThan(state.words[ids[1]].difficulty)
     expect(state.words[ids[0]].reviewCorrect).toBe(0)
     expect(state.words[ids[0]].successDays).toHaveLength(0)
+    expect(state.chapters.b1c1.prepWrittenFirstPassCorrect).toBe(1)
+    expect(state.chapters.b1c1.prepListeningFirstPassCorrect).toBe(1)
   })
 
 
@@ -350,8 +352,14 @@ describe('chapter prep and gate progression', () => {
     const ids = CHAPTERS[0].new.slice(0, 1)
     state = recordPreparedChapter(state, 'b1c1', ids, ids, ids, ids, ids, 10)
     const afterFirstPrep = state.words[ids[0]].difficulty
+    expect(state.chapters.b1c1.prepWrittenFirstPassCorrect).toBe(0)
+    expect(state.chapters.b1c1.prepListeningFirstPassCorrect).toBe(0)
     state = recordPreparedChapter(state, 'b1c1', ids, ids, ids, [], [], 20)
     expect(state.words[ids[0]].difficulty).toBe(afterFirstPrep)
+    // Rehearsing an already prepared chapter must not rewrite the original
+    // first-attempt evidence into a perfect score.
+    expect(state.chapters.b1c1.prepWrittenFirstPassCorrect).toBe(0)
+    expect(state.chapters.b1c1.prepListeningFirstPassCorrect).toBe(0)
   })
 
   it('requires the previous book exam before crossing book boundary', () => {

@@ -123,6 +123,64 @@ describe('progress import validation', () => {
     expect(imported.currentChapter).toBe('b1c2')
     expect(imported.words.w1?.introduced).toBe(true)
   })
+
+  it('clamps malformed first-pass acquisition counters during import', () => {
+    const state = emptyState(100, 'b1c1')
+    state.chapters.b1c1 = {
+      preparedAt: 110,
+      prepAttempts: 1,
+      prepWrittenCorrect: 4,
+      prepWrittenTotal: 4,
+      prepWrittenFirstPassCorrect: 99,
+      prepListeningCorrect: 4,
+      prepListeningTotal: 4,
+      prepListeningFirstPassCorrect: 99,
+      completed: false,
+      checksCorrect: 0,
+      checksTotal: 0,
+      reads: 0,
+    }
+
+    const imported = importStateJson(
+      JSON.stringify(state),
+      200,
+      'b1c1',
+      chapters,
+      words,
+    )
+
+    expect(imported.chapters.b1c1.prepWrittenFirstPassCorrect).toBe(4)
+    expect(imported.chapters.b1c1.prepListeningFirstPassCorrect).toBe(4)
+  })
+
+  it('preserves first-pass acquisition evidence through backup import', () => {
+    const state = emptyState(100, 'b1c1')
+    state.chapters.b1c1 = {
+      preparedAt: 110,
+      prepAttempts: 1,
+      prepWrittenCorrect: 4,
+      prepWrittenTotal: 4,
+      prepWrittenFirstPassCorrect: 2,
+      prepListeningCorrect: 4,
+      prepListeningTotal: 4,
+      prepListeningFirstPassCorrect: 3,
+      completed: false,
+      checksCorrect: 0,
+      checksTotal: 0,
+      reads: 0,
+    }
+
+    const imported = importStateJson(
+      JSON.stringify(state),
+      200,
+      'b1c1',
+      chapters,
+      words,
+    )
+
+    expect(imported.chapters.b1c1.prepWrittenFirstPassCorrect).toBe(2)
+    expect(imported.chapters.b1c1.prepListeningFirstPassCorrect).toBe(3)
+  })
 })
 
 

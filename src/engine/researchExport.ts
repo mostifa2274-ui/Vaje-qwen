@@ -56,8 +56,12 @@ export interface ResearchReport {
     id: string
     completed: boolean
     prepAttempts: number
+    preparationPath: 'taught' | 'prove-known' | 'legacy'
     writtenCoverage: number | null
+    writtenFirstPass: number | null
     listeningCoverage: number | null
+    listeningFirstPass: number | null
+    diagnosticPerfect: boolean
     readingFirstPass: number | null
     chapterListeningFirstPass: number | null
     reads: number
@@ -143,12 +147,21 @@ export function buildResearchReport(state: GhesseState): ResearchReport {
   const chapters = CHAPTERS.flatMap(chapter => {
     const progress = state.chapters[chapter.id]
     if (!progress) return []
+    const preparationPath: 'taught' | 'prove-known' | 'legacy' = progress.prepDiagnosticPassed
+      ? 'prove-known'
+      : (progress.prepWrittenTotal ?? 0) > 0 || (progress.prepListeningTotal ?? 0) > 0
+        ? 'taught'
+        : 'legacy'
     return [{
       id: chapter.id,
       completed: progress.completed,
       prepAttempts: progress.prepAttempts,
+      preparationPath,
       writtenCoverage: ratio(progress.prepWrittenCorrect, progress.prepWrittenTotal),
+      writtenFirstPass: ratio(progress.prepWrittenFirstPassCorrect, progress.prepWrittenTotal),
       listeningCoverage: ratio(progress.prepListeningCorrect, progress.prepListeningTotal),
+      listeningFirstPass: ratio(progress.prepListeningFirstPassCorrect, progress.prepListeningTotal),
+      diagnosticPerfect: progress.prepDiagnosticPassed === true,
       readingFirstPass: ratio(progress.checksCorrect, progress.checksTotal),
       chapterListeningFirstPass: ratio(progress.listeningCorrect, progress.listeningTotal),
       reads: progress.reads,
