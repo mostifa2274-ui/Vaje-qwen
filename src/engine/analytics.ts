@@ -189,7 +189,7 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
     return {
       kind: 'review',
       title: `تثبیت واژه‌های کتاب ${faNum(consolidation.book)}`,
-      detail: `هر واژه باید یک روز پس از یادگیری، بدون کمک به یاد آورده شود تا ماندگار شود. امروز ${faNum(consolidation.ready.length)} واژه آمادهٔ تثبیت است؛ پس از تثبیت همه، آزمون پایان کتاب باز می‌شود.`,
+      detail: `هر واژه باید پس از یک فاصلهٔ واقعی، در روزی بعد از یادگیری، بدون کمک به یاد آورده شود تا ماندگار شود. امروز ${faNum(consolidation.ready.length)} واژه آمادهٔ تثبیت است؛ پس از تثبیت همه، آزمون پایان کتاب باز می‌شود.`,
       progress: consolidationProgress,
     }
   }
@@ -199,8 +199,8 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
   if (consolidation) {
     return {
       kind: 'rest',
-      title: 'فردا، تثبیت آخرین واژه‌ها',
-      detail: `${faNum(consolidation.waiting.length)} واژه‌ای که امروز یاد گرفتی از فردا آمادهٔ تثبیت‌اند؛ یک شب خواب حافظه را محکم می‌کند. تا آن موقع می‌توانی با جعبهٔ لایتنر تمرین کنی.`,
+      title: 'هنوز زود است برای تثبیت آخرین واژه‌ها',
+      detail: `${faNum(consolidation.waiting.length)} واژه هنوز برای سنجش ماندگاری آماده نیست. تثبیت فقط پس از ورود به روز بعد و دست‌کم ۸ ساعت فاصله حساب می‌شود؛ تا آن زمان تمرین آزاد اختیاری است.`,
       progress: consolidationProgress,
     }
   }
