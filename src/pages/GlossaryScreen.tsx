@@ -145,7 +145,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
               className="glossary-row"
               onClick={() => tapWord(word)}
             >
-              <span className="glossary-word font-en" dir="ltr">{word.word}</span>
+              <span className="glossary-word font-en" lang="en" dir="ltr">{word.word}</span>
               <span className="glossary-meaning" dir="rtl">{word.fa}</span>
               <span className={`glossary-status ${needsWork ? 'needs-work' : level}`} dir="rtl">
                 {needsWork ? 'تمرین' : LEVEL_FA[level]}

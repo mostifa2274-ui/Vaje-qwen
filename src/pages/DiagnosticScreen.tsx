@@ -189,7 +189,7 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
         <section className="learning-focus-card mt-5 p-5 sm:p-6" role="status">
           <h2 className="text-xl font-extrabold">این فصل بهتر است آموزش داده شود</h2>
           <p className="mt-3 text-sm leading-7">
-            در واژهٔ <b className="font-en" dir="ltr">{word.word}</b> نیاز به کمک بود. هیچ پیشرفتی از تعیین سطح ثبت نشد.
+            در واژهٔ <b className="font-en" lang="en" dir="ltr">{word.word}</b> نیاز به کمک بود. هیچ پیشرفتی از تعیین سطح ثبت نشد.
           </p>
           <button type="button" className="btn-ink mt-5 w-full py-3" onClick={onTeach}>شروع آموزش معمولی</button>
         </section>
@@ -237,6 +237,7 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
                 id="diagnostic-answer"
                 ref={inputRef}
                 className="answer-input mt-2 w-full font-en"
+                lang="en"
                 dir="ltr"
                 autoComplete="off"
                 autoCapitalize="none"

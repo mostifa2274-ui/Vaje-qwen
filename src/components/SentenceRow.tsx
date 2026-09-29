@@ -42,7 +42,7 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, onTogg
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="story-en">
+        <p className="story-en" lang="en" dir="ltr">
           {tokens.map((token, index) => {
             if (!token.isWord) return <span key={index}>{token.raw}</span>
             const entry = token.id ? WORD_BY_ID.get(token.id) : undefined

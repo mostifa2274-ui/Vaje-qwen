@@ -550,8 +550,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             )}
 
             <div className="mt-5 text-center">
-              <div data-testid="teach-headword" className="font-en text-4xl font-bold" dir="ltr">{currentTeachWord.word}</div>
-              {currentTeachWord.ipa && <div className="mt-2 font-en text-sm" dir="ltr">/{currentTeachWord.ipa}/</div>}
+              <div data-testid="teach-headword" className="font-en text-4xl font-bold" lang="en" dir="ltr">{currentTeachWord.word}</div>
+              {currentTeachWord.ipa && <div className="mt-2 font-en text-sm" lang="en" dir="ltr">/{currentTeachWord.ipa}/</div>}
               <div className="mt-3 flex justify-center">
                 <span className="lexical-role-chip">{persianPartOfSpeech(currentTeachWord.pos)}</span>
               </div>
@@ -573,7 +573,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             </div>
 
             <div className="learning-example mt-5 pt-4">
-              <div className="font-en text-lg leading-8" dir="ltr">{currentTeachWord.ex}</div>
+              <div className="font-en text-lg leading-8" lang="en" dir="ltr">{currentTeachWord.ex}</div>
               <div className="mt-2 text-sm leading-7" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{currentTeachWord.tr}</div>
               <button
                 type="button"
@@ -632,7 +632,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
             <div className="mt-7 text-center">
               <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>یک معنی درست را به فارسی بنویس</div>
-              <div data-testid="written-headword" className="mt-2 font-en text-4xl font-bold" dir="ltr">{currentWrittenWord.word}</div>
+              <div data-testid="written-headword" className="mt-2 font-en text-4xl font-bold" lang="en" dir="ltr">{currentWrittenWord.word}</div>
             </div>
 
             <label htmlFor="prep-written" className="mt-6 block text-sm font-bold">ترجمهٔ فارسی</label>
@@ -744,8 +744,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
             {feedback && (
               <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
-                  ? <><b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa} ✓ · بعدی…</>
-                  : <>پاسخ درست: <b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. دوباره در همین آزمون می‌آید.</>}
+                  ? <><b className="font-en" lang="en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa} ✓ · بعدی…</>
+                  : <>پاسخ درست: <b className="font-en" lang="en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. دوباره در همین آزمون می‌آید.</>}
               </div>
             )}
 

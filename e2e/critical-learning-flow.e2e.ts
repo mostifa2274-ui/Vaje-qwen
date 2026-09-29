@@ -55,6 +55,37 @@ async function openHomeSection(page: Page, name: 'امروز' | 'مسیر' | 'ک
   await expect(tab).toHaveAttribute('aria-selected', 'true')
 }
 
+async function expectEnglishLanguageMetadata(page: Page): Promise<void> {
+  const result = await page.locator('#main-content').evaluate(root => {
+    const offenders: string[] = []
+    const candidates = root.querySelectorAll<HTMLElement>('.font-en, .story-en, .test-passage, [dir="ltr"]')
+    for (const element of candidates) {
+      const directText = [...element.childNodes]
+        .filter(node => node.nodeType === Node.TEXT_NODE)
+        .map(node => node.textContent ?? '')
+        .join(' ')
+        .trim()
+      if (!/[A-Za-z]/.test(directText)) continue
+      if (element.closest('[lang="en"]')) continue
+      offenders.push(`${element.tagName.toLowerCase()}: ${directText.slice(0, 80)}`)
+    }
+
+    const inputOffenders = [...root.querySelectorAll<HTMLElement>('input[dir="ltr"], textarea[dir="ltr"]')]
+      .filter(element => element.getAttribute('lang') !== 'en')
+      .map(element => `${element.tagName.toLowerCase()}#${element.id || '<no-id>'}`)
+
+    return {
+      rootLang: document.documentElement.lang,
+      rootDir: document.documentElement.dir,
+      offenders: [...offenders, ...inputOffenders],
+    }
+  })
+
+  expect(result.rootLang).toBe('fa')
+  expect(result.rootDir).toBe('rtl')
+  expect(result.offenders).toEqual([])
+}
+
 async function expectNoHorizontalOverflow(page: Page): Promise<void> {
   const dimensions = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
@@ -616,6 +647,25 @@ test('offline audio manager is optional, book-scoped and progress-neutral', asyn
 
   expect(await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))).toBe(saved)
   await expectNoHorizontalOverflow(page)
+})
+
+test('English learning content switches assistive technology out of Persian pronunciation rules', async ({ page }) => {
+  await page.goto('/#/prep/b1c1')
+  await expect(page.getByTestId('teach-headword')).toBeVisible()
+  await expectEnglishLanguageMetadata(page)
+
+  const activeUse = page.getByTestId('active-use-practice')
+  await activeUse.getByText('کاربرد فعال در جمله (اختیاری)', { exact: true }).click()
+  await expect(activeUse.locator('textarea')).toHaveAttribute('lang', 'en')
+  await expectEnglishLanguageMetadata(page)
+
+  await page.goto('/#/glossary')
+  await expect(page.locator('.glossary-row').first()).toBeVisible()
+  await expectEnglishLanguageMetadata(page)
+
+  await openWithProgress(page, '/read/b1c1', { exploreAll: true })
+  await expect(page.locator('.story-en').first()).toBeVisible()
+  await expectEnglishLanguageMetadata(page)
 })
 
 test('settings keeps advanced controls collapsed until requested', async ({ page }) => {
