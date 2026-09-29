@@ -76,16 +76,6 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
     if (recorder && recorder.state !== 'inactive') recorder.stop()
   }, [clearStopTimer])
 
-  useEffect(() => {
-    // A recording belongs only to the word currently on screen.
-    stopRecording()
-    stopStream()
-    clearRecording()
-    setStatus('idle')
-    setMessage('')
-    setExpanded(false)
-  }, [clearRecording, stopRecording, stopStream, word])
-
   useEffect(() => () => {
     clearStopTimer()
     const recorder = recorderRef.current
