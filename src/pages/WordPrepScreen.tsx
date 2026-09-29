@@ -566,7 +566,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   speak(currentTeachWord.word, false, true)
                 }}
                 disabled={!state.soundOn || !teachAudioReady}
-                aria-label={`پخش تلفظ ${currentTeachWord.word}`}
+                aria-label="پخش دوبارهٔ تلفظ واژه"
               >
                 <span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش دوباره</span>
               </button>
