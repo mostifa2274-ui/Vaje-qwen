@@ -81,3 +81,6 @@ public/art/chapters/b8c5.webp
 # Playwright output
 test-results/
 playwright-report/
+
+# Local Cloudflare runtime state (wrangler dev)
+.wrangler/

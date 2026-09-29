@@ -351,9 +351,80 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
     // A cold navigation must also recover the shell after losing the origin.
     await page.reload()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
+    // So must a launch URL that was never cached, such as one with a query.
+    await page.goto(`${origin.url}/?source=homescreen#/map`)
+    await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
   } finally {
     await origin.stop()
   }
+})
+
+test('the production build enforces its content security policy without a single violation', async ({ page }) => {
+  await page.addInitScript(() => {
+    const seen: string[] = []
+    ;(window as Window & { __ghesseCspViolations?: string[] }).__ghesseCspViolations = seen
+    document.addEventListener('securitypolicyviolation', event => {
+      seen.push(`${event.violatedDirective} ${event.blockedURI}`)
+    })
+  })
+  await openWithProgress(page, '/map', { exploreAll: true })
+  const policy = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content')
+  expect(policy).toContain("script-src 'self'")
+  expect(policy).toContain("object-src 'none'")
+  expect(policy).not.toContain('unsafe-inline')
+  expect(policy).not.toContain('unsafe-eval')
+
+  for (const route of ['glossary', 'flashcards', 'settings', 'review', 'prep/b1c1', 'read/b1c1', 'exam/book-2', 'exam/final-8', 'map']) {
+    await page.goto(`/#/${route}`)
+    await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible()
+  }
+  // Art, recorded narration and a sheet all load under the policy.
+  await page.goto('/#/read/b1c1')
+  await expect.poll(() => page.evaluate(() => [...document.images].some(image => image.naturalWidth > 0))).toBe(true)
+  await page.goto('/#/flashcards')
+  await page.getByRole('button', { name: /شروع مرور/ }).click()
+  await page.getByRole('button', { name: 'نمایش پاسخ' }).click()
+  await expect(page.locator('.flashcard-meaning')).toBeVisible()
+  const violations = await page.evaluate(() => (window as Window & { __ghesseCspViolations?: string[] }).__ghesseCspViolations ?? [])
+  expect(violations).toEqual([])
+})
+
+test.describe('without a service worker', () => {
+  // The service worker would answer from its precache; this covers a first
+  // visit, or a browser that keeps no worker.
+  test.use({ serviceWorkers: 'block' })
+
+  test('a screen whose script fails to load reloads once, then offers a retry without losing the app', async ({ page }) => {
+    await page.goto('/#/map')
+    await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+    const chunk = /\/assets\/GlossaryScreen-[^/]+\.js$/
+    let blocked = 0
+    await page.route(chunk, route => {
+      blocked++
+      return route.abort()
+    })
+    await page.getByRole('button', { name: 'واژه‌نامه', exact: true }).click()
+    // The first failure reloads the page by itself; the second one waits.
+    const recovery = page.getByTestId('route-error')
+    await expect(recovery).toBeVisible()
+    await expect(recovery.getByRole('heading', { name: 'این بخش باز نشد' })).toBeVisible()
+    expect(blocked).toBe(2)
+    await expect(page).toHaveURL(/#\/glossary$/)
+    await expect(page.getByRole('main')).toBeVisible()
+    await expectRenderedAccessibilityContract(page)
+
+    await page.unroute(chunk)
+    await recovery.getByRole('button', { name: 'دوباره تلاش کن' }).click()
+    await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
+
+    // The way home works from the recovery card too.
+    await page.route(/\/assets\/SettingsScreen-[^/]+\.js$/, route => route.abort())
+    await page.goto('/#/map')
+    await page.getByRole('button', { name: 'تنظیمات', exact: true }).click()
+    await expect(recovery).toBeVisible()
+    await recovery.getByRole('button', { name: 'بازگشت به مسیر' }).click()
+    await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+  })
 })
 
 test('keyboard skip link focuses the main landmark without changing the hash route', async ({ page }) => {

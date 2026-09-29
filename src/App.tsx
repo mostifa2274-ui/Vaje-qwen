@@ -1,9 +1,10 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { GhesseState } from './engine/types'
-import { loadPersistedState, loadState, mergeConcurrentState, saveState, STORAGE_KEY } from './engine/store'
+import { loadPersistedState, loadState, mergeConcurrentState, requestDurableStorage, saveState, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canOpenChapter, canOpenExam, canOpenStory, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
+import RouteErrorBoundary from './components/RouteErrorBoundary'
 import { warmEnglishVoices } from './engine/narration'
 import { loadClipIndex } from './engine/audioClips'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
@@ -112,15 +113,25 @@ function viewLabel(view: View): string {
   return 'مسیر یادگیری'
 }
 
+/**
+ * The progress this tab starts from. Its first save writes back any repair or
+ * migration at once, and reports whether the browser can keep progress.
+ */
+function startCourseState(): { state: GhesseState; persisted: boolean } {
+  const state = loadCourseState()
+  return { state, persisted: saveState(state) }
+}
+
 function loadCourseState(): GhesseState {
   const now = Date.now()
   return introduceWordsOfCompletedChapters(loadState(now, FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS), CHAPTERS, now)
 }
 
 export default function App() {
-  const [state, setState] = useState<GhesseState>(() => loadCourseState())
+  const [startup] = useState(startCourseState)
+  const [state, setState] = useState<GhesseState>(startup.state)
   const [view, setView] = useState<View>(() => resolveView(rawViewFromHash(), state))
-  const [persistOk, setPersistOk] = useState(true)
+  const [persistOk, setPersistOk] = useState(startup.persisted)
   const [syncConflict, setSyncConflict] = useState(false)
   const [now, setNow] = useState(() => Date.now())
   const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
@@ -150,6 +161,8 @@ export default function App() {
     setState(resolved)
     setSyncConflict(false)
     setPersistOk(saveState(resolved))
+    // Only after the learner has done something worth keeping.
+    requestDurableStorage()
   }, [state])
 
   const navigate = useCallback((next: View, replace = false) => {
@@ -252,10 +265,6 @@ export default function App() {
     }
   }, [])
   useEffect(() => {
-    setPersistOk(saveState(state))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  useEffect(() => {
     const onStorage = (event: StorageEvent) => {
       if (event.key !== STORAGE_KEY) return
       const next = loadCourseState()
@@ -269,26 +278,24 @@ export default function App() {
     return () => window.removeEventListener('storage', onStorage)
   }, [])
 
-  const checkForDeployedUpdate = useCallback(async () => {
-    if (!import.meta.env.PROD) return
-    const marker = await fetchReleaseMarker(import.meta.env.BASE_URL)
-    if (deployedBuildDiffers(marker)) setDeployedCommit(marker?.commit?.trim() || null)
-    else setDeployedCommit(null)
-  }, [])
-
   useEffect(() => {
     if (!import.meta.env.PROD) return
-    void checkForDeployedUpdate()
-    const timer = window.setInterval(() => { void checkForDeployedUpdate() }, 5 * 60_000)
+    const checkForDeployedUpdate = () => {
+      void fetchReleaseMarker(import.meta.env.BASE_URL).then(marker => {
+        setDeployedCommit(deployedBuildDiffers(marker) ? marker?.commit?.trim() || null : null)
+      })
+    }
+    checkForDeployedUpdate()
+    const timer = window.setInterval(checkForDeployedUpdate, 5 * 60_000)
     const onVisibility = () => {
-      if (document.visibilityState === 'visible') void checkForDeployedUpdate()
+      if (document.visibilityState === 'visible') checkForDeployedUpdate()
     }
     document.addEventListener('visibilitychange', onVisibility)
     return () => {
       window.clearInterval(timer)
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [checkForDeployedUpdate])
+  }, [])
 
   async function refreshToDeployedBuild() {
     try {
@@ -434,9 +441,11 @@ export default function App() {
         tabIndex={-1}
         aria-label={viewLabel(view)}
       >
-        <Suspense fallback={<RouteLoading />}>
-          {screen}
-        </Suspense>
+        <RouteErrorBoundary key={hashFor(view)} onHome={backToMap}>
+          <Suspense fallback={<RouteLoading />}>
+            {screen}
+          </Suspense>
+        </RouteErrorBoundary>
       </main>
     </>
   )

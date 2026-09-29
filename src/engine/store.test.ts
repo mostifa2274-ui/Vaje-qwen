@@ -15,7 +15,7 @@ function memoryStorage(): Storage {
 globalThis.localStorage = memoryStorage()
 globalThis.sessionStorage = memoryStorage()
 
-import { clearSessionDrafts, emptyState, importStateJson, mergeConcurrentState, resetState, saveState, summarizeProgress } from './store'
+import { clearSessionDrafts, emptyState, importStateJson, mergeConcurrentState, requestDurableStorage, resetState, saveState, summarizeProgress } from './store'
 
 describe('progress replacement', () => {
   beforeEach(() => {
@@ -187,5 +187,19 @@ describe('concurrent progress reconciliation', () => {
     expect(merged?.chapters).toEqual({})
     expect(merged?.dailyReviewGoal).toBe(20)
     expect(merged?.created).toBe(200)
+  })
+})
+
+describe('durable storage', () => {
+  it('asks the browser once per session to keep progress, only when not yet durable', async () => {
+    const calls: string[] = []
+    const manager = {
+      persisted: async () => { calls.push('persisted'); return false },
+      persist: async () => { calls.push('persist'); return true },
+    } as unknown as StorageManager
+    requestDurableStorage(manager)
+    requestDurableStorage(manager)
+    await new Promise(resolve => setTimeout(resolve, 0))
+    expect(calls).toEqual(['persisted', 'persist'])
   })
 })

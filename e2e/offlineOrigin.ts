@@ -19,6 +19,12 @@ export async function startOfflineOrigin() {
   const server = createServer(async (incoming, outgoing) => {
     try {
       const pathname = decodeURIComponent(new URL(incoming.url ?? '/', 'http://localhost').pathname)
+      // Like Cloudflare's asset server, which redirects /index.html to /.
+      if (pathname === '/index.html') {
+        outgoing.writeHead(307, { Location: '/' })
+        outgoing.end()
+        return
+      }
       const file = resolve(dist, `.${pathname === '/' ? '/index.html' : pathname}`)
       if (!file.startsWith(resolve(dist) + sep)) throw new Error('Outside build')
       const bytes = await readFile(file)

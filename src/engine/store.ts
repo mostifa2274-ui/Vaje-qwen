@@ -324,6 +324,22 @@ function isValidStoredObject(raw: string): boolean {
   }
 }
 
+let durableStorageRequested = false
+
+/**
+ * Progress lives only on this device, so ask the browser once per session to
+ * keep this site's storage when space runs low. Browsers decide silently
+ * (Chromium, Safari) or ask the learner once (Firefox); a refusal changes
+ * nothing, and backups in Settings remain the safeguard.
+ */
+export function requestDurableStorage(storage: StorageManager | undefined = globalThis.navigator?.storage): void {
+  if (durableStorageRequested || !storage?.persist || !storage.persisted) return
+  durableStorageRequested = true
+  void storage.persisted()
+    .then(already => (already ? undefined : storage.persist()))
+    .catch(() => undefined)
+}
+
 export function saveState(state: GhesseState): boolean {
   try {
     const previous = localStorage.getItem(STORAGE_KEY)
