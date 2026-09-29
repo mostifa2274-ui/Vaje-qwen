@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "targetWords": 899,
+  "requiredHumanReviewFields": [
+    "sense distinction",
+    "Persian gloss accuracy",
+    "part of speech normalization",
+    "inflection/irregular forms where relevant",
+    "common A1-appropriate collocations",
+    "usage/register note where relevant",
+    "pronunciation trap for Persian speakers where relevant",
+    "example naturalness",
+    "Persian example translation"
+  ],
+  "reviewedWordIds": [],
+  "reviewerSignoff": null,
+  "note": "Do not fabricate reviewer sign-off. Add word ids only after the full lexical checklist has been checked by a qualified human reviewer."
+}
