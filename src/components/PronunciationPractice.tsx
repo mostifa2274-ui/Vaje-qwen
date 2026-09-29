@@ -8,6 +8,8 @@ interface Props {
   soundOn: boolean
   narratorVoiceURI: string
   narratorRate: number
+  /** Parent learning audio is still gating progression; do not interrupt it. */
+  disabled?: boolean
 }
 
 type RecordingState = 'idle' | 'requesting' | 'recording' | 'recorded' | 'error'
@@ -31,7 +33,7 @@ function microphoneErrorMessage(error: unknown): string {
  * mastery evidence, and receive no automatic accent score. The learner hears
  * the course model and their own short recording side by side.
  */
-export default function PronunciationPractice({ word, soundOn, narratorVoiceURI, narratorRate }: Props) {
+export default function PronunciationPractice({ word, soundOn, narratorVoiceURI, narratorRate, disabled = false }: Props) {
   const [expanded, setExpanded] = useState(false)
   const [status, setStatus] = useState<RecordingState>('idle')
   const [message, setMessage] = useState('')
@@ -200,6 +202,7 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
         type="button"
         className="btn-paper w-full px-3 py-2.5 text-sm"
         aria-expanded={expanded}
+        disabled={disabled}
         onClick={() => setExpanded(value => !value)}
       >
         <span className="inline-flex items-center justify-center gap-2">
