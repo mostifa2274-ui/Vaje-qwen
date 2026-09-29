@@ -2,7 +2,7 @@ import { useState, type KeyboardEvent } from 'react'
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { learningHealth, bookHealth, certificationStatus, consolidationFocus, nextBestAction } from '../engine/analytics'
-import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, FlameIcon, FlashcardsIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
+import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, DownloadIcon, FlameIcon, FlashcardsIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
 import {
   MIDPOINT_EXAM_ID,
   FINAL_EXAM_ID,
@@ -33,6 +33,7 @@ interface Props {
   onOpenReview: () => void
   onOpenGlossary: () => void
   onOpenFlashcards: () => void
+  onOpenOfflineAudio: () => void
   onOpenSettings: () => void
 }
 
@@ -80,7 +81,7 @@ function ExamGate({
   )
 }
 
-export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenDiagnostic, onOpenExam, onOpenReview, onOpenGlossary, onOpenFlashcards, onOpenSettings }: Props) {
+export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenDiagnostic, onOpenExam, onOpenReview, onOpenGlossary, onOpenFlashcards, onOpenOfflineAudio, onOpenSettings }: Props) {
   const doneCount = CHAPTERS.filter(c => state.chapters[c.id]?.completed).length
   const health = learningHealth(state, now)
   const action = nextBestAction(state, now)
@@ -436,6 +437,13 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             <span className="min-w-0 flex-1 text-right">
               <b>تمرین آزاد</b>
               <span>جعبهٔ لایتنر اختیاری؛ بدون اثر روی تسلط و قفل‌های مسیر</span>
+            </span>
+          </button>
+          <button type="button" className="library-home-row" onClick={onOpenOfflineAudio} aria-label="صدای آفلاین">
+            <span className="library-home-icon" aria-hidden="true"><DownloadIcon className="h-5 w-5" /></span>
+            <span className="min-w-0 flex-1 text-right">
+              <b>صدای آفلاین</b>
+              <span>صدای طبیعی هر کتاب را برای یادگیری بدون اینترنت ذخیره کن</span>
             </span>
           </button>
           <button type="button" className="library-home-row" onClick={onOpenSettings} aria-label="تنظیمات">
