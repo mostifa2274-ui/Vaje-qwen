@@ -53,7 +53,6 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, onTogg
                 key={index}
                 className="tok tok-word"
                 onClick={() => onWordTap(entry.id)}
-                aria-label={'معنی ' + token.raw}
               >
                 {token.raw}
               </button>
