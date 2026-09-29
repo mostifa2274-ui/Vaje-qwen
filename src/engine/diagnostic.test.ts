@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { CHAPTERS } from '../data/chapters'
 import { chapterPrepared, canPrepareChapter, canReadChapter } from './gates'
 import { wordMastery } from './mastery'
-import { recordCompletedRead, recordDiagnosticPreparedChapter } from './progress'
+import { recordCompletedRead, recordDiagnosticPreparedChapter, recordPreparedChapter } from './progress'
 import { answerCount } from './activity'
 import { emptyState } from './store'
 import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehension'
@@ -41,6 +41,28 @@ describe('optional prove-known diagnostic', () => {
       expect(next.words[id]?.successDays).toEqual([])
       expect(wordMastery(id, next)).toBe('seen')
     }
+  })
+
+  it('does not let later taught practice overwrite prove-known acquisition evidence', () => {
+    const fresh = emptyState(1, chapter.id)
+    const diagnostic = recordDiagnosticPreparedChapter(fresh, chapter.id, ids, ids, ids, 10)
+    const beforeDifficulty = diagnostic.words[ids[0]].difficulty
+
+    const replayed = recordPreparedChapter(
+      diagnostic,
+      chapter.id,
+      ids,
+      ids,
+      ids,
+      [ids[0]],
+      [ids[0]],
+      20,
+    )
+
+    expect(replayed.words[ids[0]].difficulty).toBe(beforeDifficulty)
+    expect(replayed.chapters[chapter.id].prepDiagnosticPassed).toBe(true)
+    expect(replayed.chapters[chapter.id].prepWrittenFirstPassCorrect).toBeUndefined()
+    expect(replayed.chapters[chapter.id].prepListeningFirstPassCorrect).toBeUndefined()
   })
 
   it('still requires verified story comprehension before chapter completion', () => {
