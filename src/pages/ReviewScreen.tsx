@@ -117,7 +117,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   // the feedback, so its mode stays frozen until the learner moves on.
   const mode = gradedCard?.key === cardKey
     ? gradedCard.mode
-    : progress ? modeForProgress(progress) : 'recognition'
+    : progress ? modeForProgress(progress, state.soundOn && !audioBlocked) : 'recognition'
   const question = useMemo(
     () => currentWord ? buildReviewQuestion(currentWord, VOCAB, mode, `review:${cardKey}`) : undefined,
     [cardKey, currentWord, mode],
@@ -202,7 +202,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     const unavailable = (failure: SpeechFailure = 'unavailable') => {
       setAudioReady(false)
       setAudioBlocked(true)
-      setAudioNotice(speechFailureNotice(failure, 'پخش تلفظ انگلیسی در دسترس نیست. صدای English Text-to-Speech مرورگر یا سیستم را فعال کن و دوباره امتحان کن.'))
+      setAudioNotice(speechFailureNotice(failure, 'پخش تلفظ انگلیسی در دسترس نیست؛ این کارت به یک بازیابی نوشتاریِ بدون صدا تغییر کرد.'))
     }
     const ended = () => {
       setAudioReady(true)
@@ -363,6 +363,10 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
             <span className="mastery-chip">مهارت هدف: {weaknessLabel(mode)}</span>
             <span className="text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>{modeLabel(mode)}</span>
           </div>
+
+          {audioNotice && mode !== 'spelling' && (
+            <div className="paper-note mt-4 text-right" role="status">{audioNotice}</div>
+          )}
 
           <div className="mt-6 text-center">
             {mode === 'spelling' ? (
