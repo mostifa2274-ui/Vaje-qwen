@@ -15,6 +15,8 @@ export interface PrepDraft {
   feedback: PrepFeedback
   selected: string
   typed: string
+  /** Explicit opt-in diagnostic that may skip teaching only with zero first-pass errors. */
+  proveKnown?: boolean
   updatedAt: number
 }
 
@@ -69,10 +71,12 @@ export function sanitizePrepDraft(raw: unknown, chapterId: string, chapterWordId
   let listeningQueue = validIds(value.listeningQueue, allowed).filter(id => !listeningPassed.includes(id))
   const listeningMissed = validIds(value.listeningMissed, allowed)
 
-  // Restore phases fail closed. Written testing is valid only after the final
-  // teaching card, and listening is valid only after 100% written coverage.
+  // Restore phases fail closed. Normal testing is valid only after the final
+  // teaching card. The explicit prove-known diagnostic is the one exception,
+  // and it still needs complete first-pass written coverage before listening.
+  const proveKnown = value.proveKnown === true
   let phase: PrepPhase = value.phase
-  if (phase !== 'teach' && teachIndex < maxTeachIndex) phase = 'teach'
+  if (phase !== 'teach' && teachIndex < maxTeachIndex && !proveKnown) phase = 'teach'
   if (phase === 'listening' && writtenPassed.length < chapterWordIds.length) phase = 'written'
 
   // A malformed or interrupted draft must never leave a test in an empty,
@@ -99,6 +103,7 @@ export function sanitizePrepDraft(raw: unknown, chapterId: string, chapterWordId
     feedback: isFeedback(value.feedback) ? value.feedback : null,
     selected: safeText(value.selected),
     typed: safeText(value.typed),
+    ...(proveKnown && phase !== 'teach' ? { proveKnown: true } : {}),
     updatedAt: typeof value.updatedAt === 'number' && Number.isFinite(value.updatedAt) && value.updatedAt > 0
       ? value.updatedAt
       : Date.now(),
