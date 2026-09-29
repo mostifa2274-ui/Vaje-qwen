@@ -28,6 +28,8 @@ export function recordPreparedChapter(
   const listeningMissed = new Set(listeningMissedIds)
   const alreadyUsedCurrentGate = (previous?.prepWrittenTotal ?? 0) > 0 || (previous?.prepListeningTotal ?? 0) > 0
   const tuneDifficulty = !alreadyUsedCurrentGate
+  const writtenFirstPassCorrect = wordIds.length - writtenMissed.size
+  const listeningFirstPassCorrect = wordIds.length - listeningMissed.size
 
   for (const id of wordIds) {
     const existing = words[id] ?? blankWordProgress(now)
@@ -55,8 +57,12 @@ export function recordPreparedChapter(
         prepAttempts: (previous?.prepAttempts ?? 0) + 1,
         prepWrittenCorrect: wordIds.length,
         prepWrittenTotal: wordIds.length,
+        prepWrittenFirstPassCorrect: previous?.prepWrittenFirstPassCorrect
+          ?? (tuneDifficulty ? writtenFirstPassCorrect : undefined),
         prepListeningCorrect: wordIds.length,
         prepListeningTotal: wordIds.length,
+        prepListeningFirstPassCorrect: previous?.prepListeningFirstPassCorrect
+          ?? (tuneDifficulty ? listeningFirstPassCorrect : undefined),
         completed: previous?.completed ?? false,
         completedAt: previous?.completedAt,
         lastReadAt: previous?.lastReadAt,
