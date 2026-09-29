@@ -130,3 +130,10 @@ CI روی هر PR و هر push به `main` اجرا می‌شود و ساخت Cl
 `research/VALIDATION_PROTOCOL.md` آزمون مستقل یادگیری را تعریف می‌کند: baseline، انتقال با محتوای ندیده، و پیگیری حدود ۷ و ۳۰ روز. وضعیت فعلی در `research/status.json` به‌صراحت **protocol-ready-not-run** است؛ بنابراین نرم‌افزار research-informed است اما هنوز ادعای «اثبات‌شده در مطالعهٔ واقعی» ندارد.
 
 در تنظیمات، «گزارش پژوهشی بدون اطلاعات هویتی» فقط با اقدام خود زبان‌آموز دانلود می‌شود. گزارش شامل شاخص‌های یادگیری تجمیع‌شده است و نام، پاسخ خام، تاریخ/ساعت دقیق، تنظیمات صدا یا فایل ضبط تلفظ را شامل نمی‌شود.
+
+
+## Evidence gates for best-in-class claims
+
+Technical CI and successful deployment are deliberately separated from claims that require real human or external evidence. `npm run best-in-class:status` reports the current rights, learner-outcomes, native-editorial, accessibility, visual-art-direction and learning-policy-calibration gates. `npm run validate:best-in-class` fails until all six have genuine evidence.
+
+Ordinary `npm run check` runs `validate:quality-program`: it verifies the ledgers and prevents a gate from being marked complete without the corresponding rights record, validated learner study, complete native review, hands-on accessibility matrix, exact-manifest art-direction sign-off, or evidence-backed learning-policy calibration. Pending human work remains pending rather than being fabricated by automation.

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "targetWords": 899,
+  "requiredHumanReviewFields": [
+    "sense distinction",
+    "Persian gloss accuracy",
+    "part of speech normalization",
+    "inflection/irregular forms where relevant",
+    "common level-appropriate collocations",
+    "usage/register note where relevant",
+    "pronunciation trap for Persian speakers where relevant",
+    "example naturalness",
+    "Persian example translation"
+  ],
+  "reviewedWordIds": [],
+  "reviewerSignoff": null,
+  "chapterAssessmentSignoff": null,
+  "note": "Do not fabricate reviewer sign-off. Add ids only after genuine human review.",
+  "activeVocabularySha256": "993172b126651f53441959216a5333599d5280455717451589f6abae975e9227"
+}
