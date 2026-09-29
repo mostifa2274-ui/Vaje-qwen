@@ -153,6 +153,16 @@ export interface WordEntry {
   tr: string
   pos: string
   cefr: string
+  // Optional human-reviewed lexical enrichment. These fields must never be
+  // auto-filled merely to satisfy a schema; quality/lexical-review.json tracks
+  // the real editorial sign-off.
+  senseId?: string
+  senseFa?: string
+  inflections?: string[]
+  collocations?: Array<{ en: string; fa?: string }>
+  usageNoteFa?: string
+  pronunciationNoteFa?: string
+  wordFamily?: string[]
 }
 
 export interface Sentence {
