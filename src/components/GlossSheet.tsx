@@ -1,22 +1,25 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import type { WordEntry } from '../engine/types'
+import type { GhesseState, SkillDimension, WordEntry } from '../engine/types'
 import { stopAudio } from '../engine/audio'
 import type { ClipKind } from '../engine/audioClips'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { SpeakerIcon } from './Icons'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import PronunciationPractice from './PronunciationPractice'
+import { masteryEvidence, masteryNextRequirementFa } from '../engine/mastery'
+import { faNum, percent } from '../engine/format'
 
 interface Props {
   word: WordEntry | null
+  state: GhesseState
   soundOn: boolean
   narratorVoiceURI: string
   narratorRate: number
   onClose: () => void
 }
 
-export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRate, onClose }: Props) {
+export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, narratorRate, onClose }: Props) {
   const sheetRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const onCloseRef = useRef(onClose)
@@ -87,6 +90,24 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
 
   if (!word) return null
 
+  const progress = state.words[word.id]
+  const evidence = masteryEvidence(word.id, state)
+  const skillLabels: Record<SkillDimension, string> = {
+    meaning: 'معنی',
+    context: 'بافت',
+    production: 'تولید',
+    form: 'املاء',
+  }
+  const levelLabel = evidence.level === 'mastered'
+    ? 'مسلط'
+    : evidence.level === 'strong'
+      ? 'قوی'
+      : evidence.level === 'learning'
+        ? 'در حال یادگیری'
+        : evidence.level === 'seen'
+          ? 'دیده‌شده'
+          : 'تازه'
+
   // Rendered at the document root so the sheet always rises from the bottom
   // of the viewport, whatever the story page's own layout or animation does.
   return createPortal(
@@ -136,6 +157,43 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
           narratorVoiceURI={narratorVoiceURI}
           narratorRate={narratorRate}
         />
+
+        <details className="method-details mt-4" data-testid="mastery-evidence">
+          <summary>چرا وضعیت این واژه «{levelLabel}» است؟</summary>
+          <div className="pt-3 text-sm leading-7">
+            <p style={{ color: 'var(--ink-soft)' }}>{masteryNextRequirementFa(word.id, state)}</p>
+
+            {progress?.introduced && (
+              <>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <div className="metric-card"><b>{percent(evidence.accuracy)}</b><span>دقت بازیابی</span></div>
+                  <div className="metric-card"><b>{faNum(evidence.successDays)}</b><span>روز موفق</span></div>
+                  <div className="metric-card"><b>{faNum(evidence.productiveDays)}</b><span>روز تولیدی</span></div>
+                  <div className="metric-card"><b>{faNum(evidence.spanDays)}</b><span>روز فاصلهٔ شواهد</span></div>
+                </div>
+
+                <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+                  {(Object.keys(skillLabels) as SkillDimension[]).map(dimension => {
+                    const stat = progress.skillStats?.[dimension] ?? { correct: 0, wrong: 0 }
+                    const total = stat.correct + stat.wrong
+                    return (
+                      <div key={dimension} className="paper-note">
+                        <b>{skillLabels[dimension]}</b>
+                        <span className="mr-1" style={{ color: 'var(--ink-soft)' }}>
+                          {total ? `${faNum(stat.correct)} درست · ${faNum(stat.wrong)} خطا` : 'هنوز شواهدی ندارد'}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <p className="mt-3 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+                  این اعداد فقط از پاسخ‌های مستقل ثبت‌شده می‌آیند؛ بازکردن معنی، تمرین آزاد و پاسخ درست پس از دیدن جواب، تسلط را بالا نمی‌برند.
+                </p>
+              </>
+            )}
+          </div>
+        </details>
 
         <div className="mt-4 flex gap-2">
           <button

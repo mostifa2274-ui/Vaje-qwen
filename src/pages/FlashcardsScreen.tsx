@@ -682,6 +682,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
 
       <GlossSheet
         word={gloss}
+        state={state}
         soundOn={state.soundOn}
         narratorVoiceURI={state.narratorVoiceURI}
         narratorRate={state.narratorRate}

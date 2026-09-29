@@ -1914,6 +1914,11 @@ test('dictionary columns stay aligned across different word and meaning lengths'
   await rows.first().click()
   const dialog = page.getByRole('dialog')
   await expect(dialog).toBeVisible()
+  const evidence = dialog.getByTestId('mastery-evidence')
+  await expect(evidence).toContainText('چرا وضعیت این واژه «تازه» است؟')
+  await evidence.getByText('چرا وضعیت این واژه «تازه» است؟', { exact: true }).click()
+  await expect(evidence).toContainText('ابتدا این واژه را در فصل مربوط یاد بگیر.')
+
   const pronunciation = dialog.getByRole('button', { name: 'تمرین تلفظ (اختیاری)' })
   await expect(pronunciation).toBeVisible()
   await pronunciation.click()

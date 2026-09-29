@@ -147,6 +147,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
 
       <GlossSheet
         word={gloss}
+        state={state}
         soundOn={state.soundOn}
         narratorVoiceURI={state.narratorVoiceURI}
         narratorRate={state.narratorRate}

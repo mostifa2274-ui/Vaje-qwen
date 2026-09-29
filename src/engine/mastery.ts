@@ -97,6 +97,57 @@ export function wordMastery(wordId: string, state: GhesseState): MasteryLevel {
   return masteryEvidence(wordId, state).level
 }
 
+/**
+ * Learner-facing explanation for the next evidence gap. This intentionally
+ * describes observable learning evidence instead of exposing scheduler math or
+ * implying that one successful session equals mastery.
+ */
+export function masteryNextRequirementFa(wordId: string, state: GhesseState): string {
+  const word = state.words[wordId]
+  const evidence = masteryEvidence(wordId, state)
+
+  if (!word?.introduced) return 'ابتدا این واژه را در فصل مربوط یاد بگیر.'
+  if (evidence.level === 'seen') return 'اولین بازیابی مستقل را در مرور هوشمند انجام بده.'
+  if (word.lastReviewWasCorrect === false) return 'یک بازیابی مستقلِ درست لازم است تا روند دوباره رو به جلو برود.'
+
+  const accuracy = recallAccuracy(word)
+  const productionCorrect = skillCorrect(word, 'production')
+  const coveredSkills = skillCoverage(word)
+
+  if (evidence.level === 'learning') {
+    if (evidence.successDays < 2) return 'این واژه را در دست‌کم ۲ روز متفاوت، بدون کمک درست به یاد بیاور.'
+    if (evidence.productiveDays < 1) return 'دست‌کم یک بار واژه را از حافظه به‌صورت تولیدی بنویس.'
+    if (accuracy < 0.7) return 'دقت بازیابی را با مرورهای مستقل بیشتر به دست‌کم ۷۰٪ برسان.'
+    if (coveredSkills < 0.75) return 'برای دست‌کم ۳ مهارتِ معنی، بافت، تولید و املاء شواهد موفق بساز.'
+    return 'مرورهای فاصله‌دار را ادامه بده تا شواهد کافی برای سطح «قوی» جمع شود.'
+  }
+
+  if (evidence.level === 'strong') {
+    if (evidence.successDays < 4) return 'برای تسلط، بازیابی موفق را در دست‌کم ۴ روز متفاوت ثبت کن.'
+    if (evidence.productiveDays < 2) return 'برای تسلط، در دست‌کم ۲ روز متفاوت بازیابی تولیدیِ درست لازم است.'
+    if (evidence.spanDays < 14) return 'برای تسلط، شواهد موفق باید دست‌کم ۱۴ روز را پوشش دهد.'
+    if (evidence.intervalDays < 30) return 'مرورهای فاصله‌دار را ادامه بده تا فاصلهٔ مرور پایدارتر و بلندتر شود.'
+    if (accuracy < 0.8) return 'برای تسلط، دقت بازیابی مستقل باید دست‌کم ۸۰٪ باشد.'
+    if (coveredSkills < 1) return 'برای تسلط، هر چهار مهارتِ معنی، بافت، تولید و املاء باید شواهد موفق داشته باشند.'
+    const weakSkill = (['meaning', 'context', 'production', 'form'] as SkillDimension[])
+      .find(dimension => skillAccuracy(word, dimension) < 0.67)
+    if (weakSkill) {
+      const label = weakSkill === 'meaning'
+        ? 'معنی'
+        : weakSkill === 'context'
+          ? 'بافت'
+          : weakSkill === 'production'
+            ? 'تولید فعال'
+            : 'املاء و فرم'
+      return `دقت مهارت «${label}» را با مرورهای مستقل بیشتر به دست‌کم ۶۷٪ برسان.`
+    }
+    if (productionCorrect < 2) return 'برای تسلط، دست‌کم ۲ بازیابی تولیدیِ درست لازم است.'
+    return 'چند مرور فاصله‌دار دیگر لازم است تا همهٔ معیارهای تسلط پایدار کامل شود.'
+  }
+
+  return 'معیارهای فعلی تسلط پایدار کامل است؛ مرورهای سررسید را برای نگهداری حافظه ادامه بده.'
+}
+
 export function masteryWeight(level: MasteryLevel): number {
   switch (level) {
     case 'mastered': return 1
