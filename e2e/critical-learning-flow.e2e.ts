@@ -305,6 +305,36 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
 })
 
 
+test('a deployed update waits for the calm home screen instead of interrupting learning', async ({ page }) => {
+  await page.route('**/release.json**', route => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({
+      release: 'ghesse-5.0.0',
+      app: 'Ghesse',
+      worker: 'vaje-qwen1',
+      vocabulary: 899,
+      chapters: 40,
+      stateSchema: 6,
+      learningFlow: 'teach-write-listen-100',
+      commit: 'ffffffffffffffffffffffffffffffffffffffff',
+      branch: 'main',
+    }),
+  }))
+
+  await page.goto('/#/map')
+  const banner = page.locator('.app-update-banner')
+  await expect(banner).toBeVisible()
+  await expect(banner).toContainText('نسخهٔ فعال برنامه تغییر کرده است')
+
+  await page.goto('/#/prep/b1c1')
+  await expect(page.getByRole('heading', { name: /واژه‌های تازه:/ })).toBeVisible()
+  await expect(banner).toBeHidden()
+
+  await page.goto('/#/map')
+  await expect(banner).toBeVisible()
+})
+
 test('locked future books and preparation steps keep readable text opacity', async ({ page }) => {
   await page.goto('/#/map')
   await openHomeSection(page, 'مسیر')

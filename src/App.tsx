@@ -449,6 +449,10 @@ export default function App() {
   }
 
   const updateAvailable = Boolean(deployedCommit && deployedCommit !== dismissedCommit)
+  // A new build is important, but never interrupt a graded/reading task or
+  // discard intentionally ephemeral active-use text. Surface the refresh only
+  // on the calm home screen; the pending commit remains remembered meanwhile.
+  const showUpdateBanner = updateAvailable && view.name === 'map'
 
   return (
     <>
@@ -473,7 +477,7 @@ export default function App() {
           پیشرفت در برگهٔ دیگری هم‌زمان تغییر کرده بود. برای جلوگیری از بازنویسی، نسخهٔ ذخیره‌شده نگه داشته شد؛ دوباره تلاش کن.
         </div>
       )}
-      {updateAvailable && deployedCommit && (
+      {showUpdateBanner && deployedCommit && (
         <div className="app-update-banner" role="status">
           <div className="min-w-0 flex-1">
             <b>نسخهٔ فعال برنامه تغییر کرده است.</b>
