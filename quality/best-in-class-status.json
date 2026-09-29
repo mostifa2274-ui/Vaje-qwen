@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "productClaim": "best-in-class-learning-product",
+  "updatedAt": "2026-09-29",
+  "gates": {
+    "contentRights": {
+      "status": "blocked",
+      "evidence": "provenance/release-rights.json",
+      "note": "Requires documented redistribution rights or an independently reconstructed vocabulary."
+    },
+    "learnerOutcomesPilot": {
+      "status": "pending",
+      "evidence": "quality/LEARNING_OUTCOMES_PROTOCOL.md",
+      "note": "Requires representative Persian-speaking learners and delayed outcome data."
+    },
+    "nativeEditorialReview": {
+      "status": "pending",
+      "evidence": "quality/CONTENT_REVIEW_PROTOCOL.md",
+      "note": "Requires genuine human reviewer sign-off; AI checks do not substitute."
+    },
+    "accessibilityHumanQA": {
+      "status": "pending",
+      "evidence": "quality/ACCESSIBILITY_MATRIX.md",
+      "note": "Requires hands-on TalkBack, VoiceOver, keyboard and zoom testing."
+    },
+    "visualArtDirection": {
+      "status": "pending",
+      "evidence": "quality/ART_BIBLE.md",
+      "note": "Current art is technically reviewed; signature-world human art direction remains to be signed off."
+    },
+    "learningPolicyCalibration": {
+      "status": "pending",
+      "evidence": "quality/LEARNING_OUTCOMES_PROTOCOL.md",
+      "note": "FSRS and thresholds must be tuned from observed delayed outcomes, not made harder by intuition."
+    }
+  }
+}
