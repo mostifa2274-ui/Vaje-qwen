@@ -6,7 +6,7 @@ import { listeningChoiceOptions, isTypedCorrect } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { recordDiagnosticPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { clearDiagnosticDraft, loadDiagnosticDraft, saveDiagnosticDraft, type DiagnosticPhase } from '../engine/diagnosticDraft'
+import { clearDiagnosticDraft, loadDiagnosticDraft, markDiagnosticFailed, saveDiagnosticDraft, type DiagnosticPhase } from '../engine/diagnosticDraft'
 import type { GhesseState } from '../engine/types'
 
 interface Props {
@@ -94,6 +94,7 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
 
   function fail(wordId: string, failedPhase: DiagnosticPhase) {
     clearDiagnosticDraft(chapterId)
+    markDiagnosticFailed(chapterId)
     setFailure({ wordId, phase: failedPhase })
     setTyped('')
     setListeningReady(false)
