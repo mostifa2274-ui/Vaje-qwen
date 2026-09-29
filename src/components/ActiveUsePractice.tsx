@@ -93,19 +93,20 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
         </p>
 
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <button type="button" className="btn-paper py-3" onClick={onPlayWord}>۱. شنیدن واژه</button>
-          <button type="button" className="btn-paper py-3" onClick={onPlayExample}>۲. شنیدن جمله</button>
+          <button type="button" className="btn-paper py-3" onClick={onPlayWord} aria-label="شنیدن مدل واژه">۱. شنیدن واژه</button>
+          <button type="button" className="btn-paper py-3" onClick={onPlayExample} aria-label="شنیدن جملهٔ نمونه">۲. شنیدن جمله</button>
         </div>
         <p className="mt-3">واژه و سپس جملهٔ نمونه را با صدای خودت بگو؛ بعد صدایت را با مدل مقایسه کن.</p>
         <div className="mt-3 grid grid-cols-2 gap-2">
           {!recording ? (
-            <button type="button" className="btn-ink py-3" onClick={startRecording}>ضبط صدای من</button>
+            <button type="button" className="btn-ink py-3" onClick={startRecording} aria-label="شروع ضبط صدای من">ضبط صدای من</button>
           ) : (
-            <button type="button" className="btn-crimson py-3" onClick={stopRecording}>توقف ضبط</button>
+            <button type="button" className="btn-crimson py-3" onClick={stopRecording} aria-label="توقف ضبط صدای من">توقف ضبط</button>
           )}
           <button
             type="button"
             className="btn-quiet py-3"
+            aria-label="حذف صدای ضبط‌شده"
             disabled={!audioUrl || recording}
             onClick={() => replaceAudioUrl('')}
           >
@@ -131,7 +132,7 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
             onChange={event => { setSentence(event.target.value); setShowModel(false) }}
             placeholder="Write your own English sentence…"
           />
-          <button type="button" className="btn-paper mt-2 w-full py-3" disabled={!sentence.trim()} onClick={() => setShowModel(true)}>
+          <button type="button" className="btn-paper mt-2 w-full py-3" aria-label="مقایسهٔ جملهٔ من با جملهٔ نمونه" disabled={!sentence.trim()} onClick={() => setShowModel(true)}>
             مقایسه با جملهٔ نمونه
           </button>
           {showModel && (
