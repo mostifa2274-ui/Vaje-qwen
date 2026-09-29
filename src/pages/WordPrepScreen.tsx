@@ -12,6 +12,7 @@ import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import { faNum } from '../engine/format'
 import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
+import ActiveUsePractice from '../components/ActiveUsePractice'
 
 interface Props {
   chapterId: string
@@ -45,6 +46,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
   const [initialDraft] = useState(() => alreadyPrepared ? undefined : loadPrepDraft(chapterId, chapter.new))
   const [resumedDraft, setResumedDraft] = useState(Boolean(initialDraft))
+  const [proveKnown, setProveKnown] = useState(() => initialDraft?.proveKnown === true)
+  const [diagnosticNotice, setDiagnosticNotice] = useState('')
   const [phase, setPhase] = useState<PrepPhase>(() => initialDraft?.phase ?? 'teach')
   const [teachIndex, setTeachIndex] = useState(() => initialDraft?.teachIndex ?? 0)
 
@@ -216,6 +219,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       feedback,
       selected,
       typed,
+      ...(proveKnown ? { proveKnown: true as const } : {}),
       updatedAt: Date.now(),
     }, chapter.new)
   }, [
@@ -227,6 +231,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     listeningPassed,
     listeningQueue,
     phase,
+    proveKnown,
     selected,
     teachIndex,
     typed,
@@ -242,6 +247,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   function restartPrep() {
     clearPrepDraft(chapterId)
     setResumedDraft(false)
+    setProveKnown(false)
+    setDiagnosticNotice('')
     setPhase('teach')
     setTeachIndex(0)
     setWrittenQueue([...writtenOrder])
@@ -262,6 +269,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }
 
   function jumpTo(target: PrepPhase | 'story') {
+    setProveKnown(false)
+    setDiagnosticNotice('')
     setFeedback(null)
     setSelected('')
     setTyped('')
@@ -289,6 +298,46 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
       setListeningReady(false)
     }
     setPhase(target)
+  }
+
+  function startProveKnown() {
+    clearPrepDraft(chapterId)
+    setResumedDraft(false)
+    setProveKnown(true)
+    setDiagnosticNotice('')
+    setTeachAutoPlay(false)
+    setTeachAutoExampleDone(false)
+    setWrittenQueue([...writtenOrder])
+    setWrittenPassed(new Set())
+    setWrittenMissed(new Set())
+    setListeningQueue([])
+    setListeningPassed(new Set())
+    setListeningMissed(new Set())
+    setTyped('')
+    setSelected('')
+    setFeedback(null)
+    setPhase('written')
+  }
+
+  function failProveKnown() {
+    clearPrepDraft(chapterId)
+    setProveKnown(false)
+    setDiagnosticNotice('آزمون کوتاه نشان داد دست‌کم یک واژه هنوز به آموزش نیاز دارد. مسیر استاندارد از آموزش مستقیم شروع می‌شود؛ هیچ امتیازی از دست ندادی.')
+    setPhase('teach')
+    setTeachIndex(0)
+    setWrittenQueue([...writtenOrder])
+    setWrittenPassed(new Set())
+    setWrittenMissed(new Set())
+    setListeningQueue([])
+    setListeningPassed(new Set())
+    setListeningMissed(new Set())
+    setFeedback(null)
+    setSelected('')
+    setTyped('')
+    setAudioBlocked(false)
+    setAudioNotice('')
+    setListeningReady(false)
+    setTeachAudioReady(false)
   }
 
   function previousTeach() {
@@ -336,6 +385,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   function continueWritten() {
     if (!currentWrittenId || !feedback) return
     const correct = feedback === 'correct'
+    if (proveKnown && !correct) {
+      failProveKnown()
+      return
+    }
     const passed = new Set(writtenPassed)
     if (correct) passed.add(currentWrittenId)
     const rest = writtenQueue.slice(1)
@@ -376,6 +429,10 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   function continueListening() {
     if (!currentListeningId || !feedback) return
     const correct = feedback === 'correct'
+    if (proveKnown && !correct) {
+      failProveKnown()
+      return
+    }
     const passed = new Set(listeningPassed)
     if (correct) passed.add(currentListeningId)
     const rest = listeningQueue.slice(1)
@@ -501,6 +558,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
           </p>
         )}
 
+        {diagnosticNotice && <div className="paper-note mt-3" role="status">{diagnosticNotice}</div>}
+
         {resumedDraft && !alreadyPrepared && (
           <div className="prep-resume-row mt-3" role="status">
             <span>پیشرفت این جلسه بازیابی شد؛ از همان‌جایی که رها کردی ادامه بده.</span>
@@ -517,6 +576,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
         {phase === 'teach' && currentTeachWord && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
+            {!preview && !explore && !alreadyPrepared && teachIndex === 0 && (
+              <div className="paper-note mb-5">
+                <b>این واژه‌ها را از قبل بلدی؟</b>
+                <p className="mt-1 text-xs leading-6">اختیاری: بدون دیدن آموزش، یک آزمون سخت‌گیرانهٔ نوشتاری و شنیداری بده. اولین پاسخ غلط آزمون را متوقف می‌کند و تو را به آموزش برمی‌گرداند؛ فقط عبور بی‌خطا می‌تواند آموزش این فصل را رد کند.</p>
+                <button type="button" className="btn-paper mt-3 w-full py-3" onClick={startProveKnown}>اثبات دانستن — شروع آزمون بدون آموزش</button>
+              </div>
+            )}
             <div className="flex items-center justify-between gap-3">
               <span className="text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>واژهٔ {faNum(teachIndex + 1)} از {faNum(chapter.new.length)}</span>
               <button
@@ -582,6 +648,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               </button>
             </div>
 
+            <ActiveUsePractice
+              key={currentTeachId}
+              word={currentTeachWord}
+              onPlayWord={() => { setTeachAutoPlay(false); speak(currentTeachWord.word) }}
+              onPlayExample={() => { setTeachAutoPlay(false); speakExample() }}
+            />
+
             <div className="mt-5 grid grid-cols-3 gap-2">
               <button
                 type="button"
@@ -601,7 +674,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         {phase === 'written' && currentWrittenWord && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
-              <span>ترجمهٔ نوشتاری · ۱۰۰٪</span>
+              <span>{proveKnown ? 'اثبات دانستن · ترجمهٔ نوشتاری' : 'ترجمهٔ نوشتاری · ۱۰۰٪'}</span>
               <span>{faNum(writtenPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
@@ -644,13 +717,15 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
                   ? 'درست ✓ · رفتن به واژهٔ بعدی…'
-                  : <>معنی درست: <b>{currentWrittenWord.fa}</b>. این واژه دوباره در همین آزمون می‌آید.</>}
+                  : proveKnown
+                    ? <>معنی درست: <b>{currentWrittenWord.fa}</b>. آزمون اثبات دانستن اینجا پایان می‌یابد.</>
+                    : <>معنی درست: <b>{currentWrittenWord.fa}</b>. این واژه دوباره در همین آزمون می‌آید.</>}
               </div>
             )}
 
             {feedback === 'wrong' && (
               <button ref={retryContinueRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueWritten}>
-                ادامه و تکرار این واژه ←
+                {proveKnown ? 'بازگشت به آموزش استاندارد ←' : 'ادامه و تکرار این واژه ←'}
               </button>
             )}
           </div>
@@ -659,7 +734,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         {phase === 'listening' && currentListeningWord && listeningOptions && (
           <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
-              <span>شنیداری · ۱۰۰٪</span>
+              <span>{proveKnown ? 'اثبات دانستن · شنیداری' : 'شنیداری · ۱۰۰٪'}</span>
               <span>{faNum(listeningPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
             <div className="mastery-progress mt-3">
@@ -723,13 +798,15 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <div className={`feedback-panel mt-4 p-3 text-sm ${feedback === 'correct' ? 'feedback-correct' : 'feedback-wrong'}`} role="status">
                 {feedback === 'correct'
                   ? <><b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa} ✓ · بعدی…</>
-                  : <>پاسخ درست: <b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. دوباره در همین آزمون می‌آید.</>}
+                  : proveKnown
+                    ? <>پاسخ درست: <b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. آزمون اثبات دانستن اینجا پایان می‌یابد.</>
+                    : <>پاسخ درست: <b className="font-en" dir="ltr">{currentListeningWord.word}</b> — {currentListeningWord.fa}. دوباره در همین آزمون می‌آید.</>}
               </div>
             )}
 
             {feedback === 'wrong' && (
               <button ref={retryContinueRef} type="button" className="btn-ink mt-4 w-full py-3" onClick={continueListening}>
-                ادامه و تکرار این واژه ←
+                {proveKnown ? 'بازگشت به آموزش استاندارد ←' : 'ادامه و تکرار این واژه ←'}
               </button>
             )}
           </div>
