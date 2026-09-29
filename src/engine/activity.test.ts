@@ -68,7 +68,15 @@ describe('daily goal and streak', () => {
   })
 
   it('repairs stored logs, survives import and adds up across two tabs', () => {
-    expect(normalizeActivity({ [dayKey(at(0))]: 12.7, junk: 3, [dayKey(at(-1))]: -2, [dayKey(at(-500))]: 9 }, at(0))).toEqual({ [dayKey(at(0))]: 12 })
+    expect(normalizeActivity({
+      [dayKey(at(0))]: 12.7,
+      junk: 3,
+      [dayKey(at(-1))]: -2,
+      [dayKey(at(-500))]: 9,
+      // A one-day shift can happen after travel; a far-future log is corrupt.
+      [dayKey(at(1))]: 4,
+      [dayKey(at(30))]: 99,
+    }, at(0))).toEqual({ [dayKey(at(0))]: 12, [dayKey(at(1))]: 4 })
     const imported = importStateJson(JSON.stringify({ ...fresh(), activity: undefined }), at(0), CHAPTERS[0].id)
     expect(imported.activity).toEqual({})
 

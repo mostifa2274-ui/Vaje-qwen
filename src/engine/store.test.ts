@@ -153,6 +153,78 @@ describe('progress import validation', () => {
     expect(imported.chapters.b1c1.prepListeningFirstPassCorrect).toBe(4)
   })
 
+  it('does not let impossible future timestamps fabricate or postpone learning evidence', () => {
+    const now = new Date(2026, 0, 10, 12, 0, 0).getTime()
+    const farFuture = new Date(2099, 0, 1, 12, 0, 0).getTime()
+    const today = '2026-01-10'
+
+    const imported = importStateJson(
+      JSON.stringify({
+        version: 6,
+        dayEvidenceVersion: 1,
+        currentChapter: 'b1c1',
+        created: farFuture,
+        chapters: {
+          b1c1: {
+            preparedAt: farFuture,
+            prepAttempts: 1,
+            completed: true,
+            completedAt: farFuture,
+            lastReadAt: farFuture,
+            checksCorrect: 2,
+            checksTotal: 2,
+            reads: 1,
+          },
+        },
+        words: {
+          w1: {
+            introduced: true,
+            firstSeenAt: farFuture,
+            lastCheckAt: farFuture,
+            dueAt: farFuture,
+            lastReviewedAt: farFuture,
+            lastIndependentSuccessAt: farFuture,
+            lastProductiveSuccessAt: farFuture,
+            successDays: [today, '2099-01-01'],
+            productiveSuccessDays: [today, '2099-01-01'],
+          },
+        },
+        exams: {
+          'book-1': {
+            attempts: 1,
+            passed: true,
+            passedAt: farFuture,
+            lastAttemptAt: farFuture,
+            lastScore: 1,
+            bestScore: 1,
+            lastProductiveScore: 1,
+            bestProductiveScore: 1,
+            missedWordIds: [],
+            testedWordIds: ['w1'],
+          },
+        },
+      }),
+      now,
+      'b1c1',
+      chapters,
+      words,
+    )
+
+    expect(imported.created).toBe(now)
+    expect(imported.chapters.b1c1).toMatchObject({ completed: true, preparedAt: 1 })
+    expect(imported.chapters.b1c1.completedAt).toBeUndefined()
+    expect(imported.chapters.b1c1.lastReadAt).toBeUndefined()
+    expect(imported.words.w1.firstSeenAt).toBeUndefined()
+    expect(imported.words.w1.lastReviewedAt).toBeUndefined()
+    expect(imported.words.w1.lastIndependentSuccessAt).toBeUndefined()
+    expect(imported.words.w1.lastProductiveSuccessAt).toBeUndefined()
+    expect(imported.words.w1.dueAt).toBe(now)
+    expect(imported.words.w1.successDays).toEqual([today])
+    expect(imported.words.w1.productiveSuccessDays).toEqual([today])
+    expect(imported.exams['book-1'].passedAt).toBeUndefined()
+    expect(imported.exams['book-1'].lastAttemptAt).toBeUndefined()
+  })
+
   it('preserves first-pass acquisition evidence through backup import', () => {
     const state = emptyState(100, 'b1c1')
     state.chapters.b1c1 = {

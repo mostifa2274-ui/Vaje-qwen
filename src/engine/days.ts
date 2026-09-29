@@ -42,3 +42,24 @@ export function isDelayedLearningEvidence(firstSeenAt: number, evidenceAt: numbe
   return evidenceAt >= consolidationEligibleAt(firstSeenAt)
     && dayKey(evidenceAt) > dayKey(firstSeenAt)
 }
+
+
+/**
+ * A learner can cross the International Date Line or repair a device clock,
+ * so stored evidence may appear slightly ahead of "now". Keep a two-day
+ * tolerance, but reject timestamps/day buckets implausibly far in the future.
+ */
+export const FUTURE_EVIDENCE_TOLERANCE_MS = 2 * 24 * 60 * 60 * 1000
+
+export function plausibleEvidenceTimestamp(value: unknown, now: number): number | undefined {
+  return typeof value === 'number'
+    && Number.isFinite(value)
+    && value > 0
+    && value <= now + FUTURE_EVIDENCE_TOLERANCE_MS
+    ? value
+    : undefined
+}
+
+export function latestPlausibleDayKey(now: number): string {
+  return dayKey(now + FUTURE_EVIDENCE_TOLERANCE_MS)
+}

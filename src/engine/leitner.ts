@@ -1,7 +1,7 @@
 import { CHAPTERS, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState, LeitnerCard, LeitnerDay, LeitnerDirection, LeitnerScope, LeitnerSettings, LeitnerState, WordEntry } from './types'
 import { isHeadwordTranslationCorrect } from './persianTranslation'
-import { dayKey, dayStartAfter, startOfDay } from './days'
+import { dayKey, dayStartAfter, latestPlausibleDayKey, plausibleEvidenceTimestamp, startOfDay } from './days'
 
 // A Leitner deck over every course word. Cards start in box 1 and climb one
 // box per remembered review; each box waits twice as long as the one before.
@@ -61,7 +61,8 @@ export function gradeCard(card: LeitnerCard | undefined, grade: LeitnerGrade, no
 
 function pruneDays(days: Record<string, LeitnerDay>, now: number): Record<string, LeitnerDay> {
   const oldest = dayKey(dayStartAfter(now, -LOG_DAYS))
-  return Object.fromEntries(Object.entries(days).filter(([key]) => key >= oldest))
+  const newest = latestPlausibleDayKey(now)
+  return Object.fromEntries(Object.entries(days).filter(([key]) => key >= oldest && key <= newest))
 }
 
 /** Record a card's review in the deck and in today's activity. */
@@ -284,14 +285,19 @@ export function normalizeLeitner(raw: unknown, now: number, validWordIds?: Reado
       if (validWordIds && !validWordIds.has(id)) continue
       if (!card || typeof card !== 'object') continue
       const c = card as Partial<LeitnerCard>
-      const dueAt = time(c.dueAt)
-      if (dueAt === undefined) continue
+      const storedDueAt = time(c.dueAt)
+      if (storedDueAt === undefined) continue
+      // No valid Leitner box schedules beyond 32 days. A wildly future date
+      // from a corrupted/imported file must not hide a card for years.
+      const dueAt = storedDueAt <= dayStartAfter(now, 40) ? storedDueAt : now
       const reviews = wholeNumber(c.reviews, 0, 0, 100_000)
+      const addedAt = plausibleEvidenceTimestamp(c.addedAt, now) ?? Math.min(dueAt, now)
+      const lastReviewedAt = plausibleEvidenceTimestamp(c.lastReviewedAt, now)
       cards[id] = {
         box: wholeNumber(c.box, 1, 1, LEITNER_BOXES),
         dueAt,
-        addedAt: time(c.addedAt) ?? dueAt,
-        ...(time(c.lastReviewedAt) ? { lastReviewedAt: time(c.lastReviewedAt) } : {}),
+        addedAt,
+        ...(lastReviewedAt ? { lastReviewedAt } : {}),
         reviews,
         correct: wholeNumber(c.correct, 0, 0, reviews),
         lapses: wholeNumber(c.lapses, 0, 0, reviews),

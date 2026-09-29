@@ -156,11 +156,36 @@ describe('Leitner boxes', () => {
         [second.id]: { box: 2 },
       },
       settings: { direction: 'sideways', scope: 'book-3', newPerDay: 7, typed: true },
-      days: { [dayKey(NOON)]: { reviewed: 3, correct: 9, added: 1 }, junk: { reviewed: 1 } },
+      days: {
+        [dayKey(NOON)]: { reviewed: 3, correct: 9, added: 1 },
+        [dayKey(days(1))]: { reviewed: 2, correct: 2, added: 0 },
+        [dayKey(days(50))]: { reviewed: 50, correct: 50, added: 50 },
+        junk: { reviewed: 1 },
+      },
     }, NOON, new Set(VOCAB.map(word => word.id)))
     expect(repaired.cards).toEqual({ [first.id]: { box: LEITNER_BOXES, dueAt: NOON, addedAt: NOON, reviews: 2, correct: 2, lapses: 0 } })
     expect(repaired.settings).toEqual({ direction: 'enFa', scope: 'book-3', newPerDay: 10, typed: true })
-    expect(repaired.days).toEqual({ [dayKey(NOON)]: { reviewed: 3, correct: 3, added: 1 } })
+    expect(repaired.days).toEqual({
+      [dayKey(NOON)]: { reviewed: 3, correct: 3, added: 1 },
+      [dayKey(days(1))]: { reviewed: 2, correct: 2, added: 0 },
+    })
+
+    const impossibleFuture = normalizeLeitner({
+      cards: {
+        [first.id]: {
+          box: 6,
+          dueAt: days(5000),
+          addedAt: days(5000),
+          lastReviewedAt: days(5000),
+          reviews: 20,
+          correct: 20,
+          lapses: 0,
+        },
+      },
+    }, NOON, new Set([first.id]))
+    expect(impossibleFuture.cards[first.id]?.dueAt).toBe(NOON)
+    expect(impossibleFuture.cards[first.id]?.addedAt).toBe(NOON)
+    expect(impossibleFuture.cards[first.id]?.lastReviewedAt).toBeUndefined()
 
     // Older backups without a deck import with an empty one.
     const imported = importStateJson(JSON.stringify({ ...fresh(), leitner: undefined }), NOON, CHAPTERS[0].id)
