@@ -58,6 +58,7 @@ export function blankWordProgress(now: number): WordProgress {
     productiveCorrect: 0,
     successDays: [],
     productiveSuccessDays: [],
+    lastProductiveSuccessAt: undefined,
     difficulty: 5,
     stabilityDays: 0,
     lapses: 0,
@@ -224,13 +225,20 @@ export function recordRetrieval(
   if (correct) {
     next.lastIndependentSuccessAt = now
     if (progress.lastErrorMode && dimensionForMode(progress.lastErrorMode) === dimensionForMode(mode)) next.lastErrorMode = undefined
-    const isNewSuccessDay = !next.successDays.includes(day)
-    if (isNewSuccessDay) next.successDays.push(day)
+    // Timestamp truth is authoritative for day transitions. This remains
+    // correct even when a migrated legacy array still contains an adjacent
+    // UTC-labelled historical bucket.
+    const isNewSuccessDay = progress.lastIndependentSuccessAt === undefined
+      || dayKey(progress.lastIndependentSuccessAt) !== day
+    if (!next.successDays.includes(day)) next.successDays.push(day)
     next.successDays.sort()
 
     if (mode === 'productive' || mode === 'contextProductive' || mode === 'spelling') {
       next.productiveCorrect = progress.productiveCorrect + 1
-      if (!next.productiveSuccessDays.includes(day)) next.productiveSuccessDays.push(day)
+      const isNewProductiveDay = progress.lastProductiveSuccessAt === undefined
+        || dayKey(progress.lastProductiveSuccessAt) !== day
+      next.lastProductiveSuccessAt = now
+      if (isNewProductiveDay && !next.productiveSuccessDays.includes(day)) next.productiveSuccessDays.push(day)
       next.productiveSuccessDays.sort()
     }
 
