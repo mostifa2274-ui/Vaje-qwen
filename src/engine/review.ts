@@ -12,6 +12,31 @@ export function isTypedMode(mode: ReviewMode): boolean {
 
 const DAY = 86_400_000
 
+function utcDayKey(time: number): string {
+  return new Date(time).toISOString().slice(0, 10)
+}
+
+/**
+ * A legacy productive-day array may contain UTC day labels but no timestamp
+ * for its last productive success. Treat either UTC bucket touched by the
+ * learner's current local day as already represented. This deliberately errs
+ * toward one extra review day rather than granting false mastery.
+ */
+function legacyProductiveBucketCouldCoverLocalDay(days: readonly string[], now: number): boolean {
+  if (days.length === 0) return false
+  const local = dayKey(now)
+  if (days.includes(local)) return true
+  const start = new Date(now)
+  start.setHours(0, 0, 0, 0)
+  const next = new Date(start)
+  next.setDate(next.getDate() + 1)
+  const candidates = new Set([
+    utcDayKey(start.getTime()),
+    utcDayKey(next.getTime() - 1),
+  ])
+  return [...candidates].some(candidate => days.includes(candidate))
+}
+
 export interface ReviewQuestion {
   wordId: string
   mode: ReviewMode
@@ -235,8 +260,9 @@ export function recordRetrieval(
 
     if (mode === 'productive' || mode === 'contextProductive' || mode === 'spelling') {
       next.productiveCorrect = progress.productiveCorrect + 1
-      const isNewProductiveDay = progress.lastProductiveSuccessAt === undefined
-        || dayKey(progress.lastProductiveSuccessAt) !== day
+      const isNewProductiveDay = progress.lastProductiveSuccessAt !== undefined
+        ? dayKey(progress.lastProductiveSuccessAt) !== day
+        : !legacyProductiveBucketCouldCoverLocalDay(progress.productiveSuccessDays ?? [], now)
       next.lastProductiveSuccessAt = now
       if (isNewProductiveDay && !next.productiveSuccessDays.includes(day)) next.productiveSuccessDays.push(day)
       next.productiveSuccessDays.sort()
