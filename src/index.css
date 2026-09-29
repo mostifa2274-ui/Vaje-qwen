@@ -2087,3 +2087,15 @@ input[type="range"]:focus-visible {
   background: var(--cream);
   color: var(--ink);
 }
+
+.lexical-enrichment {
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--cream) 72%, transparent);
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+.lexical-enrichment b {
+  color: var(--ink);
+}
