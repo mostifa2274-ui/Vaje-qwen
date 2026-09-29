@@ -253,6 +253,19 @@ describe('spaced mastery', () => {
     expect(p.lapses).toBe(1)
   })
 
+  it('never chooses an audio-dependent spelling card when audio is unavailable', () => {
+    const start = Date.UTC(2026, 0, 1)
+    const p = blankWordProgress(start)
+    p.reviewStage = 5
+    p.skillStats.meaning.correct = 3
+    p.skillStats.context.correct = 2
+    p.skillStats.production.correct = 2
+    expect(modeForProgress(p, true)).toBe('spelling')
+    const fallback = modeForProgress(p, false)
+    expect(fallback).not.toBe('spelling')
+    expect(['productive', 'contextProductive', 'reverse']).toContain(fallback)
+  })
+
   it('flags repeated weak retrieval as a trouble word', () => {
     const start = Date.UTC(2026, 0, 1)
     let p = blankWordProgress(start)
