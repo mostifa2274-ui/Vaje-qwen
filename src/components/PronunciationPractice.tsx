@@ -10,11 +10,10 @@ interface Props {
   narratorRate: number
   /** Parent learning audio is still gating progression; do not interrupt it. */
   disabled?: boolean
+  practiceKind?: 'word' | 'sentence'
 }
 
 type RecordingState = 'idle' | 'requesting' | 'recording' | 'recorded' | 'error'
-
-const MAX_RECORDING_MS = 4_000
 
 function microphoneErrorMessage(error: unknown): string {
   if (error instanceof DOMException && error.name === 'NotAllowedError') {
@@ -33,7 +32,10 @@ function microphoneErrorMessage(error: unknown): string {
  * mastery evidence, and receive no automatic accent score. The learner hears
  * the course model and their own short recording side by side.
  */
-export default function PronunciationPractice({ word, soundOn, narratorVoiceURI, narratorRate, disabled = false }: Props) {
+export default function PronunciationPractice({ word, soundOn, narratorVoiceURI, narratorRate, disabled = false, practiceKind = 'word' }: Props) {
+  const sentencePractice = practiceKind === 'sentence'
+  const maxRecordingMs = sentencePractice ? 12_000 : 4_000
+  const practiceLabel = sentencePractice ? 'تمرین گفتاری جمله (اختیاری)' : 'تمرین تلفظ (اختیاری)'
   const [expanded, setExpanded] = useState(false)
   const [status, setStatus] = useState<RecordingState>('idle')
   const [message, setMessage] = useState('')
@@ -159,7 +161,7 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
 
       recorder.start()
       setStatus('recording')
-      stopTimerRef.current = window.setTimeout(stopRecording, MAX_RECORDING_MS)
+      stopTimerRef.current = window.setTimeout(stopRecording, maxRecordingMs)
     } catch (error) {
       if (!mountedRef.current) return
       clearStopTimer()
@@ -190,7 +192,7 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
     stopPlayback()
     cancelEnglishSpeech()
     stopAudio()
-    const started = speakEnglishWithFallback(word, narratorVoiceURI, narratorRate, 'w', () => {}, () => {
+    const started = speakEnglishWithFallback(word, narratorVoiceURI, narratorRate, sentencePractice ? 's' : 'w', () => {}, () => {
       setMessage('نمونهٔ تلفظ پخش نشد. صدای انگلیسی دستگاه یا اتصال را بررسی کن.')
     })
     if (!started) setMessage('نمونهٔ تلفظ پخش نشد. صدای انگلیسی دستگاه یا اتصال را بررسی کن.')
@@ -207,14 +209,16 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
       >
         <span className="inline-flex items-center justify-center gap-2">
           <MicrophoneIcon className="h-5 w-5" />
-          تمرین تلفظ (اختیاری)
+          {practiceLabel}
         </span>
       </button>
 
       {expanded && (
         <div className="mt-3 border-t pt-3 text-sm" style={{ borderColor: 'var(--line-soft)' }}>
           <p className="leading-7" style={{ color: 'var(--ink-soft)' }}>
-            نمونه را گوش کن، واژه را با صدای خودت بگو، بعد هر دو را مقایسه کن.
+            {sentencePractice
+              ? 'جملهٔ نمونه را گوش کن، با ریتم طبیعی تکرارش کن و بعد صدای خودت را با مدل مقایسه کن.'
+              : 'نمونه را گوش کن، واژه را با صدای خودت بگو، بعد هر دو را مقایسه کن.'}
           </p>
           <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
             ضبط فقط در حافظهٔ همین صفحه می‌ماند، جایی فرستاده یا ذخیره نمی‌شود و هیچ امتیاز خودکاری به لهجه‌ات داده نمی‌شود.
@@ -236,7 +240,9 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
           </div>
 
           {status === 'recording' && (
-            <p className="mt-2 text-xs font-bold" role="status">در حال ضبط… واژه را طبیعی بگو؛ ضبط حداکثر ۴ ثانیه است.</p>
+            <p className="mt-2 text-xs font-bold" role="status">
+              {sentencePractice ? 'در حال ضبط… جمله را طبیعی بگو؛ ضبط حداکثر ۱۲ ثانیه است.' : 'در حال ضبط… واژه را طبیعی بگو؛ ضبط حداکثر ۴ ثانیه است.'}
+            </p>
           )}
 
           {recordingUrl && status === 'recorded' && (

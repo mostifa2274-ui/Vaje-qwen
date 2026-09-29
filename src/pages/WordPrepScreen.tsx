@@ -14,6 +14,7 @@ import { faNum } from '../engine/format'
 import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
 import { clearDiagnosticFailure } from '../engine/diagnosticDraft'
 import PronunciationPractice from '../components/PronunciationPractice'
+import ActiveUsePractice from '../components/ActiveUsePractice'
 
 interface Props {
   chapterId: string
@@ -587,6 +588,15 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <PronunciationPractice
                 key={currentTeachWord.id}
                 word={currentTeachWord.word}
+                soundOn={state.soundOn}
+                narratorVoiceURI={state.narratorVoiceURI}
+                narratorRate={state.narratorRate}
+                disabled={!teachAudioReady || teachAutoPlay || audioBlocked}
+              />
+
+              <ActiveUsePractice
+                key={`active-${currentTeachWord.id}`}
+                word={currentTeachWord}
                 soundOn={state.soundOn}
                 narratorVoiceURI={state.narratorVoiceURI}
                 narratorRate={state.narratorRate}
