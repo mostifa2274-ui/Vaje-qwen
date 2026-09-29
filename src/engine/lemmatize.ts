@@ -108,6 +108,68 @@ function firstExisting(candidates: string[], map: LemmaMap): string | undefined 
   return undefined
 }
 
+export interface InflectionBaseCandidates {
+  noun: string[]
+  verb: string[]
+  adjective: string[]
+}
+
+/**
+ * Return plausible *inflectional* base spellings without consulting the deck.
+ * Keeping classes separate lets coaching code accept "writing" for the verb
+ * "write" without accidentally accepting "evening" for the adverb "even".
+ */
+export function inflectionBaseCandidates(token: string): InflectionBaseCandidates {
+  const t = normalizeSurface(token)
+  const noun: string[] = []
+  const verb: string[] = []
+  const adjective: string[] = []
+  const irregular = IRREGULAR[t]
+  if (irregular) {
+    noun.push(irregular)
+    verb.push(irregular)
+    adjective.push(irregular)
+  }
+
+  if (t.endsWith('ies') && t.length > 3) {
+    const base = `${t.slice(0, -3)}y`
+    noun.push(base)
+    verb.push(base)
+  }
+  if (t.endsWith('es') && t.length > 3) {
+    const minusS = t.slice(0, -1)
+    const minusEs = t.slice(0, -2)
+    noun.push(minusS, minusEs)
+    verb.push(minusS, minusEs)
+  } else if (t.endsWith('s') && t.length > 3) {
+    const base = t.slice(0, -1)
+    noun.push(base)
+    verb.push(base)
+  }
+  if (t.endsWith('ves') && t.length > 3) {
+    noun.push(`${t.slice(0, -3)}f`, `${t.slice(0, -3)}fe`)
+  }
+
+  if (t.endsWith('ied') && t.length > 3) verb.push(`${t.slice(0, -3)}y`)
+  if (t.endsWith('ing') && t.length > 4) {
+    const stem = t.slice(0, -3)
+    verb.push(stem, stem.replace(/(.)\1$/, '$1'), `${stem}e`)
+  }
+  if (t.endsWith('ed') && t.length > 3) {
+    const stem = t.slice(0, -2)
+    verb.push(stem, stem.replace(/(.)\1$/, '$1'), `${stem}e`)
+  }
+
+  if (t.endsWith('er') && t.length > 4) adjective.push(t.slice(0, -2))
+  if (t.endsWith('est') && t.length > 5) adjective.push(t.slice(0, -3))
+
+  return {
+    noun: [...new Set(noun)],
+    verb: [...new Set(verb)],
+    adjective: [...new Set(adjective)],
+  }
+}
+
 export function lemmaOf(token: string, map: LemmaMap): string | undefined {
   const t = normalizeSurface(token)
   const direct = map.lemma.get(t)
