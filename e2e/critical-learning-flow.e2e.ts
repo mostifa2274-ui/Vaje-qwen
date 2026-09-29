@@ -755,19 +755,16 @@ test('smart review speaks a spelling card on arrival and supports a keyboard-onl
   await expect(page.getByRole('button', { name: 'کارت بعدی ←' })).toBeFocused()
 })
 
-test('the Leitner box opens beside the glossary, moves cards between boxes and keeps them after a reload', async ({ page }) => {
+test('the optional Leitner box opens from the home tools, moves cards between boxes and keeps them after a reload', async ({ page }) => {
   await page.goto('/#/map')
   const leitnerButton = page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true })
   await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
   await expect(leitnerButton).toBeVisible()
-  // The two sit side by side in the home toolbar. Both are measured in one
-  // frame: the page's entry animation may still be moving them.
-  const [glossaryBox, leitnerBox] = await page.evaluate(() => ['واژه‌نامه', 'تمرین آزاد'].map(label => {
-    const box = document.querySelector(`.home-toolbar [aria-label="${label}"]`)!.getBoundingClientRect()
-    return { x: box.x, y: box.y, width: box.width }
-  }))
-  expect(Math.abs(glossaryBox.y - leitnerBox.y)).toBeLessThan(2)
-  expect(leitnerBox.x + leitnerBox.width).toBeLessThanOrEqual(glossaryBox.x + 1)
+  // Free practice remains discoverable beside the glossary, but it is no
+  // longer a competing due system on the home screen.
+  await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true })).toBeVisible()
+  await expectNoHorizontalOverflow(page)
   await leitnerButton.click()
   await expect(page).toHaveURL(/#\/flashcards$/)
   await expect(page.getByRole('heading', { level: 1, name: 'جعبهٔ لایتنر' })).toBeVisible()
