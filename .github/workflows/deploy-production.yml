@@ -75,7 +75,7 @@ jobs:
         env:
           WORKERS_CI_COMMIT_SHA: ${{ env.SOURCE_SHA }}
           WORKERS_CI_BRANCH: ${{ env.SOURCE_BRANCH }}
-        run: npm run build
+        run: npm run build && npm run validate:bundle-budget
 
       - name: Deploy to Cloudflare Workers
         if: steps.cloudflare.outputs.configured == 'true'

@@ -15,8 +15,8 @@ assert(pkg.scripts?.['cloudflare:build'] === 'npm run check', 'Cloudflare build 
 assert(pkg.scripts?.check?.includes('npm run build'), 'quality checks must create dist for Wrangler')
 assert(pkg.scripts?.deploy?.includes('npm run cloudflare:build'), 'deploy must build before Wrangler')
 assert(
-  directWorkflow.includes('npm run build') && directWorkflow.includes('npx wrangler@4.135.0 deploy'),
-  'the direct workflow must build before deploying',
+  directWorkflow.includes('npm run build') && directWorkflow.includes('npm run validate:bundle-budget') && directWorkflow.includes('npx wrangler@4.135.0 deploy'),
+  'the direct workflow must build, enforce bundle budgets, then deploy',
 )
 assert(!pkg.scripts?.['release:check'], 'obsolete content-rights deployment gate must be removed')
 
