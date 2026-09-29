@@ -121,7 +121,9 @@ describe('store v6', () => {
       expect(new Date(legacySuccessAt).getDate()).toBe(30)
 
       const fresh = emptyState(legacySuccessAt, 'b1c1')
-      const { dayEvidenceVersion: _dropMarker, ...legacyState } = fresh
+      const legacyState = Object.fromEntries(
+        Object.entries(fresh).filter(([key]) => key !== 'dayEvidenceVersion'),
+      )
       const legacyWord = {
         ...blankWordProgress(legacySuccessAt),
         reviewStage: 2,
