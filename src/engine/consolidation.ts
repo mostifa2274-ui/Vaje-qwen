@@ -1,19 +1,19 @@
 import { bookWordIds } from './bookTestSize'
-import { dayKey } from './days'
+import { consolidationEligibleAt, isDelayedLearningEvidence } from './days'
 import type { GhesseState, WordProgress } from './types'
 
-// A book's words are consolidated when each one has been recalled without
-// help on a later day than it was taught. Recall after a night's sleep is what
-// predicts that a word stays learned; a same-day success mostly measures
-// short-term memory. Every word of a book must pass this before the book's
-// test opens, so no word reaches the next book on a single day's evidence.
+// A book's words are consolidated only after genuinely delayed independent
+// retrieval. A local date boundary alone is not enough: evidence must occur on
+// a later learner-local day and at least eight real hours after first exposure.
+// This prevents a few minutes around midnight from masquerading as overnight
+// retention while keeping the rule understandable and DST-safe.
 
 /** Recalled without help on a later local day than it was taught. */
 export function isConsolidated(progress: WordProgress | undefined): boolean {
   if (!progress?.introduced || progress.lastIndependentSuccessAt === undefined) return false
-  // Progress from before first-seen times were kept counts any recall.
+  // Progress from before first-seen times were kept counts any independent recall.
   if (progress.firstSeenAt === undefined) return true
-  return dayKey(progress.lastIndependentSuccessAt) > dayKey(progress.firstSeenAt)
+  return isDelayedLearningEvidence(progress.firstSeenAt, progress.lastIndependentSuccessAt)
 }
 
 export interface BookConsolidation {
@@ -27,7 +27,6 @@ export interface BookConsolidation {
 }
 
 export function bookConsolidation(state: GhesseState, book: number, now: number): BookConsolidation {
-  const today = dayKey(now)
   const ids = bookWordIds(book)
   const ready: string[] = []
   const waiting: string[] = []
@@ -36,7 +35,7 @@ export function bookConsolidation(state: GhesseState, book: number, now: number)
     const progress = state.words[id]
     if (isConsolidated(progress)) consolidated++
     else if (!progress?.introduced) continue
-    else if (progress.firstSeenAt !== undefined && dayKey(progress.firstSeenAt) >= today) waiting.push(id)
+    else if (progress.firstSeenAt !== undefined && now < consolidationEligibleAt(progress.firstSeenAt)) waiting.push(id)
     else ready.push(id)
   }
   return { book, total: ids.length, consolidated, ready, waiting }
