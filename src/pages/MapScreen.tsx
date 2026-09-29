@@ -24,6 +24,7 @@ interface Props {
   now: number
   onChange: (next: GhesseState) => void
   onOpenChapter: (id: string) => void
+  onOpenDiagnostic: (id: string) => void
   onOpenExam: (id: string) => void
   onOpenReview: () => void
   onOpenGlossary: () => void
@@ -75,7 +76,7 @@ function ExamGate({
   )
 }
 
-export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenExam, onOpenReview, onOpenGlossary, onOpenFlashcards, onOpenSettings }: Props) {
+export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenDiagnostic, onOpenExam, onOpenReview, onOpenGlossary, onOpenFlashcards, onOpenSettings }: Props) {
   const doneCount = CHAPTERS.filter(c => state.chapters[c.id]?.completed).length
   const health = learningHealth(state, now)
   const action = nextBestAction(state, now)
@@ -150,6 +151,15 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-extrabold">قدم بعدی: {actionTitle}</h2>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{action.detail}</p>
+          {action.kind === 'chapter' && !action.prepared && !state.exploreAll && (
+            <button
+              type="button"
+              className="btn-quiet mt-2 px-3 text-xs"
+              onClick={() => onOpenDiagnostic(action.chapterId)}
+            >
+              این واژه‌ها را از قبل بلدم — تعیین سطح اختیاری
+            </button>
+          )}
           {'progress' in action && action.progress && (
             <div className="next-action-progress mt-2">
               <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
