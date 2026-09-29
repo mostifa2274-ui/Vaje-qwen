@@ -374,9 +374,36 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
       })
     })
 
+    const offlineClip = './audio/' + clipId('w', chapterWords[0].word) + '.mp3'
+    const offlineClipBytes = await page.evaluate(async url => {
+      const absolute = new URL(url, window.location.href).href
+      const response = await fetch(absolute, { cache: 'no-cache' })
+      if (!response.ok) throw new Error('recorded clip unavailable in offline QA fixture')
+      const cache = await caches.open('ghesse-audio-v1')
+      await cache.put(absolute, response.clone())
+      return (await response.arrayBuffer()).byteLength
+    }, offlineClip)
+    expect(offlineClipBytes).toBeGreaterThan(32)
+
     await origin.stop()
     // Negative control: an HTTP client without a worker cannot reach the app.
     await expect(context.request.get(`${origin.url}/index.html`, { timeout: 3_000 })).rejects.toThrow()
+
+    const cachedAudioRange = await page.evaluate(async url => {
+      const response = await fetch(url, { headers: { Range: 'bytes=0-31' } })
+      const bytes = await response.arrayBuffer()
+      return {
+        status: response.status,
+        range: response.headers.get('content-range'),
+        acceptRanges: response.headers.get('accept-ranges'),
+        length: bytes.byteLength,
+      }
+    }, offlineClip)
+    expect(cachedAudioRange.status).toBe(206)
+    expect(cachedAudioRange.range).toBe(`bytes 0-31/${offlineClipBytes}`)
+    expect(cachedAudioRange.acceptRanges).toBe('bytes')
+    expect(cachedAudioRange.length).toBe(32)
+
     const uncachedRouteArt = await page.evaluate(async () => {
       const response = await fetch('./art/chapters/b8c5.webp')
       return { ok: response.ok, type: response.headers.get('content-type') }
@@ -415,7 +442,7 @@ test('the production build enforces its content security policy without a single
   expect(policy).not.toContain('unsafe-inline')
   expect(policy).not.toContain('unsafe-eval')
 
-  for (const route of ['glossary', 'flashcards', 'settings', 'review', 'prep/b1c1', 'read/b1c1', 'exam/book-2', 'exam/final-8', 'map']) {
+  for (const route of ['glossary', 'flashcards', 'offline-audio', 'settings', 'review', 'prep/b1c1', 'read/b1c1', 'exam/book-2', 'exam/final-8', 'map']) {
     await page.goto(`/#/${route}`)
     await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible()
   }
@@ -557,7 +584,26 @@ test('home defaults to Today, keeps Journey focused, and exposes optional tools 
   await expect(page.locator('#home-panel-library')).toBeVisible()
   await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'صدای آفلاین', exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: 'تنظیمات', exact: true })).toBeVisible()
+  await expectNoHorizontalOverflow(page)
+})
+
+test('offline audio manager is optional, book-scoped and progress-neutral', async ({ page }) => {
+  await page.goto('/#/map')
+  const saved = await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))
+  await openHomeSection(page, 'کتابخانه')
+  await page.getByRole('button', { name: 'صدای آفلاین', exact: true }).click()
+
+  await expect(page).toHaveURL(/#\/offline-audio$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'صدای آفلاین' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 2, name: 'چطور کار می‌کند؟' })).toBeVisible()
+  await expect(page.getByText(/هیچ پیشرفت یا نمره‌ای تغییر نمی‌کند/)).toBeVisible()
+  for (let book = 1; book <= 8; book++) {
+    await expect(page.getByRole('heading', { level: 2, name: new RegExp(`^کتاب ${faNum(book)}:`) })).toBeVisible()
+  }
+  await expect(page.getByRole('button', { name: 'پاک‌کردن همهٔ صداهای آفلاین' })).toBeVisible()
+  expect(await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))).toBe(saved)
   await expectNoHorizontalOverflow(page)
 })
 
