@@ -33,12 +33,14 @@ for (const required of [
   'X-Content-Type-Options: nosniff',
   'Referrer-Policy: no-referrer',
   'Permissions-Policy:',
+  'microphone=(self)',
 ]) {
   assert(headers.includes(required), `public/_headers must send ${required}`)
 }
 assert(/\/assets\/\*\s*\n\s*Cache-Control: public, max-age=31536000, immutable/.test(headers), 'hashed assets must be cached as immutable')
 const viteConfig = readFileSync(join(root, 'vite.config.ts'), 'utf8')
 assert(viteConfig.includes('contentSecurityPolicy()') && viteConfig.includes("script-src 'self'"), 'the build must add the Content-Security-Policy')
+assert(viteConfig.includes("media-src 'self' blob:"), 'local pronunciation recordings need blob: media without allowing remote media origins')
 assert(!/unsafe-(?:inline|eval)/.test(viteConfig), 'the Content-Security-Policy must not allow unsafe-inline or unsafe-eval')
 assert(!directWorkflow.includes('GHESSE_RIGHTS_CONFIRMED'), 'direct workflow must not require the old rights flag')
 assert(manifest.schemaVersion === 1, 'provenance record schemaVersion must be 1')
