@@ -147,15 +147,16 @@ export function buildResearchReport(state: GhesseState): ResearchReport {
   const chapters = CHAPTERS.flatMap(chapter => {
     const progress = state.chapters[chapter.id]
     if (!progress) return []
+    const preparationPath: 'taught' | 'prove-known' | 'legacy' = progress.prepDiagnosticPassed
+      ? 'prove-known'
+      : (progress.prepWrittenTotal ?? 0) > 0 || (progress.prepListeningTotal ?? 0) > 0
+        ? 'taught'
+        : 'legacy'
     return [{
       id: chapter.id,
       completed: progress.completed,
       prepAttempts: progress.prepAttempts,
-      preparationPath: progress.prepDiagnosticPassed
-        ? 'prove-known'
-        : (progress.prepWrittenTotal ?? 0) > 0 || (progress.prepListeningTotal ?? 0) > 0
-          ? 'taught'
-          : 'legacy',
+      preparationPath,
       writtenCoverage: ratio(progress.prepWrittenCorrect, progress.prepWrittenTotal),
       writtenFirstPass: ratio(progress.prepWrittenFirstPassCorrect, progress.prepWrittenTotal),
       listeningCoverage: ratio(progress.prepListeningCorrect, progress.prepListeningTotal),
