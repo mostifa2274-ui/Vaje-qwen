@@ -241,5 +241,5 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
   if (!certification.ready) {
     return { kind: 'certification', title: 'مرحلهٔ تثبیت نهایی', detail: certification.missing[0] ?? 'مرورهای فاصله‌دار را ادامه بده.' }
   }
-  return { kind: 'complete', title: 'تسلط پایدار تأیید شد', detail: 'هم آزمون نهایی و هم معیارهای ماندگاری واژگان کامل شده‌اند.' }
+  return { kind: 'complete', title: 'معیارهای دوره کامل شد', detail: 'آزمون نهایی و معیارهای ماندگاری درون‌برنامه‌ای کامل‌اند؛ این نتیجه جای سنجش مستقل یادگیری در دنیای واقعی را نمی‌گیرد.' }
 }
