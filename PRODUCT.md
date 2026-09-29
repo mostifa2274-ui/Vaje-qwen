@@ -42,6 +42,11 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Dense dashboards that obscure the next learning action.
 - Making the story linguistically harder merely to sound literary.
 
+## Evidence policy
+- Internal mastery labels and in-app exam scores are not substitutes for external delayed-transfer evidence.
+- Real-world validation status is explicit in `research/status.json`. Until study evidence is attached, product language must say research-informed rather than empirically validated.
+- Learner research export is opt-in, de-identified and local-only until the learner explicitly shares the downloaded file.
+
 ## Release constraints
 - All 899 assigned vocabulary introductions must remain covered.
 - Sentence/audio provenance safeguards must remain intact.
