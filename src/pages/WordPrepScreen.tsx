@@ -643,6 +643,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               dir="rtl"
               autoFocus
               autoComplete="off"
+                autoCorrect="off"
               spellCheck={false}
               enterKeyHint="done"
               disabled={Boolean(feedback)}
