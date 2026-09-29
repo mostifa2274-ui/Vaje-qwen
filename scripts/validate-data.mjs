@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
+import { createCourseLexicon } from './lib/course-lexicon.mjs'
 
 const root = new URL('..', import.meta.url).pathname
 const dataDir = join(root, 'src/data')
@@ -52,6 +53,20 @@ for (const [index, word] of vocab.entries()) {
 // copy/paste defect and weakens contextual retrieval. Persian glosses may
 // legitimately repeat for synonyms, so they are intentionally not unique.
 assert(new Set(vocab.map(word => word.ex)).size === vocab.length, 'every vocabulary entry must have its own English example')
+
+// Each teaching example must actually demonstrate its own target lexical item
+// (or an inflected/irregular form that resolves to it). This is stricter than
+// merely checking for Latin text: a fluent but unrelated example would teach
+// the learner the wrong evidence. The shared course lexicon also keeps
+// homograph senses such as like/like-2 and second/second-2 contextual.
+const { analyzeSentence: analyzeVocabularyExample } = createCourseLexicon(vocab)
+for (const word of vocab) {
+  const analysis = analyzeVocabularyExample(word.ex)
+  assert(
+    analysis.ids.has(word.id),
+    `${word.id}: English example must contain the target word/sense or a recognized inflected form — "${word.ex}"`,
+  )
+}
 
 assert(chapters.length === 40, `expected 40 chapters, found ${chapters.length}`)
 assert(new Set(chapters.map(chapter => chapter.id)).size === chapters.length, 'chapter ids must be unique')
