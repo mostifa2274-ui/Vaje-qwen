@@ -122,8 +122,31 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
           </button>
         </div>
 
-        <div id={descriptionId} className="mt-3 text-xl font-bold">{word.fa}</div>
+        <div id={descriptionId} className="mt-3 text-xl font-bold">{word.senseFa ?? word.fa}</div>
+        {word.senseFa && word.senseFa !== word.fa && <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.fa}</div>}
         {audioNotice && <div className="paper-note mt-3" role="alert">{audioNotice}</div>}
+        {(word.inflections?.length || word.collocations?.length || word.usageNoteFa || word.pronunciationNoteFa || word.wordFamily?.length) && (
+          <div className="lexical-enrichment mt-4">
+            {word.inflections?.length ? (
+              <div><b>شکل‌ها:</b> <span className="font-en" dir="ltr">{word.inflections.join(' · ')}</span></div>
+            ) : null}
+            {word.collocations?.length ? (
+              <div className="mt-2">
+                <b>ترکیب‌های رایج:</b>
+                <ul className="mt-1 space-y-1">
+                  {word.collocations.map((item, index) => (
+                    <li key={`${item.en}:${index}`}>
+                      <span className="font-en" dir="ltr">{item.en}</span>{item.fa ? <> — {item.fa}</> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {word.usageNoteFa && <div className="mt-2"><b>کاربرد:</b> {word.usageNoteFa}</div>}
+            {word.pronunciationNoteFa && <div className="mt-2"><b>نکتهٔ تلفظ:</b> {word.pronunciationNoteFa}</div>}
+            {word.wordFamily?.length ? <div className="mt-2"><b>خانوادهٔ واژه:</b> <span className="font-en" dir="ltr">{word.wordFamily.join(' · ')}</span></div> : null}
+          </div>
+        )}
         <hr className="dash-line my-4" />
         <div className="font-en text-base leading-relaxed" dir="ltr">{word.ex}</div>
         <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.tr}</div>
