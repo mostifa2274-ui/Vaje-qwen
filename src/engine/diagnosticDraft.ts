@@ -83,3 +83,32 @@ export function clearDiagnosticDraft(chapterId: string): void {
     // Nothing else depends on this draft.
   }
 }
+
+const FAILED_PREFIX = 'ghesse:diagnostic-failed:v1:'
+
+export function diagnosticFailed(chapterId: string): boolean {
+  if (typeof sessionStorage === 'undefined') return false
+  try {
+    return sessionStorage.getItem(`${FAILED_PREFIX}${chapterId}`) === '1'
+  } catch {
+    return false
+  }
+}
+
+export function markDiagnosticFailed(chapterId: string): void {
+  if (typeof sessionStorage === 'undefined') return
+  try {
+    sessionStorage.setItem(`${FAILED_PREFIX}${chapterId}`, '1')
+  } catch {
+    // The fail-closed UI still routes to teaching in this tab.
+  }
+}
+
+export function clearDiagnosticFailure(chapterId: string): void {
+  if (typeof sessionStorage === 'undefined') return
+  try {
+    sessionStorage.removeItem(`${FAILED_PREFIX}${chapterId}`)
+  } catch {
+    // The flag is only an anti-retry guard; course progress is authoritative.
+  }
+}
