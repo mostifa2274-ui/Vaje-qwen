@@ -45,6 +45,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 
 ## Evidence policy
 - Internal mastery labels and in-app exam scores are not substitutes for external delayed-transfer evidence.
+- The learner-facing completion badge must be described as an **in-app/course evidence** badge, never as proof of real-world mastery or empirical validation.
 - Real-world validation status is explicit in `research/status.json`. Until study evidence is attached, product language must say research-informed rather than empirically validated.
 - Learner research export is opt-in, de-identified and local-only until the learner explicitly shares the downloaded file.
 
