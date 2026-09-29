@@ -25,8 +25,17 @@ assert(lexical.targetWords === vocabulary.length, 'lexical review target must ma
 assert(Array.isArray(lexical.reviewedWordIds), 'reviewedWordIds must be an array')
 assert(new Set(lexical.reviewedWordIds).size === lexical.reviewedWordIds.length, 'lexical review ids must be unique')
 for (const id of lexical.reviewedWordIds) assert(ids.has(id), 'lexical review contains unknown word id: ' + id)
-if (lexical.reviewedWordIds.length === vocabulary.length) {
-  assert(lexical.reviewerSignoff && typeof lexical.reviewerSignoff === 'object', 'full lexical review requires genuine reviewer sign-off')
+if (lexical.reviewedWordIds.length > 0) {
+  assert(lexical.reviewerSignoff && typeof lexical.reviewerSignoff === 'object', 'reviewed lexical entries require genuine reviewer sign-off')
+}
+const reviewed = new Set(lexical.reviewedWordIds)
+const enrichmentFields = ['senseId', 'senseFa', 'inflections', 'collocations', 'usageNoteFa', 'pronunciationNoteFa', 'wordFamily']
+for (const word of vocabulary) {
+  const enriched = enrichmentFields.some(field => {
+    const value = word[field]
+    return Array.isArray(value) ? value.length > 0 : typeof value === 'string' ? value.trim().length > 0 : value != null
+  })
+  assert(!enriched || reviewed.has(word.id), 'unreviewed lexical enrichment is not allowed for ' + word.id)
 }
 
 console.log('Quality program valid: lexical human review ' + lexical.reviewedWordIds.length + '/' + vocabulary.length + '; external gates are explicit.')
