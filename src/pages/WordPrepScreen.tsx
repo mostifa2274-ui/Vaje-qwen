@@ -12,6 +12,7 @@ import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import { faNum } from '../engine/format'
 import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
+import { clearDiagnosticFailure } from '../engine/diagnosticDraft'
 import PronunciationPractice from '../components/PronunciationPractice'
 
 interface Props {
@@ -406,6 +407,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         Date.now(),
       )
       clearPrepDraft(chapterId)
+      clearDiagnosticFailure(chapterId)
       onChange(nextState)
       onReady()
     }
