@@ -15,7 +15,7 @@ import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { introduceWordsOfCompletedChapters, recordCompletedRead, recordPreparedChapter } from './progress'
 import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
-import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
+import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus, nextBestAction } from './analytics'
 import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
@@ -462,6 +462,21 @@ describe('review and exam generation', () => {
     expect(isTypedCorrect('noone', noOne)).toBe(false)
     expect(isTypedCorrect('books', book)).toBe(false)
     expect(isTypedCorrect('television', tv)).toBe(false)
+  })
+
+  it('interleaves adjacent topics and homographs without changing the selected review set', () => {
+    const topicBlocked = ['cat', 'dog', 'bird', 'like', 'fish']
+    const interleaved = interleaveReviewQueue(topicBlocked, MINI_VOCAB)
+    expect(interleaved[0]).toBe('cat')
+    expect(interleaved[1]).toBe('like')
+    expect(new Set(interleaved)).toEqual(new Set(topicBlocked))
+
+    const homographs = interleaveReviewQueue(['like', 'like-2', 'cat'], MINI_VOCAB)
+    expect(homographs).toEqual(['like', 'cat', 'like-2'])
+
+    // Small queues and unknown metadata preserve scheduler order.
+    expect(interleaveReviewQueue(['cat', 'dog'], MINI_VOCAB)).toEqual(['cat', 'dog'])
+    expect(interleaveReviewQueue(['missing', 'cat', 'dog'], MINI_VOCAB)).toEqual(['missing', 'cat', 'dog'])
   })
 
   it('builds four unique MCQ labels for all vocabulary words', () => {

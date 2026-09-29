@@ -382,6 +382,62 @@ export function dueWordIds(words: Record<string, WordProgress>, now: number): st
     .map(([id]) => id)
 }
 
+/**
+ * Preserve the scheduler's selected set and rough priority while reducing
+ * immediate context blocking. Within a small look-ahead window, prefer a word
+ * whose headword/topic differs from the previous card. The first (highest
+ * priority) item never moves, and no item can jump forward more than the local
+ * look-ahead window.
+ */
+export function interleaveReviewQueue(
+  ids: readonly string[],
+  vocab: readonly WordEntry[],
+  lookahead = 5,
+): string[] {
+  if (ids.length < 3) return [...ids]
+  const byId = new Map(vocab.map(word => [word.id, word]))
+  const remaining = [...ids]
+  const result: string[] = [remaining.shift()!]
+
+  while (remaining.length) {
+    const previous = byId.get(result[result.length - 1])
+    const windowSize = Math.min(Math.max(1, Math.floor(lookahead)), remaining.length)
+    let bestIndex = 0
+    let bestScore = Number.POSITIVE_INFINITY
+
+    for (let index = 0; index < windowSize; index++) {
+      const candidate = byId.get(remaining[index])
+      // Missing metadata stays in scheduler order rather than receiving a
+      // misleading diversity bonus.
+      if (!previous || !candidate) {
+        if (index === 0) {
+          bestIndex = 0
+          bestScore = 0
+        }
+        continue
+      }
+      const sameHeadword = candidate.word.trim().toLowerCase() === previous.word.trim().toLowerCase()
+      const sameTopic = candidate.topic === previous.topic
+      const samePos = candidate.pos === previous.pos
+      // Priority displacement has a small cost; a repeated headword has the
+      // largest cost, then same-topic blocking, then same part of speech.
+      const score =
+        (sameHeadword ? 12 : 0)
+        + (sameTopic ? 3 : 0)
+        + (samePos ? 0.75 : 0)
+        + index * 0.35
+      if (score < bestScore) {
+        bestScore = score
+        bestIndex = index
+      }
+    }
+
+    result.push(remaining.splice(bestIndex, 1)[0])
+  }
+
+  return result
+}
+
 function hashString(value: string): number {
   let hash = 2166136261
   for (let i = 0; i < value.length; i++) {

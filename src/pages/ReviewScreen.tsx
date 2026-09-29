@@ -6,6 +6,7 @@ import {
   buildReviewQuestion,
   dimensionForMode,
   dueWordIds,
+  interleaveReviewQueue,
   isQuestionTypedCorrect,
   isTypedMode,
   modeForProgress,
@@ -74,12 +75,12 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   }, [consolidation, consolidationFirst, due, introduced, now, remediation, state.dailyReviewGoal, state.words, trouble])
   // Explore mode with nothing to review yet: practise course words instead.
   // Such a session only practises; no word has progress to record.
-  const initial = useMemo(
-    () => scheduled.length || !state.exploreAll
+  const initial = useMemo(() => {
+    const selected = scheduled.length || !state.exploreAll
       ? scheduled
-      : seededSample(VOCAB.map(w => w.id), state.dailyReviewGoal, `explore:${Math.floor(now / 86_400_000)}`),
-    [now, scheduled, state.dailyReviewGoal, state.exploreAll],
-  )
+      : seededSample(VOCAB.map(w => w.id), state.dailyReviewGoal, `explore:${Math.floor(now / 86_400_000)}`)
+    return interleaveReviewQueue(selected, VOCAB)
+  }, [now, scheduled, state.dailyReviewGoal, state.exploreAll])
   const suggestedKind: ReviewSessionKind = remediation.length
     ? 'remediation'
     : consolidationFirst || (!due.length && consolidation.length) ? 'consolidation' : due.length ? 'due' : trouble.length ? 'trouble' : 'extra'
