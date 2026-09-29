@@ -72,9 +72,14 @@ export function setClipIndex(clips: Iterable<string> | null): void {
   loading = clips ? Promise.resolve() : null
 }
 
+/** Stable content-addressed URL, whether or not the current index has loaded. */
+export function clipUrl(kind: ClipKind, text: string): string {
+  return `${base()}audio/${clipId(kind, text)}.mp3`
+}
+
 /** URL of the recorded clip for this prompt, if one exists. */
 export function recordedClip(kind: ClipKind, text: string): string | undefined {
   if (!available || available.size === 0) return undefined
   const id = clipId(kind, text)
-  return available.has(id) ? `${base()}audio/${id}.mp3` : undefined
+  return available.has(id) ? clipUrl(kind, text) : undefined
 }
