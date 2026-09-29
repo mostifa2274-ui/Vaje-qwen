@@ -73,6 +73,7 @@ describe('store v6', () => {
   it('creates schema v6', () => {
     const state = emptyState(1, 'b1c1')
     expect(state.version).toBe(6)
+    expect(state.dayEvidenceVersion).toBe(1)
     expect(state.exams).toEqual({})
   })
 
@@ -109,6 +110,66 @@ describe('store v6', () => {
     expect(saveState({ ...first, currentChapter: 'b1c2' })).toBe(true)
     localStorage.setItem(STORAGE_KEY, '{broken')
     expect(loadState(3, 'b1c1', ['b1c1', 'b1c2'], []).currentChapter).toBe('b1c1')
+  })
+
+  it('migrates legacy UTC day evidence and prevents a false same-local-day stage', () => {
+    const previousTz = process.env.TZ
+    process.env.TZ = 'Asia/Tehran'
+    try {
+      // 21:30 UTC is 01:00 on the next local calendar day in Tehran.
+      const legacySuccessAt = Date.UTC(2026, 8, 29, 21, 30)
+      expect(new Date(legacySuccessAt).getDate()).toBe(30)
+
+      const fresh = emptyState(legacySuccessAt, 'b1c1')
+      const { dayEvidenceVersion: _dropMarker, ...legacyState } = fresh
+      const legacyWord = {
+        ...blankWordProgress(legacySuccessAt),
+        reviewStage: 2,
+        reviewCorrect: 2,
+        productiveCorrect: 1,
+        lastReviewedAt: legacySuccessAt,
+        lastIndependentSuccessAt: legacySuccessAt,
+        lastReviewWasCorrect: true,
+        lastMode: 'productive' as const,
+        // The old engine stored the UTC date.
+        successDays: ['2026-09-29'],
+        productiveSuccessDays: ['2026-09-29'],
+      }
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        ...legacyState,
+        words: { cat: legacyWord },
+      }))
+
+      const migrated = loadState(legacySuccessAt + 60_000, 'b1c1', ['b1c1'], ['cat'])
+      expect(migrated.dayEvidenceVersion).toBe(1)
+      expect(migrated.words.cat.successDays).toEqual(['2026-09-30'])
+      expect(migrated.words.cat.productiveSuccessDays).toEqual(['2026-09-30'])
+      expect(migrated.words.cat.lastProductiveSuccessAt).toBe(legacySuccessAt)
+
+      const sameLocalDay = recordRetrieval(
+        migrated.words.cat,
+        true,
+        'productive',
+        legacySuccessAt + 2 * 60 * 60_000,
+      )
+      expect(sameLocalDay.reviewStage).toBe(2)
+      expect(sameLocalDay.successDays).toEqual(['2026-09-30'])
+      expect(sameLocalDay.productiveSuccessDays).toEqual(['2026-09-30'])
+
+      const nextLocalDay = recordRetrieval(
+        sameLocalDay,
+        true,
+        'productive',
+        Date.UTC(2026, 8, 30, 21, 30),
+      )
+      expect(nextLocalDay.reviewStage).toBe(3)
+      expect(nextLocalDay.successDays).toEqual(['2026-09-30', '2026-10-01'])
+      expect(nextLocalDay.productiveSuccessDays).toEqual(['2026-09-30', '2026-10-01'])
+    } finally {
+      if (previousTz === undefined) delete process.env.TZ
+      else process.env.TZ = previousTz
+    }
   })
 })
 
