@@ -100,13 +100,16 @@ export function blankWordProgress(now: number): WordProgress {
 
 export function normalizeTypedAnswer(value: string): string {
   return value
+    .normalize('NFKC')
     .trim()
     .toLowerCase()
     .replace(/[’‘`]/g, "'")
     .replace(/[‐‑‒–—−]/g, '-')
     .replace(/\s+/g, ' ')
     .replace(/\s*-\s*/g, '-')
-    .replace(/[.!?]+$/g, '')
+    // A mobile keyboard may append sentence punctuation after a single-word
+    // recall. Treat that as typography, not lexical evidence.
+    .replace(/[.,;:!?]+$/g, '')
 }
 
 const ORTHOGRAPHIC_ALIASES: Readonly<Record<string, readonly string[]>> = {
