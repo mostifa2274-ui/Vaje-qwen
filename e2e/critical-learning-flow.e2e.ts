@@ -1614,6 +1614,22 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   await expect(stage.getByText('هیچ امتیاز خودکاری به لهجه‌ات داده نمی‌شود', { exact: false })).toBeVisible()
   await pronunciation.click()
 
+  // Open-ended transfer is optional and self-assessed: the learner writes a
+  // genuinely new sentence, compares it with the model and may shadow the
+  // complete model sentence. The free text never enters saved progress.
+  const activeUse = stage.getByTestId('active-use-practice')
+  await activeUse.getByText('کاربرد فعال در جمله (اختیاری)', { exact: true }).click()
+  const sentence = `My private transfer sentence uses ${chapterWords[0].word} today.`
+  const sentenceInput = activeUse.getByLabel(`یک جملهٔ انگلیسی با ${chapterWords[0].word}`)
+  await sentenceInput.fill(sentence)
+  await expect(activeUse).toContainText('واژهٔ هدف در جمله‌ات دیده می‌شود')
+  await activeUse.getByRole('button', { name: 'مقایسه با نمونه' }).click()
+  await expect(activeUse.getByText(sentence, { exact: true })).toBeVisible()
+  await expect(activeUse.getByText(chapterWords[0].ex, { exact: true })).toBeVisible()
+  const sentenceShadow = activeUse.getByRole('button', { name: 'تمرین گفتاری جمله (اختیاری)' })
+  await expect(sentenceShadow).toBeEnabled()
+  expect(await page.evaluate(text => window.localStorage.getItem('ghesse:state:v6')?.includes(text) ?? false, sentence)).toBe(false)
+
   // Teaching stays learner-paced. Prove the new backward control can revisit
   // a word and retrigger its automatic pronunciation without bypassing audio.
   const firstNext = stage.getByRole('button', { name: /واژهٔ بعدی/ })
