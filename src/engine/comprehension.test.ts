@@ -56,10 +56,12 @@ describe('chapter reading comprehension', () => {
         expect(external.length, question.id).toBe(expectedPrior)
         expect(fallback.length, question.id).toBe(3 - expectedPrior)
 
+        const currentStory = new Set(chapter.sentences.map(sentence => sentence.en.trim().toLowerCase()))
         for (const option of external) {
           const other = CHAPTERS.findIndex(candidate => option.id.startsWith(`story-${candidate.id}-`))
           expect(other, `${question.id}:${option.id}`).toBeGreaterThanOrEqual(0)
           expect(other, `${question.id}:${option.id}`).toBeLessThan(chapterIndex)
+          expect(currentStory.has(option.label.trim().toLowerCase()), `${question.id}:${option.id}`).toBe(false)
         }
       }
     }
