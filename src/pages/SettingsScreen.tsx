@@ -5,6 +5,7 @@ import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakE
 import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
 import { BUILD_COMMIT } from '../engine/release'
 import { faNum } from '../engine/format'
+import { buildResearchReport } from '../engine/researchExport'
 
 interface Props {
   state: GhesseState
@@ -65,6 +66,19 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     anchor.click()
     anchor.remove()
     // Revoking in the same task can cancel the download in some browsers.
+    window.setTimeout(() => URL.revokeObjectURL(url), 30_000)
+  }
+
+  function exportResearchReport() {
+    const report = buildResearchReport(state)
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = 'ghesse-research-report.json'
+    document.body.appendChild(anchor)
+    anchor.click()
+    anchor.remove()
     window.setTimeout(() => URL.revokeObjectURL(url), 30_000)
   }
 
@@ -267,6 +281,16 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
             </div>
           )}
           {importMessage && <p className="mt-2 text-xs" role="status">{importMessage}</p>}
+        </div>
+
+        <div className="settings-section p-4 sm:p-5">
+          <div className="font-bold">گزارش پژوهشی بدون اطلاعات هویتی</div>
+          <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+            برای ارزیابی علمی دوره می‌توانی یک گزارش جمع‌بندی‌شده بگیری. این فایل نام، پاسخ‌های خام، تاریخ‌های دقیق، تنظیمات دستگاه یا فایل صوتی ندارد و فقط وقتی خودت آن را به پژوهشگر بدهی از دستگاهت خارج می‌شود.
+          </p>
+          <button type="button" className="btn-paper mt-3 w-full py-2.5" onClick={exportResearchReport}>
+            <span className="inline-flex items-center justify-center gap-2"><DownloadIcon className="h-5 w-5" />دریافت گزارش پژوهشی</span>
+          </button>
         </div>
 
         <details className="settings-details settings-section">
