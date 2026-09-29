@@ -113,8 +113,9 @@ describe('store v6', () => {
   })
 
   it('migrates legacy UTC day evidence and prevents a false same-local-day stage', () => {
-    const previousTz = process.env.TZ
-    process.env.TZ = 'Asia/Tehran'
+    const nodeProcess = (globalThis as unknown as { process: { env: Record<string, string | undefined> } }).process
+    const previousTz = nodeProcess.env.TZ
+    nodeProcess.env.TZ = 'Asia/Tehran'
     try {
       // 21:30 UTC is 01:00 on the next local calendar day in Tehran.
       const legacySuccessAt = Date.UTC(2026, 8, 29, 21, 30)
@@ -169,8 +170,8 @@ describe('store v6', () => {
       expect(nextLocalDay.successDays).toEqual(['2026-09-30', '2026-10-01'])
       expect(nextLocalDay.productiveSuccessDays).toEqual(['2026-09-30', '2026-10-01'])
     } finally {
-      if (previousTz === undefined) delete process.env.TZ
-      else process.env.TZ = previousTz
+      if (previousTz === undefined) delete nodeProcess.env.TZ
+      else nodeProcess.env.TZ = previousTz
     }
   })
 })
