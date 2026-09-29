@@ -1570,6 +1570,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   // before any microphone request is made.
   const pronunciation = stage.getByRole('button', { name: 'تمرین تلفظ (اختیاری)' })
   await expect(pronunciation).toBeVisible()
+  await expect(pronunciation).toBeEnabled()
   await pronunciation.click()
   await expect(stage.getByText('ضبط فقط در حافظهٔ همین صفحه می‌ماند', { exact: false })).toBeVisible()
   await expect(stage.getByText('هیچ امتیاز خودکاری به لهجه‌ات داده نمی‌شود', { exact: false })).toBeVisible()
