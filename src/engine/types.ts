@@ -60,10 +60,11 @@ export interface WordProgress {
   dueAt?: number
   lastReviewedAt?: number
   lastIndependentSuccessAt?: number
+  lastProductiveSuccessAt?: number
   intervalDays: number
   productiveCorrect: number
-  successDays: string[] // learner-local YYYY-MM-DD dates; unique and sorted
-  productiveSuccessDays: string[] // distinct learner-local dates with successful typed recall
+  successDays: string[] // canonical learner-local YYYY-MM-DD day buckets after dayEvidenceVersion=1
+  productiveSuccessDays: string[] // canonical learner-local productive-recall day buckets
   lastReviewWasCorrect?: boolean
   lastMode?: RetrievalMode
 
@@ -130,6 +131,8 @@ export interface LeitnerState {
 
 export interface GhesseState {
   version: 6
+  /** Day-evidence semantics marker. Missing = legacy UTC/mixed day keys. */
+  dayEvidenceVersion: 1
   currentChapter: string // retained for migration/history; gate engine is authoritative
   chapters: Record<string, ChapterProgress>
   words: Record<string, WordProgress>
