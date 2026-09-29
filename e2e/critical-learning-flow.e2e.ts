@@ -666,6 +666,13 @@ test('English learning content switches assistive technology out of Persian pron
   await openWithProgress(page, '/read/b1c1', { exploreAll: true })
   await expect(page.locator('.story-en').first()).toBeVisible()
   await expectEnglishLanguageMetadata(page)
+
+  const storyWord = page.locator('.story-en .tok-word').first()
+  const describedBy = await storyWord.getAttribute('aria-describedby')
+  expect(describedBy).toBeTruthy()
+  const lookupHint = page.locator(`[id="${describedBy}"]`)
+  await expect(lookupHint).toHaveAttribute('lang', 'fa')
+  await expect(lookupHint).toHaveText('برای نمایش معنی فارسی، فعال کن.')
 })
 
 test('settings keeps advanced controls collapsed until requested', async ({ page }) => {
