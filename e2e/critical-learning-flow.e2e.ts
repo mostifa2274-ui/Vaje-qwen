@@ -1534,6 +1534,31 @@ test('explore mode opens every step of the lessons, tests and review without pre
   expect(await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))).toBe(saved)
 })
 
+test('exported progress is self-describing and integrity-verified before restore', async ({ page }) => {
+  await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
+
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'دریافت پشتیبان' }).click()
+  const download = await downloadPromise
+  expect(download.suggestedFilename()).toMatch(/^ghesse-progress-\d{4}-\d{2}-\d{2}\.json$/)
+  const downloadedPath = await download.path()
+  expect(downloadedPath).toBeTruthy()
+
+  const raw = JSON.parse(readFileSync(downloadedPath!, 'utf8'))
+  expect(raw.format).toBe('ghesse-progress-backup')
+  expect(raw.schemaVersion).toBe(1)
+  expect(raw.stateVersion).toBe(6)
+  expect(raw.vocabularySha256).toMatch(/^[a-f0-9]{64}$/)
+  expect(raw.integrity).toMatchObject({ algorithm: 'SHA-256' })
+  expect(raw.integrity.sha256).toMatch(/^[a-f0-9]{64}$/)
+  expect(raw.state.words?.[chapterWords[0].id]).toBeDefined()
+
+  await page.getByLabel('فایل پشتیبان پیشرفت').setInputFiles(downloadedPath!)
+  const confirm = page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })
+  await expect(confirm).toContainText('سلامت پشتیبان با SHA-256 تأیید شد.')
+  await confirm.getByRole('button', { name: 'انصراف' }).click()
+})
+
 test('importing a backup asks before replacing progress', async ({ page }) => {
   await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
   await page.evaluate(() => window.sessionStorage.setItem('ghesse:prep:v1:b1c1', '{"stale":true}'))
