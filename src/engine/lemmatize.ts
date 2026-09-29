@@ -181,8 +181,16 @@ function contextualSense(raw: string, id: string, ids: string[], spans: Span[], 
     // Inflected "likes" is necessarily the verb in this deck.
     if (form !== 'like') return 'like-2'
     const prev = previousWords(spans, index, 2)
-    const beForms = new Set(['am', 'is', 'are', 'was', 'were', 'be', 'been', 'being'])
-    if (prev.some(word => beForms.has(word))) return 'like'
+    const prepositionTrigger = new Set([
+      'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+      'look', 'looks', 'looked', 'looking',
+      'sound', 'sounds', 'sounded',
+      'seem', 'seems', 'seemed',
+      'feel', 'feels', 'felt',
+      'smell', 'smells', 'smelled',
+      'taste', 'tastes', 'tasted',
+    ])
+    if (prev.some(word => prepositionTrigger.has(word))) return 'like'
     return 'like-2'
   }
 
