@@ -424,6 +424,25 @@ describe('review and exam generation', () => {
     expect(isTypedCorrect(' An ', article)).toBe(true)
     const shirt = VOCAB.find(w => w.id === 't-shirt')!
     expect(isTypedCorrect('T–shirt', shirt)).toBe(true)
+    expect(isTypedCorrect('T shirt', shirt)).toBe(true)
+
+    const noOne = VOCAB.find(w => w.id === 'no-one')!
+    expect(isTypedCorrect('no-one', noOne)).toBe(true)
+
+    const ok = VOCAB.find(w => w.id === 'ok')!
+    expect(isTypedCorrect('okay', ok)).toBe(true)
+    expect(isTypedCorrect('O.K.', ok)).toBe(true)
+
+    const tv = VOCAB.find(w => w.id === 'tv')!
+    const cd = VOCAB.find(w => w.id === 'cd')!
+    const dvd = VOCAB.find(w => w.id === 'dvd')!
+    expect(isTypedCorrect('T.V.', tv)).toBe(true)
+    expect(isTypedCorrect('C.D.', cd)).toBe(true)
+    expect(isTypedCorrect('D.V.D.', dvd)).toBe(true)
+
+    // Do not broaden into misspellings or unrelated synonyms.
+    expect(isTypedCorrect('noone', noOne)).toBe(false)
+    expect(isTypedCorrect('television', tv)).toBe(false)
   })
 
   it('builds four unique MCQ labels for all vocabulary words', () => {
