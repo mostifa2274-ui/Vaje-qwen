@@ -2,10 +2,10 @@ import { useMemo, useState } from 'react'
 import type { GhesseState, WordEntry } from '../engine/types'
 import { VOCAB } from '../data/chapters'
 import { wordMastery, type MasteryLevel } from '../engine/mastery'
-import { troubleWordIds } from '../engine/review'
+import { acceptedAnswers, troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
 import { BackIcon, SearchIcon } from '../components/Icons'
-import { compactPersianAnswer } from '../engine/persianTranslation'
+import { acceptedPersianAnswers, compactPersianAnswer } from '../engine/persianTranslation'
 import { faNum } from '../engine/format'
 
 interface Props {
@@ -20,7 +20,27 @@ type GlossaryFilter = 'all' | 'trouble' | MasteryLevel
 // Arabic-layout letters (ي/ك), a half-space typed as a space or left out,
 // diacritics and punctuation must not hide a word from a learner typing on a
 // different keyboard.
-const SEARCH_KEYS = new Map(VOCAB.map(word => [word.id, `${compactPersianAnswer(word.word)}\n${compactPersianAnswer(word.fa)}`]))
+interface SearchRecord {
+  courseIndex: number
+  words: string[]
+  meanings: string[]
+}
+
+const SEARCH_RECORDS = new Map(VOCAB.map((word, courseIndex) => [word.id, {
+  courseIndex,
+  words: acceptedAnswers(word).map(compactPersianAnswer),
+  meanings: acceptedPersianAnswers(word).map(compactPersianAnswer),
+} satisfies SearchRecord]))
+
+function searchRank(word: WordEntry, query: string): number | null {
+  if (!query) return 0
+  const record = SEARCH_RECORDS.get(word.id)
+  if (!record) return null
+  if (record.words.includes(query) || record.meanings.includes(query)) return 0
+  if (record.words.some(value => value.startsWith(query)) || record.meanings.some(value => value.startsWith(query))) return 1
+  if (record.words.some(value => value.includes(query)) || record.meanings.some(value => value.includes(query))) return 2
+  return null
+}
 
 const LEVEL_FA: Record<MasteryLevel, string> = {
   new: 'تازه',
@@ -46,13 +66,17 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
 
   const list = useMemo(() => {
     const q = compactPersianAnswer(query)
-    return VOCAB.filter(word => {
-      const level = wordMastery(word.id, state)
-      if (filter === 'trouble' && !trouble.has(word.id)) return false
-      if (filter !== 'all' && filter !== 'trouble' && level !== filter) return false
-      if (!q) return true
-      return SEARCH_KEYS.get(word.id)?.includes(q) ?? false
-    })
+    return VOCAB
+      .flatMap(word => {
+        const level = wordMastery(word.id, state)
+        if (filter === 'trouble' && !trouble.has(word.id)) return []
+        if (filter !== 'all' && filter !== 'trouble' && level !== filter) return []
+        const rank = searchRank(word, q)
+        if (rank === null) return []
+        return [{ word, rank, courseIndex: SEARCH_RECORDS.get(word.id)?.courseIndex ?? Number.MAX_SAFE_INTEGER }]
+      })
+      .sort((a, b) => a.rank - b.rank || a.courseIndex - b.courseIndex)
+      .map(item => item.word)
   }, [query, filter, state, trouble])
 
   function tapWord(word: WordEntry) {
