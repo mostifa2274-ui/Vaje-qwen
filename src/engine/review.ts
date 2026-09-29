@@ -178,12 +178,14 @@ function dimensionNeed(progress: WordProgress, dimension: SkillDimension): numbe
  * Recognition is intentionally front-loaded; later reviews rotate through
  * semantic recall, contextual production, free production, and spelling.
  */
-export function modeForProgress(progress: WordProgress): ReviewMode {
+export function modeForProgress(progress: WordProgress, audioAvailable = true): ReviewMode {
   if (progress.reviewStage <= 0) return 'recognition'
   if (progress.reviewStage === 1) return 'reverse'
   if (progress.reviewStage === 2) return 'cloze'
 
-  const dimensions: SkillDimension[] = ['production', 'context', 'form', 'meaning']
+  const dimensions: SkillDimension[] = audioAvailable
+    ? ['production', 'context', 'form', 'meaning']
+    : ['production', 'context', 'meaning']
   const weakest = [...dimensions].sort((a, b) => dimensionNeed(progress, b) - dimensionNeed(progress, a))[0]
   if (weakest === 'production') return 'productive'
   if (weakest === 'context') return progress.reviewStage >= 4 ? 'contextProductive' : 'cloze'
