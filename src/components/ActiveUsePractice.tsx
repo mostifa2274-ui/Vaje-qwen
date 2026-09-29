@@ -16,7 +16,10 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
   const recorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const chunksRef = useRef<Blob[]>([])
+  const requestRef = useRef(0)
+  const mountedRef = useRef(true)
   const [recording, setRecording] = useState(false)
+  const [requesting, setRequesting] = useState(false)
   const [audioUrl, setAudioUrl] = useState('')
   const [recordingError, setRecordingError] = useState('')
   const [sentence, setSentence] = useState('')
@@ -35,14 +38,22 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
   }
 
   async function startRecording() {
+    if (recording || requesting) return
     setRecordingError('')
     if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
       setRecordingError('ضبط صدا در این مرورگر در دسترس نیست؛ می‌توانی همچنان با صدای مدل تمرین کنی.')
       return
     }
+    const requestId = ++requestRef.current
+    setRequesting(true)
     try {
       releaseStream()
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      if (!mountedRef.current || requestRef.current !== requestId) {
+        stream.getTracks().forEach(track => track.stop())
+        return
+      }
+      setRequesting(false)
       streamRef.current = stream
       const recorder = new MediaRecorder(stream)
       recorderRef.current = recorder
@@ -65,6 +76,8 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
       recorder.start()
       setRecording(true)
     } catch {
+      if (requestRef.current !== requestId || !mountedRef.current) return
+      setRequesting(false)
       releaseStream()
       setRecordingError('اجازهٔ میکروفون داده نشد. ضبط کاملاً اختیاری است و بدون آن هم می‌توانی ادامه بدهی.')
     }
@@ -78,6 +91,8 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
   }
 
   useEffect(() => () => {
+    mountedRef.current = false
+    requestRef.current++
     const recorder = recorderRef.current
     if (recorder && recorder.state !== 'inactive') recorder.stop()
     releaseStream()
@@ -99,7 +114,9 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
         <p className="mt-3">واژه و سپس جملهٔ نمونه را با صدای خودت بگو؛ بعد صدایت را با مدل مقایسه کن.</p>
         <div className="mt-3 grid grid-cols-2 gap-2">
           {!recording ? (
-            <button type="button" className="btn-ink py-3" onClick={startRecording} aria-label="شروع ضبط صدای من">ضبط صدای من</button>
+            <button type="button" className="btn-ink py-3" onClick={startRecording} aria-label="شروع ضبط صدای من" disabled={requesting}>
+              {requesting ? 'درخواست اجازهٔ میکروفون…' : 'ضبط صدای من'}
+            </button>
           ) : (
             <button type="button" className="btn-crimson py-3" onClick={stopRecording} aria-label="توقف ضبط صدای من">توقف ضبط</button>
           )}
@@ -107,12 +124,13 @@ export default function ActiveUsePractice({ word, onPlayWord, onPlayExample }: P
             type="button"
             className="btn-quiet py-3"
             aria-label="حذف صدای ضبط‌شده"
-            disabled={!audioUrl || recording}
+            disabled={!audioUrl || recording || requesting}
             onClick={() => replaceAudioUrl('')}
           >
             حذف ضبط
           </button>
         </div>
+        {requesting && <div className="mt-2" role="status">در انتظار اجازهٔ میکروفون…</div>}
         {recording && <div className="mt-2" role="status">در حال ضبط…</div>}
         {recordingError && <div className="paper-note mt-3" role="status">{recordingError}</div>}
         {audioUrl && !recording && (
