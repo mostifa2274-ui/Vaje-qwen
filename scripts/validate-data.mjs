@@ -23,7 +23,7 @@ assert(new Set(vocab.map(word => word.id)).size === vocab.length, 'vocabulary id
 // common authoring/import mistakes before they can reach lessons, audio hashes,
 // review scheduling or a research export.
 const REQUIRED_VOCAB_FIELDS = ['id', 'word', 'fa', 'ipa', 'topic', 'ex', 'tr', 'pos', 'cefr']
-const PERSIAN_TEXT = /[\u0600-\u06ff]/
+const PERSIAN_TEXT = /[\u0621-\u063a\u0641-\u064a\u066e-\u066f\u0671-\u06d3\u06fa-\u06fc\u06ff]/
 const LATIN_TEXT = /[A-Za-z]/
 const SAFE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const SAFE_TOPIC = /^[a-z0-9][a-z0-9 _-]*$/
