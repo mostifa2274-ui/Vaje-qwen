@@ -98,6 +98,23 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
       ? `${faNum(answersLeft)} پاسخ دیگر تا ${faNum(daily.streak + 1)} روز پیاپی`
       : `${faNum(answersLeft)} پاسخ تا کامل‌شدن هدف امروز`
 
+  function moveHomeTab(event: React.KeyboardEvent<HTMLButtonElement>, current: HomeSection) {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+    event.preventDefault()
+    const order: HomeSection[] = ['today', 'journey', 'library']
+    const currentIndex = order.indexOf(current)
+    const nextIndex = event.key === 'Home'
+      ? 0
+      : event.key === 'End'
+        ? order.length - 1
+        : event.key === 'ArrowLeft'
+          ? (currentIndex + 1) % order.length
+          : (currentIndex - 1 + order.length) % order.length
+    const next = order[nextIndex]
+    setHomeSection(next)
+    window.requestAnimationFrame(() => document.getElementById(`home-tab-${next}`)?.focus())
+  }
+
   function runNextAction() {
     if (action.kind === 'rest') return onOpenFlashcards()
     if (action.kind === 'review' || action.kind === 'certification') return onOpenReview()
@@ -140,6 +157,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             tabIndex={homeSection === id ? 0 : -1}
             className={homeSection === id ? 'home-section-tab active' : 'home-section-tab'}
             onClick={() => setHomeSection(id)}
+            onKeyDown={event => moveHomeTab(event, id)}
           >
             {label}
           </button>
