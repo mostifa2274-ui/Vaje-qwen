@@ -273,7 +273,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           <summary><span className="settings-section-title"><ShieldIcon className="h-5 w-5" aria-hidden="true" /><span>حریم خصوصی</span></span></summary>
           <div className="settings-details-body">
             <p className="text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-              پیشرفت و تنظیمات در همین مرورگر می‌مانند. صداهای دوره از همین سایت بارگیری می‌شوند؛ فقط در صورت نبودن فایل ضبط‌شده، موتور گفتار دستگاه استفاده می‌شود.
+              پیشرفت و تنظیمات در همین مرورگر می‌مانند. صداهای دوره از همین سایت بارگیری می‌شوند؛ فقط در صورت نبودن فایل ضبط‌شده، موتور گفتار دستگاه استفاده می‌شود. تمرین تلفظ فقط وقتی خودت دکمهٔ ضبط را بزنی از میکروفن اجازه می‌خواهد؛ ضبط کوتاه روی همان صفحه می‌ماند، آپلود یا ذخیره نمی‌شود و با عوض‌کردن واژه پاک می‌شود.
             </p>
           </div>
         </details>
