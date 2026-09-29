@@ -18,6 +18,39 @@ function assert(condition, message) {
 
 assert(vocab.length === 899, `expected 899 vocabulary entries, found ${vocab.length}`)
 assert(new Set(vocab.map(word => word.id)).size === vocab.length, 'vocabulary ids must be unique')
+
+// Lexical records are a public learning contract, not arbitrary JSON. Reject
+// common authoring/import mistakes before they can reach lessons, audio hashes,
+// review scheduling or a research export.
+const REQUIRED_VOCAB_FIELDS = ['id', 'word', 'fa', 'ipa', 'topic', 'ex', 'tr', 'pos', 'cefr']
+const PERSIAN_TEXT = /[\u0621-\u063a\u0641-\u064a\u066e-\u066f\u0671-\u06d3\u06fa-\u06fc\u06ff]/
+const LATIN_TEXT = /[A-Za-z]/
+const SAFE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+const SAFE_TOPIC = /^[a-z0-9][a-z0-9 _-]*$/
+
+for (const [index, word] of vocab.entries()) {
+  const label = typeof word?.id === 'string' && word.id ? word.id : `entry #${index + 1}`
+  for (const field of REQUIRED_VOCAB_FIELDS) {
+    assert(typeof word?.[field] === 'string' && word[field].trim(), `${label}: ${field} must be a non-empty string`)
+    assert(word[field] === word[field].trim(), `${label}: ${field} must not have leading/trailing whitespace`)
+    assert(!/[\r\n]/.test(word[field]), `${label}: ${field} must stay on one line`)
+    assert(!/ {2,}/.test(word[field]), `${label}: ${field} must not contain repeated ASCII spaces`)
+  }
+  assert(SAFE_ID.test(word.id), `${label}: id must be lowercase kebab-case`)
+  assert(PERSIAN_TEXT.test(word.fa), `${label}: Persian gloss must contain Persian text`)
+  assert(PERSIAN_TEXT.test(word.tr), `${label}: Persian example translation must contain Persian text`)
+  assert(LATIN_TEXT.test(word.word), `${label}: English headword must contain Latin text`)
+  assert(LATIN_TEXT.test(word.ex), `${label}: English example must contain Latin text`)
+  assert(word.cefr === 'A1', `${label}: active deck entries must be CEFR A1`)
+  assert(!word.ipa.includes('/'), `${label}: IPA is stored without wrapping slashes`)
+  assert(SAFE_TOPIC.test(word.topic), `${label}: topic contains unsupported characters`)
+}
+
+// Reusing the exact same example for different headwords is normally a
+// copy/paste defect and weakens contextual retrieval. Persian glosses may
+// legitimately repeat for synonyms, so they are intentionally not unique.
+assert(new Set(vocab.map(word => word.ex)).size === vocab.length, 'every vocabulary entry must have its own English example')
+
 assert(chapters.length === 40, `expected 40 chapters, found ${chapters.length}`)
 assert(new Set(chapters.map(chapter => chapter.id)).size === chapters.length, 'chapter ids must be unique')
 
