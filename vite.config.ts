@@ -1,8 +1,12 @@
 import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 
 const buildCommit = process.env.WORKERS_CI_COMMIT_SHA || process.env.GITHUB_SHA || 'local'
+const vocabularySha256 = createHash('sha256')
+  .update(readFileSync(new URL('./src/data/vocabulary.json', import.meta.url)))
+  .digest('hex')
 
 /**
  * Adds the page's Content-Security-Policy to the production index.html. It is
@@ -47,6 +51,7 @@ export default defineConfig({
   plugins: [react(), contentSecurityPolicy()],
   define: {
     __GHESSE_BUILD_COMMIT__: JSON.stringify(buildCommit),
+    __GHESSE_VOCAB_SHA256__: JSON.stringify(vocabularySha256),
   },
   server: { port: 3000 },
   build: {
