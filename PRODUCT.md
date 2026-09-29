@@ -42,6 +42,11 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Gamification that distracts from reading, or points, levels and leaderboards that stand in for learning evidence.
 - Decorative scoring that implies mastery after one successful session.
 - Dense dashboards that obscure the next learning action.
+
+## Home information architecture
+- **Today / امروز** is the default home surface and contains only the engine-selected next action, daily effort, and Smart Review.
+- **Journey / مسیر** contains books, chapters, exams, progress evidence and certification.
+- **Library / کتابخانه** contains reference/free-practice/settings tools. Leitner lives here because it is optional practice, not a competing scheduler.
 - Making the story linguistically harder merely to sound literary.
 
 ## Release constraints
