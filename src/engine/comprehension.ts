@@ -154,6 +154,7 @@ function storyPresenceOptions(
   const answerLabel = chapter.sentences[target].en
   const answerWords = contentWords(answerLabel)
   const chapterWords = contentWords(chapter.sentences.map(sentence => sentence.en).join(' '))
+  const currentStorySurfaces = new Set(chapter.sentences.map(sentence => sentence.en.trim().toLowerCase()))
   const seen = new Set([answerLabel.trim().toLowerCase()])
   const candidates: Array<ReadingOption & { overlap: number }> = []
 
@@ -165,7 +166,9 @@ function storyPresenceOptions(
     const index = indices[position]
     const label = other.sentences[index].en
     const normalized = label.trim().toLowerCase()
-    if (!normalized || seen.has(normalized)) continue
+    // If the same event sentence also occurs in the current chapter, it is
+    // not a valid "did not happen here" distractor even if sourced elsewhere.
+    if (!normalized || currentStorySurfaces.has(normalized) || seen.has(normalized)) continue
     seen.add(normalized)
     const words = contentWords(label)
     const overlap = Math.max(overlapRatio(answerWords, words), overlapRatio(chapterWords, words) * 0.5)
