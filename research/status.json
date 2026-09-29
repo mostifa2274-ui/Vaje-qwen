@@ -4,5 +4,6 @@
   "claim": "research-informed-not-empirically-validated",
   "protocol": "research/VALIDATION_PROTOCOL.md",
   "studyEvidence": [],
-  "protocolId": "ghesse-learning-outcomes-v1"
+  "protocolId": "ghesse-learning-outcomes-v1",
+  "protocolBlobSha": "2a6018507bc220ceda89763c36fe06ee53fa8f09"
 }
