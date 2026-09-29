@@ -83,7 +83,18 @@ export default function OfflineAudioScreen({ onBack }: Props) {
     }
   }
 
+  function cancelDownload() {
+    const controller = abortRef.current
+    if (!controller) return
+    controller.abort()
+    setMessage('دانلود متوقف شد؛ فایل‌هایی که کامل ذخیره شده‌اند باقی می‌مانند و بعداً می‌توانی ادامه بدهی.')
+  }
+
   async function clearAll() {
+    if (activeBook !== null) {
+      setMessage('برای پاک‌کردن صداها ابتدا دانلود فعال را متوقف کن.')
+      return
+    }
     if (!confirmClear) {
       setConfirmClear(true)
       return
@@ -155,17 +166,27 @@ export default function OfflineAudioScreen({ onBack }: Props) {
                               : faNum(total) + ' فایل صوتی'}
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      className={ready ? 'btn-paper shrink-0 px-3 py-2 text-sm' : 'btn-ink shrink-0 px-3 py-2 text-sm'}
-                      disabled={ready || activeBook !== null || !status}
-                      onClick={() => void downloadBook(meta.book)}
-                    >
-                      <span className="inline-flex items-center gap-2">
-                        <DownloadIcon className="h-4 w-4" />
-                        {activeBook === meta.book ? 'در حال دانلود…' : partial ? 'تکمیل دانلود' : ready ? 'ذخیره شده' : 'ذخیره'}
-                      </span>
-                    </button>
+                    {activeBook === meta.book ? (
+                      <button
+                        type="button"
+                        className="btn-paper shrink-0 px-3 py-2 text-sm"
+                        onClick={cancelDownload}
+                      >
+                        توقف دانلود
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className={ready ? 'btn-paper shrink-0 px-3 py-2 text-sm' : 'btn-ink shrink-0 px-3 py-2 text-sm'}
+                        disabled={ready || activeBook !== null || !status}
+                        onClick={() => void downloadBook(meta.book)}
+                      >
+                        <span className="inline-flex items-center gap-2">
+                          <DownloadIcon className="h-4 w-4" />
+                          {partial ? 'تکمیل دانلود' : ready ? 'ذخیره شده' : 'ذخیره'}
+                        </span>
+                      </button>
+                    )}
                   </div>
                   {(activeBook === meta.book || partial || ready) && total > 0 && (
                     <div
@@ -194,7 +215,12 @@ export default function OfflineAudioScreen({ onBack }: Props) {
             <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
               فقط فایل‌های صوتی دانلودشده پاک می‌شوند؛ پیشرفت، متن، تصویر و تنظیمات دست‌نخورده می‌مانند.
             </p>
-            <button type="button" className={confirmClear ? 'btn-crimson mt-3 w-full py-2.5' : 'btn-paper mt-3 w-full py-2.5'} onClick={() => void clearAll()}>
+            <button
+              type="button"
+              className={confirmClear ? 'btn-crimson mt-3 w-full py-2.5' : 'btn-paper mt-3 w-full py-2.5'}
+              disabled={activeBook !== null}
+              onClick={() => void clearAll()}
+            >
               <span className="inline-flex items-center justify-center gap-2"><TrashIcon className="h-4 w-4" />{confirmClear ? 'بله، صداهای آفلاین پاک شوند' : 'پاک‌کردن همهٔ صداهای آفلاین'}</span>
             </button>
             {confirmClear && <button type="button" className="btn-quiet mt-2 w-full py-2 text-xs" onClick={() => setConfirmClear(false)}>انصراف</button>}
