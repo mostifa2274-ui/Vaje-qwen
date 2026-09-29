@@ -1823,3 +1823,32 @@ test('narrow phones and wide screens retain the same page canvas across routes',
     }
   }
 })
+
+
+test('prove-known is explicit, fail-closed, and active-use practice stays optional', async ({ page }) => {
+  await page.goto('/#/prep/b1c1')
+
+  const proveKnown = page.getByRole('button', { name: 'اثبات دانستن — شروع آزمون بدون آموزش' })
+  await expect(proveKnown).toBeVisible()
+
+  // Active production is available inside teaching without blocking the normal path.
+  const activeUse = page.getByTestId('active-use-practice')
+  await activeUse.locator('summary').click()
+  const ownSentence = activeUse.locator('textarea')
+  await ownSentence.fill('I use this word in my own sentence.')
+  await activeUse.getByRole('button', { name: 'مقایسه با جملهٔ نمونه' }).click()
+  await expect(activeUse).toContainText('جملهٔ تو لازم نیست مثل نمونه باشد')
+
+  // The opt-in diagnostic is allowed to bypass teaching only while it remains
+  // perfect. The first miss ends it instead of entering the normal retry loop.
+  await proveKnown.click()
+  await expect(page.getByText('اثبات دانستن · ترجمهٔ نوشتاری')).toBeVisible()
+  await page.getByLabel('ترجمهٔ فارسی').fill('پاسخ نادرست قطعی')
+  await page.getByRole('button', { name: 'ثبت پاسخ' }).click()
+  await expect(page.getByRole('button', { name: 'بازگشت به آموزش استاندارد ←' })).toBeVisible()
+  await page.getByRole('button', { name: 'بازگشت به آموزش استاندارد ←' }).click()
+
+  await expect(page.getByTestId('teach-headword')).toBeVisible()
+  await expect(page.getByText(/آزمون کوتاه نشان داد/)).toBeVisible()
+  await expect(page.getByRole('button', { name: 'اثبات دانستن — شروع آزمون بدون آموزش' })).toBeVisible()
+})
