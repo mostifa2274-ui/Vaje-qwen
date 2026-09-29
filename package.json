@@ -8,7 +8,7 @@
     "build": "npm run materialize:chapter-art && tsc -b && vite build && node scripts/stamp-release.mjs",
     "lint": "eslint .",
     "test": "vitest run",
-    "check": "npm run materialize:chapter-art && npm run validate:release-config && npm run validate:learning-policy && npm run validate:research-status && npm run validate:quality-program && npm run validate:data && npm run validate:editorial && npm run validate:introductions && npm run validate:assessment-prerequisites && npm run validate:mastery && npm run validate:art-batch && npm run validate:generated-art && npm run validate:art-review && npm run lint && npm run test && npm run build && npm run validate:bundle-budget",
+    "check": "npm run materialize:chapter-art && npm run validate:release-config && npm run validate:learning-policy && npm run validate:research-status && npm run validate:quality-program && npm run validate:data && npm run validate:editorial && npm run validate:introductions && npm run validate:assessment-prerequisites && npm run validate:graded-inputs && npm run validate:mastery && npm run validate:art-batch && npm run validate:generated-art && npm run validate:art-review && npm run lint && npm run test && npm run build && npm run validate:bundle-budget",
     "preview": "vite preview",
     "validate:release-config": "node scripts/validate-release-config.mjs",
     "validate:data": "node scripts/validate-data.mjs",
@@ -28,7 +28,8 @@
     "validate:quality-program": "node scripts/validate-quality-program.mjs",
     "best-in-class:status": "npm run validate:quality-program && node scripts/validate-best-in-class.mjs --report",
     "validate:best-in-class": "npm run validate:quality-program && node scripts/validate-best-in-class.mjs",
-    "validate:assessment-prerequisites": "node scripts/validate-assessment-prerequisites.mjs"
+    "validate:assessment-prerequisites": "node scripts/validate-assessment-prerequisites.mjs",
+    "validate:graded-inputs": "node scripts/validate-graded-inputs.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
