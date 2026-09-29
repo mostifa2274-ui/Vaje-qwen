@@ -12,6 +12,7 @@ import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import { faNum } from '../engine/format'
 import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
+import PronunciationPractice from '../components/PronunciationPractice'
 
 interface Props {
   chapterId: string
@@ -580,6 +581,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               >
                 <span className="inline-flex items-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن مثال</span>
               </button>
+
+              <PronunciationPractice
+                word={currentTeachWord.word}
+                soundOn={state.soundOn}
+                narratorVoiceURI={state.narratorVoiceURI}
+                narratorRate={state.narratorRate}
+              />
             </div>
 
             <div className="mt-5 grid grid-cols-3 gap-2">
