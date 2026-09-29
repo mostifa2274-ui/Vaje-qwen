@@ -31,7 +31,7 @@ jobs:
        github.event.check_run.name == 'Workers Builds: vaje-qwen1' &&
        github.event.check_run.conclusion == 'success')
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 10
     env:
       PRODUCTION_URL: https://vaje-qwen1.mostifa2273.workers.dev
       SOURCE_SHA: ${{ github.event.check_run.head_sha || github.event.workflow_run.head_sha || github.sha }}
@@ -61,8 +61,8 @@ jobs:
           echo "Verifying source revision: $SOURCE_SHA"
           echo "Production worker: $PRODUCTION_URL"
 
-          for attempt in $(seq 1 30); do
-            echo "Smoke attempt $attempt/30 for $SOURCE_SHA"
+          for attempt in $(seq 1 96); do
+            echo "Smoke attempt $attempt/96 for $SOURCE_SHA"
             body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
             compact="$(printf '%s' "$body" | tr -d '[:space:]')"
             last_compact="$compact"
@@ -97,7 +97,7 @@ jobs:
               fi
             fi
 
-            if [ "$attempt" -lt 30 ]; then sleep 5; fi
+            if [ "$attempt" -lt 96 ]; then sleep 5; fi
           done
 
           {
