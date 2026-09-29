@@ -18,6 +18,7 @@ import {
 } from '../engine/gates'
 import { faNum, percent } from '../engine/format'
 import { dailyProgress } from '../engine/activity'
+import { diagnosticFailed } from '../engine/diagnosticDraft'
 
 interface Props {
   state: GhesseState
@@ -151,7 +152,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-extrabold">قدم بعدی: {actionTitle}</h2>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{action.detail}</p>
-          {action.kind === 'chapter' && !action.prepared && !state.exploreAll && (
+          {action.kind === 'chapter' && !action.prepared && !state.exploreAll && !diagnosticFailed(action.chapterId) && (
             <button
               type="button"
               className="btn-quiet mt-2 px-3 text-xs"
