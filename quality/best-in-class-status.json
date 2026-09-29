@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-29",
+  "gates": {
+    "contentRights": {
+      "status": "blocked",
+      "evidence": "provenance/release-rights.json"
+    },
+    "learnerOutcomesPilot": {
+      "status": "pending",
+      "evidence": "research/status.json"
+    },
+    "nativeEditorialReview": {
+      "status": "pending",
+      "evidence": "quality/lexical-review.json"
+    },
+    "accessibilityHumanQA": {
+      "status": "pending",
+      "evidence": "quality/accessibility-status.json"
+    },
+    "visualArtDirection": {
+      "status": "pending",
+      "evidence": "quality/art-review-status.json"
+    },
+    "learningPolicyCalibration": {
+      "status": "pending",
+      "evidence": "quality/calibration-status.json"
+    }
+  },
+  "target": "best-in-class-learning-product"
+}

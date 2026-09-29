@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "status": "pending",
+  "requiredRuns": [
+    "android-talkback",
+    "ios-voiceover",
+    "desktop-keyboard-screenreader",
+    "zoom-200",
+    "large-text",
+    "reduced-motion",
+    "forced-contrast",
+    "audio-screenreader-conflict",
+    "microphone-permission-matrix",
+    "offline-assistive-tech"
+  ],
+  "completedRuns": [],
+  "signoff": null
+}
