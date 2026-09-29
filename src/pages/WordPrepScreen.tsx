@@ -583,6 +583,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               </button>
 
               <PronunciationPractice
+                key={currentTeachWord.id}
                 word={currentTeachWord.word}
                 soundOn={state.soundOn}
                 narratorVoiceURI={state.narratorVoiceURI}
