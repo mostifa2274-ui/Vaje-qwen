@@ -1023,6 +1023,15 @@ test('glossary search tolerates Arabic-layout Persian letters and keeps filterin
   await expect(page.locator('.glossary-row')).toContainText('cake')
   await search.fill('BOOK')
   await expect(page.locator('.glossary-row').first()).toContainText('book')
+
+  await search.fill('کتاب')
+  const first = page.locator('.glossary-row').first()
+  await expect(first).toContainText('book')
+  await expect(first.locator('.glossary-meaning')).toHaveText('کتاب')
+
+  await search.fill('an')
+  await expect(page.locator('.glossary-row').first()).toContainText('a, an')
+
   await filter.selectOption('mastered')
   await expectNoHorizontalOverflow(page)
 })
