@@ -2,10 +2,10 @@ import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, Retrieva
 import { emptyLeitner, normalizeLeitner } from './leitner'
 import { mergeActivity, mergeLeitnerDays, normalizeActivity } from './activity'
 
-export const STORAGE_KEY = 'ghesse:state:v6'
-const CURRENT_STATE_VERSION = 6
-const BACKUP_KEY = 'ghesse:state:v6:backup'
-const LEGACY_KEYS = ['ghesse:state:v5', 'ghesse:state:v4', 'ghesse:state:v3', 'ghesse:state:v2', 'ghesse:state:v1'] as const
+export const STORAGE_KEY = 'ghesse:state:v7'
+const CURRENT_STATE_VERSION = 7
+const BACKUP_KEY = 'ghesse:state:v7:backup'
+const LEGACY_KEYS = ['ghesse:state:v6', 'ghesse:state:v5', 'ghesse:state:v4', 'ghesse:state:v3', 'ghesse:state:v2', 'ghesse:state:v1'] as const
 // Prep, reading, review and exam drafts all live under this sessionStorage prefix.
 const SESSION_DRAFT_PREFIX = 'ghesse:'
 // The long end-of-book tests keep their draft in localStorage instead.
@@ -111,7 +111,7 @@ function normalizeSkillStats(v: unknown): Record<SkillDimension, SkillStat> {
   }
 }
 
-function normalizeWord(raw: unknown): WordProgress | undefined {
+function normalizeWord(raw: unknown, sourceVersion: number): WordProgress | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const r = raw as Partial<WordProgress>
   const intervalDays = Math.max(0, Math.min(3650, num(r.intervalDays)))
@@ -143,8 +143,17 @@ function normalizeWord(raw: unknown): WordProgress | undefined {
     lastIndependentSuccessAt: timestamp(r.lastIndependentSuccessAt),
     intervalDays,
     productiveCorrect,
-    successDays: normalizeDays(r.successDays),
-    productiveSuccessDays: normalizeDays(r.productiveSuccessDays),
+    // v6 and earlier used UTC calendar labels. Preserve them as legacy
+    // evidence, but start a clean learner-local bucket in v7. This avoids
+    // silently mixing two day bases after an upgrade.
+    successDays: sourceVersion >= 7 ? normalizeDays(r.successDays) : [],
+    productiveSuccessDays: sourceVersion >= 7 ? normalizeDays(r.productiveSuccessDays) : [],
+    legacyUtcSuccessDays: sourceVersion >= 7
+      ? normalizeDays(r.legacyUtcSuccessDays)
+      : [...new Set([...normalizeDays(r.legacyUtcSuccessDays), ...normalizeDays(r.successDays)])].sort(),
+    legacyUtcProductiveSuccessDays: sourceVersion >= 7
+      ? normalizeDays(r.legacyUtcProductiveSuccessDays)
+      : [...new Set([...normalizeDays(r.legacyUtcProductiveSuccessDays), ...normalizeDays(r.productiveSuccessDays)])].sort(),
     lastReviewWasCorrect: typeof r.lastReviewWasCorrect === 'boolean' ? r.lastReviewWasCorrect : undefined,
     lastMode: normalizeMode(r.lastMode),
     difficulty: Math.min(10, Math.max(1, num(r.difficulty, 5))),
@@ -189,6 +198,7 @@ function normalizeState(
   if (!raw || typeof raw !== 'object') return undefined
   const p = raw as Partial<GhesseState> & { version?: number }
   if (typeof p.version === 'number' && (!Number.isInteger(p.version) || p.version < 1 || p.version > CURRENT_STATE_VERSION)) return undefined
+  const sourceVersion = typeof p.version === 'number' ? p.version : 1
   const chapters: Record<string, ChapterProgress> = {}
   for (const [id, c] of Object.entries(p.chapters ?? {})) {
     if (validChapterIds && !validChapterIds.has(id)) continue
@@ -198,7 +208,7 @@ function normalizeState(
   const words: Record<string, WordProgress> = {}
   for (const [id, w] of Object.entries(p.words ?? {})) {
     if (validWordIds && !validWordIds.has(id)) continue
-    const normalized = normalizeWord(w)
+    const normalized = normalizeWord(w, sourceVersion)
     if (normalized) words[id] = normalized
   }
   const exams: Record<string, ExamProgress> = {}
@@ -209,7 +219,7 @@ function normalizeState(
   const requested = typeof p.currentChapter === 'string' ? p.currentChapter : firstChapterId
   const currentChapter = validChapterIds && !validChapterIds.has(requested) ? firstChapterId : requested
   return {
-    version: 6,
+    version: CURRENT_STATE_VERSION,
     currentChapter,
     chapters,
     words,
