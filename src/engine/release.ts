@@ -14,6 +14,10 @@ export const BUILD_COMMIT = typeof __GHESSE_BUILD_COMMIT__ === 'string'
   ? __GHESSE_BUILD_COMMIT__
   : 'local'
 
+export const VOCABULARY_SHA256 = typeof __GHESSE_VOCAB_SHA256__ === 'string'
+  ? __GHESSE_VOCAB_SHA256__
+  : 'unknown'
+
 export function parseReleaseMarker(value: unknown): ReleaseMarker | undefined {
   if (!value || typeof value !== 'object') return undefined
   const marker = value as Partial<ReleaseMarker>
