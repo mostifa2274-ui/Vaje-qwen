@@ -42,6 +42,11 @@ for (const [index, word] of vocab.entries()) {
   assert(PERSIAN_TEXT.test(word.tr), `${label}: Persian example translation must contain Persian text`)
   assert(LATIN_TEXT.test(word.word), `${label}: English headword must contain Latin text`)
   assert(LATIN_TEXT.test(word.ex), `${label}: English example must contain Latin text`)
+  const exampleWords = word.ex.match(/[A-Za-z]+(?:[-'’][A-Za-z]+)*/g) ?? []
+  assert(exampleWords.length >= 3 && exampleWords.length <= 14, `${label}: English example must stay flashcard-sized (3–14 words)`)
+  assert(/[.!?]$/.test(word.ex), `${label}: English example must end with sentence punctuation`)
+  const firstLatin = word.ex.match(/[A-Za-z]/)?.[0]
+  assert(firstLatin && firstLatin === firstLatin.toUpperCase(), `${label}: English example must begin as a sentence`)
   assert(word.cefr === 'A1', `${label}: active deck entries must be CEFR A1`)
   assert(!word.ipa.includes('/'), `${label}: IPA is stored without wrapping slashes`)
   const primaryStressCount = (word.ipa.match(/ˈ/g) ?? []).length
