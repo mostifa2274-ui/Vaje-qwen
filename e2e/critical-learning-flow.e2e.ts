@@ -1923,6 +1923,24 @@ test('dictionary columns stay aligned across different word and meaning lengths'
   await expect(pronunciation).toBeVisible()
   await pronunciation.click()
   await expect(dialog.getByText('ضبط فقط در حافظهٔ همین صفحه می‌ماند', { exact: false })).toBeVisible()
+  await pronunciation.click()
+
+  const activeUse = dialog.getByTestId('active-use-practice')
+  await expect(activeUse.getByText('کاربرد فعال در جمله (اختیاری)', { exact: true })).toBeVisible()
+  await activeUse.getByText('کاربرد فعال در جمله (اختیاری)', { exact: true }).click()
+  await activeUse.locator('textarea').fill('This is my own new sentence.')
+  await activeUse.getByRole('button', { name: 'مقایسه با نمونه' }).click()
+  await expect(activeUse.getByText('یک نمونهٔ طبیعی', { exact: true })).toBeVisible()
+
+  const geometry = await dialog.evaluate(element => ({
+    height: element.getBoundingClientRect().height,
+    viewport: window.innerHeight,
+    scrollable: element.scrollHeight > element.clientHeight,
+    overflowY: getComputedStyle(element).overflowY,
+  }))
+  expect(geometry.height).toBeLessThanOrEqual(geometry.viewport - 8)
+  expect(geometry.scrollable).toBe(true)
+  expect(geometry.overflowY).toBe('auto')
   await expectNoHorizontalOverflow(page)
 })
 
