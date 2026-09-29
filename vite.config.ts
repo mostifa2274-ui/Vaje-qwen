@@ -25,7 +25,7 @@ function contentSecurityPolicy(): Plugin {
           "script-src 'self'",
           ["style-src 'self'", ...styleHashes].join(' '),
           "img-src 'self' data:",
-          "media-src 'self'",
+          "media-src 'self' blob:",
           "connect-src 'self'",
           "font-src 'self'",
           "manifest-src 'self'",

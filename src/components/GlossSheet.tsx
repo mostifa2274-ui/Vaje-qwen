@@ -6,6 +6,7 @@ import type { ClipKind } from '../engine/audioClips'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { SpeakerIcon } from './Icons'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
+import PronunciationPractice from './PronunciationPractice'
 
 interface Props {
   word: WordEntry | null
@@ -127,6 +128,14 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
         <hr className="dash-line my-4" />
         <div className="font-en text-base leading-relaxed" dir="ltr">{word.ex}</div>
         <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.tr}</div>
+
+        <PronunciationPractice
+          key={word.id}
+          word={word.word}
+          soundOn={soundOn}
+          narratorVoiceURI={narratorVoiceURI}
+          narratorRate={narratorRate}
+        />
 
         <div className="mt-4 flex gap-2">
           <button
