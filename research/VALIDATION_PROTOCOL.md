@@ -87,6 +87,7 @@ Also report distributions, not only averages.
 
 Use the exported de-identified Ghesse report to test whether these internal signals predict held-out delayed outcomes:
 
+- first-attempt written and listening accuracy during initial chapter preparation (kept separate from the corrected 100% unlock score);
 - FSRS stability and difficulty;
 - retrieval latency;
 - lapse count;
