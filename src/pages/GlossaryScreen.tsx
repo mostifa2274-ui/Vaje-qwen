@@ -20,7 +20,16 @@ type GlossaryFilter = 'all' | 'trouble' | MasteryLevel
 // Arabic-layout letters (ي/ك), a half-space typed as a space or left out,
 // diacritics and punctuation must not hide a word from a learner typing on a
 // different keyboard.
-const SEARCH_KEYS = new Map(VOCAB.map(word => [word.id, `${compactPersianAnswer(word.word)}\n${compactPersianAnswer(word.fa)}`]))
+const SEARCH_KEYS = new Map(VOCAB.map(word => [word.id, [
+  word.word,
+  word.fa,
+  word.senseFa,
+  word.usageNoteFa,
+  word.pronunciationNoteFa,
+  ...(word.inflections ?? []),
+  ...(word.wordFamily ?? []),
+  ...(word.collocations ?? []).flatMap(item => [item.en, item.fa]),
+].filter((value): value is string => Boolean(value)).map(compactPersianAnswer).join('\n')]))
 
 const LEVEL_FA: Record<MasteryLevel, string> = {
   new: 'تازه',
