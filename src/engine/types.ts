@@ -25,8 +25,12 @@ export interface ChapterProgress {
   // every new word has passed both tests (100% written + 100% listening).
   prepWrittenCorrect?: number
   prepWrittenTotal?: number
+  /** Correct on the learner's first encounter with each written prep item. */
+  prepWrittenFirstPassCorrect?: number
   prepListeningCorrect?: number
   prepListeningTotal?: number
+  /** Correct on the learner's first encounter with each listening prep item. */
+  prepListeningFirstPassCorrect?: number
   // Optional prove-known path. It unlocks only after every chapter word is
   // produced from Persian and recognized from audio correctly on first try.
   // This is preparation evidence only; it never grants spaced mastery.
