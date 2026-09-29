@@ -120,3 +120,14 @@ CI روی هر PR و هر push به `main` اجرا می‌شود و ساخت Cl
 ## Provenance
 
 `CONTENT_PROVENANCE.md` و `provenance/release-rights.json` وضعیت منبع واژگان را ثبت می‌کنند. رکورد فعلی همچنان `blocked` است، زیرا مدرک حقوق بازنشر برای انتخاب واژگان فعلی در این مخزن وجود ندارد. این وضعیت دیگر ساخت یا انتشار فنی را متوقف نمی‌کند و انتشار موفق به معنی تأیید حقوق محتوا نیست. مسیر بازسازی مستقل در `provenance/open-vocab/README.md` آمده است.
+
+
+## Evidence status for “best in class”
+
+The repository deliberately separates a **technical release** from an evidence-backed “best-in-class” claim.
+
+- `npm run best-in-class:status` prints the current human/external evidence gates.
+- `npm run validate:best-in-class` fails until every gate has genuine evidence.
+- Unresolved work is recorded in `quality/best-in-class-status.json`; code must never invent human sign-off, learner-study results, accessibility passes or content-rights evidence.
+- `npm run check` validates that the quality program, lexical-review ledger and performance budgets are structurally sound, but it does not falsely mark pending human work complete.
+- Settings can export a de-identified research snapshot for voluntary learner studies; it excludes raw answers, recordings, exact dates, device IDs and account identifiers.
