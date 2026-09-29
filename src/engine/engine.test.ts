@@ -440,8 +440,14 @@ describe('review and exam generation', () => {
     expect(isTypedCorrect('C.D.', cd)).toBe(true)
     expect(isTypedCorrect('D.V.D.', dvd)).toBe(true)
 
-    // Do not broaden into misspellings or unrelated synonyms.
+    const book = VOCAB.find(w => w.id === 'book')!
+    expect(isTypedCorrect('ＢＯＯＫ', book)).toBe(true)
+    expect(isTypedCorrect('book,', book)).toBe(true)
+    expect(isTypedCorrect('book:', book)).toBe(true)
+
+    // Do not broaden into misspellings, inflections or unrelated synonyms.
     expect(isTypedCorrect('noone', noOne)).toBe(false)
+    expect(isTypedCorrect('books', book)).toBe(false)
     expect(isTypedCorrect('television', tv)).toBe(false)
   })
 
