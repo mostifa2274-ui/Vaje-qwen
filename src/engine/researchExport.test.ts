@@ -18,8 +18,10 @@ describe('de-identified research export', () => {
       prepAttempts: 1,
       prepWrittenCorrect: 10,
       prepWrittenTotal: 10,
+      prepWrittenFirstPassCorrect: 7,
       prepListeningCorrect: 10,
       prepListeningTotal: 10,
+      prepListeningFirstPassCorrect: 8,
       completed: true,
       completedAt: new Date(2026, 8, 30, 11).getTime(),
       checksCorrect: 8,
@@ -43,6 +45,12 @@ describe('de-identified research export', () => {
       averageResponseMs: 4200,
     })
     expect(report.chapters[0]).toMatchObject({
+      preparationPath: 'taught',
+      writtenCoverage: 1,
+      writtenFirstPass: 0.7,
+      listeningCoverage: 1,
+      listeningFirstPass: 0.8,
+      diagnosticPerfect: false,
       readingFirstPass: 0.8,
       chapterListeningFirstPass: 0.8,
     })
