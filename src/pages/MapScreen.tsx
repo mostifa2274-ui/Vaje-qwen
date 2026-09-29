@@ -1,3 +1,4 @@
+import { useState, type KeyboardEvent } from 'react'
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { learningHealth, bookHealth, certificationStatus, consolidationFocus, nextBestAction } from '../engine/analytics'
@@ -19,6 +20,8 @@ import {
 import { faNum, percent } from '../engine/format'
 import { dailyProgress } from '../engine/activity'
 import { diagnosticFailed } from '../engine/diagnosticDraft'
+
+type HomeSection = 'today' | 'journey' | 'library'
 
 interface Props {
   state: GhesseState
@@ -87,12 +90,30 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
   const certification = certificationStatus(state, now)
   const focus = consolidationFocus(state, now)
   const daily = dailyProgress(state, now)
+  const [homeSection, setHomeSection] = useState<HomeSection>(() => state.exploreAll ? 'journey' : 'today')
   const answersLeft = Math.max(0, daily.goal - daily.today)
   const goalLabel = daily.met
     ? 'هدف امروز کامل شد'
     : daily.streak > 0
       ? `${faNum(answersLeft)} پاسخ دیگر تا ${faNum(daily.streak + 1)} روز پیاپی`
       : `${faNum(answersLeft)} پاسخ تا کامل‌شدن هدف امروز`
+
+  function moveHomeTab(event: KeyboardEvent<HTMLButtonElement>, current: HomeSection) {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+    event.preventDefault()
+    const order: HomeSection[] = ['today', 'journey', 'library']
+    const currentIndex = order.indexOf(current)
+    const nextIndex = event.key === 'Home'
+      ? 0
+      : event.key === 'End'
+        ? order.length - 1
+        : event.key === 'ArrowLeft'
+          ? (currentIndex + 1) % order.length
+          : (currentIndex - 1 + order.length) % order.length
+    const next = order[nextIndex]
+    setHomeSection(next)
+    window.requestAnimationFrame(() => document.getElementById(`home-tab-${next}`)?.focus())
+  }
 
   function runNextAction() {
     if (action.kind === 'rest') return onOpenFlashcards()
@@ -115,31 +136,33 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
 
   return (
     <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center justify-between gap-3">
-        <div>
-          <h1 className="text-3xl font-extrabold">قصه</h1>
-          <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ از اولین برخورد تا تسلط پایدار</p>
-        </div>
-        <div className="home-toolbar">
-          <button type="button" className="btn-paper home-toolbar-button px-3 text-sm" onClick={onOpenGlossary} aria-label="واژه‌نامه">
-            <BookOpenTextIcon className="h-5 w-5" />
-            <span>واژه‌نامه</span>
-          </button>
-          <button
-            type="button"
-            className="btn-paper home-toolbar-button px-3 text-sm"
-            onClick={onOpenFlashcards}
-            aria-label="تمرین آزاد با جعبهٔ لایتنر"
-            data-testid="open-flashcards"
-          >
-            <FlashcardsIcon className="h-5 w-5" />
-            <span>تمرین آزاد</span>
-          </button>
-          <button type="button" className="btn-paper home-toolbar-icon" onClick={onOpenSettings} aria-label="تنظیمات">
-            <SettingsIcon className="h-5 w-5" />
-          </button>
-        </div>
+      <header>
+        <h1 className="text-3xl font-extrabold">قصه</h1>
+        <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ از اولین برخورد تا تسلط پایدار</p>
       </header>
+
+      <nav className="home-section-tabs mt-4 grid grid-cols-3 gap-1" role="tablist" aria-label="بخش‌های اصلی قصه">
+        {([
+          ['today', 'امروز'],
+          ['journey', 'مسیر'],
+          ['library', 'کتابخانه'],
+        ] as const).map(([id, label]) => (
+          <button
+            key={id}
+            id={`home-tab-${id}`}
+            type="button"
+            role="tab"
+            aria-selected={homeSection === id}
+            aria-controls={`home-panel-${id}`}
+            tabIndex={homeSection === id ? 0 : -1}
+            className={homeSection === id ? 'home-section-tab active' : 'home-section-tab'}
+            onClick={() => setHomeSection(id)}
+            onKeyDown={event => moveHomeTab(event, id)}
+          >
+            {label}
+          </button>
+        ))}
+      </nav>
 
       {state.exploreAll && (
         <div className="explore-note mt-4" role="status">
@@ -148,6 +171,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </div>
       )}
 
+      <section
+        id="home-panel-today"
+        role="tabpanel"
+        aria-labelledby="home-tab-today"
+        hidden={homeSection !== 'today'}
+      >
       <section className="next-action-card mt-4">
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-extrabold">قدم بعدی: {actionTitle}</h2>
@@ -208,12 +237,6 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </div>
       </section>
 
-      <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
-        <div><b>{faNum(doneCount)}</b><span>فصل تمام‌شده</span></div>
-        <div><b>{faNum(health.mastered)}</b><span>واژهٔ مسلط</span></div>
-        <div><b>{percent(health.durableCoverage)}</b><span>قوی یا مسلط</span></div>
-      </section>
-
       <button type="button" className={`review-hero mt-4 w-full ${health.dueNow ? 'due' : ''}`} onClick={onOpenReview}>
         <span className="review-hero-icon" aria-hidden="true"><RefreshCcwIcon className="h-5 w-5" /></span>
         <div className="min-w-0 flex-1 text-right">
@@ -226,6 +249,20 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </div>
         <span className="review-badge">{health.dueNow ? faNum(health.dueNow) : health.trouble ? faNum(health.trouble) : 'تمرین'}</span>
       </button>
+
+      </section>
+
+      <section
+        id="home-panel-journey"
+        role="tabpanel"
+        aria-labelledby="home-tab-journey"
+        hidden={homeSection !== 'journey'}
+      >
+      <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
+        <div><b>{faNum(doneCount)}</b><span>فصل تمام‌شده</span></div>
+        <div><b>{faNum(health.mastered)}</b><span>واژهٔ مسلط</span></div>
+        <div><b>{percent(health.durableCoverage)}</b><span>قوی یا مسلط</span></div>
+      </section>
 
       <details className="method-details mt-4">
         <summary>روش یادگیری و معیارهای عبور</summary>
@@ -369,6 +406,44 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           )}
         </section>
       )}
+      </section>
+
+      <section
+        id="home-panel-library"
+        role="tabpanel"
+        aria-labelledby="home-tab-library"
+        hidden={homeSection !== 'library'}
+      >
+        <div className="library-home mt-4">
+          <button type="button" className="library-home-row" onClick={onOpenGlossary} aria-label="واژه‌نامه">
+            <span className="library-home-icon" aria-hidden="true"><BookOpenTextIcon className="h-5 w-5" /></span>
+            <span className="min-w-0 flex-1 text-right">
+              <b>واژه‌نامه</b>
+              <span>جست‌وجو و مرور مرجع همهٔ ۸۹۹ واژه</span>
+            </span>
+          </button>
+          <button
+            type="button"
+            className="library-home-row"
+            onClick={onOpenFlashcards}
+            aria-label="تمرین آزاد با جعبهٔ لایتنر"
+            data-testid="open-flashcards"
+          >
+            <span className="library-home-icon" aria-hidden="true"><FlashcardsIcon className="h-5 w-5" /></span>
+            <span className="min-w-0 flex-1 text-right">
+              <b>تمرین آزاد</b>
+              <span>جعبهٔ لایتنر اختیاری؛ بدون اثر روی تسلط و قفل‌های مسیر</span>
+            </span>
+          </button>
+          <button type="button" className="library-home-row" onClick={onOpenSettings} aria-label="تنظیمات">
+            <span className="library-home-icon" aria-hidden="true"><SettingsIcon className="h-5 w-5" /></span>
+            <span className="min-w-0 flex-1 text-right">
+              <b>تنظیمات و پشتیبان</b>
+              <span>صدا، هدف روزانه، حریم خصوصی و پشتیبان پیشرفت</span>
+            </span>
+          </button>
+        </div>
+      </section>
 
     </div>
   )

@@ -49,6 +49,12 @@ async function speechHistory(page: Page): Promise<string[]> {
   ).__ghesseSpeechHistory ?? [])
 }
 
+async function openHomeSection(page: Page, name: 'امروز' | 'مسیر' | 'کتابخانه'): Promise<void> {
+  const tab = page.getByRole('tab', { name, exact: true })
+  await tab.click()
+  await expect(tab).toHaveAttribute('aria-selected', 'true')
+}
+
 async function expectNoHorizontalOverflow(page: Page): Promise<void> {
   const dimensions = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
@@ -301,6 +307,7 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
 
 test('locked future books and preparation steps keep readable text opacity', async ({ page }) => {
   await page.goto('/#/map')
+  await openHomeSection(page, 'مسیر')
 
   const locked = page.locator('.future-book-row').first()
   await expect(locked).toBeVisible()
@@ -347,6 +354,7 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
     expect(uncachedRouteArt.ok).toBe(true)
     expect(uncachedRouteArt.type).toMatch(/^image\//)
 
+    await openHomeSection(page, 'کتابخانه')
     await page.getByRole('button', { name: 'واژه‌نامه' }).click()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
     await expectNoHorizontalOverflow(page)
@@ -400,6 +408,7 @@ test.describe('without a service worker', () => {
   test('a screen whose script fails to load reloads once, then offers a retry without losing the app', async ({ page }) => {
     await page.goto('/#/map')
     await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+    await openHomeSection(page, 'کتابخانه')
     const chunk = /\/assets\/GlossaryScreen-[^/]+\.js$/
     let blocked = 0
     await page.route(chunk, route => {
@@ -423,6 +432,7 @@ test.describe('without a service worker', () => {
     // The way home works from the recovery card too.
     await page.route(/\/assets\/SettingsScreen-[^/]+\.js$/, route => route.abort())
     await page.goto('/#/map')
+    await openHomeSection(page, 'کتابخانه')
     await page.getByRole('button', { name: 'تنظیمات', exact: true }).click()
     await expect(recovery).toBeVisible()
     await recovery.getByRole('button', { name: 'بازگشت به مسیر' }).click()
@@ -451,8 +461,31 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
   await expect(page).toHaveURL(/#\/map$/)
 })
 
-test('journey home keeps a compact hierarchy without the old dashboard layer', async ({ page }) => {
+test('home defaults to Today, keeps Journey focused, and exposes optional tools only in Library', async ({ page }) => {
   await page.goto('/#/map')
+
+  const today = page.getByRole('tab', { name: 'امروز', exact: true })
+  const journey = page.getByRole('tab', { name: 'مسیر', exact: true })
+  const library = page.getByRole('tab', { name: 'کتابخانه', exact: true })
+  await expect(today).toHaveAttribute('aria-selected', 'true')
+  await expect(journey).toHaveAttribute('aria-selected', 'false')
+  await expect(library).toHaveAttribute('aria-selected', 'false')
+  await expect(page.locator('#home-panel-today')).toBeVisible()
+  await expect(page.locator('#home-panel-journey')).toBeHidden()
+  await expect(page.locator('#home-panel-library')).toBeHidden()
+  await expect(page.locator('.next-action-card')).toBeVisible()
+  await expect(page.getByTestId('today-strip')).toBeVisible()
+  await expect(page.locator('.review-hero')).toBeVisible()
+  await expect(page.locator('.home-summary')).toBeHidden()
+  await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeHidden()
+
+  // RTL roving-tab keyboard navigation: ArrowLeft advances visually.
+  await today.focus()
+  await page.keyboard.press('ArrowLeft')
+  await expect(journey).toBeFocused()
+  await expect(journey).toHaveAttribute('aria-selected', 'true')
+  await expect(page.locator('#home-panel-today')).toBeHidden()
+  await expect(page.locator('#home-panel-journey')).toBeVisible()
 
   await expect(page.locator('.home-summary > div')).toHaveCount(3)
   await expect(page.locator('.journey-overview')).toHaveCount(0)
@@ -487,6 +520,14 @@ test('journey home keeps a compact hierarchy without the old dashboard layer', a
     if (number === 1) await expect(entry).toBeEnabled()
     else await expect(entry).toBeDisabled()
   }
+
+  await page.keyboard.press('ArrowLeft')
+  await expect(library).toBeFocused()
+  await expect(library).toHaveAttribute('aria-selected', 'true')
+  await expect(page.locator('#home-panel-library')).toBeVisible()
+  await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'تنظیمات', exact: true })).toBeVisible()
   await expectNoHorizontalOverflow(page)
 })
 
@@ -794,8 +835,9 @@ test('smart review speaks a spelling card on arrival and supports a keyboard-onl
   await expect(page.getByRole('button', { name: 'کارت بعدی ←' })).toBeFocused()
 })
 
-test('the optional Leitner box opens from the home tools, moves cards between boxes and keeps them after a reload', async ({ page }) => {
+test('the optional Leitner box opens from Library, moves cards between boxes and keeps them after a reload', async ({ page }) => {
   await page.goto('/#/map')
+  await openHomeSection(page, 'کتابخانه')
   const leitnerButton = page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true })
   await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
   await expect(leitnerButton).toBeVisible()
@@ -880,6 +922,7 @@ test('a due Leitner card shows on the map and can be answered by typing', async 
       days: {},
     },
   })
+  await openHomeSection(page, 'کتابخانه')
   const leitnerButton = page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر' })
   // Free practice is intentionally subordinate to Smart Review: no competing
   // due badge appears on the journey home.
@@ -905,6 +948,7 @@ test('a due Leitner card shows on the map and can be answered by typing', async 
   await page.getByTestId('flashcards-summary').getByRole('button', { name: 'بازگشت به جعبه‌ها' }).click()
   await expect(page.getByRole('button', { name: /^جعبهٔ ۴، هر ۸ روز: ۱ کارت$/ })).toBeVisible()
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
+  await openHomeSection(page, 'کتابخانه')
   await expect(page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true }).locator('.home-toolbar-badge')).toHaveCount(0)
 })
 
@@ -928,7 +972,9 @@ test('a finished book is consolidated in review, and today\'s answers fill the d
   const next = page.locator('.next-action-card')
   await expect(next.getByRole('heading', { name: 'قدم بعدی: تثبیت واژه‌های کتاب ۱' })).toBeVisible()
   await expect(next.getByRole('progressbar', { name: 'واژه‌های ثابت‌شده' })).toHaveAttribute('aria-valuenow', String(bookIds.size - 3))
+  await openHomeSection(page, 'مسیر')
   await expect(page.getByText(`پس از تثبیت دیرهنگام همهٔ واژه‌ها باز می‌شود: ${faNum(bookIds.size - 3)} از ${faNum(bookIds.size)} واژه`, { exact: false })).toBeVisible()
+  await openHomeSection(page, 'امروز')
   const strip = page.getByTestId('today-strip')
   await expect(strip).toContainText('۲ پاسخ تا کامل‌شدن هدف امروز')
   await expect(strip).toContainText('۱۳ از ۱۵')
@@ -981,8 +1027,9 @@ test('glossary search tolerates Arabic-layout Persian letters and keeps filterin
   await expectNoHorizontalOverflow(page)
 })
 
-test('map shows reviewed artwork only for reachable books and announces chapter status', async ({ page }) => {
+test('Journey shows reviewed artwork only for reachable books and announces chapter status', async ({ page }) => {
   await page.goto('/#/map')
+  await openHomeSection(page, 'مسیر')
   const bookArt = page.locator('.book-banner img')
   await expect(bookArt).toHaveCount(1)
   await expect(bookArt.first()).toBeVisible()
@@ -1117,9 +1164,11 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   const futureBook2 = page.getByLabel(/کتاب ۲: .+ — قفل/)
 
   await expect(page.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
-  // Future books stay compact until the previous book gate is cleared.
+  // Future books stay compact inside Journey until the previous book gate is cleared.
+  await openHomeSection(page, 'مسیر')
   await expect(futureBook2).toBeVisible()
   await expect(page.getByText('آزمون پایان کتاب ۲', { exact: true })).toHaveCount(0)
+  await openHomeSection(page, 'امروز')
   await page.locator('.next-action-card').getByRole('button', { name: 'شروع آزمون' }).click()
   await expect(page).toHaveURL(/#\/exam\/book-1$/)
   await expect(page.getByRole('heading', { level: 1, name: 'آزمون پایان کتاب ۱' })).toBeVisible()
@@ -1213,6 +1262,7 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   expect(await page.evaluate(() => window.localStorage.getItem('ghesse:book-test:v3:1'))).toBeNull()
 
   await page.getByRole('button', { name: 'ادامهٔ مسیر ←' }).click()
+  await openHomeSection(page, 'مسیر')
   await expect(futureBook2).toHaveCount(0)
   await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
 })
