@@ -1,6 +1,7 @@
 import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, RetrievalMode, SkillDimension, SkillStat } from './types'
 import { emptyLeitner, normalizeLeitner } from './leitner'
 import { mergeActivity, mergeLeitnerDays, normalizeActivity } from './activity'
+import { dayKey } from './days'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
 const CURRENT_STATE_VERSION = 6
@@ -15,6 +16,7 @@ export const MAX_IMPORT_BYTES = 2 * 1024 * 1024
 export function emptyState(now: number, firstChapterId: string): GhesseState {
   return {
     version: CURRENT_STATE_VERSION,
+    dayEvidenceVersion: 1,
     currentChapter: firstChapterId,
     chapters: {},
     words: {},
@@ -90,6 +92,32 @@ function normalizeDays(v: unknown): string[] {
   return [...new Set(v.filter((x): x is string => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x)))].sort()
 }
 
+function utcDayKey(time: number): string {
+  return new Date(time).toISOString().slice(0, 10)
+}
+
+/**
+ * v6 originally stored success-day buckets in UTC, then switched to learner
+ * local days without a persisted semantics marker. We cannot reconstruct every
+ * historical event timestamp, but the last successful retrieval timestamp is
+ * authoritative. Canonicalizing that bucket prevents the upgrade boundary from
+ * creating a false extra day, and the timestamp-based review engine prevents
+ * same-local-day stage advancement thereafter.
+ */
+function reconcileLatestLegacyDay(days: string[], at: number | undefined): string[] {
+  if (at === undefined) return days
+  const local = dayKey(at)
+  const utc = utcDayKey(at)
+  const next = new Set(days)
+  if (utc !== local) next.delete(utc)
+  next.add(local)
+  return [...next].sort()
+}
+
+function isProductiveMode(mode: RetrievalMode | undefined): boolean {
+  return mode === 'productive' || mode === 'contextProductive' || mode === 'spelling'
+}
+
 function normalizeMode(v: unknown): RetrievalMode | undefined {
   return v === 'recognition' || v === 'reverse' || v === 'cloze' || v === 'productive' || v === 'contextProductive' || v === 'spelling' ? v : undefined
 }
@@ -113,7 +141,7 @@ function normalizeSkillStats(v: unknown): Record<SkillDimension, SkillStat> {
   }
 }
 
-function normalizeWord(raw: unknown): WordProgress | undefined {
+function normalizeWord(raw: unknown, legacyDayEvidence = false): WordProgress | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const r = raw as Partial<WordProgress>
   const intervalDays = Math.max(0, Math.min(3650, num(r.intervalDays)))
@@ -121,6 +149,17 @@ function normalizeWord(raw: unknown): WordProgress | undefined {
   const reviewCorrect = Math.max(0, Math.floor(num(r.reviewCorrect)))
   const productiveCorrect = Math.max(0, Math.floor(num(r.productiveCorrect)))
   const skillStats = normalizeSkillStats(r.skillStats)
+  const lastIndependentSuccessAt = timestamp(r.lastIndependentSuccessAt)
+  const lastMode = normalizeMode(r.lastMode)
+  const lastReviewWasCorrect = typeof r.lastReviewWasCorrect === 'boolean' ? r.lastReviewWasCorrect : undefined
+  const inferredLastProductiveSuccessAt = timestamp(r.lastProductiveSuccessAt)
+    ?? (lastReviewWasCorrect === true && isProductiveMode(lastMode) ? lastIndependentSuccessAt : undefined)
+  let successDays = normalizeDays(r.successDays)
+  let productiveSuccessDays = normalizeDays(r.productiveSuccessDays)
+  if (legacyDayEvidence) {
+    successDays = reconcileLatestLegacyDay(successDays, lastIndependentSuccessAt)
+    productiveSuccessDays = reconcileLatestLegacyDay(productiveSuccessDays, inferredLastProductiveSuccessAt)
+  }
   if (!r.skillStats) {
     // v5 and earlier did not persist per-skill aggregates. Preserve only what
     // can be conservatively inferred from the old staged review path; never
@@ -142,13 +181,14 @@ function normalizeWord(raw: unknown): WordProgress | undefined {
     reviewStreak: Math.max(0, Math.floor(num(r.reviewStreak))),
     dueAt: timestamp(r.dueAt),
     lastReviewedAt: timestamp(r.lastReviewedAt),
-    lastIndependentSuccessAt: timestamp(r.lastIndependentSuccessAt),
+    lastIndependentSuccessAt,
+    lastProductiveSuccessAt: inferredLastProductiveSuccessAt,
     intervalDays,
     productiveCorrect,
-    successDays: normalizeDays(r.successDays),
-    productiveSuccessDays: normalizeDays(r.productiveSuccessDays),
-    lastReviewWasCorrect: typeof r.lastReviewWasCorrect === 'boolean' ? r.lastReviewWasCorrect : undefined,
-    lastMode: normalizeMode(r.lastMode),
+    successDays,
+    productiveSuccessDays,
+    lastReviewWasCorrect,
+    lastMode,
     difficulty: Math.min(10, Math.max(1, num(r.difficulty, 5))),
     stabilityDays: Math.max(0, Math.min(3650, num(r.stabilityDays, intervalDays))),
     lapses: Math.max(0, Math.floor(num(r.lapses))),
@@ -189,8 +229,9 @@ function normalizeState(
   validWordIds?: ReadonlySet<string>,
 ): GhesseState | undefined {
   if (!raw || typeof raw !== 'object') return undefined
-  const p = raw as Partial<GhesseState> & { version?: number }
+  const p = raw as Partial<GhesseState> & { version?: number; dayEvidenceVersion?: number }
   if (typeof p.version === 'number' && (!Number.isInteger(p.version) || p.version < 1 || p.version > CURRENT_STATE_VERSION)) return undefined
+  const legacyDayEvidence = p.dayEvidenceVersion !== 1
   const chapters: Record<string, ChapterProgress> = {}
   for (const [id, c] of Object.entries(p.chapters ?? {})) {
     if (validChapterIds && !validChapterIds.has(id)) continue
@@ -200,7 +241,7 @@ function normalizeState(
   const words: Record<string, WordProgress> = {}
   for (const [id, w] of Object.entries(p.words ?? {})) {
     if (validWordIds && !validWordIds.has(id)) continue
-    const normalized = normalizeWord(w)
+    const normalized = normalizeWord(w, legacyDayEvidence)
     if (normalized) words[id] = normalized
   }
   const exams: Record<string, ExamProgress> = {}
@@ -212,6 +253,7 @@ function normalizeState(
   const currentChapter = validChapterIds && !validChapterIds.has(requested) ? firstChapterId : requested
   return {
     version: 6,
+    dayEvidenceVersion: 1,
     currentChapter,
     chapters,
     words,
@@ -468,6 +510,7 @@ export function mergeConcurrentState(
 
   return {
     version: CURRENT_STATE_VERSION,
+    dayEvidenceVersion: 1,
     currentChapter,
     chapters,
     words,
