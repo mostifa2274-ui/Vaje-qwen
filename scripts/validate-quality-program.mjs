@@ -77,10 +77,11 @@ const wordIds = new Set(vocabulary.map(word => word.id))
 for (const id of lexical.reviewedWordIds) assert(wordIds.has(id), `lexical review contains unknown word id: ${id}`)
 
 assert(['blocked', 'cleared'].includes(rights.status), 'release-rights status must be blocked or cleared')
+assert(rights.activeVocabulary === 'src/data/vocabulary.json', 'rights record must identify the active vocabulary file')
+assert(rights.activeVocabularySha256 === currentVocabularySha, 'rights record is not tied to the active vocabulary')
 const rightsGate = rights.status === 'cleared' ? 'complete' : 'blocked'
 assert(status.gates.contentRights.status === rightsGate, 'content-rights quality gate must mirror release-rights status')
 if (rightsGate === 'complete') {
-  assert(rights.activeVocabularySha256 === currentVocabularySha, 'rights evidence is not tied to the active vocabulary')
   assert(Array.isArray(rights.sources) && rights.sources.length > 0, 'cleared rights require documented sources/evidence')
 }
 
