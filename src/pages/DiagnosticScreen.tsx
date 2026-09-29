@@ -240,6 +240,7 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
                 lang="en"
                 dir="ltr"
                 autoComplete="off"
+                autoCorrect="off"
                 autoCapitalize="none"
                 spellCheck={false}
                 value={typed}
