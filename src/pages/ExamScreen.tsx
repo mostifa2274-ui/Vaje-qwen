@@ -625,6 +625,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
                 dir="ltr"
                 autoFocus
                 autoComplete="off"
+                autoCorrect="off"
                 autoCapitalize="none"
                 spellCheck={false}
                 enterKeyHint="next"
