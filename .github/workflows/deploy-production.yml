@@ -1,10 +1,15 @@
-name: Optional direct Cloudflare deploy
+name: Production deployment fallback
 
-# Manual only (Actions > Optional direct Cloudflare deploy > Run workflow).
-# Cloudflare's Git integration deploys main; without the two secrets below
-# this fallback did nothing but still spent Actions minutes after each merge.
+# Cloudflare Git integration remains the primary deployment path.
+# After an exact-main CI pass, this workflow first waits for that integration.
+# If production is still stale, it can fall back to Wrangler using repository
+# secrets. Manual execution remains available for an operator retry.
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
@@ -15,37 +20,79 @@ concurrency:
 
 jobs:
   deploy:
-    # A manual run can target any branch; only main may reach production.
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      SOURCE_SHA: ${{ github.sha }}
+      SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
       SOURCE_BRANCH: main
+      PRODUCTION_URL: https://vaje-qwen1.mostifa2273.workers.dev
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
     steps:
-      - name: Check Cloudflare credentials
+      - name: Confirm exact current main
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          main_sha="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')"
+          if [ "$SOURCE_SHA" = "$main_sha" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+            echo "Deploy candidate is current main: $SOURCE_SHA"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping superseded revision $SOURCE_SHA; current main is $main_sha."
+          fi
+
+      - name: Wait for Cloudflare Git deployment
+        id: primary
+        if: steps.source.outputs.current == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Waiting for the primary Cloudflare Git integration to publish $SOURCE_SHA."
+          for attempt in $(seq 1 18); do
+            marker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20               "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
+            if printf '%s' "$marker" | jq -e --arg commit "$SOURCE_SHA"               '.release == "ghesse-5.0.0" and .worker == "vaje-qwen1" and .commit == $commit and .branch == "main"' >/dev/null; then
+              if curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null                 && worker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/sw.js?fresh=$(date +%s)")"                 && [[ "$worker" == *"ghesse-shell-${SOURCE_SHA:0:16}"* ]]; then
+                echo "needs_deploy=false" >> "$GITHUB_OUTPUT"
+                echo "Primary deployment already converged on $SOURCE_SHA."
+                exit 0
+              fi
+            fi
+            if [ "$attempt" -lt 18 ]; then sleep 5; fi
+          done
+          echo "needs_deploy=true" >> "$GITHUB_OUTPUT"
+          echo "::warning::Primary Cloudflare Git deployment did not converge on $SOURCE_SHA; evaluating direct fallback."
+
+      - name: Check direct-deploy credentials
         id: cloudflare
+        if: steps.source.outputs.current == 'true' && steps.primary.outputs.needs_deploy == 'true'
         shell: bash
         run: |
           set -euo pipefail
           if [ -n "${CLOUDFLARE_API_TOKEN:-}" ] && [ -n "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
-            echo "Cloudflare GitHub Actions credentials are configured."
+            echo "Wrangler fallback credentials are configured."
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Direct deployment NOT performed: CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are not configured. Cloudflare Git integration remains the deployment path."
+            echo "::error::Production is stale and the direct Cloudflare fallback cannot run because CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are not configured."
             {
-              echo "## Direct Cloudflare deploy skipped"
+              echo "## Production fallback blocked"
               echo ""
-              echo "- Source revision: \`$SOURCE_SHA\`"
-              echo "- Reason: GitHub Actions Cloudflare credentials are not configured"
-              echo "- Active deployment path: Cloudflare Git integration"
-              echo ""
-              echo "A green workflow result here means the optional fallback behaved correctly; it does not mean Wrangler deployed production."
+              echo "- Expected revision: `$SOURCE_SHA`"
+              echo "- Primary Cloudflare Git deployment: did not converge"
+              echo "- Direct Wrangler credentials: missing"
             } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
           fi
 
       - name: Check out exact verified revision
@@ -77,9 +124,39 @@ jobs:
           WORKERS_CI_BRANCH: ${{ env.SOURCE_BRANCH }}
         run: npm run build && npm run validate:bundle-budget
 
-      - name: Deploy to Cloudflare Workers
+      - name: Deploy exact revision with Wrangler
         if: steps.cloudflare.outputs.configured == 'true'
         env:
           WORKERS_CI_COMMIT_SHA: ${{ env.SOURCE_SHA }}
           WORKERS_CI_BRANCH: ${{ env.SOURCE_BRANCH }}
         run: npx wrangler@4.135.0 deploy
+
+      - name: Verify exact production revision
+        if: steps.source.outputs.current == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 24); do
+            marker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20               "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
+            if printf '%s' "$marker" | jq -e --arg commit "$SOURCE_SHA"               '.release == "ghesse-5.0.0" and .worker == "vaje-qwen1" and .commit == $commit and .branch == "main"' >/dev/null; then
+              if curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null                 && worker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/sw.js?fresh=$(date +%s)")"                 && [[ "$worker" == *"ghesse-shell-${SOURCE_SHA:0:16}"* ]]; then
+                {
+                  echo "## Production deployment verified"
+                  echo ""
+                  echo "- Exact revision: `$SOURCE_SHA`"
+                  echo "- Production root reachable: yes"
+                  echo "- Service-worker cache matches: yes"
+                  if [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ]; then
+                    echo "- Deployment path: direct Wrangler fallback"
+                  else
+                    echo "- Deployment path: Cloudflare Git integration"
+                  fi
+                } >> "$GITHUB_STEP_SUMMARY"
+                echo "Production is exactly $SOURCE_SHA."
+                exit 0
+              fi
+            fi
+            if [ "$attempt" -lt 24 ]; then sleep 5; fi
+          done
+          echo "::error::Production did not converge on exact revision $SOURCE_SHA after deployment."
+          exit 1
