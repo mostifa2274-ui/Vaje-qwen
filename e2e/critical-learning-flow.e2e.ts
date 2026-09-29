@@ -602,7 +602,18 @@ test('offline audio manager is optional, book-scoped and progress-neutral', asyn
   for (let book = 1; book <= 8; book++) {
     await expect(page.getByRole('heading', { level: 2, name: new RegExp(`^کتاب ${faNum(book)}:`) })).toBeVisible()
   }
-  await expect(page.getByRole('button', { name: 'پاک‌کردن همهٔ صداهای آفلاین' })).toBeVisible()
+  const clear = page.getByRole('button', { name: 'پاک‌کردن همهٔ صداهای آفلاین' })
+  await expect(clear).toBeVisible()
+
+  // A long pack is explicitly cancellable; cache deletion stays disabled
+  // until the in-flight workers have observed the abort.
+  await page.getByRole('button', { name: 'ذخیره', exact: true }).first().click()
+  const cancel = page.getByRole('button', { name: 'توقف دانلود', exact: true })
+  await expect(cancel).toBeVisible()
+  await expect(clear).toBeDisabled()
+  await cancel.click()
+  await expect(clear).toBeEnabled()
+
   expect(await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))).toBe(saved)
   await expectNoHorizontalOverflow(page)
 })
