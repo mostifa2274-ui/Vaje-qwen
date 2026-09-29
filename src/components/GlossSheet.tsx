@@ -130,6 +130,7 @@ export default function GlossSheet({ word, soundOn, narratorVoiceURI, narratorRa
         <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.tr}</div>
 
         <PronunciationPractice
+          key={word.id}
           word={word.word}
           soundOn={soundOn}
           narratorVoiceURI={narratorVoiceURI}
