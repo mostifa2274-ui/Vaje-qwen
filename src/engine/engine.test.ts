@@ -23,7 +23,7 @@ import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehensio
 
 const FULL_LISTENING = { firstPassCorrect: LISTENING_QUESTION_COUNT, total: LISTENING_QUESTION_COUNT, verifiedCorrect: LISTENING_QUESTION_COUNT }
 import { CHAPTERS, VOCAB } from '../data/chapters'
-import type { WordEntry } from './types'
+import type { GhesseState, WordEntry } from './types'
 
 const MINI_VOCAB: WordEntry[] = [
   { id: 'cat', word: 'cat', fa: 'گربه', ipa: '', topic: 'animals', ex: 'The cat is black.', tr: '', pos: 'n.', cefr: 'A1' },
@@ -295,6 +295,7 @@ describe('chapter prep and gate progression', () => {
     for (const ch of CHAPTERS.filter(ch => ch.book === 1)) {
       state.chapters[ch.id] = { preparedAt: 1, prepAttempts: 1, completed: true, checksCorrect: 2, checksTotal: 2, reads: 1 }
     }
+    consolidateBook(state, 1)
     expect(canTakeExam(state, bookExamId(1))).toBe(true)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
     state.exams[bookExamId(1)] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: .9, bestScore: .9, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] }
@@ -319,23 +320,30 @@ describe('chapter prep and gate progression', () => {
     }
     const examId = bookExamId(1)
     const missedId = CHAPTERS.find(ch => ch.book === 1)!.new[0]
-    state.words[missedId] = blankWordProgress(1)
+    consolidateBook(state, 1)
     state.exams[examId] = {
-      attempts: 1, passed: false, lastAttemptAt: 100, lastScore: .7, bestScore: .7,
+      attempts: 1, passed: false, lastAttemptAt: 3 * 86_400_000, lastScore: .7, bestScore: .7,
       lastProductiveScore: .6, bestProductiveScore: .6, missedWordIds: [missedId], testedWordIds: [missedId],
     }
     expect(examRemediationPending(state, examId)).toBe(true)
     expect(examRemediationWordIds(state)).toContain(missedId)
     expect(canTakeExam(state, examId)).toBe(false)
 
-    state.words[missedId] = recordRetrieval(state.words[missedId], true, 'productive', 101, 'relearn')
+    state.words[missedId] = recordRetrieval(state.words[missedId], true, 'productive', 3 * 86_400_000 + 1, 'relearn')
     expect(examRemediationPending(state, examId)).toBe(true)
 
-    state.words[missedId] = recordRetrieval(state.words[missedId], true, 'productive', 102, 'review')
+    state.words[missedId] = recordRetrieval(state.words[missedId], true, 'productive', 3 * 86_400_000 + 2, 'review')
     expect(examRemediationPending(state, examId)).toBe(false)
     expect(canTakeExam(state, examId)).toBe(true)
   })
 })
+
+/** Every word of the book recalled without help two days after it was taught. */
+function consolidateBook(state: GhesseState, book: number) {
+  for (const ch of CHAPTERS.filter(ch => ch.book === book)) {
+    for (const id of ch.new) state.words[id] = { ...blankWordProgress(1), lastIndependentSuccessAt: 2 * 86_400_000 + 1 }
+  }
+}
 
 describe('review and exam generation', () => {
   it('accepts safe typed aliases and normalizes punctuation', () => {
@@ -386,7 +394,8 @@ describe('review and exam generation', () => {
 
       const comprehensionTotal = [...exam.reading, ...exam.listening].reduce((sum, text) => sum + text.questions.length, 0)
       const tooManyWrong = { ...allCorrect }
-      const failCount = Math.floor((exam.questions.length + comprehensionTotal) * (1 - exam.definition.passRate)) + 1
+      // The epsilon keeps 20 × (1 − 0.9) at 2, not 1.999….
+      const failCount = Math.floor((exam.questions.length + comprehensionTotal) * (1 - exam.definition.passRate) + 1e-9) + 1
       for (const question of exam.questions.slice(0, failCount)) tooManyWrong[question.index] = false
       expect(scoreExam(exam, tooManyWrong, rightTexts).passed).toBe(false)
 
@@ -396,7 +405,7 @@ describe('review and exam generation', () => {
       }
       expect(scoreExam(exam, allCorrect, oneWrongText).passed).toBe(true)
 
-      const comprehensionFails = Math.floor(comprehensionTotal * (1 - exam.definition.passRate)) + 1
+      const comprehensionFails = Math.floor(comprehensionTotal * (1 - exam.definition.passRate) + 1e-9) + 1
       let remaining = comprehensionFails
       const wrongTexts = {
         reading: rightTexts.reading.map(answers => answers.map(answer => {

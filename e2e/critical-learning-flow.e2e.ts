@@ -4,6 +4,7 @@ import { persianPartOfSpeech } from '../src/engine/partOfSpeech'
 import { faNum } from '../src/engine/format'
 import { clipId } from '../src/engine/audioClips'
 import { startOfflineOrigin } from './offlineOrigin'
+import { dayKey } from '../src/engine/days'
 
 interface VocabularyEntry {
   id: string
@@ -351,9 +352,80 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
     // A cold navigation must also recover the shell after losing the origin.
     await page.reload()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
+    // So must a launch URL that was never cached, such as one with a query.
+    await page.goto(`${origin.url}/?source=homescreen#/map`)
+    await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
   } finally {
     await origin.stop()
   }
+})
+
+test('the production build enforces its content security policy without a single violation', async ({ page }) => {
+  await page.addInitScript(() => {
+    const seen: string[] = []
+    ;(window as Window & { __ghesseCspViolations?: string[] }).__ghesseCspViolations = seen
+    document.addEventListener('securitypolicyviolation', event => {
+      seen.push(`${event.violatedDirective} ${event.blockedURI}`)
+    })
+  })
+  await openWithProgress(page, '/map', { exploreAll: true })
+  const policy = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content')
+  expect(policy).toContain("script-src 'self'")
+  expect(policy).toContain("object-src 'none'")
+  expect(policy).not.toContain('unsafe-inline')
+  expect(policy).not.toContain('unsafe-eval')
+
+  for (const route of ['glossary', 'flashcards', 'settings', 'review', 'prep/b1c1', 'read/b1c1', 'exam/book-2', 'exam/final-8', 'map']) {
+    await page.goto(`/#/${route}`)
+    await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible()
+  }
+  // Art, recorded narration and a sheet all load under the policy.
+  await page.goto('/#/read/b1c1')
+  await expect.poll(() => page.evaluate(() => [...document.images].some(image => image.naturalWidth > 0))).toBe(true)
+  await page.goto('/#/flashcards')
+  await page.getByRole('button', { name: /شروع مرور/ }).click()
+  await page.getByRole('button', { name: 'نمایش پاسخ' }).click()
+  await expect(page.locator('.flashcard-meaning')).toBeVisible()
+  const violations = await page.evaluate(() => (window as Window & { __ghesseCspViolations?: string[] }).__ghesseCspViolations ?? [])
+  expect(violations).toEqual([])
+})
+
+test.describe('without a service worker', () => {
+  // The service worker would answer from its precache; this covers a first
+  // visit, or a browser that keeps no worker.
+  test.use({ serviceWorkers: 'block' })
+
+  test('a screen whose script fails to load reloads once, then offers a retry without losing the app', async ({ page }) => {
+    await page.goto('/#/map')
+    await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+    const chunk = /\/assets\/GlossaryScreen-[^/]+\.js$/
+    let blocked = 0
+    await page.route(chunk, route => {
+      blocked++
+      return route.abort()
+    })
+    await page.getByRole('button', { name: 'واژه‌نامه', exact: true }).click()
+    // The first failure reloads the page by itself; the second one waits.
+    const recovery = page.getByTestId('route-error')
+    await expect(recovery).toBeVisible()
+    await expect(recovery.getByRole('heading', { name: 'این بخش باز نشد' })).toBeVisible()
+    expect(blocked).toBe(2)
+    await expect(page).toHaveURL(/#\/glossary$/)
+    await expect(page.getByRole('main')).toBeVisible()
+    await expectRenderedAccessibilityContract(page)
+
+    await page.unroute(chunk)
+    await recovery.getByRole('button', { name: 'دوباره تلاش کن' }).click()
+    await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
+
+    // The way home works from the recovery card too.
+    await page.route(/\/assets\/SettingsScreen-[^/]+\.js$/, route => route.abort())
+    await page.goto('/#/map')
+    await page.getByRole('button', { name: 'تنظیمات', exact: true }).click()
+    await expect(recovery).toBeVisible()
+    await recovery.getByRole('button', { name: 'بازگشت به مسیر' }).click()
+    await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+  })
 })
 
 test('keyboard skip link focuses the main landmark without changing the hash route', async ({ page }) => {
@@ -592,6 +664,7 @@ async function openWithProgress(page: Page, route: string, progress: {
   exams?: Record<string, Record<string, unknown>>
   exploreAll?: boolean
   leitner?: Record<string, unknown>
+  activity?: Record<string, number>
 }): Promise<void> {
   await page.addInitScript(({ progress }) => {
     // Seed before React mounts. Writing after page.goto races the initial
@@ -611,11 +684,18 @@ async function openWithProgress(page: Page, route: string, progress: {
       dailyReviewGoal: 15,
       exploreAll: progress.exploreAll === true,
       ...(progress.leitner ? { leitner: progress.leitner } : {}),
+      ...(progress.activity ? { activity: progress.activity } : {}),
       created: now - 2 * 86_400_000,
     }))
     window.sessionStorage.setItem('ghesse:e2e:progress-seeded', 'true')
   }, { progress })
   await page.goto(`/#${route}`)
+}
+
+/** A word taught two days ago and recalled without help yesterday: consolidated, not due. */
+function consolidatedWord(): Record<string, unknown> {
+  const now = Date.now()
+  return { introduced: true, firstSeenAt: now - 2 * 86_400_000, lastIndependentSuccessAt: now - 86_400_000, reviewStage: 1, reviewCorrect: 1, dueAt: now + 5 * 86_400_000 }
 }
 
 function dueWord(overrides: Record<string, unknown> = {}): Record<string, unknown> {
@@ -677,12 +757,15 @@ test('smart review speaks a spelling card on arrival and supports a keyboard-onl
 
 test('the Leitner box opens beside the glossary, moves cards between boxes and keeps them after a reload', async ({ page }) => {
   await page.goto('/#/map')
-  const glossaryButton = page.getByRole('button', { name: 'واژه‌نامه', exact: true })
   const leitnerButton = page.getByRole('button', { name: 'جعبهٔ لایتنر', exact: true })
+  await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
   await expect(leitnerButton).toBeVisible()
-  // The two sit side by side in the home toolbar.
-  const glossaryBox = (await glossaryButton.boundingBox())!
-  const leitnerBox = (await leitnerButton.boundingBox())!
+  // The two sit side by side in the home toolbar. Both are measured in one
+  // frame: the page's entry animation may still be moving them.
+  const [glossaryBox, leitnerBox] = await page.evaluate(() => ['واژه‌نامه', 'جعبهٔ لایتنر'].map(label => {
+    const box = document.querySelector(`.home-toolbar [aria-label="${label}"]`)!.getBoundingClientRect()
+    return { x: box.x, y: box.y, width: box.width }
+  }))
   expect(Math.abs(glossaryBox.y - leitnerBox.y)).toBeLessThan(2)
   expect(leitnerBox.x + leitnerBox.width).toBeLessThanOrEqual(glossaryBox.x + 1)
   await leitnerButton.click()
@@ -785,6 +868,62 @@ test('a due Leitner card shows on the map and can be answered by typing', async 
   await expect(page.getByRole('button', { name: /^جعبهٔ ۴، هر ۸ روز: ۱ کارت$/ })).toBeVisible()
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
   await expect(page.getByRole('button', { name: 'جعبهٔ لایتنر', exact: true }).locator('.home-toolbar-badge')).toHaveCount(0)
+})
+
+test('a finished book is consolidated in review, and today\'s answers fill the daily goal with a celebration', async ({ page }) => {
+  const bookIds = new Set<string>()
+  for (const id of ['b1c1', 'b1c2', 'b1c3', 'b1c4', 'b1c5']) {
+    const fixture = JSON.parse(readFileSync(new URL(`../src/data/chapters/${id}.json`, import.meta.url), 'utf8')) as ChapterFixture
+    for (const wordId of fixture.new) bookIds.add(wordId)
+  }
+  // Three words were taught two days ago and never recalled since.
+  const pending = chapterWords.slice(0, 3)
+  const now = Date.now()
+  const words = Object.fromEntries([...bookIds].map(id => [id, consolidatedWord()]))
+  for (const word of pending) words[word.id] = { introduced: true, firstSeenAt: now - 2 * 86_400_000, reviewStage: 0, dueAt: now + 5 * 86_400_000 }
+  await openWithProgress(page, '/map', {
+    chapters: Object.fromEntries(['b1c1', 'b1c2', 'b1c3', 'b1c4', 'b1c5'].map(id => [id, { preparedAt: 1, prepAttempts: 1, completed: true, completedAt: 2, checksCorrect: 10, checksTotal: 10, reads: 1 }])),
+    words,
+    activity: { [dayKey(now)]: 13 },
+  })
+
+  const next = page.locator('.next-action-card')
+  await expect(next.getByRole('heading', { name: 'قدم بعدی: تثبیت واژه‌های کتاب ۱' })).toBeVisible()
+  await expect(next.getByRole('progressbar', { name: 'واژه‌های ثابت‌شده' })).toHaveAttribute('aria-valuenow', String(bookIds.size - 3))
+  await expect(page.getByText(`پس از تثبیت همهٔ واژه‌ها باز می‌شود: ${faNum(bookIds.size - 3)} از ${faNum(bookIds.size)} واژه`, { exact: false })).toBeVisible()
+  const strip = page.getByTestId('today-strip')
+  await expect(strip).toContainText('۲ پاسخ تا کامل‌شدن هدف امروز')
+  await expect(strip).toContainText('۱۳ از ۱۵')
+  await expect(strip.getByRole('img', { name: '۰ روز پیاپی' })).toBeVisible()
+  await expectRenderedAccessibilityContract(page)
+  await expectNoHorizontalOverflow(page)
+
+  await next.getByRole('button', { name: 'شروع مرور' }).click()
+  await expect(page.getByText('تثبیت واژه‌های دیروز و پیش‌تر')).toBeVisible()
+  for (let answered = 1; answered <= 3; answered++) {
+    const prompt = (await page.getByTestId('review-prompt').innerText()).trim()
+    const target = pending.find(word => word.fa === prompt)!
+    await page.locator('.review-focus-card').getByRole('button', { name: target.word, exact: true }).click()
+    await expect(page.locator('.feedback-panel')).toContainText('درست')
+    // The fifteenth answer of the day completes the goal.
+    if (answered === 2) {
+      const celebration = page.getByTestId('goal-celebration')
+      await expect(celebration).toContainText('هدف امروز کامل شد!')
+      await expect(celebration).toContainText('اولین روز از روزهای پیاپی‌ات')
+      await celebration.getByRole('button', { name: 'بستن' }).click()
+      await expect(celebration).toHaveCount(0)
+    }
+    await page.getByRole('button', { name: 'کارت بعدی ←' }).click()
+  }
+  await expect(page.getByRole('heading', { name: 'جلسه تمام شد' })).toBeVisible()
+
+  // A later-day recall of every word opens the book's test.
+  await page.goto('/#/map')
+  await expect(next.getByRole('heading', { name: 'قدم بعدی: آزمون پایان کتاب ۱' })).toBeVisible()
+  await expect(strip).toContainText('هدف امروز کامل شد')
+  await expect(strip.getByRole('img', { name: '۱ روز پیاپی' })).toBeVisible()
+  await page.reload()
+  await expect(strip).toContainText('۱۵ از ۱۵')
 })
 
 test('glossary search tolerates Arabic-layout Persian letters and keeps filtering compact', async ({ page }) => {
@@ -934,6 +1073,8 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
 
   await openWithProgress(page, '/map', {
     chapters: Object.fromEntries(book1.map(id => [id, { preparedAt: 1, prepAttempts: 1, completed: true, completedAt: 2, checksCorrect: 10, checksTotal: 10, reads: 1 }])),
+    // Every book-1 word already recalled on a later day than it was taught.
+    words: Object.fromEntries([...bookWords.values()].map(word => [word.id, consolidatedWord()])),
   })
   const futureBook2 = page.getByLabel(/کتاب ۲: .+ — قفل/)
 
@@ -1046,7 +1187,7 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
   await page.goto('/#/exam/midpoint-4')
   await page.reload()
   const saved = await page.evaluate(() => window.localStorage.getItem('ghesse:state:v6'))
-  await expect(page.getByText('بازخورد در پایان آزمون می‌آید. حد عبور ۸۸٪ کل آزمون، ۸۵٪ یادآوری نوشتاری و ۸۸٪ درک مطلب است.', { exact: true })).toBeVisible()
+  await expect(page.getByText('بازخورد در پایان آزمون می‌آید. حد عبور ۹۰٪ کل آزمون، ۸۸٪ یادآوری نوشتاری و ۹۰٪ درک مطلب است.', { exact: true })).toBeVisible()
 
   // Explore mode jumps past the word questions to the texts.
   await page.getByRole('button', { name: 'پرش به درک مطلب ←' }).click()
@@ -1095,7 +1236,7 @@ test('the midpoint exam ends with two reading and two listening texts, all requi
   // Word questions were skipped, so this is unrecorded practice even though 19/20 comprehension clears the midpoint comprehension threshold.
   await expect(page.getByRole('heading', { level: 1, name: 'هنوز آمادهٔ عبور نیستی' })).toBeVisible()
   await expect(page.getByTestId('exam-comprehension-score')).toContainText('۱۹/۲۰')
-  await expect(page.getByText(/حد عبور: ۸۸٪ کل آزمون، ۸۵٪ یادآوری نوشتاری، و ۸۸٪ درک مطلب/)).toBeVisible()
+  await expect(page.getByText(/حد عبور: ۹۰٪ کل آزمون، ۸۸٪ یادآوری نوشتاری، و ۹۰٪ درک مطلب/)).toBeVisible()
   await expectRenderedAccessibilityContract(page)
   await expectNoHorizontalOverflow(page)
   const lastText = texts[3]
@@ -1357,7 +1498,7 @@ test('a stale tab save preserves unrelated progress written after its render', a
     window.localStorage.setItem('ghesse:state:v6', JSON.stringify(state))
   }, { remoteWordId })
 
-  await page.getByRole('group', { name: 'هدف مرور روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
+  await page.getByRole('group', { name: 'هدف روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
 
   const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
   expect(stored.dailyReviewGoal).toBe(20)
@@ -1373,7 +1514,7 @@ test('conflicting stale-tab settings are rejected instead of overwriting persist
     window.localStorage.setItem('ghesse:state:v6', JSON.stringify(state))
   })
 
-  await page.getByRole('group', { name: 'هدف مرور روزانه' }).getByRole('button', { name: faNum(25), exact: true }).click()
+  await page.getByRole('group', { name: 'هدف روزانه' }).getByRole('button', { name: faNum(25), exact: true }).click()
 
   await expect(page.getByRole('alert')).toContainText('پیشرفت در برگهٔ دیگری هم‌زمان تغییر کرده بود')
   const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
@@ -1393,7 +1534,7 @@ test('a reset propagates across tabs and later settings saves cannot resurrect o
     return Object.keys(state.words ?? {}).length
   })).toBe(0)
 
-  await page.getByRole('group', { name: 'هدف مرور روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
+  await page.getByRole('group', { name: 'هدف روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
   const stored = await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'))
   expect(stored.words).toEqual({})
   expect(stored.dailyReviewGoal).toBe(20)

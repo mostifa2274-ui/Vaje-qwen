@@ -1,7 +1,7 @@
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
-import { learningHealth, bookHealth, certificationStatus, nextBestAction } from '../engine/analytics'
-import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, FlashcardsIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
+import { learningHealth, bookHealth, certificationStatus, consolidationFocus, nextBestAction } from '../engine/analytics'
+import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, FlameIcon, FlashcardsIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
 import {
   MIDPOINT_EXAM_ID,
   FINAL_EXAM_ID,
@@ -18,6 +18,7 @@ import {
 } from '../engine/gates'
 import { faNum, percent } from '../engine/format'
 import { leitnerSummary } from '../engine/leitner'
+import { dailyProgress } from '../engine/activity'
 
 interface Props {
   state: GhesseState
@@ -84,8 +85,17 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
     : action.title
   const certification = certificationStatus(state, now)
   const flashcardsDue = leitnerSummary(state, now).due
+  const focus = consolidationFocus(state, now)
+  const daily = dailyProgress(state, now)
+  const answersLeft = Math.max(0, daily.goal - daily.today)
+  const goalLabel = daily.met
+    ? 'هدف امروز کامل شد'
+    : daily.streak > 0
+      ? `${faNum(answersLeft)} پاسخ دیگر تا ${faNum(daily.streak + 1)} روز پیاپی`
+      : `${faNum(answersLeft)} پاسخ تا کامل‌شدن هدف امروز`
 
   function runNextAction() {
+    if (action.kind === 'rest') return onOpenFlashcards()
     if (action.kind === 'review' || action.kind === 'certification') return onOpenReview()
     if (action.kind === 'exam') return onOpenExam(action.examId)
     if (action.kind === 'chapter') return onOpenChapter(action.chapterId)
@@ -93,6 +103,8 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
 
   const actionLabel = action.kind === 'review'
     ? 'شروع مرور'
+    : action.kind === 'rest'
+      ? 'تمرین با لایتنر'
     : action.kind === 'exam'
       ? 'شروع آزمون'
       : action.kind === 'chapter'
@@ -141,9 +153,51 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-extrabold">قدم بعدی: {actionTitle}</h2>
           <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{action.detail}</p>
+          {'progress' in action && action.progress && (
+            <div className="next-action-progress mt-2">
+              <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
+                <span>{action.progress.label}</span>
+                <span>{faNum(action.progress.done)} از {faNum(action.progress.total)}</span>
+              </div>
+              <div
+                className="mastery-progress mt-1.5"
+                role="progressbar"
+                aria-label={action.progress.label}
+                aria-valuemin={0}
+                aria-valuemax={action.progress.total}
+                aria-valuenow={action.progress.done}
+              >
+                <span style={{ width: `${(action.progress.done / Math.max(1, action.progress.total)) * 100}%` }} />
+              </div>
+            </div>
+          )}
         </div>
         {action.kind !== 'complete' && <button type="button" className="btn-crimson shrink-0 px-4 py-3" onClick={runNextAction}>{actionLabel}</button>}
         {action.kind === 'complete' && <BadgeCheckIcon className="h-8 w-8 shrink-0" role="img" aria-hidden={false} aria-label="مسیر کامل شده" />}
+      </section>
+
+      <section className={`today-strip mt-4 ${daily.met ? 'met' : ''}`} aria-label="هدف امروز" data-testid="today-strip">
+        <div className={`today-streak ${daily.streak > 0 ? 'on' : ''}`} role="img" aria-label={`${faNum(daily.streak)} روز پیاپی`}>
+          <FlameIcon className="h-5 w-5" />
+          <b>{faNum(daily.streak)}</b>
+          <span>روز پیاپی</span>
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center justify-between gap-2 text-xs font-bold">
+            <span>{goalLabel}</span>
+            <span style={{ color: 'var(--ink-soft)' }}>{faNum(Math.min(daily.today, daily.goal))} از {faNum(daily.goal)}</span>
+          </div>
+          <div
+            className="mastery-progress today-goal mt-1.5"
+            role="progressbar"
+            aria-label="پاسخ‌های امروز"
+            aria-valuemin={0}
+            aria-valuemax={daily.goal}
+            aria-valuenow={Math.min(daily.today, daily.goal)}
+          >
+            <span style={{ width: `${Math.min(1, daily.today / daily.goal) * 100}%` }} />
+          </div>
+        </div>
       </section>
 
       <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
@@ -168,7 +222,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
       <details className="method-details mt-4">
         <summary>روش یادگیری و معیارهای عبور</summary>
         <p>
-          هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. آزمون پایان کتاب در هر بخش حداقل {percent(examDefinition(bookExamId(1))!.passRate)} می‌خواهد؛ آزمون نیمهٔ مسیر {percent(examDefinition(MIDPOINT_EXAM_ID)!.passRate)} کل و {percent(examDefinition(MIDPOINT_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری، و آزمون نهایی {percent(examDefinition(FINAL_EXAM_ID)!.passRate)} کل و {percent(examDefinition(FINAL_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری می‌خواهد. واژه‌های از‌دست‌رفته همیشه پیش از ادامه جبران می‌شوند.
+          هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. پیش از آزمون پایان کتاب، هر واژهٔ کتاب باید یک روز پس از یادگیری دوباره بدون کمک به یاد آورده شود (تثبیت). آزمون پایان کتاب در هر بخش حداقل {percent(examDefinition(bookExamId(1))!.passRate)} می‌خواهد و یک اشتباه در هر بخش بخشیده می‌شود؛ آزمون نیمهٔ مسیر {percent(examDefinition(MIDPOINT_EXAM_ID)!.passRate)} کل و {percent(examDefinition(MIDPOINT_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری، و آزمون نهایی {percent(examDefinition(FINAL_EXAM_ID)!.passRate)} کل و {percent(examDefinition(FINAL_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری می‌خواهد. واژه‌های از‌دست‌رفته همیشه پیش از ادامه جبران می‌شوند.
         </p>
       </details>
 
@@ -269,7 +323,9 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                     title={examDefinition(bookExam)!.titleFa}
                     state={state}
                     onOpen={onOpenExam}
-                    lockedHint={`پس از تمام‌شدن ${faNum(chapters.length)} فصل این کتاب باز می‌شود.`}
+                    lockedHint={focus?.book === meta.book && focus.blocking
+                      ? `پس از تثبیت همهٔ واژه‌ها باز می‌شود: ${faNum(focus.status.consolidated)} از ${faNum(focus.status.total)} واژه یک روز پس از یادگیری دوباره به یاد آمده است.`
+                      : `پس از تمام‌شدن ${faNum(chapters.length)} فصل این کتاب و تثبیت واژه‌هایش باز می‌شود.`}
                   />
                 </div>
               </section>

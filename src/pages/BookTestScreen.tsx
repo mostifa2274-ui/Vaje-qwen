@@ -4,6 +4,7 @@ import { WORD_BY_ID } from '../data/chapters'
 import { bookExamId, canTakeExam, examDefinition } from '../engine/gates'
 import {
   BOOK_TEST_PASS_RATE,
+  allowedMistakes,
   BOOK_TEST_SECTIONS,
   buildBookTest,
   emptyBookTestAnswers,
@@ -347,14 +348,14 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
               return (
                 <div key={section} className={`metric-card ${score.passed ? '' : 'metric-fail'}`}>
                   <b>{faNum(score.correct)}/{faNum(score.total)}</b>
-                  <span>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `نیاز به ${percent(BOOK_TEST_PASS_RATE)}`}</span>
+                  <span>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `حداکثر ${faNum(allowedMistakes(score.total))} اشتباه`}</span>
                 </div>
               )
             })}
           </div>
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            برای قبولی، هر چهار بخش باید {percent(BOOK_TEST_PASS_RATE)} درست باشد.
+            برای قبولی، هر چهار بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ یک اشتباه در هر بخش همیشه بخشیده می‌شود.
             {preview
               ? ' پیش‌نمایش در حالت کاوش: این نتیجه ثبت نمی‌شود و مسیری را باز نمی‌کند.'
               : practice
@@ -440,7 +441,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <li><b>{SECTION_LABELS.listening}</b> — {test.listening.length === 1 ? 'متن تازهٔ دیگری' : `${faNum(test.listening.length)} متن تازهٔ دیگر`} که فقط پخش {test.listening.length === 1 ? 'می‌شود' : 'می‌شوند'}، هر کدام با ۵ سؤال.</li>
           </ol>
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-            {faNum(test.translation.length + test.listeningWords.length)} واژهٔ نمونه از {book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(book)}`} می‌آید و کتاب تازه سهم بیشتری دارد. هر بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ واژه‌های اشتباه وارد مرور جبرانی می‌شوند.
+            {faNum(test.translation.length + test.listeningWords.length)} واژهٔ نمونه از {book === 1 ? 'این کتاب' : `کتاب‌های ۱ تا ${faNum(book)}`} می‌آید و کتاب تازه سهم بیشتری دارد. هر بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد و یک اشتباه در هر بخش همیشه بخشیده می‌شود؛ واژه‌های اشتباه وارد مرور جبرانی می‌شوند.
           </p>
           <div className="paper-note mt-4">بازخورد در پایان آزمون نمایش داده می‌شود. پیشرفت خودکار ذخیره می‌شود و در بخش واژگان هر ۴۰ پاسخ یک وقفه داری.</div>
           <button type="button" className="btn-crimson mt-5 w-full py-3" onClick={() => setPhase('translation')}>شروع آزمون</button>

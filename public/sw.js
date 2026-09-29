@@ -1,11 +1,29 @@
 const CACHE = 'ghesse-shell-__GHESSE_BUILD_CACHE__'
 const BUILD_ASSETS = __GHESSE_BUILD_ASSETS__
+// The shell is cached under './' only: Cloudflare redirects /index.html to /,
+// and a redirected response cannot answer a navigation.
 const CORE = [
   './',
-  './index.html',
   './manifest.webmanifest',
   './icons/icon.svg'
 ]
+
+/**
+ * Whether a network response may be stored for offline use. Error pages, and
+ * an HTML page answering a request for a script, style, image or clip, must
+ * never be served from the cache in place of the real file.
+ */
+function cacheable(request, response) {
+  if (!response.ok || response.type === 'opaque') return false
+  const html = (response.headers.get('content-type') || '').includes('text/html')
+  return request.mode === 'navigate' || !html
+}
+
+/** A copy of a cached response that can answer a navigation. */
+function navigable(response) {
+  if (!response || !response.redirected) return response
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers: response.headers })
+}
 
 async function precacheShell() {
   const cache = await caches.open(CACHE)
@@ -57,7 +75,7 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(request, { cache: 'no-cache' })
         .then(response => {
-          if (response.ok) {
+          if (cacheable(request, response)) {
             const copy = response.clone()
             void caches.open(CACHE).then(cache => cache.put(request, copy))
           }
@@ -74,13 +92,15 @@ self.addEventListener('fetch', event => {
         .then(response => {
           // Never let an error page (a 404 or a transient 5xx) replace the
           // cached shell that offline launches fall back to.
-          if (response.ok) {
+          if (cacheable(request, response)) {
             const copy = response.clone()
             void caches.open(CACHE).then(cache => cache.put(request, copy))
           }
           return response
         })
-        .catch(async () => (await caches.match(request)) || (await caches.match('./index.html')) || (await caches.match('./')))
+        // Any launch URL (a query string, an old /index.html bookmark) falls
+        // back to the one cached shell.
+        .catch(async () => navigable((await caches.match(request, { ignoreSearch: true })) || (await caches.match('./'))))
     )
     return
   }
@@ -89,7 +109,7 @@ self.addEventListener('fetch', event => {
     caches.match(request).then(cached => {
       if (cached) return cached
       return fetch(request).then(response => {
-        if (response.ok) {
+        if (cacheable(request, response)) {
           const copy = response.clone()
           void caches.open(CACHE).then(cache => cache.put(request, copy))
         }

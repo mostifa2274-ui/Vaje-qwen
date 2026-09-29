@@ -138,6 +138,8 @@ export interface GhesseState {
   // changes: the strict gates still decide what is recorded as progress.
   exploreAll: boolean
   leitner: LeitnerState
+  /** Graded answers per local day (YYYY-MM-DD), for the daily goal and streak. */
+  activity: Record<string, number>
   created: number
 }
 

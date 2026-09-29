@@ -29,6 +29,18 @@ import policy from '../data/learningPolicy.json'
 // Each section must independently demonstrate solid recall. Missed vocabulary
 // still enters remediation and blocks the next gate until independently recalled.
 export const BOOK_TEST_PASS_RATE = policy.bookTest.sectionPassRate
+/** Every section forgives this many slips, however short it is. */
+export const BOOK_TEST_FORGIVEN_SLIPS = policy.bookTest.forgivenSlips
+
+/**
+ * Mistakes a section may contain and still pass: the policy's share of its
+ * questions, but never fewer than the forgiven slips, so one typo or one
+ * misheard option never fails a short section on its own.
+ */
+export function allowedMistakes(total: number): number {
+  if (total <= 0) return 0
+  return Math.max(BOOK_TEST_FORGIVEN_SLIPS, Math.floor(total * (1 - BOOK_TEST_PASS_RATE) + 1e-9))
+}
 
 export type BookTestSection = 'translation' | 'listeningWords' | 'reading' | 'listening'
 export const BOOK_TEST_SECTIONS: readonly BookTestSection[] = ['translation', 'listeningWords', 'reading', 'listening']
@@ -269,7 +281,7 @@ export function listeningWordCorrect(test: BookTest, index: number, chosen: stri
 
 function sectionResult(correct: number, total: number): BookTestSectionResult {
   const score = total ? correct / total : 0
-  return { correct, total, score, passed: score >= BOOK_TEST_PASS_RATE }
+  return { correct, total, score, passed: total > 0 && total - correct <= allowedMistakes(total) }
 }
 
 export function scoreBookTest(test: BookTest, answers: BookTestAnswers): BookTestResult {

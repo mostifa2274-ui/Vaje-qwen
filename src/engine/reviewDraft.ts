@@ -1,5 +1,5 @@
 export type ReviewFeedback = 'correct' | 'wrong' | null
-export type ReviewSessionKind = 'remediation' | 'due' | 'trouble' | 'extra'
+export type ReviewSessionKind = 'remediation' | 'consolidation' | 'due' | 'trouble' | 'extra'
 
 export interface ReviewDraft {
   version: 1
@@ -21,7 +21,7 @@ const MAX_TEXT = 300
 const MAX_AGE_MS = 12 * 60 * 60 * 1000
 
 function isKind(value: unknown): value is ReviewSessionKind {
-  return value === 'remediation' || value === 'due' || value === 'trouble' || value === 'extra'
+  return value === 'remediation' || value === 'consolidation' || value === 'due' || value === 'trouble' || value === 'extra'
 }
 
 function isFeedback(value: unknown): value is ReviewFeedback {
