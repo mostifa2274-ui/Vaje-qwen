@@ -61,6 +61,14 @@ function normalizeChapter(raw: unknown): ChapterProgress | undefined {
   const completed = r.completed === true
   const completedAt = timestamp(r.completedAt)
   const lastReadAt = timestamp(r.lastReadAt) ?? completedAt
+  const prepWrittenTotal = r.prepWrittenTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepWrittenTotal)))
+  const prepListeningTotal = r.prepListeningTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepListeningTotal)))
+  const prepWrittenFirstPassCorrect = r.prepWrittenFirstPassCorrect === undefined
+    ? undefined
+    : Math.min(prepWrittenTotal ?? Number.MAX_SAFE_INTEGER, Math.max(0, Math.floor(num(r.prepWrittenFirstPassCorrect))))
+  const prepListeningFirstPassCorrect = r.prepListeningFirstPassCorrect === undefined
+    ? undefined
+    : Math.min(prepListeningTotal ?? Number.MAX_SAFE_INTEGER, Math.max(0, Math.floor(num(r.prepListeningFirstPassCorrect))))
   return {
     preparedAt: timestamp(r.preparedAt) ?? (completed ? completedAt ?? lastReadAt ?? 1 : undefined),
     prepAttempts: Math.max(0, Math.floor(num(r.prepAttempts, completed ? 1 : 0))),
@@ -71,11 +79,11 @@ function normalizeChapter(raw: unknown): ChapterProgress | undefined {
     prepProductiveCorrect: r.prepProductiveCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.prepProductiveCorrect))),
     prepProductiveTotal: r.prepProductiveTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepProductiveTotal))),
     prepWrittenCorrect: r.prepWrittenCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.prepWrittenCorrect))),
-    prepWrittenTotal: r.prepWrittenTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepWrittenTotal))),
-    prepWrittenFirstPassCorrect: r.prepWrittenFirstPassCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.prepWrittenFirstPassCorrect))),
+    prepWrittenTotal,
+    prepWrittenFirstPassCorrect,
     prepListeningCorrect: r.prepListeningCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.prepListeningCorrect))),
-    prepListeningTotal: r.prepListeningTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepListeningTotal))),
-    prepListeningFirstPassCorrect: r.prepListeningFirstPassCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.prepListeningFirstPassCorrect))),
+    prepListeningTotal,
+    prepListeningFirstPassCorrect,
     prepDiagnosticPassed: r.prepDiagnosticPassed === true,
     prepDiagnosticTotal: r.prepDiagnosticTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepDiagnosticTotal))),
     completed,
