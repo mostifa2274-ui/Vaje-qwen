@@ -153,7 +153,19 @@ export function createCourseLexicon(vocab, { properNouns = [] } = {}) {
       const form = norm(raw)
       if (form !== 'like') return 'like-2'
       const prev = previousWords(spans, index, 2)
-      if (prev.some(word => ['am', 'is', 'are', 'was', 'were', 'be', 'been', 'being'].includes(word))) return 'like'
+      // Prepositional "like" follows copular/linking expressions ("is like",
+      // "looks like", "sounds like", ...). Plain lexical "like" after a
+      // subject ("I like this song") is the verb sense.
+      const prepositionTrigger = new Set([
+        'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+        'look', 'looks', 'looked', 'looking',
+        'sound', 'sounds', 'sounded',
+        'seem', 'seems', 'seemed',
+        'feel', 'feels', 'felt',
+        'smell', 'smells', 'smelled',
+        'taste', 'tastes', 'tasted',
+      ])
+      if (prev.some(word => prepositionTrigger.has(word))) return 'like'
       return 'like-2'
     }
     if (ids.includes('second') && ids.includes('second-2')) {
