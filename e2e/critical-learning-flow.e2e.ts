@@ -57,6 +57,12 @@ async function expectNoHorizontalOverflow(page: Page): Promise<void> {
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1)
 }
 
+async function openHomeSection(page: Page, name: 'امروز' | 'مسیر' | 'کتابخانه'): Promise<void> {
+  const tab = page.getByRole('tab', { name, exact: true })
+  await tab.click()
+  await expect(tab).toHaveAttribute('aria-selected', 'true')
+}
+
 async function expectTouchSafeStoryControls(page: Page): Promise<void> {
   const controls = [
     page.getByRole('button', { name: 'شنیدن جمله' }).first(),
@@ -276,6 +282,25 @@ test.beforeEach(async ({ page }) => {
   })
 })
 
+
+test('home defaults to Today and separates Journey from Library', async ({ page }) => {
+  await page.goto('/#/map')
+  await expect(page.getByRole('tab', { name: 'امروز', exact: true })).toHaveAttribute('aria-selected', 'true')
+  await expect(page.locator('.next-action-card')).toBeVisible()
+  await expect(page.locator('.book-banner')).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toHaveCount(0)
+
+  await openHomeSection(page, 'مسیر')
+  await expect(page.locator('.book-banner')).toHaveCount(1)
+  await expect(page.locator('.next-action-card')).toBeHidden()
+
+  await openHomeSection(page, 'کتابخانه')
+  await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'تنظیمات', exact: true })).toBeVisible()
+  await expectNoHorizontalOverflow(page)
+})
+
 test('rendered core screens satisfy the structural accessibility contract', async ({ page }) => {
   // Fresh progress cannot read b1c1 yet, so exercise Prep explicitly here.
   // Reader accessibility is asserted again after the full unlock journey below.
@@ -300,6 +325,7 @@ test('rendered core screens satisfy the structural accessibility contract', asyn
 
 test('locked future books and preparation steps keep readable text opacity', async ({ page }) => {
   await page.goto('/#/map')
+  await openHomeSection(page, 'مسیر')
 
   const locked = page.locator('.future-book-row').first()
   await expect(locked).toBeVisible()
@@ -346,6 +372,7 @@ test('fresh install can open an unloaded lazy route offline', async ({ page, con
     expect(uncachedRouteArt.ok).toBe(true)
     expect(uncachedRouteArt.type).toMatch(/^image\//)
 
+    await openHomeSection(page, 'کتابخانه')
     await page.getByRole('button', { name: 'واژه‌نامه' }).click()
     await expect(page.getByRole('heading', { level: 1, name: 'واژه‌نامه' })).toBeVisible()
     await expectNoHorizontalOverflow(page)
@@ -404,6 +431,7 @@ test.describe('without a service worker', () => {
       blocked++
       return route.abort()
     })
+    await openHomeSection(page, 'کتابخانه')
     await page.getByRole('button', { name: 'واژه‌نامه', exact: true }).click()
     // The first failure reloads the page by itself; the second one waits.
     const recovery = page.getByTestId('route-error')
@@ -421,6 +449,7 @@ test.describe('without a service worker', () => {
     // The way home works from the recovery card too.
     await page.route(/\/assets\/SettingsScreen-[^/]+\.js$/, route => route.abort())
     await page.goto('/#/map')
+    await openHomeSection(page, 'کتابخانه')
     await page.getByRole('button', { name: 'تنظیمات', exact: true }).click()
     await expect(recovery).toBeVisible()
     await recovery.getByRole('button', { name: 'بازگشت به مسیر' }).click()
@@ -451,6 +480,7 @@ test('keyboard skip link focuses the main landmark without changing the hash rou
 
 test('journey home keeps a compact hierarchy without the old dashboard layer', async ({ page }) => {
   await page.goto('/#/map')
+  await openHomeSection(page, 'مسیر')
 
   await expect(page.locator('.home-summary > div')).toHaveCount(3)
   await expect(page.locator('.journey-overview')).toHaveCount(0)
@@ -755,19 +785,14 @@ test('smart review speaks a spelling card on arrival and supports a keyboard-onl
   await expect(page.getByRole('button', { name: 'کارت بعدی ←' })).toBeFocused()
 })
 
-test('the Leitner box opens beside the glossary, moves cards between boxes and keeps them after a reload', async ({ page }) => {
+test('the Leitner box opens from the library, moves cards between boxes and keeps them after a reload', async ({ page }) => {
   await page.goto('/#/map')
+  await openHomeSection(page, 'کتابخانه')
   const leitnerButton = page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true })
   await expect(page.getByRole('button', { name: 'واژه‌نامه', exact: true })).toBeVisible()
   await expect(leitnerButton).toBeVisible()
-  // The two sit side by side in the home toolbar. Both are measured in one
-  // frame: the page's entry animation may still be moving them.
-  const [glossaryBox, leitnerBox] = await page.evaluate(() => ['واژه‌نامه', 'تمرین آزاد'].map(label => {
-    const box = document.querySelector(`.home-toolbar [aria-label="${label}"]`)!.getBoundingClientRect()
-    return { x: box.x, y: box.y, width: box.width }
-  }))
-  expect(Math.abs(glossaryBox.y - leitnerBox.y)).toBeLessThan(2)
-  expect(leitnerBox.x + leitnerBox.width).toBeLessThanOrEqual(glossaryBox.x + 1)
+  await expect(page.locator('.library-home-row')).toHaveCount(3)
+  await expectNoHorizontalOverflow(page)
   await leitnerButton.click()
   await expect(page).toHaveURL(/#\/flashcards$/)
   await expect(page.getByRole('heading', { level: 1, name: 'جعبهٔ لایتنر' })).toBeVisible()
@@ -844,6 +869,7 @@ test('a due Leitner card shows on the map and can be answered by typing', async 
       days: {},
     },
   })
+  await openHomeSection(page, 'کتابخانه')
   const leitnerButton = page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر' })
   // Free practice is intentionally subordinate to Smart Review: no competing
   // due badge appears on the journey home.
@@ -869,6 +895,7 @@ test('a due Leitner card shows on the map and can be answered by typing', async 
   await page.getByTestId('flashcards-summary').getByRole('button', { name: 'بازگشت به جعبه‌ها' }).click()
   await expect(page.getByRole('button', { name: /^جعبهٔ ۴، هر ۸ روز: ۱ کارت$/ })).toBeVisible()
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
+  await openHomeSection(page, 'کتابخانه')
   await expect(page.getByRole('button', { name: 'تمرین آزاد با جعبهٔ لایتنر', exact: true }).locator('.home-toolbar-badge')).toHaveCount(0)
 })
 
@@ -892,7 +919,9 @@ test('a finished book is consolidated in review, and today\'s answers fill the d
   const next = page.locator('.next-action-card')
   await expect(next.getByRole('heading', { name: 'قدم بعدی: تثبیت واژه‌های کتاب ۱' })).toBeVisible()
   await expect(next.getByRole('progressbar', { name: 'واژه‌های ثابت‌شده' })).toHaveAttribute('aria-valuenow', String(bookIds.size - 3))
+  await openHomeSection(page, 'مسیر')
   await expect(page.getByText(`پس از تثبیت دیرهنگام همهٔ واژه‌ها باز می‌شود: ${faNum(bookIds.size - 3)} از ${faNum(bookIds.size)} واژه`, { exact: false })).toBeVisible()
+  await openHomeSection(page, 'امروز')
   const strip = page.getByTestId('today-strip')
   await expect(strip).toContainText('۲ پاسخ تا کامل‌شدن هدف امروز')
   await expect(strip).toContainText('۱۳ از ۱۵')
@@ -947,6 +976,7 @@ test('glossary search tolerates Arabic-layout Persian letters and keeps filterin
 
 test('map shows reviewed artwork only for reachable books and announces chapter status', async ({ page }) => {
   await page.goto('/#/map')
+  await openHomeSection(page, 'مسیر')
   const bookArt = page.locator('.book-banner img')
   await expect(bookArt).toHaveCount(1)
   await expect(bookArt.first()).toBeVisible()
@@ -1306,6 +1336,7 @@ test('explore mode opens every chapter as an unrecorded preview and closes again
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
   await expect(page.getByText('حالت کاوش روشن است.')).toBeVisible()
   await expectRenderedAccessibilityContract(page)
+  await openHomeSection(page, 'مسیر')
   await expect(page.locator('.future-book-row')).toHaveCount(0)
   await expect(page.locator('.book-banner')).toHaveCount(8)
   // Every book test is open too, as a preview.
@@ -1329,6 +1360,7 @@ test('explore mode opens every chapter as an unrecorded preview and closes again
   await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
   await page.getByRole('button', { name: 'خاموش کردن' }).click()
   await expect(page.getByText('حالت کاوش روشن است.')).toHaveCount(0)
+  await openHomeSection(page, 'مسیر')
   await expect(page.locator('.future-book-row')).toHaveCount(7)
   await expect(page.getByRole('button', { name: lastNodeName('قفل') })).toHaveCount(0)
   expect(await page.evaluate(() => JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').chapters)).toEqual({})
