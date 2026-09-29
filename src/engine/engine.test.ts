@@ -17,7 +17,7 @@ import { introduceWordsOfCompletedChapters, recordCompletedRead, recordPreparedC
 import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
 import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
-import { certificationStatus } from './analytics'
+import { certificationStatus, nextBestAction } from './analytics'
 import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
 import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehension'
 
@@ -695,6 +695,73 @@ describe('narration voice selection', () => {
 
 
 describe('mastery certification', () => {
+  it('uses explicitly internal wording when every course evidence threshold is met', () => {
+    const now = Date.UTC(2026, 0, 20)
+    const state = emptyState(now, 'b1c1')
+
+    for (const chapter of CHAPTERS) {
+      state.chapters[chapter.id] = {
+        preparedAt: now - 20 * 86_400_000,
+        prepAttempts: 1,
+        completed: true,
+        completedAt: now - 15 * 86_400_000,
+        lastReadAt: now - 15 * 86_400_000,
+        checksCorrect: READING_QUESTION_COUNT,
+        checksTotal: READING_QUESTION_COUNT,
+        listeningCorrect: LISTENING_QUESTION_COUNT,
+        listeningTotal: LISTENING_QUESTION_COUNT,
+        reads: 1,
+      }
+    }
+
+    for (const word of VOCAB) {
+      state.words[word.id] = {
+        ...blankWordProgress(now - 20 * 86_400_000),
+        reviewStage: 5,
+        reviewCorrect: 4,
+        reviewWrong: 0,
+        reviewStreak: 4,
+        lastReviewedAt: now,
+        lastIndependentSuccessAt: now,
+        lastProductiveSuccessAt: now,
+        lastReviewWasCorrect: true,
+        intervalDays: 30,
+        productiveCorrect: 2,
+        successDays: ['2026-01-01', '2026-01-05', '2026-01-10', '2026-01-20'],
+        productiveSuccessDays: ['2026-01-10', '2026-01-20'],
+        skillStats: {
+          meaning: { correct: 2, wrong: 0 },
+          context: { correct: 2, wrong: 0 },
+          production: { correct: 2, wrong: 0 },
+          form: { correct: 2, wrong: 0 },
+        },
+      }
+    }
+
+    const passedExam = {
+      attempts: 1,
+      passed: true,
+      passedAt: now,
+      lastAttemptAt: now,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+    for (let book = 1; book <= 8; book++) state.exams[bookExamId(book)] = { ...passedExam }
+    state.exams[MIDPOINT_EXAM_ID] = { ...passedExam }
+    state.exams['final-8'] = { ...passedExam }
+
+    expect(certificationStatus(state, now).ready).toBe(true)
+    const action = nextBestAction(state, now)
+    expect(action.kind).toBe('complete')
+    expect(action.title).toBe('معیارهای دوره کامل شد')
+    expect(action.detail).toContain('درون‌برنامه‌ای')
+    expect(action.detail).toContain('سنجش مستقل')
+  })
+
   it('cannot be earned by passing the final exam alone', () => {
     const state = emptyState(1, 'b1c1')
     state.exams['final-8'] = {

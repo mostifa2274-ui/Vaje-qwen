@@ -386,9 +386,9 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         <section className={`certification-card mt-6 ${certification.ready ? 'ready' : ''}`}>
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h2 className="text-xl font-extrabold">گواهی تسلط واقعی</h2>
+              <h2 className="text-xl font-extrabold">نشان تسلط درون‌برنامه‌ای</h2>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-                {certification.ready ? 'معیارهای تسلط پایدار کامل است' : 'آزمون پایان راه، پایان یادگیری نیست'}
+                {certification.ready ? 'همهٔ معیارهای داخلی دوره کامل شده‌اند' : 'آزمون پایان راه، پایان یادگیری نیست'}
               </p>
             </div>
             <BadgeCheckIcon className={`h-7 w-7 shrink-0 ${certification.ready ? '' : 'opacity-45'}`} aria-hidden="true" />
@@ -401,9 +401,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           </div>
           {!certification.ready && certification.missing.length > 0 && (
             <div className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-              قدم بعدی برای گواهی: <b>{certification.missing[0]}</b>.
+              قدم بعدی برای نشان دوره: <b>{certification.missing[0]}</b>.
             </div>
           )}
+          <p className="mt-4 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
+            این نشان فقط بر اساس شواهد داخل قصه است؛ جای آزمون مستقلِ انتقال و ماندگاری در دنیای واقعی را نمی‌گیرد.
+          </p>
         </section>
       )}
       </section>
