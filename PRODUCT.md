@@ -23,6 +23,7 @@ The learner should understand, recall, hear, and use the vocabulary well enough 
 Explore mode (Settings, off by default) opens every chapter, word lesson and test for looking around. It changes only what can be opened: anything the learner has not reached on the path above runs as a preview that records nothing, so switching it off restores the path exactly.
 
 ## Product principles
+- User-exported progress backups must be self-describing and integrity-checked, remain backwards-compatible with supported raw-state backups, and warn when restored against a different vocabulary snapshot.
 - The task leads; decoration never competes with learning.
 - Do not ask beginners to guess a word before teaching it. The only exception is an explicit learner-chosen prove-known diagnostic: it tests every chapter word by productive English recall and audio meaning recognition, requires 100% first-try coverage, returns to teaching on the first miss, and never grants durable mastery.
 - 100% preparation gates mean coverage, not mastery. Durable mastery requires later spaced retrieval.
