@@ -19,6 +19,9 @@ assert(policy.version === 1, 'learning policy version must be 1')
 assert(policy.chapterPreparation.passRate === 1, 'chapter preparation remains a 100% coverage gate')
 assert(policy.bookTest.sectionPassRate > 0 && policy.bookTest.sectionPassRate < 1, 'book-test section threshold must be a criterion rate')
 assert(policy.bookTest.newestBookWeight > policy.bookTest.olderBookWeight, 'newest book must receive stronger sampling weight')
+assert(Number.isInteger(policy.bookTest.forgivenSlips) && policy.bookTest.forgivenSlips >= 1, 'every book-test section must forgive at least one slip')
+assert(policy.bookConsolidation?.everyWordRecalledOnALaterDay === true, 'every book word must be recalled on a later day before its test')
+assert(policy.midpointExam.passRate >= policy.bookTest.sectionPassRate && policy.finalExam.passRate >= policy.midpointExam.passRate, 'cumulative thresholds must not fall below earlier gates')
 
 const sizes = Array.from({ length: 8 }, (_, index) =>
   Math.min(
@@ -35,7 +38,9 @@ assert(readme.includes(`${faNum(Math.round(policy.finalExam.productivePassRate *
 
 const asciiSizes = sizes.join(', ')
 assert(product.includes(asciiSizes), 'PRODUCT.md end-of-book vocabulary sizes do not match learningPolicy.json')
-assert(product.includes(`${Math.round(policy.bookTest.sectionPassRate * 100)}%`), 'PRODUCT.md book-test threshold does not match learningPolicy.json')
+assert(product.includes(`each needing ${Math.round(policy.bookTest.sectionPassRate * 100)}%`), 'PRODUCT.md book-test threshold does not match learningPolicy.json')
+assert(readme.includes('یک اشتباه در هر بخش همیشه بخشیده می‌شود') && product.includes('one slip always forgiven'), 'docs must explain the forgiven slip')
+assert(readme.includes('consolidation.ts') && product.includes('Consolidate the book'), 'docs must explain book consolidation')
 assert(product.includes(`${Math.round(policy.midpointExam.passRate * 100)}% overall / ${Math.round(policy.midpointExam.productivePassRate * 100)}% productive`), 'PRODUCT.md midpoint thresholds do not match learningPolicy.json')
 assert(product.includes(`${Math.round(policy.finalExam.passRate * 100)}% overall / ${Math.round(policy.finalExam.productivePassRate * 100)}% productive`), 'PRODUCT.md final thresholds do not match learningPolicy.json')
 

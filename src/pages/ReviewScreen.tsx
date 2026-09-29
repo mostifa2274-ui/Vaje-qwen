@@ -16,6 +16,7 @@ import {
 } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { examRemediationWordIds } from '../engine/gates'
+import { consolidationFocus } from '../engine/analytics'
 import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
 import SpellingHint from '../components/SpellingHint'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
@@ -50,15 +51,26 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const trouble = useMemo(() => troubleWordIds(state.words), [state.words])
   const remediation = useMemo(() => examRemediationWordIds(state), [state])
   const introduced = useMemo(() => VOCAB.filter(w => state.words[w.id]?.introduced).map(w => w.id), [state.words])
+  // Words of the current book that can be proven on a later day than taught.
+  // Once the book's chapters are done they come first, because they stand
+  // between the learner and the book's test; before that they fill quiet days.
+  const focus = useMemo(() => consolidationFocus(state, now), [now, state])
+  const consolidation = useMemo(() => focus?.status.ready ?? [], [focus])
+  const consolidationFirst = focus?.blocking === true && consolidation.length > 0
   const scheduled = useMemo(() => {
     if (remediation.length) {
       const restDue = due.filter(id => !remediation.includes(id))
       return [...remediation, ...restDue].slice(0, Math.max(state.dailyReviewGoal, Math.min(20, remediation.length)))
     }
+    if (consolidationFirst) {
+      const restDue = due.filter(id => !consolidation.includes(id))
+      return [...consolidation, ...restDue].slice(0, Math.max(state.dailyReviewGoal, Math.min(20, consolidation.length)))
+    }
     if (due.length) return due.slice(0, state.dailyReviewGoal)
+    if (consolidation.length) return consolidation.slice(0, state.dailyReviewGoal)
     if (trouble.length) return trouble.slice(0, Math.min(10, state.dailyReviewGoal))
     return selectWeakestWordIds(introduced, state.words, Math.min(10, state.dailyReviewGoal), `extra:${Math.floor(now / 86_400_000)}`)
-  }, [due, introduced, now, remediation, state.dailyReviewGoal, state.words, trouble])
+  }, [consolidation, consolidationFirst, due, introduced, now, remediation, state.dailyReviewGoal, state.words, trouble])
   // Explore mode with nothing to review yet: practise course words instead.
   // Such a session only practises; no word has progress to record.
   const initial = useMemo(
@@ -67,7 +79,9 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
       : seededSample(VOCAB.map(w => w.id), state.dailyReviewGoal, `explore:${Math.floor(now / 86_400_000)}`),
     [now, scheduled, state.dailyReviewGoal, state.exploreAll],
   )
-  const suggestedKind: ReviewSessionKind = remediation.length ? 'remediation' : due.length ? 'due' : trouble.length ? 'trouble' : 'extra'
+  const suggestedKind: ReviewSessionKind = remediation.length
+    ? 'remediation'
+    : consolidationFirst || (!due.length && consolidation.length) ? 'consolidation' : due.length ? 'due' : trouble.length ? 'trouble' : 'extra'
 
   const [initialDraft] = useState(() => loadReviewDraft(introduced))
   const [practiceSession] = useState(() => !initialDraft && scheduled.length === 0 && initial.length > 0)
@@ -285,6 +299,8 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     ? 'تمرین آزاد در حالت کاوش'
     : sessionKind === 'remediation'
     ? 'ترمیم آزمون'
+    : sessionKind === 'consolidation'
+    ? 'تثبیت واژه‌های دیروز و پیش‌تر'
     : sessionKind === 'due'
       ? 'مرورهای سررسید'
       : sessionKind === 'trouble'

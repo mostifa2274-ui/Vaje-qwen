@@ -2,7 +2,8 @@ import { CHAPTERS, VOCAB, chaptersOfBook } from '../data/chapters'
 import type { GhesseState, SkillDimension } from './types'
 import { durableCoverage, masteredCoverage, masteryCounts, skillCoverage } from './mastery'
 import { dueWordIds, retentionEstimate, troubleWordIds } from './review'
-import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examDefinition, examPassed, examRemediationWordIds } from './gates'
+import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookCompleted, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examDefinition, examPassed, examRemediationWordIds } from './gates'
+import { bookConsolidation, type BookConsolidation } from './consolidation'
 import { faNum } from './format'
 
 const DAY = 86_400_000
@@ -140,8 +141,36 @@ export function certificationStatus(state: GhesseState, now = Date.now()): Certi
   }
 }
 
+export interface ConsolidationFocus {
+  book: number
+  /** Every chapter is done, so consolidation is all that stands before the book's test. */
+  blocking: boolean
+  status: BookConsolidation
+}
+
+/**
+ * Consolidation of the book whose test comes next on the path. Books whose
+ * test is already passed are never reopened.
+ */
+export function consolidationFocus(state: GhesseState, now = Date.now()): ConsolidationFocus | undefined {
+  for (let book = 1; book <= 8; book++) {
+    if (examPassed(state, bookExamId(book))) continue
+    const status = bookConsolidation(state, book, now)
+    if (status.consolidated >= status.total) return undefined
+    return { book, blocking: bookCompleted(state, book), status }
+  }
+  return undefined
+}
+
+export interface ActionProgress {
+  done: number
+  total: number
+  label: string
+}
+
 export type NextAction =
-  | { kind: 'review'; title: string; detail: string }
+  | { kind: 'review'; title: string; detail: string; progress?: ActionProgress }
+  | { kind: 'rest'; title: string; detail: string; progress?: ActionProgress }
   | { kind: 'exam'; examId: string; title: string; detail: string }
   | { kind: 'chapter'; chapterId: string; prepared: boolean; title: string; detail: string }
   | { kind: 'certification'; title: string; detail: string }
@@ -153,8 +182,27 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
   if (remediation.length > 0) {
     return { kind: 'review', title: 'ترمیم قبل از آزمون', detail: `${faNum(remediation.length)} واژه از آزمون قبلی هنوز باید بدون کمک بازیابی شود؛ پس از آن آزمون دوباره باز می‌شود.` }
   }
+  const focus = consolidationFocus(state, now)
+  const consolidation = focus?.blocking ? focus.status : undefined
+  const consolidationProgress = consolidation && { done: consolidation.consolidated, total: consolidation.total, label: 'واژه‌های ثابت‌شده' }
+  if (consolidation && consolidation.ready.length > 0) {
+    return {
+      kind: 'review',
+      title: `تثبیت واژه‌های کتاب ${faNum(consolidation.book)}`,
+      detail: `هر واژه باید یک روز پس از یادگیری، بدون کمک به یاد آورده شود تا ماندگار شود. امروز ${faNum(consolidation.ready.length)} واژه آمادهٔ تثبیت است؛ پس از تثبیت همه، آزمون پایان کتاب باز می‌شود.`,
+      progress: consolidationProgress,
+    }
+  }
   if (health.dueNow >= Math.max(8, Math.ceil(state.dailyReviewGoal * 0.6)) || health.overdueLong > 0) {
     return { kind: 'review', title: 'اول مرورهای امروز', detail: `${faNum(health.dueNow)} واژه سررسید دارد؛ تثبیت حافظه قبل از واژه‌های تازه مهم‌تر است.` }
+  }
+  if (consolidation) {
+    return {
+      kind: 'rest',
+      title: 'فردا، تثبیت آخرین واژه‌ها',
+      detail: `${faNum(consolidation.waiting.length)} واژه‌ای که امروز یاد گرفتی از فردا آمادهٔ تثبیت‌اند؛ یک شب خواب حافظه را محکم می‌کند. تا آن موقع می‌توانی با جعبهٔ لایتنر تمرین کنی.`,
+      progress: consolidationProgress,
+    }
   }
 
   for (let book = 1; book <= 8; book++) {

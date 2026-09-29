@@ -5,7 +5,9 @@ import { emptyState } from './store'
 import { blankWordProgress, recordRetrieval } from './review'
 import { bookExamId, canPrepareChapter, canTakeExam, examDefinition, examRemediationPending } from './gates'
 import { bookTestQuestionCount, bookTestTextsPerSkill, bookTestWordCount, bookTestWordsFrom } from './bookTestSize'
+import { bookConsolidation, isConsolidated } from './consolidation'
 import {
+  allowedMistakes,
   bookTestAllocation,
   buildBookTest,
   recordBookTest,
@@ -18,11 +20,16 @@ import type { GhesseState } from './types'
 const introducedIn = new Map<string, number>()
 for (const chapter of CHAPTERS) for (const id of chapter.new) if (!introducedIn.has(id)) introducedIn.set(id, chapter.book)
 
-function stateThroughBook(book: number): GhesseState {
+const DAY = 86_400_000
+
+/** Books 1..book finished; every word recalled two days after it was taught, unless `consolidated` is false. */
+function stateThroughBook(book: number, consolidated = true): GhesseState {
   const state = emptyState(1, 'b1c1')
   for (const chapter of CHAPTERS.filter(ch => ch.book <= book)) {
     state.chapters[chapter.id] = { preparedAt: 1, prepAttempts: 1, completed: true, checksCorrect: 10, checksTotal: 10, reads: 1 }
-    for (const id of chapter.new) state.words[id] = blankWordProgress(1)
+    for (const id of chapter.new) {
+      state.words[id] = consolidated ? { ...blankWordProgress(1), lastIndependentSuccessAt: 2 * DAY } : blankWordProgress(1)
+    }
   }
   for (let passed = 1; passed < book; passed++) {
     state.exams[bookExamId(passed)] = {
@@ -43,12 +50,62 @@ function perfectAnswers(test: BookTest): BookTestAnswers {
 }
 
 describe('end-of-book test', () => {
-  it('is a bounded cumulative book-N gate with an 80% floor in each part', () => {
+  it('is a bounded cumulative book-N gate with a 90% floor in each part and one forgiven slip', () => {
     const def = examDefinition(bookExamId(3))!
     expect(def.kind).toBe('book')
     expect(def.titleFa).toBe('آزمون پایان کتاب ۳')
     expect(def.questionCount).toBe(bookTestQuestionCount(3))
-    expect(def.passRate).toBe(0.8)
+    expect(def.passRate).toBe(0.9)
+    expect([5, 10, 12, 19, 20, 26].map(allowedMistakes)).toEqual([1, 1, 1, 1, 2, 2])
+
+    const test = buildBookTest(1, stateThroughBook(1), 1)!
+    const answers = perfectAnswers(test)
+    // One slip in a five-question text passes; a second fails the part.
+    answers.reading[0][0] = (answers.reading[0][0]! + 1) % 4
+    expect(scoreBookTest(test, answers).sections.reading.passed).toBe(true)
+    answers.reading[0][1] = (answers.reading[0][1]! + 1) % 4
+    expect(scoreBookTest(test, answers).sections.reading.passed).toBe(false)
+    expect(scoreBookTest(test, answers).passed).toBe(false)
+    // Twelve typed words allow one mistake, not two.
+    const typed = perfectAnswers(test)
+    typed.translation[0] = ''
+    expect(scoreBookTest(test, typed).sections.translation.passed).toBe(true)
+    typed.translation[1] = ''
+    expect(test.translation).toHaveLength(12)
+    expect(scoreBookTest(test, typed).sections.translation.passed).toBe(false)
+  })
+
+  it('opens only once every word of the book has been recalled on a later day than it was taught', () => {
+    let state = stateThroughBook(1, false)
+    const ids = CHAPTERS.filter(ch => ch.book === 1).flatMap(ch => ch.new)
+    const unique = [...new Set(ids)]
+    expect(canTakeExam(state, bookExamId(1))).toBe(false)
+    // Words taught at 1 ms, now two days later: all are ready to be proven.
+    expect(bookConsolidation(state, 1, 2 * DAY)).toMatchObject({ total: unique.length, consolidated: 0 })
+    expect(bookConsolidation(state, 1, 2 * DAY).ready).toHaveLength(unique.length)
+
+    for (const id of unique.slice(1)) state.words[id] = recordRetrieval(state.words[id], true, 'reverse', 2 * DAY, 'review')
+    expect(canTakeExam(state, bookExamId(1))).toBe(false)
+    const last = unique[0]
+    // Help-assisted relearning and a same-day success are not later-day recall.
+    state.words[last] = recordRetrieval(state.words[last], true, 'reverse', 2 * DAY, 'relearn')
+    expect(isConsolidated(state.words[last])).toBe(false)
+    const sameDay = { ...state.words[last], firstSeenAt: 2 * DAY + 1_000 }
+    expect(isConsolidated(recordRetrieval(sameDay, true, 'reverse', 2 * DAY + 60_000, 'review'))).toBe(false)
+    // A word taught today waits for tomorrow.
+    state = { ...state, words: { ...state.words, [last]: { ...state.words[last], firstSeenAt: 2 * DAY } } }
+    expect(bookConsolidation(state, 1, 2 * DAY + 1_000)).toMatchObject({ consolidated: unique.length - 1, ready: [], waiting: [last] })
+
+    state.words[last] = recordRetrieval(state.words[last], true, 'reverse', 3 * DAY + 1_000, 'review')
+    expect(isConsolidated(state.words[last])).toBe(true)
+    expect(canTakeExam(state, bookExamId(1))).toBe(true)
+    // A passed book never closes again.
+    state.exams[bookExamId(1)] = {
+      attempts: 1, passed: true, passedAt: 4 * DAY, lastAttemptAt: 4 * DAY, lastScore: 1, bestScore: 1,
+      lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [],
+    }
+    state.words[last] = { ...state.words[last], lastIndependentSuccessAt: undefined }
+    expect(canPrepareChapter(state, 'b2c1')).toBe(true)
     expect(Array.from({ length: 8 }, (_, index) => bookTestWordCount(index + 1))).toEqual([24, 28, 32, 36, 40, 44, 48, 52])
     for (let book = 1; book <= 8; book++) expect(bookTestTextsPerSkill(book)).toBe(Math.ceil(book / 2))
   })
@@ -192,16 +249,16 @@ describe('end-of-book test', () => {
     expect(canTakeExam(state, bookExamId(1))).toBe(true)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
 
-    // One missed word can still meet the 80% criterion, but remediation keeps
+    // One missed word is a forgiven slip, but remediation keeps
     // the next book closed until that word is independently recalled.
     const test = buildBookTest(1, state, 1)!
     const answers = perfectAnswers(test)
     answers.translation[0] = ''
     const result = scoreBookTest(test, answers)
     expect(result.passed).toBe(true)
-    state = recordBookTest(state, test, answers, result, 1_000)
+    state = recordBookTest(state, test, answers, result, 3 * DAY)
     const progress = state.exams[bookExamId(1)]
-    expect(progress).toMatchObject({ attempts: 1, passed: true, lastAttemptAt: 1_000, missedWordIds: [test.translation[0].wordId] })
+    expect(progress).toMatchObject({ attempts: 1, passed: true, lastAttemptAt: 3 * DAY, missedWordIds: [test.translation[0].wordId] })
     expect(progress.lastProductiveScore).toBeCloseTo((test.translation.length - 1) / test.translation.length)
     const missed = test.translation[0].wordId
     expect(state.words[missed].reviewWrong).toBe(1)
@@ -210,14 +267,14 @@ describe('end-of-book test', () => {
     expect(examRemediationPending(state, bookExamId(1))).toBe(true)
     expect(canTakeExam(state, bookExamId(1))).toBe(false)
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
-    state = { ...state, words: { ...state.words, [missed]: recordRetrieval(state.words[missed], true, 'reverse', 2_000, 'review') } }
+    state = { ...state, words: { ...state.words, [missed]: recordRetrieval(state.words[missed], true, 'reverse', 4 * DAY, 'review') } }
     expect(examRemediationPending(state, bookExamId(1))).toBe(false)
     expect(canPrepareChapter(state, 'b2c1')).toBe(true)
 
     // A later failed retake never revokes the pass.
     const retake = buildBookTest(1, state, 3)!
     const blank: BookTestAnswers = { translation: [], listeningWords: [], reading: [[null, null, null, null, null]], listening: [[null, null, null, null, null]] }
-    state = recordBookTest(state, retake, blank, scoreBookTest(retake, blank), 4_000)
-    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 2, passed: true, passedAt: 1_000, bestScore: result.score })
+    state = recordBookTest(state, retake, blank, scoreBookTest(retake, blank), 5 * DAY)
+    expect(state.exams[bookExamId(1)]).toMatchObject({ attempts: 2, passed: true, passedAt: 3 * DAY, bestScore: result.score })
   })
 })

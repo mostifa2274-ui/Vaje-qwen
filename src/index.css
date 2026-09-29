@@ -1900,3 +1900,122 @@ input[type="range"]:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+
+/* ---------- Daily goal and streak ---------- */
+.today-strip {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  background: var(--cream-soft);
+  padding: .7rem .85rem;
+}
+.today-streak {
+  display: inline-flex;
+  min-width: 4.25rem;
+  flex-direction: column;
+  align-items: center;
+  gap: .05rem;
+  color: var(--ink-soft);
+  line-height: 1.2;
+}
+.today-streak svg {
+  opacity: .45;
+}
+.today-streak b {
+  color: var(--ink);
+  font-size: 1.15rem;
+}
+.today-streak span {
+  font-size: .64rem;
+  white-space: nowrap;
+}
+.today-streak.on {
+  color: var(--crimson-deep);
+}
+.today-streak.on svg {
+  opacity: 1;
+  fill: color-mix(in srgb, var(--gold) 70%, transparent);
+}
+.today-goal > span {
+  background: var(--gold);
+}
+.today-strip.met .today-goal > span {
+  background: var(--crimson);
+}
+
+.goal-toast {
+  position: fixed;
+  inset-inline: 10px;
+  top: max(10px, env(safe-area-inset-top));
+  z-index: 118;
+  display: flex;
+  max-width: 30rem;
+  margin-inline: auto;
+  align-items: center;
+  gap: .75rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, var(--line-medium));
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--gold) 14%, var(--cream-soft));
+  box-shadow: var(--shadow-soft);
+  padding: .75rem .85rem;
+  color: var(--ink);
+  animation: goal-toast-in 420ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+.goal-toast b {
+  display: block;
+  font-size: .95rem;
+  font-weight: 800;
+}
+.goal-toast span {
+  display: block;
+  margin-top: .1rem;
+  color: var(--ink-soft);
+  font-size: .8rem;
+  line-height: 1.7;
+}
+.goal-toast-flame {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--cream-soft);
+  color: var(--crimson-deep);
+  animation: goal-flame 1.2s ease-in-out 2;
+}
+.goal-toast-flame svg {
+  fill: color-mix(in srgb, var(--gold) 75%, transparent);
+}
+.goal-toast .goal-toast-flame {
+  margin: 0;
+}
+.goal-toast-close {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.goal-toast-close:focus-visible {
+  outline: 3px solid var(--crimson-deep);
+  outline-offset: 2px;
+}
+@keyframes goal-toast-in {
+  from { opacity: 0; transform: translateY(-14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes goal-flame {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14) rotate(-4deg); }
+}

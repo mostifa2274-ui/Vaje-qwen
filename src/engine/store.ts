@@ -1,5 +1,6 @@
 import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, RetrievalMode, SkillDimension, SkillStat } from './types'
 import { emptyLeitner, normalizeLeitner } from './leitner'
+import { mergeActivity, mergeLeitnerDays, normalizeActivity } from './activity'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
 const CURRENT_STATE_VERSION = 6
@@ -25,6 +26,7 @@ export function emptyState(now: number, firstChapterId: string): GhesseState {
     dailyReviewGoal: 15,
     exploreAll: false,
     leitner: emptyLeitner(),
+    activity: {},
     created: now,
   }
 }
@@ -219,6 +221,7 @@ function normalizeState(
     dailyReviewGoal: reviewGoal(p.dailyReviewGoal),
     exploreAll: p.exploreAll === true,
     leitner: normalizeLeitner(p.leitner, now, validWordIds),
+    activity: normalizeActivity(p.activity, now),
     created: num(p.created, now),
   }
 }
@@ -437,7 +440,7 @@ export function mergeConcurrentState(
   const exams = mergeConcurrentRecord(base.exams, local.exams, remote.exams)
   // Flashcards merge card by card and day by day, like the learning records.
   const leitnerCards = mergeConcurrentRecord(base.leitner.cards, local.leitner.cards, remote.leitner.cards)
-  const leitnerDays = mergeConcurrentRecord(base.leitner.days, local.leitner.days, remote.leitner.days)
+  const leitnerDays = mergeLeitnerDays(base.leitner.days, local.leitner.days, remote.leitner.days)
   const leitnerSettings = mergeConcurrentValue(base.leitner.settings, local.leitner.settings, remote.leitner.settings)
   if (!chapters || !words || !exams || !leitnerCards || !leitnerDays || !leitnerSettings) return undefined
 
@@ -474,6 +477,7 @@ export function mergeConcurrentState(
     dailyReviewGoal,
     exploreAll,
     leitner: { cards: leitnerCards, settings: leitnerSettings, days: leitnerDays },
+    activity: mergeActivity(base.activity, local.activity, remote.activity),
     created,
   }
 }

@@ -1,6 +1,7 @@
 import { CHAPTERS, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState, LeitnerCard, LeitnerDay, LeitnerDirection, LeitnerScope, LeitnerSettings, LeitnerState, WordEntry } from './types'
 import { isHeadwordTranslationCorrect } from './persianTranslation'
+import { dayKey, dayStartAfter, startOfDay } from './days'
 
 // A Leitner deck over every course word. Cards start in box 1 and climb one
 // box per remembered review; each box waits twice as long as the one before.
@@ -31,26 +32,7 @@ export function emptyLeitner(): LeitnerState {
   return { cards: {}, settings: { ...DEFAULT_LEITNER_SETTINGS }, days: {} }
 }
 
-/** Local calendar day, YYYY-MM-DD. */
-export function dayKey(time: number): string {
-  const date = new Date(time)
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-  return `${date.getFullYear()}-${month}-${day}`
-}
-
-export function startOfDay(time: number): number {
-  const date = new Date(time)
-  date.setHours(0, 0, 0, 0)
-  return date.getTime()
-}
-
-/** The start of the local day `days` days after `time`. */
-function dayStartAfter(time: number, days: number): number {
-  const date = new Date(startOfDay(time))
-  date.setDate(date.getDate() + days)
-  return date.getTime()
-}
+export { dayKey, startOfDay }
 
 export function intervalDays(box: number): number {
   return BOX_INTERVAL_DAYS[Math.min(LEITNER_BOXES, Math.max(1, box)) - 1]

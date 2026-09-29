@@ -178,11 +178,11 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
 
 
         <div className="settings-section p-4 sm:p-5">
-          <div className="font-bold">هدف مرور روزانه</div>
+          <div className="font-bold">هدف روزانه</div>
           <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>
-            تعداد واژه‌های هر جلسهٔ مرور هوشمند. پاسخ اشتباه تا بازیابی درست دوباره برمی‌گردد.
+            هر روز دست‌کم این تعداد پاسخ بده تا روزهای پیاپی‌ات ادامه یابد؛ هر جلسهٔ مرور هوشمند هم همین تعداد واژه دارد.
           </p>
-          <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label="هدف مرور روزانه">
+          <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label="هدف روزانه">
             {[10, 15, 20, 25].map(goal => (
               <button
                 key={goal}

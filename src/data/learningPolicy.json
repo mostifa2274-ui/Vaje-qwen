@@ -8,26 +8,30 @@
     "listeningQuestions": 5,
     "correctionRequired": true
   },
+  "bookConsolidation": {
+    "everyWordRecalledOnALaterDay": true
+  },
   "bookTest": {
     "minVocabularyQuestions": 24,
     "vocabularyQuestionStep": 4,
     "maxVocabularyQuestions": 52,
     "newestBookWeight": 2,
     "olderBookWeight": 1,
-    "sectionPassRate": 0.8,
+    "sectionPassRate": 0.9,
+    "forgivenSlips": 1,
     "questionsPerText": 5
   },
   "midpointExam": {
     "wordQuestions": 56,
-    "passRate": 0.88,
-    "productivePassRate": 0.85,
+    "passRate": 0.9,
+    "productivePassRate": 0.88,
     "readingTexts": 2,
     "listeningTexts": 2
   },
   "finalExam": {
     "wordQuestions": 88,
-    "passRate": 0.92,
-    "productivePassRate": 0.9,
+    "passRate": 0.95,
+    "productivePassRate": 0.92,
     "readingTexts": 4,
     "listeningTexts": 4
   }

@@ -1,5 +1,6 @@
 import { CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { bookTestQuestionCount, bookTestTextsPerSkill, bookTestWordCount } from './bookTestSize'
+import { bookConsolidated } from './consolidation'
 import type { GhesseState } from './types'
 import { faNum } from './format'
 import policy from '../data/learningPolicy.json'
@@ -179,7 +180,12 @@ export function examCleared(state: GhesseState, id: string): boolean {
 function examPrerequisitesMet(state: GhesseState, id: string): boolean {
   const def = examDefinition(id)
   if (!def) return false
-  if (def.kind === 'book') return bookCompleted(state, def.book!)
+  // Every word of the book must also have been recalled on a later day than
+  // it was taught (see consolidation.ts).
+  if (def.kind === 'book') {
+    return bookCompleted(state, def.book!)
+      && (!policy.bookConsolidation.everyWordRecalledOnALaterDay || bookConsolidated(state, def.book!))
+  }
   if (def.kind === 'midpoint') return [1, 2, 3, 4].every(book => examCleared(state, bookExamId(book)))
   return [1, 2, 3, 4, 5, 6, 7, 8].every(book => examCleared(state, bookExamId(book)))
 }

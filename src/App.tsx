@@ -5,6 +5,8 @@ import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canOpenChapter, canOpenExam, canOpenStory, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
 import RouteErrorBoundary from './components/RouteErrorBoundary'
+import GoalCelebration from './components/GoalCelebration'
+import { dailyProgress, recordActivity } from './engine/activity'
 import { warmEnglishVoices } from './engine/narration'
 import { loadClipIndex } from './engine/audioClips'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
@@ -134,15 +136,19 @@ export default function App() {
   const [persistOk, setPersistOk] = useState(startup.persisted)
   const [syncConflict, setSyncConflict] = useState(false)
   const [now, setNow] = useState(() => Date.now())
+  const [celebration, setCelebration] = useState<{ streak: number; at: number } | null>(null)
   const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
   const [dismissedCommit, setDismissedCommit] = useState<string | null>(null)
   const stateRef = useRef(state)
   const mainRef = useRef<HTMLElement>(null)
   const routeFocusReadyRef = useRef(false)
 
-  const update = useCallback((next: GhesseState) => {
+  const update = useCallback((candidate: GhesseState) => {
     const base = state
-    const remote = loadPersistedState(Date.now(), FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)
+    const time = Date.now()
+    // Every answer this change records counts towards today's goal.
+    const next = recordActivity(candidate, base, time)
+    const remote = loadPersistedState(time, FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)
     const reconciled = remote ? mergeConcurrentState(base, next, remote) : next
 
     if (!reconciled && remote) {
@@ -163,7 +169,11 @@ export default function App() {
     setPersistOk(saveState(resolved))
     // Only after the learner has done something worth keeping.
     requestDurableStorage()
+    const after = dailyProgress(resolved, time)
+    if (after.met && !dailyProgress(base, time).met) setCelebration({ streak: after.streak, at: time })
   }, [state])
+
+  const closeCelebration = useCallback(() => setCelebration(null), [])
 
   const navigate = useCallback((next: View, replace = false) => {
     const currentDepth = typeof history.state?.ghesseDepth === 'number' ? history.state.ghesseDepth : 0
@@ -433,6 +443,10 @@ export default function App() {
             <button type="button" className="btn-ink px-3 text-xs" onClick={() => { void refreshToDeployedBuild() }}>تازه‌سازی</button>
           </div>
         </div>
+      )}
+      {/* Tests and story reading keep their focus; the note waits for the next calmer screen. */}
+      {celebration && view.name !== 'exam' && view.name !== 'read' && (
+        <GoalCelebration key={celebration.at} streak={celebration.streak} onClose={closeCelebration} />
       )}
       <main
         id="main-content"
