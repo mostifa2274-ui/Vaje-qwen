@@ -1681,7 +1681,7 @@ test('chapter 1 enforces teach → written 100% → listening 100% → story →
   const sentence = `My private transfer sentence uses ${chapterWords[0].word} today.`
   const sentenceInput = activeUse.getByLabel(`یک جملهٔ انگلیسی با ${chapterWords[0].word}`)
   await sentenceInput.fill(sentence)
-  await expect(activeUse).toContainText('واژهٔ هدف در جمله‌ات دیده می‌شود')
+  await expect(activeUse).toContainText('واژهٔ هدف، با همین معنی یا یکی از شکل‌های صرفی طبیعی آن')
   await activeUse.getByRole('button', { name: 'مقایسه با نمونه' }).click()
   await expect(activeUse.locator('div.font-en').filter({ hasText: sentence })).toBeVisible()
   await expect(activeUse.locator('div.font-en').filter({ hasText: chapterWords[0].ex })).toBeVisible()

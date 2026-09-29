@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { WordEntry } from '../engine/types'
 import { normalizeTypedAnswer } from '../engine/review'
+import { sentenceUsesTargetSense } from '../engine/activeUse'
 import PronunciationPractice from './PronunciationPractice'
 
 interface Props {
@@ -9,16 +10,6 @@ interface Props {
   narratorVoiceURI: string
   narratorRate: number
   disabled?: boolean
-}
-
-function wordAppearsInSentence(sentence: string, word: WordEntry): boolean {
-  const normalizedSentence = normalizeTypedAnswer(sentence)
-  const surface = normalizeTypedAnswer(word.word)
-  if (!surface) return false
-  return normalizedSentence === surface
-    || normalizedSentence.startsWith(`${surface} `)
-    || normalizedSentence.endsWith(` ${surface}`)
-    || normalizedSentence.includes(` ${surface} `)
 }
 
 /**
@@ -38,7 +29,7 @@ export default function ActiveUsePractice({
   const [showComparison, setShowComparison] = useState(false)
   const normalizedSentence = useMemo(() => normalizeTypedAnswer(sentence), [sentence])
   const copiedModel = normalizedSentence !== '' && normalizedSentence === normalizeTypedAnswer(word.ex)
-  const containsHeadword = wordAppearsInSentence(sentence, word)
+  const containsTargetSense = sentenceUsesTargetSense(sentence, word.id)
 
   return (
     <details className="method-details mt-4" data-testid="active-use-practice">
@@ -69,9 +60,9 @@ export default function ActiveUsePractice({
           <div className="paper-note mt-3 text-xs leading-6" role="status">
             {copiedModel
               ? 'این همان جملهٔ نمونه است. برای تمرین انتقال، یک جملهٔ متفاوت از خودت بساز.'
-              : containsHeadword
-                ? 'واژهٔ هدف در جمله‌ات دیده می‌شود. حالا معنی و طبیعی‌بودن جمله را با نمونه مقایسه کن.'
-                : 'اگر شکل دیگری از واژه را به کار نبرده‌ای، بررسی کن واژهٔ هدف در جمله جا نیفتاده باشد.'}
+              : containsTargetSense
+                ? 'واژهٔ هدف، با همین معنی یا یکی از شکل‌های صرفی طبیعی آن، در جمله‌ات دیده می‌شود. حالا طبیعی‌بودن جمله را با نمونه مقایسه کن.'
+                : 'هنوز کاربرد همین واژه/معنی در جمله تشخیص داده نشد. شکل صرفی، املا یا معنی موردنظر را دوباره بررسی کن.'}
           </div>
         )}
 
