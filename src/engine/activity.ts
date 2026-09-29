@@ -1,4 +1,4 @@
-import { dayKey, dayStartAfter, isDayKey } from './days'
+import { dayKey, dayStartAfter, isDayKey, latestPlausibleDayKey } from './days'
 import type { GhesseState, LeitnerDay } from './types'
 
 // A daily goal and a streak built on effort, not on scores: a day counts when
@@ -76,8 +76,9 @@ export function dailyProgress(state: GhesseState, now: number): DailyProgress {
 
 function pruneActivity(activity: Record<string, number>, now: number): Record<string, number> {
   const oldest = dayKey(dayStartAfter(now, -ACTIVITY_LOG_DAYS))
+  const newest = latestPlausibleDayKey(now)
   const result: Record<string, number> = {}
-  for (const [key, value] of Object.entries(activity)) if (key >= oldest) result[key] = value
+  for (const [key, value] of Object.entries(activity)) if (key >= oldest && key <= newest) result[key] = value
   return result
 }
 
