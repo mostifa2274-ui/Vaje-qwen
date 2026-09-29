@@ -2019,3 +2019,71 @@ input[type="range"]:focus-visible {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.14) rotate(-4deg); }
 }
+
+
+/* Home information architecture: one task surface at a time. */
+.home-section-tabs {
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+}
+.home-section-tab {
+  min-height: 44px;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font-weight: 800;
+  color: var(--ink-soft);
+}
+.home-section-tab.active {
+  background: var(--ink);
+  color: var(--cream);
+}
+.home-section-tab:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.library-home {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+}
+.library-home-row {
+  display: flex;
+  width: 100%;
+  min-height: 76px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+.library-home-row + .library-home-row {
+  border-top: 1px solid var(--line);
+}
+.library-home-row:hover {
+  background: color-mix(in srgb, var(--cream) 75%, transparent);
+}
+.library-home-row:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: -3px;
+}
+.library-home-row b,
+.library-home-row span {
+  display: block;
+}
+.library-home-row .min-w-0 > span {
+  margin-top: 3px;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.library-home-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--ink);
+}
