@@ -61,8 +61,8 @@ jobs:
           echo "Verifying source revision: $SOURCE_SHA"
           echo "Production worker: $PRODUCTION_URL"
 
-          for attempt in $(seq 1 6); do
-            echo "Smoke attempt $attempt/6 for $SOURCE_SHA"
+          for attempt in $(seq 1 30); do
+            echo "Smoke attempt $attempt/30 for $SOURCE_SHA"
             body="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
             compact="$(printf '%s' "$body" | tr -d '[:space:]')"
             last_compact="$compact"
@@ -97,7 +97,7 @@ jobs:
               fi
             fi
 
-            if [ "$attempt" -lt 6 ]; then sleep 5; fi
+            if [ "$attempt" -lt 30 ]; then sleep 5; fi
           done
 
           {
