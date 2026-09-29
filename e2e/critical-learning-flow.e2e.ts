@@ -535,7 +535,12 @@ test('prove-known is explicit, first-miss fail-closed, and falls back to teachin
   expect(storedBeforeTeaching.chapters?.b1c1).toBeUndefined()
   expect(Object.keys(storedBeforeTeaching.words ?? {})).toHaveLength(0)
 
-  await page.getByRole('button', { name: 'شروع آموزش معمولی' }).click()
+  // The revealed miss cannot be harvested by backing out and retrying the same
+  // deterministic diagnostic word by word.
+  await page.getByRole('button', { name: 'بازگشت به نقشه' }).click()
+  await expect(page).toHaveURL(/#\/map$/)
+  await expect(page.getByRole('button', { name: /تعیین سطح اختیاری/ })).toHaveCount(0)
+  await page.goto('/#/diagnostic/b1c1')
   await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
 })
