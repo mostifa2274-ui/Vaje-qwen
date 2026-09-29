@@ -35,6 +35,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Progress must be explainable. Learners should always know what is required to unlock the next stage.
 - Word-level mastery labels must also be explainable: the glossary may show the actual independent-retrieval evidence and the next missing observable requirement, but never expose a decorative score or imply certainty beyond recorded evidence.
 - Smart Review is the canonical adaptive scheduler. The Leitner box is optional free practice and never competes with, replaces or supplies mastery evidence for Smart Review.
+- Smart Review may reorder only a small local window of the scheduler-selected queue to avoid adjacent same-headword/topic cards; it must preserve the selected set and keep the highest-priority first card fixed.
 - Motivation rewards effort, never implies mastery. A daily goal counts graded answers (the Settings goal, 10–25), a day streak counts days that met it, and reaching the goal earns one brief, dismissible note that waits until tests and story reading are over. Scores and gates stay the only evidence of learning.
 - Stories fit an Iranian family audience: Mina is always with a parent or relative outside home, adults speak to strangers, schools and pools are for girls or boys, Friday is the day off, and there is no alcohol, dancing, dating or pork anywhere in the course (`validate-editorial.mjs` guards the words).
 
