@@ -17,7 +17,6 @@ import {
   examRemediationPending,
 } from '../engine/gates'
 import { faNum, percent } from '../engine/format'
-import { leitnerSummary } from '../engine/leitner'
 import { dailyProgress } from '../engine/activity'
 
 interface Props {
@@ -84,7 +83,6 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
     ? CHAPTERS.find(chapter => chapter.id === action.chapterId)?.titleFa ?? action.title
     : action.title
   const certification = certificationStatus(state, now)
-  const flashcardsDue = leitnerSummary(state, now).due
   const focus = consolidationFocus(state, now)
   const daily = dailyProgress(state, now)
   const answersLeft = Math.max(0, daily.goal - daily.today)
@@ -104,7 +102,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
   const actionLabel = action.kind === 'review'
     ? 'شروع مرور'
     : action.kind === 'rest'
-      ? 'تمرین با لایتنر'
+      ? 'تمرین اختیاری'
     : action.kind === 'exam'
       ? 'شروع آزمون'
       : action.kind === 'chapter'
@@ -129,12 +127,11 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
             type="button"
             className="btn-paper home-toolbar-button px-3 text-sm"
             onClick={onOpenFlashcards}
-            aria-label={flashcardsDue ? `جعبهٔ لایتنر، ${faNum(flashcardsDue)} کارت برای مرور` : 'جعبهٔ لایتنر'}
+            aria-label="تمرین آزاد با جعبهٔ لایتنر"
             data-testid="open-flashcards"
           >
             <FlashcardsIcon className="h-5 w-5" />
-            <span>لایتنر</span>
-            {flashcardsDue > 0 && <span className="home-toolbar-badge" aria-hidden="true">{flashcardsDue > 99 ? '۹۹+' : faNum(flashcardsDue)}</span>}
+            <span>تمرین آزاد</span>
           </button>
           <button type="button" className="btn-paper home-toolbar-icon" onClick={onOpenSettings} aria-label="تنظیمات">
             <SettingsIcon className="h-5 w-5" />
@@ -172,7 +169,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
             </div>
           )}
         </div>
-        {action.kind !== 'complete' && <button type="button" className="btn-crimson shrink-0 px-4 py-3" onClick={runNextAction}>{actionLabel}</button>}
+        {action.kind !== 'complete' && <button type="button" className={action.kind === 'rest' ? 'btn-paper shrink-0 px-4 py-3' : 'btn-crimson shrink-0 px-4 py-3'} onClick={runNextAction}>{actionLabel}</button>}
         {action.kind === 'complete' && <BadgeCheckIcon className="h-8 w-8 shrink-0" role="img" aria-hidden={false} aria-label="مسیر کامل شده" />}
       </section>
 
@@ -222,7 +219,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
       <details className="method-details mt-4">
         <summary>روش یادگیری و معیارهای عبور</summary>
         <p>
-          هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. پیش از آزمون پایان کتاب، هر واژهٔ کتاب باید یک روز پس از یادگیری دوباره بدون کمک به یاد آورده شود (تثبیت). آزمون پایان کتاب در هر بخش حداقل {percent(examDefinition(bookExamId(1))!.passRate)} می‌خواهد و یک اشتباه در هر بخش بخشیده می‌شود؛ آزمون نیمهٔ مسیر {percent(examDefinition(MIDPOINT_EXAM_ID)!.passRate)} کل و {percent(examDefinition(MIDPOINT_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری، و آزمون نهایی {percent(examDefinition(FINAL_EXAM_ID)!.passRate)} کل و {percent(examDefinition(FINAL_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری می‌خواهد. واژه‌های از‌دست‌رفته همیشه پیش از ادامه جبران می‌شوند.
+          هر فصل: <b>آموزش ← ترجمهٔ نوشتاری ۱۰۰٪ ← شنیداری ۱۰۰٪ ← قصه و درک مطلب ← درک مطلب شنیداری.</b> قصه فقط بعد از پاس کامل هر دو آزمون واژه باز می‌شود و فصل وقتی تمام می‌شود که همهٔ پاسخ‌های درک مطلب خواندنی و شنیداری درست باشند. پیش از آزمون پایان کتاب، هر واژهٔ کتاب باید پس از یک فاصلهٔ واقعی و در روزی بعد از یادگیری دوباره بدون کمک به یاد آورده شود (تثبیت). آزمون پایان کتاب در هر بخش حداقل {percent(examDefinition(bookExamId(1))!.passRate)} می‌خواهد و یک اشتباه در هر بخش بخشیده می‌شود؛ آزمون نیمهٔ مسیر {percent(examDefinition(MIDPOINT_EXAM_ID)!.passRate)} کل و {percent(examDefinition(MIDPOINT_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری، و آزمون نهایی {percent(examDefinition(FINAL_EXAM_ID)!.passRate)} کل و {percent(examDefinition(FINAL_EXAM_ID)!.productivePassRate)} یادآوری نوشتاری می‌خواهد. واژه‌های از‌دست‌رفته همیشه پیش از ادامه جبران می‌شوند.
         </p>
       </details>
 
@@ -324,7 +321,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenE
                     state={state}
                     onOpen={onOpenExam}
                     lockedHint={focus?.book === meta.book && focus.blocking
-                      ? `پس از تثبیت همهٔ واژه‌ها باز می‌شود: ${faNum(focus.status.consolidated)} از ${faNum(focus.status.total)} واژه یک روز پس از یادگیری دوباره به یاد آمده است.`
+                      ? `پس از تثبیت دیرهنگام همهٔ واژه‌ها باز می‌شود: ${faNum(focus.status.consolidated)} از ${faNum(focus.status.total)} واژه پس از فاصلهٔ لازم دوباره به یاد آمده است.`
                       : `پس از تمام‌شدن ${faNum(chapters.length)} فصل این کتاب و تثبیت واژه‌هایش باز می‌شود.`}
                   />
                 </div>

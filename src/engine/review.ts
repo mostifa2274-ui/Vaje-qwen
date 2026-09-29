@@ -1,6 +1,7 @@
 import type { RetrievalMode, SkillDimension, WordEntry, WordProgress } from './types'
 import { forgottenStability, inferFsrsGrade, initialDifficulty, initialStability, intervalForRetention, nextDifficulty, retrievability, sameDayStability, successfulStability } from './fsrs'
 import { differentlySpelledHomophones, soundsAlike } from './homophones'
+import { dayKey } from './days'
 
 export type ReviewMode = RetrievalMode
 export type ReviewSource = 'review' | 'exam' | 'relearn'
@@ -99,9 +100,6 @@ export function isQuestionTypedCorrect(input: string, question: Pick<ReviewQuest
   return question.acceptedAnswers.includes(normalizeTypedAnswer(input))
 }
 
-function utcDay(now: number): string {
-  return new Date(now).toISOString().slice(0, 10)
-}
 
 export function modeForStage(stage: number): ReviewMode {
   if (stage <= 0) return 'recognition'
@@ -205,7 +203,7 @@ export function recordRetrieval(
     }
   }
 
-  const day = utcDay(now)
+  const day = dayKey(now)
   const next: WordProgress = {
     ...progress,
     reviewCorrect: progress.reviewCorrect + (correct ? 1 : 0),

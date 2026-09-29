@@ -57,8 +57,8 @@ export interface WordProgress {
   lastIndependentSuccessAt?: number
   intervalDays: number
   productiveCorrect: number
-  successDays: string[] // UTC YYYY-MM-DD dates; unique and sorted
-  productiveSuccessDays: string[] // distinct dates with successful typed recall
+  successDays: string[] // learner-local YYYY-MM-DD dates; unique and sorted
+  productiveSuccessDays: string[] // distinct learner-local dates with successful typed recall
   lastReviewWasCorrect?: boolean
   lastMode?: RetrievalMode
 
