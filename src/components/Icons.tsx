@@ -175,3 +175,13 @@ export function FlameIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function MicrophoneIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <rect width="8" height="13" x="8" y="2" rx="4" />
+      <path d="M5 10a7 7 0 0 0 14 0" />
+      <path d="M12 19v3" />
+    </svg>
+  )
+}
