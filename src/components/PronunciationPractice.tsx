@@ -42,6 +42,7 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
   const stopTimerRef = useRef<number | null>(null)
   const recordingUrlRef = useRef('')
   const playbackRef = useRef<HTMLAudioElement | null>(null)
+  const mountedRef = useRef(true)
 
   const stopPlayback = useCallback(() => {
     if (!playbackRef.current) return
@@ -77,12 +78,24 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
   }, [clearStopTimer])
 
   useEffect(() => () => {
+    mountedRef.current = false
     clearStopTimer()
     const recorder = recorderRef.current
-    if (recorder && recorder.state !== 'inactive') recorder.stop()
+    if (recorder) {
+      // A stopped MediaRecorder fires onstop asynchronously. Detach every
+      // callback before lifecycle cleanup so an obsolete word can never
+      // publish a Blob URL after this keyed component has unmounted.
+      recorder.ondataavailable = null
+      recorder.onerror = null
+      recorder.onstop = null
+      if (recorder.state !== 'inactive') recorder.stop()
+    }
+    recorderRef.current = null
+    chunksRef.current = []
     stopStream()
     stopPlayback()
     if (recordingUrlRef.current) URL.revokeObjectURL(recordingUrlRef.current)
+    recordingUrlRef.current = ''
     cancelEnglishSpeech()
     stopAudio()
   }, [clearStopTimer, stopPlayback, stopStream])
@@ -103,21 +116,27 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
     try {
       setStatus('requesting')
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      if (!mountedRef.current) {
+        for (const track of stream.getTracks()) track.stop()
+        return
+      }
       streamRef.current = stream
       const recorder = new MediaRecorder(stream)
       recorderRef.current = recorder
       chunksRef.current = []
 
       recorder.ondataavailable = event => {
-        if (event.data.size > 0) chunksRef.current.push(event.data)
+        if (mountedRef.current && event.data.size > 0) chunksRef.current.push(event.data)
       }
       recorder.onerror = () => {
+        if (!mountedRef.current) return
         clearStopTimer()
         stopStream()
         setStatus('error')
         setMessage('ضبط صدا کامل نشد. دوباره امتحان کن یا این تمرین را رد کن.')
       }
       recorder.onstop = () => {
+        if (!mountedRef.current) return
         clearStopTimer()
         stopStream()
         recorderRef.current = null
@@ -140,6 +159,7 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
       setStatus('recording')
       stopTimerRef.current = window.setTimeout(stopRecording, MAX_RECORDING_MS)
     } catch (error) {
+      if (!mountedRef.current) return
       clearStopTimer()
       stopStream()
       recorderRef.current = null
