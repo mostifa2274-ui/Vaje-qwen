@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "maxSingleJavaScriptBytes": 1200000,
+  "maxTotalJavaScriptCssBytes": 2200000,
+  "note": "Raw production bytes. Tighten using measured low-end Android data; do not loosen merely to make CI pass."
+}
