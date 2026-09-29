@@ -31,8 +31,10 @@ export function recordPreparedChapter(
     || (previous?.prepListeningTotal ?? 0) > 0
     || previous?.prepDiagnosticPassed === true
   const tuneDifficulty = !alreadyUsedCurrentGate
-  const writtenFirstPassCorrect = wordIds.length - writtenMissed.size
-  const listeningFirstPassCorrect = wordIds.length - listeningMissed.size
+  // Count only misses that belong to this chapter. Direct callers/imported
+  // draft data must not be able to drive first-pass evidence below zero.
+  const writtenFirstPassCorrect = wordIds.filter(id => !writtenMissed.has(id)).length
+  const listeningFirstPassCorrect = wordIds.filter(id => !listeningMissed.has(id)).length
 
   for (const id of wordIds) {
     const existing = words[id] ?? blankWordProgress(now)
