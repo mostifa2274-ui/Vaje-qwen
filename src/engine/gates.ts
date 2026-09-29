@@ -61,7 +61,7 @@ export function examDefinition(id: string): ExamDefinition | undefined {
       id,
       kind: 'final',
       titleFa: 'آزمون نهایی ۸۹۹ واژه',
-      subtitleFa: 'آزمون تجمعی کل مسیر: یادآوری نوشتاری همهٔ کتاب‌ها، به‌علاوهٔ چهار متن خواندنی و چهار متن شنیداری؛ گواهی تسلط علاوه بر این آزمون به شواهد فاصله‌دار همهٔ واژه‌ها نیاز دارد.',
+      subtitleFa: 'آزمون تجمعی کل مسیر: یادآوری نوشتاری همهٔ کتاب‌ها، به‌علاوهٔ چهار متن خواندنی و چهار متن شنیداری؛ نشان تسلط درون‌برنامه‌ای علاوه بر این آزمون به شواهد فاصله‌دار همهٔ واژه‌ها نیاز دارد.',
       // 88 word questions plus four reading and four listening texts.
       questionCount: policy.finalExam.wordQuestions,
       passRate: policy.finalExam.passRate,
