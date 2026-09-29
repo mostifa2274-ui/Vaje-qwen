@@ -11,6 +11,7 @@ import { warmEnglishVoices } from './engine/narration'
 import { loadClipIndex } from './engine/audioClips'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
 import { introduceWordsOfCompletedChapters } from './engine/progress'
+import { diagnosticFailed } from './engine/diagnosticDraft'
 
 const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
 const DiagnosticScreen = lazy(() => import('./pages/DiagnosticScreen'))
@@ -91,9 +92,10 @@ function resolveView(view: View, state: GhesseState): View {
   }
   if (view.name === 'diagnostic') {
     // Prove-known is only for the learner's actual next chapter, never an
-    // Explore preview. A prepared direct URL resolves straight to reading.
+    // Explore preview. After a first miss, this session must use teaching.
     if (!canPrepareChapter(state, view.chapterId)) return { name: 'map' }
     if (canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
+    if (diagnosticFailed(view.chapterId)) return { name: 'prep', chapterId: view.chapterId }
   }
   if (view.name === 'exam' && !canOpenExam(state, view.examId)) return { name: 'map' }
   return view
@@ -229,9 +231,10 @@ export default function App() {
   }, [navigate, state])
 
   const openDiagnostic = useCallback((chapterId: string) => {
-    if (canPrepareChapter(state, chapterId) && !canReadChapter(state, chapterId)) {
-      navigate({ name: 'diagnostic', chapterId })
-    }
+    if (!canPrepareChapter(state, chapterId) || canReadChapter(state, chapterId)) return
+    navigate(diagnosticFailed(chapterId)
+      ? { name: 'prep', chapterId }
+      : { name: 'diagnostic', chapterId })
   }, [navigate, state])
 
   const openExam = useCallback((examId: string) => {
