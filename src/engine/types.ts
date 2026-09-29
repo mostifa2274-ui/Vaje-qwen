@@ -1,4 +1,4 @@
-// Ghesse progress model — version 6 adds skill-diagnostic mastery.
+// Ghesse progress model — version 7 separates legacy UTC success-day evidence from new learner-local evidence.
 // Story exposure introduces vocabulary; durable mastery requires spaced,
 // unassisted retrieval with productive recall across different days.
 
@@ -57,8 +57,12 @@ export interface WordProgress {
   lastIndependentSuccessAt?: number
   intervalDays: number
   productiveCorrect: number
-  successDays: string[] // learner-local YYYY-MM-DD dates; unique and sorted
-  productiveSuccessDays: string[] // distinct learner-local dates with successful typed recall
+  successDays: string[] // v7 learner-local YYYY-MM-DD dates; unique and sorted
+  productiveSuccessDays: string[] // v7 learner-local dates with successful typed recall
+  // v6 and earlier stored these calendar labels in UTC. Keep them separate
+  // after migration so old evidence is preserved without mixing date bases.
+  legacyUtcSuccessDays?: string[]
+  legacyUtcProductiveSuccessDays?: string[]
   lastReviewWasCorrect?: boolean
   lastMode?: RetrievalMode
 
@@ -124,7 +128,7 @@ export interface LeitnerState {
 }
 
 export interface GhesseState {
-  version: 6
+  version: 7
   currentChapter: string // retained for migration/history; gate engine is authoritative
   chapters: Record<string, ChapterProgress>
   words: Record<string, WordProgress>
