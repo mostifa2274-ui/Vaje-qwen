@@ -125,13 +125,16 @@ export function createCourseLexicon(vocab, { properNouns = [] } = {}) {
     const candidates = []
     if (value.endsWith("'s") && value.length > 2) candidates.push(value.slice(0, -2))
     if (value.endsWith('ies') && value.length > 3) candidates.push(value.slice(0, -3) + 'y')
-    if (value.endsWith('ves') && value.length > 3) {
-      candidates.push(value.slice(0, -3) + 'f', value.slice(0, -3) + 'fe')
-    }
+    // Keep validation aligned with the runtime lemmatizer. Prefer regular
+    // third-person/plural -s before -ves -> -f/-fe so "lives" resolves to
+    // the verb "live"; irregular wives/knives are handled above.
     if (value.endsWith('es') && value.length > 3) {
       candidates.push(value.slice(0, -1), value.slice(0, -2))
     } else if (value.endsWith('s') && value.length > 3) {
       candidates.push(value.slice(0, -1))
+    }
+    if (value.endsWith('ves') && value.length > 3) {
+      candidates.push(value.slice(0, -3) + 'f', value.slice(0, -3) + 'fe')
     }
     if (value.endsWith('ied') && value.length > 3) candidates.push(value.slice(0, -3) + 'y')
     if (value.endsWith('ing') && value.length > 4) {
@@ -153,7 +156,16 @@ export function createCourseLexicon(vocab, { properNouns = [] } = {}) {
       const form = norm(raw)
       if (form !== 'like') return 'like-2'
       const prev = previousWords(spans, index, 2)
-      if (prev.some(word => ['am', 'is', 'are', 'was', 'were', 'be', 'been', 'being'].includes(word))) return 'like'
+      const prepositionTrigger = new Set([
+        'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+        'look', 'looks', 'looked', 'looking',
+        'sound', 'sounds', 'sounded',
+        'seem', 'seems', 'seemed',
+        'feel', 'feels', 'felt',
+        'smell', 'smells', 'smelled',
+        'taste', 'tastes', 'tasted',
+      ])
+      if (prev.some(word => prepositionTrigger.has(word))) return 'like'
       return 'like-2'
     }
     if (ids.includes('second') && ids.includes('second-2')) {

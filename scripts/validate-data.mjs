@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
+import { createCourseLexicon } from './lib/course-lexicon.mjs'
 
 const root = new URL('..', import.meta.url).pathname
 const dataDir = join(root, 'src/data')
@@ -28,45 +29,6 @@ const LATIN_TEXT = /[A-Za-z]/
 const SAFE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const SAFE_TOPIC = /^[a-z0-9][a-z0-9 _-]*$/
 
-function normalizedEnglishSurface(value) {
-  return value
-    .normalize('NFKC')
-    .toLowerCase()
-    .replace(/[’‘`]/g, "'")
-    .replace(/[‐‑‒–—−]/g, '-')
-    .replace(/[^a-z0-9' -]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-function transparentInflections(target) {
-  if (!/^[a-z]+$/.test(target)) return [target]
-  const forms = new Set([target])
-  const consonantY = /[^aeiou]y$/.test(target)
-  // Keep both -s and -es candidates: English has productive rules plus common
-  // exceptions (euro → euros). The check only asks whether a transparent form
-  // appears as a complete token in the example, so the wider candidate set
-  // cannot silently accept an unrelated word.
-  forms.add(`${target}s`)
-  forms.add(`${target}es`)
-  if (consonantY) forms.add(`${target.slice(0, -1)}ies`)
-  if (target.endsWith('e')) {
-    forms.add(`${target}d`)
-    forms.add(`${target.slice(0, -1)}ing`)
-  } else {
-    forms.add(`${target}ed`)
-    forms.add(`${target}ing`)
-  }
-  return [...forms]
-}
-
-function exampleContainsHeadword(word) {
-  const example = ` ${normalizedEnglishSurface(word.ex)} `
-  if (word.id === 'a-an') return / (?:a|an) /.test(example)
-  const target = normalizedEnglishSurface(word.word)
-  return transparentInflections(target).some(form => example.includes(` ${form} `))
-}
-
 for (const [index, word] of vocab.entries()) {
   const label = typeof word?.id === 'string' && word.id ? word.id : `entry #${index + 1}`
   for (const field of REQUIRED_VOCAB_FIELDS) {
@@ -80,9 +42,11 @@ for (const [index, word] of vocab.entries()) {
   assert(PERSIAN_TEXT.test(word.tr), `${label}: Persian example translation must contain Persian text`)
   assert(LATIN_TEXT.test(word.word), `${label}: English headword must contain Latin text`)
   assert(LATIN_TEXT.test(word.ex), `${label}: English example must contain Latin text`)
-  assert(exampleContainsHeadword(word), `${label}: English example must contain the taught headword or a transparent inflection`)
-  assert(word.ex.trim().split(/\s+/).length >= 3, `${label}: English example is too fragmentary for a learning card`)
+  const exampleWords = word.ex.match(/[A-Za-z]+(?:[-'’][A-Za-z]+)*/g) ?? []
+  assert(exampleWords.length >= 3 && exampleWords.length <= 14, `${label}: English example must stay flashcard-sized (3–14 words)`)
   assert(/[.!?]["']?$/.test(word.ex), `${label}: English example must end with sentence punctuation`)
+  const firstLatin = word.ex.match(/[A-Za-z]/)?.[0]
+  assert(firstLatin && firstLatin === firstLatin.toUpperCase(), `${label}: English example must begin as a sentence`)
   assert(/[.!؟?]["»”']?$/.test(word.tr), `${label}: Persian example translation must end with sentence punctuation`)
   assert(word.cefr === 'A1', `${label}: active deck entries must be CEFR A1`)
   assert(!word.ipa.includes('/'), `${label}: IPA is stored without wrapping slashes`)
@@ -95,6 +59,19 @@ for (const [index, word] of vocab.entries()) {
 // copy/paste defect and weakens contextual retrieval. Persian glosses may
 // legitimately repeat for synonyms, so they are intentionally not unique.
 assert(new Set(vocab.map(word => word.ex)).size === vocab.length, 'every vocabulary entry must have its own English example')
+
+// Examples must demonstrate the intended lexical sense, not merely repeat the
+// same spelling. The shared vocabulary-aware lemmatizer recognizes transparent
+// inflections and resolves controlled homographs such as like/like-2 and
+// second/second-2 from context.
+const { analyzeSentence: analyzeVocabularyExample } = createCourseLexicon(vocab)
+for (const word of vocab) {
+  const analysis = analyzeVocabularyExample(word.ex)
+  assert(
+    analysis.ids.has(word.id),
+    `${word.id}: English example must demonstrate the target word/sense or a recognized inflected form — "${word.ex}"`,
+  )
+}
 
 assert(chapters.length === 40, `expected 40 chapters, found ${chapters.length}`)
 assert(new Set(chapters.map(chapter => chapter.id)).size === chapters.length, 'chapter ids must be unique')
