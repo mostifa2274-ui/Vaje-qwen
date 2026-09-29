@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
-import { clearSessionDrafts, importStateJson, MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
+import { clearSessionDrafts, MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
+import { createProgressBackupJson, importProgressBackupJson } from '../engine/backup'
 import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
 import { BUILD_COMMIT } from '../engine/release'
@@ -29,6 +30,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
   const [confirming, setConfirming] = useState(false)
   const [importMessage, setImportMessage] = useState('')
   const [pendingImport, setPendingImport] = useState<GhesseState | null>(null)
+  const [pendingImportNote, setPendingImportNote] = useState('')
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
   const [voiceMessage, setVoiceMessage] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
@@ -56,17 +58,23 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     if (!started) unavailable()
   }
 
-  function exportProgress() {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const anchor = document.createElement('a')
-    anchor.href = url
-    anchor.download = `ghesse-progress-${new Date().toISOString().slice(0, 10)}.json`
-    document.body.appendChild(anchor)
-    anchor.click()
-    anchor.remove()
-    // Revoking in the same task can cancel the download in some browsers.
-    window.setTimeout(() => URL.revokeObjectURL(url), 30_000)
+  async function exportProgress() {
+    try {
+      setImportMessage('')
+      const json = await createProgressBackupJson(state)
+      const blob = new Blob([json], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const anchor = document.createElement('a')
+      anchor.href = url
+      anchor.download = `ghesse-progress-${new Date().toISOString().slice(0, 10)}.json`
+      document.body.appendChild(anchor)
+      anchor.click()
+      anchor.remove()
+      // Revoking in the same task can cancel the download in some browsers.
+      window.setTimeout(() => URL.revokeObjectURL(url), 30_000)
+    } catch (error) {
+      setImportMessage(error instanceof Error ? error.message : 'ساخت پشتیبان ناموفق بود.')
+    }
   }
 
   function exportResearchReport() {
@@ -86,13 +94,15 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     try {
       if (file.size > MAX_IMPORT_BYTES) throw new Error('فایل پیشرفت بیش از ۲ مگابایت است.')
       const text = await file.text()
-      const imported = importStateJson(text, Date.now(), firstChapterId, validChapterIds, validWordIds)
+      const imported = await importProgressBackupJson(text, Date.now(), firstChapterId, validChapterIds, validWordIds)
       // Replacing progress cannot be undone from the UI, so it waits for an
       // explicit confirmation that shows what the file actually contains.
       setImportMessage('')
-      setPendingImport(imported)
+      setPendingImport(imported.state)
+      setPendingImportNote(imported.notice)
     } catch (error) {
       setPendingImport(null)
+      setPendingImportNote('')
       setImportMessage(error instanceof Error ? error.message : 'بازیابی فایل ناموفق بود.')
     } finally {
       if (fileRef.current) fileRef.current.value = ''
@@ -253,7 +263,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
             پیشرفتت را در یک فایل نگه دار یا از فایل قبلی بازیابی کن.
           </p>
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <button type="button" className="btn-paper py-2.5" onClick={exportProgress}><span className="inline-flex items-center justify-center gap-2"><DownloadIcon className="h-5 w-5" />دریافت پشتیبان</span></button>
+            <button type="button" className="btn-paper py-2.5" onClick={() => void exportProgress()}><span className="inline-flex items-center justify-center gap-2"><DownloadIcon className="h-5 w-5" />دریافت پشتیبان</span></button>
             <button type="button" className="btn-paper py-2.5" onClick={() => fileRef.current?.click()}><span className="inline-flex items-center justify-center gap-2"><UploadIcon className="h-5 w-5" />بازیابی پشتیبان</span></button>
           </div>
           <input
@@ -274,6 +284,7 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
               <p className="mt-1 text-sm leading-7">
                 این فایل شامل {describeProgress(summarizeProgress(pendingImport))} است و جای پیشرفت فعلی ({describeProgress(summarizeProgress(state))}) را می‌گیرد.
               </p>
+              {pendingImportNote && <p className="mt-2 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{pendingImportNote}</p>}
               <div className="mt-3 flex gap-2">
                 <button type="button" className="btn-paper flex-1 py-2.5" onClick={() => setPendingImport(null)}>انصراف</button>
                 <button type="button" className="btn-crimson flex-1 py-2.5" onClick={confirmImport}>جایگزین کن</button>
