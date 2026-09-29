@@ -1,4 +1,5 @@
 const CACHE = 'ghesse-shell-__GHESSE_BUILD_CACHE__'
+const AUDIO_CACHE = 'ghesse-audio-v1'
 const BUILD_ASSETS = __GHESSE_BUILD_ASSETS__
 // The shell is cached under './' only: Cloudflare redirects /index.html to /,
 // and a redirected response cannot answer a navigation.
@@ -23,6 +24,61 @@ function cacheable(request, response) {
 function navigable(response) {
   if (!response || !response.redirected) return response
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers: response.headers })
+}
+
+function byteRange(header, size) {
+  const match = /^bytes=(\d*)-(\d*)$/.exec(header || '')
+  if (!match || (!match[1] && !match[2]) || size <= 0) return undefined
+
+  let start
+  let end
+  if (!match[1]) {
+    const suffix = Number(match[2])
+    if (!Number.isFinite(suffix) || suffix <= 0) return undefined
+    start = Math.max(0, size - suffix)
+    end = size - 1
+  } else {
+    start = Number(match[1])
+    end = match[2] ? Number(match[2]) : size - 1
+    if (!Number.isFinite(start) || !Number.isFinite(end)) return undefined
+    end = Math.min(end, size - 1)
+  }
+
+  if (start < 0 || start >= size || end < start) return undefined
+  return { start, end }
+}
+
+async function offlineAudioResponse(request) {
+  const cache = await caches.open(AUDIO_CACHE)
+  const cached = await cache.match(request.url)
+  if (!cached) return fetch(request)
+
+  const rangeHeader = request.headers.get('range')
+  if (!rangeHeader) return cached
+
+  const bytes = await cached.arrayBuffer()
+  const range = byteRange(rangeHeader, bytes.byteLength)
+  if (!range) {
+    return new Response('', {
+      status: 416,
+      statusText: 'Range Not Satisfiable',
+      headers: { 'Content-Range': `bytes */${bytes.byteLength}` },
+    })
+  }
+
+  const body = bytes.slice(range.start, range.end + 1)
+  const headers = new Headers(cached.headers)
+  headers.delete('content-encoding')
+  headers.delete('transfer-encoding')
+  headers.set('Accept-Ranges', 'bytes')
+  headers.set('Content-Length', String(body.byteLength))
+  headers.set('Content-Range', `bytes ${range.start}-${range.end}/${bytes.byteLength}`)
+
+  return new Response(body, {
+    status: 206,
+    statusText: 'Partial Content',
+    headers,
+  })
 }
 
 async function precacheShell() {
@@ -53,11 +109,13 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
-  // Media elements fetch narration clips with Range requests, which a cached
-  // full response cannot answer reliably (notably on Safari). The browser's
-  // own HTTP cache handles them, and offline the app falls back to the
-  // device's English voice.
-  if (url.pathname.includes('/audio/') && url.pathname.endsWith('.mp3')) return
+  // Explicit offline packs keep full recorded clips in a separate cache.
+  // Serve their Range requests ourselves; otherwise use the network and keep
+  // the existing device-voice fallback on failure.
+  if (url.pathname.includes('/audio/') && url.pathname.endsWith('.mp3')) {
+    event.respondWith(offlineAudioResponse(request))
+    return
+  }
 
   if (url.pathname.endsWith('/release.json')) {
     event.respondWith(

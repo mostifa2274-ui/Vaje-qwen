@@ -62,6 +62,17 @@ assert(viteConfig.includes('contentSecurityPolicy()') && viteConfig.includes("sc
 assert(viteConfig.includes("media-src 'self' blob:"), 'local pronunciation playback must be allowed without opening media to remote origins')
 assert(!/unsafe-(?:inline|eval)/.test(viteConfig), 'the Content-Security-Policy must not allow unsafe-inline or unsafe-eval')
 assert(!directWorkflow.includes('GHESSE_RIGHTS_CONFIRMED'), 'direct workflow must not require the old rights flag')
+
+const serviceWorker = readFileSync(join(root, 'public/sw.js'), 'utf8')
+const offlineAudio = readFileSync(join(root, 'src/engine/offlineAudio.ts'), 'utf8')
+assert(serviceWorker.includes("const AUDIO_CACHE = 'ghesse-audio-v1'"), 'service worker must keep the dedicated offline-audio cache')
+assert(offlineAudio.includes("OFFLINE_AUDIO_CACHE = 'ghesse-audio-v1'"), 'client and service worker must agree on the offline-audio cache name')
+assert(
+  serviceWorker.includes('offlineAudioResponse(request)')
+    && serviceWorker.includes('status: 206')
+    && serviceWorker.includes("'Content-Range'"),
+  'downloaded MP3s must support byte-range playback from the service worker',
+)
 assert(manifest.schemaVersion === 1, 'provenance record schemaVersion must be 1')
 assert(['blocked', 'cleared'].includes(manifest.status), 'provenance status must remain explicit')
 assert(manifest.activeVocabulary === 'src/data/vocabulary.json', 'record must identify the active deck')

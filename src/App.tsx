@@ -21,6 +21,7 @@ const ExamScreen = lazy(() => import('./pages/ExamScreen'))
 const BookTestScreen = lazy(() => import('./pages/BookTestScreen'))
 const GlossaryScreen = lazy(() => import('./pages/GlossaryScreen'))
 const FlashcardsScreen = lazy(() => import('./pages/FlashcardsScreen'))
+const OfflineAudioScreen = lazy(() => import('./pages/OfflineAudioScreen'))
 const SettingsScreen = lazy(() => import('./pages/SettingsScreen'))
 
 type View =
@@ -32,6 +33,7 @@ type View =
   | { name: 'exam'; examId: string }
   | { name: 'glossary' }
   | { name: 'flashcards' }
+  | { name: 'offline-audio' }
   | { name: 'settings' }
 
 function RouteLoading() {
@@ -60,6 +62,7 @@ function rawViewFromHash(): View {
   if (hash === 'review') return { name: 'review' }
   if (hash === 'glossary') return { name: 'glossary' }
   if (hash === 'flashcards') return { name: 'flashcards' }
+  if (hash === 'offline-audio') return { name: 'offline-audio' }
   if (hash === 'settings') return { name: 'settings' }
   if (hash.startsWith('prep/')) {
     const chapterId = safeDecodeRouteSegment(hash.slice(5))
@@ -109,6 +112,7 @@ function hashFor(view: View): string {
   if (view.name === 'exam') return `#/exam/${encodeURIComponent(view.examId)}`
   if (view.name === 'glossary') return '#/glossary'
   if (view.name === 'flashcards') return '#/flashcards'
+  if (view.name === 'offline-audio') return '#/offline-audio'
   if (view.name === 'settings') return '#/settings'
   return '#/map'
 }
@@ -130,6 +134,7 @@ function viewLabel(view: View): string {
   if (view.name === 'exam') return examDefinition(view.examId)?.titleFa ?? 'آزمون'
   if (view.name === 'glossary') return 'واژه‌نامه'
   if (view.name === 'flashcards') return 'جعبهٔ لایتنر'
+  if (view.name === 'offline-audio') return 'صدای آفلاین'
   if (view.name === 'settings') return 'تنظیمات'
   return 'مسیر یادگیری'
 }
@@ -417,6 +422,9 @@ export default function App() {
     case 'flashcards':
       screen = <FlashcardsScreen state={state} now={now} onChange={update} onBack={backToMap} />
       break
+    case 'offline-audio':
+      screen = <OfflineAudioScreen onBack={backToMap} />
+      break
     case 'settings':
       screen = (
         <SettingsScreen
@@ -443,6 +451,7 @@ export default function App() {
           onOpenReview={() => navigate({ name: 'review' })}
           onOpenGlossary={() => navigate({ name: 'glossary' })}
           onOpenFlashcards={() => navigate({ name: 'flashcards' })}
+          onOpenOfflineAudio={() => navigate({ name: 'offline-audio' })}
           onOpenSettings={() => navigate({ name: 'settings' })}
         />
       )
