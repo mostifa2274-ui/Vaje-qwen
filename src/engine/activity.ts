@@ -34,6 +34,25 @@ export function recordActivity(next: GhesseState, previous: GhesseState, now: nu
   return { ...next, activity: pruneActivity({ ...next.activity, [key]: Math.min(MAX_DAY_ANSWERS, (next.activity[key] ?? 0) + added) }, now) }
 }
 
+/**
+ * Credits graded effort that intentionally does not mutate mastery evidence.
+ * The main example is a correct relearning answer after corrective feedback:
+ * it should count toward the effort goal, but must not become an independent
+ * recall observation or train the scheduler.
+ */
+export function creditGradedEffort(state: GhesseState, now: number, count = 1): GhesseState {
+  const added = Math.max(0, Math.floor(count))
+  if (!added) return state
+  const key = dayKey(now)
+  return {
+    ...state,
+    activity: pruneActivity({
+      ...state.activity,
+      [key]: Math.min(MAX_DAY_ANSWERS, (state.activity[key] ?? 0) + added),
+    }, now),
+  }
+}
+
 export interface DailyProgress {
   /** Answers given today. */
   today: number

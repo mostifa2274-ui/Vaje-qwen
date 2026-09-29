@@ -21,6 +21,7 @@ import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/
 import SpellingHint from '../components/SpellingHint'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
 import { faNum } from '../engine/format'
+import { creditGradedEffort } from '../engine/activity'
 
 interface Props {
   state: GhesseState
@@ -264,8 +265,11 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
       updatedAt: Date.now(),
     }, introduced)
 
-    const nextProgress = recordRetrieval(progress, correct, mode, Date.now(), source, elapsedMs)
-    onChange({ ...state, words: { ...state.words, [currentId]: nextProgress } })
+    const gradedAt = Date.now()
+    const nextProgress = recordRetrieval(progress, correct, mode, gradedAt, source, elapsedMs)
+    let candidate = { ...state, words: { ...state.words, [currentId]: nextProgress } }
+    if (source === 'relearn') candidate = creditGradedEffort(candidate, gradedAt)
+    onChange(candidate)
     setGradedCard({ key: cardKey, mode })
     focusNextCardRef.current = true
     setFeedback(correct ? 'correct' : 'wrong')
