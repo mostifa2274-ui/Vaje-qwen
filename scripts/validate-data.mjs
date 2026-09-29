@@ -43,6 +43,8 @@ for (const [index, word] of vocab.entries()) {
   assert(LATIN_TEXT.test(word.ex), `${label}: English example must contain Latin text`)
   assert(word.cefr === 'A1', `${label}: active deck entries must be CEFR A1`)
   assert(!word.ipa.includes('/'), `${label}: IPA is stored without wrapping slashes`)
+  const primaryStressCount = (word.ipa.match(/ˈ/g) ?? []).length
+  assert(primaryStressCount <= 1, `${label}: IPA must use ˌ for non-primary stress; multiple ˈ marks are not allowed`)
   assert(SAFE_TOPIC.test(word.topic), `${label}: topic contains unsupported characters`)
 }
 

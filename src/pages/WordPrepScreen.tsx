@@ -551,7 +551,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
 
             <div className="mt-5 text-center">
               <div data-testid="teach-headword" className="font-en text-4xl font-bold" dir="ltr">{currentTeachWord.word}</div>
-              {currentTeachWord.ipa && <div className="mt-2 font-en text-sm" dir="ltr">/ {currentTeachWord.ipa} /</div>}
+              {currentTeachWord.ipa && <div className="mt-2 font-en text-sm" dir="ltr">/{currentTeachWord.ipa}/</div>}
               <div className="mt-3 flex justify-center">
                 <span className="lexical-role-chip">{persianPartOfSpeech(currentTeachWord.pos)}</span>
               </div>
