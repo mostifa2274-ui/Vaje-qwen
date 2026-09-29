@@ -588,6 +588,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 soundOn={state.soundOn}
                 narratorVoiceURI={state.narratorVoiceURI}
                 narratorRate={state.narratorRate}
+                disabled={!teachAudioReady || teachAutoPlay || audioBlocked}
               />
             </div>
 
