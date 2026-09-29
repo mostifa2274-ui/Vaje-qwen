@@ -26,6 +26,25 @@ const wrangler = JSON.parse(readFileSync(join(root, 'wrangler.jsonc'), 'utf8').r
 assert(wrangler.assets?.directory === './dist', 'Wrangler must publish dist/')
 assert(wrangler.assets?.not_found_handling === '404-page', 'missing assets must return the 404 page, not the app shell')
 assert(existsSync(join(root, 'public/404.html')), 'public/404.html must exist for 404-page handling')
+const webManifest = JSON.parse(readFileSync(join(root, 'public/manifest.webmanifest'), 'utf8'))
+assert(webManifest.id === './', 'PWA manifest must keep a stable app identity')
+assert(webManifest.start_url === './#/map', 'installed app must launch on the calm home route')
+assert(webManifest.scope === './' && webManifest.display === 'standalone', 'PWA manifest must stay scoped and standalone')
+assert(webManifest.lang === 'fa' && webManifest.dir === 'rtl', 'PWA install metadata must remain Persian-first RTL')
+assert(
+  typeof webManifest.description === 'string'
+    && webManifest.description.includes('یادگیری عمیق و ماندگار')
+    && !webManifest.description.includes('تسلط بر'),
+  'PWA description must stay inside the evidence-bounded learning claim',
+)
+const shortcutUrls = new Set((webManifest.shortcuts ?? []).map(shortcut => shortcut?.url))
+for (const requiredShortcut of ['./#/review', './#/glossary']) {
+  assert(shortcutUrls.has(requiredShortcut), `PWA manifest must keep useful shortcut ${requiredShortcut}`)
+}
+const indexHtml = readFileSync(join(root, 'index.html'), 'utf8')
+assert(indexHtml.includes('name="apple-mobile-web-app-capable" content="yes"'), 'iOS installed-app metadata must remain enabled')
+assert(!indexHtml.includes('تسلط بر ۸۹۹ واژه'), 'HTML metadata must not overclaim externally validated mastery')
+
 const headers = readFileSync(join(root, 'public/_headers'), 'utf8')
 for (const required of [
   "Content-Security-Policy: frame-ancestors 'none'",
