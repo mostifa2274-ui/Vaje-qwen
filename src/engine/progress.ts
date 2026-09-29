@@ -26,7 +26,10 @@ export function recordPreparedChapter(
   const words = { ...state.words }
   const writtenMissed = new Set(writtenMissedIds)
   const listeningMissed = new Set(listeningMissedIds)
-  const alreadyUsedCurrentGate = (previous?.prepWrittenTotal ?? 0) > 0 || (previous?.prepListeningTotal ?? 0) > 0
+  const alreadyUsedCurrentGate =
+    (previous?.prepWrittenTotal ?? 0) > 0
+    || (previous?.prepListeningTotal ?? 0) > 0
+    || previous?.prepDiagnosticPassed === true
   const tuneDifficulty = !alreadyUsedCurrentGate
   const writtenFirstPassCorrect = wordIds.length - writtenMissed.size
   const listeningFirstPassCorrect = wordIds.length - listeningMissed.size
