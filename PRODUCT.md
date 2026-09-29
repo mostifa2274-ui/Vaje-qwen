@@ -24,11 +24,13 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 
 ## Product principles
 - The task leads; decoration never competes with learning.
-- Do not ask learners to guess a word before teaching it.
+- Do not ask learners to guess a word before teaching it by default. A learner may explicitly choose a strict prove-known diagnostic; it stops on the first miss and otherwise requires complete written and listening evidence before skipping teaching.
 - 100% preparation gates mean coverage, not mastery. Durable mastery requires later spaced retrieval.
 - Reading should feel like reading, not like reviewing flashcards.
 - Once preparation is passed, story text should not visually mark new words.
 - Audio is a first-class learning channel and must be consistent across word teaching, examples and story narration.
+- Speaking practice is opt-in and privacy-preserving: microphone audio stays in-memory in the current tab, is never uploaded or persisted, and self-comparison never counts as mastery evidence.
+- Open-ended sentence production is encouraged as optional practice, but unscored self-checks must never inflate mastery.
 - Persian is the interface language; English content keeps clear LTR typography.
 - Mobile and tablet are primary. Touch targets must remain comfortable and core functionality must work offline where possible.
 - Progress must be explainable. Learners should always know what is required to unlock the next stage.
