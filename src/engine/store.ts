@@ -1,7 +1,7 @@
 import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, RetrievalMode, SkillDimension, SkillStat } from './types'
 import { emptyLeitner, normalizeLeitner } from './leitner'
 import { mergeActivity, mergeLeitnerDays, normalizeActivity } from './activity'
-import { dayKey } from './days'
+import { dayKey, latestPlausibleDayKey, plausibleEvidenceTimestamp } from './days'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
 const CURRENT_STATE_VERSION = 6
@@ -41,6 +41,14 @@ function timestamp(v: unknown): number | undefined {
   return typeof v === 'number' && Number.isFinite(v) && v > 0 ? v : undefined
 }
 
+function scheduledTimestamp(v: unknown, now: number): number | undefined {
+  const value = timestamp(v)
+  if (value === undefined) return undefined
+  // Smart Review never schedules beyond 365 days. A corrupted/imported
+  // far-future due date should become reviewable now rather than disappear.
+  return value <= now + 370 * 24 * 60 * 60 * 1000 ? value : now
+}
+
 function text(v: unknown, fallback = ''): string {
   return typeof v === 'string' ? v : fallback
 }
@@ -55,12 +63,12 @@ function reviewGoal(v: unknown): number {
   return [10, 15, 20, 25].includes(value) ? value : 15
 }
 
-function normalizeChapter(raw: unknown): ChapterProgress | undefined {
+function normalizeChapter(raw: unknown, now: number): ChapterProgress | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const r = raw as Partial<ChapterProgress>
   const completed = r.completed === true
-  const completedAt = timestamp(r.completedAt)
-  const lastReadAt = timestamp(r.lastReadAt) ?? completedAt
+  const completedAt = plausibleEvidenceTimestamp(r.completedAt, now)
+  const lastReadAt = plausibleEvidenceTimestamp(r.lastReadAt, now) ?? completedAt
   const prepWrittenTotal = r.prepWrittenTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepWrittenTotal)))
   const prepListeningTotal = r.prepListeningTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepListeningTotal)))
   const prepWrittenFirstPassCorrect = r.prepWrittenFirstPassCorrect === undefined
@@ -70,7 +78,7 @@ function normalizeChapter(raw: unknown): ChapterProgress | undefined {
     ? undefined
     : Math.min(prepListeningTotal ?? Number.MAX_SAFE_INTEGER, Math.max(0, Math.floor(num(r.prepListeningFirstPassCorrect))))
   return {
-    preparedAt: timestamp(r.preparedAt) ?? (completed ? completedAt ?? lastReadAt ?? 1 : undefined),
+    preparedAt: plausibleEvidenceTimestamp(r.preparedAt, now) ?? (completed ? completedAt ?? lastReadAt ?? 1 : undefined),
     prepAttempts: Math.max(0, Math.floor(num(r.prepAttempts, completed ? 1 : 0))),
     prepPretestCorrect: r.prepPretestCorrect === undefined ? undefined : Math.max(0, Math.floor(num(r.prepPretestCorrect))),
     prepPretestTotal: r.prepPretestTotal === undefined ? undefined : Math.max(0, Math.floor(num(r.prepPretestTotal))),
@@ -97,9 +105,14 @@ function normalizeChapter(raw: unknown): ChapterProgress | undefined {
   }
 }
 
-function normalizeDays(v: unknown): string[] {
+function normalizeDays(v: unknown, now: number): string[] {
   if (!Array.isArray(v)) return []
-  return [...new Set(v.filter((x): x is string => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x)))].sort()
+  const newest = latestPlausibleDayKey(now)
+  return [...new Set(v.filter((x): x is string => (
+    typeof x === 'string'
+    && /^\d{4}-\d{2}-\d{2}$/.test(x)
+    && x <= newest
+  )))].sort()
 }
 
 function utcDayKey(time: number): string {
@@ -151,7 +164,7 @@ function normalizeSkillStats(v: unknown): Record<SkillDimension, SkillStat> {
   }
 }
 
-function normalizeWord(raw: unknown, legacyDayEvidence = false): WordProgress | undefined {
+function normalizeWord(raw: unknown, legacyDayEvidence: boolean, now: number): WordProgress | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const r = raw as Partial<WordProgress>
   const intervalDays = Math.max(0, Math.min(3650, num(r.intervalDays)))
@@ -159,13 +172,13 @@ function normalizeWord(raw: unknown, legacyDayEvidence = false): WordProgress | 
   const reviewCorrect = Math.max(0, Math.floor(num(r.reviewCorrect)))
   const productiveCorrect = Math.max(0, Math.floor(num(r.productiveCorrect)))
   const skillStats = normalizeSkillStats(r.skillStats)
-  const lastIndependentSuccessAt = timestamp(r.lastIndependentSuccessAt)
+  const lastIndependentSuccessAt = plausibleEvidenceTimestamp(r.lastIndependentSuccessAt, now)
   const lastMode = normalizeMode(r.lastMode)
   const lastReviewWasCorrect = typeof r.lastReviewWasCorrect === 'boolean' ? r.lastReviewWasCorrect : undefined
-  const inferredLastProductiveSuccessAt = timestamp(r.lastProductiveSuccessAt)
+  const inferredLastProductiveSuccessAt = plausibleEvidenceTimestamp(r.lastProductiveSuccessAt, now)
     ?? (lastReviewWasCorrect === true && isProductiveMode(lastMode) ? lastIndependentSuccessAt : undefined)
-  let successDays = normalizeDays(r.successDays)
-  let productiveSuccessDays = normalizeDays(r.productiveSuccessDays)
+  let successDays = normalizeDays(r.successDays, now)
+  let productiveSuccessDays = normalizeDays(r.productiveSuccessDays, now)
   if (legacyDayEvidence) {
     successDays = reconcileLatestLegacyDay(successDays, lastIndependentSuccessAt)
     productiveSuccessDays = reconcileLatestLegacyDay(productiveSuccessDays, inferredLastProductiveSuccessAt)
@@ -183,14 +196,14 @@ function normalizeWord(raw: unknown, legacyDayEvidence = false): WordProgress | 
     taps: Math.max(0, Math.floor(num(r.taps))),
     checkCorrect: Math.max(0, Math.floor(num(r.checkCorrect))),
     checkWrong: Math.max(0, Math.floor(num(r.checkWrong))),
-    firstSeenAt: timestamp(r.firstSeenAt),
-    lastCheckAt: timestamp(r.lastCheckAt),
+    firstSeenAt: plausibleEvidenceTimestamp(r.firstSeenAt, now),
+    lastCheckAt: plausibleEvidenceTimestamp(r.lastCheckAt, now),
     reviewStage,
     reviewCorrect,
     reviewWrong: Math.max(0, Math.floor(num(r.reviewWrong))),
     reviewStreak: Math.max(0, Math.floor(num(r.reviewStreak))),
-    dueAt: timestamp(r.dueAt),
-    lastReviewedAt: timestamp(r.lastReviewedAt),
+    dueAt: scheduledTimestamp(r.dueAt, now),
+    lastReviewedAt: plausibleEvidenceTimestamp(r.lastReviewedAt, now),
     lastIndependentSuccessAt,
     lastProductiveSuccessAt: inferredLastProductiveSuccessAt,
     intervalDays,
@@ -214,14 +227,14 @@ function normalizeWordIdArray(v: unknown, validWordIds?: ReadonlySet<string>): s
   return [...new Set(v.filter((id): id is string => typeof id === 'string' && (!validWordIds || validWordIds.has(id))))]
 }
 
-function normalizeExam(raw: unknown, validWordIds?: ReadonlySet<string>): ExamProgress | undefined {
+function normalizeExam(raw: unknown, now: number, validWordIds?: ReadonlySet<string>): ExamProgress | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const r = raw as Partial<ExamProgress>
   return {
     attempts: Math.max(0, Math.floor(num(r.attempts))),
     passed: r.passed === true,
-    passedAt: timestamp(r.passedAt),
-    lastAttemptAt: timestamp(r.lastAttemptAt),
+    passedAt: plausibleEvidenceTimestamp(r.passedAt, now),
+    lastAttemptAt: plausibleEvidenceTimestamp(r.lastAttemptAt, now),
     lastScore: Math.min(1, Math.max(0, num(r.lastScore))),
     bestScore: Math.min(1, Math.max(0, num(r.bestScore))),
     lastProductiveScore: Math.min(1, Math.max(0, num(r.lastProductiveScore))),
@@ -245,18 +258,18 @@ function normalizeState(
   const chapters: Record<string, ChapterProgress> = {}
   for (const [id, c] of Object.entries(p.chapters ?? {})) {
     if (validChapterIds && !validChapterIds.has(id)) continue
-    const normalized = normalizeChapter(c)
+    const normalized = normalizeChapter(c, now)
     if (normalized) chapters[id] = normalized
   }
   const words: Record<string, WordProgress> = {}
   for (const [id, w] of Object.entries(p.words ?? {})) {
     if (validWordIds && !validWordIds.has(id)) continue
-    const normalized = normalizeWord(w, legacyDayEvidence)
+    const normalized = normalizeWord(w, legacyDayEvidence, now)
     if (normalized) words[id] = normalized
   }
   const exams: Record<string, ExamProgress> = {}
   for (const [id, exam] of Object.entries(p.exams ?? {})) {
-    const normalized = normalizeExam(exam, validWordIds)
+    const normalized = normalizeExam(exam, now, validWordIds)
     if (normalized) exams[id] = normalized
   }
   const requested = typeof p.currentChapter === 'string' ? p.currentChapter : firstChapterId
@@ -276,7 +289,7 @@ function normalizeState(
     exploreAll: p.exploreAll === true,
     leitner: normalizeLeitner(p.leitner, now, validWordIds),
     activity: normalizeActivity(p.activity, now),
-    created: num(p.created, now),
+    created: plausibleEvidenceTimestamp(p.created, now) ?? now,
   }
 }
 
