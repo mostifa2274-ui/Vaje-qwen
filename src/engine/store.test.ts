@@ -211,6 +211,50 @@ describe('progress import validation', () => {
     )).toThrow('این فایل پشتیبان معتبر قصه نیست.')
   })
 
+  it('normalizes impossible zero-attempt exam evidence to an unattempted state', () => {
+    const imported = importStateJson(
+      JSON.stringify({
+        version: 6,
+        dayEvidenceVersion: 1,
+        currentChapter: 'b1c1',
+        chapters: {},
+        words: { w1: { introduced: true } },
+        exams: {
+          'book-1': {
+            attempts: 0,
+            passed: true,
+            passedAt: 50,
+            lastAttemptAt: 50,
+            lastScore: 1,
+            bestScore: 1,
+            lastProductiveScore: 1,
+            bestProductiveScore: 1,
+            missedWordIds: ['w1'],
+            testedWordIds: ['w1'],
+          },
+        },
+      }),
+      100,
+      'b1c1',
+      chapters,
+      words,
+    )
+
+    expect(imported.exams['book-1']).toEqual({
+      attempts: 0,
+      passed: false,
+      passedAt: undefined,
+      lastAttemptAt: undefined,
+      lastScore: 0,
+      bestScore: 0,
+      lastProductiveScore: 0,
+      bestProductiveScore: 0,
+      missedWordIds: [],
+      testedWordIds: [],
+    })
+    expect(summarizeProgress(imported).passedExams).toBe(0)
+  })
+
   it('still accepts a recognizable supported legacy backup', () => {
     const imported = importStateJson(
       JSON.stringify({
