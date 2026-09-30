@@ -54,6 +54,11 @@ function text(v: unknown, fallback = ''): string {
   return typeof v === 'string' ? v : fallback
 }
 
+function progressReplacementToken(v: unknown): string | undefined {
+  if (typeof v !== 'string' || v.length < 1 || v.length > 96) return undefined
+  return /^[a-z0-9:_-]+$/i.test(v) ? v : undefined
+}
+
 function narratorRate(v: unknown): number {
   const value = num(v, 0.92)
   return Math.min(1.1, Math.max(0.75, value))
@@ -283,6 +288,7 @@ function normalizeState(
   return {
     version: 6,
     dayEvidenceVersion: 1,
+    progressReplacementToken: progressReplacementToken(p.progressReplacementToken),
     currentChapter,
     chapters,
     words,
@@ -572,6 +578,13 @@ export function mergeConcurrentState(
   local: GhesseState,
   remote: GhesseState,
 ): GhesseState | undefined {
+  // An explicit reset/import is a new progress lineage. Never merge stale task
+  // output across that boundary; the storage listener will remount the task.
+  if (
+    remote.progressReplacementToken
+    && remote.progressReplacementToken !== base.progressReplacementToken
+  ) return undefined
+
   const chapters = mergeConcurrentRecord(base.chapters, local.chapters, remote.chapters)
   const words = mergeConcurrentRecord(base.words, local.words, remote.words)
   const exams = mergeConcurrentRecord(base.exams, local.exams, remote.exams)
@@ -604,6 +617,10 @@ export function mergeConcurrentState(
   return {
     version: CURRENT_STATE_VERSION,
     dayEvidenceVersion: 1,
+    progressReplacementToken:
+      local.progressReplacementToken
+      ?? remote.progressReplacementToken
+      ?? base.progressReplacementToken,
     currentChapter,
     chapters,
     words,
@@ -662,9 +679,12 @@ export function clearSessionDrafts(): void {
   }
 }
 
-export function signalProgressReplacement(): string | undefined {
+export function createProgressReplacementToken(): string {
+  return `${Date.now().toString(36)}:${Math.random().toString(36).slice(2)}`
+}
+
+export function signalProgressReplacement(token: string): string | undefined {
   try {
-    const token = `${Date.now()}:${Math.random().toString(36).slice(2)}`
     localStorage.setItem(PROGRESS_REPLACEMENT_KEY, token)
     return localStorage.getItem(PROGRESS_REPLACEMENT_KEY) === token ? token : undefined
   } catch {
@@ -673,18 +693,5 @@ export function signalProgressReplacement(): string | undefined {
 }
 
 export function resetState(firstChapterId: string): GhesseState {
-  const fresh = emptyState(Date.now(), firstChapterId)
-  try {
-    localStorage.removeItem(STORAGE_KEY)
-    localStorage.removeItem(BACKUP_KEY)
-    for (const key of LEGACY_KEYS) localStorage.removeItem(key)
-    // Persist the reset before returning. Other open tabs then see an explicit
-    // fresh snapshot instead of a momentary missing key they could overwrite
-    // with an older full-state save.
-    saveState(fresh)
-  } catch {
-    // Keep reset semantics in memory.
-  }
-  clearSessionDrafts()
-  return fresh
+  return emptyState(Date.now(), firstChapterId)
 }
