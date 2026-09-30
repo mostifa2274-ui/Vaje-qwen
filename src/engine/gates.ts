@@ -161,16 +161,23 @@ export function canOpenStory(state: GhesseState, chapterId: string): boolean {
   return canReadChapter(state, chapterId)
 }
 
+function remediationFloor(progress: GhesseState['exams'][string]): number | undefined {
+  return progress.lastAttemptAt ?? progress.remediationAfter
+}
+
 export function examRemediationWordIds(state: GhesseState): string[] {
   const unresolved = new Set<string>()
   for (const progress of Object.values(state.exams)) {
     // A passed exam can still contain missed words. Those gaps must remain
     // first-class remediation items until independently recalled after the
-    // attempt; otherwise the gate is blocked without showing the learner why.
-    if (!progress || progress.attempts === 0 || !progress.lastAttemptAt) continue
+    // attempt. If an imported timestamp was unusable, normalization supplies
+    // a separate conservative remediation floor instead of inventing an
+    // attempt time.
+    if (!progress || progress.attempts === 0 || progress.missedWordIds.length === 0) continue
+    const floor = remediationFloor(progress)
     for (const wordId of progress.missedWordIds) {
       const word = state.words[wordId]
-      if (!word?.lastIndependentSuccessAt || word.lastIndependentSuccessAt <= progress.lastAttemptAt) unresolved.add(wordId)
+      if (!floor || !word?.lastIndependentSuccessAt || word.lastIndependentSuccessAt <= floor) unresolved.add(wordId)
     }
   }
   return [...unresolved]
@@ -178,11 +185,15 @@ export function examRemediationWordIds(state: GhesseState): string[] {
 
 export function examRemediationPending(state: GhesseState, id: string): boolean {
   const progress = state.exams[id]
-  if (!progress || progress.attempts === 0 || progress.missedWordIds.length === 0 || !progress.lastAttemptAt) return false
-  const lastAttemptAt = progress.lastAttemptAt
+  if (!progress || progress.attempts === 0 || progress.missedWordIds.length === 0) return false
+  const floor = remediationFloor(progress)
+  // A direct/corrupted in-memory record without either timestamp still fails
+  // closed. Normalized imports get remediationAfter, so a fresh independent
+  // recall can resolve them without permanent lockout.
+  if (!floor) return true
   return progress.missedWordIds.some(wordId => {
     const word = state.words[wordId]
-    return !word?.lastIndependentSuccessAt || word.lastIndependentSuccessAt <= lastAttemptAt
+    return !word?.lastIndependentSuccessAt || word.lastIndependentSuccessAt <= floor
   })
 }
 
