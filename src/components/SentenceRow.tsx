@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useId, useMemo } from 'react'
 import { tokenizeSentence } from '../engine/lemmatize'
 import { lemmaMap, WORD_BY_ID } from '../data/chapters'
 import { SpeakerIcon } from './Icons'
@@ -16,6 +16,7 @@ interface Props {
 
 export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, onToggleFa, onPlay, onWordTap }: Props) {
   const tokens = useMemo(() => tokenizeSentence(en, lemmaMap), [en])
+  const wordActionHintId = useId()
 
   return (
     <div className="story-sentence">
@@ -42,7 +43,8 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, onTogg
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="story-en">
+        <span id={wordActionHintId} className="sr-only" lang="fa">برای نمایش معنی فارسی، فعال کن.</span>
+        <p className="story-en" lang="en" dir="ltr">
           {tokens.map((token, index) => {
             if (!token.isWord) return <span key={index}>{token.raw}</span>
             const entry = token.id ? WORD_BY_ID.get(token.id) : undefined
@@ -52,8 +54,8 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, onTogg
                 type="button"
                 key={index}
                 className="tok tok-word"
+                aria-describedby={wordActionHintId}
                 onClick={() => onWordTap(entry.id)}
-                aria-label={'معنی ' + token.raw}
               >
                 {token.raw}
               </button>
