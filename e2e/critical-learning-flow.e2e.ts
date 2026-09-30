@@ -1677,6 +1677,53 @@ test('importing a backup asks before replacing progress', async ({ page }) => {
   expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).toBeNull()
 })
 
+test('legacy import applies completed-chapter word migration before confirmation and persistence', async ({ page }) => {
+  await openWithProgress(page, '/settings', {})
+
+  const backup = {
+    version: 5,
+    currentChapter: 'b1c2',
+    chapters: {
+      b1c1: {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        completedAt: 2,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      },
+    },
+    words: {},
+  }
+  const file = {
+    name: 'ghesse-legacy-progress.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(backup)),
+  }
+
+  await page.getByLabel('فایل پشتیبان پیشرفت').setInputFiles(file)
+  const confirm = page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })
+  await expect(confirm).toContainText(`۱ فصل تمام‌شده، ${faNum(chapter.new.length)} واژهٔ آموخته`)
+
+  await confirm.getByRole('button', { name: 'جایگزین کن' }).click()
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+  const migrated = await page.evaluate(ids => {
+    const state = JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}')
+    return ids.map(id => ({
+      introduced: state.words?.[id]?.introduced,
+      firstSeenAt: state.words?.[id]?.firstSeenAt,
+      dueAt: state.words?.[id]?.dueAt,
+    }))
+  }, chapter.new)
+
+  expect(migrated).toHaveLength(chapter.new.length)
+  expect(migrated.every(word => word.introduced === true)).toBe(true)
+  expect(migrated.every(word => typeof word.firstSeenAt === 'number' && typeof word.dueAt === 'number')).toBe(true)
+})
+
+
 test('backup import rejects unrelated JSON before replacement confirmation', async ({ page }) => {
   await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
 
