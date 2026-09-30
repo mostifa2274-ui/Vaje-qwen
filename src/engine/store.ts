@@ -594,13 +594,13 @@ export function clearSessionDrafts(): void {
   }
 }
 
-export function signalProgressReplacement(): boolean {
+export function signalProgressReplacement(): string | undefined {
   try {
     const token = `${Date.now()}:${Math.random().toString(36).slice(2)}`
     localStorage.setItem(PROGRESS_REPLACEMENT_KEY, token)
-    return localStorage.getItem(PROGRESS_REPLACEMENT_KEY) === token
+    return localStorage.getItem(PROGRESS_REPLACEMENT_KEY) === token ? token : undefined
   } catch {
-    return false
+    return undefined
   }
 }
 
