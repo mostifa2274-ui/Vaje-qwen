@@ -517,7 +517,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
               className="answer-input mt-2 w-full"
               dir="rtl"
               autoComplete="off"
-                autoCorrect="off"
+              autoCorrect="off"
               spellCheck={false}
               enterKeyHint="next"
               value={typed}
