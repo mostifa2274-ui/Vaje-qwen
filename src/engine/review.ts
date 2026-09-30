@@ -255,27 +255,36 @@ export function recordRetrieval(
   }
 
   if (correct) {
-    next.lastIndependentSuccessAt = now
     if (progress.lastErrorMode && dimensionForMode(progress.lastErrorMode) === dimensionForMode(mode)) next.lastErrorMode = undefined
     // A calendar boundary alone is not spaced evidence. Require both a later
     // learner-local day and at least eight real hours since the previous
-    // independent success, so 23:58 -> 00:03 cannot advance memory stage.
+    // spacing-credited independent success. Extra same-day practice must not
+    // reset that anchor and postpone otherwise valid delayed evidence.
     const isNewSuccessDay = progress.lastIndependentSuccessAt === undefined
       || isDelayedLearningEvidence(progress.lastIndependentSuccessAt, now)
-    if (isNewSuccessDay && !next.successDays.includes(day)) next.successDays.push(day)
+    if (isNewSuccessDay) {
+      next.lastIndependentSuccessAt = now
+      if (!next.successDays.includes(day)) next.successDays.push(day)
+    }
     next.successDays.sort()
 
     if (mode === 'productive' || mode === 'contextProductive' || mode === 'spelling') {
       next.productiveCorrect = progress.productiveCorrect + 1
       const priorProductiveDays = progress.productiveSuccessDays ?? []
-      const isNewProductiveDay = progress.lastProductiveSuccessAt !== undefined
-        ? isDelayedLearningEvidence(progress.lastProductiveSuccessAt, now)
+      const hadProductiveTimestamp = progress.lastProductiveSuccessAt !== undefined
+      const isNewProductiveDay = hadProductiveTimestamp
+        ? isDelayedLearningEvidence(progress.lastProductiveSuccessAt!, now)
         // Older state can have productive day labels but no trustworthy
-        // timestamp. The first new productive success anchors timing rather
-        // than granting another spaced day from unknowable evidence.
+        // timestamp. Do not invent another spaced day from unknowable evidence.
         : priorProductiveDays.length === 0
-      next.lastProductiveSuccessAt = now
-      if (isNewProductiveDay && !next.productiveSuccessDays.includes(day)) next.productiveSuccessDays.push(day)
+      if (isNewProductiveDay) {
+        next.lastProductiveSuccessAt = now
+        if (!next.productiveSuccessDays.includes(day)) next.productiveSuccessDays.push(day)
+      } else if (!hadProductiveTimestamp && priorProductiveDays.length > 0) {
+        // Anchor legacy timing from the first new productive success without
+        // granting a new day; subsequent evidence must be delayed from here.
+        next.lastProductiveSuccessAt = now
+      }
       next.productiveSuccessDays.sort()
     }
 
