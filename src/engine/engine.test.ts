@@ -442,6 +442,19 @@ describe('chapter prep and gate progression', () => {
     expect(canTakeExam(state, FINAL_EXAM_ID)).toBe(false)
 
     state.exams[MIDPOINT_EXAM_ID] = { ...passed }
+    // Exam records alone are not a substitute for the underlying course path.
+    expect(canTakeExam(state, FINAL_EXAM_ID)).toBe(false)
+
+    for (const chapter of CHAPTERS) {
+      state.chapters[chapter.id] = {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      }
+    }
     expect(canTakeExam(state, FINAL_EXAM_ID)).toBe(true)
   })
 
@@ -885,6 +898,7 @@ describe('mastery certification', () => {
     const certification = certificationStatus(state, now)
     expect(certification.finalExamPassed).toBe(true)
     expect(certification.requiredExamsCleared).toBe(true)
+    expect(certification.chaptersCompleted).toBe(true)
     expect(certification.ready).toBe(true)
     const action = nextBestAction(state, now)
     expect(action.kind).toBe('complete')
@@ -904,7 +918,9 @@ describe('mastery certification', () => {
     expect(status.ready).toBe(false)
     expect(status.finalExamPassed).toBe(true)
     expect(status.requiredExamsCleared).toBe(false)
+    expect(status.chaptersCompleted).toBe(false)
     expect(status.missing).toContain('تکمیل و ترمیم همهٔ آزمون‌های مسیر')
+    expect(status.missing).toContain('تکمیل همهٔ فصل‌های مسیر')
   })
   it('prioritizes remediation even when an exam passed with missed words', () => {
     let state = emptyState(1, 'b1c1')
