@@ -41,6 +41,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Progress must be explainable. Learners should always know what is required to unlock the next stage.
 - Persisted chapter and exam evidence must remain path-consistent: a later chapter or passed exam record never substitutes for missing completion of the chapters and milestone exams that precede it. Sparse/imported state fails closed at the next gate.
 - An exam pass is evidence only when at least one attempt is recorded; impossible zero-attempt pass flags and their derived score/word evidence normalize to an unattempted state.
+- Known missed exam words never become implicitly remediated because an imported attempt timestamp is missing or implausible. When that timestamp cannot be trusted, normalization records a separate remediation floor and requires a new independent recall after it.
 - The in-app mastery badge must not become ready from a final-exam pass record alone: all eight book exams, the midpoint exam and the final exam must be cleared, including any required post-exam remediation.
 - Word-level mastery labels must also be explainable: the glossary may show the actual independent-retrieval evidence and the next missing observable requirement, but never expose a decorative score or imply certainty beyond recorded evidence.
 - Smart Review is the canonical adaptive scheduler. The Leitner box is optional free practice and never competes with, replaces or supplies mastery evidence for Smart Review.
