@@ -15,6 +15,7 @@ const { analyzeSentence } = createCourseLexicon(vocab, {
   properNouns: storyCanon.properNouns || []
 })
 
+const allIds = new Set(vocab.map(word => word.id))
 const introChapter = new Map()
 for (const chapter of chapters) {
   for (const id of chapter.new) introChapter.set(id, chapter.id)
@@ -24,6 +25,7 @@ const introduced = new Set()
 const unknown = []
 const premature = []
 const missingInOwnChapter = []
+const invalidCheckpointIds = []
 
 for (const chapter of chapters) {
   const available = new Set([...introduced, ...chapter.new])
@@ -53,6 +55,62 @@ for (const chapter of chapters) {
     }
   }
 
+  // Chapter comprehension starts immediately after reading, so its authored
+  // prompts and answer choices must not introduce lexical material beyond the
+  // words available by this chapter.
+  for (const [index, checkpoint] of chapter.check.entries()) {
+    const analysis = analyzeSentence(checkpoint.q)
+    for (const item of analysis.unknown) {
+      unknown.push({
+        chapter: chapter.id,
+        token: item.token,
+        sentence: `checkpoint ${index + 1}: ${checkpoint.q}`,
+      })
+    }
+    for (const id of analysis.ids) {
+      if (!available.has(id)) {
+        premature.push({
+          chapter: chapter.id,
+          id,
+          assigned: introChapter.get(id) || 'unassigned',
+          sentence: `checkpoint ${index + 1}: ${checkpoint.q}`,
+        })
+      }
+    }
+
+    const optionIds = Array.isArray(checkpoint.options) ? checkpoint.options : []
+    if (optionIds.length !== 4 || new Set(optionIds).size !== optionIds.length) {
+      invalidCheckpointIds.push({
+        chapter: chapter.id,
+        index: index + 1,
+        detail: 'checkpoint must have four unique vocabulary options',
+      })
+    }
+    for (const id of optionIds) {
+      if (!allIds.has(id)) {
+        invalidCheckpointIds.push({
+          chapter: chapter.id,
+          index: index + 1,
+          detail: `unknown option id ${id}`,
+        })
+      } else if (!available.has(id)) {
+        premature.push({
+          chapter: chapter.id,
+          id,
+          assigned: introChapter.get(id) || 'unassigned',
+          sentence: `checkpoint ${index + 1} option`,
+        })
+      }
+    }
+    if (!optionIds.includes(checkpoint.a)) {
+      invalidCheckpointIds.push({
+        chapter: chapter.id,
+        index: index + 1,
+        detail: `answer ${checkpoint.a} is not one of the options`,
+      })
+    }
+  }
+
   for (const id of chapter.new) {
     if (!usedHere.has(id)) missingInOwnChapter.push({ chapter: chapter.id, id })
   }
@@ -73,7 +131,7 @@ const uniqueBy = (items, key) => {
 const uniqueUnknown = uniqueBy(unknown, item => `${item.chapter}|${item.token.toLowerCase()}`)
 const uniquePremature = uniqueBy(premature, item => `${item.chapter}|${item.id}`)
 
-if (uniqueUnknown.length || uniquePremature.length || missingInOwnChapter.length) {
+if (uniqueUnknown.length || uniquePremature.length || missingInOwnChapter.length || invalidCheckpointIds.length) {
   const sections = []
 
   if (uniqueUnknown.length) {
@@ -99,6 +157,13 @@ if (uniqueUnknown.length || uniquePremature.length || missingInOwnChapter.length
     )
   }
 
+  if (invalidCheckpointIds.length) {
+    sections.push(
+      `Invalid authored chapter checkpoints (${invalidCheckpointIds.length}):\n` +
+      invalidCheckpointIds.map(item => `  ${item.chapter} / checkpoint ${item.index}: ${item.detail}`).join('\n')
+    )
+  }
+
   console.error(
     'Chapter prerequisite-vocabulary validation failed. Every lexical word in a story must be in the 899-word deck and reviewed no later than that chapter.\n\n' +
     sections.join('\n\n')
@@ -107,5 +172,5 @@ if (uniqueUnknown.length || uniquePremature.length || missingInOwnChapter.length
 }
 
 console.log(
-  `Chapter prerequisite-vocabulary validation passed: all ${vocab.length} target words are introduced in a chapter where they appear, and every story word is reviewed before reading.`
+  `Chapter prerequisite-vocabulary validation passed: all ${vocab.length} target words are introduced where they appear, every story word is reviewed before reading, and authored chapter checkpoints use only available vocabulary.`
 )
