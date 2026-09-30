@@ -187,6 +187,25 @@ describe('spaced mastery', () => {
     expect(p.successDays).toHaveLength(1)
   })
 
+  it('a midnight boundary without eight real hours cannot advance spacing', () => {
+    const start = Date.UTC(2026, 0, 1, 23, 58)
+    let p = blankWordProgress(start)
+    p = recordRetrieval(p, true, 'recognition', start)
+    expect(p.reviewStage).toBe(1)
+    expect(p.successDays).toHaveLength(1)
+
+    const fiveMinutesLater = start + 5 * 60_000
+    p = recordRetrieval(p, true, 'reverse', fiveMinutesLater)
+    expect(new Date(fiveMinutesLater).getUTCDate()).toBe(2)
+    expect(p.reviewStage).toBe(1)
+    expect(p.successDays).toHaveLength(1)
+
+    const genuinelySpaced = fiveMinutesLater + 8 * 60 * 60_000 + 60_000
+    p = recordRetrieval(p, true, 'reverse', genuinelySpaced)
+    expect(p.reviewStage).toBe(2)
+    expect(p.successDays).toHaveLength(2)
+  })
+
   it('a lapse relearned on a day that already had a success returns tomorrow', () => {
     const start = Date.UTC(2026, 0, 1, 8)
     let p = blankWordProgress(start)
