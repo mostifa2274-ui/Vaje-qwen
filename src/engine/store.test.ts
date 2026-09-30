@@ -36,20 +36,20 @@ describe('progress replacement', () => {
     expect(sessionStorage.getItem('other-app')).toBe('keep')
   })
 
-  it('reset replaces saved progress with an explicit fresh snapshot and clears drafts', () => {
+  it('constructs reset state without emitting an unmarked storage replacement first', () => {
     const state = emptyState(1, 'b1c1')
     state.chapters.b1c1 = { preparedAt: 2, prepAttempts: 1, completed: true, checksCorrect: 10, checksTotal: 10, reads: 1 }
     expect(saveState(state)).toBe(true)
     sessionStorage.setItem('ghesse:prep:v1:b1c2', '{}')
 
+    const before = localStorage.getItem('ghesse:state:v6')
     const fresh = resetState('b1c1')
-    const persisted = JSON.parse(localStorage.getItem('ghesse:state:v6') ?? '{}')
 
     expect(fresh.chapters).toEqual({})
-    expect(persisted.chapters).toEqual({})
-    expect(persisted.words).toEqual({})
-    expect(localStorage.getItem('ghesse:state:v6:backup')).toBeNull()
-    expect(sessionStorage.length).toBe(0)
+    // App owns the explicit replacement transaction so the authoritative
+    // storage event can carry its in-band lineage token from the first write.
+    expect(localStorage.getItem('ghesse:state:v6')).toBe(before)
+    expect(sessionStorage.getItem('ghesse:prep:v1:b1c2')).not.toBeNull()
   })
 
   it('repairs a corrupted primary without overwriting the last-known good backup', () => {
@@ -274,6 +274,42 @@ describe('progress import validation', () => {
     expect(imported.words.w1?.introduced).toBe(true)
   })
 
+  it('preserves only a bounded valid replacement-lineage token on import', () => {
+    const valid = importStateJson(
+      JSON.stringify({
+        version: 6,
+        dayEvidenceVersion: 1,
+        progressReplacementToken: 'mabc123:lineage',
+        currentChapter: 'b1c1',
+        chapters: {},
+        words: {},
+        exams: {},
+      }),
+      100,
+      'b1c1',
+      chapters,
+      words,
+    )
+    expect(valid.progressReplacementToken).toBe('mabc123:lineage')
+
+    const invalid = importStateJson(
+      JSON.stringify({
+        version: 6,
+        dayEvidenceVersion: 1,
+        progressReplacementToken: '<script>'.repeat(30),
+        currentChapter: 'b1c1',
+        chapters: {},
+        words: {},
+        exams: {},
+      }),
+      100,
+      'b1c1',
+      chapters,
+      words,
+    )
+    expect(invalid.progressReplacementToken).toBeUndefined()
+  })
+
   it('clamps malformed first-pass acquisition counters during import', () => {
     const state = emptyState(100, 'b1c1')
     state.chapters.b1c1 = {
@@ -426,6 +462,29 @@ describe('concurrent progress reconciliation', () => {
     expect(merged?.dailyReviewGoal).toBe(20)
     expect(merged?.showFaDefault).toBe(true)
     expect(Object.keys(merged?.chapters ?? {}).sort()).toEqual(['b1c1', 'b1c2'])
+  })
+
+  it('preserves replacement lineage across an ordinary concurrent merge', () => {
+    const base = { ...emptyState(100, 'b1c1'), progressReplacementToken: 'lineage:one' }
+    const local = { ...base, dailyReviewGoal: 20 as const }
+    const remote = { ...base, showFaDefault: true }
+
+    const merged = mergeConcurrentState(base, local, remote)
+
+    expect(merged?.progressReplacementToken).toBe('lineage:one')
+    expect(merged?.dailyReviewGoal).toBe(20)
+    expect(merged?.showFaDefault).toBe(true)
+  })
+
+  it('rejects every stale write across an explicit replacement lineage boundary', () => {
+    const base = { ...emptyState(100, 'b1c1'), progressReplacementToken: 'lineage:old' }
+    const staleSettings = { ...base, dailyReviewGoal: 20 as const }
+    const replacement = {
+      ...emptyState(200, 'b1c1'),
+      progressReplacementToken: 'lineage:new',
+    }
+
+    expect(mergeConcurrentState(base, staleSettings, replacement)).toBeUndefined()
   })
 
   it('rejects divergent edits to the same learning record', () => {
