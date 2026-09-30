@@ -187,7 +187,7 @@ describe('spaced mastery', () => {
     expect(p.successDays).toHaveLength(1)
   })
 
-  it('a midnight boundary without eight real hours cannot advance spacing', () => {
+  it('an unspaced midnight retry cannot create or reset spaced evidence', () => {
     const start = Date.UTC(2026, 0, 1, 23, 58)
     let p = blankWordProgress(start)
     p = recordRetrieval(p, true, 'recognition', start)
@@ -200,11 +200,27 @@ describe('spaced mastery', () => {
     expect(p.reviewStage).toBe(1)
     expect(p.successDays).toHaveLength(1)
 
-    const genuinelySpaced = fiveMinutesLater + 24 * 60 * 60_000 + 60_000
+    const genuinelySpaced = fiveMinutesLater + 8 * 60 * 60_000 + 60_000
     p = recordRetrieval(p, true, 'reverse', genuinelySpaced)
-    expect(new Date(genuinelySpaced).getUTCDate()).toBe(3)
+    expect(new Date(genuinelySpaced).getUTCDate()).toBe(2)
     expect(p.reviewStage).toBe(2)
     expect(p.successDays).toHaveLength(2)
+  })
+
+  it('unspaced productive practice does not postpone the next spaced productive day', () => {
+    const start = Date.UTC(2026, 0, 1, 23, 58)
+    let p = blankWordProgress(start)
+    p = recordRetrieval(p, true, 'productive', start)
+    expect(p.productiveSuccessDays).toHaveLength(1)
+
+    const fiveMinutesLater = start + 5 * 60_000
+    p = recordRetrieval(p, true, 'spelling', fiveMinutesLater)
+    expect(p.productiveSuccessDays).toHaveLength(1)
+
+    const genuinelySpaced = fiveMinutesLater + 8 * 60 * 60_000 + 60_000
+    p = recordRetrieval(p, true, 'contextProductive', genuinelySpaced)
+    expect(new Date(genuinelySpaced).getUTCDate()).toBe(2)
+    expect(p.productiveSuccessDays).toHaveLength(2)
   })
 
   it('a lapse relearned on a day that already had a success returns tomorrow', () => {
