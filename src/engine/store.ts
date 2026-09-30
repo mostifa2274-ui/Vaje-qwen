@@ -4,6 +4,7 @@ import { mergeActivity, mergeLeitnerDays, normalizeActivity } from './activity'
 import { dayKey, latestPlausibleDayKey, plausibleEvidenceTimestamp } from './days'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
+export const PROGRESS_REPLACEMENT_KEY = 'ghesse:progress-replacement:v1'
 const CURRENT_STATE_VERSION = 6
 const BACKUP_KEY = 'ghesse:state:v6:backup'
 const LEGACY_KEYS = ['ghesse:state:v5', 'ghesse:state:v4', 'ghesse:state:v3', 'ghesse:state:v2', 'ghesse:state:v1'] as const
@@ -593,6 +594,16 @@ export function clearSessionDrafts(): void {
   }
 }
 
+export function signalProgressReplacement(): boolean {
+  try {
+    const token = `${Date.now()}:${Math.random().toString(36).slice(2)}`
+    localStorage.setItem(PROGRESS_REPLACEMENT_KEY, token)
+    return localStorage.getItem(PROGRESS_REPLACEMENT_KEY) === token
+  } catch {
+    return false
+  }
+}
+
 export function resetState(firstChapterId: string): GhesseState {
   const fresh = emptyState(Date.now(), firstChapterId)
   try {
@@ -602,7 +613,7 @@ export function resetState(firstChapterId: string): GhesseState {
     // Persist the reset before returning. Other open tabs then see an explicit
     // fresh snapshot instead of a momentary missing key they could overwrite
     // with an older full-state save.
-    saveState(fresh)
+    if (saveState(fresh)) signalProgressReplacement()
   } catch {
     // Keep reset semantics in memory.
   }
