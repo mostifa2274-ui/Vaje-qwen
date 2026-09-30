@@ -135,6 +135,47 @@ describe('progress replacement', () => {
     expect(recovered?.chapters).toEqual({})
   })
 
+  it('keeps a verified replacement successful when auxiliary cleanup rejects removals', () => {
+    const originalStorage = globalThis.localStorage
+    const backing = memoryStorage()
+    const flakyStorage = {
+      getItem: (key: string) => backing.getItem(key),
+      setItem: (key: string, value: string) => backing.setItem(key, value),
+      removeItem: (key: string) => {
+        if (key === 'ghesse:state:v5' || key === 'ghesse:state:v6:backup') {
+          throw new DOMException('cleanup blocked', 'SecurityError')
+        }
+        backing.removeItem(key)
+      },
+      clear: () => backing.clear(),
+      key: (index: number) => backing.key(index),
+      get length() { return backing.length },
+    } as Storage
+
+    const old = emptyState(1, 'b1c1')
+    backing.setItem('ghesse:state:v6', JSON.stringify(old))
+    backing.setItem('ghesse:state:v5', JSON.stringify(old))
+    backing.setItem('ghesse:state:v6:backup', JSON.stringify(old))
+
+    const replacement = emptyState(100, 'b1c1')
+    replacement.currentChapter = 'b1c2'
+    replacement.dailyReviewGoal = 20
+
+    globalThis.localStorage = flakyStorage
+    try {
+      // The primary write is the commit point. Auxiliary cleanup must not make
+      // App suppress the replacement marker after that point.
+      expect(replacePersistedState(replacement)).toBe(true)
+      expect(backing.getItem('ghesse:state:v6')).toBe(JSON.stringify(replacement))
+      // When removeItem is blocked but writes work, stale fallbacks are
+      // neutralized by overwriting them with the authoritative replacement.
+      expect(backing.getItem('ghesse:state:v6:backup')).toBe(JSON.stringify(replacement))
+      expect(backing.getItem('ghesse:state:v5')).toBe(JSON.stringify(replacement))
+    } finally {
+      globalThis.localStorage = originalStorage
+    }
+  })
+
   it('summarizes progress for an import confirmation', () => {
     const state = emptyState(1, 'b1c1')
     state.chapters.b1c1 = { preparedAt: 2, prepAttempts: 1, completed: true, checksCorrect: 10, checksTotal: 10, reads: 1 }
