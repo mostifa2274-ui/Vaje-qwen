@@ -51,6 +51,12 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
   useEffect(() => {
     if (!word) return
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    const appMain = document.getElementById('main-content')
+    const mainWasInert = appMain?.inert ?? false
+    // The sheet is portaled outside #main-content. Marking the app surface
+    // inert keeps virtual-cursor/touch exploration inside the modal just as
+    // the existing keyboard trap keeps Tab focus inside it.
+    if (appMain) appMain.inert = true
     // The sheet slides in from below the viewport. Without preventScroll the
     // browser scrolls the whole story toward the still off-screen button,
     // and jumps back again when focus returns on close.
@@ -85,6 +91,7 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
       if (autoSpeakTimer) window.clearTimeout(autoSpeakTimer)
       cancelEnglishSpeech()
       stopAudio()
+      if (appMain) appMain.inert = mainWasInert
       previousFocus?.focus({ preventScroll: true })
     }
   }, [word, soundOn, speakOrFallback])
@@ -128,9 +135,9 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <div id={titleId} className="font-en text-3xl font-bold" dir="ltr">{word.word}</div>
+            <div id={titleId} className="font-en text-3xl font-bold" lang="en" dir="ltr">{word.word}</div>
             <div className="mt-1 flex flex-wrap items-center gap-2 text-sm" style={{ color: 'var(--ink-soft)' }}>
-              {word.ipa && <span className="font-en" dir="ltr">/{word.ipa}/</span>}
+              {word.ipa && <span className="font-en" lang="en" dir="ltr">/{word.ipa}/</span>}
               <span className="lexical-role-chip">{persianPartOfSpeech(word.pos)}</span>
             </div>
           </div>
@@ -148,7 +155,7 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
         <div id={descriptionId} className="mt-3 text-xl font-bold">{word.fa}</div>
         {audioNotice && <div className="paper-note mt-3" role="alert">{audioNotice}</div>}
         <hr className="dash-line my-4" />
-        <div className="font-en text-base leading-relaxed" dir="ltr">{word.ex}</div>
+        <div className="font-en text-base leading-relaxed" lang="en" dir="ltr">{word.ex}</div>
         <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.tr}</div>
 
         <PronunciationPractice
