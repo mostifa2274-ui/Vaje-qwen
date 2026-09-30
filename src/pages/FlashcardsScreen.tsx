@@ -414,7 +414,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
               lang={face === 'enFa' ? 'fa' : 'en'}
               dir={face === 'enFa' ? 'rtl' : 'ltr'}
               autoComplete="off"
-                autoCorrect="off"
+              autoCorrect="off"
               autoCapitalize="none"
               spellCheck={false}
               enterKeyHint="done"
