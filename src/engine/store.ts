@@ -679,6 +679,7 @@ export function clearSessionDrafts(): void {
   }
 }
 
+/** One token identifies the same replacement in both state and marker channels. */
 export function createProgressReplacementToken(): string {
   return `${Date.now().toString(36)}:${Math.random().toString(36).slice(2)}`
 }
