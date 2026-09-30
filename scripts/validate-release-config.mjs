@@ -63,6 +63,29 @@ assert(viteConfig.includes("media-src 'self' blob:"), 'local pronunciation playb
 assert(!/unsafe-(?:inline|eval)/.test(viteConfig), 'the Content-Security-Policy must not allow unsafe-inline or unsafe-eval')
 assert(!directWorkflow.includes('GHESSE_RIGHTS_CONFIRMED'), 'direct workflow must not require the old rights flag')
 
+const primaryWaitStart = directWorkflow.indexOf('- name: Wait for Cloudflare Git deployment')
+const credentialsStart = directWorkflow.indexOf('- name: Check direct-deploy credentials')
+const finalVerifyStart = directWorkflow.indexOf('- name: Verify exact production revision')
+assert(primaryWaitStart >= 0 && credentialsStart > primaryWaitStart && finalVerifyStart > credentialsStart, 'production deployment workflow step order is malformed')
+const primaryWaitStep = directWorkflow.slice(primaryWaitStart, credentialsStart)
+const finalVerifyStep = directWorkflow.slice(finalVerifyStart)
+assert(
+  !primaryWaitStep.includes('steps.primary.outputs') && !primaryWaitStep.includes('steps.cloudflare.outputs'),
+  'primary Cloudflare wait must not read self/future step outputs before they exist',
+)
+assert(
+  finalVerifyStep.includes('steps.primary.outputs.needs_deploy')
+    && finalVerifyStep.includes('steps.cloudflare.outputs.configured')
+    && finalVerifyStep.includes('max_attempts=96')
+    && finalVerifyStep.includes('if [ "$attempt" -lt "$max_attempts" ]; then sleep 5; fi'),
+  'final production verification must extend and pace polling when the primary deploy is stale and direct fallback credentials are unavailable',
+)
+assert(
+  finalVerifyStep.includes('Cloudflare Git integration (late convergence)')
+    && finalVerifyStep.includes('steps.cloudflare.outputs.configured }}" = "true"'),
+  'deployment evidence must distinguish direct Wrangler fallback from late Cloudflare convergence',
+)
+
 const serviceWorker = readFileSync(join(root, 'public/sw.js'), 'utf8')
 const offlineAudio = readFileSync(join(root, 'src/engine/offlineAudio.ts'), 'utf8')
 assert(serviceWorker.includes("const AUDIO_CACHE = 'ghesse-audio-v1'"), 'service worker must keep the dedicated offline-audio cache')

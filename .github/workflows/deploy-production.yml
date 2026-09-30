@@ -59,12 +59,8 @@ jobs:
         run: |
           set -euo pipefail
           echo "Waiting for the primary Cloudflare Git integration to publish $SOURCE_SHA."
-          if [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ] && [ "${{ steps.cloudflare.outputs.configured }}" != "true" ]; then
-            max_attempts=96
-          else
-            max_attempts=30
-          fi
-          echo "Final production verification window: $max_attempts attempts."
+          max_attempts=30
+          echo "Primary deployment verification window: $max_attempts attempts."
           for attempt in $(seq 1 "$max_attempts"); do
             marker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20               "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
             if printf '%s' "$marker" | jq -e --arg commit "$SOURCE_SHA"               '.release == "ghesse-5.0.0" and .worker == "vaje-qwen1" and .commit == $commit and .branch == "main"' >/dev/null; then
@@ -142,7 +138,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for attempt in $(seq 1 24); do
+          if [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ] && [ "${{ steps.cloudflare.outputs.configured }}" != "true" ]; then
+            max_attempts=96
+          else
+            max_attempts=24
+          fi
+          echo "Final production verification window: $max_attempts attempts."
+          for attempt in $(seq 1 "$max_attempts"); do
             marker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20               "$PRODUCTION_URL/release.json?fresh=$(date +%s)" || true)"
             if printf '%s' "$marker" | jq -e --arg commit "$SOURCE_SHA"               '.release == "ghesse-5.0.0" and .worker == "vaje-qwen1" and .commit == $commit and .branch == "main"' >/dev/null; then
               if curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/" >/dev/null                 && worker="$(curl --fail --silent --show-error --location --connect-timeout 10 --max-time 20 "$PRODUCTION_URL/sw.js?fresh=$(date +%s)")"                 && [[ "$worker" == *"ghesse-shell-${SOURCE_SHA:0:16}"* ]]; then
@@ -152,8 +154,10 @@ jobs:
                   echo "- Exact revision: `$SOURCE_SHA`"
                   echo "- Production root reachable: yes"
                   echo "- Service-worker cache matches: yes"
-                  if [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ]; then
+                  if [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ] && [ "${{ steps.cloudflare.outputs.configured }}" = "true" ]; then
                     echo "- Deployment path: direct Wrangler fallback"
+                  elif [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ]; then
+                    echo "- Deployment path: Cloudflare Git integration (late convergence)"
                   else
                     echo "- Deployment path: Cloudflare Git integration"
                   fi
@@ -162,7 +166,7 @@ jobs:
                 exit 0
               fi
             fi
-            if [ "$attempt" -lt 24 ]; then sleep 5; fi
+            if [ "$attempt" -lt "$max_attempts" ]; then sleep 5; fi
           done
-          echo "::error::Production did not converge on exact revision $SOURCE_SHA after deployment."
+          echo "::error::Production did not converge on exact revision $SOURCE_SHA within the verification window."
           exit 1
