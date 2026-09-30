@@ -18,7 +18,7 @@ import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, se
 import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, reliableRetrievalElapsedMs, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus, nextBestAction } from './analytics'
-import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
+import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
 import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehension'
 
 const FULL_LISTENING = { firstPassCorrect: LISTENING_QUESTION_COUNT, total: LISTENING_QUESTION_COUNT, verifiedCorrect: LISTENING_QUESTION_COUNT }
@@ -421,6 +421,28 @@ describe('chapter prep and gate progression', () => {
     expect(canPrepareChapter(state, 'b2c1')).toBe(false)
     state.exams[bookExamId(1)] = { attempts: 1, passed: true, passedAt: 2, lastAttemptAt: 2, lastScore: .9, bestScore: .9, lastProductiveScore: 1, bestProductiveScore: 1, missedWordIds: [], testedWordIds: [] }
     expect(canPrepareChapter(state, 'b2c1')).toBe(true)
+  })
+
+  it('requires the midpoint gate before the final exam even in sparse imported state', () => {
+    const state = emptyState(1, 'b1c1')
+    const passed = {
+      attempts: 1,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: .95,
+      bestScore: .95,
+      lastProductiveScore: .95,
+      bestProductiveScore: .95,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+    for (let book = 1; book <= 8; book++) state.exams[bookExamId(book)] = { ...passed }
+
+    expect(canTakeExam(state, FINAL_EXAM_ID)).toBe(false)
+
+    state.exams[MIDPOINT_EXAM_ID] = { ...passed }
+    expect(canTakeExam(state, FINAL_EXAM_ID)).toBe(true)
   })
 
   it('requires midpoint exam before Book 5', () => {

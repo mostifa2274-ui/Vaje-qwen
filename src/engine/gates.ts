@@ -192,7 +192,11 @@ function examPrerequisitesMet(state: GhesseState, id: string): boolean {
       && (!policy.bookConsolidation.everyWordRecalledOnALaterDay || bookConsolidated(state, def.book!))
   }
   if (def.kind === 'midpoint') return [1, 2, 3, 4].every(book => examCleared(state, bookExamId(book)))
-  return [1, 2, 3, 4, 5, 6, 7, 8].every(book => examCleared(state, bookExamId(book)))
+  // The midpoint is an explicit cumulative gate before Book 5. A sparse or
+  // imported state must not be able to bypass it merely by carrying later
+  // end-of-book pass records.
+  return examCleared(state, MIDPOINT_EXAM_ID)
+    && [1, 2, 3, 4, 5, 6, 7, 8].every(book => examCleared(state, bookExamId(book)))
 }
 
 export function canTakeExam(state: GhesseState, id: string): boolean {
