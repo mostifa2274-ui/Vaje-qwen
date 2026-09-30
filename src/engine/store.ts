@@ -4,6 +4,7 @@ import { mergeActivity, mergeLeitnerDays, normalizeActivity } from './activity'
 import { dayKey, latestPlausibleDayKey, plausibleEvidenceTimestamp } from './days'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
+export const PROGRESS_REPLACEMENT_KEY = 'ghesse:progress-replacement:v1'
 const CURRENT_STATE_VERSION = 6
 const BACKUP_KEY = 'ghesse:state:v6:backup'
 const LEGACY_KEYS = ['ghesse:state:v5', 'ghesse:state:v4', 'ghesse:state:v3', 'ghesse:state:v2', 'ghesse:state:v1'] as const
@@ -590,6 +591,16 @@ export function clearSessionDrafts(): void {
     removeKeys(localStorage, BOOK_TEST_DRAFT_PREFIX)
   } catch {
     // As above.
+  }
+}
+
+export function signalProgressReplacement(): string | undefined {
+  try {
+    const token = `${Date.now()}:${Math.random().toString(36).slice(2)}`
+    localStorage.setItem(PROGRESS_REPLACEMENT_KEY, token)
+    return localStorage.getItem(PROGRESS_REPLACEMENT_KEY) === token ? token : undefined
+  } catch {
+    return undefined
   }
 }
 

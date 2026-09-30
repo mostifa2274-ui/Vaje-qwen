@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { GhesseState } from './engine/types'
-import { loadPersistedState, loadState, mergeConcurrentState, requestDurableStorage, saveState, STORAGE_KEY } from './engine/store'
+import { clearSessionDrafts, loadPersistedState, loadState, mergeConcurrentState, PROGRESS_REPLACEMENT_KEY, requestDurableStorage, saveState, signalProgressReplacement, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canOpenChapter, canOpenExam, canOpenStory, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
@@ -163,7 +163,9 @@ export default function App() {
   const [celebration, setCelebration] = useState<{ streak: number; at: number } | null>(null)
   const [deployedCommit, setDeployedCommit] = useState<string | null>(null)
   const [dismissedCommit, setDismissedCommit] = useState<string | null>(null)
+  const [progressRevision, setProgressRevision] = useState(0)
   const stateRef = useRef(state)
+  const progressReplacementTokenRef = useRef<string | null>(null)
   const mainRef = useRef<HTMLElement>(null)
   const routeFocusReadyRef = useRef(false)
 
@@ -219,7 +221,12 @@ export default function App() {
     stateRef.current = next
     setState(next)
     setSyncConflict(false)
-    setPersistOk(saveState(next))
+    const persisted = saveState(next)
+    setPersistOk(persisted)
+    if (persisted) {
+      const replacementToken = signalProgressReplacement()
+      if (replacementToken) progressReplacementTokenRef.current = replacementToken
+    }
     navigate({ name: 'map' }, true)
   }, [navigate])
 
@@ -306,14 +313,44 @@ export default function App() {
     }
   }, [])
   useEffect(() => {
-    const onStorage = (event: StorageEvent) => {
-      if (event.key !== STORAGE_KEY) return
+    const replacementToken = () => {
+      try {
+        return localStorage.getItem(PROGRESS_REPLACEMENT_KEY)
+      } catch {
+        return null
+      }
+    }
+    progressReplacementTokenRef.current = replacementToken()
+
+    const applyPersistedState = (replacement: boolean) => {
+      if (replacement) {
+        // sessionStorage is tab-local, so the tab that performed a reset/import
+        // cannot clear this tab's active draft. Invalidate it here and force the
+        // route subtree to remount before any stale task can write into the
+        // replacement progress snapshot.
+        clearSessionDrafts()
+        setProgressRevision(revision => revision + 1)
+      }
       const next = loadCourseState()
       stateRef.current = next
       setState(next)
       setView(current => resolveView(current, next))
       setPersistOk(true)
       setSyncConflict(false)
+    }
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== STORAGE_KEY && event.key !== PROGRESS_REPLACEMENT_KEY) return
+
+      // localStorage writes are synchronous in the source tab. By the time this
+      // tab receives the earlier STORAGE_KEY event, the replacement marker has
+      // already been written too. Detect it immediately instead of waiting for
+      // the marker's later storage event and leaving a render/effect window in
+      // which stale task state could run.
+      const token = replacementToken()
+      const replacement = token !== progressReplacementTokenRef.current
+      progressReplacementTokenRef.current = token
+      if (event.key === PROGRESS_REPLACEMENT_KEY && !replacement) return
+      applyPersistedState(replacement)
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
@@ -509,7 +546,7 @@ export default function App() {
         tabIndex={-1}
         aria-label={viewLabel(view)}
       >
-        <RouteErrorBoundary key={hashFor(view)} onHome={backToMap}>
+        <RouteErrorBoundary key={`${progressRevision}:${hashFor(view)}`} onHome={backToMap}>
           <Suspense fallback={<RouteLoading />}>
             {screen}
           </Suspense>

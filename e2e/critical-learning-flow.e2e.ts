@@ -1829,6 +1829,171 @@ test('a reset propagates across tabs and later settings saves cannot resurrect o
 })
 
 
+test('an ordinary cross-tab settings save preserves this tab\'s active prep draft', async ({ page, context }) => {
+  const wordIds = chapter.new
+  const state = {
+    version: 6,
+    dayEvidenceVersion: 1,
+    currentChapter: 'b1c1',
+    chapters: {},
+    words: {},
+    exams: {},
+    soundOn: true,
+    showFaDefault: false,
+    narratorVoiceURI: '',
+    narratorRate: 0.92,
+    dailyReviewGoal: 15,
+    exploreAll: false,
+    activity: {},
+    created: Date.now() - 86_400_000,
+  }
+  const draft = {
+    version: 1,
+    chapterId: 'b1c1',
+    phase: 'listening',
+    teachIndex: wordIds.length - 1,
+    writtenQueue: [],
+    writtenPassed: wordIds,
+    writtenMissed: [],
+    listeningQueue: [wordIds[0]],
+    listeningPassed: wordIds.slice(1),
+    listeningMissed: [],
+    feedback: null,
+    selected: '',
+    typed: '',
+    updatedAt: Date.now(),
+  }
+
+  await page.addInitScript(({ state, draft }) => {
+    window.localStorage.setItem('ghesse:state:v6', JSON.stringify(state))
+    window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify(draft))
+  }, { state, draft })
+
+  await page.goto('/#/prep/b1c1')
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
+
+  const other = await context.newPage()
+  await other.goto('/#/settings')
+  await other.getByRole('group', { name: 'هدف روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
+
+  await expect.poll(async () => page.evaluate(() => (
+    JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').dailyReviewGoal
+  ))).toBe(20)
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
+  const survivingDraft = await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))
+  expect(survivingDraft).not.toBeNull()
+  expect(JSON.parse(survivingDraft!).phase).toBe('listening')
+
+  await other.close()
+})
+
+
+test('the tab that replaces progress does not misclassify a later ordinary cross-tab save', async ({ page, context }) => {
+  await page.goto('/#/settings')
+  await page.getByRole('button', { name: 'پاک کردن پیشرفت' }).click()
+  await page.getByRole('group', { name: 'تأیید پاک کردن پیشرفت' }).getByRole('button', { name: 'بله، پاک کن' }).click()
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+  const wordIds = chapter.new
+  const draft = {
+    version: 1,
+    chapterId: 'b1c1',
+    phase: 'listening',
+    teachIndex: wordIds.length - 1,
+    writtenQueue: [],
+    writtenPassed: wordIds,
+    writtenMissed: [],
+    listeningQueue: [wordIds[0]],
+    listeningPassed: wordIds.slice(1),
+    listeningMissed: [],
+    feedback: null,
+    selected: '',
+    typed: '',
+    updatedAt: Date.now(),
+  }
+  await page.evaluate(({ draft }) => {
+    window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify(draft))
+  }, { draft })
+  await openHomeSection(page, 'مسیر')
+  await page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ }).click()
+  await expect(page).toHaveURL(/#\/prep\/b1c1$/)
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
+
+  const other = await context.newPage()
+  await other.goto('/#/settings')
+  await other.getByRole('group', { name: 'هدف روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
+
+  await expect.poll(async () => page.evaluate(() => (
+    JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').dailyReviewGoal
+  ))).toBe(20)
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
+  const survivingDraft = await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))
+  expect(survivingDraft).not.toBeNull()
+  expect(JSON.parse(survivingDraft!).phase).toBe('listening')
+
+  await other.close()
+})
+
+
+test('a cross-tab reset invalidates this tab\'s active prep draft before it can restore progress', async ({ page, context }) => {
+  const wordIds = chapter.new
+  const backupState = {
+    version: 6,
+    dayEvidenceVersion: 1,
+    currentChapter: 'b1c1',
+    chapters: {},
+    words: {},
+    exams: {},
+    soundOn: true,
+    showFaDefault: false,
+    narratorVoiceURI: '',
+    narratorRate: 0.92,
+    dailyReviewGoal: 15,
+    exploreAll: false,
+    activity: {},
+    created: Date.now() - 86_400_000,
+  }
+  const draft = {
+    version: 1,
+    chapterId: 'b1c1',
+    phase: 'listening',
+    teachIndex: wordIds.length - 1,
+    writtenQueue: [],
+    writtenPassed: wordIds,
+    writtenMissed: [],
+    listeningQueue: [wordIds[0]],
+    listeningPassed: wordIds.slice(1),
+    listeningMissed: [],
+    feedback: null,
+    selected: '',
+    typed: '',
+    updatedAt: Date.now(),
+  }
+
+  await page.addInitScript(({ state, draft }) => {
+    window.localStorage.setItem('ghesse:state:v6', JSON.stringify(state))
+    window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify(draft))
+  }, { state: backupState, draft })
+
+  await page.goto('/#/prep/b1c1')
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
+  expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).not.toBeNull()
+
+  const other = await context.newPage()
+  await other.goto('/#/settings')
+  await other.getByRole('button', { name: 'پاک کردن پیشرفت' }).click()
+  await other.getByRole('group', { name: 'تأیید پاک کردن پیشرفت' }).getByRole('button', { name: 'بله، پاک کن' }).click()
+
+  // b1c1 remains a valid route after reset, so route validity alone cannot
+  // protect us. The replacement signal must clear this tab's session draft and
+  // remount prep at the first teaching card.
+  await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
+  expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).toBeNull()
+
+  await other.close()
+})
+
+
 test('chapter 1 enforces teach → written 100% → listening 100% → story → 10 corrected questions → listening text', async ({ page }) => {
   // This is the full 72-word chapter flow. Written and listening gates intentionally
   // exercise the product's 650 ms feedback/auto-advance timing for every word, so the
