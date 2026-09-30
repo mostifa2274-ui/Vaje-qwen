@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { CHAPTERS } from '../data/chapters'
-import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam } from './gates'
+import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examPassed } from './gates'
 import { emptyState } from './store'
 
 describe('progression gate invariants', () => {
@@ -38,6 +38,24 @@ describe('progression gate invariants', () => {
 
       expect(canReadChapter(state, chapter.id)).toBe(exact)
     }
+  })
+
+  it('never treats a zero-attempt pass flag as exam evidence', () => {
+    const state = emptyState(1, 'b1c1')
+    state.exams[bookExamId(1)] = {
+      attempts: 0,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+
+    expect(examPassed(state, bookExamId(1))).toBe(false)
   })
 
   it('never lets a passed previous-book record substitute for missing earlier chapters', () => {

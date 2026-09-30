@@ -116,7 +116,8 @@ export function courseChaptersCompleted(state: GhesseState): boolean {
 }
 
 export function examPassed(state: GhesseState, id: string): boolean {
-  return state.exams[id]?.passed === true
+  const progress = state.exams[id]
+  return Boolean(progress && progress.attempts > 0 && progress.passed === true)
 }
 
 export function previousChapterId(chapterId: string): string | undefined {
