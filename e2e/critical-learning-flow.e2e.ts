@@ -1914,7 +1914,9 @@ test('the tab that replaces progress does not misclassify a later ordinary cross
   await page.evaluate(({ draft }) => {
     window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify(draft))
   }, { draft })
-  await page.goto('/#/prep/b1c1')
+  await openHomeSection(page, 'مسیر')
+  await page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ }).click()
+  await expect(page).toHaveURL(/#\/prep\/b1c1$/)
   await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
 
   const other = await context.newPage()
