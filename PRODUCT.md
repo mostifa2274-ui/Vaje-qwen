@@ -24,6 +24,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 
 ## Product principles
 - User-exported progress backups must be self-describing and integrity-checked, remain backwards-compatible with supported raw-state backups, and warn when restored against a different vocabulary snapshot.
+- Persisted progress must fail closed on structurally unrecognizable primary state without destroying the last-known-good backup; explicit reset/import must invalidate in-progress drafts in every open tab before stale task state can write into the replacement snapshot.
 - The task leads; decoration never competes with learning.
 - Do not ask beginners to guess a word before teaching it. The only exception is an explicit learner-chosen prove-known diagnostic: it tests every chapter word by productive English recall and audio meaning recognition, requires 100% first-try coverage, returns to teaching on the first miss, and never grants durable mastery.
 - 100% preparation gates mean coverage, not mastery. Durable mastery requires later spaced retrieval.
