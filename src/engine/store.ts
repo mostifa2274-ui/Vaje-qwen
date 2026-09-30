@@ -432,6 +432,40 @@ export function saveState(state: GhesseState): boolean {
   }
 }
 
+/**
+ * Persist an explicit reset/import as a replacement, not as an ordinary edit.
+ * Recovery must never resurrect the state the learner intentionally replaced:
+ * the rolling backup is aligned to the replacement when possible and every
+ * supported legacy snapshot is discarded after the new primary is verified.
+ */
+export function replacePersistedState(state: GhesseState): boolean {
+  try {
+    const next = JSON.stringify(state)
+    localStorage.setItem(STORAGE_KEY, next)
+    if (localStorage.getItem(STORAGE_KEY) !== next) return false
+
+    for (const key of LEGACY_KEYS) localStorage.removeItem(key)
+
+    // Remove the pre-replacement fallback before attempting to mirror the new
+    // state. If storage is too full for the duplicate copy, keeping no rolling
+    // backup is safer than reviving progress the learner explicitly replaced.
+    localStorage.removeItem(BACKUP_KEY)
+    try {
+      localStorage.setItem(BACKUP_KEY, next)
+      if (localStorage.getItem(BACKUP_KEY) !== next) localStorage.removeItem(BACKUP_KEY)
+    } catch {
+      try {
+        localStorage.removeItem(BACKUP_KEY)
+      } catch {
+        // The verified primary remains authoritative.
+      }
+    }
+    return true
+  } catch {
+    return false
+  }
+}
+
 function sameJsonValue(left: unknown, right: unknown): boolean {
   if (Object.is(left, right)) return true
   if (Array.isArray(left) || Array.isArray(right)) {

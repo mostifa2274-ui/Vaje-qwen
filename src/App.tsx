@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { GhesseState } from './engine/types'
-import { clearSessionDrafts, loadPersistedState, loadState, mergeConcurrentState, PROGRESS_REPLACEMENT_KEY, requestDurableStorage, saveState, signalProgressReplacement, STORAGE_KEY } from './engine/store'
+import { clearSessionDrafts, loadPersistedState, loadState, mergeConcurrentState, PROGRESS_REPLACEMENT_KEY, replacePersistedState, requestDurableStorage, saveState, signalProgressReplacement, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canOpenChapter, canOpenExam, canOpenStory, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
@@ -221,7 +221,7 @@ export default function App() {
     stateRef.current = next
     setState(next)
     setSyncConflict(false)
-    const persisted = saveState(next)
+    const persisted = replacePersistedState(next)
     setPersistOk(persisted)
     if (persisted) {
       const replacementToken = signalProgressReplacement()

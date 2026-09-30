@@ -7,6 +7,8 @@ import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon 
 import { BUILD_COMMIT } from '../engine/release'
 import { faNum } from '../engine/format'
 import { buildResearchReport } from '../engine/researchExport'
+import { CHAPTERS } from '../data/chapters'
+import { introduceWordsOfCompletedChapters } from '../engine/progress'
 
 interface Props {
   state: GhesseState
@@ -94,11 +96,16 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     try {
       if (file.size > MAX_IMPORT_BYTES) throw new Error('فایل پیشرفت بیش از ۲ مگابایت است.')
       const text = await file.text()
-      const imported = await importProgressBackupJson(text, Date.now(), firstChapterId, validChapterIds, validWordIds)
+      const now = Date.now()
+      const imported = await importProgressBackupJson(text, now, firstChapterId, validChapterIds, validWordIds)
+      // Apply the same completed-chapter migration used at app startup before
+      // confirmation. The learner must see and persist the exact state they
+      // would get after a reload, including words moved into finished chapters.
+      const canonicalState = introduceWordsOfCompletedChapters(imported.state, CHAPTERS, now)
       // Replacing progress cannot be undone from the UI, so it waits for an
       // explicit confirmation that shows what the file actually contains.
       setImportMessage('')
-      setPendingImport(imported.state)
+      setPendingImport(canonicalState)
       setPendingImportNote(imported.notice)
     } catch (error) {
       setPendingImport(null)
