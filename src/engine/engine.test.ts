@@ -411,6 +411,49 @@ describe('chapter prep and gate progression', () => {
     expect(state.chapters.b1c1.prepListeningFirstPassCorrect).toBe(0)
   })
 
+  it('does not let direct prep or completion writers create future-chapter evidence', () => {
+    const state = emptyState(1, 'b1c1')
+    const chapter = CHAPTERS.find(ch => ch.id === 'b2c1')!
+    const ids = chapter.new
+
+    const prepared = recordPreparedChapter(state, chapter.id, ids, ids, ids, [], [], 10)
+    expect(prepared).toBe(state)
+    expect(prepared.chapters[chapter.id]).toBeUndefined()
+
+    const forged = {
+      ...state,
+      chapters: {
+        ...state.chapters,
+        [chapter.id]: {
+          preparedAt: 10,
+          prepAttempts: 1,
+          prepWrittenCorrect: ids.length,
+          prepWrittenTotal: ids.length,
+          prepListeningCorrect: ids.length,
+          prepListeningTotal: ids.length,
+          completed: false,
+          checksCorrect: 0,
+          checksTotal: 0,
+          reads: 0,
+        },
+      },
+      words: Object.fromEntries(ids.map(id => [id, blankWordProgress(10)])),
+    }
+    const completed = recordCompletedRead(
+      forged,
+      chapter.id,
+      ids,
+      READING_QUESTION_COUNT,
+      READING_QUESTION_COUNT,
+      READING_QUESTION_COUNT,
+      FULL_LISTENING,
+      20,
+      CHAPTERS.map(item => item.id),
+    )
+    expect(completed).toBe(forged)
+    expect(completed.chapters[chapter.id].completed).toBe(false)
+  })
+
   it('requires the previous book exam before crossing book boundary', () => {
     const state = emptyState(1, 'b1c1')
     for (const ch of CHAPTERS.filter(ch => ch.book === 1)) {
