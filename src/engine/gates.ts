@@ -130,18 +130,16 @@ export function canPrepareChapter(state: GhesseState, chapterId: string): boolea
   const index = CHAPTERS.findIndex(ch => ch.id === chapterId)
   if (index === 0) return true
 
-  const previous = CHAPTERS[index - 1]
   // Corrupted/imported sparse state must never use a later chapter or exam
   // record as a substitute for the actual earlier course path.
   if (!CHAPTERS.slice(0, index).every(ch => chapterCompleted(state, ch.id))) return false
 
-  // Crossing a book boundary always requires the previous book's
-  // end-of-book test.
-  if (previous.book !== chapter.book) {
-    if (!examCleared(state, bookExamId(previous.book))) return false
-    // Book 5 has an additional cumulative midpoint gate.
-    if (chapter.book === 5 && !examCleared(state, MIDPOINT_EXAM_ID)) return false
-  }
+  // Every chapter in a later book depends on the whole milestone chain, not
+  // merely the immediately preceding exam record. This keeps sparse imports
+  // from manufacturing a path through book 3+ or around the midpoint gate.
+  const priorBooks = Array.from({ length: Math.max(0, chapter.book - 1) }, (_, offset) => offset + 1)
+  if (!priorBooks.every(book => examCleared(state, bookExamId(book)))) return false
+  if (chapter.book >= 5 && !examCleared(state, MIDPOINT_EXAM_ID)) return false
   return true
 }
 
