@@ -39,6 +39,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Persian is the interface language; English content keeps clear LTR typography.
 - Mobile and tablet are primary. Touch targets must remain comfortable and core functionality must work offline where possible.
 - Progress must be explainable. Learners should always know what is required to unlock the next stage.
+- The in-app mastery badge must not become ready from a final-exam pass record alone: all eight book exams, the midpoint exam and the final exam must be cleared, including any required post-exam remediation.
 - Word-level mastery labels must also be explainable: the glossary may show the actual independent-retrieval evidence and the next missing observable requirement, but never expose a decorative score or imply certainty beyond recorded evidence.
 - Smart Review is the canonical adaptive scheduler. The Leitner box is optional free practice and never competes with, replaces or supplies mastery evidence for Smart Review.
 - Smart Review may reorder only a small local window of the scheduler-selected queue to avoid adjacent same-headword/topic cards; it must preserve the selected set and keep the highest-priority first card fixed.
