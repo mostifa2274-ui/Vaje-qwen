@@ -618,6 +618,35 @@ test('offline audio manager is optional, book-scoped and progress-neutral', asyn
   await expectNoHorizontalOverflow(page)
 })
 
+test('forced-colors mode preserves visible structure, selection and keyboard focus', async ({ page }) => {
+  await page.emulateMedia({ forcedColors: 'active' })
+  await page.goto('/#/map')
+
+  expect(await page.evaluate(() => matchMedia('(forced-colors: active)').matches)).toBe(true)
+
+  const today = page.getByRole('tab', { name: 'امروز', exact: true })
+  await expect(today).toHaveAttribute('aria-selected', 'true')
+  const selectedStyle = await today.evaluate(element => {
+    const style = getComputedStyle(element)
+    return { outlineStyle: style.outlineStyle, borderStyle: style.borderStyle }
+  })
+  expect(selectedStyle.outlineStyle).not.toBe('none')
+  expect(selectedStyle.borderStyle).not.toBe('none')
+
+  const action = page.locator('.next-action-card').getByRole('button').first()
+  await action.focus()
+  const focusStyle = await action.evaluate(element => {
+    const style = getComputedStyle(element)
+    return { outlineStyle: style.outlineStyle, outlineWidth: style.outlineWidth }
+  })
+  expect(focusStyle.outlineStyle).not.toBe('none')
+  expect(parseFloat(focusStyle.outlineWidth)).toBeGreaterThanOrEqual(2)
+
+  await openHomeSection(page, 'مسیر')
+  await expect(page.locator('.book-banner')).toBeVisible()
+  await expectNoHorizontalOverflow(page)
+})
+
 test('settings keeps advanced controls collapsed until requested', async ({ page }) => {
   await page.goto('/#/settings')
   await expect(page.locator('.app-page')).toHaveCount(1)
