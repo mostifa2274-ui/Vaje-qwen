@@ -17,13 +17,13 @@ export function SoundOffNote({ onEnable }: { onEnable: () => void }) {
 
 export function Passage({ text, showTranslation = false }: { text: TestText; showTranslation?: boolean }) {
   if (!showTranslation) {
-    return <p className="test-passage">{text.sentences.map(sentence => sentence.en).join(' ')}</p>
+    return <p className="test-passage" lang="en" dir="ltr">{text.sentences.map(sentence => sentence.en).join(' ')}</p>
   }
   return (
     <ol className="test-passage-lines">
       {text.sentences.map((sentence, index) => (
         <li key={index}>
-          <div className="font-en" dir="ltr">{sentence.en}</div>
+          <div className="font-en" lang="en" dir="ltr">{sentence.en}</div>
           <div className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>{sentence.fa}</div>
         </li>
       ))}
@@ -97,10 +97,10 @@ export function Questions({
         const tried = rejected?.[index] ?? []
         return (
           <li key={index} data-testid={`${prefix}-question`}>
-            <div id={`${prefix}-q${index}`} className="font-en text-base font-bold leading-7" dir="ltr">
+            <div id={`${prefix}-q${index}`} className="font-en text-base font-bold leading-7" lang="en" dir="ltr">
               {index + 1}. {question.q}
             </div>
-            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2" dir="ltr" role="group" aria-labelledby={`${prefix}-q${index}`}>
+            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2" lang="en" dir="ltr" role="group" aria-labelledby={`${prefix}-q${index}`}>
               {question.options.map((option, optionIndex) => {
                 const wrong = tried.includes(optionIndex)
                 let className = 'btn-paper test-option font-en min-h-12 px-3 py-2.5 text-sm leading-6'
@@ -141,12 +141,12 @@ export function QuestionReview({ text, chosen }: { text: TestText; chosen: Array
         const right = answer === question.answer
         return (
           <li key={index} className="test-review-item">
-            <div className="font-en text-sm font-bold leading-7" dir="ltr">{index + 1}. {question.q}</div>
+            <div className="font-en text-sm font-bold leading-7" lang="en" dir="ltr">{index + 1}. {question.q}</div>
             <div className="mt-1 text-sm leading-7">
               <span className={right ? 'review-mark-right' : 'review-mark-wrong'}>{right ? '✓' : '✗'}</span>{' '}
-              پاسخ تو: <span className="font-en" dir="ltr">{answer === null || answer === undefined ? '—' : question.options[answer]}</span>
+              پاسخ تو: <span className="font-en" lang="en" dir="ltr">{answer === null || answer === undefined ? '—' : question.options[answer]}</span>
             </div>
-            {!right && <div className="text-sm font-bold leading-7">پاسخ درست: <span className="font-en" dir="ltr">{question.options[question.answer]}</span></div>}
+            {!right && <div className="text-sm font-bold leading-7">پاسخ درست: <span className="font-en" lang="en" dir="ltr">{question.options[question.answer]}</span></div>}
           </li>
         )
       })}
@@ -173,7 +173,7 @@ export function ListeningReview({
     <details className="test-review-details mt-3">
       <summary>{summary}</summary>
       <div className="mt-3 flex items-center justify-between gap-3">
-        <h4 className="font-en text-base font-bold" dir="ltr">{text.titleEn}</h4>
+        <h4 className="font-en text-base font-bold" lang="en" dir="ltr">{text.titleEn}</h4>
         {soundOn && (
           <button
             type="button"
@@ -255,7 +255,7 @@ export function ReadingTextReview({ text, chosen, summary }: { text: TestText; c
   return (
     <details className="test-review-details mt-3">
       <summary>{summary}</summary>
-      <h4 className="mt-3 font-en text-base font-bold" dir="ltr">{text.titleEn}</h4>
+      <h4 className="mt-3 font-en text-base font-bold" lang="en" dir="ltr">{text.titleEn}</h4>
       <Passage text={text} showTranslation />
       <QuestionReview text={text} chosen={chosen} />
     </details>

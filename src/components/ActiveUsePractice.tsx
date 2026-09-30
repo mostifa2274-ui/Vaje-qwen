@@ -40,11 +40,12 @@ export default function ActiveUsePractice({
         </p>
 
         <label htmlFor={`active-use-${word.id}`} className="mt-4 block font-bold">
-          یک جملهٔ انگلیسی با <span className="font-en" dir="ltr">{word.word}</span>
+          یک جملهٔ انگلیسی با <span className="font-en" lang="en" dir="ltr">{word.word}</span>
         </label>
         <textarea
           id={`active-use-${word.id}`}
           className="answer-input mt-2 min-h-24 w-full font-en"
+          lang="en"
           dir="ltr"
           autoComplete="off"
           spellCheck
@@ -78,9 +79,9 @@ export default function ActiveUsePractice({
         {showComparison && (
           <div className="learning-example mt-4 pt-4">
             <div className="text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>جملهٔ تو</div>
-            <div className="mt-1 font-en leading-7" dir="ltr">{sentence.trim()}</div>
+            <div className="mt-1 font-en leading-7" lang="en" dir="ltr">{sentence.trim()}</div>
             <div className="mt-4 text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>یک نمونهٔ طبیعی</div>
-            <div className="mt-1 font-en leading-7" dir="ltr">{word.ex}</div>
+            <div className="mt-1 font-en leading-7" lang="en" dir="ltr">{word.ex}</div>
             <div className="mt-1 text-xs leading-6" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{word.tr}</div>
 
             <ul className="mt-3 list-disc space-y-1 pr-5 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>

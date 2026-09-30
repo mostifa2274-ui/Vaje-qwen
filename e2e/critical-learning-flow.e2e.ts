@@ -752,7 +752,7 @@ test('an autoplay refusal asks for one tap instead of reporting missing speech',
   await page.evaluate(() => {
     (window as Window & { __ghesseBlockSpeech?: boolean }).__ghesseBlockSpeech = false
   })
-  await page.getByRole('button', { name: `پخش تلفظ ${chapterWords[0].word}` }).click()
+  await page.getByRole('button', { name: 'پخش دوبارهٔ تلفظ واژه' }).click()
   await expect.poll(() => spokenWord(page)).toBe(chapterWords[0].word)
   await expect(page.getByRole('alert')).toHaveCount(0)
   await expect(page.getByRole('button', { name: /واژهٔ بعدی/ })).toBeEnabled()

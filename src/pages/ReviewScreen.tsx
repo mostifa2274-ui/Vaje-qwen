@@ -379,7 +379,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                 {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}
               </>
             ) : (
-              <div data-testid="review-prompt" className={`text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
+              <div data-testid="review-prompt" className={`text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} lang={question.promptDir === 'ltr' ? 'en' : undefined} dir={question.promptDir}>{question.prompt}</div>
             )}
           </div>
 
@@ -392,9 +392,11 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                 id="review-answer"
                 ref={answerInputRef}
                 className="answer-input mt-2 w-full"
+                lang="en"
                 dir="ltr"
                 autoFocus
                 autoComplete="off"
+                autoCorrect="off"
                 autoCapitalize="none"
                 spellCheck={false}
                 enterKeyHint="done"
@@ -415,7 +417,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
               )}
             </div>
           ) : (
-            <div className="mt-6" dir={mode === 'reverse' ? 'rtl' : 'ltr'}>
+            <div className="mt-6" lang={mode === 'reverse' ? undefined : 'en'} dir={mode === 'reverse' ? 'rtl' : 'ltr'}>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {question.options?.map(option => {
                   const isAnswer = option.id === question.answerId
@@ -446,9 +448,9 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
               ) : (
                 <div>
                   <div className="text-xs font-bold" style={{ color: 'var(--crimson-deep)' }}>ترمیم ضعف: {weaknessLabel(mode)}</div>
-                  <div className="mt-1">پاسخ درست: <b className="font-en text-base" dir="ltr">{currentWord.word}</b> — <b>{currentWord.fa}</b></div>
-                  {mode === 'spelling' && currentWord.ipa && <div className="mt-2 font-en" dir="ltr">/{currentWord.ipa}/</div>}
-                  {currentWord.ex && <div className="mt-2 font-en" dir="ltr">{currentWord.ex}</div>}
+                  <div className="mt-1">پاسخ درست: <b className="font-en text-base" lang="en" dir="ltr">{currentWord.word}</b> — <b>{currentWord.fa}</b></div>
+                  {mode === 'spelling' && currentWord.ipa && <div className="mt-2 font-en" lang="en" dir="ltr">/{currentWord.ipa}/</div>}
+                  {currentWord.ex && <div className="mt-2 font-en" lang="en" dir="ltr">{currentWord.ex}</div>}
                   {currentWord.tr && <div className="mt-1" dir="rtl" style={{ color: 'var(--ink-soft)' }}>{currentWord.tr}</div>}
                   <button type="button" className="btn-paper mt-3 px-3 py-2 text-xs" onClick={speakCurrent}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-4 w-4" />شنیدن واژه</span></button>
                   {audioNotice && <div className="paper-note mt-2" role="alert">{audioNotice}</div>}

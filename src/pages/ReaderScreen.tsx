@@ -450,7 +450,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         <section className="lesson-cover-card mt-4 overflow-hidden">
           <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
           <div className="lesson-cover-copy">
-            <div className="min-w-0 font-en text-sm font-bold" dir="ltr">{chapter.titleEn}</div>
+            <div className="min-w-0 font-en text-sm font-bold" lang="en" dir="ltr">{chapter.titleEn}</div>
             <div className="shrink-0 text-left text-xs" style={{ color: 'var(--ink-soft)' }}>
               {faNum(chapter.sentences.length)} جمله · حدود {faNum(readingMinutes)} دقیقه
             </div>
@@ -576,7 +576,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               <div className="text-xs font-extrabold" style={{ color: 'var(--crimson-deep)' }}>
                 سؤال {faNum(checkIndex + 1)} از {faNum(questions.length)}
               </div>
-              <h3 ref={questionHeadingRef} tabIndex={-1} className="mt-2 font-en text-lg font-bold leading-8" dir="ltr">{currentQuestion.prompt}</h3>
+              <h3 ref={questionHeadingRef} tabIndex={-1} className="mt-2 font-en text-lg font-bold leading-8" lang="en" dir="ltr">{currentQuestion.prompt}</h3>
               {currentQuestion.promptHintFa && (
                 <div className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{currentQuestion.promptHintFa}</div>
               )}
@@ -704,7 +704,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             {listeningDone && (
               <details className="test-review-details mt-5">
                 <summary>متن شنیداری و ترجمه‌اش</summary>
-                <h3 className="mt-3 font-en text-base font-bold" dir="ltr">{listeningText.titleEn}</h3>
+                <h3 className="mt-3 font-en text-base font-bold" lang="en" dir="ltr">{listeningText.titleEn}</h3>
                 <Passage text={listeningText} showTranslation />
               </details>
             )}
