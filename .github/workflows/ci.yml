@@ -33,4 +33,4 @@ jobs:
       - name: Run WebKit mobile compatibility smoke
         run: >
           npx playwright test --project=webkit-phone
-          --grep "structural accessibility contract|content security policy|fresh install can open an unloaded lazy route offline|autoplay refusal|listening gate fails closed|story sentences and words play the recorded natural voice|importing a backup asks before replacing progress|stale tab save preserves unrelated progress|chapter 1 enforces"
+          --grep "structural accessibility contract|content security policy|fresh install can open an unloaded lazy route offline|autoplay refusal|listening gate fails closed|story sentences and words play the recorded natural voice|importing a backup asks before replacing progress|stale tab save preserves unrelated progress|cross-tab settings save preserves|cross-tab reset invalidates|tab that replaces progress|chapter 1 enforces"
