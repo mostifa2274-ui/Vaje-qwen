@@ -1392,7 +1392,7 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
 })
 
-test('a sparse imported state cannot bypass the midpoint gate to open the final exam', async ({ page }) => {
+test('sparse imported pass records cannot bypass missing chapters to open the final exam', async ({ page }) => {
   const passed = {
     attempts: 1,
     passed: true,
@@ -1406,7 +1406,10 @@ test('a sparse imported state cannot bypass the midpoint gate to open the final 
     testedWordIds: [],
   }
   await openWithProgress(page, '/exam/final-8', {
-    exams: Object.fromEntries(Array.from({ length: 8 }, (_, index) => [`book-${index + 1}`, { ...passed }])),
+    exams: {
+      ...Object.fromEntries(Array.from({ length: 8 }, (_, index) => [`book-${index + 1}`, { ...passed }])),
+      'midpoint-4': { ...passed },
+    },
   })
 
   await expect(page).toHaveURL(/#\/map$/)
