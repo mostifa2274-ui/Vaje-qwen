@@ -15,7 +15,7 @@ function memoryStorage(): Storage {
 globalThis.localStorage = memoryStorage()
 globalThis.sessionStorage = memoryStorage()
 
-import { clearSessionDrafts, emptyState, importStateJson, loadPersistedState, mergeConcurrentState, requestDurableStorage, resetState, saveState, summarizeProgress } from './store'
+import { clearSessionDrafts, emptyState, importStateJson, loadPersistedState, mergeConcurrentState, replacePersistedState, requestDurableStorage, resetState, saveState, summarizeProgress } from './store'
 
 describe('progress replacement', () => {
   beforeEach(() => {
@@ -97,6 +97,42 @@ describe('progress replacement', () => {
     expect(saveState(recovered!)).toBe(true)
     expect(localStorage.getItem('ghesse:state:v6:backup')).toBe(goodBackup)
     expect(JSON.parse(localStorage.getItem('ghesse:state:v6') ?? '{}').chapters.b1c1.completed).toBe(true)
+  })
+
+  it('explicit replacement aligns primary and backup and discards stale legacy fallbacks', () => {
+    const old = emptyState(1, 'b1c1')
+    old.chapters.b1c1 = {
+      preparedAt: 2,
+      prepAttempts: 1,
+      completed: true,
+      checksCorrect: 10,
+      checksTotal: 10,
+      reads: 1,
+    }
+    expect(saveState(old)).toBe(true)
+
+    const newerOld = { ...old, currentChapter: 'b1c2' }
+    expect(saveState(newerOld)).toBe(true)
+    localStorage.setItem('ghesse:state:v5', JSON.stringify(old))
+
+    const replacement = emptyState(100, 'b1c1')
+    replacement.currentChapter = 'b1c2'
+    replacement.dailyReviewGoal = 20
+    expect(replacePersistedState(replacement)).toBe(true)
+
+    const primary = localStorage.getItem('ghesse:state:v6')
+    const backup = localStorage.getItem('ghesse:state:v6:backup')
+    expect(primary).toBe(JSON.stringify(replacement))
+    expect(backup).toBe(JSON.stringify(replacement))
+    expect(localStorage.getItem('ghesse:state:v5')).toBeNull()
+
+    // If the new primary is later damaged, recovery must restore the explicit
+    // replacement, never the progress that existed before the replacement.
+    localStorage.setItem('ghesse:state:v6', '{}')
+    const recovered = loadPersistedState(200, 'b1c1', ['b1c1', 'b1c2'], [])
+    expect(recovered?.currentChapter).toBe('b1c2')
+    expect(recovered?.dailyReviewGoal).toBe(20)
+    expect(recovered?.chapters).toEqual({})
   })
 
   it('summarizes progress for an import confirmation', () => {
