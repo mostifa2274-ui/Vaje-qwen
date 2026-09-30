@@ -1392,6 +1392,28 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
 })
 
+test('a sparse imported state cannot bypass the midpoint gate to open the final exam', async ({ page }) => {
+  const passed = {
+    attempts: 1,
+    passed: true,
+    passedAt: 2,
+    lastAttemptAt: 2,
+    lastScore: .95,
+    bestScore: .95,
+    lastProductiveScore: .95,
+    bestProductiveScore: .95,
+    missedWordIds: [],
+    testedWordIds: [],
+  }
+  await openWithProgress(page, '/exam/final-8', {
+    exams: Object.fromEntries(Array.from({ length: 8 }, (_, index) => [`book-${index + 1}`, { ...passed }])),
+  })
+
+  await expect(page).toHaveURL(/#\/map$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+})
+
+
 test('the midpoint exam ends with two reading and two listening texts, all required', async ({ page }) => {
   const content = JSON.parse(readFileSync(new URL('../src/data/examTests/midpoint.json', import.meta.url), 'utf8')) as BookTestFixture
   const texts = [...content.reading.slice(0, 2), ...content.listening.slice(0, 2)]
