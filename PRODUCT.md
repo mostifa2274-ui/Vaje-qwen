@@ -27,6 +27,8 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - The task leads; decoration never competes with learning.
 - Do not ask beginners to guess a word before teaching it. The only exception is an explicit learner-chosen prove-known diagnostic: it tests every chapter word by productive English recall and audio meaning recognition, requires 100% first-try coverage, returns to teaching on the first miss, and never grants durable mastery.
 - 100% preparation gates mean coverage, not mastery. Durable mastery requires later spaced retrieval.
+- Graded free-response fields must suppress browser spellcheck/autocorrect/autocomplete assistance where the platform honors those hints; independent recall should reflect the learner, not the keyboard.
+- English learning content must declare `lang="en"` while the Persian-first shell remains `lang="fa" dir="rtl"`, so assistive technology switches pronunciation rules correctly.
 - Reading should feel like reading, not like reviewing flashcards.
 - Comprehension distractors must stay inside the learner's reached language: use earlier chapters or the current story, never future-chapter sentences. Prefer lexically plausible distractors so success reflects comprehension rather than spotting obviously unrelated wording.
 - Once preparation is passed, story text should not visually mark new words.
