@@ -223,7 +223,10 @@ export default function App() {
     setSyncConflict(false)
     const persisted = saveState(next)
     setPersistOk(persisted)
-    if (persisted) signalProgressReplacement()
+    if (persisted) {
+      const replacementToken = signalProgressReplacement()
+      if (replacementToken) progressReplacementTokenRef.current = replacementToken
+    }
     navigate({ name: 'map' }, true)
   }, [navigate])
 
