@@ -198,6 +198,21 @@ export function averageResponseMs(progress: WordProgress): number | undefined {
 }
 
 /**
+ * A card restored from sessionStorage has crossed an interruption boundary, so
+ * wall-clock response time is no longer a trustworthy retrieval-speed signal.
+ * Return undefined rather than manufacturing a fast or slow FSRS grade.
+ */
+export function reliableRetrievalElapsedMs(
+  startedAt: number,
+  gradedAt: number,
+  timingReliable: boolean,
+): number | undefined {
+  if (!timingReliable) return undefined
+  if (!Number.isFinite(startedAt) || !Number.isFinite(gradedAt) || startedAt <= 0 || gradedAt <= startedAt) return undefined
+  return gradedAt - startedAt
+}
+
+/**
  * Approximate probability of recall now. stabilityDays is defined as the
  * interval at which expected recall is about 90%; this is a display/priority
  * signal, not a claim of psychometric precision.
