@@ -231,17 +231,20 @@ function normalizeWordIdArray(v: unknown, validWordIds?: ReadonlySet<string>): s
 function normalizeExam(raw: unknown, now: number, validWordIds?: ReadonlySet<string>): ExamProgress | undefined {
   if (!raw || typeof raw !== 'object') return undefined
   const r = raw as Partial<ExamProgress>
+  const attempts = Math.max(0, Math.floor(num(r.attempts)))
+  const hasAttempt = attempts > 0
+  const passed = hasAttempt && r.passed === true
   return {
-    attempts: Math.max(0, Math.floor(num(r.attempts))),
-    passed: r.passed === true,
-    passedAt: plausibleEvidenceTimestamp(r.passedAt, now),
-    lastAttemptAt: plausibleEvidenceTimestamp(r.lastAttemptAt, now),
-    lastScore: Math.min(1, Math.max(0, num(r.lastScore))),
-    bestScore: Math.min(1, Math.max(0, num(r.bestScore))),
-    lastProductiveScore: Math.min(1, Math.max(0, num(r.lastProductiveScore))),
-    bestProductiveScore: Math.min(1, Math.max(0, num(r.bestProductiveScore))),
-    missedWordIds: normalizeWordIdArray(r.missedWordIds, validWordIds),
-    testedWordIds: normalizeWordIdArray(r.testedWordIds, validWordIds),
+    attempts,
+    passed,
+    passedAt: passed ? plausibleEvidenceTimestamp(r.passedAt, now) : undefined,
+    lastAttemptAt: hasAttempt ? plausibleEvidenceTimestamp(r.lastAttemptAt, now) : undefined,
+    lastScore: hasAttempt ? Math.min(1, Math.max(0, num(r.lastScore))) : 0,
+    bestScore: hasAttempt ? Math.min(1, Math.max(0, num(r.bestScore))) : 0,
+    lastProductiveScore: hasAttempt ? Math.min(1, Math.max(0, num(r.lastProductiveScore))) : 0,
+    bestProductiveScore: hasAttempt ? Math.min(1, Math.max(0, num(r.bestProductiveScore))) : 0,
+    missedWordIds: hasAttempt ? normalizeWordIdArray(r.missedWordIds, validWordIds) : [],
+    testedWordIds: hasAttempt ? normalizeWordIdArray(r.testedWordIds, validWordIds) : [],
   }
 }
 
@@ -625,7 +628,7 @@ export function summarizeProgress(state: GhesseState): ProgressSummary {
   return {
     completedChapters: Object.values(state.chapters).filter(chapter => chapter.completed).length,
     introducedWords: Object.values(state.words).filter(word => word.introduced).length,
-    passedExams: Object.values(state.exams).filter(exam => exam.passed).length,
+    passedExams: Object.values(state.exams).filter(exam => exam.attempts > 0 && exam.passed).length,
   }
 }
 
