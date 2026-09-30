@@ -1,7 +1,7 @@
 import type { RetrievalMode, SkillDimension, WordEntry, WordProgress } from './types'
 import { forgottenStability, inferFsrsGrade, initialDifficulty, initialStability, intervalForRetention, nextDifficulty, retrievability, sameDayStability, successfulStability } from './fsrs'
 import { differentlySpelledHomophones, soundsAlike } from './homophones'
-import { dayKey } from './days'
+import { dayKey, isDelayedLearningEvidence } from './days'
 
 export type ReviewMode = RetrievalMode
 export type ReviewSource = 'review' | 'exam' | 'relearn'
@@ -11,31 +11,6 @@ export function isTypedMode(mode: ReviewMode): boolean {
 }
 
 const DAY = 86_400_000
-
-function utcDayKey(time: number): string {
-  return new Date(time).toISOString().slice(0, 10)
-}
-
-/**
- * A legacy productive-day array may contain UTC day labels but no timestamp
- * for its last productive success. Treat either UTC bucket touched by the
- * learner's current local day as already represented. This deliberately errs
- * toward one extra review day rather than granting false mastery.
- */
-function legacyProductiveBucketCouldCoverLocalDay(days: readonly string[], now: number): boolean {
-  if (days.length === 0) return false
-  const local = dayKey(now)
-  if (days.includes(local)) return true
-  const start = new Date(now)
-  start.setHours(0, 0, 0, 0)
-  const next = new Date(start)
-  next.setDate(next.getDate() + 1)
-  const candidates = new Set([
-    utcDayKey(start.getTime()),
-    utcDayKey(next.getTime() - 1),
-  ])
-  return [...candidates].some(candidate => days.includes(candidate))
-}
 
 export interface ReviewQuestion {
   wordId: string
@@ -198,6 +173,21 @@ export function averageResponseMs(progress: WordProgress): number | undefined {
 }
 
 /**
+ * A card restored from sessionStorage has crossed an interruption boundary, so
+ * wall-clock response time is no longer a trustworthy retrieval-speed signal.
+ * Return undefined rather than manufacturing a fast or slow FSRS grade.
+ */
+export function reliableRetrievalElapsedMs(
+  startedAt: number,
+  gradedAt: number,
+  timingReliable: boolean,
+): number | undefined {
+  if (!timingReliable) return undefined
+  if (!Number.isFinite(startedAt) || !Number.isFinite(gradedAt) || startedAt <= 0 || gradedAt <= startedAt) return undefined
+  return gradedAt - startedAt
+}
+
+/**
  * Approximate probability of recall now. stabilityDays is defined as the
  * interval at which expected recall is about 90%; this is a display/priority
  * signal, not a claim of psychometric precision.
@@ -265,23 +255,36 @@ export function recordRetrieval(
   }
 
   if (correct) {
-    next.lastIndependentSuccessAt = now
     if (progress.lastErrorMode && dimensionForMode(progress.lastErrorMode) === dimensionForMode(mode)) next.lastErrorMode = undefined
-    // Timestamp truth is authoritative for day transitions. This remains
-    // correct even when a migrated legacy array still contains an adjacent
-    // UTC-labelled historical bucket.
+    // A calendar boundary alone is not spaced evidence. Require both a later
+    // learner-local day and at least eight real hours since the previous
+    // spacing-credited independent success. Extra same-day practice must not
+    // reset that anchor and postpone otherwise valid delayed evidence.
     const isNewSuccessDay = progress.lastIndependentSuccessAt === undefined
-      || dayKey(progress.lastIndependentSuccessAt) !== day
-    if (!next.successDays.includes(day)) next.successDays.push(day)
+      || isDelayedLearningEvidence(progress.lastIndependentSuccessAt, now)
+    if (isNewSuccessDay) {
+      next.lastIndependentSuccessAt = now
+      if (!next.successDays.includes(day)) next.successDays.push(day)
+    }
     next.successDays.sort()
 
     if (mode === 'productive' || mode === 'contextProductive' || mode === 'spelling') {
       next.productiveCorrect = progress.productiveCorrect + 1
-      const isNewProductiveDay = progress.lastProductiveSuccessAt !== undefined
-        ? dayKey(progress.lastProductiveSuccessAt) !== day
-        : !legacyProductiveBucketCouldCoverLocalDay(progress.productiveSuccessDays ?? [], now)
-      next.lastProductiveSuccessAt = now
-      if (isNewProductiveDay && !next.productiveSuccessDays.includes(day)) next.productiveSuccessDays.push(day)
+      const priorProductiveDays = progress.productiveSuccessDays ?? []
+      const hadProductiveTimestamp = progress.lastProductiveSuccessAt !== undefined
+      const isNewProductiveDay = hadProductiveTimestamp
+        ? isDelayedLearningEvidence(progress.lastProductiveSuccessAt!, now)
+        // Older state can have productive day labels but no trustworthy
+        // timestamp. Do not invent another spaced day from unknowable evidence.
+        : priorProductiveDays.length === 0
+      if (isNewProductiveDay) {
+        next.lastProductiveSuccessAt = now
+        if (!next.productiveSuccessDays.includes(day)) next.productiveSuccessDays.push(day)
+      } else if (!hadProductiveTimestamp && priorProductiveDays.length > 0) {
+        // Anchor legacy timing from the first new productive success without
+        // granting a new day; subsequent evidence must be delayed from here.
+        next.lastProductiveSuccessAt = now
+      }
       next.productiveSuccessDays.sort()
     }
 

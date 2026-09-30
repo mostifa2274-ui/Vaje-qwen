@@ -11,6 +11,7 @@ import {
   isTypedMode,
   modeForProgress,
   recordRetrieval,
+  reliableRetrievalElapsedMs,
   seededSample,
   selectWeakestWordIds,
   troubleWordIds,
@@ -103,6 +104,8 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
   const [audioReady, setAudioReady] = useState(false)
   const [gradedCard, setGradedCard] = useState<{ key: string; mode: RetrievalMode } | null>(null)
   const startedAtRef = useRef(0)
+  const timingReliableRef = useRef(!initialDraft)
+  const firstTimingEffectRef = useRef(true)
   const cardRef = useRef<HTMLDivElement>(null)
   const answerInputRef = useRef<HTMLInputElement>(null)
   const nextCardRef = useRef<HTMLButtonElement>(null)
@@ -127,6 +130,11 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   useEffect(() => {
     startedAtRef.current = Date.now()
+    if (firstTimingEffectRef.current) {
+      firstTimingEffectRef.current = false
+      return
+    }
+    timingReliableRef.current = true
   }, [currentId, attemptNumber])
 
   useEffect(() => {
@@ -233,8 +241,10 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     if (!currentId || !currentWord || feedback) return
     if (!progress && !practiceSession) return
     if (answerLocked) return
+    const gradedAt = Date.now()
+    const elapsedMs = reliableRetrievalElapsedMs(startedAtRef.current, gradedAt, timingReliableRef.current)
+    timingReliableRef.current = true
     if (resumedDraft) setResumedDraft(false)
-    const elapsedMs = Date.now() - startedAtRef.current
     const source = (attemptNumber[currentId] ?? 0) > 0 ? 'relearn' : 'review'
     const nextCorrectCount = correct && source === 'review' ? correctCount + 1 : correctCount
     const nextRelearnedCount = correct && source === 'relearn' ? relearnedCount + 1 : relearnedCount
@@ -266,7 +276,6 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
       updatedAt: Date.now(),
     }, introduced)
 
-    const gradedAt = Date.now()
     const nextProgress = recordRetrieval(progress, correct, mode, gradedAt, source, elapsedMs)
     let candidate = { ...state, words: { ...state.words, [currentId]: nextProgress } }
     if (source === 'relearn') candidate = creditGradedEffort(candidate, gradedAt)
