@@ -323,7 +323,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
     const grades = gradeOptions(typedResult)
     const primary: LeitnerGrade = grades.some(item => item.result === 'good') ? 'good' : 'again'
     const frontWord = (
-      <div className="flashcard-word font-en" dir="ltr">{word.word}</div>
+      <div className="flashcard-word font-en" lang="en" dir="ltr">{word.word}</div>
     )
     const speakerButton = (label: string, big = false): ReactNode => state.soundOn && (
       <button type="button" className={`btn-paper ${big ? 'flashcard-listen' : 'flashcard-speaker'}`} onClick={() => speak(word.word, 'w')} aria-label={label}>
@@ -351,7 +351,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
                 {face === 'enFa' && (
                   <>
                     {frontWord}
-                    {word.ipa && <div className="flashcard-ipa font-en" dir="ltr">{word.ipa}</div>}
+                    {word.ipa && <div className="flashcard-ipa font-en" lang="en" dir="ltr">{word.ipa}</div>}
                     <div className="mt-3 flex justify-center">{speakerButton('شنیدن تلفظ')}</div>
                   </>
                 )}
@@ -379,7 +379,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
                 <div className="flashcard-pos">{persianPartOfSpeech(word.pos)}</div>
                 {word.ex && (
                   <div className="flashcard-example">
-                    <div className="flex items-start gap-2" dir="ltr">
+                    <div className="flex items-start gap-2" lang="en" dir="ltr">
                       <p className="font-en flex-1">{word.ex}</p>
                       {state.soundOn && (
                         <button type="button" className="btn-quiet flashcard-example-play" onClick={() => speak(word.ex, 's')} aria-label="شنیدن جملهٔ نمونه">
@@ -411,8 +411,10 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
               id="flashcard-answer"
               ref={answerRef}
               className="answer-input mt-2 w-full"
+              lang={face === 'enFa' ? 'fa' : 'en'}
               dir={face === 'enFa' ? 'rtl' : 'ltr'}
               autoComplete="off"
+              autoCorrect="off"
               autoCapitalize="none"
               spellCheck={false}
               enterKeyHint="done"
@@ -587,7 +589,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
                   return (
                     <li key={id}>
                       <button type="button" className="glossary-row" onClick={() => setGloss(entry)}>
-                        <span className="glossary-word font-en" dir="ltr">{entry.word}</span>
+                        <span className="glossary-word font-en" lang="en" dir="ltr">{entry.word}</span>
                         <span className="glossary-meaning" dir="rtl">{entry.fa}</span>
                         {due && <span className="glossary-status" dir="rtl">{afterLabel(Math.max(0, daysUntil(due.dueAt, now)))}</span>}
                       </button>
