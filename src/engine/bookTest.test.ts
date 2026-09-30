@@ -186,6 +186,16 @@ describe('end-of-book test', () => {
     }
   })
 
+  it('does not record an end-of-book attempt when its progression gate is closed', () => {
+    const state = emptyState(1, 'b1c1')
+    const test = buildBookTest(1, state, 1)!
+    const answers = perfectAnswers(test)
+    const next = recordBookTest(state, test, answers, scoreBookTest(test, answers), 100)
+
+    expect(next).toBe(state)
+    expect(next.exams[bookExamId(1)]).toBeUndefined()
+  })
+
   it('widens vocabulary coverage on a retake', () => {
     let state = stateThroughBook(1)
     const first = buildBookTest(1, state, 1)!

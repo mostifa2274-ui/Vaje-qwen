@@ -2,7 +2,7 @@ import { CHAPTERS, VOCAB, chaptersOfBook } from '../data/chapters'
 import type { GhesseState, SkillDimension } from './types'
 import { durableCoverage, masteredCoverage, masteryCounts, skillCoverage } from './mastery'
 import { dueWordIds, retentionEstimate, troubleWordIds } from './review'
-import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookCompleted, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examCleared, examDefinition, examPassed, examRemediationWordIds } from './gates'
+import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookCompleted, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, courseChaptersCompleted, examCleared, examDefinition, examPassed, examRemediationWordIds } from './gates'
 import { bookConsolidation, type BookConsolidation } from './consolidation'
 import { faNum } from './format'
 
@@ -107,6 +107,7 @@ export function bookHealth(state: GhesseState, book: number, now = Date.now()): 
 export interface CertificationStatus {
   finalExamPassed: boolean
   requiredExamsCleared: boolean
+  chaptersCompleted: boolean
   masteredCoverage: number
   durableCoverage: number
   productiveCoverage: number
@@ -126,9 +127,11 @@ export function certificationStatus(state: GhesseState, now = Date.now()): Certi
     FINAL_EXAM_ID,
   ]
   const requiredExamsCleared = requiredExamIds.every(id => examCleared(state, id))
+  const chaptersCompleted = courseChaptersCompleted(state)
   const missing: string[] = []
   if (!finalExamPassed) missing.push('قبولی در آزمون نهایی')
   else if (!requiredExamsCleared) missing.push('تکمیل و ترمیم همهٔ آزمون‌های مسیر')
+  if (!chaptersCompleted) missing.push('تکمیل همهٔ فصل‌های مسیر')
   if (health.introduced < VOCAB.length) missing.push('تکمیل همهٔ ۸۹۹ واژه')
   if (health.masteredCoverage < 0.95) missing.push('تسلط پایدار روی دست‌کم ۹۵٪ واژه‌ها')
   if (health.durableCoverage < 1) missing.push('قوی یا مسلط بودن همهٔ ۸۹۹ واژه')
@@ -139,6 +142,7 @@ export function certificationStatus(state: GhesseState, now = Date.now()): Certi
   return {
     finalExamPassed,
     requiredExamsCleared,
+    chaptersCompleted,
     masteredCoverage: health.masteredCoverage,
     durableCoverage: health.durableCoverage,
     productiveCoverage: health.productiveCoverage,

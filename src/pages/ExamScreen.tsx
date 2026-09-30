@@ -187,8 +187,12 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const scored = scoreExam(built, nextAnswers, nextComprehension)
     const skipped = built.questions.some(item => nextAnswers[item.index] === undefined)
       || [...nextComprehension.reading, ...nextComprehension.listening].some(chosen => !textAnswered(chosen))
-    setPractice(skipped)
-    if (preview || skipped) {
+    // Re-check immediately before persistence. A route was valid when this
+    // attempt started, but replacement/sparse state must never let a stale
+    // screen commit cumulative exam evidence after its prerequisites vanish.
+    const gateStillOpen = canTakeExam(state, examId)
+    setPractice(skipped || !gateStillOpen)
+    if (preview || skipped || !gateStillOpen) {
       setResult(scored)
       return
     }
