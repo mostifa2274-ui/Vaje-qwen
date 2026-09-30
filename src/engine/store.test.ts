@@ -15,7 +15,7 @@ function memoryStorage(): Storage {
 globalThis.localStorage = memoryStorage()
 globalThis.sessionStorage = memoryStorage()
 
-import { clearSessionDrafts, emptyState, importStateJson, mergeConcurrentState, requestDurableStorage, resetState, saveState, summarizeProgress } from './store'
+import { clearSessionDrafts, emptyState, importStateJson, loadPersistedState, mergeConcurrentState, requestDurableStorage, resetState, saveState, summarizeProgress } from './store'
 
 describe('progress replacement', () => {
   beforeEach(() => {
@@ -68,6 +68,35 @@ describe('progress replacement', () => {
 
     expect(localStorage.getItem('ghesse:state:v6:backup')).toBe(goodBackup)
     expect(localStorage.getItem('ghesse:state:v6')).toContain('"currentChapter":"b1c3"')
+  })
+
+  it('falls back from parseable structural corruption and preserves that backup during repair', () => {
+    const first = emptyState(1, 'b1c1')
+    first.chapters.b1c1 = {
+      preparedAt: 2,
+      prepAttempts: 1,
+      completed: true,
+      checksCorrect: 10,
+      checksTotal: 10,
+      reads: 1,
+    }
+    expect(saveState(first)).toBe(true)
+
+    const second = { ...first, currentChapter: 'b1c2' }
+    expect(saveState(second)).toBe(true)
+    const goodBackup = localStorage.getItem('ghesse:state:v6:backup')
+    expect(goodBackup).toContain('"completed":true')
+
+    // Valid JSON, but not a recognizable Ghesse state. This must not mask the
+    // rolling backup or be promoted into that backup during startup repair.
+    localStorage.setItem('ghesse:state:v6', '{}')
+    const recovered = loadPersistedState(100, 'b1c1', ['b1c1', 'b1c2'], [])
+    expect(recovered?.chapters.b1c1?.completed).toBe(true)
+    expect(recovered?.currentChapter).toBe('b1c1')
+
+    expect(saveState(recovered!)).toBe(true)
+    expect(localStorage.getItem('ghesse:state:v6:backup')).toBe(goodBackup)
+    expect(JSON.parse(localStorage.getItem('ghesse:state:v6') ?? '{}').chapters.b1c1.completed).toBe(true)
   })
 
   it('summarizes progress for an import confirmation', () => {
