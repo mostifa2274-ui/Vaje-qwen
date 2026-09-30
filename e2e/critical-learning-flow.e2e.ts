@@ -1695,6 +1695,55 @@ test('backup import rejects unrelated JSON before replacement confirmation', asy
 })
 
 
+test('startup recovers a valid rolling backup when primary storage is parseable but structurally corrupt', async ({ page }) => {
+  const backup = JSON.stringify({
+    version: 6,
+    dayEvidenceVersion: 1,
+    currentChapter: 'b1c1',
+    chapters: {
+      b1c1: {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        completedAt: 2,
+        lastReadAt: 2,
+        checksCorrect: 10,
+        checksTotal: 10,
+        listeningCorrect: 5,
+        listeningTotal: 5,
+        reads: 1,
+      },
+    },
+    words: {},
+    exams: {},
+    soundOn: true,
+    showFaDefault: false,
+    narratorVoiceURI: '',
+    narratorRate: 0.92,
+    dailyReviewGoal: 15,
+    exploreAll: false,
+    activity: {},
+    created: 1,
+  })
+
+  await page.addInitScript(({ backup }) => {
+    window.localStorage.setItem('ghesse:state:v6', '{}')
+    window.localStorage.setItem('ghesse:state:v6:backup', backup)
+  }, { backup })
+
+  await page.goto('/#/map')
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+  const stored = await page.evaluate(() => ({
+    primary: JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}'),
+    backup: window.localStorage.getItem('ghesse:state:v6:backup'),
+  }))
+  expect(stored.primary.chapters?.b1c1?.completed).toBe(true)
+  expect(stored.backup).toBe(backup)
+  await expect(page.getByText('ذخیره‌سازی مرورگر در دسترس نیست')).toHaveCount(0)
+})
+
+
 test('malformed encoded routes recover to the map instead of crashing', async ({ page }) => {
   await page.goto('/#/read/%E0%A4%A')
   await expect(page).toHaveURL(/#\/map$/)

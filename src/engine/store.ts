@@ -302,7 +302,9 @@ function parseStored(
 ): GhesseState | undefined {
   if (!raw) return undefined
   try {
-    return normalizeState(JSON.parse(raw), now, firstChapterId, validChapterIds, validWordIds)
+    const parsed = JSON.parse(raw)
+    if (!isRecognizableProgressState(parsed)) return undefined
+    return normalizeState(parsed, now, firstChapterId, validChapterIds, validWordIds)
   } catch {
     return undefined
   }
@@ -345,7 +347,7 @@ function isPlainRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value && typeof value === 'object' && !Array.isArray(value))
 }
 
-function isRecognizableProgressBackup(raw: unknown): boolean {
+function isRecognizableProgressState(raw: unknown): boolean {
   if (!isPlainRecord(raw)) return false
   const version = raw.version
   if (typeof version !== 'number' || !Number.isInteger(version) || version < 1 || version > CURRENT_STATE_VERSION) return false
@@ -373,7 +375,7 @@ export function importStateJson(
   } catch {
     throw new Error('فایل پیشرفت JSON معتبر نیست.')
   }
-  if (!isRecognizableProgressBackup(raw)) throw new Error('این فایل پشتیبان معتبر قصه نیست.')
+  if (!isRecognizableProgressState(raw)) throw new Error('این فایل پشتیبان معتبر قصه نیست.')
   const state = normalizeState(
     raw,
     now,
@@ -385,10 +387,9 @@ export function importStateJson(
   return state
 }
 
-function isValidStoredObject(raw: string): boolean {
+function isValidStoredState(raw: string): boolean {
   try {
-    const parsed = JSON.parse(raw)
-    return Boolean(parsed && typeof parsed === 'object' && !Array.isArray(parsed))
+    return isRecognizableProgressState(JSON.parse(raw))
   } catch {
     return false
   }
@@ -415,11 +416,11 @@ export function saveState(state: GhesseState): boolean {
     const previous = localStorage.getItem(STORAGE_KEY)
     const next = JSON.stringify(state)
 
-    // Rotate only a parseable previous primary into the backup slot. If the
-    // primary was corrupted and loadState recovered from the backup, the
-    // startup save must repair the primary without destroying that last-known
-    // good backup with the corrupted bytes.
-    if (previous && previous !== next && isValidStoredObject(previous)) {
+    // Rotate only a structurally recognizable previous primary into backup.
+    // Parseable-but-malformed objects such as {} are corruption too: if startup
+    // recovered from the backup, repairing primary must not overwrite the
+    // last-known good backup with those malformed bytes.
+    if (previous && previous !== next && isValidStoredState(previous)) {
       localStorage.setItem(BACKUP_KEY, previous)
     }
 
