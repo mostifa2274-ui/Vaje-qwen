@@ -165,6 +165,7 @@ export default function App() {
   const [dismissedCommit, setDismissedCommit] = useState<string | null>(null)
   const [progressRevision, setProgressRevision] = useState(0)
   const stateRef = useRef(state)
+  const progressReplacementTokenRef = useRef<string | null>(null)
   const mainRef = useRef<HTMLElement>(null)
   const routeFocusReadyRef = useRef(false)
 
@@ -309,6 +310,15 @@ export default function App() {
     }
   }, [])
   useEffect(() => {
+    const replacementToken = () => {
+      try {
+        return localStorage.getItem(PROGRESS_REPLACEMENT_KEY)
+      } catch {
+        return null
+      }
+    }
+    progressReplacementTokenRef.current = replacementToken()
+
     const applyPersistedState = (replacement: boolean) => {
       if (replacement) {
         // sessionStorage is tab-local, so the tab that performed a reset/import
@@ -326,12 +336,18 @@ export default function App() {
       setSyncConflict(false)
     }
     const onStorage = (event: StorageEvent) => {
-      if (event.key === PROGRESS_REPLACEMENT_KEY) {
-        applyPersistedState(true)
-        return
-      }
-      if (event.key !== STORAGE_KEY) return
-      applyPersistedState(false)
+      if (event.key !== STORAGE_KEY && event.key !== PROGRESS_REPLACEMENT_KEY) return
+
+      // localStorage writes are synchronous in the source tab. By the time this
+      // tab receives the earlier STORAGE_KEY event, the replacement marker has
+      // already been written too. Detect it immediately instead of waiting for
+      // the marker's later storage event and leaving a render/effect window in
+      // which stale task state could run.
+      const token = replacementToken()
+      const replacement = token !== progressReplacementTokenRef.current
+      progressReplacementTokenRef.current = token
+      if (event.key === PROGRESS_REPLACEMENT_KEY && !replacement) return
+      applyPersistedState(replacement)
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
