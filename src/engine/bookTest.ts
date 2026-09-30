@@ -1,7 +1,7 @@
 import { VOCAB, WORD_BY_ID } from '../data/chapters'
 import { BOOK_TEST_CONTENT, type TestText } from '../data/bookTests'
 import type { ExamProgress, GhesseState, WordEntry } from './types'
-import { bookExamId } from './gates'
+import { bookExamId, canTakeExam } from './gates'
 import { listeningChoiceOptions, recordRetrieval, seededSample, selectWeakestWordIds } from './review'
 import { isHeadwordTranslationCorrect } from './persianTranslation'
 import { sameHeadwordEntries } from './homophones'
@@ -332,6 +332,9 @@ export function recordBookTest(
   now: number,
   timings: Record<string, number> = {},
 ): GhesseState {
+  const id = bookExamId(test.book)
+  if (!canTakeExam(state, id)) return state
+
   const words = { ...state.words }
   const record = (wordId: string, correct: boolean, elapsed: number | undefined) => {
     const progress = words[wordId]
@@ -340,7 +343,6 @@ export function recordBookTest(
   test.translation.forEach((item, index) => record(item.wordId, translationCorrect(test, index, answers.translation[index]), timings[`translation:${index}`]))
   test.listeningWords.forEach((item, index) => record(item.wordId, listeningWordCorrect(test, index, answers.listeningWords[index]), timings[`listeningWords:${index}`]))
 
-  const id = bookExamId(test.book)
   const previous = state.exams[id]
   const tested = [...test.translation, ...test.listeningWords].map(item => item.wordId)
   const translationScore = result.sections.translation.score
