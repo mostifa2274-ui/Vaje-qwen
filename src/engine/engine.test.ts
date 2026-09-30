@@ -423,6 +423,36 @@ describe('chapter prep and gate progression', () => {
     expect(canPrepareChapter(state, 'b2c1')).toBe(true)
   })
 
+  it('requires earlier book exams before a later end-of-book exam', () => {
+    const state = emptyState(1, 'b1c1')
+    for (const ch of CHAPTERS.filter(ch => ch.book <= 2)) {
+      state.chapters[ch.id] = {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      }
+    }
+    consolidateBook(state, 2)
+    expect(canTakeExam(state, bookExamId(2))).toBe(false)
+
+    state.exams[bookExamId(1)] = {
+      attempts: 1,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+    expect(canTakeExam(state, bookExamId(2))).toBe(true)
+  })
+
   it('requires the midpoint gate before the final exam even in sparse imported state', () => {
     const state = emptyState(1, 'b1c1')
     const passed = {
@@ -905,6 +935,15 @@ describe('mastery certification', () => {
     expect(action.title).toBe('معیارهای دوره کامل شد')
     expect(action.detail).toContain('درون‌برنامه‌ای')
     expect(action.detail).toContain('سنجش مستقل')
+
+    // Sparse imported/corrupted chapter evidence must revoke readiness even
+    // when every word metric and every exam record still looks complete.
+    delete state.chapters[CHAPTERS[0].id]
+    const sparseCertification = certificationStatus(state, now)
+    expect(sparseCertification.requiredExamsCleared).toBe(true)
+    expect(sparseCertification.chaptersCompleted).toBe(false)
+    expect(sparseCertification.ready).toBe(false)
+    expect(sparseCertification.missing).toContain('تکمیل همهٔ فصل‌های مسیر')
   })
 
   it('cannot be earned by passing the final exam alone', () => {
