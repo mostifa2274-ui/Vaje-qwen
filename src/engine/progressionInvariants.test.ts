@@ -160,6 +160,47 @@ describe('progression gate invariants', () => {
     expect(canPrepareChapter(state, 'b6c1')).toBe(true)
   })
 
+  it('keeps completed content rereadable while old remediation still blocks new progression', () => {
+    const state = emptyState(1, 'b1c1')
+    for (const chapter of CHAPTERS.filter(ch => ch.book < 6 || ch.id === 'b6c1')) {
+      state.chapters[chapter.id] = {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      }
+    }
+    const passed = {
+      attempts: 1,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+    for (const book of [1, 2, 3, 4, 5]) state.exams[bookExamId(book)] = { ...passed }
+    state.exams[MIDPOINT_EXAM_ID] = { ...passed }
+
+    const missedId = CHAPTERS[0].new[0]
+    state.exams[bookExamId(1)] = {
+      ...passed,
+      lastAttemptAt: 100,
+      missedWordIds: [missedId],
+      testedWordIds: [missedId],
+    }
+
+    expect(canPrepareChapter(state, 'b6c1')).toBe(false)
+    expect(canReadChapter(state, 'b6c1')).toBe(true)
+    expect(canPrepareChapter(state, 'b6c2')).toBe(false)
+    expect(canReadChapter(state, 'b6c2')).toBe(false)
+  })
+
   it('never lets a perfectly forged later chapter skip its unfinished predecessor', () => {
     const first = CHAPTERS[0]
     const second = CHAPTERS[1]
