@@ -1888,6 +1888,51 @@ test('an ordinary cross-tab settings save preserves this tab\'s active prep draf
 })
 
 
+test('the tab that replaces progress does not misclassify a later ordinary cross-tab save', async ({ page, context }) => {
+  await page.goto('/#/settings')
+  await page.getByRole('button', { name: 'پاک کردن پیشرفت' }).click()
+  await page.getByRole('group', { name: 'تأیید پاک کردن پیشرفت' }).getByRole('button', { name: 'بله، پاک کن' }).click()
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+  const wordIds = chapter.new
+  const draft = {
+    version: 1,
+    chapterId: 'b1c1',
+    phase: 'listening',
+    teachIndex: wordIds.length - 1,
+    writtenQueue: [],
+    writtenPassed: wordIds,
+    writtenMissed: [],
+    listeningQueue: [wordIds[0]],
+    listeningPassed: wordIds.slice(1),
+    listeningMissed: [],
+    feedback: null,
+    selected: '',
+    typed: '',
+    updatedAt: Date.now(),
+  }
+  await page.evaluate(({ draft }) => {
+    window.sessionStorage.setItem('ghesse:prep:v1:b1c1', JSON.stringify(draft))
+  }, { draft })
+  await page.goto('/#/prep/b1c1')
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
+
+  const other = await context.newPage()
+  await other.goto('/#/settings')
+  await other.getByRole('group', { name: 'هدف روزانه' }).getByRole('button', { name: faNum(20), exact: true }).click()
+
+  await expect.poll(async () => page.evaluate(() => (
+    JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').dailyReviewGoal
+  ))).toBe(20)
+  await expect(page.getByText('شنیداری · ۱۰۰٪')).toBeVisible()
+  const survivingDraft = await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))
+  expect(survivingDraft).not.toBeNull()
+  expect(JSON.parse(survivingDraft!).phase).toBe('listening')
+
+  await other.close()
+})
+
+
 test('a cross-tab reset invalidates this tab\'s active prep draft before it can restore progress', async ({ page, context }) => {
   const wordIds = chapter.new
   const backupState = {
