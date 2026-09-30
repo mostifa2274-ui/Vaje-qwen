@@ -150,7 +150,7 @@ function storyPresenceOptions(
   target: number,
   fraction: number,
   seed: string,
-): ReadingOption[] {
+): ReadingOption[] | undefined {
   const answerLabel = chapter.sentences[target].en
   const answerWords = contentWords(answerLabel)
   const chapterWords = contentWords(chapter.sentences.map(sentence => sentence.en).join(' '))
@@ -183,26 +183,43 @@ function storyPresenceOptions(
     .slice(0, 3)
     .map(({ id, label }) => ({ id, label }))
 
-  // Production always supplies all 40 chapters. Keep a deterministic fallback
-  // for isolated unit/integration consumers without making the builder fragile.
-  if (distractors.length < 3) {
-    const fallback = sentenceOptions(chapter, 'en', target, `${seed}:fallback`)
-      .filter(option => option.id !== `sentence-${target}`)
-      .map(option => ({ ...option, id: `fallback-${option.id}` }))
-    for (const option of fallback) {
-      const normalized = option.label.trim().toLowerCase()
-      if (seen.has(normalized)) continue
-      seen.add(normalized)
-      distractors.push(option)
-      if (distractors.length === 3) break
-    }
-  }
+  // A presence question is valid only when all three distractors are events
+  // that did NOT happen in this chapter. Never fill a missing external event
+  // with another sentence from the current story: that would make multiple
+  // choices literally true. The caller replaces an under-supplied presence
+  // question with an exact adjacent-sequence question instead.
+  if (distractors.length < 3) return undefined
 
   const answerId = `story-${chapter.id}-${target}`
   return [
     { id: answerId, label: answerLabel },
     ...distractors,
   ].sort((a, b) => seededRank(`${seed}:shuffle`, a.id) - seededRank(`${seed}:shuffle`, b.id))
+}
+
+function adjacentSequenceFallback(
+  chapter: Chapter,
+  stem: (name: Stem) => Pick<ReadingQuestion, 'prompt' | 'promptHintFa'>,
+  slot: number,
+  fraction: number,
+  seed: string,
+): ReadingQuestion {
+  const after = slot === 2
+  const length = chapter.sentences.length
+  const anchor = after
+    ? Math.max(0, Math.min(length - 2, Math.round((length - 2) * fraction)))
+    : Math.max(1, Math.min(length - 1, Math.round((length - 2) * fraction) + 1))
+  const target = after ? anchor + 1 : anchor - 1
+
+  return {
+    id: `${chapter.id}:story-event:${slot}:adjacent-fallback`,
+    ...stem(after ? 'next' : 'previous'),
+    context: chapter.sentences[anchor].en,
+    contextDir: 'ltr',
+    optionDir: 'ltr',
+    options: sentenceOptions(chapter, 'en', target, `${seed}:adjacent`),
+    answerId: `sentence-${target}`,
+  }
 }
 
 function sequenceAnchorIndices(chapter: Chapter): number[] {
@@ -284,18 +301,26 @@ export function buildReadingQuestions(
   })
 
   // Which event belongs to this chapter: early, in the middle and near the
-  // end. Distractors come only from chapters the learner has already reached;
-  // very early chapters deterministically fall back to other sentences from
-  // the current story until three prior chapters exist.
+  // end. A presence question needs three genuinely external events from
+  // already-reached chapters. If that evidence pool is too small (especially
+  // in the first chapters), use an exact adjacent-sequence question instead
+  // of making other true sentences from this story pretend to be distractors.
   for (const [slot, fraction, name] of [[2, 0.15, 'early'], [0, 0.42, 'inChapter'], [1, 0.84, 'nearEnd']] as const) {
     const target = targetIndex(enIndices, fraction, usedEn)
-    const answerId = `story-${chapter.id}-${target}`
+    const seed = `${chapter.id}:story-event:${slot}`
+    const options = storyPresenceOptions(chapter, knownChapters, target, fraction, seed)
+
+    if (!options) {
+      questions.push(adjacentSequenceFallback(chapter, stem, slot, fraction, seed))
+      continue
+    }
+
     questions.push({
       id: `${chapter.id}:story-event:${slot}`,
       ...stem(name),
       optionDir: 'ltr',
-      options: storyPresenceOptions(chapter, knownChapters, target, fraction, `${chapter.id}:story-event:${slot}`),
-      answerId,
+      options,
+      answerId: `story-${chapter.id}-${target}`,
     })
   }
 
