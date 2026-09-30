@@ -1,7 +1,8 @@
 import type { GhesseState, WordProgress } from './types'
+import { CHAPTER_BY_ID } from '../data/chapters'
 import { blankWordProgress, scheduleAfterChapter } from './review'
 import { LISTENING_QUESTION_COUNT, READING_QUESTION_COUNT } from './comprehension'
-import { canPrepareChapter } from './gates'
+import { canPrepareChapter, canReadChapter } from './gates'
 
 export function recordPreparedChapter(
   state: GhesseState,
@@ -13,6 +14,10 @@ export function recordPreparedChapter(
   listeningMissedIds: readonly string[],
   now: number,
 ): GhesseState {
+  // Synthetic chapter ids are used by isolated engine tests, but every real
+  // course chapter must still be reachable when evidence is committed.
+  if (CHAPTER_BY_ID.has(chapterId) && !canPrepareChapter(state, chapterId)) return state
+
   const previous = state.chapters[chapterId]
   const writtenPassed = new Set(writtenPassedIds)
   const listeningPassed = new Set(listeningPassedIds)
@@ -152,6 +157,8 @@ export function recordCompletedRead(
   chapterOrder: readonly string[],
   successorId?: string,
 ): GhesseState {
+  if (CHAPTER_BY_ID.has(chapterId) && !canReadChapter(state, chapterId)) return state
+
   const previous = state.chapters[chapterId]
 
   const hasCurrentPrepGate = Boolean(
