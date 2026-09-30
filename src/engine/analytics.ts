@@ -2,7 +2,7 @@ import { CHAPTERS, VOCAB, chaptersOfBook } from '../data/chapters'
 import type { GhesseState, SkillDimension } from './types'
 import { durableCoverage, masteredCoverage, masteryCounts, skillCoverage } from './mastery'
 import { dueWordIds, retentionEstimate, troubleWordIds } from './review'
-import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookCompleted, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examDefinition, examPassed, examRemediationWordIds } from './gates'
+import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookCompleted, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examCleared, examDefinition, examPassed, examRemediationWordIds } from './gates'
 import { bookConsolidation, type BookConsolidation } from './consolidation'
 import { faNum } from './format'
 
@@ -106,6 +106,7 @@ export function bookHealth(state: GhesseState, book: number, now = Date.now()): 
 
 export interface CertificationStatus {
   finalExamPassed: boolean
+  requiredExamsCleared: boolean
   masteredCoverage: number
   durableCoverage: number
   productiveCoverage: number
@@ -119,8 +120,15 @@ export interface CertificationStatus {
 export function certificationStatus(state: GhesseState, now = Date.now()): CertificationStatus {
   const health = learningHealth(state, now)
   const finalExamPassed = examPassed(state, FINAL_EXAM_ID)
+  const requiredExamIds = [
+    ...Array.from({ length: 8 }, (_, index) => bookExamId(index + 1)),
+    MIDPOINT_EXAM_ID,
+    FINAL_EXAM_ID,
+  ]
+  const requiredExamsCleared = requiredExamIds.every(id => examCleared(state, id))
   const missing: string[] = []
   if (!finalExamPassed) missing.push('قبولی در آزمون نهایی')
+  else if (!requiredExamsCleared) missing.push('تکمیل و ترمیم همهٔ آزمون‌های مسیر')
   if (health.introduced < VOCAB.length) missing.push('تکمیل همهٔ ۸۹۹ واژه')
   if (health.masteredCoverage < 0.95) missing.push('تسلط پایدار روی دست‌کم ۹۵٪ واژه‌ها')
   if (health.durableCoverage < 1) missing.push('قوی یا مسلط بودن همهٔ ۸۹۹ واژه')
@@ -130,6 +138,7 @@ export function certificationStatus(state: GhesseState, now = Date.now()): Certi
   if (health.overdueLong > 0) missing.push('تکمیل مرورهای بیش از ۳ روز عقب‌افتاده')
   return {
     finalExamPassed,
+    requiredExamsCleared,
     masteredCoverage: health.masteredCoverage,
     durableCoverage: health.durableCoverage,
     productiveCoverage: health.productiveCoverage,
