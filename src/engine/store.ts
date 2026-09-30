@@ -232,6 +232,8 @@ function normalizeExam(raw: unknown, now: number, validWordIds?: ReadonlySet<str
   if (!raw || typeof raw !== 'object') return undefined
   const r = raw as Partial<ExamProgress>
   const attempts = Math.max(0, Math.floor(num(r.attempts)))
+  // A pass/score/word sample cannot exist before the first recorded attempt.
+  // Normalize that impossible shape here even if a caller bypasses UI gates.
   const hasAttempt = attempts > 0
   const passed = hasAttempt && r.passed === true
   return {
