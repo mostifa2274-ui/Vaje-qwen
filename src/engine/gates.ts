@@ -106,6 +106,15 @@ export function bookCompleted(state: GhesseState, book: number): boolean {
   return chapters.length > 0 && chapters.every(ch => chapterCompleted(state, ch.id))
 }
 
+function chaptersThroughBookCompleted(state: GhesseState, book: number): boolean {
+  const chapters = CHAPTERS.filter(chapter => chapter.book <= book)
+  return chapters.length > 0 && chapters.every(chapter => chapterCompleted(state, chapter.id))
+}
+
+export function courseChaptersCompleted(state: GhesseState): boolean {
+  return CHAPTERS.length > 0 && CHAPTERS.every(chapter => chapterCompleted(state, chapter.id))
+}
+
 export function examPassed(state: GhesseState, id: string): boolean {
   return state.exams[id]?.passed === true
 }
@@ -122,9 +131,9 @@ export function canPrepareChapter(state: GhesseState, chapterId: string): boolea
   if (index === 0) return true
 
   const previous = CHAPTERS[index - 1]
-  // Corrupted/imported sparse state must not allow skipping earlier chapters.
-  const earlierInBook = CHAPTERS.filter(ch => ch.book === chapter.book && ch.n < chapter.n)
-  if (!earlierInBook.every(ch => chapterCompleted(state, ch.id))) return false
+  // Corrupted/imported sparse state must never use a later chapter or exam
+  // record as a substitute for the actual earlier course path.
+  if (!CHAPTERS.slice(0, index).every(ch => chapterCompleted(state, ch.id))) return false
 
   // Crossing a book boundary always requires the previous book's
   // end-of-book test.
@@ -188,14 +197,26 @@ function examPrerequisitesMet(state: GhesseState, id: string): boolean {
   // Every word of the book must also have been recalled on a later day than
   // it was taught (see consolidation.ts).
   if (def.kind === 'book') {
-    return bookCompleted(state, def.book!)
-      && (!policy.bookConsolidation.everyWordRecalledOnALaterDay || bookConsolidated(state, def.book!))
+    const book = def.book!
+    const previousBookExamsCleared = Array.from(
+      { length: Math.max(0, book - 1) },
+      (_, index) => index + 1,
+    ).every(previousBook => examCleared(state, bookExamId(previousBook)))
+    const midpointCleared = book < 5 || examCleared(state, MIDPOINT_EXAM_ID)
+    return chaptersThroughBookCompleted(state, book)
+      && previousBookExamsCleared
+      && midpointCleared
+      && (!policy.bookConsolidation.everyWordRecalledOnALaterDay || bookConsolidated(state, book))
   }
-  if (def.kind === 'midpoint') return [1, 2, 3, 4].every(book => examCleared(state, bookExamId(book)))
-  // The midpoint is an explicit cumulative gate before Book 5. A sparse or
-  // imported state must not be able to bypass it merely by carrying later
-  // end-of-book pass records.
-  return examCleared(state, MIDPOINT_EXAM_ID)
+  if (def.kind === 'midpoint') {
+    return chaptersThroughBookCompleted(state, 4)
+      && [1, 2, 3, 4].every(book => examCleared(state, bookExamId(book)))
+  }
+  // Cumulative pass records are evidence only after the underlying path exists.
+  // Sparse/imported state must not be able to reconstruct a completed course
+  // from exam records while chapters themselves are missing.
+  return courseChaptersCompleted(state)
+    && examCleared(state, MIDPOINT_EXAM_ID)
     && [1, 2, 3, 4, 5, 6, 7, 8].every(book => examCleared(state, bookExamId(book)))
 }
 
