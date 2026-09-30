@@ -1677,6 +1677,85 @@ test('importing a backup asks before replacing progress', async ({ page }) => {
   expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).toBeNull()
 })
 
+test('legacy import applies current migrations and replacement fallbacks cannot revive old progress', async ({ page }) => {
+  await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
+
+  // Simulate an upgraded browser that still contains an obsolete v5 fallback.
+  await page.evaluate(() => {
+    const stale = JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}')
+    window.localStorage.setItem('ghesse:state:v5', JSON.stringify({ ...stale, version: 5 }))
+  })
+
+  const backup = {
+    version: 5,
+    currentChapter: 'b1c2',
+    chapters: {
+      b1c1: {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        completedAt: 2,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      },
+    },
+    words: {},
+  }
+  const file = {
+    name: 'ghesse-legacy-progress.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(backup)),
+  }
+
+  await page.getByLabel('فایل پشتیبان پیشرفت').setInputFiles(file)
+  const confirm = page.getByRole('group', { name: 'جایگزینی پیشرفت؟' })
+
+  // Current chapter assignments are migrated before confirmation, so the
+  // learner sees exactly the state that will survive a reload.
+  await expect(confirm).toContainText(`۱ فصل تمام‌شده، ${faNum(chapter.new.length)} واژهٔ آموخته`)
+  await confirm.getByRole('button', { name: 'جایگزین کن' }).click()
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+
+  const snapshots = await page.evaluate(ids => {
+    const primaryText = window.localStorage.getItem('ghesse:state:v6')
+    const primary = JSON.parse(primaryText ?? '{}')
+    return {
+      primaryText,
+      backupText: window.localStorage.getItem('ghesse:state:v6:backup'),
+      legacy: window.localStorage.getItem('ghesse:state:v5'),
+      currentChapter: primary.currentChapter,
+      words: ids.map(id => ({
+        introduced: primary.words?.[id]?.introduced,
+        firstSeenAt: primary.words?.[id]?.firstSeenAt,
+        dueAt: primary.words?.[id]?.dueAt,
+      })),
+    }
+  }, chapter.new)
+
+  expect(snapshots.currentChapter).toBe('b1c2')
+  expect(snapshots.words).toHaveLength(chapter.new.length)
+  expect(snapshots.words.every(word => word.introduced === true)).toBe(true)
+  expect(snapshots.words.every(word => typeof word.firstSeenAt === 'number' && typeof word.dueAt === 'number')).toBe(true)
+  expect(snapshots.backupText).toBe(snapshots.primaryText)
+  expect(snapshots.legacy).toBeNull()
+
+  // Damage the replacement primary. Startup must recover the imported state
+  // from its aligned backup, never the pre-import progress.
+  await page.evaluate(() => window.localStorage.setItem('ghesse:state:v6', '{}'))
+  await page.reload()
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+  const recovered = await page.evaluate(ids => {
+    const state = JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}')
+    return {
+      currentChapter: state.currentChapter,
+      completed: state.chapters?.b1c1?.completed,
+      introduced: ids.every(id => state.words?.[id]?.introduced === true),
+    }
+  }, chapter.new)
+  expect(recovered).toEqual({ currentChapter: 'b1c2', completed: true, introduced: true })
+})
+
 test('backup import rejects unrelated JSON before replacement confirmation', async ({ page }) => {
   await openWithProgress(page, '/settings', { words: { [chapterWords[0].id]: dueWord() } })
 
