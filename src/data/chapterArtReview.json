@@ -324,5 +324,7 @@
       "focalScene": "After Nino returns, Mina, her mother and father review the search map and photos at home beside Nino’s basket.",
       "action": "retained"
     }
-  }
+  },
+  "chapterHashSemantics": "legacy-full-chapter-sha256-at-review-time",
+  "storyFingerprintSource": "src/data/chapterArtBatch.json#reviewedStoryFingerprints"
 }
