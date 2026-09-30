@@ -43,4 +43,7 @@ for (const [path, needles] of Object.entries(required)) {
   }
 }
 
+const css = readFileSync(join(root, 'src/index.css'), 'utf8')
+assert(css.includes('.sr-only {') && css.includes('clip: rect(0, 0, 0, 0)'), 'screen-reader-only hint must stay visually hidden')
+
 console.log('English/Persian assistive-language metadata validated.')
