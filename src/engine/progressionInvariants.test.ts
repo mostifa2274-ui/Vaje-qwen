@@ -77,6 +77,71 @@ describe('progression gate invariants', () => {
     expect(canTakeExam(state, MIDPOINT_EXAM_ID)).toBe(false)
   })
 
+  it('requires the full earlier exam chain for later books', () => {
+    const state = emptyState(1, 'b1c1')
+    for (const chapter of CHAPTERS.filter(ch => ch.book <= 2)) {
+      state.chapters[chapter.id] = {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      }
+    }
+    const passed = {
+      attempts: 1,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+
+    // A forged book-2 pass cannot hide the missing book-1 milestone.
+    state.exams[bookExamId(2)] = { ...passed }
+    expect(canPrepareChapter(state, 'b3c1')).toBe(false)
+
+    state.exams[bookExamId(1)] = { ...passed }
+    expect(canPrepareChapter(state, 'b3c1')).toBe(true)
+  })
+
+  it('requires midpoint clearance throughout books 5–8, not only at the book-5 boundary', () => {
+    const state = emptyState(1, 'b1c1')
+    for (const chapter of CHAPTERS.filter(ch => ch.book <= 5)) {
+      state.chapters[chapter.id] = {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      }
+    }
+    const passed = {
+      attempts: 1,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+    for (const book of [1, 2, 3, 4, 5]) state.exams[bookExamId(book)] = { ...passed }
+
+    expect(canPrepareChapter(state, 'b6c1')).toBe(false)
+
+    state.exams[MIDPOINT_EXAM_ID] = { ...passed }
+    expect(canPrepareChapter(state, 'b6c1')).toBe(true)
+  })
+
   it('never lets a perfectly forged later chapter skip its unfinished predecessor', () => {
     const first = CHAPTERS[0]
     const second = CHAPTERS[1]
