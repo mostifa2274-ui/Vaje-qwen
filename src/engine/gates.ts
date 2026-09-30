@@ -145,6 +145,10 @@ export function canPrepareChapter(state: GhesseState, chapterId: string): boolea
 }
 
 export function canReadChapter(state: GhesseState, chapterId: string): boolean {
+  // Completion is historical evidence and must keep its story rereadable even
+  // if a later retake creates remediation on an older milestone. That does not
+  // unlock any unfinished successor; canPrepareChapter remains strict.
+  if (chapterCompleted(state, chapterId)) return CHAPTERS.some(ch => ch.id === chapterId)
   return canPrepareChapter(state, chapterId) && chapterPrepared(state, chapterId)
 }
 
@@ -153,7 +157,7 @@ export function canReadChapter(state: GhesseState, chapterId: string): boolean {
 // whether anything done there is recorded.
 export function canOpenChapter(state: GhesseState, chapterId: string): boolean {
   if (state.exploreAll) return CHAPTERS.some(ch => ch.id === chapterId)
-  return canPrepareChapter(state, chapterId)
+  return chapterCompleted(state, chapterId) || canPrepareChapter(state, chapterId)
 }
 
 export function canOpenStory(state: GhesseState, chapterId: string): boolean {
