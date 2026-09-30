@@ -2091,3 +2091,93 @@ input[type="range"]:focus-visible {
   background: var(--cream);
   color: var(--ink);
 }
+
+/* Native high-contrast / forced-colors support.
+   Human AT validation remains a separate evidence gate; these rules make the
+   software resilient before that sign-off exists. */
+@media (forced-colors: active) {
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .paper-card,
+  .learning-focus-card,
+  .next-action-card,
+  .review-hero,
+  .certification-card,
+  .paper-note,
+  .feedback-panel,
+  .library-home,
+  .settings-section,
+  .book-banner,
+  .chapter-row,
+  .future-book-row {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .btn-ink,
+  .btn-crimson,
+  .btn-paper,
+  .btn-quiet,
+  .home-section-tab,
+  .story-action,
+  .test-option,
+  .glossary-row,
+  .library-home-row {
+    border: 1px solid ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+
+  .home-section-tab.active,
+  button[aria-pressed="true"],
+  .test-option[aria-pressed="true"],
+  .answer-correct {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+
+  .answer-wrong,
+  .feedback-wrong {
+    outline: 2px dashed CanvasText;
+    outline-offset: -2px;
+  }
+
+  .mastery-progress,
+  .skill-bar,
+  .leitner-box-track,
+  .leitner-forecast-track {
+    border: 1px solid CanvasText;
+    background: Canvas;
+  }
+
+  .mastery-progress > span,
+  .skill-bar > span,
+  .leitner-box-track > span,
+  .leitner-forecast-track > span {
+    background: Highlight;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid Highlight !important;
+    outline-offset: 3px;
+  }
+
+  button:disabled,
+  input:disabled,
+  select:disabled {
+    color: GrayText;
+    border-color: GrayText;
+    opacity: 1;
+  }
+}
