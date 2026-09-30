@@ -15,7 +15,7 @@ import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { introduceWordsOfCompletedChapters, recordCompletedRead, recordPreparedChapter } from './progress'
 import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
-import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
+import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, reliableRetrievalElapsedMs, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus, nextBestAction } from './analytics'
 import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
@@ -185,6 +185,26 @@ describe('spaced mastery', () => {
     p = recordRetrieval(p, true, 'reverse', start + 60_000)
     expect(p.reviewStage).toBe(1)
     expect(p.successDays).toHaveLength(1)
+  })
+
+  it('a midnight boundary without eight real hours cannot advance spacing', () => {
+    const start = Date.UTC(2026, 0, 1, 23, 58)
+    let p = blankWordProgress(start)
+    p = recordRetrieval(p, true, 'recognition', start)
+    expect(p.reviewStage).toBe(1)
+    expect(p.successDays).toHaveLength(1)
+
+    const fiveMinutesLater = start + 5 * 60_000
+    p = recordRetrieval(p, true, 'reverse', fiveMinutesLater)
+    expect(new Date(fiveMinutesLater).getUTCDate()).toBe(2)
+    expect(p.reviewStage).toBe(1)
+    expect(p.successDays).toHaveLength(1)
+
+    const genuinelySpaced = fiveMinutesLater + 24 * 60 * 60_000 + 60_000
+    p = recordRetrieval(p, true, 'reverse', genuinelySpaced)
+    expect(new Date(genuinelySpaced).getUTCDate()).toBe(3)
+    expect(p.reviewStage).toBe(2)
+    expect(p.successDays).toHaveLength(2)
   })
 
   it('a lapse relearned on a day that already had a success returns tomorrow', () => {
@@ -429,6 +449,23 @@ function consolidateBook(state: GhesseState, book: number) {
     for (const id of ch.new) state.words[id] = { ...blankWordProgress(1), lastIndependentSuccessAt: 2 * 86_400_000 + 1 }
   }
 }
+
+describe('review timing evidence', () => {
+  it('keeps uninterrupted latency but treats resumed-card timing as unknown', () => {
+    expect(reliableRetrievalElapsedMs(1_000, 6_500, true)).toBe(5_500)
+    expect(reliableRetrievalElapsedMs(1_000, 6_500, false)).toBeUndefined()
+    expect(reliableRetrievalElapsedMs(0, 6_500, true)).toBeUndefined()
+    expect(reliableRetrievalElapsedMs(7_000, 6_500, true)).toBeUndefined()
+  })
+
+  it('does not let unknown resumed latency create an artificial Easy grade', () => {
+    const progress = blankWordProgress(1)
+    progress.reviewStage = 5
+    const uninterrupted = recordRetrieval(progress, true, 'productive', 20_000, 'review', 5_000)
+    const resumed = recordRetrieval(progress, true, 'productive', 20_000, 'review', undefined)
+    expect(uninterrupted.difficulty).toBeLessThan(resumed.difficulty)
+  })
+})
 
 describe('review and exam generation', () => {
   it('accepts safe typed aliases and normalizes punctuation', () => {
