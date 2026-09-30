@@ -439,31 +439,60 @@ export function saveState(state: GhesseState): boolean {
  * supported legacy snapshot is discarded after the new primary is verified.
  */
 export function replacePersistedState(state: GhesseState): boolean {
+  let next: string
   try {
-    const next = JSON.stringify(state)
+    next = JSON.stringify(state)
     localStorage.setItem(STORAGE_KEY, next)
     if (localStorage.getItem(STORAGE_KEY) !== next) return false
-
-    for (const key of LEGACY_KEYS) localStorage.removeItem(key)
-
-    // Remove the pre-replacement fallback before attempting to mirror the new
-    // state. If storage is too full for the duplicate copy, keeping no rolling
-    // backup is safer than reviving progress the learner explicitly replaced.
-    localStorage.removeItem(BACKUP_KEY)
-    try {
-      localStorage.setItem(BACKUP_KEY, next)
-      if (localStorage.getItem(BACKUP_KEY) !== next) localStorage.removeItem(BACKUP_KEY)
-    } catch {
-      try {
-        localStorage.removeItem(BACKUP_KEY)
-      } catch {
-        // The verified primary remains authoritative.
-      }
-    }
-    return true
   } catch {
     return false
   }
+
+  // Once the primary has been verified, the replacement really happened.
+  // Cleanup is auxiliary: a legacy/remove failure must not make the caller
+  // suppress the cross-tab replacement signal and let stale task state merge
+  // back into the new snapshot.
+  for (const key of LEGACY_KEYS) {
+    try {
+      localStorage.removeItem(key)
+    } catch {
+      // If removal itself is unavailable but writes still work, neutralize the
+      // old fallback by replacing it with the new authoritative snapshot.
+      try {
+        localStorage.setItem(key, next)
+      } catch {
+        // The verified v6 primary remains authoritative; backup alignment below
+        // still prevents a normal fallback from reviving pre-replacement state.
+      }
+    }
+  }
+
+  // Remove the pre-replacement fallback before attempting to mirror the new
+  // state. If storage is too full for the duplicate copy, keeping no rolling
+  // backup is safer than reviving progress the learner explicitly replaced.
+  try {
+    localStorage.removeItem(BACKUP_KEY)
+  } catch {
+    // Continue: setItem may still be available even when a storage shim or
+    // browser policy rejects this auxiliary removal operation.
+  }
+  try {
+    localStorage.setItem(BACKUP_KEY, next)
+    if (localStorage.getItem(BACKUP_KEY) !== next) {
+      try {
+        localStorage.removeItem(BACKUP_KEY)
+      } catch {
+        // Do not turn a verified primary write into a false failure.
+      }
+    }
+  } catch {
+    try {
+      localStorage.removeItem(BACKUP_KEY)
+    } catch {
+      // The verified primary remains authoritative.
+    }
+  }
+  return true
 }
 
 function sameJsonValue(left: unknown, right: unknown): boolean {
