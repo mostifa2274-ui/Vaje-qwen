@@ -154,6 +154,7 @@ function storyPresenceOptions(
   const answerLabel = chapter.sentences[target].en
   const answerWords = contentWords(answerLabel)
   const chapterWords = contentWords(chapter.sentences.map(sentence => sentence.en).join(' '))
+  const currentStorySurfaces = new Set(chapter.sentences.map(sentence => sentence.en.trim().toLowerCase()))
   const seen = new Set([answerLabel.trim().toLowerCase()])
   const candidates: Array<ReadingOption & { overlap: number }> = []
 
@@ -165,7 +166,9 @@ function storyPresenceOptions(
     const index = indices[position]
     const label = other.sentences[index].en
     const normalized = label.trim().toLowerCase()
-    if (!normalized || seen.has(normalized)) continue
+    // If the same event sentence also occurs in the current chapter, it is
+    // not a valid "did not happen here" distractor even if sourced elsewhere.
+    if (!normalized || currentStorySurfaces.has(normalized) || seen.has(normalized)) continue
     seen.add(normalized)
     const words = contentWords(label)
     const overlap = Math.max(overlapRatio(answerWords, words), overlapRatio(chapterWords, words) * 0.5)
@@ -173,7 +176,10 @@ function storyPresenceOptions(
   }
 
   const distractors: ReadingOption[] = candidates
-    .sort((a, b) => a.overlap - b.overlap || seededRank(seed, a.id) - seededRank(seed, b.id))
+    // A story-comprehension distractor should be credible. Prefer earlier
+    // events that share more content vocabulary with the current chapter,
+    // rather than making the right answer obvious through unrelated wording.
+    .sort((a, b) => b.overlap - a.overlap || seededRank(seed, a.id) - seededRank(seed, b.id))
     .slice(0, 3)
     .map(({ id, label }) => ({ id, label }))
 
@@ -254,9 +260,13 @@ export function buildReadingQuestions(
   chapterPool: readonly Chapter[],
   lemmaMap?: LemmaMap,
 ): ReadingQuestion[] {
-  // Words taught by the end of this chapter, for the stems' Persian gloss.
+  // Words taught by the end of this chapter, for the stems' Persian gloss
+  // and for distractor safety. Never expose a sentence from a future chapter
+  // just to make a comprehension option: that leaks untaught vocabulary and
+  // can make the future-looking option trivially wrong.
   const position = chapterPool.findIndex(item => item.id === chapter.id)
-  const known = new Set((position < 0 ? [chapter] : chapterPool.slice(0, position + 1)).flatMap(item => item.new))
+  const knownChapters = position < 0 ? [chapter] : chapterPool.slice(0, position + 1)
+  const known = new Set(knownChapters.flatMap(item => item.new))
   const stem = (name: Stem) => stemmed(name, known, lemmaMap)
   const questions: ReadingQuestion[] = [...authoredQuestions(chapter, wordById)]
   const enIndices = storySentenceIndices(chapter)
@@ -274,7 +284,9 @@ export function buildReadingQuestions(
   })
 
   // Which event belongs to this chapter: early, in the middle and near the
-  // end, against events from other chapters at the same point.
+  // end. Distractors come only from chapters the learner has already reached;
+  // very early chapters deterministically fall back to other sentences from
+  // the current story until three prior chapters exist.
   for (const [slot, fraction, name] of [[2, 0.15, 'early'], [0, 0.42, 'inChapter'], [1, 0.84, 'nearEnd']] as const) {
     const target = targetIndex(enIndices, fraction, usedEn)
     const answerId = `story-${chapter.id}-${target}`
@@ -282,7 +294,7 @@ export function buildReadingQuestions(
       id: `${chapter.id}:story-event:${slot}`,
       ...stem(name),
       optionDir: 'ltr',
-      options: storyPresenceOptions(chapter, chapterPool, target, fraction, `${chapter.id}:story-event:${slot}`),
+      options: storyPresenceOptions(chapter, knownChapters, target, fraction, `${chapter.id}:story-event:${slot}`),
       answerId,
     })
   }

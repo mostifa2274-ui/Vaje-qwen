@@ -28,6 +28,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Do not ask beginners to guess a word before teaching it. The only exception is an explicit learner-chosen prove-known diagnostic: it tests every chapter word by productive English recall and audio meaning recognition, requires 100% first-try coverage, returns to teaching on the first miss, and never grants durable mastery.
 - 100% preparation gates mean coverage, not mastery. Durable mastery requires later spaced retrieval.
 - Reading should feel like reading, not like reviewing flashcards.
+- Comprehension distractors must stay inside the learner's reached language: use earlier chapters or the current story, never future-chapter sentences. Prefer lexically plausible distractors so success reflects comprehension rather than spotting obviously unrelated wording.
 - Once preparation is passed, story text should not visually mark new words.
 - Audio is a first-class learning channel and must be consistent across word teaching, examples and story narration. Pronunciation rehearsal is optional record–listen–compare practice: microphone access is user-initiated, recordings stay ephemeral and local, and the product must not invent an opaque accent score.
 - High-quality recorded narration must remain available offline by explicit learner choice. Offline audio packs are book-scoped, stored locally, support media byte-range requests, and never alter progress or mastery evidence.
