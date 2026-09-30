@@ -399,7 +399,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           {result.missedWordIds.length > 0 && (
             <div className="remediation-panel mt-4 p-3 text-right">
               <div className="text-xs font-bold">نیازمند جبران</div>
-              <div className="mt-2 flex flex-wrap gap-1.5" dir="ltr">
+              <div className="mt-2 flex flex-wrap gap-1.5" lang="en" dir="ltr">
                 {result.missedWordIds.slice(0, 16).map(id => <span key={id} className="mastery-chip font-en">{WORD_BY_ID.get(id)?.word ?? id}</span>)}
                 {result.missedWordIds.length > 16 && <span className="mastery-chip">+{faNum(result.missedWordIds.length - 16)}</span>}
               </div>
@@ -536,7 +536,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             />
           ) : (
             <>
-              <article className="question-context mt-4" dir="ltr" aria-labelledby="exam-reading-title">
+              <article className="question-context mt-4" lang="en" dir="ltr" aria-labelledby="exam-reading-title">
                 <h3 id="exam-reading-title" className="font-en text-base font-bold">{currentText.text.titleEn}</h3>
                 <Passage text={currentText.text} />
               </article>
@@ -610,7 +610,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
                 {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}
               </>
             ) : (
-              <div className={`mt-4 text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} dir={question.promptDir}>{question.prompt}</div>
+              <div className={`mt-4 text-2xl font-extrabold ${question.promptDir === 'ltr' ? 'font-en' : ''}`} lang={question.promptDir === 'ltr' ? 'en' : undefined} dir={question.promptDir}>{question.prompt}</div>
             )}
           </div>
 
@@ -621,6 +621,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
                 id="exam-answer"
                 ref={answerInputRef}
                 className="answer-input mt-2 w-full"
+                lang="en"
                 dir="ltr"
                 autoFocus
                 autoComplete="off"
