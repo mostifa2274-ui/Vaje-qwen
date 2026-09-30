@@ -15,7 +15,7 @@ import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { introduceWordsOfCompletedChapters, recordCompletedRead, recordPreparedChapter } from './progress'
 import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
-import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, isTroubleWord } from './review'
+import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, reliableRetrievalElapsedMs, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus, nextBestAction } from './analytics'
 import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
@@ -429,6 +429,23 @@ function consolidateBook(state: GhesseState, book: number) {
     for (const id of ch.new) state.words[id] = { ...blankWordProgress(1), lastIndependentSuccessAt: 2 * 86_400_000 + 1 }
   }
 }
+
+describe('review timing evidence', () => {
+  it('keeps uninterrupted latency but treats resumed-card timing as unknown', () => {
+    expect(reliableRetrievalElapsedMs(1_000, 6_500, true)).toBe(5_500)
+    expect(reliableRetrievalElapsedMs(1_000, 6_500, false)).toBeUndefined()
+    expect(reliableRetrievalElapsedMs(0, 6_500, true)).toBeUndefined()
+    expect(reliableRetrievalElapsedMs(7_000, 6_500, true)).toBeUndefined()
+  })
+
+  it('does not let unknown resumed latency create an artificial Easy grade', () => {
+    const progress = blankWordProgress(1)
+    progress.reviewStage = 5
+    const uninterrupted = recordRetrieval(progress, true, 'productive', 20_000, 'review', 5_000)
+    const resumed = recordRetrieval(progress, true, 'productive', 20_000, 'review', undefined)
+    expect(uninterrupted.difficulty).toBeLessThan(resumed.difficulty)
+  })
+})
 
 describe('review and exam generation', () => {
   it('accepts safe typed aliases and normalizes punctuation', () => {
