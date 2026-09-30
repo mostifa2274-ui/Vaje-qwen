@@ -16,9 +16,17 @@ const ids = chapters.map((chapter) => chapter.id)
 const idSet = new Set(ids)
 const chapterFileById = new Map(chapterFiles.map((name, index) => [chapters[index].id, name]))
 
-function gitBlobSha1(bytes) {
-  const header = Buffer.from(`blob ${bytes.length}\0`)
-  return crypto.createHash('sha1').update(header).update(bytes).digest('hex')
+function storyFingerprint(chapter) {
+  const payload = JSON.stringify({
+    id: chapter.id,
+    book: chapter.book,
+    n: chapter.n,
+    titleFa: chapter.titleFa,
+    titleEn: chapter.titleEn,
+    new: chapter.new,
+    sentences: chapter.sentences,
+  })
+  return crypto.createHash('sha1').update(payload, 'utf8').digest('hex')
 }
 
 let failed = false
@@ -45,26 +53,43 @@ for (const id of Object.keys(manifest.ninoPolicyOverrides ?? {})) {
   if (!idSet.has(id)) fail(`Nino policy override references unknown chapter: ${id}`)
 }
 
-// An artwork approval is semantic, not only a file-hash approval. Bind every
-// reviewed image to the exact chapter JSON revision it was checked against so
-// later story rewrites cannot silently keep stale art marked as approved.
+// An artwork approval is semantic, not merely tied to the chapter file bytes.
+// Checkpoints and other assessment metadata can change without altering the
+// scene the illustration was reviewed against. Bind approval to the exact
+// art-relevant payload instead: identity/order, titles, assigned vocabulary
+// and bilingual story sentences. Keep the original full-file Git blob solely
+// as audit provenance for when the human visual review occurred.
 const reviewedStoryBlobs = manifest.reviewedStoryBlobs ?? {}
+const reviewedStoryFingerprints = manifest.reviewedStoryFingerprints ?? {}
+
 for (const id of approved) {
-  const expected = reviewedStoryBlobs[id]
+  const provenanceBlob = reviewedStoryBlobs[id]
+  if (typeof provenanceBlob !== 'string' || !/^[a-f0-9]{40}$/.test(provenanceBlob)) {
+    fail(`Approved chapter art has no original reviewed Git blob provenance: ${id}`)
+  }
+
+  const expected = reviewedStoryFingerprints[id]
   if (typeof expected !== 'string' || !/^[a-f0-9]{40}$/.test(expected)) {
-    fail(`Approved chapter art has no reviewed story revision: ${id}`)
+    fail(`Approved chapter art has no semantic story fingerprint: ${id}`)
     continue
   }
-  const chapterFile = chapterFileById.get(id)
-  if (!chapterFile) continue
-  const actual = gitBlobSha1(fs.readFileSync(path.join(chapterDir, chapterFile)))
+
+  const chapter = chapters.find(item => item.id === id)
+  if (!chapter) continue
+  const actual = storyFingerprint(chapter)
   if (actual !== expected) {
-    fail(`${id}: story changed after artwork review (expected blob ${expected}, current ${actual}); re-review the illustration against the new story before updating reviewedStoryBlobs.`)
+    fail(`${id}: art-relevant story payload changed after visual review (expected ${expected}, current ${actual}); re-review the illustration before updating reviewedStoryFingerprints.`)
   }
 }
-for (const id of Object.keys(reviewedStoryBlobs)) {
-  if (!idSet.has(id)) fail(`Reviewed story revision references unknown chapter: ${id}`)
-  else if (!approved.includes(id)) fail(`Story revision is marked reviewed for unapproved artwork: ${id}`)
+
+for (const [field, values] of [
+  ['reviewedStoryBlobs', reviewedStoryBlobs],
+  ['reviewedStoryFingerprints', reviewedStoryFingerprints],
+]) {
+  for (const id of Object.keys(values)) {
+    if (!idSet.has(id)) fail(`${field} references unknown chapter: ${id}`)
+    else if (!approved.includes(id)) fail(`${field} marks an unapproved artwork as reviewed: ${id}`)
+  }
 }
 
 const rasterFiles = fs.existsSync(artDir)
