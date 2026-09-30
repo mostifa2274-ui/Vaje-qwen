@@ -882,7 +882,10 @@ describe('mastery certification', () => {
     state.exams[MIDPOINT_EXAM_ID] = { ...passedExam }
     state.exams['final-8'] = { ...passedExam }
 
-    expect(certificationStatus(state, now).ready).toBe(true)
+    const certification = certificationStatus(state, now)
+    expect(certification.finalExamPassed).toBe(true)
+    expect(certification.requiredExamsCleared).toBe(true)
+    expect(certification.ready).toBe(true)
     const action = nextBestAction(state, now)
     expect(action.kind).toBe('complete')
     expect(action.title).toBe('معیارهای دوره کامل شد')
@@ -900,6 +903,8 @@ describe('mastery certification', () => {
     const status = certificationStatus(state, Date.UTC(2026, 0, 1))
     expect(status.ready).toBe(false)
     expect(status.finalExamPassed).toBe(true)
+    expect(status.requiredExamsCleared).toBe(false)
+    expect(status.missing).toContain('تکمیل و ترمیم همهٔ آزمون‌های مسیر')
   })
   it('prioritizes remediation even when an exam passed with missed words', () => {
     let state = emptyState(1, 'b1c1')
