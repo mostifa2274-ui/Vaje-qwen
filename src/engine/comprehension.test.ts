@@ -40,29 +40,44 @@ describe('chapter reading comprehension', () => {
     }
   })
 
-  it('never leaks future-chapter sentences into story-event distractors', () => {
+  it('never leaks future chapters or uses another true current-story event as a false distractor', () => {
     for (const [chapterIndex, chapter] of CHAPTERS.entries()) {
       const questions = buildReadingQuestions(chapter, WORD_BY_ID, CHAPTERS)
         .filter(question => question.id.includes(':story-event:'))
 
       for (const question of questions) {
-        expect(question.options.some(option => option.id.startsWith(`story-${chapter.id}-`)), question.id).toBe(true)
+        expect(question.options.some(option => option.id.startsWith('fallback-')), question.id).toBe(false)
 
-        const external = question.options
-          .filter(option => option.id.startsWith('story-') && !option.id.startsWith(`story-${chapter.id}-`))
-        const fallback = question.options.filter(option => option.id.startsWith('fallback-'))
-        const expectedPrior = Math.min(3, chapterIndex)
+        const currentAnswer = question.options.find(option => option.id.startsWith(`story-${chapter.id}-`))
+        if (currentAnswer) {
+          const external = question.options.filter(option => option.id.startsWith('story-') && option.id !== currentAnswer.id)
+          expect(external, question.id).toHaveLength(3)
 
-        expect(external.length, question.id).toBe(expectedPrior)
-        expect(fallback.length, question.id).toBe(3 - expectedPrior)
-
-        const currentStory = new Set(chapter.sentences.map(sentence => sentence.en.trim().toLowerCase()))
-        for (const option of external) {
-          const other = CHAPTERS.findIndex(candidate => option.id.startsWith(`story-${candidate.id}-`))
-          expect(other, `${question.id}:${option.id}`).toBeGreaterThanOrEqual(0)
-          expect(other, `${question.id}:${option.id}`).toBeLessThan(chapterIndex)
-          expect(currentStory.has(option.label.trim().toLowerCase()), `${question.id}:${option.id}`).toBe(false)
+          const currentStory = new Set(chapter.sentences.map(sentence => sentence.en.trim().toLowerCase()))
+          for (const option of external) {
+            const other = CHAPTERS.findIndex(candidate => option.id.startsWith(`story-${candidate.id}-`))
+            expect(other, `${question.id}:${option.id}`).toBeGreaterThanOrEqual(0)
+            expect(other, `${question.id}:${option.id}`).toBeLessThan(chapterIndex)
+            expect(currentStory.has(option.label.trim().toLowerCase()), `${question.id}:${option.id}`).toBe(false)
+          }
+          continue
         }
+
+        // When fewer than three valid prior-story distractors exist, the
+        // replacement asks for the exact adjacent event. Every option may
+        // legitimately occur in the current story, but only one is immediately
+        // before/after the displayed context.
+        expect(question.id, chapter.id).toContain(':adjacent-fallback')
+        expect(question.context, question.id).toBeTruthy()
+        expect(question.contextDir, question.id).toBe('ltr')
+        expect(question.options.every(option => option.id.startsWith('sentence-')), question.id).toBe(true)
+
+        const contextIndex = chapter.sentences.findIndex(sentence => sentence.en === question.context)
+        const answer = question.options.find(option => option.id === question.answerId)
+        const answerIndex = answer ? chapter.sentences.findIndex(sentence => sentence.en === answer.label) : -1
+        expect(contextIndex, question.id).toBeGreaterThanOrEqual(0)
+        expect(answerIndex, question.id).toBeGreaterThanOrEqual(0)
+        expect(Math.abs(contextIndex - answerIndex), question.id).toBe(1)
       }
     }
   })
