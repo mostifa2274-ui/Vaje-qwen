@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { CHAPTERS } from '../data/chapters'
-import { canPrepareChapter, canReadChapter } from './gates'
+import { MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam } from './gates'
 import { emptyState } from './store'
 
 describe('progression gate invariants', () => {
@@ -38,6 +38,43 @@ describe('progression gate invariants', () => {
 
       expect(canReadChapter(state, chapter.id)).toBe(exact)
     }
+  })
+
+  it('never lets a passed previous-book record substitute for missing earlier chapters', () => {
+    const state = emptyState(1, 'b1c1')
+    state.exams[bookExamId(1)] = {
+      attempts: 1,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+
+    expect(canPrepareChapter(state, 'b2c1')).toBe(false)
+  })
+
+  it('never lets cumulative exam records substitute for missing chapter completion', () => {
+    const state = emptyState(1, 'b1c1')
+    const passed = {
+      attempts: 1,
+      passed: true,
+      passedAt: 2,
+      lastAttemptAt: 2,
+      lastScore: 1,
+      bestScore: 1,
+      lastProductiveScore: 1,
+      bestProductiveScore: 1,
+      missedWordIds: [],
+      testedWordIds: [],
+    }
+    for (const book of [1, 2, 3, 4]) state.exams[bookExamId(book)] = { ...passed }
+
+    expect(canTakeExam(state, MIDPOINT_EXAM_ID)).toBe(false)
   })
 
   it('never lets a perfectly forged later chapter skip its unfinished predecessor', () => {
