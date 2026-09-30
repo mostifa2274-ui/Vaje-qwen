@@ -15,6 +15,7 @@ const { analyzeSentence } = createCourseLexicon(vocab, {
   properNouns: storyCanon.properNouns || []
 })
 
+const allIds = new Set(vocab.map(word => word.id))
 const introChapter = new Map()
 for (const chapter of chapters) {
   for (const id of chapter.new) introChapter.set(id, chapter.id)
