@@ -154,8 +154,10 @@ jobs:
                   echo "- Exact revision: `$SOURCE_SHA`"
                   echo "- Production root reachable: yes"
                   echo "- Service-worker cache matches: yes"
-                  if [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ]; then
+                  if [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ] && [ "${{ steps.cloudflare.outputs.configured }}" = "true" ]; then
                     echo "- Deployment path: direct Wrangler fallback"
+                  elif [ "${{ steps.primary.outputs.needs_deploy }}" = "true" ]; then
+                    echo "- Deployment path: Cloudflare Git integration (late convergence)"
                   else
                     echo "- Deployment path: Cloudflare Git integration"
                   fi
@@ -164,7 +166,7 @@ jobs:
                 exit 0
               fi
             fi
-            if [ "$attempt" -lt 24 ]; then sleep 5; fi
+            if [ "$attempt" -lt "$max_attempts" ]; then sleep 5; fi
           done
-          echo "::error::Production did not converge on exact revision $SOURCE_SHA after deployment."
+          echo "::error::Production did not converge on exact revision $SOURCE_SHA within the verification window."
           exit 1
