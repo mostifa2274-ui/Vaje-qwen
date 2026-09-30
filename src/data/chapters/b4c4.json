@@ -113,7 +113,7 @@
   ],
   "check": [
     {
-      "q": "The visitors pay the bill in ___s.",
+      "q": "The visitors pay the bill with a ___.",
       "options": [
         "dollar",
         "pound",
