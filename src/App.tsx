@@ -175,6 +175,24 @@ export default function App() {
     // Every answer this change records counts towards today's goal.
     const next = recordActivity(candidate, base, time)
     const remote = loadPersistedState(time, FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)
+
+    // A reset/import can land in storage before this tab's queued storage
+    // event runs. Detect its lineage synchronously here so a stale task submit
+    // is discarded and remounted instead of waiting for that later callback.
+    if (
+      remote?.progressReplacementToken
+      && remote.progressReplacementToken !== base.progressReplacementToken
+    ) {
+      clearSessionDrafts()
+      setProgressRevision(revision => revision + 1)
+      stateRef.current = remote
+      setState(remote)
+      setView(current => resolveView(current, remote))
+      setPersistOk(true)
+      setSyncConflict(false)
+      return
+    }
+
     const reconciled = remote ? mergeConcurrentState(base, next, remote) : next
 
     if (!reconciled && remote) {
