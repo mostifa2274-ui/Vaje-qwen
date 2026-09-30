@@ -613,7 +613,7 @@ export function resetState(firstChapterId: string): GhesseState {
     // Persist the reset before returning. Other open tabs then see an explicit
     // fresh snapshot instead of a momentary missing key they could overwrite
     // with an older full-state save.
-    if (saveState(fresh)) signalProgressReplacement()
+    saveState(fresh)
   } catch {
     // Keep reset semantics in memory.
   }
