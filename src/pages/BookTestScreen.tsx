@@ -394,7 +394,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
                 return (
                   <li key={item.key} className="test-review-item">
                     <div className="text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>{SECTION_LABELS[item.section]}</div>
-                    <div className="mt-1 font-en text-lg font-bold" dir="ltr">{word.word}</div>
+                    <div className="mt-1 font-en text-lg font-bold" lang="en" dir="ltr">{word.word}</div>
                     <div className="text-sm leading-7"><span className="review-mark-wrong">✗</span> پاسخ تو: {item.given}</div>
                     <div className="text-sm font-bold leading-7">معنی درست: {word.fa}</div>
                   </li>
@@ -509,7 +509,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
               <span>واژهٔ {faNum(translationIndex + 1)} از {faNum(test.translation.length)}</span>
             </div>
             <div className="mastery-progress mt-2"><span style={{ width: `${(translationIndex / test.translation.length) * 100}%` }} /></div>
-            <div data-testid="translation-headword" className="mt-7 text-center font-en text-4xl font-bold" dir="ltr">{translationWord.word}</div>
+            <div data-testid="translation-headword" className="mt-7 text-center font-en text-4xl font-bold" lang="en" dir="ltr">{translationWord.word}</div>
             <label htmlFor="book-test-translation" className="mt-6 block text-sm font-bold">معنی فارسی</label>
             <input
               id="book-test-translation"
@@ -582,7 +582,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
               )}
               {phase === 'reading' ? (
                 <>
-                  <article className="question-context mt-4" dir="ltr" aria-labelledby="reading-title">
+                  <article className="question-context mt-4" lang="en" dir="ltr" aria-labelledby="reading-title">
                     <h3 id="reading-title" className="font-en text-base font-bold">{text.titleEn}</h3>
                     <Passage text={text} />
                   </article>
