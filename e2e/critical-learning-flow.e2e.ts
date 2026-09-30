@@ -865,7 +865,7 @@ async function openWithProgress(page: Page, route: string, progress: {
   await page.addInitScript(({ progress }) => {
     // Seed before React mounts. Writing after page.goto races the initial
     // persistence effect on WebKit; reloads must retain subsequent changes.
-    if (window.sessionStorage.getItem('ghesse:e2e:progress-seeded')) return
+    if (window.sessionStorage.getItem('e2e:ghesse:progress-seeded')) return
     const now = Date.now()
     window.localStorage.setItem('ghesse:state:v6', JSON.stringify({
       version: 6,
@@ -883,7 +883,7 @@ async function openWithProgress(page: Page, route: string, progress: {
       ...(progress.activity ? { activity: progress.activity } : {}),
       created: now - 2 * 86_400_000,
     }))
-    window.sessionStorage.setItem('ghesse:e2e:progress-seeded', 'true')
+    window.sessionStorage.setItem('e2e:ghesse:progress-seeded', 'true')
   }, { progress })
   await page.goto(`/#${route}`)
 }
