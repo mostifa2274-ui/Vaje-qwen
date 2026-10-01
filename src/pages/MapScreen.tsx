@@ -159,7 +159,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           <div className="luxury-brand-title" aria-hidden="true">واژه‌خوان</div>
           <div className="luxury-brand-rule" aria-hidden="true"><span /></div>
           <p className="font-en" lang="en" dir="ltr">Vaje-Qwen</p>
-          <span className="font-en" lang="en" dir="ltr">Persian Stories. A Brighter You.</span>
+          <span>قصه، مرور فاصله‌دار و آزمون مرحله‌ای</span>
         </div>
         <button type="button" className="luxury-round-control luxury-crown-control" onClick={() => setHomeSection('journey')} aria-label="دیدن مسیر پیشرفت">
           <CrownIcon className="h-6 w-6" />
