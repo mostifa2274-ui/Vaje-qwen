@@ -51,6 +51,8 @@ const appShell = readFileSync(join(root, 'src/App.tsx'), 'utf8')
 assert(appShell.includes('aria-label="به‌روزرسانی برنامه"'), 'update banner must have an accessible name')
 assert(appShell.includes('aria-label="تازه‌سازی و بارگذاری نسخهٔ جدید"'), 'update action must say it loads the new build')
 assert(appShell.includes('aria-label="بعداً این نسخه را تازه کن"'), 'defer action must stay an update choice, not a generic later')
+const homeCss = readFileSync(join(root, 'src/index.css'), 'utf8')
+assert(homeCss.includes('.next-action-card > .btn-crimson'), 'the home primary must be a full-width thumb target on small screens')
 
 const headers = readFileSync(join(root, 'public/_headers'), 'utf8')
 for (const required of [

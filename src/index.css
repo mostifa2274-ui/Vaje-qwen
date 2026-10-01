@@ -733,6 +733,12 @@ button:disabled {
     align-items: stretch;
     flex-direction: column;
   }
+  /* One primary, full width, under the copy — thumb reach on 320px. */
+  .next-action-card > .btn-crimson,
+  .next-action-card > .btn-paper {
+    width: 100%;
+    min-height: 48px;
+  }
 }
 @media (max-width: 380px) {
   .prep-stepper {
