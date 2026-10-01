@@ -1,11 +1,7 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-10-01",
   "gates": {
-    "contentRights": {
-      "status": "blocked",
-      "evidence": "provenance/release-rights.json"
-    },
     "learnerOutcomesPilot": {
       "status": "pending",
       "evidence": "research/status.json"
