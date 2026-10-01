@@ -15,7 +15,7 @@ import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
 import { clearDiagnosticFailure } from '../engine/diagnosticDraft'
 import PronunciationPractice from '../components/PronunciationPractice'
 import ActiveUsePractice from '../components/ActiveUsePractice'
-import ChapterIllustration from '../components/ChapterIllustration'
+import { GENERATED_CHAPTER_ART } from '../art/generatedChapterArt'
 
 interface Props {
   chapterId: string
@@ -34,6 +34,7 @@ const PREP_STEPS: { label: string; target: PrepPhase | 'story' }[] = [
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
+  const backdropArt = GENERATED_CHAPTER_ART[chapterId]
   const alreadyPrepared = chapterPrepared(state, chapterId)
   // Opened through explore mode before the learner reached it: the lessons
   // and tests work as practice, but passing them records nothing.
@@ -470,7 +471,16 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   return (
     <div className={`app-page luxury-prep luxury-prep-${phase} page-in`}>
       <div className="luxury-task-backdrop" aria-hidden="true">
-        <ChapterIllustration chapterId={chapter.id} titleFa={chapter.titleFa} />
+        {backdropArt && (
+          <img
+            className="luxury-task-backdrop-image"
+            src={backdropArt.src}
+            width={backdropArt.width}
+            height={backdropArt.height}
+            alt=""
+            decoding="async"
+          />
+        )}
         <span />
       </div>
       <header className="sticky top-0 z-40 app-task-header luxury-prep-header">
