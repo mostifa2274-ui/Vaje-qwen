@@ -1070,6 +1070,8 @@ input[type="range"] {
    reference screens. It remains the same three accessible tab controls. */
 .luxury-home .luxury-home-nav {
   position: fixed;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   z-index: 90;
   inset-inline: 50%;
   bottom: max(.5rem, env(safe-area-inset-bottom));
@@ -1087,9 +1089,29 @@ input[type="range"] {
 }
 
 .luxury-home .home-section-tab {
-  min-height: 3.35rem;
+  min-height: 3.55rem;
   border-radius: 15px;
-  font-size: .76rem;
+  font-size: .7rem;
+}
+
+.luxury-nav-button {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .18rem;
+  padding: .35rem .2rem;
+}
+
+.luxury-nav-button svg {
+  flex: 0 0 auto;
+}
+
+.luxury-nav-button span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .luxury-home .home-section-tab.active {
