@@ -128,7 +128,8 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
       <header className="flex items-center gap-3">
         <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
         <div className="min-w-0 flex-1 text-center">
-          <h1 className="text-2xl font-extrabold">من</h1>
+          <h1 className="luxury-contract-heading">تنظیمات</h1>
+          <div className="text-2xl font-extrabold">من</div>
           <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>پروفایل یادگیری و تنظیمات</p>
         </div>
         <span className="luxury-settings-crown" aria-hidden="true"><CrownIcon className="h-5 w-5" /></span>
