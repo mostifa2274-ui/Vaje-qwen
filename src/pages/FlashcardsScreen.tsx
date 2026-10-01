@@ -26,7 +26,7 @@ import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, typ
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import GlossSheet from '../components/GlossSheet'
 import { BadgeCheckIcon, CheckIcon, FlashcardsIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
-import { LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
+import { LuxuryMetricGrid, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { faNum, percent } from '../engine/format'
 
 interface Props {
@@ -495,12 +495,15 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
         <section className="learning-focus-card mt-5 p-6 text-center" data-testid="flashcards-summary">
           <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
           <h2 className="mt-3 text-2xl font-extrabold">مرور تمام شد</h2>
-          <div className="leitner-kpis mt-5">
-            <div className="metric-card"><b>{faNum(answers.length)}</b><span>کارت مرورشده</span></div>
-            <div className="metric-card"><b>{answers.length ? percent(remembered / answers.length) : '—'}</b><span>به یاد آمده</span></div>
-            <div className="metric-card"><b>{faNum(finished.promoted)}</b><span>یک جعبه بالاتر رفت</span></div>
-            <div className="metric-card"><b>{faNum(backToOne)}</b><span>به جعبهٔ ۱ برگشت</span></div>
-          </div>
+          <LuxuryMetricGrid
+            className="leitner-kpis mt-5 luxury-metric-grid-4"
+            items={[
+              { value: faNum(answers.length), label: 'کارت مرورشده' },
+              { value: answers.length ? percent(remembered / answers.length) : '—', label: 'به یاد آمده' },
+              { value: faNum(finished.promoted), label: 'یک جعبه بالاتر رفت' },
+              { value: faNum(backToOne), label: 'به جعبهٔ ۱ برگشت' },
+            ]}
+          />
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             {summary.due
               ? `هنوز ${faNum(summary.due)} کارت برای امروز مانده است.`
@@ -541,12 +544,15 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
 
       <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="leitner-today">
         <h2 id="leitner-today" className="text-lg font-extrabold">امروز</h2>
-        <div className="leitner-kpis mt-3">
-          <div className="metric-card"><b>{faNum(summary.due)}</b><span>کارت برای مرور</span></div>
-          <div className="metric-card"><b>{faNum(summary.newToday)}</b><span>کارت تازه</span></div>
-          <div className="metric-card"><b>{faNum(summary.reviewedToday)}</b><span>مرورشدهٔ امروز</span></div>
-          <div className="metric-card"><b>{faNum(summary.streak)}</b><span>روز پیاپی</span></div>
-        </div>
+        <LuxuryMetricGrid
+          className="leitner-kpis mt-3 luxury-metric-grid-4"
+          items={[
+            { value: faNum(summary.due), label: 'کارت برای مرور' },
+            { value: faNum(summary.newToday), label: 'کارت تازه' },
+            { value: faNum(summary.reviewedToday), label: 'مرورشدهٔ امروز' },
+            { value: faNum(summary.streak), label: 'روز پیاپی' },
+          ]}
+        />
         {available > 0 ? (
           <button type="button" className="btn-crimson mt-4 w-full py-3.5 text-lg" onClick={() => start()}>
             <span className="inline-flex items-center justify-center gap-2"><FlashcardsIcon className="h-5 w-5" />شروع مرور ({faNum(Math.min(available, SESSION_LIMIT))} کارت)</span>
