@@ -21,6 +21,7 @@ import {
 import { faNum, percent } from '../engine/format'
 import { dailyProgress } from '../engine/activity'
 import { diagnosticFailed } from '../engine/diagnosticDraft'
+import { LuxuryMetricGrid, LuxuryProgress } from '../components/LuxuryUI'
 
 type HomeSection = 'today' | 'journey' | 'library'
 
@@ -334,16 +335,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
                 <span>{action.progress.label}</span>
                 <span>{faNum(action.progress.done)} از {faNum(action.progress.total)}</span>
               </div>
-              <div
-                className="mastery-progress mt-1.5"
-                role="progressbar"
-                aria-label={action.progress.label}
-                aria-valuemin={0}
-                aria-valuemax={action.progress.total}
-                aria-valuenow={action.progress.done}
-              >
-                <span style={{ width: `${(action.progress.done / Math.max(1, action.progress.total)) * 100}%` }} />
-              </div>
+              <LuxuryProgress
+                className="mt-1.5"
+                value={action.progress.done}
+                max={action.progress.total}
+                label={action.progress.label}
+              />
             </div>
           )}
         </div>
@@ -362,16 +359,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             <span>{goalLabel}</span>
             <span style={{ color: 'var(--ink-soft)' }}>{faNum(Math.min(daily.today, daily.goal))} از {faNum(daily.goal)}</span>
           </div>
-          <div
-            className="mastery-progress today-goal mt-1.5"
-            role="progressbar"
-            aria-label="پاسخ‌های امروز"
-            aria-valuemin={0}
-            aria-valuemax={daily.goal}
-            aria-valuenow={Math.min(daily.today, daily.goal)}
-          >
-            <span style={{ width: `${Math.min(1, daily.today / daily.goal) * 100}%` }} />
-          </div>
+          <LuxuryProgress
+            className="today-goal mt-1.5"
+            value={Math.min(daily.today, daily.goal)}
+            max={daily.goal}
+            label="پاسخ‌های امروز"
+          />
         </div>
       </section>
 
@@ -410,11 +403,14 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           </div>
         </section>
       )}
-      <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
-        <div><b>{faNum(doneCount)}</b><span>فصل تمام‌شده</span></div>
-        <div><b>{faNum(health.mastered)}</b><span>واژهٔ مسلط</span></div>
-        <div><b>{percent(health.durableCoverage)}</b><span>قوی یا مسلط</span></div>
-      </section>
+      <LuxuryMetricGrid
+        className="home-summary mt-4"
+        items={[
+          { value: faNum(doneCount), label: 'فصل تمام‌شده' },
+          { value: faNum(health.mastered), label: 'واژهٔ مسلط' },
+          { value: percent(health.durableCoverage), label: 'قوی یا مسلط' },
+        ]}
+      />
 
       <details className="method-details mt-4">
         <summary>روش یادگیری و معیارهای عبور</summary>
@@ -510,7 +506,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
                       <span>پیشرفت واژگان</span>
                       <span>{percent(bHealth.durableCoverage)}</span>
                     </div>
-                    <div className="mastery-progress mt-1.5"><span style={{ width: `${bHealth.durableCoverage * 100}%`, background: 'var(--gold)' }} /></div>
+                    <LuxuryProgress
+                      className="mt-1.5"
+                      value={bHealth.durableCoverage * 100}
+                      max={100}
+                      label={`پیشرفت واژگان کتاب ${faNum(meta.book)}`}
+                    />
                   </div>
                 )}
 
