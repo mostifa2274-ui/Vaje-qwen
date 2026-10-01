@@ -681,3 +681,709 @@ input[type="range"] {
     background-color: #09131e;
   }
 }
+
+
+/* ==========================================================================
+   Cinematic product layer — structure inspired by the approved visual targets
+   ========================================================================== */
+
+.luxury-home {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+.luxury-brand-header {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  align-items: start;
+  gap: .8rem;
+  padding: .1rem 0 .7rem;
+}
+
+.luxury-round-control {
+  display: inline-grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid rgba(240, 204, 121, .54);
+  border-radius: 999px;
+  background: rgba(5, 13, 22, .68);
+  color: var(--lux-gold-bright);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 10px 32px rgba(0,0,0,.22);
+}
+
+.luxury-round-control:active {
+  transform: scale(.97);
+}
+
+.luxury-brand-lockup {
+  min-width: 0;
+  text-align: center;
+}
+
+.luxury-brand-lockup h1 {
+  margin: -.15rem 0 0;
+  color: var(--lux-gold-bright);
+  font-size: clamp(2rem, 8vw, 3.25rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.035em;
+  text-shadow: 0 8px 28px rgba(215, 168, 77, .12);
+}
+
+.luxury-brand-lockup .font-en {
+  margin-top: .28rem;
+  color: var(--lux-gold-bright);
+  font-size: .98rem;
+  letter-spacing: .08em;
+}
+
+.luxury-brand-lockup > span {
+  display: block;
+  margin-top: .12rem;
+  color: #a8b1b9;
+  font-size: .67rem;
+  line-height: 1.6;
+}
+
+.luxury-brand-rule {
+  display: flex;
+  align-items: center;
+  width: min(13rem, 72%);
+  margin: .3rem auto 0;
+}
+
+.luxury-brand-rule::before,
+.luxury-brand-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(240,204,121,.65));
+}
+
+.luxury-brand-rule::after {
+  transform: scaleX(-1);
+}
+
+.luxury-brand-rule span {
+  width: .42rem;
+  height: .42rem;
+  margin-inline: .45rem;
+  border: 1px solid var(--lux-gold-bright);
+  transform: rotate(45deg);
+}
+
+.luxury-crown-control {
+  color: #f5c95f;
+}
+
+.luxury-home-hero {
+  position: relative;
+  min-height: clamp(24rem, 66vw, 31rem);
+  overflow: hidden;
+  border: 1px solid rgba(240, 204, 121, .56);
+  border-radius: 24px;
+  background: #050c14;
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.36),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.luxury-home-hero-art,
+.luxury-home-hero-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.luxury-home-hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.76) saturate(.86) contrast(1.08);
+  transform: scale(1.035);
+}
+
+.luxury-home-hero-shade {
+  background:
+    linear-gradient(90deg, rgba(3,8,14,.95) 0%, rgba(3,8,14,.76) 42%, rgba(3,8,14,.16) 76%),
+    linear-gradient(0deg, rgba(3,8,14,.88) 0%, transparent 45%);
+}
+
+.luxury-home-hero-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: inherit;
+  width: min(100%, 31rem);
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.3rem, 5vw, 2.4rem);
+  text-align: right;
+}
+
+.luxury-eyebrow {
+  color: var(--lux-gold-bright);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.luxury-home-hero-copy h2 {
+  max-width: 13ch;
+  margin-top: .55rem;
+  color: #fff3dd;
+  font-size: clamp(1.85rem, 7vw, 3.1rem);
+  font-weight: 900;
+  line-height: 1.42;
+  text-wrap: balance;
+}
+
+.luxury-home-hero-copy > p {
+  max-width: 31rem;
+  margin-top: .65rem;
+  color: #c5ccd1;
+  font-size: .92rem;
+  line-height: 2;
+}
+
+.luxury-home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-top: 1.15rem;
+}
+
+.luxury-hero-primary,
+.luxury-hero-secondary {
+  display: inline-flex;
+  min-height: 3.35rem;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  padding-inline: 1.25rem;
+}
+
+.luxury-hero-primary {
+  min-width: 11rem;
+  font-size: 1.02rem;
+}
+
+.luxury-hero-secondary {
+  min-width: 9rem;
+  background: rgba(8,17,28,.72);
+  backdrop-filter: blur(10px);
+}
+
+.luxury-complete-badge {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: .5rem;
+  border: 1px solid rgba(139,189,146,.34);
+  border-radius: 14px;
+  background: rgba(67,112,75,.18);
+  padding: .7rem 1rem;
+  color: #cde8d1;
+  font-weight: 800;
+}
+
+.luxury-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: .7rem;
+}
+
+.luxury-feature-card {
+  position: relative;
+  display: flex;
+  min-height: 8.7rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .38rem;
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.23);
+  border-radius: 19px;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(240,204,121,.12), transparent 55%),
+    linear-gradient(145deg, rgba(17,30,44,.94), rgba(6,14,23,.96));
+  box-shadow:
+    0 14px 38px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.025);
+  color: var(--ink);
+  text-align: center;
+}
+
+.luxury-feature-card::after {
+  content: "";
+  position: absolute;
+  inset-inline: 18%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240,204,121,.42), transparent);
+}
+
+.luxury-feature-card svg {
+  color: var(--lux-gold-bright);
+  filter: drop-shadow(0 5px 12px rgba(215,168,77,.12));
+}
+
+.luxury-feature-card b {
+  color: #f5d690;
+  font-size: .95rem;
+  font-weight: 900;
+}
+
+.luxury-feature-card span {
+  color: #9ea8b1;
+  font-size: .68rem;
+}
+
+.luxury-feature-card:active {
+  transform: scale(.985);
+}
+
+.luxury-current-story {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0,1fr) minmax(6rem, .72fr);
+  width: 100%;
+  align-items: center;
+  gap: .85rem;
+  border: 1px solid rgba(240,204,121,.38);
+  border-radius: 19px;
+  background:
+    linear-gradient(145deg, rgba(16,29,42,.96), rgba(7,15,24,.97));
+  box-shadow: 0 18px 48px rgba(0,0,0,.24);
+  padding: .7rem;
+  color: var(--ink);
+  text-align: right;
+}
+
+.luxury-current-story-thumb {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid rgba(240,204,121,.26);
+  border-radius: 12px;
+  background: #050c14;
+}
+
+.luxury-current-story-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.luxury-current-story-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.luxury-current-story-copy small {
+  color: #87929c;
+  font-size: .68rem;
+}
+
+.luxury-current-story-copy b {
+  margin-top: .18rem;
+  overflow: hidden;
+  color: var(--lux-gold-bright);
+  font-size: 1.03rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.luxury-current-story-copy > span {
+  margin-top: .18rem;
+  color: #aeb6bd;
+  font-size: .68rem;
+}
+
+.luxury-current-story-progress {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .42rem;
+  color: #aeb6bd;
+  font-size: .7rem;
+  text-align: center;
+}
+
+.luxury-current-story-progress .mastery-progress {
+  width: 100%;
+}
+
+.luxury-quote {
+  position: relative;
+  display: flex;
+  min-height: 8.6rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.25);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 110%, rgba(215,168,77,.12), transparent 45%),
+    linear-gradient(180deg, rgba(13,25,37,.92), rgba(5,13,21,.96));
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.luxury-quote::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .08;
+  background:
+    radial-gradient(circle at 15% 70%, #f0cc79 0 1px, transparent 1.5px),
+    radial-gradient(circle at 76% 42%, #f0cc79 0 1px, transparent 1.5px);
+  background-size: 64px 52px, 88px 71px;
+}
+
+.luxury-quote b,
+.luxury-quote span {
+  position: relative;
+  z-index: 1;
+}
+
+.luxury-quote b {
+  color: #f0ca72;
+  font-size: 1rem;
+}
+
+.luxury-quote span {
+  margin-top: .4rem;
+  color: #c8ab75;
+  font-size: .83rem;
+  font-style: italic;
+}
+
+/* Home's old action surface is replaced by the visual hero above. */
+.luxury-home #home-panel-today > .next-action-card {
+  display: none;
+}
+
+/* The section selector becomes the persistent bottom navigation seen in the
+   reference screens. It remains the same three accessible tab controls. */
+.luxury-home .luxury-home-nav {
+  position: fixed;
+  z-index: 90;
+  inset-inline: 50%;
+  bottom: max(.5rem, env(safe-area-inset-bottom));
+  width: min(calc(100% - 1rem), 50rem);
+  transform: translateX(50%);
+  margin: 0;
+  border-color: rgba(215,168,77,.24);
+  border-radius: 22px;
+  background: rgba(4,11,19,.94);
+  box-shadow:
+    0 18px 54px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.03);
+  padding: .35rem;
+  backdrop-filter: blur(18px);
+}
+
+.luxury-home .home-section-tab {
+  min-height: 3.35rem;
+  border-radius: 15px;
+  font-size: .76rem;
+}
+
+.luxury-home .home-section-tab.active {
+  border-color: rgba(240,204,121,.32);
+  background:
+    radial-gradient(circle at 50% 120%, rgba(215,168,77,.18), transparent 62%),
+    rgba(215,168,77,.07);
+  color: var(--lux-gold-bright);
+}
+
+/* Journey becomes a dark railway-like sequence rather than a stack of pale cards. */
+.luxury-journey-panel {
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.luxury-journey-panel::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-block: 5rem 2rem;
+  inset-inline-start: 2rem;
+  width: 2px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(240,204,121,.40) 0 7px,
+      transparent 7px 14px
+    );
+  box-shadow: 0 0 20px rgba(215,168,77,.14);
+}
+
+.luxury-journey-panel .book-section {
+  border-color: rgba(215,168,77,.24);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(215,168,77,.07), transparent 18rem),
+    linear-gradient(145deg, rgba(15,28,42,.96), rgba(6,14,23,.97));
+}
+
+.luxury-journey-panel .future-book-row {
+  margin-inline-start: 1.2rem;
+  border: 1px solid rgba(215,168,77,.16);
+  border-radius: 16px;
+  background: rgba(7,15,24,.72);
+  padding-inline: .8rem;
+}
+
+.luxury-library-panel .library-home {
+  margin-bottom: 1rem;
+}
+
+/* Reader: editorial, image-led, with the text treated as the luxury focal surface. */
+.luxury-reader .luxury-reader-header {
+  border-bottom-color: rgba(215,168,77,.22);
+  background: rgba(4,11,19,.93);
+  backdrop-filter: blur(18px);
+}
+
+.luxury-reader .lesson-cover-card {
+  border-color: rgba(240,204,121,.50);
+  border-radius: 24px;
+  background: #050c14;
+}
+
+.luxury-reader .lesson-chapter-image {
+  width: 100%;
+  aspect-ratio: 40 / 21;
+  object-fit: cover;
+  filter: brightness(.82) saturate(.86) contrast(1.06);
+}
+
+.luxury-reader .lesson-cover-copy {
+  background:
+    linear-gradient(180deg, rgba(14,27,40,.97), rgba(6,15,24,.98));
+}
+
+.luxury-reader .story-reading {
+  border: 1px solid rgba(215,168,77,.22);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(215,168,77,.055), transparent 18rem),
+    rgba(6,14,23,.72);
+  box-shadow: 0 22px 58px rgba(0,0,0,.26);
+  padding: clamp(1rem, 4vw, 1.7rem);
+}
+
+.luxury-reader .story-paragraph + .story-paragraph {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(215,168,77,.12);
+}
+
+.luxury-reader .story-en {
+  color: #f6d99b;
+  font-size: clamp(1.1rem, 3vw, 1.34rem);
+  line-height: 1.95;
+}
+
+.luxury-reader .story-fa {
+  color: #d7d1c8;
+}
+
+.luxury-reader .story-action {
+  border-color: rgba(215,168,77,.18);
+  background: rgba(215,168,77,.035);
+}
+
+.luxury-reader .story-line.is-playing {
+  border-radius: 14px;
+  background:
+    linear-gradient(90deg, rgba(215,168,77,.12), rgba(215,168,77,.035));
+  box-shadow: inset 3px 0 0 var(--lux-gold-bright);
+}
+
+.luxury-reader .reading-guidance {
+  text-align: center;
+}
+
+/* Preparation, review and exams share the same focused cinematic practice frame. */
+.luxury-prep,
+.luxury-review,
+.luxury-exam,
+.luxury-flashcards,
+.luxury-glossary,
+.luxury-settings {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(38,74,104,.12), transparent 26rem),
+    linear-gradient(180deg, rgba(5,13,22,.18), transparent 18rem);
+}
+
+.luxury-prep .luxury-prep-header {
+  background: rgba(4,11,19,.94);
+  backdrop-filter: blur(18px);
+}
+
+.luxury-prep .prep-stepper,
+.luxury-exam .test-steps {
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.18);
+  border-radius: 15px;
+  background: rgba(5,13,22,.62);
+}
+
+.luxury-prep .learning-focus-card,
+.luxury-review .learning-focus-card,
+.luxury-exam .learning-focus-card,
+.luxury-flashcards .learning-focus-card {
+  border-color: rgba(240,204,121,.28);
+  background:
+    radial-gradient(circle at 50% -8%, rgba(215,168,77,.075), transparent 16rem),
+    linear-gradient(160deg, rgba(17,31,46,.98), rgba(6,14,23,.98));
+}
+
+.luxury-prep .learning-focus-card .font-en,
+.luxury-review .learning-focus-card .font-en,
+.luxury-exam .learning-focus-card .font-en {
+  color: #fff0cf;
+}
+
+.luxury-prep .answer-input,
+.luxury-review .answer-input,
+.luxury-exam .answer-input {
+  min-height: 3.8rem;
+  border-color: rgba(215,168,77,.30);
+  border-radius: 16px;
+  background: rgba(2,8,14,.60);
+  font-size: 1.12rem;
+}
+
+.luxury-prep .btn-paper,
+.luxury-review .btn-paper,
+.luxury-exam .btn-paper {
+  min-height: 3.25rem;
+}
+
+.luxury-prep .btn-crimson,
+.luxury-review .btn-crimson,
+.luxury-exam .btn-crimson,
+.luxury-prep .btn-ink,
+.luxury-review .btn-ink,
+.luxury-exam .btn-ink {
+  min-height: 3.25rem;
+}
+
+/* Listening moments get the luminous circular-play treatment without changing
+   the actual audio or grading mechanics. */
+.luxury-prep button[aria-label*="پخش"],
+.luxury-review button[aria-label*="پخش"],
+.luxury-exam button[aria-label*="پخش"] {
+  border-color: rgba(240,204,121,.50);
+  box-shadow:
+    0 0 0 1px rgba(240,204,121,.08),
+    0 0 34px rgba(215,168,77,.12);
+}
+
+/* Settings/profile stay luxurious but intentionally less cinematic. */
+.luxury-settings .settings-list {
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.18);
+  border-radius: 20px;
+  background: rgba(7,15,24,.66);
+  padding-inline: 1rem;
+}
+
+.luxury-settings .settings-section {
+  border-bottom-color: rgba(215,168,77,.13);
+}
+
+/* Responsive tuning follows the tall mobile references first. */
+@media (max-width: 640px) {
+  .luxury-brand-header {
+    grid-template-columns: 2.8rem minmax(0,1fr) 2.8rem;
+  }
+
+  .luxury-round-control {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .luxury-home-hero {
+    min-height: 28rem;
+  }
+
+  .luxury-home-hero-shade {
+    background:
+      linear-gradient(0deg, rgba(3,8,14,.96) 0%, rgba(3,8,14,.64) 46%, rgba(3,8,14,.18) 75%);
+  }
+
+  .luxury-home-hero-copy {
+    width: 100%;
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .luxury-feature-grid {
+    gap: .55rem;
+  }
+
+  .luxury-feature-card {
+    min-height: 7.9rem;
+    border-radius: 17px;
+    padding-inline: .35rem;
+  }
+
+  .luxury-feature-card svg {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+
+  .luxury-feature-card b {
+    font-size: .82rem;
+  }
+
+  .luxury-feature-card span {
+    font-size: .61rem;
+  }
+
+  .luxury-current-story {
+    grid-template-columns: 4.6rem minmax(0,1fr);
+  }
+
+  .luxury-current-story-progress {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding-inline: .2rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .luxury-feature-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .luxury-home-hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-hero-primary,
+  .luxury-hero-secondary {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .luxury-home-hero {
+    min-height: 31rem;
+  }
+
+  .luxury-home-hero-art img {
+    object-position: center;
+  }
+
+  .luxury-reader .story-reading {
+    padding: 2rem 2.25rem;
+  }
+}
