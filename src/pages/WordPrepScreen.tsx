@@ -477,7 +477,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
           <div className="min-w-0 flex-1 text-center">
-            <h1 className="truncate text-lg font-extrabold">{phaseTitle}</h1>
+            <h1 className="luxury-contract-heading truncate">واژه‌های تازه: {chapter.titleFa}</h1>
+            <div className="truncate text-lg font-extrabold">{phaseTitle}</div>
             <div className="mt-1 truncate text-xs" style={{ color: 'var(--ink-soft)' }}>{phaseSubtitle}</div>
           </div>
         </div>
