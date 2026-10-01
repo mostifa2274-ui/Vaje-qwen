@@ -1,8 +1,9 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { GhesseState } from './engine/types'
 import { clearSessionDrafts, createProgressReplacementToken, loadPersistedState, loadState, mergeConcurrentState, PROGRESS_REPLACEMENT_KEY, replacePersistedState, requestDurableStorage, saveState, signalProgressReplacement, STORAGE_KEY } from './engine/store'
-import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
-import { canOpenChapter, canOpenExam, canOpenStory, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
+import { CHAPTERS, VOCAB } from './data/chapters'
+import { canOpenChapter, canOpenExam, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
+import { hashFor, rawViewFromHash, resolveView, viewLabel, type AppView as View } from './engine/routes'
 import MapScreen from './pages/MapScreen'
 import RouteErrorBoundary from './components/RouteErrorBoundary'
 import GoalCelebration from './components/GoalCelebration'
@@ -26,18 +27,6 @@ const FlashcardsScreen = lazy(() => import('./pages/FlashcardsScreen'))
 const OfflineAudioScreen = lazy(() => import('./pages/OfflineAudioScreen'))
 const SettingsScreen = lazy(() => import('./pages/SettingsScreen'))
 
-type View =
-  | { name: 'map' }
-  | { name: 'prep'; chapterId: string }
-  | { name: 'diagnostic'; chapterId: string }
-  | { name: 'read'; chapterId: string }
-  | { name: 'review' }
-  | { name: 'exam'; examId: string }
-  | { name: 'glossary' }
-  | { name: 'flashcards' }
-  | { name: 'offline-audio' }
-  | { name: 'settings' }
-
 function RouteLoading() {
   return (
     <div className="app-page" role="status" aria-live="polite">
@@ -52,96 +41,6 @@ function RouteLoading() {
 const FIRST = CHAPTERS[0].id
 const VALID_CHAPTER_IDS = CHAPTERS.map(ch => ch.id)
 const VALID_WORD_IDS = VOCAB.map(word => word.id)
-
-function safeDecodeRouteSegment(value: string): string | undefined {
-  try {
-    return decodeURIComponent(value)
-  } catch {
-    return undefined
-  }
-}
-
-function rawViewFromHash(): View {
-  const hash = window.location.hash.replace(/^#\/?/, '')
-  if (hash === 'review') return { name: 'review' }
-  if (hash === 'glossary') return { name: 'glossary' }
-  if (hash === 'flashcards') return { name: 'flashcards' }
-  if (hash === 'offline-audio') return { name: 'offline-audio' }
-  if (hash === 'settings') return { name: 'settings' }
-  if (hash.startsWith('prep/')) {
-    const chapterId = safeDecodeRouteSegment(hash.slice(5))
-    if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'prep', chapterId }
-  }
-  if (hash.startsWith('diagnostic/')) {
-    const chapterId = safeDecodeRouteSegment(hash.slice(11))
-    if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'diagnostic', chapterId }
-  }
-  if (hash.startsWith('read/')) {
-    const chapterId = safeDecodeRouteSegment(hash.slice(5))
-    if (chapterId && CHAPTER_BY_ID.has(chapterId)) return { name: 'read', chapterId }
-  }
-  if (hash.startsWith('exam/')) {
-    const examId = safeDecodeRouteSegment(hash.slice(5))
-    if (examId && examDefinition(examId)) return { name: 'exam', examId }
-  }
-  return { name: 'map' }
-}
-
-function resolveView(view: View, state: GhesseState): View {
-  if (view.name === 'read') {
-    if (!canOpenChapter(state, view.chapterId)) return { name: 'map' }
-    if (!canOpenStory(state, view.chapterId)) return { name: 'prep', chapterId: view.chapterId }
-  }
-  if (view.name === 'prep') {
-    if (!canOpenChapter(state, view.chapterId)) return { name: 'map' }
-    // A prepared chapter goes straight to its story; explore mode may revisit its words.
-    if (!state.exploreAll && canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
-  }
-  if (view.name === 'diagnostic') {
-    // Prove-known is only for the learner's actual next chapter, never an
-    // Explore preview. After a first miss, this session must use teaching.
-    if (!canPrepareChapter(state, view.chapterId)) return { name: 'map' }
-    if (canReadChapter(state, view.chapterId)) return { name: 'read', chapterId: view.chapterId }
-    if (diagnosticFailed(view.chapterId)) return { name: 'prep', chapterId: view.chapterId }
-  }
-  if (view.name === 'exam' && !canOpenExam(state, view.examId)) return { name: 'map' }
-  return view
-}
-
-function hashFor(view: View): string {
-  if (view.name === 'prep') return `#/prep/${encodeURIComponent(view.chapterId)}`
-  if (view.name === 'diagnostic') return `#/diagnostic/${encodeURIComponent(view.chapterId)}`
-  if (view.name === 'read') return `#/read/${encodeURIComponent(view.chapterId)}`
-  if (view.name === 'review') return '#/review'
-  if (view.name === 'exam') return `#/exam/${encodeURIComponent(view.examId)}`
-  if (view.name === 'glossary') return '#/glossary'
-  if (view.name === 'flashcards') return '#/flashcards'
-  if (view.name === 'offline-audio') return '#/offline-audio'
-  if (view.name === 'settings') return '#/settings'
-  return '#/map'
-}
-
-function viewLabel(view: View): string {
-  if (view.name === 'prep') {
-    const chapter = CHAPTER_BY_ID.get(view.chapterId)
-    return chapter ? `آمادگی فصل: ${chapter.titleFa}` : 'آمادگی فصل'
-  }
-  if (view.name === 'diagnostic') {
-    const chapter = CHAPTER_BY_ID.get(view.chapterId)
-    return chapter ? `تعیین سطح فصل: ${chapter.titleFa}` : 'تعیین سطح فصل'
-  }
-  if (view.name === 'read') {
-    const chapter = CHAPTER_BY_ID.get(view.chapterId)
-    return chapter ? `خواندن داستان: ${chapter.titleFa}` : 'خواندن داستان'
-  }
-  if (view.name === 'review') return 'مرور هوشمند'
-  if (view.name === 'exam') return examDefinition(view.examId)?.titleFa ?? 'آزمون'
-  if (view.name === 'glossary') return 'واژه‌نامه'
-  if (view.name === 'flashcards') return 'جعبهٔ لایتنر'
-  if (view.name === 'offline-audio') return 'صدای آفلاین'
-  if (view.name === 'settings') return 'تنظیمات'
-  return 'مسیر یادگیری'
-}
 
 /**
  * The progress this tab starts from. Its first save writes back any repair or
