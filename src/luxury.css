@@ -694,7 +694,7 @@ input[type="range"] {
 
 .luxury-brand-header {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: minmax(3rem, auto) minmax(0, 1fr) minmax(3rem, auto);
   align-items: start;
   gap: .8rem;
   padding: .1rem 0 .7rem;
@@ -2715,7 +2715,7 @@ input[type="range"] {
 
 @media (max-width: 520px) {
   .luxury-page-header {
-    grid-template-columns: 2.75rem minmax(0,1fr) 2.75rem;
+    grid-template-columns: minmax(2.75rem, auto) minmax(0,1fr) minmax(2.75rem, auto);
   }
 
   .luxury-icon-button,
