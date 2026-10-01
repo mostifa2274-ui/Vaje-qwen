@@ -3,7 +3,8 @@ import type { GhesseState } from '../engine/types'
 import { MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
 import { createProgressBackupJson, importProgressBackupJson } from '../engine/backup'
 import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, CrownIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon, UserIcon } from '../components/Icons'
+import { CrownIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon, UserIcon } from '../components/Icons'
+import { LuxuryPageHeader } from '../components/LuxuryUI'
 import { BUILD_COMMIT } from '../engine/release'
 import { faNum } from '../engine/format'
 import { buildResearchReport } from '../engine/researchExport'
@@ -125,15 +126,15 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
 
   return (
     <div className="app-page luxury-settings page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-        <div className="min-w-0 flex-1 text-center">
-          <h1 className="luxury-contract-heading">تنظیمات</h1>
-          <div className="text-2xl font-extrabold">من</div>
-          <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>پروفایل یادگیری و تنظیمات</p>
-        </div>
-        <span className="luxury-settings-crown" aria-hidden="true"><CrownIcon className="h-5 w-5" /></span>
-      </header>
+      <LuxuryPageHeader
+        title="تنظیمات"
+        eyebrow="من"
+        subtitle="پروفایل یادگیری و تنظیمات"
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+        centered
+        trailing={<span className="luxury-settings-crown" aria-hidden="true"><CrownIcon className="h-5 w-5" /></span>}
+      />
 
       <section className="luxury-profile-card mt-5" aria-label="خلاصهٔ پروفایل یادگیری">
         <div className="luxury-profile-avatar" aria-hidden="true"><UserIcon className="h-8 w-8" /></div>
