@@ -187,10 +187,16 @@ export function recordCompletedRead(
   // marked complete remain rereadable.
   if ((!hasCurrentPrepGate && !canRereadLegacyCompletion) || !comprehensionVerified || !listeningVerified) return state
 
-  const words = { ...state.words }
-  for (const id of wordIds) {
-    const base = words[id] ?? blankWordProgress(now)
-    words[id] = scheduleAfterChapter(base, now)
+  const reread = previous?.completed === true
+  // Finishing a chapter for the first time schedules its words into Smart
+  // Review. A reread is reading practice, not new acquisition evidence: do not
+  // pull mature words forward or otherwise perturb their existing schedule.
+  const words = reread ? state.words : { ...state.words }
+  if (!reread) {
+    for (const id of wordIds) {
+      const base = words[id] ?? blankWordProgress(now)
+      words[id] = scheduleAfterChapter(base, now)
+    }
   }
   const next: GhesseState = {
     ...state,
@@ -204,11 +210,13 @@ export function recordCompletedRead(
         completed: true,
         completedAt: previous?.completedAt ?? now,
         lastReadAt: now,
-        checksCorrect: firstPassChecksCorrect,
-        checksTotal,
-        listeningCorrect: listening.firstPassCorrect,
-        listeningTotal: listening.total,
-        reads: Math.max(previous?.reads ?? 0, previous?.completed ? 1 : 0) + 1,
+        // The acquisition first-pass scores feed research export and must stay
+        // historical. A later reread records frequency/recency only.
+        checksCorrect: reread ? (previous?.checksCorrect ?? 0) : firstPassChecksCorrect,
+        checksTotal: reread ? (previous?.checksTotal ?? 0) : checksTotal,
+        listeningCorrect: reread ? previous?.listeningCorrect : listening.firstPassCorrect,
+        listeningTotal: reread ? previous?.listeningTotal : listening.total,
+        reads: Math.max(previous?.reads ?? 0, reread ? 1 : 0) + 1,
       },
     },
   }
