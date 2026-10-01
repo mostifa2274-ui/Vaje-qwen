@@ -19,7 +19,7 @@ export default function SentenceRow({ en, fa, showFa, isPlaying, soundOn, onTogg
   const wordActionHintId = useId()
 
   return (
-    <div className="story-sentence">
+    <div className="story-sentence luxury-story-sentence">
       <div className="story-sentence-actions">
         <button
           type="button"
