@@ -1073,10 +1073,10 @@ input[type="range"] {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   z-index: 90;
-  inset-inline: 50%;
+  left: 50%;
   bottom: max(.5rem, env(safe-area-inset-bottom));
   width: min(calc(100% - 1rem), 50rem);
-  transform: translateX(50%);
+  transform: translateX(-50%);
   margin: 0;
   border-color: rgba(215,168,77,.24);
   border-radius: 22px;
