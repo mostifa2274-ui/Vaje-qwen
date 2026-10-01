@@ -2280,3 +2280,456 @@ input[type="range"] {
     display: none;
   }
 }
+
+
+/* ==========================================================================
+   Luxury treatment for the complete learning component inventory
+   ========================================================================== */
+
+.luxury-glossary .search-shell {
+  min-height: 3.5rem;
+  border: 1px solid rgba(240,204,121,.24);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(13,26,39,.92), rgba(6,14,23,.94));
+  box-shadow:
+    0 12px 32px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+.luxury-glossary .glossary-list {
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.16);
+  border-radius: 20px;
+  background:
+    linear-gradient(155deg, rgba(14,27,40,.86), rgba(5,13,22,.92));
+  box-shadow: 0 20px 52px rgba(0,0,0,.22);
+}
+
+.luxury-glossary .glossary-row {
+  min-height: 4rem;
+  padding: .85rem 1rem;
+}
+
+.luxury-glossary .glossary-row + .glossary-row {
+  border-top: 1px solid rgba(215,168,77,.10);
+}
+
+.luxury-glossary .glossary-word {
+  color: #f4d693;
+  font-size: 1.05rem;
+}
+
+.luxury-glossary .glossary-status {
+  border: 1px solid rgba(215,168,77,.14);
+  border-radius: 999px;
+  background: rgba(215,168,77,.045);
+  padding: .2rem .48rem;
+}
+
+/* Flashcard experience */
+.luxury-flashcards .flashcard {
+  min-height: 26rem;
+  border: 1px solid rgba(240,204,121,.30);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(215,168,77,.09), transparent 17rem),
+    linear-gradient(160deg, rgba(18,32,47,.98), rgba(5,13,22,.99));
+  box-shadow:
+    0 28px 74px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.luxury-flashcards .flashcard-face {
+  min-height: 26rem;
+  padding: clamp(1.4rem, 6vw, 2.5rem);
+}
+
+.luxury-flashcards .flashcard-prompt {
+  color: #9fa9b1;
+  font-size: .78rem;
+}
+
+.luxury-flashcards .flashcard-word {
+  color: #f6d58e;
+  font-size: clamp(2.8rem, 11vw, 5.4rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  text-shadow: 0 10px 34px rgba(0,0,0,.34);
+}
+
+.luxury-flashcards .flashcard-meaning {
+  color: #f6eee3;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  font-weight: 900;
+}
+
+.luxury-flashcards .flashcard-ipa,
+.luxury-flashcards .flashcard-pos,
+.luxury-flashcards .flashcard-origin {
+  color: #9aa5ae;
+}
+
+.luxury-flashcards .flashcard-example {
+  margin-top: 1.3rem;
+  border-top: 1px solid rgba(215,168,77,.14);
+  padding-top: 1rem;
+}
+
+.luxury-flashcards .flashcard-listen {
+  width: 7.5rem;
+  height: 7.5rem;
+  border: 2px solid rgba(240,204,121,.62);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(215,168,77,.10), rgba(6,14,23,.90) 68%);
+  color: #f0c96f;
+  box-shadow: 0 0 36px rgba(215,168,77,.16);
+}
+
+.luxury-flashcards .flashcard-grades {
+  gap: .65rem;
+}
+
+.luxury-flashcards .flashcard-grade {
+  border-radius: 15px;
+}
+
+.luxury-flashcards .leitner-boxes {
+  gap: .55rem;
+}
+
+.luxury-flashcards .leitner-box {
+  min-height: 7.5rem;
+  border: 1px solid rgba(215,168,77,.14);
+  border-radius: 15px;
+  background:
+    linear-gradient(180deg, rgba(15,29,43,.86), rgba(7,16,26,.90));
+}
+
+.luxury-flashcards .leitner-box.open {
+  border-color: rgba(240,204,121,.56);
+  background:
+    radial-gradient(circle at 50% 100%, rgba(215,168,77,.13), transparent 70%),
+    linear-gradient(180deg, rgba(18,32,46,.92), rgba(8,17,27,.94));
+}
+
+.luxury-flashcards .leitner-unstarted {
+  border: 1px solid rgba(215,168,77,.14);
+  border-radius: 14px;
+  background: rgba(5,13,22,.54);
+}
+
+/* Offline audio */
+.luxury-settings .offline-audio-intro,
+.luxury-settings .settings-section {
+  border-color: rgba(215,168,77,.15);
+}
+
+.luxury-settings .settings-section {
+  background:
+    linear-gradient(155deg, rgba(14,27,40,.72), rgba(6,14,23,.76));
+}
+
+.luxury-settings .settings-section + .settings-section {
+  border-top-color: rgba(215,168,77,.11);
+}
+
+.luxury-settings .settings-details > summary {
+  color: #ece3d7;
+}
+
+.luxury-settings .settings-details[open] {
+  background: rgba(215,168,77,.025);
+}
+
+.luxury-settings .settings-select {
+  border-color: rgba(215,168,77,.22);
+  background: #07111b;
+  color: var(--ink);
+}
+
+/* Smart review */
+.luxury-review .compact-summary {
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.17);
+  border-radius: 18px;
+  background:
+    linear-gradient(155deg, rgba(14,27,40,.82), rgba(6,14,23,.86));
+  box-shadow: 0 16px 40px rgba(0,0,0,.18);
+}
+
+.luxury-review .compact-summary > div + div {
+  border-inline-start-color: rgba(215,168,77,.12);
+}
+
+.luxury-review .compact-summary b {
+  color: #efca77;
+}
+
+.luxury-review .review-focus-card {
+  min-height: 25rem;
+}
+
+.luxury-review .review-focus-card > .mt-6.text-center {
+  padding-block: .6rem;
+}
+
+.luxury-review .review-focus-card [data-testid="review-prompt"] {
+  color: #f7dfaa;
+  font-size: clamp(1.7rem, 7vw, 2.7rem);
+  line-height: 1.5;
+}
+
+/* Pronunciation / active-use modules */
+.luxury-pronunciation {
+  border-top: 1px solid rgba(215,168,77,.12);
+  padding-top: .9rem;
+}
+
+.luxury-module-trigger {
+  border-color: rgba(215,168,77,.19);
+  background:
+    linear-gradient(180deg, rgba(15,29,43,.78), rgba(7,16,26,.82));
+}
+
+.luxury-module-trigger svg {
+  color: #e7bf68;
+}
+
+.luxury-inline-module {
+  border-top-color: rgba(215,168,77,.14) !important;
+  border-radius: 0 0 14px 14px;
+  background:
+    linear-gradient(180deg, rgba(215,168,77,.025), transparent);
+  padding-inline: .2rem;
+  padding-bottom: .2rem;
+}
+
+.luxury-active-use {
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.16);
+  border-radius: 15px;
+  background: rgba(5,13,22,.44);
+}
+
+.luxury-active-use > summary {
+  padding: .8rem .9rem;
+}
+
+.luxury-active-use > div {
+  padding-inline: .9rem;
+  padding-bottom: .9rem;
+}
+
+.luxury-comparison {
+  border-top-color: rgba(215,168,77,.16);
+  background:
+    linear-gradient(180deg, rgba(215,168,77,.035), transparent);
+}
+
+.luxury-spelling-hint {
+  border: 1px solid rgba(240,204,121,.22);
+  border-radius: 13px;
+  background: rgba(215,168,77,.065);
+  padding: .7rem .8rem;
+  color: #d8d1c7;
+}
+
+/* Story sentence controls and typography */
+.luxury-story-sentence {
+  position: relative;
+  border-radius: 14px;
+  padding: .5rem .25rem;
+}
+
+.luxury-story-sentence:hover {
+  background: rgba(215,168,77,.025);
+}
+
+.luxury-story-sentence .story-action {
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid rgba(215,168,77,.14);
+  border-radius: 999px;
+  background: rgba(5,13,22,.56);
+}
+
+.luxury-story-sentence .story-action:hover,
+.luxury-story-sentence .story-action[aria-pressed="true"] {
+  border-color: rgba(240,204,121,.46);
+  background: rgba(215,168,77,.085);
+  color: #efc970;
+}
+
+.luxury-story-sentence .tok-word {
+  border-radius: .32rem;
+  text-decoration-color: rgba(240,204,121,.32);
+  text-underline-offset: .18em;
+}
+
+.luxury-story-sentence .tok-word:hover,
+.luxury-story-sentence .tok-word:focus-visible {
+  background: rgba(215,168,77,.10);
+  color: #ffe4aa;
+}
+
+/* Listening passage */
+.luxury-test-player {
+  padding: 1rem 0 .25rem;
+}
+
+.test-passage {
+  color: #eadfcf;
+  font-size: 1rem;
+  line-height: 1.95;
+}
+
+.test-passage-lines {
+  border: 1px solid rgba(215,168,77,.14);
+  border-radius: 14px;
+  background: rgba(5,13,22,.42);
+  padding: .8rem 1rem;
+}
+
+.test-passage-lines > li + li {
+  border-top: 1px solid rgba(215,168,77,.10);
+  margin-top: .7rem;
+  padding-top: .7rem;
+}
+
+.test-review-details {
+  overflow: hidden;
+  border: 1px solid rgba(215,168,77,.16);
+  border-radius: 14px;
+  background: rgba(5,13,22,.48);
+}
+
+.test-review-details > summary {
+  padding: .75rem .9rem;
+  color: #ead5a5;
+  font-weight: 800;
+}
+
+.test-review-details > :not(summary) {
+  margin-inline: .9rem;
+}
+
+.test-review-item {
+  border: 1px solid rgba(215,168,77,.11);
+  border-radius: 12px;
+  background: rgba(255,255,255,.018);
+  padding: .7rem .8rem;
+}
+
+/* Goal completion */
+.luxury-goal-toast {
+  border: 1px solid rgba(240,204,121,.38);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(240,204,121,.10), transparent 12rem),
+    linear-gradient(155deg, rgba(18,32,46,.985), rgba(6,14,23,.99));
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.40),
+    0 0 32px rgba(215,168,77,.08);
+}
+
+.luxury-goal-toast .goal-toast-flame {
+  border: 1px solid rgba(240,204,121,.22);
+  color: #f1ca70;
+}
+
+/* Recovery states */
+.luxury-error-card {
+  border: 1px solid rgba(240,204,121,.20);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(215,168,77,.06), transparent 18rem),
+    linear-gradient(155deg, rgba(17,31,45,.98), rgba(6,14,23,.99));
+  box-shadow: 0 24px 66px rgba(0,0,0,.34);
+}
+
+.luxury-error-card h1 {
+  color: #f6e7c8;
+}
+
+.luxury-error-card .runtime-error-mark {
+  border-color: rgba(228,141,134,.34);
+  background: rgba(111,49,45,.24);
+}
+
+/* Two-column metric grids such as glossary evidence. */
+.luxury-metric-grid-2 {
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+
+.luxury-metric-grid-2 .luxury-metric:nth-child(3) {
+  border-inline-start: 0;
+  border-top: 1px solid rgba(215,168,77,.13);
+}
+
+.luxury-metric-grid-2 .luxury-metric:nth-child(4) {
+  border-top: 1px solid rgba(215,168,77,.13);
+}
+
+/* Stronger visual parity with the supplied luxury mobile references. */
+.luxury-exam .learning-focus-card,
+.luxury-prep .learning-focus-card,
+.luxury-review .learning-focus-card {
+  border-radius: 22px;
+}
+
+.luxury-exam .answer-input,
+.luxury-prep .answer-input,
+.luxury-review .answer-input,
+.luxury-flashcards .answer-input {
+  min-height: 4rem;
+  border-radius: 15px;
+  background:
+    linear-gradient(180deg, rgba(4,10,17,.86), rgba(8,17,27,.86));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.015),
+    0 10px 28px rgba(0,0,0,.14);
+}
+
+.luxury-exam .answer-input:focus,
+.luxury-prep .answer-input:focus,
+.luxury-review .answer-input:focus,
+.luxury-flashcards .answer-input:focus {
+  border-color: rgba(240,204,121,.72);
+  box-shadow:
+    0 0 0 3px rgba(215,168,77,.12),
+    0 12px 32px rgba(0,0,0,.18);
+}
+
+.luxury-exam .paper-note,
+.luxury-prep .paper-note,
+.luxury-review .paper-note,
+.luxury-settings .paper-note,
+.luxury-glossary .paper-note,
+.luxury-flashcards .paper-note {
+  border: 1px solid rgba(215,168,77,.14);
+  border-radius: 13px;
+  background: rgba(5,13,22,.52);
+}
+
+@media (max-width: 520px) {
+  .luxury-page-header {
+    grid-template-columns: 2.75rem minmax(0,1fr) 2.75rem;
+  }
+
+  .luxury-icon-button,
+  .luxury-header-spacer {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .luxury-audio-orb {
+    width: 9rem;
+  }
+
+  .luxury-flashcards .flashcard,
+  .luxury-flashcards .flashcard-face {
+    min-height: 23rem;
+  }
+}
