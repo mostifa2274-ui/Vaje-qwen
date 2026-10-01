@@ -199,10 +199,10 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
   }
 
   return (
-    <div className="pronunciation-practice mt-4">
+    <div className="pronunciation-practice luxury-pronunciation mt-4">
       <button
         type="button"
-        className="btn-paper w-full px-3 py-2.5 text-sm"
+        className="btn-paper luxury-module-trigger w-full px-3 py-2.5 text-sm"
         aria-expanded={expanded}
         disabled={disabled}
         onClick={() => setExpanded(value => !value)}
@@ -214,7 +214,7 @@ export default function PronunciationPractice({ word, soundOn, narratorVoiceURI,
       </button>
 
       {expanded && (
-        <div className="mt-3 border-t pt-3 text-sm" style={{ borderColor: 'var(--line-soft)' }}>
+        <div className="luxury-inline-module mt-3 border-t pt-3 text-sm" style={{ borderColor: 'var(--line-soft)' }}>
           <p className="leading-7" style={{ color: 'var(--ink-soft)' }}>
             {sentencePractice
               ? 'جملهٔ نمونه را گوش کن، با ریتم طبیعی تکرارش کن و بعد صدای خودت را با مدل مقایسه کن.'
