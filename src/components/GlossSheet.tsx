@@ -10,7 +10,7 @@ import PronunciationPractice from './PronunciationPractice'
 import ActiveUsePractice from './ActiveUsePractice'
 import { masteryEvidence, masteryNextRequirementFa } from '../engine/mastery'
 import { faNum, percent } from '../engine/format'
-import { LuxuryDivider, LuxuryMetricGrid } from './LuxuryUI'
+import { LuxuryDivider, LuxuryMetricGrid, LuxurySheetFrame } from './LuxuryUI'
 
 interface Props {
   word: WordEntry | null
@@ -119,9 +119,9 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
       onMouseDown={event => { if (event.target === event.currentTarget) onClose() }}
       role="presentation"
     >
-      <div
-        ref={sheetRef}
-        className="sheet-up luxury-sheet-frame mx-2 mb-2 w-full max-w-lg p-5"
+      <LuxurySheetFrame
+        frameRef={sheetRef}
+        className="sheet-up mx-2 mb-2 w-full max-w-lg p-5"
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
@@ -221,7 +221,7 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
             بستن
           </button>
         </div>
-      </div>
+      </LuxurySheetFrame>
     </div>,
     document.body,
   )
