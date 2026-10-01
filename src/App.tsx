@@ -218,7 +218,7 @@ export default function App() {
     return () => window.cancelAnimationFrame(frame)
   }, [view])
   useEffect(() => {
-    document.title = `${viewLabel(view)} — قصه`
+    document.title = `${viewLabel(view)} — واژه‌خوان`
   }, [view])
   useEffect(() => {
     // Warm the usual next screen after home is visible. Save-Data and in-task
