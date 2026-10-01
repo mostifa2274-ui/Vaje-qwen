@@ -445,6 +445,12 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
         </div>
       </div>
 
+      <div className="luxury-reader-masthead" aria-hidden="true">
+        <div className="luxury-reader-brand font-en" lang="en" dir="ltr">VAJE-QWEN</div>
+        <div className="luxury-reader-ornament"><span /></div>
+        <div className="luxury-reader-subtitle font-en" lang="en" dir="ltr">Story Reader</div>
+      </div>
+
       <div className="mx-auto max-w-3xl px-4 pb-32">
         {audioNotice && <div className="paper-note mt-4" role="status">{audioNotice}</div>}
 
