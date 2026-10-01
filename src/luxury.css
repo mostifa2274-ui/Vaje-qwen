@@ -722,7 +722,7 @@ input[type="range"] {
   text-align: center;
 }
 
-.luxury-brand-lockup h1 {
+.luxury-brand-title {
   margin: -.15rem 0 0;
   color: var(--lux-gold-bright);
   font-size: clamp(2rem, 8vw, 3.25rem);
@@ -1061,9 +1061,13 @@ input[type="range"] {
   font-style: italic;
 }
 
-/* Home's old action surface is replaced by the visual hero above. */
+/* The canonical next-action surface remains visible for progress clarity and
+   automated critical-flow contracts; the hero is the richer visual entry. */
 .luxury-home #home-panel-today > .next-action-card {
-  display: none;
+  margin-top: .85rem;
+  border-color: rgba(215,168,77,.18);
+  background: rgba(6,14,23,.72);
+  box-shadow: none;
 }
 
 /* The section selector becomes the persistent bottom navigation seen in the
@@ -1858,4 +1862,14 @@ input[type="range"] {
 .luxury-listen-option:not(:disabled):hover {
   border-color: rgba(240,204,121,.52);
   background: rgba(215,168,77,.08);
+}
+
+
+.luxury-contract-heading {
+  margin: 0 0 .15rem;
+  color: #88939d;
+  font-size: .68rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .05em;
 }
