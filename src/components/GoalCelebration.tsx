@@ -11,7 +11,7 @@ export default function GoalCelebration({ streak, onClose }: { streak: number; o
     return () => window.clearTimeout(timer)
   }, [onClose])
   return (
-    <div className="goal-toast" role="status" data-testid="goal-celebration">
+    <div className="goal-toast luxury-goal-toast" role="status" data-testid="goal-celebration">
       <span className="goal-toast-flame" aria-hidden="true"><FlameIcon className="h-6 w-6" /></span>
       <div className="min-w-0 flex-1">
         <b>هدف امروز کامل شد!</b>
