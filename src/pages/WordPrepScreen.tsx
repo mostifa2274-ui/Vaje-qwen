@@ -632,7 +632,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'written' && currentWrittenWord && (
-          <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
+          <div ref={stageRef} className="learning-focus-card luxury-written-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>ترجمهٔ نوشتاری · ۱۰۰٪</span>
               <span>{faNum(writtenPassed.size)} از {faNum(chapter.new.length)}</span>
@@ -691,7 +691,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'listening' && currentListeningWord && listeningOptions && (
-          <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
+          <div ref={stageRef} className="learning-focus-card luxury-listening-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>شنیداری · ۱۰۰٪</span>
               <span>{faNum(listeningPassed.size)} از {faNum(chapter.new.length)}</span>
@@ -711,7 +711,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و معنی درست را انتخاب کن</div>
                   <button
                     type="button"
-                    className="btn-paper mt-4 min-h-20 w-full text-2xl"
+                    className="btn-paper luxury-listen-play mt-4 text-2xl"
                     onClick={() => { setListeningReady(false); speak(currentListeningWord.word, true) }}
                     aria-label="پخش دوبارهٔ واژه"
                   >
@@ -728,7 +728,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   {listeningOptions.map(option => {
                     const isAnswer = option.id === currentListeningId
                     const isSelected = selected === option.id
-                    let className = 'btn-paper min-h-14 px-3 py-3'
+                    let className = 'btn-paper luxury-listen-option min-h-14 px-3 py-3'
                     if (feedback && isAnswer) className += ' answer-correct'
                     else if (feedback && isSelected) className += ' answer-wrong'
                     return (
