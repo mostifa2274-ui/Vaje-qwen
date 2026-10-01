@@ -4,7 +4,7 @@ import { MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary }
 import { createProgressBackupJson, importProgressBackupJson } from '../engine/backup'
 import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { CrownIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon, UserIcon } from '../components/Icons'
-import { LuxuryPageHeader } from '../components/LuxuryUI'
+import { LuxuryMetricGrid, LuxuryPageHeader } from '../components/LuxuryUI'
 import { BUILD_COMMIT } from '../engine/release'
 import { faNum } from '../engine/format'
 import { buildResearchReport } from '../engine/researchExport'
@@ -143,11 +143,14 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
           <h2>مسیر شخصی تو</h2>
           <p>پیشرفت واقعی از فصل‌ها، واژه‌های معرفی‌شده و آزمون‌های پاس‌شده محاسبه می‌شود.</p>
         </div>
-        <div className="luxury-profile-metrics">
-          <div><b>{faNum(profileSummary.completedChapters)}</b><span>فصل</span></div>
-          <div><b>{faNum(profileSummary.introducedWords)}</b><span>واژه</span></div>
-          <div><b>{faNum(profileSummary.passedExams)}</b><span>آزمون</span></div>
-        </div>
+        <LuxuryMetricGrid
+          className="luxury-profile-metrics"
+          items={[
+            { value: faNum(profileSummary.completedChapters), label: 'فصل' },
+            { value: faNum(profileSummary.introducedWords), label: 'واژه' },
+            { value: faNum(profileSummary.passedExams), label: 'آزمون' },
+          ]}
+        />
       </section>
 
       <div className="settings-list mt-5">
