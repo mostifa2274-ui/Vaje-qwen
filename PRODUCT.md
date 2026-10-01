@@ -40,6 +40,7 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 - Mobile and tablet are primary. Touch targets must remain comfortable and core functionality must work offline where possible.
 - Progress must be explainable. Learners should always know what is required to unlock the next stage.
 - New remediation may block future progression, but it must not re-lock story chapters the learner already completed; earned content remains rereadable while the next unfinished gate stays strict.
+- Rereading an already completed chapter records only reread recency/frequency. It must not overwrite the original first-pass reading/listening scores or pull the chapter's words forward in Smart Review.
 - Persisted chapter and exam evidence must remain path-consistent: a later chapter or passed exam record never substitutes for missing completion of the chapters and milestone exams that precede it. Sparse/imported state fails closed at the next gate, and a stale tab's concurrent chapter/exam write is rechecked against the latest persisted prerequisites before independent records may merge.
 - An exam pass is evidence only when at least one attempt is recorded; impossible zero-attempt pass flags and their derived score/word evidence normalize to an unattempted state.
 - Known missed exam words never become implicitly remediated because an imported attempt timestamp is missing or implausible. When that timestamp cannot be trusted, normalization records a separate remediation floor and requires a new independent recall after it.

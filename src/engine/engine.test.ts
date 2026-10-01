@@ -874,10 +874,14 @@ describe('chapter completion scheduling', () => {
     expect(next.chapters.c1.listeningTotal).toBe(LISTENING_QUESTION_COUNT)
   })
 
-  it('allows legacy completed chapters to be reread without regressing the frontier', () => {
+  it('records rereads without changing acquisition scores or Smart Review timing', () => {
     const order = ['c1', 'c2', 'c3']
     const state = emptyState(1, 'c3')
-    state.words.cat = blankWordProgress(1)
+    const scheduled = blankWordProgress(1)
+    scheduled.dueAt = 30 * 86_400_000
+    scheduled.reviewStage = 5
+    scheduled.intervalDays = 30
+    state.words.cat = scheduled
     state.chapters.c1 = {
       preparedAt: 1,
       prepAttempts: 1,
@@ -885,7 +889,9 @@ describe('chapter completion scheduling', () => {
       completedAt: 2,
       lastReadAt: 2,
       checksCorrect: 2,
-      checksTotal: 2,
+      checksTotal: READING_QUESTION_COUNT,
+      listeningCorrect: 3,
+      listeningTotal: LISTENING_QUESTION_COUNT,
       reads: 1,
     }
     const next = recordCompletedRead(
@@ -895,14 +901,19 @@ describe('chapter completion scheduling', () => {
       8,
       READING_QUESTION_COUNT,
       READING_QUESTION_COUNT,
-      FULL_LISTENING,
+      { ...FULL_LISTENING, firstPassCorrect: 5 },
       20,
       order,
       'c2',
     )
     expect(next.currentChapter).toBe('c3')
     expect(next.chapters.c1.reads).toBe(2)
-    expect(next.words.cat.dueAt).toBe(20 + 86_400_000)
+    expect(next.chapters.c1.lastReadAt).toBe(20)
+    expect(next.chapters.c1.checksCorrect).toBe(2)
+    expect(next.chapters.c1.checksTotal).toBe(READING_QUESTION_COUNT)
+    expect(next.chapters.c1.listeningCorrect).toBe(3)
+    expect(next.chapters.c1.listeningTotal).toBe(LISTENING_QUESTION_COUNT)
+    expect(next.words.cat).toEqual(state.words.cat)
   })
 })
 
