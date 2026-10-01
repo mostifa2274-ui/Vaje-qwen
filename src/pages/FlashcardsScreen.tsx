@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type Ref } from 'react'
 import type { GhesseState, LeitnerDirection, LeitnerScope, LeitnerSettings, WordEntry } from '../engine/types'
 import { WORD_BY_ID } from '../data/chapters'
 import {
@@ -127,6 +127,31 @@ function weekdayLabel(offset: number, now: number): string {
   } catch {
     return `+${faNum(offset)}`
   }
+}
+
+function FlashcardsHeader({
+  title,
+  subtitle,
+  onBack,
+  backLabel,
+  headingRef,
+}: {
+  title: string
+  subtitle: string
+  onBack: () => void
+  backLabel: string
+  headingRef: Ref<HTMLHeadingElement>
+}) {
+  return (
+    <LuxuryPageHeader
+      title={title}
+      subtitle={subtitle}
+      eyebrow="تمرین آزاد"
+      onBack={onBack}
+      backLabel={backLabel}
+      headingRef={headingRef}
+    />
+  )
 }
 
 export default function FlashcardsScreen({ state, now, onChange, onBack }: Props) {
@@ -305,17 +330,6 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
     return () => window.removeEventListener('keydown', onKey)
   })
 
-  const header = (title: string, subtitle: string, onBackClick: () => void, backLabel: string) => (
-    <LuxuryPageHeader
-      title={title}
-      subtitle={subtitle}
-      eyebrow="تمرین آزاد"
-      onBack={onBackClick}
-      backLabel={backLabel}
-      headingRef={headingRef}
-    />
-  )
-
   // ---------- Study ----------
   if (session && word && face && currentId) {
     const done = session.total - new Set(session.queue).size
@@ -335,7 +349,13 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
     )
     return (
       <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-        {header('جعبهٔ لایتنر', box ? `این کارت در جعبهٔ ${faNum(box)} است؛ ${everyLabel(box)} مرور می‌شود` : 'کارت تازه؛ اولین دیدار', leave, 'پایان مرور و بازگشت')}
+        <FlashcardsHeader
+          title="جعبهٔ لایتنر"
+          subtitle={box ? `این کارت در جعبهٔ ${faNum(box)} است؛ ${everyLabel(box)} مرور می‌شود` : 'کارت تازه؛ اولین دیدار'}
+          onBack={leave}
+          backLabel="پایان مرور و بازگشت"
+          headingRef={headingRef}
+        />
 
         <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
           <span>کارت {faNum(Math.min(done + 1, session.total))} از {faNum(session.total)}</span>
@@ -465,7 +485,13 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
     const backToOne = answers.filter(result => result === 'again').length
     return (
       <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-        {header('جعبهٔ لایتنر', 'نتیجهٔ این مرور', leave, 'بازگشت به جعبه‌ها')}
+        <FlashcardsHeader
+          title="جعبهٔ لایتنر"
+          subtitle="نتیجهٔ این مرور"
+          onBack={leave}
+          backLabel="بازگشت به جعبه‌ها"
+          headingRef={headingRef}
+        />
         <section className="learning-focus-card mt-5 p-6 text-center" data-testid="flashcards-summary">
           <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
           <h2 className="mt-3 text-2xl font-extrabold">مرور تمام شد</h2>
@@ -505,7 +531,13 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
 
   return (
     <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      {header('جعبهٔ لایتنر', 'کارت‌های مرور برای همهٔ واژه‌های مسیر؛ هر کارتی که به یاد بیاوری یک جعبه جلو می‌رود.', onBack, 'بازگشت به نقشه')}
+      <FlashcardsHeader
+        title="جعبهٔ لایتنر"
+        subtitle="کارت‌های مرور برای همهٔ واژه‌های مسیر؛ هر کارتی که به یاد بیاوری یک جعبه جلو می‌رود."
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+        headingRef={headingRef}
+      />
 
       <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="leitner-today">
         <h2 id="leitner-today" className="text-lg font-extrabold">امروز</h2>
