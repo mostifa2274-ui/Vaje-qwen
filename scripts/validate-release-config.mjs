@@ -30,6 +30,8 @@ const webManifest = JSON.parse(readFileSync(join(root, 'public/manifest.webmanif
 assert(webManifest.id === './', 'PWA manifest must keep a stable app identity')
 assert(webManifest.start_url === './#/map', 'installed app must launch on the calm home route')
 assert(webManifest.scope === './' && webManifest.display === 'standalone', 'PWA manifest must stay scoped and standalone')
+assert(Array.isArray(webManifest.display_override) && webManifest.display_override[0] === 'standalone', 'PWA must declare a current display_override chain that still prefers standalone')
+assert(webManifest.launch_handler?.client_mode === 'navigate-existing', 'reopening the installed app must reuse the existing window')
 assert(webManifest.lang === 'fa' && webManifest.dir === 'rtl', 'PWA install metadata must remain Persian-first RTL')
 assert(
   typeof webManifest.description === 'string'
