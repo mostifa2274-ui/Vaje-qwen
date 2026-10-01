@@ -9,6 +9,7 @@ import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, typ
 import { stopAudio } from '../engine/audio'
 import { clearDiagnosticDraft, loadDiagnosticDraft, markDiagnosticFailed, saveDiagnosticDraft, type DiagnosticPhase } from '../engine/diagnosticDraft'
 import type { GhesseState } from '../engine/types'
+import { GENERATED_CHAPTER_ART } from '../art/generatedChapterArt'
 
 interface Props {
   chapterId: string
@@ -24,6 +25,22 @@ type Failure = { wordId: string; phase: DiagnosticPhase } | null
 
 export default function DiagnosticScreen({ chapterId, state, onChange, onBack, onTeach, onReady, now }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
+  const backdropArt = GENERATED_CHAPTER_ART[chapterId]
+  const diagnosticBackdrop = (
+    <div className="luxury-task-backdrop luxury-exam-backdrop" aria-hidden="true">
+      {backdropArt && (
+        <img
+          className="luxury-task-backdrop-image"
+          src={backdropArt.src}
+          width={backdropArt.width}
+          height={backdropArt.height}
+          alt=""
+          decoding="async"
+        />
+      )}
+      <span />
+    </div>
+  )
   const { writtenOrder: productiveOrder, listeningOrder } = useMemo(
     () => buildPrepTestOrders(`${chapterId}:diagnostic`, chapter.new),
     [chapter.new, chapterId],
@@ -157,6 +174,7 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
   if (!started) {
     return (
       <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {diagnosticBackdrop}
         <LuxuryPageHeader
           title="تعیین سطح این فصل"
           eyebrow={`فصل ${faNum(chapter.n)} · کتاب ${faNum(chapter.book)}`}
@@ -185,6 +203,7 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
     const word = WORD_BY_ID.get(failure.wordId)!
     return (
       <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {diagnosticBackdrop}
         <LuxuryPageHeader
           title="تعیین سطح این فصل"
           eyebrow={`فصل ${faNum(chapter.n)} · کتاب ${faNum(chapter.book)}`}
@@ -206,7 +225,8 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
   const done = phase === 'productive' ? productivePassed.length : listeningPassed.length
 
   return (
-    <div className="app-page page-in">
+    <div className="app-page luxury-exam page-in">
+      {diagnosticBackdrop}
       <LuxuryPageHeader
         title="تعیین سطح این فصل"
         eyebrow={`فصل ${faNum(chapter.n)} · کتاب ${faNum(chapter.book)}`}
