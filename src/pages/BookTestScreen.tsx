@@ -20,7 +20,7 @@ import {
 import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft, savedBookTest } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BadgeCheckIcon, CheckIcon, RefreshCcwIcon } from '../components/Icons'
-import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryMetricGrid, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
 import { SPEECH_UNAVAILABLE } from '../components/usePassagePlayer'
 import { faNum, percent } from '../engine/format'
@@ -353,17 +353,17 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
               : previousPass ? 'قبولی قبلی حفظ شده است' : 'هنوز آمادهٔ عبور نیستی'}
           </h1>
 
-          <div className="mt-5 grid grid-cols-2 gap-2">
-            {BOOK_TEST_SECTIONS.map(section => {
+          <LuxuryMetricGrid
+            className="mt-5 luxury-metric-grid-4"
+            items={BOOK_TEST_SECTIONS.map(section => {
               const score = result.sections[section]
-              return (
-                <div key={section} className={`metric-card ${score.passed ? '' : 'metric-fail'}`}>
-                  <b>{faNum(score.correct)}/{faNum(score.total)}</b>
-                  <span>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `حداکثر ${faNum(allowedMistakes(score.total))} اشتباه`}</span>
-                </div>
-              )
+              return {
+                value: `${faNum(score.correct)}/${faNum(score.total)}`,
+                label: <>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `حداکثر ${faNum(allowedMistakes(score.total))} اشتباه`}</>,
+                className: score.passed ? undefined : 'metric-fail',
+              }
             })}
-          </div>
+          />
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             برای قبولی، هر چهار بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ یک اشتباه در هر بخش همیشه بخشیده می‌شود.
