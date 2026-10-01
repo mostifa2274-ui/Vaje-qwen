@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { BOOKS } from '../data/chapters'
-import { BackIcon, DownloadIcon, TrashIcon } from '../components/Icons'
+import { DownloadIcon, TrashIcon } from '../components/Icons'
+import { LuxuryPageHeader } from '../components/LuxuryUI'
 import { faNum } from '../engine/format'
 import {
   cacheBookAudio,
@@ -115,13 +116,12 @@ export default function OfflineAudioScreen({ onBack }: Props) {
 
   return (
     <div className="app-page luxury-settings page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-        <div>
-          <h1 className="text-2xl font-extrabold">صدای آفلاین</h1>
-          <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>صدای طبیعی ضبط‌شده را برای هر کتاب روی همین دستگاه نگه دار.</p>
-        </div>
-      </header>
+      <LuxuryPageHeader
+        title="صدای آفلاین"
+        subtitle="صدای طبیعی ضبط‌شده را برای هر کتاب روی همین دستگاه نگه دار."
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+      />
 
       {!supported ? (
         <div className="paper-note mt-5" role="alert">
