@@ -19,7 +19,8 @@ import {
 } from '../engine/bookTest'
 import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft, savedBookTest } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryPageHeader } from '../components/LuxuryUI'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
 import { SPEECH_UNAVAILABLE } from '../components/usePassagePlayer'
 import { faNum, percent } from '../engine/format'
@@ -310,14 +311,15 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   const header = (
     <>
-    <header className="flex items-center gap-3">
-      <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="ترک آزمون"><BackIcon className="h-5 w-5" /></button>
-      <div className="min-w-0 flex-1">
-        <h1 className="truncate text-xl font-extrabold">{def.titleFa}</h1>
-        <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{def.subtitleFa}</p>
-      </div>
-    </header>
-    {preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>}
+      <LuxuryPageHeader
+        title={def.titleFa}
+        subtitle={def.subtitleFa}
+        eyebrow={`کتاب ${faNum(book)} · آزمون پایان کتاب`}
+        onBack={onBack}
+        backLabel="ترک آزمون"
+        centered
+      />
+      {preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>}
     </>
   )
 
