@@ -731,9 +731,11 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
               <BadgeCheckIcon className="mx-auto h-9 w-9" aria-hidden="true" />
               <div className="mt-2 font-extrabold">{wasAlreadyDone ? 'بازخوانی ثبت شد' : 'فصل تمام شد'}</div>
               <p className="mt-1 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
-                {isLastOfBook
-                  ? `این کتاب تمام شد و واژه‌هایش وارد مرور فاصله‌دار شده‌اند. برای بازشدن مرحلهٔ بعد، آزمون پایان کتاب ${faNum(chapter.book)} را بگذران: واژه‌های ${chapter.book === 1 ? 'این کتاب' : 'همهٔ کتاب‌ها تا اینجا'} و دو متن تازه برای درک مطلب خواندنی و شنیداری.`
-                  : next ? `واژه‌های این فصل برای مرور فاصله‌دار برنامه‌ریزی شدند. پیش از فصل بعد، واژه‌های تازهٔ «${next.titleFa}» را آماده می‌کنی.` : ''}
+                {wasAlreadyDone
+                  ? 'بازخوانی ثبت شد؛ امتیازهای بار اول و زمان‌بندی مرور هوشمند بدون تغییر باقی ماندند.'
+                  : isLastOfBook
+                    ? `این کتاب تمام شد و واژه‌هایش وارد مرور فاصله‌دار شده‌اند. برای بازشدن مرحلهٔ بعد، آزمون پایان کتاب ${faNum(chapter.book)} را بگذران: واژه‌های ${chapter.book === 1 ? 'این کتاب' : 'همهٔ کتاب‌ها تا اینجا'} و دو متن تازه برای درک مطلب خواندنی و شنیداری.`
+                    : next ? `واژه‌های این فصل برای مرور فاصله‌دار برنامه‌ریزی شدند. پیش از فصل بعد، واژه‌های تازهٔ «${next.titleFa}» را آماده می‌کنی.` : ''}
               </p>
               <div className="mt-4 flex gap-2">
                 <button type="button" className="btn-paper flex-1 py-2.5" onClick={onBack}>نقشه</button>
