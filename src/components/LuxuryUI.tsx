@@ -197,10 +197,11 @@ export function LuxuryMetricGrid({
 export function LuxurySheetFrame({
   children,
   className,
+  frameRef,
   ...props
-}: HTMLAttributes<HTMLDivElement> & { children: ReactNode }) {
+}: HTMLAttributes<HTMLDivElement> & { children: ReactNode; frameRef?: Ref<HTMLDivElement> }) {
   return (
-    <div className={join('luxury-sheet-frame', className)} {...props}>
+    <div ref={frameRef} className={join('luxury-sheet-frame', className)} {...props}>
       <span className="luxury-sheet-handle" aria-hidden="true" />
       {children}
     </div>
