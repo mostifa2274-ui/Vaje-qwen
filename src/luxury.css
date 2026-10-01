@@ -1409,3 +1409,74 @@ input[type="range"] {
     padding: 2rem 2.25rem;
   }
 }
+
+
+/* Chapter-linked atmospheric backdrop for teaching and testing. */
+.luxury-prep {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.luxury-task-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  min-height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.luxury-task-backdrop img {
+  width: 100%;
+  height: 100dvh;
+  object-fit: cover;
+  filter: brightness(.36) saturate(.65) blur(.2px);
+  transform: scale(1.055);
+}
+
+.luxury-task-backdrop > span {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(3,9,16,.48), rgba(3,9,16,.82) 48%, rgba(3,9,16,.97) 86%),
+    radial-gradient(circle at 50% 22%, rgba(9,22,35,.02), rgba(2,7,13,.72) 72%);
+}
+
+.luxury-prep-teach .luxury-task-backdrop img {
+  filter: brightness(.29) saturate(.58);
+}
+
+.luxury-prep-written .luxury-task-backdrop img,
+.luxury-prep-listening .luxury-task-backdrop img {
+  filter: brightness(.39) saturate(.72) contrast(1.06);
+}
+
+.luxury-prep > .mx-auto {
+  position: relative;
+  z-index: 1;
+}
+
+.luxury-prep .luxury-prep-header {
+  border-bottom-color: rgba(240,204,121,.20);
+  background: linear-gradient(180deg, rgba(3,9,16,.94), rgba(4,11,19,.84));
+}
+
+.luxury-prep .luxury-prep-header h1 {
+  color: var(--lux-gold-bright);
+}
+
+.luxury-prep .learning-focus-card {
+  backdrop-filter: blur(12px);
+}
+
+.luxury-prep-written .learning-focus-card,
+.luxury-prep-listening .learning-focus-card {
+  background:
+    linear-gradient(160deg, rgba(12,24,36,.92), rgba(5,13,22,.94));
+}
+
+.luxury-prep-listening .learning-focus-card button[aria-label*="پخش"] {
+  min-height: 5rem;
+  border-radius: 999px;
+}
