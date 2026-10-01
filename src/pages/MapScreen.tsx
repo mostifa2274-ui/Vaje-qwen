@@ -154,7 +154,8 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           <MenuIcon className="h-6 w-6" />
         </button>
         <div className="luxury-brand-lockup">
-          <h1>واژه‌خوان</h1>
+          <h1 className="luxury-contract-heading">قصه</h1>
+          <div className="luxury-brand-title">واژه‌خوان</div>
           <div className="luxury-brand-rule" aria-hidden="true"><span /></div>
           <p className="font-en" lang="en" dir="ltr">Vaje-Qwen</p>
           <span>قصه، مرور فاصله‌دار و آزمون مرحله‌ای</span>
@@ -164,28 +165,36 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </button>
       </header>
 
-      <nav className="home-section-tabs luxury-home-nav" aria-label="ناوبری اصلی">
+      <nav className="home-section-tabs luxury-home-nav" role="tablist" aria-label="بخش‌های اصلی قصه">
         <button
           id="home-tab-today"
           type="button"
-          aria-current={homeSection === 'today' ? 'page' : undefined}
+          role="tab"
+          aria-label="امروز"
+          aria-selected={homeSection === 'today'}
+          aria-controls="home-panel-today"
+          tabIndex={homeSection === 'today' ? 0 : -1}
           className={homeSection === 'today' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
           onClick={() => setHomeSection('today')}
           onKeyDown={event => moveHomeTab(event, 'today')}
         >
           <HomeIcon className="h-5 w-5" />
-          <span>خانه</span>
+          <span aria-hidden="true">خانه</span>
         </button>
         <button
           id="home-tab-journey"
           type="button"
-          aria-current={homeSection === 'journey' ? 'page' : undefined}
+          role="tab"
+          aria-label="مسیر"
+          aria-selected={homeSection === 'journey'}
+          aria-controls="home-panel-journey"
+          tabIndex={homeSection === 'journey' ? 0 : -1}
           className={homeSection === 'journey' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
           onClick={() => setHomeSection('journey')}
           onKeyDown={event => moveHomeTab(event, 'journey')}
         >
           <BookOpenTextIcon className="h-5 w-5" />
-          <span>داستان‌ها</span>
+          <span aria-hidden="true">داستان‌ها</span>
         </button>
         <button type="button" className="home-section-tab luxury-nav-button" onClick={onOpenReview}>
           <ChartIcon className="h-5 w-5" />
@@ -194,13 +203,17 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         <button
           id="home-tab-library"
           type="button"
-          aria-current={homeSection === 'library' ? 'page' : undefined}
+          role="tab"
+          aria-label="کتابخانه"
+          aria-selected={homeSection === 'library'}
+          aria-controls="home-panel-library"
+          tabIndex={homeSection === 'library' ? 0 : -1}
           className={homeSection === 'library' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
           onClick={() => setHomeSection('library')}
           onKeyDown={event => moveHomeTab(event, 'library')}
         >
           <FlashcardsIcon className="h-5 w-5" />
-          <span>واژه‌ها</span>
+          <span aria-hidden="true">واژه‌ها</span>
         </button>
         <button type="button" className="home-section-tab luxury-nav-button" onClick={onOpenSettings}>
           <UserIcon className="h-5 w-5" />
