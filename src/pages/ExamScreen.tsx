@@ -375,7 +375,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             items={[
               { value: percent(result.overallScore), label: 'کل آزمون' },
               { value: percent(result.productiveScore), label: 'پاسخ بدون گزینه' },
-              { value: `${faNum(result.comprehensionCorrect)}/${faNum(result.comprehensionTotal)}`, label: 'درک مطلب' },
+              { value: `${faNum(result.comprehensionCorrect)}/${faNum(result.comprehensionTotal)}`, label: 'درک مطلب', className: textsMissed ? 'metric-fail' : undefined, testId: 'exam-comprehension-score' },
               { value: `${faNum(testedCoverage)}/${faNum(totalPool)}`, label: 'پوشش واژه' },
             ]}
           />
