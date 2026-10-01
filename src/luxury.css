@@ -2773,3 +2773,230 @@ input[type="range"] {
     border-top: 1px solid rgba(215,168,77,.13);
   }
 }
+
+/* ==========================================================================
+   Reference pass — lantern night, gold type, one cinematic scene
+   Matches the approved phone frames without baking UI text into images.
+   ========================================================================== */
+
+.luxury-home {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(215,168,77,.08), transparent 18rem),
+    linear-gradient(180deg, #07111c 0%, #050b14 40%, #040910 100%);
+}
+
+.luxury-contract-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.luxury-brand-title {
+  font-size: clamp(2.4rem, 10vw, 3.6rem);
+  color: #e7c36a;
+  text-shadow: 0 10px 30px rgba(215,168,77,.18);
+}
+
+.luxury-brand-lockup .font-en {
+  color: #f0d59a;
+  letter-spacing: .14em;
+  text-transform: none;
+}
+
+.luxury-brand-lockup > span {
+  color: #d9c7a2;
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+
+.luxury-home-hero {
+  min-height: clamp(18rem, 62vw, 26rem);
+  border: 1px solid rgba(232,196,112,.72);
+  border-radius: 26px;
+  box-shadow:
+    0 0 0 1px rgba(232,196,112,.12),
+    0 28px 70px rgba(0,0,0,.42);
+}
+
+.luxury-home-hero-copy h2 {
+  color: #f7e7c2;
+  font-size: clamp(1.7rem, 6.4vw, 2.5rem);
+  line-height: 1.45;
+}
+
+.luxury-hero-primary {
+  border-radius: 16px;
+  min-height: 3.4rem;
+  background: linear-gradient(180deg, #f0d48a 0%, #d7ae55 55%, #c4923a 100%);
+  color: #1a130b;
+  box-shadow: 0 10px 28px rgba(196,146,58,.28);
+}
+
+.luxury-hero-secondary {
+  display: none;
+}
+
+.luxury-feature-grid {
+  gap: .65rem;
+}
+
+.luxury-feature-card {
+  min-height: 6.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: .85rem .8rem .75rem;
+  text-align: right;
+  border-color: rgba(232,196,112,.28);
+  border-radius: 18px;
+  background:
+    linear-gradient(160deg, rgba(16,28,42,.94), rgba(7,14,24,.96));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+.luxury-feature-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .15rem;
+}
+
+.luxury-feature-copy b {
+  color: #f3d48a;
+  font-size: .92rem;
+}
+
+.luxury-feature-copy span {
+  color: #c5ced6;
+  font-size: .7rem;
+}
+
+.luxury-feature-chevron {
+  position: absolute;
+  top: .7rem;
+  inset-inline-start: .7rem;
+  color: rgba(240,204,121,.7);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.luxury-current-story {
+  border-color: rgba(232,196,112,.34);
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(14,26,40,.96), rgba(6,13,22,.98));
+}
+
+.luxury-current-story-copy b {
+  color: #f6e7c4;
+  font-size: 1.15rem;
+}
+
+.luxury-quote {
+  border-color: rgba(232,196,112,.28);
+  background:
+    linear-gradient(180deg, rgba(8,16,28,.55), rgba(5,10,18,.82)),
+    radial-gradient(circle at 50% 120%, rgba(215,168,77,.16), transparent 16rem);
+  padding: 1.4rem 1rem 1.2rem;
+}
+
+.luxury-quote b {
+  color: #f6e7c4;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.luxury-home .luxury-home-nav {
+  border-radius: 26px 26px 18px 18px;
+  background: rgba(6,12,20,.96);
+  border-color: rgba(232,196,112,.2);
+}
+
+.luxury-home .home-section-tab.active {
+  color: #f0cc79;
+  background: transparent;
+  box-shadow: none;
+}
+
+.luxury-home .home-section-tab.active::after {
+  content: "";
+  width: .35rem;
+  height: .35rem;
+  border-radius: 999px;
+  background: #f0cc79;
+  box-shadow: 0 0 10px rgba(240,204,121,.8);
+}
+
+.luxury-journey-panel::before {
+  inset-inline-start: 1.7rem;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(240,204,121,.7), rgba(240,204,121,.15));
+}
+
+.luxury-journey-panel .future-book-row {
+  border-radius: 999px;
+  background: rgba(8,16,28,.72);
+  border-color: rgba(232,196,112,.22);
+}
+
+.luxury-reader .lesson-cover-card {
+  border: 1px solid rgba(232,196,112,.55);
+  border-radius: 22px;
+}
+
+.luxury-reader .story-reading {
+  border: 1px solid rgba(232,196,112,.42);
+  border-radius: 22px;
+  background: rgba(6,12,20,.78);
+  padding: 1.2rem 1rem;
+}
+
+.luxury-reader .story-en {
+  color: #f3e2b4;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.9;
+}
+
+.luxury-reader .story-fa {
+  text-align: center;
+  color: #e7dcc8;
+}
+
+.luxury-reader-brand {
+  color: #e7c36a;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  letter-spacing: 0;
+  font-weight: 900;
+}
+
+.luxury-audio-orb {
+  border-color: rgba(240,204,121,.8);
+  box-shadow:
+    0 0 0 8px rgba(215,168,77,.08),
+    0 0 36px rgba(215,168,77,.35);
+}
+
+.luxury-choice.is-selected,
+.luxury-choice.is-correct {
+  border-color: rgba(240,204,121,.8);
+  box-shadow: 0 0 0 1px rgba(240,204,121,.35), 0 0 22px rgba(215,168,77,.16);
+}
+
+.luxury-prep .learning-focus-card,
+.luxury-exam .learning-focus-card {
+  border: 1px solid rgba(232,196,112,.4);
+  border-radius: 22px;
+  background: rgba(8,16,28,.82);
+}
+
+@media (max-width: 520px) {
+  .luxury-feature-card {
+    min-height: 6.1rem;
+  }
+}

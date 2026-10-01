@@ -156,10 +156,10 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </button>
         <div className="luxury-brand-lockup">
           <h1 className="luxury-contract-heading">قصه</h1>
-          <div className="luxury-brand-title">واژه‌خوان</div>
+          <div className="luxury-brand-title" aria-hidden="true">واژه‌خوان</div>
           <div className="luxury-brand-rule" aria-hidden="true"><span /></div>
           <p className="font-en" lang="en" dir="ltr">Vaje-Qwen</p>
-          <span>قصه، مرور فاصله‌دار و آزمون مرحله‌ای</span>
+          <span className="font-en" lang="en" dir="ltr">Persian Stories. A Brighter You.</span>
         </div>
         <button type="button" className="luxury-round-control luxury-crown-control" onClick={() => setHomeSection('journey')} aria-label="دیدن مسیر پیشرفت">
           <CrownIcon className="h-6 w-6" />
@@ -265,33 +265,33 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
       <section className="luxury-feature-grid mt-4" aria-label="دسترسی سریع">
         <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
           <BookOpenTextIcon className="h-8 w-8" />
-          <b>داستان‌ها</b>
-          <span>کتاب‌ها و فصل‌ها</span>
+          <span className="luxury-feature-copy"><b>داستان‌ها</b><span>مطالعه و یادگیری</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
         <button type="button" className="luxury-feature-card" onClick={action.kind === 'chapter' ? runNextAction : onOpenGlossary}>
           <FlashcardsIcon className="h-8 w-8" />
-          <b>واژه‌های جدید</b>
-          <span>یادگیری و بازیابی</span>
+          <span className="luxury-feature-copy"><b>واژه‌های جدید</b><span>یادگیری واژگان</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
         <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
           <ClipboardCheckIcon className="h-8 w-8" />
-          <b>آزمون‌ها</b>
-          <span>سنجش مرحله‌ای</span>
+          <span className="luxury-feature-copy"><b>آزمون‌ها</b><span>تست و تمرین</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
         <button type="button" className="luxury-feature-card" onClick={onOpenReview}>
           <HeadphonesIcon className="h-8 w-8" />
-          <b>شنیداری</b>
-          <span>مرور و گوش‌دادن</span>
+          <span className="luxury-feature-copy"><b>شنیداری</b><span>گوش دادن و تقویت</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
         <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
           <ChartIcon className="h-8 w-8" />
-          <b>پیشرفت من</b>
-          <span>{faNum(doneCount)} فصل کامل</span>
+          <span className="luxury-feature-copy"><b>پیشرفت من</b><span>مسیر یادگیری</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
         <button type="button" className="luxury-feature-card" onClick={onOpenSettings}>
           <UserIcon className="h-8 w-8" />
-          <b>من</b>
-          <span>تنظیمات و پشتیبان</span>
+          <span className="luxury-feature-copy"><b>من</b><span>حساب کاربری</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
       </section>
 
