@@ -1480,3 +1480,54 @@ input[type="range"] {
   min-height: 5rem;
   border-radius: 999px;
 }
+
+
+.luxury-reader-masthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.15rem 1rem .15rem;
+  text-align: center;
+}
+
+.luxury-reader-brand {
+  color: var(--lux-gold-bright);
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  letter-spacing: .12em;
+  line-height: 1;
+  text-shadow: 0 8px 28px rgba(215,168,77,.13);
+}
+
+.luxury-reader-ornament {
+  display: flex;
+  width: min(18rem, 70%);
+  align-items: center;
+  margin-top: .55rem;
+}
+
+.luxury-reader-ornament::before,
+.luxury-reader-ornament::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(240,204,121,.62));
+}
+
+.luxury-reader-ornament::after {
+  transform: scaleX(-1);
+}
+
+.luxury-reader-ornament span {
+  width: .48rem;
+  height: .48rem;
+  margin-inline: .55rem;
+  border: 1px solid var(--lux-gold-bright);
+  transform: rotate(45deg);
+}
+
+.luxury-reader-subtitle {
+  margin-top: .38rem;
+  color: #d7b66f;
+  font-size: .9rem;
+  letter-spacing: .08em;
+}
