@@ -64,6 +64,12 @@ for (const [name, gate] of Object.entries(status.gates)) {
   assert(existsSync(artifact), `quality gate ${name} evidence file is missing: ${gate.evidence}`)
 }
 
+assert(existsSync(join(root, 'quality/HUMAN_RUNS.md')), 'quality/HUMAN_RUNS.md must exist so the five pending gates have an executable sheet')
+assert(
+  readFileSync(join(root, 'quality/HUMAN_RUNS.md'), 'utf8').includes('An agent cannot fill'),
+  'human run sheet must keep the no-fabricated-signoff rule',
+)
+
 const currentVocabularySha = sha256('src/data/vocabulary.json')
 assert(vocabulary.length === 899 && new Set(vocabulary.map(word => word.id)).size === 899, 'human review ledger currently targets the active 899-word course')
 assert(lexical.targetWords === vocabulary.length, 'lexical review target must match active vocabulary count')
