@@ -24,6 +24,8 @@ const wrangler = JSON.parse(readFileSync(join(root, 'wrangler.jsonc'), 'utf8').r
 assert(wrangler.assets?.directory === './dist', 'Wrangler must publish dist/')
 assert(wrangler.assets?.not_found_handling === '404-page', 'missing assets must return the 404 page, not the app shell')
 assert(existsSync(join(root, 'public/404.html')), 'public/404.html must exist for 404-page handling')
+const missingPage = readFileSync(join(root, 'public/404.html'), 'utf8')
+assert(missingPage.includes('./#/map') && missingPage.includes('background: #b0c6b3'), '404 page must return to the home route with the boot-screen paper color')
 const webManifest = JSON.parse(readFileSync(join(root, 'public/manifest.webmanifest'), 'utf8'))
 assert(webManifest.id === './', 'PWA manifest must keep a stable app identity')
 assert(webManifest.start_url === './#/map', 'installed app must launch on the calm home route')

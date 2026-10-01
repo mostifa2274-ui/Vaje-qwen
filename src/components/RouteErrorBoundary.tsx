@@ -50,8 +50,11 @@ export default class RouteErrorBoundary extends Component<Props, State> {
     if (!error) return this.props.children
     if (reloading) {
       return (
-        <div className="page-in mx-auto max-w-3xl px-4 py-14 text-center" role="status" aria-live="polite">
-          <p className="font-extrabold">در حال به‌روزرسانی برنامه…</p>
+        <div className="app-page" role="status" aria-live="polite">
+          <div className="app-task-header px-4 py-4">
+            <p className="font-extrabold">در حال به‌روزرسانی برنامه…</p>
+            <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>نسخهٔ تازه بارگذاری می‌شود؛ پیشرفت پاک نمی‌شود.</p>
+          </div>
         </div>
       )
     }
