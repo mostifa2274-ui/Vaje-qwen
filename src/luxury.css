@@ -3000,3 +3000,18 @@ input[type="range"] {
     min-height: 6.1rem;
   }
 }
+
+.luxury-brand-tagline {
+  display: block;
+  margin-top: .2rem;
+  color: #e7d7b4;
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+
+.luxury-method-line {
+  display: block;
+  margin-top: .15rem;
+  color: #b7c0c8;
+  font-size: .72rem;
+}

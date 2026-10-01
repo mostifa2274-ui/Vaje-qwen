@@ -159,7 +159,8 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           <div className="luxury-brand-title" aria-hidden="true">واژه‌خوان</div>
           <div className="luxury-brand-rule" aria-hidden="true"><span /></div>
           <p className="font-en" lang="en" dir="ltr">Vaje-Qwen</p>
-          <span>قصه، مرور فاصله‌دار و آزمون مرحله‌ای</span>
+          <span className="luxury-brand-tagline font-en" lang="en" dir="ltr">Persian Stories. A Brighter You.</span>
+          <span className="luxury-method-line">قصه، مرور فاصله‌دار و آزمون مرحله‌ای</span>
         </div>
         <button type="button" className="luxury-round-control luxury-crown-control" onClick={() => setHomeSection('journey')} aria-label="دیدن مسیر پیشرفت">
           <CrownIcon className="h-6 w-6" />
@@ -249,7 +250,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
               {action.kind !== 'complete' ? (
                 <button type="button" className="btn-crimson luxury-hero-primary" onClick={runNextAction}>
                   <PlayIcon className="h-5 w-5" />
-                  <span>{actionLabel}</span>
+                  <span>{action.kind === 'chapter' && action.prepared ? 'ادامه داستان' : actionLabel}</span>
                 </button>
               ) : (
                 <div className="luxury-complete-badge"><BadgeCheckIcon className="h-5 w-5" /> مسیر کامل شده</div>
@@ -273,7 +274,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           <span className="luxury-feature-copy"><b>واژه‌های جدید</b><span>یادگیری واژگان</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
-        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
+        <button type="button" className="luxury-feature-card" onClick={() => action.kind === 'exam' ? onOpenExam(action.examId) : setHomeSection('journey')}>
           <ClipboardCheckIcon className="h-8 w-8" />
           <span className="luxury-feature-copy"><b>آزمون‌ها</b><span>تست و تمرین</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
@@ -283,7 +284,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           <span className="luxury-feature-copy"><b>شنیداری</b><span>گوش دادن و تقویت</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
-        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
+        <button type="button" className="luxury-feature-card" onClick={onOpenReview}>
           <ChartIcon className="h-8 w-8" />
           <span className="luxury-feature-copy"><b>پیشرفت من</b><span>مسیر یادگیری</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
@@ -306,8 +307,8 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             <span>{heroSubtitle}</span>
           </span>
           <span className="luxury-current-story-progress">
-            <span>{faNum(doneCount)} از {faNum(CHAPTERS.length)}</span>
-            <span className="mastery-progress"><span style={{ width: `${(doneCount / Math.max(1, CHAPTERS.length)) * 100}%` }} /></span>
+            <span>{faNum((chaptersOfBook(heroChapter.book).findIndex(item => item.id === heroChapter.id) + 1))} از {faNum(chaptersOfBook(heroChapter.book).length)}</span>
+            <span className="mastery-progress"><span style={{ width: `${((chaptersOfBook(heroChapter.book).findIndex(item => item.id === heroChapter.id) + 1) / Math.max(1, chaptersOfBook(heroChapter.book).length)) * 100}%` }} /></span>
           </span>
         </button>
       )}
