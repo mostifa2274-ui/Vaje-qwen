@@ -2,6 +2,7 @@ import type { Ref } from 'react'
 import type { TestText } from '../data/bookTests'
 import { faNum } from '../engine/format'
 import { PauseIcon, PlayIcon } from './Icons'
+import { LuxuryAudioOrb, LuxuryChoice } from './LuxuryUI'
 import { usePassagePlayer, type PassagePlayer } from './usePassagePlayer'
 
 const NO_OP = () => {}
@@ -47,19 +48,21 @@ export function ListeningPlayer({
 }) {
   const playing = player.playing >= 0
   return (
-    <div className="test-player mt-4" data-testid={testId}>
-      <button
-        ref={buttonRef}
-        type="button"
-        className={playing ? 'btn-paper min-h-14 w-full text-lg' : 'btn-crimson min-h-14 w-full text-lg'}
+    <div className="test-player luxury-test-player mt-4" data-testid={testId}>
+      <LuxuryAudioOrb
+        buttonRef={buttonRef}
+        label={playing ? 'توقف' : heard ? 'پخش دوبارهٔ متن' : 'پخش متن'}
+        helper={playing
+          ? `جملهٔ ${faNum(player.playing + 1)} از ${faNum(text.sentences.length)}`
+          : heard
+            ? 'متن کامل شنیده شد'
+            : `${faNum(text.sentences.length)} جمله`}
+        active={playing}
         onClick={() => playing ? player.stop() : player.play()}
       >
-        <span className="inline-flex items-center justify-center gap-2">
-          {playing ? <PauseIcon className="h-5 w-5" /> : <PlayIcon className="h-5 w-5" />}
-          {playing ? 'توقف' : heard ? 'پخش دوبارهٔ متن' : 'پخش متن'}
-        </span>
-      </button>
-      <div className="mt-3 text-center text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>
+        {playing ? <PauseIcon /> : <PlayIcon />}
+      </LuxuryAudioOrb>
+      <div className="mt-4 text-center text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>
         {playing
           ? `در حال پخش: جملهٔ ${faNum(player.playing + 1)} از ${faNum(text.sentences.length)}`
           : heard
@@ -107,16 +110,18 @@ export function Questions({
                 if (done && chosen[index] === optionIndex) className += ' answer-correct'
                 else if (wrong) className += ' answer-wrong'
                 return (
-                  <button
+                  <LuxuryChoice
                     key={optionIndex}
-                    type="button"
                     className={className}
+                    selected={chosen[index] === optionIndex}
+                    correct={done && chosen[index] === optionIndex}
+                    wrong={wrong}
                     aria-pressed={chosen[index] === optionIndex}
                     disabled={disabled || done || wrong}
                     onClick={() => onChoose(index, optionIndex)}
                   >
                     {option}
-                  </button>
+                  </LuxuryChoice>
                 )
               })}
             </div>
