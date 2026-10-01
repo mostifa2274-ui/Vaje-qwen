@@ -165,6 +165,7 @@ export function canOpenStory(state: GhesseState, chapterId: string): boolean {
   return canReadChapter(state, chapterId)
 }
 
+/** Prefer real attempt time; the import floor is only a conservative fallback. */
 function remediationFloor(progress: GhesseState['exams'][string]): number | undefined {
   return progress.lastAttemptAt ?? progress.remediationAfter
 }
