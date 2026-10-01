@@ -1392,6 +1392,33 @@ test('the end-of-book test uses a bounded cumulative vocabulary sample plus read
   await expect(page.getByRole('button', { name: /^فصل ۱: .+ — آموزش \+ آزمون واژه‌ها$/ })).toBeEnabled()
 })
 
+test('an already completed later chapter remains rereadable without unlocking its successor', async ({ page }) => {
+  const completed = JSON.parse(
+    readFileSync(new URL('../src/data/chapters/b6c1.json', import.meta.url), 'utf8'),
+  ) as { titleFa: string }
+
+  await openWithProgress(page, '/read/b6c1', {
+    chapters: {
+      b6c1: {
+        preparedAt: 1,
+        prepAttempts: 1,
+        completed: true,
+        completedAt: 2,
+        checksCorrect: 10,
+        checksTotal: 10,
+        reads: 1,
+      },
+    },
+  })
+
+  await expect(page).toHaveURL(/#\/read\/b6c1$/)
+  await expect(page.getByRole('heading', { level: 1, name: completed.titleFa })).toBeVisible()
+
+  await page.goto('/#/read/b6c2')
+  await expect(page).toHaveURL(/#\/map$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'قصه' })).toBeVisible()
+})
+
 test('sparse imported pass records cannot bypass missing chapters to open the final exam', async ({ page }) => {
   const passed = {
     attempts: 1,

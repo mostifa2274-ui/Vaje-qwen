@@ -6,7 +6,7 @@ import { BLOCKED_AUDIO_NOTICE, cancelEnglishSpeech, speakEnglishWithFallback, ty
 import { buildReadingQuestions } from '../engine/comprehension'
 import { recordCompletedRead } from '../engine/progress'
 import { blankWordProgress } from '../engine/review'
-import { bookExamId, canReadChapter } from '../engine/gates'
+import { bookExamId, canOpenChapter, canOpenExam, canReadChapter } from '../engine/gates'
 import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
 import { BackIcon, BadgeCheckIcon, PauseIcon, PlayIcon } from '../components/Icons'
@@ -102,8 +102,9 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   const currentAnswer = answers[checkIndex]
   const currentCorrectLabel = currentQuestion?.options.find(option => option.id === currentQuestion.answerId)?.label ?? ''
   const next = nextChapter(chapterId)
-  const canOpenNext = !!next && next.book === chapter.book
+  const canOpenNext = Boolean(next && next.book === chapter.book && canOpenChapter(state, next.id))
   const isLastOfBook = !next || next.book !== chapter.book
+  const canOpenBookExam = isLastOfBook && canOpenExam(state, bookExamId(chapter.book))
   const readingDone = checksCorrect === questions.length
   // Explore mode opens the listening part before the reading one is done.
   const showListening = readingDone || explore
@@ -741,7 +742,7 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
                     آمادگی فصل بعد ←
                   </button>
                 )}
-                {isLastOfBook && (
+                {canOpenBookExam && (
                   <button type="button" className="btn-crimson flex-1 py-2.5" onClick={() => onOpenExam(bookExamId(chapter.book))}>
                     آزمون پایان کتاب ←
                   </button>
