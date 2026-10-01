@@ -1,5 +1,7 @@
-export type ReviewFeedback = 'correct' | 'wrong' | null
+import { requeueMissedItem } from './review'
+
 export type ReviewSessionKind = 'remediation' | 'consolidation' | 'due' | 'trouble' | 'extra'
+export type ReviewFeedback = 'correct' | 'wrong' | null
 
 export interface ReviewDraft {
   version: 1
@@ -107,7 +109,7 @@ export function sanitizeReviewDraft(
       completed += 1
       queue = rest
     } else {
-      queue = [...rest, currentId]
+      queue = requeueMissedItem(rest, currentId)
     }
   }
 

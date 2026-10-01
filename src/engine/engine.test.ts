@@ -15,7 +15,7 @@ import { emptyState, loadState, saveState, STORAGE_KEY } from './store'
 import { wordMastery } from './mastery'
 import { introduceWordsOfCompletedChapters, recordCompletedRead, recordPreparedChapter } from './progress'
 import { clampNarrationRate, englishNarrationVoices, narrationLaunchDecision, selectNarrationVoice, shouldWaitForHigherQualityVoice, voiceQualityScore, type VoiceLike } from './narration'
-import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, reliableRetrievalElapsedMs, isTroubleWord } from './review'
+import { acceptedAnswers, blankWordProgress, buildReviewQuestion, dueWordIds, interleaveReviewFormats, interleaveReviewQueue, isTypedCorrect, modeForProgress, recordRetrieval, reliableRetrievalElapsedMs, requeueMissedItem, isTroubleWord } from './review'
 import { buildExam, scoreExam } from './exams'
 import { certificationStatus, nextBestAction } from './analytics'
 import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, examRemediationPending, examRemediationWordIds } from './gates'
@@ -669,6 +669,23 @@ describe('review and exam generation', () => {
     // Small queues and unknown metadata preserve scheduler order.
     expect(interleaveReviewQueue(['cat', 'dog'], MINI_VOCAB)).toEqual(['cat', 'dog'])
     expect(interleaveReviewQueue(['missing', 'cat', 'dog'], MINI_VOCAB)).toEqual(['missing', 'cat', 'dog'])
+  })
+
+  it('requeues a miss after remaining cards and mixes retrieval formats', () => {
+    expect(requeueMissedItem(['dog', 'bird'], 'cat')).toEqual(['dog', 'bird', 'cat'])
+    expect(requeueMissedItem([], 'cat')).toEqual(['cat'])
+
+    const modes: Record<string, 'recognition' | 'productive' | 'spelling'> = {
+      cat: 'recognition',
+      dog: 'recognition',
+      bird: 'productive',
+      fish: 'recognition',
+      like: 'spelling',
+    }
+    const mixed = interleaveReviewFormats(['cat', 'dog', 'bird', 'fish', 'like'], id => modes[id] ?? 'recognition')
+    expect(mixed[0]).toBe('cat')
+    expect(new Set(mixed)).toEqual(new Set(['cat', 'dog', 'bird', 'fish', 'like']))
+    expect(mixed[1]).not.toBe('dog')
   })
 
   it('builds four unique MCQ labels for all vocabulary words', () => {

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
 import type { GhesseState } from '../engine/types'
-import { listeningChoiceOptions } from '../engine/review'
+import { listeningChoiceOptions, requeueMissedItem } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
 import { canPrepareChapter, chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
@@ -342,7 +342,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     const passed = new Set(writtenPassed)
     if (correct) passed.add(currentWrittenId)
     const rest = writtenQueue.slice(1)
-    const nextQueue = correct ? rest : [...rest, currentWrittenId]
+    const nextQueue = correct ? rest : requeueMissedItem(rest, currentWrittenId)
 
     setWrittenPassed(passed)
     setWrittenQueue(nextQueue)
@@ -382,7 +382,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
     const passed = new Set(listeningPassed)
     if (correct) passed.add(currentListeningId)
     const rest = listeningQueue.slice(1)
-    const nextQueue = correct ? rest : [...rest, currentListeningId]
+    const nextQueue = correct ? rest : requeueMissedItem(rest, currentListeningId)
 
     setListeningPassed(passed)
     setListeningQueue(nextQueue)

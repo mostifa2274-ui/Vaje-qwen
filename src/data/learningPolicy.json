@@ -34,5 +34,12 @@
     "productivePassRate": 0.92,
     "readingTexts": 4,
     "listeningTexts": 4
+  },
+  "learningTechniques": {
+    "desiredRetention": 0.9,
+    "topicLookahead": 5,
+    "modeLookahead": 4,
+    "lapseRequeue": "end",
+    "earlyStagesBlocked": true
   }
 }
