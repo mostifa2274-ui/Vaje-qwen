@@ -5,7 +5,7 @@ import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { acceptedAnswers, troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
 import { SearchIcon } from '../components/Icons'
-import { LuxuryPageHeader } from '../components/LuxuryUI'
+import { LuxuryPageHeader, LuxuryPanel, LuxurySectionHeading } from '../components/LuxuryUI'
 import { acceptedPersianAnswers, compactPersianAnswer } from '../engine/persianTranslation'
 import { faNum } from '../engine/format'
 
@@ -99,7 +99,13 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         backLabel="بازگشت به نقشه"
       />
 
-      <label className="search-shell mt-4">
+      <LuxuryPanel className="mt-4 p-4" elevated={false}>
+        <LuxurySectionHeading
+          title="جست‌وجو و مرور"
+          subtitle="واژه را با انگلیسی یا فارسی پیدا کن و شواهد یادگیری‌اش را ببین."
+          badge={`${faNum(list.length)} واژه`}
+        />
+        <label className="search-shell mt-4">
         <SearchIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
         <input
           className="min-w-0 flex-1 bg-transparent py-3 text-base outline-none"
@@ -134,6 +140,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         </label>
         <span className="glossary-result-count" aria-live="polite">{faNum(list.length)} واژه</span>
       </div>
+      </LuxuryPanel>
 
       <div className="glossary-list mt-4">
         {list.slice(0, visibleCount).map(word => {
