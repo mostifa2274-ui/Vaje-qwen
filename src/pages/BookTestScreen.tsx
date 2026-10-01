@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
-import { WORD_BY_ID } from '../data/chapters'
+import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
 import { bookExamId, canTakeExam, examDefinition } from '../engine/gates'
 import {
   BOOK_TEST_PASS_RATE,
@@ -23,6 +23,7 @@ import { BackIcon, BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
 import { SPEECH_UNAVAILABLE } from '../components/usePassagePlayer'
 import { faNum, percent } from '../engine/format'
+import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   book: number
@@ -68,6 +69,13 @@ function isSection(phase: Phase): phase is BookTestSection {
 export default function BookTestScreen({ book, state, onChange, onBack, onReview }: Props) {
   const examId = bookExamId(book)
   const def = examDefinition(examId)!
+  const backdropChapter = CHAPTERS.find(item => item.book === book) ?? CHAPTERS[0]
+  const bookBackdrop = (
+    <div className="luxury-task-backdrop luxury-exam-backdrop" aria-hidden="true">
+      <ChapterIllustration chapterId={backdropChapter.id} titleFa={backdropChapter.titleFa} />
+      <span />
+    </div>
+  )
   // Opened through explore mode before the learner reached it: a preview
   // whose attempts are never recorded.
   const [preview] = useState(() => !canTakeExam(state, examId))
@@ -331,7 +339,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     const canRetake = unrecorded || (!result.passed && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     const next = book === 8 ? 'آزمون نهایی' : `کتاب ${faNum(book + 1)}`
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+        {bookBackdrop}
         <div className={`exam-result-card p-6 text-center ${result.passed ? 'exam-pass' : 'exam-fail'}`}>
           {result.passed && result.missedWordIds.length === 0
             ? <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
@@ -431,6 +440,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   if (phase === 'intro') {
     return (
       <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {bookBackdrop}
         {header}
         <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="intro-heading">
           <h2 id="intro-heading" className="text-lg font-extrabold">چهار بخش</h2>
@@ -454,6 +464,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   return (
     <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      {bookBackdrop}
       {header}
 
       <ol className="test-steps mt-6" aria-label="بخش‌های آزمون">
