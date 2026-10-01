@@ -1058,6 +1058,21 @@ describe('mastery certification', () => {
     }
     expect(examRemediationWordIds(state)).toContain(missedId)
     expect(examRemediationPending(state, 'book-1')).toBe(true)
+    const passedAction = nextBestAction(state, 1001)
+    expect(passedAction.kind).toBe('review')
+    expect(passedAction.title).toBe('ترمیم برای ادامهٔ مسیر')
+    expect(passedAction.detail).toContain('ادامهٔ مسیر باز می‌شود')
+    expect(passedAction.detail).not.toContain('آزمون دوباره باز می‌شود')
+
+    state.exams['book-1'] = {
+      ...state.exams['book-1'],
+      passed: false,
+      passedAt: undefined,
+    }
+    const failedAction = nextBestAction(state, 1001)
+    expect(failedAction.kind).toBe('review')
+    expect(failedAction.title).toBe('ترمیم قبل از آزمون دوباره')
+    expect(failedAction.detail).toContain('آزمون دوباره باز می‌شود')
   })
 
 
