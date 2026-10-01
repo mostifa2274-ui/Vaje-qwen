@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
-import { clearSessionDrafts, MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
+import { MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
 import { createProgressBackupJson, importProgressBackupJson } from '../engine/backup'
 import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
@@ -118,7 +118,6 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
 
   function confirmImport() {
     if (!pendingImport) return
-    clearSessionDrafts()
     onImport(pendingImport)
   }
 

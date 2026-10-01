@@ -2039,7 +2039,7 @@ test('the tab that replaces progress does not misclassify a later ordinary cross
 })
 
 
-test('a cross-tab reset invalidates this tab\'s active prep draft before it can restore progress', async ({ page, context }) => {
+test('a cross-tab reset invalidates an active prep draft even when the marker write is blocked', async ({ page, context }) => {
   const wordIds = chapter.new
   const backupState = {
     version: 6,
@@ -2084,13 +2084,26 @@ test('a cross-tab reset invalidates this tab\'s active prep draft before it can 
   expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).not.toBeNull()
 
   const other = await context.newPage()
+  await other.addInitScript(() => {
+    const nativeSetItem = Storage.prototype.setItem
+    Storage.prototype.setItem = function setItem(key: string, value: string) {
+      if (this === window.localStorage && key === 'ghesse:progress-replacement:v1') {
+        throw new DOMException('replacement marker blocked', 'QuotaExceededError')
+      }
+      return nativeSetItem.call(this, key, value)
+    }
+  })
   await other.goto('/#/settings')
   await other.getByRole('button', { name: 'پاک کردن پیشرفت' }).click()
   await other.getByRole('group', { name: 'تأیید پاک کردن پیشرفت' }).getByRole('button', { name: 'بله، پاک کن' }).click()
+  expect(await other.evaluate(() => window.localStorage.getItem('ghesse:progress-replacement:v1'))).toBeNull()
+  expect(await other.evaluate(() => (
+    typeof JSON.parse(window.localStorage.getItem('ghesse:state:v6') ?? '{}').progressReplacementToken
+  ))).toBe('string')
 
   // b1c1 remains a valid route after reset, so route validity alone cannot
-  // protect us. The replacement signal must clear this tab's session draft and
-  // remount prep at the first teaching card.
+  // protect us. The in-band lineage must clear this tab's session draft and
+  // remount prep at the first teaching card even without the marker key.
   await expect(page.getByTestId('teach-headword')).toHaveText(chapterWords[0].word)
   expect(await page.evaluate(() => window.sessionStorage.getItem('ghesse:prep:v1:b1c1'))).toBeNull()
 

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { GhesseState } from './engine/types'
-import { clearSessionDrafts, loadPersistedState, loadState, mergeConcurrentState, PROGRESS_REPLACEMENT_KEY, replacePersistedState, requestDurableStorage, saveState, signalProgressReplacement, STORAGE_KEY } from './engine/store'
+import { clearSessionDrafts, createProgressReplacementToken, loadPersistedState, loadState, mergeConcurrentState, PROGRESS_REPLACEMENT_KEY, replacePersistedState, requestDurableStorage, saveState, signalProgressReplacement, STORAGE_KEY } from './engine/store'
 import { CHAPTERS, CHAPTER_BY_ID, VOCAB } from './data/chapters'
 import { canOpenChapter, canOpenExam, canOpenStory, canPrepareChapter, canReadChapter, examDefinition } from './engine/gates'
 import MapScreen from './pages/MapScreen'
@@ -165,7 +165,7 @@ export default function App() {
   const [dismissedCommit, setDismissedCommit] = useState<string | null>(null)
   const [progressRevision, setProgressRevision] = useState(0)
   const stateRef = useRef(state)
-  const progressReplacementTokenRef = useRef<string | null>(null)
+  const progressReplacementMarkerRef = useRef<string | null>(null)
   const mainRef = useRef<HTMLElement>(null)
   const routeFocusReadyRef = useRef(false)
 
@@ -175,6 +175,24 @@ export default function App() {
     // Every answer this change records counts towards today's goal.
     const next = recordActivity(candidate, base, time)
     const remote = loadPersistedState(time, FIRST, VALID_CHAPTER_IDS, VALID_WORD_IDS)
+
+    // A reset/import can land in storage before this tab's queued storage
+    // event runs. Detect its lineage synchronously here so a stale task submit
+    // is discarded and remounted instead of waiting for that later callback.
+    if (
+      remote?.progressReplacementToken
+      && remote.progressReplacementToken !== base.progressReplacementToken
+    ) {
+      clearSessionDrafts()
+      setProgressRevision(revision => revision + 1)
+      stateRef.current = remote
+      setState(remote)
+      setView(current => resolveView(current, remote))
+      setPersistOk(true)
+      setSyncConflict(false)
+      return
+    }
+
     const reconciled = remote ? mergeConcurrentState(base, next, remote) : next
 
     if (!reconciled && remote) {
@@ -217,15 +235,20 @@ export default function App() {
 
   const replaceProgress = useCallback((next: GhesseState) => {
     // Reset/import are explicit replacement actions, not ordinary stale-screen
-    // edits, so they intentionally replace the persisted snapshot exactly.
-    stateRef.current = next
-    setState(next)
+    // edits. Carry a fresh lineage token inside the authoritative snapshot so
+    // other tabs can recognize the replacement from the STORAGE_KEY event
+    // even if the auxiliary marker write is rejected.
+    const replacementToken = createProgressReplacementToken()
+    const replacement = { ...next, progressReplacementToken: replacementToken }
+    clearSessionDrafts()
+    stateRef.current = replacement
+    setState(replacement)
     setSyncConflict(false)
-    const persisted = replacePersistedState(next)
+    const persisted = replacePersistedState(replacement)
     setPersistOk(persisted)
     if (persisted) {
-      const replacementToken = signalProgressReplacement()
-      if (replacementToken) progressReplacementTokenRef.current = replacementToken
+      const markerToken = signalProgressReplacement(replacementToken)
+      if (markerToken) progressReplacementMarkerRef.current = markerToken
     }
     navigate({ name: 'map' }, true)
   }, [navigate])
@@ -313,16 +336,16 @@ export default function App() {
     }
   }, [])
   useEffect(() => {
-    const replacementToken = () => {
+    const replacementMarkerToken = () => {
       try {
         return localStorage.getItem(PROGRESS_REPLACEMENT_KEY)
       } catch {
         return null
       }
     }
-    progressReplacementTokenRef.current = replacementToken()
+    progressReplacementMarkerRef.current = replacementMarkerToken()
 
-    const applyPersistedState = (replacement: boolean) => {
+    const applyPersistedState = (replacement: boolean, next = loadCourseState()) => {
       if (replacement) {
         // sessionStorage is tab-local, so the tab that performed a reset/import
         // cannot clear this tab's active draft. Invalidate it here and force the
@@ -331,7 +354,6 @@ export default function App() {
         clearSessionDrafts()
         setProgressRevision(revision => revision + 1)
       }
-      const next = loadCourseState()
       stateRef.current = next
       setState(next)
       setView(current => resolveView(current, next))
@@ -341,16 +363,25 @@ export default function App() {
     const onStorage = (event: StorageEvent) => {
       if (event.key !== STORAGE_KEY && event.key !== PROGRESS_REPLACEMENT_KEY) return
 
-      // localStorage writes are synchronous in the source tab. By the time this
-      // tab receives the earlier STORAGE_KEY event, the replacement marker has
-      // already been written too. Detect it immediately instead of waiting for
-      // the marker's later storage event and leaving a render/effect window in
-      // which stale task state could run.
-      const token = replacementToken()
-      const replacement = token !== progressReplacementTokenRef.current
-      progressReplacementTokenRef.current = token
+      // The authoritative snapshot carries its own replacement lineage. The
+      // legacy marker remains a second signal for compatibility, but a failed
+      // marker write can no longer make an explicit reset/import look ordinary.
+      const markerToken = replacementMarkerToken()
+      const next = loadCourseState()
+      const stateTokenChanged = Boolean(
+        next.progressReplacementToken
+        && next.progressReplacementToken !== stateRef.current.progressReplacementToken
+      )
+      const markerChanged = Boolean(
+        markerToken
+        && markerToken !== progressReplacementMarkerRef.current
+        && markerToken !== stateRef.current.progressReplacementToken
+      )
+      if (markerToken) progressReplacementMarkerRef.current = markerToken
+
+      const replacement = stateTokenChanged || markerChanged
       if (event.key === PROGRESS_REPLACEMENT_KEY && !replacement) return
-      applyPersistedState(replacement)
+      applyPersistedState(replacement, next)
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)

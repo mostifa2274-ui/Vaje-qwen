@@ -137,6 +137,8 @@ export interface GhesseState {
   version: 6
   /** Day-evidence semantics marker. Missing = legacy UTC/mixed day keys. */
   dayEvidenceVersion: 1
+  /** Changes only for an explicit reset/import replacement, never ordinary edits. */
+  progressReplacementToken?: string
   currentChapter: string // retained for migration/history; gate engine is authoritative
   chapters: Record<string, ChapterProgress>
   words: Record<string, WordProgress>
