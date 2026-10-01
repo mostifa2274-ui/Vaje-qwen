@@ -19,7 +19,7 @@ import {
 } from '../engine/bookTest'
 import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft, savedBookTest } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CheckIcon, RefreshCcwIcon } from '../components/Icons'
 import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
 import { SPEECH_UNAVAILABLE } from '../components/usePassagePlayer'
