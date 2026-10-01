@@ -25,7 +25,8 @@ import {
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import GlossSheet from '../components/GlossSheet'
-import { BackIcon, BadgeCheckIcon, CheckIcon, FlashcardsIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CheckIcon, FlashcardsIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { faNum, percent } from '../engine/format'
 
 interface Props {
@@ -305,13 +306,14 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
   })
 
   const header = (title: string, subtitle: string, onBackClick: () => void, backLabel: string) => (
-    <header className="flex items-center gap-3">
-      <button type="button" className="btn-paper reader-header-button" onClick={onBackClick} aria-label={backLabel}><BackIcon className="h-5 w-5" /></button>
-      <div className="min-w-0 flex-1">
-        <h1 ref={headingRef} tabIndex={-1} className="truncate text-2xl font-extrabold">{title}</h1>
-        <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{subtitle}</p>
-      </div>
-    </header>
+    <LuxuryPageHeader
+      title={title}
+      subtitle={subtitle}
+      eyebrow="تمرین آزاد"
+      onBack={onBackClick}
+      backLabel={backLabel}
+      headingRef={headingRef}
+    />
   )
 
   // ---------- Study ----------
@@ -339,9 +341,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
           <span>کارت {faNum(Math.min(done + 1, session.total))} از {faNum(session.total)}</span>
           <span>{DIRECTION_LABELS[face]}</span>
         </div>
-        <div className="mastery-progress mt-2" role="progressbar" aria-label="پیشرفت مرور" aria-valuemin={0} aria-valuemax={session.total} aria-valuenow={done}>
-          <span style={{ width: `${(done / session.total) * 100}%` }} />
-        </div>
+        <LuxuryProgress className="mt-2" value={done} max={session.total} label="پیشرفت مرور" />
 
         <section className="flashcard mt-5" aria-live="polite" data-testid="flashcard">
           <div key={`${currentId}:${flipped ? 'back' : 'front'}`} className="flashcard-face">
