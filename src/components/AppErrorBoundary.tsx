@@ -26,7 +26,7 @@ export default class AppErrorBoundary extends Component<Props, State> {
   }
 
   private goHome = () => {
-    window.location.hash = '#/'
+    window.location.hash = '#/map'
     window.location.reload()
   }
 
