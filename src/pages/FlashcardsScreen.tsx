@@ -332,7 +332,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
       </button>
     )
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
         {header('جعبهٔ لایتنر', box ? `این کارت در جعبهٔ ${faNum(box)} است؛ ${everyLabel(box)} مرور می‌شود` : 'کارت تازه؛ اولین دیدار', leave, 'پایان مرور و بازگشت')}
 
         <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
@@ -464,7 +464,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
     const remembered = answers.filter(result => result !== 'again').length
     const backToOne = answers.filter(result => result === 'again').length
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
         {header('جعبهٔ لایتنر', 'نتیجهٔ این مرور', leave, 'بازگشت به جعبه‌ها')}
         <section className="learning-focus-card mt-5 p-6 text-center" data-testid="flashcards-summary">
           <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
@@ -504,7 +504,7 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
   const listIds = openBox === null ? [] : cardsInBox(state, scopeIds, openBox)
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+    <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       {header('جعبهٔ لایتنر', 'کارت‌های مرور برای همهٔ واژه‌های مسیر؛ هر کارتی که به یاد بیاوری یک جعبه جلو می‌رود.', onBack, 'بازگشت به نقشه')}
 
       <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="leitner-today">
