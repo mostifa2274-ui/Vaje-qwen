@@ -6,7 +6,7 @@ import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon } from '../components/Icons'
-import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryMetricGrid, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import SpellingHint from '../components/SpellingHint'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview } from '../components/TestPassage'
 import type { TestText } from '../data/bookTests'
@@ -361,7 +361,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const textsMissed = result.comprehensionTotal - result.comprehensionCorrect
     const canRetake = unrecorded || (!passedNow && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+        {examBackdrop}
         <div className={`exam-result-card p-6 text-center ${passedNow ? 'exam-pass' : 'exam-fail'}`}>
           {passedNow
             ? <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
@@ -369,14 +370,15 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           <h1 className="mt-3 text-2xl font-extrabold">
             {passedNow ? 'قبول شدی' : gateAlreadyPassed ? 'این بازآزمایی نیاز به مرور دارد' : 'هنوز آمادهٔ عبور نیستی'}
           </h1>
-          <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            <div className="metric-card"><b>{percent(result.overallScore)}</b><span>کل آزمون</span></div>
-            <div className="metric-card"><b>{percent(result.productiveScore)}</b><span>پاسخ بدون گزینه</span></div>
-            <div className={`metric-card ${textsMissed ? 'metric-fail' : ''}`} data-testid="exam-comprehension-score">
-              <b>{faNum(result.comprehensionCorrect)}/{faNum(result.comprehensionTotal)}</b><span>درک مطلب</span>
-            </div>
-            <div className="metric-card"><b>{faNum(testedCoverage)}/{faNum(totalPool)}</b><span>پوشش واژه</span></div>
-          </div>
+          <LuxuryMetricGrid
+            className="mt-5 luxury-exam-metrics"
+            items={[
+              { value: percent(result.overallScore), label: 'کل آزمون' },
+              { value: percent(result.productiveScore), label: 'پاسخ بدون گزینه' },
+              { value: `${faNum(result.comprehensionCorrect)}/${faNum(result.comprehensionTotal)}`, label: 'درک مطلب' },
+              { value: `${faNum(testedCoverage)}/${faNum(totalPool)}`, label: 'پوشش واژه' },
+            ]}
+          />
 
           <div className="exam-summary-panel mt-4 p-3 text-right">
             <div className="text-xs font-extrabold">نقشهٔ مهارت این آزمون</div>
