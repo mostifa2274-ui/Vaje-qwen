@@ -241,17 +241,28 @@ function normalizeExam(raw: unknown, now: number, validWordIds?: ReadonlySet<str
   // Normalize that impossible shape here even if a caller bypasses UI gates.
   const hasAttempt = attempts > 0
   const passed = hasAttempt && r.passed === true
+  const missedWordIds = hasAttempt ? normalizeWordIdArray(r.missedWordIds, validWordIds) : []
+  const testedWordIds = hasAttempt ? normalizeWordIdArray(r.testedWordIds, validWordIds) : []
+  const lastAttemptAt = hasAttempt ? plausibleEvidenceTimestamp(r.lastAttemptAt, now) : undefined
+  const storedRemediationAfter = hasAttempt ? plausibleEvidenceTimestamp(r.remediationAfter, now) : undefined
+  // If miss evidence survived but the attempt timestamp did not, keep the
+  // evidence conservative without inventing when the attempt occurred. The
+  // learner must prove each miss again after this normalization floor.
+  const remediationAfter = hasAttempt && missedWordIds.length > 0 && !lastAttemptAt
+    ? storedRemediationAfter ?? now
+    : undefined
   return {
     attempts,
     passed,
     passedAt: passed ? plausibleEvidenceTimestamp(r.passedAt, now) : undefined,
-    lastAttemptAt: hasAttempt ? plausibleEvidenceTimestamp(r.lastAttemptAt, now) : undefined,
+    lastAttemptAt,
+    remediationAfter,
     lastScore: hasAttempt ? Math.min(1, Math.max(0, num(r.lastScore))) : 0,
     bestScore: hasAttempt ? Math.min(1, Math.max(0, num(r.bestScore))) : 0,
     lastProductiveScore: hasAttempt ? Math.min(1, Math.max(0, num(r.lastProductiveScore))) : 0,
     bestProductiveScore: hasAttempt ? Math.min(1, Math.max(0, num(r.bestProductiveScore))) : 0,
-    missedWordIds: hasAttempt ? normalizeWordIdArray(r.missedWordIds, validWordIds) : [],
-    testedWordIds: hasAttempt ? normalizeWordIdArray(r.testedWordIds, validWordIds) : [],
+    missedWordIds,
+    testedWordIds,
   }
 }
 

@@ -88,6 +88,8 @@ export interface ExamProgress {
   passed: boolean
   passedAt?: number
   lastAttemptAt?: number
+  /** Conservative floor used only when imported miss evidence lacks an attempt timestamp. */
+  remediationAfter?: number
   lastScore: number
   bestScore: number
   lastProductiveScore: number

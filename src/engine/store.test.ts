@@ -252,6 +252,7 @@ describe('progress import validation', () => {
       missedWordIds: [],
       testedWordIds: [],
     })
+    expect(imported.exams['book-1'].remediationAfter).toBeUndefined()
     expect(summarizeProgress(imported).passedExams).toBe(0)
   })
 
@@ -385,7 +386,7 @@ describe('progress import validation', () => {
             bestScore: 1,
             lastProductiveScore: 1,
             bestProductiveScore: 1,
-            missedWordIds: [],
+            missedWordIds: ['w1'],
             testedWordIds: ['w1'],
           },
         },
@@ -409,6 +410,8 @@ describe('progress import validation', () => {
     expect(imported.words.w1.productiveSuccessDays).toEqual([today])
     expect(imported.exams['book-1'].passedAt).toBeUndefined()
     expect(imported.exams['book-1'].lastAttemptAt).toBeUndefined()
+    expect(imported.exams['book-1'].remediationAfter).toBe(now)
+    expect(imported.exams['book-1'].missedWordIds).toEqual(['w1'])
   })
 
   it('preserves first-pass acquisition evidence through backup import', () => {

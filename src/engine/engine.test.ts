@@ -542,6 +542,37 @@ describe('chapter prep and gate progression', () => {
   })
 
 
+  it('fails closed on known exam misses when the attempt timestamp is unavailable', () => {
+    const state = emptyState(1, 'b1c1')
+    const examId = bookExamId(1)
+    const missedId = CHAPTERS.find(ch => ch.book === 1)!.new[0]
+    state.words[missedId] = blankWordProgress(1)
+    state.exams[examId] = {
+      attempts: 1,
+      passed: true,
+      lastScore: .9,
+      bestScore: .9,
+      lastProductiveScore: .9,
+      bestProductiveScore: .9,
+      missedWordIds: [missedId],
+      testedWordIds: [missedId],
+    }
+
+    // Direct/corrupted in-memory state without any trustworthy floor is still
+    // blocked rather than silently treating the miss as remediated.
+    expect(examRemediationPending(state, examId)).toBe(true)
+    expect(examRemediationWordIds(state)).toContain(missedId)
+
+    // Normalization supplies this conservative floor. A new independent recall
+    // after it resolves the gap; same-floor evidence does not.
+    state.exams[examId].remediationAfter = 100
+    state.words[missedId].lastIndependentSuccessAt = 100
+    expect(examRemediationPending(state, examId)).toBe(true)
+    state.words[missedId].lastIndependentSuccessAt = 101
+    expect(examRemediationPending(state, examId)).toBe(false)
+    expect(examRemediationWordIds(state)).not.toContain(missedId)
+  })
+
   it('locks an exam retake until every missed word is remediated after the failed attempt', () => {
     const state = emptyState(1, 'b1c1')
     for (const ch of CHAPTERS.filter(ch => ch.book === 1)) {
