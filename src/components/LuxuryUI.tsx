@@ -119,14 +119,17 @@ export function LuxuryAudioOrb({
   active = false,
   className,
   children,
+  buttonRef,
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string
   helper?: string
   active?: boolean
+  buttonRef?: Ref<HTMLButtonElement>
 }) {
   return (
     <button
+      ref={buttonRef}
       type="button"
       className={join('luxury-audio-orb', active && 'is-active', className)}
       disabled={disabled}
