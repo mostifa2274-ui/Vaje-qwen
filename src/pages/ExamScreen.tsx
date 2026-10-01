@@ -6,7 +6,7 @@ import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
-import { LuxuryPageHeader } from '../components/LuxuryUI'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import SpellingHint from '../components/SpellingHint'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview } from '../components/TestPassage'
 import type { TestText } from '../data/bookTests'
@@ -507,7 +507,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           <span>درک مطلب · متن {faNum(textIndex + 1)} از {faNum(texts.length)}</span>
           <span>تلاش {faNum(attempt)}</span>
         </div>
-        <div className="mastery-progress mt-2"><span style={{ width: `${(textIndex / texts.length) * 100}%` }} /></div>
+        <LuxuryProgress className="mt-2" value={textIndex} max={texts.length} label="پیشرفت درک مطلب آزمون" />
 
         {previewNote}
 
@@ -594,13 +594,14 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   return (
     <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      {examBackdrop}
       {header}
 
       <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
         <span>سؤال {faNum(index + 1)} از {faNum(builtExam.questions.length)}</span>
         <span>تلاش {faNum(attempt)}</span>
       </div>
-      <div className="mastery-progress mt-2"><span style={{ width: `${(index / builtExam.questions.length) * 100}%` }} /></div>
+      <LuxuryProgress className="mt-2" value={index} max={builtExam.questions.length} label="پیشرفت آزمون واژگان" />
 
       {previewNote}
 
@@ -623,7 +624,13 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
               <>
                 <div className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و دقیق بنویس.</div>
                 {question.hintFa && <SpellingHint meaning={question.hintFa} />}
-                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={() => { setAudioReady(false); speakCurrent() }}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
+                <div className="mt-5">
+                  <LuxuryAudioOrb
+                    label="پخش واژه"
+                    helper="کلمه را کامل گوش کن و سپس بنویس"
+                    onClick={() => { setAudioReady(false); speakCurrent() }}
+                  />
+                </div>
                 {audioNotice && <div className="paper-note mt-3 text-right" role="alert">{audioNotice}</div>}
                 {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}
               </>
@@ -665,14 +672,13 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             <div className="mt-7" dir={question.mode === 'reverse' ? 'rtl' : 'ltr'}>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {question.options?.map(option => (
-                  <button
+                  <LuxuryChoice
                     key={option.id}
-                    type="button"
-                    className={`btn-paper min-h-14 px-3 py-3 ${question.mode === 'reverse' ? '' : 'font-en'}`}
+                    className={question.mode === 'reverse' ? '' : 'font-en'}
                     onClick={() => answer(option.id === question.answerId)}
                   >
                     {option.label}
-                  </button>
+                  </LuxuryChoice>
                 ))}
               </div>
               <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" onClick={() => answer(false)}>نمی‌دانم — بعدی</button>
