@@ -61,7 +61,7 @@ export default class RouteErrorBoundary extends Component<Props, State> {
     const missingScript = isChunkLoadError(error)
     const offline = typeof navigator !== 'undefined' && !navigator.onLine
     return (
-      <section className="runtime-error-card mx-auto mt-10" role="alert" data-testid="route-error">
+      <section className="runtime-error-card luxury-error-card mx-auto mt-10" role="alert" data-testid="route-error">
         <div className="runtime-error-mark" aria-hidden="true">!</div>
         <h1>{missingScript ? 'این بخش باز نشد' : 'نمایش این بخش با مشکل روبه‌رو شد'}</h1>
         <p>
