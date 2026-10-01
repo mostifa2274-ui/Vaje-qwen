@@ -158,6 +158,10 @@ assert(
   'learning-policy calibration cannot close before validated outcome evidence and documented policy changes',
 )
 
+const mapScreen = readFileSync(join(root, 'src/pages/MapScreen.tsx'), 'utf8')
+assert(mapScreen.includes('قصه، مرور فاصله‌دار و آزمون مرحله‌ای'), 'home line must name the method, not claim mastery')
+assert(!mapScreen.includes('تا تسلط پایدار'), 'home line must not claim stable mastery')
+
 console.log([
   'Quality evidence program valid.',
   `learner outcomes: ${status.gates.learnerOutcomesPilot.status}`,
