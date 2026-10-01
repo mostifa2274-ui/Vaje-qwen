@@ -238,11 +238,11 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </div>
       </section>
 
-      <button type="button" className={`review-hero mt-4 w-full ${health.dueNow ? 'due' : ''}`} onClick={onOpenReview}>
+      <button type="button" className={`review-hero mt-4 w-full ${health.dueNow ? 'due' : ''}`} aria-label="مرور هوشمند" aria-describedby="review-hero-detail" onClick={onOpenReview}>
         <span className="review-hero-icon" aria-hidden="true"><RefreshCcwIcon className="h-5 w-5" /></span>
         <div className="min-w-0 flex-1 text-right">
           <div className="font-extrabold">مرور هوشمند</div>
-          <div className="mt-1 text-xs leading-6">
+          <div id="review-hero-detail" className="mt-1 text-xs leading-6">
             {health.dueNow
               ? `${faNum(health.dueNow)} واژه اکنون سررسید دارد${health.overdueLong ? ` · ${faNum(health.overdueLong)} مورد بیش از ۳ روز عقب است` : ''}`
               : health.trouble ? `${faNum(health.trouble)} واژهٔ سخت برای تمرین هدفمند` : 'تمرین تقویتی بر اساس ضعیف‌ترین واژه‌ها'}
