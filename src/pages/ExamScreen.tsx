@@ -5,7 +5,8 @@ import { canTakeExam, examDefinition } from '../engine/gates'
 import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryPageHeader } from '../components/LuxuryUI'
 import SpellingHint from '../components/SpellingHint'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview } from '../components/TestPassage'
 import type { TestText } from '../data/bookTests'
@@ -481,13 +482,14 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   }
 
   const header = (
-    <header className="flex items-center gap-3">
-      <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="ترک آزمون"><BackIcon className="h-5 w-5" /></button>
-      <div className="min-w-0 flex-1">
-        <h1 className="truncate text-xl font-extrabold">{def.titleFa}</h1>
-        <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>{def.subtitleFa}</p>
-      </div>
-    </header>
+    <LuxuryPageHeader
+      title={def.titleFa}
+      subtitle={def.subtitleFa}
+      eyebrow="آزمون مرحله‌ای"
+      onBack={onBack}
+      backLabel="ترک آزمون"
+      centered
+    />
   )
   const previewNote = preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>
 
