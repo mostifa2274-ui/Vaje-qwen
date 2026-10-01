@@ -12,6 +12,8 @@ import { loadClipIndex } from './engine/audioClips'
 import { deployedBuildDiffers, fetchReleaseMarker } from './engine/release'
 import { introduceWordsOfCompletedChapters } from './engine/progress'
 import { diagnosticFailed } from './engine/diagnosticDraft'
+import { nextBestAction } from './engine/analytics'
+import { warmupTarget } from './engine/routeWarmup'
 
 const WordPrepScreen = lazy(() => import('./pages/WordPrepScreen'))
 const DiagnosticScreen = lazy(() => import('./pages/DiagnosticScreen'))
@@ -38,9 +40,11 @@ type View =
 
 function RouteLoading() {
   return (
-    <div className="page-in mx-auto max-w-3xl px-4 py-14 text-center" role="status" aria-live="polite">
-      <p className="font-extrabold">در حال آماده‌سازی…</p>
-      <p className="mt-2 text-sm" style={{ color: 'var(--ink-soft)' }}>این بخش فقط یک‌بار بارگذاری می‌شود.</p>
+    <div className="app-page" role="status" aria-live="polite">
+      <div className="app-task-header px-4 py-4">
+        <p className="font-extrabold">در حال آماده‌سازی…</p>
+        <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>این بخش فقط یک‌بار بارگذاری می‌شود.</p>
+      </div>
     </div>
   )
 }
@@ -324,12 +328,18 @@ export default function App() {
     const connection = navigator as Navigator & { connection?: { saveData?: boolean } }
     if (connection.connection?.saveData) return
     let cancelled = false
-    const warmReview = () => {
-      if (!cancelled) void import('./pages/ReviewScreen')
+    const warmNext = () => {
+      if (cancelled) return
+      const target = warmupTarget(nextBestAction(stateRef.current, Date.now()))
+      if (target === 'review') void import('./pages/ReviewScreen')
+      else if (target === 'book-test') void import('./pages/BookTestScreen')
+      else if (target === 'exam') void import('./pages/ExamScreen')
+      else if (target === 'read') void import('./pages/ReaderScreen')
+      else if (target === 'prep') void import('./pages/WordPrepScreen')
     }
-    const idle = window.requestIdleCallback?.(warmReview, { timeout: 2500 })
+    const idle = window.requestIdleCallback?.(warmNext, { timeout: 2500 })
     if (idle === undefined) {
-      const timer = window.setTimeout(warmReview, 1500)
+      const timer = window.setTimeout(warmNext, 1500)
       return () => {
         cancelled = true
         window.clearTimeout(timer)
