@@ -318,6 +318,29 @@ export default function App() {
     document.title = `${viewLabel(view)} — قصه`
   }, [view])
   useEffect(() => {
+    // Warm the usual next screen after home is visible. Save-Data and in-task
+    // routes stay ahead of this; it never changes a gate or a route decision.
+    if (view.name !== 'map') return
+    const connection = navigator as Navigator & { connection?: { saveData?: boolean } }
+    if (connection.connection?.saveData) return
+    let cancelled = false
+    const warmReview = () => {
+      if (!cancelled) void import('./pages/ReviewScreen')
+    }
+    const idle = window.requestIdleCallback?.(warmReview, { timeout: 2500 })
+    if (idle === undefined) {
+      const timer = window.setTimeout(warmReview, 1500)
+      return () => {
+        cancelled = true
+        window.clearTimeout(timer)
+      }
+    }
+    return () => {
+      cancelled = true
+      window.cancelIdleCallback(idle)
+    }
+  }, [view.name])
+  useEffect(() => {
     document.documentElement.setAttribute('dir', 'rtl')
     document.documentElement.setAttribute('lang', 'fa')
     warmEnglishVoices()
