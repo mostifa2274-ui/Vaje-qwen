@@ -19,8 +19,8 @@
   "categories": [
     "education"
   ],
-  "background_color": "#b0c6b3",
-  "theme_color": "#b0c6b3",
+  "background_color": "#040a12",
+  "theme_color": "#040a12",
   "icons": [
     {
       "src": "icons/icon.svg",
