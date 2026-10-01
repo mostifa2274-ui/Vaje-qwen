@@ -6,7 +6,8 @@ import { buildPrepTestOrders } from '../engine/prepOrder'
 import { canPrepareChapter, chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
+import { PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
@@ -483,16 +484,18 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
         <span />
       </div>
-      <header className="sticky top-0 z-40 app-task-header luxury-prep-header">
-        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
-          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-          <div className="min-w-0 flex-1 text-center">
-            <h1 className="luxury-contract-heading truncate">واژه‌های تازه: {chapter.titleFa}</h1>
-            <div className="truncate text-lg font-extrabold">{phaseTitle}</div>
-            <div className="mt-1 truncate text-xs" style={{ color: 'var(--ink-soft)' }}>{phaseSubtitle}</div>
-          </div>
-        </div>
-      </header>
+      <div className="mx-auto max-w-3xl px-4">
+        <LuxuryPageHeader
+          title={`واژه‌های تازه: ${chapter.titleFa}`}
+          eyebrow={phaseTitle}
+          subtitle={phaseSubtitle}
+          onBack={onBack}
+          backLabel="بازگشت به نقشه"
+          sticky
+          centered
+          className="luxury-prep-header"
+        />
+      </div>
 
       <div className="mx-auto max-w-3xl px-4 pb-28 pt-5">
         {preview && (
@@ -559,9 +562,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </span>
               </button>
             </div>
-            <div className="mastery-progress mt-2">
-              <span style={{ width: `${((teachIndex + 1) / chapter.new.length) * 100}%` }} />
-            </div>
+            <LuxuryProgress className="mt-2" value={teachIndex + 1} max={chapter.new.length} label="پیشرفت آموزش واژه‌ها" />
             {!state.soundOn && (
               <div className="paper-note mt-4">
                 {explore
@@ -648,9 +649,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <span>ترجمهٔ نوشتاری · ۱۰۰٪</span>
               <span>{faNum(writtenPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
-            <div className="mastery-progress mt-3">
-              <span style={{ width: `${(writtenPassed.size / chapter.new.length) * 100}%` }} />
-            </div>
+            <LuxuryProgress className="mt-3" value={writtenPassed.size} max={chapter.new.length} label="پیشرفت آزمون ترجمهٔ نوشتاری" />
 
             <div className="mt-7 text-center">
               <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>یک معنی درست را به فارسی بنویس</div>
@@ -707,9 +706,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <span>شنیداری · ۱۰۰٪</span>
               <span>{faNum(listeningPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
-            <div className="mastery-progress mt-3">
-              <span style={{ width: `${(listeningPassed.size / chapter.new.length) * 100}%` }} />
-            </div>
+            <LuxuryProgress className="mt-3" value={listeningPassed.size} max={chapter.new.length} label="پیشرفت آزمون شنیداری" />
 
             {!state.soundOn ? (
               <div className="paper-note mt-5">
@@ -720,14 +717,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <>
                 <div className="mt-7 text-center">
                   <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و معنی درست را انتخاب کن</div>
-                  <button
-                    type="button"
-                    className="btn-paper luxury-listen-play mt-4 text-2xl"
-                    onClick={() => { setListeningReady(false); speak(currentListeningWord.word, true) }}
-                    aria-label="پخش دوبارهٔ واژه"
-                  >
-                    <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
-                  </button>
+                  <div className="mt-5">
+                    <LuxuryAudioOrb
+                      label="پخش دوبارهٔ واژه"
+                      helper="گوش کن و معنی درست را انتخاب کن"
+                      onClick={() => { setListeningReady(false); speak(currentListeningWord.word, true) }}
+                    />
+                  </div>
                   {!listeningReady && !audioNotice && (
                     <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>
                       برای پاسخ، ابتدا واژه را تا پایان گوش کن.
@@ -743,15 +739,17 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                     if (feedback && isAnswer) className += ' answer-correct'
                     else if (feedback && isSelected) className += ' answer-wrong'
                     return (
-                      <button
+                      <LuxuryChoice
                         key={option.id}
-                        type="button"
                         className={className}
+                        selected={Boolean(feedback && isSelected)}
+                        correct={Boolean(feedback && isAnswer)}
+                        wrong={Boolean(feedback && isSelected && !isAnswer)}
                         disabled={Boolean(feedback) || audioBlocked || !listeningReady}
                         onClick={() => chooseListening(option.id)}
                       >
                         {option.label}
-                      </button>
+                      </LuxuryChoice>
                     )
                   })}
                 </div>
