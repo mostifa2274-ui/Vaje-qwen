@@ -2,6 +2,7 @@ import type { ExamProgress, GhesseState, ChapterProgress, WordProgress, Retrieva
 import { emptyLeitner, normalizeLeitner } from './leitner'
 import { mergeActivity, mergeLeitnerDays, normalizeActivity } from './activity'
 import { dayKey, latestPlausibleDayKey, plausibleEvidenceTimestamp } from './days'
+import { canPrepareChapter, canReadChapter, canTakeExam } from './gates'
 
 export const STORAGE_KEY = 'ghesse:state:v6'
 export const PROGRESS_REPLACEMENT_KEY = 'ghesse:progress-replacement:v1'
@@ -579,6 +580,38 @@ function mergeConcurrentRecord<T>(
 }
 
 /**
+ * A stale tab may have started a chapter or exam while its prerequisites were
+ * valid, then another tab can create remediation on an earlier milestone.
+ * Those edits touch different records, so an ordinary three-way merge would
+ * otherwise preserve both and fabricate later-path evidence after the gate
+ * has closed. Re-check every local chapter/exam delta against the latest
+ * persisted state before independent records are combined.
+ */
+function localLearningDeltaStillAllowed(
+  base: GhesseState,
+  local: GhesseState,
+  remote: GhesseState,
+): boolean {
+  for (const [chapterId, localProgress] of Object.entries(local.chapters)) {
+    if (sameJsonValue(localProgress, base.chapters[chapterId])) continue
+    // A reread of already-earned content remains legal even when later
+    // remediation blocks new progression. An unfinished chapter, however,
+    // must still be reachable from the latest prerequisite state.
+    if (localProgress.completed) {
+      if (!canReadChapter(remote, chapterId)) return false
+    } else if (!canPrepareChapter(remote, chapterId)) {
+      return false
+    }
+  }
+
+  for (const [examId, localProgress] of Object.entries(local.exams)) {
+    if (sameJsonValue(localProgress, base.exams[examId])) continue
+    if (!canTakeExam(remote, examId)) return false
+  }
+  return true
+}
+
+/**
  * Three-way merge for a full state snapshot produced by a screen that may be
  * stale relative to localStorage. Learning records are atomic: independent
  * records can merge, but divergent edits to the same chapter/word/exam are
@@ -595,6 +628,8 @@ export function mergeConcurrentState(
     remote.progressReplacementToken
     && remote.progressReplacementToken !== base.progressReplacementToken
   ) return undefined
+
+  if (!localLearningDeltaStillAllowed(base, local, remote)) return undefined
 
   const chapters = mergeConcurrentRecord(base.chapters, local.chapters, remote.chapters)
   const words = mergeConcurrentRecord(base.words, local.words, remote.words)

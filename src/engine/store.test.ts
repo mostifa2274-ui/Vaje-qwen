@@ -16,6 +16,10 @@ globalThis.localStorage = memoryStorage()
 globalThis.sessionStorage = memoryStorage()
 
 import { clearSessionDrafts, emptyState, importStateJson, loadPersistedState, mergeConcurrentState, replacePersistedState, requestDurableStorage, resetState, saveState, summarizeProgress } from './store'
+import { CHAPTERS } from '../data/chapters'
+import { bookWordIds } from './bookTestSize'
+import { canTakeExam } from './gates'
+import { blankWordProgress } from './review'
 
 describe('progress replacement', () => {
   beforeEach(() => {
@@ -454,6 +458,30 @@ describe('concurrent progress reconciliation', () => {
     reads: 0,
   })
 
+  const passedExam = (at = 200) => ({
+    attempts: 1,
+    passed: true,
+    passedAt: at,
+    lastAttemptAt: at,
+    lastScore: 1,
+    bestScore: 1,
+    lastProductiveScore: 1,
+    bestProductiveScore: 1,
+    missedWordIds: [] as string[],
+    testedWordIds: [] as string[],
+  })
+
+  const completedChapter = () => ({
+    preparedAt: 100,
+    prepAttempts: 1,
+    completed: true,
+    completedAt: 150,
+    lastReadAt: 150,
+    checksCorrect: 10,
+    checksTotal: 10,
+    reads: 1,
+  })
+
   it('preserves independent changes made by a stale tab and the persisted tab', () => {
     const base = emptyState(100, 'b1c1')
     const local = { ...base, dailyReviewGoal: 20 as const, chapters: { b1c1: chapterProgress() } }
@@ -488,6 +516,92 @@ describe('concurrent progress reconciliation', () => {
     }
 
     expect(mergeConcurrentState(base, staleSettings, replacement)).toBeUndefined()
+  })
+
+  it('rejects a stale later-chapter write when another tab creates earlier remediation', () => {
+    const base = emptyState(100, 'b1c1')
+    for (const chapter of CHAPTERS.filter(item => item.book === 1)) {
+      base.chapters[chapter.id] = completedChapter()
+    }
+    base.exams['book-1'] = passedExam()
+
+    const target = CHAPTERS.find(chapter => chapter.id === 'b2c1')!
+    const required = target.new.length
+    const local = {
+      ...base,
+      chapters: {
+        ...base.chapters,
+        [target.id]: {
+          preparedAt: 300,
+          prepAttempts: 1,
+          prepWrittenCorrect: required,
+          prepWrittenTotal: required,
+          prepListeningCorrect: required,
+          prepListeningTotal: required,
+          completed: false,
+          checksCorrect: 0,
+          checksTotal: 0,
+          reads: 0,
+        },
+      },
+    }
+
+    const missedId = CHAPTERS.find(chapter => chapter.book === 1)!.new[0]
+    const remote = {
+      ...base,
+      exams: {
+        ...base.exams,
+        'book-1': {
+          ...passedExam(400),
+          attempts: 2,
+          missedWordIds: [missedId],
+          testedWordIds: [missedId],
+        },
+      },
+    }
+
+    expect(mergeConcurrentState(base, local, remote)).toBeUndefined()
+  })
+
+  it('rejects a stale later-exam write when another tab closes an earlier milestone', () => {
+    const base = emptyState(100, 'b1c1')
+    for (const chapter of CHAPTERS.filter(item => item.book <= 2)) {
+      base.chapters[chapter.id] = completedChapter()
+    }
+    base.exams['book-1'] = passedExam()
+
+    for (const wordId of bookWordIds(2)) {
+      base.words[wordId] = {
+        ...blankWordProgress(1),
+        firstSeenAt: undefined,
+        lastIndependentSuccessAt: 2,
+      }
+    }
+    expect(canTakeExam(base, 'book-2')).toBe(true)
+
+    const local = {
+      ...base,
+      exams: {
+        ...base.exams,
+        'book-2': passedExam(300),
+      },
+    }
+
+    const missedId = CHAPTERS.find(chapter => chapter.book === 1)!.new[0]
+    const remote = {
+      ...base,
+      exams: {
+        ...base.exams,
+        'book-1': {
+          ...passedExam(400),
+          attempts: 2,
+          missedWordIds: [missedId],
+          testedWordIds: [missedId],
+        },
+      },
+    }
+    expect(canTakeExam(remote, 'book-2')).toBe(false)
+    expect(mergeConcurrentState(base, local, remote)).toBeUndefined()
   })
 
   it('rejects divergent edits to the same learning record', () => {
