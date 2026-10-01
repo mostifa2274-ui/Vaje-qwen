@@ -22,7 +22,7 @@ import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } fro
 import { examRemediationWordIds } from '../engine/gates'
 import { consolidationFocus } from '../engine/analytics'
 import { BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
-import { LuxuryPageHeader } from '../components/LuxuryUI'
+import { LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import SpellingHint from '../components/SpellingHint'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
 import { faNum } from '../engine/format'
@@ -375,7 +375,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
             <span>{sessionLabel}</span>
             <span>{faNum(completed)} از {faNum(sessionTotal)}</span>
           </div>
-          <div className="mastery-progress mt-3"><span style={{ width: `${Math.min(100, (completed / sessionTotal) * 100)}%` }} /></div>
+          <LuxuryProgress className="mt-3" value={completed} max={sessionTotal} label="پیشرفت مرور هوشمند" />
 
           <div className="mt-5 flex items-center justify-between gap-2">
             <span className="mastery-chip">مهارت هدف: {weaknessLabel(mode)}</span>
@@ -444,9 +444,17 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
                   if (feedback && isAnswer) cls += ' answer-correct'
                   else if (feedback && isSelected) cls += ' answer-wrong'
                   return (
-                    <button key={option.id} type="button" className={cls} disabled={Boolean(feedback)} onClick={() => { setSelected(option.id); commit(option.id === question.answerId) }}>
+                    <LuxuryChoice
+                      key={option.id}
+                      className={cls}
+                      selected={Boolean(feedback && isSelected)}
+                      correct={Boolean(feedback && isAnswer)}
+                      wrong={Boolean(feedback && isSelected && !isAnswer)}
+                      disabled={Boolean(feedback)}
+                      onClick={() => { setSelected(option.id); commit(option.id === question.answerId) }}
+                    >
                       {option.label}
-                    </button>
+                    </LuxuryChoice>
                   )
                 })}
               </div>
