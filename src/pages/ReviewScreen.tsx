@@ -7,6 +7,8 @@ import {
   dimensionForMode,
   dueWordIds,
   interleaveReviewQueue,
+  interleaveReviewFormats,
+  requeueMissedItem,
   isQuestionTypedCorrect,
   isTypedMode,
   modeForProgress,
@@ -80,8 +82,14 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     const selected = scheduled.length || !state.exploreAll
       ? scheduled
       : seededSample(VOCAB.map(w => w.id), state.dailyReviewGoal, `explore:${Math.floor(now / 86_400_000)}`)
-    return interleaveReviewQueue(selected, VOCAB)
-  }, [now, scheduled, state.dailyReviewGoal, state.exploreAll])
+    return interleaveReviewFormats(
+      interleaveReviewQueue(selected, VOCAB),
+      id => {
+        const wordProgress = state.words[id]
+        return wordProgress ? modeForProgress(wordProgress, state.soundOn) : 'recognition'
+      },
+    )
+  }, [now, scheduled, state.dailyReviewGoal, state.exploreAll, state.soundOn, state.words])
   const suggestedKind: ReviewSessionKind = remediation.length
     ? 'remediation'
     : consolidationFirst || (!due.length && consolidation.length) ? 'consolidation' : due.length ? 'due' : trouble.length ? 'trouble' : 'extra'
@@ -299,7 +307,7 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
     const rest = queue.slice(1)
     const attempts = (attemptNumber[currentId] ?? 0) + 1
     setAttemptNumber(previous => ({ ...previous, [currentId]: attempts }))
-    setQueue(correct ? rest : [...rest, currentId])
+    setQueue(correct ? rest : requeueMissedItem(rest, currentId))
     if (correct) setCompleted(value => value + 1)
     setFeedback(null)
     setSelected('')

@@ -21,6 +21,9 @@ assert(policy.bookTest.sectionPassRate > 0 && policy.bookTest.sectionPassRate < 
 assert(policy.bookTest.newestBookWeight > policy.bookTest.olderBookWeight, 'newest book must receive stronger sampling weight')
 assert(Number.isInteger(policy.bookTest.forgivenSlips) && policy.bookTest.forgivenSlips >= 1, 'every book-test section must forgive at least one slip')
 assert(policy.bookConsolidation?.everyWordRecalledOnALaterDay === true, 'every book word must be recalled on a later day before its test')
+assert(policy.learningTechniques?.desiredRetention === 0.9, 'desired retention stays the FSRS-6 90% research default')
+assert(policy.learningTechniques?.lapseRequeue === 'end', 'missed cards must use maximum within-session lag when other cards remain')
+assert(policy.learningTechniques?.earlyStagesBlocked === true, 'early acquisition stages stay blocked before skill interleaving')
 assert(policy.midpointExam.passRate >= policy.bookTest.sectionPassRate && policy.finalExam.passRate >= policy.midpointExam.passRate, 'cumulative thresholds must not fall below earlier gates')
 
 const sizes = Array.from({ length: 8 }, (_, index) =>

@@ -441,6 +441,50 @@ export function interleaveReviewQueue(
   return result
 }
 
+/**
+ * Nakata, Suzuki and He (2023): long within-session lag on relearning beats
+ * putting the same word back immediately. When other cards remain, the missed
+ * item goes to the end (maximum lag). A one-card remainder cannot invent lag.
+ */
+export function requeueMissedItem(rest: readonly string[], missedId: string): string[] {
+  if (!missedId) return [...rest]
+  return rest.length > 0 ? [...rest, missedId] : [missedId]
+}
+
+/**
+ * After topic interleaving, reduce runs of the same retrieval format.
+ * Lafleur (2024) ISRS and Nation-style multi-aspect practice: meaning, form
+ * and use should not arrive as long blocked streaks once words are past the
+ * early blocked acquisition stages (Hwang 2025).
+ */
+export function interleaveReviewFormats(
+  ids: readonly string[],
+  modeOf: (id: string) => ReviewMode,
+  lookahead = 4,
+): string[] {
+  if (ids.length < 3) return [...ids]
+  const remaining = [...ids]
+  const result: string[] = [remaining.shift()!]
+
+  while (remaining.length) {
+    const previousMode = modeOf(result[result.length - 1])
+    const windowSize = Math.min(Math.max(1, Math.floor(lookahead)), remaining.length)
+    let bestIndex = 0
+    let bestScore = Number.POSITIVE_INFINITY
+    for (let index = 0; index < windowSize; index++) {
+      const sameMode = modeOf(remaining[index]) === previousMode
+      const score = (sameMode ? 3 : 0) + index * 0.4
+      if (score < bestScore) {
+        bestScore = score
+        bestIndex = index
+      }
+    }
+    result.push(remaining.splice(bestIndex, 1)[0])
+  }
+
+  return result
+}
+
 function hashString(value: string): number {
   let hash = 2166136261
   for (let i = 0; i < value.length; i++) {
