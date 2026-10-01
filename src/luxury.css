@@ -40,6 +40,10 @@
   --shadow-control: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   color-scheme: dark;
   background: var(--lux-bg-deep);
@@ -204,6 +208,10 @@ body::before {
 }
 
 .book-banner {
+  width: 100%;
+  max-width: 20rem;
+  aspect-ratio: 40 / 21;
+  margin-inline: auto;
   overflow: hidden;
   border: 1px solid rgba(240, 204, 121, .26);
   border-radius: 16px;
@@ -807,8 +815,8 @@ input[type="range"] {
 
 .luxury-home-hero-shade {
   background:
-    linear-gradient(90deg, rgba(3,8,14,.95) 0%, rgba(3,8,14,.76) 42%, rgba(3,8,14,.16) 76%),
-    linear-gradient(0deg, rgba(3,8,14,.88) 0%, transparent 45%);
+    linear-gradient(to left, rgba(3,8,14,.96) 0%, rgba(3,8,14,.78) 46%, rgba(3,8,14,.18) 78%),
+    linear-gradient(to top, rgba(3,8,14,.90) 0%, transparent 48%);
 }
 
 .luxury-home-hero-copy {
@@ -898,11 +906,11 @@ input[type="range"] {
 .luxury-feature-card {
   position: relative;
   display: flex;
-  min-height: 8.7rem;
+  min-height: 5.6rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: .38rem;
+  gap: .28rem;
   overflow: hidden;
   border: 1px solid rgba(215,168,77,.23);
   border-radius: 19px;
@@ -937,8 +945,9 @@ input[type="range"] {
 }
 
 .luxury-feature-card span {
-  color: #9ea8b1;
-  font-size: .68rem;
+  color: #c5ced6;
+  font-size: .72rem;
+  line-height: 1.45;
 }
 
 .luxury-feature-card:active {
@@ -947,10 +956,10 @@ input[type="range"] {
 
 .luxury-current-story {
   display: grid;
-  grid-template-columns: 5.5rem minmax(0,1fr) minmax(6rem, .72fr);
+  grid-template-columns: 4.5rem minmax(0,1fr);
   width: 100%;
   align-items: center;
-  gap: .85rem;
+  gap: .75rem;
   border: 1px solid rgba(240,204,121,.38);
   border-radius: 19px;
   background:
@@ -1004,22 +1013,25 @@ input[type="range"] {
 
 .luxury-current-story-progress {
   display: flex;
+  grid-column: 1 / -1;
   min-width: 0;
-  flex-direction: column;
-  gap: .42rem;
-  color: #aeb6bd;
-  font-size: .7rem;
-  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  gap: .7rem;
+  color: #c5ced6;
+  font-size: .75rem;
 }
 
 .luxury-current-story-progress .mastery-progress {
-  width: 100%;
+  flex: 1;
+  width: auto;
+  min-width: 0;
 }
 
 .luxury-quote {
   position: relative;
   display: flex;
-  min-height: 8.6rem;
+  min-height: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -1356,8 +1368,8 @@ input[type="range"] {
   }
 
   .luxury-feature-card {
-    min-height: 7.9rem;
-    border-radius: 17px;
+    min-height: 5.35rem;
+    border-radius: 16px;
     padding-inline: .35rem;
   }
 
@@ -2206,7 +2218,12 @@ input[type="range"] {
 
 .luxury-sheet-frame {
   position: relative;
-  overflow: hidden;
+  /* Keep the sheet itself scrollable: overflow:hidden here defeated .sheet-up
+     and made the glossary dialog fail the critical-flow contract. */
+  max-height: calc(100dvh - 1rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   border: 1px solid rgba(240,204,121,.26);
   border-radius: 24px 24px 18px 18px;
   background:
@@ -2298,7 +2315,8 @@ input[type="range"] {
 }
 
 .luxury-glossary .glossary-list {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   border: 1px solid rgba(215,168,77,.16);
   border-radius: 20px;
   background:
@@ -2548,11 +2566,14 @@ input[type="range"] {
 }
 
 .luxury-story-sentence .story-action {
-  width: 2.6rem;
-  height: 2.6rem;
-  border: 1px solid rgba(215,168,77,.14);
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid rgba(215,168,77,.22);
   border-radius: 999px;
-  background: rgba(5,13,22,.56);
+  background: rgba(5,13,22,.72);
+  color: #f3e7cf;
 }
 
 .luxury-story-sentence .story-action:hover,
