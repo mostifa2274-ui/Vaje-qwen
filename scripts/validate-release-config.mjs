@@ -41,6 +41,7 @@ for (const requiredShortcut of ['./#/review', './#/glossary']) {
 }
 const indexHtml = readFileSync(join(root, 'index.html'), 'utf8')
 assert(indexHtml.includes('name="apple-mobile-web-app-capable" content="yes"'), 'iOS installed-app metadata must remain enabled')
+assert(indexHtml.includes('background: #b0c6b3') && indexHtml.includes('class="boot-screen"'), 'index.html must paint the boot screen before the app stylesheet loads')
 assert(!indexHtml.includes('تسلط بر ۸۹۹ واژه'), 'HTML metadata must not overclaim externally validated mastery')
 
 const headers = readFileSync(join(root, 'public/_headers'), 'utf8')
