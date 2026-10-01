@@ -1,37 +1,41 @@
 # DESIGN.md — Ghesse
 
 ## Visual direction
-A calm Persian-first reading product with a warm sketchbook character. The identity may feel human and literary, but the interface itself is restrained and task-oriented.
+A Persian-first literary learning product with a **Luxury Midnight** visual system: deep ink/navy surfaces, warm ivory typography, cinematic reviewed chapter art and restrained metallic-gold emphasis.
 
-The app is not neobrutalist. Avoid hard zero-blur offset shadows, repeated heavy black outlines, and turning every group into a card.
+The reference mood is elegant Iranian night-time storytelling, not generic “Middle Eastern luxury.” Gold is a functional accent, not decoration on every edge. The interface remains calm, modern and task-oriented; the learning engine and content hierarchy stay more important than ornament.
+
+The app is not neobrutalist and not faux-3D. Avoid hard zero-blur offset shadows, repeated heavy outlines, excessive glow, ornamental clutter, or turning every group into a card.
 
 ## Modes
 - Preparation, exams, review, settings: **Operate**. Familiar controls, stable hierarchy, low visual friction.
 - Story chapters: **Read**. Typography and prose rhythm take priority over component chrome.
 
 ## Color
-- Cream reading surface: `--cream`
-- Sage shell/background: `--paper`
-- One cream canvas lives on `.app-main` across every route, capped at 60rem; page content keeps its existing reading measure.
-- Soft ink: `--ink`
-- Crimson: primary accent for current state and primary emphasis only
-- Gold: limited supporting state color
+- Deep midnight shell/background: `--paper` / `--lux-bg`
+- Raised ink surface: `--cream-soft` / `--lux-surface`
+- Warm ivory foreground: `--ink` / `--lux-ivory`
+- Muted cool-gray secondary text: `--ink-soft`
+- Gold: primary action, current state, focus and progress emphasis
+- Green/red are reserved for semantic success/error feedback and must never be replaced by gold
 
-Inactive UI should stay neutral. Do not use crimson as decoration.
+One dark canvas lives on `.app-main` across every route, capped at 60rem; page content keeps its existing reading measure. Inactive UI stays neutral. Use luminous gold sparingly enough that the primary action remains obvious.
 
 ## Depth and borders
-- Default structural border: 1px using `--line-soft` or `--line-medium`
-- Depth uses `--shadow-soft` / `--shadow-control`
-- Never add hard offset shadows unless the entire visual world is intentionally redesigned around them
+- Default structural border: 1px using translucent gold-neutral `--line-soft` or `--line-medium`
+- Depth uses soft dark elevation through `--shadow-soft` / `--shadow-control`; no plastic bevels
+- A major panel may use one subtle gold hairline highlight, never a full glowing frame
+- Never add hard offset shadows
 - Use proximity and spacing before adding another container
 - One task may have one primary bounded surface; secondary information should normally use spacing or separators, not another card
 - Never nest a decorative card inside another card
 
 ## Distilled hierarchy
-- Home has one dominant next action, one compact three-value progress summary and one direct review row. Detailed skill analytics belong in review/results, not on the journey map.
+- Home follows the approved luxury composition: brand lockup, one cinematic chapter hero, six primary destinations, current-story progress, a restrained editorial quote and the persistent mobile bottom navigation. The canonical next-action surface remains compact and functional below the hero so learning-state clarity is never lost.
+- Detailed skill analytics belong in review/results, not in the hero.
 - Long explanations and assessment policy are progressive disclosure, not permanently visible callouts.
 - Book artwork appears on the journey map only once that book is reachable; locked future books remain compact milestones so the current path stays visually dominant.
-- Settings is one continuous separated list, not a stack of independent cards.
+- Settings reads as a premium learner profile followed by one continuous separated settings list, not a stack of unrelated cards.
 - Success, warning and error containers are reserved for real state/feedback. Ordinary guidance remains plain text.
 
 ## Typography
@@ -39,7 +43,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - English story/headwords: Georgia/Times-style serif as content, not as UI-label typography
 - Story body target: roughly 65–75 characters per line
 - Minimum mobile body text: 16px for primary reading/input content
-- Avoid eyebrow/kicker labels above headings
+- Small eyebrow/kicker text is allowed only for functional context such as book/chapter/phase metadata; never repeat the same heading decoratively
 
 ## Interaction
 - Touch targets: at least 44×44px
@@ -52,7 +56,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - One focus surface at a time
 - Progress rail shows Teach → Written → Listening → Story
 - Word, Persian meaning and example dominate the teach phase
-- No chapter illustration: teaching and both tests open directly on the word card
+- Teaching keeps the word card as the only interactive focus. The reviewed chapter scene may appear behind it as a darkened, non-interactive atmospheric backdrop; it must never contain UI text or compete with the learning task
 - Automatic pronunciation is expected; replay is secondary
 - Wrong answers explain the correction and return later in the same test
 - Advancing to a new item scrolls the focus surface back into view
@@ -68,7 +72,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 
 ## Illustration
 - The production visual system is the 40 reviewed raster scenes registered in `src/art/generatedChapterArt.ts` and materialized into `public/art/chapters/` during the build. The chapter-art validator must remain 40 approved / 0 pending.
-- Story chapters use those reviewed scenes directly; the preparation screen shows none, so the word card stays the only focus. Book overview cards reuse one reviewed scene per book; legacy inline/vector banners are not a production fallback.
+- Story chapters use those reviewed scenes directly. Preparation and graded word-test screens may reuse the same reviewed scene as a heavily darkened background layer while the real HTML task surface stays foregrounded. Book overview cards reuse one reviewed scene per book; legacy inline/vector banners are not a production fallback.
 - Nino is always a small yellow chicken with an orange beak and feet and one small white feather on the left wing. Never depict him as the former cat concept, a duck, an adult hen, or an unmarked generic chick.
 - Mina keeps the same face and age impression while her contemporary Iranian modest clothing may vary by chapter. Girls and women are never shown without hijab; public/outdoor scenes keep hair exposure minimal. Mina's red book and the crimson bird remain recurring visual anchors.
 - No readable text or logos inside illustrations. Each chapter image has a Persian accessible description.
@@ -77,7 +81,7 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 
 ## Distilled interface rules
 - One dominant task per screen. Status, policy, and diagnostics stay secondary and use progressive disclosure.
-- The journey home uses one next-action surface, one three-item progress summary, one review row, then the book path. Do not rebuild a dashboard above the books.
+- Home is the exception: it is a visual navigation dashboard based on the approved luxury reference, but it still has one dominant hero CTA and does not duplicate detailed analytics.
 - Book cards and task chrome use one neutral surface. Per-book color does not tint headers or task containers; reviewed artwork carries visual variation.
 - Future/locked books remain visible for orientation as compact milestone rows; their artwork, chapter rows and exam details appear only when the book becomes reachable.
 - Reachable books show named chapter rows with a number and explicit status, including readable locked chapters.
@@ -100,3 +104,27 @@ Inactive UI should stay neutral. Do not use crimson as decoration.
 - Correct/wrong states use text and structure, not color alone
 - Reduced-motion preference must disable nonessential animation
 - No core action may depend on an emoji or icon without an accessible label
+
+
+## Luxury component architecture
+All new or redesigned UI should use the shared primitives in `src/components/LuxuryUI.tsx` instead of inventing page-specific chrome.
+
+- `LuxuryPageHeader`: route/task header with accessible back control, contextual eyebrow, title, subtitle and optional trailing action.
+- `LuxuryPanel`: primary raised surface with the standard midnight gradient, gold-neutral border and elevation.
+- `LuxurySectionHeading`: title/subtitle/badge hierarchy inside a panel.
+- `LuxuryProgress`: canonical gold progress rail with progressbar semantics.
+- `LuxuryAudioOrb`: the large circular listening control used by listening tests and audio-only tasks.
+- `LuxuryChoice`: answer/selection row with selected/correct/wrong states that remain readable without color.
+- `LuxuryMetricGrid`: compact evidence/result/profile metrics; use only when the values are genuinely useful.
+- `LuxurySheetFrame`: bottom-sheet/dialog surface used for gloss and future modal details.
+- `LuxuryDivider`: restrained editorial separator used in reading/reference contexts.
+
+The shared primitives are already used by Home/Journey, Reader, Preparation, Diagnostic, Smart Review, generic Exams, Book Tests, Flashcards, Glossary, Offline Audio, Settings/Profile and shared listening/gloss components. If a screen needs a new visual treatment, extend these primitives or add a clearly reusable primitive before adding local one-off CSS.
+
+### Component composition rules
+- Do not put a `LuxuryPanel` inside another raised `LuxuryPanel`; nested modules should use separators or a low-contrast inline module.
+- `LuxuryAudioOrb` is reserved for the primary audio action. Secondary replay buttons stay compact.
+- `LuxuryChoice` is for learner choices, not generic navigation.
+- `LuxuryMetricGrid` is not decoration: every metric must affect learner understanding or decision-making.
+- Reviewed chapter art is atmosphere/content, never UI. Buttons, labels and progress remain real HTML.
+- All luxury components must retain keyboard focus, RTL correctness, forced-colors support and reduced-motion behavior.

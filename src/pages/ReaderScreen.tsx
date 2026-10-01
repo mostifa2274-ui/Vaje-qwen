@@ -9,7 +9,8 @@ import { blankWordProgress } from '../engine/review'
 import { bookExamId, canOpenChapter, canOpenExam, canReadChapter } from '../engine/gates'
 import SentenceRow from '../components/SentenceRow'
 import GlossSheet from '../components/GlossSheet'
-import { BackIcon, BadgeCheckIcon, PauseIcon, PlayIcon } from '../components/Icons'
+import { BadgeCheckIcon, PauseIcon, PlayIcon } from '../components/Icons'
+import { LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { clearReadingDraft, loadReadingDraft, readingQuestionSignature, saveReadingDraft } from '../engine/readingDraft'
 import ChapterIllustration from '../components/ChapterIllustration'
 import { faNum } from '../engine/format'
@@ -418,31 +419,36 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
   }
 
   return (
-    <div className="app-page page-in">
-      <div className="sticky top-0 z-40 app-task-header">
-        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
-          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه">
-            <BackIcon className="h-5 w-5" />
-          </button>
-          <div className="min-w-0 flex-1">
-            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>
-              کتاب {faNum(chapter.book)} · فصل {faNum(chapter.n)}
-            </div>
-            <h1 className="truncate text-lg font-extrabold">{chapter.titleFa}</h1>
-          </div>
-          <button
-            type="button"
-            className={`${playAll ? 'btn-ink' : 'btn-paper'} px-3 py-2 text-sm`}
-            disabled={!state.soundOn}
-            aria-pressed={playAll}
-            onClick={() => playAll ? stopReaderAudio() : playAt(0, true)}
-          >
-            <span className="inline-flex items-center gap-2">
-              {playAll ? <PauseIcon className="h-4 w-4" /> : <PlayIcon className="h-4 w-4" />}
-              {playAll ? 'توقف' : 'خواندن'}
-            </span>
-          </button>
-        </div>
+    <div className="app-page luxury-reader page-in">
+      <div className="mx-auto max-w-3xl px-4">
+        <LuxuryPageHeader
+          title={chapter.titleFa}
+          eyebrow={`کتاب ${faNum(chapter.book)} · فصل ${faNum(chapter.n)}`}
+          onBack={onBack}
+          backLabel="بازگشت به نقشه"
+          sticky
+          className="luxury-reader-header"
+          trailing={
+            <button
+              type="button"
+              className={`${playAll ? 'btn-ink' : 'btn-paper'} luxury-reader-play px-3 py-2 text-sm`}
+              disabled={!state.soundOn}
+              aria-pressed={playAll}
+              onClick={() => playAll ? stopReaderAudio() : playAt(0, true)}
+            >
+              <span className="inline-flex items-center gap-2">
+                {playAll ? <PauseIcon className="h-4 w-4" /> : <PlayIcon className="h-4 w-4" />}
+                <span className="luxury-reader-play-label">{playAll ? 'توقف' : 'خواندن'}</span>
+              </span>
+            </button>
+          }
+        />
+      </div>
+
+      <div className="luxury-reader-masthead" aria-hidden="true">
+        <div className="luxury-reader-brand">{chapter.titleFa}</div>
+        <div className="luxury-reader-ornament"><span /></div>
+        <div className="luxury-reader-subtitle font-en" lang="en" dir="ltr">Story Reader</div>
       </div>
 
       <div className="mx-auto max-w-3xl px-4 pb-32">
@@ -533,17 +539,13 @@ export default function ReaderScreen({ chapterId, state, onChange, onBack, onOpe
             </span>
           </div>
 
-          <div
-            className="mastery-progress mt-3"
-            role="progressbar"
-            aria-label="پاسخ‌های تأییدشدهٔ درک مطلب"
-            aria-valuemin={0}
-            aria-valuemax={questions.length}
-            aria-valuenow={checksCorrect}
-            aria-valuetext={`${faNum(checksCorrect)} از ${faNum(questions.length)}`}
-          >
-            <span style={{ width: `${(checksCorrect / questions.length) * 100}%` }} />
-          </div>
+          <LuxuryProgress
+            className="mt-3"
+            value={checksCorrect}
+            max={questions.length}
+            label="پاسخ‌های تأییدشدهٔ درک مطلب"
+            valueText={`${faNum(checksCorrect)} از ${faNum(questions.length)}`}
+          />
 
           {correctionMode && !finished && (
             <div className="paper-note mt-3" role="status">

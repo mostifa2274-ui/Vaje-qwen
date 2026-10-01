@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState } from '../engine/types'
-import { WORD_BY_ID } from '../data/chapters'
+import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
 import { bookExamId, canTakeExam, examDefinition } from '../engine/gates'
 import {
   BOOK_TEST_PASS_RATE,
@@ -19,10 +19,12 @@ import {
 } from '../engine/bookTest'
 import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft, savedBookTest } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CheckIcon, RefreshCcwIcon } from '../components/Icons'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryMetricGrid, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
 import { SPEECH_UNAVAILABLE } from '../components/usePassagePlayer'
 import { faNum, percent } from '../engine/format'
+import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   book: number
@@ -68,6 +70,13 @@ function isSection(phase: Phase): phase is BookTestSection {
 export default function BookTestScreen({ book, state, onChange, onBack, onReview }: Props) {
   const examId = bookExamId(book)
   const def = examDefinition(examId)!
+  const backdropChapter = CHAPTERS.find(item => item.book === book) ?? CHAPTERS[0]
+  const bookBackdrop = (
+    <div className="luxury-task-backdrop luxury-exam-backdrop" aria-hidden="true">
+      <ChapterIllustration chapterId={backdropChapter.id} titleFa={backdropChapter.titleFa} />
+      <span />
+    </div>
+  )
   // Opened through explore mode before the learner reached it: a preview
   // whose attempts are never recorded.
   const [preview] = useState(() => !canTakeExam(state, examId))
@@ -302,14 +311,15 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   const header = (
     <>
-    <header className="flex items-center gap-3">
-      <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="ترک آزمون"><BackIcon className="h-5 w-5" /></button>
-      <div className="min-w-0 flex-1">
-        <h1 className="truncate text-xl font-extrabold">{def.titleFa}</h1>
-        <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{def.subtitleFa}</p>
-      </div>
-    </header>
-    {preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>}
+      <LuxuryPageHeader
+        title={def.titleFa}
+        subtitle={def.subtitleFa}
+        eyebrow={`کتاب ${faNum(book)} · آزمون پایان کتاب`}
+        onBack={onBack}
+        backLabel="ترک آزمون"
+        centered
+      />
+      {preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>}
     </>
   )
 
@@ -331,7 +341,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
     const canRetake = unrecorded || (!result.passed && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     const next = book === 8 ? 'آزمون نهایی' : `کتاب ${faNum(book + 1)}`
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+        {bookBackdrop}
         <div className={`exam-result-card p-6 text-center ${result.passed ? 'exam-pass' : 'exam-fail'}`}>
           {result.passed && result.missedWordIds.length === 0
             ? <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
@@ -342,17 +353,17 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
               : previousPass ? 'قبولی قبلی حفظ شده است' : 'هنوز آمادهٔ عبور نیستی'}
           </h1>
 
-          <div className="mt-5 grid grid-cols-2 gap-2">
-            {BOOK_TEST_SECTIONS.map(section => {
+          <LuxuryMetricGrid
+            className="mt-5 luxury-metric-grid-4"
+            items={BOOK_TEST_SECTIONS.map(section => {
               const score = result.sections[section]
-              return (
-                <div key={section} className={`metric-card ${score.passed ? '' : 'metric-fail'}`}>
-                  <b>{faNum(score.correct)}/{faNum(score.total)}</b>
-                  <span>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `حداکثر ${faNum(allowedMistakes(score.total))} اشتباه`}</span>
-                </div>
-              )
+              return {
+                value: `${faNum(score.correct)}/${faNum(score.total)}`,
+                label: <>{SECTION_LABELS[section]} · {score.passed ? 'قبول' : `حداکثر ${faNum(allowedMistakes(score.total))} اشتباه`}</>,
+                className: score.passed ? undefined : 'metric-fail',
+              }
             })}
-          </div>
+          />
 
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             برای قبولی، هر چهار بخش باید دست‌کم {percent(BOOK_TEST_PASS_RATE)} درست باشد؛ یک اشتباه در هر بخش همیشه بخشیده می‌شود.
@@ -430,7 +441,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   if (phase === 'intro') {
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {bookBackdrop}
         {header}
         <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="intro-heading">
           <h2 id="intro-heading" className="text-lg font-extrabold">چهار بخش</h2>
@@ -453,7 +465,8 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   if (!isSection(phase)) return null
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+    <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      {bookBackdrop}
       {header}
 
       <ol className="test-steps mt-6" aria-label="بخش‌های آزمون">
@@ -508,7 +521,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <div className="mt-4 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>واژهٔ {faNum(translationIndex + 1)} از {faNum(test.translation.length)}</span>
             </div>
-            <div className="mastery-progress mt-2"><span style={{ width: `${(translationIndex / test.translation.length) * 100}%` }} /></div>
+            <LuxuryProgress className="mt-2" value={translationIndex} max={test.translation.length} label="پیشرفت بخش ترجمهٔ واژه‌ها" />
             <div data-testid="translation-headword" className="mt-7 text-center font-en text-4xl font-bold" lang="en" dir="ltr">{translationWord.word}</div>
             <label htmlFor="book-test-translation" className="mt-6 block text-sm font-bold">معنی فارسی</label>
             <input
@@ -540,21 +553,29 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <div className="mt-4 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>واژهٔ {faNum(listenIndex + 1)} از {faNum(test.listeningWords.length)}</span>
             </div>
-            <div className="mastery-progress mt-2"><span style={{ width: `${(listenIndex / test.listeningWords.length) * 100}%` }} /></div>
+            <LuxuryProgress className="mt-2" value={listenIndex} max={test.listeningWords.length} label="پیشرفت بخش شنیدن واژه‌ها" />
             {!state.soundOn ? <SoundOffNote onEnable={enableSound} /> : (
               <>
-                <button type="button" className="btn-paper mt-6 min-h-20 w-full text-2xl" onClick={speakWord} aria-label="پخش دوبارهٔ واژه">
-                  <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
-                </button>
+                <div className="mt-6">
+                  <LuxuryAudioOrb
+                    label="پخش دوبارهٔ واژه"
+                    helper="واژه را کامل گوش کن و سپس معنی را انتخاب کن"
+                    onClick={speakWord}
+                  />
+                </div>
                 {wordNotice && <div className="paper-note mt-3" role="alert">{wordNotice}</div>}
                 {!wordReady && !wordNotice && (
                   <div className="mt-3 text-center text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را تا پایان گوش کن.</div>
                 )}
                 <div data-testid="book-test-listening-options" className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {listenItem.options.map(option => (
-                    <button key={option.id} type="button" className="btn-paper min-h-14 px-3 py-3" disabled={!wordReady} onClick={() => answerListeningWord(option.id)}>
+                    <LuxuryChoice
+                      key={option.id}
+                      disabled={!wordReady}
+                      onClick={() => answerListeningWord(option.id)}
+                    >
                       {option.label}
-                    </button>
+                    </LuxuryChoice>
                   ))}
                 </div>
                 <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" disabled={!wordReady} onClick={() => answerListeningWord('')}>نمی‌دانم — بعدی</button>
@@ -578,7 +599,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
                   <div className="mt-4 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
                     <span>متن {faNum(slot + 1)} از {faNum(texts.length)}</span>
                   </div>
-                  <div className="mastery-progress mt-2"><span style={{ width: `${(slot / texts.length) * 100}%` }} /></div>
+                  <LuxuryProgress className="mt-2" value={slot} max={texts.length} label="پیشرفت متن‌های آزمون" />
                 </>
               )}
               {phase === 'reading' ? (

@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { BOOKS } from '../data/chapters'
-import { BackIcon, DownloadIcon, TrashIcon } from '../components/Icons'
+import { DownloadIcon, TrashIcon } from '../components/Icons'
+import { LuxuryPageHeader } from '../components/LuxuryUI'
 import { faNum } from '../engine/format'
+import { LuxuryPanel, LuxuryProgress, LuxurySectionHeading } from '../components/LuxuryUI'
 import {
   cacheBookAudio,
   clearOfflineAudio,
@@ -114,14 +116,13 @@ export default function OfflineAudioScreen({ onBack }: Props) {
   const quota = formatStorage(storage.quota)
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-        <div>
-          <h1 className="text-2xl font-extrabold">صدای آفلاین</h1>
-          <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>صدای طبیعی ضبط‌شده را برای هر کتاب روی همین دستگاه نگه دار.</p>
-        </div>
-      </header>
+    <div className="app-page luxury-settings page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <LuxuryPageHeader
+        title="صدای آفلاین"
+        subtitle="صدای طبیعی ضبط‌شده را برای هر کتاب روی همین دستگاه نگه دار."
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+      />
 
       {!supported ? (
         <div className="paper-note mt-5" role="alert">
@@ -129,9 +130,12 @@ export default function OfflineAudioScreen({ onBack }: Props) {
         </div>
       ) : (
         <>
-          <section className="learning-focus-card mt-5 p-4 sm:p-5">
-            <h2 className="font-extrabold">چطور کار می‌کند؟</h2>
-            <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
+          <LuxuryPanel className="mt-5 p-4 sm:p-5">
+            <LuxurySectionHeading
+              title="چطور کار می‌کند؟"
+              subtitle="فایل‌های صوتی طبیعی هر کتاب را برای استفادهٔ بدون اینترنت روی همین دستگاه نگه دار."
+            />
+            <p className="mt-3 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
               پوسته، متن و تصویرهای دوره از قبل برای آفلاین آماده‌اند. این دانلود اختیاری فقط فایل‌های صدای ضبط‌شدهٔ واژه‌ها، مثال‌ها، قصه، شنیداری فصل و آزمون‌های شنیداری همان کتاب را نگه می‌دارد. هیچ پیشرفت یا نمره‌ای تغییر نمی‌کند.
             </p>
             {usage && (
@@ -139,7 +143,7 @@ export default function OfflineAudioScreen({ onBack }: Props) {
                 فضای فعلی این سایت در مرورگر: <b dir="ltr">{usage}</b>{quota ? <> از حدود <b dir="ltr">{quota}</b></> : null}
               </p>
             )}
-          </section>
+          </LuxuryPanel>
 
           <div className="mt-4 space-y-3" aria-live="polite">
             {BOOKS.map(meta => {
@@ -149,7 +153,6 @@ export default function OfflineAudioScreen({ onBack }: Props) {
               const total = progress?.total ?? status?.total ?? 0
               const ready = status?.ready === true && activeBook !== meta.book
               const partial = done > 0 && !ready
-              const percentage = total ? Math.min(100, Math.round((done / total) * 100)) : 0
 
               return (
                 <section key={meta.book} className="settings-section p-4 sm:p-5">
@@ -189,16 +192,12 @@ export default function OfflineAudioScreen({ onBack }: Props) {
                     )}
                   </div>
                   {(activeBook === meta.book || partial || ready) && total > 0 && (
-                    <div
-                      className="mastery-progress mt-3"
-                      role="progressbar"
-                      aria-label={'دانلود صدای کتاب ' + faNum(meta.book)}
-                      aria-valuemin={0}
-                      aria-valuemax={total}
-                      aria-valuenow={done}
-                    >
-                      <span style={{ width: percentage + '%' }} />
-                    </div>
+                    <LuxuryProgress
+                      className="mt-3"
+                      value={done}
+                      max={total}
+                      label={'دانلود صدای کتاب ' + faNum(meta.book)}
+                    />
                   )}
                   {activeBook === meta.book && progress?.failed ? (
                     <p className="mt-2 text-xs" style={{ color: 'var(--crimson-deep)' }}>{faNum(progress.failed)} فایل تا اینجا ناموفق بوده است.</p>

@@ -1,6 +1,6 @@
 {
-  "name": "قصه — Ghesse",
-  "short_name": "قصه",
+  "name": "واژه‌خوان — Vaje-Qwen",
+  "short_name": "واژه‌خوان",
   "description": "یادگیری عمیق و ماندگار ۸۹۹ واژهٔ A1 انگلیسی با قصه، مرور فاصله‌دار و آزمون‌های مرحله‌ای برای فارسی‌زبانان",
   "id": "./",
   "start_url": "./#/map",
@@ -19,8 +19,8 @@
   "categories": [
     "education"
   ],
-  "background_color": "#b0c6b3",
-  "theme_color": "#b0c6b3",
+  "background_color": "#040a12",
+  "theme_color": "#040a12",
   "icons": [
     {
       "src": "icons/icon.svg",

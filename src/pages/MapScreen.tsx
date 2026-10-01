@@ -2,9 +2,11 @@ import { useState, type KeyboardEvent } from 'react'
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { learningHealth, bookHealth, certificationStatus, consolidationFocus, nextBestAction } from '../engine/analytics'
-import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, DownloadIcon, FlameIcon, FlashcardsIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
+import { BadgeCheckIcon, BookOpenTextIcon, ChartIcon, CheckIcon, ClipboardCheckIcon, CrownIcon, DownloadIcon, FlameIcon, FlashcardsIcon, HeadphonesIcon, HomeIcon, LockIcon, MenuIcon, PlayIcon, RefreshCcwIcon, SettingsIcon, UserIcon } from '../components/Icons'
+import ChapterIllustration from '../components/ChapterIllustration'
 import {
   MIDPOINT_EXAM_ID,
+  FINAL_EXAM_ID,
   FINAL_EXAM_ID,
   bookExamId,
   canOpenChapter,
@@ -20,8 +22,9 @@ import {
 import { faNum, percent } from '../engine/format'
 import { dailyProgress } from '../engine/activity'
 import { diagnosticFailed } from '../engine/diagnosticDraft'
+import { LuxuryMetricGrid, LuxuryProgress } from '../components/LuxuryUI'
 
-type HomeSection = 'today' | 'journey' | 'library'
+type HomeSection = 'today' | 'journey' | 'library' | 'exams' | 'listening'
 
 interface Props {
   state: GhesseState
@@ -124,6 +127,16 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
     if (action.kind === 'chapter') return onOpenChapter(action.chapterId)
   }
 
+  const heroChapter = action.kind === 'chapter'
+    ? CHAPTERS.find(item => item.id === action.chapterId)
+    : CHAPTERS.find(item => canOpenChapter(state, item.id) && !state.chapters[item.id]?.completed)
+      ?? [...CHAPTERS].reverse().find(item => state.chapters[item.id]?.completed)
+      ?? CHAPTERS[0]
+  const heroTitle = heroChapter?.titleFa ?? actionTitle
+  const heroSubtitle = heroChapter
+    ? `کتاب ${faNum(heroChapter.book)} · فصل ${faNum(heroChapter.n)}`
+    : 'مسیر یادگیری'
+
   const actionLabel = action.kind === 'review'
     ? 'شروع مرور'
     : action.kind === 'rest'
@@ -137,33 +150,78 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           : 'مسیر کامل شده'
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header>
-        <h1 className="text-3xl font-extrabold leading-tight">قصه</h1>
-        <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ قصه، مرور فاصله‌دار و آزمون مرحله‌ای</p>
+    <div className="app-page luxury-home page-in mx-auto max-w-3xl px-4 pb-32 pt-4">
+      <header className="luxury-brand-header">
+        <button type="button" className="luxury-round-control" onClick={() => setHomeSection('library')} aria-label="باز کردن کتابخانه">
+          <MenuIcon className="h-6 w-6" />
+        </button>
+        <div className="luxury-brand-lockup">
+          <h1 className="luxury-contract-heading">قصه</h1>
+          <div className="luxury-brand-title" aria-hidden="true">واژه‌خوان</div>
+          <div className="luxury-brand-rule" aria-hidden="true"><span /></div>
+          <p className="font-en" lang="en" dir="ltr">Vaje-Qwen</p>
+          <span className="luxury-brand-tagline font-en" lang="en" dir="ltr">Persian Stories. A Brighter You.</span>
+          <span className="luxury-method-line">قصه، مرور فاصله‌دار و آزمون مرحله‌ای</span>
+        </div>
+        <button type="button" className="luxury-round-control luxury-crown-control" onClick={() => setHomeSection('journey')} aria-label="دیدن مسیر پیشرفت">
+          <CrownIcon className="h-6 w-6" />
+        </button>
       </header>
 
-      <nav className="home-section-tabs mt-4 grid grid-cols-3 gap-1" role="tablist" aria-label="بخش‌های اصلی قصه">
-        {([
-          ['today', 'امروز'],
-          ['journey', 'مسیر'],
-          ['library', 'کتابخانه'],
-        ] as const).map(([id, label]) => (
-          <button
-            key={id}
-            id={`home-tab-${id}`}
-            type="button"
-            role="tab"
-            aria-selected={homeSection === id}
-            aria-controls={`home-panel-${id}`}
-            tabIndex={homeSection === id ? 0 : -1}
-            className={homeSection === id ? 'home-section-tab active' : 'home-section-tab'}
-            onClick={() => setHomeSection(id)}
-            onKeyDown={event => moveHomeTab(event, id)}
-          >
-            {label}
-          </button>
-        ))}
+      <nav className="home-section-tabs luxury-home-nav" role="tablist" aria-label="بخش‌های اصلی قصه">
+        <button
+          id="home-tab-today"
+          type="button"
+          role="tab"
+          aria-label="امروز"
+          aria-selected={homeSection === 'today'}
+          aria-controls="home-panel-today"
+          tabIndex={homeSection === 'today' ? 0 : -1}
+          className={homeSection === 'today' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
+          onClick={() => setHomeSection('today')}
+          onKeyDown={event => moveHomeTab(event, 'today')}
+        >
+          <HomeIcon className="h-5 w-5" />
+          <span aria-hidden="true">خانه</span>
+        </button>
+        <button
+          id="home-tab-journey"
+          type="button"
+          role="tab"
+          aria-label="مسیر"
+          aria-selected={homeSection === 'journey'}
+          aria-controls="home-panel-journey"
+          tabIndex={homeSection === 'journey' ? 0 : -1}
+          className={homeSection === 'journey' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
+          onClick={() => setHomeSection('journey')}
+          onKeyDown={event => moveHomeTab(event, 'journey')}
+        >
+          <BookOpenTextIcon className="h-5 w-5" />
+          <span aria-hidden="true">داستان‌ها</span>
+        </button>
+        <button type="button" className="home-section-tab luxury-nav-button" onClick={onOpenReview}>
+          <ChartIcon className="h-5 w-5" />
+          <span>پیشرفت</span>
+        </button>
+        <button
+          id="home-tab-library"
+          type="button"
+          role="tab"
+          aria-label="کتابخانه"
+          aria-selected={homeSection === 'library'}
+          aria-controls="home-panel-library"
+          tabIndex={homeSection === 'library' ? 0 : -1}
+          className={homeSection === 'library' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
+          onClick={() => setHomeSection('library')}
+          onKeyDown={event => moveHomeTab(event, 'library')}
+        >
+          <FlashcardsIcon className="h-5 w-5" />
+          <span aria-hidden="true">واژه‌ها</span>
+        </button>
+        <button type="button" className="home-section-tab luxury-nav-button" onClick={onOpenSettings}>
+          <UserIcon className="h-5 w-5" />
+          <span>من</span>
+        </button>
       </nav>
 
       {state.exploreAll && (
@@ -179,6 +237,87 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         aria-labelledby="home-tab-today"
         hidden={homeSection !== 'today'}
       >
+      {heroChapter && (
+        <section className="luxury-home-hero mt-4" aria-labelledby="luxury-home-hero-title">
+          <div className="luxury-home-hero-art" aria-hidden="true">
+            <ChapterIllustration chapterId={heroChapter.id} titleFa={heroChapter.titleFa} />
+          </div>
+          <div className="luxury-home-hero-shade" aria-hidden="true" />
+          <div className="luxury-home-hero-copy">
+            <span className="luxury-eyebrow">{heroSubtitle}</span>
+            <h2 id="luxury-home-hero-title">با داستان، انگلیسی یاد بگیر</h2>
+            <p>{action.detail}</p>
+            <div className="luxury-home-hero-actions">
+              {action.kind !== 'complete' ? (
+                <button type="button" className="btn-crimson luxury-hero-primary" onClick={runNextAction}>
+                  <PlayIcon className="h-5 w-5" />
+                  <span>{action.kind === 'chapter' && action.prepared ? 'ادامه داستان' : actionLabel}</span>
+                </button>
+              ) : (
+                <div className="luxury-complete-badge"><BadgeCheckIcon className="h-5 w-5" /> مسیر کامل شده</div>
+              )}
+              <button type="button" className="btn-paper luxury-hero-secondary" onClick={() => onOpenChapter(heroChapter.id)}>
+                {heroTitle}
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="luxury-feature-grid mt-4" aria-label="دسترسی سریع">
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
+          <BookOpenTextIcon className="h-8 w-8" />
+          <span className="luxury-feature-copy"><b>داستان‌ها</b><span>مطالعه و یادگیری</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('library')}>
+          <FlashcardsIcon className="h-8 w-8" />
+          <span className="luxury-feature-copy"><b>واژه‌های جدید</b><span>فقط واژه‌ها و فلش‌کارت</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('exams')}>
+          <ClipboardCheckIcon className="h-8 w-8" />
+          <span className="luxury-feature-copy"><b>آزمون‌ها</b><span>فقط آزمون‌های مرحله‌ای</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('listening')}>
+          <HeadphonesIcon className="h-8 w-8" />
+          <span className="luxury-feature-copy"><b>شنیداری</b><span>فقط تمرین شنیدن</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={onOpenReview}>
+          <ChartIcon className="h-8 w-8" />
+          <span className="luxury-feature-copy"><b>پیشرفت من</b><span>مسیر یادگیری</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={onOpenSettings}>
+          <UserIcon className="h-8 w-8" />
+          <span className="luxury-feature-copy"><b>من</b><span>حساب کاربری</span></span>
+          <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
+        </button>
+      </section>
+
+      {heroChapter && (
+        <button type="button" className="luxury-current-story mt-4" onClick={() => onOpenChapter(heroChapter.id)}>
+          <span className="luxury-current-story-thumb" aria-hidden="true">
+            <ChapterIllustration chapterId={heroChapter.id} titleFa={heroChapter.titleFa} />
+          </span>
+          <span className="luxury-current-story-copy">
+            <small>داستان فعلی</small>
+            <b>{heroTitle}</b>
+            <span>{heroSubtitle}</span>
+          </span>
+          <span className="luxury-current-story-progress">
+            <span>{faNum((chaptersOfBook(heroChapter.book).findIndex(item => item.id === heroChapter.id) + 1))} از {faNum(chaptersOfBook(heroChapter.book).length)}</span>
+            <span className="mastery-progress"><span style={{ width: `${((chaptersOfBook(heroChapter.book).findIndex(item => item.id === heroChapter.id) + 1) / Math.max(1, chaptersOfBook(heroChapter.book).length)) * 100}%` }} /></span>
+          </span>
+        </button>
+      )}
+
+      <blockquote className="luxury-quote mt-4">
+        <b>هر واژه، دری به دنیای بزرگ‌تر است.</b>
+        <span className="font-en" lang="en" dir="ltr">Every word is a door to a brighter world.</span>
+      </blockquote>
       <section className="next-action-card mt-4">
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-extrabold">قدم بعدی: {actionTitle}</h2>
@@ -198,16 +337,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
                 <span>{action.progress.label}</span>
                 <span>{faNum(action.progress.done)} از {faNum(action.progress.total)}</span>
               </div>
-              <div
-                className="mastery-progress mt-1.5"
-                role="progressbar"
-                aria-label={action.progress.label}
-                aria-valuemin={0}
-                aria-valuemax={action.progress.total}
-                aria-valuenow={action.progress.done}
-              >
-                <span style={{ width: `${(action.progress.done / Math.max(1, action.progress.total)) * 100}%` }} />
-              </div>
+              <LuxuryProgress
+                className="mt-1.5"
+                value={action.progress.done}
+                max={action.progress.total}
+                label={action.progress.label}
+              />
             </div>
           )}
         </div>
@@ -226,16 +361,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             <span>{goalLabel}</span>
             <span style={{ color: 'var(--ink-soft)' }}>{faNum(Math.min(daily.today, daily.goal))} از {faNum(daily.goal)}</span>
           </div>
-          <div
-            className="mastery-progress today-goal mt-1.5"
-            role="progressbar"
-            aria-label="پاسخ‌های امروز"
-            aria-valuemin={0}
-            aria-valuemax={daily.goal}
-            aria-valuenow={Math.min(daily.today, daily.goal)}
-          >
-            <span style={{ width: `${Math.min(1, daily.today / daily.goal) * 100}%` }} />
-          </div>
+          <LuxuryProgress
+            className="today-goal mt-1.5"
+            value={Math.min(daily.today, daily.goal)}
+            max={daily.goal}
+            label="پاسخ‌های امروز"
+          />
         </div>
       </section>
 
@@ -254,17 +385,96 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
 
       </section>
 
+      <section className="luxury-section-panel mt-4" hidden={homeSection !== 'exams'} aria-label="آزمون‌ها">
+        <h2>آزمون‌ها</h2>
+        <p>فقط آزمون‌های کتاب، میان‌دوره و پایان. قصه و مرور اینجا نیستند.</p>
+        <ol className="chapter-list mt-3">
+          {BOOKS.map(meta => {
+            const id = bookExamId(meta.book)
+            const exam = examDefinition(id)
+            const open = canOpenExam(state, id)
+            const cleared = examCleared(state, id)
+            return (
+              <li key={id}>
+                <button type="button" className="chapter-row" disabled={!open} onClick={() => onOpenExam(id)}>
+                  <span className="chapter-label">
+                    <span className="font-bold">آزمون کتاب {faNum(meta.book)}</span>
+                    <span className="chapter-status">{cleared ? 'پاس شده' : open ? (exam?.titleFa ?? 'آماده') : 'قفل'}</span>
+                  </span>
+                </button>
+              </li>
+            )
+          })}
+          {[MIDPOINT_EXAM_ID, FINAL_EXAM_ID].map(id => {
+            const exam = examDefinition(id)
+            const open = canOpenExam(state, id)
+            return (
+              <li key={id}>
+                <button type="button" className="chapter-row" disabled={!open} onClick={() => onOpenExam(id)}>
+                  <span className="chapter-label">
+                    <span className="font-bold">{exam?.titleFa ?? id}</span>
+                    <span className="chapter-status">{examCleared(state, id) ? 'پاس شده' : open ? 'آماده' : 'قفل'}</span>
+                  </span>
+                </button>
+              </li>
+            )
+          })}
+        </ol>
+      </section>
+
+      <section className="luxury-section-panel mt-4" hidden={homeSection !== 'listening'} aria-label="شنیداری">
+        <h2>شنیداری</h2>
+        <p>فقط شنیدن فصل‌های باز و بستهٔ صدای آفلاین.</p>
+        <ol className="chapter-list mt-3">
+          {CHAPTERS.filter(chapter => canOpenChapter(state, chapter.id)).map(chapter => (
+            <li key={chapter.id}>
+              <button type="button" className="chapter-row" onClick={() => onOpenChapter(chapter.id)}>
+                <span className="chapter-label">
+                  <span className="font-bold">شنیدن {chapter.titleFa}</span>
+                  <span className="chapter-status">جمله و واژه با صدا</span>
+                </span>
+              </button>
+            </li>
+          ))}
+          <li>
+            <button type="button" className="chapter-row" onClick={onOpenOfflineAudio}>
+              <span className="chapter-label">
+                <span className="font-bold">صدای آفلاین</span>
+                <span className="chapter-status">ذخیره برای شنیدن بدون شبکه</span>
+              </span>
+            </button>
+          </li>
+        </ol>
+      </section>
+
       <section
         id="home-panel-journey"
+        className="luxury-journey-panel"
         role="tabpanel"
         aria-labelledby="home-tab-journey"
         hidden={homeSection !== 'journey'}
       >
-      <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
-        <div><b>{faNum(doneCount)}</b><span>فصل تمام‌شده</span></div>
-        <div><b>{faNum(health.mastered)}</b><span>واژهٔ مسلط</span></div>
-        <div><b>{percent(health.durableCoverage)}</b><span>قوی یا مسلط</span></div>
-      </section>
+      {heroChapter && (
+        <section className="luxury-journey-hero mt-4" aria-labelledby="journey-map-title">
+          <div className="luxury-journey-hero-art" aria-hidden="true">
+            <ChapterIllustration chapterId={heroChapter.id} titleFa={heroChapter.titleFa} />
+          </div>
+          <div className="luxury-journey-hero-shade" aria-hidden="true" />
+          <div className="luxury-journey-hero-copy">
+            <span>مسیر تو در Vaje-Qwen</span>
+            <h2 id="journey-map-title">نقشهٔ داستان</h2>
+            <p>{faNum(doneCount)} فصل از {faNum(CHAPTERS.length)} فصل کامل شده</p>
+          </div>
+        </section>
+      )}
+      <LuxuryMetricGrid
+        className="home-summary mt-4"
+        items={[
+          { value: faNum(doneCount), label: 'فصل تمام‌شده' },
+          { value: faNum(health.mastered), label: 'واژهٔ مسلط' },
+          { value: percent(health.durableCoverage), label: 'قوی یا مسلط' },
+        ]}
+      />
 
       <details className="method-details mt-4">
         <summary>روش یادگیری و معیارهای عبور</summary>
@@ -360,7 +570,12 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
                       <span>پیشرفت واژگان</span>
                       <span>{percent(bHealth.durableCoverage)}</span>
                     </div>
-                    <div className="mastery-progress mt-1.5"><span style={{ width: `${bHealth.durableCoverage * 100}%`, background: 'var(--gold)' }} /></div>
+                    <LuxuryProgress
+                      className="mt-1.5"
+                      value={bHealth.durableCoverage * 100}
+                      max={100}
+                      label={`پیشرفت واژگان کتاب ${faNum(meta.book)}`}
+                    />
                   </div>
                 )}
 
@@ -395,12 +610,15 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             </div>
             <BadgeCheckIcon className={`h-7 w-7 shrink-0 ${certification.ready ? '' : 'opacity-45'}`} aria-hidden="true" />
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            <div className="metric-card"><b>{percent(certification.masteredCoverage)}</b><span>مسلط</span></div>
-            <div className="metric-card"><b>{percent(certification.durableCoverage)}</b><span>قوی + مسلط</span></div>
-            <div className="metric-card"><b>{percent(certification.productiveCoverage)}</b><span>تولید فعال</span></div>
-            <div className="metric-card"><b>{percent(certification.fullSkillCoverage)}</b><span>چهارمهارتی</span></div>
-          </div>
+          <LuxuryMetricGrid
+            className="mt-4 luxury-metric-grid-4"
+            items={[
+              { value: percent(certification.masteredCoverage), label: 'مسلط' },
+              { value: percent(certification.durableCoverage), label: 'قوی + مسلط' },
+              { value: percent(certification.productiveCoverage), label: 'تولید فعال' },
+              { value: percent(certification.fullSkillCoverage), label: 'چهارمهارتی' },
+            ]}
+          />
           {!certification.ready && certification.missing.length > 0 && (
             <div className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
               قدم بعدی برای نشان دوره: <b>{certification.missing[0]}</b>.
@@ -415,6 +633,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
 
       <section
         id="home-panel-library"
+        className="luxury-library-panel"
         role="tabpanel"
         aria-labelledby="home-tab-library"
         hidden={homeSection !== 'library'}

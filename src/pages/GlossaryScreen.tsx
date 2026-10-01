@@ -4,7 +4,8 @@ import { VOCAB } from '../data/chapters'
 import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { acceptedAnswers, troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
-import { BackIcon, SearchIcon } from '../components/Icons'
+import { SearchIcon } from '../components/Icons'
+import { LuxuryPageHeader, LuxuryPanel, LuxurySectionHeading } from '../components/LuxuryUI'
 import { acceptedPersianAnswers, compactPersianAnswer } from '../engine/persianTranslation'
 import { faNum } from '../engine/format'
 
@@ -90,15 +91,21 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
   }
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-        <div className="flex-1">
-          <h1 className="text-2xl font-extrabold">واژه‌نامه</h1>
-        </div>
-      </header>
+    <div className="app-page luxury-glossary page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <LuxuryPageHeader
+        title="واژه‌نامه"
+        subtitle="مرجع شخصی واژه‌ها، معنی‌ها و شواهد یادگیری"
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+      />
 
-      <label className="search-shell mt-4">
+      <LuxuryPanel className="mt-4 p-4" elevated={false}>
+        <LuxurySectionHeading
+          title="جست‌وجو و مرور"
+          subtitle="واژه را با انگلیسی یا فارسی پیدا کن و شواهد یادگیری‌اش را ببین."
+          badge={`${faNum(list.length)} واژه`}
+        />
+        <label className="search-shell mt-4">
         <SearchIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
         <input
           className="min-w-0 flex-1 bg-transparent py-3 text-base outline-none"
@@ -133,6 +140,7 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
         </label>
         <span className="glossary-result-count" aria-live="polite">{faNum(list.length)} واژه</span>
       </div>
+      </LuxuryPanel>
 
       <div className="glossary-list mt-4">
         {list.slice(0, visibleCount).map(word => {

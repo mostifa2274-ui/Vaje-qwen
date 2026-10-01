@@ -3,7 +3,8 @@ import type { GhesseState } from '../engine/types'
 import { MAX_IMPORT_BYTES, resetState, summarizeProgress, type ProgressSummary } from '../engine/store'
 import { createProgressBackupJson, importProgressBackupJson } from '../engine/backup'
 import { cancelEnglishSpeech, clampNarrationRate, englishNarrationVoices, speakEnglish, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon } from '../components/Icons'
+import { CrownIcon, DownloadIcon, ShieldIcon, SpeakerIcon, TrashIcon, UploadIcon, UserIcon } from '../components/Icons'
+import { LuxuryMetricGrid, LuxuryPageHeader } from '../components/LuxuryUI'
 import { BUILD_COMMIT } from '../engine/release'
 import { faNum } from '../engine/format'
 import { buildResearchReport } from '../engine/researchExport'
@@ -121,12 +122,36 @@ export default function SettingsScreen({ state, onChange, onBack, onReset, onImp
     onImport(pendingImport)
   }
 
+  const profileSummary = summarizeProgress(state)
+
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-        <h1 className="text-2xl font-extrabold">تنظیمات</h1>
-      </header>
+    <div className="app-page luxury-settings page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <LuxuryPageHeader
+        title="تنظیمات"
+        eyebrow="من"
+        subtitle="پروفایل یادگیری و تنظیمات"
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+        centered
+        trailing={<span className="luxury-settings-crown" aria-hidden="true"><CrownIcon className="h-5 w-5" /></span>}
+      />
+
+      <section className="luxury-profile-card mt-5" aria-label="خلاصهٔ پروفایل یادگیری">
+        <div className="luxury-profile-avatar" aria-hidden="true"><UserIcon className="h-8 w-8" /></div>
+        <div className="luxury-profile-copy">
+          <small>Vaje-Qwen Learning Profile</small>
+          <h2>مسیر شخصی تو</h2>
+          <p>پیشرفت واقعی از فصل‌ها، واژه‌های معرفی‌شده و آزمون‌های پاس‌شده محاسبه می‌شود.</p>
+        </div>
+        <LuxuryMetricGrid
+          className="luxury-profile-metrics"
+          items={[
+            { value: faNum(profileSummary.completedChapters), label: 'فصل' },
+            { value: faNum(profileSummary.introducedWords), label: 'واژه' },
+            { value: faNum(profileSummary.passedExams), label: 'آزمون' },
+          ]}
+        />
+      </section>
 
       <div className="settings-list mt-5">
         <div className="settings-section settings-toggle-row flex items-center justify-between gap-4 p-4">

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { CHAPTER_BY_ID, VOCAB, WORD_BY_ID } from '../data/chapters'
-import { BackIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { faNum } from '../engine/format'
 import { listeningChoiceOptions, isTypedCorrect } from '../engine/review'
 import { buildPrepTestOrders } from '../engine/prepOrder'
@@ -9,6 +9,7 @@ import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, typ
 import { stopAudio } from '../engine/audio'
 import { clearDiagnosticDraft, loadDiagnosticDraft, markDiagnosticFailed, saveDiagnosticDraft, type DiagnosticPhase } from '../engine/diagnosticDraft'
 import type { GhesseState } from '../engine/types'
+import { GENERATED_CHAPTER_ART } from '../art/generatedChapterArt'
 
 interface Props {
   chapterId: string
@@ -24,6 +25,22 @@ type Failure = { wordId: string; phase: DiagnosticPhase } | null
 
 export default function DiagnosticScreen({ chapterId, state, onChange, onBack, onTeach, onReady, now }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
+  const backdropArt = GENERATED_CHAPTER_ART[chapterId]
+  const diagnosticBackdrop = (
+    <div className="luxury-task-backdrop luxury-exam-backdrop" aria-hidden="true">
+      {backdropArt && (
+        <img
+          className="luxury-task-backdrop-image"
+          src={backdropArt.src}
+          width={backdropArt.width}
+          height={backdropArt.height}
+          alt=""
+          decoding="async"
+        />
+      )}
+      <span />
+    </div>
+  )
   const { writtenOrder: productiveOrder, listeningOrder } = useMemo(
     () => buildPrepTestOrders(`${chapterId}:diagnostic`, chapter.new),
     [chapter.new, chapterId],
@@ -156,11 +173,15 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
 
   if (!started) {
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-        <header className="flex items-center gap-3">
-          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-          <h1 className="text-2xl font-extrabold">تعیین سطح این فصل</h1>
-        </header>
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {diagnosticBackdrop}
+        <LuxuryPageHeader
+          title="تعیین سطح این فصل"
+          eyebrow={`فصل ${faNum(chapter.n)} · کتاب ${faNum(chapter.book)}`}
+          subtitle="فقط برای واژه‌هایی که واقعاً از قبل بلدی"
+          onBack={onBack}
+          backLabel="بازگشت به نقشه"
+        />
         <section className="learning-focus-card mt-5 p-5 sm:p-6">
           <h2 className="text-xl font-extrabold">فقط اگر این واژه‌ها را از قبل بلدی</h2>
           <p className="mt-3 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
@@ -181,11 +202,15 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
   if (failure) {
     const word = WORD_BY_ID.get(failure.wordId)!
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-        <header className="flex items-center gap-3">
-          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-          <h1 className="text-2xl font-extrabold">تعیین سطح این فصل</h1>
-        </header>
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {diagnosticBackdrop}
+        <LuxuryPageHeader
+          title="تعیین سطح این فصل"
+          eyebrow={`فصل ${faNum(chapter.n)} · کتاب ${faNum(chapter.book)}`}
+          subtitle="نتیجهٔ تعیین سطح"
+          onBack={onBack}
+          backLabel="بازگشت به نقشه"
+        />
         <section className="learning-focus-card mt-5 p-5 sm:p-6" role="status">
           <h2 className="text-xl font-extrabold">این فصل بهتر است آموزش داده شود</h2>
           <p className="mt-3 text-sm leading-7">
@@ -200,16 +225,16 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
   const done = phase === 'productive' ? productivePassed.length : listeningPassed.length
 
   return (
-    <div className="app-page page-in">
-      <header className="sticky top-0 z-40 app-task-header">
-        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
-          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-          <div className="min-w-0 flex-1">
-            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>تعیین سطح · فصل {faNum(chapter.n)} · کتاب {faNum(chapter.book)}</div>
-            <h1 className="truncate text-lg font-extrabold">{phase === 'productive' ? 'تولید واژه' : 'تشخیص شنیداری'}</h1>
-          </div>
-        </div>
-      </header>
+    <div className="app-page luxury-exam page-in">
+      {diagnosticBackdrop}
+      <LuxuryPageHeader
+        title="تعیین سطح این فصل"
+        eyebrow={`فصل ${faNum(chapter.n)} · کتاب ${faNum(chapter.book)}`}
+        subtitle={phase === 'productive' ? 'تولید واژه' : 'تشخیص شنیداری'}
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+        sticky
+      />
 
       <div className="mx-auto max-w-3xl px-4 pb-28 pt-5">
         {initialDraft && (
@@ -222,9 +247,7 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
             <span>{phase === 'productive' ? 'بخش ۱ از ۲ · تولید انگلیسی' : 'بخش ۲ از ۲ · شنیداری'}</span>
             <span>{faNum(done)} از {faNum(chapter.new.length)}</span>
           </div>
-          <div className="mastery-progress mt-3">
-            <span style={{ width: `${(done / chapter.new.length) * 100}%` }} />
-          </div>
+          <LuxuryProgress className="mt-3" value={done} max={chapter.new.length} label="پیشرفت تعیین سطح" />
 
           {phase === 'productive' && productiveWord && (
             <>
@@ -265,23 +288,21 @@ export default function DiagnosticScreen({ chapterId, state, onChange, onBack, o
                 {!state.soundOn ? (
                   <p className="paper-note mt-4" role="alert">برای این بخش صدا باید روشن باشد. از نقشه وارد آموزش معمولی شو یا صدا را در تنظیمات روشن کن.</p>
                 ) : (
-                  <button type="button" className="btn-paper mt-4 min-h-20 w-full text-xl" onClick={speakListening} aria-label="پخش دوبارهٔ واژه">
-                    <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
-                  </button>
+                  <div className="mt-5">
+                    <LuxuryAudioOrb label="پخش دوبارهٔ واژه" helper="گوش کن، سپس معنی را انتخاب کن" onClick={speakListening} />
+                  </div>
                 )}
               </div>
               {audioNotice && <p className="paper-note mt-3" role="alert">{audioNotice}</p>}
               <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2" data-testid="diagnostic-listening-options">
                 {listeningOptions.map(option => (
-                  <button
+                  <LuxuryChoice
                     key={option.id}
-                    type="button"
-                    className="btn-paper min-h-14 px-3 py-3"
                     disabled={!state.soundOn || !listeningReady}
                     onClick={() => chooseListening(option.id)}
                   >
                     {option.label}
-                  </button>
+                  </LuxuryChoice>
                 ))}
               </div>
               <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" disabled={!listeningReady} onClick={() => fail(listeningWord.id, 'listening')}>

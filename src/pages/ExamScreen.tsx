@@ -2,15 +2,17 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState, RetrievalMode, SkillDimension } from '../engine/types'
 import { buildExam, emptyComprehensionAnswers, examPool, scoreExam, type BuiltExam, type ExamComprehensionAnswers, type ExamResult } from '../engine/exams'
 import { canTakeExam, examDefinition } from '../engine/gates'
-import { WORD_BY_ID } from '../data/chapters'
+import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon } from '../components/Icons'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryMetricGrid, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import SpellingHint from '../components/SpellingHint'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview } from '../components/TestPassage'
 import type { TestText } from '../data/bookTests'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 import { faNum, percent } from '../engine/format'
+import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   examId: string
@@ -179,6 +181,15 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   if (!exam) return null
   const builtExam: BuiltExam = exam
   const def = examDefinition(examId)!
+  const backdropChapter = (def.book
+    ? CHAPTERS.find(item => item.book === def.book)
+    : [...CHAPTERS].reverse().find(item => state.chapters[item.id]?.completed)) ?? CHAPTERS[0]
+  const examBackdrop = (
+    <div className="luxury-task-backdrop luxury-exam-backdrop" aria-hidden="true">
+      <ChapterIllustration chapterId={backdropChapter.id} titleFa={backdropChapter.titleFa} />
+      <span />
+    </div>
+  )
   const texts = examTexts(builtExam)
   const currentText = stage === 'texts' ? texts[textIndex] : undefined
 
@@ -350,7 +361,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const textsMissed = result.comprehensionTotal - result.comprehensionCorrect
     const canRetake = unrecorded || (!passedNow && result.missedWordIds.length === 0 && canTakeExam(state, examId))
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-6">
+        {examBackdrop}
         <div className={`exam-result-card p-6 text-center ${passedNow ? 'exam-pass' : 'exam-fail'}`}>
           {passedNow
             ? <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
@@ -358,14 +370,15 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
           <h1 className="mt-3 text-2xl font-extrabold">
             {passedNow ? 'قبول شدی' : gateAlreadyPassed ? 'این بازآزمایی نیاز به مرور دارد' : 'هنوز آمادهٔ عبور نیستی'}
           </h1>
-          <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            <div className="metric-card"><b>{percent(result.overallScore)}</b><span>کل آزمون</span></div>
-            <div className="metric-card"><b>{percent(result.productiveScore)}</b><span>پاسخ بدون گزینه</span></div>
-            <div className={`metric-card ${textsMissed ? 'metric-fail' : ''}`} data-testid="exam-comprehension-score">
-              <b>{faNum(result.comprehensionCorrect)}/{faNum(result.comprehensionTotal)}</b><span>درک مطلب</span>
-            </div>
-            <div className="metric-card"><b>{faNum(testedCoverage)}/{faNum(totalPool)}</b><span>پوشش واژه</span></div>
-          </div>
+          <LuxuryMetricGrid
+            className="mt-5 luxury-exam-metrics"
+            items={[
+              { value: percent(result.overallScore), label: 'کل آزمون' },
+              { value: percent(result.productiveScore), label: 'پاسخ بدون گزینه' },
+              { value: `${faNum(result.comprehensionCorrect)}/${faNum(result.comprehensionTotal)}`, label: 'درک مطلب', className: textsMissed ? 'metric-fail' : undefined, testId: 'exam-comprehension-score' },
+              { value: `${faNum(testedCoverage)}/${faNum(totalPool)}`, label: 'پوشش واژه' },
+            ]}
+          />
 
           <div className="exam-summary-panel mt-4 p-3 text-right">
             <div className="text-xs font-extrabold">نقشهٔ مهارت این آزمون</div>
@@ -450,7 +463,8 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   if (onBreak) {
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-8">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-8">
+        {examBackdrop}
         <div className="learning-focus-card p-6 text-center">
           <CirclePauseIcon className="mx-auto h-10 w-10" aria-hidden="true" />
           <h1 className="mt-3 text-2xl font-extrabold">وقفهٔ کوتاه</h1>
@@ -470,13 +484,14 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   }
 
   const header = (
-    <header className="flex items-center gap-3">
-      <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="ترک آزمون"><BackIcon className="h-5 w-5" /></button>
-      <div className="min-w-0 flex-1">
-        <h1 className="truncate text-xl font-extrabold">{def.titleFa}</h1>
-        <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>{def.subtitleFa}</p>
-      </div>
-    </header>
+    <LuxuryPageHeader
+      title={def.titleFa}
+      subtitle={def.subtitleFa}
+      eyebrow="آزمون مرحله‌ای"
+      onBack={onBack}
+      backLabel="ترک آزمون"
+      centered
+    />
   )
   const previewNote = preview && <div className="explore-note mt-4" role="status"><span><b>پیش‌نمایش در حالت کاوش.</b> هنوز به این آزمون نرسیده‌ای؛ نتیجه‌اش ثبت نمی‌شود و مسیری را باز نمی‌کند.</span></div>
 
@@ -486,14 +501,15 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const ready = textAnswered(chosen) && (!isListening || heard[currentText.slot])
     const last = textIndex + 1 >= texts.length
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {examBackdrop}
         {header}
 
         <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
           <span>درک مطلب · متن {faNum(textIndex + 1)} از {faNum(texts.length)}</span>
           <span>تلاش {faNum(attempt)}</span>
         </div>
-        <div className="mastery-progress mt-2"><span style={{ width: `${(textIndex / texts.length) * 100}%` }} /></div>
+        <LuxuryProgress className="mt-2" value={textIndex} max={texts.length} label="پیشرفت درک مطلب آزمون" />
 
         {previewNote}
 
@@ -579,14 +595,15 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const typedMode = question ? isTypedMode(question.mode) : false
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+    <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      {examBackdrop}
       {header}
 
       <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
         <span>سؤال {faNum(index + 1)} از {faNum(builtExam.questions.length)}</span>
         <span>تلاش {faNum(attempt)}</span>
       </div>
-      <div className="mastery-progress mt-2"><span style={{ width: `${(index / builtExam.questions.length) * 100}%` }} /></div>
+      <LuxuryProgress className="mt-2" value={index} max={builtExam.questions.length} label="پیشرفت آزمون واژگان" />
 
       {previewNote}
 
@@ -609,7 +626,13 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
               <>
                 <div className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و دقیق بنویس.</div>
                 {question.hintFa && <SpellingHint meaning={question.hintFa} />}
-                <button type="button" className="btn-paper mt-4 px-5 py-3 text-lg" onClick={() => { setAudioReady(false); speakCurrent() }}><span className="inline-flex items-center gap-2"><SpeakerIcon className="h-5 w-5" />پخش واژه</span></button>
+                <div className="mt-5">
+                  <LuxuryAudioOrb
+                    label="پخش واژه"
+                    helper="کلمه را کامل گوش کن و سپس بنویس"
+                    onClick={() => { setAudioReady(false); speakCurrent() }}
+                  />
+                </div>
                 {audioNotice && <div className="paper-note mt-3 text-right" role="alert">{audioNotice}</div>}
                 {!audioReady && !audioNotice && <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را کامل گوش کن.</div>}
               </>
@@ -651,14 +674,13 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
             <div className="mt-7" dir={question.mode === 'reverse' ? 'rtl' : 'ltr'}>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {question.options?.map(option => (
-                  <button
+                  <LuxuryChoice
                     key={option.id}
-                    type="button"
-                    className={`btn-paper min-h-14 px-3 py-3 ${question.mode === 'reverse' ? '' : 'font-en'}`}
+                    className={question.mode === 'reverse' ? '' : 'font-en'}
                     onClick={() => answer(option.id === question.answerId)}
                   >
                     {option.label}
-                  </button>
+                  </LuxuryChoice>
                 ))}
               </div>
               <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" onClick={() => answer(false)}>نمی‌دانم — بعدی</button>

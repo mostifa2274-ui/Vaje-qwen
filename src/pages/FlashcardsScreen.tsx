@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type Ref } from 'react'
 import type { GhesseState, LeitnerDirection, LeitnerScope, LeitnerSettings, WordEntry } from '../engine/types'
 import { WORD_BY_ID } from '../data/chapters'
 import {
@@ -25,7 +25,8 @@ import {
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
 import GlossSheet from '../components/GlossSheet'
-import { BackIcon, BadgeCheckIcon, CheckIcon, FlashcardsIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CheckIcon, FlashcardsIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryMetricGrid, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { faNum, percent } from '../engine/format'
 
 interface Props {
@@ -126,6 +127,31 @@ function weekdayLabel(offset: number, now: number): string {
   } catch {
     return `+${faNum(offset)}`
   }
+}
+
+function FlashcardsHeader({
+  title,
+  subtitle,
+  onBack,
+  backLabel,
+  headingRef,
+}: {
+  title: string
+  subtitle: string
+  onBack: () => void
+  backLabel: string
+  headingRef: Ref<HTMLHeadingElement>
+}) {
+  return (
+    <LuxuryPageHeader
+      title={title}
+      subtitle={subtitle}
+      eyebrow="تمرین آزاد"
+      onBack={onBack}
+      backLabel={backLabel}
+      headingRef={headingRef}
+    />
+  )
 }
 
 export default function FlashcardsScreen({ state, now, onChange, onBack }: Props) {
@@ -304,16 +330,6 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
     return () => window.removeEventListener('keydown', onKey)
   })
 
-  const header = (title: string, subtitle: string, onBackClick: () => void, backLabel: string) => (
-    <header className="flex items-center gap-3">
-      <button type="button" className="btn-paper reader-header-button" onClick={onBackClick} aria-label={backLabel}><BackIcon className="h-5 w-5" /></button>
-      <div className="min-w-0 flex-1">
-        <h1 ref={headingRef} tabIndex={-1} className="truncate text-2xl font-extrabold">{title}</h1>
-        <p className="mt-1 text-xs leading-6" style={{ color: 'var(--ink-soft)' }}>{subtitle}</p>
-      </div>
-    </header>
-  )
-
   // ---------- Study ----------
   if (session && word && face && currentId) {
     const done = session.total - new Set(session.queue).size
@@ -332,16 +348,20 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
       </button>
     )
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-        {header('جعبهٔ لایتنر', box ? `این کارت در جعبهٔ ${faNum(box)} است؛ ${everyLabel(box)} مرور می‌شود` : 'کارت تازه؛ اولین دیدار', leave, 'پایان مرور و بازگشت')}
+      <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        <FlashcardsHeader
+          title="جعبهٔ لایتنر"
+          subtitle={box ? `این کارت در جعبهٔ ${faNum(box)} است؛ ${everyLabel(box)} مرور می‌شود` : 'کارت تازه؛ اولین دیدار'}
+          onBack={leave}
+          backLabel="پایان مرور و بازگشت"
+          headingRef={headingRef}
+        />
 
         <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
           <span>کارت {faNum(Math.min(done + 1, session.total))} از {faNum(session.total)}</span>
           <span>{DIRECTION_LABELS[face]}</span>
         </div>
-        <div className="mastery-progress mt-2" role="progressbar" aria-label="پیشرفت مرور" aria-valuemin={0} aria-valuemax={session.total} aria-valuenow={done}>
-          <span style={{ width: `${(done / session.total) * 100}%` }} />
-        </div>
+        <LuxuryProgress className="mt-2" value={done} max={session.total} label="پیشرفت مرور" />
 
         <section className="flashcard mt-5" aria-live="polite" data-testid="flashcard">
           <div key={`${currentId}:${flipped ? 'back' : 'front'}`} className="flashcard-face">
@@ -464,17 +484,26 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
     const remembered = answers.filter(result => result !== 'again').length
     const backToOne = answers.filter(result => result === 'again').length
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-        {header('جعبهٔ لایتنر', 'نتیجهٔ این مرور', leave, 'بازگشت به جعبه‌ها')}
+      <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        <FlashcardsHeader
+          title="جعبهٔ لایتنر"
+          subtitle="نتیجهٔ این مرور"
+          onBack={leave}
+          backLabel="بازگشت به جعبه‌ها"
+          headingRef={headingRef}
+        />
         <section className="learning-focus-card mt-5 p-6 text-center" data-testid="flashcards-summary">
           <BadgeCheckIcon className="mx-auto h-11 w-11" aria-hidden="true" />
           <h2 className="mt-3 text-2xl font-extrabold">مرور تمام شد</h2>
-          <div className="leitner-kpis mt-5">
-            <div className="metric-card"><b>{faNum(answers.length)}</b><span>کارت مرورشده</span></div>
-            <div className="metric-card"><b>{answers.length ? percent(remembered / answers.length) : '—'}</b><span>به یاد آمده</span></div>
-            <div className="metric-card"><b>{faNum(finished.promoted)}</b><span>یک جعبه بالاتر رفت</span></div>
-            <div className="metric-card"><b>{faNum(backToOne)}</b><span>به جعبهٔ ۱ برگشت</span></div>
-          </div>
+          <LuxuryMetricGrid
+            className="leitner-kpis mt-5 luxury-metric-grid-4"
+            items={[
+              { value: faNum(answers.length), label: 'کارت مرورشده' },
+              { value: answers.length ? percent(remembered / answers.length) : '—', label: 'به یاد آمده' },
+              { value: faNum(finished.promoted), label: 'یک جعبه بالاتر رفت' },
+              { value: faNum(backToOne), label: 'به جعبهٔ ۱ برگشت' },
+            ]}
+          />
           <p className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
             {summary.due
               ? `هنوز ${faNum(summary.due)} کارت برای امروز مانده است.`
@@ -504,17 +533,26 @@ export default function FlashcardsScreen({ state, now, onChange, onBack }: Props
   const listIds = openBox === null ? [] : cardsInBox(state, scopeIds, openBox)
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      {header('جعبهٔ لایتنر', 'کارت‌های مرور برای همهٔ واژه‌های مسیر؛ هر کارتی که به یاد بیاوری یک جعبه جلو می‌رود.', onBack, 'بازگشت به نقشه')}
+    <div className="app-page luxury-flashcards page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <FlashcardsHeader
+        title="جعبهٔ لایتنر"
+        subtitle="کارت‌های مرور برای همهٔ واژه‌های مسیر؛ هر کارتی که به یاد بیاوری یک جعبه جلو می‌رود."
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+        headingRef={headingRef}
+      />
 
       <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="leitner-today">
         <h2 id="leitner-today" className="text-lg font-extrabold">امروز</h2>
-        <div className="leitner-kpis mt-3">
-          <div className="metric-card"><b>{faNum(summary.due)}</b><span>کارت برای مرور</span></div>
-          <div className="metric-card"><b>{faNum(summary.newToday)}</b><span>کارت تازه</span></div>
-          <div className="metric-card"><b>{faNum(summary.reviewedToday)}</b><span>مرورشدهٔ امروز</span></div>
-          <div className="metric-card"><b>{faNum(summary.streak)}</b><span>روز پیاپی</span></div>
-        </div>
+        <LuxuryMetricGrid
+          className="leitner-kpis mt-3 luxury-metric-grid-4"
+          items={[
+            { value: faNum(summary.due), label: 'کارت برای مرور' },
+            { value: faNum(summary.newToday), label: 'کارت تازه' },
+            { value: faNum(summary.reviewedToday), label: 'مرورشدهٔ امروز' },
+            { value: faNum(summary.streak), label: 'روز پیاپی' },
+          ]}
+        />
         {available > 0 ? (
           <button type="button" className="btn-crimson mt-4 w-full py-3.5 text-lg" onClick={() => start()}>
             <span className="inline-flex items-center justify-center gap-2"><FlashcardsIcon className="h-5 w-5" />شروع مرور ({faNum(Math.min(available, SESSION_LIMIT))} کارت)</span>

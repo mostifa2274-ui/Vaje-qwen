@@ -4,7 +4,7 @@
  */
 export default function SpellingHint({ meaning }: { meaning: string }) {
   return (
-    <div className="spelling-hint mt-3 text-sm leading-7" data-testid="spelling-hint">
+    <div className="spelling-hint luxury-spelling-hint mt-3 text-sm leading-7" data-testid="spelling-hint">
       واژهٔ هم‌آوای دیگری هم هست؛ منظور این معنی است: <b>{meaning}</b>
     </div>
   )

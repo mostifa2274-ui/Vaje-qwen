@@ -6,7 +6,8 @@ import { buildPrepTestOrders } from '../engine/prepOrder'
 import { canPrepareChapter, chapterPrepared } from '../engine/gates'
 import { recordPreparedChapter } from '../engine/progress'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
-import { BackIcon, PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
+import { PauseIcon, PlayIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { clearPrepDraft, loadPrepDraft, savePrepDraft, type PrepFeedback, type PrepPhase } from '../engine/prepDraft'
 import { isHeadwordTranslationCorrect } from '../engine/persianTranslation'
 import { persianPartOfSpeech } from '../engine/partOfSpeech'
@@ -15,6 +16,7 @@ import { autoTeachReflectionPauseMs } from '../engine/teachTiming'
 import { clearDiagnosticFailure } from '../engine/diagnosticDraft'
 import PronunciationPractice from '../components/PronunciationPractice'
 import ActiveUsePractice from '../components/ActiveUsePractice'
+import { GENERATED_CHAPTER_ART } from '../art/generatedChapterArt'
 
 interface Props {
   chapterId: string
@@ -33,6 +35,7 @@ const PREP_STEPS: { label: string; target: PrepPhase | 'story' }[] = [
 
 export default function WordPrepScreen({ chapterId, state, onChange, onBack, onReady }: Props) {
   const chapter = CHAPTER_BY_ID.get(chapterId)!
+  const backdropArt = GENERATED_CHAPTER_ART[chapterId]
   const alreadyPrepared = chapterPrepared(state, chapterId)
   // Opened through explore mode before the learner reached it: the lessons
   // and tests work as practice, but passing them records nothing.
@@ -459,18 +462,40 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   }, [currentListeningId, currentWrittenId, feedback, phase])
 
   const step = phase === 'teach' ? 1 : phase === 'written' ? 2 : 3
+  const phaseTitle = phase === 'teach' ? 'یادگیری واژگان' : phase === 'written' ? 'آزمون واژگان' : 'تمرین شنیداری'
+  const phaseSubtitle = phase === 'teach'
+    ? 'ببین، گوش کن و در بافت یاد بگیر'
+    : phase === 'written'
+      ? 'یادآوری کن و معادل انگلیسی را بنویس'
+      : 'گوش کن و معنی درست را انتخاب کن'
 
   return (
-    <div className="app-page page-in">
-      <header className="sticky top-0 z-40 app-task-header">
-        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
-          <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-          <div className="min-w-0 flex-1">
-            <div className="text-xs" style={{ color: 'var(--ink-soft)' }}>آمادگی فصل {faNum(chapter.n)} · کتاب {faNum(chapter.book)}</div>
-            <h1 className="truncate text-lg font-extrabold">واژه‌های تازه: {chapter.titleFa}</h1>
-          </div>
-        </div>
-      </header>
+    <div className={`app-page luxury-prep luxury-prep-${phase} page-in`}>
+      <div className="luxury-task-backdrop" aria-hidden="true">
+        {backdropArt && (
+          <img
+            className="luxury-task-backdrop-image"
+            src={backdropArt.src}
+            width={backdropArt.width}
+            height={backdropArt.height}
+            alt=""
+            decoding="async"
+          />
+        )}
+        <span />
+      </div>
+      <div className="mx-auto max-w-3xl px-4">
+        <LuxuryPageHeader
+          title={`واژه‌های تازه: ${chapter.titleFa}`}
+          eyebrow={phaseTitle}
+          subtitle={phaseSubtitle}
+          onBack={onBack}
+          backLabel="بازگشت به نقشه"
+          sticky
+          centered
+          className="luxury-prep-header"
+        />
+      </div>
 
       <div className="mx-auto max-w-3xl px-4 pb-28 pt-5">
         {preview && (
@@ -537,9 +562,7 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                 </span>
               </button>
             </div>
-            <div className="mastery-progress mt-2">
-              <span style={{ width: `${((teachIndex + 1) / chapter.new.length) * 100}%` }} />
-            </div>
+            <LuxuryProgress className="mt-2" value={teachIndex + 1} max={chapter.new.length} label="پیشرفت آموزش واژه‌ها" />
             {!state.soundOn && (
               <div className="paper-note mt-4">
                 {explore
@@ -621,14 +644,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'written' && currentWrittenWord && (
-          <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
+          <div ref={stageRef} className="learning-focus-card luxury-written-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>ترجمهٔ نوشتاری · ۱۰۰٪</span>
               <span>{faNum(writtenPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
-            <div className="mastery-progress mt-3">
-              <span style={{ width: `${(writtenPassed.size / chapter.new.length) * 100}%` }} />
-            </div>
+            <LuxuryProgress className="mt-3" value={writtenPassed.size} max={chapter.new.length} label="پیشرفت آزمون ترجمهٔ نوشتاری" />
 
             <div className="mt-7 text-center">
               <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>یک معنی درست را به فارسی بنویس</div>
@@ -680,14 +701,12 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
         )}
 
         {phase === 'listening' && currentListeningWord && listeningOptions && (
-          <div ref={stageRef} className="learning-focus-card mt-5 p-5 sm:p-6">
+          <div ref={stageRef} className="learning-focus-card luxury-listening-card mt-5 p-5 sm:p-6">
             <div className="flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>شنیداری · ۱۰۰٪</span>
               <span>{faNum(listeningPassed.size)} از {faNum(chapter.new.length)}</span>
             </div>
-            <div className="mastery-progress mt-3">
-              <span style={{ width: `${(listeningPassed.size / chapter.new.length) * 100}%` }} />
-            </div>
+            <LuxuryProgress className="mt-3" value={listeningPassed.size} max={chapter.new.length} label="پیشرفت آزمون شنیداری" />
 
             {!state.soundOn ? (
               <div className="paper-note mt-5">
@@ -698,14 +717,13 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
               <>
                 <div className="mt-7 text-center">
                   <div className="text-sm" style={{ color: 'var(--ink-soft)' }}>واژه را گوش کن و معنی درست را انتخاب کن</div>
-                  <button
-                    type="button"
-                    className="btn-paper mt-4 min-h-20 w-full text-2xl"
-                    onClick={() => { setListeningReady(false); speak(currentListeningWord.word, true) }}
-                    aria-label="پخش دوبارهٔ واژه"
-                  >
-                    <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
-                  </button>
+                  <div className="mt-5">
+                    <LuxuryAudioOrb
+                      label="پخش دوبارهٔ واژه"
+                      helper="گوش کن و معنی درست را انتخاب کن"
+                      onClick={() => { setListeningReady(false); speak(currentListeningWord.word, true) }}
+                    />
+                  </div>
                   {!listeningReady && !audioNotice && (
                     <div className="mt-3 text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>
                       برای پاسخ، ابتدا واژه را تا پایان گوش کن.
@@ -717,19 +735,21 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
                   {listeningOptions.map(option => {
                     const isAnswer = option.id === currentListeningId
                     const isSelected = selected === option.id
-                    let className = 'btn-paper min-h-14 px-3 py-3'
+                    let className = 'btn-paper luxury-listen-option min-h-14 px-3 py-3'
                     if (feedback && isAnswer) className += ' answer-correct'
                     else if (feedback && isSelected) className += ' answer-wrong'
                     return (
-                      <button
+                      <LuxuryChoice
                         key={option.id}
-                        type="button"
                         className={className}
+                        selected={Boolean(feedback && isSelected)}
+                        correct={Boolean(feedback && isAnswer)}
+                        wrong={Boolean(feedback && isSelected && !isAnswer)}
                         disabled={Boolean(feedback) || audioBlocked || !listeningReady}
                         onClick={() => chooseListening(option.id)}
                       >
                         {option.label}
-                      </button>
+                      </LuxuryChoice>
                     )
                   })}
                 </div>

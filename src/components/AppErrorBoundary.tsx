@@ -35,7 +35,7 @@ export default class AppErrorBoundary extends Component<Props, State> {
 
     return (
       <main className="runtime-error-shell" role="alert" aria-live="assertive">
-        <section className="runtime-error-card">
+        <section className="runtime-error-card luxury-error-card">
           <div className="runtime-error-mark" aria-hidden="true">!</div>
           <h1>نمایش این صفحه با مشکل روبه‌رو شد</h1>
           <p>
