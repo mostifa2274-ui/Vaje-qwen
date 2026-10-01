@@ -10,6 +10,7 @@ import PronunciationPractice from './PronunciationPractice'
 import ActiveUsePractice from './ActiveUsePractice'
 import { masteryEvidence, masteryNextRequirementFa } from '../engine/mastery'
 import { faNum, percent } from '../engine/format'
+import { LuxuryDivider, LuxuryMetricGrid } from './LuxuryUI'
 
 interface Props {
   word: WordEntry | null
@@ -120,7 +121,7 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
     >
       <div
         ref={sheetRef}
-        className="sheet-up paper-card mx-2 mb-2 w-full max-w-lg p-5"
+        className="sheet-up luxury-sheet-frame mx-2 mb-2 w-full max-w-lg p-5"
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
@@ -147,7 +148,7 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
 
         <div id={descriptionId} className="mt-3 text-xl font-bold">{word.fa}</div>
         {audioNotice && <div className="paper-note mt-3" role="alert">{audioNotice}</div>}
-        <hr className="dash-line my-4" />
+        <LuxuryDivider className="my-4" />
         <div className="font-en text-base leading-relaxed" lang="en" dir="ltr">{word.ex}</div>
         <div className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>{word.tr}</div>
 
@@ -174,12 +175,15 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
 
             {progress?.introduced && (
               <>
-                <div className="mt-3 grid grid-cols-2 gap-2">
-                  <div className="metric-card"><b>{percent(evidence.accuracy)}</b><span>دقت بازیابی</span></div>
-                  <div className="metric-card"><b>{faNum(evidence.successDays)}</b><span>روز موفق</span></div>
-                  <div className="metric-card"><b>{faNum(evidence.productiveDays)}</b><span>روز تولیدی</span></div>
-                  <div className="metric-card"><b>{faNum(evidence.spanDays)}</b><span>روز فاصلهٔ شواهد</span></div>
-                </div>
+                <LuxuryMetricGrid
+                  className="mt-3 luxury-metric-grid-2"
+                  items={[
+                    { value: percent(evidence.accuracy), label: 'دقت بازیابی' },
+                    { value: faNum(evidence.successDays), label: 'روز موفق' },
+                    { value: faNum(evidence.productiveDays), label: 'روز تولیدی' },
+                    { value: faNum(evidence.spanDays), label: 'روز فاصلهٔ شواهد' },
+                  ]}
+                />
 
                 <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
                   {(Object.keys(skillLabels) as SkillDimension[]).map(dimension => {
