@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GhesseState, RetrievalMode, SkillDimension } from '../engine/types'
 import { buildExam, emptyComprehensionAnswers, examPool, scoreExam, type BuiltExam, type ExamComprehensionAnswers, type ExamResult } from '../engine/exams'
 import { canTakeExam, examDefinition } from '../engine/gates'
-import { WORD_BY_ID } from '../data/chapters'
+import { CHAPTERS, WORD_BY_ID } from '../data/chapters'
 import { isQuestionTypedCorrect, isTypedMode, recordRetrieval } from '../engine/review'
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BackIcon, BadgeCheckIcon, CirclePauseIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
@@ -11,6 +11,7 @@ import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextRevi
 import type { TestText } from '../data/bookTests'
 import { clearExamDraft, EXAM_BREAK_EVERY, examSignature, loadExamDraft, saveExamDraft } from '../engine/examDraft'
 import { faNum, percent } from '../engine/format'
+import ChapterIllustration from '../components/ChapterIllustration'
 
 interface Props {
   examId: string
@@ -179,6 +180,15 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   if (!exam) return null
   const builtExam: BuiltExam = exam
   const def = examDefinition(examId)!
+  const backdropChapter = (def.book
+    ? CHAPTERS.find(item => item.book === def.book)
+    : [...CHAPTERS].reverse().find(item => state.chapters[item.id]?.completed)) ?? CHAPTERS[0]
+  const examBackdrop = (
+    <div className="luxury-task-backdrop luxury-exam-backdrop" aria-hidden="true">
+      <ChapterIllustration chapterId={backdropChapter.id} titleFa={backdropChapter.titleFa} />
+      <span />
+    </div>
+  )
   const texts = examTexts(builtExam)
   const currentText = stage === 'texts' ? texts[textIndex] : undefined
 
@@ -451,6 +461,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   if (onBreak) {
     return (
       <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-8">
+        {examBackdrop}
         <div className="learning-focus-card p-6 text-center">
           <CirclePauseIcon className="mx-auto h-10 w-10" aria-hidden="true" />
           <h1 className="mt-3 text-2xl font-extrabold">وقفهٔ کوتاه</h1>
@@ -487,6 +498,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const last = textIndex + 1 >= texts.length
     return (
       <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+        {examBackdrop}
         {header}
 
         <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
