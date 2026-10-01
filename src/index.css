@@ -667,13 +667,29 @@ button:disabled {
 
 /* ---------- Learning flow ---------- */
 .next-action-card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1rem;
-  border: 1px solid var(--line-soft);
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--gold) 10%, var(--cream-soft));
-  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, var(--line-soft));
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--gold) 9%, var(--cream-soft)), var(--cream-soft) 42%);
+  box-shadow: var(--shadow-soft);
+  padding: 1.15rem 1.2rem 1.2rem;
+}
+.next-action-card::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 3px;
+  background: color-mix(in srgb, var(--gold) 72%, var(--crimson));
+}
+.next-action-card h2 {
+  letter-spacing: 0;
+  line-height: 1.35;
 }
 
 .prep-stepper {
@@ -2050,9 +2066,10 @@ input[type="range"]:focus-visible {
 /* Home information architecture: one clear surface at a time. */
 .home-section-tabs {
   padding: 4px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--cream-soft) 55%, var(--paper));
+  box-shadow: var(--shadow-control);
 }
 .home-section-tab {
   min-height: 44px;
@@ -2141,6 +2158,9 @@ input[type="range"]:focus-visible {
     border: 1px solid CanvasText;
     background: Canvas;
     color: CanvasText;
+  }
+  .next-action-card::before {
+    display: none;
   }
 
   .btn-ink,
