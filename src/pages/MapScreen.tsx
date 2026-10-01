@@ -164,27 +164,48 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </button>
       </header>
 
-      <nav className="home-section-tabs luxury-home-nav mt-4 grid grid-cols-3 gap-1" role="tablist" aria-label="بخش‌های اصلی قصه">
-        {([
-          ['today', 'امروز'],
-          ['journey', 'مسیر'],
-          ['library', 'کتابخانه'],
-        ] as const).map(([id, label]) => (
-          <button
-            key={id}
-            id={`home-tab-${id}`}
-            type="button"
-            role="tab"
-            aria-selected={homeSection === id}
-            aria-controls={`home-panel-${id}`}
-            tabIndex={homeSection === id ? 0 : -1}
-            className={homeSection === id ? 'home-section-tab active' : 'home-section-tab'}
-            onClick={() => setHomeSection(id)}
-            onKeyDown={event => moveHomeTab(event, id)}
-          >
-            {label}
-          </button>
-        ))}
+      <nav className="home-section-tabs luxury-home-nav" aria-label="ناوبری اصلی">
+        <button
+          id="home-tab-today"
+          type="button"
+          aria-current={homeSection === 'today' ? 'page' : undefined}
+          className={homeSection === 'today' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
+          onClick={() => setHomeSection('today')}
+          onKeyDown={event => moveHomeTab(event, 'today')}
+        >
+          <HomeIcon className="h-5 w-5" />
+          <span>خانه</span>
+        </button>
+        <button
+          id="home-tab-journey"
+          type="button"
+          aria-current={homeSection === 'journey' ? 'page' : undefined}
+          className={homeSection === 'journey' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
+          onClick={() => setHomeSection('journey')}
+          onKeyDown={event => moveHomeTab(event, 'journey')}
+        >
+          <BookOpenTextIcon className="h-5 w-5" />
+          <span>داستان‌ها</span>
+        </button>
+        <button type="button" className="home-section-tab luxury-nav-button" onClick={onOpenReview}>
+          <ChartIcon className="h-5 w-5" />
+          <span>پیشرفت</span>
+        </button>
+        <button
+          id="home-tab-library"
+          type="button"
+          aria-current={homeSection === 'library' ? 'page' : undefined}
+          className={homeSection === 'library' ? 'home-section-tab luxury-nav-button active' : 'home-section-tab luxury-nav-button'}
+          onClick={() => setHomeSection('library')}
+          onKeyDown={event => moveHomeTab(event, 'library')}
+        >
+          <FlashcardsIcon className="h-5 w-5" />
+          <span>واژه‌ها</span>
+        </button>
+        <button type="button" className="home-section-tab luxury-nav-button" onClick={onOpenSettings}>
+          <UserIcon className="h-5 w-5" />
+          <span>من</span>
+        </button>
       </nav>
 
       {state.exploreAll && (
