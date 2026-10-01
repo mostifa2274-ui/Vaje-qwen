@@ -79,3 +79,94 @@ if (outcomesGate === 'complete') {
   assert(research.claim === 'empirically-validated', 'completed learner-outcomes gate requires the validated research claim')
   assert(Array.isArray(research.studyEvidence) && research.studyEvidence.length > 0, 'completed learner-outcomes gate requires study evidence')
 }
+
+const editorialComplete =
+  lexical.reviewedWordIds.length === vocabulary.length
+  && hasSignoff(lexical.reviewerSignoff, currentVocabularySha)
+  && hasSignoff(lexical.chapterAssessmentSignoff, currentVocabularySha)
+assert(
+  status.gates.nativeEditorialReview.status === (editorialComplete ? 'complete' : 'pending'),
+  'native-editorial gate does not match genuine review coverage/sign-off',
+)
+
+assert(accessibility.schemaVersion === 1, 'accessibility status schema is invalid')
+assert(['pending', 'complete'].includes(accessibility.status), 'accessibility status must be pending or complete')
+const requiredAccessibilityRuns = [
+  'android-talkback',
+  'ios-voiceover',
+  'desktop-keyboard-screenreader',
+  'zoom-200',
+  'large-text',
+  'reduced-motion',
+  'forced-contrast',
+  'audio-screenreader-conflict',
+  'microphone-permission-matrix',
+  'offline-assistive-tech',
+]
+assert(
+  JSON.stringify([...accessibility.requiredRuns].sort()) === JSON.stringify([...requiredAccessibilityRuns].sort()),
+  'accessibility required-run set cannot be shortened or changed without updating the validator',
+)
+assert(Array.isArray(accessibility.completedRuns), 'accessibility completedRuns must be an array')
+const completedRuns = new Set(accessibility.completedRuns)
+assert(completedRuns.size === accessibility.completedRuns.length, 'accessibility completedRuns must be unique')
+for (const run of accessibility.completedRuns) assert(requiredAccessibilityRuns.includes(run), `unknown accessibility run: ${run}`)
+const accessibilityComplete =
+  accessibility.status === 'complete'
+  && accessibility.requiredRuns.every(run => completedRuns.has(run))
+  && hasSignoff(accessibility.signoff)
+assert(
+  status.gates.accessibilityHumanQA.status === (accessibilityComplete ? 'complete' : 'pending'),
+  'accessibility gate cannot close without every required human run and sign-off',
+)
+
+assert(art.schemaVersion === 1, 'art review status schema is invalid')
+assert(['pending', 'complete'].includes(art.status), 'art review status must be pending or complete')
+assert(Array.isArray(art.reviewedChapterIds), 'art reviewedChapterIds must be an array')
+assert(new Set(art.reviewedChapterIds).size === art.reviewedChapterIds.length, 'art reviewedChapterIds must be unique')
+const approvedChapterIds = new Set(artManifest.approved ?? [])
+const reviewedChapterIds = new Set(art.reviewedChapterIds ?? [])
+const artComplete =
+  art.status === 'complete'
+  && approvedChapterIds.size === 40
+  && [...approvedChapterIds].every(id => reviewedChapterIds.has(id))
+  && art.reviewedManifestSha256 === sha256('src/data/chapterArtBatch.json')
+  && hasSignoff(art.signoff)
+assert(
+  status.gates.visualArtDirection.status === (artComplete ? 'complete' : 'pending'),
+  'visual-art-direction gate cannot close without the exact manifest, all chapters and human sign-off',
+)
+
+assert(calibration.schemaVersion === 1, 'calibration status schema is invalid')
+assert(['pending', 'complete'].includes(calibration.status), 'calibration status must be pending or complete')
+assert(Array.isArray(calibration.studyEvidence), 'calibration studyEvidence must be an array')
+assert(Array.isArray(calibration.policyChanges), 'calibration policyChanges must be an array')
+const researchEvidence = new Set((research.studyEvidence ?? []).map(item => `${item?.path ?? ''}:${item?.sha256 ?? ''}`))
+for (const evidence of calibration.studyEvidence) {
+  assert(evidence && typeof evidence === 'object', 'calibration study evidence entries must be objects')
+  assert(researchEvidence.has(`${evidence.path ?? ''}:${evidence.sha256 ?? ''}`), 'calibration evidence must reference validated research evidence exactly')
+}
+const calibrationComplete =
+  calibration.status === 'complete'
+  && research.status === 'validated'
+  && calibration.researchProtocolId === research.protocolId
+  && Array.isArray(calibration.studyEvidence) && calibration.studyEvidence.length > 0
+  && Array.isArray(calibration.policyChanges) && calibration.policyChanges.length > 0
+  && hasSignoff(calibration.signoff)
+assert(
+  status.gates.learningPolicyCalibration.status === (calibrationComplete ? 'complete' : 'pending'),
+  'learning-policy calibration cannot close before validated outcome evidence and documented policy changes',
+)
+
+const mapScreen = readFileSync(join(root, 'src/pages/MapScreen.tsx'), 'utf8')
+assert(mapScreen.includes('قصه، مرور فاصله‌دار و آزمون مرحله‌ای'), 'home line must name the method, not claim mastery')
+assert(!mapScreen.includes('تا تسلط پایدار'), 'home line must not claim stable mastery')
+
+console.log([
+  'Quality evidence program valid.',
+  `learner outcomes: ${status.gates.learnerOutcomesPilot.status}`,
+  `human lexical review: ${lexical.reviewedWordIds.length}/${vocabulary.length}`,
+  `accessibility human QA: ${status.gates.accessibilityHumanQA.status}`,
+  `signature art direction: ${status.gates.visualArtDirection.status}`,
+  `learning-policy calibration: ${status.gates.learningPolicyCalibration.status}`,
+].join('\n'))
