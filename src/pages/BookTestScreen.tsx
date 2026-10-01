@@ -20,7 +20,7 @@ import {
 import { clearBookTestDraft, loadBookTestDraft, saveBookTestDraft, savedBookTest } from '../engine/bookTestDraft'
 import { cancelEnglishSpeech, speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { BadgeCheckIcon, CheckIcon, RefreshCcwIcon, SpeakerIcon } from '../components/Icons'
-import { LuxuryPageHeader } from '../components/LuxuryUI'
+import { LuxuryAudioOrb, LuxuryChoice, LuxuryPageHeader, LuxuryProgress } from '../components/LuxuryUI'
 import { ListeningText, ListeningTextReview, Passage, Questions, ReadingTextReview, SoundOffNote } from '../components/TestPassage'
 import { SPEECH_UNAVAILABLE } from '../components/usePassagePlayer'
 import { faNum, percent } from '../engine/format'
@@ -521,7 +521,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <div className="mt-4 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>واژهٔ {faNum(translationIndex + 1)} از {faNum(test.translation.length)}</span>
             </div>
-            <div className="mastery-progress mt-2"><span style={{ width: `${(translationIndex / test.translation.length) * 100}%` }} /></div>
+            <LuxuryProgress className="mt-2" value={translationIndex} max={test.translation.length} label="پیشرفت بخش ترجمهٔ واژه‌ها" />
             <div data-testid="translation-headword" className="mt-7 text-center font-en text-4xl font-bold" lang="en" dir="ltr">{translationWord.word}</div>
             <label htmlFor="book-test-translation" className="mt-6 block text-sm font-bold">معنی فارسی</label>
             <input
@@ -553,21 +553,29 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
             <div className="mt-4 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
               <span>واژهٔ {faNum(listenIndex + 1)} از {faNum(test.listeningWords.length)}</span>
             </div>
-            <div className="mastery-progress mt-2"><span style={{ width: `${(listenIndex / test.listeningWords.length) * 100}%` }} /></div>
+            <LuxuryProgress className="mt-2" value={listenIndex} max={test.listeningWords.length} label="پیشرفت بخش شنیدن واژه‌ها" />
             {!state.soundOn ? <SoundOffNote onEnable={enableSound} /> : (
               <>
-                <button type="button" className="btn-paper mt-6 min-h-20 w-full text-2xl" onClick={speakWord} aria-label="پخش دوبارهٔ واژه">
-                  <span className="inline-flex items-center justify-center gap-2"><SpeakerIcon className="h-6 w-6" />پخش دوباره</span>
-                </button>
+                <div className="mt-6">
+                  <LuxuryAudioOrb
+                    label="پخش دوبارهٔ واژه"
+                    helper="واژه را کامل گوش کن و سپس معنی را انتخاب کن"
+                    onClick={speakWord}
+                  />
+                </div>
                 {wordNotice && <div className="paper-note mt-3" role="alert">{wordNotice}</div>}
                 {!wordReady && !wordNotice && (
                   <div className="mt-3 text-center text-xs leading-6" role="status" style={{ color: 'var(--ink-soft)' }}>برای پاسخ، ابتدا واژه را تا پایان گوش کن.</div>
                 )}
                 <div data-testid="book-test-listening-options" className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {listenItem.options.map(option => (
-                    <button key={option.id} type="button" className="btn-paper min-h-14 px-3 py-3" disabled={!wordReady} onClick={() => answerListeningWord(option.id)}>
+                    <LuxuryChoice
+                      key={option.id}
+                      disabled={!wordReady}
+                      onClick={() => answerListeningWord(option.id)}
+                    >
                       {option.label}
-                    </button>
+                    </LuxuryChoice>
                   ))}
                 </div>
                 <button type="button" className="btn-quiet mt-3 w-full py-2.5 text-sm" disabled={!wordReady} onClick={() => answerListeningWord('')}>نمی‌دانم — بعدی</button>
@@ -591,7 +599,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
                   <div className="mt-4 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
                     <span>متن {faNum(slot + 1)} از {faNum(texts.length)}</span>
                   </div>
-                  <div className="mastery-progress mt-2"><span style={{ width: `${(slot / texts.length) * 100}%` }} /></div>
+                  <LuxuryProgress className="mt-2" value={slot} max={texts.length} label="پیشرفت متن‌های آزمون" />
                 </>
               )}
               {phase === 'reading' ? (
