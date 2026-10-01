@@ -487,14 +487,14 @@ export default function App() {
         </div>
       )}
       {showUpdateBanner && deployedCommit && (
-        <div className="app-update-banner" role="status">
+        <div className="app-update-banner" role="status" aria-label="به‌روزرسانی برنامه">
           <div className="min-w-0 flex-1">
             <b>نسخهٔ فعال برنامه تغییر کرده است.</b>
             <span> برای هماهنگ‌شدن با نسخهٔ جدید، صفحه را تازه کن.</span>
           </div>
           <div className="app-update-actions">
-            <button type="button" className="btn-quiet px-3 text-xs" onClick={() => setDismissedCommit(deployedCommit)}>بعداً</button>
-            <button type="button" className="btn-ink px-3 text-xs" onClick={() => { void refreshToDeployedBuild() }}>تازه‌سازی</button>
+            <button type="button" className="btn-quiet px-3 text-xs" aria-label="بعداً این نسخه را تازه کن" onClick={() => setDismissedCommit(deployedCommit)}>بعداً</button>
+            <button type="button" className="btn-ink px-3 text-xs" aria-label="تازه‌سازی و بارگذاری نسخهٔ جدید" onClick={() => { void refreshToDeployedBuild() }}>تازه‌سازی</button>
           </div>
         </div>
       )}

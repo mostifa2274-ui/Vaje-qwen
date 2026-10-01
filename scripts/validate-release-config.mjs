@@ -47,6 +47,10 @@ const indexHtml = readFileSync(join(root, 'index.html'), 'utf8')
 assert(indexHtml.includes('name="apple-mobile-web-app-capable" content="yes"'), 'iOS installed-app metadata must remain enabled')
 assert(indexHtml.includes('background: #b0c6b3') && indexHtml.includes('class="boot-screen"'), 'index.html must paint the boot screen before the app stylesheet loads')
 assert(!indexHtml.includes('تسلط بر ۸۹۹ واژه'), 'HTML metadata must not overclaim externally validated mastery')
+const appShell = readFileSync(join(root, 'src/App.tsx'), 'utf8')
+assert(appShell.includes('aria-label="به‌روزرسانی برنامه"'), 'update banner must have an accessible name')
+assert(appShell.includes('aria-label="تازه‌سازی و بارگذاری نسخهٔ جدید"'), 'update action must say it loads the new build')
+assert(appShell.includes('aria-label="بعداً این نسخه را تازه کن"'), 'defer action must stay an update choice, not a generic later')
 
 const headers = readFileSync(join(root, 'public/_headers'), 'utf8')
 for (const required of [
