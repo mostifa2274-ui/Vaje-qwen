@@ -1543,6 +1543,12 @@ input[type="range"]:focus-visible {
 .app-main:focus {
   outline: none;
 }
+.app-main.has-top-banner {
+  padding-top: 4.5rem;
+}
+.app-main.has-bottom-banner {
+  padding-bottom: 5.5rem;
+}
 
 
 /* ---------- Teach-card lexical cue ---------- */

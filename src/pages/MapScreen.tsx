@@ -139,7 +139,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
     <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       <header>
         <h1 className="text-3xl font-extrabold">قصه</h1>
-        <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ از اولین برخورد تا تسلط پایدار</p>
+        <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ قصه، مرور فاصله‌دار و آزمون مرحله‌ای</p>
       </header>
 
       <nav className="home-section-tabs mt-4 grid grid-cols-3 gap-1" role="tablist" aria-label="بخش‌های اصلی قصه">
@@ -210,7 +210,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             </div>
           )}
         </div>
-        {action.kind !== 'complete' && <button type="button" className={action.kind === 'rest' ? 'btn-paper shrink-0 px-4 py-3' : 'btn-crimson shrink-0 px-4 py-3'} onClick={runNextAction}>{actionLabel}</button>}
+        {action.kind !== 'complete' && <button type="button" className={action.kind === 'rest' ? 'btn-paper shrink-0 px-4 py-3' : 'btn-crimson shrink-0 px-4 py-3'} aria-label={`${actionLabel}: ${action.title}`} onClick={runNextAction}>{actionLabel}</button>}
         {action.kind === 'complete' && <BadgeCheckIcon className="h-8 w-8 shrink-0" role="img" aria-hidden={false} aria-label="مسیر کامل شده" />}
       </section>
 
