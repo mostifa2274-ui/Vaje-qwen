@@ -546,12 +546,15 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             </div>
             <BadgeCheckIcon className={`h-7 w-7 shrink-0 ${certification.ready ? '' : 'opacity-45'}`} aria-hidden="true" />
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            <div className="metric-card"><b>{percent(certification.masteredCoverage)}</b><span>مسلط</span></div>
-            <div className="metric-card"><b>{percent(certification.durableCoverage)}</b><span>قوی + مسلط</span></div>
-            <div className="metric-card"><b>{percent(certification.productiveCoverage)}</b><span>تولید فعال</span></div>
-            <div className="metric-card"><b>{percent(certification.fullSkillCoverage)}</b><span>چهارمهارتی</span></div>
-          </div>
+          <LuxuryMetricGrid
+            className="mt-4 luxury-metric-grid-4"
+            items={[
+              { value: percent(certification.masteredCoverage), label: 'مسلط' },
+              { value: percent(certification.durableCoverage), label: 'قوی + مسلط' },
+              { value: percent(certification.productiveCoverage), label: 'تولید فعال' },
+              { value: percent(certification.fullSkillCoverage), label: 'چهارمهارتی' },
+            ]}
+          />
           {!certification.ready && certification.missing.length > 0 && (
             <div className="mt-4 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>
               قدم بعدی برای نشان دوره: <b>{certification.missing[0]}</b>.
