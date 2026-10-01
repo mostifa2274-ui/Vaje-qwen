@@ -31,10 +31,11 @@ One dark canvas lives on `.app-main` across every route, capped at 60rem; page c
 - Never nest a decorative card inside another card
 
 ## Distilled hierarchy
-- Home has one dominant next action, one compact three-value progress summary and one direct review row. Detailed skill analytics belong in review/results, not on the journey map.
+- Home follows the approved luxury composition: brand lockup, one cinematic chapter hero, six primary destinations, current-story progress, a restrained editorial quote and the persistent mobile bottom navigation. The canonical next-action surface remains compact and functional below the hero so learning-state clarity is never lost.
+- Detailed skill analytics belong in review/results, not in the hero.
 - Long explanations and assessment policy are progressive disclosure, not permanently visible callouts.
 - Book artwork appears on the journey map only once that book is reachable; locked future books remain compact milestones so the current path stays visually dominant.
-- Settings is one continuous separated list, not a stack of independent cards.
+- Settings reads as a premium learner profile followed by one continuous separated settings list, not a stack of unrelated cards.
 - Success, warning and error containers are reserved for real state/feedback. Ordinary guidance remains plain text.
 
 ## Typography
@@ -42,7 +43,7 @@ One dark canvas lives on `.app-main` across every route, capped at 60rem; page c
 - English story/headwords: Georgia/Times-style serif as content, not as UI-label typography
 - Story body target: roughly 65–75 characters per line
 - Minimum mobile body text: 16px for primary reading/input content
-- Avoid eyebrow/kicker labels above headings
+- Small eyebrow/kicker text is allowed only for functional context such as book/chapter/phase metadata; never repeat the same heading decoratively
 
 ## Interaction
 - Touch targets: at least 44×44px
@@ -80,7 +81,7 @@ One dark canvas lives on `.app-main` across every route, capped at 60rem; page c
 
 ## Distilled interface rules
 - One dominant task per screen. Status, policy, and diagnostics stay secondary and use progressive disclosure.
-- The journey home uses one next-action surface, one three-item progress summary, one review row, then the book path. Do not rebuild a dashboard above the books.
+- Home is the exception: it is a visual navigation dashboard based on the approved luxury reference, but it still has one dominant hero CTA and does not duplicate detailed analytics.
 - Book cards and task chrome use one neutral surface. Per-book color does not tint headers or task containers; reviewed artwork carries visual variation.
 - Future/locked books remain visible for orientation as compact milestone rows; their artwork, chapter rows and exam details appear only when the book becomes reachable.
 - Reachable books show named chapter rows with a number and explicit status, including readable locked chapters.
@@ -103,3 +104,27 @@ One dark canvas lives on `.app-main` across every route, capped at 60rem; page c
 - Correct/wrong states use text and structure, not color alone
 - Reduced-motion preference must disable nonessential animation
 - No core action may depend on an emoji or icon without an accessible label
+
+
+## Luxury component architecture
+All new or redesigned UI should use the shared primitives in `src/components/LuxuryUI.tsx` instead of inventing page-specific chrome.
+
+- `LuxuryPageHeader`: route/task header with accessible back control, contextual eyebrow, title, subtitle and optional trailing action.
+- `LuxuryPanel`: primary raised surface with the standard midnight gradient, gold-neutral border and elevation.
+- `LuxurySectionHeading`: title/subtitle/badge hierarchy inside a panel.
+- `LuxuryProgress`: canonical gold progress rail with progressbar semantics.
+- `LuxuryAudioOrb`: the large circular listening control used by listening tests and audio-only tasks.
+- `LuxuryChoice`: answer/selection row with selected/correct/wrong states that remain readable without color.
+- `LuxuryMetricGrid`: compact evidence/result/profile metrics; use only when the values are genuinely useful.
+- `LuxurySheetFrame`: bottom-sheet/dialog surface used for gloss and future modal details.
+- `LuxuryDivider`: restrained editorial separator used in reading/reference contexts.
+
+The shared primitives are already used by Home/Journey, Reader, Preparation, Diagnostic, Smart Review, generic Exams, Book Tests, Flashcards, Glossary, Offline Audio, Settings/Profile and shared listening/gloss components. If a screen needs a new visual treatment, extend these primitives or add a clearly reusable primitive before adding local one-off CSS.
+
+### Component composition rules
+- Do not put a `LuxuryPanel` inside another raised `LuxuryPanel`; nested modules should use separators or a low-contrast inline module.
+- `LuxuryAudioOrb` is reserved for the primary audio action. Secondary replay buttons stay compact.
+- `LuxuryChoice` is for learner choices, not generic navigation.
+- `LuxuryMetricGrid` is not decoration: every metric must affect learner understanding or decision-making.
+- Reviewed chapter art is atmosphere/content, never UI. Buttons, labels and progress remain real HTML.
+- All luxury components must retain keyboard focus, RTL correctness, forced-colors support and reduced-motion behavior.
