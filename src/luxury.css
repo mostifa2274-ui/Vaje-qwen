@@ -3015,3 +3015,12 @@ input[type="range"] {
   color: #b7c0c8;
   font-size: .72rem;
 }
+
+.luxury-section-panel {
+  border: 1px solid rgba(212, 175, 55, .35);
+  border-radius: 1.4rem;
+  padding: 1rem;
+  background: rgba(8, 16, 32, .72);
+}
+.luxury-section-panel h2 { color: #f3e2b8; font-size: 1.25rem; }
+.luxury-section-panel p { color: #b7c0c8; font-size: .85rem; margin-top: .35rem; }

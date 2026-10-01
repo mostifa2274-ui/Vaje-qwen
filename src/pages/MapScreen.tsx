@@ -7,6 +7,7 @@ import ChapterIllustration from '../components/ChapterIllustration'
 import {
   MIDPOINT_EXAM_ID,
   FINAL_EXAM_ID,
+  FINAL_EXAM_ID,
   bookExamId,
   canOpenChapter,
   canOpenExam,
@@ -23,7 +24,7 @@ import { dailyProgress } from '../engine/activity'
 import { diagnosticFailed } from '../engine/diagnosticDraft'
 import { LuxuryMetricGrid, LuxuryProgress } from '../components/LuxuryUI'
 
-type HomeSection = 'today' | 'journey' | 'library'
+type HomeSection = 'today' | 'journey' | 'library' | 'exams' | 'listening'
 
 interface Props {
   state: GhesseState
@@ -269,19 +270,19 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           <span className="luxury-feature-copy"><b>داستان‌ها</b><span>مطالعه و یادگیری</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
-        <button type="button" className="luxury-feature-card" onClick={action.kind === 'chapter' ? runNextAction : onOpenGlossary}>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('library')}>
           <FlashcardsIcon className="h-8 w-8" />
-          <span className="luxury-feature-copy"><b>واژه‌های جدید</b><span>یادگیری واژگان</span></span>
+          <span className="luxury-feature-copy"><b>واژه‌های جدید</b><span>فقط واژه‌ها و فلش‌کارت</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
-        <button type="button" className="luxury-feature-card" onClick={() => action.kind === 'exam' ? onOpenExam(action.examId) : setHomeSection('journey')}>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('exams')}>
           <ClipboardCheckIcon className="h-8 w-8" />
-          <span className="luxury-feature-copy"><b>آزمون‌ها</b><span>تست و تمرین</span></span>
+          <span className="luxury-feature-copy"><b>آزمون‌ها</b><span>فقط آزمون‌های مرحله‌ای</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
-        <button type="button" className="luxury-feature-card" onClick={onOpenReview}>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('listening')}>
           <HeadphonesIcon className="h-8 w-8" />
-          <span className="luxury-feature-copy"><b>شنیداری</b><span>گوش دادن و تقویت</span></span>
+          <span className="luxury-feature-copy"><b>شنیداری</b><span>فقط تمرین شنیدن</span></span>
           <span className="luxury-feature-chevron" aria-hidden="true">‹</span>
         </button>
         <button type="button" className="luxury-feature-card" onClick={onOpenReview}>
@@ -382,6 +383,68 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         <span className="review-badge">{health.dueNow ? faNum(health.dueNow) : health.trouble ? faNum(health.trouble) : 'تمرین'}</span>
       </button>
 
+      </section>
+
+      <section className="luxury-section-panel mt-4" hidden={homeSection !== 'exams'} aria-label="آزمون‌ها">
+        <h2>آزمون‌ها</h2>
+        <p>فقط آزمون‌های کتاب، میان‌دوره و پایان. قصه و مرور اینجا نیستند.</p>
+        <ol className="chapter-list mt-3">
+          {BOOKS.map(meta => {
+            const id = bookExamId(meta.book)
+            const exam = examDefinition(id)
+            const open = canOpenExam(state, id)
+            const cleared = examCleared(state, id)
+            return (
+              <li key={id}>
+                <button type="button" className="chapter-row" disabled={!open} onClick={() => onOpenExam(id)}>
+                  <span className="chapter-label">
+                    <span className="font-bold">آزمون کتاب {faNum(meta.book)}</span>
+                    <span className="chapter-status">{cleared ? 'پاس شده' : open ? (exam?.titleFa ?? 'آماده') : 'قفل'}</span>
+                  </span>
+                </button>
+              </li>
+            )
+          })}
+          {[MIDPOINT_EXAM_ID, FINAL_EXAM_ID].map(id => {
+            const exam = examDefinition(id)
+            const open = canOpenExam(state, id)
+            return (
+              <li key={id}>
+                <button type="button" className="chapter-row" disabled={!open} onClick={() => onOpenExam(id)}>
+                  <span className="chapter-label">
+                    <span className="font-bold">{exam?.titleFa ?? id}</span>
+                    <span className="chapter-status">{examCleared(state, id) ? 'پاس شده' : open ? 'آماده' : 'قفل'}</span>
+                  </span>
+                </button>
+              </li>
+            )
+          })}
+        </ol>
+      </section>
+
+      <section className="luxury-section-panel mt-4" hidden={homeSection !== 'listening'} aria-label="شنیداری">
+        <h2>شنیداری</h2>
+        <p>فقط شنیدن فصل‌های باز و بستهٔ صدای آفلاین.</p>
+        <ol className="chapter-list mt-3">
+          {CHAPTERS.filter(chapter => canOpenChapter(state, chapter.id)).map(chapter => (
+            <li key={chapter.id}>
+              <button type="button" className="chapter-row" onClick={() => onOpenChapter(chapter.id)}>
+                <span className="chapter-label">
+                  <span className="font-bold">شنیدن {chapter.titleFa}</span>
+                  <span className="chapter-status">جمله و واژه با صدا</span>
+                </span>
+              </button>
+            </li>
+          ))}
+          <li>
+            <button type="button" className="chapter-row" onClick={onOpenOfflineAudio}>
+              <span className="chapter-label">
+                <span className="font-bold">صدای آفلاین</span>
+                <span className="chapter-status">ذخیره برای شنیدن بدون شبکه</span>
+              </span>
+            </button>
+          </li>
+        </ol>
       </section>
 
       <section
