@@ -1803,3 +1803,59 @@ input[type="range"] {
     margin-inline-start: auto;
   }
 }
+
+
+.luxury-written-card {
+  text-align: center;
+}
+
+.luxury-written-card .answer-input {
+  text-align: center;
+}
+
+.luxury-listening-card {
+  text-align: center;
+}
+
+.luxury-listen-play {
+  display: grid;
+  width: 8.5rem;
+  height: 8.5rem;
+  min-height: 8.5rem !important;
+  margin-inline: auto;
+  place-items: center;
+  border: 2px solid rgba(240,204,121,.76) !important;
+  border-radius: 999px !important;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(240,204,121,.10), rgba(8,18,29,.84) 62%) !important;
+  color: var(--lux-gold-bright) !important;
+  box-shadow:
+    0 0 0 10px rgba(215,168,77,.04),
+    0 0 36px rgba(215,168,77,.20),
+    inset 0 0 30px rgba(215,168,77,.06) !important;
+}
+
+.luxury-listen-play > span {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-size: .75rem;
+}
+
+.luxury-listen-play svg {
+  width: 2.35rem;
+  height: 2.35rem;
+  filter: drop-shadow(0 0 10px rgba(240,204,121,.24));
+}
+
+.luxury-listen-option {
+  border-color: rgba(215,168,77,.20);
+  background:
+    linear-gradient(180deg, rgba(15,29,43,.92), rgba(7,16,26,.94));
+  font-size: 1rem;
+}
+
+.luxury-listen-option:not(:disabled):hover {
+  border-color: rgba(240,204,121,.52);
+  background: rgba(215,168,77,.08);
+}
