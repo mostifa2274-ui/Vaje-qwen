@@ -606,7 +606,7 @@ export default function App() {
       <main
         id="main-content"
         ref={mainRef}
-        className="app-main"
+        className={`app-main${(!persistOk || syncConflict) ? ' has-top-banner' : ''}${showUpdateBanner ? ' has-bottom-banner' : ''}`}
         tabIndex={-1}
         aria-label={viewLabel(view)}
       >
