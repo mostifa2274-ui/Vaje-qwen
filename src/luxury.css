@@ -1,0 +1,683 @@
+/*
+ * Vaje-qwen Luxury Midnight visual system
+ * Visual-only layer: learning gates, grading, persistence and content remain untouched.
+ * Loaded after index.css so existing semantic class names keep working.
+ */
+
+:root {
+  --lux-bg: #040a12;
+  --lux-bg-deep: #02060b;
+  --lux-surface: #0a1520;
+  --lux-surface-2: #0e1b28;
+  --lux-surface-3: #122231;
+  --lux-gold: #d7a84d;
+  --lux-gold-bright: #f0cc79;
+  --lux-gold-deep: #a87322;
+  --lux-ivory: #f5efe6;
+  --lux-muted: #aab3bc;
+  --lux-line: rgba(215, 168, 77, 0.28);
+  --lux-line-strong: rgba(240, 204, 121, 0.48);
+  --lux-success: #8bbd92;
+  --lux-danger: #e48d86;
+
+  /* Map the existing semantic design system onto the new visual language. */
+  --paper: var(--lux-bg);
+  --paper-deep: var(--lux-bg-deep);
+  --cream: #08121d;
+  --cream-soft: var(--lux-surface);
+  --ink: var(--lux-ivory);
+  --ink-soft: var(--lux-muted);
+  --crimson: var(--lux-gold);
+  --crimson-deep: var(--lux-gold-bright);
+  --gold: var(--lux-gold);
+  --sage-line: rgba(215, 168, 77, 0.22);
+  --line: var(--lux-line);
+  --line-soft: rgba(215, 168, 77, 0.18);
+  --line-medium: rgba(215, 168, 77, 0.36);
+  --shadow-soft:
+    0 22px 56px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  --shadow-control: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+html {
+  color-scheme: dark;
+  background: var(--lux-bg-deep);
+}
+
+body {
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(215, 168, 77, 0.11), transparent 34rem),
+    radial-gradient(circle at 8% 32%, rgba(35, 79, 116, 0.16), transparent 26rem),
+    linear-gradient(180deg, #06101a 0%, #030811 56%, #02060b 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .28;
+  background-image:
+    linear-gradient(rgba(240, 204, 121, .018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 204, 121, .014) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 78%);
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+::selection {
+  background: rgba(240, 204, 121, .25);
+  color: #fff8e9;
+}
+
+.app-main {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(215, 168, 77, .055), transparent 24rem),
+    linear-gradient(180deg, rgba(8, 18, 29, .98), rgba(4, 10, 18, .985));
+  border-inline: 1px solid rgba(215, 168, 77, .10);
+  box-shadow: 0 0 80px rgba(0, 0, 0, .30);
+}
+
+.app-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(240, 204, 121, .025) 50%, transparent);
+}
+
+.app-page {
+  color: var(--ink);
+}
+
+.app-page > header:not(.app-task-header) {
+  position: relative;
+  padding-bottom: .9rem;
+}
+
+.app-page > header:not(.app-task-header)::after {
+  content: "";
+  position: absolute;
+  inset-inline: 3.25rem;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lux-line-strong), transparent);
+}
+
+.app-task-header {
+  position: relative;
+  border-bottom-color: var(--lux-line);
+  background:
+    linear-gradient(180deg, rgba(17, 31, 45, .98), rgba(8, 18, 29, .98));
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .16);
+}
+
+.app-task-header::after {
+  content: "";
+  position: absolute;
+  inset-inline: 10%;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lux-gold), transparent);
+  opacity: .7;
+}
+
+/* Surfaces */
+.paper-card,
+.learning-focus-card,
+.exam-result-card,
+.book-section,
+.today-strip,
+.flashcard,
+.search-shell,
+.runtime-error-card,
+.certification-card,
+.library-home,
+.paper-note[role="alert"],
+.paper-note[role="group"] {
+  border-color: var(--lux-line);
+  background:
+    linear-gradient(145deg, rgba(17, 31, 45, .96), rgba(7, 16, 26, .96));
+  box-shadow: var(--shadow-soft);
+}
+
+.paper-card,
+.learning-focus-card,
+.exam-result-card,
+.book-section,
+.flashcard,
+.runtime-error-card,
+.certification-card,
+.library-home {
+  border-radius: 20px;
+}
+
+.learning-focus-card,
+.exam-result-card,
+.flashcard {
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, .30),
+    inset 0 1px 0 rgba(255, 255, 255, .025);
+}
+
+.next-action-card {
+  border-color: rgba(240, 204, 121, .34);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(240, 204, 121, .09), transparent 15rem),
+    linear-gradient(145deg, rgba(18, 34, 49, .98), rgba(7, 16, 26, .98));
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, .32),
+    inset 0 1px 0 rgba(255, 255, 255, .03);
+}
+
+.next-action-card::before {
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--lux-gold-bright), transparent);
+}
+
+.lesson-cover-card {
+  border-color: rgba(240, 204, 121, .32);
+  border-radius: 20px;
+  background: #07111b;
+  box-shadow: 0 26px 68px rgba(0, 0, 0, .32);
+}
+
+.lesson-chapter-art,
+.lesson-chapter-image {
+  background: #050c14;
+}
+
+.lesson-cover-copy {
+  border-color: var(--lux-line);
+  background:
+    linear-gradient(180deg, rgba(15, 28, 41, .97), rgba(8, 17, 27, .98));
+}
+
+.book-banner {
+  overflow: hidden;
+  border: 1px solid rgba(240, 204, 121, .26);
+  border-radius: 16px;
+  background: #050c14;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .26);
+}
+
+.book-banner > img {
+  filter: saturate(.92) contrast(1.04) brightness(.92);
+}
+
+.future-book-row {
+  border-color: var(--lux-line);
+}
+
+.future-book-lock,
+.exam-gate-icon,
+.review-hero-icon,
+.library-home-icon {
+  border: 1px solid rgba(215, 168, 77, .18);
+  background: rgba(240, 204, 121, .06);
+  color: var(--lux-gold-bright);
+}
+
+.review-hero {
+  border-color: var(--lux-line);
+}
+
+.review-hero.due {
+  border-color: rgba(240, 204, 121, .40);
+}
+
+.review-badge,
+.mastery-chip,
+.lexical-role-chip {
+  border: 1px solid rgba(215, 168, 77, .20);
+  background: rgba(215, 168, 77, .08);
+  color: var(--lux-gold-bright);
+}
+
+/* Controls */
+.btn-ink,
+.btn-crimson,
+.btn-paper,
+.btn-quiet,
+.settings-select,
+.answer-input,
+.question-jump-button,
+.test-option {
+  border-radius: 14px;
+}
+
+.btn-crimson,
+.btn-ink {
+  border: 1px solid rgba(255, 225, 150, .72);
+  background:
+    linear-gradient(180deg, #f0ca73 0%, #d5a345 52%, #ba8127 100%);
+  color: #17110a;
+  box-shadow:
+    0 9px 28px rgba(189, 132, 39, .20),
+    inset 0 1px 0 rgba(255, 248, 222, .52);
+  text-shadow: none;
+}
+
+.btn-crimson:hover,
+.btn-ink:hover {
+  filter: brightness(1.055);
+}
+
+.btn-crimson:active,
+.btn-ink:active {
+  transform: translateY(1px) scale(.992);
+  box-shadow:
+    0 5px 18px rgba(189, 132, 39, .15),
+    inset 0 1px 0 rgba(255, 248, 222, .42);
+}
+
+.btn-paper {
+  border-color: rgba(215, 168, 77, .26);
+  background:
+    linear-gradient(180deg, rgba(21, 37, 52, .96), rgba(10, 21, 32, .96));
+  color: var(--ink);
+}
+
+.btn-paper:hover,
+.btn-quiet:hover,
+.btn-quiet:focus-visible {
+  border-color: rgba(240, 204, 121, .38);
+  background: rgba(215, 168, 77, .08);
+  color: var(--lux-gold-bright);
+}
+
+.btn-quiet {
+  color: var(--lux-muted);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid rgba(240, 204, 121, .82);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  filter: saturate(.5);
+}
+
+.answer-input,
+.settings-select,
+.search-shell {
+  border-color: rgba(215, 168, 77, .30);
+  background: rgba(4, 11, 18, .72);
+  color: var(--ink);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .02);
+}
+
+.answer-input::placeholder,
+input::placeholder {
+  color: #7f8b95;
+}
+
+.answer-input:focus,
+.settings-select:focus,
+.search-shell:focus-within {
+  border-color: var(--lux-gold-bright);
+  box-shadow: 0 0 0 3px rgba(215, 168, 77, .14);
+  outline: none;
+}
+
+input[type="range"] {
+  accent-color: var(--lux-gold);
+}
+
+/* Progress and state */
+.mastery-progress,
+.skill-bar {
+  border: 1px solid rgba(215, 168, 77, .16);
+  background: rgba(255, 255, 255, .055);
+}
+
+.mastery-progress > span,
+.skill-bar > span,
+.today-goal > span {
+  background: linear-gradient(90deg, var(--lux-gold-deep), var(--lux-gold-bright));
+  box-shadow: 0 0 16px rgba(215, 168, 77, .18);
+}
+
+.today-strip.met .today-goal > span {
+  background: linear-gradient(90deg, #6f9e76, #9bcda2);
+}
+
+.today-streak.on,
+.review-mark-right {
+  color: #9dcaa4;
+}
+
+.today-streak.on svg {
+  fill: rgba(215, 168, 77, .65);
+  color: var(--lux-gold-bright);
+}
+
+.prep-stepper,
+.test-steps {
+  border-color: var(--lux-line);
+}
+
+.prep-stepper li.active,
+.test-steps li.current {
+  box-shadow: inset 0 -2px 0 var(--lux-gold-bright);
+  color: var(--lux-gold-bright);
+}
+
+.test-steps li.current {
+  border-bottom-color: var(--lux-gold-bright);
+}
+
+.test-steps li.done > :first-child,
+.test-steps li.done .test-step-jump > :first-child {
+  background: rgba(119, 165, 126, .22);
+  color: #b5ddb9;
+}
+
+.question-jump-button {
+  border-color: rgba(215, 168, 77, .24);
+  background: rgba(7, 16, 25, .84);
+  color: var(--ink);
+}
+
+.question-jump-button.right,
+.answer-correct,
+.feedback-correct,
+.exam-pass {
+  border-color: rgba(128, 186, 138, .40) !important;
+  background: rgba(55, 105, 65, .24) !important;
+  color: #d8f0dc !important;
+}
+
+.question-jump-button.wrong,
+.answer-wrong,
+.feedback-wrong,
+.exam-fail {
+  border-color: rgba(218, 119, 110, .42) !important;
+  background: rgba(111, 49, 45, .28) !important;
+  color: #f4d7d4 !important;
+}
+
+.review-mark-wrong,
+.glossary-status.needs-work {
+  color: #ef9d94;
+}
+
+/* Story reading */
+.story-en,
+.font-en,
+.flashcard-word,
+.test-passage-lines .font-en {
+  color: #fff4dc;
+}
+
+.story-en {
+  text-wrap: pretty;
+}
+
+.story-fa {
+  color: #d5d8da;
+}
+
+.story-line.is-playing {
+  background: rgba(215, 168, 77, .10);
+  box-shadow: inset 3px 0 0 rgba(240, 204, 121, .55);
+}
+
+.story-action {
+  border-color: rgba(215, 168, 77, .12);
+  color: #9ba8b2;
+}
+
+.story-action[aria-pressed="true"],
+.story-action:hover {
+  border-color: rgba(215, 168, 77, .30);
+  background: rgba(215, 168, 77, .09);
+  color: var(--lux-gold-bright);
+}
+
+.question-context,
+.learning-example,
+.feedback-panel,
+.exam-summary-panel,
+.remediation-panel,
+.prep-resume-row,
+.glossary-list,
+.settings-list,
+.settings-section,
+.method-details,
+.home-summary,
+.compact-summary,
+.leitner-list {
+  border-color: var(--lux-line);
+}
+
+/* Home */
+.home-section-tabs {
+  border-color: var(--lux-line);
+  background: rgba(3, 9, 15, .64);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .02);
+}
+
+.home-section-tab {
+  color: #9aa5af;
+}
+
+.home-section-tab.active {
+  border: 1px solid rgba(240, 204, 121, .46);
+  background:
+    linear-gradient(180deg, rgba(215, 168, 77, .19), rgba(215, 168, 77, .08));
+  color: var(--lux-gold-bright);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+.library-home-row + .library-home-row,
+.glossary-row + .glossary-row {
+  border-color: var(--lux-line);
+}
+
+.library-home-row:hover,
+.glossary-row:hover {
+  background: rgba(215, 168, 77, .055);
+}
+
+.chapter-row {
+  color: var(--ink);
+}
+
+.chapter-number {
+  border: 1px solid rgba(215, 168, 77, .16);
+  background: rgba(255, 255, 255, .035);
+}
+
+.chapter-row.is-current .chapter-number,
+.chapter-row.is-ready .chapter-number {
+  border-color: rgba(240, 204, 121, .76);
+  background: linear-gradient(180deg, #efc970, #c89134);
+  color: #17110a;
+  box-shadow: 0 5px 18px rgba(215, 168, 77, .16);
+}
+
+.chapter-row.is-done .chapter-number {
+  border-color: rgba(139, 189, 146, .42);
+  background: rgba(72, 119, 80, .28);
+  color: #dff2e2;
+}
+
+/* Glossary / flashcards / analytics */
+.flashcard {
+  overflow: hidden;
+}
+
+.flashcard-face {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(215, 168, 77, .07), transparent 12rem);
+}
+
+.leitner-kpis .metric-card,
+.leitner-box {
+  border-color: var(--lux-line);
+  background: rgba(255, 255, 255, .025);
+}
+
+.leitner-box.open {
+  border-color: rgba(240, 204, 121, .54);
+  background: rgba(215, 168, 77, .075);
+}
+
+.leitner-box-fill,
+.leitner-forecast-fill {
+  background: linear-gradient(180deg, #a9c9ae, #5f8d68);
+}
+
+.leitner-forecast li.today .leitner-forecast-fill {
+  background: linear-gradient(180deg, var(--lux-gold-bright), var(--lux-gold-deep));
+}
+
+/* Settings */
+.settings-details[open] > summary {
+  border-color: var(--lux-line);
+}
+
+.settings-details > summary::after {
+  border-color: var(--lux-gold-bright);
+}
+
+.settings-danger {
+  border-color: rgba(228, 141, 134, .30);
+}
+
+/* Toasts, banners, recovery */
+.storage-warning,
+.app-update-banner,
+.goal-toast {
+  border-color: rgba(240, 204, 121, .42);
+  background:
+    linear-gradient(145deg, rgba(20, 35, 49, .985), rgba(7, 16, 25, .985));
+  color: var(--ink);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .38);
+}
+
+.goal-toast-flame {
+  background: rgba(215, 168, 77, .09);
+  color: var(--lux-gold-bright);
+}
+
+.runtime-error-shell {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(215, 168, 77, .10), transparent 28rem),
+    var(--lux-bg);
+}
+
+.runtime-error-mark {
+  border-color: rgba(228, 141, 134, .34);
+  background: rgba(111, 49, 45, .22);
+  color: #f0aaa3;
+}
+
+.skip-link {
+  border-color: var(--lux-gold-bright);
+  background: var(--lux-surface-2);
+  color: var(--ink);
+}
+
+/* Decorative restraint: a single luxury hairline at major panel tops. */
+.next-action-card,
+.lesson-cover-card,
+.learning-focus-card,
+.exam-result-card,
+.flashcard {
+  position: relative;
+}
+
+.next-action-card::after,
+.lesson-cover-card::after,
+.learning-focus-card::after,
+.exam-result-card::after,
+.flashcard::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset-inline: 14%;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240, 204, 121, .62), transparent);
+}
+
+/* Compact screens stay calm and readable. */
+@media (max-width: 480px) {
+  .app-main {
+    border-inline: 0;
+    box-shadow: none;
+  }
+
+  .paper-card,
+  .learning-focus-card,
+  .exam-result-card,
+  .book-section,
+  .flashcard,
+  .lesson-cover-card {
+    border-radius: 17px;
+  }
+
+  .next-action-card {
+    border-radius: 17px;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-main {
+    border-inline-color: rgba(240, 204, 121, .14);
+  }
+
+  .app-page {
+    padding-inline: clamp(1rem, 2.4vw, 2rem);
+  }
+}
+
+/* High contrast keeps native system colors authoritative. */
+@media (forced-colors: active) {
+  body,
+  .app-main {
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .next-action-card::after,
+  .lesson-cover-card::after,
+  .learning-focus-card::after,
+  .exam-result-card::after,
+  .flashcard::after,
+  .app-task-header::after,
+  .app-page > header:not(.app-task-header)::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .app-main,
+  .paper-card,
+  .learning-focus-card,
+  .next-action-card,
+  .exam-result-card,
+  .flashcard,
+  .storage-warning,
+  .app-update-banner,
+  .goal-toast {
+    background-image: none;
+    background-color: #09131e;
+  }
+}
