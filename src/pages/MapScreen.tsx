@@ -139,8 +139,8 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
   return (
     <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       <header>
-        <h1 className="text-3xl font-extrabold">قصه</h1>
-        <p className="mt-1 text-sm" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ قصه، مرور فاصله‌دار و آزمون مرحله‌ای</p>
+        <h1 className="text-3xl font-extrabold leading-tight">قصه</h1>
+        <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ قصه، مرور فاصله‌دار و آزمون مرحله‌ای</p>
       </header>
 
       <nav className="home-section-tabs mt-4 grid grid-cols-3 gap-1" role="tablist" aria-label="بخش‌های اصلی قصه">
