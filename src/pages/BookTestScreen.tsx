@@ -430,7 +430,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
 
   if (phase === 'intro') {
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
         {header}
         <section className="learning-focus-card mt-5 p-5 sm:p-6" aria-labelledby="intro-heading">
           <h2 id="intro-heading" className="text-lg font-extrabold">چهار بخش</h2>
@@ -453,7 +453,7 @@ export default function BookTestScreen({ book, state, onChange, onBack, onReview
   if (!isSection(phase)) return null
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+    <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       {header}
 
       <ol className="test-steps mt-6" aria-label="بخش‌های آزمون">
