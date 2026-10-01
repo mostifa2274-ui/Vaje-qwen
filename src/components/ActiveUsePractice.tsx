@@ -32,7 +32,7 @@ export default function ActiveUsePractice({
   const containsTargetSense = sentenceUsesTargetSense(sentence, word.id)
 
   return (
-    <details className="method-details mt-4" data-testid="active-use-practice">
+    <details className="method-details luxury-active-use mt-4" data-testid="active-use-practice">
       <summary>کاربرد فعال در جمله (اختیاری)</summary>
       <div className="pt-3 text-sm leading-7">
         <p style={{ color: 'var(--ink-soft)' }}>
@@ -77,7 +77,7 @@ export default function ActiveUsePractice({
         </button>
 
         {showComparison && (
-          <div className="learning-example mt-4 pt-4">
+          <div className="learning-example luxury-comparison mt-4 pt-4">
             <div className="text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>جملهٔ تو</div>
             <div className="mt-1 font-en leading-7" lang="en" dir="ltr">{sentence.trim()}</div>
             <div className="mt-4 text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>یک نمونهٔ طبیعی</div>
