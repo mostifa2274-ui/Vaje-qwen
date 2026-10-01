@@ -1531,3 +1531,57 @@ input[type="range"] {
   font-size: .9rem;
   letter-spacing: .08em;
 }
+
+
+.luxury-exam {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.luxury-exam > :not(.luxury-task-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+.luxury-exam .luxury-exam-backdrop img {
+  filter: brightness(.30) saturate(.62) contrast(1.08);
+}
+
+.luxury-exam .luxury-exam-backdrop > span {
+  background:
+    linear-gradient(180deg, rgba(3,9,16,.48), rgba(3,9,16,.78) 40%, rgba(3,9,16,.97) 78%),
+    radial-gradient(circle at 50% 24%, transparent, rgba(2,7,13,.64) 70%);
+}
+
+.luxury-exam > header {
+  border-bottom: 1px solid rgba(215,168,77,.18);
+  padding-bottom: .9rem;
+}
+
+.luxury-exam > header h1 {
+  color: var(--lux-gold-bright);
+}
+
+.luxury-exam .exam-question-card,
+.luxury-exam .learning-focus-card {
+  backdrop-filter: blur(12px);
+}
+
+.luxury-exam .exam-question-card > .text-center > .text-2xl,
+.luxury-exam .exam-question-card > .text-center > .font-en {
+  color: #fff0cf;
+  text-shadow: 0 6px 22px rgba(0,0,0,.36);
+}
+
+.luxury-exam .exam-result-card {
+  margin-top: 1.5rem;
+  backdrop-filter: blur(14px);
+}
+
+.luxury-exam .question-context {
+  border: 1px solid rgba(215,168,77,.16);
+  border-radius: 14px;
+  background: rgba(3,10,17,.42);
+  padding: 1rem;
+}
