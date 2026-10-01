@@ -2,7 +2,8 @@ import { useState, type KeyboardEvent } from 'react'
 import type { GhesseState } from '../engine/types'
 import { BOOKS, CHAPTERS, chaptersOfBook } from '../data/chapters'
 import { learningHealth, bookHealth, certificationStatus, consolidationFocus, nextBestAction } from '../engine/analytics'
-import { BadgeCheckIcon, BookOpenTextIcon, CheckIcon, DownloadIcon, FlameIcon, FlashcardsIcon, LockIcon, PlayIcon, RefreshCcwIcon, SettingsIcon } from '../components/Icons'
+import { BadgeCheckIcon, BookOpenTextIcon, ChartIcon, CheckIcon, ClipboardCheckIcon, CrownIcon, DownloadIcon, FlameIcon, FlashcardsIcon, HeadphonesIcon, HomeIcon, LockIcon, MenuIcon, PlayIcon, RefreshCcwIcon, SettingsIcon, UserIcon } from '../components/Icons'
+import ChapterIllustration from '../components/ChapterIllustration'
 import {
   MIDPOINT_EXAM_ID,
   FINAL_EXAM_ID,
@@ -124,6 +125,16 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
     if (action.kind === 'chapter') return onOpenChapter(action.chapterId)
   }
 
+  const heroChapter = action.kind === 'chapter'
+    ? CHAPTERS.find(item => item.id === action.chapterId)
+    : CHAPTERS.find(item => canOpenChapter(state, item.id) && !state.chapters[item.id]?.completed)
+      ?? [...CHAPTERS].reverse().find(item => state.chapters[item.id]?.completed)
+      ?? CHAPTERS[0]
+  const heroTitle = heroChapter?.titleFa ?? actionTitle
+  const heroSubtitle = heroChapter
+    ? `کتاب ${faNum(heroChapter.book)} · فصل ${faNum(heroChapter.n)}`
+    : 'مسیر یادگیری'
+
   const actionLabel = action.kind === 'review'
     ? 'شروع مرور'
     : action.kind === 'rest'
@@ -137,13 +148,23 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
           : 'مسیر کامل شده'
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header>
-        <h1 className="text-3xl font-extrabold leading-tight">قصه</h1>
-        <p className="mt-2 text-sm leading-7" style={{ color: 'var(--ink-soft)' }}>۸۹۹ واژه؛ قصه، مرور فاصله‌دار و آزمون مرحله‌ای</p>
+    <div className="app-page luxury-home page-in mx-auto max-w-3xl px-4 pb-32 pt-4">
+      <header className="luxury-brand-header">
+        <button type="button" className="luxury-round-control" onClick={() => setHomeSection('library')} aria-label="باز کردن کتابخانه">
+          <MenuIcon className="h-6 w-6" />
+        </button>
+        <div className="luxury-brand-lockup">
+          <h1>واژه‌خوان</h1>
+          <div className="luxury-brand-rule" aria-hidden="true"><span /></div>
+          <p className="font-en" lang="en" dir="ltr">Vaje-Qwen</p>
+          <span>داستان، واژه و تمرین در یک مسیر</span>
+        </div>
+        <button type="button" className="luxury-round-control luxury-crown-control" onClick={() => setHomeSection('journey')} aria-label="دیدن مسیر پیشرفت">
+          <CrownIcon className="h-6 w-6" />
+        </button>
       </header>
 
-      <nav className="home-section-tabs mt-4 grid grid-cols-3 gap-1" role="tablist" aria-label="بخش‌های اصلی قصه">
+      <nav className="home-section-tabs luxury-home-nav mt-4 grid grid-cols-3 gap-1" role="tablist" aria-label="بخش‌های اصلی قصه">
         {([
           ['today', 'امروز'],
           ['journey', 'مسیر'],
@@ -179,6 +200,87 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         aria-labelledby="home-tab-today"
         hidden={homeSection !== 'today'}
       >
+      {heroChapter && (
+        <section className="luxury-home-hero mt-4" aria-labelledby="luxury-home-hero-title">
+          <div className="luxury-home-hero-art" aria-hidden="true">
+            <ChapterIllustration chapterId={heroChapter.id} titleFa={heroChapter.titleFa} />
+          </div>
+          <div className="luxury-home-hero-shade" aria-hidden="true" />
+          <div className="luxury-home-hero-copy">
+            <span className="luxury-eyebrow">{heroSubtitle}</span>
+            <h2 id="luxury-home-hero-title">با داستان، انگلیسی یاد بگیر</h2>
+            <p>{action.detail}</p>
+            <div className="luxury-home-hero-actions">
+              {action.kind !== 'complete' ? (
+                <button type="button" className="btn-crimson luxury-hero-primary" onClick={runNextAction}>
+                  <PlayIcon className="h-5 w-5" />
+                  <span>{actionLabel}</span>
+                </button>
+              ) : (
+                <div className="luxury-complete-badge"><BadgeCheckIcon className="h-5 w-5" /> مسیر کامل شده</div>
+              )}
+              <button type="button" className="btn-paper luxury-hero-secondary" onClick={() => onOpenChapter(heroChapter.id)}>
+                {heroTitle}
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="luxury-feature-grid mt-4" aria-label="دسترسی سریع">
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
+          <BookOpenTextIcon className="h-8 w-8" />
+          <b>داستان‌ها</b>
+          <span>کتاب‌ها و فصل‌ها</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={action.kind === 'chapter' ? runNextAction : onOpenGlossary}>
+          <FlashcardsIcon className="h-8 w-8" />
+          <b>واژه‌های جدید</b>
+          <span>یادگیری و بازیابی</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
+          <ClipboardCheckIcon className="h-8 w-8" />
+          <b>آزمون‌ها</b>
+          <span>سنجش مرحله‌ای</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={onOpenReview}>
+          <HeadphonesIcon className="h-8 w-8" />
+          <b>شنیداری</b>
+          <span>مرور و گوش‌دادن</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={() => setHomeSection('journey')}>
+          <ChartIcon className="h-8 w-8" />
+          <b>پیشرفت من</b>
+          <span>{faNum(doneCount)} فصل کامل</span>
+        </button>
+        <button type="button" className="luxury-feature-card" onClick={onOpenSettings}>
+          <UserIcon className="h-8 w-8" />
+          <b>من</b>
+          <span>تنظیمات و پشتیبان</span>
+        </button>
+      </section>
+
+      {heroChapter && (
+        <button type="button" className="luxury-current-story mt-4" onClick={() => onOpenChapter(heroChapter.id)}>
+          <span className="luxury-current-story-thumb" aria-hidden="true">
+            <ChapterIllustration chapterId={heroChapter.id} titleFa={heroChapter.titleFa} />
+          </span>
+          <span className="luxury-current-story-copy">
+            <small>داستان فعلی</small>
+            <b>{heroTitle}</b>
+            <span>{heroSubtitle}</span>
+          </span>
+          <span className="luxury-current-story-progress">
+            <span>{faNum(doneCount)} از {faNum(CHAPTERS.length)}</span>
+            <span className="mastery-progress"><span style={{ width: `${(doneCount / Math.max(1, CHAPTERS.length)) * 100}%` }} /></span>
+          </span>
+        </button>
+      )}
+
+      <blockquote className="luxury-quote mt-4">
+        <b>هر واژه، دری به دنیای بزرگ‌تر است.</b>
+        <span className="font-en" lang="en" dir="ltr">Every word is a door to a brighter world.</span>
+      </blockquote>
       <section className="next-action-card mt-4">
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-extrabold">قدم بعدی: {actionTitle}</h2>
@@ -256,6 +358,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
 
       <section
         id="home-panel-journey"
+        className="luxury-journey-panel"
         role="tabpanel"
         aria-labelledby="home-tab-journey"
         hidden={homeSection !== 'journey'}
@@ -415,6 +518,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
 
       <section
         id="home-panel-library"
+        className="luxury-library-panel"
         role="tabpanel"
         aria-labelledby="home-tab-library"
         hidden={homeSection !== 'library'}
