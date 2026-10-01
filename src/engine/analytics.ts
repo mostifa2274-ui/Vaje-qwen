@@ -193,7 +193,24 @@ export function nextBestAction(state: GhesseState, now = Date.now()): NextAction
   const health = learningHealth(state, now)
   const remediation = examRemediationWordIds(state)
   if (remediation.length > 0) {
-    return { kind: 'review', title: 'ترمیم قبل از آزمون', detail: `${faNum(remediation.length)} واژه از آزمون قبلی هنوز باید بدون کمک بازیابی شود؛ پس از آن آزمون دوباره باز می‌شود.` }
+    const blockedExams = Object.keys(state.exams).filter(id => examRemediationPending(state, id))
+    const hasPassedGate = blockedExams.some(id => examPassed(state, id))
+    const hasFailedGate = blockedExams.some(id => !examPassed(state, id))
+    const title = hasPassedGate && !hasFailedGate
+      ? 'ترمیم برای ادامهٔ مسیر'
+      : hasFailedGate && !hasPassedGate
+        ? 'ترمیم قبل از آزمون دوباره'
+        : 'ترمیم واژه‌های آزمون'
+    const nextStep = hasPassedGate && !hasFailedGate
+      ? 'پس از ترمیم، ادامهٔ مسیر باز می‌شود.'
+      : hasFailedGate && !hasPassedGate
+        ? 'پس از ترمیم، آزمون دوباره باز می‌شود.'
+        : 'پس از ترمیم، آزمون‌های ناموفق دوباره باز می‌شوند و مسیر آزمون‌های گذرانده‌شده ادامه می‌یابد.'
+    return {
+      kind: 'review',
+      title,
+      detail: `${faNum(remediation.length)} واژه از آزمون قبلی هنوز باید بدون کمک بازیابی شود؛ ${nextStep}`,
+    }
   }
   const focus = consolidationFocus(state, now)
   const consolidation = focus?.blocking ? focus.status : undefined
