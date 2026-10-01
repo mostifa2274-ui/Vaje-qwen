@@ -26,10 +26,10 @@ To avoid merely relabeling the current deck:
 3. Select the release vocabulary using documented beginner-language criteria: frequency, concrete communicative usefulness, function-word coverage, basic semantic domains, and A1-appropriate morphology.
 4. Freeze the selected English headword set before comparing it with the legacy 899-word development deck.
 5. Independently author or independently verify every redistributable runtime field used by the new deck: Persian gloss, IPA, topic, example, Persian example translation, POS, and CEFR assignment.
-6. Record the final vocabulary JSON SHA-256 plus source/license evidence in `provenance/release-rights.json`.
-7. Only then change the manifest to `status: "cleared"` with retained evidence.
+6. Keep source and license evidence with the replacement deck. The product no longer has a content-rights status file.
+7. Adopt the replacement only as a new deck with its own source and license notes. There is no content-rights status to flip.
 
-When documenting a reconstructed deck, record the SHA-256 of the exact active vocabulary bytes. A stale evidence file cannot substantiate a later revision.
+When documenting a reconstructed deck, record the SHA-256 of the exact active vocabulary bytes.
 
 ## Candidate generation
 

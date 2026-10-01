@@ -24,7 +24,6 @@ function hasSignoff(value, vocabularySha) {
 }
 
 const status = readJson('quality/best-in-class-status.json')
-const rights = readJson('provenance/release-rights.json')
 const research = readJson('research/status.json')
 const lexical = readJson('quality/lexical-review.json')
 const accessibility = readJson('quality/accessibility-status.json')
@@ -37,7 +36,6 @@ assert(status.schemaVersion === 1 && status.gates && typeof status.gates === 'ob
 assert(status.target === 'best-in-class-learning-product', 'quality program target changed unexpectedly')
 assert(status.productClaim === undefined, 'unearned best-in-class product claims must not be stored as status')
 const expectedGates = [
-  'contentRights',
   'learnerOutcomesPilot',
   'nativeEditorialReview',
   'accessibilityHumanQA',
@@ -50,7 +48,6 @@ assert(
 )
 
 const expectedEvidence = {
-  contentRights: 'provenance/release-rights.json',
   learnerOutcomesPilot: 'research/status.json',
   nativeEditorialReview: 'quality/lexical-review.json',
   accessibilityHumanQA: 'quality/accessibility-status.json',
@@ -75,15 +72,6 @@ assert(Array.isArray(lexical.reviewedWordIds), 'lexical reviewedWordIds must be 
 assert(new Set(lexical.reviewedWordIds).size === lexical.reviewedWordIds.length, 'lexical reviewedWordIds must be unique')
 const wordIds = new Set(vocabulary.map(word => word.id))
 for (const id of lexical.reviewedWordIds) assert(wordIds.has(id), `lexical review contains unknown word id: ${id}`)
-
-assert(['blocked', 'cleared'].includes(rights.status), 'release-rights status must be blocked or cleared')
-assert(rights.activeVocabulary === 'src/data/vocabulary.json', 'rights record must identify the active vocabulary file')
-assert(rights.activeVocabularySha256 === currentVocabularySha, 'rights record is not tied to the active vocabulary')
-const rightsGate = rights.status === 'cleared' ? 'complete' : 'blocked'
-assert(status.gates.contentRights.status === rightsGate, 'content-rights quality gate must mirror release-rights status')
-if (rightsGate === 'complete') {
-  assert(Array.isArray(rights.sources) && rights.sources.length > 0, 'cleared rights require documented sources/evidence')
-}
 
 const outcomesGate = research.status === 'validated' ? 'complete' : 'pending'
 assert(status.gates.learnerOutcomesPilot.status === outcomesGate, 'learner-outcomes gate must mirror research evidence status')
@@ -172,7 +160,6 @@ assert(
 
 console.log([
   'Quality evidence program valid.',
-  `rights: ${status.gates.contentRights.status}`,
   `learner outcomes: ${status.gates.learnerOutcomesPilot.status}`,
   `human lexical review: ${lexical.reviewedWordIds.length}/${vocabulary.length}`,
   `accessibility human QA: ${status.gates.accessibilityHumanQA.status}`,

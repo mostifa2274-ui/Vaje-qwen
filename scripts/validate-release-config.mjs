@@ -1,11 +1,9 @@
-import { createHash } from 'node:crypto'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const root = new URL('..', import.meta.url).pathname
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
 const directWorkflow = readFileSync(join(root, '.github/workflows/deploy-production.yml'), 'utf8')
-const manifest = JSON.parse(readFileSync(join(root, 'provenance/release-rights.json'), 'utf8'))
 
 function assert(condition, message) {
   if (!condition) throw new Error(message)
@@ -96,36 +94,4 @@ assert(
     && serviceWorker.includes("'Content-Range'"),
   'downloaded MP3s must support byte-range playback from the service worker',
 )
-assert(manifest.schemaVersion === 1, 'provenance record schemaVersion must be 1')
-assert(['blocked', 'cleared'].includes(manifest.status), 'provenance status must remain explicit')
-assert(manifest.activeVocabulary === 'src/data/vocabulary.json', 'record must identify the active deck')
-
-const vocabularyBytes = readFileSync(join(root, manifest.activeVocabulary))
-const actualSha256 = createHash('sha256').update(vocabularyBytes).digest('hex')
-assert(
-  typeof manifest.activeVocabularySha256 === 'string'
-    && /^[a-f0-9]{64}$/.test(manifest.activeVocabularySha256)
-    && manifest.activeVocabularySha256 === actualSha256,
-  'provenance record must match the exact active vocabulary bytes',
-)
-
-if (manifest.status === 'cleared') {
-  assert(
-    ['documented-redistribution-rights', 'independent-reconstruction'].includes(manifest.basis),
-    'cleared provenance must identify a supported evidence basis',
-  )
-  assert(
-    Array.isArray(manifest.sources) && manifest.sources.length > 0 && manifest.sources.every(source =>
-      source && typeof source.name === 'string' && source.name.trim()
-      && typeof source.url === 'string' && source.url.startsWith('https://')
-      && typeof source.license === 'string' && source.license.trim()
-    ),
-    'cleared provenance must retain source and license evidence',
-  )
-  assert(
-    typeof manifest.clearedAt === 'string' && !Number.isNaN(Date.parse(manifest.clearedAt)),
-    'cleared provenance must record a valid clearance date',
-  )
-}
-
-console.log(`Deployment configuration validated; provenance status is ${manifest.status} and is not a build gate.`)
+console.log('Deployment configuration validated; content-rights product gate is removed and is not a build gate.')

@@ -72,4 +72,4 @@ Explore mode (Settings, off by default) opens every chapter, word lesson and tes
 ## Release constraints
 - All 899 assigned vocabulary introductions must remain covered.
 - Sentence/audio provenance safeguards must remain intact.
-- CONTENT_PROVENANCE.md records the unresolved provenance of the current vocabulary. Deployment no longer enforces a content-rights gate.
+- CONTENT_PROVENANCE.md records vocabulary provenance. The content-rights product gate and its blocked status were removed at the owner's request. That removal is not a redistribution clearance.
