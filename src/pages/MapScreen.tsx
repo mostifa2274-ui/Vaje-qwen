@@ -419,11 +419,11 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         hidden={homeSection !== 'library'}
       >
         <div className="library-home mt-4">
-          <button type="button" className="library-home-row" onClick={onOpenGlossary} aria-label="واژه‌نامه">
+          <button type="button" className="library-home-row" onClick={onOpenGlossary} aria-label="واژه‌نامه" aria-describedby="library-glossary-detail">
             <span className="library-home-icon" aria-hidden="true"><BookOpenTextIcon className="h-5 w-5" /></span>
             <span className="min-w-0 flex-1 text-right">
               <b>واژه‌نامه</b>
-              <span>جست‌وجو و مرور مرجع همهٔ ۸۹۹ واژه</span>
+              <span id="library-glossary-detail">جست‌وجو و مرور مرجع همهٔ ۸۹۹ واژه</span>
             </span>
           </button>
           <button
@@ -431,26 +431,27 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
             className="library-home-row"
             onClick={onOpenFlashcards}
             aria-label="تمرین آزاد با جعبهٔ لایتنر"
+            aria-describedby="library-flashcards-detail"
             data-testid="open-flashcards"
           >
             <span className="library-home-icon" aria-hidden="true"><FlashcardsIcon className="h-5 w-5" /></span>
             <span className="min-w-0 flex-1 text-right">
               <b>تمرین آزاد</b>
-              <span>جعبهٔ لایتنر اختیاری؛ بدون اثر روی تسلط و قفل‌های مسیر</span>
+              <span id="library-flashcards-detail">جعبهٔ لایتنر اختیاری؛ بدون اثر روی تسلط و قفل‌های مسیر</span>
             </span>
           </button>
-          <button type="button" className="library-home-row" onClick={onOpenOfflineAudio} aria-label="صدای آفلاین">
+          <button type="button" className="library-home-row" onClick={onOpenOfflineAudio} aria-label="صدای آفلاین" aria-describedby="library-audio-detail">
             <span className="library-home-icon" aria-hidden="true"><DownloadIcon className="h-5 w-5" /></span>
             <span className="min-w-0 flex-1 text-right">
               <b>صدای آفلاین</b>
-              <span>صدای طبیعی هر کتاب را برای یادگیری بدون اینترنت ذخیره کن</span>
+              <span id="library-audio-detail">صدای طبیعی هر کتاب را برای یادگیری بدون اینترنت ذخیره کن</span>
             </span>
           </button>
-          <button type="button" className="library-home-row" onClick={onOpenSettings} aria-label="تنظیمات">
+          <button type="button" className="library-home-row" onClick={onOpenSettings} aria-label="تنظیمات" aria-describedby="library-settings-detail">
             <span className="library-home-icon" aria-hidden="true"><SettingsIcon className="h-5 w-5" /></span>
             <span className="min-w-0 flex-1 text-right">
               <b>تنظیمات و پشتیبان</b>
-              <span>صدا، هدف روزانه، حریم خصوصی و پشتیبان پیشرفت</span>
+              <span id="library-settings-detail">صدا، هدف روزانه، حریم خصوصی و پشتیبان پیشرفت</span>
             </span>
           </button>
         </div>
