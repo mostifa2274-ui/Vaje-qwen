@@ -384,6 +384,19 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         aria-labelledby="home-tab-journey"
         hidden={homeSection !== 'journey'}
       >
+      {heroChapter && (
+        <section className="luxury-journey-hero mt-4" aria-labelledby="journey-map-title">
+          <div className="luxury-journey-hero-art" aria-hidden="true">
+            <ChapterIllustration chapterId={heroChapter.id} titleFa={heroChapter.titleFa} />
+          </div>
+          <div className="luxury-journey-hero-shade" aria-hidden="true" />
+          <div className="luxury-journey-hero-copy">
+            <span>مسیر تو در Vaje-Qwen</span>
+            <h2 id="journey-map-title">نقشهٔ داستان</h2>
+            <p>{faNum(doneCount)} فصل از {faNum(CHAPTERS.length)} فصل کامل شده</p>
+          </div>
+        </section>
+      )}
       <section className="home-summary mt-4" aria-label="خلاصهٔ پیشرفت">
         <div><b>{faNum(doneCount)}</b><span>فصل تمام‌شده</span></div>
         <div><b>{faNum(health.mastered)}</b><span>واژهٔ مسلط</span></div>
