@@ -16,4 +16,6 @@ Current gate sources:
 - signature visual art direction → `quality/art-review-status.json`
 - learning-policy calibration → `quality/calibration-status.json`
 
+How to run the missing human work: `quality/HUMAN_RUNS.md`.
+
 Never populate reviewer names, study results, device QA results, sign-offs unless those events actually occurred.
