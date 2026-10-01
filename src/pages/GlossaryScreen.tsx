@@ -4,7 +4,8 @@ import { VOCAB } from '../data/chapters'
 import { wordMastery, type MasteryLevel } from '../engine/mastery'
 import { acceptedAnswers, troubleWordIds } from '../engine/review'
 import GlossSheet from '../components/GlossSheet'
-import { BackIcon, SearchIcon } from '../components/Icons'
+import { SearchIcon } from '../components/Icons'
+import { LuxuryPageHeader } from '../components/LuxuryUI'
 import { acceptedPersianAnswers, compactPersianAnswer } from '../engine/persianTranslation'
 import { faNum } from '../engine/format'
 
@@ -91,12 +92,12 @@ export default function GlossaryScreen({ state, onChange, onBack }: Props) {
 
   return (
     <div className="app-page luxury-glossary page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-        <div className="flex-1">
-          <h1 className="text-2xl font-extrabold">واژه‌نامه</h1>
-        </div>
-      </header>
+      <LuxuryPageHeader
+        title="واژه‌نامه"
+        subtitle="مرجع شخصی واژه‌ها، معنی‌ها و شواهد یادگیری"
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+      />
 
       <label className="search-shell mt-4">
         <SearchIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
