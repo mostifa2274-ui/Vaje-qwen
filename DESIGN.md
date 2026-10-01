@@ -1,28 +1,31 @@
 # DESIGN.md — Ghesse
 
 ## Visual direction
-A calm Persian-first reading product with a warm sketchbook character. The identity may feel human and literary, but the interface itself is restrained and task-oriented.
+A Persian-first literary learning product with a **Luxury Midnight** visual system: deep ink/navy surfaces, warm ivory typography, cinematic reviewed chapter art and restrained metallic-gold emphasis.
 
-The app is not neobrutalist. Avoid hard zero-blur offset shadows, repeated heavy black outlines, and turning every group into a card.
+The reference mood is elegant Iranian night-time storytelling, not generic “Middle Eastern luxury.” Gold is a functional accent, not decoration on every edge. The interface remains calm, modern and task-oriented; the learning engine and content hierarchy stay more important than ornament.
+
+The app is not neobrutalist and not faux-3D. Avoid hard zero-blur offset shadows, repeated heavy outlines, excessive glow, ornamental clutter, or turning every group into a card.
 
 ## Modes
 - Preparation, exams, review, settings: **Operate**. Familiar controls, stable hierarchy, low visual friction.
 - Story chapters: **Read**. Typography and prose rhythm take priority over component chrome.
 
 ## Color
-- Cream reading surface: `--cream`
-- Sage shell/background: `--paper`
-- One cream canvas lives on `.app-main` across every route, capped at 60rem; page content keeps its existing reading measure.
-- Soft ink: `--ink`
-- Crimson: primary accent for current state and primary emphasis only
-- Gold: limited supporting state color
+- Deep midnight shell/background: `--paper` / `--lux-bg`
+- Raised ink surface: `--cream-soft` / `--lux-surface`
+- Warm ivory foreground: `--ink` / `--lux-ivory`
+- Muted cool-gray secondary text: `--ink-soft`
+- Gold: primary action, current state, focus and progress emphasis
+- Green/red are reserved for semantic success/error feedback and must never be replaced by gold
 
-Inactive UI should stay neutral. Do not use crimson as decoration.
+One dark canvas lives on `.app-main` across every route, capped at 60rem; page content keeps its existing reading measure. Inactive UI stays neutral. Use luminous gold sparingly enough that the primary action remains obvious.
 
 ## Depth and borders
-- Default structural border: 1px using `--line-soft` or `--line-medium`
-- Depth uses `--shadow-soft` / `--shadow-control`
-- Never add hard offset shadows unless the entire visual world is intentionally redesigned around them
+- Default structural border: 1px using translucent gold-neutral `--line-soft` or `--line-medium`
+- Depth uses soft dark elevation through `--shadow-soft` / `--shadow-control`; no plastic bevels
+- A major panel may use one subtle gold hairline highlight, never a full glowing frame
+- Never add hard offset shadows
 - Use proximity and spacing before adding another container
 - One task may have one primary bounded surface; secondary information should normally use spacing or separators, not another card
 - Never nest a decorative card inside another card
