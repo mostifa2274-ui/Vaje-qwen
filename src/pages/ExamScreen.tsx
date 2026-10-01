@@ -450,7 +450,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
 
   if (onBreak) {
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-8">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-8">
         <div className="learning-focus-card p-6 text-center">
           <CirclePauseIcon className="mx-auto h-10 w-10" aria-hidden="true" />
           <h1 className="mt-3 text-2xl font-extrabold">وقفهٔ کوتاه</h1>
@@ -486,7 +486,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
     const ready = textAnswered(chosen) && (!isListening || heard[currentText.slot])
     const last = textIndex + 1 >= texts.length
     return (
-      <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+      <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
         {header}
 
         <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
@@ -579,7 +579,7 @@ export default function ExamScreen({ examId, state, onChange, onBack, onReview }
   const typedMode = question ? isTypedMode(question.mode) : false
 
   return (
-    <div className="app-page page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
+    <div className="app-page luxury-exam page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
       {header}
 
       <div className="mt-5 flex items-center justify-between text-xs font-bold" style={{ color: 'var(--ink-soft)' }}>
