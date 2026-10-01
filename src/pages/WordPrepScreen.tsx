@@ -461,8 +461,8 @@ export default function WordPrepScreen({ chapterId, state, onChange, onBack, onR
   const step = phase === 'teach' ? 1 : phase === 'written' ? 2 : 3
 
   return (
-    <div className="app-page page-in">
-      <header className="sticky top-0 z-40 app-task-header">
+    <div className="app-page luxury-prep page-in">
+      <header className="sticky top-0 z-40 app-task-header luxury-prep-header">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
           <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
           <div className="min-w-0 flex-1">
