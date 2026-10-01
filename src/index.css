@@ -560,8 +560,19 @@ button:disabled {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: rgba(255,255,255,.5);
+  background: color-mix(in srgb, var(--cream) 70%, white);
   color: var(--crimson-deep);
+}
+.review-hero.due {
+  border-block-color: color-mix(in srgb, var(--crimson) 35%, var(--line-soft));
+}
+.review-hero.due .review-hero-icon {
+  background: color-mix(in srgb, var(--crimson) 16%, var(--cream));
+  color: var(--crimson-deep);
+}
+.review-hero.is-echo .review-hero-icon {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  color: var(--ink-soft);
 }
 .review-badge {
   display: inline-flex;

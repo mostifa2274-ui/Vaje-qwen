@@ -92,6 +92,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
   const focus = consolidationFocus(state, now)
   const daily = dailyProgress(state, now)
   const [homeSection, setHomeSection] = useState<HomeSection>(() => state.exploreAll ? 'journey' : 'today')
+  const reviewIsPrimary = action.kind === 'review' || action.kind === 'certification'
   const answersLeft = Math.max(0, daily.goal - daily.today)
   const goalLabel = daily.met
     ? 'هدف امروز کامل شد'
@@ -238,7 +239,7 @@ export default function MapScreen({ state, now, onChange, onOpenChapter, onOpenD
         </div>
       </section>
 
-      <button type="button" className={`review-hero mt-4 w-full ${health.dueNow ? 'due' : ''}`} aria-label="مرور هوشمند" aria-describedby="review-hero-detail" onClick={onOpenReview}>
+      <button type="button" className={`review-hero mt-4 w-full ${reviewIsPrimary ? 'is-echo' : health.dueNow ? 'due' : ''}`} aria-label="مرور هوشمند" aria-describedby="review-hero-detail" onClick={onOpenReview}>
         <span className="review-hero-icon" aria-hidden="true"><RefreshCcwIcon className="h-5 w-5" /></span>
         <div className="min-w-0 flex-1 text-right">
           <div className="font-extrabold">مرور هوشمند</div>
