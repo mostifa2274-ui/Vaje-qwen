@@ -78,7 +78,8 @@ body::before {
 .app-main {
   position: relative;
   isolation: isolate;
-  background:
+  background-color: var(--cream);
+  background-image:
     radial-gradient(circle at 50% 0%, rgba(215, 168, 77, .055), transparent 24rem),
     linear-gradient(180deg, rgba(8, 18, 29, .98), rgba(4, 10, 18, .985));
   border-inline: 1px solid rgba(215, 168, 77, .10);
