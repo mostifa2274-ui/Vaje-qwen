@@ -21,7 +21,8 @@ import {
 import { speakEnglishWithFallback, speechFailureNotice, type SpeechFailure } from '../engine/narration'
 import { examRemediationWordIds } from '../engine/gates'
 import { consolidationFocus } from '../engine/analytics'
-import { BackIcon, BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
+import { BadgeCheckIcon, CheckIcon, SpeakerIcon } from '../components/Icons'
+import { LuxuryPageHeader } from '../components/LuxuryUI'
 import SpellingHint from '../components/SpellingHint'
 import { clearReviewDraft, loadReviewDraft, saveReviewDraft, type ReviewSessionKind } from '../engine/reviewDraft'
 import { faNum } from '../engine/format'
@@ -331,14 +332,13 @@ export default function ReviewScreen({ state, now, onChange, onBack }: Props) {
 
   return (
     <div className="app-page luxury-review page-in mx-auto max-w-3xl px-4 pb-28 pt-5">
-      <header className="flex items-center gap-3">
-        <button type="button" className="btn-paper reader-header-button" onClick={onBack} aria-label="بازگشت به نقشه"><BackIcon className="h-5 w-5" /></button>
-        <div className="flex-1">
-          <h1 className="text-2xl font-extrabold">مرور هوشمند</h1>
-          <p className="mt-1 text-xs" style={{ color: 'var(--ink-soft)' }}>هر کارت ضعیف‌ترین مهارت همان واژه را هدف می‌گیرد</p>
-        </div>
-        <span className="mastery-chip">هدف {faNum(state.dailyReviewGoal)}</span>
-      </header>
+      <LuxuryPageHeader
+        title="مرور هوشمند"
+        subtitle="هر کارت ضعیف‌ترین مهارت همان واژه را هدف می‌گیرد"
+        onBack={onBack}
+        backLabel="بازگشت به نقشه"
+        trailing={<span className="mastery-chip">هدف {faNum(state.dailyReviewGoal)}</span>}
+      />
 
       <div className="compact-summary mt-5" aria-label="خلاصهٔ مرور">
         <div><b>{faNum(due.length)}</b><span>سررسید</span></div>
