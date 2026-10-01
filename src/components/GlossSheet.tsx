@@ -115,7 +115,7 @@ export default function GlossSheet({ word, state, soundOn, narratorVoiceURI, nar
   return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-end justify-center"
-      style={{ background: 'rgba(43,42,38,0.45)' }}
+      style={{ background: 'rgba(2,7,13,0.78)', backdropFilter: 'blur(4px)' }}
       onMouseDown={event => { if (event.target === event.currentTarget) onClose() }}
       role="presentation"
     >
