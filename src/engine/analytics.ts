@@ -2,7 +2,7 @@ import { CHAPTERS, VOCAB, chaptersOfBook } from '../data/chapters'
 import type { GhesseState, SkillDimension } from './types'
 import { durableCoverage, masteredCoverage, masteryCounts, skillCoverage } from './mastery'
 import { dueWordIds, retentionEstimate, troubleWordIds } from './review'
-import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookCompleted, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, courseChaptersCompleted, examCleared, examDefinition, examPassed, examRemediationWordIds } from './gates'
+import { FINAL_EXAM_ID, MIDPOINT_EXAM_ID, bookCompleted, bookExamId, canPrepareChapter, canReadChapter, canTakeExam, courseChaptersCompleted, examCleared, examDefinition, examPassed, examRemediationPending, examRemediationWordIds } from './gates'
 import { bookConsolidation, type BookConsolidation } from './consolidation'
 import { faNum } from './format'
 
