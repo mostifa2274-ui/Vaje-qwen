@@ -179,13 +179,13 @@ export function LuxuryMetricGrid({
   items,
   className,
 }: {
-  items: Array<{ label: ReactNode; value: ReactNode }>
+  items: Array<{ label: ReactNode; value: ReactNode; className?: string; testId?: string }>
   className?: string
 }) {
   return (
     <div className={join('luxury-metric-grid', className)}>
       {items.map((item, index) => (
-        <div className="luxury-metric" key={index}>
+        <div className={join('luxury-metric', item.className)} data-testid={item.testId} key={index}>
           <b>{item.value}</b>
           <span>{item.label}</span>
         </div>
